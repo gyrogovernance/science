@@ -1,0 +1,19 @@
+{
+  "include": [
+    "Experiments"
+  ],
+  "exclude": [
+    "**/node_modules",
+    "**/__pycache__"
+  ],
+  "ignore": [
+    "**/cgm_data_manager.py"
+  ],
+  "defineConstant": {},
+  "typeCheckingMode": "basic",
+  "useLibraryCodeForTypes": true,
+  "reportMissingImports": true,
+  "reportMissingTypeStubs": false,
+  "pythonVersion": "3.12.10",
+  "pythonPlatform": "All"
+}

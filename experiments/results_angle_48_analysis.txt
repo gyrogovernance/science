@@ -1,0 +1,253 @@
+48° ANGLE ANALYSIS - DETAILED RESULTS
+==================================================
+
+KEY ANGLES ANALYSIS:
+
+12°:
+  angle_deg: 12
+  angle_rad: 0.20943951023931956
+  ratio_48_to_angle: 4.0
+  ratio_angle_to_48: 0.25
+  percentage_difference: 75.0
+  common_factors: [1, 2, 3, 4, 6, 12]
+  fraction_48_over_angle: 4
+  fraction_angle_over_48: 1/4
+
+24°:
+  angle_deg: 24
+  angle_rad: 0.4188790204786391
+  ratio_48_to_angle: 2.0
+  ratio_angle_to_48: 0.5
+  percentage_difference: 50.0
+  common_factors: [1, 2, 3, 4, 6, 8, 12, 24]
+  fraction_48_over_angle: 2
+  fraction_angle_over_48: 1/2
+
+30°:
+  angle_deg: 30
+  angle_rad: 0.5235987755982988
+  ratio_48_to_angle: 1.6
+  ratio_angle_to_48: 0.625
+  percentage_difference: 37.5
+  common_factors: [1, 2, 3, 6]
+  fraction_48_over_angle: 8/5
+  fraction_angle_over_48: 5/8
+
+36°:
+  angle_deg: 36
+  angle_rad: 0.6283185307179586
+  ratio_48_to_angle: 1.3333333333333333
+  ratio_angle_to_48: 0.75
+  percentage_difference: 25.0
+  common_factors: [1, 2, 3, 4, 6, 12]
+  fraction_48_over_angle: 4/3
+  fraction_angle_over_48: 3/4
+
+45°:
+  angle_deg: 45
+  angle_rad: 0.7853981633974483
+  ratio_48_to_angle: 1.0666666666666667
+  ratio_angle_to_48: 0.9375
+  percentage_difference: 6.25
+  common_factors: [1, 3]
+  fraction_48_over_angle: 16/15
+  fraction_angle_over_48: 15/16
+
+60°:
+  angle_deg: 60
+  angle_rad: 1.0471975511965976
+  ratio_48_to_angle: 0.8
+  ratio_angle_to_48: 1.25
+  percentage_difference: 20.0
+  common_factors: [1, 2, 3, 4, 6, 12]
+  fraction_48_over_angle: 4/5
+  fraction_angle_over_48: 5/4
+
+72°:
+  angle_deg: 72
+  angle_rad: 1.2566370614359172
+  ratio_48_to_angle: 0.6666666666666666
+  ratio_angle_to_48: 1.5
+  percentage_difference: 33.33333333333333
+  common_factors: [1, 2, 3, 4, 6, 8, 12, 24]
+  fraction_48_over_angle: 2/3
+  fraction_angle_over_48: 3/2
+
+90°:
+  angle_deg: 90
+  angle_rad: 1.5707963267948966
+  ratio_48_to_angle: 0.5333333333333333
+  ratio_angle_to_48: 1.875
+  percentage_difference: 46.666666666666664
+  common_factors: [1, 2, 3, 6]
+  fraction_48_over_angle: 8/15
+  fraction_angle_over_48: 15/8
+
+120°:
+  angle_deg: 120
+  angle_rad: 2.0943951023931953
+  ratio_48_to_angle: 0.4
+  ratio_angle_to_48: 2.5
+  percentage_difference: 60.0
+  common_factors: [1, 2, 3, 4, 6, 8, 12, 24]
+  fraction_48_over_angle: 2/5
+  fraction_angle_over_48: 5/2
+
+135°:
+  angle_deg: 135
+  angle_rad: 2.356194490192345
+  ratio_48_to_angle: 0.35555555555555557
+  ratio_angle_to_48: 2.8125
+  percentage_difference: 64.44444444444444
+  common_factors: [1, 3]
+  fraction_48_over_angle: 16/45
+  fraction_angle_over_48: 45/16
+
+150°:
+  angle_deg: 150
+  angle_rad: 2.6179938779914944
+  ratio_48_to_angle: 0.32
+  ratio_angle_to_48: 3.125
+  percentage_difference: 68.0
+  common_factors: [1, 2, 3, 6]
+  fraction_48_over_angle: 8/25
+  fraction_angle_over_48: 25/8
+
+180°:
+  angle_deg: 180
+  angle_rad: 3.141592653589793
+  ratio_48_to_angle: 0.26666666666666666
+  ratio_angle_to_48: 3.75
+  percentage_difference: 73.33333333333333
+  common_factors: [1, 2, 3, 4, 6, 12]
+  fraction_48_over_angle: 4/15
+  fraction_angle_over_48: 15/4
+
+270°:
+  angle_deg: 270
+  angle_rad: 4.71238898038469
+  ratio_48_to_angle: 0.17777777777777778
+  ratio_angle_to_48: 5.625
+  percentage_difference: 82.22222222222221
+  common_factors: [1, 2, 3, 6]
+  fraction_48_over_angle: 8/45
+  fraction_angle_over_48: 45/8
+
+360°:
+  angle_deg: 360
+  angle_rad: 6.283185307179586
+  ratio_48_to_angle: 0.13333333333333333
+  ratio_angle_to_48: 7.5
+  percentage_difference: 86.66666666666667
+  common_factors: [1, 2, 3, 4, 6, 8, 12, 24]
+  fraction_48_over_angle: 2/15
+  fraction_angle_over_48: 15/2
+
+
+PI-RELATED ANGLES ANALYSIS:
+
+0.17π:
+  angle_deg: 29.999999999999996
+  angle_rad: 0.5235987755982988
+  ratio_48_to_angle: 1.6
+  ratio_angle_to_48: 0.625
+  percentage_difference: 37.50000000000001
+  fraction_48_over_angle: 8/5
+  fraction_angle_over_48: 5/8
+
+0.25π:
+  angle_deg: 45.0
+  angle_rad: 0.7853981633974483
+  ratio_48_to_angle: 1.0666666666666667
+  ratio_angle_to_48: 0.9375
+  percentage_difference: 6.25
+  fraction_48_over_angle: 16/15
+  fraction_angle_over_48: 15/16
+
+0.33π:
+  angle_deg: 59.99999999999999
+  angle_rad: 1.0471975511965976
+  ratio_48_to_angle: 0.8
+  ratio_angle_to_48: 1.25
+  percentage_difference: 19.99999999999999
+  fraction_48_over_angle: 4/5
+  fraction_angle_over_48: 5/4
+
+0.50π:
+  angle_deg: 90.0
+  angle_rad: 1.5707963267948966
+  ratio_48_to_angle: 0.5333333333333333
+  ratio_angle_to_48: 1.875
+  percentage_difference: 46.666666666666664
+  fraction_48_over_angle: 8/15
+  fraction_angle_over_48: 15/8
+
+1.00π:
+  angle_deg: 180.0
+  angle_rad: 3.141592653589793
+  ratio_48_to_angle: 0.26666666666666666
+  ratio_angle_to_48: 3.75
+  percentage_difference: 73.33333333333333
+  fraction_48_over_angle: 4/15
+  fraction_angle_over_48: 15/4
+
+2.00π:
+  angle_deg: 360.0
+  angle_rad: 6.283185307179586
+  ratio_48_to_angle: 0.13333333333333333
+  ratio_angle_to_48: 7.5
+  percentage_difference: 86.66666666666667
+  fraction_48_over_angle: 2/15
+  fraction_angle_over_48: 15/2
+
+4.00π:
+  angle_deg: 720.0
+  angle_rad: 12.566370614359172
+  ratio_48_to_angle: 0.06666666666666667
+  ratio_angle_to_48: 15.0
+  percentage_difference: 93.33333333333333
+  fraction_48_over_angle: 1/15
+  fraction_angle_over_48: 15
+
+
+SPECIAL RELATIONSHIPS:
+  48_as_fraction_of_360: 0.13333333333333333
+  48_as_fraction_of_180: 0.26666666666666666
+  48_as_fraction_of_90: 0.5333333333333333
+  48_as_fraction_of_45: 1.0666666666666667
+  48_as_fraction_of_24: 2.0
+  48_as_fraction_of_12: 4.0
+  complement_to_90: 42.0
+  complement_to_180: 132.0
+  supplement_to_360: 312.0
+  48_in_radians: 0.8377580409572782
+  48_as_fraction_of_2pi: 0.13333333333333333
+  48_as_fraction_of_pi: 0.26666666666666666
+  48_as_fraction_of_pi_over_2: 0.5333333333333333
+
+
+HARMONIC RELATIONSHIPS:
+  unison: {'cents': 0, 'ratio_in_48_degrees': inf, 'remainder_cents': 0, 'closest_whole_number': 0}
+  minor_second: {'cents': 100, 'ratio_in_48_degrees': 1.6, 'remainder_cents': 60.0, 'closest_whole_number': 2}
+  major_second: {'cents': 200, 'ratio_in_48_degrees': 0.8, 'remainder_cents': 160.0, 'closest_whole_number': 1}
+  minor_third: {'cents': 300, 'ratio_in_48_degrees': 0.5333333333333333, 'remainder_cents': 160.0, 'closest_whole_number': 1}
+  major_third: {'cents': 400, 'ratio_in_48_degrees': 0.4, 'remainder_cents': 160.0, 'closest_whole_number': 0}
+  perfect_fourth: {'cents': 500, 'ratio_in_48_degrees': 0.32, 'remainder_cents': 160.0, 'closest_whole_number': 0}
+  tritone: {'cents': 600, 'ratio_in_48_degrees': 0.26666666666666666, 'remainder_cents': 160.0, 'closest_whole_number': 0}
+  perfect_fifth: {'cents': 700, 'ratio_in_48_degrees': 0.22857142857142856, 'remainder_cents': 160.0, 'closest_whole_number': 0}
+  minor_sixth: {'cents': 800, 'ratio_in_48_degrees': 0.2, 'remainder_cents': 160.0, 'closest_whole_number': 0}
+  major_sixth: {'cents': 900, 'ratio_in_48_degrees': 0.17777777777777778, 'remainder_cents': 160.0, 'closest_whole_number': 0}
+  minor_seventh: {'cents': 1000, 'ratio_in_48_degrees': 0.16, 'remainder_cents': 160.0, 'closest_whole_number': 0}
+  major_seventh: {'cents': 1100, 'ratio_in_48_degrees': 0.14545454545454545, 'remainder_cents': 160.0, 'closest_whole_number': 0}
+  octave: {'cents': 1200, 'ratio_in_48_degrees': 0.13333333333333333, 'remainder_cents': 160.0, 'closest_whole_number': 0}
+
+
+GEOMETRIC PROPERTIES:
+  regular_polygon_sides: 7.5
+  exterior_angle: 132.0
+  interior_angle_sum: 990.0
+  central_angle: 48.0
+  arc_length_ratio: 0.13333333333333333
+  sector_area_ratio: 0.13333333333333333
+  chord_length_ratio: 0.8134732861516004
+  apothem_ratio: 0.9135454576426009

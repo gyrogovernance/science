@@ -1,0 +1,64 @@
+# Virtual Environment
+.venv/
+venv/
+env/
+ENV/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Environment variables
+.env
+.env.local
+
+# Logs
+*.log
+
+# Results and data files
+*.npy
+*.npz
+*.pkl
+*.pickle
+results/
+data/
+!experiments/data/
+
+# Large data files (excluded from tracking)
+experiments/data/COM_CompMap_Compton-SZMap-masks_2048_R2.01.fits
+
+# Temporary files
+*.tmp
+*.temp
