@@ -1,3 +1,5 @@
+# Mathematical Physics Science
+> **Gyroscopic Alignment Research Lab**
 
 <div align="center">
   <img src="assets/CGMCover.png" alt="CGM Cover" />
