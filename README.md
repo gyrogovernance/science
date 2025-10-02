@@ -101,12 +101,12 @@ Developing mathematical tools for understanding the deep structure of physical r
 If you use this framework in your research, please cite:
 
 ```bibtex
-@software{korompilias2025cgm,
+@software{gyrogovernancesciencerepo,
   title={Common Governance Model},
   author={Korompilias, Basil},
   year={2025},
   url={https://github.com/GyroSuperintelligence/CGM},
-  note={Axiomatic framework for recursive geometry in physics}
+  note={Mathematical Physics Framework about Gyroscopic Alignment}
 }
 ```
 ---
