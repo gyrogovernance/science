@@ -45,8 +45,8 @@ Recent developments have extended CGM to define quantum gravity as the geometric
 
 ## 📚 Documentation
 
-- 📖 **[CHANGELOG.md](CHANGELOG.md)** - Complete version history and development timeline
 - 🌐 **[Foundations](docs/Foundations/CommonGovernanceModel.md)** - Theoretical foundations and mathematical framework
+- 📖 **[CHANGELOG.md](CHANGELOG.md)** - Latest Updates and Complete version history
 
 ### Key Results & Experiments
 
@@ -60,8 +60,6 @@ Recent developments have extended CGM to define quantum gravity as the geometric
 | **1.0.7** | 🔄 Monodromy Structure | [Analysis](docs/Findings/Analysis_Monodromy.md) | [Code](experiments/tw_closure_test.py) |
 | **1.0.7** | 📡 Kompaneyets Analysis | [Analysis](docs/Findings/Analysis_Kompaneyets.md) | [Code](experiments/cgm_kompaneyets_analysis.py) |
 | **1.0.6** | 🌠 CMB Patterns | [Analysis](docs/Findings/Analysis_CMB.md) | [Code](experiments/cgm_cmb_data_analysis_300825.py) |
-
-**For our Latest work, read our [Changelog](/CHANGELOG.md)
 
 ---
 
