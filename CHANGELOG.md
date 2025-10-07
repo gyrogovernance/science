@@ -4,6 +4,14 @@ All notable changes to the CGM Experimental Framework will be documented in this
 
 ---
 
+## [1.1.4-Balance] - 2025-10-06
+New Topic - Balance Constant
+Experiments Results and Analysis found here: 
+docs\Findings\Analysis_Balance_Constant.md
+experiments\cgm_balance_analysis.py
+
+---
+
 ## [1.1.3-Measurement] - 2025-10-05
 New Topic - Measurement Analysis:
 docs\Findings\Analysis_Measurement.md
@@ -13,7 +21,7 @@ docs\Findings\Analysis_Measurement.md
 ## [1.1.3-Geometry] - 2025-09-23
 
 New Topic - Geometry Coherence
-Experiments Review and Results found here: 
+Experiments Results and Analysis found here: 
 experiments\cgm_coherence_analysis.py
 docs\Findings\Analysis_Geometric_Coherence.md
 
@@ -39,7 +47,7 @@ experiments\cgm_higgs_analysis.py
 ## [1.1.3-CGM] - 2025-09-19
 
 New Topic - Universal Correction Operator
-Experiments Review and Results found here: 
+Experiments Results and Analysis found here: 
 docs\Findings\Analysis_Universal_Corrections.md
 experiments\cgm_corrections_analysis_1.py
 experiments\cgm_corrections_analysis_2.py
@@ -52,7 +60,7 @@ docs\Findings\Analysis_Alignment.md
 
 ## [1.1.2-BH] - 2025-09-18
 New Topic - Black Hole Universe.
-Experiments Review and Results found here: 
+Experiments Results and Analysis found here: 
 docs\Findings\Analysis_BH_Universe.md
 experiments\cgm_bh_universe_analysis.py
 
@@ -75,14 +83,14 @@ experiments\cgm_proto_units_helpers_.py
 
 ## [1.1.1-E★] - 2025-09-16
 New Topic - CGM E, Gut and ToE Predictions.
-Experiments Review and Results found here: 
+Experiments Results and Analysis found here: 
 docs\Findings\Analysis_Energy_Scales.md
 experiments\cgm_energy_analysis.py
 
 ---
 
 ## [1.1.1-BSM] - 2025-09-15
-Experiments Review and Results found here: 
+Experiments Results and Analysis found here: 
 docs\Findings\Analysis_48_States.md
 experiments\cgm_equations_analysis.py
 
@@ -90,14 +98,14 @@ experiments\cgm_equations_analysis.py
 
 ## [1.1.1-BSM] - 2025-09-13
 New Topic - Beyond Standard Model Analysis.
-Experiments Review and Results found here: 
+Experiments Results and Analysis found here: 
 experiments\cgm_bsm_analysis.py
 
 ---
 
 ## [1.1.1-Higgs] - 2025-09-12
 New Topic - Higgs Analysis.
-Experiments Review and Results found here: 
+Experiments Results and Analysis found here: 
 docs\Findings\Analysis_Higgs.md
 experiments\cgm_higgs_analysis.py
 
@@ -111,7 +119,7 @@ docs\Findings\Analysis_Alignment.md
 
 ## [1.1.1-Walking] - 2025-09-10
 
-Experiments Review and Results found here: 
+Experiments Results and Analysis found here: 
 docs\Findings\Analysis_Walking.md
 experiments\cgm_walking_analysis.py
 
@@ -126,21 +134,21 @@ docs\Findings\Analysis_Motion.md
 
 ## [1.1.1-Alignment] - 2025-09-05
 
-Experiments Review and Results found here: 
+Experiments Results and Analysis found here: 
 docs\Findings\Analysis_Alignment.md
 
 ---
 
 ## [1.1.0-Alpha] - 2025-09-04
 
-Experiments Review and Results found here: 
+Experiments Results and Analysis found here: 
 docs\Findings\Analysis_3_Fine_Structure.md
 experiments\cgm_alpha_analysis.py
 
 ---
 
 ## [1.0.9-Proto-Units] - 2025-09-03
-Experiments Review and Results found here: 
+Experiments Results and Analysis found here: 
 docs\Findings\Analysis_CGM_Units.md
 experiments\cgm_proto_units_analysis.py
 experiments\cgm_proto_units_helpers_.py
@@ -148,7 +156,7 @@ experiments\cgm_proto_units_helpers_.py
 ---
 
 ## [1.0.8-QuantumGravity] - 2025-09-02
-Experiments Review and Results found here: 
+Experiments Results and Analysis found here: 
 docs\Findings\Analysis_2_Quantum_Gravity.md
 experiments\cgm_quantum_gravity_analysis.py
 experiments\cgm_quantum_gravity_helpers.py
@@ -157,7 +165,7 @@ experiments\cgm_quantum_gravity_helpers.py
 
 ## [1.0.7-Monodromy] - 2025-09-01
 
-Experiments Review and Results found here: 
+Experiments Results and Analysis found here: 
 docs\Findings\Analysis_5_Monodromy.md
 experiments\tw_closure_test.py
 
@@ -165,7 +173,7 @@ experiments\tw_closure_test.py
 
 ## [1.0.7-Kompaneyets] - 2025-08-31
 
-Experiments Review and Results found here: 
+Experiments Results and Analysis found here: 
 docs\Findings\Analysis_Kompaneyets.md
 experiments\cgm_kompaneyets_analysis.py
 
@@ -173,7 +181,7 @@ experiments\cgm_kompaneyets_analysis.py
 
 ## [1.0.6] - 2025-08-30
 
-Experiments Review and Results found here: 
+Experiments Results and Analysis found here: 
 docs\Findings\Analysis_CMB.md
 experiments\cgm_cmb_data_analysis_300825.py
 
