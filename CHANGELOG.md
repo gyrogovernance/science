@@ -4,10 +4,10 @@ All notable changes to the CGM Experimental Framework will be documented in this
 
 ---
 
-## [1.1.4-Balance] - 2025-10-06
-New Topic - Balance Constant
+## [1.1.4-Balance] - 2025-10-06 2025-10-07 
+New Topic - Balance Index
 Experiments Results and Analysis found here: 
-- [docs/Findings/Analysis_Balance_Constant.md](docs/Findings/Analysis_Balance_Constant.md)
+- [docs/Findings/Analysis_Balance_Constant.md](docs/Findings/Analysis_Balance_Index.md)
 - [experiments/cgm_balance_analysis.py](experiments/cgm_balance_analysis.py)
 
 ---
