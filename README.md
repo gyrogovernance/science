@@ -61,6 +61,8 @@ Recent developments have extended CGM to define quantum gravity as the geometric
 | **1.0.7** | 📡 Kompaneyets Analysis | [Analysis](docs/Findings/Analysis_Kompaneyets.md) | [Code](experiments/cgm_kompaneyets_analysis.py) |
 | **1.0.6** | 🌠 CMB Patterns | [Analysis](docs/Findings/Analysis_CMB.md) | [Code](experiments/cgm_cmb_data_analysis_300825.py) |
 
+**For our Latest work, read our [Changelog](/CHANGELOG.md)
+
 ---
 
 ## 📊 Current Status
@@ -105,7 +107,7 @@ If you use this framework in your research, please cite:
   title={Common Governance Model},
   author={Korompilias, Basil},
   year={2025},
-  url={https://github.com/GyroSuperintelligence/CGM},
+  url={https://github.com/gyrogovernance/science},
   note={Mathematical Physics Framework about Gyroscopic Alignment}
 }
 ```
