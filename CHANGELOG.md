@@ -7,14 +7,14 @@ All notable changes to the CGM Experimental Framework will be documented in this
 ## [1.1.4-Balance] - 2025-10-06
 New Topic - Balance Constant
 Experiments Results and Analysis found here: 
-docs\Findings\Analysis_Balance_Constant.md
-experiments\cgm_balance_analysis.py
+- [docs/Findings/Analysis_Balance_Constant.md](docs/Findings/Analysis_Balance_Constant.md)
+- [experiments/cgm_balance_analysis.py](experiments/cgm_balance_analysis.py)
 
 ---
 
 ## [1.1.3-Measurement] - 2025-10-05
 New Topic - Measurement Analysis:
-docs\Findings\Analysis_Measurement.md
+- [docs/Findings/Analysis_Measurement.md](docs/Findings/Analysis_Measurement.md)
 
 ---
 
@@ -22,8 +22,8 @@ docs\Findings\Analysis_Measurement.md
 
 New Topic - Geometry Coherence
 Experiments Results and Analysis found here: 
-experiments\cgm_coherence_analysis.py
-docs\Findings\Analysis_Geometric_Coherence.md
+- [experiments/cgm_coherence_analysis.py](experiments/cgm_coherence_analysis.py)
+- [docs/Findings/Analysis_Geometric_Coherence.md](docs/Findings/Analysis_Geometric_Coherence.md)
 
 ---
 
@@ -32,15 +32,15 @@ docs\Findings\Analysis_Geometric_Coherence.md
 New Topic - Gyroscopic Field Equation and Cosmological Chronology
 
 Hypotheses Notes found here:
-docs\Findings\Analysis_GFE.md
-docs\Notes\Notes_12_Chronology.md
+- [docs/Findings/Analysis_GFE.md](docs/Findings/Analysis_GFE.md)
+- [docs/Notes/Notes_12_Chronology.md](docs/Notes/Notes_12_Chronology.md)
 
 ---
 
 ## [1.1.3-Massive] - 2025-09-21
 New Topic - Higgs and Fermion Mass Analysis
 Experiments found here: 
-experiments\cgm_higgs_analysis.py
+- [experiments/cgm_higgs_analysis.py](experiments/cgm_higgs_analysis.py)
 
 ---
 
@@ -48,149 +48,148 @@ experiments\cgm_higgs_analysis.py
 
 New Topic - Universal Correction Operator
 Experiments Results and Analysis found here: 
-docs\Findings\Analysis_Universal_Corrections.md
-experiments\cgm_corrections_analysis_1.py
-experiments\cgm_corrections_analysis_2.py
+- [docs/Findings/Analysis_Universal_Corrections.md](docs/Findings/Analysis_Universal_Corrections.md)
+- [experiments/cgm_corrections_analysis_1.py](experiments/cgm_corrections_analysis_1.py)
+- [experiments/cgm_corrections_analysis_2.py](experiments/cgm_corrections_analysis_2.py)
 
 Revisions:
-docs\Findings\Analysis_CGM_Units.md
-docs\Findings\Analysis_Alignment.md
+- [docs/Findings/Analysis_CGM_Units.md](docs/Findings/Analysis_CGM_Units.md)
+- [docs/Findings/Analysis_Alignment.md](docs/Findings/Analysis_Alignment.md)
 
 ---
 
 ## [1.1.2-BH] - 2025-09-18
 New Topic - Black Hole Universe.
 Experiments Results and Analysis found here: 
-docs\Findings\Analysis_BH_Universe.md
-experiments\cgm_bh_universe_analysis.py
+- [docs/Findings/Analysis_BH_Universe.md](docs/Findings/Analysis_BH_Universe.md)
+- [experiments/cgm_bh_universe_analysis.py](experiments/cgm_bh_universe_analysis.py)
 
 Updated Experiments and Analyses:
-docs\Findings\Analysis_BH_Aperture.md
-experiments\cgm_bh_aperture_analysis.py
+- [docs/Findings/Analysis_BH_Aperture.md](docs/Findings/Analysis_BH_Aperture.md)
+- [experiments/cgm_bh_aperture_analysis.py](experiments/cgm_bh_aperture_analysis.py)
 
 ---
 
 ## [1.1.2-GuT] - 2025-09-17
 Corrections:
-docs\Findings\Analysis_Energy_Scales.md
-experiments\cgm_energy_analysis.py
-
-docs\Findings\Analysis_CGM_Units.md
-experiments\cgm_proto_units_analysis.py
-experiments\cgm_proto_units_helpers_.py
+- [docs/Findings/Analysis_Energy_Scales.md](docs/Findings/Analysis_Energy_Scales.md)
+- [experiments/cgm_energy_analysis.py](experiments/cgm_energy_analysis.py)
+- [docs/Findings/Analysis_CGM_Units.md](docs/Findings/Analysis_CGM_Units.md)
+- [experiments/cgm_proto_units_analysis.py](experiments/cgm_proto_units_analysis.py)
+- [experiments/cgm_proto_units_helpers_.py](experiments/cgm_proto_units_helpers_.py)
 
 ---
 
 ## [1.1.1-E★] - 2025-09-16
 New Topic - CGM E, Gut and ToE Predictions.
 Experiments Results and Analysis found here: 
-docs\Findings\Analysis_Energy_Scales.md
-experiments\cgm_energy_analysis.py
+- [docs/Findings/Analysis_Energy_Scales.md](docs/Findings/Analysis_Energy_Scales.md)
+- [experiments/cgm_energy_analysis.py](experiments/cgm_energy_analysis.py)
 
 ---
 
 ## [1.1.1-BSM] - 2025-09-15
 Experiments Results and Analysis found here: 
-docs\Findings\Analysis_48_States.md
-experiments\cgm_equations_analysis.py
+- [docs/Findings/Analysis_48_States.md](docs/Findings/Analysis_48_States.md)
+- [experiments/cgm_equations_analysis.py](experiments/cgm_equations_analysis.py)
 
 ---
 
 ## [1.1.1-BSM] - 2025-09-13
 New Topic - Beyond Standard Model Analysis.
 Experiments Results and Analysis found here: 
-experiments\cgm_bsm_analysis.py
+- [experiments/cgm_bsm_analysis.py](experiments/cgm_bsm_analysis.py)
 
 ---
 
 ## [1.1.1-Higgs] - 2025-09-12
 New Topic - Higgs Analysis.
 Experiments Results and Analysis found here: 
-docs\Findings\Analysis_Higgs.md
-experiments\cgm_higgs_analysis.py
+- [docs/Findings/Analysis_Higgs.md](docs/Findings/Analysis_Higgs.md)
+- [experiments/cgm_higgs_analysis.py](experiments/cgm_higgs_analysis.py)
 
 ---
 
 ## [1.1.1-Alignment] - 2025-09-11
 New Topic - Documentation found here: 
-docs\Findings\Analysis_Alignment.md
+- [docs/Findings/Analysis_Alignment.md](docs/Findings/Analysis_Alignment.md)
 
 ---
 
 ## [1.1.1-Walking] - 2025-09-10
 
 Experiments Results and Analysis found here: 
-docs\Findings\Analysis_Walking.md
-experiments\cgm_walking_analysis.py
+- [docs/Findings/Analysis_Walking.md](docs/Findings/Analysis_Walking.md)
+- [experiments/cgm_walking_analysis.py](experiments/cgm_walking_analysis.py)
 
 ---
 
 ## [1.1.1-Motion] - 2025-09-07
 
 New Topic - Documentation found here: 
-docs\Findings\Analysis_Motion.md
+- [docs/Findings/Analysis_Motion.md](docs/Findings/Analysis_Motion.md)
 
 ---
 
 ## [1.1.1-Alignment] - 2025-09-05
 
 Experiments Results and Analysis found here: 
-docs\Findings\Analysis_Alignment.md
+- [docs/Findings/Analysis_Alignment.md](docs/Findings/Analysis_Alignment.md)
 
 ---
 
 ## [1.1.0-Alpha] - 2025-09-04
 
 Experiments Results and Analysis found here: 
-docs\Findings\Analysis_3_Fine_Structure.md
-experiments\cgm_alpha_analysis.py
+- [docs/Findings/Analysis_3_Fine_Structure.md](docs/Findings/Analysis_3_Fine_Structure.md)
+- [experiments/cgm_alpha_analysis.py](experiments/cgm_alpha_analysis.py)
 
 ---
 
 ## [1.0.9-Proto-Units] - 2025-09-03
 Experiments Results and Analysis found here: 
-docs\Findings\Analysis_CGM_Units.md
-experiments\cgm_proto_units_analysis.py
-experiments\cgm_proto_units_helpers_.py
+- [docs/Findings/Analysis_CGM_Units.md](docs/Findings/Analysis_CGM_Units.md)
+- [experiments/cgm_proto_units_analysis.py](experiments/cgm_proto_units_analysis.py)
+- [experiments/cgm_proto_units_helpers_.py](experiments/cgm_proto_units_helpers_.py)
 
 ---
 
 ## [1.0.8-QuantumGravity] - 2025-09-02
 Experiments Results and Analysis found here: 
-docs\Findings\Analysis_2_Quantum_Gravity.md
-experiments\cgm_quantum_gravity_analysis.py
-experiments\cgm_quantum_gravity_helpers.py
+- [docs/Findings/Analysis_2_Quantum_Gravity.md](docs/Findings/Analysis_2_Quantum_Gravity.md)
+- [experiments/cgm_quantum_gravity_analysis.py](experiments/cgm_quantum_gravity_analysis.py)
+- [experiments/cgm_quantum_gravity_helpers.py](experiments/cgm_quantum_gravity_helpers.py)
 
 ---
 
 ## [1.0.7-Monodromy] - 2025-09-01
 
 Experiments Results and Analysis found here: 
-docs\Findings\Analysis_5_Monodromy.md
-experiments\tw_closure_test.py
+- [docs/Findings/Analysis_5_Monodromy.md](docs/Findings/Analysis_5_Monodromy.md)
+- [experiments/tw_closure_test.py](experiments/tw_closure_test.py)
 
 ---
 
 ## [1.0.7-Kompaneyets] - 2025-08-31
 
 Experiments Results and Analysis found here: 
-docs\Findings\Analysis_Kompaneyets.md
-experiments\cgm_kompaneyets_analysis.py
+- [docs/Findings/Analysis_Kompaneyets.md](docs/Findings/Analysis_Kompaneyets.md)
+- [experiments/cgm_kompaneyets_analysis.py](experiments/cgm_kompaneyets_analysis.py)
 
 ---
 
 ## [1.0.6] - 2025-08-30
 
 Experiments Results and Analysis found here: 
-docs\Findings\Analysis_CMB.md
-experiments\cgm_cmb_data_analysis_300825.py
+- [docs/Findings/Analysis_CMB.md](docs/Findings/Analysis_CMB.md)
+- [experiments/cgm_cmb_data_analysis_300825.py](experiments/cgm_cmb_data_analysis_300825.py)
 
 ---
 
 ## [1.0.6] - 2025-08-29
 
 Experiment: 
-experiments\cgm_cmb_data_analysis_290825.py
+- [experiments/cgm_cmb_data_analysis_290825.py](experiments/cgm_cmb_data_analysis_290825.py)
 
 ---
 
@@ -199,7 +198,7 @@ experiments\cgm_cmb_data_analysis_290825.py
 A lot of changes and cleaning up. 
 
 Experiment: 
-docs\Findings\results_28082025.md
+- [docs/Findings/results_28082025.md](docs/Findings/results_28082025.md)
 
 ---
 
