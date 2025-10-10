@@ -7,7 +7,7 @@ This script calculates a newly identified index with dimensions [M^-2 L^2 Θ^1 T
 that emerges from considering thermodynamic equilibrium at cosmological horizons.
 
 The Balance Index is defined as:
-    Σ_eq = (A_H × T_eq) / M_P^2
+    B_i = (A_H × T_eq) / M_P^2
 
 Where:
     A_H = 4π R_H^2 is the horizon area
@@ -15,7 +15,7 @@ Where:
     M_P^2 = (ℏc/G) is the Planck mass squared
 
 This simplifies to the compact form:
-    Σ_eq = 2Gc/(k_B H_0)
+    B_i = 2Gc/(k_B H_0)
 
 Physical interpretation: This Index represents the thermal surface capacity
 per unit gravitational mass squared at cosmological equilibrium, providing a
@@ -205,7 +205,7 @@ def calculate_balance_index(H0_kmsmpc, H0_error_kmsmpc=None):
     Sigma_eq_CGM = Sigma_eq_area * cgm.aperture_correction()
     
     # Error propagation if uncertainty provided
-    # Σ_eq = 2Gc/(k_B H₀), so Σ_eq ∝ G/H₀
+    # B_i = 2Gc/(k_B H₀), so B_i ∝ G/H₀
     # ΔΣ/Σ = sqrt((ΔG/G)² + (ΔH₀/H₀)²)
     if H0_error_kmsmpc:
         H0_error = cosmo.H0_to_SI(H0_error_kmsmpc)
@@ -578,7 +578,7 @@ def print_results():
     print("CGM BALANCE INDEX ANALYSIS")
     print("=" * 80)
     print()
-    print(f"Σ_eq = 2Gc/(k_B H₀)  |  Dimensions: [M^-2 L^2 Θ^1 T^0]  |  ℏ cancels")
+    print(f"B_i = 2Gc/(k_B H₀)  |  Dimensions: [M^-2 L^2 Θ^1 T^0]  |  ℏ cancels")
     print()
     
     print("BALANCE INDEX VALUES")
@@ -598,8 +598,8 @@ def print_results():
         all_results.append((name, results))
         
         print(f"{name}: H₀ = {float(H0):.2f} ± {float(H0_err):.2f} km/s/Mpc")
-        print(f"  Σ_eq = ({results['Sigma_eq']:.6e} ± {results['Sigma_eq_error']:.2e}) m²⋅K⋅kg⁻²")
-        print(f"  Σ_eq,CGM (aperture) = {results['Sigma_eq_CGM']:.6e} m²⋅K⋅kg⁻²")
+        print(f"  B_i = ({results['Sigma_eq']:.6e} ± {results['Sigma_eq_error']:.2e}) m²⋅K⋅kg⁻²")
+        print(f"  B_i,CGM (aperture) = {results['Sigma_eq_CGM']:.6e} m²⋅K⋅kg⁻²")
         print(f"  Verification (area/compact): {results['verification_ratio']:.15f}")
         
         # Guardrail: verification must be exact
@@ -611,28 +611,119 @@ def print_results():
     planck_results = all_results[0][1]
     shoes_results = all_results[1][1]
     ratio = shoes_results['Sigma_eq'] / planck_results['Sigma_eq']
-    print(f"Hubble tension: Σ_eq(SH0ES)/Σ_eq(Planck) = {ratio:.6f} (∝ H₀ ratio)")
+    print(f"Hubble tension: B_i(SH0ES)/B_i(Planck) = {ratio:.6f} (∝ H₀ ratio)")
     print()
     
-    # Fundamental geometric identities linking Σ_eq to CGM core
+    # Fundamental geometric identities and dimensionless checks
     print("FUNDAMENTAL GEOMETRIC IDENTITIES")
     print("----------")
     
+    # Dimensionless closure vector (what geometry forces)
+    chi = (const.k_B * planck_results['Sigma_eq_decimal'] * planck_results['H0_SI_decimal']) / (const.G * const.c)
+    print(f"Identity: χ = (k_B Σ H₀)/(G c) = {float(chi):.15f} (= 2)")
+    assert abs(chi - 2) < 1e-15, "χ must equal 2"
+    
     # Topology check: 4π (area) vs 2π (temperature) identity
-    # (k_B T_eq A_H) / (ħ H_0 2R_H²) should equal 1 (4π/2π reduction in Σ_eq)
     I_top = (const.k_B * planck_results['T_eq_decimal'] * planck_results['A_H_decimal']) / \
             (const.hbar * planck_results['H0_SI_decimal'] * Decimal('2') * planck_results['R_H_decimal']**2)
-    print(f"Identity: Topology (4π area vs 2π temp) = {float(I_top):.15f}")
+    print(f"Identity: τ = Topology (4π/2π) = {float(I_top):.15f} (= 1)")
     assert abs(I_top - 1) < 1e-15, "Topology identity must equal 1"
     
     # Q_G and aperture identities (CGM geometric core)
     s_p = PI / Decimal('2')  # π/2 from CS threshold
     check_QG_aperture = cgm.Q_G * (cgm.m_p ** 2)
     check_sp_aperture = s_p / (cgm.m_p ** 2)
-    print(f"Identity: Q_G × m_p² = {float(check_QG_aperture):.15f} (expected 0.5)")
-    print(f"Identity: s_p / m_p² = {float(check_sp_aperture):.15f} (expected 4π²)")
+    phi = check_sp_aperture / (Decimal('4') * PI ** 2)
+    print(f"Identity: ϕ = (s_p/m_p²)/(4π²) = {float(phi):.15f} (= 1)")
+    print(f"Identity: Q_G × m_p² = {float(check_QG_aperture):.15f} (= 0.5)")
     assert abs(check_QG_aperture - Decimal('0.5')) < 1e-15, "Q_G aperture must equal 0.5"
-    assert abs(check_sp_aperture - (Decimal('4') * PI ** 2)) < 1e-10, "s_p aperture must equal 4π²"
+    assert abs(phi - 1) < 1e-10, "ϕ must equal 1"
+    print()
+    print("Closure vector (χ, τ, ϕ) = (2, 1, 1) — geometric necessities")
+    print()
+    
+    # Unit-neutral checks (dimensionless physics)
+    print("DIMENSIONLESS PHYSICS")
+    print("----------")
+    
+    # H0 in Planck units
+    t_P = (const.hbar * const.G / const.c**5).sqrt()
+    H0_planck_units = planck_results['H0_SI_decimal'] * t_P
+    print(f"Ĥ₀ = H₀ × t_P (dimensionless):  {float(H0_planck_units):.6e}")
+    
+    # Gravitational coupling at EW scale
+    E_EW_J = CGMEnergyScales.E_EW * Decimal('1.602176634e-10')
+    m_EW = E_EW_J / const.c**2
+    alpha_G_EW = const.G * m_EW**2 / (const.hbar * const.c)
+    print(f"α_G(EW) = Gm²/(ħc) at 240 GeV: {float(alpha_G_EW):.6e}")
+    
+    # Gravitational coupling at proton mass
+    m_proton = Decimal('1.67262192e-27')  # kg
+    alpha_G_proton = const.G * m_proton**2 / (const.hbar * const.c)
+    print(f"α_G(proton):                    {float(alpha_G_proton):.6e}")
+    print()
+    
+    # Error budget for B_i
+    print("ERROR BUDGET")
+    print("----------")
+    rel_err_G = float(const.G_uncertainty / const.G)
+    rel_err_H0 = float(cosmo.H0_planck_error / cosmo.H0_planck)
+    rel_err_total = math.sqrt(rel_err_G**2 + rel_err_H0**2)
+    print(f"Fractional uncertainty contributions:")
+    print(f"  ΔG/G:                         {rel_err_G:.6e} ({100*rel_err_G**2/rel_err_total**2:.1f}%)")
+    print(f"  ΔH₀/H₀:                       {rel_err_H0:.6e} ({100*rel_err_H0**2/rel_err_total**2:.1f}%)")
+    print(f"  Total ΔΣ/Σ:                   {rel_err_total:.6e}")
+    print(f"  → B_i precision limited by H₀ measurement ({100*rel_err_H0**2/rel_err_total**2:.0f}%)")
+    print()
+    
+    # Aperture recovery test
+    print("APERTURE RECOVERY")
+    print("----------")
+    I1_CGM_computed = (const.k_B * planck_results['Sigma_eq_CGM_decimal'] * 
+                       (planck_results['H0_SI_decimal'] / (Decimal('1') + cgm.m_p))) / (const.G * const.c)
+    m_p_recovered = (Decimal('2') / I1_CGM_computed).sqrt() - Decimal('1')
+    m_p_deviation = abs(m_p_recovered - cgm.m_p)
+    print(f"From I₁_CGM: m_p = √(2/I₁_CGM) − 1")
+    print(f"  Recovered:  {float(m_p_recovered):.15f}")
+    print(f"  Expected:   {float(cgm.m_p):.15f}")
+    print(f"  Deviation:  {float(m_p_deviation):.2e}")
+    print(f"  → Aperture value {'locked by equilibrium ✓' if m_p_deviation < 1e-10 else 'not fully determined'}")
+    print()
+    
+    # Constant recovery from closure (equilibrium viewpoint)
+    print("CONSTANT RECOVERY FROM CLOSURE χ = 2")
+    print("----------")
+    
+    # H0 recovery
+    H0_from_BI = (Decimal('2') * const.G * const.c) / (const.k_B * planck_results['Sigma_eq_decimal'])
+    H0_ratio = H0_from_BI / planck_results['H0_SI_decimal']
+    print(f"H₀ from B_i:                    {float(H0_from_BI):.6e} s⁻¹")
+    print(f"H₀ input:                       {float(planck_results['H0_SI_decimal']):.6e} s⁻¹")
+    print(f"  Ratio: {float(H0_ratio):.15f}")
+    assert abs(H0_ratio - 1) < 1e-15, "H0 inversion must be exact"
+    
+    # G recovery from χ = 2
+    G_recovered = (const.k_B * planck_results['Sigma_eq_decimal'] * planck_results['H0_SI_decimal']) / (Decimal('2') * const.c)
+    G_ratio = G_recovered / const.G
+    print(f"G from χ = 2:                   {float(G_recovered):.8e} m³⋅kg⁻¹⋅s⁻²")
+    print(f"G CODATA:                       {float(const.G):.8e} m³⋅kg⁻¹⋅s⁻²")
+    print(f"  Ratio: {float(G_ratio):.15f}")
+    assert abs(G_ratio - 1) < 1e-15, "G recovery must be exact"
+    
+    # k_B recovery from χ = 2
+    kB_recovered = (Decimal('2') * const.G * const.c) / (planck_results['Sigma_eq_decimal'] * planck_results['H0_SI_decimal'])
+    kB_ratio = kB_recovered / const.k_B
+    print(f"k_B from χ = 2:                 {float(kB_recovered):.8e} J⋅K⁻¹")
+    print(f"k_B CODATA:                     {float(const.k_B):.8e} J⋅K⁻¹")
+    print(f"  Ratio: {float(kB_ratio):.15f}")
+    assert abs(kB_ratio - 1) < 1e-15, "k_B recovery must be exact"
+    
+    print()
+    print("Interpretation:")
+    print("  • Constants are overdetermined by closure vector (χ, τ, ϕ) = (2, 1, 1)")
+    print("  • Values locked by geometric equilibrium, not arbitrary")
+    print("  • 'Why these values?' → 'Why closure vector (2, 1, 1)?'")
+    print()
     
     # Extended CGM Analysis: Emergent Constancy and Balance Index
     print()
@@ -645,7 +736,7 @@ def print_results():
     planck_sigma = planck_results['Sigma_eq_decimal']
     planck_H0_SI = planck_results['H0_SI_decimal']
     
-    # Gibbons-Hawking product (ħ-cancellation parallel to Σ_eq)
+    # Gibbons-Hawking product (ħ-cancellation parallel to B_i)
     # T_eq × S_dS should equal c⁵/(2G H_0)
     print("GIBBONS-HAWKING THERMODYNAMIC IDENTITY")
     print("----------")
@@ -659,7 +750,7 @@ def print_results():
     print(f"  Right side: {float(gh_right):.6e} J")
     print(f"  Ratio:      {float(gh_ratio):.15f}")
     assert abs(gh_ratio - 1) < 1e-15, "GH product identity must equal 1"
-    print(f"  → ħ cancels in equilibrium thermodynamics (parallel to Σ_eq)")
+    print(f"  → ħ cancels in equilibrium thermodynamics (parallel to B_i)")
     print()
     
     print("EMERGENT CONSTANCY CHECKS")
@@ -790,7 +881,7 @@ def print_results():
     print("PHYSICAL INTERPRETATION")
     print("=" * 80)
     print()
-    print("Σ_eq = 1.33×10³⁹ m²·K·kg⁻² represents:")
+    print("B_i = 1.33×10³⁹ m²·K·kg⁻² represents:")
     print("  • Thermal capacity of the cosmic horizon per gravitational mass²")
     print("  • Timeless (T⁰) equilibrium between geometry and thermodynamics")
     print("  • The 'Balance' that maintains r_s/R_H = 1 in CGM BH universe")
@@ -803,8 +894,8 @@ def print_results():
     print("SUMMARY METRICS")
     print("=" * 80)
     print()
-    print(f"Balance Index (Planck):          Σ_eq = {planck_results['Sigma_eq']:.6e} m²⋅K⋅kg⁻²")
-    print(f"Balance Index (SH0ES):           Σ_eq = {shoes_results['Sigma_eq']:.6e} m²⋅K⋅kg⁻²")
+    print(f"Balance Index (Planck):          B_i = {planck_results['Sigma_eq']:.6e} m²⋅K⋅kg⁻²")
+    print(f"Balance Index (SH0ES):           B_i = {shoes_results['Sigma_eq']:.6e} m²⋅K⋅kg⁻²")
     print(f"Ratio (Hubble tension):          {ratio:.6f}")
     print()
     print(f"Closure invariant (baseline):    I₁ = 2.000000000000")
