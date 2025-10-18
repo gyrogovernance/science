@@ -12,9 +12,9 @@ The model axiomatizes physics through formal logic with mathematical and semanti
 
 > Building on the tradition established by Noether's derivation of conservation principles from symmetry (1918), Kolmogorov's axiomatization of probability theory (1933), and Wightman's axiomatic quantum field theory (1950s), CGM extends the program to fundamental spacetime structure itself. Examples of derived predictions include the quantum gravity invariant Q_G = 4π (representing the complete solid angle for coherent observation), a quantitative estimate of the fine-structure constant matching experimental precision to 0.043 parts per billion, neutrino mass scale, and a hierarchy of energy scales consistent with observed physics. As a complete axiomatization of physics from a single foundational principle, CGM addresses the core challenge of Hilbert's sixth problem: rigorous and satisfactory logical investigation of the axioms of mathematical physics.
 
-## 1. CGM Axiom
+## 1. The Emergence of Freedom
 
-**Statement: The Source is Common**
+**CS Axiom:** 
 
 **Interpretation:** All phenomena manifest through self-referential state transitions. The Common Source (CS) represents the originating condition containing inherent chirality and directionality. CS is freedom itself, and not mere potential. It is the active source of parity violation that governs all subsequent emergence. Though unobservable directly, CS manifests through the principles it generates.
 
