@@ -62,3 +62,6 @@ experiments/data/COM_CompMap_Compton-SZMap-masks_2048_R2.01.fits
 # Temporary files
 *.tmp
 *.temp
+
+# Personal
+docs/Notes/
