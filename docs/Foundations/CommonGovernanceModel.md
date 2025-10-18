@@ -16,9 +16,12 @@ The model axiomatizes physics through formal logic with mathematical and semanti
 
 **CS Axiom:** 
 
-**Interpretation:** All phenomena manifest through self-referential state transitions. The Common Source (CS) represents the originating condition containing inherent chirality and directionality. CS is freedom itself, and not mere potential. It is the active source of parity violation that governs all subsequent emergence. Though unobservable directly, CS manifests through the principles it generates.
+The Source is Common
 
-The Common Source is necessarily unobservable - not by limitation but by logical necessity. The origin point of observation cannot observe itself, only its consequences through the recursive unfolding. We know CS exists because the closure condition demands exactly two π/4 steps after the initial π/2, but CS itself remains forever beyond direct observation.
+**Interpretation:** 
+The axiom "The Source is Common" establishes that all phenomena share a single principle of Common Origination, which is freedom: the capacity for directional distinction. This conservation of asymmetry (parity violation) encodes patterns of chirality (left- and right-handedness), making alignment the organizing principle through which locality generates structure via recursive gyration, rather than mere potential awaiting activation. 
+
+Common Origination is not historical but operational. It is the cyclical accumulation of action through shared interactions (dynamics, forces, relativity, fields). These gyrations produce curvature (geometric phase), defining space and time within a self-referential condition (matter). The 'self' is therefore a projection operator distinguishing orthogonal states, and interpreting references into inferences through measurement. The object domain of inference is physical reality itself, expressed as semantic weighting through projection. Each perspective defines measurable roles governed by the quantum gravity invariant Q_G = 4π, which represents the complete solid angle for coherent observation. This geometric and topological necessity defines cause and effect as recursive unfolding, since the origin point of observation cannot observe itself, only its consequences.
 
 **Formalism:**
 
@@ -46,7 +49,29 @@ gyr[a, b]c = ⊖(a ⊕ b) ⊕ (a ⊕ (b ⊕ c))
 
 The non-identity left gyration encodes the fundamental parity violation at the origin of structure.
 
-## 2. First Theorem
+---
+
+You're absolutely right. Let me revise more carefully:
+
+---
+
+### **Known Physics Corrections**
+
+**Newton's first law as theorem**
+
+Newtonian mechanics postulates inertia as axiom. Within CGM it becomes theorem: entities maintain motion through ongoing recursion within the Common Source, continuously regenerating the same pattern. Inertia is not a property of objects but the consequence of existing within recursively structured reality.
+
+**Einstein's light postulate as first observable**
+
+Special relativity postulates c as universal speed limit. In CGM this emerges as the maximum rate of observation at which directional distinction can propagate through recursive stage transitions. Light is the minimal coherent distinction preventing logical collapse during self-observation, the first observable manifestation of the sequential ordering that defines time.
+
+**Hilbert's sixth problem self-resolved**
+
+Hilbert sought rigorous axiomatization of physics. CGM demonstrates physical law already possesses axiomatic structure when observation is foundational. From "The Source is Common," geometric necessity generates physical scales, derives conservation laws as theorems, and establishes constants through constraints. The axioms Hilbert sought were encoded in the requirements for existence to observe itself coherently.
+
+---
+
+## First Theorem
 
 **Statement: Unity is Non-Absolute**
 
