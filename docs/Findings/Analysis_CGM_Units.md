@@ -8,9 +8,9 @@ The Common Governance Model (CGM) presents a geometric framework where physical 
 
 ### 1.1 The Fundamental Shift
 
-Traditional physics treats observation as secondary, something that reveals pre-existing reality. The CGM framework inverts this relationship entirely: observation is the primary process through which reality achieves coherent existence. Physical units become the geometric requirements for this observational coherence to manifest across scales.
+Traditional physics treats observation as secondary, something that reveals pre-existing reality. The CGM framework inverts this relationship: observation becomes the primary process generating physical structure. Physical units become the geometric requirements for this observational coherence to manifest across scales.
 
-This paradigm shift resolves fundamental puzzles:
+This approach addresses fundamental puzzles:
 - Measurement problem: Wavefunction collapse becomes geometric alignment with observational requirements
 - Quantum-classical transition: Emerges as the scale where observational geometry becomes classical  
 - Fine-tuning: Constants are geometrically necessary, not empirically contingent
@@ -100,7 +100,7 @@ With memory weight η = 1 (complete preservation), this yields S_GUT ≈ 1.508, 
 
 ### 4.1 The Fundamental UV-IR Relation
 
-The framework's central result connects high and low energy physics through geometric necessity:
+The framework's central result, the optical conjugacy relation, connects high and low energy physics:
 
 E_i^UV × E_i^IR = (E_CS × E_EW)/(4π²)
 
@@ -188,9 +188,9 @@ The same geometric principles manifest from quantum to cosmic scales:
 
 ### 7.1 Reality as Recursive Self-Observation
 
-CGM reveals reality as the process by which existence achieves coherent self-awareness through geometric necessity. Physical laws become the requirements for this self-observational process to remain consistent across all scales.
+The CGM framework treats reality as emerging through recursive self-observation, with physical laws as consistency requirements for this process across scales.
 
-### 7.2 Unification Through Shared Origin
+### 7.2 Unification Through Geometric Structure
 
 Rather than seeking mathematical unification of forces, CGM unifies physics through shared observational origin:
 - Quantum effects: From commutator preventing simultaneous eigenvalues
@@ -200,13 +200,13 @@ Rather than seeking mathematical unification of forces, CGM unifies physics thro
 
 Optical conjugacy provides the mechanism for this unification, ensuring that high-energy processes that probe small scales maintain observational coherence with their low-energy manifestations at large scales.
 
-### 7.3 Resolution of Fundamental Problems
+### 7.3 Approach to Fundamental Questions
 
-The measurement problem is solved by recognizing measurement as the fundamental process, not a secondary effect on pre-existing reality.
+The measurement problem is addressed by treating measurement as the fundamental process, not a secondary effect on pre-existing reality.
 
-The hierarchy problem is resolved through optical conjugacy connecting all scales geometrically.
+The hierarchy problem is addressed through optical conjugacy connecting all scales geometrically.
 
-The cosmological constant problem finds resolution as the "vacuum energy" becomes the geometric pressure maintaining observational coherence.
+The cosmological constant problem is addressed as the "vacuum energy" becomes the geometric pressure maintaining observational coherence.
 
 The arrow of time is fixed by primordial left-chirality encoded in the CS axiom.
 
@@ -264,7 +264,7 @@ CGM's emphasis on observation suggests deep connections to:
 
 ## 10. Conclusions
 
-The Common Governance Model demonstrates that treating observation as the fundamental process, rather than something that reveals pre-existing reality, yields a consistent framework for deriving physical units and constants from pure geometry. The optical conjugacy relation E^UV × E^IR = const/(4π²) connects all energy scales through the same observational requirements that generate quantum behavior.
+The Common Governance Model demonstrates that treating observation as fundamental yields a consistent framework for deriving physical units and constants from geometric principles. The optical conjugacy relation E^UV × E^IR = const/(4π²) connects all energy scales through the same observational requirements that generate quantum behavior.
 
 Key achievements include:
 - Derivation of fundamental constants from geometric necessity

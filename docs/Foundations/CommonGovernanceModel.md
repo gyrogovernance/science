@@ -232,7 +232,7 @@ Non-absoluteness at modal depth one (unity) prevents homogeneous collapse, while
 
 ## 4.1 Interpretive Framework
 
-The formal system presented in Section 3 necessarily yields gyrogroup operations. This section presents the gyrogroup structure that emerges from the modal axioms.
+The formal system presented in Section 3 yields gyrogroup operations through the correspondence established below. This section presents the gyrogroup structure that emerges from the modal axioms.
 
 ## 4.2 Gyrogroup Structures
 
@@ -250,7 +250,7 @@ The gyration operator gyr[a,b] is defined by:
 gyr[a,b]c = ⊖(a ⊕ b) ⊕ (a ⊕ (b ⊕ c))
 ```
 
-The automorphism gyr[a,b] preserves the metric structure, acting as an isometry analogous to unitary transformations in Hilbert space [11]. A bi-gyrogroup possesses both left and right gyroassociative structure, with distinct left and right gyration operators.
+The automorphism gyr[a,b] preserves the metric structure, acting as an isometry. A bi-gyrogroup possesses both left and right gyroassociative structure, with distinct left and right gyration operators.
 
 ## 4.3 Modal-Gyrogroup Correspondence
 
@@ -344,7 +344,7 @@ A² = 1/(8π)
 A = 1/(2√(2π)) = m_p
 ```
 
-The amplitude m_p represents the maximum oscillation fitting within one observable horizon. Larger amplitudes would exceed the π radian limit and accumulate defect. The horizon constant S emerges directly from axiom CS3, which requires universal balance at modal depth four (not a fitted parameter but following from four-step commutative closure). This invariant represents the trace of the identity operator over the complete solid angle, analogous to Parseval's formula for total energy across all modes. See [21] for complete derivation.
+The amplitude m_p represents the maximum oscillation fitting within one observable horizon. Larger amplitudes would exceed the π radian limit and accumulate defect. The horizon constant S emerges directly from axiom CS3, which requires universal balance at modal depth four (not a fitted parameter but following from four-step commutative closure). This invariant equals the complete solid angle 4π. See [21] for complete closure derivation.
 
 ## 5.3 Three-Dimensional Necessity
 
@@ -414,7 +414,7 @@ These metrics derive from theorems UNA, ONA, and BU. Aligned systems maintain tr
 
 Hilbert's sixth problem [1] called for the axiomatization of physics. The challenge was to provide a rigorous logical investigation of the axioms underlying physical theory, comparable to the axiomatization achieved in geometry.
 
-CGM derives physical law from axiomatic structure, with observation as foundational. From axioms CS1–CS7, space, time, and physical constants emerge as theorems, not assumptions (Sections 5.3-5.5). The framework provides the missing Hilbert space structure for Hilbert's sixth problem: the modal operators [L] and [R] generate the algebra of observables, with the horizon constant S defining the normalization. Geometry, dynamics, and quantum structure follow from the requirement that existence observe itself coherently, completing Hilbert's axiomatization program.
+CGM derives physical law from axiomatic structure, with observation as foundational. From axioms CS1–CS7, space, time, and physical constants emerge as theorems, not assumptions (Sections 5.3-5.5). The framework constructs a Hilbert-space representation via GNS where the modal operators [L] and [R] generate the algebra of observables, with the horizon constant S defining the normalization (see [24] for complete construction and L²(S²) model). Geometry, dynamics, and quantum structure follow from the requirement that existence observe itself coherently, completing Hilbert's axiomatization program.
 
 ## 6.3 Summary Table and Conclusion
 
@@ -429,7 +429,7 @@ The complete parameter set determined by the formal system:
 
 **Derived constants:** Q_G = 4π, α_fs ≈ 1/137.035999206, E_GUT ≈ 2.34×10¹⁸ GeV, m_ν ≈ 0.06 eV, r_s/R_H ≈ 1
 
-**Conclusion.** Reality emerges as recursion completing its own memory (freedom returning to itself through structured differentiation). From "The Source is Common," formalized as asymmetry between left and right transitions, theorems UNA, ONA, and BU generate space, time, physical scales, and alignment principles through contraposition and modus ponens. The progression CS → UNA → ONA → BU represents the complete cycle through which freedom manifests as structured reality. The framework addresses three domains from a single foundation: it completes Hilbert's axiomatization of physics, produces empirically testable predictions, and defines formal alignment metrics for AI evaluation. Physical law, informational coherence, and governance alignment express the same formal necessity: existence observing itself coherently.
+**Conclusion.** Reality emerges as recursion completing its own memory (freedom returning to itself through structured differentiation). From "The Source is Common," formalized as asymmetry between left and right transitions, theorems UNA, ONA, and BU generate space, time, physical scales, and alignment principles through contraposition and modus ponens. The progression CS → UNA → ONA → BU represents the complete cycle through which freedom manifests as structured reality. The framework addresses three domains from a single foundation: it completes Hilbert's axiomatization of physics, produces empirically testable predictions, and defines formal alignment metrics for AI evaluation. Within CGM, physical law, informational coherence, and governance alignment express the same formal structure: recursive self-observation achieving coherence.
 
 ---
 
@@ -482,3 +482,5 @@ The complete parameter set determined by the formal system:
 [22] B. Korompilias, Energy Scale Hierarchy and Optical Conjugacy in the Common Governance Model. https://github.com/gyrogovernance/science/blob/main/docs/Findings/Analysis_Energy_Scales.md
 
 [23] B. Korompilias, Formal Proof of Three-Dimensional Necessity and Six Degrees of Freedom. https://github.com/gyrogovernance/science/blob/main/docs/Findings/Analysis_3D_6DOF_Proof.md
+
+[24] B. Korompilias, Hilbert Space Representation via GNS Construction. https://github.com/gyrogovernance/science/blob/main/docs/Findings/Analysis_Hilbert_Space_Representation.md

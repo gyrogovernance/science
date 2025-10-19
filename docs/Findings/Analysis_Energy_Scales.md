@@ -148,7 +148,7 @@ The CS domain is unobservable by principle. As the UV focus of the optical conju
 
 The framework makes a precise distinction:
 
-**Direct observation impossible**: Sterile neutrinos cannot be detected as propagating particles at any stage or energy scale. They remain forever confined to the unobservable CS focus.
+**Direct observation impossible**: The framework predicts sterile neutrinos cannot be detected as propagating particles at any observable stage. They remain forever confined to the unobservable CS focus.
 
 **Indirect effects observable**: Their presence manifests only through:
 - Generation of light neutrino masses via the seesaw mechanism

@@ -4,6 +4,13 @@ All notable changes to the CGM Experimental Framework will be documented in this
 
 ---
 
+## [1.2.0-Hilbert] - 2025-10-06 2025-10-19 
+New Topic - Hlibert Spaces and Axiomatization
+Experiments Results and Analysis found here: 
+
+
+---
+
 ## [1.1.4-Balance] - 2025-10-06 2025-10-07 
 New Topic - Balance Index
 Experiments Results and Analysis found here: 

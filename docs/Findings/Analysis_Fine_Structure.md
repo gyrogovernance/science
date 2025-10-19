@@ -113,7 +113,7 @@ The derivation reveals α as emerging from the UV-IR foci structure:
 
 4. **Focus Coherence**: Final correction ensures geometric coherence at the IR focus after incorporating UV influences.
 
-The value 1/137.036 thus emerges from the geometric requirements for electromagnetic phenomena to manifest at the observable focus while maintaining consistency with the unobservable UV origin.
+Within CGM, the value 1/137.036 thus emerges from the geometric requirements for electromagnetic phenomena to manifest at the observable focus while maintaining consistency with the unobservable UV origin.
 
 ## 6. Validation
 
@@ -134,4 +134,4 @@ The optical conjugacy relation E^UV × E^IR = const provides the framework for u
 - Holonomy projection through 4π steradians
 - Coherence requirements for observation
 
-This demonstrates that fundamental constants are not arbitrary but emerge from the geometric requirements for phenomena to be observable. The success suggests other constants may similarly arise from the UV-IR foci structure of the CGM framework.
+This demonstrates that within CGM, fundamental constants emerge from geometric requirements for observational coherence. The success suggests other constants may similarly arise from the UV-IR foci structure of the CGM framework.
