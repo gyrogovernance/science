@@ -50,6 +50,9 @@ print(f"  gamma (ONA): {gamma:.10f} rad = pi/4")
 print(f"\nDefect:")
 print(f"  delta = pi - (alpha + beta + gamma) = {delta:.2e} rad")
 print(f"  Closure achieved: {abs(delta) < 1e-15}")
+
+# Assert key claim for CI/testing
+assert abs(delta) < 1e-15, "Gyrotriangle closure failed"
 print()
 
 # ============================================================================
@@ -85,6 +88,10 @@ print(f"  UNA: 3 DOF (rotational generators) -> requires dim(so(n)) = 3")
 print(f"  ONA: 6 DOF (rotations + translations) -> requires dim(se(n)) = 6")
 print(f"  BU:  6 DOF (closed)")
 print(f"\n  Only n=3 satisfies: dim(so(3)) = 3 and dim(se(3)) = 6")
+
+# Assert key claim for CI/testing
+assert so_n_dimension(3) == 3, "SO(3) dimension mismatch"
+assert se_n_dimension(3) == 6, "SE(3) dimension mismatch"
 print()
 
 # ============================================================================
@@ -122,6 +129,9 @@ print(f"  [sigma_2, sigma_3] = 2i sigma_1: error = {error_23:.2e}")
 print(f"  [sigma_3, sigma_1] = 2i sigma_2: error = {error_31:.2e}")
 max_error = float(max(float(error_12), float(error_23), float(error_31)))
 print(f"\nSU(2) algebra verified: {max_error < 1e-15}")
+
+# Assert key claim for CI/testing
+assert max_error < 1e-15, "SU(2) commutation relations failed"
 
 # Verify this is 3-dimensional (exactly 3 independent generators)
 print(f"\nNumber of generators: 3 (sigma_1, sigma_2, sigma_3)")
@@ -296,12 +306,11 @@ def test_closure_nd(n: int, alpha: float, beta: float, gamma: float) -> Tuple[fl
         delta = np.pi - (alpha + beta + gamma)
         closes = abs(delta) < 1e-10
     elif n == 2:
-        # In 2D Euclidean: alpha + beta + gamma = pi exactly
-        # In 2D hyperbolic: alpha + beta + gamma < pi
-        # Our angles give pi, so would be Euclidean, but
-        # non-trivial gyration requires hyperbolic curvature -> contradiction
+        # In 2D: alpha + beta + gamma = pi gives Euclidean/degenerate closure
+        # This contradicts CGM's non-trivial gyration requirement (CS1, CS2)
+        # SO(2) is abelian, cannot realize non-commutative gyrations
         delta = np.pi - (alpha + beta + gamma)
-        closes = False  # Even if numerically delta=0, conceptual contradiction
+        closes = False  # Degenerate closure incompatible with CGM axioms
     else:
         # For n>=4, Schlafli formula gives different constraints
         # The sum (pi/2 + pi/4 + pi/4) = pi does not achieve closure
@@ -319,11 +328,16 @@ for n in dimensions_to_test:
     delta, closes = test_closure_nd(n, alpha, beta, gamma)
     if delta is not None:
         status = "[CLOSES]" if closes else "[NO CLOSURE]"
-        print(f"  n={n}D: delta = {delta:+.2e} rad  {status}")
+        note = " (degenerate; violates non-trivial gyration)" if n == 2 else ""
+        print(f"  n={n}D: delta = {delta:+.2e} rad  {status}{note}")
     else:
         print(f"  n={n}D: Formula undefined  [NO CLOSURE]")
 
-print(f"\nConclusion: Only n=3 achieves exact closure (delta=0)")
+print(f"\nConclusion: Only n=3 achieves exact closure (delta=0) compatible with CGM axioms")
+
+# Assert key claim for CI/testing
+delta_3d, closes_3d = test_closure_nd(3, alpha, beta, gamma)
+assert closes_3d, "3D closure verification failed"
 print()
 
 # ============================================================================
@@ -434,4 +448,9 @@ results = {
 
 print(f"\nResults saved to numerical verification.")
 print(f"All tests passed: n=3 is the unique solution.")
+
+# Final assertions
+assert results['closure_achieved'], "Overall closure check failed"
+assert results['unique_solution'] == 'n=3', "Unique solution verification failed"
+assert results['dof_progression'] == [1, 3, 6, 6], "DOF progression verification failed"
 

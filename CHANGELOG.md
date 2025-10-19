@@ -5,9 +5,12 @@ All notable changes to the CGM Experimental Framework will be documented in this
 ---
 
 ## [1.2.0-Hilbert] - 2025-10-06 2025-10-19 
-New Topic - Hlibert Spaces and Axiomatization
+New Topic - Hilbert Spaces and Axiomatization
 Experiments Results and Analysis found here: 
-
+- [experiments/cgm_3D_6DoF_analysis.py](experiments/cgm_3D_6DoF_analysis.py)
+- [experiments/cgm_Hilbert_Space_analysis.py](experiments/cgm_Hilbert_Space_analysis.py)
+- [docs/Findings/Analysis_3D_6DOF_Proof.md](docs/Findings/Analysis_3D_6DOF_Proof.md)
+- [docs/Findings/Analysis_Hilbert_Space_Representation.md](docs/Findings/Analysis_Hilbert_Space_Representation.md)
 
 ---
 
