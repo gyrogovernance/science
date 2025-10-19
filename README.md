@@ -49,7 +49,7 @@ The model axiomatizes physics through formal logic with mathematical and semanti
 
 ## 📚 Documentation
 
-- 🌐 **[Foundations](docs/Foundations/CommonGovernanceModel.md)** - Theoretical foundations and mathematical framework
+- 🌐 **[Common Governance Model](docs/CommonGovernanceModel.md)** - Theoretical foundations and mathematical framework
 - 📖 **[CHANGELOG.md](CHANGELOG.md)** - Latest Updates and Complete version history
 
 ### Key Results & Experiments
