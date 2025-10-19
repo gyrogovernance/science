@@ -348,7 +348,7 @@ The amplitude m_p represents the maximum oscillation fitting within one observab
 
 ## 5.3 Three-Dimensional Necessity
 
-The theorems require exactly three spatial dimensions for gyrogroup consistency. See [20] for geometric analysis and [23] for formal proof.
+The theorems require exactly three spatial dimensions for gyrogroup consistency. See [20] for the complete formal proof.
 
 **From CS:** The asymmetry lgyr ≠ id with rgyr = id yields one degree of freedom, as the chiral seed that uniquely determines all subsequent structure.
 
@@ -414,7 +414,7 @@ These metrics derive from theorems UNA, ONA, and BU. Aligned systems maintain tr
 
 Hilbert's sixth problem [1] called for the axiomatization of physics. The challenge was to provide a rigorous logical investigation of the axioms underlying physical theory, comparable to the axiomatization achieved in geometry.
 
-CGM derives physical law from axiomatic structure, with observation as foundational. From axioms CS1–CS7, space, time, and physical constants emerge as theorems, not assumptions (Sections 5.3-5.5). The framework constructs a Hilbert-space representation via GNS where the modal operators [L] and [R] generate the algebra of observables, with the horizon constant S defining the normalization (see [24] for complete construction and L²(S²) model). Geometry, dynamics, and quantum structure follow from the requirement that existence observe itself coherently, completing Hilbert's axiomatization program.
+CGM derives physical law from axiomatic structure, with observation as foundational. From axioms CS1–CS7, space, time, and physical constants emerge as theorems, not assumptions (Sections 5.3-5.5). The framework constructs a Hilbert-space representation via GNS where the modal operators [L] and [R] generate the algebra of observables, with the horizon constant S defining the normalization (see [23] for complete construction and L²(S²) model). Geometry, dynamics, and quantum structure follow from the requirement that existence observe itself coherently, completing Hilbert's axiomatization program.
 
 ## 6.3 Summary Table and Conclusion
 
@@ -475,12 +475,10 @@ The complete parameter set determined by the formal system:
 
 [19] B. Korompilias, Fine-Structure Constant Derivation in the Common Governance Model. https://github.com/gyrogovernance/science/blob/main/docs/Findings/Analysis_Fine_Structure.md
 
-[20] B. Korompilias, Geometric Coherence and Three-Dimensional Necessity in the Common Governance Model. https://github.com/gyrogovernance/science/blob/main/docs/Findings/Analysis_Geometric_Coherence.md
+[20] B. Korompilias, Formal Proof of Three-Dimensional Necessity and Six Degrees of Freedom in the Common Governance Model. https://github.com/gyrogovernance/science/blob/main/docs/Findings/Analysis_3D_6DOF_Proof.md
 
 [21] B. Korompilias, CGM Units and Amplitude Closure Derivation. https://github.com/gyrogovernance/science/blob/main/docs/Findings/Analysis_CGM_Units.md
 
 [22] B. Korompilias, Energy Scale Hierarchy and Optical Conjugacy in the Common Governance Model. https://github.com/gyrogovernance/science/blob/main/docs/Findings/Analysis_Energy_Scales.md
 
-[23] B. Korompilias, Formal Proof of Three-Dimensional Necessity and Six Degrees of Freedom. https://github.com/gyrogovernance/science/blob/main/docs/Findings/Analysis_3D_6DOF_Proof.md
-
-[24] B. Korompilias, Hilbert Space Representation via GNS Construction. https://github.com/gyrogovernance/science/blob/main/docs/Findings/Analysis_Hilbert_Space_Representation.md
+[23] B. Korompilias, Hilbert Space Representation via GNS Construction. https://github.com/gyrogovernance/science/blob/main/docs/Findings/Analysis_Hilbert_Space_Representation.md
