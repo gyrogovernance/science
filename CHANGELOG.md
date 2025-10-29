@@ -22,12 +22,6 @@ Experiments Results and Analysis found here:
 
 ---
 
-## [1.1.3-Measurement] - 2025-10-05
-New Topic - Measurement Analysis:
-- [docs/Findings/Analysis_Measurement.md](docs/Findings/Analysis_Measurement.md)
-
----
-
 ## [1.1.3-Geometry] - 2025-09-23
 
 New Topic - Geometry Coherence

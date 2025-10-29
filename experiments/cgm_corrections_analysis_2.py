@@ -557,7 +557,7 @@ class CGMRotationCurves:
         galaxy_names = list(galaxies.keys())[:n_galaxies]
         
         print(f"\nAnalyzing {len(galaxy_names)} galaxies with a0 = {a0:.6e} m/s²")
-        print("="*60)
+          
         
         results = []
         cgm_mond_ratios = []  # For CGM-MOND diagnostics
@@ -604,9 +604,9 @@ class CGMRotationCurves:
                 self.plot_galaxy(name, analysis, save_plot=True)
         
         # Summary statistics
-        print("\n" + "="*60)
+         
         print("SUMMARY STATISTICS")
-        print("="*60)
+          
         
         chi2_newton = [r['chi2_newton'] for r in results]
         chi2_mond = [r['chi2_mond'] for r in results]
@@ -804,7 +804,7 @@ def main():
     # Handle --help-plots flag
     if args.help_plots:
         print("CGM Galaxy Rotation Curve Analysis - Plot Options")
-        print("="*60)
+          
         print("Plot Control Switches:")
         print("  --plots              Enable basic plotting (overall control)")
         print("  --individual-plots   Create individual galaxy rotation curve plots")

@@ -23,11 +23,12 @@
 
 ### G Y R O G O V E R N A N C E
 
-[![Home](./assets/menu/home_badge.svg)](https://gyrogovernance.com)
-[![Diagnostics](./assets/menu/diagnostics_badge.svg)](https://github.com/gyrogovernance/diagnostics)
-[![Tools](./assets/menu/tools_badge.svg)](https://github.com/gyrogovernance/tools)
-[![Science](./assets/menu/science_badge.svg)](https://github.com/gyrogovernance/science)
-[![Superintelligence](./assets/menu/superintelligence_badge.svg)](https://github.com/gyrogovernance/superintelligence)
+[![Home](/assets/menu/gyro_icon_home.svg)](https://gyrogovernance.com)
+[![Apps](/assets/menu/gyro_icon_apps.svg)](https://github.com/gyrogovernance/apps)
+[![Diagnostics](/assets/menu/gyro_icon_diagnostics.svg)](https://github.com/gyrogovernance/diagnostics)
+[![Tools](/assets/menu/gyro_icon_tools.svg)](https://github.com/gyrogovernance/tools)
+[![Science](/assets/menu/gyro_icon_science.svg)](https://github.com/gyrogovernance/science)
+[![Superintelligence](/assets/menu/gyro_icon_si.svg)](https://github.com/gyrogovernance/superintelligence)
 
 </div>
 

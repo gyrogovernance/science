@@ -153,6 +153,8 @@ Q_G × m_p² = 1/2
 
 This yields m_p² = 1/(8π), establishing that only 1/(8π) ≈ 3.98% of the full solid angle can be coherently observed at any instant. The observable fraction further reduces to 2.07% when accounting for the bidirectional nature of observation (incoming and outgoing light paths).
 
+**IMPORTANT CLARIFICATION**: The 2.07% mentioned here is NOT the same as the structural aperture fraction Δ = 1 - δ_BU/m_p ≈ 0.0207 used in CGM calculations. This 2.07% is a different concept related to coherent observation, while Δ is the structural aperture used in balance calculations. Do not confuse these two different aperture concepts.
+
 This geometric limitation manifests at all scales:
 - Quantum: Uncertainty relations from incomplete angular coverage
 - Atomic: Electron orbitals as partial spherical harmonics

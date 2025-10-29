@@ -23,10 +23,10 @@ from typing import Tuple
 Q_G = 4 * np.pi  # Quantum gravity invariant
 M_P = 1 / (2 * np.sqrt(2 * np.pi))  # BU aperture
 
-print("="*80)
+ 
 print("HILBERT SPACE REPRESENTATION OF CGM")
 print("GNS Construction on L2(S^2, dOmega)")
-print("="*80)
+ 
 print()
 
 # ============================================================================

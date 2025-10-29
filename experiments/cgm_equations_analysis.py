@@ -88,9 +88,9 @@ class CGMEquationsAnalyzer:
         - Theoretical attempt: cgm_quantum_gravity_analysis.py delta_BU_from_CGM()
         - Empirical decomposition: cgm_alpha_analysis.py
         """
-        print("\n" + "="*60)
+         
         print("δ_BU (BU DUAL-POLE MONODROMY) ANALYSIS")
-        print("="*60)
+          
         
         # 1. Primary measurement from CGM framework
         print("\n1. PRIMARY MEASUREMENT (tw_closure_test.py):")
@@ -148,9 +148,9 @@ class CGMEquationsAnalyzer:
         - cgm_alpha_analysis.py: Δ = 1 - (δ_BU/m_p) (direct derivation)
         - cgm_bsm_analysis.py: 48Δ = 1 (geometric quantization)
         """
-        print("\n" + "="*60)
+         
         print("Δ (APERTURE GAP) ANALYSIS")
-        print("="*60)
+          
         
         # 1. Direct derivation from δ_BU
         print("\n1. DIRECT DERIVATION FROM δ_BU:")
@@ -194,9 +194,9 @@ class CGMEquationsAnalyzer:
         - cgm_quantum_gravity_analysis.py: compute_su2_commutator_holonomy()
         - cgm_alpha_analysis.py: exact closed form
         """
-        print("\n" + "="*60)
+         
         print("SU(2) COMMUTATOR HOLONOMY ANALYSIS")
-        print("="*60)
+          
         
         # 1. Exact closed form
         print("\n1. EXACT CLOSED FORM:")
@@ -238,9 +238,9 @@ class CGMEquationsAnalyzer:
         - docs/Findings/Analysis_CGM_Units.md
         - cgm_alpha_analysis.py
         """
-        print("\n" + "="*60)
+         
         print("FINE-STRUCTURE CONSTANT ANALYSIS")
-        print("="*60)
+          
         
         # 1. Base formula
         print("\n1. BASE FORMULA:")
@@ -281,9 +281,9 @@ class CGMEquationsAnalyzer:
         - cgm_proto_units_helpers_.py: Complete derivation from Einstein-Hilbert action
         - cgm_bsm_experiments.py: INCORRECT usage of 16√(2π) instead of 16√(2π/3)
         """
-        print("\n" + "="*60)
+         
         print("ζ (ZETA FACTOR) DERIVATION ANALYSIS")
-        print("="*60)
+          
         
         # 1. Correct derivation from CGM geometric invariants
         print("\n1. CORRECT DERIVATION (cgm_higgs_analysis.py):")
@@ -364,9 +364,9 @@ class CGMEquationsAnalyzer:
         - cgm_bsm_analysis.py: geometric quantization derivations
         - test_exact_48delta.py: testing framework
         """
-        print("\n" + "="*60)
+         
         print("GEOMETRIC QUANTIZATION ANALYSIS")
-        print("="*60)
+          
         
         # 1. 48Δ = 1 geometric quantization
         print("\n1. 48Δ = 1 GEOMETRIC QUANTIZATION:")
@@ -411,9 +411,9 @@ class CGMEquationsAnalyzer:
         """
         print("\n" + "="*80)
         print("CGM EQUATIONS COMPREHENSIVE ANALYSIS")
-        print("="*80)
+         
         print("Consolidating derivations and measurements from across the codebase")
-        print("="*80)
+         
         
         results = {}
         
@@ -426,9 +426,9 @@ class CGMEquationsAnalyzer:
         results["geometric_quantization"] = self.analyze_geometric_quantization()
         
         # Summary
-        print("\n" + "="*60)
+         
         print("SUMMARY OF DERIVATION STATUS")
-        print("="*60)
+          
         print("✓ MEASURED: δ_BU = 0.195342176580 rad (from CGM framework)")
         print("✓ DERIVED: Δ = 1 - (δ_BU/m_p) = 0.020699553913 (exact algebra)")
         print("✓ EXACT: φ_SU2 = 2 arccos((1 + 2√2)/4) (SU(2) commutator identity)")

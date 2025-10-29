@@ -24,10 +24,10 @@ U_P = 1 / np.sqrt(2)  # UNA threshold
 O_P = np.pi / 4  # ONA threshold
 M_P = 1 / (2 * np.sqrt(2 * np.pi))  # BU aperture
 
-print("="*80)
+ 
 print("THREE-DIMENSIONAL NECESSITY AND SIX DEGREES OF FREEDOM")
 print("Formal Verification of CGM Uniqueness Theorem")
-print("="*80)
+ 
 print()
 
 # ============================================================================

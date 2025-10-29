@@ -405,17 +405,17 @@ class CGMAnalysis:
 
         print(f"\nConjugacy check (all triads): {'OK' if conj_ok else 'FAIL'}")
 
-        print("\n" + "="*60)
+         
         print("STRUCTURAL IDENTITIES (by construction):")
-        print("="*60)
+          
         print("• Horizontal/vertical ratios: OK (given projectors and stage scales)")
         print("• Conjugacy: OK (E_TOP × E_BTM = K by construction)")
         print("• Seesaw constants: OK (sector-dependent targets)")
         print("• 48° projector P_down = 16/15 = 48°/45° (apertured orthogonality)")
 
-        print("\n" + "="*60)
+         
         print("EMPIRICAL CONTENT (physics being tested):")
-        print("="*60)
+          
         print("• e-exponents and their 45° lattice positioning")
         print("• 3° aperture click quantization (π/60 fine structure)")
         print("• 30-fold phase division residuals")
