@@ -2,7 +2,8 @@
 > **Gyroscopic Alignment Research Lab**
 
 <div align="center">
-  <img src="assets/CGMCover.png" alt="CGM Cover" />
+
+![Science](/assets/gyro_cover_science.png)
 
 <h1>Common Governance Model</h1>
 <h3>Deep Physics</h3>
