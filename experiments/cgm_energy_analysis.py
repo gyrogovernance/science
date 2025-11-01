@@ -150,7 +150,7 @@ def anchor_by(stage: str, e_value: float, actions: Dict[str, float], s_gut: floa
     return scale_A, uv_energies
 
 
-def bu_dual_project(uv_energies: Dict[str, float], e_ew: float = 240.0) -> Dict[str, float]:
+def bu_dual_project(uv_energies: Dict[str, float], e_ew: float = 246.22) -> Dict[str, float]:
     """
     Project UV energies to IR energies using BU-centered optical conjugacy.
     
@@ -177,7 +177,7 @@ def bu_dual_project(uv_energies: Dict[str, float], e_ew: float = 240.0) -> Dict[
     return ir_energies
 
 
-def bu_dual_project_geometry(actions: Dict[str, float], e_ew: float = 240.0) -> Dict[str, float]:
+def bu_dual_project_geometry(actions: Dict[str, float], e_ew: float = 246.22) -> Dict[str, float]:
     """
     Alternative IR calculation using pure geometry + EW (no UV anchor needed).
     
@@ -291,7 +291,7 @@ def main():
     
     # 6) IR Ladder (BU-dual projected to EW scale)
     print("\n6. IR Ladder (BU-dual projected to EW scale):")
-    ir_energies = bu_dual_project(uv_energies, e_ew=240.0)
+    ir_energies = bu_dual_project(uv_energies, e_ew=246.22)
     
     print("   Energies (BU-centered optical conjugacy):")
     for stage, energy in ir_energies.items():
@@ -302,7 +302,7 @@ def main():
     
     # 6b) Alternative IR calculation (pure geometry)
     print("\n6b. IR Ladder (pure geometry + EW, no UV anchor):")
-    ir_energies_geom = bu_dual_project_geometry(actions, e_ew=240.0)
+    ir_energies_geom = bu_dual_project_geometry(actions, e_ew=246.22)
     
     print("   Energies (E_i^IR = E_EW x S_CS/(4*pi^2 x S_i)):")
     for stage, energy in ir_energies_geom.items():
@@ -314,7 +314,7 @@ def main():
     # 7) Optical invariant analysis
     print("\n7. Optical Invariant Analysis:")
     optical_invariant = calculate_optical_invariant(uv_energies, ir_energies)
-    expected_invariant = (uv_energies['CS'] * 240.0) / (4 * math.pi**2)
+    expected_invariant = (uv_energies['CS'] * 246.22) / (4 * math.pi**2)
     
     print(f"   Expected invariant: (E_CS x E_EW)/(4*pi^2) = {expected_invariant:.2e} GeV^2")
     print("   Calculated invariants:")
@@ -439,7 +439,7 @@ def neutrino_mass_analysis(uv_energies, kappa_R=1.0):
         kappa_R: optional O(1) factor for group representation choice
     """
     # Electroweak scale
-    v = 240.0  # GeV
+    v = 246.22  # GeV - Higgs vacuum expectation value v = (√2 G_F)^(-1/2)
 
     # CGM 48^2 quantisation (the resolution)
     M_R = kappa_R * uv_energies['GUT'] / (48**2)
@@ -469,8 +469,8 @@ def report_qg_influence(actions, uv_energies, ir_energies):
     print(f"Q_G = 4*pi = {Q_G:.10f}")
     print(f"pi*Q_G = {piQG:.10f}  (should equal 4*pi^2)")
     print(f"E_BU/E_CS (from Q_G) = {1.0/piQG:.6f}  |  reported = {uv_energies['BU']/uv_energies['CS']:.6f}")
-    print(f"E_CS^IR  (from Q_G) = {240.0/piQG:.2f} GeV  |  reported = {ir_energies['CS']:.2f} GeV")
-    const = uv_energies['CS']*240.0/piQG
+    print(f"E_CS^IR  (from Q_G) = {246.22/piQG:.2f} GeV  |  reported = {ir_energies['CS']:.2f} GeV")
+    const = uv_energies['CS']*246.22/piQG
     print(f"Invariant K = (E_CS*E_EW)/(pi*Q_G) = {const:.2e} GeV^2")
     print("Q_G appears as the global 'dilution' factor 1/(pi*Q_G) = 1/(4*pi^2) throughout the framework")
 
@@ -642,7 +642,7 @@ def report_breaking_chain():
     print("Higgs choices:  Delta_R ~ (1,1,3,+2)  and  H ~ (1,2,2,0)")
     print("Chain:")
     print("  SU(3)_c x SU(2)_L x SU(2)_R x U(1)_chi  --(v_R~M_R)-->  SU(3)_c x SU(2)_L x U(1)_Y")
-    print("                                                   --(v=240 GeV)-->  SU(3)_c x U(1)_em")
+    print("                                                   --(v=246.22 GeV)-->  SU(3)_c x U(1)_em")
     print("Embeddings:  Y = T3_R + (B-L)/2 ,   Q = T3_L + Y")
     print("Interpretation:  UNA ~ left rotations, ONA ~ right rotations/translations, BU ~ U(1) memory.")
 
@@ -659,7 +659,7 @@ def report_neutrino_fit_and_mixing(results_from_main, hierarchy="NH", mlight_eV=
     dm21 = 7.4e-5
     dm31 = 2.5e-3 if hierarchy.upper() == "NH" else -2.5e-3
 
-    v = 240.0  # GeV
+    v = 246.22  # GeV - Higgs vacuum expectation value v = (√2 G_F)^(-1/2)
     fac = 2.0 if include_half else 1.0
 
     M_R = results_from_main['uv_energies']['GUT'] / (48.0**2)  # your quantised heavy scale

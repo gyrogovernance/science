@@ -112,7 +112,7 @@ Optical conjugacy reflects a fundamental principle: high-energy processes that p
 
 ### 4.3 Scale Determination
 
-With E_CS anchored at the Planck scale (1.22×10^19 GeV) and E_EW at the electroweak scale (240 GeV), optical conjugacy determines all intermediate scales through pure geometry:
+With E_CS anchored at the Planck scale (1.22×10^19 GeV) and E_EW at the electroweak scale (246.22 GeV, the Higgs vacuum expectation value), optical conjugacy determines all intermediate scales through pure geometry:
 
 UV Ladder:
 - E_CS^UV = 1.22×10^19 GeV (Planck anchor)
@@ -122,11 +122,11 @@ UV Ladder:
 - E_BU^UV = 3.09×10^17 GeV
 
 IR Conjugates:
-- E_CS^IR = 6.08 GeV
-- E_UNA^IR = 13.5 GeV  
-- E_ONA^IR = 12.2 GeV
-- E_GUT^IR = 31.7 GeV
-- E_BU^IR = 240 GeV (electroweak anchor)
+- E_CS^IR = 6.24 GeV
+- E_UNA^IR = 13.8 GeV  
+- E_ONA^IR = 12.5 GeV
+- E_GUT^IR = 32.6 GeV
+- E_BU^IR = 246.22 GeV (Higgs vacuum expectation value)
 
 ## 5. Quantum Structure from Geometric Requirements
 

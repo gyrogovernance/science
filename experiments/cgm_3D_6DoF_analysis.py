@@ -183,13 +183,13 @@ print("  Depth 1 (UNA): [L]S != [R]S")
 print("    Realized by: SU(2) left vs right actions differ")
 print("    Status: [Satisfied]")
 
-# Depth two: non-absolute commutation (CS1, CS2)
-print("  Depth 2 (CS1,CS2): [L][R]S and [R][L]S do not commute absolutely")
+# Depth two: non-absolute commutation (CS3, CS5)
+print("  Depth 2 (CS3,CS5): [L][R]S and [R][L]S do not commute absolutely")
 print("    Realized by: gyr[a,b] non-trivial in SU(2)")
 print("    Status: [Satisfied] (non-commutative but not absolute)")
 
-# Depth four: absolute commutation (CS3)
-print("  Depth 4 (CS3): [L][R][L][R]S <-> [R][L][R][L]S")
+# Depth four: absolute commutation (CS7)
+print("  Depth 4 (CS7): [L][R][L][R]S <-> [R][L][R][L]S")
 print("    Realized by: Four-step gyration exhausts degrees of freedom")
 print("    Status: [Satisfied] (absolute commutation at BU)")
 print()
@@ -205,7 +205,7 @@ print("Case n=2:")
 print("  Obstruction 1: SO(2) =~ U(1) is abelian (only 1 generator)")
 print("    -> Cannot realize non-trivial gyrocommutativity (UNA fails)")
 print("  Obstruction 2: Cannot satisfy depth-4 closure with non-trivial gyrations")
-print("    -> CS3 incompatible with CS7 in 2D")
+print("    -> CS7 incompatible with CS2 in 2D")
 print("  Conclusion: [FAILS] n=2")
 print()
 
@@ -214,7 +214,7 @@ print(f"  Obstruction 1: SO(4) has dim(so(4)) = {so_n_dimension(4)} generators")
 print(f"    -> Excess generators ({so_n_dimension(4) - 3}) violate 'Source is Common'")
 print("  Obstruction 2: Gyrotriangle closure delta=0 unachievable in 4D hyperbolic geometry")
 print("    -> Schlafli formula gives different angle constraints")
-print("  Obstruction 3: Bridge axioms CS4, CS5 violated by independent paths")
+print("  Obstruction 3: Bridge axioms CS4, CS6 violated by independent paths")
 print("  Conclusion: [FAILS] n=4")
 print()
 
@@ -245,7 +245,7 @@ for stage, dof, description in stages:
 
 print("\nProgression uniqueness:")
 print("  - Each stage follows necessarily from axioms")
-print("  - Bridge axioms CS4, CS5 prevent alternative pathways")
+print("  - Bridge axioms CS4, CS6 prevent alternative pathways")
 print("  - Closure constraint delta=0 uniquely determines angles")
 print()
 
@@ -373,21 +373,21 @@ print()
 print("11. BRIDGE AXIOM VERIFICATION")
 print("-" * 80)
 
-print("Bridge axioms CS4 and CS5 constrain the structure:")
+print("Bridge axioms CS4 and CS6 constrain the structure:")
 print("  CS4: []U -> []E  (if unity absolute, then two-step equality absolute)")
-print("  CS5: []O -> []~E (if opposition absolute, then two-step inequality absolute)")
+print("  CS6: []O -> []~E (if opposition absolute, then two-step inequality absolute)")
 print()
 
 print("For n=3 (SE(3) structure):")
 print("  - Single path from CS seed through UNA, ONA to BU")
-print("  - CS4, CS5 satisfied by construction")
+print("  - CS4, CS6 satisfied by construction")
 print("  Status: [Compatible]")
 print()
 
 print("For n=4 (SO(4) =~ (SU(2) x SU(2))/Z_2):")
 print("  - Two independent SU(2) factors create independent paths")
 print("  - []U could hold without forcing []E (violates CS4)")
-print("  - []O could hold without forcing []~E (violates CS5)")
+print("  - []O could hold without forcing []~E (violates CS6)")
 print("  Status: [Violates bridge axioms]")
 print()
 
@@ -396,7 +396,7 @@ print()
 # ============================================================================
 
 print("12. SUMMARY AND CONCLUSION")
-print("=" * 80)
+ 
 
 print("\nTHEOREM: CGM axioms CS1–CS7 uniquely determine n=3, d=6")
 print()
@@ -426,9 +426,9 @@ print("  Three-dimensional space with six degrees of freedom")
 print("  is not an assumption but a THEOREM of CGM.")
 print()
 
-print("=" * 80)
+ 
 print("VERIFICATION COMPLETE")
-print("=" * 80)
+ 
 
 # Save results
 results = {

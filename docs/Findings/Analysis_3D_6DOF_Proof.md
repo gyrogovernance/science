@@ -7,10 +7,10 @@ We present a formal proof that the Common Governance Model (CGM) axioms CS1–CS
 ## 1. Introduction
 
 The Common Governance Model posits seven axioms CS1–CS7 that encode:
-- CS1, CS2: Non-absoluteness of two-step commutation
-- CS3: Absoluteness of four-step commutation  
-- CS4, CS5: Bridge axioms connecting unity, opposition, and equality
-- CS6, CS7: Asymmetry between left and right transitions at the horizon constant S
+- CS1, CS2: Asymmetry between left and right transitions at the horizon constant S
+- CS3, CS5: Non-absoluteness of two-step commutation
+- CS4, CS6: Bridge axioms connecting unity, opposition, and equality
+- CS7: Absoluteness of four-step commutation  
 
 From these axioms, three theorems follow:
 - UNA (⊢ ¬□U): Unity is non-absolute
@@ -39,8 +39,8 @@ A bi-gyrogroup possesses both left and right gyroassociative structure with dist
 
 The CGM axioms establish:
 - **Depth one**: [L]S ≠ [R]S (by UNA: ¬□U)
-- **Depth two**: [L][R]S and [R][L]S do not commute absolutely (by CS1, CS2)
-- **Depth four**: [L][R][L][R]S ↔ [R][L][R][L]S (by CS3: □B)
+- **Depth two**: [L][R]S and [R][L]S do not commute absolutely (by CS3, CS5)
+- **Depth four**: [L][R][L][R]S ↔ [R][L][R][L]S (by CS7: □B)
 
 These depth requirements constrain the gyrogroup structure.
 
@@ -66,7 +66,7 @@ This constraint is exact and non-negotiable.
 
 *Step 1: Activation of right gyration*
 
-By CS6 and CS7, at the CS state:
+By CS1 and CS2, at the CS state:
 - [R]S ↔ S (right transition preserves S)
 - ¬([L]S ↔ S) (left transition alters S)
 
@@ -109,7 +109,7 @@ The isomorphism SU(2) ≅ Spin(3) is the unique double cover of SO(3), the rotat
 
 **Proof:**
 
-For n = 2: The rotation group is SO(2) ≅ U(1), which is abelian. This has only one generator, insufficient to realize the non-trivial gyrocommutative law required by UNA with memory of CS chirality. Furthermore, U(1) cannot exhibit the depth-two non-commutation required by CS1 and CS2.
+For n = 2: The rotation group is SO(2) ≅ U(1), which is abelian. This has only one generator, insufficient to realize the non-trivial gyrocommutative law required by UNA with memory of CS chirality. Furthermore, U(1) cannot exhibit the depth-two non-commutation required by CS3 and CS5.
 
 For n = 4: The rotation group SO(4) has Lie algebra so(4) of dimension 6. However, SO(4) ≅ (SU(2) × SU(2))/Z₂ requires six generators, not three. This violates the minimality constraint that all structure derives from the single chiral seed (1 DOF) established at CS. The additional generators would constitute independent structure not traceable to the CS axiom.
 
@@ -197,7 +197,7 @@ For our specific angles (π/2, π/4, π/4), achieving δ = 0 in 2D would require
 - The bi-gyroassociative laws (ONA)  
 - The closure constraint (BU)
 
-The modal depth four requirement (CS3: □B) cannot be satisfied in 2D with non-trivial gyrations.
+The modal depth four requirement (CS7: □B) cannot be satisfied in 2D with non-trivial gyrations.
 
 **Conclusion:** n = 2 fails. □
 
@@ -212,15 +212,15 @@ As shown in Lemma 1.2, n = 4 admits SO(4) with Lie algebra dimension 6. This req
 The gyrotriangle defect formula δ = π - (π/2 + π/4 + π/4) = 0 achieves exact closure in 3D hyperbolic geometry. In n ≥ 4 dimensions, the generalized defect formula for hyperbolic n-simplices does not reduce to this form.
 
 Specifically, the Schläfli formula for hyperbolic simplices shows that angle sums in higher dimensions obey different constraints. The specific angles (π/2, π/4, π/4) cannot achieve δ = 0 in n = 4 while maintaining:
-- Non-trivial left gyration (CS7)
-- Depth-two non-commutation (CS1, CS2)
-- Depth-four commutation (CS3)
+- Non-trivial left gyration (CS2)
+- Depth-two non-commutation (CS3, CS5)
+- Depth-four commutation (CS7)
 
 *Obstruction 3: Bridge axiom violation*
 
-The bridge axioms CS4 and CS5 connect unity, opposition, and two-step equality. In n = 4, the additional generators would create independent paths through the modal space. This would allow configurations where:
+The bridge axioms CS4 and CS6 connect unity, opposition, and two-step equality. In n = 4, the additional generators would create independent paths through the modal space. This would allow configurations where:
 - □U could hold without forcing □E (violating the CS4 constraint structure)
-- □O could hold without forcing □¬E (violating the CS5 constraint structure)
+- □O could hold without forcing □¬E (violating the CS6 constraint structure)
 
 **Conclusion:** n = 4 fails. □
 
@@ -248,7 +248,7 @@ We have shown through Lemmas 1 and 2 that n = 3 satisfies all requirements:
 
 From the axiom structure:
 
-**CS (1 DOF):** CS6 and CS7 establish rgyr = id and lgyr ≠ id at the horizon. This asymmetry constitutes exactly 1 degree of freedom (directional distinction). This is the chiral seed.
+**CS (1 DOF):** CS1 and CS2 establish rgyr = id and lgyr ≠ id at the horizon. This asymmetry constitutes exactly 1 degree of freedom (directional distinction). This is the chiral seed.
 
 **UNA (3 DOF):** Theorem UNA (⊢ ¬□U) forces rgyr ≠ id. By Lemma 1.1, this requires exactly 3 generators. Total: 3 degrees of freedom (all rotational).
 
@@ -258,7 +258,7 @@ From the axiom structure:
 
 The progression is unique because:
 - Each stage follows necessarily from the previous via the axioms
-- The bridge axioms CS4 and CS5 prevent alternative pathways
+- The bridge axioms CS4 and CS6 prevent alternative pathways
 - The closure constraint δ = 0 uniquely determines the angles (π/2, π/4, π/4)
 
 **Conclusion:** The DOF progression 1 → 3 → 6 → 6(closed) is uniquely determined by CS1–CS7. □
@@ -296,9 +296,9 @@ We verify that n = 3 satisfies all modal depth constraints:
 
 **Depth one (UNA):** With SU(2) active, [L]S ≠ [R]S is satisfied because the left-initiated path differs from the right path due to CS chirality.
 
-**Depth two (CS1, CS2):** The non-commutativity [L][R]S ≠ [R][L]S is realized by the gyration gyr[a,b] being non-trivial in SU(2). However, this non-commutativity is not absolute (both CS1: ¬□E and CS2: ¬□¬E hold) because the gyration can vary depending on the path.
+**Depth two (CS3, CS5):** The non-commutativity [L][R]S ≠ [R][L]S is realized by the gyration gyr[a,b] being non-trivial in SU(2). However, this non-commutativity is not absolute (both CS3: ¬□E and CS5: ¬□¬E hold) because the gyration can vary depending on the path.
 
-**Depth four (CS3):** The commutation [L][R][L][R]S ↔ [R][L][R][L]S is achieved at BU through the closure of both gyrations. This is absolute (□B holds) because the four-step operation exhausts all non-trivial gyration, returning to effective identity.
+**Depth four (CS7):** The commutation [L][R][L][R]S ↔ [R][L][R][L]S is achieved at BU through the closure of both gyrations. This is absolute (□B holds) because the four-step operation exhausts all non-trivial gyration, returning to effective identity.
 
 These conditions can be satisfied simultaneously only with the SU(2) ⋉ R³ structure in n = 3.
 

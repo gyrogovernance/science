@@ -115,7 +115,7 @@ class CGMEnergyScales:
     E_ONA = Decimal('6.10e18')        # ONA scale
     E_GUT = Decimal('2.34e18')        # GUT scale (union formation)
     E_BU = Decimal('3.09e17')         # BU scale
-    E_EW = Decimal('240.0')           # Electroweak VEV (IR anchor)
+    E_EW = Decimal('246.22')          # Higgs vacuum expectation value v = (√2 G_F)^(-1/2) ≈ 246.22 GeV
 
 class ParticleData:
     """
@@ -574,9 +574,9 @@ def print_results():
     cosmo = CosmologicalParameters()
     cgm = CGMParameters()
     
-    print("=" * 80)
+     
     print("CGM BALANCE INDEX ANALYSIS")
-    print("=" * 80)
+     
     print()
     print(f"B_i = 2Gc/(k_B H₀)  |  Dimensions: [M^-2 L^2 Θ^1 T^0]  |  ℏ cancels")
     print()
@@ -655,7 +655,7 @@ def print_results():
     E_EW_J = CGMEnergyScales.E_EW * Decimal('1.602176634e-10')
     m_EW = E_EW_J / const.c**2
     alpha_G_EW = const.G * m_EW**2 / (const.hbar * const.c)
-    print(f"α_G(EW) = Gm²/(ħc) at 240 GeV: {float(alpha_G_EW):.6e}")
+    print(f"α_G(EW) = Gm²/(ħc) at 246.22 GeV: {float(alpha_G_EW):.6e}")
     
     # Gravitational coupling at proton mass
     m_proton = Decimal('1.67262192e-27')  # kg
@@ -727,9 +727,9 @@ def print_results():
     
     # Extended CGM Analysis: Emergent Constancy and Balance Index
     print()
-    print("=" * 80)
+     
     print("CGM EXTENDED ANALYSIS")
-    print("=" * 80)
+     
     print()
     
     # Use Planck values for extended analysis (Decimal for precision)
@@ -819,7 +819,7 @@ def print_results():
     print(f"Ratio to m_p²:                         {bridge['m_p_squared_ratio']:.6e}")
     print()
     print(f"Signal: Conjugacy exponent (log area / log energy):")
-    print(f"  Using EW anchor (240 GeV):  {bridge['conjugacy_exp']:.3f}")
+    print(f"  Using EW anchor (246.22 GeV):  {bridge['conjugacy_exp']:.3f}")
     print(f"  Suggests 4th-5th power scaling: (E_CS/E_EW)^n with n~4.7")
     print()
     print("Interpretation:")
@@ -877,9 +877,9 @@ def print_results():
         print()
     
     # Physical interpretation
-    print("=" * 80)
+     
     print("PHYSICAL INTERPRETATION")
-    print("=" * 80)
+     
     print()
     print("B_i = 1.33×10³⁹ m²·K·kg⁻² represents:")
     print("  • Thermal capacity of the cosmic horizon per gravitational mass²")
@@ -890,9 +890,9 @@ def print_results():
     print()
     
     # Summary metrics
-    print("=" * 80)
+     
     print("SUMMARY METRICS")
-    print("=" * 80)
+     
     print()
     print(f"Balance Index (Planck):          B_i = {planck_results['Sigma_eq']:.6e} m²⋅K⋅kg⁻²")
     print(f"Balance Index (SH0ES):           B_i = {shoes_results['Sigma_eq']:.6e} m²⋅K⋅kg⁻²")
@@ -915,7 +915,7 @@ def print_results():
     print(f"  Cutpoints: {baseline_cuts[0]:.2f}, {baseline_cuts[1]:.2f}")
     print(f"  Gap strengths: {baseline_gaps[0]:.2f}, {baseline_gaps[1]:.2f} decades")
     print()
-    print("=" * 80)
+     
 
 if __name__ == "__main__":
     print_results()

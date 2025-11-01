@@ -4,10 +4,10 @@ from scipy.spatial.transform import Rotation as R
 
 # CGM constants
 E_CS = 1.22e19
-E_BU = 240.0
+E_BU = 246.22  # Higgs vacuum expectation value v = (√2 G_F)^(-1/2)
 Q_G = 4.0 * math.pi
 pi = math.pi
-K = 7.42e19
+K = 7.608927e19  # Optical invariant K = (E_CS × E_BU)/(4π²) with corrected Higgs vev
 
 # Energy scales
 E_UNA_UV = 5.50e18
@@ -19,7 +19,7 @@ E_CS_IR = 6.08
 E_UNA_IR = 13.5
 E_ONA_IR = 12.2
 E_GUT_IR = 31.7
-E_BU_IR = 240.0
+E_BU_IR = 246.22  # Higgs vacuum expectation value
 
 # Action scales
 S_CS = 7.875

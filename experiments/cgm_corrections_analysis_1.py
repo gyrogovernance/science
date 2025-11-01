@@ -156,7 +156,7 @@ def main() -> None:
     # Optical conjugacy and stage energies
     # ANCHORS (sacred - must be preserved exactly):
     Ecs = Decimal("1.22e19")  # Planck scale
-    Eew = Decimal("240")      # Electroweak scale (exact)
+    Eew = Decimal("246.22")   # Higgs vacuum expectation value v = (√2 G_F)^(-1/2) ≈ 246.22 GeV
     K = _optical_invariant(Ecs, Eew, pi_)
 
     # UV energies from energy analysis (derived from geometric ratios)

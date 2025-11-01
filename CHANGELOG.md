@@ -4,6 +4,43 @@ All notable changes to the CGM Experimental Framework will be documented in this
 
 ---
 
+## [1.2.1-CGM] - 2025-10-06 2025-11-02 
+
+**Critical Correction: Higgs Vacuum Expectation Value (VEV)**
+
+Corrected the electroweak anchor E_BU from 240 GeV to the proper Higgs vacuum expectation value **246.22 GeV** (v = (√2 G_F)^(-1/2)). This correction cascades through all derived optical conjugacy calculations.
+
+**Impact:**
+- Optical invariant K: 7.42×10^19 → **7.61×10^19 GeV²** (2.59% increase)
+- IR energy scales: All increased by 2.59%
+  - E_CS^IR: 6.08 → **6.24 GeV**
+  - E_UNA^IR: 13.48 → **13.8 GeV**  
+  - E_ONA^IR: 12.16 → **12.5 GeV**
+  - E_GUT^IR: 31.70 → **32.6 GeV**
+  - E_BU^IR: 240 → **246.22 GeV**
+- Neutrino mass: 0.057 eV → **0.060 eV** (unchanged within ±0.02 eV uncertainty)
+
+**Affected Files:**
+All experimental calculations now use 246.22 GeV consistently:
+- [experiments/cgm_energy_analysis.py](experiments/cgm_energy_analysis.py)
+- [experiments/cgm_balance_analysis.py](experiments/cgm_balance_analysis.py)
+- [experiments/cgm_bh_universe_analysis.py](experiments/cgm_bh_universe_analysis.py)
+- [experiments/cgm_higgs_analysis.py](experiments/cgm_higgs_analysis.py)
+- [experiments/cgm_corrections_analysis_1.py](experiments/cgm_corrections_analysis_1.py)
+- [experiments/cgm_proto_units_analysis.py](experiments/cgm_proto_units_analysis.py)
+
+Updated documentation for consistency:
+- [docs/CommonGovernanceModel.md](docs/CommonGovernanceModel.md)
+- [docs/Findings/Analysis_Energy_Scales.md](docs/Findings/Analysis_Energy_Scales.md)
+- [docs/Findings/Analysis_CGM_Units.md](docs/Findings/Analysis_CGM_Units.md)
+- [docs/Findings/Analysis_BH_Universe.md](docs/Findings/Analysis_BH_Universe.md)
+- [docs/Findings/Analysis_GFE.md](docs/Findings/Analysis_GFE.md)
+- [docs/Findings/Analysis_Balance_Index.md](docs/Findings/Analysis_Balance_Index.md)
+
+**Note:** UV energy scales (E_GUT^UV, E_UNA^UV, etc.) are purely geometric and remain unchanged at 2.34×10^18 GeV, 5.50×10^18 GeV respectively.
+
+---
+
 ## [1.2.0-Hilbert] - 2025-10-06 2025-10-19 
 New Topic - Hilbert Spaces and Axiomatization
 Experiments Results and Analysis found here: 

@@ -299,11 +299,11 @@ The factor 1/(4π²) represents double geometric dilution through complete solid
 ### 17.2 Five-Stage Energy Hierarchy
 
 The validated energy scales show perfect conjugacy:
-- CS (Planck): 1.22×10^19 GeV ↔ 6.08 GeV
-- UNA: 5.50×10^18 GeV ↔ 13.5 GeV
-- ONA: 6.10×10^18 GeV ↔ 12.2 GeV
-- GUT: 2.34×10^18 GeV ↔ 31.7 GeV
-- BU: 3.09×10^17 GeV ↔ 240 GeV (EW scale)
+- CS (Planck): 1.22×10^19 GeV ↔ 6.24 GeV
+- UNA: 5.50×10^18 GeV ↔ 13.8 GeV
+- ONA: 6.10×10^18 GeV ↔ 12.5 GeV
+- GUT: 2.34×10^18 GeV ↔ 32.6 GeV
+- BU: 3.09×10^17 GeV ↔ 246.22 GeV (Higgs vev, electroweak scale)
 
 Maximum deviation: 0.00%, confirming exact geometric relationship.
 

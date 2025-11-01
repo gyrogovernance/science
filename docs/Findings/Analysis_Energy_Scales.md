@@ -83,18 +83,18 @@ The framework's central result is the optical conjugacy relation:
 E_i^UV × E_i^IR = (E_CS × E_BU)/(4π²)
 ```
 
-where E_BU = 240 GeV is the electroweak scale. This invariant holds for all stages i ∈ {CS, UNA, ONA, BU, GUT}, yielding:
+where E_BU = 246.22 GeV is the Higgs vacuum expectation value (electroweak scale). This invariant holds for all stages i ∈ {CS, UNA, ONA, BU, GUT}, yielding:
 
 ```
-Invariant K = 7.42 × 10^19 GeV²
+Invariant K = 7.61 × 10^19 GeV²
 ```
 
 The IR energy scales follow:
-- E_CS^IR = 6.08 GeV
-- E_UNA^IR = 13.5 GeV
-- E_ONA^IR = 12.2 GeV
-- E_BU^IR = 240 GeV (fixed at EW scale)
-- E_GUT^IR = 31.7 GeV
+- E_CS^IR = 6.24 GeV
+- E_UNA^IR = 13.8 GeV
+- E_ONA^IR = 12.5 GeV
+- E_BU^IR = 246.22 GeV (Higgs vacuum expectation value)
+- E_GUT^IR = 32.6 GeV
 
 ## 4. Physical Predictions
 
@@ -207,7 +207,7 @@ Symmetry breaking proceeds through:
 G → SU(3)_c × SU(2)_L × U(1)_Y → SU(3)_c × U(1)_em
 ```
 
-with breaking scales v_R ≈ M_R ≈ 10^15 GeV and v_EW = 240 GeV.
+with breaking scales v_R ≈ M_R ≈ 10^15 GeV and v_EW = 246.22 GeV (Higgs vev).
 
 ### 5.3 Charge Quantization
 
@@ -280,7 +280,7 @@ The framework's strength lies in deriving energy ratios from geometric principle
 2. **Four-Stage Structure**: The CS, UNA, ONA, BU hierarchy is fundamental
 3. **Aperture Parameter**: m_p = 1/(2√(2π)) is treated as a fundamental constant
 4. **Anchoring**: The CS stage is identified with the Planck scale
-5. **Electroweak Scale**: E_EW = 240 GeV is taken from experimental measurement
+5. **Electroweak Scale**: E_EW = 246.22 GeV is the Higgs vacuum expectation value v = (√2 G_F)^(-1/2)
 
 ### A.2 Calculational Methods
 
@@ -346,14 +346,14 @@ All calculations maintain at least 10 significant figures internally, with resul
             
             E_i^BTM × E_i^TOP = (E_CS^BTM × E_BU^TOP) / (4π²)
             
-        2. Anchors: E_CS^BTM = 1.22 × 10^19 GeV, E_BU^TOP = 240 GeV
-            - Invariant K = 7.42 × 10^19 GeV²
+        2. Anchors: E_CS^BTM = 1.22 × 10^19 GeV, E_BU^TOP = 246.22 GeV (Higgs vev)
+            - Invariant K = 7.61 × 10^19 GeV²
     9. **IR Focus Scales** (TOP ≡ IR; from E_i^TOP = K / E_i^BTM):
-        1. E_CS^IR = 6.08 GeV
-            - E_UNA^IR = 13.5 GeV
-            - E_ONA^IR = 12.2 GeV
-            - E_BU^IR = 240 GeV (shell anchor at TOP)
-        2. E_UNI^IR = 31.7 GeV
+        1. E_CS^IR = 6.24 GeV
+            - E_UNA^IR = 13.8 GeV
+            - E_ONA^IR = 12.5 GeV
+            - E_BU^IR = 246.22 GeV (Higgs vacuum expectation value)
+        2. E_UNI^IR = 32.6 GeV
     10. **Union Derivation**
         1. Inversion map: E_i^BTM = K / E_i^TOP with K = (E_CS^BTM × E_BU^TOP) / (4π²)
         2. Fixed point (conjugacy centre): E_MID = √K ≈ 8.6 × 10^9 GeV

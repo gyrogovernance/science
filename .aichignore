@@ -1,0 +1,86 @@
+# Git internals and metadata
+.git/
+.gitignore
+.gitattributes
+
+# Python environments and caches
+.venv/
+venv/
+env/
+ENV/
+__pycache__/
+**/__pycache__/
+*.py[cod]
+**/*.py[cod]
+*$py.class
+*.so
+
+# Build and packaging artifacts
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# IDE and editor settings
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS-specific clutter
+.DS_Store
+Thumbs.db
+
+# Environment files
+.env
+.env.local
+
+# Logs and temp output
+*.log
+*.tmp
+*.temp
+**/*.log
+**/*.tmp
+**/*.temp
+
+# Large data and results directories
+results/
+data/
+experiments/data/
+experiments/results_*.txt
+experiments/results_*.md
+
+# Compiled bytecode anywhere in experiments
+experiments/**/__pycache__/
+
+# Binary and media assets
+assets/
+plots/
+*.png
+*.svg
+*.jpg
+*.jpeg
+*.gif
+*.webp
+*.pdf
+
+# Documentation archives (retain top-level summaries only)
+docs/Notes/
+docs/papers/
+
+# Bytecode cache within experiments
+experiments/__pycache__/
+
+

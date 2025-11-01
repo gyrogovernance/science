@@ -429,10 +429,10 @@ class CGMGeometricCoherence:
     def print_coherence_analysis(self):
         """Print the complete geometric coherence analysis as a coherent story."""
         
-        print("=" * 80)
+         
         print("CGM GEOMETRIC COHERENCE ANALYSIS")
         print("Circle-Sphere (UNA) ↔ Square-Cube (ONA) ↔ Angular Momentum (CS)")
-        print("=" * 80)
+         
         
         # ===== Stage 1: CGM Thresholds =====
         print("\n1. CGM STAGE THRESHOLDS")

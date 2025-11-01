@@ -825,10 +825,10 @@ def run_complete_analysis():
 
     analyzer = CGMWalkingTheory()
 
-    print("=" * 80)
+     
     print("CGM-WALKING THEORETICAL ANALYSIS")
     print("Connecting Common Governance Model to Human Locomotion")
-    print("=" * 80)
+     
 
     # Test moment sign logic for walking balance
     print(f"\nWALKING BALANCE LOGIC TEST:")
@@ -1135,7 +1135,7 @@ def run_complete_analysis():
     print("Human walking operates in a near-closure regime with")
     print("purposeful departures during manoeuvres, consistent with")
     print("CGM's alignment economy through chiral perpendicularity.")
-    print("=" * 80)
+     
 
     return results
 

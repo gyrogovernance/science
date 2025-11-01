@@ -46,7 +46,7 @@ class CGMConstants:
     """Fundamental CGM constants and parameters."""
     delta_BU: float = 0.195342176580
     E_CS_BTM: float = 1.22e19
-    E_BU_TOP: float = 240.0
+    E_BU_TOP: float = 246.22  # Higgs vacuum expectation value v = (√2 G_F)^(-1/2)
 
     m_p: float = field(init=False)
     thresholds: Dict[str, float] = field(init=False)
@@ -99,7 +99,7 @@ class CGMAnalysis:
         self.c = CGMConstants()
         # CGM duality parametrization: Yukawa couplings at v≈246 GeV
         # Convert PDG masses to Yukawa couplings: y = √2 * m/v (SM convention)
-        v_ew = 246.0  # GeV, electroweak scale
+        v_ew = 246.22  # GeV, Higgs vacuum expectation value v = (√2 G_F)^(-1/2)
         sqrt2 = math.sqrt(2.0)
         self.experimental_masses = {
             'up': (sqrt2*172.0/v_ew, sqrt2*1.27/v_ew, sqrt2*0.0022/v_ew),      # top, charm, up (Yukawa couplings)

@@ -64,7 +64,7 @@ class CosmologicalParameters:
 class CGMEnergyScales:
     """CGM energy scale anchors in GeV"""
     E_CS = Decimal('1.22089e19')
-    E_EW = Decimal('240.0')
+    E_EW = Decimal('246.22')  # Higgs vacuum expectation value v = (√2 G_F)^(-1/2) ≈ 246.22 GeV
     E_BU = Decimal('3.09e17')
 
 class CGMGeometry:
@@ -327,9 +327,9 @@ def print_analysis():
     H0_SI = cosmo.H0_to_SI(cosmo.H0_planck)
     B_i = calculate_balance_index(H0_SI, const)
     
-    print("=" * 80)
+     
     print("COSMOLOGICAL CONSTANT AND BALANCE INDEX ANALYSIS")
-    print("=" * 80)
+     
     print()
     print(f"Using Planck 2018: H₀ = {float(cosmo.H0_planck):.2f} km/s/Mpc")
     print(f"Balance Index: B_i = {float(B_i):.6e} m²⋅K⋅kg⁻²")
@@ -455,9 +455,9 @@ def print_analysis():
     print()
     
     # UV/IR Bridge: H0 from CGM geometry (noncircular prediction)
-    print("=" * 80)
+     
     print("UV/IR BRIDGE: H₀ FROM CGM GEOMETRY")
-    print("=" * 80)
+     
     print()
     
     # Empirical exponent (diagnostic: what n fits observed H0?)
@@ -496,9 +496,9 @@ def print_analysis():
     print()
     
     # Summary
-    print("=" * 80)
+     
     print("SUMMARY")
-    print("=" * 80)
+     
     print()
     print("Calculations performed:")
     print("  • Vacuum energy discrepancy: ~10^{:.0f} orders".format(cc_terms['log10_ratio']))
@@ -511,7 +511,7 @@ def print_analysis():
     print("  • B_i ~ 10^39 m²⋅K⋅kg⁻² ↔ H₀ ~ 10^-18 s⁻¹ (given G, c, k_B)")
     print("  • ρ_Pl/ρ_H ~ 10^123 matches Λ_vac/Λ_obs discrepancy")
     print()
-    print("=" * 80)
+     
 
 if __name__ == "__main__":
     print_analysis()

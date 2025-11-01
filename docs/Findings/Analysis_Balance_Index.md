@@ -276,7 +276,7 @@ This structure persists across different holonomy estimators, indicating robustn
 
 ### 7.2 UV-IR Length Conjugacy
 
-The Hubble diameter L_B = 2R_H and the EW Compton length ℓ* = ℏc/E_EW (with E_EW = 240 GeV) satisfy a conjugacy relation:
+The Hubble diameter L_B = 2R_H and the EW Compton length ℓ* = ℏc/E_EW (with E_EW = 246.22 GeV, the Higgs vacuum expectation value) satisfy a conjugacy relation:
 
 L_B × ℓ* / l_P² ≈ 8.66×10^77
 

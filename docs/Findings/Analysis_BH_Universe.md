@@ -45,7 +45,7 @@ The framework establishes a fundamental relationship between ultraviolet (high e
 
 K = (E_CS × E_EW)/(4π²)
 
-where E_CS is the Planck-scale energy (1.22×10^19 GeV) and E_EW is the electroweak scale (240 GeV). This yields K = 7.416711×10^19 GeV², which remains constant across all stages.
+where E_CS is the Planck-scale energy (1.22×10^19 GeV) and E_EW is the Higgs vacuum expectation value (246.22 GeV). This yields K = 7.608927×10^19 GeV², which remains constant across all stages.
 
 ## 3. Methodology
 
@@ -87,11 +87,11 @@ The optical conjugacy E_UV × E_IR = K holds to machine precision across all fiv
 
 | Stage | E_UV (GeV) | E_IR (GeV) | Product (GeV²) | Deviation |
 |-------|------------|------------|----------------|-----------|
-| CS    | 1.22×10^19 | 6.08       | 7.416711×10^19 | 0.00      |
-| UNA   | 5.50×10^18 | 1.35×10^1  | 7.416711×10^19 | 0.00      |
-| ONA   | 6.10×10^18 | 1.22×10^1  | 7.416711×10^19 | 0.00      |
-| GUT   | 2.34×10^18 | 3.17×10^1  | 7.416711×10^19 | 0.00      |
-| BU    | 3.09×10^17 | 2.40×10^2  | 7.416711×10^19 | 0.00      |
+| CS    | 1.22×10^19 | 6.24       | 7.608927×10^19 | 0.00      |
+| UNA   | 5.50×10^18 | 1.38×10^1  | 7.608927×10^19 | 0.00      |
+| ONA   | 6.10×10^18 | 1.25×10^1  | 7.608927×10^19 | 0.00      |
+| GUT   | 2.34×10^18 | 3.26×10^1  | 7.608927×10^19 | 0.00      |
+| BU    | 3.09×10^17 | 2.46×10^2  | 7.608927×10^19 | 0.00      |
 
 Maximum relative deviation: 0.00×10^0
 
@@ -300,7 +300,7 @@ The Python implementation verifies all geometric identities, enforces exact opti
 **CGM Parameters:**
 - Aperture parameter: m_p = 0.199471140201
 - Quantum Gravity: Q_G = 4π = 12.566370614 steradians (complete observational solid angle)
-- Optical invariant: K = 7.416711×10^19 GeV²
+- Optical invariant: K = 7.608927×10^19 GeV²
 
 **Energy Scales (GeV):**
 - CS (Planck): 1.22×10^19
@@ -308,6 +308,6 @@ The Python implementation verifies all geometric identities, enforces exact opti
 - ONA: 6.10×10^18
 - GUT: 2.34×10^18
 - BU: 3.09×10^17
-- EW (anchor): 240
+- EW (anchor): 246.22
 
 This comprehensive analysis establishes the viability of understanding our universe as the interior of a black hole with apparent expansion arising as an optical illusion, providing a geometrically grounded alternative to the standard cosmological model while maintaining consistency with all current observations.

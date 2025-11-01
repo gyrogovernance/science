@@ -52,7 +52,7 @@ E_UNA_UV = 5.50e18  # UNA scale
 E_ONA_UV = 6.10e18  # ONA scale
 E_GUT_UV = 2.34e18  # GUT scale
 E_BU_UV = 3.09e17   # BU scale
-E_EW = 240.0        # Electroweak scale (IR anchor)
+E_EW = 246.22       # Higgs vacuum expectation value v = (√2 G_F)^(-1/2) ≈ 246.22 GeV
 
 # Sagittarius A* parameters
 M_SGRA = 4.0e6 * 1.989e30  # kg (4 million solar masses)

@@ -101,7 +101,7 @@ class PhysicalScales:
     # Energy scales [GeV unless noted] - anchored to Planck energy
     E_CS: float = 1.22089e19  # CS energy (Planck energy)
     E_reciprocal: float = 1.36e18  # Reciprocal mode energy
-    v_weak: float = 240.0  # Electroweak VEV
+    v_weak: float = 246.22  # Higgs vacuum expectation value v = (√2 G_F)^(-1/2) ≈ 246.22 GeV
     M_Planck: float = 1.22089e19  # Planck mass
     m_H: float = 125.20  # Higgs mass (PDG 2025: 125.20 ± 0.11 GeV)
     m_H_predicted: float = 124.97  # Higgs mass (CGM predicted)
@@ -802,7 +802,7 @@ class HiggsFirstFramework:
         y_t_CS = bc["y_t_CS"]
 
         # Use λ_IR from Higgs analysis: λ_IR = m_H(pred)²/(2 v_weak²)
-        v_weak_higgs = 240.0  # GeV (from Higgs analysis)
+        v_weak_higgs = 246.22  # GeV - Higgs vacuum expectation value v = (√2 G_F)^(-1/2)
         lambda_IR = (self.M_H / v_weak_higgs)**2 / 2.0  # ≈ 0.128815
 
         # CGM self-consistency constraints
@@ -1658,7 +1658,7 @@ def main():
         "c_physical (natural units)": (f"{light['c_physical_natural']:.6f}", ""),
         # Angular structure derivation with Higgs-consistent λ_IR
         "λ_IR (from Higgs)": (f"0.128806", ""),
-        "v_weak from Higgs": (f"240.0 GeV", ""),
+        "v_weak from Higgs": (f"246.22 GeV", ""),
         "Total angular defect": (f"{defect['total_defect']:.2e}", ""),
         "Q_G (4π coupling)": (f"{light['Q_G']:.6f}", ""),
         "Insight": ("Angular structure: M_H → v_weak via CGM recursion with Higgs-consistent λ_IR", ""),
