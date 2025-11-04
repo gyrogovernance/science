@@ -1,0 +1,43 @@
+{
+  "title": "Common Governance Model: Mathematical Physics Framework",
+  "description": "The Common Governance Model (CGM) is a Hilbert-style formal deductive system for fundamental physics and information science. As an axiomatic model, CGM begins with a single foundational axiom (\"The Source is Common\"), derives all subsequent logic through syntactic rules of inference (recursive stage transitions formalized by gyrogroup operations), and interprets the resulting theorems semantically in physical geometry, yielding empirically testable predictions.\n\nThe model axiomatizes physics through formal logic with mathematical and semantic interpretation, deriving three-dimensional space with six degrees of freedom as a logical necessity rather than an assumption. Time appears as the sequential ordering of recursive self-referential operations, encoded by gyration's memory of operation order.\n\nKey achievements include:\n- Derived α = 1/137.036 from pure geometry (0.043 ppb accuracy)\n- Defined quantum gravity as Q_G = 4π (complete solid angle)\n- Predicted gravitational coupling ζ = 23.155 from first principles\n- Established optical conjugacy law: E^UV × E^IR = (E_CS × E_EW)/(4π)²\n- Predicted neutrino masses ~0.06 eV via 48² quantization",
+  "creators": [
+    {
+      "name": "Korompilias, Basil",
+      "affiliation": "Independent Researcher",
+      "orcid": ""
+    }
+  ],
+  "keywords": [
+    "mathematical physics",
+    "gyrogroup geometry",
+    "axiomatic physics",
+    "quantum gravity",
+    "fine-structure constant",
+    "Hilbert's sixth problem",
+    "formal deductive system",
+    "geometric first principles",
+    "common governance model",
+    "gyroscopic alignment"
+  ],
+  "license": {
+    "id": "MIT"
+  },
+  "upload_type": "software",
+  "access_right": "open",
+  "communities": [
+    {
+      "identifier": "physics"
+    }
+  ],
+  "related_identifiers": [
+    {
+      "relation": "isDocumentedBy",
+      "identifier": "https://github.com/gyrogovernance/science"
+    }
+  ],
+  "notes": "Mathematical Physics Framework about Gyroscopic Alignment. Part of the GyroGovernance project.",
+  "language": "eng",
+  "publication_date": "2025-01-01"
+}
+
