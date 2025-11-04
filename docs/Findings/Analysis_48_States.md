@@ -1,5 +1,7 @@
 # Significance of 48 in CGM Framework
 
+**Citation:** Korompilias, B. (2025). Common Governance Model: Mathematical Physics Framework. Zenodo. https://doi.org/10.5281/zenodo.17521384
+
 ## Overview
 The factor 48 is a fundamental geometric quantization unit in the CGM framework, derived from the structure of the geometric space rather than imposed as a constraint.
 

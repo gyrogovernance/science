@@ -1,5 +1,7 @@
 # Gyrational Modeling of Motion and Structure in the Common Governance Model
 
+**Citation:** Korompilias, B. (2025). Common Governance Model: Mathematical Physics Framework. Zenodo. https://doi.org/10.5281/zenodo.17521384
+
 ## Abstract
 
 The Common Governance Model (CGM) adopts a gyrational modeling principle where motion and structure emerge from rotational and cyclic processes rather than linear trajectories. This framework posits angular momentum as the primitive structural invariant from which observable phenomena derive. CGM suggests that sustained motion requires underlying gyration, that spacetime configurations carry non-zero holonomy as structural memory, and that energy transforms across scales through reallocation among gyrational modes. The model reinterprets cosmic observables through rate-based rather than velocity-based descriptions and proposes connections between galactic morphology and the six degrees of freedom anticipated by CGM's recursive stages.

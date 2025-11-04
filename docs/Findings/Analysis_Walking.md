@@ -1,5 +1,7 @@
 # Human Walking as Physical Intelligence: A CGM-Based Analysis
 
+**Citation:** Korompilias, B. (2025). Common Governance Model: Mathematical Physics Framework. Zenodo. https://doi.org/10.5281/zenodo.17521384
+
 ## Executive Summary
 
 This analysis examines human walking as geometric alignment under gravity using literature values from Herr & Popović (2008) and a CGM-inspired framework. The data support a non-zero coherent helical structure (|CHSI| ≈ 0.71; polarity negative under x=ML, y=AP, z=UP), first-order geometric margins relative to the base of support (AP ≈ 0.72; ML ≈ 0.92), an Action-per-Stride Index ≈ 4.15 S_min (3.7% from 4, consistent with discrete correction packets under our assumptions), and a Phase-Offset Score of 0.867 (24° from the 120° reference). Aggregated into a constructed Alignment Index (AIS), these yield AIS ≈ 0.81. "Horizon" and "thermodynamic" terms are used by analogy as variability/complexity proxies rather than literal thermodynamic quantities.

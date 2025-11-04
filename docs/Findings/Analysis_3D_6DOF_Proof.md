@@ -1,5 +1,7 @@
 # Formal Proof of Three-Dimensional Necessity and Six Degrees of Freedom in the Common Governance Model
 
+**Citation:** Korompilias, B. (2025). Common Governance Model: Mathematical Physics Framework. Zenodo. https://doi.org/10.5281/zenodo.17521384
+
 ## Abstract
 
 We present a formal proof that the Common Governance Model (CGM) axioms CS1–CS7 uniquely determine exactly three spatial dimensions with six degrees of freedom. The proof proceeds through three lemmas: (1) the rotational DOF lemma establishes that UNA's gyrocommutativity requirement forces exactly three rotational generators via SU(2) uniqueness, (2) the translational DOF lemma shows that ONA's bi-gyrogroup consistency requires exactly three translational parameters via semidirect product structure, and (3) the non-existence theorem demonstrates that both n = 2 and n ≥ 4 spatial dimensions violate the closure constraint δ = π - (π/2 + π/4 + π/4) = 0 combined with the modal depth requirements encoded in CS1–CS7. The proof is constructive, relying only on standard Lie group theory and the gyrogroup axiomatics of Ungar. No empirical parameters or adjustable constants appear; all results follow by logical necessity from the CS axioms.

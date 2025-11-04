@@ -1,5 +1,7 @@
 # CGM Alignment Analysis: Quantum Gravity and the Universal Coherence Principle
 
+**Citation:** Korompilias, B. (2025). Common Governance Model: Mathematical Physics Framework. Zenodo. https://doi.org/10.5281/zenodo.17521384
+
 ## Abstract
 
 This analysis demonstrates that Quantum Gravity is the geometric invariant Q_G = 4π, representing the complete solid angle required for coherent observation in three-dimensional space. We show how this single principle explains the ubiquitous appearance of 4π throughout physics, from electromagnetic and gravitational relations to quantum mechanical normalization and thermodynamic kernels. Through alignment dynamics, we establish that physical observables represent different projections of aperture-mediated relationships with a common geometric source, with the commutator [X, P] = iK_QG encoding the cost of switching between projections. The framework yields testable predictions including the fine-structure constant α = 0.007299734 and reveals the geometric origin of the 97.93% closure/2.07% aperture balance that enables stable yet dynamic physical systems.

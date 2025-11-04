@@ -1,5 +1,7 @@
 # CGM Monodromy Analysis: Complete Picture of Geometric Memory
 
+**Citation:** Korompilias, B. (2025). Common Governance Model: Mathematical Physics Framework. Zenodo. https://doi.org/10.5281/zenodo.17521384
+
 ## Abstract
 
 This document provides a comprehensive analysis of the monodromy values discovered in the Common Governance Model (CGM) framework. Monodromy represents the "memory" that accumulates when traversing closed loops in the geometric structure, and CGM has revealed multiple levels of monodromy that are interconnected and consistent across different scales. The analysis shows how these monodromy values emerge from the fundamental geometric thresholds and connect to physical predictions, particularly the fine-structure constant.

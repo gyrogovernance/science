@@ -1,5 +1,7 @@
 # CGM Measurement Analysis: Info-Set Dynamics for Alignment
 
+**Citation:** Korompilias, B. (2025). Common Governance Model: Mathematical Physics Framework. Zenodo. https://doi.org/10.5281/zenodo.17521384
+
 ## Executive Summary
 
 This analysis presents a geometric framework for collective intelligence measurement based on the Common Governance Model (CGM). The framework replaces conventional evaluative roles (judge, critic, user) with two geometrically defined roles: Unity Non-Absolute Information Synthesist and Opposition Non-Absolute Inference Analyst. Through orthogonal decomposition of observational data on a tetrahedral information topology, the system eliminates systematic bias while maintaining the 2.07% aperture required for evolutionary capacity. The central thesis is that AI alignment is topological tensegrity dynamics: stable configuration emerges when coherence-seeking forces (UNA) balance with differentiation-seeking forces (ONA) through proper information topology.

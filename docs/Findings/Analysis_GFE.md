@@ -1,5 +1,7 @@
 # Observational Coherence and Cosmic Structure in the CGM Framework
 
+**Citation:** Korompilias, B. (2025). Common Governance Model: Mathematical Physics Framework. Zenodo. https://doi.org/10.5281/zenodo.17521384
+
 ## 1. The Coherence Radius and Observational Breakdown
 
 The Common Governance Model establishes that observation emerges through recursive alignment, with the observable horizon limited to π radians in phase space. This constraint manifests physically as a coherence radius R_coh beyond which causal continuity in observations breaks down.

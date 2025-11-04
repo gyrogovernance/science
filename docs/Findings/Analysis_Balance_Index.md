@@ -1,5 +1,7 @@
 # The Balance Index: A Dimensional Analysis of Cosmological Thermal-Gravitational Equilibrium
 
+**Citation:** Korompilias, B. (2025). Common Governance Model: Mathematical Physics Framework. Zenodo. https://doi.org/10.5281/zenodo.17521384
+
 ## Abstract
 
 We present a dimensional analysis of a newly identified index that emerges from considering the thermal properties of cosmological horizons. This Balance Index, denoted B_i, has dimensions [M^-2 L^2 Θ^1 T^0] and takes the value approximately 1.3 × 10^39 m²·K·kg^-2 based on current cosmological measurements. The index depends only on the gravitational constant G, speed of light c, Boltzmann constant k_B, and Hubble parameter H_0, with the reduced Planck constant ℏ canceling in the final expression. Through rigorous analysis, we demonstrate that B_i satisfies multiple exact geometric identities linking it to the Common Governance Model's fundamental quantum gravity invariant Q_G = 4π, establishes emergent constancy under holonomy transport, and reveals natural structure in the Standard Model particle spectrum. We explore the physical interpretation of this timeless quantity and its implications for understanding cosmological equilibrium states.

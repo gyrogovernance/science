@@ -1,5 +1,7 @@
 # The Common Governance Model Black Hole Universe: A Geometric Framework for Cosmology Without Expansion
 
+**Citation:** Korompilias, B. (2025). Common Governance Model: Mathematical Physics Framework. Zenodo. https://doi.org/10.5281/zenodo.17521384
+
 ## Abstract
 
 We present a comprehensive analysis of the universe as the interior of a Planck-scale black hole within the Common Governance Model (CGM) geometric framework. Our investigation demonstrates that the observable universe sits precisely on the Schwarzschild threshold with r_s/R_H = 1.0000 ± 0.0126, while maintaining exact UV-IR optical conjugacy across five energy stages spanning 19 orders of magnitude. The framework introduces a fundamental aperture parameter m_p = 0.199471 that enables observation from within the horizon through 2.07% transmission. We show that cosmological expansion can be understood as an optical illusion arising from UV-IR geometric inversion viewed from the interior perspective, eliminating the need for dark energy as a physical component. Our results align with current observational data within 1-sigma uncertainties and provide specific, falsifiable predictions for near-future experiments including zero redshift drift, 2.07% gravitational wave memory fraction, and resolution of the Hubble tension through combined void and aperture effects.

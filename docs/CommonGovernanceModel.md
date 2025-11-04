@@ -2,6 +2,8 @@
 
 > **The Common Governance Model is founded on a single foundational axiom: "The Source is Common." This principle reveals that reality is fundamentally structured by freedom, defined as the capacity for directional distinction and alignment. The logical requirements for this freedom to manifest generate the observable structures of both spacetime and information. The framework provides a unified account where physical conservation and informational coherence are not separate principles but expressions of the same logical necessity.**
 
+**Citation:** Korompilias, B. (2025). Common Governance Model: Mathematical Physics Framework. Zenodo. https://doi.org/10.5281/zenodo.17521384
+
 **Navigation Note:** This document presents the core formal framework of CGM. Sections 1-2 establish conceptual foundations, Section 3 provides the formal deductive system, Sections 4-5 show the gyrogroup-theoretic and geometric interpretation, and Section 6 discusses applications to information systems and physics. For immediate practical engagement, see Appendix A (Practitioner Protocol) and Appendix B (Glossary).
 
 **Note on Claims and Labeling:** Throughout this document, results are labeled to indicate their epistemological status:
@@ -682,31 +684,35 @@ Superintelligence Index (SI): composite diagnostic score combining alignment met
 
 [29] I. E. Segal, A non-commutative extension of abstract integration, Annals of Mathematics 57, 401–457 (1953); M. H. Stone, On one-parameter unitary groups in Hilbert space, Annals of Mathematics 33, 643–648 (1932).
 
+### CGM Software Repository
+
+[Software] B. Korompilias, Common Governance Model: Mathematical Physics Framework. Zenodo. https://doi.org/10.5281/zenodo.17521384
+
 ### CGM Supporting Derivations
 
-[19] B. Korompilias, Fine-Structure Constant Derivation in the Common Governance Model. https://github.com/gyrogovernance/science/blob/main/docs/Findings/Analysis_Fine_Structure.md
+[19] B. Korompilias, Fine-Structure Constant Derivation in the Common Governance Model. https://github.com/gyrogovernance/science/blob/main/docs/Findings/Analysis_Fine_Structure.md (Part of [Software])
 
-[20] B. Korompilias, Formal Proof of Three-Dimensional Necessity and Six Degrees of Freedom in the Common Governance Model. https://github.com/gyrogovernance/science/blob/main/docs/Findings/Analysis_3D_6DOF_Proof.md
+[20] B. Korompilias, Formal Proof of Three-Dimensional Necessity and Six Degrees of Freedom in the Common Governance Model. https://github.com/gyrogovernance/science/blob/main/docs/Findings/Analysis_3D_6DOF_Proof.md (Part of [Software])
 
-[21] B. Korompilias, CGM Units and Amplitude Closure Derivation. https://github.com/gyrogovernance/science/blob/main/docs/Findings/Analysis_CGM_Units.md
+[21] B. Korompilias, CGM Units and Amplitude Closure Derivation. https://github.com/gyrogovernance/science/blob/main/docs/Findings/Analysis_CGM_Units.md (Part of [Software])
 
-[22] B. Korompilias, Energy Scale Hierarchy and Optical Conjugacy in the Common Governance Model. https://github.com/gyrogovernance/science/blob/main/docs/Findings/Analysis_Energy_Scales.md
+[22] B. Korompilias, Energy Scale Hierarchy and Optical Conjugacy in the Common Governance Model. https://github.com/gyrogovernance/science/blob/main/docs/Findings/Analysis_Energy_Scales.md (Part of [Software])
 
-[23] B. Korompilias, Hilbert Space Representation via GNS Construction. https://github.com/gyrogovernance/science/blob/main/docs/Findings/Analysis_Hilbert_Space_Representation.md
+[23] B. Korompilias, Hilbert Space Representation via GNS Construction. https://github.com/gyrogovernance/science/blob/main/docs/Findings/Analysis_Hilbert_Space_Representation.md (Part of [Software])
 
-[30] B. Korompilias, CGM Geometry Coherence Analysis. https://github.com/gyrogovernance/science/blob/main/docs/Findings/Analysis_Geometric_Coherence.md
+[30] B. Korompilias, CGM Geometry Coherence Analysis. https://github.com/gyrogovernance/science/blob/main/docs/Findings/Analysis_Geometric_Coherence.md (Part of [Software])
 
 [31] A. Loeb, Direct Measurement of Cosmological Parameters from the Cosmic Deceleration of Extragalactic Objects, Astrophysical Journal 499, L111–L114 (1998).
 
-[BH Universe Analysis] B. Korompilias, Cosmological Structure as Planck-Scale Black Hole Interior. https://github.com/gyrogovernance/science/blob/main/docs/Findings/Analysis_BH_Universe.md
+[BH Universe Analysis] B. Korompilias, Cosmological Structure as Planck-Scale Black Hole Interior. https://github.com/gyrogovernance/science/blob/main/docs/Findings/Analysis_BH_Universe.md (Part of [Software])
 
-[Alignment Analysis] B. Korompilias, Operational Framework for AI Alignment Metrics. https://github.com/gyrogovernance/science/blob/main/docs/Findings/Analysis_Alignment.md
+[Alignment Analysis] B. Korompilias, Operational Framework for AI Alignment Metrics. https://github.com/gyrogovernance/science/blob/main/docs/Findings/Analysis_Alignment.md (Part of [Software])
 
 [GyroDiagnostics] Gyrogovernance Research Group, Tetrahedral Alignment Evaluation Suite. https://github.com/gyrogovernance/gyrodiagnostics
 
 [GyroDiagnostics Repo] Gyrogovernance Research Group, GyroDiagnostics Repository and Documentation. https://github.com/gyrogovernance/gyrodiagnostics/
 
-[Measurement Analysis] B. Korompilias, CGM Measurement Analysis and Protocols. https://github.com/gyrogovernance/science/blob/main/docs/Findings/Analysis_Measurement.md
+[Measurement Analysis] B. Korompilias, CGM Measurement Analysis and Protocols. https://github.com/gyrogovernance/science/blob/main/docs/Findings/Analysis_Measurement.md (Part of [Software])
 
 [GyroSI Specs] B. Korompilias, GyroSI Technical Specifications. https://github.com/gyrogovernance/superintelligence/blob/main/guides/GyroSI_Specs.md
 

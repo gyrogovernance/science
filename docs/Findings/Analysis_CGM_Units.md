@@ -1,5 +1,7 @@
 # CGM Units Analysis: Geometric Foundation of Physical Reality
 
+**Citation:** Korompilias, B. (2025). Common Governance Model: Mathematical Physics Framework. Zenodo. https://doi.org/10.5281/zenodo.17521384
+
 ## Abstract
 
 The Common Governance Model (CGM) presents a geometric framework where physical units and constants emerge from pure observational geometry. Beginning from the single axiom "The Source is Common," the framework derives a four-stage hierarchy (CS, UNA, ONA, BU) that generates the complete energy landscape from Planck to electroweak scales. The central innovation is treating Quantum Gravity as the invariant Q_G = 4π, representing the complete solid angle required for coherent observation in three-dimensional space. This approach yields the optical conjugacy relation E^UV × E^IR = const connecting ultraviolet and infrared physics through geometric necessity, predicts the fine-structure constant to 0.0316% accuracy, and establishes a consistent unit system where physical constants express geometric requirements rather than empirical measurements.

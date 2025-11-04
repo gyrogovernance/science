@@ -1,5 +1,7 @@
 # CGM Kompaneyets Analysis: Observation as Alignment Through Recursive Structure
 
+**Citation:** Korompilias, B. (2025). Common Governance Model: Mathematical Physics Framework. Zenodo. https://doi.org/10.5281/zenodo.17521384
+
 ## The Physical Architecture of Observation
 
 The Kompaneyets analysis tests a fundamental prediction of CGM: that observation itself has a universal architecture manifesting across scales. This architecture follows the same recursive pattern through four stages:

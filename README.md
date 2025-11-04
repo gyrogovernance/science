@@ -10,8 +10,8 @@
 <p><em>Cosmology, Biology, and Beyond...</em></p>
 
 <p>
-  <a href="https://doi.org/10.5281/zenodo.17521385">
-    <img src="https://zenodo.org/badge/DOI/10.5281/zenodo.17521385.svg" alt="DOI">
+  <a href="https://doi.org/10.5281/zenodo.17521384">
+    <img src="https://zenodo.org/badge/DOI/10.5281/zenodo.17521384.svg" alt="DOI">
   </a>
   <a href="LICENSE">
     <img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT">
@@ -114,14 +114,13 @@ If you use this framework in your research, please cite:
   title={Common Governance Model: Mathematical Physics Framework},
   author={Korompilias, Basil},
   year={2025},
-  version={1.2.1},
-  doi={10.5281/zenodo.17521385},
+  doi={10.5281/zenodo.17521384},
   url={https://github.com/gyrogovernance/science},
-  publisher={Zenodo}
+  orcid={0009-0006-4967-1245}
 }
 ```
 
-**DOI:** [10.5281/zenodo.17521385](https://doi.org/10.5281/zenodo.17521385)
+**DOI:** [10.5281/zenodo.17521384](https://doi.org/10.5281/zenodo.17521384)
 ---
 
 <div style="border: 1px solid #ccc; padding: 1em; font-size: 0.6em; background-color: #f9f9f9; border-radius: 6px; line-height: 1.5;">

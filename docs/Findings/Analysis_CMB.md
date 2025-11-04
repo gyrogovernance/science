@@ -1,5 +1,7 @@
 # Experimental Results: 29 Aug 2025
 
+**Citation:** Korompilias, B. (2025). Common Governance Model: Mathematical Physics Framework. Zenodo. https://doi.org/10.5281/zenodo.17521384
+
 ## Executive Summary
 
 The Common Governance Model (CGM) empirical validation suite has produced statistically significant patterns that warrant careful consideration. The analysis reveals consistent mathematical relationships across multiple cosmological observables, with particular strength in the detection of enhanced power at specific multipoles and harmonic ratios that align with theoretical predictions. While these findings require independent validation before drawing definitive conclusions, they present an internally coherent framework that merits further investigation.

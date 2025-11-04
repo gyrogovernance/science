@@ -1,6 +1,8 @@
 # Review: Quantum Gravity Through Geometric Invariance
 ## Analysis of 01 September 2025 Results
 
+**Citation:** Korompilias, B. (2025). Common Governance Model: Mathematical Physics Framework. Zenodo. https://doi.org/10.5281/zenodo.17521384
+
 ### Executive Summary
 
 The computational analysis has yielded a consistent framework where quantum gravity emerges from a geometric invariant Q_G = 4π, representing the complete solid angle required for coherent observation. The framework predicts the fine-structure constant α = 0.0072997 within 0.03% of the measured value through pure geometric relations, without electromagnetic inputs. All computations converge on a fundamental surplus factor ρ = 0.979, suggesting reality maintains a ~2.1% aperture enabling observation through available reserve.

@@ -1,5 +1,7 @@
 # Energy Scale Structure in the Common Governance Model: A Geometric Approach to Unification
 
+**Citation:** Korompilias, B. (2025). Common Governance Model: Mathematical Physics Framework. Zenodo. https://doi.org/10.5281/zenodo.17521384
+
 ## Abstract
 
 We present a systematic analysis of energy scales emerging from the Common Governance Model (CGM), a geometric framework that derives physical scales from fundamental structural principles. The framework establishes a hierarchy of energy scales through four stages (CS, UNA, ONA, BU) characterized by specific geometric thresholds. A central result is the optical conjugacy relation E_i^UV × E_i^IR = (E_CS × E_EW)/(4π)² that connects ultraviolet and infrared physics through a single invariant. We demonstrate how this geometric structure yields testable predictions including neutrino masses of approximately 0.06 eV through 48² quantization, proton lifetime of order 10^43 years, and a characteristic electromagnetic duality angle of 48°. The analysis employs standard renormalization group methods to verify consistency with gauge coupling evolution while maintaining clear distinction between dimensionless geometric ratios and dimensionful physical scales.

@@ -1,5 +1,7 @@
 # CGM Geometry Coherence Analysis
 
+**Citation:** Korompilias, B. (2025). Common Governance Model: Mathematical Physics Framework. Zenodo. https://doi.org/10.5281/zenodo.17521384
+
 ## Abstract
 
 We present a systematic geometric analysis demonstrating how the Common Governance Model (CGM) stage structure manifests in fundamental geometric relationships. Through examination of circle-square and sphere-cube relationships in the context of angular momentum and quantum gravity, we establish that CGM thresholds correspond to exact geometric invariants. The analysis reveals that the quantum gravity constant Q_G = 4π steradians governs all geometric relationships, with the Opposition Non-Absolute (ONA) threshold π/4 representing exactly 1/16 of this fundamental solid angle. Key findings include the exact correspondence between stage thresholds and geometric ratios, quantification of angular momentum costs for structural transitions, identification of universal scaling factors connecting dimensional transitions, and validation through triangle analysis and monodromy calculations. The UNA to ONA lift of 0.078291 quantifies the geometric cost of transitioning from rotational coherence to axial structure.

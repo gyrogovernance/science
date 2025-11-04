@@ -1,6 +1,8 @@
 # Analysis of the Higgs Mechanism within the Common Governance Model Framework
 ## A Geometric Approach to Electroweak Symmetry Breaking
 
+**Citation:** Korompilias, B. (2025). Common Governance Model: Mathematical Physics Framework. Zenodo. https://doi.org/10.5281/zenodo.17521384
+
 ### Date: 12 September 2025
 
 ---

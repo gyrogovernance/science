@@ -1,5 +1,7 @@
 # The Fine-Structure Constant from Geometric First Principles
 
+**Citation:** Korompilias, B. (2025). Common Governance Model: Mathematical Physics Framework. Zenodo. https://doi.org/10.5281/zenodo.17521384
+
 ## Abstract
 
 We derive the fine-structure constant α ≈ 1/137.036 from the geometric structure of the Common Governance Model (CGM). The derivation uses the optical conjugacy relation between UV and IR foci, with CS as the unobservable UV focus and BU as the observable IR focus where electromagnetic interactions manifest. Starting from the base formula α₀ = δ_BU⁴/m_p at the IR focus, we apply three systematic corrections that account for UV-IR transport, holonomy mapping between foci, and residual alignment. Each correction reduces error by orders of magnitude, yielding a final prediction accurate to 0.043 parts per billion. All parameters are measured geometric invariants from the CGM framework with no fitted values. This demonstrates that fundamental constants emerge from the geometric requirements of observation itself.

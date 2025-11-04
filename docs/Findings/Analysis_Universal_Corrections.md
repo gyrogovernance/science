@@ -1,5 +1,7 @@
 # CGM Corrections Analysis: Universal Operator Framework
 
+**Citation:** Korompilias, B. (2025). Common Governance Model: Mathematical Physics Framework. Zenodo. https://doi.org/10.5281/zenodo.17521384
+
 ## Abstract
 
 This document presents a comprehensive analysis of the Common Governance Model (CGM) universal correction operator framework. The CGM posits that physical constants and interactions emerge from geometric principles rather than empirical fitting. We demonstrate that a single correction operator, derived from first principles, simultaneously predicts the fine-structure constant to sub-ppb accuracy and explains galactic rotation curves without dark matter. The framework achieves this through geometric parameters that remain invariant across energy scales and physical domains.

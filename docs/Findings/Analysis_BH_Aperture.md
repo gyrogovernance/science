@@ -1,5 +1,7 @@
 # CGM Black Hole Aperture: Geometric Modifications to Horizon Thermodynamics
 
+**Citation:** Korompilias, B. (2025). Common Governance Model: Mathematical Physics Framework. Zenodo. https://doi.org/10.5281/zenodo.17521384
+
 ## Abstract
 
 We present a systematic investigation of black hole thermodynamics within the Common Governance Model (CGM) framework, which introduces a geometric aperture parameter m_p = 1/(2√(2π)) ≈ 0.19947 derived from first principles. This parameter modifies the standard Bekenstein-Hawking relations through three scaling laws: S_CGM = S_BH(1 + m_p), T_CGM = T_H/(1 + m_p), and τ_CGM = τ_std(1 + m_p)^4. Our analysis spans 10 orders of magnitude in black hole mass, from Planck-scale to supermassive black holes, incorporating species-resolved emission using recent greybody factors. The resulting 19.947% entropy increase and 16.63% temperature decrease align with independent calculations from area quantization and f(R) gravity studies. We find that primordial black holes evaporating today have masses reduced to 1.357 × 10^11 kg, while detection prospects for Hawking radiation remain far below current experimental thresholds. The framework maintains exact thermodynamic consistency and energy conservation while providing testable predictions for future observations.
