@@ -65,8 +65,6 @@ Derived predictions include:
 
 </div>
 
-<div align="center">
-
 ## 📚 Documentation
 
 - 🌐 **[Common Governance Model](docs/CommonGovernanceModel.md)** - Theoretical foundations and mathematical framework
