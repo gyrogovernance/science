@@ -67,7 +67,8 @@ Derived predictions include:
 
 ## 📚 Documentation
 
-- 🌐 **[Common Governance Model](docs/CommonGovernanceModel.md)** - Theoretical foundations and mathematical framework
+- 🧠 **[CGM Core](docs/CGM_Core.md)** – Formal axioms, derivations, and geometric invariants
+- 🔭 **[CGM Program](docs/CGM_Program.md)** – Research roadmap, validation plan, and applied objectives
 - 📖 **[CHANGELOG.md](CHANGELOG.md)** - Latest Updates and Complete version history
 
 ### Foundational Verification Framework
