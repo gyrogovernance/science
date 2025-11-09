@@ -59,34 +59,34 @@ def tag_result_status(
 
 
 def delta_BU_from_CGM(
-    alpha: float, beta_ang: float, gamma_ang: float, m_p: float
+    alpha: float, beta_ang: float, gamma_ang: float, m_a: float
 ) -> float:
     """
     Intrinsic derivation of δ_BU from CGM primitives.
 
-    This implements the provisional rule: δ_BU = f(α, β, γ, m_p)
+    This implements the provisional rule: δ_BU = f(α, β, γ, m_a)
     where the function is derived from geometric constraints.
 
-    Current implementation: δ_BU = m_p × (α/π) × cos(β_ang) × sin(γ_ang)
-    This gives δ_BU ≈ 0.9793 × m_p, matching the observed ratio.
+    Current implementation: δ_BU =  m_a × (α/π) × cos(β_ang) × sin(γ_ang)
+    This gives δ_BU ≈ 0.9793 × m_a, matching the observed ratio.
 
     Args:
         alpha: CS chirality angle (π/2)
         beta_ang: UNA split angle (π/4)
         gamma_ang: ONA tilt angle (π/4)
-        m_p: BU aperture (1/(2√(2π)))
+        m_a: BU aperture (1/(2√(2π)))
 
     Returns:
         δ_BU derived from CGM primitives
     """
-    # Provisional rule: δ_BU = m_p × (α/π) × cos(β_ang) × sin(γ_ang)
-    # This gives δ_BU ≈ 0.9793 × m_p, matching the observed ratio
-    delta_BU = m_p * (alpha / np.pi) * np.cos(beta_ang) * np.sin(gamma_ang)
+    # Provisional rule: δ_BU =  m_a × (α/π) × cos(β_ang) × sin(γ_ang)
+    # This gives δ_BU ≈ 0.9793 × m_a, matching the observed ratio
+    delta_BU =  m_a * (alpha / np.pi) * np.cos(beta_ang) * np.sin(gamma_ang)
     return delta_BU
 
 
 def derive_eta_from_CGM(
-    alpha: float, beta_ang: float, gamma_ang: float, m_p: float
+    alpha: float, beta_ang: float, gamma_ang: float, m_a: float
 ) -> float:
     """
     Derive rapidity η from CGM primitives for SL(2,C) implementation.
@@ -98,14 +98,14 @@ def derive_eta_from_CGM(
         alpha: CS chirality angle
         beta_ang: UNA split angle
         gamma_ang: ONA tilt angle
-        m_p: BU aperture
+        m_a: BU aperture
 
     Returns:
         Rapidty η derived from CGM structure
     """
     # Provisional rule: η = arcsinh(δ_BU / (2 × sin(γ_ang)))
     # where δ_BU is derived from CGM primitives
-    delta_BU = delta_BU_from_CGM(alpha, beta_ang, gamma_ang, m_p)
+    delta_BU = delta_BU_from_CGM(alpha, beta_ang, gamma_ang, m_a)
     eta = np.arcsinh(delta_BU / (2.0 * np.sin(gamma_ang)))
     return eta
 
@@ -224,20 +224,20 @@ class CGMConstants:
     gamma_ang: float = np.pi / 4  # ONA diagonal tilt angle [Derived]
 
     # Closure amplitude (unique solution for defect-free closure)
-    m_p: float = 1.0 / (2.0 * np.sqrt(2.0 * np.pi))  # BU aperture [Derived]
+    m_a: float = 1.0 / (2.0 * np.sqrt(2.0 * np.pi))  # BU aperture [Derived]
 
     # Recursive index (empirical discovery from cosmological data)
     N_star: int = 37  # Recursive ladder index [Empirical]
 
     @property
     def L_horizon(self) -> float:
-        """Horizon length from phase geometry: L = 1/(2m_p) = √(2π)"""
-        return 1.0 / (2.0 * self.m_p)
+        """Horizon length from phase geometry: L = 1/(2m_a) = √(2π)"""
+        return 1.0 / (2.0 * self.m_a)
 
     @property
     def t_aperture(self) -> float:
-        """Aperture time scale: t = m_p"""
-        return self.m_p
+        """Aperture time scale: t = m_a"""
+        return self.m_a
 
     @property
     def Q_G(self) -> float:
@@ -246,13 +246,13 @@ class CGMConstants:
 
     @property
     def Q_cavity(self) -> float:
-        """Cavity quality factor: Q = 1/m_p ≈ 5.013"""
-        return 1.0 / self.m_p
+        """Cavity quality factor: Q = 1/ m_a ≈ 5.013"""
+        return 1.0 / self.m_a
 
     @property
     def S_min(self) -> float:
-        """Minimal action quantum: S_min = α × m_p [Provisional]"""
-        return self.alpha * self.m_p
+        """Minimal action quantum: S_min = α ×  m_a [Provisional]"""
+        return self.alpha * self.m_a
 
     @property
     def s_p(self) -> float:
@@ -278,7 +278,7 @@ def _assert_core_invariants(c: CGMConstants) -> None:
     assert abs(c.L_horizon - np.sqrt(2 * np.pi)) < EPS, "L_horizon must be √(2π)"
     assert abs(c.Q_G - 4 * np.pi) < EPS, "𝒬_G must be 4π"
     # Closure amplitude identity used in the text: A^2 (2π)_L (2π)_R = α
-    A = c.m_p
+    A = c.m_a
     lhs = (A**2) * (2 * np.pi) * (2 * np.pi)
     assert abs(lhs - c.alpha) < EPS, "A² (2π)_L (2π)_R must equal α=π/2"
     assert abs(c.u_p - (1 / np.sqrt(2))) < 1e-12, "u_p must be 1/√2"
@@ -316,7 +316,7 @@ class QuantumGravityHorizon:
         print(f"  s_p = α = {self.cgm.s_p:.6f}  (π/2)")
         print(f"  u_p = cos β = {self.cgm.u_p:.6f}  (1/√2)")
         print(f"  o_p = γ = {self.cgm.o_p:.6f}  (π/4)")
-        print(f"  m_p = {self.cgm.m_p:.12f}  (1/(2√(2π)))")
+        print(f"   m_a = {self.cgm.m_a:.12f}  (1/(2√(2π)))")
 
     def prove_symbolic_core(self):
         """Exact checks: if sympy is available, prove the equalities symbolically."""
@@ -327,14 +327,14 @@ class QuantumGravityHorizon:
         alpha = pi / 2
         beta_ang = pi / 4
         gamma_ang = pi / 4
-        m_p = sp.Rational(1, 2) / sp.sqrt(2 * pi)  # 1/(2√(2π))
+        m_a = sp.Rational(1, 2) / sp.sqrt(2 * pi)  # 1/(2√(2π))
 
         # Exact identities
         assert sp.simplify(alpha + beta_ang + gamma_ang - pi) == 0
-        assert sp.simplify(1 / (2 * m_p) - sp.sqrt(2 * pi)) == 0
-        assert sp.simplify(m_p - (sp.Rational(1, 2) / sp.sqrt(2 * pi))) == 0
-        assert sp.simplify((1 / (2 * m_p)) / m_p - 4 * pi) == 0
-        assert sp.simplify(alpha * m_p - pi / (4 * sp.sqrt(2 * pi))) == 0
+        assert sp.simplify(1 / (2 * m_a) - sp.sqrt(2 * pi)) == 0
+        assert sp.simplify( m_a - (sp.Rational(1, 2) / sp.sqrt(2 * pi))) == 0
+        assert sp.simplify((1 / (2 * m_a)) /  m_a - 4 * pi) == 0
+        assert sp.simplify(alpha *  m_a - pi / (4 * sp.sqrt(2 * pi))) == 0
 
         print(
             "\n[Symbolic core ✓] Φ_total=π, L_horizon=√(2π), t_aperture=1/(2√(2π)), 𝒬_G=4π, S_min=π/(4√(2π))"
@@ -390,13 +390,13 @@ class QuantumGravityHorizon:
         # Step 2: Horizon emerges from phase/aperture relation
         print("\n2. Horizon Length from Phase Geometry:")
         L_horizon = self.cgm.L_horizon
-        print(f"   L_horizon = 1/(2m_p) = 1/(2 × {self.cgm.m_p:.6f})")
+        print(f"   L_horizon = 1/(2m_a) = 1/(2 × {self.cgm.m_a:.6f})")
         print(f"   L_horizon = {L_horizon:.6f} = √(2π)")
 
         # Step 3: Time scale from aperture
         print("\n3. Aperture Time Scale:")
         t_aperture = self.cgm.t_aperture
-        print(f"   t_aperture = m_p = {t_aperture:.6f}")
+        print(f"   t_aperture =  m_a = {t_aperture:.6f}")
         print(f"   This is the minimal coherence time")
 
         # Step 4: Derive geometric invariant
@@ -672,7 +672,7 @@ class QuantumGravityHorizon:
         Compute the BU dual-pole monodromy angle δ_BU = 2ω(ONA↔BU).
 
         This is the key geometric quantity that appears in the fine-structure
-        constant prediction: α_fs = δ_BU^4 / m_p.
+        constant prediction: α_fs = δ_BU^4 / m_a.
 
         Returns:
             Dict with δ_BU and related quantities
@@ -710,14 +710,14 @@ class QuantumGravityHorizon:
             print(f"    δ_BU = 2ω = {delta_BU:.6f} rad ({np.degrees(delta_BU):.4f}°)")
             print(f"")
             print(f"  Key ratios:")
-            print(f"    δ_BU/m_p = {delta_BU/self.cgm.m_p:.6f} (very stable)")
+            print(f"    δ_BU/ m_a = {delta_BU/self.cgm.m_a:.6f} (very stable)")
             print(f"    δ_BU/π = {delta_BU/np.pi:.6f} ≈ 0.062 (small fraction)")
             print(f"")
             print("  Physics interpretation:")
             print("  • δ_BU is the dual-pole slice angle across BU")
             print("  • Represents the holonomy from traversing BU⁺ and BU⁻")
             print("  • Fourth power δ_BU^4 gives the fine-structure constant")
-            print("  • Normalized by aperture conductance m_p")
+            print("  • Normalized by aperture conductance m_a")
 
         return {
             "omega_ona_bu": float(omega_ona_bu),
@@ -728,21 +728,21 @@ class QuantumGravityHorizon:
     def predict_fine_structure_constant(self, verbose: bool = True) -> Dict[str, Any]:
         """
         Predict the fine-structure constant using the dual-pole monodromy:
-        α_fs = δ_BU^4 / m_p
+        α_fs = δ_BU^4 / m_a
 
         This is the geometry-first coupling ansatz based on:
         - Single SU(2) commutator gives quadratic scaling: φ ~ θ²
         - Dual-pole traversal (BU⁺ & BU⁻) gives two independent quadratic factors
         - Quartic scaling overall: δ_BU^4
-        - Aperture normalization: divide by m_p
+        - Aperture normalization: divide by m_a
         """
         # Get the dual-pole monodromy
         monodromy = self.compute_bu_dual_pole_monodromy(verbose=False)
         delta_BU = monodromy["delta_BU"]
-        m_p = self.cgm.m_p
+        m_a = self.cgm.m_a
 
         # Predict fine-structure constant
-        alpha_pred = (delta_BU**4) / m_p
+        alpha_pred = (delta_BU**4) / m_a
 
         # CODATA 2018 value for comparison
         alpha_codata = 0.0072973525693
@@ -751,7 +751,7 @@ class QuantumGravityHorizon:
         deviation = abs(alpha_pred - alpha_codata) / alpha_codata
 
         # Invert to get implied monodromy if we assume CODATA α
-        delta_BU_star = (alpha_codata * m_p) ** 0.25
+        delta_BU_star = (alpha_codata * m_a) ** 0.25
         delta_BU_diff = abs(delta_BU - delta_BU_star)
 
         if verbose:
@@ -759,30 +759,30 @@ class QuantumGravityHorizon:
             print("FINE-STRUCTURE CONSTANT PREDICTION")
             print("=====")
             print("  Geometry-first coupling ansatz:")
-            print("  α_fs = δ_BU^4 / m_p")
+            print("  α_fs = δ_BU^4 / m_a")
             print("")
             print("  Physics motivation:")
             print("  • Single SU(2) commutator: φ ~ θ² (quadratic)")
             print("  • Dual-pole traversal: two independent quadratic factors")
             print("  • Quartic scaling: δ_BU^4")
-            print("  • Aperture normalization: divide by m_p")
+            print("  • Aperture normalization: divide by m_a")
             print("")
             print(f"  Measured values:")
             print(f"    δ_BU = {delta_BU:.6f} rad")
-            print(f"    m_p = {m_p:.12f}")
+            print(f"     m_a = {m_a:.12f}")
             print(f"")
             print(f"  Prediction:")
-            print(f"    α_pred = δ_BU^4 / m_p = {alpha_pred:.10f}")
+            print(f"    α_pred = δ_BU^4 /  m_a = {alpha_pred:.10f}")
             print(f"    α_CODATA = {alpha_codata:.10f}")
             print(f"    Relative deviation = {deviation:.2e} ({deviation*100:.4f}%)")
             print(f"")
             print(f"  Inverted constraint:")
-            print(f"    δ_BU* = (α_CODATA × m_p)^(1/4) = {delta_BU_star:.8f} rad")
+            print(f"    δ_BU* = (α_CODATA × m_a)^(1/4) = {delta_BU_star:.8f} rad")
             print(f"    |δ_BU - δ_BU*| = {delta_BU_diff:.2e} rad")
             print(f"")
             print("  Interpretation:")
             print("  • α_fs is the bi-hemispheric, dual-pole fourth-order monodromy")
-            print("  • Normalized by the aperture conductance m_p")
+            print("  • Normalized by the aperture conductance m_a")
             print("  • Fourth power from 'two commutators × two poles'")
 
         return {
@@ -792,14 +792,14 @@ class QuantumGravityHorizon:
             "delta_BU": float(delta_BU),
             "delta_BU_star": float(delta_BU_star),
             "delta_BU_diff": float(delta_BU_diff),
-            "m_p": float(m_p),
+            "m_a": float(m_a),
         }
 
     def test_alpha_prediction_stability(
         self, perturbations: Optional[list] = None, verbose: bool = True
     ) -> Dict[str, Any]:
         """
-        Test stability of α_pred = δ_BU^4 / m_p under small perturbations.
+        Test stability of α_pred = δ_BU^4 /  m_a under small perturbations.
 
         This checks if the relation is structural rather than coincidental.
         """
@@ -814,7 +814,7 @@ class QuantumGravityHorizon:
         print("\n=====")
         print("α PREDICTION STABILITY TEST")
         print("=====")
-        print("  Testing α_pred = δ_BU^4 / m_p under perturbations")
+        print("  Testing α_pred = δ_BU^4 /  m_a under perturbations")
         print("")
 
         for pert in perturbations:
@@ -823,8 +823,8 @@ class QuantumGravityHorizon:
             delta_BU_plus = delta_BU_base * (1.0 + pert)
             delta_BU_minus = delta_BU_base * (1.0 - pert)
 
-            alpha_plus = (delta_BU_plus**4) / base_result["m_p"]
-            alpha_minus = (delta_BU_minus**4) / base_result["m_p"]
+            alpha_plus = (delta_BU_plus**4) / base_result["m_a"]
+            alpha_minus = (delta_BU_minus**4) / base_result["m_a"]
 
             max_deviation = max(
                 abs(alpha_plus - base_alpha) / base_alpha,
@@ -861,7 +861,7 @@ class QuantumGravityHorizon:
 
     def analyze_alpha_error_budget(self, verbose: bool = True) -> Dict[str, Any]:
         """
-        Analyze the error budget for α_pred = δ_BU^4 / m_p.
+        Analyze the error budget for α_pred = δ_BU^4 / m_a.
 
         This provides the sensitivity relation and target precisions needed
         to achieve specific accuracy goals for the fine-structure constant.
@@ -869,11 +869,11 @@ class QuantumGravityHorizon:
         # Get base values
         base_result = self.predict_fine_structure_constant(verbose=False)
         delta_BU = base_result["delta_BU"]
-        m_p = base_result["m_p"]
+        m_a = base_result["m_a"]
         alpha_pred = base_result["alpha_pred"]
         alpha_codata = base_result["alpha_codata"]
 
-        # Sensitivity relation: Δα/α ≈ 4(Δδ/δ) - (Δm_p/m_p)
+        # Sensitivity relation: Δα/α ≈ 4(Δδ/δ) - (Δm_p/m_a)
         # For small relative errors, this is the leading order expansion
 
         # Target precision levels
@@ -889,13 +889,13 @@ class QuantumGravityHorizon:
         print("\n=====")
         print("α PREDICTION ERROR BUDGET")
         print("=====")
-        print("  Sensitivity relation: Δα/α ≈ 4(Δδ/δ) - (Δm_p/m_p)")
+        print("  Sensitivity relation: Δα/α ≈ 4(Δδ/δ) - (Δm_p/m_a)")
         print("  This shows why α_pred is sensitive to δ_BU precision")
         print("")
 
         for target_name, target_precision in target_precisions.items():
             # For a given target precision on α, what precision do we need on δ_BU?
-            # Assuming m_p is known exactly (it's derived from closure)
+            # Assuming  m_a is known exactly (it's derived from closure)
             # Then: Δα/α ≈ 4(Δδ/δ)
             # So: Δδ/δ ≈ (Δα/α)/4
 
@@ -955,11 +955,11 @@ class QuantumGravityHorizon:
         return {
             "base_values": {
                 "delta_BU": float(delta_BU),
-                "m_p": float(m_p),
+                "m_a": float(m_a),
                 "alpha_pred": float(alpha_pred),
                 "alpha_codata": float(alpha_codata),
             },
-            "sensitivity_relation": "Δα/α ≈ 4(Δδ/δ) - (Δm_p/m_p)",
+            "sensitivity_relation": "Δα/α ≈ 4(Δδ/δ) - (Δm_p/m_a)",
             "error_budget": error_budget,
             "current_status": {
                 "deviation": float(current_deviation),
@@ -1407,10 +1407,10 @@ class QuantumGravityHorizon:
 
         # Aperture maintains transmission
         print(f"\n4. Aperture Prevents Total Confinement:")
-        T_aperture = self.cgm.m_p
+        T_aperture = self.cgm.m_a
         T_effective = max(T_aperture, T_aperture * amplitude)
 
-        print(f"   Aperture transmission: m_p = {T_aperture:.6f}")
+        print(f"   Aperture transmission:  m_a = {T_aperture:.6f}")
         print(f"   This ensures ~{T_aperture*100:.1f}% leakage")
         print(f"   Effective transmission: {T_effective:.6f}")
 
@@ -1419,7 +1419,7 @@ class QuantumGravityHorizon:
         Q = self.cgm.Q_cavity
         coherent_oscillations = int(Q)
 
-        print(f"   Q = 1/m_p = {Q:.6f}")
+        print(f"   Q = 1/ m_a = {Q:.6f}")
         print(f"   Allows ~{coherent_oscillations} coherent oscillations")
         print(f"   Before decoherence sets in")
 
@@ -1625,8 +1625,8 @@ class QuantumGravityHorizon:
 
         print("\n1. Action from Phase Cell at CS:")
         S_min = self.cgm.S_min
-        print(f"   S_min = α × m_p")
-        print(f"   S_min = {self.cgm.alpha:.6f} × {self.cgm.m_p:.6f}")
+        print(f"   S_min = α × m_a")
+        print(f"   S_min = {self.cgm.alpha:.6f} × {self.cgm.m_a:.6f}")
         print(f"   S_min = {S_min:.6f}")
 
         print("\n2. Alternative Expression:")
@@ -1650,16 +1650,16 @@ class QuantumGravityHorizon:
 
     def verify_closure_constraint_identity(self) -> Dict[str, Any]:
         """
-        Show A^2 (2π)_L (2π)_R = α with A = m_p.
+        Show A^2 (2π)_L (2π)_R = α with A = m_a.
         """
-        A = self.cgm.m_p
+        A = self.cgm.m_a
         lhs = (A * A) * (2 * np.pi) * (2 * np.pi)
         rhs = self.cgm.alpha
         ok = abs(lhs - rhs) < EPS
         print("\n=====")
         print("CLOSURE CONSTRAINT IDENTITY")
         print("=====")
-        print(f"  A = m_p = {A:.12f}")
+        print(f"  A =  m_a = {A:.12f}")
         print(f"  A²·(2π)_L·(2π)_R = {lhs:.12f}")
         print(f"  α = {rhs:.12f}")
         print(f"  status: {'OK' if ok else 'FAIL'}")
@@ -1719,8 +1719,8 @@ class QuantumGravityHorizon:
 
         print("\n1. Universal Dimensionless Ratios:")
         predictions["Q_G"] = (self.cgm.Q_G, 4 * np.pi, "Geometric invariant")
-        predictions["m_p"] = (
-            self.cgm.m_p,
+        predictions["m_a"] = (
+            self.cgm.m_a,
             1 / (2 * np.sqrt(2 * np.pi)),
             "Aperture fraction",
         )
@@ -1745,7 +1745,7 @@ class QuantumGravityHorizon:
         print(f"   Observable in CMB power spectrum")
 
         print("\n4. Horizon Transmission:")
-        print(f"   T = m_p ≈ {self.cgm.m_p:.1%} transmission")
+        print(f"   T =  m_a ≈ {self.cgm.m_a:.1%} transmission")
         print(f"   Testable in analog gravity experiments")
         print(f"   Black hole information leakage rate")
 
@@ -1762,10 +1762,10 @@ class QuantumGravityHorizon:
         return predictions
 
     # REMOVED: probe_delta_bu_identity()
-    # This diagnostic helper probed the δ_BU = m_p identity using multiple methods
+    # This diagnostic helper probed the δ_BU =  m_a identity using multiple methods
     # PHYSICAL INSIGHT: Explored the crucial relationship between dual-pole monodromy δ_BU
-    # and primitive aperture m_p, fundamental to the fine-structure constant prediction
-    # α_fs = δ_BU⁴/m_p, connecting geometric monodromy to the primitive aperture
+    # and primitive aperture m_a, fundamental to the fine-structure constant prediction
+    # α_fs = δ_BU⁴/m_a, connecting geometric monodromy to the primitive aperture
 
     # REMOVED: quantify_pi6_curvature_hint()
     # This diagnostic helper quantified the -π/6 curvature hint with systematic grid refinement
@@ -1780,7 +1780,7 @@ class QuantumGravityHorizon:
     # δ_BU = √2 × sinh(η) where η = 0.1377 is the boost rapidity
     # This is exact to numerical precision: δ_BU = 0.195342 is fundamentally
     # a hyperbolic sine of the rapidity, scaled by √2
-    # Since δ_BU/m_p = 0.979 ≈ 1, we essentially have: m_p ≈ √2 × sinh(η)
+    # Since δ_BU/ m_a = 0.979 ≈ 1, we essentially have:  m_a ≈ √2 × sinh(η)
 
     # THE TINY WIGNER ANGLE:
     # SU(2) trace canonical φ = 0.019080 rad (≈ 1.09°) is remarkably small
@@ -1798,29 +1798,29 @@ class QuantumGravityHorizon:
     # These are exact consequences of the 120° rotation
 
     # THE MISSING BRIDGE:
-    # The formula α = δ_BU⁴/m_p with δ_BU ≈ m_p means: α ≈ m_p³
-    # Since m_p = 1/(2√(2π)), we have: α ≈ 1/(8π^(3/2) × 2√2)
+    # The formula α = δ_BU⁴/ m_a with δ_BU ≈  m_a means: α ≈ m_a³
+    # Since  m_a = 1/(2√(2π)), we have: α ≈ 1/(8π^(3/2) × 2√2)
     # This says the fine-structure constant is fundamentally related to
     # the cube of the aperture, which is a volume in phase space
 
     # THE DIMENSIONFUL CONNECTION:
     # The geometric invariant Q_G = 4π sets a closure requirement
-    # The aperture m_p = 1/(2√(2π)) sets a transmission fraction
-    # The ratio Q_G × m_p² gives: 4π × [1/(2√(2π))]² = 4π/(8π) = 1/2
+    # The aperture  m_a = 1/(2√(2π)) sets a transmission fraction
+    # The ratio Q_G × m_a² gives: 4π × [1/(2√(2π))]² = 4π/(8π) = 1/2
     # This 1/2 might be the missing bridge - the product of the full solid
     # angle with the square of the aperture
 
     # WHAT WE'VE ACTUALLY FOUND:
     # The α prediction works because:
-    # 1. δ_BU is locked to m_p through hyperbolic geometry (the sinh relation)
+    # 1. δ_BU is locked to  m_a through hyperbolic geometry (the sinh relation)
     # 2. The quartic power emerges from dual-pole × dual-hemisphere structure
-    # 3. The normalization by m_p makes it dimensionless
-    # The 0.03% accuracy comes from δ_BU/m_p = 0.979 being nearly but not
+    # 3. The normalization by  m_a makes it dimensionless
+    # The 0.03% accuracy comes from δ_BU/ m_a = 0.979 being nearly but not
     # exactly 1. This 2.1% deviation, when raised to the fourth power and
     # normalized, gives exactly the right correction to match α
 
     # THE DIMENSIONAL BRIDGE:
-    # We have a geometric invariant (Q_G = 4π), an aperture (m_p ≈ 0.2),
+    # We have a geometric invariant (Q_G = 4π), an aperture ( m_a ≈ 0.2),
     # a hyperbolic relation (δ_BU = √2 sinh(η)), and a quartic scaling
     # that gives α. To get actual dimensions, we need one empirical anchor
     # that isn't circular. The CMB temperature could work - it's observable
@@ -1993,7 +1993,7 @@ class QuantumGravityHorizon:
         print("\n✓ FINE-STRUCTURE CONSTANT PREDICTION:")
         # Use the main fine-structure constant prediction (0.03% accuracy)
         alpha_result = self.predict_fine_structure_constant(verbose=False)
-        print(f"  • α_fs = δ_BU^4 / m_p = {alpha_result['alpha_pred']:.10f}")
+        print(f"  • α_fs = δ_BU^4 /  m_a = {alpha_result['alpha_pred']:.10f}")
         print(f"  • α_CODATA = {alpha_result['alpha_codata']:.10f}")
         print(
             f"  • Deviation = {alpha_result['deviation']:.4f} ({alpha_result['deviation']*100:.4f}%)"
@@ -2079,7 +2079,7 @@ class QuantumGravityHorizon:
         result_bundle = {
             "core_constants": {
                 "Q_G": float(self.cgm.Q_G),
-                "m_p": float(self.cgm.m_p),
+                "m_a": float(self.cgm.m_a),
                 "alpha": float(self.cgm.alpha),
                 "beta_ang": float(self.cgm.beta_ang),
                 "gamma_ang": float(self.cgm.gamma_ang),

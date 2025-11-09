@@ -711,7 +711,7 @@ def run_geometric_kappa_experiment(gs: GyroVectorSpace) -> Dict[str, Any]:
     chi_stats = tw_tester.compute_anatomical_tw_ratio(verbose=False)
 
     print(
-        f"  δ_BU = {delta_bu['delta_bu']:.6f} rad (ratio to m_p: {delta_bu['ratio_to_mp']:.3f})"
+        f"  δ_BU = {delta_bu['delta_bu']:.6f} rad (ratio to m_a: {delta_bu['ratio_to_mp']:.3f})"
     )
     print(
         f"  χ = {chi_stats['chi_mean']:.6f} ± {chi_stats['chi_std']:.6f} (CV: {chi_stats['coefficient_of_variation']:.1%})"

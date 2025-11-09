@@ -27,9 +27,9 @@ class Angle45_48ApertureAnalyzer:
         self.angle_48_rad = math.radians(self.angle_48)
         
         # CGM aperture parameters
-        self.m_p = 1 / (2 * math.sqrt(2 * math.pi))
+        self.m_a = 1 / (2 * math.sqrt(2 * math.pi))
         self.delta_BU = 0.195342176580
-        self.cgm_aperture = 1 - self.delta_BU / self.m_p
+        self.cgm_aperture = 1 - self.delta_BU / self.m_a
         
     def analyze_aperture_transition(self) -> Dict:
         """Analyze the geometric transition from 45° to 48°."""

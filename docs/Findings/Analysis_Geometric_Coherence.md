@@ -10,7 +10,7 @@ We present a systematic geometric analysis demonstrating how the Common Governan
 
 ### 1.1 Theoretical Context
 
-The Common Governance Model posits four stages of recursive emergence from a common source: CS (Common Source), UNA (Unity Non-Absolute), ONA (Opposition Non-Absolute), and BU (Balance Universal). Each stage is characterized by specific threshold values that govern transitions in the recursive structure. The CS stage introduces chirality through angular momentum at threshold π/2, UNA establishes rotational coherence at threshold 1/√2, ONA creates axial structure at threshold π/4, and BU achieves balance through aperture parameter m_p = 1/(2√(2π)). This analysis investigates whether these theoretically derived thresholds correspond to fundamental geometric relationships.
+The Common Governance Model posits four stages of recursive emergence from a common source: CS (Common Source), UNA (Unity Non-Absolute), ONA (Opposition Non-Absolute), and BU (Balance Universal). Each stage is characterized by specific threshold values that govern transitions in the recursive structure. The CS stage introduces chirality through angular momentum at threshold π/2, UNA establishes rotational coherence at threshold 1/√2, ONA creates axial structure at threshold π/4, and BU achieves balance through aperture parameter  m_a = 1/(2√(2π)). This analysis investigates whether these theoretically derived thresholds correspond to fundamental geometric relationships.
 
 ### 1.2 Research Objectives
 
@@ -145,12 +145,12 @@ The quantum gravity invariant Q_G = 4π steradians emerges as the fundamental or
 - CS amplification factor: 7.874805
 
 **Quantum Geometric Constant**:
-K_QG = 3.937402 appears both as π²/√(2π) (theoretical) and (π/4)/m_p (empirical), confirming internal consistency. The CS amplification factor of 7.874805 demonstrates recursive magnification through the geometric hierarchy.
+K_QG = 3.937402 appears both as π²/√(2π) (theoretical) and (π/4)/ m_a (empirical), confirming internal consistency. The CS amplification factor of 7.874805 demonstrates recursive magnification through the geometric hierarchy.
 
 ### 3.6 Aperture Balance and Monodromy
 
 The theoretical 97.93%/2.07% split is confirmed through:
-- Q_G × m_p² = 0.500000 (exact 1/2)
+- Q_G × m_a² = 0.500000 (exact 1/2)
 - Structural closure: 97.93%
 - Dynamic aperture: 2.07%
 - BU monodromy: δ_BU = 0.195342 rad

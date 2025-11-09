@@ -48,29 +48,29 @@ class CGMConstants:
     E_CS_BTM: float = 1.22e19
     E_BU_TOP: float = 246.22  # Higgs vacuum expectation value v = (√2 G_F)^(-1/2)
 
-    m_p: float = field(init=False)
+    m_a: float = field(init=False)
     thresholds: Dict[str, float] = field(init=False)
     actions: Dict[str, float] = field(init=False)
 
     def __post_init__(self):
-        self.m_p = 1 / (2 * math.sqrt(2 * math.pi))
+        self.m_a = 1 / (2 * math.sqrt(2 * math.pi))
         self.thresholds = {
             'CS': math.pi / 2,
             'UNA': math.cos(math.pi / 4),
             'ONA': math.pi / 4,
-            'BU': self.m_p
+            'BU': self.m_a
         }
-        S_CS = self.thresholds['CS'] / self.m_p
-        S_UNA = self.thresholds['UNA'] / self.m_p
-        S_ONA = self.thresholds['ONA'] / self.m_p
-        S_BU = self.m_p
+        S_CS = self.thresholds['CS'] / self.m_a
+        S_UNA = self.thresholds['UNA'] / self.m_a
+        S_ONA = self.thresholds['ONA'] / self.m_a
+        S_BU = self.m_a
         s_uni_inv = (1 / S_CS) + (1 / S_UNA) + (1 / S_ONA)
         S_UNI = 1 / s_uni_inv
         self.actions = {'CS': S_CS, 'UNA': S_UNA, 'ONA': S_ONA, 'BU': S_BU, 'UNI': S_UNI}
 
     @property
     def Delta(self) -> float:
-        return 1 - self.delta_BU / self.m_p
+        return 1 - self.delta_BU / self.m_a
 
     @property
     def sqrt_Delta(self) -> float:
@@ -370,7 +370,7 @@ class CGMAnalysis:
     def run(self, rho_union: Optional[List[float]] = None) -> None:
         print("CGM Fermion Mass Analysis")
         print("=" * 40)
-        print(f"m_p = {self.c.m_p:.12f}")
+        print(f" m_a = {self.c.m_a:.12f}")
         print(f"Δ = {self.c.Delta:.6f}, 1/√Δ = {1/self.c.sqrt_Delta:.6f}")
         print(f"K = {self.c.optical_invariant:.2e} GeV², E_MID = {self.c.fixed_point:.2e} GeV")
 

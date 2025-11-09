@@ -19,14 +19,14 @@ M_sun = 1.989e30  # Solar mass (kg)
 year_tropical = 365.25636 * 24 * 3600  # Tropical year (seconds)
 year_julian = 365.25 * 24 * 3600  # Julian year (seconds)
 
-m_p = 1 / (2 * math.sqrt(2 * math.pi))
+ m_a = 1 / (2 * math.sqrt(2 * math.pi))
 Q_G = 4 * math.pi
 s_p = math.pi / 2
 u_p = 1 / math.sqrt(2)
 o_p = math.pi / 4
 delta_BU = 0.195342176580
 
-APERTURE_TRANSMISSION = 1 - delta_BU / m_p
+APERTURE_TRANSMISSION = 1 - delta_BU / m_a
 
 ly_tropical = c * year_tropical
 ly_julian = c * year_julian
@@ -43,7 +43,7 @@ hbar = h / (2 * math.pi)
 m_electron = 9.1093837e-31  # Electron mass (kg)
 m_proton = 1.6726219e-27  # Proton mass (kg)
 compton_electron = hbar / (m_electron * c)
-compton_proton = hbar / (m_proton * c)
+compton_proton = hbar / (m_aroton * c)
 
 oort_boundaries = {
     "Inner Oort (Hills) start": (2000, 500),
@@ -345,9 +345,9 @@ def main():
     print()
     
     print("1. FUNDAMENTAL CGM PARAMETERS")
-    print(f"Aperture parameter (m_p):     {m_p:.6f}")
+    print(f"Aperture parameter (m_a):     {m_a:.6f}")
     print(f"Quantum gravity (Q_G):         {Q_G:.6f} sr = 4pi")
-    print(f"Closure constraint:            Q_G x m_p^2 = {Q_G * m_p**2:.6f}")
+    print(f"Closure constraint:            Q_G x m_a^2 = {Q_G * m_a**2:.6f}")
     print(f"Aperture fraction:             {APERTURE_TRANSMISSION:.4f} = {APERTURE_TRANSMISSION*100:.2f}%")
     print(f"BU dual-pole monodromy:        {delta_BU:.6f} rad")
     print()

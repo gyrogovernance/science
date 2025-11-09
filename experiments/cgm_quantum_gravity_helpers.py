@@ -436,14 +436,14 @@ def solve_theta_for_target_phi_numpy(
 
 def probe_delta_bu_identity(verbose: bool = True) -> Dict[str, Any]:
     """
-    DIAGNOSTIC HELPER: Probe the δ_BU = m_p identity using multiple methods.
+    DIAGNOSTIC HELPER: Probe the δ_BU =  m_a identity using multiple methods.
 
     This explores the relationship between the dual-pole monodromy δ_BU
-    and the primitive aperture m_p, which is fundamental to the
+    and the primitive aperture m_a, which is fundamental to the
     fine-structure constant prediction.
 
-    Physical Insight: The δ_BU ≈ m_p relationship is crucial for the
-    α_fs = δ_BU⁴/m_p prediction to work, connecting geometric monodromy
+    Physical Insight: The δ_BU ≈  m_a relationship is crucial for the
+    α_fs = δ_BU⁴/ m_a prediction to work, connecting geometric monodromy
     to the primitive aperture.
 
     Args:
@@ -529,10 +529,10 @@ KEY PHYSICAL INSIGHTS ESTABLISHED BY THESE HELPERS:
    - Understanding how φ depends on θ and δ
    - Mathematical solutions show geometric constraints
    - Abundance indices quantify 3-cycle nature
-   - δ_BU ≈ m_p relationship crucial for α_fs prediction
+   - δ_BU ≈  m_a relationship crucial for α_fs prediction
 
 6. CURVATURE AND IDENTITY PROBES:
-   - δ_BU = m_p identity exploration
+   - δ_BU =  m_a identity exploration
    - -π/6 curvature hint quantification
    - Systematic grid refinement for geometric relationships
    - Connection to fundamental constants through closure structure

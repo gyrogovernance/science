@@ -12,7 +12,7 @@ The computational analysis has yielded a consistent framework where quantum grav
 #### 1.1 The Fundamental Invariant
 The analysis confirms Q_G = L_horizon/t_aperture = 4π exactly, where:
 - L_horizon = √(2π) = 2.5066 (horizon length)
-- t_aperture = m_p = 0.19947 (aperture time)
+- t_aperture =  m_a = 0.19947 (aperture time)
 - Q_G = 12.5664 = 4π (geometric invariant)
 
 This ratio represents the closure requirement for observation, not a velocity. The factor 4π appears as the complete solid angle of three-dimensional space, necessary for coherent perspective.
@@ -28,7 +28,7 @@ The gyrotriangle defect δ = π - (α + β + γ) = 0 confirms exact closure. Num
 #### 2.1 The Quartic Formula
 The electromagnetic coupling emerges as:
 ```
-α = δ_BU^4 / m_p = 0.0072997
+α = δ_BU^4 /  m_a = 0.0072997
 ```
 compared to α_CODATA = 0.0072974, yielding 0.0316% deviation.
 
@@ -71,14 +71,14 @@ where η = 0.13769 is the boost rapidity. This is exact under the geometric cons
 In the weak-field limit:
 - φ ≈ δ_BU^2/2 = 0.01908 (matches SU(2) trace to 4×10^-5)
 - φ ≈ η^2 (quadratic in rapidity)
-- α ≈ 4φ^2/m_p (quartic overall)
+- α ≈ 4φ^2/ m_a (quartic overall)
 
 This hierarchy explains why α ∝ δ^4: two quadratic factors compound.
 
 ### 5. The Surplus Factor
 
 #### 5.1 The Critical Ratio
-The ratio ρ = δ_BU/m_p = 0.97930 appears throughout:
+The ratio ρ = δ_BU/ m_a = 0.97930 appears throughout:
 - ρ^4 = 0.91973
 - 1 - ρ^4 = 0.08027 (8.03% surplus)
 
@@ -93,8 +93,8 @@ The surplus enables:
 ### 6. Exact Algebraic Relations
 
 The analysis confirms multiple exact identities:
-- Q_G × m_p^2 = 1/2
-- L × m_p = 1/2
+- Q_G × m_a^2 = 1/2
+- L ×  m_a = 1/2
 - Q_cavity = 2L = 2√(2π)
 - S_min = L/8 = π/(4√(2π))
 - Memory volume = Q_G^2/4 = 4π^2
@@ -171,7 +171,7 @@ The 120° rotor creating a 3-fold oscillator, rather than closure to ±I, indica
 
 ### A3. Hand-Body Correlations
 - Q_cavity = 5.013 (relates to 5 fingers)
-- m_p ≈ 0.2 (20% ~ thumb opposition ratio)
+-  m_a ≈ 0.2 (20% ~ thumb opposition ratio)
 - Base-10 arithmetic (10 digits)
 - These require further dimensional analysis to validate or refute
 

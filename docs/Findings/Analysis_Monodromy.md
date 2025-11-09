@@ -51,14 +51,14 @@ The 8-leg toroidal holonomy exactly equals the BU dual-pole monodromy, confirmin
 
 #### 2.2.3 Aperture Relationship
 ```
-δ_BU ≈ 0.98 × m_p
+δ_BU ≈ 0.98 × m_a
 0.195342 ≈ 0.98 × 0.199471
 Ratio: 0.979300 (97.93% closure, 2.07% aperture)
 ```
 
 #### 2.2.4 Fine-Structure Constant Connection
 ```
-α_fs = δ_BU⁴ / m_p = 0.0072997
+α_fs = δ_BU⁴ /  m_a = 0.0072997
 α_CODATA = 0.0072974
 Deviation: +3.19×10⁻⁴ (0.0316%)
 ```
@@ -110,25 +110,25 @@ Where ω(ONA↔BU) = 0.097671 rad is the single transition memory.
 #### 3.2.3 Connection to Fine-Structure Constant
 The BU dual-pole monodromy is the key quantity in the fine-structure constant prediction:
 ```
-α_fs = δ_BU⁴ / m_p
+α_fs = δ_BU⁴ / m_a
 ```
 
 This emerges from:
 - **Single SU(2) commutator**: φ ~ θ² (quadratic scaling)
 - **Dual-pole traversal**: Two independent quadratic factors
 - **Quartic scaling**: δ_BU⁴
-- **Aperture normalization**: Division by m_p
+- **Aperture normalization**: Division by m_a
 
 #### 3.2.4 Stability and Validation
 - **Cross-validation**: Consistent across multiple test runs
 - **Seed independence**: Stable under different random seeds
 - **Precision**: Reproducible to machine precision
-- **Physical significance**: 97.9% agreement with m_p suggests fundamental relationship
+- **Physical significance**: 97.9% agreement with  m_a suggests fundamental relationship
 
 #### 3.2.5 Connection to CGM Closure Principle
-The ratio δ_BU/m_p ≈ 0.979 has deep physical significance:
+The ratio δ_BU/ m_a ≈ 0.979 has deep physical significance:
 
-- **97.9% Closure / 2.1% Aperture**: The 97.9% agreement with m_p directly connects to the fundamental CGM principle of 97.9% closure with 2.1% aperture
+- **97.9% Closure / 2.1% Aperture**: The 97.9% agreement with  m_a directly connects to the fundamental CGM principle of 97.9% closure with 2.1% aperture
 - **Geometric Memory**: The 2.1% deviation represents the fundamental "aperture" or "openness" needed for observation
 - **Information Flow**: The monodromy deficit (2.1%) is the geometric memory that prevents perfect closure, enabling observation while maintaining structural stability
 - **Universal Balance**: This balance between closure and aperture is universal across all scales in the CGM framework
@@ -177,19 +177,19 @@ The Thomas-Wigner closure test provides a comprehensive validation framework tha
 At the canonical thresholds:
 - **UNA threshold (u_p)**: 1/√2 ≈ 0.707107 (light speed related)
 - **ONA threshold (o_p)**: π/4 ≈ 0.785398 (sound speed related)  
-- **BU threshold (m_p)**: 1/(2√(2π)) ≈ 0.199471
+- **BU threshold (m_a)**: 1/(2√(2π)) ≈ 0.199471
 
 #### 4.2.2 Wigner Rotation Analysis
 The Wigner rotation at canonical inputs yields:
 ```
-w(u_p, o_p) = 0.215550 rad vs m_p = 0.199471 rad
-Finite kinematic offset = 0.016079 rad (8.1% of m_p)
+w(u_p, o_p) = 0.215550 rad vs  m_a = 0.199471 rad
+Finite kinematic offset = 0.016079 rad (8.1% of m_a)
 ```
 
 This 8.1% finite offset represents a structural fingerprint rather than a discrepancy. The UNA/ONA pair does not land exactly on BU in Wigner space; instead, there exists a small but fixed offset that maps the thresholds without requiring equality.
 
-#### 4.2.3 Nearest Solutions to w = m_p
-When solving for exact equality w = m_p:
+#### 4.2.3 Nearest Solutions to w = m_a
+When solving for exact equality w = m_a:
 - **Holding θ = π/4**: β* = 0.685332 (2.2% reduction from u_p)
 - **Holding β = 1/√2**: θ* = 0.718880 (3.8° reduction from π/4)
 
@@ -225,15 +225,15 @@ The BU dual-pole structure exhibits perfect symmetry:
 #### 4.4.1 Measured Values
 ```
 δ_BU = 2·w(ONA ↔ BU) = 0.1953421766 rad
-BU threshold m_p = 0.1994711402 rad
-Ratio δ_BU/m_p = 0.9793004463
+BU threshold  m_a = 0.1994711402 rad
+Ratio δ_BU/ m_a = 0.9793004463
 ```
 
 This corresponds to **97.93% closure and 2.07% aperture**, directly connecting to the fundamental CGM principle of 97.9% closure with 2.1% aperture.
 
 #### 4.4.2 Stability Under Perturbations
-The ratio δ_BU/m_p demonstrates robust stability:
-- **Parameter range tested**: ±0.1% to ±5% variations in m_p
+The ratio δ_BU/ m_a demonstrates robust stability:
+- **Parameter range tested**: ±0.1% to ±5% variations in m_a
 - **Maximum relative change**: ≤0.1% across all perturbations
 - **Invariance threshold**: 1.0% (well satisfied)
 - **Conclusion**: Genuine geometric relationship, not fine-tuning
@@ -249,7 +249,7 @@ The 8-leg monodromy exhibits sharp invariant characteristics:
 #### 4.5.2 Anatomical TW Ratio (χ)
 The exploratory anatomical TW ratio shows:
 ```
-χ = mean[(w(β,θ)/m_p)²] ≈ 1.170 ± 0.246
+χ = mean[(w(β,θ)/m_a)²] ≈ 1.170 ± 0.246
 Coefficient of variation: 21.1%
 ```
 
@@ -277,7 +277,7 @@ The hierarchical memory structure shows:
 - **Consistency**: Both are consistent slices of the same toroidal anatomy
 
 #### 4.7.3 Implications for Fine-Structure Constant
-The geometry-only relation α̂ = δ_BU⁴/m_p with measured δ_BU yields a prediction that is +3.19×10⁻⁴ high relative to CODATA. This tiny surplus plausibly represents the first fixed correction from coupling to larger toroidal/commutator sectors. Until this correction is derived from pure geometry, δ_BU⁴/m_p remains the best zeroth-order prediction.
+The geometry-only relation α̂ = δ_BU⁴/ m_a with measured δ_BU yields a prediction that is +3.19×10⁻⁴ high relative to CODATA. This tiny surplus plausibly represents the first fixed correction from coupling to larger toroidal/commutator sectors. Until this correction is derived from pure geometry, δ_BU⁴/ m_a remains the best zeroth-order prediction.
 
 ## 5. Hierarchical Structure of Monodromy
 
@@ -306,7 +306,7 @@ Each level represents memory accumulation at different scales of the geometric s
 The most significant physical prediction comes from the BU dual-pole monodromy:
 
 ```
-α_fs = δ_BU⁴ / m_p = 0.0072997
+α_fs = δ_BU⁴ /  m_a = 0.0072997
 ```
 
 This prediction:
@@ -340,7 +340,7 @@ The SU(2) holonomy (0.587901 rad) represents quantum-level memory:
 All monodromy values are consistent with each other:
 
 - **δ_BU = 2 × ω(ONA↔BU)**: Exact relationship
-- **δ_BU ≈ 0.98 × m_p**: 97.9% agreement
+- **δ_BU ≈ 0.98 × m_a**: 97.9% agreement
 - **Hierarchical ordering**: Logical scale progression
 - **Physical predictions**: Consistent with measured constants
 
@@ -416,7 +416,7 @@ The monodromy structure represents the fundamental "memory" of the geometric sys
 
 The most significant achievement is the prediction of the fine-structure constant from pure geometry:
 ```
-α_fs = δ_BU⁴ / m_p = 0.0072997
+α_fs = δ_BU⁴ /  m_a = 0.0072997
 ```
 
 This demonstrates that fundamental physical constants can emerge from geometric first principles, providing a new foundation for understanding the relationship between geometry and physics. The +3.19×10⁻⁴ deviation from CODATA plausibly represents the first fixed correction from coupling to larger toroidal/commutator sectors.

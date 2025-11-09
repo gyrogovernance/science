@@ -22,9 +22,9 @@ The Higgs mechanism, confirmed through the 2012 discovery of a 125 GeV scalar bo
 The Common Governance Model represents a geometric framework where physical properties emerge from structural requirements of coherent observation in three-dimensional space. The model identifies several fundamental ontological invariants:
 
 - **Q_G = 4π**: The complete solid angle in three dimensions, interpreted as the geometric requirement for coherent observation
-- **m_p = 1/(2√(2π)) ≈ 0.199471**: An aperture parameter governing the balance between structural closure and dynamic openness
+- ** m_a = 1/(2√(2π)) ≈ 0.199471**: An aperture parameter governing the balance between structural closure and dynamic openness
 - **δ_BU = 0.195342 rad**: A monodromy value representing geometric "memory" in recursive structures
-- **Δ = 1 - δ_BU/m_p ≈ 0.0207**: The aperture fraction, representing approximately 2.07% structural openness
+- **Δ = 1 - δ_BU/ m_a ≈ 0.0207**: The aperture fraction, representing approximately 2.07% structural openness
 
 The central hypothesis of this analysis is that these ontological parameters, when properly interpreted, constrain the Higgs mechanism and predict observable properties of electroweak physics.
 
@@ -34,13 +34,13 @@ The central hypothesis of this analysis is that these ontological parameters, wh
 
 Our approach begins by establishing a boundary condition for the Higgs quartic coupling at ultra-high energies based purely on CGM geometric invariants:
 
-**λ(E₀) = δ_BU⁴/(4m_p²) ≈ 0.009149**    (Equation 1)
+**λ(E₀) = δ_BU⁴/(4m_a²) ≈ 0.009149**    (Equation 1)
 
-Numerically, δ_BU = 0.195342 and m_p = 0.199471 give λ(E₀) = 0.009149.
+Numerically, δ_BU = 0.195342 and  m_a = 0.199471 give λ(E₀) = 0.009149.
 
 where E₀ represents the CGM energy scale (1.36×10¹⁸ GeV for reciprocal mode). This formula emerges from the geometric structure:
 - The quartic power of δ_BU reflects the compound nature of the Higgs self-interaction
-- The normalization by 4m_p² ensures proper dimensional scaling
+- The normalization by 4m_a² ensures proper dimensional scaling
 - The factor of 4 relates to the complete solid angle Q_G = 4π
 
 Crucially, no Standard Model parameters are fitted in determining this boundary condition; it derives entirely from geometric principles.
@@ -65,8 +65,8 @@ We include one-loop and two-loop terms for the quartic and top Yukawa beta funct
 
 We search for scales where CGM's geometric structure appears within Standard Model running by identifying where specific coupling ratios equal the CGM invariant:
 
-**λ/y_t² = δ_BU⁴/(4m_p²)**    (Equation 3a)
-**λ/(g₂² + g₁²/3) = δ_BU⁴/(4m_p²)**    (Equation 3b)
+**λ/y_t² = δ_BU⁴/(4m_a²)**    (Equation 3a)
+**λ/(g₂² + g₁²/3) = δ_BU⁴/(4m_a²)**    (Equation 3b)
 
 These "crossing points" represent energy scales where the Standard Model naturally exhibits CGM's geometric relationships.
 
@@ -197,7 +197,7 @@ This proximity is consistent with Δ influencing the separation of the two scale
 Our analysis reveals several remarkable structural identities that provide independent validation of the geometric framework:
 
 **Exact Identities:**
-- **Q_G × m_p² = 1/2** (exact)
+- **Q_G × m_a² = 1/2** (exact)
 - **ζ = 16√(2π/3)** (exact to machine precision)  
 - **λ₀ = 2π δ_BU⁴** (exact by construction)
 
@@ -298,11 +298,11 @@ If confirmed, this geometric approach could provide new insights into the origin
 
 1. **Ontological Universality**: We assume CGM's ontological invariants, derived from requirements of coherent observation, apply universally across energy scales
 
-2. **Boundary Condition Validity**: The formula λ(E₀) = δ_BU⁴/(4m_p²) is assumed to hold at the CGM energy scale E₀ = 1.36×10¹⁸ GeV
+2. **Boundary Condition Validity**: The formula λ(E₀) = δ_BU⁴/(4m_a²) is assumed to hold at the CGM energy scale E₀ = 1.36×10¹⁸ GeV
 
 3. **Standard Model Validity**: We assume Standard Model renormalization group equations remain valid up to the CGM scale
 
-4. **Parameter Stability**: CGM ontological parameters (m_p, δ_BU, φ_SU2) are treated as exact mathematical constants
+4. **Parameter Stability**: CGM ontological parameters (m_a, δ_BU, φ_SU2) are treated as exact mathematical constants
 
 ### A.2 Computational Assumptions
 

@@ -8,10 +8,10 @@ within the Common Governance Model (CGM) framework. The derivation focuses on di
 geometric invariants without introducing new base units.
 
 Key Results:
-- ζ = Q_G/S_geo = 4π/(m_p × π × √3/2) ≈ 23.16 (dimensionless)
-- S_geometric = √(S_fwd × S_rec) = m_p × π × √3/2 (geometric mean)
+- ζ = Q_G/S_geo = 4π/( m_a × π × √3/2) ≈ 23.16 (dimensionless)
+- S_geometric = √(S_fwd × S_rec) =  m_a × π × √3/2 (geometric mean)
 - Q_G = 4π (complete solid angle for coherent observation)
-- m_p = 1/(2√(2π)) (aperture parameter)
+-  m_a = 1/(2√(2π)) (aperture parameter)
 
 The coupling ζ serves as a dimensionless normalizer within the geometric framework.
 When dimensional scales are needed, we anchor to measured constants (e.g., E_CS = Planck energy)
@@ -37,9 +37,9 @@ pi = sp.pi
 fourpi = 4 * sp.pi
 
 # CGM invariants (dimensionless)
-m_p = 1 / (2 * sp.sqrt(2 * sp.pi))  # aperture parameter
-S_fwd = (sp.pi / 2) * m_p  # forward action
-S_rec = (3 * sp.pi / 2) * m_p  # reciprocal action
+ m_a = 1 / (2 * sp.sqrt(2 * sp.pi))  # aperture parameter
+S_fwd = (sp.pi / 2) *  m_a  # forward action
+S_rec = (3 * sp.pi / 2) *  m_a  # reciprocal action
 
 # Geometric coupling and related factors
 zeta, sigma, xi, K, nu, S_geo = sp.symbols(
@@ -107,7 +107,7 @@ def prove_geometric_mean_uniqueness() -> Dict[str, Any]:
     }
 
 def compute_S_geometric():
-    """Compute S_geometric = √(S_fwd S_rec) = m_p · π · √3 / 2."""
+    """Compute S_geometric = √(S_fwd S_rec) =  m_a · π · √3 / 2."""
     return sp.simplify(sp.sqrt(S_fwd * S_rec))
 
 # -------------------------------------------------------
@@ -133,7 +133,7 @@ def numeric_zeta_evaluation():
     
     Returns numerical ζ and verification of geometric derivation.
     """
-    Sgeo = compute_S_geometric()  # m_p π √3/2
+    Sgeo = compute_S_geometric()  #  m_a π √3/2
     Q_G = fourpi
     zeta_expr = sp.simplify(Q_G / Sgeo)
     zeta_num = float(zeta_expr.evalf(mp.dps))
@@ -163,11 +163,11 @@ def main():
     print("Mathematical Framework:")
     print("  • Pure geometric derivation using dimensionless invariants")
     print("  • Q_G = 4π as complete solid angle for coherent observation")
-    print("  • m_p = 1/(2√(2π)) as aperture parameter enabling observation")
+    print("  •  m_a = 1/(2√(2π)) as aperture parameter enabling observation")
     print("  • S_geometric as geometric mean of forward/reciprocal actions")
     print("\nGeometric Principles:")
     print("  • Survey completeness: Q_G = 4π (steradians)")
-    print("  • Aperture balance: m_p enables 2.07% openness for observation")
+    print("  • Aperture balance:  m_a enables 2.07% openness for observation")
     print("  • Dual mode structure: forward and reciprocal geometric actions")
     print("  • Geometric mean: unique mean satisfying symmetry and dual invariance")
     print("\nDerivation Method:")
@@ -195,9 +195,9 @@ def main():
     print(f"    ⇒ Solution:      α = β = 1/2")
     print(f"    Mean form:       {proofs['mean_form']}")
     Sgeo = compute_S_geometric()
-    print(f"B2) S_fwd = (π/2)m_p, S_rec = (3π/2)m_p")
+    print(f"B2) S_fwd = (π/2)m_a, S_rec = (3π/2)m_a")
     print(f"    S_geo = √(S_fwd·S_rec) = {nstr(Sgeo, 20)}")
-    print(f"    Simplified: S_geo = m_p · π · √3 / 2")
+    print(f"    Simplified: S_geo =  m_a · π · √3 / 2")
 
     # Part C
     print("\n[C] Numerical evaluation and verification")

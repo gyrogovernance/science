@@ -21,22 +21,22 @@ The CGM framework identifies four stages of geometric evolution, each characteri
 - **CS (Common Source)**: s_p = π/2 [dimensionless]
 - **UNA (Unity Non-Absolute)**: u_p = cos(π/4) = 1/√2 [dimensionless]
 - **ONA (Opposition Non-Absolute)**: o_p = π/4 [dimensionless]
-- **BU (Balance Universal)**: m_p = 1/(2√(2π)) ≈ 0.1995 [dimensionless]
+- **BU (Balance Universal)**:  m_a = 1/(2√(2π)) ≈ 0.1995 [dimensionless]
 
-The parameter m_p serves as the fundamental aperture parameter, governing the relationship between different stages.
+The parameter  m_a serves as the fundamental aperture parameter, governing the relationship between different stages.
 
 ### 2.2 Action Mapping
 
 From these thresholds, we derive stage actions through the mapping:
 
 ```
-S_CS = s_p / m_p ≈ 7.875
-S_UNA = u_p / m_p ≈ 3.545
-S_ONA = o_p / m_p ≈ 3.937
-S_BU = m_p ≈ 0.199
+S_CS = s_p /  m_a ≈ 7.875
+S_UNA = u_p /  m_a ≈ 3.545
+S_ONA = o_p /  m_a ≈ 3.937
+S_BU =  m_a ≈ 0.199
 ```
 
-All actions are dimensionless. The BU stage serves as a fixed point where S_BU = m_p, while other stages scale inversely with m_p.
+All actions are dimensionless. The BU stage serves as a fixed point where S_BU = m_a, while other stages scale inversely with m_a.
 
 ### 2.3 GUT Action Construction
 
@@ -280,13 +280,13 @@ The framework's strength lies in deriving energy ratios from geometric principle
 
 1. **Geometric Origin**: Energy scales emerge from geometric relationships rather than dynamical mechanisms
 2. **Four-Stage Structure**: The CS, UNA, ONA, BU hierarchy is fundamental
-3. **Aperture Parameter**: m_p = 1/(2√(2π)) is treated as a fundamental constant
+3. **Aperture Parameter**:  m_a = 1/(2√(2π)) is treated as a fundamental constant
 4. **Anchoring**: The CS stage is identified with the Planck scale
 5. **Electroweak Scale**: E_EW = 246.22 GeV is the Higgs vacuum expectation value v = (√2 G_F)^(-1/2)
 
 ### A.2 Calculational Methods
 
-1. **Action Derivation**: Actions computed as threshold/m_p ratios (except BU)
+1. **Action Derivation**: Actions computed as threshold/ m_a ratios (except BU)
 2. **Energy Scaling**: Energies proportional to actions with single scale factor
 3. **Optical Projection**: IR energies derived through E^IR = K/E^UV
 4. **Seesaw Mechanism**: Standard type-I seesaw formula for neutrino masses
@@ -320,15 +320,15 @@ All calculations maintain at least 10 significant figures internally, with resul
         1. CS (Common Source): s_p = π/2 [dimensionless]
         2. UNA (Unity Non-Absolute): u_p = cos(π/4) = 1/√2 [dimensionless]
         3. ONA (Opposition Non-Absolute): o_p = π/4 [dimensionless]
-        4. BU (Balance Universal): m_p = 1/(2√(2π)) ≈ 0.1995 [dimensionless]
+        4. BU (Balance Universal):  m_a = 1/(2√(2π)) ≈ 0.1995 [dimensionless]
         5. Geometric constant
-            - m_p² = 1/(8π)
-            - s_p/m_p² = 4π²
+            - m_a² = 1/(8π)
+            - s_p/m_a² = 4π²
     4. **Action Mapping:**
-        1. S_CS = s_p / m_p ≈ 7.875
-        2. S_UNA = u_p / m_p ≈ 3.545
-        3. S_ONA = o_p / m_p ≈ 3.937
-        4. S_BU = m_p ≈ 0.199 [identity]
+        1. S_CS = s_p /  m_a ≈ 7.875
+        2. S_UNA = u_p /  m_a ≈ 3.545
+        3. S_ONA = o_p /  m_a ≈ 3.937
+        4. S_BU =  m_a ≈ 0.199 [identity]
     5. **Union Formation:**
         1. 1/S_UNI = η/S_CS + 1/S_UNA + 1/S_ONA
         2. For η = 1: S_UNI ≈ 1.508, hence S_UNI/S_CS ≈ 0.192
@@ -360,7 +360,7 @@ All calculations maintain at least 10 significant figures internally, with resul
         1. Inversion map: E_i^BTM = K / E_i^TOP with K = (E_CS^BTM × E_BU^TOP) / (4π²)
         2. Fixed point (conjugacy centre): E_MID = √K ≈ 8.6 × 10^9 GeV
     11. **Invariant (equivalent forms)**
-        1. Stage-independent product: E_i^BTM × E_i^TOP = (E_BASE^BTM × E_SHELL^TOP) / (s_p/m_p²), with BASE = CS, SHELL = BU
+        1. Stage-independent product: E_i^BTM × E_i^TOP = (E_BASE^BTM × E_SHELL^TOP) / (s_p/m_a²), with BASE = CS, SHELL = BU
         2. Normalised (cross-anchors): (E_i^BTM / E_CS^BTM) × (E_i^TOP / E_BU^TOP) = 1 / (4π²)
         3. Centred (via fixed point): (E_i^BTM / E_MID) × (E_i^TOP / E_MID) = 1
     

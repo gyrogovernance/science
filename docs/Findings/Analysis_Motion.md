@@ -10,7 +10,7 @@ The Common Governance Model (CGM) adopts a gyrational modeling principle where m
 
 **Angular momentum**: L = r × p, treated as the primitive quantity generating rotational structure.
 
-**Aperture parameter**: m_p = 1/(2√(2π)) ≈ 0.199471, representing the structural opening in CGM.
+**Aperture parameter**:  m_a = 1/(2√(2π)) ≈ 0.199471, representing the structural opening in CGM.
 
 **Completeness invariant**: Q_G = 4π, the total solid angle for geometric completeness.
 

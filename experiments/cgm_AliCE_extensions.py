@@ -40,8 +40,8 @@ for name, H0 in [("Planck", H0_planck), ("SH0ES", H0_sh0es)]:
     print(f"         |L_B - 2c/H0| / 2c/H0 = {abs(LB - 2*c/H0)/(2*c/H0):.6e}")
 
 # Aperture-corrected invariant
-m_p = 1.0/(2.0*math.sqrt(2.0*pi))
-I1_cgm = 2.0/((1.0+m_p)**2)
+ m_a = 1.0/(2.0*math.sqrt(2.0*pi))
+I1_cgm = 2.0/((1.0+m_a)**2)
 print(f"\n  Aperture-corrected I1_CGM = {I1_cgm:.12f}")
 
  

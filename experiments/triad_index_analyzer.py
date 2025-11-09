@@ -208,7 +208,7 @@ class TriadIndexAnalyzer:
         self.epsilon0 = 8.8541878128e-12  # F/m
         self.e = 1.602176634e-19  # C
         self.m_e = 9.1093837015e-31  # kg
-        self.m_p = 1.67262192369e-27  # kg
+        self. m_a = 1.67262192369e-27  # kg
 
         # Fine structure constant
         self.alpha = 0.0072973525693
@@ -238,17 +238,17 @@ class TriadIndexAnalyzer:
         m_tau = (1776.86e6 * self.eV) / (self.c**2)  # Tau mass
         m_Z = (91.1876e9 * self.eV) / (self.c**2)  # Z boson mass
         m_W = (80.379e9 * self.eV) / (self.c**2)  # W boson mass
-        m_pi = (139.57039e6 * self.eV) / (self.c**2)  # Pion mass
+        m_ai = (139.57039e6 * self.eV) / (self.c**2)  # Pion mass
 
         # Reduced Compton wavelengths
         L_e = self.lambda_compton(self.m_e)  # Electron
-        L_p = self.lambda_compton(self.m_p)  # Proton
+        L_p = self.lambda_compton(self.m_a)  # Proton
         L_H = self.lambda_compton(m_H)  # Higgs
         L_mu = self.lambda_compton(m_mu)  # Muon
         L_tau = self.lambda_compton(m_tau)  # Tau
         L_Z = self.lambda_compton(m_Z)  # Z boson
         L_W = self.lambda_compton(m_W)  # W boson
-        L_pi = self.lambda_compton(m_pi)  # Pion
+        L_pi = self.lambda_compton(m_ai)  # Pion
 
         # Atomic scales (QED)
         a0 = (
@@ -1384,22 +1384,22 @@ class TriadIndexAnalyzer:
             # Test against known CGM thresholds using exact Wigner angle
             u_p = 1 / np.sqrt(2)  # UNA threshold (velocity)
             o_p = np.pi / 4  # ONA threshold (angle in radians)
-            m_p = 1 / (2 * np.sqrt(2 * np.pi))  # BU threshold (expected Wigner angle)
+             m_a = 1 / (2 * np.sqrt(2 * np.pi))  # BU threshold (expected Wigner angle)
 
             # Convert velocity to rapidity: η = arctanh(β)
             eta_u = np.arctanh(u_p)
 
-            # For the CGM test, we need ω(η_u, o_p) = m_p
+            # For the CGM test, we need ω(η_u, o_p) = m_a
             # Our function expects: compute_tw_holonomy(m, n, k, theta_dom, signed)
             # where k is the rapidity scale factor, and m,n are integer steps
             # For the threshold test, we want m=1, n=1, k=eta_u, theta=o_p
             wigner_angle_cgm = compute_tw_holonomy(1, 1, eta_u, o_p, signed=True)
 
-            # Check if ω(u_p, o_p) ≈ m_p (the CGM constraint)
+            # Check if ω(u_p, o_p) ≈  m_a (the CGM constraint)
             # The working codebase expects ~8% deviation and considers it a success
             # This shows the kinematic relationship between thresholds
-            cgm_error = abs(wigner_angle_cgm - m_p)
-            relative_error = cgm_error / m_p
+            cgm_error = abs(wigner_angle_cgm - m_a)
+            relative_error = cgm_error / m_a
             cgm_passed = (
                 relative_error < 0.1
             )  # Accept up to 10% deviation like working codebase
@@ -1407,7 +1407,7 @@ class TriadIndexAnalyzer:
             test_results["cgm_thresholds"] = {
                 "u_p": u_p,
                 "o_p": o_p,
-                "m_p": m_p,
+                "m_a": m_a,
                 "eta_u": eta_u,
                 "wigner_angle_cgm": wigner_angle_cgm,
                 "cgm_error": cgm_error,
@@ -1418,7 +1418,7 @@ class TriadIndexAnalyzer:
             print(f"\nCGM threshold validation:")
             print(f"  UNA threshold (velocity): {u_p:.6f}")
             print(f"  ONA threshold (angle): {o_p:.6f} rad ({np.degrees(o_p):.1f}°)")
-            print(f"  BU threshold (expected): {m_p:.6f}")
+            print(f"  BU threshold (expected): {m_a:.6f}")
             print(f"  UNA rapidity η_u: {eta_u:.6f}")
             print(f"  Wigner angle ω(η_u, o_p): {wigner_angle_cgm:.6f}")
             print(f"  CGM constraint error: {cgm_error:.2e}")

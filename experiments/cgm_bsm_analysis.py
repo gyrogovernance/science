@@ -30,7 +30,7 @@ class CGMInvariants:
     gamma_ONA: float = pi / 4  # Opposition Non-Absolute threshold
 
     # Core invariants [dimensionless]
-    m_p: float = 1 / (2 * sqrt(2 * pi))  # Aperture parameter
+    m_a: float = 1 / (2 * sqrt(2 * pi))  # Aperture parameter
     Q_G: float = 4 * pi  # Complete solid angle
     delta_BU: float = 0.195342176580  # BU dual-pole monodromy
     phi_SU2: float = 0.587901  # SU(2) commutator holonomy
@@ -45,14 +45,14 @@ class CGMInvariants:
     # CGM constants
     zeta: float = field(init=False)  # Gravitational coupling
     lambda_0_formal: float = field(init=False)  # Formal identity: Δ/√5
-    lambda_CS_physical: float = field(init=False)  # Physics: δ_BU⁴/(4m_p²)
+    lambda_CS_physical: float = field(init=False)  # Physics: δ_BU⁴/(4m_a²)
 
     # Exact identities and near-equalities from 4π alignment hypotheses
     delta_over_pi16: float = field(init=False)  # δ_BU / (π/16)
     forty_eight_delta: float = field(init=False)  # 48 * Δ
     lambda0_over_delta: float = field(init=False)  # λ₀ / Δ
     one_over_sqrt5: float = field(init=False)  # 1/√5
-    qg_mp2: float = field(init=False)  # Q_G * m_p² (exact 0.5)
+    qg_mp2: float = field(init=False)  # Q_G * m_a² (exact 0.5)
     zeta_over_16sqrt: float = field(init=False)  # ζ / (16√(2π/3)) (exact 1)
     lambda0_over_2pi_delta4: float = field(init=False)  # λ₀ / (2π δ⁴) (check)
     residual_lambda: float = field(init=False)  # Tension from enforcing λ₀/Δ = 1/√5
@@ -63,12 +63,12 @@ class CGMInvariants:
         # 48Δ = 1 exactly, λ₀/Δ = 1/√5 exactly
         object.__setattr__(self, "Delta", 1 / 48)  # EXACT: 48Δ = 1
         object.__setattr__(self, "lambda_0_formal", (1 / 48) / sqrt(5))  # EXACT: λ₀/Δ = 1/√5
-        object.__setattr__(self, "lambda_CS_physical", self.delta_BU**4 / (4 * self.m_p**2))  # Physics
+        object.__setattr__(self, "lambda_CS_physical", self.delta_BU**4 / (4 * self.m_a**2))  # Physics
 
-        # Other derived invariants (keeping m_p as foundational)
-        object.__setattr__(self, "rho", self.delta_BU / self.m_p)
-        object.__setattr__(self, "S_min", (pi / 2) * self.m_p)
-        object.__setattr__(self, "S_geo", self.m_p * pi * sqrt(3) / 2)
+        # Other derived invariants (keeping  m_a as foundational)
+        object.__setattr__(self, "rho", self.delta_BU / self.m_a)
+        object.__setattr__(self, "S_min", (pi / 2) * self.m_a)
+        object.__setattr__(self, "S_geo", self.m_a * pi * sqrt(3) / 2)
         object.__setattr__(self, "K_QG", self.Q_G * self.S_min)
         object.__setattr__(self, "zeta", self.Q_G / self.S_geo)
 
@@ -78,7 +78,7 @@ class CGMInvariants:
         object.__setattr__(self, "lambda0_over_delta", self.lambda_0_formal / self.Delta)
         object.__setattr__(self, "one_over_sqrt5", 1 / sqrt(5))
         object.__setattr__(
-            self, "qg_mp2", self.Q_G * self.m_p**2
+            self, "qg_mp2", self.Q_G * self.m_a**2
         )  # Should be exactly 0.5
         object.__setattr__(
             self, "zeta_over_16sqrt", self.zeta / (16 * sqrt(2 * pi / 3))
@@ -669,7 +669,7 @@ class HiggsFirstFramework:
         self.M_H = 124.97  # GeV (CGM predicted, 2-loop RGE from Higgs analysis)
 
         # CGM invariants for anchor-minimal derivations
-        self.m_p = cgm.m_p
+        self.m_a = cgm.m_a
         self.Q_G = cgm.Q_G
         self.delta_BU = cgm.delta_BU
         self.phi_SU2 = cgm.phi_SU2
@@ -710,7 +710,7 @@ class HiggsFirstFramework:
         # Each recursive level contributes an angular factor
         rho_1 = cos(self.alpha - self.beta)  # CS→UNA: cos(π/2 - π/4) = cos(π/4) = 1/√2
         rho_2 = cos(self.beta - self.gamma)  # UNA→ONA: cos(π/4 - π/4) = cos(0) = 1
-        rho_3 = self.cgm.delta_BU / self.cgm.m_p  # ONA→BU: ≈ 0.9793
+        rho_3 = self.cgm.delta_BU / self.cgm. m_a  # ONA→BU: ≈ 0.9793
 
         # Aperture incompleteness at each level
         aperture_per_level = 1 - self.cgm.Delta  # = 47/48

@@ -1,6 +1,6 @@
 #**🌐 Common Governance Model (CGM)**
 
-> **The Common Governance Model is founded on a single foundational axiom: "The Source is Common." This principle reveals that reality is fundamentally structured by freedom, defined as the capacity for directional distinction and alignment. The logical requirements for this freedom to manifest generate the observable structures of both spacetime and information. The framework provides a unified account where physical conservation and informational coherence are not separate principles but expressions of the same logical necessity.**
+> **The Common Governance Model is founded on a single foundational assumption: "The Source is Common." This principle reveals that reality is fundamentally structured by freedom, defined as the capacity for directional distinction and alignment. The logical requirements for this freedom to manifest generate the observable structures of both spacetime and information. The framework provides a unified account where physical conservation and informational coherence are not separate principles but expressions of the same logical necessity.**
 
 **Citation:** Korompilias, B. (2025). Common Governance Model: Mathematical Physics Framework. Zenodo. https://doi.org/10.5281/zenodo.17521384
 
@@ -8,7 +8,7 @@
 
 **Note on Claims and Labeling:** Throughout this document, results are labeled to indicate their epistemological status:
 
-- **[Theorem]**: Logically proven results derived from the operational axioms CS1-CS7, which formalize how "The Source is Common" manifests through modal transitions
+- **[Theorem]**: Logically proven results derived from the foundational assumption and lemmas, which formalize how "The Source is Common" manifests through modal transitions
 
 - **[Derived mapping]**: Mathematical correspondences established through explicit constructions (e.g., GNS representation, SU(2) isomorphism) with verified computational implementations. These demonstrate necessity through uniqueness proofs and geometric invariants.
 
@@ -20,9 +20,9 @@
 
 ## 1. Introduction
 
-The Common Governance Model (CGM) is a Hilbert-style formal deductive system [9] founded on the axiom "The Source is Common." Subsequent logic derives through recursive state transitions formalized mathematically by gyrogroup operations [5,6], and followed by theorems interpreted in physical geometry to yield testable predictions. This machinery axiomatizes three-dimensional space with six degrees of freedom as logical necessity [Theorem] and derives quantitative alignment metrics for information systems. Time emerges as the sequential ordering of these recursive operations, encoded by gyration's memory of operation order. The term "Governance" denotes coherent coordination under shared constraints in both physical and informational systems.
+The Common Governance Model (CGM) is a Hilbert-style formal deductive system [9] founded on the foundational assumption "The Source is Common." Subsequent logic derives through recursive state transitions formalized mathematically by gyrogroup operations [5,6], and followed by lemmas interpreted in physical geometry to yield testable predictions. This machinery axiomatizes three-dimensional space with six degrees of freedom as logical necessity [Lemma] and derives quantitative alignment metrics for information systems. Time emerges as the sequential ordering of these recursive operations, encoded by gyration's memory of operation order. The term "Governance" denotes coherent coordination under shared constraints in both physical and informational systems.
 
-Physical conservation and informational coherence share the same formal structure because both emerge from operational closure under the modal axioms. The gyrogroup constraints that generate physical principles (conservation, dimensionality, time ordering) identically generate alignment metrics (traceability, variety, accountability). Sections 4-5 develop the physical interpretation, Section 6 develops the informational interpretation.
+Physical conservation and informational coherence share the same formal structure because both emerge from operational closure under the foundational assumption and lemmas. The gyrogroup constraints that generate physical principles (conservation, dimensionality, time ordering) identically generate alignment metrics (traceability, variety, accountability). Sections 4-5 develop the physical interpretation, Section 6 develops the informational interpretation.
 
 > Building on the tradition established by Noether's derivation of conservation principles from symmetry (1918) [2], Kolmogorov's axiomatization of probability theory (1933) [3], and Wightman's axiomatic quantum field theory (1950s) [4], CGM extends the program to fundamental spacetime structure itself. Examples of derived predictions include the quantum gravity invariant Q_G = 4π (representing the complete solid angle for coherent observation), a quantitative estimate of the fine-structure constant matching experimental precision to 0.043 parts per billion, neutrino mass scale, and a hierarchy of energy scales consistent with observed physics. As a self-contained axiomatization of physics from a single foundational principle, CGM advances toward resolving Hilbert's sixth problem [1]: rigorous and satisfactory logical investigation of the axioms of mathematical physics.
 
@@ -32,13 +32,13 @@ These predictions are falsifiable; for instance, deviations in α beyond 0.03% (
 
 CGM differs from existing approaches in what it takes as given and what it derives as necessary:
 
-**Physics:** Foundational physics programs follow three distinct approaches. Entity-based frameworks like string theory and loop quantum gravity begin with physical primitives (strings, spin networks) and derive dynamics from their properties. Principle-based frameworks like general relativity begin with physical postulates (equivalence principle, constancy of c) and derive geometric structure. CGM begins with a domain-agnostic logical axiom ("The Source is Common") that makes no reference to physical phenomena, deriving spacetime, quantum structure, and conservation laws as necessary consequences of operational closure.
+**Physics:** Foundational physics programs follow three distinct approaches. Entity-based frameworks like string theory and loop quantum gravity begin with physical primitives (strings, spin networks) and derive dynamics from their properties. Principle-based frameworks like general relativity begin with physical postulates (equivalence principle, constancy of c) and derive geometric structure. CGM begins with a domain-agnostic logical foundational assumption ("The Source is Common") that makes no reference to physical phenomena, deriving spacetime, quantum structure, and conservation laws as necessary consequences of operational closure.
 
 This methodological difference yields complementary strengths. String theory excels at unifying forces through higher-dimensional geometry; loop quantum gravity provides background-independent quantization; CGM derives observable-scale parameters from logical necessity. Where string theory requires compactification choices and loop quantum gravity requires cutoff regularization, CGM's constraints are fully determined by modal depth requirements. The frameworks also differ computationally: gyrogroup operations are more efficient than the combinatorial complexity of spin-foam summations in loop quantum gravity, the high-order perturbative series in string theory, or the numerical solutions to Einstein field equations in effective field theory, scaling polynomially with modal depth while requiring only bespoke mappings to observables.
 
 Empirical discrimination is possible. CGM predicts zero redshift drift testable with Extremely Large Telescope observations, whereas ΛCDM expects δz/δt ≈ -0.022 cm/s/yr at z = 2 [31]. Precision measurements of α beyond ±0.03% or neutrino masses outside 0.04-0.08 eV would challenge CGM's derivations while leaving other frameworks unchanged.
 
-**Policy and Governance:** CGM's governance applications derive directly from the axioms, yielding operational alignment metrics that quantify traceability, informational variety, inference accountability, and intelligence integrity. These measurements treat semantic coherence as the informational counterpart to physical conservation, using the same gyrogroup constraints discussed later in the document. Detailed derivations and protocols appear in [Alignment Analysis], with practical implementations provided by the GyroDiagnostics evaluation suite.
+**Policy and Governance:** CGM's governance applications derive directly from the foundational assumption and lemmas, yielding operational alignment metrics that quantify traceability, informational variety, inference accountability, and intelligence integrity. These measurements treat semantic coherence as the informational counterpart to physical conservation, using the same gyrogroup constraints discussed later in the document. Detailed derivations and protocols appear in [Alignment Analysis], with practical implementations provided by the GyroDiagnostics evaluation suite.
 
 **AI Alignment:** Current alignment approaches operate through empirical fitting. RLHF trains on human feedback signals, debate uses adversarial dynamics, and constitutional AI implements explicit behavioral rules. These methods excel at immediate deployment but remain vulnerable to preference manipulation and distributional shift because they lack grounding in necessary structure.
 
@@ -54,7 +54,7 @@ CGM derives alignment metrics as necessities parallel to physical conservation l
 
 ## 2.1. Governance Traceability: The Emergence of Freedom
 
-**CS Axiom:** 
+**Assumption CS:** 
 
 > *The Source is Common*
 
@@ -188,9 +188,9 @@ where □φ is defined as [L]φ ∧ [R]φ.
 
 Throughout this document, 'absolute' means a proposition φ is invariant under both transitions (□φ holds), not that the modal operators [L] and [R] are identical. The operators remain distinct; absoluteness characterizes invariance of specific formulas under transitions.
 
-## 3.4 The Operational Axioms
+## 3.4 The Foundational Assumption and Lemmas
 
-The primitive principle 'The Source is Common' is formalized through seven operational axioms, collectively designated CS (Common Source):
+The primitive principle 'The Source is Common' is formalized through one foundational assumption (CS) and four lemmas (UNA, ONA, BU, Memory):
 
 Ordering principle. The numbering CS1–CS7 mirrors the canonical dependency CS → UNA → ONA → BU. It reflects logical grouping rather than temporal priority. Conceptually, the axioms group as: horizon asymmetry (CS1–CS2), depth-two contingency (CS3, CS5), depth-four closure (CS7), and bridge implications (CS4, CS6).
 
@@ -215,57 +215,74 @@ Ordering principle. The numbering CS1–CS7 mirrors the canonical dependency CS 
 **CS7:** □B  
 (Balance for the four-step composition is absolute, [L][R][L][R]S ↔ [R][L][R][L]S; see 3.1 "Modal depth")
 
-**Consistency note:** The operational axiom set CS1–CS7 is consistent. In Kripke semantics [7] with two accessibility relations R_L and R_R (corresponding to [L] and [R]), there exist frames where depth-two commutation is contingent (satisfying CS3 and CS5) while depth-four commutation is necessary (satisfying CS7). For example, a frame in which R_L and R_R are independent K-relations with R_L ≠ R_R at depth two but R_L ∘ R_R ∘ R_L ∘ R_R = R_R ∘ R_L ∘ R_R ∘ R_L at depth four validates all seven axioms.
+**Consistency note:** The foundational assumption and lemmas are consistent. In Kripke semantics [7] with two accessibility relations R_L and R_R (corresponding to [L] and [R]), there exist frames where depth-two commutation is contingent (satisfying Lemmas UNA and ONA) while depth-four commutation is necessary (satisfying Lemma BU). For example, a frame in which R_L and R_R are independent K-relations with R_L ≠ R_R at depth two but R_L ∘ R_R ∘ R_L ∘ R_R = R_R ∘ R_L ∘ R_R ∘ R_L at depth four validates the full system.
 
-## 3.5 Derivation of the Core Theorems
+### 3.4.1 Mathematical Status of the Axioms
 
-### 3.5.1 Theorem UNA (Unity is Non-Absolute) **[Theorem]**
+The axioms CS1–CS7 form a complete and independent axiomatization of a precise formal condition expressible in standard modal logic. This section establishes their mathematical status, addressing why these seven axioms are necessary and sufficient.
 
-**Statement:** ⊢ ¬□U
+**Formal specification:** In a pointed bi-modal Kripke frame F = (W, R_L, R_R, V, S) with designated propositional constant S, the foundational condition "The Source is Common" is formalized as:
+
+1. **Generatedness:** Every world is reachable from S-worlds via transitions {L, R}. This is expressible in modal μ-calculus as μX.(S ∨ ⟨L⟩X ∨ ⟨R⟩X) [Bradfield & Stirling 2006].
+2. **Source asymmetry:** R preserves S while L acts non-trivially on S (CS1, CS2).
+3. **Depth-2 contingency:** Depth-two operations are not absolute (CS3, CS5).
+4. **Depth-4 closure:** Depth-four operations commute (CS7).
+
+**Completeness:** The axioms CS1–CS7 are sound and complete for the class of frames satisfying conditions (1)–(4). CS7 is a Sahlqvist formula [Sahlqvist 1975], ensuring first-order frame definability and canonical completeness. By Jónsson–Tarski representation [Jónsson & Tarski 1951], the modal algebra generated by CS1–CS7 corresponds to frames with the specified structure.
+
+**Independence:** Each axiom CS1–CS7 is independent: for each i ∈ {1,…,7}, there exists a finite pointed frame satisfying all CS_j for j ≠ i but falsifying CS_i. Minimal counterexamples use 2–3 node frames. For instance, CS3 fails on the frame W={0,1}, R_L = R_R = {(0,1)} where depth-two commutation holds everywhere; CS7 fails on frames where depth-four operations do not commute.
+
+This establishes that CS1–CS7 are not arbitrary choices but a canonical presentation of the formal condition (1)–(4). Alternative axiom sets encoding the same principle are inter-derivable over the base modal logic K and thus conservative variants of CS1–CS7.
+
+## 3.5 Derivation of the Core Lemmas
+
+### 3.5.1 Lemma UNA (Unity is Non-Absolute) **[Lemma]**
+
+**Statement:** ⊢ ¬□E
 
 **Proof:**
 
 ```
-1. ⊢ CS4                               [Axiom: □U → □E]
-2. ⊢ CS3                               [Axiom: ¬□E]
-3. ⊢ (□U → □E) → (¬□E → ¬□U)           [Lemma: Contraposition]
+1. ⊢ CS4                               [Bridge: □U → □E]
+2. ⊢ CS3                               [Depth-2 contingency: ¬□E]
+3. ⊢ (□U → □E) → (¬□E → ¬□U)           [Contraposition]
 4. ⊢ ¬□E → ¬□U                         [Modus ponens on lines 1 and 3]
 5. ⊢ ¬□U                               [Modus ponens on lines 2 and 4]
 ```
 
-This theorem formalizes the non-absolute unity introduced in Section 2.2.
+This lemma formalizes the non-absolute unity introduced in Section 2.2.
 
-### 3.5.2 Theorem ONA (Opposition is Non-Absolute) **[Theorem]**
+### 3.5.2 Lemma ONA (Opposition is Non-Absolute) **[Lemma]**
 
-**Statement:** ⊢ ¬□O
+**Statement:** ⊢ ¬□¬E
 
 **Proof:**
 
 ```
-1. ⊢ CS6                               [Axiom: □O → □¬E]
-2. ⊢ CS5                               [Axiom: ¬□¬E]
-3. ⊢ (□O → □¬E) → (¬□¬E → ¬□O)         [Lemma: Contraposition]
+1. ⊢ CS6                               [Bridge: □O → □¬E]
+2. ⊢ CS5                               [Depth-2 contingency: ¬□¬E]
+3. ⊢ (□O → □¬E) → (¬□¬E → ¬□O)         [Contraposition]
 4. ⊢ ¬□¬E → ¬□O                        [Modus ponens on lines 1 and 3]
 5. ⊢ ¬□O                               [Modus ponens on lines 2 and 4]
 ```
 
-This theorem formalizes the non-absolute opposition introduced in Section 2.3.
+This lemma formalizes the non-absolute opposition introduced in Section 2.3.
 
-### 3.5.3 Theorem BU (Balance is Universal) **[Theorem]**
+### 3.5.3 Lemma BU (Balance is Universal) **[Lemma]**
 
 **Statement:** ⊢ □B
 
 **Proof:**
 
 ```
-1. ⊢ CS7                               [Axiom: □B]
+1. ⊢ CS7                               [Depth-4 closure: □B]
 ```
 
-This theorem formalizes the universal balance introduced in Section 2.4.
+This lemma formalizes the universal balance introduced in Section 2.4.
 
 ## 3.6 Logical Structure Summary
 
-The formal system establishes three principal results derived from the seven operational axioms CS1–CS7: unity is non-absolute (UNA, derived by contraposition from CS3 and CS4), opposition is non-absolute (ONA, derived by contraposition from CS5 and CS6), and balance is universal (BU, directly given by CS7).
+The formal system establishes four lemmas derived from the foundational assumption: unity is non-absolute (UNA), opposition is non-absolute (ONA), balance is universal (BU), and memory reconstruction (Memory).
 
 Non-absoluteness at modal depth one (unity) prevents homogeneous collapse, while non-absoluteness at modal depth two (opposition) prevents contradictory rigidity. Absoluteness at modal depth four (balance, i.e., the length‑4 composition [L][R][L][R]) ensures coherence within the observable horizon. These three properties are logically interdependent through the bridge axioms CS4 and CS6. The asymmetry axioms CS1 and CS2 establish that the left and right transitions are not initially equivalent at the horizon constant.
 
@@ -275,7 +292,7 @@ Non-absoluteness at modal depth one (unity) prevents homogeneous collapse, while
 
 ## 4.1 Interpretive Framework
 
-The gyrogroup correspondence is necessary, established through uniqueness theorems and explicit constructions **[Derived mapping]**. Theorem 5.1 proves that CS1–CS7 uniquely determine n = 3 spatial dimensions with SU(2) ⋉ R³ structure—alternative dimensionalities violate the modal depth constraints [20]. The GNS construction provides explicit unitary representation on Hilbert space, where modal operators necessarily generate gyration automorphisms through their non-commutative products [23]. Geometric analysis confirms this structure through exact invariants: the π/4 threshold appears in four independent geometric contexts, demonstrating necessity rather than arbitrary choice [30]. Computational verification in `experiments/cgm_Hilbert_Space_analysis.py` and `experiments/cgm_3D_6DoF_analysis.py` confirms these theoretical results numerically.
+The gyrogroup correspondence is necessary, established through uniqueness lemmas and explicit constructions **[Derived mapping]**. Theorem 5.1 proves that the foundational assumption and lemmas (CS1–CS7) uniquely determine n = 3 spatial dimensions with SU(2) ⋉ R³ structure—alternative dimensionalities violate the modal depth constraints [20]. The GNS construction provides explicit unitary representation on Hilbert space, where modal operators necessarily generate gyration automorphisms through their non-commutative products [23]. Geometric analysis confirms this structure through exact invariants: the π/4 threshold appears in four independent geometric contexts, demonstrating necessity rather than arbitrary choice [30]. Computational verification in `experiments/cgm_Hilbert_Space_analysis.py` and `experiments/cgm_3D_6DoF_analysis.py` confirms these theoretical results numerically.
 
 ## 4.2 Gyrogroup Structures
 
@@ -299,15 +316,15 @@ The automorphism gyr[a,b] preserves the metric structure, acting as an isometry.
 
 The modal operators [L] and [R] are gyration operations: [L]φ represents the result of applying left gyration to state φ, while [R]φ represents right gyration. Two-step equality E tests whether [L][R]S ↔ [R][L]S (depth-two commutation), while balance B tests whether [L][R][L][R]S ↔ [R][L][R][L]S (depth-four commutation).
 
-The axiom set CS1–CS7 encodes that two-step gyration around the observable horizon is order-sensitive but not deterministically fixed (CS3, CS5), four-step gyration reaches commutative closure at the observable horizon (CS7), and right gyration acts trivially on the horizon constant while left gyration does not (CS1, CS2).
+The foundational assumption and lemmas (CS1–CS7) encode that two-step gyration around the observable horizon is order-sensitive but not deterministically fixed (CS3, CS5), four-step gyration reaches commutative closure at the observable horizon (CS7), and right gyration acts trivially on the horizon constant while left gyration does not (CS1, CS2).
 
 ## 4.4 Operational State Correspondence
 
-The theorems UNA, ONA, and BU correspond to four operational states of gyrogroup structure, all logically necessary, not temporally sequential:
+The lemmas UNA, ONA, BU, and Memory correspond to four operational states of gyrogroup structure, all logically necessary, not temporally sequential:
 
 ### 4.4.1 State CS (Common Source)
 
-**Axiomatic content:** CS1 and CS2
+**Foundational content:** Assumption CS (CS1 and CS2)
 
 **Behavior:**
 - Right gyration on horizon: rgyr = id
@@ -349,7 +366,7 @@ The theorems UNA, ONA, and BU correspond to four operational states of gyrogroup
 
 | State | Formal Result | Right Gyration | Left Gyration | Governing Law |
 |-------|---------------|----------------|---------------|---------------|
-| CS | Axioms CS1–CS2 | id | ≠ id | Left gyroassociativity |
+| CS | Assumption CS (CS1–CS2) | id | ≠ id | Left gyroassociativity |
 | UNA | ⊢ ¬□U | ≠ id | ≠ id | Gyrocommutativity |
 | ONA | ⊢ ¬□O | ≠ id | ≠ id | Bi-gyroassociativity |
 | BU | ⊢ □B | achieves closure | achieves closure | Coaddition |
@@ -362,9 +379,9 @@ The gyrogroup correspondence is established through convergent necessity argumen
 
 ### 4.7 Structural Convergence in Physical Frameworks
 
-The formal derivation of physical structure from the CGM axioms suggests that the operational states {CS, UNA, ONA, BU} may constitute a necessary logical scaffold. This leads to the hypothesis that successful physical frameworks, developed independently, will exhibit a convergent formal organization mappable to this four-state progression.
+The formal derivation of physical structure from the foundational assumption and lemmas suggests that the operational states {CS, UNA, ONA, BU} may constitute a necessary logical scaffold. This leads to the hypothesis that successful physical frameworks, developed independently, will exhibit a convergent formal organization mappable to this four-state progression.
 
-**Newtonian Correspondence [Derived Mapping]:** A direct, tight structural mapping exists between Newton's principles and the CGM operational states. The first principle (inertia) corresponds to **CS**: the axiom CS2 (`¬([L]S ↔ S)`) establishes that a state persists identically under self-action ([R]) but is altered by an external operation ([L]), formalizing the concept of inertia. The second principle (F=ma) corresponds to **UNA**: the activation of both gyrations (`rgyr ≠ id, lgyr ≠ id`) introduces the capacity for dynamic response to interaction, where "force" is modeled by the non-identity of the gyrations. The third principle (action-reaction) corresponds to **ONA**: the bi-gyrogroup structure, with maximal non-associativity at depth two, instantiates a formal reciprocity where every operation induces a compensatory, non-absolute opposition, ensuring conservation. This mapping demonstrates tight structural correspondence, with each Newtonian principle directly derivable from specific CGM axioms.
+**Newtonian Correspondence [Derived Mapping]:** A direct, tight structural mapping exists between Newton's principles and the CGM operational states. The first principle (inertia) corresponds to **CS**: Assumption CS (CS2: `¬([L]S ↔ S)`) establishes that a state persists identically under self-action ([R]) but is altered by an external operation ([L]), formalizing the concept of inertia. The second principle (F=ma) corresponds to **UNA**: the activation of both gyrations (`rgyr ≠ id, lgyr ≠ id`) introduces the capacity for dynamic response to interaction, where "force" is modeled by the non-identity of the gyrations. The third principle (action-reaction) corresponds to **ONA**: the bi-gyrogroup structure, with maximal non-associativity at depth two, instantiates a formal reciprocity where every operation induces a compensatory, non-absolute opposition, ensuring conservation. This mapping demonstrates tight structural correspondence, with each Newtonian principle directly derivable from specific CGM axioms.
 
 **Structural Convergence Hypothesis [Hypothesis]:** If physical structure is indeed a logical necessity derived from the common governance of observation, then any empirically adequate description of fundamental physical behavior must encode the progression from a foundational asymmetry (CS) through non-absolute distinction (UNA) and regulated opposition (ONA) to coherent closure (BU). The recurrence of this structure in independent frameworks reflects the minimal formal requirements for a coherent, observable universe.
 
@@ -398,16 +415,16 @@ This alignment at universal balance connects accumulated structure to primordial
 A² × (2π)_L × (2π)_R = α
 A² × 4π² = π/2
 A² = 1/(8π)
-A = 1/(2√(2π)) = m_p
+A = 1/(2√(2π)) = m_a
 ```
 
-**Notation:** m_p denotes the CGM amplitude bound, not the Planck mass.
+**Notation:**  m_a denotes the CGM amplitude bound, not the Planck mass.
 
-The amplitude m_p represents the maximum oscillation fitting within one observable horizon. Larger amplitudes exceed the π-radian limit and accumulate defect, violating coherent traversal. The horizon constant S emerges directly from the universal balance condition of axiom CS7 at modal depth four. S is a derived quantity following from four-step commutative alignment. This invariant equals the complete solid angle 4π. See [21] for complete derivation.
+The amplitude  m_a represents the maximum oscillation fitting within one observable horizon. Larger amplitudes exceed the π-radian limit and accumulate defect, violating coherent traversal. The horizon constant S emerges directly from the universal balance condition of Lemma BU (CS7) at modal depth four. S is a derived quantity following from four-step commutative alignment. This invariant equals the complete solid angle 4π. See [21] for complete derivation.
 
 ## 5.2 Three-Dimensional Necessity **[Theorem]**
 
-The theorems require exactly three spatial dimensions for gyrogroup consistency. See [20] for the complete formal proof.
+The lemmas require exactly three spatial dimensions for gyrogroup consistency. See [20] for the complete formal proof.
 
 **From CS:** The asymmetry lgyr ≠ id with rgyr = id yields one degree of freedom, as the chiral seed that uniquely determines all subsequent structure.
 
@@ -417,29 +434,29 @@ The theorems require exactly three spatial dimensions for gyrogroup consistency.
 
 **At BU:** The gyrotriangle closure condition δ = 0 with angles (π/2, π/4, π/4) is achievable only in three dimensions, denoting the capacity for self-autonomy through alignment. The gyrotriangle inequality requires α + β + γ ≤ π in hyperbolic geometry, with equality only for degenerate triangles. Higher-dimensional generalizations cannot satisfy this constraint with the specific angular values required by CS, UNA, and ONA.
 
-The progression 1 → 3 → 6 → 6(aligned) degrees of freedom is the unique path satisfying theorems UNA, ONA, and BU while maintaining gyrogroup consistency.
+The progression 1 → 3 → 6 → 6(aligned) degrees of freedom is the unique path satisfying lemmas UNA, ONA, BU, and Memory while maintaining gyrogroup consistency.
 
 ## 5.3 Parity Violation and Time
 
-**Directional asymmetry.** The axiom-level asymmetry encoded in CS1 and CS2 manifests mathematically in the angle sequences. The positive sequence (π/2, π/4, π/4) achieves zero defect, as shown above. The negative sequence (−π/2, −π/4, −π/4) accumulates a 2π defect:
+**Directional asymmetry.** The foundational asymmetry encoded in Assumption CS (CS1 and CS2) manifests mathematically in the angle sequences. The positive sequence (π/2, π/4, π/4) achieves zero defect, as shown above. The negative sequence (−π/2, −π/4, −π/4) accumulates a 2π defect:
 
 ```
 δ_- = π - (−π/2 − π/4 − π/4) = 2π
 ```
 
-The 2π defect represents observation beyond the accessible π-radian horizon. Only the left-gyration-initiated path (positive sequence) provides a defect-free trajectory through phase space. Configurations requiring right gyration to precede left gyration violate the foundational axiom CS and remain structurally unobservable. This explains observed parity violation as an axiomatic property rather than a broken symmetry.
+The 2π defect represents observation beyond the accessible π-radian horizon. Only the left-gyration-initiated path (positive sequence) provides a defect-free trajectory through phase space. Configurations requiring right gyration to precede left gyration violate the foundational Assumption CS and remain structurally unobservable. This explains observed parity violation as an axiomatic property rather than a broken symmetry.
 
-**Time as logical sequence.** Time emerges from proof dependencies: UNA depends on CS3 and CS4, ONA depends on UNA via CS5 and CS6, and BU requires the complete axiom set CS1–CS7. ***Each theorem preserves the memory of prior proofs through the formal dependency chain***. The gyration formula gyr[a,b]c = ⊖(a ⊕ b) ⊕ (a ⊕ (b ⊕ c)) itself encodes operation order, rendering temporal sequence an algebraic property internal to the system. The progression CS → UNA → ONA → BU cannot be reversed without contradiction, since later theorems require earlier results as premises. This logical dependency constitutes the arrow of time, intrinsic to the deductive structure.
+**Time as logical sequence.** Time emerges from proof dependencies: Lemma UNA depends on depth-2 contingency (CS3, CS4), Lemma ONA depends on Lemma UNA via depth-2 contingency (CS5, CS6), and Lemma BU requires depth-4 closure (CS7). ***Each lemma preserves the memory of prior results through the formal dependency chain***. The gyration formula gyr[a,b]c = ⊖(a ⊕ b) ⊕ (a ⊕ (b ⊕ c)) itself encodes operation order, rendering temporal sequence an algebraic property internal to the system. The progression CS → UNA → ONA → BU cannot be reversed without contradiction, since later lemmas require earlier results as premises. This logical dependency constitutes the arrow of time, intrinsic to the deductive structure.
 
 ## 5.4 Empirical Predictions
 
 The geometric closure yields quantitative values for fundamental constants.
 
-**Assumption ledger.** Anchor-free predictions: K_QG ≈ 3.937 from closure and monodromy (`experiments/cgm_quantum_gravity_analysis.py`), redshift drift forecast ≈ 0 within the stated observational range, aperture ratio δ_BU/m_p = 0.0207 from BU closure (`experiments/cgm_balance_analysis.py`). Anchored to units: E_GUT via Planck and electroweak scales (`experiments/cgm_energy_analysis.py`), neutrino seesaw via E_GUT and 48² quantization (`experiments/cgm_energy_analysis.py`). Fine-structure constant: δ_BU derivation and quartic scaling (`experiments/cgm_alpha_analysis.py`).
+**Assumption ledger.** Anchor-free predictions: K_QG ≈ 3.937 from closure and monodromy (`experiments/cgm_quantum_gravity_analysis.py`), redshift drift forecast ≈ 0 within the stated observational range, aperture ratio δ_BU/ m_a = 0.0207 from BU closure (`experiments/cgm_balance_analysis.py`). Anchored to units: E_GUT via Planck and electroweak scales (`experiments/cgm_energy_analysis.py`), neutrino seesaw via E_GUT and 48² quantization (`experiments/cgm_energy_analysis.py`). Fine-structure constant: δ_BU derivation and quartic scaling (`experiments/cgm_alpha_analysis.py`).
 
 **Quantum gravity invariant:** The horizon constant S anchors all subsequent structure (as explained in section 3.1) **[Theorem]**.
 
-**Fine-structure constant:** From BU dual-pole monodromy through quartic scaling, α = (δ_BU)⁴ / m_p ≈ 1/137.035999206, where δ_BU = 0.195342 rad is the BU dual-pole monodromy, matching experimental precision [17,18] to 0.043 parts per billion **[Hypothesis]**. Uncertainty: ±0.03% from monodromy angle precision and gyrogroup interpretation assumptions. See [19] for complete derivation.
+**Fine-structure constant:** From BU dual-pole monodromy through quartic scaling, α = (δ_BU)⁴ /  m_a ≈ 1/137.035999206, where δ_BU = 0.195342 rad is the BU dual-pole monodromy, matching experimental precision [17,18] to 0.043 parts per billion **[Hypothesis]**. Uncertainty: ±0.03% from monodromy angle precision and gyrogroup interpretation assumptions. See [19] for complete derivation.
 
 **Neutrino mass scale:** Neutrino masses correspond to minimal excitations of the chiral seed (1 DOF) consistent with three-generational structure (3 DOF). Using 48² quantization, the right-handed neutrino mass scale is M_R = E_GUT/48², and the light neutrino masses follow from the seesaw mechanism [15,16]: m_ν = y²v²/M_R ≈ 0.06 eV (via 48² quantization scheme), consistent with oscillation experiments [14] **[Hypothesis]**. Uncertainty: ±0.02 eV from Yukawa coupling variations and quantization scheme sensitivity. See [22] for complete mechanism.
 
@@ -449,7 +466,7 @@ The geometric closure yields quantitative values for fundamental constants.
 
 These values arise from geometric closure conditions (e.g., δ_BU determined by BU monodromy in [19], dimensionality fixed by SU(2) consistency in [20]) with empirical anchors such as Planck and electroweak scales supplying physical units. Predictions that do not depend on external anchors, such as the quantum gravity commutator K_QG ≈ 3.937 or the zero redshift drift forecast, provide independent falsification paths if observed outside the stated bounds. Computational implementations documented in the reproducibility scripts verify these derivations numerically, with propagated uncertainties showing that a ±15% variation in E_GUT induces an approximately ±30% shift in m_ν through the quadratic seesaw dependence while maintaining a low correlation (roughly 0.2) with the fine-structure result.
 
-All emerge from axiom CS through formal derivation.
+All emerge from Assumption CS through formal derivation.
 
 ---
 
@@ -463,13 +480,13 @@ In AI, alignment is treated as a structural property of recursively autonomous r
 
 ### 6.1.1 Operational Metrics Framework
 
-The theorems UNA, ONA, and BU provide rigorous quantitative metrics through weighted orthogonal decomposition on a tetrahedral information topology. These metrics operationalize CGM's tensegrity dynamics in information space, using the same gyrogroup constraints that determine physical balance thresholds. The methodology decomposes observational data into gradient components (shared structure) and cycle components (differentiation), targeting a 2.07% aperture ratio for balanced alignment. Complete implementation details, including participant protocols and tensegrity dynamics, appear in [Alignment Analysis] and [Measurement Analysis].
+The lemmas UNA, ONA, BU, and Memory provide rigorous quantitative metrics through weighted orthogonal decomposition on a tetrahedral information topology. These metrics operationalize CGM's tensegrity dynamics in information space, using the same gyrogroup constraints that determine physical balance thresholds. The methodology decomposes observational data into gradient components (shared structure) and cycle components (differentiation), targeting a 2.07% aperture ratio for balanced alignment. Complete implementation details, including participant protocols and tensegrity dynamics, appear in [Alignment Analysis] and [Measurement Analysis].
 
-The four metrics, each derived from a specific theorem or axiom, quantify how CGM geometric necessities manifest as behavioral properties:
+The four metrics, each derived from a specific lemma or the foundational assumption, quantify how CGM geometric necessities manifest as behavioral properties:
 
 ### 6.1.2 Governance Traceability (from CS)
 
-**Source:** Axioms CS1 and CS2 establish horizon asymmetry: [R]S ↔ S and ¬([L]S ↔ S).
+**Source:** Assumption CS (CS1 and CS2) establishes horizon asymmetry: [R]S ↔ S and ¬([L]S ↔ S).
 
 **Mathematical definition:** In the Hilbert space representation, T = (U_R + U_R†)/2, the real part of the right unitary operator.
 
@@ -491,7 +508,7 @@ The four metrics, each derived from a specific theorem or axiom, quantify how CG
 
 ### 6.1.4 Inference Accountability (from ONA)
 
-**Source:** Theorem ONA (⊢ ¬□O) establishes that perfect contradiction is geometrically impossible.
+**Source:** Lemma ONA (¬□¬E) establishes that perfect contradiction is geometrically impossible.
 
 **Mathematical definition:** A = I - P_O, where P_O projects onto states exhibiting absolute opposition.
 
@@ -501,19 +518,19 @@ The four metrics, each derived from a specific theorem or axiom, quantify how CG
 
 ### 6.1.5 Intelligence Integrity (from BU)
 
-**Source:** Theorem BU (⊢ □B) establishes that balance is absolute at the four-step composition: [L][R][L][R]S ↔ [R][L][R][L]S.
+**Source:** Lemma BU (□B) establishes that balance is absolute at the four-step composition: [L][R][L][R]S ↔ [R][L][R][L]S.
 
 **Mathematical definition:** B = P_B, where P_B projects onto states satisfying the balance condition.
 
-**Operational meaning:** Measures synthesis to universal balance, where the four-step composition achieves commutative closure. Does the system synthesize multiple considerations into coherent responses while preserving complexity within the amplitude bound m_p = 1/(2√(2π))?
+**Operational meaning:** Measures synthesis to universal balance, where the four-step composition achieves commutative closure. Does the system synthesize multiple considerations into coherent responses while preserving complexity within the amplitude bound  m_a = 1/(2√(2π))?
 
-**Amplitude constraint:** The bound m_p ensures closure remains within the observable horizon. See [Measurement Analysis] for synthesis assessment protocols.
+**Amplitude constraint:** The bound  m_a ensures closure remains within the observable horizon. See [Measurement Analysis] for synthesis assessment protocols.
 
 ### 6.1.6 Composite Metric and Implementation
 
 **Superintelligence Index (SI):** A composite diagnostic score combining all four metrics (Governance Traceability, Information Variety, Inference Accountability, Intelligence Integrity), used in experimental validation only. This provides a single measure of structural maturity, quantifying proximity to the theoretical optimum where recursive transitions achieve stable coherence.
 
-**Implementation:** These metrics are operationalized through orthogonal decomposition on a tetrahedral information topology. The 2.07% alignment aperture concerns observational measurement of informational balance and is distinct from the structural closure ratio δ_BU/m_p = 0.0207 governing physical amplitude bounds in Section 5.2.
+**Implementation:** These metrics are operationalized through orthogonal decomposition on a tetrahedral information topology. The 2.07% alignment aperture concerns observational measurement of informational balance and is distinct from the structural closure ratio δ_BU/ m_a = 0.0207 governing physical amplitude bounds in Section 5.2.
 
 **End-to-end systems:** For complete implementations, see the GyroSI architecture (https://github.com/gyrogovernance/superintelligence; technical specifications in [GyroSI Specs], holographic foundations in [GyroSI Holography]) and the GyroDiagnostics evaluation suite (https://github.com/gyrogovernance/gyrodiagnostics).
 
@@ -553,7 +570,7 @@ Production evaluations (October 2025) on frontier models demonstrated these metr
 
 Hilbert's sixth problem [1] called for the axiomatization of physics. The challenge was to provide a rigorous logical investigation of the foundational and operational axioms underlying physical theory, comparable to the axiomatization achieved in geometry.
 
-CGM advances toward this axiomatization by deriving physical structure from modal logic **[Derived mapping]**. From operational axioms CS1–CS7, space, time, and physical constants emerge as theorems with explicit derivations (Sections 5.3-5.5). The uniqueness proof shows this derivation is necessary: Theorem 5.1 establishes that only n = 3 spatial dimensions satisfy the modal constraints [20]. The framework constructs a Hilbert-space representation via GNS where the modal operators [L] and [R] generate the algebra of observables, with the horizon constant S defining the normalization (see [23] for complete construction and L²(S²) model). Geometry, dynamics, and quantum structure follow from the requirement that modal operations maintain coherence under recursive closure. This builds on established constructions like GNS representations [29] and Stone's theorem for unitary groups [10] **[Derived mapping]**.
+CGM advances toward this axiomatization by deriving physical structure from modal logic **[Derived mapping]**. From the foundational assumption and lemmas, space, time, and physical constants emerge as lemmas with explicit derivations (Sections 5.3-5.5). The uniqueness proof shows this derivation is necessary: Theorem 5.1 establishes that only n = 3 spatial dimensions satisfy the modal constraints [20]. The framework constructs a Hilbert-space representation via GNS where the modal operators [L] and [R] generate the algebra of observables, with the horizon constant S defining the normalization (see [23] for complete construction and L²(S²) model). Geometry, dynamics, and quantum structure follow from the requirement that modal operations maintain coherence under recursive closure. This builds on established constructions like GNS representations [29] and one-parameter unitary groups [10] **[Derived mapping]**.
 
 ## 6.3 Summary Table and Conclusion
 
@@ -564,11 +581,11 @@ The complete parameter set determined by the formal system:
 | CS | CS1 through CS7 | id, ≠id | 1 | α = π/2 | s_p = π/2 | Left gyroassociativity |
 | UNA | ⊢ ¬□U | ≠id, ≠id | 3 | β = π/4 | u_p = 1/√2 | Gyrocommutativity |
 | ONA | ⊢ ¬□O | ≠id, ≠id | 6 | γ = π/4 | o_p = π/4 | Bi-gyroassociativity |
-| BU | ⊢ □B | closure | closure | 6 (closed) | δ = 0, m_p = 1/(2√(2π)) | Coaddition |
+| BU | ⊢ □B | closure | closure | 6 (closed) | δ = 0,  m_a = 1/(2√(2π)) | Coaddition |
 
 **Derived constants:** Q_G = 4π, α_fs ≈ 1/137.035999206, E_GUT ≈ 2.34×10¹⁸ GeV, m_ν ≈ 0.06 eV, r_s/R_H ≈ 1
 
-Conclusion. Reality manifests as recursion actualizing its own memory: freedom cohering through structured distinction. The axiom "The Source is Common," formalized as asymmetry between left and right transitions, necessitates theorems UNA, ONA, and BU, from which space, time, physical scales, and alignment principles emerge. See Section 3 for formal derivations via contraposition and modus ponens. The progression from common origination through non-absolute unity and opposition to universal balance demonstrates how a single axiomatic foundation unifies physical structure, informational coherence, and governance principles. This unified necessity invites empirical testing across domains, with validation pathways outlined in Sections 6.4-6.6. The framework advances toward completing Hilbert's axiomatization of physics by deriving key structures from a single axiom and provides formal metrics for AI evaluation, where ethical coherence arises endogenously from the same necessities. Within CGM, physical conservation, informational traceability, and governance alignment all manifest as modal transitions achieving coherent actualization.
+Conclusion. Reality manifests as recursion actualizing its own memory: freedom cohering through structured distinction. The foundational assumption "The Source is Common," formalized as asymmetry between left and right transitions, necessitates lemmas UNA, ONA, BU, and Memory, from which space, time, physical scales, and alignment principles emerge. See Section 3 for formal derivations via contraposition and modus ponens. The progression from common origination through non-absolute unity and opposition to universal balance demonstrates how a single foundational assumption unifies physical structure, informational coherence, and governance principles. This unified necessity invites empirical testing across domains, with validation pathways outlined in Sections 6.4-6.6. The framework advances toward completing Hilbert's axiomatization of physics by deriving key structures from a single foundational assumption and provides formal metrics for AI evaluation, where ethical coherence arises endogenously from the same necessities. Within CGM, physical conservation, informational traceability, and governance alignment all manifest as modal transitions achieving coherent actualization.
 
 
 ## 6.4 Limitations and Future Work
@@ -653,6 +670,12 @@ Superintelligence Index (SI): composite diagnostic score combining alignment met
 [8] B. F. Chellas, Modal Logic, Cambridge University Press, Cambridge (1980).
 
 [9] E. Mendelson, Introduction to Mathematical Logic, 5th ed., CRC Press, Boca Raton (2009).
+
+[Sahlqvist 1975] H. Sahlqvist, Completeness and correspondence in the first and second order semantics for modal logic, in Proceedings of the 3rd Scandinavian Logic Symposium, North-Holland, Amsterdam (1975), pp. 110–143.
+
+[Bradfield & Stirling 2006] J. Bradfield, C. Stirling, Modal mu-calculi, in Handbook of Modal Logic, eds. P. Blackburn, J. van Benthem, F. Wolter, Elsevier, Amsterdam (2006), pp. 721–756.
+
+[Jónsson & Tarski 1951] B. Jónsson, A. Tarski, Boolean algebras with operators. Part I, American Journal of Mathematics 73, 891–939 (1951).
 
 [10] M. H. Stone, On One-Parameter Unitary Groups in Hilbert Space, Annals of Mathematics 33, 643–648 (1932).
 

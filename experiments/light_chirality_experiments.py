@@ -47,7 +47,7 @@ class LightChiralityExperiments:
         self.s_p = np.pi / 2  # CS threshold - directionality
         self.u_p = 1 / np.sqrt(2)  # UNA threshold - orthogonality
         self.o_p = np.pi / 4  # ONA threshold - diagonality
-        self.m_p = 1 / (2 * np.sqrt(2 * np.pi))  # BU threshold - closure
+        self. m_a = 1 / (2 * np.sqrt(2 * np.pi))  # BU threshold - closure
 
     def validate_una_boundary_as_reflective_shell(self) -> Dict[str, Any]:
         """

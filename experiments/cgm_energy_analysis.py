@@ -3,7 +3,7 @@
 CGM Energy Scale Calculations - Stage Thresholds, Actions, and Energies
 
 Calculate the fundamental energy scales for CS, UNA, ONA, BU stages
-based on CGM theory with aperture parameter m_p.
+based on CGM theory with aperture parameter m_a.
 
 Based on the clean hierarchy:
 - CS: Top scale (ToE/Planck sector) 
@@ -22,36 +22,36 @@ def calculate_stage_thresholds() -> Dict[str, float]:
     - CS: s_p = pi/2
     - UNA: u_p = cos(pi/4) = 1/sqrt(2)  
     - ONA: o_p = pi/4
-    - BU: m_p = 1/(2*sqrt(2*pi)) (aperture/closure parameter)
+    - BU:  m_a = 1/(2*sqrt(2*pi)) (aperture/closure parameter)
     """
     s_p = math.pi / 2
     u_p = math.cos(math.pi / 4)  # = 1/sqrt(2)
     o_p = math.pi / 4
-    m_p = 1 / (2 * math.sqrt(2 * math.pi))
+    m_a = 1 / (2 * math.sqrt(2 * math.pi))
     
     return {
         'CS': s_p,
         'UNA': u_p, 
         'ONA': o_p,
-        'BU': m_p
+        'BU': m_a
     }
 
 
 def calculate_stage_actions(thresholds: Dict[str, float]) -> Dict[str, float]:
     """
     Calculate stage actions using the simple map:
-    - S_CS = s_p / m_p
-    - S_UNA = u_p / m_p  
-    - S_ONA = o_p / m_p
-    - S_BU = m_p (fixed point)
+    - S_CS = s_p / m_a
+    - S_UNA = u_p /  m_a  
+    - S_ONA = o_p / m_a
+    - S_BU =  m_a (fixed point)
     """
-    m_p = thresholds['BU']
+    m_a = thresholds['BU']
     
     actions = {
-        'CS': thresholds['CS'] / m_p,
-        'UNA': thresholds['UNA'] / m_p,
-        'ONA': thresholds['ONA'] / m_p,
-        'BU': m_p
+        'CS': thresholds['CS'] / m_a,
+        'UNA': thresholds['UNA'] / m_a,
+        'ONA': thresholds['ONA'] / m_a,
+        'BU': m_a
     }
     
     return actions
@@ -75,21 +75,21 @@ def calculate_gut_action(actions: Dict[str, float], eta: float = 1.0) -> float:
     return s_gut
 
 
-def calculate_duality_map(actions: Dict[str, float], m_p: float) -> Dict[str, float]:
+def calculate_duality_map(actions: Dict[str, float], m_a: float) -> Dict[str, float]:
     """
     Calculate duality map around BU fixed point:
-    D(S) = m_p^2 / S
+    D(S) = m_a^2 / S
     
-    BU is a fixed point: D(m_p) = m_p
+    BU is a fixed point: D(m_a) = m_a
     """
-    m_p_squared = m_p ** 2
+    m_a_squared =  m_a ** 2
     
     duality = {}
     for stage, action in actions.items():
         if stage == 'BU':
-            duality[stage] = m_p  # Fixed point
+            duality[stage] =  m_a  # Fixed point
         else:
-            duality[stage] = m_p_squared / action
+            duality[stage] = m_a_squared / action
     
     return duality
 
@@ -343,7 +343,7 @@ def main():
     print("\n9. Theoretical Predictions (UV ratios):")
     print(f"   E_UNA/E_CS = 2/(pi*sqrt(2)) ~ {2/(math.pi * math.sqrt(2)):.6f}")
     print(f"   E_ONA/E_CS = 1/2 = {0.5:.6f}")
-    print(f"   E_BU/E_CS = (2*m_p^2)/pi ~ {(2 * thresholds['BU']**2) / math.pi:.6f}")
+    print(f"   E_BU/E_CS = (2*m_a^2)/pi ~ {(2 * thresholds['BU']**2) / math.pi:.6f}")
     print(f"   E_GUT/E_CS ~ {s_gut/actions['CS']:.6f}")
     
     # 10) Optical Law and Involution Analysis
@@ -406,8 +406,8 @@ def main():
         print(f"   eta={eta:3.1f}: S_GUT={s_gut_eta:.6f}, E_GUT^UV={e_gut_uv_eta:.2e} GeV, E_GUT^IR={e_gut_ir_eta:.2f} GeV")
     
     # 14) Aperture dependence analysis
-    print("\n14. Aperture Dependence (m_p -> 0):")
-    print("   As aperture closes (m_p -> 0):")
+    print("\n14. Aperture Dependence ( m_a -> 0):")
+    print("   As aperture closes ( m_a -> 0):")
     print("   - UV stages (CS, UNA, ONA): action -> infinity (hard)")
     print("   - BU stage: action -> 0 (soft)")
     print("   - This captures UV<->IR duality with BU as the only dual")

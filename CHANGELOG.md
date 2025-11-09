@@ -4,6 +4,43 @@ All notable changes to the CGM Experimental Framework will be documented in this
 
 ---
 
+## [1.2.3-CGM-Paper] - 2025-10-06 2025-11-09 
+
+Publishing: Common Governance Model: A Constitutional analysis on the Mathematical Physics of Authority, from Quantum Measurement to AI Alignment
+
+---
+
+## [1.2.2-Axiomatization] - 2025-10-06 2025-11-04 
+
+**Refactor: Rigorous Modal Axiomatization Analysis**
+
+Rewrote `cgm_axiomatization_analysis.py` to rigorously prove the modal axiomatization using Z3 SMT solver. The script now verifies consistency, independence, and entailment relationships for the foundational assumption (CS) and lemmas (UNA, ONA, BU, Memory).
+
+**Key Improvements:**
+
+- **Faster & More Rigorous**: Replaced exhaustive search with Z3 constraint solver (10-1000x speedup)
+- **Semantic Alignment**: Fixed encoding to match intended "Common Source" semantics (axioms scoped to S-worlds)
+- **Bundle-Level Analysis**: Tests conceptual pairs (CS, UNA, ONA bundles) as independent units
+- **Entailment Chain Verification**: Proves forward chain (CS → UNA → ONA → BU) and reverse/cyclic relationships
+- **Minimality Checks**: Verifies both members of pairs are necessary for their theorems
+- **Derivability Analysis**: Identifies which axioms are derivable under foundational constraints
+
+**Hilbert Space Analysis Updates:**
+
+- Enhanced `cgm_Hilbert_Space_analysis.py` to include verification of the foundational assumption and lemmas
+- Added Kripke-style truth bridge connecting Hilbert space representation to modal semantics
+- Dimensionality proof strengthened with explicit lemmas for n=2 and n≠3 cases
+- Will be finalized once axiomatization results are confirmed
+
+**Affected Files:**
+- [experiments/cgm_axiomatization_analysis.py](experiments/cgm_axiomatization_analysis.py) - Complete rewrite
+- [experiments/cgm_Hilbert_Space_analysis.py](experiments/cgm_Hilbert_Space_analysis.py) - Enhanced with foundational assumption and lemmas verification
+
+**Dependencies:**
+- Requires `z3-solver` package: `pip install z3-solver`
+
+---
+
 ## [1.2.1-CGM] - 2025-10-06 2025-11-02 
 
 **Critical Correction: Higgs Vacuum Expectation Value (VEV)**

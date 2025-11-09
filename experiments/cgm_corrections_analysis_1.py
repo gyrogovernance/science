@@ -10,13 +10,13 @@ and the universal acceleration scale a0 = c H0 / (2π) for two reference Hubble 
 Definitions and formulas:
 
 1) Aperture parameter:
-   m_p = 1 / (2 * sqrt(2π))
+    m_a = 1 / (2 * sqrt(2π))
 
 2) BU dual-pole monodromy:
    δ = δ_BU
 
 3) Aperture gap:
-   Δ = 1 - δ / m_p
+   Δ = 1 - δ / m_a
    Δ² = Δ^2
    Δ⁴ = Δ^4
 
@@ -27,7 +27,7 @@ Definitions and formulas:
    with φ = 3δ + diff, R the curvature ratio, h the holonomy ratio, and 1/ρ the inverse closure fraction.
 
 5) Fine-structure constant sequence:
-   α₀ = δ⁴ / m_p
+   α₀ = δ⁴ / m_a
    α₁ = α₀ * C_AB
    α₂ = α₁ * C_HC
    α   = α₂ * C_IDE
@@ -67,7 +67,7 @@ def _sqrt(x: Decimal) -> Decimal:
 
 def _mp(pi_: Decimal) -> Decimal:
     """
-    Returns the aperture parameter m_p = 1 / (2 * sqrt(2π)).
+    Returns the aperture parameter  m_a = 1 / (2 * sqrt(2π)).
     """
     return Decimal(1) / (Decimal(2) * _sqrt(Decimal(2) * pi_))
 
@@ -221,7 +221,7 @@ def main() -> None:
             f"{prod:.6e}",
         )
 
-    print("m_p:", f"{mp_:.18f}")
+    print("m_a:", f"{mp_:.18f}")
     print("delta_BU:", f"{d:.18f}")
     print("delta_over_m_p:", f"{closure_ratio:.12f}")
     print("aperture_fraction:", f"{aperture_ratio:.12f}")
@@ -252,7 +252,7 @@ def main() -> None:
     print("K_QG_exact = π²/√(2π):", f"{K_QG_exact:.12f}")
     print("K_QG_original:", f"{k_qg:.12f}")
     print("Difference:", f"{abs(K_QG_exact - k_qg):.12f}")
-    print("Note: K_QG = Q_G × (π/2) × m_p = 4π × (π/2) × 1/(2√(2π)) = π²/√(2π)")
+    print("Note: K_QG = Q_G × (π/2) ×  m_a = 4π × (π/2) × 1/(2√(2π)) = π²/√(2π)")
     
     # 3. Proton Radius Prediction (CGM-derived)
     print("\n3. Proton Radius Prediction (CGM-derived):")

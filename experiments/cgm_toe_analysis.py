@@ -96,7 +96,7 @@ class CGMToEAnalysis:
         # Geometric constants from CGM framework
         self.pi_cgm = np.pi  # Will be updated from actual CGM calculation
         self.S_min = self.cgm_units.S_min
-        self.m_p = self.cgm_units.m_p
+        self.m_a = self.cgm_units.m_a
         self.L_horizon = self.cgm_units.L_horizon
         self.c_cgm = self.cgm_units.c_cgm
 

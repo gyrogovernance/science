@@ -36,7 +36,7 @@ CGM establishes four states of structural emergence (for full details, see `docs
 - **Common Source (CS)**: The originating condition of reasoning containing inherent chirality and directionality
 - **Unity Non-Absolute (UNA)**: The inherent chirality of CS forbids perfect homogeneity. Unity cannot be absolute because the source itself contains directional distinction
 - **Opposition Non-Absolute (ONA)**: Given non-absolute unity, absolute opposition would create rigid binary structure, contradicting the recursive nature inherited from CS
-- **Balance Universal (BU)**: The system reaches self-consistent configuration where local non-associativities cancel while full memory of the recursive path is retained (aperture A* = 1 - (δ_BU/m_p) ≈ 0.02070 for optimal balance)
+- **Balance Universal (BU)**: The system reaches self-consistent configuration where local non-associativities cancel while full memory of the recursive path is retained (aperture A* = 1 - (δ_BU/m_a) ≈ 0.02070 for optimal balance)
 
 Systems maintaining proper structural relationships across these states exhibit greater stability, sustained contextual awareness, and resistance to pathological behaviors. In the Hilbert space representation of CGM, these states correspond to orthogonal projections, with BU as the eigenspace achieving optimal balance.
 
@@ -201,7 +201,7 @@ For each epoch, the 6 Level 2 (Behavior) metrics map to the 6 edges of the K₄ 
 - **Gradient projection**: Global alignment component (3 degrees of freedom) representing what can be explained by coherent flow from the reference vertex
 - **Residual projection**: Local differentiation component (3 degrees of freedom) representing non-associative circulation orthogonal to the gradient
 - **Raw aperture**: A = ||residual||² / ||total||². This aperture is the Rayleigh quotient of the cycle projection operator P_cycle with respect to the weighted inner product ⟨·,·⟩_W.
-- **Target aperture**: A* = 1 - (δ_BU/m_p) ≈ 0.02070 (from CGM Balance Universal)
+- **Target aperture**: A* = 1 - (δ_BU/m_a) ≈ 0.02070 (from CGM Balance Universal)
 - **Superintelligence Index (SI)**: Proximity to BU optimum, SI = 100 / max(A/A*, A*/A)
 - **Closure ratio**: C = ||gradient||² / ||total||² = 1 - A
 
@@ -244,7 +244,7 @@ The Superintelligence Index (SI) measures how closely an AI system's information
 SI = 100 / D, where D = max(A/A*, A*/A)
 ```
 - A = raw aperture from tensegrity decomposition. Here, A is a projection observable in the Hilbert space, measuring the fraction of measurement energy in the cycle subspace.
-- A* = 1 - (δ_BU/m_p) ≈ 0.02070 (CGM BU threshold)
+- A* = 1 - (δ_BU/m_a) ≈ 0.02070 (CGM BU threshold)
 
 **What SI Represents**:
 

@@ -88,7 +88,7 @@ class CGMParameters:
     """
     
     # Aperture parameter from geometric closure requirements
-    m_p = Decimal('1') / (Decimal('2') * (Decimal('2') * PI).sqrt())
+     m_a = Decimal('1') / (Decimal('2') * (Decimal('2') * PI).sqrt())
     
     # Quantum gravity as complete solid angle
     Q_G = FOUR_PI  # 4π steradians
@@ -100,8 +100,8 @@ class CGMParameters:
     
     @classmethod
     def aperture_correction(cls):
-        """Temperature correction factor in CGM: T → T/(1 + m_p)"""
-        return Decimal('1') / (Decimal('1') + cls.m_p)
+        """Temperature correction factor in CGM: T → T/(1 + m_a)"""
+        return Decimal('1') / (Decimal('1') + cls.m_a)
 
 class CGMEnergyScales:
     """
@@ -269,8 +269,8 @@ def calculate_phase_curvature_H(H0_SI, method='baseline'):
     
     elif method == 'aperture':
         # Transport curvature through aperture correction
-        # ℋ = H0 / (1 + m_p)
-        return H0_SI / (Decimal('1') + cgm.m_p)
+        # ℋ = H0 / (1 + m_a)
+        return H0_SI / (Decimal('1') + cgm.m_a)
     
     else:
         raise ValueError(f"Unknown method: {method}")
@@ -518,7 +518,7 @@ def compute_micro_macro_bridge(Sigma_eq, H_curv_SI, const):
     L_B = (k_B Σ)/G = 2c/ℋ is the macro Hubble diameter
     ℓ* = ħc/E_EW is the micro Compton-like scale at EW anchor
     
-    Test: L_B × ℓ* should relate to CGM invariants (Q_G, m_p)
+    Test: L_B × ℓ* should relate to CGM invariants (Q_G, m_a)
     Conjugacy exponent tests whether bridge scales as (E_CS/E_EW)^n
     
     Returns:
@@ -546,7 +546,7 @@ def compute_micro_macro_bridge(Sigma_eq, H_curv_SI, const):
     
     # Check against CGM numbers
     Q_G_ratio = ratio_to_planck_area / cgm.Q_G
-    m_p_ratio = ratio_to_planck_area / (cgm.m_p**2)
+    m_a_ratio = ratio_to_planck_area / (cgm.m_a**2)
     
     # Conjugacy exponent: does L_B × ℓ*(EW) scale like (E_CS/E_EW)^n?
     E_CS = scales.E_CS
@@ -561,7 +561,7 @@ def compute_micro_macro_bridge(Sigma_eq, H_curv_SI, const):
         'L_B_times_ell': float(L_B_times_ell),
         'ratio_to_planck_area': float(ratio_to_planck_area),
         'Q_G_ratio': float(Q_G_ratio),
-        'm_p_squared_ratio': float(m_p_ratio),
+        'm_p_squared_ratio': float(m_a_ratio),
         'conjugacy_exp': conjugacy_exp
     }
 
@@ -631,11 +631,11 @@ def print_results():
     
     # Q_G and aperture identities (CGM geometric core)
     s_p = PI / Decimal('2')  # π/2 from CS threshold
-    check_QG_aperture = cgm.Q_G * (cgm.m_p ** 2)
-    check_sp_aperture = s_p / (cgm.m_p ** 2)
+    check_QG_aperture = cgm.Q_G * (cgm. m_a ** 2)
+    check_sp_aperture = s_p / (cgm. m_a ** 2)
     phi = check_sp_aperture / (Decimal('4') * PI ** 2)
-    print(f"Identity: ϕ = (s_p/m_p²)/(4π²) = {float(phi):.15f} (= 1)")
-    print(f"Identity: Q_G × m_p² = {float(check_QG_aperture):.15f} (= 0.5)")
+    print(f"Identity: ϕ = (s_p/m_a²)/(4π²) = {float(phi):.15f} (= 1)")
+    print(f"Identity: Q_G × m_a² = {float(check_QG_aperture):.15f} (= 0.5)")
     assert abs(check_QG_aperture - Decimal('0.5')) < 1e-15, "Q_G aperture must equal 0.5"
     assert abs(phi - 1) < 1e-10, "ϕ must equal 1"
     print()
@@ -658,8 +658,8 @@ def print_results():
     print(f"α_G(EW) = Gm²/(ħc) at 246.22 GeV: {float(alpha_G_EW):.6e}")
     
     # Gravitational coupling at proton mass
-    m_proton = Decimal('1.67262192e-27')  # kg
-    alpha_G_proton = const.G * m_proton**2 / (const.hbar * const.c)
+    m_aroton = Decimal('1.67262192e-27')  # kg
+    alpha_G_proton = const.G * m_aroton**2 / (const.hbar * const.c)
     print(f"α_G(proton):                    {float(alpha_G_proton):.6e}")
     print()
     
@@ -680,14 +680,14 @@ def print_results():
     print("APERTURE RECOVERY")
     print("----------")
     I1_CGM_computed = (const.k_B * planck_results['Sigma_eq_CGM_decimal'] * 
-                       (planck_results['H0_SI_decimal'] / (Decimal('1') + cgm.m_p))) / (const.G * const.c)
-    m_p_recovered = (Decimal('2') / I1_CGM_computed).sqrt() - Decimal('1')
-    m_p_deviation = abs(m_p_recovered - cgm.m_p)
-    print(f"From I₁_CGM: m_p = √(2/I₁_CGM) − 1")
-    print(f"  Recovered:  {float(m_p_recovered):.15f}")
-    print(f"  Expected:   {float(cgm.m_p):.15f}")
-    print(f"  Deviation:  {float(m_p_deviation):.2e}")
-    print(f"  → Aperture value {'locked by equilibrium ✓' if m_p_deviation < 1e-10 else 'not fully determined'}")
+                       (planck_results['H0_SI_decimal'] / (Decimal('1') + cgm.m_a))) / (const.G * const.c)
+    m_a_recovered = (Decimal('2') / I1_CGM_computed).sqrt() - Decimal('1')
+    m_a_deviation = abs(m_a_recovered - cgm.m_a)
+    print(f"From I₁_CGM:  m_a = √(2/I₁_CGM) − 1")
+    print(f"  Recovered:  {float(m_a_recovered):.15f}")
+    print(f"  Expected:   {float(cgm.m_a):.15f}")
+    print(f"  Deviation:  {float(m_a_deviation):.2e}")
+    print(f"  → Aperture value {'locked by equilibrium ✓' if m_a_deviation < 1e-10 else 'not fully determined'}")
     print()
     
     # Constant recovery from closure (equilibrium viewpoint)
@@ -792,8 +792,8 @@ def print_results():
     H_aperture = H_curvs['aperture']
     Sigma_eq_CGM_dec = planck_results['Sigma_eq_CGM_decimal']
     inv_cgm = calculate_emergent_constancy_invariants(Sigma_eq_CGM_dec, H_aperture, const)
-    expected_I1_CGM_dec = Decimal('2') / ((Decimal('1') + cgm.m_p)**2)
-    print(f"Identity: CGM Aperture I₁_CGM = 2/(1+m_p)²")
+    expected_I1_CGM_dec = Decimal('2') / ((Decimal('1') + cgm.m_a)**2)
+    print(f"Identity: CGM Aperture I₁_CGM = 2/(1+m_a)²")
     print(f"  Computed: {inv_cgm['I1']:.12f}")
     print(f"  Expected: {float(expected_I1_CGM_dec):.12f}")
     print(f"  Deviation: {abs(inv_cgm['I1'] - float(expected_I1_CGM_dec)):.2e}")
@@ -816,7 +816,7 @@ def print_results():
     print()
     print(f"Normalized to Planck area (l_P²):      {bridge['ratio_to_planck_area']:.6e}")
     print(f"Ratio to Q_G (4π):                     {bridge['Q_G_ratio']:.6e}")
-    print(f"Ratio to m_p²:                         {bridge['m_p_squared_ratio']:.6e}")
+    print(f"Ratio to m_a²:                         {bridge['m_p_squared_ratio']:.6e}")
     print()
     print(f"Signal: Conjugacy exponent (log area / log energy):")
     print(f"  Using EW anchor (246.22 GeV):  {bridge['conjugacy_exp']:.3f}")
@@ -900,7 +900,7 @@ def print_results():
     print()
     print(f"Closure invariant (baseline):    I₁ = 2.000000000000")
     print(f"Aperture identity:               I₁_CGM = {inv_cgm['I1']:.12f}")
-    print(f"  Expected [2/(1+m_p)²]:         {float(expected_I1_CGM_dec):.12f} ✓")
+    print(f"  Expected [2/(1+m_a)²]:         {float(expected_I1_CGM_dec):.12f} ✓")
     print()
     print(f"UV-IR conjugacy exponent:        {bridge['conjugacy_exp']:.3f}")
     print(f"  (4th-5th power scaling at EW)")

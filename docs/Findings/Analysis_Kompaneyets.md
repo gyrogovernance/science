@@ -34,7 +34,7 @@ The analysis examines whether cosmological observation shows the specific harmon
 
 The universe traces a single left-handed helix through phase space, accumulating rotational memory at three critical angles. At CS, α = π/2 establishes chirality through the primordial left-first bias. At UNA, β = π/4 produces the first orthogonal rotation, from which three rotational degrees of freedom emerge. At ONA, γ = π/4 creates a diagonal tilt, generating three translational degrees of freedom.
 
-These angles satisfy the unique gyrotriangle closure condition δ = π - (α + β + γ) = 0 in three dimensions. The amplitude m_p = 1/(2√(2π)) represents the alignment aperture, which is the precise opening needed for observation while maintaining structural coherence.
+These angles satisfy the unique gyrotriangle closure condition δ = π - (α + β + γ) = 0 in three dimensions. The amplitude  m_a = 1/(2√(2π)) represents the alignment aperture, which is the precise opening needed for observation while maintaining structural coherence.
 
 ## Key Findings: Alignment Confirmed
 
@@ -58,7 +58,7 @@ The spectral distortion tests confirm alignment operates within physical constra
 
 ## The Alignment Aperture: Why "97.9% Closure"
 
-The 2.1% surplus (m_p ≈ 0.2) represents the aperture through which alignment occurs. Complete closure (100%) would result in both gyrations returning to identity, eliminating memory and preventing observation. Zero closure would produce no structure, no coherence, and no observation. The 97.9% closure represents optimal alignment between memory and observation.
+The 2.1% surplus ( m_a ≈ 0.2) represents the aperture through which alignment occurs. Complete closure (100%) would result in both gyrations returning to identity, eliminating memory and preventing observation. Zero closure would produce no structure, no coherence, and no observation. The 97.9% closure represents optimal alignment between memory and observation.
 
 This principle manifests across scales. In quantum mechanics, the uncertainty principle ensures measurement always involves finite aperture. In black hole physics, the event horizon represents a similar threshold where observation becomes impossible due to complete closure. In atomic physics, electron orbitals maintain specific angular momentum quanta that prevent collapse while enabling stable observation.
 
@@ -82,7 +82,7 @@ The perfect anti-alignment in real Planck data demonstrates observation function
 
 ## Formal Statement
 
-Observation at BU operates through alignment of recursive memory within the 3D+6DoF structure, producing characteristic harmonic inversions in the form of anti-aligned P₂/C₄ coefficients and phase relationships through ℓ=37 enhancement. These signatures enable coherent observation through the m_p = 1/(2√(2π)) aperture.
+Observation at BU operates through alignment of recursive memory within the 3D+6DoF structure, producing characteristic harmonic inversions in the form of anti-aligned P₂/C₄ coefficients and phase relationships through ℓ=37 enhancement. These signatures enable coherent observation through the  m_a = 1/(2√(2π)) aperture.
 
 ## Conclusion
 

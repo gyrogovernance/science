@@ -4,7 +4,7 @@ CGM Chronology Analysis: Recursion Depth Hypothesis Testing
 Purpose
 -------
 - Test the hypothesis that cosmological time t_FRW maps to recursion depth n via
-  t_FRW = t_* * λ^n where λ = 1/m_p and m_p = 1/(2*sqrt(2*pi)).
+  t_FRW = t_* * λ^n where λ = 1/ m_a and  m_a = 1/(2*sqrt(2*pi)).
 - Evaluate whether fractional parts of n cluster near {0, 0.5} more than expected
   from uniform distribution.
 - Provide proper statistical testing with uncertainties and significance levels.
@@ -12,7 +12,7 @@ Purpose
 Notes
 -----
 - This is a hypothesis test, not a discovery claim.
-- Uses CGM values: m_p ≈ 0.199471, T₀ = 8.916×10⁻⁴³ s
+- Uses CGM values:  m_a ≈ 0.199471, T₀ = 8.916×10⁻⁴³ s
 - Includes Monte Carlo uncertainty propagation and statistical significance testing.
 - Results should be interpreted as evidence for/against the hypothesis, not as
   definitive proof of quantization.
@@ -31,9 +31,9 @@ from typing import Dict, List, Tuple, TypedDict, Union
 T0_CGM = 8.916e-43  # seconds
 
 
-# Aperture parameter: m_p = 1/(2*sqrt(2*pi)) ≈ 0.199471
+# Aperture parameter:  m_a = 1/(2*sqrt(2*pi)) ≈ 0.199471
 def compute_aperture_parameter() -> float:
-    """Return CGM aperture parameter m_p = 1/(2*sqrt(2*pi))."""
+    """Return CGM aperture parameter  m_a = 1/(2*sqrt(2*pi))."""
     return 1.0 / (2.0 * math.sqrt(2.0 * math.pi))
 
 
@@ -50,12 +50,12 @@ def recursion_depth_from_time(
     """
     Compute recursion depth n from physical time t via:
 
-        t = t_Planck * (1/m_p)^n  =>  n = log(t/t_Planck) / log(1/m_p)
+        t = t_Planck * (1/m_a)^n  =>  n = log(t/t_Planck) / log(1/m_a)
 
     Args:
         t_seconds: Observed time in seconds (> 0)
         t_planck_seconds: Planck time in seconds (> 0)
-        aperture_parameter: m_p in (0, 1)
+        aperture_parameter:  m_a in (0, 1)
 
     Returns:
         Recursion depth n (float)
@@ -65,7 +65,7 @@ def recursion_depth_from_time(
     if t_planck_seconds <= 0.0:
         raise ValueError("t_planck_seconds must be positive")
     if not (0.0 < aperture_parameter < 1.0):
-        raise ValueError("aperture_parameter (m_p) must be in (0, 1)")
+        raise ValueError("aperture_parameter (m_a) must be in (0, 1)")
 
     base = 1.0 / aperture_parameter
     return math.log(t_seconds / t_planck_seconds, base)
@@ -79,12 +79,12 @@ def recursion_depth_from_temperature(
     """
     Compute recursion depth n from temperature T via:
 
-        T = T_* * (1/m_p)^n  =>  n = log(T/T_*) / log(1/m_p)
+        T = T_* * (1/m_a)^n  =>  n = log(T/T_*) / log(1/m_a)
 
     Args:
         temperature_gev: Temperature in GeV (> 0)
         reference_temp_gev: Reference temperature in GeV (> 0)
-        aperture_parameter: m_p in (0, 1)
+        aperture_parameter:  m_a in (0, 1)
 
     Returns:
         Recursion depth n (float)
@@ -94,7 +94,7 @@ def recursion_depth_from_temperature(
     if reference_temp_gev <= 0.0:
         raise ValueError("reference_temp_gev must be positive")
     if not (0.0 < aperture_parameter < 1.0):
-        raise ValueError("aperture_parameter (m_p) must be in (0, 1)")
+        raise ValueError("aperture_parameter (m_a) must be in (0, 1)")
 
     base = 1.0 / aperture_parameter
     return math.log(temperature_gev / reference_temp_gev, base)
@@ -108,12 +108,12 @@ def recursion_depth_from_scale_factor(
     """
     Compute recursion depth n from scale factor a via:
 
-        a = a_* * (1/m_p)^n  =>  n = log(a/a_*) / log(1/m_p)
+        a = a_* * (1/m_a)^n  =>  n = log(a/a_*) / log(1/m_a)
 
     Args:
         scale_factor: Scale factor (> 0)
         reference_scale_factor: Reference scale factor (> 0)
-        aperture_parameter: m_p in (0, 1)
+        aperture_parameter:  m_a in (0, 1)
 
     Returns:
         Recursion depth n (float)
@@ -123,7 +123,7 @@ def recursion_depth_from_scale_factor(
     if reference_scale_factor <= 0.0:
         raise ValueError("reference_scale_factor must be positive")
     if not (0.0 < aperture_parameter < 1.0):
-        raise ValueError("aperture_parameter (m_p) must be in (0, 1)")
+        raise ValueError("aperture_parameter (m_a) must be in (0, 1)")
 
     base = 1.0 / aperture_parameter
     return math.log(scale_factor / reference_scale_factor, base)
@@ -305,12 +305,12 @@ def compute_doubled_angle_rayleigh(fractional_parts: List[float]) -> Dict[str, f
 
 
 def compute_spacing_test(
-    milestone_times: List[float], t_planck: float, m_p: float
+    milestone_times: List[float], t_planck: float, m_a: float
 ) -> Dict[str, float]:
     """
     Test whether adjacent milestone separations cluster near integers in n.
 
-    If t ∝ λ^n holds, then Δn_i = log_{1/m_p}(t_i/t_{i-1}) should concentrate near integers.
+    If t ∝ λ^n holds, then Δn_i = log_{1/m_a}(t_i/t_{i-1}) should concentrate near integers.
     """
     # Sort times to handle order swaps from log-normal noise
     times = sorted(t for t in milestone_times if t > 0.0)
@@ -319,7 +319,7 @@ def compute_spacing_test(
 
     # Compute Δn_i for adjacent milestones
     delta_n_values = [
-        math.log(times[i] / times[i - 1], 1.0 / m_p) for i in range(1, len(times))
+        math.log(times[i] / times[i - 1], 1.0 / m_a) for i in range(1, len(times))
     ]
 
     if not delta_n_values:
@@ -537,7 +537,7 @@ def compute_weighted_cgm_test(fractional_parts: List[float]) -> Dict[str, float]
 def monte_carlo_analysis_time(
     milestones: List[Milestone],
     t_planck: float,
-    m_p: float,
+    m_a: float,
     n_samples: int = 10_000,
     exclude_anchors: bool = True,
     rng: random.Random | None = None,
@@ -563,7 +563,7 @@ def monte_carlo_analysis_time(
     # Compute mean n values for display
     results: List[ResultRow] = []
     for m in test_milestones:
-        n_mean = recursion_depth_from_time(m.t_seconds, t_planck, m_p)
+        n_mean = recursion_depth_from_time(m.t_seconds, t_planck, m_a)
         k_int, d_int = nearest_integer(n_mean)
         k_half, d_half = nearest_half_integer(n_mean)
 
@@ -596,7 +596,7 @@ def monte_carlo_analysis_time(
                 t_sample = m.t_seconds
 
             milestone_times.append(t_sample)
-            n = recursion_depth_from_time(t_sample, t_planck, m_p)
+            n = recursion_depth_from_time(t_sample, t_planck, m_a)
             fractional_parts.append(n - math.floor(n))
 
         if fractional_parts and len(milestone_times) >= 2:
@@ -606,7 +606,7 @@ def monte_carlo_analysis_time(
                 "rayleigh_m4": compute_generalized_rayleigh(fractional_parts, m=4),
                 "cgm_composite": compute_cgm_composite_harmonic_test(fractional_parts),
                 "weighted_cgm": compute_weighted_cgm_test(fractional_parts),
-                "spacing_test": compute_spacing_test(milestone_times, t_planck, m_p),
+                "spacing_test": compute_spacing_test(milestone_times, t_planck, m_a),
                 "kuiper": kuiper_test(fractional_parts),
                 "watson": watson_test(fractional_parts),
             }
@@ -661,15 +661,15 @@ def run_comprehensive_chronology_analysis() -> None:
 
     t_planck = compute_planck_time_from_cgm()
     t0_cgm = T0_CGM  # Use CGM's natural time scale
-    m_p = compute_aperture_parameter()
+     m_a = compute_aperture_parameter()
 
     print("CGM Chronology Analysis: CGM-Native Variables")
     print("=" * 60)
     print(f"Random seed: 42 (for reproducibility)")
     print(f"Planck time t_P = {t_planck:.6e} s")
     print(f"CGM time scale T₀ = {t0_cgm:.6e} s (16.54 × t_P)")
-    print(f"Aperture parameter m_p = {m_p:.6f} (1/m_p = {1.0/m_p:.6f})")
-    print(f"Testing both λ = 1/m_p = {1.0/m_p:.6f} and λ = √3 = {math.sqrt(3):.6f}")
+    print(f"Aperture parameter  m_a = {m_a:.6f} (1/ m_a = {1.0/m_a:.6f})")
+    print(f"Testing both λ = 1/ m_a = {1.0/m_a:.6f} and λ = √3 = {math.sqrt(3):.6f}")
     print()
 
     # Test 1: FRW time with T0_CGM reference (CGM-pure scaling)
@@ -677,7 +677,7 @@ def run_comprehensive_chronology_analysis() -> None:
     print("-" * 40)
     milestones_time = default_milestones(t_planck)
     results_time, stats_time, test_stats_time = monte_carlo_analysis_time(
-        milestones_time, t0_cgm, m_p, n_samples=10_000, exclude_anchors=True, rng=rng
+        milestones_time, t0_cgm, m_a, n_samples=10_000, exclude_anchors=True, rng=rng
     )
     print_brief_results(stats_time, "FRW Time (T0_CGM)")
     print()
@@ -691,7 +691,7 @@ def run_comprehensive_chronology_analysis() -> None:
     results_temp, stats_temp, test_stats_temp = monte_carlo_analysis_temperature(
         milestones_temp,
         t_planck_gev,
-        m_p,
+        m_a,
         n_samples=10_000,
         exclude_anchors=True,
         rng=rng,
@@ -708,7 +708,7 @@ def run_comprehensive_chronology_analysis() -> None:
     results_scale, stats_scale, test_stats_scale = monte_carlo_analysis_scale_factor(
         milestones_scale,
         a_reference,
-        m_p,
+        m_a,
         n_samples=10_000,
         exclude_anchors=True,
         rng=rng,
@@ -748,7 +748,7 @@ def run_comprehensive_chronology_analysis() -> None:
         f"{'FRW Time (T0_CGM)':<20} {primary_p_time:<15.4f} {'Null' if primary_p_time > 0.05 else 'Significant'}"
     )
     print(
-        f"{'Temperature (1/m_p)':<20} {primary_p_temp:<15.4f} {'Null' if primary_p_temp > 0.05 else 'Significant'}"
+        f"{'Temperature (1/m_a)':<20} {primary_p_temp:<15.4f} {'Null' if primary_p_temp > 0.05 else 'Significant'}"
     )
     print(
         f"{'Temperature (√3)':<20} {primary_p_temp_sqrt3:<15.4f} {'Null' if primary_p_temp_sqrt3 > 0.05 else 'Significant'}"
@@ -767,7 +767,7 @@ def run_comprehensive_chronology_analysis() -> None:
             )
         elif primary_p_temp == best_p:
             print(
-                "INTERPRETATION: Evidence for CGM chronology in TEMPERATURE scale with λ = 1/m_p"
+                "INTERPRETATION: Evidence for CGM chronology in TEMPERATURE scale with λ = 1/m_a"
             )
         elif primary_p_scale == best_p:
             print("INTERPRETATION: Evidence for CGM chronology in SCALE FACTOR")
@@ -798,7 +798,7 @@ def print_brief_results(stats: Dict[str, Union[float, str]], clock_name: str) ->
 def monte_carlo_analysis_temperature(
     milestones: List[Milestone],
     reference_temp_gev: float,
-    m_p: float,
+    m_a: float,
     n_samples: int = 10_000,
     exclude_anchors: bool = True,
     rng: random.Random | None = None,
@@ -824,7 +824,7 @@ def monte_carlo_analysis_temperature(
     # Compute mean n values for display
     results: List[ResultRow] = []
     for m in test_milestones:
-        n_mean = recursion_depth_from_temperature(m.t_seconds, reference_temp_gev, m_p)
+        n_mean = recursion_depth_from_temperature(m.t_seconds, reference_temp_gev, m_a)
         k_int, d_int = nearest_integer(n_mean)
         k_half, d_half = nearest_half_integer(n_mean)
 
@@ -855,7 +855,7 @@ def monte_carlo_analysis_temperature(
             else:
                 t_sample = m.t_seconds
 
-            n = recursion_depth_from_temperature(t_sample, reference_temp_gev, m_p)
+            n = recursion_depth_from_temperature(t_sample, reference_temp_gev, m_a)
             fractional_parts.append(n - math.floor(n))
 
         if fractional_parts:
@@ -914,7 +914,7 @@ def monte_carlo_analysis_temperature(
 def monte_carlo_analysis_scale_factor(
     milestones: List[Milestone],
     reference_scale_factor: float,
-    m_p: float,
+    m_a: float,
     n_samples: int = 10_000,
     exclude_anchors: bool = True,
     rng: random.Random | None = None,
@@ -937,7 +937,7 @@ def monte_carlo_analysis_scale_factor(
     results: List[ResultRow] = []
     for m in test_milestones:
         n_mean = recursion_depth_from_scale_factor(
-            m.t_seconds, reference_scale_factor, m_p
+            m.t_seconds, reference_scale_factor, m_a
         )
         k_int, d_int = nearest_integer(n_mean)
         k_half, d_half = nearest_half_integer(n_mean)
@@ -969,7 +969,7 @@ def monte_carlo_analysis_scale_factor(
             else:
                 t_sample = m.t_seconds
 
-            n = recursion_depth_from_scale_factor(t_sample, reference_scale_factor, m_p)
+            n = recursion_depth_from_scale_factor(t_sample, reference_scale_factor, m_a)
             fractional_parts.append(n - math.floor(n))
 
         if fractional_parts:

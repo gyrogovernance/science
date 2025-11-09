@@ -4,7 +4,7 @@
 
 ## Abstract
 
-We derive the fine-structure constant α ≈ 1/137.036 from the geometric structure of the Common Governance Model (CGM). The derivation uses the optical conjugacy relation between UV and IR foci, with CS as the unobservable UV focus and BU as the observable IR focus where electromagnetic interactions manifest. Starting from the base formula α₀ = δ_BU⁴/m_p at the IR focus, we apply three systematic corrections that account for UV-IR transport, holonomy mapping between foci, and residual alignment. Each correction reduces error by orders of magnitude, yielding a final prediction accurate to 0.043 parts per billion. All parameters are measured geometric invariants from the CGM framework with no fitted values. This demonstrates that fundamental constants emerge from the geometric requirements of observation itself.
+We derive the fine-structure constant α ≈ 1/137.036 from the geometric structure of the Common Governance Model (CGM). The derivation uses the optical conjugacy relation between UV and IR foci, with CS as the unobservable UV focus and BU as the observable IR focus where electromagnetic interactions manifest. Starting from the base formula α₀ = δ_BU⁴/ m_a at the IR focus, we apply three systematic corrections that account for UV-IR transport, holonomy mapping between foci, and residual alignment. Each correction reduces error by orders of magnitude, yielding a final prediction accurate to 0.043 parts per billion. All parameters are measured geometric invariants from the CGM framework with no fitted values. This demonstrates that fundamental constants emerge from the geometric requirements of observation itself.
 
 ## 1. Introduction
 
@@ -27,19 +27,19 @@ The fine-structure constant characterizes electromagnetic coupling at the observ
 
 The fundamental expression for α at the BU focus is:
 
-α₀ = δ_BU⁴/m_p                                                           (1)
+α₀ = δ_BU⁴/ m_a                                                           (1)
 
 where:
 - δ_BU = 0.195342176580 rad is the BU dual-pole monodromy (measured)
-- m_p = 1/(2√(2π)) = 0.199471140201 is the observational aperture parameter (exact)
+-  m_a = 1/(2√(2π)) = 0.199471140201 is the observational aperture parameter (exact)
 
-The quartic scaling reflects electromagnetic interaction geometry, while normalization by m_p ensures observational coherence. This yields α₀ = 0.007299683322, differing from experiment by 319.398 ppm.
+The quartic scaling reflects electromagnetic interaction geometry, while normalization by  m_a ensures observational coherence. This yields α₀ = 0.007299683322, differing from experiment by 319.398 ppm.
 
 ### 2.3 Aperture Structure
 
 The system maintains 97.93% closure with 2.07% aperture:
 
-Δ = 1 - δ_BU/m_p = 0.020699553913                                        (2)
+Δ = 1 - δ_BU/ m_a = 0.020699553913                                        (2)
 
 This aperture gap enables observation and serves as the expansion parameter for corrections.
 
@@ -56,7 +56,7 @@ where:
 - R = 0.993434896272 is the measured Thomas-Wigner curvature ratio
 - Δ² represents quadratic aperture effects
 
-The curvature R = (F̄/π)/m_p with F̄ = 0.622543 measured at canonical thresholds. This correction captures how geometric transport from UV to IR focus modifies the coupling. Error reduces from 319.398 ppm to 0.052 ppm.
+The curvature R = (F̄/π)/ m_a with F̄ = 0.622543 measured at canonical thresholds. This correction captures how geometric transport from UV to IR focus modifies the coupling. Error reduces from 319.398 ppm to 0.052 ppm.
 
 ### 3.2 Holonomy Transport UV→IR
 
@@ -80,7 +80,7 @@ The final correction aligns residual mismatch at the IR focus:
 α₃ = α₂ × [1 + (1/ρ)diffΔ⁴]                                             (5)
 
 where:
-- ρ = δ_BU/m_p = 0.979300: closure fraction
+- ρ = δ_BU/ m_a = 0.979300: closure fraction
 - diff = φ_SU2 - 3δ_BU = 0.001874: monodromic residue
 - Δ⁴: fourth-order suppression
 
@@ -90,7 +90,7 @@ This ensures coherence at the observable focus after UV-IR transport. Final erro
 
 The complete formula incorporating all foci corrections:
 
-α = (δ_BU⁴/m_p) × [1 - (3/4)RΔ²] × [1 - (5/6)((φ_SU2/(3δ_BU)) - 1)(1 - Δ²h_ratio)Δ²/(4π√3)] × [1 + (1/ρ)diffΔ⁴]    (6)
+α = (δ_BU⁴/m_a) × [1 - (3/4)RΔ²] × [1 - (5/6)((φ_SU2/(3δ_BU)) - 1)(1 - Δ²h_ratio)Δ²/(4π√3)] × [1 + (1/ρ)diffΔ⁴]    (6)
 
 Results:
 - CGM prediction: α = 0.007297352563
@@ -107,7 +107,7 @@ Error reduction sequence:
 
 The derivation reveals α as emerging from the UV-IR foci structure:
 
-1. **IR Focus Geometry**: Base term δ_BU⁴/m_p represents pure electromagnetic coupling at the observable BU focus.
+1. **IR Focus Geometry**: Base term δ_BU⁴/ m_a represents pure electromagnetic coupling at the observable BU focus.
 
 2. **UV-IR Transport**: Curvature correction accounts for geometric transport between unobservable UV (CS) and observable IR (BU) foci.
 

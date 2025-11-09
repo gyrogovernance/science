@@ -4,22 +4,39 @@
 
 ## Abstract
 
-We present a formal proof that the Common Governance Model (CGM) axioms CS1–CS7 uniquely determine exactly three spatial dimensions with six degrees of freedom. The proof proceeds through three lemmas: (1) the rotational DOF lemma establishes that UNA's gyrocommutativity requirement forces exactly three rotational generators via SU(2) uniqueness, (2) the translational DOF lemma shows that ONA's bi-gyrogroup consistency requires exactly three translational parameters via semidirect product structure, and (3) the non-existence theorem demonstrates that both n = 2 and n ≥ 4 spatial dimensions violate the closure constraint δ = π - (π/2 + π/4 + π/4) = 0 combined with the modal depth requirements encoded in CS1–CS7. The proof is constructive, relying only on standard Lie group theory and the gyrogroup axiomatics of Ungar. No empirical parameters or adjustable constants appear; all results follow by logical necessity from the CS axioms.
+We present a formal proof that the Common Governance Model (CGM) foundational assumption and lemmas constitute the operational requirements that uniquely characterize exactly three spatial dimensions with six degrees of freedom. The proof proceeds through three lemmas: (1) the rotational DOF lemma establishes that UNA's gyrocommutativity requirement forces exactly three rotational generators via SU(2) uniqueness, (2) the translational DOF lemma shows that ONA's bi-gyrogroup consistency requires exactly three translational parameters via semidirect product structure, and (3) the non-existence theorem demonstrates that both n = 2 and n ≥ 4 spatial dimensions violate the closure constraint δ = π - (π/2 + π/4 + π/4) = 0 combined with the modal depth requirements. The characterization is constructive, relying only on standard Lie group theory and the gyrogroup axiomatics of Ungar. No empirical parameters or adjustable constants appear; all results follow by logical necessity from the foundational assumption and lemmas.
 
 ## 1. Introduction
 
-The Common Governance Model posits seven axioms CS1–CS7 that encode:
-- CS1, CS2: Asymmetry between left and right transitions at the horizon constant S
-- CS3, CS5: Non-absoluteness of two-step commutation
-- CS4, CS6: Bridge axioms connecting unity, opposition, and equality
-- CS7: Absoluteness of four-step commutation  
+The Common Governance Model posits one foundational assumption (CS) and four lemmas (UNA, ONA, BU, Memory) that encode:
+- CS: Asymmetry between left and right transitions at the horizon constant S
+- UNA: Non-absoluteness of two-step equality
+- ONA: Non-absoluteness of two-step inequality
+- BU: Absoluteness of four-step commutation
+- Memory: Balance implies reconstruction of prior states
 
-From these axioms, three theorems follow:
-- UNA (⊢ ¬□U): Unity is non-absolute
-- ONA (⊢ ¬□O): Opposition is non-absolute
-- BU (⊢ □B): Balance is universal
+From these, the following lemmas follow:
+- UNA (¬□E): Unity is non-absolute
+- ONA (¬□¬E): Opposition is non-absolute
+- BU (□B): Balance is universal
 
-This document proves that these axioms and theorems uniquely determine n = 3 spatial dimensions with d = 6 total degrees of freedom (3 rotational + 3 translational).
+This document proves that the foundational assumption and lemmas constitute the operational requirements that uniquely characterize n = 3 spatial dimensions with d = 6 total degrees of freedom (3 rotational + 3 translational).
+
+### Framework Integration
+
+This analysis is part of a unified framework comprising three interconnected components:
+
+1. **Axiomatization** (Z3 SMT verification): Establishes logical consistency, independence, and entailment structure of the foundational assumption and lemmas via Kripke frames.
+
+2. **Hilbert Space Representation** (GNS construction): Realizes modal operators as unitaries on L²(S², dΩ), verifies the system numerically, and confirms BCH scaling predictions.
+
+3. **3D/6DoF Characterization** (Lie-theoretic proof): Shows that the foundational assumption and lemmas uniquely characterize n=3 spatial dimensions and d=6 degrees of freedom via BCH constraints, simplicity requirements, and gyrotriangle closure.
+
+These three analyses form a complete verification chain:
+
+- **Logical** (modal axioms) → **Analytic** (Hilbert operators) → **Geometric** (3D space)
+
+Each analysis validates the others, establishing CGM as a mathematically rigorous framework characterizing spatial structure from operational principles.
 
 ## 2. Preliminaries
 
@@ -60,6 +77,50 @@ For closure (δ = 0), the CGM angles must satisfy:
 
 This constraint is exact and non-negotiable.
 
+### 2.4 Unitary Representation and BCH Analysis
+
+The modal operators correspond to one-parameter unitary groups:
+
+- [L] ↔ U_L(t) = e^{itX}
+
+- [R] ↔ U_R(t) = e^{itY}
+
+with skew-adjoint generators X, Y. The Baker-Campbell-Hausdorff (BCH) formula to O(t³) gives:
+
+```
+log(e^A e^B) = A + B + ½[A,B] + 1/12([A,[A,B]] + [B,[B,A]]) + O(||A||⁴)
+```
+
+For depth-4 balance (Lemma BU: □B):
+
+```
+Δ = log(e^{tX}e^{tY}e^{tX}e^{tY}) - log(e^{tY}e^{tX}e^{tY}e^{tX})
+
+  = 2t²[X,Y] + O(t⁴)
+```
+
+The t³ terms cancel exactly in the difference. The requirement Δ = 0 for all small t forces:
+
+1. **O(t²) term**: P_S[X,Y]P_S = 0 (sectoral commutation)
+
+2. **Higher-order terms**: The su(2)-type nested-commutator constraints ([X,[X,Y]] = aY, [Y,[X,Y]] = -aX) arise at higher order (O(t⁵)/O(t⁷)) in the full Dynkin series expansion. See extended Dynkin/BCH analysis and code verification to O(t⁷) in the repository.
+
+In 3 real dimensions, the only simple Lie algebras are so(3) and sl(2,ℝ); unitarity (compact type) selects so(3) ≅ su(2) in our conventions. Since "The Source is Common" requires all structure to trace to a single origin, the Lie algebra must be simple (not a direct sum) and compact (from unitarity). Together with the BCH constraints, this uniquely selects su(2) as the 3-dimensional Lie algebra.
+
+**Reference:** Hall, *Lie Groups, Lie Algebras, and Representations* (2nd ed.), Chapter 5.
+
+### 2.5 Simplicity and Compactness Constraints
+
+Since "The Source is Common" requires all structure to trace to a single origin, the Lie subalgebra L generated by X and Y must be:
+
+1. **Simple**: Contains no proper nontrivial ideals (excludes direct sums like su(2)⊕su(2))
+
+2. **Compact type**: From unitarity (excludes non-compact like sl(2,ℝ))
+
+3. **Minimally dimensional**: dim(L) = 3 (traceable to 1 DOF chiral seed)
+
+Among all simple compact Lie algebras satisfying the BCH constraints from Lemma BU, we select the minimal one (dimension 3), which is su(2). This constraint is essential for uniqueness; without it, multiple dimensions could satisfy BCH constraints.
+
 ## 3. Lemma 1: Rotational Degrees of Freedom (UNA)
 
 **Lemma 1.1 (Three Rotational Generators):** Under UNA, the gyroautomorphism group requires exactly three independent generators.
@@ -68,11 +129,11 @@ This constraint is exact and non-negotiable.
 
 *Step 1: Activation of right gyration*
 
-By CS1 and CS2, at the CS state:
+By the foundational assumption (CS), at the CS state:
 - [R]S ↔ S (right transition preserves S)
 - ¬([L]S ↔ S) (left transition alters S)
 
-This establishes rgyr = id and lgyr ≠ id at the horizon constant. At UNA, theorem ⊢ ¬□U forces [L]S ≠ [R]S, meaning right gyration must activate beyond the horizon: rgyr ≠ id.
+This establishes rgyr = id and lgyr ≠ id at the horizon constant. At UNA, Lemma UNA (¬□E) forces [L]S ≠ [R]S, meaning right gyration must activate beyond the horizon: rgyr ≠ id.
 
 *Step 2: Gyroautomorphism constraint*
 
@@ -103,7 +164,7 @@ is SU(2), which has exactly three generators (the Pauli matrices σ₁, σ₂, �
 
 *Step 5: Uniqueness*
 
-The isomorphism SU(2) ≅ Spin(3) is the unique double cover of SO(3), the rotation group in three dimensions. The Lie algebra su(2) has dimension 3, corresponding to three independent generators. This is minimal: any proper subgroup would be abelian (e.g., U(1)), violating the non-trivial action requirement. Any larger group would require additional generators, violating minimality and the constraint that all structure derives from the single chiral seed at CS.
+The isomorphism SU(2) ≅ Spin(3) is the unique double cover of SO(3), the rotation group in three dimensions. The Lie algebra su(2) has dimension 3, corresponding to three independent generators. This is minimal: any proper subgroup would be abelian (e.g., U(1)), violating the non-trivial action requirement. Any larger group would require additional generators, violating minimality and the constraint that all structure traces to the single chiral seed at CS.
 
 **Conclusion:** UNA requires exactly 3 rotational degrees of freedom. □
 
@@ -113,7 +174,7 @@ The isomorphism SU(2) ≅ Spin(3) is the unique double cover of SO(3), the rotat
 
 For n = 2: The rotation group is SO(2) ≅ U(1), which is abelian. This has only one generator, insufficient to realize the non-trivial gyrocommutative law required by UNA with memory of CS chirality. Furthermore, U(1) cannot exhibit the depth-two non-commutation required by CS3 and CS5.
 
-For n = 4: The rotation group SO(4) has Lie algebra so(4) of dimension 6. However, SO(4) ≅ (SU(2) × SU(2))/Z₂ requires six generators, not three. This violates the minimality constraint that all structure derives from the single chiral seed (1 DOF) established at CS. The additional generators would constitute independent structure not traceable to the CS axiom.
+For n = 4: The rotation group SO(4) has Lie algebra so(4) of dimension 6. However, SO(4) ≅ (SU(2) × SU(2))/Z₂ requires six generators, not three. This violates the minimality constraint that all structure traces to the CS chiral seed (1 DOF) established at CS. The additional generators would constitute independent structure not traceable to the CS axiom.
 
 For n ≥ 5: The dimension of so(n) is n(n-1)/2, which exceeds 3 for n ≥ 5, similarly violating minimality.
 
@@ -127,7 +188,7 @@ For n ≥ 5: The dimension of so(n) is n(n-1)/2, which exceeds 3 for n ≥ 5, si
 
 *Step 1: Bi-gyrogroup activation*
 
-At ONA, theorem ⊢ ¬□O establishes that opposition is non-absolute. This forces both left and right gyroassociative laws to operate with maximal non-associativity at modal depth two. The bi-gyrogroup structure becomes fully active.
+At ONA, Lemma ONA (¬□¬E) establishes that opposition is non-absolute. This forces both left and right gyroassociative laws to operate with maximal non-associativity at modal depth two. The bi-gyrogroup structure becomes fully active.
 
 *Step 2: Consistency requirement*
 
@@ -175,7 +236,7 @@ The semidirect product structure is minimal: fewer translational parameters woul
 
 ## 5. Theorem: Non-Existence for n ≠ 3
 
-**Theorem 5.1 (Unique Dimensionality):** The axioms CS1–CS7 are satisfiable if and only if n = 3 spatial dimensions.
+**Theorem 5.1 (Unique Dimensionality):** The foundational assumption and lemmas are satisfiable if and only if n = 3 spatial dimensions.
 
 **Proof:**
 
@@ -199,7 +260,7 @@ For our specific angles (π/2, π/4, π/4), achieving δ = 0 in 2D would require
 - The bi-gyroassociative laws (ONA)  
 - The closure constraint (BU)
 
-The modal depth four requirement (CS7: □B) cannot be satisfied in 2D with non-trivial gyrations.
+The modal depth four requirement (Lemma BU: □B) cannot be satisfied in 2D with non-trivial gyrations.
 
 **Conclusion:** n = 2 fails. □
 
@@ -209,16 +270,23 @@ The modal depth four requirement (CS7: □B) cannot be satisfied in 2D with non-
 
 As shown in Lemma 1.2, n = 4 admits SO(4) with Lie algebra dimension 6. This requires six generators, but only three can be traced to the CS chiral seed (1 DOF). The additional three generators would be independent structure, violating the axiom that "The Source is Common."
 
-*Obstruction 2: Gyrotriangle non-closure*
+*BCH Analysis:*
 
-The gyrotriangle defect formula δ = π - (π/2 + π/4 + π/4) = 0 achieves exact closure in 3D hyperbolic geometry. In n ≥ 4 dimensions, the generalized defect formula for hyperbolic n-simplices does not reduce to this form.
+The generators X and Y must span a 3-dimensional Lie algebra (from BCH O(t³) constraints). However, so(4) = su(2)⊕su(2) decomposes as two independent 3-dimensional factors.
 
-Specifically, the Schläfli formula for hyperbolic simplices shows that angle sums in higher dimensions obey different constraints. The specific angles (π/2, π/4, π/4) cannot achieve δ = 0 in n = 4 while maintaining:
-- Non-trivial left gyration (CS2)
-- Depth-two non-commutation (CS3, CS5)
-- Depth-four commutation (CS7)
+If we restrict to one su(2) factor, we obtain n=3 (contradiction).
 
-*Obstruction 3: Bridge axiom violation*
+If we activate both factors, we violate simplicity (two independent sources, not a common source).
+
+The BCH formula forces Δ = 0, which requires:
+
+```
+[X,[X,Y]] + [Y,[X,Y]] must lie in span{X,Y,[X,Y]}
+```
+
+In so(4) with two factors, this constraint cannot be satisfied by generators X,Y spanning both factors without creating independent structure untraceable to the CS chiral seed.
+
+*Obstruction 2: Bridge axiom violation*
 
 The bridge axioms CS4 and CS6 connect unity, opposition, and two-step equality. In n = 4, the additional generators would create independent paths through the modal space. This would allow configurations where:
 - □U could hold without forcing □E (violating the CS4 constraint structure)
@@ -238,9 +306,9 @@ We have shown through Lemmas 1 and 2 that n = 3 satisfies all requirements:
 - Exactly 3 rotational generators from SU(2) (Lemma 1.1)
 - Exactly 3 translational parameters from R³ (Lemma 2.1)
 - Gyrotriangle closure: δ = π - (π/2 + π/4 + π/4) = 0 (verified)
-- Modal depth constraints: CS1–CS7 all satisfied (verified in main CGM document)
+- Modal depth constraints: The foundational assumption and lemmas all satisfied (verified in main CGM document)
 
-**Final Conclusion:** The axioms CS1–CS7 uniquely determine n = 3 spatial dimensions with d = 6 degrees of freedom. □
+**Final Conclusion:** The foundational assumption and lemmas uniquely determine n = 3 spatial dimensions with d = 6 degrees of freedom. □
 
 ## 6. Corollary: Emergence Sequence
 
@@ -250,20 +318,20 @@ We have shown through Lemmas 1 and 2 that n = 3 satisfies all requirements:
 
 From the axiom structure:
 
-**CS (1 DOF):** CS1 and CS2 establish rgyr = id and lgyr ≠ id at the horizon. This asymmetry constitutes exactly 1 degree of freedom (directional distinction). This is the chiral seed.
+**CS (1 DOF):** The foundational assumption (CS) establishes rgyr = id and lgyr ≠ id at the horizon. This asymmetry constitutes exactly 1 degree of freedom (directional distinction). This is the chiral seed.
 
-**UNA (3 DOF):** Theorem UNA (⊢ ¬□U) forces rgyr ≠ id. By Lemma 1.1, this requires exactly 3 generators. Total: 3 degrees of freedom (all rotational).
+**UNA (3 DOF):** Lemma UNA (¬□E) forces rgyr ≠ id. By Lemma 1.1, this requires exactly 3 generators. Total: 3 degrees of freedom (all rotational).
 
-**ONA (6 DOF):** Theorem ONA (⊢ ¬□O) forces bi-gyrogroup structure. By Lemma 2.1, this requires exactly 3 translational parameters. Total: 3 + 3 = 6 degrees of freedom.
+**ONA (6 DOF):** Lemma ONA (¬□¬E) forces bi-gyrogroup structure. By Lemma 2.1, this requires exactly 3 translational parameters. Total: 3 + 3 = 6 degrees of freedom.
 
-**BU (6 DOF closed):** Theorem BU (⊢ □B) forces both gyrations to achieve commutative closure at modal depth four. The 6 degrees of freedom remain but become coordinated (no longer independently variable). The system retains complete structural memory while achieving closure.
+**BU (6 DOF closed):** Lemma BU (□B) forces both gyrations to achieve commutative closure at modal depth four. The 6 degrees of freedom remain but become coordinated (no longer independently variable). The system retains complete structural memory while achieving closure.
 
 The progression is unique because:
-- Each stage follows necessarily from the previous via the axioms
-- The bridge axioms CS4 and CS6 prevent alternative pathways
+- Each stage follows necessarily from the previous via the foundational assumption and lemmas
+- The lemmas prevent alternative pathways
 - The closure constraint δ = 0 uniquely determines the angles (π/2, π/4, π/4)
 
-**Conclusion:** The DOF progression 1 → 3 → 6 → 6(closed) is uniquely determined by CS1–CS7. □
+**Conclusion:** The DOF progression 1 → 3 → 6 → 6(closed) is uniquely determined by the foundational assumption and lemmas. □
 
 ## 7. Explicit Construction
 
@@ -298,9 +366,9 @@ We verify that n = 3 satisfies all modal depth constraints:
 
 **Depth one (UNA):** With SU(2) active, [L]S ≠ [R]S is satisfied because the left-initiated path differs from the right path due to CS chirality.
 
-**Depth two (CS3, CS5):** The non-commutativity [L][R]S ≠ [R][L]S is realized by the gyration gyr[a,b] being non-trivial in SU(2). However, this non-commutativity is not absolute (both CS3: ¬□E and CS5: ¬□¬E hold) because the gyration can vary depending on the path.
+**Depth two (Lemmas UNA, ONA):** The non-commutativity [L][R]S ≠ [R][L]S is realized by the gyration gyr[a,b] being non-trivial in SU(2). However, this non-commutativity is not absolute (both Lemma UNA: ¬□E and Lemma ONA: ¬□¬E hold) because the gyration can vary depending on the path.
 
-**Depth four (CS7):** The commutation [L][R][L][R]S ↔ [R][L][R][L]S is achieved at BU through the closure of both gyrations. This is absolute (□B holds) because the four-step operation exhausts all non-trivial gyration, returning to effective identity.
+**Depth four (Lemma BU):** The commutation [L][R][L][R]S ↔ [R][L][R][L]S is achieved at BU through the closure of both gyrations. This is absolute (□B holds) because the four-step operation exhausts all non-trivial gyration, returning to effective identity.
 
 These conditions can be satisfied simultaneously only with the SU(2) ⋉ R³ structure in n = 3.
 
@@ -326,11 +394,11 @@ The n = 3 result is consistent with:
 - SE(3) symmetry of Euclidean space
 - SU(2) structure of spin and angular momentum
 
-The derivation shows that these features are not contingent but necessary consequences of the CS axioms.
+The characterization shows that these features are not contingent but necessary consequences of the foundational assumption and lemmas.
 
 ## 11. Conclusion
 
-We have proven that the CGM axioms CS1–CS7 uniquely determine:
+We have proven that the CGM foundational assumption and lemmas uniquely determine:
 1. Exactly three spatial dimensions (Theorem 5.1)
 2. Exactly six degrees of freedom (3 rotational + 3 translational) (Corollary 6.1)
 3. The unique progression 1 → 3 → 6 → 6(closed) (Corollary 6.1)

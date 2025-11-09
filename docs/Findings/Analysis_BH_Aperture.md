@@ -4,13 +4,13 @@
 
 ## Abstract
 
-We present a systematic investigation of black hole thermodynamics within the Common Governance Model (CGM) framework, which introduces a geometric aperture parameter m_p = 1/(2√(2π)) ≈ 0.19947 derived from first principles. This parameter modifies the standard Bekenstein-Hawking relations through three scaling laws: S_CGM = S_BH(1 + m_p), T_CGM = T_H/(1 + m_p), and τ_CGM = τ_std(1 + m_p)^4. Our analysis spans 10 orders of magnitude in black hole mass, from Planck-scale to supermassive black holes, incorporating species-resolved emission using recent greybody factors. The resulting 19.947% entropy increase and 16.63% temperature decrease align with independent calculations from area quantization and f(R) gravity studies. We find that primordial black holes evaporating today have masses reduced to 1.357 × 10^11 kg, while detection prospects for Hawking radiation remain far below current experimental thresholds. The framework maintains exact thermodynamic consistency and energy conservation while providing testable predictions for future observations.
+We present a systematic investigation of black hole thermodynamics within the Common Governance Model (CGM) framework, which introduces a geometric aperture parameter  m_a = 1/(2√(2π)) ≈ 0.19947 derived from first principles. This parameter modifies the standard Bekenstein-Hawking relations through three scaling laws: S_CGM = S_BH(1 + m_a), T_CGM = T_H/(1 + m_a), and τ_CGM = τ_std(1 + m_a)^4. Our analysis spans 10 orders of magnitude in black hole mass, from Planck-scale to supermassive black holes, incorporating species-resolved emission using recent greybody factors. The resulting 19.947% entropy increase and 16.63% temperature decrease align with independent calculations from area quantization and f(R) gravity studies. We find that primordial black holes evaporating today have masses reduced to 1.357 × 10^11 kg, while detection prospects for Hawking radiation remain far below current experimental thresholds. The framework maintains exact thermodynamic consistency and energy conservation while providing testable predictions for future observations.
 
 ## 1. Introduction
 
 The thermodynamics of black holes represents a crucial intersection between general relativity, quantum mechanics, and statistical physics. Since the foundational work establishing black hole entropy proportional to horizon area and temperature inversely proportional to mass, numerous approaches have sought corrections arising from quantum gravitational effects. These corrections typically manifest as modifications to the Bekenstein-Hawking formulae, with various theoretical frameworks predicting adjustments ranging from logarithmic corrections to multiplicative factors.
 
-The Common Governance Model (CGM) provides a geometric framework for understanding physical phenomena through recursive self-reference and structural alignment. Within this framework, the concept of an aperture emerges naturally from the requirement that observational closure must be incomplete to permit observation itself. This aperture, characterized by the parameter m_p = 1/(2√(2π)), represents a fundamental balance: sufficient closure for structural stability (97.93%) with sufficient openness for observation (2.07%).
+The Common Governance Model (CGM) provides a geometric framework for understanding physical phenomena through recursive self-reference and structural alignment. Within this framework, the concept of an aperture emerges naturally from the requirement that observational closure must be incomplete to permit observation itself. This aperture, characterized by the parameter  m_a = 1/(2√(2π)), represents a fundamental balance: sufficient closure for structural stability (97.93%) with sufficient openness for observation (2.07%).
 
 This study applies CGM principles to black hole thermodynamics, deriving modified relations for entropy, temperature, and evaporation time. We implement these modifications computationally across a comprehensive range of black hole masses and compare our results with both standard predictions and recent quantum gravity corrections reported in the literature.
 
@@ -20,7 +20,7 @@ This study applies CGM principles to black hole thermodynamics, deriving modifie
 
 The CGM framework identifies a fundamental geometric parameter:
 
-m_p = 1/(2√(2π)) ≈ 0.199471140201
+ m_a = 1/(2√(2π)) ≈ 0.199471140201
 
 This parameter emerges from the requirement that the complete solid angle 4π steradians necessary for three-dimensional observation must accommodate an aperture preventing total closure. The value derives from geometric principles rather than empirical fitting, specifically from the constraint that recursive operations must achieve closure while maintaining observability.
 
@@ -29,19 +29,19 @@ This parameter emerges from the requirement that the complete solid angle 4π st
 The aperture parameter modifies black hole thermodynamics through three primary relations:
 
 **Entropy Enhancement:**
-S_CGM = S_BH × (1 + m_p)
+S_CGM = S_BH × (1 + m_a)
 
 where S_BH = k_B c^3 A/(4ħG) is the standard Bekenstein-Hawking entropy. This 19.947% increase reflects additional information storage capacity arising from the aperture structure.
 
 **Temperature Reduction:**
-T_CGM = T_H / (1 + m_p)
+T_CGM = T_H / (1 + m_a)
 
 where T_H = ħc^3/(8πGMk_B) is the standard Hawking temperature. The 16.63% decrease maintains the thermodynamic identity TdS = dM.
 
 **Lifetime Extension:**
-τ_CGM = τ_std × (1 + m_p)^4
+τ_CGM = τ_std × (1 + m_a)^4
 
-where τ_std = 5120πG^2M^3/(ħc^4) is the standard evaporation time. The factor of (1 + m_p)^4 arises from the Stefan-Boltzmann scaling with temperature to the fourth power.
+where τ_std = 5120πG^2M^3/(ħc^4) is the standard evaporation time. The factor of (1 + m_a)^4 arises from the Stefan-Boltzmann scaling with temperature to the fourth power.
 
 ### 2.3 Conservation Laws
 
@@ -127,11 +127,11 @@ Current observations cannot distinguish CGM predictions from standard theory due
 
 ### 5.4 Extension to Other Horizons
 
-The framework extends naturally to other horizon types. For Rindler horizons associated with uniform acceleration, CGM predicts a 16.63% reduction in Unruh temperature. For de Sitter horizons, the cosmological horizon entropy increases by the same factor (1 + m_p). These extensions provide additional avenues for testing the framework.
+The framework extends naturally to other horizon types. For Rindler horizons associated with uniform acceleration, CGM predicts a 16.63% reduction in Unruh temperature. For de Sitter horizons, the cosmological horizon entropy increases by the same factor (1 + m_a). These extensions provide additional avenues for testing the framework.
 
 ## 6. Conclusions
 
-The CGM aperture framework provides a geometrically motivated modification to black hole thermodynamics that produces specific, testable predictions. The three scaling laws derived from the single parameter m_p = 1/(2√(2π)) maintain complete thermodynamic consistency while modifying observable quantities in ways that align with independent quantum gravity calculations.
+The CGM aperture framework provides a geometrically motivated modification to black hole thermodynamics that produces specific, testable predictions. The three scaling laws derived from the single parameter  m_a = 1/(2√(2π)) maintain complete thermodynamic consistency while modifying observable quantities in ways that align with independent quantum gravity calculations.
 
 Key findings include:
 1. Universal 19.947% entropy enhancement and 16.63% temperature reduction across all black hole masses
@@ -147,7 +147,7 @@ We acknowledge valuable discussions on the implementation of greybody factors an
 
 ## Appendix A: Fundamental Assumptions
 
-1. **Geometric Origin:** The aperture parameter m_p derives from geometric requirements for observation rather than empirical fitting.
+1. **Geometric Origin:** The aperture parameter  m_a derives from geometric requirements for observation rather than empirical fitting.
 
 2. **Universal Application:** The same scaling laws apply to all black hole types (Schwarzschild, Kerr, Reissner-Nordström) with modifications affecting only thermodynamic quantities, not the background geometry.
 

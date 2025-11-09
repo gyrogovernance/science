@@ -7,7 +7,7 @@ and a single physical anchor. The framework derives energy scales from geometric
 principles without introducing new base units.
 
 Key Features:
-- Dimensionless geometric invariants (Q_G, m_p, stage actions/ratios)
+- Dimensionless geometric invariants (Q_G, m_a, stage actions/ratios)
 - Single anchor approach: choose one physical scale (e.g., E_CS = Planck energy)
 - Optical conjugacy relation for UV/IR energy mapping
 - Polygon recursion for π derivation (pure geometry, no trig)
@@ -135,24 +135,24 @@ class CGMCore:
         return 4*mp.pi
 
     @property
-    def m_p(self) -> Any:
+    def m_a(self) -> Any:
         return mp.mpf(1)/(2*mp.sqrt(2*mp.pi))
 
     @property
     def S_min(self) -> Any:
-        return (mp.pi/2)*self.m_p
+        return (mp.pi/2)*self.m_a
 
     @property
     def S_rec(self) -> Any:
-        return (3*mp.pi/2)*self.m_p
+        return (3*mp.pi/2)*self.m_a
 
     @property
     def S_geo(self) -> Any:
-        return self.m_p * mp.pi * mp.sqrt(3) / 2
+        return self.m_a * mp.pi * mp.sqrt(3) / 2
 
     @property
     def closure_identity(self) -> Any:
-        return self.Q_G * (self.m_p**2)  # = 1/2 (dimensionless)
+        return self.Q_G * (self.m_a**2)  # = 1/2 (dimensionless)
 
 # Stage thresholds/actions/ratios (dimensionless)
 
@@ -162,7 +162,7 @@ def stage_thresholds() -> Dict[str, Any]:
     CS: s_p = π/2
     UNA: u_p = cos(π/4) = 1/√2
     ONA: o_p = π/4
-    BU: m_p = 1/(2√(2π))
+    BU:  m_a = 1/(2√(2π))
     """
     return {
         "CS": mp.pi/2,
@@ -174,14 +174,14 @@ def stage_thresholds() -> Dict[str, Any]:
 def stage_actions(thr: Dict[str, Any]) -> Dict[str, Any]:
     """
     Actions map (dimensionless):
-    S_CS = s_p/m_p; S_UNA = u_p/m_p; S_ONA = o_p/m_p; S_BU = m_p
+    S_CS = s_p/m_a; S_UNA = u_p/m_a; S_ONA = o_p/m_a; S_BU = m_a
     """
-    m_p = thr["BU"]
+     m_a = thr["BU"]
     return {
-        "CS": thr["CS"]/m_p,
-        "UNA": thr["UNA"]/m_p,
-        "ONA": thr["ONA"]/m_p,
-        "BU": m_p
+        "CS": thr["CS"]/m_a,
+        "UNA": thr["UNA"]/m_a,
+        "ONA": thr["ONA"]/m_a,
+        "BU": m_a
     }
 
 def gut_action(actions: Dict[str, Any], eta: float = 1.0) -> Any:
@@ -236,7 +236,7 @@ def magnification_swap(uv: Dict[str, float], ir: Dict[str, float]) -> Dict[str, 
 # OPTIONAL: fine-structure hook (kept; purely dimensionless)
 # ============================================================================
 
-def try_fine_structure(m_p: Any) -> Optional[Dict[str, Any]]:
+def try_fine_structure(m_a: Any) -> Optional[Dict[str, Any]]:
     try:
         # Prefer local package import; fallback to flat files
         try:
@@ -250,10 +250,10 @@ def try_fine_structure(m_p: Any) -> Optional[Dict[str, Any]]:
         tester = TWClosureTester(gyro)
         res = tester.compute_bu_dual_pole_monodromy(verbose=False)
         delta_BU = res["delta_bu"]
-        alpha_pred = (delta_BU**4)/m_p
+        alpha_pred = (delta_BU**4)/m_a
         return {
             "delta_BU": float(delta_BU),
-            "m_p": float(m_p),
+            "m_a": float(m_a),
             "alpha_pred": float(alpha_pred),
         }
     except Exception:
@@ -289,9 +289,9 @@ def print_summary(iterations: List[PolygonIteration],
     # 2) CGM invariants (dimensionless)
     print("\n2) CGM invariants (dimensionless)")
     print(f"   Q_G = 4π = {mp.nstr(core.Q_G,10)}")
-    print(f"   m_p = 1/(2√(2π)) = {mp.nstr(core.m_p,10)}")
-    print(f"   S_min=(π/2)m_p = {mp.nstr(core.S_min,10)} ; S_rec=(3π/2)m_p = {mp.nstr(core.S_rec,10)} ; S_geo= m_p π√3/2 = {mp.nstr(core.S_geo,10)}")
-    print(f"   closure: Q_G·m_p² = {mp.nstr(core.closure_identity,10)} (expected 1/2)")
+    print(f"    m_a = 1/(2√(2π)) = {mp.nstr(core.m_a,10)}")
+    print(f"   S_min=(π/2) m_a = {mp.nstr(core.S_min,10)} ; S_rec=(3π/2) m_a = {mp.nstr(core.S_rec,10)} ; S_geo=  m_a π√3/2 = {mp.nstr(core.S_geo,10)}")
+    print(f"   closure: Q_G·m_a² = {mp.nstr(core.closure_identity,10)} (expected 1/2)")
 
     # 3) Stage actions & ratios (dimensionless)
     print("\n3) Stage actions (dimensionless)")
@@ -335,10 +335,10 @@ def print_summary(iterations: List[PolygonIteration],
         print(f"   swap verified: {swap.get('swap_verified', False)}")
 
     # 7) Optional fine-structure (dimensionless)
-    fs = try_fine_structure(core.m_p)
+    fs = try_fine_structure(core.m_a)
     print("\n7) Fine-structure (optional hook)")
     if fs:
-        print(f"   δ_BU = {fs['delta_BU']:.9f} ; m_p = {fs['m_p']:.9f} ; α_pred = {fs['alpha_pred']:.10f}")
+        print(f"   δ_BU = {fs['delta_BU']:.9f} ;  m_a = {fs['m_a']:.9f} ; α_pred = {fs['alpha_pred']:.10f}")
     else:
         print("   (fine-structure module not available)")
 

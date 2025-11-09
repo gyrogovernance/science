@@ -69,12 +69,12 @@ class CGMEnergyScales:
 
 class CGMGeometry:
     """CGM geometric parameters"""
-    m_p = Decimal('1') / (Decimal('2') * (Decimal('2') * PI).sqrt())
+     m_a = Decimal('1') / (Decimal('2') * (Decimal('2') * PI).sqrt())
     
     @classmethod
     def aperture_factor(cls):
-        """Aperture correction: (1+m_p)^-2"""
-        return Decimal('1') / ((Decimal('1') + cls.m_p)**2)
+        """Aperture correction: (1+m_a)^-2"""
+        return Decimal('1') / ((Decimal('1') + cls.m_a)**2)
 
 def calculate_balance_index(H0_SI, const):
     """Calculate Balance Index B_i = 2Gc/(k_B H₀)"""
@@ -291,7 +291,7 @@ def predict_H0_from_UVIR(const, scales, n_th):
     Predict H0 from micro→macro UV/IR bridge (noncircular)
     H0 = 2c⁵/(G E_anchor) × (E_anchor/E_CS)^n × C_geom
     
-    Uses only {G, c, ħ, E_CS, E_anchor, m_p}, not observed H0
+    Uses only {G, c, ħ, E_CS, E_anchor, m_a}, not observed H0
     """
     GeV_to_J = Decimal('1.602176634e-10')
     E_anchor_J = scales.E_EW * GeV_to_J
@@ -477,9 +477,9 @@ def print_analysis():
     print("PREDICTIVE MODE (Noncircular)")
     print("-" * 80)
     print(f"Theory exponent:                n_th = {float(n_th):.6f} (14/3)")
-    print("Inputs: G, c, ħ, E_CS, E_EW, m_p (no observed H₀)")
+    print("Inputs: G, c, ħ, E_CS, E_EW,  m_a (no observed H₀)")
     print()
-    print(f"With aperture correction (1+m_p)^-2:")
+    print(f"With aperture correction (1+m_a)^-2:")
     print(f"  H₀_pred = {float(pred['H0_pred_aperture']):.6e} s⁻¹")
     print(f"  H₀_obs  = {float(H0_SI):.6e} s⁻¹")
     print(f"  Ratio:    {float(pred['H0_pred_aperture']/H0_SI):.6f}")

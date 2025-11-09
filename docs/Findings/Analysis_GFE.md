@@ -64,7 +64,7 @@ The CMB anisotropies encode the statistical distribution of multiplicity pattern
 
 ## 7. UV/IR Duality and Observational Limits
 
-The universe exhibits UV/IR duality where probing the smallest scales effectively accesses the largest scales. This duality emerges from CGM's closure condition: the amplitude constraint m_p = 1/(2√(2π)) links the minimal observable scale to the maximal coherent radius.
+The universe exhibits UV/IR duality where probing the smallest scales effectively accesses the largest scales. This duality emerges from CGM's closure condition: the amplitude constraint  m_a = 1/(2√(2π)) links the minimal observable scale to the maximal coherent radius.
 
 Approaching microscopic limits corresponds to approaching the CS state with its single degree of freedom. Approaching cosmic limits corresponds to approaching the BU state with its six stabilized degrees of freedom. The two limits meet through the toroidal topology of CGM's closure, creating an optical illusion where extreme UV and extreme IR observations converge.
 
@@ -149,13 +149,13 @@ The key insight is that observational limitations are not mere technical constra
 
 The quantum gravity invariant Q_G = 4π steradians represents more than a geometric constant; it establishes the fundamental architecture of observational coherence. This complete solid angle requirement creates a natural hierarchy of partial observations, each characterized by specific fractional coverage of the full 4π sphere.
 
-The coherence radius R_coh emerges from the interplay between Q_G and the aperture parameter m_p through the fundamental constraint:
+The coherence radius R_coh emerges from the interplay between Q_G and the aperture parameter  m_a through the fundamental constraint:
 
-Q_G × m_p² = 1/2
+Q_G × m_a² = 1/2
 
-This yields m_p² = 1/(8π), establishing that only 1/(8π) ≈ 3.98% of the full solid angle can be coherently observed at any instant. The observable fraction further reduces to 2.07% when accounting for the bidirectional nature of observation (incoming and outgoing light paths).
+This yields m_a² = 1/(8π), establishing that only 1/(8π) ≈ 3.98% of the full solid angle can be coherently observed at any instant. The observable fraction further reduces to 2.07% when accounting for the bidirectional nature of observation (incoming and outgoing light paths).
 
-**IMPORTANT CLARIFICATION**: The 2.07% mentioned here is NOT the same as the structural aperture fraction Δ = 1 - δ_BU/m_p ≈ 0.0207 used in CGM calculations. This 2.07% is a different concept related to coherent observation, while Δ is the structural aperture used in balance calculations. Do not confuse these two different aperture concepts.
+**IMPORTANT CLARIFICATION**: The 2.07% mentioned here is NOT the same as the structural aperture fraction Δ = 1 - δ_BU/ m_a ≈ 0.0207 used in CGM calculations. This 2.07% is a different concept related to coherent observation, while Δ is the structural aperture used in balance calculations. Do not confuse these two different aperture concepts.
 
 This geometric limitation manifests at all scales:
 - Quantum: Uncertainty relations from incomplete angular coverage
@@ -211,7 +211,7 @@ T_CMB = (ℏc/k_B) × (1/R_coh) × f(Q_G)
 
 where f(Q_G) = 1/(4π) accounts for solid angle averaging. This yields:
 
-T_CMB = 2.725 K × [1 + m_p × cos(δ_multipole)]
+T_CMB = 2.725 K × [1 +  m_a × cos(δ_multipole)]
 
 The term in brackets creates the observed anisotropies.
 
@@ -232,7 +232,7 @@ CMB polarization patterns encode the chirality structure:
 - TE correlation: Phase relationship between normal and inverted images
 
 The predicted B-mode amplitude from primordial parity violation:
-|B|/|E| = m_p = 0.199
+|B|/|E| =  m_a = 0.199
 
 This awaits confirmation from next-generation CMB experiments.
 
@@ -272,7 +272,7 @@ No horizon problem exists in a finite, closed universe viewed through multiplici
 
 ### 16.2 The Flatness Problem
 
-The universe appears flat because we observe from within a toroidal structure where local geometry is Euclidean. The precise balance Q_G × m_p² = 1/2 ensures criticality without fine-tuning.
+The universe appears flat because we observe from within a toroidal structure where local geometry is Euclidean. The precise balance Q_G × m_a² = 1/2 ensures criticality without fine-tuning.
 
 ### 16.3 Dark Energy as Geometric Effect
 
@@ -311,7 +311,7 @@ Maximum deviation: 0.00%, confirming exact geometric relationship.
 
 ### 17.3 Entropy Enhancement
 
-The CGM entropy enhancement factor (1+m_p)² = 1.439 explains the 20% excess in horizon entropy over standard calculations. This results from the aperture enabling observation despite being within the horizon.
+The CGM entropy enhancement factor (1+m_a)² = 1.439 explains the 20% excess in horizon entropy over standard calculations. This results from the aperture enabling observation despite being within the horizon.
 
 ## 18. Predictions for Next-Generation Experiments
 

@@ -9,7 +9,7 @@ systematically map to the largest physical scales through exact geometric relati
 Key tests include: exact optical conjugacy E_UV × E_IR = K across all CGM energy stages, 
 preservation of Schwarzschild radius and entropy products as geometric invariants, 
 verification that the universe sits precisely on the Schwarzschild threshold (r_s = R_H), 
-and demonstration that the aperture parameter m_p provides consistent thermodynamic 
+and demonstration that the aperture parameter  m_a provides consistent thermodynamic 
 corrections while maintaining observational completeness through Q_G = 4π.
 
 CRITICAL INSIGHT: Q_G = 4π steradians IS quantum gravity itself - the complete 
@@ -43,7 +43,7 @@ EV_J = 1.602_176_634e-19  # J per eV
 GEV_J = EV_J * 1e9  # J per GeV
 
 # CGM fundamental parameters
-M_P = 1.0 / (2.0 * math.sqrt(2.0 * math.pi))  # Aperture parameter ≈ 0.19947
+ m_a = 1.0 / (2.0 * math.sqrt(2.0 * math.pi))  # Aperture parameter ≈ 0.19947
 Q_G = 4.0 * math.pi  # Complete solid angle (steradians)
 
 # Energy scales from CGM Energy Analysis (GeV)
@@ -67,14 +67,14 @@ K_CCBH = 3.0         # CCBH coupling (Croker et al. 2021)
 
 def verify_cgm_identities():
     """Verify fundamental CGM geometric identities."""
-    identity_1 = Q_G * M_P**2  # Should equal 0.5
-    identity_2 = M_P * math.sqrt(2 * Q_G)  # Should equal 1
+    identity_1 = Q_G * m_a**2  # Should equal 0.5
+    identity_2 =  m_a * math.sqrt(2 * Q_G)  # Should equal 1
     
     return {
         'Q_G_mp_squared': identity_1,
         'aperture_identity': identity_2,
         'Q_G': Q_G,
-        'm_p': M_P
+        'm_a': m_a
     }
 
 
@@ -157,8 +157,8 @@ def analyze_universe_as_blackhole(H0, H0_err, label):
     S_dS_lambda = S_dS / OMEGA_L  # In k_B units
     
     # CGM corrections
-    S_dS_CGM = S_dS * (1 + M_P)
-    S_dS_lambda_CGM = S_dS_lambda * (1 + M_P)
+    S_dS_CGM = S_dS * (1 + m_a)
+    S_dS_lambda_CGM = S_dS_lambda * (1 + m_a)
     
     return {
         'label': label,
@@ -183,14 +183,14 @@ def compute_entropy_budget():
     # Use Planck H0 for entropy calculations
     S_dS = math.pi * (C**5) / (G * HBAR * H0_PLANCK**2)  # k_B units
     S_dS_lambda = S_dS / OMEGA_L  # k_B units
-    S_dS_CGM = S_dS * (1 + M_P)
-    S_dS_lambda_CGM = S_dS_lambda * (1 + M_P)
+    S_dS_CGM = S_dS * (1 + m_a)
+    S_dS_lambda_CGM = S_dS_lambda * (1 + m_a)
     
     # SH0ES entropy calculations
     S_dS_shoes = math.pi * (C**5) / (G * HBAR * H0_SHOES**2)  # k_B units
     S_dS_lambda_shoes = S_dS_shoes / OMEGA_L  # k_B units
-    S_dS_CGM_shoes = S_dS_shoes * (1 + M_P)
-    S_dS_lambda_CGM_shoes = S_dS_lambda_shoes * (1 + M_P)
+    S_dS_CGM_shoes = S_dS_shoes * (1 + m_a)
+    S_dS_lambda_CGM_shoes = S_dS_lambda_shoes * (1 + m_a)
     
     return {
         'S_obs_total': S_obs_total,
@@ -259,7 +259,7 @@ def compute_dual_invariants(K_J2, energies_uv, energies_ir):
         S_ir = area_ir * (C**3) / (4 * G * HBAR)  # Already in k_B units
         
         entropy_products_GR[stage] = S_uv * S_ir
-        entropy_products_CGM[stage] = entropy_products_GR[stage] * (1 + M_P)**2
+        entropy_products_CGM[stage] = entropy_products_GR[stage] * (1 + m_a)**2
     
     # Theoretical dual length
     L_dual = math.sqrt(list(r_s_products.values())[0])
@@ -396,9 +396,9 @@ def main():
     identities = verify_cgm_identities()
     print(f"\nCGM Fundamental Identities:")
     print(f"  Quantum Gravity: Q_G = {identities['Q_G']:.6f} steradians (complete observational solid angle)")
-    print(f"  Aperture parameter: m_p = {identities['m_p']:.6f}")
-    print(f"  Q_G × m_p² = {identities['Q_G_mp_squared']:.10f} (exact: 0.5)")
-    print(f"  m_p × √(2Q_G) = {identities['aperture_identity']:.10f} (exact: 1.0)")
+    print(f"  Aperture parameter:  m_a = {identities['m_a']:.6f}")
+    print(f"  Q_G × m_a² = {identities['Q_G_mp_squared']:.10f} (exact: 0.5)")
+    print(f"   m_a × √(2Q_G) = {identities['aperture_identity']:.10f} (exact: 1.0)")
     print(f"  Note: Q_G = 4π defines quantum gravity geometrically, not as a quantized field")
     
     # Optical invariant
@@ -429,7 +429,7 @@ def main():
     print(f"\nEntropy Products:")
     S_prod_GR = list(dual_invariants['entropy_products_GR'].values())[0]
     S_prod_CGM = list(dual_invariants['entropy_products_CGM'].values())[0]
-    ratio_expected = (1 + M_P)**2
+    ratio_expected = (1 + m_a)**2
     print(f"  GR entropy product (k_B units): {S_prod_GR:.6e}")
     print(f"  CGM entropy product (k_B units): {S_prod_CGM:.6e}")
     print(f"  CGM enhancement factor: {S_prod_CGM/S_prod_GR:.6f} (exact: {ratio_expected:.6f})")
@@ -514,11 +514,11 @@ def main():
     print(f"  CCBH/observed ratio: {ccbh['ratio_ccbh_obs']:.3e} (short by ~{ccbh['deficit_factor']:.0e}×)")
     print(f"  CCBH provides directionally consistent mechanism but quantitatively insufficient")
     
-    # CGM aperture transmission (derived from ρ = δ_BU/m_p)
-    # Using δ_BU/m_p = 0.9793, so transmission = 1 - 0.9793 = 0.0207 = 2.07%
+    # CGM aperture transmission (derived from ρ = δ_BU/m_a)
+    # Using δ_BU/ m_a = 0.9793, so transmission = 1 - 0.9793 = 0.0207 = 2.07%
     aperture_transmission = 0.0207  # 2.07% transmission
     print(f"\nCGM Aperture Properties:")
-    print(f"  Aperture transmission: {aperture_transmission*100:.2f}% (derived from ρ = δ_BU/m_p)")
+    print(f"  Aperture transmission: {aperture_transmission*100:.2f}% (derived from ρ = δ_BU/m_a)")
     print(f"  Closure completeness: {(1-aperture_transmission)*100:.2f}%")
     print(f"  Balance enables existence: sufficient structure + sufficient observation")
     
@@ -559,7 +559,7 @@ def h0_tension_void_aperture():
     """H0 tension analysis: void + aperture decomposition."""
     # Observed ratio
     ratio_obs = H0_SHOES / H0_PLANCK  # ~1.0858
-    # Aperture transmission (from δ_BU/m_p)
+    # Aperture transmission (from δ_BU/m_a)
     aperture = 0.0207  # 2.07%
     # Predict ratio from a 20% local void (linear LTB: δH/H ≈ -(1/3) δrho/rho)
     delta_void = -0.20

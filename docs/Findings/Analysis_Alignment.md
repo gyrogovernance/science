@@ -46,9 +46,9 @@ The commutator [X, P] = iK_QG encodes the geometric cost of switching between th
 
 The fundamental geometric constraint governing alignment is:
 
-Q_G × m_p² = 1/2
+Q_G × m_a² = 1/2
 
-where Q_G = 4π and m_p = 1/(2√(2π)) ≈ 0.199471 is the aperture parameter derived from CGM stage thresholds (detailed in the Core Theory documentation). This exact relationship yields:
+where Q_G = 4π and  m_a = 1/(2√(2π)) ≈ 0.199471 is the aperture parameter derived from CGM stage thresholds (detailed in the Core Theory documentation). This exact relationship yields:
 
 97.93% structural closure providing stability
 2.07% dynamic aperture enabling interaction and observation
@@ -64,13 +64,13 @@ The value emerges from geometric necessity rather than evolutionary accident, re
 
 The quantum geometric constant K_QG derives directly from:
 
-K_QG = Q_G × (π/2) × m_p = 4π × (π/2) × 1/(2√(2π)) = π²/√(2π) ≈ 3.937
+K_QG = Q_G × (π/2) ×  m_a = 4π × (π/2) × 1/(2√(2π)) = π²/√(2π) ≈ 3.937
 
 This value appears in the commutator [X, P] = iK_QG, making spacetime coordinates operator-valued rather than classical variables.
 
 The fine-structure constant emerges from geometric monodromy:
 
-α = δ_BU⁴/m_p = (0.195342)⁴/0.199471 = 0.007299734
+α = δ_BU⁴/ m_a = (0.195342)⁴/0.199471 = 0.007299734
 
 where δ_BU represents the BU monodromy encoding angular memory. This value differs from the measured fine-structure constant by only 0.0316%, suggesting electromagnetic coupling strength derives from geometric necessity.
 
@@ -108,7 +108,7 @@ Experimental verification could involve:
 - High-resolution atomic imaging confirming alignment patterns
 
 The framework is falsifiable if:
-- Q_G × m_p² deviates significantly from 1/2
+- Q_G × m_a² deviates significantly from 1/2
 - K_QG differs from 3.937 in quantum experiments
 - The 97.93/2.07 balance is violated in stable systems
 - Fine-structure constant measurements diverge from prediction

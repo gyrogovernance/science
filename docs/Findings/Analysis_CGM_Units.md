@@ -56,7 +56,7 @@ Stage 3: ONA (Opposition Non-Absolute)
 - Both gyrations reach maximum non-identity
 
 Stage 4: BU (Balance Universal)
-- Threshold: m_p = 1/(2√(2π)) ≈ 0.199471
+- Threshold:  m_a = 1/(2√(2π)) ≈ 0.199471
 - Meaning: Aperture parameter ensuring observational coherence
 - Both gyrations return to identity with complete memory preserved
 
@@ -73,12 +73,12 @@ This exact closure was verified through exhaustive numerical analysis, finding t
 
 From the geometric thresholds, we construct dimensionless stage actions by normalizing to the BU aperture parameter:
 
-S_CS = s_p / m_p = (π/2) / 0.199471 ≈ 7.875
-S_UNA = u_p / m_p = (1/√2) / 0.199471 ≈ 3.545  
-S_ONA = o_p / m_p = (π/4) / 0.199471 ≈ 3.937
-S_BU = m_p ≈ 0.199471
+S_CS = s_p /  m_a = (π/2) / 0.199471 ≈ 7.875
+S_UNA = u_p /  m_a = (1/√2) / 0.199471 ≈ 3.545  
+S_ONA = o_p /  m_a = (π/4) / 0.199471 ≈ 3.937
+S_BU =  m_a ≈ 0.199471
 
-The BU stage serves as a geometric fixed point where S_BU = m_p, representing the self-referential balance point where observation becomes self-sustaining.
+The BU stage serves as a geometric fixed point where S_BU = m_a, representing the self-referential balance point where observation becomes self-sustaining.
 
 ### 3.2 Energy Scale Relationships
 
@@ -86,7 +86,7 @@ The framework yields pure geometric energy ratios independent of unit choices:
 
 E_UNA/E_CS = u_p/s_p = (1/√2)/(π/2) = 2/(π√2) ≈ 0.450
 E_ONA/E_CS = o_p/s_p = (π/4)/(π/2) = 1/2 = 0.500  
-E_BU/E_CS = m_p/s_p ≈ 0.025330
+E_BU/E_CS = m_a/s_p ≈ 0.025330
 
 These ratios express the geometric requirements for maintaining observational coherence across different scales of self-reference.
 
@@ -138,17 +138,17 @@ Q_G = 4π enforces a non-zero commutator:
 [X, P] = i K_QG
 
 with
-K_QG = S_CS / 2 = (π / 4) / m_p.
+K_QG = S_CS / 2 = (π / 4) / m_a.
 
-Using the aperture constraint Q_G m_p^2 = 1/2 (with Q_G = 4π), this is identically
-K_QG = 2π² m_p = π² / √(2π) ≈ 3.937.
+Using the aperture constraint Q_G m_a^2 = 1/2 (with Q_G = 4π), this is identically
+K_QG = 2π²  m_a = π² / √(2π) ≈ 3.937.
 
 This makes spacetime metric components into operators since [g_μν(X), P] ≠ 0. Spacetime cannot have fixed classical values, it becomes intrinsically observer-dependent through the geometric requirements of observation itself.
 
 ### 5.2 The Aperture Constraint
 
 The fundamental balance requirement:
-Q_G × m_p² = 1/2
+Q_G × m_a² = 1/2
 
 This creates exactly 97.93% closure with 2.07% aperture, providing sufficient structure for physical stability while maintaining sufficient openness for observational processes. The half-integer value connects to SU(2) double-cover properties and the fundamental nature of spin-1/2 particles.
 
@@ -165,7 +165,7 @@ Incomplete closure creates monodromy, geometric memory that encodes the complete
 
 From BU dual-pole monodromy through quartic scaling:
 
-α = (δ_BU)^4 / m_p = 0.007299734
+α = (δ_BU)^4 /  m_a = 0.007299734
 
 Compared to CODATA value α = 0.007297353: +0.0316% deviation
 

@@ -44,12 +44,12 @@ The factor 48 is a fundamental geometric quantization unit in the CGM framework,
 ### 2. Particle Physics Predictions
 - **Neutrino masses**: Exact predictions enabled by 48Δ = 1
 - **Gravity hierarchy**: Precise calculations from geometric quantization
-- **Fine-structure constant**: α = δ_BU⁴/m_p (quartic scaling)
+- **Fine-structure constant**: α = δ_BU⁴/ m_a (quartic scaling)
 
 ### 3. Geometric Memory
 - **δ_BU**: BU dual-pole monodromy (measured: 0.195342176580 rad)
-- **ρ = δ_BU/m_p**: Closure fraction (97.9% closure, 2.1% aperture)
-- **Δ = 1 - ρ**: Aperture gap (2.07% of m_p)
+- **ρ = δ_BU/m_a**: Closure fraction (97.9% closure, 2.1% aperture)
+- **Δ = 1 - ρ**: Aperture gap (2.07% of m_a)
 
 ## Theoretical Foundation
 
@@ -105,7 +105,7 @@ The 48° angle introduces intentional geometric aperture:
 ### 2.3 CGM Structural Closure
 
 CGM establishes structural closure with observational aperture:
-- **CGM aperture**: 2.07% (derived from Δ = 1 - δ_BU/m_p)
+- **CGM aperture**: 2.07% (derived from Δ = 1 - δ_BU/m_a)
 - **CGM closure**: 97.93% (complement of aperture)
 - **Physical observation**: Aperture enables measurement while maintaining structure
 

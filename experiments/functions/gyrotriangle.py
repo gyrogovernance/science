@@ -139,7 +139,7 @@ class GyroTriangle:
         A² × (2π)_L × (2π)_R = π/2 ⇒ A = 1/(2√(2π))
 
         Returns:
-            Amplitude threshold m_p = 1/(2√(2π))
+            Amplitude threshold  m_a = 1/(2√(2π))
         """
         return 1.0 / (2.0 * np.sqrt(2.0 * np.pi))
 

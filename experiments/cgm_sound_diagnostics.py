@@ -55,7 +55,7 @@ class CGMAcousticDiagnostics:
         self.holonomy_deficit = 0.863  # rad - persistent invariant
 
         # BU dual-pole monodromy (discovery)
-        self.delta_BU = 0.195  # rad ≈ m_p (97.9% agreement)
+        self.delta_BU = 0.195  # rad ≈  m_a (97.9% agreement)
 
         # Anatomical TW ratio (discovery)
         self.chi_anatomical = 1.169539  # ± 0.246470 (21.1% variation)

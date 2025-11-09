@@ -234,8 +234,8 @@ def main():
     print("-" * 60)
 
     verification = {
-        "Q_G × m_p²": 0.5,
-        "4π × m_p": 2.5066282746310005,
+        "Q_G × m_a²": 0.5,
+        "4π × m_a": 2.5066282746310005,
         "L_horizon": 2.5066282746310005,
         "Relative difference": 0.0,
     }
@@ -276,10 +276,10 @@ def main():
     print("-" * 60)
     print("  Testing the universe's 'native language' in base-12:")
 
-    # Test the mixing angle revelation (m_p ≈ 0.25₁₂ = 1/4)
+    # Test the mixing angle revelation ( m_a ≈ 0.25₁₂ = 1/4)
     mixing_angle = 0.199471
     mixing_duo = decimal_to_duodecimal(mixing_angle)
-    print(f"  Mixing Angle (m_p): {mixing_angle:.6f} → {mixing_duo} (base-12)")
+    print(f"  Mixing Angle (m_a): {mixing_angle:.6f} → {mixing_duo} (base-12)")
     print(f"  Target 1/4 in base-12: 0.3 (exactly!)")
     print(f"  Difference: {mixing_angle:.6f} - 0.25 = {mixing_angle - 0.25:.6f}")
     print()
@@ -331,7 +331,7 @@ def main():
     print("  The Dual Sector makes more sense:")
     print("  • Normal sector: operates in standard scales")
     print("  • Dark sector: operates in base-12 harmonic inversions")
-    print("  • The boundary: m_p ≈ 0.25₁₂ = 1/4 (perfect fraction!)")
+    print("  • The boundary:  m_a ≈ 0.25₁₂ = 1/4 (perfect fraction!)")
     print()
     print("  Ancient civilizations knew this:")
     print("  • Babylonian base-60 = 5×12")

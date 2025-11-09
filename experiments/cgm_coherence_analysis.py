@@ -9,7 +9,7 @@ This analysis explores how the Common Governance Model stages manifest in fundam
 - BU (Balance Universal): Aperture balance enabling observation
 
 The story: CS seeds chirality through L, UNA captures it with rotational symmetry,
-ONA converts it to axial/tileable structure at calculable cost, BU caps it with aperture m_p.
+ONA converts it to axial/tileable structure at calculable cost, BU caps it with aperture m_a.
 """
 
 import math
@@ -28,7 +28,7 @@ class CGMGeometricCoherence:
         self.cs_threshold = math.pi / 2              # π/2 - chirality seed
         self.una_threshold = math.cos(math.pi / 4)   # 1/√2 - orthogonal projection  
         self.ona_threshold = math.pi / 4             # π/4 - diagonal angle
-        self.bu_threshold = 1 / (2 * math.sqrt(2 * math.pi))  # m_p aperture parameter
+        self.bu_threshold = 1 / (2 * math.sqrt(2 * math.pi))  #  m_a aperture parameter
         self.bu_monodromy = 0.19534217658            # δ_BU monodromy angle
         
         # Derived CGM constants
@@ -372,12 +372,12 @@ class CGMGeometricCoherence:
     def calculate_aperture_balance(self) -> Dict[str, float]:
         """BU Aperture Balance: The 97.93%/2.07% Split"""
         
-        # The fundamental balance: Q_G × m_p² = 1/2
+        # The fundamental balance: Q_G × m_a² = 1/2
         q_g = 4 * math.pi  # Complete solid angle
         balance_check = q_g * (self.bu_threshold ** 2)  # Should equal 0.5
         
         # Correct calculation: The aperture creates 2.07% opening
-        # From CGM theory: m_p² = 1/(8π), so 8π × m_p² = 1
+        # From CGM theory: m_a² = 1/(8π), so 8π × m_a² = 1
         # The closure/aperture split comes from the specific geometric construction
         aperture_fraction = 0.0207  # Model constant from CGM (aperture split); not derived in this function
         closure_fraction = 1 - aperture_fraction  # 97.93%
@@ -443,7 +443,7 @@ class CGMGeometricCoherence:
         print(f"   BU (Balance Universal - Aperture):       {self.bu_threshold:.6f} = 1/(2√(2π))")
         print(f"   BU Monodromy δ_BU:                      {self.bu_monodromy:.6f} rad")
         print(f"\n   UNA→ONA Lift:                           {self.una_ona_lift:.6f} = π/4 - 1/√2")
-        print(f"   Quantum Geometric Constant K_QG:         {self.quantum_geometric_constant:.6f} = (π/4)/m_p")
+        print(f"   Quantum Geometric Constant K_QG:         {self.quantum_geometric_constant:.6f} = (π/4)/m_a")
         
         # ===== Stage 2: UNA Analysis =====
         una = self.calculate_una_geometry()
@@ -617,8 +617,8 @@ class CGMGeometricCoherence:
         print("\n12. BU APERTURE BALANCE: THE 97.93%/2.07% SPLIT")
         print("-" * 40)
         print(f"   Quantum Gravity Constant:    Q_G = {aperture['quantum_gravity_qg']:.6f} = 4π")
-        print(f"   Aperture Parameter:          m_p = {aperture['aperture_parameter_mp']:.6f}")
-        print(f"   Balance Verification:        Q_G × m_p² = {aperture['balance_verification']:.6f} = 1/2")
+        print(f"   Aperture Parameter:           m_a = {aperture['aperture_parameter_mp']:.6f}")
+        print(f"   Balance Verification:        Q_G × m_a² = {aperture['balance_verification']:.6f} = 1/2")
         
         print(f"\n   Universal Balance Split:")
         print(f"   • Structural closure:        {aperture['structural_closure_percent']:.2f}%")
@@ -634,7 +634,7 @@ class CGMGeometricCoherence:
         print("   CS seeds chirality through angular momentum L")
         print("   UNA captures it with perfect rotational coherence (circles/spheres)")
         print("   ONA converts it to discrete axial structure (squares/cubes)")
-        print("   BU balances structure vs openness with m_p aperture")
+        print("   BU balances structure vs openness with  m_a aperture")
         
         print(f"\n   The π/4 signature appears as:")
         print(f"   • ONA threshold = π/4")
@@ -669,7 +669,7 @@ class CGMGeometricCoherence:
 
         print(f"\n   Quantum gravity commutator:")
         print(f"   • K_QG theoretical:             {qg_conn['k_qg_theoretical']:.6f} = π²/√(2π)")
-        print(f"   • K_QG empirical:               {qg_conn['k_qg_empirical']:.6f} = (π/4)/m_p")
+        print(f"   • K_QG empirical:               {qg_conn['k_qg_empirical']:.6f} = (π/4)/m_a")
         print(f"   • π² as Q_G × (π/4):            {qg_conn['pi_squared_relation']:.6f} = 4π × π/4")
 
         print(f"\n   Optical conjugacy and gravity dilution:")
@@ -704,7 +704,7 @@ class CGMGeometricCoherence:
         # 3. Gaussian curvature integral for sphere: ∫K dA = 4π (Gauss-Bonnet)
         gauss_bonnet_sphere = q_g
         
-        # 4. Relationship to aperture parameter: Q_G × m_p² = 1/2
+        # 4. Relationship to aperture parameter: Q_G × m_a² = 1/2
         aperture_balance = q_g * (self.bu_threshold ** 2)
         
         # ===== How Q_G appears in the geometric ratios =====
@@ -728,7 +728,7 @@ class CGMGeometricCoherence:
         # ===== Quantum gravity commutator connection =====
         
         # From CGM: [X,P] = iK_QG, where K_QG = π²/√(2π)
-        # But K_QG also = S_CS/2 = (π/4)/m_p ≈ 3.9374
+        # But K_QG also = S_CS/2 = (π/4)/ m_a ≈ 3.9374
         k_qg_theoretical = (math.pi ** 2) / math.sqrt(2 * math.pi)
         k_qg_empirical = self.quantum_geometric_constant
         

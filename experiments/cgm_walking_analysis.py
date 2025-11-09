@@ -25,7 +25,7 @@ class CGMConstants:
     gamma: float = np.pi / 4  # ONA threshold
 
     # Aperture and closure parameters [dimensionless]
-    m_p: float = 1 / (2 * np.sqrt(2 * np.pi))  # ≈ 0.199471
+    m_a: float = 1 / (2 * np.sqrt(2 * np.pi))  # ≈ 0.199471
     Q_G: float = 4 * np.pi  # Survey closure [steradians]
 
     # Derived quantities
@@ -47,7 +47,7 @@ class CGMConstants:
 
     # Derived horizons
     L_horizon: float = np.sqrt(2 * np.pi)  # ≈ 2.5066
-    t_aperture: float = 1 / (2 * np.sqrt(2 * np.pi))  # = m_p
+    t_aperture: float = 1 / (2 * np.sqrt(2 * np.pi))  # = m_a
 
     # Additional constants
     K_QG: float = 4 * np.pi * np.pi / 2 * (1 / (2 * np.sqrt(2 * np.pi)))  # ≈ 3.937
@@ -266,16 +266,16 @@ class CGMWalkingTheory:
     def analyze_horizon_thermodynamics(self) -> Dict:
         """Apply black hole aperture thermodynamics to walking."""
 
-        m_p = self.cgm.m_p
+         m_a = self.cgm.m_a
 
         # From black hole analysis:
-        # S_CGM = S_std × (1 + m_p)
-        # T_CGM = T_std / (1 + m_p)
-        # τ_CGM = τ_std × (1 + m_p)^4
+        # S_CGM = S_std × (1 + m_a)
+        # T_CGM = T_std / (1 + m_a)
+        # τ_CGM = τ_std × (1 + m_a)^4
 
-        entropy_factor = 1 + m_p
-        temp_factor = 1 / (1 + m_p)
-        lifetime_factor = (1 + m_p) ** 4
+        entropy_factor = 1 + m_a
+        temp_factor = 1 / (1 + m_a)
+        lifetime_factor = (1 + m_a) ** 4
 
         # Apply to walking "horizons" (support polygon boundary)
         # When CMP approaches edge, it's like approaching event horizon
@@ -295,14 +295,14 @@ class CGMWalkingTheory:
         recovery_scaling = lifetime_factor
 
         # Information leakage through aperture
-        info_leakage_rate = m_p / (1 + m_p)
+        info_leakage_rate =  m_a / (1 + m_a)
 
-        # Check closure identity: m_p² × Q_G = 0.5
-        closure_identity = m_p**2 * self.cgm.Q_G
+        # Check closure identity: m_a² × Q_G = 0.5
+        closure_identity = m_a**2 * self.cgm.Q_G
         identity_ok = abs(closure_identity - 0.5) < 1e-12
 
         return {
-            "cgm_m_p": m_p,
+            "cgm_m_p": m_a,
             "entropy_increase_factor": entropy_factor,
             "temperature_decrease_factor": temp_factor,
             "lifetime_increase_factor": lifetime_factor,
@@ -362,8 +362,8 @@ class CGMWalkingTheory:
         # CGM prediction: τ = L_horizon/c_CGM = √(2π)/(4π)
         tau_cgm = self.cgm.L_horizon / self.cgm.Q_G
 
-        # Alternative: τ = m_p (aperture time)
-        tau_aperture = self.cgm.m_p
+        # Alternative: τ =  m_a (aperture time)
+        tau_aperture = self.cgm.m_a
 
         # Fix stride time calculation with correct dimensions
         v = self.walking.preferred_speed
@@ -484,8 +484,8 @@ class CGMWalkingTheory:
         H_max = np.log2(3)  # three states
 
         # Relate to CGM aperture
-        H_cgm = -self.cgm.m_p * np.log2(self.cgm.m_p) - (1 - self.cgm.m_p) * np.log2(
-            1 - self.cgm.m_p
+        H_cgm = -self.cgm.m_a * np.log2(self.cgm.m_a) - (1 - self.cgm.m_a) * np.log2(
+            1 - self.cgm.m_a
         )
 
         return {
@@ -543,7 +543,7 @@ class CGMWalkingTheory:
 
         # Compare to CGM theoretical optimum
         cgm_optimum = np.sqrt(
-            0.5 * self.cgm.m_p
+            0.5 * self.cgm.m_a
         )  # geometric mean of 50% compression and aperture
 
         return {
@@ -842,7 +842,7 @@ def run_complete_analysis():
     # Display CGM constants
     cgm = analyzer.cgm
     print(f"\nCGM FUNDAMENTAL CONSTANTS:")
-    print(f"  m_p (aperture): {cgm.m_p:.6f} ({cgm.aperture_percent:.2f}%)")
+    print(f"   m_a (aperture): {cgm.m_a:.6f} ({cgm.aperture_percent:.2f}%)")
     print(f"  Q_G (solid angle): {cgm.Q_G:.4f} steradians")
     print(f"  delta_BU (monodromy): {cgm.delta_BU:.6f} radians")
     print(f"  sqrt3 ratio: {cgm.sqrt3_ratio:.4f}")
@@ -1018,7 +1018,7 @@ def run_complete_analysis():
     )
     print(f"Info leakage rate: {thermo_results['info_leakage_rate']:.4f}")
     print(
-        f"Aperture efficiency (m_p²×Q_G): {thermo_results['aperture_efficiency']:.4f}"
+        f"Aperture efficiency (m_a²×Q_G): {thermo_results['aperture_efficiency']:.4f}"
     )
     print(
         f"Closure identity: {'OK' if thermo_results['closure_identity_ok'] else 'FAIL'}"

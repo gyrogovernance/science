@@ -31,8 +31,8 @@ These parameters are not fitted but measured from CGM geometric structure.
 
 From these parameters, we derive:
 
-- **m_p** = 1/(2√(2π)) ≈ 0.199471 (Aperture parameter)
-- **Δ** = 1 - δ_BU/m_p ≈ 0.020700 (Aperture fraction, 2.07%)
+- **m_a** = 1/(2√(2π)) ≈ 0.199471 (Aperture parameter)
+- **Δ** = 1 - δ_BU/ m_a ≈ 0.020700 (Aperture fraction, 2.07%)
 - **Q_G** = 4π (Quantum gravity as complete observational solid angle)
 - **K_QG** = π²/√(2π) ≈ 3.937402 (Quantum geometric constant)
 
@@ -69,7 +69,7 @@ The full universal operator:
 
 The fine-structure constant is derived through:
 
-**α₀** = δ_BU⁴/m_p ≈ 0.007299683322 (Base value, error: 319 ppm)
+**α₀** = δ_BU⁴/ m_a ≈ 0.007299683322 (Base value, error: 319 ppm)
 
 **α₁** = α₀ · C_AB ≈ 0.007297352943 (After AB correction, error: 0.052 ppm)
 

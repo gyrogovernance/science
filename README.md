@@ -1,8 +1,6 @@
 # Mathematical Physics Science
 > **Gyroscopic Alignment Research Lab**
 
-<div align="center">
-
 ![Science](/assets/gyro_cover_science.png)
 
 <h1>Common Governance Model</h1>
@@ -38,24 +36,45 @@
 
 ---
     
-#**🌐 Common Governance Model (CGM)**
+# 🌐 Common Governance Model (CGM)
 
-> CGM is a formal deductive system that starts from one axiom and, using gyrogroup geometry, derives the structure of space, time, and conservation relations. The same formal machinery applies to information and policy, where it defines measurable alignment. The framework produces empirical predictions and operational metrics for AI evaluation.
+> CGM is a formal deductive framework that begins with a single foundational axiom: that all states in a coherent system must be traceable to a common source. Formalized using modal logic, this principle yields five constraints that any system, physical or informational, must satisfy to maintain coherence under recursive observation. The framework uses gyrogroup geometry to derive the structure of space, time, and physical constants, while also defining measurable alignment metrics for artificial intelligence.
 
 ## Introduction
 
-The Common Governance Model (CGM) is a Hilbert-style formal deductive system for fundamental physics and information science. As an axiomatic model, CGM begins with a single foundational axiom ("The Source is Common"), derives all subsequent logic through syntactic rules of inference (recursive stage transitions formalized by gyrogroup operations), and interprets the resulting theorems semantically in physical geometry, yielding empirically testable predictions.
+The Common Governance Model (CGM) is a Hilbert style axiomatic system for fundamental physics and information science. As an axiomatic model, CGM begins with five foundational constraints (CS, UNA, ONA, BU Egress, BU Ingress), derives all subsequent structure through syntactic rules of inference, and interprets the results in physical geometry to produce empirically testable predictions.
 
-The model axiomatizes physics through formal logic with mathematical and semantic interpretation, deriving three-dimensional space with six degrees of freedom as a logical necessity rather than an assumption. Time appears as the sequential ordering of recursive self-referential operations, encoded by gyration’s memory of operation order. The mathematical formalism employs gyrogroup and bi-gyrogroup structures following Abraham Ungar’s work, providing precise language for tracking transitions from undifferentiated potential to fully structured reality. In information and political science, CGM reframes alignment from an empirical matter of shared intention to a coherent semantic grammar, where geometric and logical necessity lead to common consensus.
+The model axiomatizes physics from logic, deriving **three dimensional space with six degrees of freedom** as a necessary consequence, not an assumption. Time emerges as the logical ordering of recursive operations, encoded by the memory inherent in gyrogroup geometry. The framework extends the tradition of Noether, Kolmogorov, and Wightman by applying axiomatic methods to spacetime structure itself, addressing the core challenge of Hilbert's sixth problem.
 
-> Building on the tradition established by Noether's derivation of conservation principles from symmetry (1918), Kolmogorov's axiomatization of probability theory (1933), and Wightman's axiomatic quantum field theory (1950s), CGM extends the program to fundamental spacetime structure itself. Examples of derived predictions include the quantum gravity invariant Q_G = 4π (representing the complete solid angle for coherent observation), a quantitative estimate of the fine-structure constant matching experimental precision to 0.043 parts per billion, neutrino mass scale, and a hierarchy of energy scales consistent with observed physics. As a complete axiomatization of physics from a single foundational principle, CGM addresses the core challenge of Hilbert's sixth problem: rigorous and satisfactory logical investigation of the axioms of mathematical physics.
+Derived predictions include:
+- The **quantum gravity invariant** `Q_G = 4π`, representing the complete solid angle for coherent observation.
+- A geometric estimate of the **fine structure constant** `α ≈ 1/137.036`, matching experiment without physical inputs.
+- A universal **2.07% aperture ratio**, connecting physical coupling to the optimal balance for AI alignment.
 
 ---
+
+<div align="center">
+
+<a href="docs/CGM.pdf">
+  <img src="/assets/CGM_Cover_Letter.jpg" alt="Common Governance Model Paper" width="420">
+</a>
+
+</div>
+
+<div align="center">
 
 ## 📚 Documentation
 
 - 🌐 **[Common Governance Model](docs/CommonGovernanceModel.md)** - Theoretical foundations and mathematical framework
 - 📖 **[CHANGELOG.md](CHANGELOG.md)** - Latest Updates and Complete version history
+
+### Foundational Verification Framework
+
+| Component | Documentation | Implementation |
+|-----------|---------------|----------------|
+| **Axiomatization** | [Analysis](docs/Findings/Analysis_Axiomatization.md) | [Code](experiments/cgm_axiomatization_analysis.py) |
+| **Hilbert Space Representation** | [Analysis](docs/Findings/Analysis_Hilbert_Space_Representation.md) | [Code](experiments/cgm_Hilbert_Space_analysis.py) |
+| **3D/6DoF Derivation** | [Analysis](docs/Findings/Analysis_3D_6DOF_Proof.md) | [Code](experiments/cgm_3D_6DoF_analysis.py) |
 
 ### Key Results & Experiments
 

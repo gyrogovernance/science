@@ -26,7 +26,7 @@ def su3_hadron_checks():
 
     # PDG central values [GeV]
     # Mesons (use isospin averages for simplicity)
-    m_pi = 0.1380
+    m_ai = 0.1380
     m_K = 0.4956
     m_eta = 0.5479
 
@@ -49,8 +49,8 @@ def su3_hadron_checks():
     M_Omega = 1.6724  # Ω-
 
     # CGM invariants to compare
-    m_p = 1 / (2 * sqrt(2 * pi))
-    rho = 0.195342176580 / m_p
+     m_a = 1 / (2 * sqrt(2 * pi))
+    rho = 0.195342176580 / m_a
     Delta = 1 - rho  # ~ 0.0206995539
 
     # 1) Baryon GMO: 2N + 2Ξ ?= 3Λ + Σ
@@ -62,7 +62,7 @@ def su3_hadron_checks():
     print(f"  defect = {D_baryon*100:.3f}%   (CGM Δ = {Delta*100:.3f}%)")
 
     # 2) Meson GMO (squared masses): 3 η^2 + π^2 ?= 4 K^2
-    lhs_m = 3 * m_eta**2 + m_pi**2
+    lhs_m = 3 * m_eta**2 + m_ai**2
     rhs_m = 4 * m_K**2
     D_meson = (lhs_m - rhs_m) / rhs_m
     print(f"GMO (pseudoscalar octet, mass^2): 3η^2 + π^2 vs 4K^2")
@@ -83,7 +83,7 @@ def su3_hadron_checks():
     print(f"  RMS |dev| ≈ {rms_dev*100:.2f}% vs Δ = {Delta*100:.2f}%")
 
     # 4) GMOR-like ratio (Yukawa hierarchy proxy)
-    R = (m_K**2 - m_pi**2) / m_pi**2
+    R = (m_K**2 - m_ai**2) / m_ai**2
     print(f"GMOR-like ratio R = (K^2 − π^2)/π^2 ≈ {R:.2f}  (Yukawa hierarchy proxy)")
 
     # 5) Coleman-Glashow isospin breaking

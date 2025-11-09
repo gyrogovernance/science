@@ -9,9 +9,9 @@ the codebase. It provides both theoretical derivations and empirical measurement
 
 Key Equations Analyzed:
 - δ_BU = 2 × ω(ONA ↔ BU) ≈ 0.195342176580 rad (measured)
-- Δ = 1 - (δ_BU/m_p) = 0.020699553913 (derived)
+- Δ = 1 - (δ_BU/m_a) = 0.020699553913 (derived)
 - φ_SU2 = 2 arccos((1 + 2√2)/4) ≈ 0.587901 rad (exact closed form)
-- α = δ_BU⁴/m_p ≈ 0.007299734 (fine-structure constant)
+- α = δ_BU⁴/ m_a ≈ 0.007299734 (fine-structure constant)
 - 48Δ = 1 (geometric quantization from N_e = 48²)
 - λ₀/Δ = 1/√5 (pentagonal symmetry relationship)
 
@@ -39,31 +39,31 @@ class CGMConstants:
     
     # Primary measured values
     delta_BU: float = 0.195342176580  # Measured from tw_closure_test.py
-    m_p: float = 1.0 / (2.0 * np.sqrt(2.0 * np.pi))  # BU aperture = 0.199471140201
+    m_a: float = 1.0 / (2.0 * np.sqrt(2.0 * np.pi))  # BU aperture = 0.199471140201
     
     # Derived values
-    rho: float = 0.0  # δ_BU/m_p ratio
+    rho: float = 0.0  # δ_BU/ m_a ratio
     Delta: float = 0.0  # Aperture gap = 1 - rho
     
     # SU(2) holonomy (exact closed form)
     phi_SU2: float = 0.0  # 2 arccos((1 + 2√2)/4)
     
     # Fine-structure constant
-    alpha_fs: float = 0.0  # δ_BU⁴/m_p
+    alpha_fs: float = 0.0  # δ_BU⁴/m_a
     
     # Zeta factor (gravitational coupling)
     zeta: float = 0.0  # Q_G / S_geo = 16√(2π/3)
     
     def __post_init__(self):
         """Calculate derived constants."""
-        self.rho = self.delta_BU / self.m_p
+        self.rho = self.delta_BU / self.m_a
         self.Delta = 1.0 - self.rho
         self.phi_SU2 = 2.0 * np.arccos((1.0 + 2.0 * np.sqrt(2.0)) / 4.0)
-        self.alpha_fs = (self.delta_BU ** 4) / self.m_p
+        self.alpha_fs = (self.delta_BU ** 4) / self.m_a
         
         # Zeta factor derivation: ζ = Q_G / S_geo
         Q_G = 4.0 * np.pi  # Complete solid angle
-        S_geo = self.m_p * np.pi * np.sqrt(3.0) / 2.0  # Geometric mean action
+        S_geo = self.m_a * np.pi * np.sqrt(3.0) / 2.0  # Geometric mean action
         self.zeta = Q_G / S_geo  # = 16√(2π/3)
 
 
@@ -97,7 +97,7 @@ class CGMEquationsAnalyzer:
         print(f"   δ_BU = 2 × ω(ONA ↔ BU) = {self.constants.delta_BU:.12f} rad")
         print("   Source: compute_bu_dual_pole_monodromy()")
         print("   Physical meaning: Memory accumulated in ONA→BU+→BU-→ONA path")
-        print(f"   Ratio δ_BU/m_p = {self.constants.rho:.12f}")
+        print(f"   Ratio δ_BU/ m_a = {self.constants.rho:.12f}")
         print(f"   Interpretation: {self.constants.rho*100:.2f}% closure, {(1-self.constants.rho)*100:.2f}% aperture")
         
         # 2. Theoretical derivation attempt
@@ -106,9 +106,9 @@ class CGMEquationsAnalyzer:
         beta_ang = np.pi / 4  # UNA split angle
         gamma_ang = np.pi / 4  # ONA tilt angle
         
-        # Provisional rule: δ_BU = m_p × (α/π) × cos(β_ang) × sin(γ_ang)
-        delta_BU_theoretical = self.constants.m_p * (alpha / np.pi) * np.cos(beta_ang) * np.sin(gamma_ang)
-        print(f"   Provisional rule: δ_BU = m_p × (α/π) × cos(β) × sin(γ)")
+        # Provisional rule: δ_BU =  m_a × (α/π) × cos(β_ang) × sin(γ_ang)
+        delta_BU_theoretical = self.constants. m_a * (alpha / np.pi) * np.cos(beta_ang) * np.sin(gamma_ang)
+        print(f"   Provisional rule: δ_BU =  m_a × (α/π) × cos(β) × sin(γ)")
         print(f"   δ_BU_theoretical = {delta_BU_theoretical:.12f} rad")
         print(f"   δ_BU_measured = {self.constants.delta_BU:.12f} rad")
         print(f"   Agreement: {abs(delta_BU_theoretical - self.constants.delta_BU)/self.constants.delta_BU*100:.3f}% error")
@@ -138,14 +138,14 @@ class CGMEquationsAnalyzer:
         Analyze the derivation of Δ (aperture gap) from δ_BU.
         
         The aperture gap Δ emerges from two sources:
-        1. Direct derivation: Δ = 1 - (δ_BU/m_p) from measured δ_BU
+        1. Direct derivation: Δ = 1 - (δ_BU/m_a) from measured δ_BU
         2. Geometric quantization: 48Δ = 1 from inflation e-folds N_e = 48²
         
         The factor 48 is NOT a constraint but a fundamental geometric quantization
         unit derived from the CGM framework's structure (N_e = 48² = 2304).
         
         Sources:
-        - cgm_alpha_analysis.py: Δ = 1 - (δ_BU/m_p) (direct derivation)
+        - cgm_alpha_analysis.py: Δ = 1 - (δ_BU/m_a) (direct derivation)
         - cgm_bsm_analysis.py: 48Δ = 1 (geometric quantization)
         """
          
@@ -154,7 +154,7 @@ class CGMEquationsAnalyzer:
         
         # 1. Direct derivation from δ_BU
         print("\n1. DIRECT DERIVATION FROM δ_BU:")
-        print(f"   Δ = 1 - (δ_BU/m_p) = 1 - {self.constants.rho:.12f}")
+        print(f"   Δ = 1 - (δ_BU/m_a) = 1 - {self.constants.rho:.12f}")
         print(f"   Δ = {self.constants.Delta:.12f}")
         print("   Source: cgm_alpha_analysis.py line 111")
         print("   Status: EXACT algebraic expression")
@@ -231,7 +231,7 @@ class CGMEquationsAnalyzer:
     
     def analyze_fine_structure_constant(self) -> Dict[str, Any]:
         """
-        Analyze the fine-structure constant α = δ_BU⁴/m_p.
+        Analyze the fine-structure constant α = δ_BU⁴/m_a.
         
         Sources:
         - docs/Findings/Analysis_Fine_Structure.md
@@ -244,7 +244,7 @@ class CGMEquationsAnalyzer:
         
         # 1. Base formula
         print("\n1. BASE FORMULA:")
-        print(f"   α = δ_BU⁴/m_p = {self.constants.alpha_fs:.12f}")
+        print(f"   α = δ_BU⁴/ m_a = {self.constants.alpha_fs:.12f}")
         print("   Source: Pure geometric relation from CGM framework")
         print("   Physical meaning: Quartic scaling from dual commutators and poles")
         
@@ -259,7 +259,7 @@ class CGMEquationsAnalyzer:
         
         # 3. Complete CGM formula (from Analysis_CGM_Units.md)
         print(f"\n3. COMPLETE CGM FORMULA:")
-        print("   α = (δ_BU⁴/m_p) × [1 - (3/4 R) Δ²] × [1 - (5/6)((SU2/(3δ)) - 1)(1 - Δ²×4.42)Δ²/(4π√3)] × [1 + (1/ρ) × diff × Δ⁴]")
+        print("   α = (δ_BU⁴/m_a) × [1 - (3/4 R) Δ²] × [1 - (5/6)((SU2/(3δ)) - 1)(1 - Δ²×4.42)Δ²/(4π√3)] × [1 + (1/ρ) × diff × Δ⁴]")
         print("   Final Result: α = 0.007297352563")
         print("   Experimental: α = 0.007297352563")
         print("   Error: 0.035 ppb (within experimental uncertainty of 0.081 ppb)")
@@ -288,20 +288,20 @@ class CGMEquationsAnalyzer:
         # 1. Correct derivation from CGM geometric invariants
         print("\n1. CORRECT DERIVATION (cgm_higgs_analysis.py):")
         Q_G = 4.0 * np.pi  # Complete solid angle
-        S_geo = self.constants.m_p * np.pi * np.sqrt(3.0) / 2.0  # Geometric mean action
+        S_geo = self.constants. m_a * np.pi * np.sqrt(3.0) / 2.0  # Geometric mean action
         zeta_correct = Q_G / S_geo
         print(f"   ζ = Q_G / S_geo")
         print(f"   Q_G = 4π = {Q_G:.12f}")
-        print(f"   S_geo = m_p × π × √3/2 = {S_geo:.12f}")
+        print(f"   S_geo =  m_a × π × √3/2 = {S_geo:.12f}")
         print(f"   ζ = {zeta_correct:.12f}")
         print(f"   Simplified: ζ = 16√(2π/3) = {16.0 * np.sqrt(2.0 * np.pi / 3.0):.12f}")
         
         # 2. Mathematical derivation
         print("\n2. MATHEMATICAL DERIVATION:")
         print("   ζ = Q_G / S_geo")
-        print("   ζ = 4π / (m_p × π × √3/2)")
-        print("   ζ = 4π / (m_p × π × √3/2)")
-        print("   ζ = 8 / (m_p × √3)")
+        print("   ζ = 4π / ( m_a × π × √3/2)")
+        print("   ζ = 4π / ( m_a × π × √3/2)")
+        print("   ζ = 8 / ( m_a × √3)")
         print("   ζ = 8 / ((1/(2√(2π))) × √3)")
         print("   ζ = 8 × 2√(2π) / √3")
         print("   ζ = 16√(2π) / √3")
@@ -326,7 +326,7 @@ class CGMEquationsAnalyzer:
         print("   Result: ζ = (σKξ)/(ν·S_geometric)")
         print("   With (ν,σ,ξ) = (3,1,1) and K = 12π:")
         print("   ζ = K/(12·S_geo) = 12π/(12·S_geo) = π/S_geo")
-        print("   ζ = π/(m_p × π × √3/2) = 2/(m_p × √3) = 16√(2π/3)")
+        print("   ζ = π/( m_a × π × √3/2) = 2/( m_a × √3) = 16√(2π/3)")
         
         # 5. Verification
         print("\n5. VERIFICATION:")
@@ -430,9 +430,9 @@ class CGMEquationsAnalyzer:
         print("SUMMARY OF DERIVATION STATUS")
           
         print("✓ MEASURED: δ_BU = 0.195342176580 rad (from CGM framework)")
-        print("✓ DERIVED: Δ = 1 - (δ_BU/m_p) = 0.020699553913 (exact algebra)")
+        print("✓ DERIVED: Δ = 1 - (δ_BU/m_a) = 0.020699553913 (exact algebra)")
         print("✓ EXACT: φ_SU2 = 2 arccos((1 + 2√2)/4) (SU(2) commutator identity)")
-        print("✓ GEOMETRIC: α = δ_BU⁴/m_p ≈ 0.007299734 (quartic scaling)")
+        print("✓ GEOMETRIC: α = δ_BU⁴/ m_a ≈ 0.007299734 (quartic scaling)")
         print("✓ DERIVED: ζ = Q_G/S_geo = 16√(2π/3) ≈ 23.155 (Einstein-Hilbert action)")
         print("✓ DERIVED: 48Δ = 1 (from N_e = 48² geometric quantization)")
         print("✓ DERIVED: λ₀/Δ = 1/√5 (from pentagonal symmetry)")

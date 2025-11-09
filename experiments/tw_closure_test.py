@@ -5,9 +5,9 @@ Thomas-Wigner Closure Test
 This experiment tests the critical identity that connects CGM's three fundamental thresholds:
 - UNA threshold (u_p = 1/√2 ≈ 0.70711)
 - ONA threshold (o_p = π/4 ≈ 0.78540)
-- BU threshold (m_p ≈ 0.19947)
+- BU threshold ( m_a ≈ 0.19947)
 
-The TW-closure identity: ω(u_p, o_p) ≡ m_p
+The TW-closure identity: ω(u_p, o_p) ≡ m_a
 where ω(β, θ) is the Wigner angle for boosts of speed β separated by angle θ.
 """
 
@@ -38,7 +38,7 @@ class TWClosureTester:
         self.s_p = mp.pi / 2  # CS threshold (Common Source)
         self.u_p = mp.mpf(1) / mp.sqrt(2)  # UNA threshold (light speed related)
         self.o_p = mp.pi / 4  # ONA threshold (sound speed related)
-        self.m_p = mp.mpf(1) / (
+        self.m_a = mp.mpf(1) / (
             2 * mp.sqrt(2 * mp.pi)
         )  # BU threshold (closure amplitude)
 
@@ -89,12 +89,12 @@ class TWClosureTester:
 
         return float(wigner_angle)
 
-    def solve_beta_for_mp(self) -> float:
-        """Solve ω(β_vel, o_p) = m_p with o_p fixed; returns β_vel_sound in (0,1)."""
+    def solve_beta_for_ma(self) -> float:
+        """Solve ω(β_vel, o_p) =  m_a with o_p fixed; returns β_vel_sound in (0,1)."""
         beta_vel = self.u_p
         for _ in range(20):
             cur = self.wigner_angle_exact(beta_vel, self.o_p)
-            if abs(cur - self.m_p) < 1e-12:
+            if abs(cur - self.m_a) < 1e-12:
                 break
             db = 1e-6
             dcur = (
@@ -103,15 +103,15 @@ class TWClosureTester:
             ) / (2 * db)
             if abs(dcur) < 1e-12:
                 break
-            beta_vel = np.clip(beta_vel - (cur - self.m_p) / dcur, 1e-6, 0.999999)
+            beta_vel = np.clip(beta_vel - (cur - self.m_a) / dcur, 1e-6, 0.999999)
         return float(beta_vel)
 
-    def _find_nearest_omega_equals_mp(self) -> Tuple[float, float]:
+    def _find_nearest_omega_equals_ma(self) -> Tuple[float, float]:
         """
-        Find the nearest (β_vel*, θ*) that makes ω(β_vel, θ) = m_p exactly
+        Find the nearest (β_vel*, θ*) that makes ω(β_vel, θ) =  m_a exactly
         without changing the validated thresholds
         """
-        target_angle = self.m_p
+        target_angle = self.m_a
 
         # Option 1: Hold β_vel = u_p, solve for θ
         beta_vel_fixed = self.u_p
@@ -160,7 +160,7 @@ class TWClosureTester:
 
     def test_tw_consistency_band(self, verbose: bool = True) -> Dict[str, Any]:
         """
-        Test TW-consistency band: how close ω(u_p, o_p) is to m_p
+        Test TW-consistency band: how close ω(u_p, o_p) is to m_a
 
         This probes the kinematic relationship between CGM thresholds
         without suggesting any changes to the validated topological invariants
@@ -172,29 +172,29 @@ class TWClosureTester:
             print(
                 f"ONA threshold (o_p): {float(self.o_p):.6f} (pi/4, sound speed related)"
             )
-            print(f"BU threshold (m_p):  {float(self.m_p):.6f}")
+            print(f"BU threshold (m_a):  {float(self.m_a):.6f}")
             print()
 
         # Test the canonical configuration: (β = u_p, θ = o_p)
         wigner_angle = self.wigner_angle_exact(self.u_p, self.o_p)
-        deviation = abs(wigner_angle - self.m_p)
-        relative_deviation = deviation / self.m_p
+        deviation = abs(wigner_angle - self.m_a)
+        relative_deviation = deviation / self.m_a
 
         if verbose:
             print(f"Wigner angle w(u_p, o_p): {float(wigner_angle):.6f}")
-            print(f"BU threshold m_p:         {float(self.m_p):.6f}")
+            print(f"BU threshold m_a:         {float(self.m_a):.6f}")
             print(f"Finite kinematic offset:  {float(deviation):.6f}")
             print(f"Relative offset:          {float(relative_deviation):.1%}")
             print()
 
-        # Find nearest (β*, θ*) that makes ω = m_p exactly
-        nearest_beta, nearest_theta = self._find_nearest_omega_equals_mp()
+        # Find nearest (β*, θ*) that makes ω =  m_a exactly
+        nearest_beta, nearest_theta = self._find_nearest_omega_equals_ma()
 
         # Solve for the anatomical sound speed ratio
-        beta_sound = self.solve_beta_for_mp()
+        beta_sound = self.solve_beta_for_ma()
 
         if verbose:
-            print(f"Nearest (β*, θ*) for w = m_p:")
+            print(f"Nearest (β*, θ*) for w = m_a:")
             print(f"  β* = {float(nearest_beta):.6f} (vs u_p = {float(self.u_p):.6f})")
             print(f"  θ* = {float(nearest_theta):.6f} (vs o_p = {float(self.o_p):.6f})")
             print()
@@ -206,7 +206,7 @@ class TWClosureTester:
             )
             print()
             print(
-                "Note: β_sound is defined by w(β_sound, pi/4)=m_p; it is NOT a material wave speed."
+                "Note: β_sound is defined by w(β_sound, pi/4)=m_a; it is NOT a material wave speed."
             )
             print(
                 "This is a kinematic map between CGM thresholds, not a propagation speed."
@@ -222,7 +222,7 @@ class TWClosureTester:
 
         return {
             "wigner_angle": wigner_angle,
-            "bu_threshold": self.m_p,
+            "bu_threshold": self.m_a,
             "deviation": deviation,
             "relative_deviation": relative_deviation,
             "nearest_beta": nearest_beta,
@@ -248,8 +248,8 @@ class TWClosureTester:
             "CS": np.array([0, 0, self.s_p]),
             "UNA": np.array([self.u_p, 0, 0]),
             "ONA": np.array([0, self.o_p, 0]),
-            "BU+": np.array([0, 0, self.m_p]),
-            "BU-": np.array([0, 0, -self.m_p]),
+            "BU+": np.array([0, 0, self.m_a]),
+            "BU-": np.array([0, 0, -self.m_a]),
         }
 
         path = ["CS", "UNA", "ONA", "BU+", "BU-", "ONA", "UNA", "CS"]
@@ -319,8 +319,8 @@ class TWClosureTester:
         """
         v = {
             "ONA": np.array([0, self.o_p, 0]),
-            "BU+": np.array([0, 0, self.m_p]),
-            "BU-": np.array([0, 0, -self.m_p]),
+            "BU+": np.array([0, 0, self.m_a]),
+            "BU-": np.array([0, 0, -self.m_a]),
         }
         G_on_to_bu_plus = self.gyrospace.gyration(v["ONA"], v["BU+"])
         G_on_to_bu_minus = self.gyrospace.gyration(v["ONA"], v["BU-"])
@@ -364,7 +364,7 @@ class TWClosureTester:
     def compute_bu_dual_pole_monodromy(self, verbose: bool = True) -> Dict[str, float]:
         """
         Compute the BU dual-pole monodromy constant:
-        δ_BU := 2·ω(ONA ↔ BU) ≈ 0.98·m_p
+        δ_BU := 2·ω(ONA ↔ BU) ≈ 0.98·m_a
 
         This is a named invariant that should be stable across seeds/perturbations.
 
@@ -372,12 +372,12 @@ class TWClosureTester:
         - δ_BU represents the "memory" that accumulates when traversing the path:
           ONA → BU+ → BU- → ONA
         - This monodromy is the geometric memory of the dual-pole structure
-        - The ratio δ_BU/m_p ≈ 0.979 indicates the system is 97.9% closed with 2.1% aperture
+        - The ratio δ_BU/ m_a ≈ 0.979 indicates the system is 97.9% closed with 2.1% aperture
         """
         v = {
             "ONA": np.array([0, self.o_p, 0]),
-            "BU+": np.array([0, 0, self.m_p]),
-            "BU-": np.array([0, 0, -self.m_p]),
+            "BU+": np.array([0, 0, self.m_a]),
+            "BU-": np.array([0, 0, -self.m_a]),
         }
 
         # Compute ONA ↔ BU rotation (should be the same magnitude for both directions)
@@ -391,21 +391,21 @@ class TWClosureTester:
         # δ_BU = 2 × ω(ONA ↔ BU) (using mpmath precision)
         delta_bu = 2.0 * omega_on_to_bu
 
-        # Compare to BU threshold m_p (using mpmath precision)
-        ratio_to_mp = delta_bu / float(self.m_p)
-        deviation_from_mp = abs(ratio_to_mp - 1.0)
+        # Compare to BU threshold  m_a (using mpmath precision)
+        ratio_to_ma = delta_bu / float(self.m_a)
+        deviation_from_ma = abs(ratio_to_ma - 1.0)
 
         if verbose:
             print(f"\nBU Dual-Pole Monodromy Constant (High Precision):")
             print(f"  δ_BU = 2·w(ONA ↔ BU) = {delta_bu:.10f} rad")
-            print(f"  BU threshold m_p = {float(self.m_p):.10f} rad")
-            print(f"  Ratio δ_BU/m_p = {ratio_to_mp:.10f}")
-            print(f"  Deviation from 1.0: {deviation_from_mp:.4%}")
+            print(f"  BU threshold  m_a = {float(self.m_a):.10f} rad")
+            print(f"  Ratio δ_BU/ m_a = {ratio_to_ma:.10f}")
+            print(f"  Deviation from 1.0: {deviation_from_ma:.4%}")
             print(
-                f"  Physical interpretation: {ratio_to_mp*100:.2f}% closure, {100-ratio_to_mp*100:.2f}% aperture"
+                f"  Physical interpretation: {ratio_to_ma*100:.2f}% closure, {100-ratio_to_ma*100:.2f}% aperture"
             )
 
-            if deviation_from_mp < 0.05:  # Within 5%
+            if deviation_from_ma < 0.05:  # Within 5%
                 print(f"  ✅ δ_BU is STABLE: Candidate CGM constant")
                 print(
                     f"     This connects to the fundamental 97.9% closure / 2.1% aperture principle"
@@ -417,9 +417,9 @@ class TWClosureTester:
             "delta_bu": delta_bu,
             "omega_on_to_bu": omega_on_to_bu,
             "omega_bu_to_on": omega_bu_to_on,
-            "ratio_to_mp": ratio_to_mp,
-            "deviation_from_mp": deviation_from_mp,
-            "is_stable": deviation_from_mp < 0.05,
+            "ratio_to_ma": ratio_to_ma,
+            "deviation_from_ma": deviation_from_ma,
+            "is_stable": deviation_from_ma < 0.05,
         }
 
     def test_canonical_configurations(self, verbose: bool = True) -> Dict[str, Any]:
@@ -450,15 +450,15 @@ class TWClosureTester:
             "match": abs(wigner_1 - expected_1) < 1e-6,
         }
 
-        # Configuration 2: Hold UNA, find θ for ω = m_p
+        # Configuration 2: Hold UNA, find θ for ω = m_a
         if verbose:
-            print("\n2. UNA-fixed, θ for w = m_p:")
+            print("\n2. UNA-fixed, θ for w = m_a:")
             print(f"   β = {float(self.u_p):.6f}, solve for θ")
         # Use the correction method to find θ
         theta_guess = self.o_p
         for _ in range(10):
             current_omega = self.wigner_angle_exact(self.u_p, theta_guess)
-            if abs(current_omega - self.m_p) < 1e-8:
+            if abs(current_omega - self.m_a) < 1e-8:
                 break
             dtheta = 1e-6
             omega_plus = self.wigner_angle_exact(self.u_p, theta_guess + dtheta)
@@ -466,34 +466,34 @@ class TWClosureTester:
             derivative = (omega_plus - omega_minus) / (2 * dtheta)
             if abs(derivative) < 1e-12:
                 break
-            theta_guess -= (current_omega - self.m_p) / derivative
+            theta_guess -= (current_omega - self.m_a) / derivative
             theta_guess = np.clip(theta_guess, 0, np.pi / 2)
 
-        theta_for_m_p = theta_guess
+        theta_for_m_a = theta_guess
         if verbose:
             print(
-                f"   θ = {float(theta_for_m_p):.6f} radians = {np.degrees(float(theta_for_m_p)):.2f}°"
+                f"   θ = {float(theta_for_m_a):.6f} radians = {np.degrees(float(theta_for_m_a)):.2f}°"
             )
             print(
                 f"   ONA threshold: {float(self.o_p):.6f} radians = {np.degrees(float(self.o_p)):.2f}°"
             )
             print(
-                f"   Difference:    {abs(float(theta_for_m_p) - float(self.o_p)):.6f} radians"
+                f"   Difference:    {abs(float(theta_for_m_a) - float(self.o_p)):.6f} radians"
             )
         results["una_fixed_theta"] = {
-            "theta": theta_for_m_p,
+            "theta": theta_for_m_a,
             "ona_threshold": self.o_p,
-            "difference": abs(theta_for_m_p - self.o_p),
+            "difference": abs(theta_for_m_a - self.o_p),
         }
 
-        # Configuration 3: Hold ONA, find β for ω = m_p
+        # Configuration 3: Hold ONA, find β for ω = m_a
         if verbose:
-            print("\n3. ONA-fixed, β for w = m_p:")
+            print("\n3. ONA-fixed, β for w = m_a:")
             print(f"   θ = {float(self.o_p):.6f}, solve for β")
         beta_guess = self.u_p
         for _ in range(10):
             current_omega = self.wigner_angle_exact(beta_guess, self.o_p)
-            if abs(current_omega - self.m_p) < 1e-8:
+            if abs(current_omega - self.m_a) < 1e-8:
                 break
             dbeta = 1e-6
             omega_plus = self.wigner_angle_exact(beta_guess + dbeta, self.o_p)
@@ -501,18 +501,18 @@ class TWClosureTester:
             derivative = (omega_plus - omega_minus) / (2 * dbeta)
             if abs(derivative) < 1e-12:
                 break
-            beta_guess -= (current_omega - self.m_p) / derivative
+            beta_guess -= (current_omega - self.m_a) / derivative
             beta_guess = np.clip(beta_guess, 0.1, 0.9)
 
-        beta_for_m_p = beta_guess
+        beta_for_m_a = beta_guess
         if verbose:
-            print(f"   β = {float(beta_for_m_p):.6f}")
+            print(f"   β = {float(beta_for_m_a):.6f}")
             print(f"   UNA threshold: {float(self.u_p):.6f}")
-            print(f"   Difference:    {abs(float(beta_for_m_p) - float(self.u_p)):.6f}")
+            print(f"   Difference:    {abs(float(beta_for_m_a) - float(self.u_p)):.6f}")
         results["ona_fixed_beta"] = {
-            "beta": beta_for_m_p,
+            "beta": beta_for_m_a,
             "una_threshold": self.u_p,
-            "difference": abs(beta_for_m_p - self.u_p),
+            "difference": abs(beta_for_m_a - self.u_p),
         }
 
         return results
@@ -551,13 +551,13 @@ class TWClosureTester:
         # This represents the closure/equilibration
         ona_to_bu_gyr = self.gyrospace.gyration(
             np.array([0, self.o_p, 0]),  # ONA threshold
-            np.array([0, 0, self.m_p]),  # BU threshold
+            np.array([0, 0, self.m_a]),  # BU threshold
         )
 
         # Stage 4: BU → CS (Balance back to Common Source)
         # This completes the toroidal loop
         bu_to_cs_gyr = self.gyrospace.gyration(
-            np.array([0, 0, self.m_p]),  # BU threshold
+            np.array([0, 0, self.m_a]),  # BU threshold
             np.array([0, 0, self.s_p]),  # CS threshold
         )
 
@@ -662,7 +662,7 @@ class TWClosureTester:
         self, verbose: bool = True, epsilon: float = 0.01
     ) -> Dict[str, Any]:
         """
-        Test toroidal holonomy stability by perturbing thresholds (u_p±ε, o_p±ε, m_p±ε).
+        Test toroidal holonomy stability by perturbing thresholds (u_p±ε, o_p±ε, m_a±ε).
 
         This makes the closure diagnostic falsifiable by demonstrating a basin of closure
         or quantifying how sharp the closure is in (β,θ,m)-space.
@@ -679,7 +679,7 @@ class TWClosureTester:
         canonical_signed_deviation = canonical_result["signed_deviation"]
 
         if verbose:
-            print(f"Canonical configuration (u_p, o_p, m_p):")
+            print(f"Canonical configuration (u_p, o_p, m_a):")
             print(f"  Deviation: {canonical_deviation:.6e}")
             print(f"  Signed deviation: {canonical_signed_deviation:.6e}")
             print()
@@ -687,7 +687,7 @@ class TWClosureTester:
         # Test perturbations
         perturbations = []
         for i, (param_name, param_value) in enumerate(
-            [("u_p", self.u_p), ("o_p", self.o_p), ("m_p", self.m_p)]
+            [("u_p", self.u_p), ("o_p", self.o_p), ("m_a", self.m_a)]
         ):
             for sign in [-1, 1]:
                 perturbed_value = param_value * (1 + sign * epsilon)
@@ -698,8 +698,8 @@ class TWClosureTester:
                     temp_tester.u_p = perturbed_value
                 elif param_name == "o_p":
                     temp_tester.o_p = perturbed_value
-                elif param_name == "m_p":
-                    temp_tester.m_p = perturbed_value
+                elif param_name == "m_a":
+                    temp_tester. m_a = perturbed_value
 
                 # Test toroidal holonomy with perturbed parameter
                 perturbed_result = temp_tester.test_toroidal_holonomy_fullpath(
@@ -828,7 +828,7 @@ class TWClosureTester:
             verbose=verbose
         )
 
-        # Probe δ_BU/m_p sensitivity
+        # Probe δ_BU/ m_a sensitivity
         results["delta_bu_sensitivity"] = self.probe_delta_bu_sensitivity(
             verbose=verbose
         )
@@ -896,7 +896,7 @@ class TWClosureTester:
         Compute the anatomical TW ratio χ as a dimensionless CGM constant.
 
         This averages over canonical meridian/parallel paths on the torus:
-        χ = ⟨(ω(β,θ)/m_p)²⟩_anatomical_loops
+        χ = ⟨(ω(β,θ)/m_a)²⟩_anatomical_loops
 
         If χ is stable across seeds/parametrizations, it's a bona-fide
         dimensionless CGM constant that can be used in κ prediction.
@@ -928,7 +928,7 @@ class TWClosureTester:
             wigner_angle = self.wigner_angle_exact(beta_meridian, theta_parallel)
 
             # Compute χ for this path
-            chi_path = (wigner_angle / self.m_p) ** 2
+            chi_path = (wigner_angle / self.m_a) ** 2
             chi_values.append(chi_path)
 
         # Compute statistics
@@ -1147,49 +1147,49 @@ class TWClosureTester:
         self, verbose: bool = True, epsilon_range: Optional[List[float]] = None
     ) -> Dict[str, Any]:
         """
-        Probe sensitivity of δ_BU ≈ m_p claim by scanning m_p → m_p(1±ε).
+        Probe sensitivity of δ_BU ≈  m_a claim by scanning  m_a → m_a(1±ε).
 
-        This tests whether δ_BU/m_p is a true invariant or just a near coincidence.
+        This tests whether δ_BU/ m_a is a true invariant or just a near coincidence.
         """
         if epsilon_range is None:
             epsilon_range = [0.001, 0.005, 0.01, 0.02, 0.05]
 
         if verbose:
-            print("\n🔍 PROBING δ_BU/m_p SENSITIVITY")
+            print("\n🔍 PROBING δ_BU/ m_a SENSITIVITY")
             print("=" * 45)
-            print("Testing whether δ_BU/m_p is a true invariant or near coincidence")
+            print("Testing whether δ_BU/ m_a is a true invariant or near coincidence")
             print()
 
         # Canonical case
         canonical_result = self.compute_bu_dual_pole_monodromy(verbose=False)
-        canonical_ratio = canonical_result["ratio_to_mp"]
-        canonical_mp = self.m_p
+        canonical_ratio = canonical_result["ratio_to_ma"]
+        canonical_ma = self.m_a
 
         if verbose:
-            print(f"Canonical case (m_p = {float(canonical_mp):.6f}):")
-            print(f"  δ_BU/m_p = {float(canonical_ratio):.6f}")
+            print(f"Canonical case ( m_a = {float(canonical_ma):.6f}):")
+            print(f"  δ_BU/ m_a = {float(canonical_ratio):.6f}")
             print()
 
         # Test perturbations
         sensitivity_data = []
         for epsilon in epsilon_range:
             for sign in [-1, 1]:
-                perturbed_mp = canonical_mp * (1 + sign * epsilon)
+                perturbed_ma = canonical_ma * (1 + sign * epsilon)
 
-                # Create temporary tester with perturbed m_p
+                # Create temporary tester with perturbed m_a
                 temp_tester = TWClosureTester(self.gyrospace)
-                temp_tester.m_p = perturbed_mp
+                temp_tester.m_a = perturbed_ma
 
-                # Compute δ_BU with perturbed m_p
+                # Compute δ_BU with perturbed m_a
                 perturbed_result = temp_tester.compute_bu_dual_pole_monodromy(
                     verbose=False
                 )
-                perturbed_ratio = perturbed_result["ratio_to_mp"]
+                perturbed_ratio = perturbed_result["ratio_to_ma"]
 
                 sensitivity_info = {
                     "epsilon": epsilon,
                     "direction": "increase" if sign > 0 else "decrease",
-                    "perturbed_mp": perturbed_mp,
+                    "perturbed_ma": perturbed_ma,
                     "perturbed_ratio": perturbed_ratio,
                     "ratio_change": perturbed_ratio - canonical_ratio,
                     "relative_change": (
@@ -1202,10 +1202,10 @@ class TWClosureTester:
 
                 if verbose:
                     print(
-                        f"m_p {float(perturbed_mp):.6f} (ε={epsilon:.3f}, {'↑' if sign > 0 else '↓'}):"
+                        f" m_a {float(perturbed_ma):.6f} (ε={epsilon:.3f}, {'↑' if sign > 0 else '↓'}):"
                     )
                     print(
-                        f"  δ_BU/m_p = {float(perturbed_ratio):.6f} (change: {sensitivity_info['ratio_change']:+.6f})"
+                        f"  δ_BU/ m_a = {float(perturbed_ratio):.6f} (change: {sensitivity_info['ratio_change']:+.6f})"
                     )
                     print(
                         f"  Relative change: {sensitivity_info['relative_change']:+.1%}"
@@ -1236,15 +1236,15 @@ class TWClosureTester:
             print(f"  Is invariant: {'✅ YES' if is_invariant else '❌ NO'}")
 
             if is_invariant:
-                print(f"  🎯 STRONG INVARIANT: δ_BU/m_p is stable across perturbations")
+                print(f"  🎯 STRONG INVARIANT: δ_BU/ m_a is stable across perturbations")
                 print(f"     This suggests a genuine geometric relationship")
             else:
-                print(f"  ⚠️  NEAR COINCIDENCE: δ_BU/m_p is sensitive to perturbations")
+                print(f"  ⚠️  NEAR COINCIDENCE: δ_BU/ m_a is sensitive to perturbations")
                 print(f"     This suggests the relationship may be fine-tuned")
 
         return {
             "canonical_ratio": canonical_ratio,
-            "canonical_mp": canonical_mp,
+            "canonical_ma": canonical_ma,
             "sensitivity_data": sensitivity_data,
             "max_ratio_change": max_ratio_change,
             "max_relative_change": max_relative_change,
@@ -1254,13 +1254,13 @@ class TWClosureTester:
 
     def probe_delta_bu_identity(self, verbose: bool = True) -> Dict[str, Any]:
         """
-        Test the suspected identity δ_BU = m_p using SU(2) composition.
+        Test the suspected identity δ_BU =  m_a using SU(2) composition.
 
         Method 2 (Lorentz analytic) removed due to unit conflation:
         o_p is an angle (π/4), not a velocity β.
         """
         if verbose:
-            print("\n🔍 PROBING δ_BU = m_p IDENTITY")
+            print("\n🔍 PROBING δ_BU =  m_a IDENTITY")
             print("=" * 40)
 
         # Method 1: SU(2) composition (validated method)
@@ -1268,20 +1268,20 @@ class TWClosureTester:
         delta_bu_1 = method1["delta_bu"]
 
         # Compare to BU threshold
-        m_p = self.m_p
-        ratio = delta_bu_1 / m_p
+        m_a = self.m_a
+        ratio = delta_bu_1 / m_a
         deviation = abs(ratio - 1.0)
         identity_holds = deviation < 0.01  # Within 1%
 
         if verbose:
             print("SU(2) composition method:")
             print(f"  δ_BU = {delta_bu_1:.8f} rad")
-            print(f"  BU threshold m_p = {m_p:.8f} rad")
-            print(f"  Ratio δ_BU/m_p = {ratio:.6f}")
+            print(f"  BU threshold  m_a = {m_a:.8f} rad")
+            print(f"  Ratio δ_BU/ m_a = {ratio:.6f}")
             print(f"  Deviation from 1.0: {deviation:.1%}")
 
             if identity_holds:
-                print("✅ δ_BU ≈ m_p: Strong candidate CGM identity")
+                print("✅ δ_BU ≈ m_a: Strong candidate CGM identity")
             elif deviation < 0.05:
                 print("⚠️  Moderate agreement within 5%")
             else:
@@ -1289,7 +1289,7 @@ class TWClosureTester:
 
         return {
             "delta_bu": delta_bu_1,
-            "m_p": m_p,
+            "m_a": m_a,
             "ratio": ratio,
             "deviation": deviation,
             "identity_holds": identity_holds,
@@ -1310,12 +1310,12 @@ class TWClosureTester:
         print("=" * 35)
 
         # Define canonical patch P around (u_p, o_p)
-        # Use geometric rules: edges set by where ω hits {m_p/2, m_p, 3m_p/2}
+        # Use geometric rules: edges set by where ω hits {m_a/2, m_a, 3m_a/2}
         beta_center = self.u_p  # CGM light speed ratio
         theta_center = self.o_p  # CGM sound speed ratio
 
         # Define patch boundaries based on geometric invariants
-        beta_half_width = self.m_p / 4  # Quarter of BU threshold
+        beta_half_width = self.m_a / 4  # Quarter of BU threshold
         theta_half_width = np.pi / 8  # 22.5° around π/4
 
         beta_min = max(0.1, beta_center - beta_half_width)

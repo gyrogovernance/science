@@ -1,9 +1,9 @@
 # CGM Black Hole Aperture Leakage — direct, equation-driven calculations
 #
 # Implements:
-#   S_CGM = S_BH * (1 + m_p),  m_p = 1/(2 sqrt(2π))
-#   T_CGM = T_H / (1 + m_p)
-#   τ_CGM = τ_std * (1 + m_p)^4
+#   S_CGM = S_BH * (1 + m_a),   m_a = 1/(2 sqrt(2π))
+#   T_CGM = T_H / (1 + m_a)
+#   τ_CGM = τ_std * (1 + m_a)^4
 #
 # Prints plain text blocks (no tables).
 
@@ -36,8 +36,8 @@ def hawking_power_std(M_kg: float) -> float:
     return hbar * c**6 / (15360.0 * pi * G**2 * M_kg**2)
 
 def hawking_power_cgm(M_kg: float) -> float:
-    """CGM-scaled Hawking power: L_CGM = L_std / (1+m_p)^4."""
-    return hawking_power_std(M_kg) / (1.0 + m_p)**4
+    """CGM-scaled Hawking power: L_CGM = L_std / (1+m_a)^4."""
+    return hawking_power_std(M_kg) / (1.0 + m_a)**4
 
 def plasma_cutoff_hz(n_e_cm3: float) -> float:
     """Plasma cutoff frequency: f_plasma ≈ 8.98 kHz × sqrt(n_e / cm^-3)."""
@@ -87,7 +87,7 @@ eV_J = 1.602_176_634e-19  # J per eV (exact)
 MeV_J = eV_J * 1.0e6  # J per MeV
 
 # CGM parameter
-m_p = 1.0 / (2.0 * math.sqrt(2.0 * pi))  # ≈ 0.19947114020071635
+ m_a = 1.0 / (2.0 * math.sqrt(2.0 * pi))  # ≈ 0.19947114020071635
 
 # Energy scales for Planck mass calculation
 E_CS_GeV = 1.22e19  # Chiral symmetry breaking scale from Energy Scales
@@ -191,11 +191,11 @@ def bh_properties(name: str, M_kg: float) -> BHResult:
     r_s = 2.0 * G * M_kg / c**2
     A = 4.0 * pi * r_s**2
     S_BH = k_B * (A * c**3) / (4.0 * G * hbar)
-    S_CGM = S_BH * (1.0 + m_p)
+    S_CGM = S_BH * (1.0 + m_a)
     T_H = (hbar * c**3) / (8.0 * pi * G * M_kg * k_B)
-    T_CGM = T_H / (1.0 + m_p)
+    T_CGM = T_H / (1.0 + m_a)
     tau_std = (5120.0 * pi * G**2 * M_kg**3) / (hbar * c**4)
-    tau_cgm = tau_std * (1.0 + m_p) ** 4
+    tau_cgm = tau_std * (1.0 + m_a) ** 4
     
     # Page curve calculations (exact formula)
     M_page = M_kg / math.sqrt(2.0)
@@ -252,13 +252,13 @@ def bh_properties(name: str, M_kg: float) -> BHResult:
         A_m2=A,
         S_BH_J_per_K=S_BH,
         S_CGM_J_per_K=S_CGM,
-        S_factor=(1.0 + m_p),
+        S_factor=(1.0 + m_a),
         T_H_K=T_H,
         T_CGM_K=T_CGM,
-        T_factor=1.0 / (1.0 + m_p),
+        T_factor=1.0 / (1.0 + m_a),
         tau_std_s=tau_std,
         tau_cgm_s=tau_cgm,
-        tau_factor=(1.0 + m_p) ** 4,
+        tau_factor=(1.0 + m_a) ** 4,
         # Page curve additions
         M_page_kg=M_page,
         t_page_s=t_page,
@@ -294,9 +294,9 @@ def bh_properties(name: str, M_kg: float) -> BHResult:
 
 def print_result(res: BHResult) -> None:
     # Precompute common factors for readability
-    factor_S = 1.0 + m_p
-    factor_T = 1.0 / (1.0 + m_p)
-    factor_tau = (1.0 + m_p)**4
+    factor_S = 1.0 + m_a
+    factor_T = 1.0 / (1.0 + m_a)
+    factor_tau = (1.0 + m_a)**4
     redshift_pct = (1.0 - factor_T) * 100
     
     print(f"\n— {res.name} —")
@@ -393,21 +393,21 @@ def print_derived_predictions() -> None:
     print("=" * 60)
 
     # 1. Entropy density at horizon
-    s_density = (k_B * c**3) / (4.0 * hbar * G) * (1.0 + m_p)
+    s_density = (k_B * c**3) / (4.0 * hbar * G) * (1.0 + m_a)
     print(f"\n1. Entropy density at horizon:")
-    print(f"   s_CGM/A = (k_B c³)/(4 ħ G) × (1 + m_p)")
+    print(f"   s_CGM/A = (k_B c³)/(4 ħ G) × (1 + m_a)")
     print(f"   s_CGM/A = {fmt_si(s_density, 'J/(K·m²)')}")
 
     # 2. Heat capacity ratio
-    C_ratio = 1.0 + m_p
+    C_ratio = 1.0 + m_a
     print(f"\n2. Heat capacity ratio:")
-    print(f"   C_CGM / C_BH = (1 + m_p)")
+    print(f"   C_CGM / C_BH = (1 + m_a)")
     print(f"   C_CGM / C_BH = {C_ratio:.6f}")
 
     # 3. Critical mass ratio for fixed lifetime
-    M_crit_ratio = (1.0 + m_p) ** (-4.0 / 3.0)
+    M_crit_ratio = (1.0 + m_a) ** (-4.0 / 3.0)
     print(f"\n3. Critical mass ratio for fixed lifetime:")
-    print(f"   M_crit,CGM / M_crit,std = (1 + m_p)^(-4/3)")
+    print(f"   M_crit,CGM / M_crit,std = (1 + m_a)^(-4/3)")
     print(f"   M_crit,CGM / M_crit,std = {M_crit_ratio:.6f}")
 
     # Additional specific calculations
@@ -428,7 +428,7 @@ def print_derived_predictions() -> None:
     # Critical mass for evaporation today (exact calculation)
     t0 = 4.352e17  # s (13.797 Gyr)
     M_crit_std = (t0 * hbar * c**4 / (5120.0 * pi * G**2)) ** (1.0/3.0)
-    M_crit_cgm = M_crit_std * (1.0 + m_p) ** (-4.0/3.0)
+    M_crit_cgm = M_crit_std * (1.0 + m_a) ** (-4.0/3.0)
     M_max_DM = 1e15  # kg
     print(f"   M_crit,CGM = {fmt_si(M_crit_cgm, 'kg')} (evaporating now)")
     print(f"   M_max_DM = {fmt_si(M_max_DM, 'kg')} (stable over Hubble time)")
@@ -447,7 +447,7 @@ def print_horizon_micro_quanta() -> None:
     print("HORIZON MICRO-QUANTA — Effective Planck Scale on the Horizon")
     print("=" * 60)
     lP = math.sqrt(hbar * G / c**3)
-    G_eff = G / (1.0 + m_p)
+    G_eff = G / (1.0 + m_a)
     lP_eff = math.sqrt(hbar * G_eff / c**3)
     
     # Area spacing: Bekenstein-Mukhanov vs LQG
@@ -459,20 +459,20 @@ def print_horizon_micro_quanta() -> None:
         dA_std = 8.0 * pi * lP**2
         spacing_type = "Bekenstein-Mukhanov"
     
-    dA_cgm = dA_std / (1.0 + m_p)
+    dA_cgm = dA_std / (1.0 + m_a)
     print(f"ℓ_P = {fmt_si(lP, 'm')}")
-    print(f"G_eff on horizon = G/(1+m_p) = {G_eff:.3e} SI")
+    print(f"G_eff on horizon = G/(1+m_a) = {G_eff:.3e} SI")
     print(
-        f"ℓ_P,eff (from G_eff) = {fmt_si(lP_eff, 'm')}  (×{1.0/math.sqrt(1.0 + m_p):.3f})"
+        f"ℓ_P,eff (from G_eff) = {fmt_si(lP_eff, 'm')}  (×{1.0/math.sqrt(1.0 + m_a):.3f})"
     )
     print(f"Area spacing: {spacing_type}")
     print(f"ΔA_std = {fmt_si(dA_std, 'm²')}")
-    print(f"ΔA_CGM = ΔA_std/(1+m_p) = {fmt_si(dA_cgm, 'm²')}  (×{1.0/(1.0 + m_p):.3f})")
+    print(f"ΔA_CGM = ΔA_std/(1+m_a) = {fmt_si(dA_cgm, 'm²')}  (×{1.0/(1.0 + m_a):.3f})")
     
     # Micro-quanta insight: bits per area quantum
     # Use a reference area for the calculation
     A_ref = 4.0 * pi * lP**2  # Reference area (Planck scale)
-    N_per_dA = (1.0 + m_p) / (A_ref / dA_cgm) * math.log(2)  # bits per patch
+    N_per_dA = (1.0 + m_a) / (A_ref / dA_cgm) * math.log(2)  # bits per patch
     print(f"Bits per ΔA_CGM: ~{N_per_dA:.1f} (quantum packing efficiency)")
 
 
@@ -481,11 +481,11 @@ def print_page_curve_invariants() -> None:
     print("\n" + "=" * 60)
     print("PAGE CURVE INVARIANTS — Lifetime, Quanta, Entropy at Page Time")
     print("=" * 60)
-    t_ratio = (1.0 + m_p) ** 4
-    N_ratio = 1.0 + m_p
-    print(f"t_Page,CGM = (1 + m_p)^4 · t_Page,std    ⇒ ratio = {t_ratio:.3f}")
-    print(f"N_tot,CGM = (1 + m_p) · N_tot,std       ⇒ ratio = {N_ratio:.3f}")
-    print("M_Page/M_0 = 1/√2 (unchanged);  S_em(Page) = ½ S_CGM (scaled by 1+m_p)")
+    t_ratio = (1.0 + m_a) ** 4
+    N_ratio = 1.0 + m_a
+    print(f"t_Page,CGM = (1 + m_a)^4 · t_Page,std    ⇒ ratio = {t_ratio:.3f}")
+    print(f"N_tot,CGM = (1 + m_a) · N_tot,std       ⇒ ratio = {N_ratio:.3f}")
+    print("M_Page/M_0 = 1/√2 (unchanged);  S_em(Page) = ½ S_CGM (scaled by 1+m_a)")
 
 
 def print_desitter_horizon_scaling() -> None:
@@ -496,14 +496,14 @@ def print_desitter_horizon_scaling() -> None:
     # Example with current Hubble parameter
     H0 = 2.2e-18  # s^-1 (current Hubble parameter, order of magnitude)
     S_dS_std = pi * k_B * c**5 / (G * hbar * H0**2)
-    S_dS_cgm = S_dS_std * (1.0 + m_p)
+    S_dS_cgm = S_dS_std * (1.0 + m_a)
     print(f"Hubble parameter: H₀ ≈ {H0:.1e} s⁻¹")
     print(f"S_dS = π k_B c⁵/(G ħ H²)")
     print(f"S_dS,std = {fmt_si(S_dS_std, 'J/K')}  (S_dS,std/k_B = {S_dS_std/k_B:.2e})")
     print(
-        f"S_dS,CGM = (1 + m_p) S_dS,std = {fmt_si(S_dS_cgm, 'J/K')}  (×{1.0 + m_p:.3f})"
+        f"S_dS,CGM = (1 + m_a) S_dS,std = {fmt_si(S_dS_cgm, 'J/K')}  (×{1.0 + m_a:.3f})"
     )
-    print("Effective horizon G_eff = G/(1 + m_p) applies to cosmological horizons")
+    print("Effective horizon G_eff = G/(1 + m_a) applies to cosmological horizons")
 
 
 def print_ringdown_analysis() -> None:
@@ -558,23 +558,23 @@ def print_rindler_horizon_analysis() -> None:
     print("  • Area element: dA = dx dy (in y-z plane)")
 
     print("\nCGM scaling for Rindler horizons:")
-    print("  • S_Rindler,CGM = (1 + m_p) S_Rindler,std")
-    print("  • T_Rindler,CGM = T_Rindler,std / (1 + m_p)")
-    print("  • Effective Planck length: ℓ_P,eff = ℓ_P/√(1 + m_p)")
+    print("  • S_Rindler,CGM = (1 + m_a) S_Rindler,std")
+    print("  • T_Rindler,CGM = T_Rindler,std / (1 + m_a)")
+    print("  • Effective Planck length: ℓ_P,eff = ℓ_P/√(1 + m_a)")
 
     # Calculate specific example
     a_example = 9.8  # Earth gravity in m/s²
     T_Rindler_std = hbar * a_example / (2 * pi * k_B * c)
-    T_Rindler_cgm = T_Rindler_std / (1.0 + m_p)
+    T_Rindler_cgm = T_Rindler_std / (1.0 + m_a)
 
     print(f"\nExample (a = {a_example} m/s²):")
     print(f"  T_Rindler,std = {fmt_si(T_Rindler_std, 'K')}")
-    print(f"  T_Rindler,CGM = {fmt_si(T_Rindler_cgm, 'K')}  (×{1.0/(1.0 + m_p):.3f})")
+    print(f"  T_Rindler,CGM = {fmt_si(T_Rindler_cgm, 'K')}  (×{1.0/(1.0 + m_a):.3f})")
 
     print("\nPhysical interpretation:")
     print("  • Rindler observer sees reduced Unruh temperature")
     print("  • Aperture leakage affects accelerated reference frames")
-    print("  • Same (1 + m_p) scaling as black hole horizons")
+    print("  • Same (1 + m_a) scaling as black hole horizons")
     print("  • Suggests universal horizon thermodynamics modification")
 
 
@@ -593,9 +593,9 @@ def print_binary_merger_analysis() -> None:
     print("  • Inspiral: Unchanged (orbital dynamics geometry-dependent)")
     print("  • Merger: Unchanged (strong-field geometry unchanged)")
     print("  • Ringdown: Duration unchanged, amplitude uncertain")
-    lifetime_factor = (1.0 + m_p) ** 4
+    lifetime_factor = (1.0 + m_a) ** 4
     print(
-        f"  • Remnant lifetime: Extended by factor (1 + m_p)^4 ≈ {lifetime_factor:.2f}"
+        f"  • Remnant lifetime: Extended by factor (1 + m_a)^4 ≈ {lifetime_factor:.2f}"
     )
 
     print(f"\nNote on merger rates:")
@@ -645,15 +645,15 @@ def print_ads_blackhole_analysis() -> None:
     T_std = (hbar * c) / (4.0 * pi * k_B * r_plus) * (1.0 + 3.0*(r_plus**2)/(L_ads**2))
 
     # CGM scaling (thermo only)
-    S_cgm = (1.0 + m_p) * S_std
-    T_cgm = T_std / (1.0 + m_p)
+    S_cgm = (1.0 + m_a) * S_std
+    T_cgm = T_std / (1.0 + m_a)
 
     print(f"Input:  M = {fmt_si(M_ads,'kg')},  L = {fmt_si(L_ads,'m')}")
     print(f"r_+ (exact AdS horizon) = {fmt_si(r_plus,'m')}")
     print(f"S_std  = {fmt_si(S_std,'J/K')}")
-    print(f"S_CGM  = {fmt_si(S_cgm,'J/K')}  (×{1.0+m_p:.3f})")
+    print(f"S_CGM  = {fmt_si(S_cgm,'J/K')}  (×{1.0+m_a:.3f})")
     print(f"T_std  = {fmt_si(T_std,'K')}")
-    print(f"T_CGM  = {fmt_si(T_cgm,'K')}  (×{1.0/(1.0+m_p):.3f})")
+    print(f"T_CGM  = {fmt_si(T_cgm,'K')}  (×{1.0/(1.0+m_a):.3f})")
     print("AdS: unique horizon exists for all M > 0; geometry unchanged, thermodynamics rescaled.")
 
 
@@ -689,11 +689,11 @@ def kerr_newman_cgm(M_kg: float, J: float, Q_C: float) -> Dict[str, float]:
 
     # Entropy
     S_BH = k_B * A * c**3 / (4.0 * G * hbar)
-    S_CGM = S_BH * (1.0 + m_p)
+    S_CGM = S_BH * (1.0 + m_a)
 
     # Hawking temperature: T = (ħ c / (4π k_B)) (r_+ - r_-)/(r_+^2 + a^2)
     T_H = (hbar * c / (4.0 * pi * k_B)) * ((r_plus - r_minus) / (r_plus**2 + a_len**2))
-    T_CGM = T_H / (1.0 + m_p)
+    T_CGM = T_H / (1.0 + m_a)
 
     # Horizon angular velocity and electric potential (SI)
     Omega_H = (a_len * c) / (r_plus**2 + a_len**2)  # rad/s
@@ -755,11 +755,11 @@ def print_kerr_newman_example():
 
     print(f"\nEntropy (Bekenstein–Hawking → CGM):")
     print(f"  S_BH:  {fmt_si(kn['S_BH'], 'J/K')}")
-    print(f"  S_CGM: {fmt_si(kn['S_CGM'], 'J/K')}  (×{1.0 + m_p:.3f})")
+    print(f"  S_CGM: {fmt_si(kn['S_CGM'], 'J/K')}  (×{1.0 + m_a:.3f})")
 
     print(f"\nTemperature (standard → CGM):")
     print(f"  T_H:   {fmt_si(kn['T_H'], 'K')}")
-    print(f"  T_CGM: {fmt_si(kn['T_CGM'], 'K')}  (×{1.0/(1.0 + m_p):.3f})")
+    print(f"  T_CGM: {fmt_si(kn['T_CGM'], 'K')}  (×{1.0/(1.0 + m_a):.3f})")
 
     print(f"\nHorizon angular velocity and electric potential (unchanged by CGM):")
     print(f"  Omega_H: {fmt_si(kn['Omega_H'], 'rad/s')}")
@@ -788,11 +788,11 @@ if __name__ == "__main__":
     }
     print("CGM Aperture-Corrected Black Hole Thermodynamics")
     print(
-        "Assumption: S_CGM = S_BH × (1 + m_p), m_p = 1/(2*sqrt(2*pi)) ≈ {:.12f}".format(
-            m_p
+        "Assumption: S_CGM = S_BH × (1 + m_a),  m_a = 1/(2*sqrt(2*pi)) ≈ {:.12f}".format(
+            m_a
         )
     )
-    print("Derived scalings:  T_CGM = T_H / (1 + m_p),  τ_CGM ≈ τ_std × (1 + m_p)^4\n")
+    print("Derived scalings:  T_CGM = T_H / (1 + m_a),  τ_CGM ≈ τ_std × (1 + m_a)^4\n")
     for name, M in catalogue.items():
         print_result(bh_properties(name, M))
 

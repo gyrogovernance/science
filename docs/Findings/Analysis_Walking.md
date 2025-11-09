@@ -21,7 +21,7 @@ The Common Governance Model posits that reality emerges through four recursive s
 - **Balance Universal (BU)**: Closure with 2.07% aperture
 
 Key CGM predictions include:
-- Aperture parameter m_p = 0.199471 (2.07% openness)
+- Aperture parameter  m_a = 0.199471 (2.07% openness)
 - Complete solid angle Q_G = 4π steradians
 - Energy duality ratio √3 = 1.732
 - Minimal action quantum S_min = 0.3133
@@ -135,7 +135,7 @@ At a modelled 30° inverted-pendulum angle, PE/KE = √3; empirical work ratio �
 
 ### 3.6 Horizon Thermodynamics (Mathematical Analogy)
 
-> *Analogy notice.* "Horizon," "entropy," and "temperature" here are mathematical analogies mapping to variability/complexity measures in gait. They are not literal thermodynamic states. The identity m_p² Q_G = 0.5 is algebraic and serves only as an internal consistency check.
+> *Analogy notice.* "Horizon," "entropy," and "temperature" here are mathematical analogies mapping to variability/complexity measures in gait. They are not literal thermodynamic states. The identity m_a² Q_G = 0.5 is algebraic and serves only as an internal consistency check.
 
 The walking support polygon boundary exhibits scaling analogous to black hole horizons:
 
@@ -144,7 +144,7 @@ The walking support polygon boundary exhibits scaling analogous to black hole ho
 - **Lifetime scaling**: ×2.0699 (107% increase in stability duration)
 - **Horizon distance**: 86.0% of support polygon utilized
 - **Info leakage rate**: 0.1663 (16.6% information loss per cycle)
-- **Closure identity**: m_p²×Q_G = 0.5000 (holds by definition of m_p; serves as internal check, not external evidence)
+- **Closure identity**: m_a²×Q_G = 0.5000 (holds by definition of m_a; serves as internal check, not external evidence)
 
 These are analogical **information-boundary markers**. The "horizon" is where control information saturates — the edge of stability. This scaling suggests the support polygon edge functions as an **information horizon** (limits of meaningful corrective information), not physical thermodynamics, similar to how black hole horizons mark the boundary of information preservation.
 
@@ -216,7 +216,7 @@ Using only 3 principal components to capture >90% variance while maintaining 6 d
 
 ### 4.6 Information Horizons and Boundaries
 
-The support polygon edge exhibits scaling analogous to black hole horizons, with 20% complexity increase and 17% variability reduction. This suggests the balance boundary functions as an **information horizon** where control information saturates — the edge of meaningful corrective information. The closure identity (m_p²×Q_G = 0.5000) serves as an internal consistency check for the geometric framework.
+The support polygon edge exhibits scaling analogous to black hole horizons, with 20% complexity increase and 17% variability reduction. This suggests the balance boundary functions as an **information horizon** where control information saturates — the edge of meaningful corrective information. The closure identity (m_a²×Q_G = 0.5000) serves as an internal consistency check for the geometric framework.
 
 Here is a section you could add, written in the same voice and register as your analysis. The most natural place is in **Discussion → 4.6 Information Horizons and Boundaries**, because that is where you already treat the support polygon as a horizon analogue. The finger example extends the argument to a finer scale, so it belongs immediately after that.
 
@@ -353,7 +353,7 @@ AIS = (|CHSI| × BOS_margin × ASI_quality × Phase_Offset)^(1/4)
 ```
 Complexity proxy = S_walking / S_min
 Variability proxy = T_walking / T_CGM
-Closure identity = m_p² × Q_G = 0.5 (algebraic)
+Closure identity = m_a² × Q_G = 0.5 (algebraic)
 ```
 
 **Information Compression**:

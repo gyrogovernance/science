@@ -221,10 +221,10 @@ A = ⟨y, P_cycle y⟩_W / ⟨y, y⟩_W
 This aperture ratio is the Rayleigh quotient of the cycle projection operator. The target value A* = 0.02070 derives from CGM's formal system:
 
 ```
-A* = 1 - (δ_BU/m_p)
+A* = 1 - (δ_BU/m_a)
 ```
 
-where δ_BU = 0.195342 rad is the BU dual-pole monodromy and m_p = 1/(2√(2π)) is the observational aperture parameter. This represents the unique balance point where the system achieves closure (97.93%) while maintaining sufficient aperture (2.07%) for adaptation.
+where δ_BU = 0.195342 rad is the BU dual-pole monodromy and  m_a = 1/(2√(2π)) is the observational aperture parameter. This represents the unique balance point where the system achieves closure (97.93%) while maintaining sufficient aperture (2.07%) for adaptation.
 
 In the Hilbert space representation of CGM via GNS construction, projection operators correspond to absoluteness conditions. Our aperture A is precisely such a projection observable, measuring the fraction of measurement energy in the non-associative (cycle) component.
 

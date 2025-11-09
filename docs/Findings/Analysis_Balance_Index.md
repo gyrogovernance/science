@@ -135,15 +135,15 @@ The Balance Index satisfies multiple exact identities connecting it to CGM's geo
 
 ### 4.1 CGM Quantum Gravity Connection
 
-The aperture parameter m_p = 1/(2√(2π)) ≈ 0.1995 from CGM's geometric closure requirements satisfies:
+The aperture parameter  m_a = 1/(2√(2π)) ≈ 0.1995 from CGM's geometric closure requirements satisfies:
 
-Q_G × m_p² = 1/2
+Q_G × m_a² = 1/2
 
 where Q_G = 4π is the quantum gravity invariant. This identity holds to machine precision and establishes the fundamental link between observational solid angle and the aperture enabling observation from within the cosmological horizon.
 
 Additionally, the CS threshold angle s_p = π/2 satisfies:
 
-s_p / m_p² = 4π²
+s_p / m_a² = 4π²
 
 linking the primordial chirality angle to the optical conjugacy factor 1/(4π²) that appears throughout CGM energy scale relationships.
 
@@ -177,15 +177,15 @@ This length scale also provides the natural cutoff for vacuum energy calculation
 
 ### 4.4 CGM Aperture Identity
 
-Within the CGM framework, the aperture-corrected index B_i,CGM = B_i/(1 + m_p) satisfies:
+Within the CGM framework, the aperture-corrected index B_i,CGM = B_i/(1 + m_a) satisfies:
 
-I₁_CGM = (k_B Σ_CGM ℋ_aperture)/(G c) = 2/(1 + m_p)²
+I₁_CGM = (k_B Σ_CGM ℋ_aperture)/(G c) = 2/(1 + m_a)²
 
-where ℋ_aperture = H_0/(1 + m_p). The quadratic aperture reduction reflects that both temperature and phase curvature are corrected, yielding:
+where ℋ_aperture = H_0/(1 + m_a). The quadratic aperture reduction reflects that both temperature and phase curvature are corrected, yielding:
 
 I₁_CGM ≈ 1.390113911159
 
-exactly matching the theoretical prediction 2/(1 + m_p)² to machine precision.
+exactly matching the theoretical prediction 2/(1 + m_a)² to machine precision.
 
 ## 5. Methodology
 
@@ -296,10 +296,10 @@ The Balance Index analysis distinguishes rigorously between exact geometric nece
 |------|--------|-----------|--------------|--------|
 | **Identity** | I₁ = 2.000... | Machine precision | Decimal(50) checked | Mathematical necessity |
 | **Identity** | L_B = 2R_H | Exact | Algebraic proof | Geometric requirement |
-| **Identity** | Q_G × m_p² = 0.5 | Exact | Machine precision | CGM closure |
+| **Identity** | Q_G × m_a² = 0.5 | Exact | Machine precision | CGM closure |
 | **Identity** | I_top = 1 (4π/2π) | Exact | Machine precision | Topological structure |
 | **Identity** | T_eq × S_dS = c⁵/(2GH_0) | Exact | Machine precision | Gibbons-Hawking product |
-| **Identity** | I₁_CGM = 2/(1+m_p)² | Machine precision | Decimal(50) checked | Aperture correction |
+| **Identity** | I₁_CGM = 2/(1+m_a)² | Machine precision | Decimal(50) checked | Aperture correction |
 | **Signal** | Conjugacy exp ~4.7 | Approximate | Pattern match | EW-anchor specific |
 | **Signal** | 1-3-9 partition | Pattern | Natural breaks | Natural clustering |
 | **Signal** | 4-leg ratio ~1.10 | ~2% match | Observational | Holonomy projection |
@@ -332,7 +332,7 @@ Both are:
 - Timeless (no T dependence)
 - Classical limits where ℏ cancels
 - Fundamental geometric requirements
-- Connected through exact identities (Q_G × m_p² = 1/2)
+- Connected through exact identities (Q_G × m_a² = 1/2)
 
 ### 8.3 Implications for Cosmological Models
 
@@ -343,7 +343,7 @@ If B_i represents a fundamental equilibrium index, several implications follow:
 3. **Static equilibrium cosmology**: A mathematically consistent alternative to ΛCDM where apparent expansion is a geometric optical illusion from UV-IR conjugacy
 4. **Dark energy elimination**: No need for dark energy as a physical component; the "acceleration" reflects geometric distortion near the BU closure state
 
-These align with CGM's black hole universe framework where r_s/R_H = 1.0000 ± 0.0126 and the 2.07% aperture (from m_p) enables interior observation.
+These align with CGM's black hole universe framework where r_s/R_H = 1.0000 ± 0.0126 and the 2.07% aperture (from m_a) enables interior observation.
 
 ### 8.4 Connection to Fundamental Physics
 
@@ -415,7 +415,7 @@ The observed Planck/SH0ES ratio of 1.0858 is remarkably close to the 4-leg predi
 Any future determination of cosmological parameters must satisfy:
 - I₁ = (k_B B_i ℋ)/(G c) = 2.000 (within measurement precision)
 - L_B = 2c/ℋ (Hubble diameter identity)
-- I₁_CGM = 2/(1 + m_p)² ≈ 1.390 (aperture-corrected identity)
+- I₁_CGM = 2/(1 + m_a)² ≈ 1.390 (aperture-corrected identity)
 
 Violation would falsify the geometric equilibrium framework.
 
@@ -453,7 +453,7 @@ The geometric resolution of the cosmological constant problem makes specific pre
 ### 10.1 Current Limitations
 
 1. **Equilibrium interpretation**: While mathematically well-defined, the interpretation as a fundamental equilibrium index requires additional theoretical grounding
-2. **CGM aperture validation**: The m_p modification needs independent observational confirmation beyond internal CGM consistency
+2. **CGM aperture validation**: The  m_a modification needs independent observational confirmation beyond internal CGM consistency
 3. **Expansion vs. equilibrium**: Reconciling with extensive evidence for cosmic expansion requires full development of the optical illusion mechanism
 4. **Uncertainty propagation**: Current errors dominated by H_0 and G uncertainties
 
@@ -474,8 +474,8 @@ We have identified and characterized the Balance Index B_i = 2Gc/(k_B H_0) with 
 - Gibbons-Hawking product T_eq S_dS = c⁵/(2G H_0)
 - Transported invariance I₁(trans) = 2 across all holonomy methods
 - Length identity L_B = 2R_H (Hubble diameter)
-- CGM aperture identity I₁_CGM = 2/(1 + m_p)²
-- Quantum gravity connection Q_G × m_p² = 1/2
+- CGM aperture identity I₁_CGM = 2/(1 + m_a)²
+- Quantum gravity connection Q_G × m_a² = 1/2
 
 **Signal-level structure:**
 - Three-band particle partition (1–3–9) with large natural gaps
