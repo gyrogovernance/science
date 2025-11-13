@@ -81,7 +81,7 @@ def delta_BU_from_CGM(
     """
     # Provisional rule: δ_BU =  m_a × (α/π) × cos(β_ang) × sin(γ_ang)
     # This gives δ_BU ≈ 0.9793 × m_a, matching the observed ratio
-    delta_BU =  m_a * (alpha / np.pi) * np.cos(beta_ang) * np.sin(gamma_ang)
+    delta_BU = m_a * (alpha / np.pi) * np.cos(beta_ang) * np.sin(gamma_ang)
     return delta_BU
 
 
@@ -332,9 +332,9 @@ class QuantumGravityHorizon:
         # Exact identities
         assert sp.simplify(alpha + beta_ang + gamma_ang - pi) == 0
         assert sp.simplify(1 / (2 * m_a) - sp.sqrt(2 * pi)) == 0
-        assert sp.simplify( m_a - (sp.Rational(1, 2) / sp.sqrt(2 * pi))) == 0
-        assert sp.simplify((1 / (2 * m_a)) /  m_a - 4 * pi) == 0
-        assert sp.simplify(alpha *  m_a - pi / (4 * sp.sqrt(2 * pi))) == 0
+        assert sp.simplify(m_a - (sp.Rational(1, 2) / sp.sqrt(2 * pi))) == 0
+        assert sp.simplify((1 / (2 * m_a)) / m_a - 4 * pi) == 0
+        assert sp.simplify(alpha * m_a - pi / (4 * sp.sqrt(2 * pi))) == 0
 
         print(
             "\n[Symbolic core ✓] Φ_total=π, L_horizon=√(2π), t_aperture=1/(2√(2π)), 𝒬_G=4π, S_min=π/(4√(2π))"

@@ -50,7 +50,7 @@ class HelicalMemoryAnalyzer:
         self.s_p = np.pi / 2  # CS threshold (Common Source)
         self.u_p = 1 / np.sqrt(2)  # UNA threshold (light speed related)
         self.o_p = np.pi / 4  # ONA threshold (sound speed related)
-        self. m_a = 1 / (2 * np.sqrt(2 * np.pi))  # BU threshold (closure amplitude)
+        self.m_a = 1 / (2 * np.sqrt(2 * np.pi))  # BU threshold (closure amplitude)
 
         # Fundamental constants (SI units)
         self.hbar = 1.054571817e-34  # J⋅s

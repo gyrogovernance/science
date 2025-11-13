@@ -24,10 +24,10 @@ U_P = 1 / np.sqrt(2)  # UNA threshold
 O_P = np.pi / 4  # ONA threshold
 m_a = 1 / (2 * np.sqrt(2 * np.pi))  # BU aperture
 
- 
+
 print("THREE-DIMENSIONAL NECESSITY AND SIX DEGREES OF FREEDOM")
 print("Formal Verification of CGM Uniqueness Theorem")
- 
+
 print()
 
 # ============================================================================
@@ -43,7 +43,7 @@ print("We verify they satisfy δ=0 in 3D hyperbolic geometry, confirming consist
 print()
 
 alpha = S_P  # π/2
-beta = O_P   # π/4
+beta = O_P  # π/4
 gamma = O_P  # π/4
 
 delta = np.pi - (alpha + beta + gamma)
@@ -67,13 +67,16 @@ print()
 print("2. LIE ALGEBRA DIMENSION VERIFICATION")
 print("-" * 80)
 
+
 def so_n_dimension(n: int) -> int:
     """Dimension of so(n) Lie algebra."""
     return n * (n - 1) // 2
 
+
 def se_n_dimension(n: int) -> int:
     """Dimension of se(n) = so(n) + R^n Euclidean group."""
     return so_n_dimension(n) + n
+
 
 print("Rotation group dimensions so(n):")
 for n in range(2, 7):
@@ -108,41 +111,45 @@ print("-" * 80)
 
 try:
     from sympy import symbols, expand
-    
+
     print("Regularity Assumption (RA): Modal operators [L] and [R] are generated")
     print("by one-parameter unitary flows U_L(t) = e^{itX}, U_R(t) = e^{itY}.")
     print()
-    
+
     # Noncommuting symbols
-    t = symbols('t', real=True)
-    X, Y = symbols('X Y', commutative=False)
-    
+    t = symbols("t", real=True)
+    X, Y = symbols("X Y", commutative=False)
+
     def comm(A, B):
         """Commutator [A, B] = AB - BA."""
-        return A*B - B*A
-    
+        return A * B - B * A
+
     def bch_t3(A, B):
         """BCH(A,B) to O(t^3): A + B + 1/2[A,B] + 1/12([A,[A,B]] + [B,[B,A]])."""
-        return A + B + comm(A, B)/2 + (comm(A, comm(A, B)) + comm(B, comm(B, A)))/12
-    
+        return A + B + comm(A, B) / 2 + (comm(A, comm(A, B)) + comm(B, comm(B, A))) / 12
+
     print("Computing Baker-Campbell-Hausdorff expansion for depth-4 closure...")
-    print("Proposition BU-Egress (A4) requires: [L][R][L][R]S ↔ [R][L][R][L]S (depth-four balance)")
-    print("Under RA: e^{tX}e^{tY}e^{tX}e^{tY} = e^{tY}e^{tX}e^{tY}e^{tX} for all small t")
+    print(
+        "Proposition BU-Egress (A4) requires: [L][R][L][R]S ↔ [R][L][R][L]S (depth-four balance)"
+    )
+    print(
+        "Under RA: e^{tX}e^{tY}e^{tX}e^{tY} = e^{tY}e^{tX}e^{tY}e^{tX} for all small t"
+    )
     print()
-    
+
     # A = tX, B = tY
-    A = t*X
-    B = t*Y
-    
-    Z1 = expand(bch_t3(A, B))          # log(e^{tX} e^{tY})
-    Z2 = expand(bch_t3(B, A))          # log(e^{tY} e^{tX})
-    
+    A = t * X
+    B = t * Y
+
+    Z1 = expand(bch_t3(A, B))  # log(e^{tX} e^{tY})
+    Z2 = expand(bch_t3(B, A))  # log(e^{tY} e^{tX})
+
     # Depth-4 products: (e^{tX} e^{tY})^2 and (e^{tY} e^{tX})^2
-    log_LRLR = expand(2*Z1)            # exact: log(e^{Z1} e^{Z1}) = 2 Z1
-    log_RLRL = expand(2*Z2)
-    
+    log_LRLR = expand(2 * Z1)  # exact: log(e^{Z1} e^{Z1}) = 2 Z1
+    log_RLRL = expand(2 * Z2)
+
     Delta = expand(log_LRLR - log_RLRL)
-    
+
     print("BCH expansion (to O(t^3)):")
     print(f"  Z1 = log(e^{{tX}}e^{{tY}}) = {Z1}")
     print(f"  Z2 = log(e^{{tY}}e^{{tX}}) = {Z2}")
@@ -152,32 +159,46 @@ try:
     print()
     print(f"  Δ = log_LRLR - log_RLRL = {Delta}")
     print()
-    
+
     print("INTERPRETATION:")
     print("  Δ = 2 t² [X,Y] to O(t³). The t³ terms cancel exactly in the difference.")
     print("  For Proposition BU-Egress (A4) to hold as □B (from S), we require")
     print("  P_S Δ P_S = 0 (sectoral equality) uniformly for all small |t| < δ.")
     print("  Uniform sectoral equality (P_S ... P_S = 0 for all |t|<δ) is verified")
-    print("  numerically in cgm_Hilbert_Space_analysis.py; here we reason symbolically.")
+    print(
+        "  numerically in cgm_Hilbert_Space_analysis.py; here we reason symbolically."
+    )
     print()
-    print("  The su(2)-type nested-commutator relations ([X,[X,Y]] = aY, [Y,[X,Y]] = -aX)")
+    print(
+        "  The su(2)-type nested-commutator relations ([X,[X,Y]] = aY, [Y,[X,Y]] = -aX)"
+    )
     print("  enter at higher order (O(t⁵)/O(t⁷)) in the full Dynkin series expansion.")
     print("  See extended proof or experiments verifying equality to O(t⁷) in the")
-    print("  supplementary code. These higher-order constraints enforce a 3D Lie algebra")
+    print(
+        "  supplementary code. These higher-order constraints enforce a 3D Lie algebra"
+    )
     print("  closure of span{X,Y,[X,Y]}. With Simplicity Constraint (single simple")
     print("  compact factor), this uniquely selects su(2).")
     print()
-    print("CONCLUSION: Proposition BU-Egress (A4) (sectoral) + unitary representation +")
+    print(
+        "CONCLUSION: Proposition BU-Egress (A4) (sectoral) + unitary representation +"
+    )
     print("  higher-order BCH constraints + simplicity uniquely select su(2).")
     print()
     print("Reference: Hall, Lie Groups, Lie Algebras, and Representations (2nd ed.),")
     print("  the BCH expansion to third order.")
-    
+
 except ImportError:
     print("SymPy not available for symbolic BCH computation.")
-    print("Theoretical result: Proposition BU-Egress (A4) (depth-4 balance) under unitary")
-    print("representation (one-parameter flows) gives Δ = 2 t² [X,Y] to O(t³) (t³ terms cancel).")
-    print("The su(2)-type relations ([X,[X,Y]] = aY, [Y,[X,Y]] = -aX) enter at higher order.")
+    print(
+        "Theoretical result: Proposition BU-Egress (A4) (depth-4 balance) under unitary"
+    )
+    print(
+        "representation (one-parameter flows) gives Δ = 2 t² [X,Y] to O(t³) (t³ terms cancel)."
+    )
+    print(
+        "The su(2)-type relations ([X,[X,Y]] = aY, [Y,[X,Y]] = -aX) enter at higher order."
+    )
     print("Compactness (unitary condition) selects su(2) over sl(2,R).")
     print("Uniform sectoral equality verified in cgm_Hilbert_Space_analysis.py.")
     print("Reference: Hall, Lie Groups, Lie Algebras, and Representations (2nd ed.)")
@@ -197,10 +218,12 @@ sigma_1 = np.array([[0, 1], [1, 0]], dtype=complex)
 sigma_2 = np.array([[0, -1j], [1j, 0]], dtype=complex)
 sigma_3 = np.array([[1, 0], [0, -1]], dtype=complex)
 
+
 # Verify su(2) commutation relations: [sigma_i, sigma_j] = 2i epsilon_ijk sigma_k
 def commutator(A, B):
     """Compute [A, B] = AB - BA."""
     return A @ B - B @ A
+
 
 comm_12 = commutator(sigma_1, sigma_2)
 comm_23 = commutator(sigma_2, sigma_3)
@@ -291,7 +314,9 @@ print()
 print("Minimality verification:")
 print("  - Fewer than 3 translations: insufficient for bi-gyrogroup consistency")
 print("  - More than 3 translations: violates minimality (no traceable origin)")
-print("  - Non-abelian N: would require additional structure not in foundational constraints")
+print(
+    "  - Non-abelian N: would require additional structure not in foundational constraints"
+)
 print(f"\n  SE(3) is the unique minimal bi-gyrogroup completion -> n=3, d=6")
 print()
 
@@ -338,7 +363,9 @@ print("  BCH obstruction: Every 2D real Lie algebra is either:")
 print("    (a) Abelian: [X,Y] = 0, violating Lemma UNA (non-absolute commutation)")
 print("    (b) Affine (non-compact): Cannot be represented by bounded")
 print("        skew-adjoint generators as a compact unitary group")
-print("  Conclusion: 2D cannot satisfy Lemma UNA + Proposition BU-Egress under unitary representation")
+print(
+    "  Conclusion: 2D cannot satisfy Lemma UNA + Proposition BU-Egress under unitary representation"
+)
 print()
 
 print("Case n=4 (SO(4) =~ (SU(2) × SU(2))/Z₂):")
@@ -387,7 +414,9 @@ print()
 
 print("Case n=4:")
 print(f"  Obstruction 1: SO(4) has dim(so(4)) = {so_n_dimension(4)} generators")
-print(f"    -> Excess generators ({so_n_dimension(4) - 3}) violate Simplicity Constraint")
+print(
+    f"    -> Excess generators ({so_n_dimension(4) - 3}) violate Simplicity Constraint"
+)
 print("  Obstruction 2: BCH forces 3D algebra, but so(4) decomposes as su(2)⊕su(2)")
 print("    -> Violates simplicity (two independent sources, not a common source)")
 print("  Conclusion: [FAILS] n=4")
@@ -408,10 +437,10 @@ print("7. DEGREES OF FREEDOM PROGRESSION")
 print("-" * 80)
 
 stages = [
-    ("CS",  1, "Chiral seed (directional distinction)"),
+    ("CS", 1, "Chiral seed (directional distinction)"),
     ("UNA", 3, "Rotational generators (SU(2))"),
     ("ONA", 6, "Rotations + translations (SE(3))"),
-    ("BU",  6, "Closed (coordinated, not independent)")
+    ("BU", 6, "Closed (coordinated, not independent)"),
 ]
 
 print("Unique emergence sequence:")
@@ -420,7 +449,9 @@ for stage, dof, description in stages:
 
 print("\nProgression uniqueness:")
 print("  - Each stage follows necessarily from foundational constraints")
-print("  - Structural constraints from the five foundational constraints prevent alternative pathways")
+print(
+    "  - Structural constraints from the five foundational constraints prevent alternative pathways"
+)
 print("  - Closure constraint delta=0 uniquely determines angles")
 print()
 
@@ -468,15 +499,18 @@ print("-" * 80)
 # Test gyrotriangle closure for different dimensions
 # Note: δ is a consistency check (triangles are 2D objects), not an exclusion tool for n≥4
 
-def test_closure_nd(n: int, alpha: float, beta: float, gamma: float) -> Tuple[float | None, bool]:
+
+def test_closure_nd(
+    n: int, alpha: float, beta: float, gamma: float
+) -> Tuple[float | None, bool]:
     """
     Test if angles achieve closure in n-dimensional hyperbolic geometry.
-    
+
     For n=3, the defect formula is delta = pi - (alpha + beta + gamma).
     Note: Triangles live in 2D geometry (ambient dimension doesn't change δ on a
     constant curvature surface), so δ is a consistency check, not an exclusion tool
     for n≥4. Exclusion of n≥4 relies on algebraic/simplicity arguments.
-    
+
     Returns: (defect, achieves_closure)
     """
     if n == 3:
@@ -487,18 +521,23 @@ def test_closure_nd(n: int, alpha: float, beta: float, gamma: float) -> Tuple[fl
         # This contradicts CGM's non-trivial gyration requirement (Assumption CS)
         # SO(2) is abelian, cannot realize non-commutative gyrations
         delta = np.pi - (alpha + beta + gamma)
-        closes = False  # Degenerate closure incompatible with CGM foundational constraints
+        closes = (
+            False  # Degenerate closure incompatible with CGM foundational constraints
+        )
     else:
         # For n>=4, δ is not used for exclusion (triangles are 2D objects).
         # Exclusion relies on algebraic/simplicity arguments (excess generators, BCH constraints).
         delta = None  # Not used for exclusion in n≥4
         closes = False
-    
+
     return delta, closes
+
 
 dimensions_to_test = [2, 3, 4, 5]
 
-print(f"Testing closure delta = pi - (alpha + beta + gamma) for angles (pi/2, pi/4, pi/4):\n")
+print(
+    f"Testing closure delta = pi - (alpha + beta + gamma) for angles (pi/2, pi/4, pi/4):\n"
+)
 
 for n in dimensions_to_test:
     delta_n, closes = test_closure_nd(n, alpha, beta, gamma)
@@ -507,9 +546,13 @@ for n in dimensions_to_test:
         note = " (degenerate; violates non-trivial gyration)" if n == 2 else ""
         print(f"  n={n}D: delta = {delta_n:+.2e} rad  {status}{note}")
     else:
-        print(f"  n={n}D: Not used for exclusion; δ is a 2D consistency check (triangles live in 2D geometry)")
+        print(
+            f"  n={n}D: Not used for exclusion; δ is a 2D consistency check (triangles live in 2D geometry)"
+        )
 
-print(f"\nConclusion: Only n=3 achieves exact closure (delta=0) compatible with CGM foundational constraints")
+print(
+    f"\nConclusion: Only n=3 achieves exact closure (delta=0) compatible with CGM foundational constraints"
+)
 
 # Assert key claim for CI/testing
 delta_3d, closes_3d = test_closure_nd(3, alpha, beta, gamma)
@@ -532,11 +575,11 @@ print("Testing dimensional compatibility:")
 for n in range(2, 7):
     rot_dim = so_n_dimension(n)
     total_dim = se_n_dimension(n)
-    
-    una_match = (rot_dim == 3)
-    ona_match = (total_dim == 6)
+
+    una_match = rot_dim == 3
+    ona_match = total_dim == 6
     both_match = una_match and ona_match
-    
+
     status = "[UNIQUE MATCH]" if both_match else "[INCOMPATIBLE]"
     print(f"  n={n}: rot={rot_dim}, total={total_dim}  {status}")
 
@@ -572,7 +615,7 @@ print()
 # ============================================================================
 
 print("12. SUMMARY AND CONCLUSION")
- 
+
 
 print("\nTHEOREM: The five foundational constraints uniquely determine n=3, d=6")
 print()
@@ -602,13 +645,13 @@ print("  Three-dimensional space with six degrees of freedom")
 print("  is not an assumption but a THEOREM of CGM.")
 print()
 
- 
+
 print("VERIFICATION COMPLETE")
 
 # Final assertions (computed, not hardcoded)
 
 # 1) Closure achieved? (delta computed at line 49 from alpha, beta, gamma)
-closure_achieved = (abs(delta) < 1e-15)
+closure_achieved = abs(delta) < 1e-15
 
 # 2) Uniqueness: only n=3 should satisfy rot=3 and total=6
 candidates = []
@@ -635,4 +678,3 @@ print(f"  Unique solution n: {unique_solution}")
 print(f"  DOF progression: {dof_progression}")
 
 print("\nAll tests passed: n=3 is the unique solution.")
-

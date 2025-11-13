@@ -699,7 +699,7 @@ class TWClosureTester:
                 elif param_name == "o_p":
                     temp_tester.o_p = perturbed_value
                 elif param_name == "m_a":
-                    temp_tester. m_a = perturbed_value
+                    temp_tester.m_a = perturbed_value
 
                 # Test toroidal holonomy with perturbed parameter
                 perturbed_result = temp_tester.test_toroidal_holonomy_fullpath(
@@ -1236,7 +1236,9 @@ class TWClosureTester:
             print(f"  Is invariant: {'✅ YES' if is_invariant else '❌ NO'}")
 
             if is_invariant:
-                print(f"  🎯 STRONG INVARIANT: δ_BU/ m_a is stable across perturbations")
+                print(
+                    f"  🎯 STRONG INVARIANT: δ_BU/ m_a is stable across perturbations"
+                )
                 print(f"     This suggests a genuine geometric relationship")
             else:
                 print(f"  ⚠️  NEAR COINCIDENCE: δ_BU/ m_a is sensitive to perturbations")

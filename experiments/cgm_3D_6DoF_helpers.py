@@ -36,6 +36,7 @@ try:
         Rational,
     )
     from sympy.physics.quantum import Commutator
+
     SYMPY_AVAILABLE = True
 except ImportError:
     SYMPY_AVAILABLE = False
@@ -62,14 +63,14 @@ print("-" * 80)
 if SYMPY_AVAILABLE:
     # Define formal non-commutative symbols
     # These are elements of the free Lie algebra L_hat(X,Y)
-    X, Y = symbols('X Y', commutative=False)
-    
+    X, Y = symbols("X Y", commutative=False)
+
     # Adjoin central idempotent s for S-sector
     # s encodes the S-world algebraically: s^2 = s, and s commutes with all elements
-    s = symbols('s', commutative=True)
+    s = symbols("s", commutative=True)
     # In the free algebra extension, we treat s as a central idempotent:
     # s^2 = s, and s commutes with X, Y, and all Lie polynomials
-    
+
     print("Working in the completed free Lie algebra L_hat(X,Y) with S-sector:")
     print("  - X, Y are formal non-commutative symbols")
     print("  - s is a central idempotent (s^2 = s) encoding the S-world")
@@ -78,24 +79,28 @@ if SYMPY_AVAILABLE:
     print("  - No Hilbert space structure")
     print("  - Pure algebraic manipulation")
     print()
-    
+
     # Define commutator function
     def comm(A, B):
         """Commutator [A, B] = AB - BA in the free algebra."""
         return A * B - B * A
-    
+
     print("Commutator definition: [A, B] = AB - BA")
     print()
-    
+
     # S-sector projection: s-sandwiching
     # For any element φ, the S-sector projection is s·φ·s
     print("S-sector formalization:")
-    print("  - BU-Egress at S: s·exp(X)exp(Y)exp(X)exp(Y)·s = s·exp(Y)exp(X)exp(Y)exp(X)·s")
+    print(
+        "  - BU-Egress at S: s·exp(X)exp(Y)exp(X)exp(Y)·s = s·exp(Y)exp(X)exp(Y)exp(X)·s"
+    )
     print("  - UNA: [X,Y] ≠ 0 globally (non-absolute commutation)")
     print("  - BU at S then forces: s[X,Y]s = 0")
-    print("    (kills the antisymmetric t^2 piece only at S, matching modal 'necessity at S')")
+    print(
+        "    (kills the antisymmetric t^2 piece only at S, matching modal 'necessity at S')"
+    )
     print()
-    
+
 else:
     print("SymPy not available. Using numerical verification approach.")
     print()
@@ -163,7 +168,7 @@ if SYMPY_AVAILABLE:
     print("EXACT IDENTITY: log(exp(Z)exp(Z)) = 2Z exactly")
     print("  (because exp(Z)exp(Z) = exp(2Z) in the free Lie group)")
     print()
-    
+
     # Compute BCH expansion to O(t^3) for formal exponentials
     # We work with formal symbols, not parameterized flows
     def bch_dynkin_t3(A, B):
@@ -175,43 +180,46 @@ if SYMPY_AVAILABLE:
         # Degree 1: A + B
         # Degree 2: 1/2[A,B]
         # Degree 3: 1/12([A,[A,B]] + [B,[B,A]])
-        return A + B + Rational(1, 2) * comm(A, B) + Rational(1, 12) * (
-            comm(A, comm(A, B)) + comm(B, comm(B, A))
+        return (
+            A
+            + B
+            + Rational(1, 2) * comm(A, B)
+            + Rational(1, 12) * (comm(A, comm(A, B)) + comm(B, comm(B, A)))
         )
-    
+
     print("Computing BCH expansion for depth-4 closure...")
     print()
-    
+
     # Z1 = log(exp(X)exp(Y)) to O(t^3)
     Z1 = bch_dynkin_t3(X, Y)
-    
+
     # Z2 = log(exp(Y)exp(X)) to O(t^3)
     Z2 = bch_dynkin_t3(Y, X)
-    
+
     print("BCH expansion (to O(t^3)):")
     print(f"  Z1 = log(exp(X)exp(Y)) = {Z1}")
     print(f"  Z2 = log(exp(Y)exp(X)) = {Z2}")
     print()
-    
+
     # EXACT IDENTITY: For depth-4 products, we have:
     # log(exp(X)exp(Y)exp(X)exp(Y)) = log(exp(Z1)exp(Z1)) = 2*Z1 exactly
     # log(exp(Y)exp(X)exp(Y)exp(X)) = log(exp(Z2)exp(Z2)) = 2*Z2 exactly
     # This is because exp(Z)exp(Z) = exp(2Z) in the free Lie group.
-    
+
     # The exact difference Delta = 2*Z1 - 2*Z2
     Delta = 2 * Z1 - 2 * Z2
-    
+
     print("EXACT depth-4 difference identity:")
     print(f"  Delta = log(exp(X)exp(Y)exp(X)exp(Y)) - log(exp(Y)exp(X)exp(Y)exp(X))")
     print(f"       = 2*Z1 - 2*Z2 = 2(BCH(X,Y) - BCH(Y,X))")
     print(f"       = {Delta}")
     print()
-    
+
     # Simplify
     Delta_simplified = simplify(expand(Delta))
     print(f"  Simplified: {Delta_simplified}")
     print()
-    
+
     # Extract coefficient structure
     # Δ should be proportional to [X,Y] at leading order
     print("Coefficient analysis:")
@@ -219,7 +227,7 @@ if SYMPY_AVAILABLE:
     print("  At degree 2: 2*(1/2)[X,Y] - 2*(1/2)[Y,X] = 2[X,Y] (since [Y,X] = -[X,Y])")
     print("  At degree 3: Higher-order nested commutators")
     print()
-    
+
 else:
     print("Dynkin formula: log(exp(A)exp(B)) = A + B + 1/2[A,B] + ...")
     print("For depth-4: compare coefficients of exp(X)exp(Y)exp(X)exp(Y)")
@@ -240,16 +248,18 @@ if SYMPY_AVAILABLE:
     print()
     print("Degree-by-degree analysis:")
     print()
-    
+
     # Degree 1: X + Y = Y + X (always true, no constraint)
     print("  Degree 1: X + Y = Y + X")
     print("    -> No constraint (always satisfied)")
     print()
-    
+
     # Degree 2: [X,Y] term
     # From Delta = 2*Z1 - 2*Z2, the degree-2 term is 2*(1/2)[X,Y] - 2*(1/2)[Y,X] = 2[X,Y]
     print("  Degree 2: Coefficient of [X,Y]")
-    print("    -> Delta = 2(BCH(X,Y) - BCH(Y,X)) contains antisymmetric Lie polynomials")
+    print(
+        "    -> Delta = 2(BCH(X,Y) - BCH(Y,X)) contains antisymmetric Lie polynomials"
+    )
     print("    -> For BU-Egress at S, we require s·Delta·s = 0")
     print("    -> This means s·(2[X,Y] + higher-order antisymmetric terms)·s = 0")
     print("    -> UNA requires [X,Y] ≠ 0 globally (non-absolute commutation)")
@@ -257,13 +267,13 @@ if SYMPY_AVAILABLE:
     print("       while preserving [X,Y] ≠ 0 globally")
     print("    -> This is the algebraic encoding of 'necessity at S'")
     print()
-    
+
     # Degree 3 and higher: nested commutator constraints
     print("  Degree 3+: Nested commutator constraints")
     print("    -> [X,[X,Y]] and [Y,[X,Y]] must satisfy specific relations")
     print("    -> These will determine the Lie algebra structure")
     print()
-    
+
 else:
     print("Coefficient matching:")
     print("  Degree 1: No constraint")
@@ -297,7 +307,9 @@ print("    [Y,[X,Y]] = -a*X")
 print()
 print("Proof sketch:")
 print("  - Delta = 2(BCH(X,Y) - BCH(Y,X)) is a sum of antisymmetric Lie polynomials")
-print("  - Requiring s·Delta·s = 0 for all small t kills the antisymmetric tower in the s-sector")
+print(
+    "  - Requiring s·Delta·s = 0 for all small t kills the antisymmetric tower in the s-sector"
+)
 print("  - The requirement that span{X, Y, [X,Y]} closes under commutation")
 print("  - Combined with UNA ([X,Y] != 0 globally), this forces the sl(2) relations")
 print("  - The parameter a is determined by normalization")
@@ -307,7 +319,7 @@ if SYMPY_AVAILABLE:
     # Verify sl(2) structure symbolically
     # Define Z = [X,Y] (this will be the third generator)
     Z_comm = comm(X, Y)
-    
+
     print("Verification of sl(2) structure:")
     print(f"  Z = [X,Y] = {Z_comm}")
     print()
@@ -320,7 +332,7 @@ if SYMPY_AVAILABLE:
     print()
     print("  The dimension is exactly 3, which corresponds to 3D space.")
     print()
-    
+
 else:
     print("sl(2) structure: 3-dimensional Lie algebra")
     print("  Generators: X, Y, Z = [X,Y]")
@@ -366,7 +378,9 @@ print("Previous approach (circularity concern):")
 print("  Modal logic + unitarity -> BCH with skew-adjoint -> su(2)")
 print()
 print("New approach (non-circular):")
-print("  Modal logic -> Formal BCH -> sl(2) algebra -> [choose representation] -> su(2) on L^2(S^2)")
+print(
+    "  Modal logic -> Formal BCH -> sl(2) algebra -> [choose representation] -> su(2) on L^2(S^2)"
+)
 print()
 print("Key differences:")
 print("  1. No unitarity assumption in the derivation")
@@ -410,8 +424,10 @@ sigma_1 = np.array([[0, 1], [1, 0]], dtype=complex)
 sigma_2 = np.array([[0, -1j], [1j, 0]], dtype=complex)
 sigma_3 = np.array([[1, 0], [0, -1]], dtype=complex)
 
+
 def commutator_np(A, B):
     return A @ B - B @ A
+
 
 # su(2) relations: [sigma_i, sigma_j] = 2i epsilon_ijk sigma_k
 comm_12 = commutator_np(sigma_1, sigma_2)
@@ -457,4 +473,3 @@ print()
 print("=" * 80)
 print("ANALYSIS COMPLETE")
 print("=" * 80)
-

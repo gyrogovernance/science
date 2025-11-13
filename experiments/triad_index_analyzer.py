@@ -208,7 +208,7 @@ class TriadIndexAnalyzer:
         self.epsilon0 = 8.8541878128e-12  # F/m
         self.e = 1.602176634e-19  # C
         self.m_e = 9.1093837015e-31  # kg
-        self. m_a = 1.67262192369e-27  # kg
+        self.m_a = 1.67262192369e-27  # kg
 
         # Fine structure constant
         self.alpha = 0.0072973525693
@@ -1384,7 +1384,7 @@ class TriadIndexAnalyzer:
             # Test against known CGM thresholds using exact Wigner angle
             u_p = 1 / np.sqrt(2)  # UNA threshold (velocity)
             o_p = np.pi / 4  # ONA threshold (angle in radians)
-             m_a = 1 / (2 * np.sqrt(2 * np.pi))  # BU threshold (expected Wigner angle)
+            m_a = 1 / (2 * np.sqrt(2 * np.pi))  # BU threshold (expected Wigner angle)
 
             # Convert velocity to rapidity: η = arctanh(β)
             eta_u = np.arctanh(u_p)

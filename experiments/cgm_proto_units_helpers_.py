@@ -37,9 +37,9 @@ pi = sp.pi
 fourpi = 4 * sp.pi
 
 # CGM invariants (dimensionless)
- m_a = 1 / (2 * sp.sqrt(2 * sp.pi))  # aperture parameter
-S_fwd = (sp.pi / 2) *  m_a  # forward action
-S_rec = (3 * sp.pi / 2) *  m_a  # reciprocal action
+m_a = 1 / (2 * sp.sqrt(2 * sp.pi))  # aperture parameter
+S_fwd = (sp.pi / 2) * m_a  # forward action
+S_rec = (3 * sp.pi / 2) * m_a  # reciprocal action
 
 # Geometric coupling and related factors
 zeta, sigma, xi, K, nu, S_geo = sp.symbols(
@@ -53,51 +53,54 @@ c, G = sp.symbols("c G", positive=True, finite=True)
 # Section A. Derive ζ from geometric principles
 # ----------------------------------------------
 
+
 def derive_zeta_from_geometry() -> Tuple[Any, Any, Any]:
     """
     Derive ζ = Q_G/S_geo from geometric mean action and survey completeness.
-    
+
     The geometric coupling emerges from the ratio of complete solid angle
     to geometric mean action, representing the normalization factor for
     geometric relationships within the CGM framework.
     """
     # Q_G = 4π (complete solid angle for coherent observation)
     Q_G = fourpi
-    
+
     # S_geometric = √(S_fwd × S_rec) (geometric mean of dual modes)
     S_geo_expr = sp.sqrt(S_fwd * S_rec)
-    
+
     # ζ = Q_G/S_geo (geometric coupling)
     zeta_expr = sp.simplify(Q_G / S_geo_expr)
-    
+
     return Q_G, S_geo_expr, zeta_expr
+
 
 # ---------------------------------------------------------------
 # Section B. Prove S_geometric is uniquely the geometric mean
 # ---------------------------------------------------------------
 
+
 def prove_geometric_mean_uniqueness() -> Dict[str, Any]:
     """
     Prove that a mean M(x,y) satisfying:
     (i) Symmetry: M(x,y) = M(y,x)
-    (ii) Homogeneity: M(ax, ay) = a · M(x,y)  
+    (ii) Homogeneity: M(ax, ay) = a · M(x,y)
     (iii) Dual invariance: M(kx, y/k) = M(x,y), ∀k>0
     must be M(x,y) = √(xy).
     """
     x, y, k, alpha, beta = sp.symbols("x y k alpha beta", positive=True)
-    
+
     # Symmetric, homogeneous ansatz
     M = (x**alpha) * (y**beta)
-    
+
     # Dual invariance: M(kx, y/k) = M(x,y) ⇒ k^(α-β)=1 for all k>0 ⇒ α=β
     eq_dual = sp.Eq(sp.simplify(((k * x) ** alpha) * ((y / k) ** beta) / M), 1)
     sol1 = sp.solve([sp.Eq(alpha - beta, 0)], [alpha, beta], dict=True)
-    
+
     # Homogeneity of degree 1: α+β=1
     sol2 = sp.solve(
         [sp.Eq(alpha - beta, 0), sp.Eq(alpha + beta, 1)], [alpha, beta], dict=True
     )
-    
+
     # Unique solution: α=β=1/2
     return {
         "dual_invariance_condition": sp.Eq(alpha - beta, 0),
@@ -106,13 +109,16 @@ def prove_geometric_mean_uniqueness() -> Dict[str, Any]:
         "mean_form": sp.Eq(sp.Function("M")(x, y), sp.sqrt(x * y)),
     }
 
+
 def compute_S_geometric():
     """Compute S_geometric = √(S_fwd S_rec) =  m_a · π · √3 / 2."""
     return sp.simplify(sp.sqrt(S_fwd * S_rec))
 
+
 # -------------------------------------------------------
 # Section C. Fix K by geometric normalization (K=12π)
 # -------------------------------------------------------
+
 
 def fix_K_by_normalizations():
     """
@@ -127,10 +133,11 @@ def fix_K_by_normalizations():
     K_final = sp.simplify(K_curv * sp.pi) * sp.Integer(1)  # ⇒ 12π
     return K_final
 
+
 def numeric_zeta_evaluation():
     """
     Evaluate ζ with S_geo as geometric mean.
-    
+
     Returns numerical ζ and verification of geometric derivation.
     """
     Sgeo = compute_S_geometric()  #  m_a π √3/2
@@ -139,19 +146,24 @@ def numeric_zeta_evaluation():
     zeta_num = float(zeta_expr.evalf(mp.dps))
     return zeta_expr, zeta_num
 
+
 # -----------------------
 # Pretty-printing helpers
 # -----------------------
 
+
 def fmt(expr) -> str:
     return sp.srepr(sp.simplify(expr))
+
 
 def nstr(x, d=12) -> str:
     return str(sp.N(x, d))
 
+
 # -------------------------
 # Main derivation reporting
 # -------------------------
+
 
 def main():
     print("=" * 78)
@@ -209,7 +221,9 @@ def main():
 
     print("\n[Summary]")
     print("  - Derived ζ = Q_G/S_geo from geometric completeness principles.")
-    print("  - Proved S_geo is uniquely the geometric mean under symmetry and dual invariance.")
+    print(
+        "  - Proved S_geo is uniquely the geometric mean under symmetry and dual invariance."
+    )
     print("  - Established ζ ≈ 23.16 as dimensionless geometric normalizer.")
     print("  - No dimensional units or bridge equations required.")
     print("  - All relationships are purely geometric and dimensionless.")
@@ -217,6 +231,7 @@ def main():
     print("When dimensional scales are needed, anchor to measured constants and")
     print("propagate via the dimensionless ratios derived here.")
     print("=" * 78)
+
 
 if __name__ == "__main__":
     main()

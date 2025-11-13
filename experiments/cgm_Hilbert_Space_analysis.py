@@ -31,10 +31,10 @@ import sys
 Q_G = 4 * np.pi  # Quantum gravity invariant
 m_a = 1 / (2 * np.sqrt(2 * np.pi))  # BU aperture
 
- 
+
 print("HILBERT SPACE REPRESENTATION OF CGM")
 print("GNS Construction on L2(S^2, dOmega)")
- 
+
 print()
 
 # 1. DISCRETIZE THE 2-SPHERE
@@ -43,7 +43,7 @@ print("1. HILBERT SPACE CONSTRUCTION")
 
 # Grid configuration
 n_theta = 64  # polar angle discretization
-n_phi = 128   # azimuthal angle discretization
+n_phi = 128  # azimuthal angle discretization
 USE_FIRST_ORDER_UL = True  # Use first-order UL_t expansion to avoid aliasing
 
 # Use Gauss-Legendre quadrature for exact integration
@@ -54,11 +54,11 @@ theta = theta[::-1]
 theta_weights = x_weights[::-1]
 
 # Uniform azimuthal grid
-phi = np.linspace(0, 2*np.pi, n_phi, endpoint=False)
-dphi = 2*np.pi / n_phi
+phi = np.linspace(0, 2 * np.pi, n_phi, endpoint=False)
+dphi = 2 * np.pi / n_phi
 
 # Create meshgrid
-THETA, PHI = np.meshgrid(theta, phi, indexing='ij')
+THETA, PHI = np.meshgrid(theta, phi, indexing="ij")
 
 # Area element with Gauss-Legendre weights (weights already include sin(theta) Jacobian)
 WEIGHTS_THETA = np.broadcast_to(theta_weights[:, np.newaxis], (n_theta, n_phi))
@@ -95,18 +95,21 @@ print()
 # Cache for Wigner D-matrices (keyed by Euler angles)
 _wigner_d_cache = {}
 
-def compute_wigner_d_matrix_from_euler(l: int, alpha: float, beta: float, gamma: float) -> np.ndarray:
+
+def compute_wigner_d_matrix_from_euler(
+    l: int, alpha: float, beta: float, gamma: float
+) -> np.ndarray:
     """
     Compute Wigner D-matrix D^l(α,β,γ) from Euler angles (ZYZ convention).
-    
+
     D^l_{m m'}(α,β,γ) = e^{-i m α} d^l_{m m'}(β) e^{-i m' γ}
-    
+
     Uses sphecerix for reliable computation instead of custom wigner_d_little.
-    
+
     Args:
         l: Angular momentum quantum number
         alpha, beta, gamma: Euler angles in ZYZ convention (radians)
-        
+
     Returns:
         (2l+1) x (2l+1) complex array: Wigner D-matrix D^l(α,β,γ)
     """
@@ -114,11 +117,11 @@ def compute_wigner_d_matrix_from_euler(l: int, alpha: float, beta: float, gamma:
     # Create rotation from Euler angles (suppress gimbal lock warning for beta=pi)
     with warnings.catch_warnings():
         warnings.simplefilter("ignore", UserWarning)
-        rot = R.from_euler('ZYZ', [alpha, beta, gamma])
+        rot = R.from_euler("ZYZ", [alpha, beta, gamma])
     D = sphecerix.wigner_D(l, rot)
-    
+
     # Verify unitarity
-    I = np.eye(2*l+1, dtype=complex)
+    I = np.eye(2 * l + 1, dtype=complex)
     D_dagger_D = D.conj().T @ D
     if not np.allclose(D_dagger_D, I, atol=1e-12):
         # Try transpose if not unitary
@@ -129,20 +132,23 @@ def compute_wigner_d_matrix_from_euler(l: int, alpha: float, beta: float, gamma:
         D_dag = D.conj().T
         if np.allclose(D_dag.conj().T @ D_dag, I, atol=1e-12):
             D = D_dag
-    
+
     return D
 
-def compute_wigner_d_matrix_from_rotation(rotation: R, l: int, euler_angles: Optional[Tuple[float, float, float]] = None) -> np.ndarray:
+
+def compute_wigner_d_matrix_from_rotation(
+    rotation: R, l: int, euler_angles: Optional[Tuple[float, float, float]] = None
+) -> np.ndarray:
     """
     Compute Wigner D-matrix D^l(R) from Rotation object.
-    
+
     For function rotation: (U_R f)(ω) = f(R^{-1} ω), we use D(R).
-    
+
     Args:
         rotation: scipy.spatial.transform.Rotation object
         l: Angular momentum quantum number
         euler_angles: Optional (alpha, beta, gamma) in ZYZ convention to avoid gimbal lock
-        
+
     Returns:
         (2l+1) x (2l+1) complex array: Wigner D-matrix D^l(R)
     """
@@ -153,8 +159,12 @@ def compute_wigner_d_matrix_from_rotation(rotation: R, l: int, euler_angles: Opt
         # Check for known rotations first to avoid gimbal lock
         R_mat = rotation.as_matrix()
         # For pi about x-axis: R_x(pi) = R_z(pi/2) R_y(pi) R_z(-pi/2)
-        if np.allclose(R_mat, R.from_euler('ZYZ', [np.pi/2, np.pi, -np.pi/2]).as_matrix(), atol=1e-10):
-            alpha, beta, gamma = np.pi/2, np.pi, -np.pi/2
+        if np.allclose(
+            R_mat,
+            R.from_euler("ZYZ", [np.pi / 2, np.pi, -np.pi / 2]).as_matrix(),
+            atol=1e-10,
+        ):
+            alpha, beta, gamma = np.pi / 2, np.pi, -np.pi / 2
         else:
             # Try to extract from rotation matrix directly (avoids as_euler call)
             beta = np.arccos(np.clip(R_mat[2, 2], -1, 1))
@@ -168,12 +178,14 @@ def compute_wigner_d_matrix_from_rotation(rotation: R, l: int, euler_angles: Opt
                         alpha, beta, gamma = 0.0, 0.0, 0.0
                     else:
                         # For pi about x-axis
-                        if np.allclose(rotvec, [np.pi, 0, 0], atol=1e-10) or np.allclose(rotvec, [-np.pi, 0, 0], atol=1e-10):
-                            alpha, beta, gamma = np.pi/2, np.pi, -np.pi/2
+                        if np.allclose(
+                            rotvec, [np.pi, 0, 0], atol=1e-10
+                        ) or np.allclose(rotvec, [-np.pi, 0, 0], atol=1e-10):
+                            alpha, beta, gamma = np.pi / 2, np.pi, -np.pi / 2
                         else:
                             # General case: try as_euler with warning suppression
                             try:
-                                alpha, beta, gamma = rotation.as_euler('ZYZ')
+                                alpha, beta, gamma = rotation.as_euler("ZYZ")
                             except:
                                 # Last resort: use identity
                                 alpha, beta, gamma = 0.0, 0.0, 0.0
@@ -181,60 +193,67 @@ def compute_wigner_d_matrix_from_rotation(rotation: R, l: int, euler_angles: Opt
                 # No gimbal lock - extract angles from matrix
                 alpha = np.arctan2(R_mat[2, 0], -R_mat[2, 1])
                 gamma = np.arctan2(R_mat[0, 2], R_mat[1, 2])
-    
+
     # Cache key based on Euler angles
     cache_key = (l, tuple(np.round([alpha, beta, gamma], 12)))
-    
+
     if cache_key in _wigner_d_cache:
         return _wigner_d_cache[cache_key]
-    
+
     # Compute D^l from Euler angles
     D = compute_wigner_d_matrix_from_euler(l, alpha, beta, gamma)
-    
+
     # Verify unitarity
-    I = np.eye(2*l+1, dtype=complex)
+    I = np.eye(2 * l + 1, dtype=complex)
     D_dagger_D = D.conj().T @ D
     if not np.allclose(D_dagger_D, I, atol=1e-12):
         # If not unitary, something is wrong
         pass  # Keep D anyway, but this shouldn't happen
-    
+
     # Cache the result
     _wigner_d_cache[cache_key] = D
     return D
 
-def rotate_sphere_function(f_values: np.ndarray, rotation: R, euler_angles: Optional[Tuple[float, float, float]] = None) -> np.ndarray:
+
+def rotate_sphere_function(
+    f_values: np.ndarray,
+    rotation: R,
+    euler_angles: Optional[Tuple[float, float, float]] = None,
+) -> np.ndarray:
     """
     Apply rotation to function on sphere using Wigner D-matrices (spherical harmonics).
-    
+
     This ensures exact unitarity to machine precision by working in the spherical
     harmonic basis where rotations are represented exactly by Wigner D-matrices.
-    
+
     For functions f on the sphere, the rotation action is (U_R f)(ω) = f(R^{-1} ω).
     In SH basis, this corresponds to applying D(R^{-1}).
-    
+
     Args:
         f_values: Function values on (theta, phi) grid
         rotation: scipy.spatial.transform.Rotation object (the rotation R)
-        
+
     Returns:
         Rotated function values (complex array)
     """
     # Expand function in spherical harmonics
     f_flat = f_values.flatten()
     f_coeffs = {}  # f_coeffs[(l, m)] = coefficient
-    
+
     # Project onto spherical harmonics
     # Note: This representation does not decompose into commuting blocks (X mixes l → l±1),
     # satisfying the simplicity constraint (no independent factors).
     for l in range(l_max + 1):
-        for m in range(-l, l+1):
+        for m in range(-l, l + 1):
             Y_lm = sph_harm_y(m, l, PHI, THETA)
             # Inner product: <Y_{lm}|f> = integral Y*_{lm} f dOmega
             # Note: For SciPy's sph_harm_y normalization (integral |Y_lm|^2 dOmega = 1), no division by 4pi needed
             # Handle both real and complex f_values
             integrand = np.conj(Y_lm) * np.asarray(f_values, dtype=complex) * dOmega
-            f_coeffs[(l, m)] = np.sum(integrand)  # No division: SH are already normalized
-    
+            f_coeffs[(l, m)] = np.sum(
+                integrand
+            )  # No division: SH are already normalized
+
     # Apply rotation via Wigner D-matrices
     # For (U_R f)(ω) = f(R^{-1} ω), the relation is:
     # Y_{lm}(R^{-1} ω) = Σ_{m'} D^l_{mm'}(R) Y_{lm'}(ω)
@@ -242,46 +261,55 @@ def rotate_sphere_function(f_values: np.ndarray, rotation: R, euler_angles: Opti
     #                = Σ_{m'} [Σ_m f_{lm} D^l_{mm'}(R)] Y_{lm'}(ω)
     # Rotated coefficients: f'_{lm'} = Σ_m D^l_{mm'}(R) f_{lm}
     # Note: This is matrix multiplication f' = D^T @ f (transpose of D)
-    
+
     f_coeffs_rot = {}
-    
+
     for l in range(l_max + 1):
         # Compute D^l(R) from Euler angles (pass euler_angles to avoid gimbal lock)
-        D_l = compute_wigner_d_matrix_from_rotation(rotation, l, euler_angles=euler_angles)
-        for m in range(-l, l+1):
+        D_l = compute_wigner_d_matrix_from_rotation(
+            rotation, l, euler_angles=euler_angles
+        )
+        for m in range(-l, l + 1):
             # Rotated coefficient: f'_{lm} = Σ_{m'} D^l_{mm'}(R) f_{lm'}
             # Note: D_l[i,j] = D^l_{m_i, m'_j} where i = m+l, j = m'+l
             # So D_l[m+l, m'+l] = D^l_{m, m'}
             f_coeffs_rot[(l, m)] = sum(
-                D_l[m+l, m_prime+l] * f_coeffs.get((l, m_prime), 0.0)
-                for m_prime in range(-l, l+1)
+                D_l[m + l, m_prime + l] * f_coeffs.get((l, m_prime), 0.0)
+                for m_prime in range(-l, l + 1)
             )
-    
+
     # Reconstruct function from rotated coefficients
     f_rot = np.zeros_like(f_values, dtype=complex)
     for l in range(l_max + 1):
-        for m in range(-l, l+1):
+        for m in range(-l, l + 1):
             Y_lm = sph_harm_y(m, l, PHI, THETA)
             f_rot += f_coeffs_rot.get((l, m), 0.0) * Y_lm
-    
+
     # Return complex (real input stays real under rotation; preserve exact unitarity)
     # If input was real, output will be real to machine precision
     return f_rot
+
 
 # Define U_R as rotation (preserves constant function - Assumption CS)
 # Choose rotation by pi about x-axis (order 2, ensures depth-four closure)
 # R_x(pi) = R_z(pi/2) R_y(pi) R_z(-pi/2) in ZYZ convention
 # Use Euler angles directly: alpha=pi/2, beta=pi, gamma=-pi/2
-rot_R_euler_zyz = (np.pi/2, np.pi, -np.pi/2)  # (alpha, beta, gamma) for pi about x-axis
-rot_R = R.from_euler('ZYZ', rot_R_euler_zyz)  # Create Rotation object for compatibility
+rot_R_euler_zyz = (
+    np.pi / 2,
+    np.pi,
+    -np.pi / 2,
+)  # (alpha, beta, gamma) for pi about x-axis
+rot_R = R.from_euler("ZYZ", rot_R_euler_zyz)  # Create Rotation object for compatibility
 
 # Define U_L as phase multiplication (alters constant function - Assumption CS)
 # U_L multiplies by exp(i*kappa*cos(theta)) with kappa != 0
 kappa_L = 0.2  # Chiral phase parameter
 
+
 def apply_UL(f: np.ndarray) -> np.ndarray:
     """Apply U_L as phase multiplication."""
     return np.exp(1j * kappa_L * np.cos(THETA)) * f
+
 
 print(f"Left operator U_L:  Phase multiplication exp(i*{kappa_L}*cos(theta))")
 print(f"Right rotation U_R: pi about x-axis (axis-angle: [pi, 0, 0])")
@@ -292,15 +320,21 @@ print()
 print("3. UNITARITY VERIFICATION")
 
 # Create generic test function (combination of harmonics)
-test_function = np.cos(THETA) + 0.7*np.sin(THETA)*np.cos(PHI) + 0.3*np.sin(THETA)*np.sin(PHI)
+test_function = (
+    np.cos(THETA)
+    + 0.7 * np.sin(THETA) * np.cos(PHI)
+    + 0.3 * np.sin(THETA) * np.sin(PHI)
+)
 
 # Apply U_L (phase multiplication)
 f_L = apply_UL(test_function)
+
 
 # Compute L² norm before and after
 def compute_L2_norm(f: np.ndarray) -> float:
     """Compute L2 norm with proper measure."""
     return np.sqrt(np.sum(np.square(np.abs(f)) * dOmega) / total_solid_angle)
+
 
 # 3.5. SANITY CHECKS: D-MATRIX UNITARITY AND CONSTANT FUNCTION PRESERVATION
 print("3.5. D-MATRIX SANITY CHECKS")
@@ -310,29 +344,35 @@ print("Verifying unitarity per l and constant function preservation...")
 print("  Checking unitarity of D^l matrices...")
 for l in range(min(5, l_max + 1)):
     D_l = compute_wigner_d_matrix_from_rotation(rot_R, l, euler_angles=rot_R_euler_zyz)
-    I = np.eye(2*l+1, dtype=complex)
+    I = np.eye(2 * l + 1, dtype=complex)
     D_dagger_D = D_l.conj().T @ D_l
     unitarity_error = np.max(np.abs(D_dagger_D - I))
     if l == 0:
-        print(f"    l={l}: ||D^l† D^l - I|| = {unitarity_error:.2e} (should be < 1e-12)")
+        print(
+            f"    l={l}: ||D^l† D^l - I|| = {unitarity_error:.2e} (should be < 1e-12)"
+        )
     if unitarity_error > 1e-12:
-        print(f"    [WARNING] l={l} D-matrix not unitary (error: {unitarity_error:.2e})")
+        print(
+            f"    [WARNING] l={l} D-matrix not unitary (error: {unitarity_error:.2e})"
+        )
 
 # Constant function (only l=0, m=0 coefficient should be nonzero)
 constant_func = np.ones((n_theta, n_phi))
-constant_rotated = rotate_sphere_function(constant_func, rot_R, euler_angles=rot_R_euler_zyz)
+constant_rotated = rotate_sphere_function(
+    constant_func, rot_R, euler_angles=rot_R_euler_zyz
+)
 
 # Project onto spherical harmonics to check coefficients
 constant_coeffs = {}
 for l in range(min(3, l_max + 1)):  # Check first few l values
-    for m in range(-l, l+1):
+    for m in range(-l, l + 1):
         Y_lm = sph_harm_y(m, l, PHI, THETA)
         integrand = np.conj(Y_lm) * np.asarray(constant_func, dtype=complex) * dOmega
         constant_coeffs[(l, m)] = np.sum(integrand)
 
 constant_rotated_coeffs = {}
 for l in range(min(3, l_max + 1)):
-    for m in range(-l, l+1):
+    for m in range(-l, l + 1):
         Y_lm = sph_harm_y(m, l, PHI, THETA)
         integrand = np.conj(Y_lm) * np.asarray(constant_rotated, dtype=complex) * dOmega
         constant_rotated_coeffs[(l, m)] = np.sum(integrand)
@@ -343,11 +383,17 @@ l0_after = abs(constant_rotated_coeffs.get((0, 0), 0.0))
 l0_preserved = abs(l0_before - l0_after) < 1e-12
 
 # Check expectation value: <Omega|U_R|Omega> should be 1
-expectation_UR = np.sum(np.conj(constant_func) * constant_rotated * dOmega) / total_solid_angle
+expectation_UR = (
+    np.sum(np.conj(constant_func) * constant_rotated * dOmega) / total_solid_angle
+)
 expectation_preserved = abs(expectation_UR - 1.0) < 1e-12
 
-print(f"  Constant function l=0 coefficient preserved: {l0_preserved} (before: {l0_before:.12f}, after: {l0_after:.12f})")
-print(f"  <Omega|U_R|Omega> = 1: {expectation_preserved} (value: {expectation_UR:.12f})")
+print(
+    f"  Constant function l=0 coefficient preserved: {l0_preserved} (before: {l0_before:.12f}, after: {l0_after:.12f})"
+)
+print(
+    f"  <Omega|U_R|Omega> = 1: {expectation_preserved} (value: {expectation_UR:.12f})"
+)
 if l0_preserved and expectation_preserved:
     print("  [OK] D-matrix convention calibrated correctly")
 else:
@@ -378,12 +424,16 @@ print("4. ASSUMPTION (CS): CHIRALITY AT THE HORIZON [R]S <-> S, not([L]S <-> S)"
 cyclic_vector = np.ones((n_theta, n_phi))
 
 # Apply U_R to cyclic vector
-omega_after_R = rotate_sphere_function(cyclic_vector, rot_R, euler_angles=rot_R_euler_zyz)
+omega_after_R = rotate_sphere_function(
+    cyclic_vector, rot_R, euler_angles=rot_R_euler_zyz
+)
 
 # Compute expectation value (handle complex values)
 expectation_before = np.sum(cyclic_vector * dOmega) / total_solid_angle
 # For complex omega_after_R, use <Omega|U_R|Omega> = integral Omega* U_R(Omega) dOmega
-expectation_after_R = np.sum(np.conj(cyclic_vector) * omega_after_R * dOmega) / total_solid_angle
+expectation_after_R = (
+    np.sum(np.conj(cyclic_vector) * omega_after_R * dOmega) / total_solid_angle
+)
 
 print(f"Cyclic vector |Omega> = constant function")
 print(f"  <Omega|Omega>:     {expectation_before:.10f}")
@@ -395,21 +445,27 @@ print()
 omega_after_L = apply_UL(cyclic_vector)
 
 # Compute expectation value (handle complex values)
-expectation_after_L = np.sum(np.conj(cyclic_vector) * omega_after_L * dOmega) / total_solid_angle
+expectation_after_L = (
+    np.sum(np.conj(cyclic_vector) * omega_after_L * dOmega) / total_solid_angle
+)
 
 print(f"  <Omega|U_L|Omega>: {expectation_after_L:.10f}")
 print(f"  Left alters:       {abs(expectation_after_L - 1.0) > 1e-6}")
 print()
 
-oa1_ok = (abs(expectation_before - expectation_after_R) < 1e-3) and (abs(expectation_after_L - 1.0) > 1e-6)
+oa1_ok = (abs(expectation_before - expectation_after_R) < 1e-3) and (
+    abs(expectation_after_L - 1.0) > 1e-6
+)
 print(f"Assumption CS verified: Right preserves horizon, left alters horizon: {oa1_ok}")
 print()
+
 
 # Define projector onto S-subspace (needed for UNA, ONA, BU-Egress, BU-Ingress)
 def proj_S(f: np.ndarray) -> np.ndarray:
     """Project function onto S-subspace (span{Omega})."""
     coef = np.sum(np.conj(cyclic_vector) * f * dOmega) / total_solid_angle
     return coef * cyclic_vector
+
 
 # 5. VERIFY LEMMA UNA (DEPTH-2 NON-ABSOLUTE EQUALITY)
 
@@ -419,10 +475,15 @@ print("5. LEMMA UNA: DEPTH-2 NON-ABSOLUTE EQUALITY not[]E")
 # This means E is not necessary (does not hold at all accessible worlds)
 
 # Apply U_L then U_R to cyclic vector
-omega_LR = rotate_sphere_function(apply_UL(cyclic_vector), rot_R, euler_angles=rot_R_euler_zyz)
+omega_LR = rotate_sphere_function(
+    apply_UL(cyclic_vector), rot_R, euler_angles=rot_R_euler_zyz
+)
 
 # Apply U_R then U_L to cyclic vector
-omega_RL = apply_UL(rotate_sphere_function(cyclic_vector, rot_R, euler_angles=rot_R_euler_zyz))
+omega_RL = apply_UL(
+    rotate_sphere_function(cyclic_vector, rot_R, euler_angles=rot_R_euler_zyz)
+)
+
 
 # Check if E holds (equality of LR and RL compositions)
 # E holds if omega_LR ~ omega_RL (in S subspace)
@@ -435,15 +496,17 @@ def compute_E_at_cyclic() -> bool:
     diff_proj = compute_L2_norm(proj_LR - proj_RL)
     return diff_proj < 1e-6
 
+
 E_holds_cyclic = compute_E_at_cyclic()
 
 # For not[]E, we need E to NOT hold at all accessible worlds
 # Check at S and its L/R images
 worlds = {
-    'w_S': cyclic_vector,
-    'w_L': apply_UL(cyclic_vector),
-    'w_R': rotate_sphere_function(cyclic_vector, rot_R, euler_angles=rot_R_euler_zyz),
+    "w_S": cyclic_vector,
+    "w_L": apply_UL(cyclic_vector),
+    "w_R": rotate_sphere_function(cyclic_vector, rot_R, euler_angles=rot_R_euler_zyz),
 }
+
 
 def compute_E_at(v: np.ndarray) -> bool:
     """Check if E holds at vector v: [L][R]S <-> [R][L]S."""
@@ -454,9 +517,10 @@ def compute_E_at(v: np.ndarray) -> bool:
     diff_proj = compute_L2_norm(proj_LR - proj_RL)
     return diff_proj < 1e-6
 
-E_at_w_S = compute_E_at(worlds['w_S'])
-E_at_w_L = compute_E_at(worlds['w_L'])
-E_at_w_R = compute_E_at(worlds['w_R'])
+
+E_at_w_S = compute_E_at(worlds["w_S"])
+E_at_w_L = compute_E_at(worlds["w_L"])
+E_at_w_R = compute_E_at(worlds["w_R"])
 
 # not[]E means: not (E holds at all accessible successors of S)
 # In modal logic: not[]E <=> exists w in successors: not E(w)
@@ -591,7 +655,9 @@ print(f"  Normalized: {abs(omega_norm_squared - 1.0) < 1e-6}")
 print()
 
 print(f"Horizon constant Q_G = {Q_G:.10f} steradians")
-print(f"  Implemented via sphere measure: Integral_S^2 dOmega = {total_solid_angle:.10f}")
+print(
+    f"  Implemented via sphere measure: Integral_S^2 dOmega = {total_solid_angle:.10f}"
+)
 print()
 
 # 11. COMPLETENESS VERIFICATION
@@ -651,13 +717,15 @@ print()
 # 14. GNS CONSTRUCTION SUMMARY
 
 print("14. GNS CONSTRUCTION SUMMARY")
- 
+
 
 print("\nInput:")
 print("  *-algebra A generated by u_L, u_R (formal unitaries)")
 print("  State functional ω with:")
 print("    - ω(I) = 1 (normalization)")
-print("    - ω encodes the foundational assumption and lemmas (CS, UNA, ONA, BU, Memory) as expectation constraints")
+print(
+    "    - ω encodes the foundational assumption and lemmas (CS, UNA, ONA, BU, Memory) as expectation constraints"
+)
 print()
 
 print("GNS Triple (H_omega, pi_omega, |Omega>):")
@@ -674,9 +742,9 @@ print("  [X] Observables as self-adjoint operators")
 print("  [X] CGM axioms satisfied in representation")
 print()
 
- 
+
 print("HILBERT SPACE REPRESENTATION VERIFIED")
- 
+
 print()
 
 # 15b. GENERATORS AND COMMUTATORS (ANALYTIC + SYMBOLIC - BCH VERIFICATION)
@@ -689,11 +757,12 @@ print("  U_L(t) = exp(i t X),  U_R(t) = exp(i t Y)")
 print("Verification: Analytic generators + symbolic commutators → su(2) relations")
 print()
 
+
 # Parameterized flows (needed for Y generator)
 def UL_t(f: np.ndarray, t: float) -> np.ndarray:
     """
     One-parameter flow for U_L: exp(i t kappa cos(theta)).
-    
+
     For k-scaling diagnostics, use first-order expansion to avoid aliasing
     from infinite bandwidth of exp(i t kappa cos(theta)) when truncated.
     """
@@ -705,10 +774,11 @@ def UL_t(f: np.ndarray, t: float) -> np.ndarray:
         # Full exponential (causes aliasing when truncated to finite l_max)
         return np.exp(1j * t * kappa_L * np.cos(THETA)) * f
 
+
 def UR_t(f: np.ndarray, t: float) -> np.ndarray:
     """
     One-parameter flow for U_R: small rotation by angle t about x-axis.
-    
+
     For BCH scaling tests (small t), uses first-order generator approximation:
     UR_t ~ I + t Y_op_x, where Y_op_x is the x-rotation generator.
     This avoids expensive Wigner D-matrix rotations for small-t diagnostics.
@@ -722,20 +792,20 @@ def UR_t(f: np.ndarray, t: float) -> np.ndarray:
         dtheta[1:-1, :] = (f[2:, :] - f[:-2, :]) / (theta[2:, None] - theta[:-2, None])
         dtheta[0, :] = (f[1, :] - f[0, :]) / (theta[1] - theta[0])
         dtheta[-1, :] = (f[-1, :] - f[-2, :]) / (theta[-1] - theta[-2])
-        
+
         # ∂_φ with uniform phi (wrap-around)
-        dphi_step = 2*np.pi / n_phi
+        dphi_step = 2 * np.pi / n_phi
         dphi_phi = np.empty_like(f, dtype=complex)
         dphi_phi[:, 1:-1] = (f[:, 2:] - f[:, :-2]) / (2 * dphi_step)
         dphi_phi[:, 0] = (f[:, 1] - f[:, -1]) / (2 * dphi_step)
         dphi_phi[:, -1] = (f[:, 0] - f[:, -2]) / (2 * dphi_step)
-        
+
         # Y_op_x = L_x = i (sin φ ∂_θ + cot θ cos φ ∂_φ)
         sin_phi = np.sin(PHI)
         cos_phi = np.cos(PHI)
         cot_theta = np.cos(THETA) / np.maximum(np.sin(THETA), 1e-12)
         Y_op_x_f = 1j * (sin_phi * dtheta + cot_theta * cos_phi * dphi_phi)
-        
+
         # First-order: UR_t ~ I + t Y_op_x
         return f + t * Y_op_x_f
     else:
@@ -743,15 +813,17 @@ def UR_t(f: np.ndarray, t: float) -> np.ndarray:
         rot_t = R.from_rotvec(np.array([t, 0.0, 0.0]))
         return rotate_sphere_function(f, rot_t)
 
+
 # Symbolic BCH verification
 try:
     from sympy import symbols, I, simplify, expand
+
     print("Symbolic BCH verification using non-commuting symbols...")
-    
+
     # Non-commuting symbols for generators (X, Y skew-Hermitian)
-    X_sym, Y_sym, a_sym = symbols('X Y a', commutative=False)
-    t_sym = symbols('t', real=True)
-    
+    X_sym, Y_sym, a_sym = symbols("X Y a", commutative=False)
+    t_sym = symbols("t", real=True)
+
     # BCH for log(exp(tX) exp(tY)) to O(t^3) (manual, exact)
     # Standard formula: log(exp(A) exp(B)) = A + B + [A,B]/2 + ([A,[A,B]] + [B,[A,B]])/12 + O(4)
     # [A,B] = A*B - B*A
@@ -761,10 +833,10 @@ try:
     double_XXY_sym = X_sym * comm_XY_sym - comm_XY_sym * X_sym
     double_YXY_sym = Y_sym * comm_XY_sym - comm_XY_sym * Y_sym
     Z1 += (t_sym**3 / 12) * (double_XXY_sym + double_YXY_sym)
-    
+
     # LRLR: log(exp(tX)exp(tY)exp(tX)exp(tY)) ~ 2 Z1 (symmetric product)
     Z_LRLR = 2 * Z1
-    
+
     # RLRL: swap X<->Y in Z1, then 2 Z2
     comm_YX_sym = Y_sym * X_sym - X_sym * Y_sym
     Z2 = t_sym * Y_sym + t_sym * X_sym + (t_sym**2 / 2) * comm_YX_sym
@@ -772,25 +844,35 @@ try:
     double_XYX_sym = X_sym * comm_YX_sym - comm_YX_sym * X_sym
     Z2 += (t_sym**3 / 12) * (double_YYX_sym + double_XYX_sym)
     Z_RLRL = 2 * Z2
-    
+
     # Difference Δ = Z_LRLR - Z_RLRL
     Delta = expand(Z_LRLR - Z_RLRL)
-    
+
     print("Symbolic BCH expansion (to O(t^3)):")
     print(f"  Z1 = log(exp({t_sym}X) exp({t_sym}Y)) = {simplify(Z1)}")
-    print(f"  Z_LRLR = log(exp({t_sym}X)exp({t_sym}Y)exp({t_sym}X)exp({t_sym}Y)) = {simplify(Z_LRLR)}")
-    print(f"  Z_RLRL = log(exp({t_sym}Y)exp({t_sym}X)exp({t_sym}Y)exp({t_sym}X)) = {simplify(Z_RLRL)}")
+    print(
+        f"  Z_LRLR = log(exp({t_sym}X)exp({t_sym}Y)exp({t_sym}X)exp({t_sym}Y)) = {simplify(Z_LRLR)}"
+    )
+    print(
+        f"  Z_RLRL = log(exp({t_sym}Y)exp({t_sym}X)exp({t_sym}Y)exp({t_sym}X)) = {simplify(Z_RLRL)}"
+    )
     print(f"\nDelta = Z_LRLR - Z_RLRL = {simplify(Delta)}")
     print()
-    
+
     # For BU-Egress: Δ = 0 for all small t ⇒ nested commutator constraints
     print("BCH analysis for BU-Egress:")
-    print("  Delta = 2 t^2 [X,Y] + O(t^4); the t^3 terms cancel in the LRLR-RLRL difference.")
-    print("  The su(2)-type nested-commutator constraints ([X,[X,Y]] = aY, [Y,[X,Y]] = -aX)")
-    print("  arise at higher order (e.g., O(t^5)/O(t^7)); see the extended Dynkin-series check")
+    print(
+        "  Delta = 2 t^2 [X,Y] + O(t^4); the t^3 terms cancel in the LRLR-RLRL difference."
+    )
+    print(
+        "  The su(2)-type nested-commutator constraints ([X,[X,Y]] = aY, [Y,[X,Y]] = -aX)"
+    )
+    print(
+        "  arise at higher order (e.g., O(t^5)/O(t^7)); see the extended Dynkin-series check"
+    )
     print("  (verified numerically to O(t^7) in this repo).")
     print()
-    
+
     # Test su(2) structure symbolically
     print("su(2) structure test:")
     print(f"  [X,[X,Y]] = {double_XXY_sym}")
@@ -798,15 +880,17 @@ try:
     print("For su(2): [X,[X,Y]] = a Y, [Y,[X,Y]] = -a X")
     print("  (This holds when X,Y satisfy su(2) commutation relations)")
     print()
-    
+
     print("CONCLUSION (symbolic): Proposition BU-Egress + higher-order BCH constraints")
     print("  + simplicity + compactness uniquely select su(2).")
-    
+
 except ImportError:
     print("SymPy unavailable; using theoretical BCH result.")
     print("Delta = 2 t^2 [X,Y] + O(t^4); t^3 terms cancel. The su(2)-type constraints")
     print("([X,[X,Y]] = aY, [Y,[X,Y]] = -aX) enter at higher order (O(t^5)/O(t^7)).")
-    print("Proposition BU-Egress + higher-order BCH + simplicity + compactness select su(2).")
+    print(
+        "Proposition BU-Egress + higher-order BCH + simplicity + compactness select su(2)."
+    )
     print("This is standard in Lie theory (see Hall, Lie Groups, Ch. 3).")
 
 print()
@@ -818,10 +902,12 @@ print("  Y = infinitesimal x-rotation generator (from U_R(t))")
 print(f"  Where κ = {kappa_L} (chiral parameter)")
 print()
 
+
 # Analytic X (multiplication): exact on grid
 def X_op_analytic(f: np.ndarray) -> np.ndarray:
     """X f = i κ cos(θ) f (exact multiplication)."""
     return 1j * kappa_L * np.cos(THETA) * f
+
 
 # Analytic Y (L_x angular momentum operator on S2)
 def Y_op_analytic_Lx(f: np.ndarray) -> np.ndarray:
@@ -834,21 +920,22 @@ def Y_op_analytic_Lx(f: np.ndarray) -> np.ndarray:
     dtheta[1:-1, :] = (f[2:, :] - f[:-2, :]) / (theta[2:, None] - theta[:-2, None])
     dtheta[0, :] = (f[1, :] - f[0, :]) / (theta[1] - theta[0])
     dtheta[-1, :] = (f[-1, :] - f[-2, :]) / (theta[-1] - theta[-2])
-    
+
     # ∂_φ with uniform φ (wrap-around)
-    dphi_step = 2*np.pi / n_phi  # grid spacing in phi
+    dphi_step = 2 * np.pi / n_phi  # grid spacing in phi
     dphi_phi = np.empty_like(f, dtype=complex)
     dphi_phi[:, 1:-1] = (f[:, 2:] - f[:, :-2]) / (2 * dphi_step)
     dphi_phi[:, 0] = (f[:, 1] - f[:, -1]) / (2 * dphi_step)
     dphi_phi[:, -1] = (f[:, 0] - f[:, -2]) / (2 * dphi_step)
-    
+
     # L_x f = i (sin φ ∂_θ + cot θ cos φ ∂_φ) f
     sin_phi = np.sin(PHI)
     cos_phi = np.cos(PHI)
     cot_theta = np.cos(THETA) / np.maximum(np.sin(THETA), 1e-12)
     Lx_f = 1j * (sin_phi * dtheta + cot_theta * cos_phi * dphi_phi)
-    
+
     return Lx_f
+
 
 # Use analytic operators
 Y_op_analytic = Y_op_analytic_Lx
@@ -859,12 +946,16 @@ print("-" * 80)
 
 print("Note: With X = i κ cosθ, the l=1 block is identically ~0 by selection rules")
 print("(X maps l=1 → l=0,2). su(2) closure cannot be tested in the l=1 block for")
-print("this representation. See 15c and 15d for Proposition BU-Egress sectoral verification.")
+print(
+    "this representation. See 15c and 15d for Proposition BU-Egress sectoral verification."
+)
 print()
+
 
 def project_to_S(v):
     """Project to S-subspace (span{cyclic_vector})."""
     return proj_S(v)
+
 
 def LRLR_proj(t):
     """Apply [L][R][L][R] to cyclic_vector and project to S."""
@@ -875,6 +966,7 @@ def LRLR_proj(t):
     v = UR_t(v, t)
     return project_to_S(v)
 
+
 def RLRL_proj(t):
     """Apply [R][L][R][L] to cyclic_vector and project to S."""
     v = cyclic_vector.copy()
@@ -883,6 +975,7 @@ def RLRL_proj(t):
     v = UR_t(v, t)
     v = UL_t(v, t)
     return project_to_S(v)
+
 
 # Define holds_B_at using S-sector generator-based test (must be before section 15)
 def holds_B_at(v: np.ndarray) -> bool:
@@ -897,14 +990,17 @@ def holds_B_at(v: np.ndarray) -> bool:
             return False
     return True
 
+
 # Compute bu_ok early so it's available for section 15
 bu_ok = holds_B_at(cyclic_vector)
+
 
 def diff_S_norm(t: float) -> float:
     """Compute ||P_S(LRLR(t) - RLRL(t))||_L2."""
     v1 = LRLR_proj(t)
     v2 = RLRL_proj(t)
     return compute_L2_norm(v1 - v2)
+
 
 # Measure scaling of ||P_S(LRLR - RLRL)|| ~ C * t^k
 t_vals = np.array([1e-2, 5e-3, 2.5e-3, 1.25e-3])
@@ -919,23 +1015,33 @@ k_est, c_est = np.linalg.lstsq(A, y, rcond=None)[0]
 
 print("t values:", t_vals)
 print("||P_S(LRLR - RLRL)||:", norms)
-print(f"\nEstimated scaling exponent k ~ {k_est:.2f} (expect >= 3 when P_S[X,Y]P_S = 0)")
+print(
+    f"\nEstimated scaling exponent k ~ {k_est:.2f} (expect >= 3 when P_S[X,Y]P_S = 0)"
+)
 
 if k_est >= 2.5:
-    print("[OK] BCH scaling confirmed: t^2 term vanishes in S-sector, consistent with Proposition BU-Egress")
+    print(
+        "[OK] BCH scaling confirmed: t^2 term vanishes in S-sector, consistent with Proposition BU-Egress"
+    )
     print("  The S-projected difference scales as t^k with k >= 3, matching the")
     print("  theoretical prediction from BCH + P_S[X,Y]P_S ~ 0.")
 else:
-    print("[WARNING] Scaling exponent lower than expected; may need higher resolution or")
+    print(
+        "[WARNING] Scaling exponent lower than expected; may need higher resolution or"
+    )
     print("  check if P_S[X,Y]P_S is truly zero.")
 
-print("\nCONCLUSION: BCH small-t scaling confirms Proposition BU-Egress sectoral structure.")
+print(
+    "\nCONCLUSION: BCH small-t scaling confirms Proposition BU-Egress sectoral structure."
+)
 print("  The numerical scaling validates the theoretical BCH relations on S2.")
 print("  This representation realizes the 3D structure derived in Script #2.")
 print()
 
 # Assert BCH scaling exponent
-assert k_est >= 2.7, f"BCH scaling exponent too low: k={k_est:.2f} (expect >= 2.7 with this resolution)"
+assert (
+    k_est >= 2.7
+), f"BCH scaling exponent too low: k={k_est:.2f} (expect >= 2.7 with this resolution)"
 
 # BU-Egress uniform check on S2 (sectoral evaluation)
 print("15c. PROPOSITION BU-EGRESS UNIFORM CHECK ON S2 (SECTORAL EVALUATION)")
@@ -969,7 +1075,9 @@ ona_holds_mem = not_box_not_E  # From ONA verification
 box_B_holds_mem = bu_ok  # From BU-Egress verification (S-sector small-t)
 
 # Memory requires: if []B, then all three hold
-memory_holds_mem = (not box_B_holds_mem) or (box_B_holds_mem and cs_holds_mem and una_holds_mem and ona_holds_mem)
+memory_holds_mem = (not box_B_holds_mem) or (
+    box_B_holds_mem and cs_holds_mem and una_holds_mem and ona_holds_mem
+)
 
 print(f"Memory condition check:")
 print(f"  []B holds: {box_B_holds_mem}")
@@ -980,7 +1088,9 @@ print(f"  Memory implication: {memory_holds_mem}")
 print()
 
 if memory_holds_mem:
-    print("Proposition BU-Ingress verified: Balance implies chirality, UNA, and ONA properties")
+    print(
+        "Proposition BU-Ingress verified: Balance implies chirality, UNA, and ONA properties"
+    )
     print("  Prior constraints reconstructed in balanced state")
 else:
     print("  WARNING: Memory implication not satisfied")
@@ -990,20 +1100,25 @@ print()
 print("15d. P_S [X,Y] P_S CHECK (SECTORAL COMMUTATOR)")
 print("-" * 80)
 
+
 def apply_op(op, f):
     """Apply operator to function."""
     return op(f)
 
+
 def comm_apply(A, B, f):
     """Apply commutator [A, B] to function."""
     return A(B(f)) - B(A(f))
+
 
 comm_on_S = project_to_S(comm_apply(X_op_analytic, Y_op_analytic, cyclic_vector))
 comm_norm_S = compute_L2_norm(comm_on_S)
 print(f"||P_S [X,Y] P_S||_L2 = {comm_norm_S:.2e}")
 
 if comm_norm_S < 1e-6:
-    print("[OK] P_S [X,Y] P_S ~ 0: Proposition BU-Egress (depth-4 balance) is consistent with BCH Delta = 2 t^2 [X,Y]")
+    print(
+        "[OK] P_S [X,Y] P_S ~ 0: Proposition BU-Egress (depth-4 balance) is consistent with BCH Delta = 2 t^2 [X,Y]"
+    )
     print("  The t^2 term vanishes in the S-sector, leaving only O(t^3) constraints")
     print("  that force the su(2) structure.")
 else:
@@ -1021,16 +1136,20 @@ print("15. KRIPKE-STYLE TRUTH EVALUATION ON HILBERT MODEL")
 # Note: proj_S is already defined above (after CS section)
 # Note: holds_B_at and bu_ok are now defined (from section 15b'/15c)
 
+
 def is_in_S(f: np.ndarray, tol: float = 1e-6) -> bool:
     p = proj_S(f)
     return compute_L2_norm(f - p) < tol
+
 
 # Truth-value helpers: interpret "S holds after op" as staying in span{Omega}
 def holds_S_after_UL(v: np.ndarray) -> bool:
     return is_in_S(apply_UL(v))
 
+
 def holds_S_after_UR(v: np.ndarray) -> bool:
     return is_in_S(rotate_sphere_function(v, rot_R, euler_angles=rot_R_euler_zyz))
+
 
 # Evaluate E and B as booleans at a given "world vector" v
 def holds_E_at(v: np.ndarray) -> bool:
@@ -1047,15 +1166,17 @@ def holds_E_at(v: np.ndarray) -> bool:
     diff_proj = compute_L2_norm(proj_LR - proj_RL)
     return diff_proj < 1e-6
 
+
 # holds_B_at is now defined in section 15b' using S-sector generator-based test
 
 # Evaluate at S (Omega) and its L/R successors (operational "[]" on S-sector)
 # Note: worlds already defined above in UNA section, but redefine here for clarity
 worlds_truth = {
-    'w_S': cyclic_vector,
-    'w_L': apply_UL(cyclic_vector),
-    'w_R': rotate_sphere_function(cyclic_vector, rot_R, euler_angles=rot_R_euler_zyz),
+    "w_S": cyclic_vector,
+    "w_L": apply_UL(cyclic_vector),
+    "w_R": rotate_sphere_function(cyclic_vector, rot_R, euler_angles=rot_R_euler_zyz),
 }
+
 
 def report_truth(label: str, v: np.ndarray):
     print(f"World {label}:")
@@ -1065,32 +1186,39 @@ def report_truth(label: str, v: np.ndarray):
     print(f"  E holds?            {holds_E_at(v)}")
     print(f"  B holds?            {holds_B_at(v)}")
 
+
 print("Truth report on S-sector (w_S, w_L, w_R):")
 for k, v in worlds_truth.items():
     report_truth(k, v)
     print()
 
 # Aggregate boolean summaries relevant to OA axioms at S
-oa1_ok_truth = (holds_S_after_UR(worlds_truth['w_S']) == True) and (holds_S_after_UL(worlds_truth['w_S']) != True)  # [R]S <-> S and not([L]S <-> S)
+oa1_ok_truth = (holds_S_after_UR(worlds_truth["w_S"]) == True) and (
+    holds_S_after_UL(worlds_truth["w_S"]) != True
+)  # [R]S <-> S and not([L]S <-> S)
 
 # "not[]E" at S means: not (E holds at both w_L and w_R)
-oa2_ok_truth = not (holds_E_at(worlds_truth['w_L']) and holds_E_at(worlds_truth['w_R']))
+oa2_ok_truth = not (holds_E_at(worlds_truth["w_L"]) and holds_E_at(worlds_truth["w_R"]))
 
 # "not[]not E" at S means: not (not E holds at both w_L and w_R) => at least one has E
-oa3_ok_truth = (holds_E_at(worlds_truth['w_L']) or holds_E_at(worlds_truth['w_R']))
+oa3_ok_truth = holds_E_at(worlds_truth["w_L"]) or holds_E_at(worlds_truth["w_R"])
 
 # "[]B" at S means: B holds uniformly (S-sector small-t test)
 oa4_ok_truth = bu_ok  # Use S-sector generator-based test result (now available)
 
 # BU-Ingress: if []B, then CS, UNA, ONA hold
-oa5_ok_truth = (not oa4_ok_truth) or (oa4_ok_truth and oa1_ok_truth and oa2_ok_truth and oa3_ok_truth)
+oa5_ok_truth = (not oa4_ok_truth) or (
+    oa4_ok_truth and oa1_ok_truth and oa2_ok_truth and oa3_ok_truth
+)
 
 print("Summary vs foundational constraints (Hilbert-side, S-sector):")
 print(f"  Assumption CS [R]S<->S and not([L]S<->S) at S: {oa1_ok_truth}")
 print(f"  Lemma UNA not[]E at S:                  {oa2_ok_truth}")
 print(f"  Lemma ONA not[]not E at S:                 {oa3_ok_truth}")
 print(f"  Proposition BU-Egress []B at S:                   {oa4_ok_truth}")
-print(f"  Proposition BU-Ingress []B -> (chirality and UNA and ONA):     {oa5_ok_truth}")
+print(
+    f"  Proposition BU-Ingress []B -> (chirality and UNA and ONA):     {oa5_ok_truth}"
+)
 print()
 
 # 16. DIMENSIONALITY TEST: n=2 (S1) CANNOT REALIZE UNA
@@ -1100,16 +1228,17 @@ if True:  # Always run dimensionality tests
 
     # Construct L2(S1) on the circle (1D manifold, 2D embedding space)
     n_phi_1d = 64
-    phi_1d = np.linspace(0, 2*np.pi, n_phi_1d, endpoint=False)
-    dphi_1d = 2*np.pi / n_phi_1d
+    phi_1d = np.linspace(0, 2 * np.pi, n_phi_1d, endpoint=False)
+    dphi_1d = 2 * np.pi / n_phi_1d
 
     # Constant function (S-world)
     cyclic_1d = np.ones(n_phi_1d)
 
     # U_L on S1: choose a rotation (shift) so that U_L and U_R commute (SO(2) abelian)
     angle_L_1d = np.pi / 3
+
     def rotate_circle(f: np.ndarray, angle: float) -> np.ndarray:
-        phi_rot = np.mod(phi_1d - angle, 2*np.pi)
+        phi_rot = np.mod(phi_1d - angle, 2 * np.pi)
         phi_idx = np.array([np.argmin(np.abs(phi_1d - p)) for p in phi_rot])
         return f[phi_idx]
 
@@ -1125,11 +1254,11 @@ if True:  # Always run dimensionality tests
 
     # Define L2 norm for S1
     def compute_L2_norm_1d(f: np.ndarray) -> float:
-        return np.sqrt(np.sum(np.square(np.abs(f)) * dphi_1d) / (2*np.pi))
+        return np.sqrt(np.sum(np.square(np.abs(f)) * dphi_1d) / (2 * np.pi))
 
     # Projector onto S-subspace for S1
     def proj_S_1d(f: np.ndarray) -> np.ndarray:
-        coef = np.sum(np.conj(cyclic_1d) * f * dphi_1d) / (2*np.pi)
+        coef = np.sum(np.conj(cyclic_1d) * f * dphi_1d) / (2 * np.pi)
         return coef * cyclic_1d
 
     def is_in_S_1d(f: np.ndarray, tol: float = 1e-6) -> bool:
@@ -1158,14 +1287,14 @@ if True:  # Always run dimensionality tests
 
     # Evaluate at S and its L/R images
     worlds_1d = {
-        'w_S': cyclic_1d,
-        'w_L': apply_UL_1d(cyclic_1d),
-        'w_R': rotate_circle(cyclic_1d, angle_R_1d),
+        "w_S": cyclic_1d,
+        "w_L": apply_UL_1d(cyclic_1d),
+        "w_R": rotate_circle(cyclic_1d, angle_R_1d),
     }
 
-    E_w_S = holds_E_at_1d(worlds_1d['w_S'])
-    E_w_L = holds_E_at_1d(worlds_1d['w_L'])
-    E_w_R = holds_E_at_1d(worlds_1d['w_R'])
+    E_w_S = holds_E_at_1d(worlds_1d["w_S"])
+    E_w_L = holds_E_at_1d(worlds_1d["w_L"])
+    E_w_R = holds_E_at_1d(worlds_1d["w_R"])
 
     print(f"\n  E formula evaluation:")
     print(f"    E at w_S: {E_w_S}")
@@ -1180,7 +1309,7 @@ if True:  # Always run dimensionality tests
     print(f"    UNA holds (not[]E):            {oa2_holds_1d}")
 
     # ONA: not[]not E means not E does not hold at all worlds, equivalently E holds somewhere
-    exists_E_1d = (E_w_S or E_w_L or E_w_R)
+    exists_E_1d = E_w_S or E_w_L or E_w_R
     oa3_holds_1d = exists_E_1d
     print(f"\n  ONA (not[]not E) check:")
     print(f"    E holds at at least one world: {exists_E_1d}")
@@ -1195,15 +1324,19 @@ if True:  # Always run dimensionality tests
 # 16b. S1 WITH FLOWS: BU-EGRESS FOR ALL SMALL t FAILS NONTRIVIALLY
 
 if True:  # Always run S1 flow tests
-    print("16b. S1 WITH FLOWS: PROPOSITION BU-EGRESS FOR ALL SMALL t FAILS NONTRIVIALLY")
+    print(
+        "16b. S1 WITH FLOWS: PROPOSITION BU-EGRESS FOR ALL SMALL t FAILS NONTRIVIALLY"
+    )
     print("-" * 80)
 
-    print("Unitary Representation: Test uniform Proposition BU-Egress on S1 with one-parameter flows.")
+    print(
+        "Unitary Representation: Test uniform Proposition BU-Egress on S1 with one-parameter flows."
+    )
     print()
 
     def g_t(phi: np.ndarray, t: float) -> np.ndarray:
         """Generic smooth phase function: f(phi) = cos(phi) + 0.3 cos(2*phi)."""
-        return np.exp(1j * t * (np.cos(phi) + 0.3 * np.cos(2*phi)))
+        return np.exp(1j * t * (np.cos(phi) + 0.3 * np.cos(2 * phi)))
 
     def UL1_t(f: np.ndarray, t: float) -> np.ndarray:
         """U_L on S1: phase multiplication by g_t(phi)."""
@@ -1249,15 +1382,23 @@ if True:  # Always run S1 flow tests
     print()
 
     if not holds_uniform:
-        print("CONCLUSION: Nontrivial U_L, U_R on S1 fail uniform Proposition BU-Egress.")
-        print("  Analytic reason: For Proposition BU-Egress to hold for all small t, we need")
+        print(
+            "CONCLUSION: Nontrivial U_L, U_R on S1 fail uniform Proposition BU-Egress."
+        )
+        print(
+            "  Analytic reason: For Proposition BU-Egress to hold for all small t, we need"
+        )
         print("    g(phi-2*theta) = g(phi)  (2*theta-periodicity of phase function)")
         print("  This forces either:")
         print("    (a) f constant -> trivial U_L (violates Assumption CS)")
-        print("    (b) Discrete theta -> no 'for all t' neighborhood (violates unitary representation requirement)")
+        print(
+            "    (b) Discrete theta -> no 'for all t' neighborhood (violates unitary representation requirement)"
+        )
         print("  Therefore: 2D fails under RA+BCH constraints that select su(2) in 3D.")
     else:
-        print("Note: This case may hold for specific parameter choices, but generically fails.")
+        print(
+            "Note: This case may hold for specific parameter choices, but generically fails."
+        )
     print()
 
 # 17. RESULTS SUMMARY
@@ -1274,5 +1415,3 @@ print("  Hilbert space representation per CGM operational axioms")
 print("  CS/UNA/ONA verified; BU-Egress verified via BCH small‑t S-sector test")
 print("  Observables are self-adjoint; Q_G = 4pi normalization holds")
 print()
-
-

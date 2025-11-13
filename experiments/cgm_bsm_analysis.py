@@ -41,7 +41,7 @@ class CGMInvariants:
     K_QG: float = field(init=False)  # Quantum gravity coupling
     S_min: float = field(init=False)  # Minimal action
     S_geo: float = field(init=False)  # Geometric mean action
-    
+
     # CGM constants
     zeta: float = field(init=False)  # Gravitational coupling
     lambda_0_formal: float = field(init=False)  # Formal identity: Δ/√5
@@ -62,8 +62,12 @@ class CGMInvariants:
         # EXACT GEOMETRIC REQUIREMENTS:
         # 48Δ = 1 exactly, λ₀/Δ = 1/√5 exactly
         object.__setattr__(self, "Delta", 1 / 48)  # EXACT: 48Δ = 1
-        object.__setattr__(self, "lambda_0_formal", (1 / 48) / sqrt(5))  # EXACT: λ₀/Δ = 1/√5
-        object.__setattr__(self, "lambda_CS_physical", self.delta_BU**4 / (4 * self.m_a**2))  # Physics
+        object.__setattr__(
+            self, "lambda_0_formal", (1 / 48) / sqrt(5)
+        )  # EXACT: λ₀/Δ = 1/√5
+        object.__setattr__(
+            self, "lambda_CS_physical", self.delta_BU**4 / (4 * self.m_a**2)
+        )  # Physics
 
         # Other derived invariants (keeping  m_a as foundational)
         object.__setattr__(self, "rho", self.delta_BU / self.m_a)
@@ -75,7 +79,9 @@ class CGMInvariants:
         # Exact identities and near-equalities from 4π alignment hypotheses
         object.__setattr__(self, "delta_over_pi16", self.delta_BU / (pi / 16))
         object.__setattr__(self, "forty_eight_delta", 48 * self.Delta)
-        object.__setattr__(self, "lambda0_over_delta", self.lambda_0_formal / self.Delta)
+        object.__setattr__(
+            self, "lambda0_over_delta", self.lambda_0_formal / self.Delta
+        )
         object.__setattr__(self, "one_over_sqrt5", 1 / sqrt(5))
         object.__setattr__(
             self, "qg_mp2", self.Q_G * self.m_a**2
@@ -84,14 +90,17 @@ class CGMInvariants:
             self, "zeta_over_16sqrt", self.zeta / (16 * sqrt(2 * pi / 3))
         )  # Should be exactly 1
         object.__setattr__(
-            self, "lambda0_over_2pi_delta4", self.lambda_0_formal / (2 * pi * self.delta_BU**4)
+            self,
+            "lambda0_over_2pi_delta4",
+            self.lambda_0_formal / (2 * pi * self.delta_BU**4),
         )  # Check (not enforced)
-        
+
         # Quantify the tension from enforcing λ₀/Δ = 1/√5
         object.__setattr__(
-            self, "residual_lambda", (self.lambda_0_formal - self.lambda_CS_physical) / self.lambda_CS_physical
+            self,
+            "residual_lambda",
+            (self.lambda_0_formal - self.lambda_CS_physical) / self.lambda_CS_physical,
         )
-    
 
 
 @dataclass(frozen=True)
@@ -101,7 +110,9 @@ class PhysicalScales:
     # Energy scales [GeV unless noted] - anchored to Planck energy
     E_CS: float = 1.22089e19  # CS energy (Planck energy)
     E_reciprocal: float = 1.36e18  # Reciprocal mode energy
-    v_weak: float = 246.22  # Higgs vacuum expectation value v = (√2 G_F)^(-1/2) ≈ 246.22 GeV
+    v_weak: float = (
+        246.22  # Higgs vacuum expectation value v = (√2 G_F)^(-1/2) ≈ 246.22 GeV
+    )
     M_Planck: float = 1.22089e19  # Planck mass
     m_H: float = 125.20  # Higgs mass (PDG 2025: 125.20 ± 0.11 GeV)
     m_H_predicted: float = 124.97  # Higgs mass (CGM predicted)
@@ -138,12 +149,11 @@ class BookletData:
     alpha_EM: float = 1 / 137.035999084  # Fine structure constant (PDG 2025)
     G_F: float = 1.166364e-5  # Fermi constant [GeV^-2] (PDG 2025: 1.166364(5) × 10^-5)
     alpha_s_MZ: float = 0.1184  # Strong coupling at M_Z (PDG 2025: 0.1184 ± 0.0007)
-    
+
     # Standard Model couplings at M_Z (PDG 2025)
     g1_MZ: float = 0.3583 * sqrt(5 / 3)  # U(1)_Y coupling (GUT normalized)
     g2_MZ: float = 0.6520  # SU(2)_L coupling
     g3_MZ: float = 1.2177  # SU(3)_C coupling
-
 
     # Weak mixing angles from Z-pole asymmetries
     sin2theta_eff_leptonic: float = (
@@ -267,7 +277,6 @@ class UnificationAnalysis:
         # CGM coherent coupling from geometric invariants
         g_unify = sqrt(self.cgm.K_QG / (2 * pi))
 
-
         # Intermediate scales via geometric means
         M_intermediate = sqrt(self.scales.v_weak * M_unify)
 
@@ -317,7 +326,6 @@ class UnificationAnalysis:
         }
 
 
-
 # =====
 # SECTION 3: NEUTRINO SECTOR PREDICTIONS
 # =====
@@ -344,7 +352,9 @@ class NeutrinoPhysics:
         mass_ratios = [1.0, 1 / sqrt(2), self.cgm.Delta]  # CGM geometric progression
 
         # Z₃ phase structure test (use tolerance for float comparison)
-        phase_structure_valid = all(abs(abs(phase) - 1.0) < 1e-10 for phase in z3_phases)
+        phase_structure_valid = all(
+            abs(abs(phase) - 1.0) < 1e-10 for phase in z3_phases
+        )
 
         # Check if 3 generations emerge naturally
         n_generations = 3  # From Z₃ structure
@@ -511,8 +521,6 @@ class DarkSectorPhysics:
         }
 
 
-
-
 # =====
 # SECTION 5: NEW GAUGE SECTOR
 # =====
@@ -653,8 +661,6 @@ class AnomalyResolutions:
 # =====
 
 
-
-
 class HiggsFirstFramework:
     """Build gravity from Higgs mass as fundamental, avoiding Planck unit circularity."""
 
@@ -710,7 +716,7 @@ class HiggsFirstFramework:
         # Each recursive level contributes an angular factor
         rho_1 = cos(self.alpha - self.beta)  # CS→UNA: cos(π/2 - π/4) = cos(π/4) = 1/√2
         rho_2 = cos(self.beta - self.gamma)  # UNA→ONA: cos(π/4 - π/4) = cos(0) = 1
-        rho_3 = self.cgm.delta_BU / self.cgm. m_a  # ONA→BU: ≈ 0.9793
+        rho_3 = self.cgm.delta_BU / self.cgm.m_a  # ONA→BU: ≈ 0.9793
 
         # Aperture incompleteness at each level
         aperture_per_level = 1 - self.cgm.Delta  # = 47/48
@@ -769,8 +775,6 @@ class HiggsFirstFramework:
             "insight": "c=1 emerges from 45° UNA threshold, physical c=4π in natural units",
         }
 
-
-
     def cgm_boundary_conditions(self) -> Dict[str, Any]:
         """Set CGM boundary conditions at CS scale - no external anchors."""
         # λ(CS) from CGM geometry
@@ -802,8 +806,10 @@ class HiggsFirstFramework:
         y_t_CS = bc["y_t_CS"]
 
         # Use λ_IR from Higgs analysis: λ_IR = m_H(pred)²/(2 v_weak²)
-        v_weak_higgs = 246.22  # GeV - Higgs vacuum expectation value v = (√2 G_F)^(-1/2)
-        lambda_IR = (self.M_H / v_weak_higgs)**2 / 2.0  # ≈ 0.128815
+        v_weak_higgs = (
+            246.22  # GeV - Higgs vacuum expectation value v = (√2 G_F)^(-1/2)
+        )
+        lambda_IR = (self.M_H / v_weak_higgs) ** 2 / 2.0  # ≈ 0.128815
 
         # CGM self-consistency constraints
         # M_Z/M_W = 1 + 6.5Δ (CGM relation)
@@ -831,7 +837,6 @@ class HiggsFirstFramework:
             "sin2_theta_W": sin2_theta_W,
             "insight": "EW sector solved from CGM constraints only",
         }
-
 
     def dimensionless_predictions(self) -> Dict[str, Any]:
         """Present results as dimensionless ratios - no SI anchors."""
@@ -1051,7 +1056,8 @@ class BSMSummary:
         return {
             "energy_scales": {
                 "E_reciprocal_GeV": self.scales.E_reciprocal,
-                "E_reciprocal_to_Planck_ratio": self.scales.E_reciprocal / self.scales.M_Planck,
+                "E_reciprocal_to_Planck_ratio": self.scales.E_reciprocal
+                / self.scales.M_Planck,
                 "unification_scale_GeV": self.unification.predict_unification_scale()[
                     "M_unify"
                 ],
@@ -1134,7 +1140,8 @@ class BSMSummary:
                 "value": self.scales.M_Z_predicted / self.booklet.M_W,
                 "target": 1 + 6.5 * self.cgm.Delta,
                 "error_pct": abs(
-                    self.scales.M_Z_predicted / self.booklet.M_W - (1 + 6.5 * self.cgm.Delta)
+                    self.scales.M_Z_predicted / self.booklet.M_W
+                    - (1 + 6.5 * self.cgm.Delta)
                 )
                 / (1 + 6.5 * self.cgm.Delta)
                 * 100,
@@ -1305,7 +1312,6 @@ class CosmologyPullTests:
         self.cgm = cgm
         self.scales = scales
         self.booklet = booklet
-
 
     def compare_As_ns_r(
         self, primordial_predictions: Dict[str, float]
@@ -1661,10 +1667,12 @@ def main():
         "v_weak from Higgs": (f"246.22 GeV", ""),
         "Total angular defect": (f"{defect['total_defect']:.2e}", ""),
         "Q_G (4π coupling)": (f"{light['Q_G']:.6f}", ""),
-        "Insight": ("Angular structure: M_H → v_weak via CGM recursion with Higgs-consistent λ_IR", ""),
+        "Insight": (
+            "Angular structure: M_H → v_weak via CGM recursion with Higgs-consistent λ_IR",
+            "",
+        ),
     }
     print_results(higgs_first_results)
-
 
     # Section 7: Cosmology
     print_section("COSMOLOGICAL PREDICTIONS")

@@ -266,7 +266,7 @@ class CGMWalkingTheory:
     def analyze_horizon_thermodynamics(self) -> Dict:
         """Apply black hole aperture thermodynamics to walking."""
 
-         m_a = self.cgm.m_a
+        m_a = self.cgm.m_a
 
         # From black hole analysis:
         # S_CGM = S_std × (1 + m_a)
@@ -295,7 +295,7 @@ class CGMWalkingTheory:
         recovery_scaling = lifetime_factor
 
         # Information leakage through aperture
-        info_leakage_rate =  m_a / (1 + m_a)
+        info_leakage_rate = m_a / (1 + m_a)
 
         # Check closure identity: m_a² × Q_G = 0.5
         closure_identity = m_a**2 * self.cgm.Q_G
@@ -825,10 +825,8 @@ def run_complete_analysis():
 
     analyzer = CGMWalkingTheory()
 
-     
     print("CGM-WALKING THEORETICAL ANALYSIS")
     print("Connecting Common Governance Model to Human Locomotion")
-     
 
     # Test moment sign logic for walking balance
     print(f"\nWALKING BALANCE LOGIC TEST:")
@@ -1135,7 +1133,6 @@ def run_complete_analysis():
     print("Human walking operates in a near-closure regime with")
     print("purposeful departures during manoeuvres, consistent with")
     print("CGM's alignment economy through chiral perpendicularity.")
-     
 
     return results
 

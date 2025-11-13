@@ -661,7 +661,7 @@ def run_comprehensive_chronology_analysis() -> None:
 
     t_planck = compute_planck_time_from_cgm()
     t0_cgm = T0_CGM  # Use CGM's natural time scale
-     m_a = compute_aperture_parameter()
+    m_a = compute_aperture_parameter()
 
     print("CGM Chronology Analysis: CGM-Native Variables")
     print("=" * 60)

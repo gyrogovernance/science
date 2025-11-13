@@ -100,9 +100,8 @@ def format_small_number(num):
 
 
 def main():
-     
+
     print("CGM ANALYSIS - KEY FINDINGS IN DUODECIMAL")
-     
 
     if MPMATH_AVAILABLE:
         print(f"✓ Using mpmath with {mp.mp.dps} decimal digits precision")
@@ -340,7 +339,6 @@ def main():
 
     print("\n" + "=" * 80)
     print("DUODECIMAL ANALYSIS COMPLETE")
-     
 
 
 if __name__ == "__main__":

@@ -17,13 +17,17 @@ h = 6.626_070_15e-34  # J·s (exact, for frequency/wavelength)
 # Physics constants and options
 PAGE_TIME_FRAC = 0.5406  # Penington 2020
 PAGE_EMITTED_FRAC = 0.750  # Almheiri et al. 2019 (replica-wormhole island formula)
-LQG_AREA = False  # Toggle between Bekenstein-Mukhanov (False) and LQG (True) area spacing
+LQG_AREA = (
+    False  # Toggle between Bekenstein-Mukhanov (False) and LQG (True) area spacing
+)
+
 
 def ads_horizon_radius(M_kg: float, L_m: float) -> float:
     """Solve r³/L² + r - 2GM/c² = 0 for AdS horizon radius."""
     import numpy as np
+
     # Solve r³/L² + r - 2GM/c² = 0
-    coeffs = [1.0/L_m**2, 1.0, 0.0, -2.0*G*M_kg/c**2]
+    coeffs = [1.0 / L_m**2, 1.0, 0.0, -2.0 * G * M_kg / c**2]
     roots = np.roots(coeffs)
     real_roots = [r.real for r in roots if abs(r.imag) < 1e-20 and r.real > 0]
     if not real_roots:
@@ -31,17 +35,21 @@ def ads_horizon_radius(M_kg: float, L_m: float) -> float:
         return 0.0
     return min(real_roots)  # outermost horizon
 
+
 def hawking_power_std(M_kg: float) -> float:
     """Standard Hawking power: L = ħ c^6 / (15360 π G^2 M^2)."""
     return hbar * c**6 / (15360.0 * pi * G**2 * M_kg**2)
 
+
 def hawking_power_cgm(M_kg: float) -> float:
     """CGM-scaled Hawking power: L_CGM = L_std / (1+m_a)^4."""
-    return hawking_power_std(M_kg) / (1.0 + m_a)**4
+    return hawking_power_std(M_kg) / (1.0 + m_a) ** 4
+
 
 def plasma_cutoff_hz(n_e_cm3: float) -> float:
     """Plasma cutoff frequency: f_plasma ≈ 8.98 kHz × sqrt(n_e / cm^-3)."""
     return 8980.0 * math.sqrt(max(n_e_cm3, 0.0))
+
 
 def q_star(Q_C: float, M_kg: float) -> float:
     """Dimensionless charge parameter: q* = Q / (M √(4π ε0 G))."""
@@ -52,11 +60,11 @@ def _oshita_gamma(a_star: float, species: str) -> float:
     """Return <Γ>(a_star) for species ∈ {'photon', 'neutrino', 'graviton'}."""
     # spin nodes actually used in the paper
     a_tab = (0.69, 0.83, 0.95)
-    if species == 'photon':
+    if species == "photon":
         g_tab = (0.905, 0.920, 0.935)
-    elif species == 'neutrino':          # 3 flavours already combined
+    elif species == "neutrino":  # 3 flavours already combined
         g_tab = (0.742, 0.758, 0.770)
-    elif species == 'graviton':
+    elif species == "graviton":
         g_tab = (0.606, 0.618, 0.628)
     else:
         raise ValueError("species must be photon/neutrino/graviton")
@@ -67,11 +75,12 @@ def _oshita_gamma(a_star: float, species: str) -> float:
         return g_tab[-1]
     # bisect manually (3 points only)
     i = 0
-    while i < len(a_tab)-1 and a_tab[i+1] < a_star:
+    while i < len(a_tab) - 1 and a_tab[i + 1] < a_star:
         i += 1
-    da  = a_tab[i+1] - a_tab[i]
-    dg  = g_tab[i+1] - g_tab[i]
+    da = a_tab[i + 1] - a_tab[i]
+    dg = g_tab[i + 1] - g_tab[i]
     return g_tab[i] + (a_star - a_tab[i]) * dg / da
+
 
 # Physical constants (SI)
 c = 299_792_458.0  # m/s (exact)
@@ -87,7 +96,7 @@ eV_J = 1.602_176_634e-19  # J per eV (exact)
 MeV_J = eV_J * 1.0e6  # J per MeV
 
 # CGM parameter
- m_a = 1.0 / (2.0 * math.sqrt(2.0 * pi))  # ≈ 0.19947114020071635
+m_a = 1.0 / (2.0 * math.sqrt(2.0 * pi))  # ≈ 0.19947114020071635
 
 # Energy scales for Planck mass calculation
 E_CS_GeV = 1.22e19  # Chiral symmetry breaking scale from Energy Scales
@@ -164,25 +173,25 @@ def seconds_to_readable(t: float) -> str:
 def _fmt_energy_triplet(E_J: float) -> str:
     # Auto-scale to appropriate energy units for readability
     E_eV = E_J / eV_J
-    
+
     if abs(E_eV) >= 1e15:  # PeV scale
         e_str = f"{E_eV/1e15:.2f} PeV"
     elif abs(E_eV) >= 1e12:  # TeV scale
         e_str = f"{E_eV/1e12:.2f} TeV"
-    elif abs(E_eV) >= 1e9:   # GeV scale
+    elif abs(E_eV) >= 1e9:  # GeV scale
         e_str = f"{E_eV/1e9:.2f} GeV"
-    elif abs(E_eV) >= 1e6:   # MeV scale
+    elif abs(E_eV) >= 1e6:  # MeV scale
         e_str = f"{E_eV/1e6:.2f} MeV"
-    elif abs(E_eV) >= 1e3:   # keV scale
+    elif abs(E_eV) >= 1e3:  # keV scale
         e_str = f"{E_eV/1e3:.2f} keV"
-    elif abs(E_eV) < 0.1:    # Very small energies
+    elif abs(E_eV) < 0.1:  # Very small energies
         e_str = f"{E_eV:.3e} eV"
     else:
         e_str = f"{E_eV:.1f} eV"
-    
+
     if E_J > 0.0:
         f = E_J / h
-        lam = (h*c) / E_J
+        lam = (h * c) / E_J
         return f"{e_str}  (f={f:.3e} Hz, λ={lam:.3e} m)"
     return f"{e_str}"
 
@@ -196,50 +205,50 @@ def bh_properties(name: str, M_kg: float) -> BHResult:
     T_CGM = T_H / (1.0 + m_a)
     tau_std = (5120.0 * pi * G**2 * M_kg**3) / (hbar * c**4)
     tau_cgm = tau_std * (1.0 + m_a) ** 4
-    
+
     # Page curve calculations (exact formula)
     M_page = M_kg / math.sqrt(2.0)
     t_page_frac = PAGE_TIME_FRAC  # 0.5406 (Penington 2020)
     t_page = t_page_frac * tau_cgm
     S_em_page = PAGE_EMITTED_FRAC * S_CGM  # 0.5 * S_CGM (Almheiri et al. 2019)
-    
+
     # Quanta accounting
     N_tot_std = S_BH / k_B
     N_tot_CGM = S_CGM / k_B
-    
+
     # Spectral analysis (pure Planck, no greybody factors)
     E_peak_std = 2.821 * k_B * T_H
     E_peak_CGM = 2.821 * k_B * T_CGM
     E_mean_std = 2.701 * k_B * T_H
     E_mean_CGM = 2.701 * k_B * T_CGM
-    
+
     # Hawking power and emission rates
     L_std = hawking_power_std(M_kg)
     L_CGM = hawking_power_cgm(M_kg)
     dNdt_std = L_std / E_mean_std
     dNdt_CGM = L_CGM / E_mean_CGM
-    
+
     # Species-resolved emission (photons and neutrinos)
     # Use greybody factors from Oshita & Okabayashi 2024 (arXiv:2403.17487v2)
     # For Schwarzschild (a_star = 0), use lowest spin value from table
     a_star = 0.0  # Schwarzschild black holes
-    epsilon_photon = _oshita_gamma(a_star, 'photon')
-    epsilon_neutrino = _oshita_gamma(a_star, 'neutrino')  # 3 flavors already combined
-    
+    epsilon_photon = _oshita_gamma(a_star, "photon")
+    epsilon_neutrino = _oshita_gamma(a_star, "neutrino")  # 3 flavors already combined
+
     L_photon_std = epsilon_photon * L_std
     L_photon_CGM = epsilon_photon * L_CGM
     L_neutrino_std = epsilon_neutrino * 3 * L_std  # 3 neutrino flavors
     L_neutrino_CGM = epsilon_neutrino * 3 * L_CGM
-    
+
     dNdt_photon_std = L_photon_std / E_mean_std
     dNdt_photon_CGM = L_photon_CGM / E_mean_CGM
     dNdt_neutrino_std = L_neutrino_std / E_mean_std
     dNdt_neutrino_CGM = L_neutrino_CGM / E_mean_CGM
-    
+
     # Energy conservation check
     E_rad_std_J = M_kg * c**2
     E_rad_CGM_J = E_rad_std_J  # Invariant under CGM scaling
-    
+
     # Verify T·S invariance
     T_S_invariance = abs(T_H * S_BH - T_CGM * S_CGM) / (T_H * S_BH)
     assert T_S_invariance < 1e-12, f"T·S invariance violated: {T_S_invariance:.2e}"
@@ -296,9 +305,9 @@ def print_result(res: BHResult) -> None:
     # Precompute common factors for readability
     factor_S = 1.0 + m_a
     factor_T = 1.0 / (1.0 + m_a)
-    factor_tau = (1.0 + m_a)**4
+    factor_tau = (1.0 + m_a) ** 4
     redshift_pct = (1.0 - factor_T) * 100
-    
+
     print(f"\n— {res.name} —")
     print(f"Mass: {fmt_si(res.M_kg, 'kg')}  ({res.M_solar:.6g} M_sun)")
     print(f"Horizon radius r_s: {fmt_si(res.r_s_m, 'm')}  ({res.r_s_m/1000:.3e} km)")
@@ -318,26 +327,36 @@ def print_result(res: BHResult) -> None:
     print("Evaporation time (standard → CGM):")
     print(f"  τ_std: {seconds_to_readable(res.tau_std_s)}")
     print(f"  τ_CGM: {seconds_to_readable(res.tau_cgm_s)}  (×{res.tau_factor:.3f})")
-    
+
     # Page curve analysis
     print("Page curve (information transfer):")
-    print(f"  M_page: {fmt_si(res.M_page_kg, 'kg')}  ({res.M_page_kg/res.M_kg:.3f} × M₀)")
+    print(
+        f"  M_page: {fmt_si(res.M_page_kg, 'kg')}  ({res.M_page_kg/res.M_kg:.3f} × M₀)"
+    )
     print(f"  t_page: {seconds_to_readable(res.t_page_s)}  ({res.t_page_frac:.3f} × τ)")
-    print(f"  S_em(Page): {fmt_si(res.S_em_page,'J/K')}  ({PAGE_EMITTED_FRAC:.1f} × S_CGM)")
-    
+    print(
+        f"  S_em(Page): {fmt_si(res.S_em_page,'J/K')}  ({PAGE_EMITTED_FRAC:.1f} × S_CGM)"
+    )
+
     # Spectral analysis (pure Planck) - simplified for non-PBH/non-Planck
     if res.M_solar < 1e-6 or res.M_kg < 1e-5:  # PBH or Planck mass
         print("Spectral analysis (pure Planck):")
         print(f"  E_peak,std:  {_fmt_energy_triplet(res.E_peak_std_J)}")
-        print(f"  E_peak_CGM:  {_fmt_energy_triplet(res.E_peak_CGM_J)}  (×{factor_T:.3f})")
+        print(
+            f"  E_peak_CGM:  {_fmt_energy_triplet(res.E_peak_CGM_J)}  (×{factor_T:.3f})"
+        )
         print(f"  E_mean,std:  {_fmt_energy_triplet(res.E_mean_std_J)}")
-        print(f"  E_mean_CGM:  {_fmt_energy_triplet(res.E_mean_CGM_J)}  (×{factor_T:.3f})")
+        print(
+            f"  E_mean_CGM:  {_fmt_energy_triplet(res.E_mean_CGM_J)}  (×{factor_T:.3f})"
+        )
         print(f"  Redshift: {redshift_pct:.1f}% redward")
     else:
         print(f"  E_mean,std:  {_fmt_energy_triplet(res.E_mean_std_J)}")
-        print(f"  E_mean_CGM:  {_fmt_energy_triplet(res.E_mean_CGM_J)}  (×{factor_T:.3f})")
+        print(
+            f"  E_mean_CGM:  {_fmt_energy_triplet(res.E_mean_CGM_J)}  (×{factor_T:.3f})"
+        )
         print(f"  Redshift: {redshift_pct:.1f}% redward")
-    
+
     # Hawking power and emission rates (for PBH and Planck mass only)
     if res.M_solar < 1e-6 or res.M_kg < 1e-5:  # PBH or Planck mass
         print("Hawking emission:")
@@ -345,31 +364,53 @@ def print_result(res: BHResult) -> None:
         print(f"  L_CGM:  {fmt_si(res.L_CGM_W,'W')}  (×{1.0/res.S_factor**4:.3f})")
         print(f"  dN/dt_std:  {fmt_si(res.dNdt_std_per_s,'quanta/s')}")
         ratio_dN = res.dNdt_CGM_per_s / res.dNdt_std_per_s
-        print(f"  dN/dt_CGM:  {fmt_si(res.dNdt_CGM_per_s,'quanta/s')}  (×{ratio_dN:.3f})")
-        
+        print(
+            f"  dN/dt_CGM:  {fmt_si(res.dNdt_CGM_per_s,'quanta/s')}  (×{ratio_dN:.3f})"
+        )
+
         # Species-resolved emission
         print("  Photon emission:")
         print(f"    L_photon_std:  {fmt_si(res.L_photon_std_W,'W')}")
-        print(f"    L_photon_CGM:  {fmt_si(res.L_photon_CGM_W,'W')}  (×{res.L_photon_CGM_W/res.L_photon_std_W:.3f})")
+        print(
+            f"    L_photon_CGM:  {fmt_si(res.L_photon_CGM_W,'W')}  (×{res.L_photon_CGM_W/res.L_photon_std_W:.3f})"
+        )
         print(f"    dN/dt_photon_std:  {fmt_si(res.dNdt_photon_std_per_s,'ph/s')}")
-        print(f"    dN/dt_photon_CGM:  {fmt_si(res.dNdt_photon_CGM_per_s,'ph/s')}  (×{res.dNdt_photon_CGM_per_s/res.dNdt_photon_std_per_s:.3f})")
-        
+        print(
+            f"    dN/dt_photon_CGM:  {fmt_si(res.dNdt_photon_CGM_per_s,'ph/s')}  (×{res.dNdt_photon_CGM_per_s/res.dNdt_photon_std_per_s:.3f})"
+        )
+
         print("  Neutrino emission:")
         print(f"    L_neutrino_std:  {fmt_si(res.L_neutrino_std_W,'W')}")
-        print(f"    L_neutrino_CGM:  {fmt_si(res.L_neutrino_CGM_W,'W')}  (×{res.L_neutrino_CGM_W/res.L_neutrino_std_W:.3f})")
+        print(
+            f"    L_neutrino_CGM:  {fmt_si(res.L_neutrino_CGM_W,'W')}  (×{res.L_neutrino_CGM_W/res.L_neutrino_std_W:.3f})"
+        )
         print(f"    dN/dt_neutrino_std:  {fmt_si(res.dNdt_neutrino_std_per_s,'nu/s')}")
-        print(f"    dN/dt_neutrino_CGM:  {fmt_si(res.dNdt_neutrino_CGM_per_s,'nu/s')}  (×{res.dNdt_neutrino_CGM_per_s/res.dNdt_neutrino_std_per_s:.3f})")
-        
+        print(
+            f"    dN/dt_neutrino_CGM:  {fmt_si(res.dNdt_neutrino_CGM_per_s,'nu/s')}  (×{res.dNdt_neutrino_CGM_per_s/res.dNdt_neutrino_std_per_s:.3f})"
+        )
+
         # PBH detectability: gamma-ray and neutrino flux estimates
         if res.M_kg == 1e12:  # Primordial BH only
             d = 3.086e20  # m, 10 kpc
-            F_gamma_std = res.L_photon_std_W / (res.E_mean_std_J * 4 * pi * d**2) / 1e4  # ph/s/cm^2
-            F_gamma_CGM = res.L_photon_CGM_W / (res.E_mean_CGM_J * 4 * pi * d**2) / 1e4  # ph/s/cm^2
-            F_nu_std = res.L_neutrino_std_W / (res.E_mean_std_J * 4 * pi * d**2) / 1e4  # nu/s/cm^2
-            F_nu_CGM = res.L_neutrino_CGM_W / (res.E_mean_CGM_J * 4 * pi * d**2) / 1e4  # nu/s/cm^2
-            print(f"  Photon flux at 10 kpc: {fmt_si(F_gamma_std, 'ph/s/cm^2')} (std) vs {fmt_si(F_gamma_CGM, 'ph/s/cm^2')} (CGM); Fermi thresh ~1e-9")
-            print(f"  Neutrino flux at 10 kpc: {fmt_si(F_nu_std, 'nu/s/cm^2')} (std) vs {fmt_si(F_nu_CGM, 'nu/s/cm^2')} (CGM); IceCube thresh ~1e-8")
-    
+            F_gamma_std = (
+                res.L_photon_std_W / (res.E_mean_std_J * 4 * pi * d**2) / 1e4
+            )  # ph/s/cm^2
+            F_gamma_CGM = (
+                res.L_photon_CGM_W / (res.E_mean_CGM_J * 4 * pi * d**2) / 1e4
+            )  # ph/s/cm^2
+            F_nu_std = (
+                res.L_neutrino_std_W / (res.E_mean_std_J * 4 * pi * d**2) / 1e4
+            )  # nu/s/cm^2
+            F_nu_CGM = (
+                res.L_neutrino_CGM_W / (res.E_mean_CGM_J * 4 * pi * d**2) / 1e4
+            )  # nu/s/cm^2
+            print(
+                f"  Photon flux at 10 kpc: {fmt_si(F_gamma_std, 'ph/s/cm^2')} (std) vs {fmt_si(F_gamma_CGM, 'ph/s/cm^2')} (CGM); Fermi thresh ~1e-9"
+            )
+            print(
+                f"  Neutrino flux at 10 kpc: {fmt_si(F_nu_std, 'nu/s/cm^2')} (std) vs {fmt_si(F_nu_CGM, 'nu/s/cm^2')} (CGM); IceCube thresh ~1e-8"
+            )
+
     # Plasma cutoff check for SMBHs
     if res.M_solar > 1e6:
         f_hawking = res.E_mean_std_J / h
@@ -377,13 +418,17 @@ def print_result(res: BHResult) -> None:
         ratio = f_hawking / f_plasma
         print(f"  f_Hawking: {f_hawking:.2e} Hz")
         print(f"  f_plasma:  {f_plasma:.0f} Hz  (n_e = 1 cm^-3)")
-        print(f"  f_Hawking/f_plasma: {ratio:.2e} << 1 ⇒ SMBH Hawking EM cannot propagate to us.")
-        
+        print(
+            f"  f_Hawking/f_plasma: {ratio:.2e} << 1 ⇒ SMBH Hawking EM cannot propagate to us."
+        )
+
         # Sgr A* mass uncertainty tie-in
         if "Sgr A*" in res.name:
             delta_M = 0.1e6 * M_sun
             delta_S_BH = 2 * res.S_BH_J_per_K / res.M_kg * delta_M
-            print(f"  Mass unc: ±0.1e6 M_sun → delta_S_BH ≈ {fmt_si(delta_S_BH, 'J/K')}")
+            print(
+                f"  Mass unc: ±0.1e6 M_sun → delta_S_BH ≈ {fmt_si(delta_S_BH, 'J/K')}"
+            )
 
 
 def print_derived_predictions() -> None:
@@ -415,30 +460,37 @@ def print_derived_predictions() -> None:
     # Planck mass from Energy Scales (E_CS ≈ 1.22e19 GeV)
     E_CS_GeV = 1.22e19
     M_CS_kg = (E_CS_GeV * 1e9 * eV_J) / c**2
-    print(f"   Planck mass from Energy Scales: M_CS = {fmt_si(M_CS_kg, 'kg')} (matches script's Planck mass ✓)")
-    
+    print(
+        f"   Planck mass from Energy Scales: M_CS = {fmt_si(M_CS_kg, 'kg')} (matches script's Planck mass ✓)"
+    )
+
     # Planck mass bits calculation
     M_planck = math.sqrt(hbar * c / G)
     res_planck = bh_properties("Planck mass", M_planck)
     S_bits_BH = res_planck.S_BH_J_per_K / (k_B * math.log(2))
     S_bits_CGM = res_planck.S_CGM_J_per_K / (k_B * math.log(2))
-    print(f"   Planck mass BH entropy: S_BH = {S_bits_BH:.1f} bits, S_CGM = {S_bits_CGM:.1f} bits")
+    print(
+        f"   Planck mass BH entropy: S_BH = {S_bits_BH:.1f} bits, S_CGM = {S_bits_CGM:.1f} bits"
+    )
 
     print(f"\n5. PBH DM mass window (CGM):")
     # Critical mass for evaporation today (exact calculation)
     t0 = 4.352e17  # s (13.797 Gyr)
-    M_crit_std = (t0 * hbar * c**4 / (5120.0 * pi * G**2)) ** (1.0/3.0)
-    M_crit_cgm = M_crit_std * (1.0 + m_a) ** (-4.0/3.0)
+    M_crit_std = (t0 * hbar * c**4 / (5120.0 * pi * G**2)) ** (1.0 / 3.0)
+    M_crit_cgm = M_crit_std * (1.0 + m_a) ** (-4.0 / 3.0)
     M_max_DM = 1e15  # kg
     print(f"   M_crit,CGM = {fmt_si(M_crit_cgm, 'kg')} (evaporating now)")
     print(f"   M_max_DM = {fmt_si(M_max_DM, 'kg')} (stable over Hubble time)")
     print(f"   PBH DM window: {fmt_si(M_crit_cgm, 'kg')} to {fmt_si(M_max_DM, 'kg')}")
 
     # Global energy conservation check
-    print(f"\nE_radiated total: {fmt_si(res_planck.E_rad_std_J, 'J')} (std=CGM, conserved ✓)")
-    
-    print(f"\nSpecies insight: Neutrinos dominate emission (ε_nu*3 ≈ 1.2 vs ε_ph=0.3); CGM reduces rates by ~0.579 but preserves ratio.")
-    
+    print(
+        f"\nE_radiated total: {fmt_si(res_planck.E_rad_std_J, 'J')} (std=CGM, conserved ✓)"
+    )
+
+    print(
+        f"\nSpecies insight: Neutrinos dominate emission (ε_nu*3 ≈ 1.2 vs ε_ph=0.3); CGM reduces rates by ~0.579 but preserves ratio."
+    )
 
 
 def print_horizon_micro_quanta() -> None:
@@ -449,7 +501,7 @@ def print_horizon_micro_quanta() -> None:
     lP = math.sqrt(hbar * G / c**3)
     G_eff = G / (1.0 + m_a)
     lP_eff = math.sqrt(hbar * G_eff / c**3)
-    
+
     # Area spacing: Bekenstein-Mukhanov vs LQG
     if LQG_AREA:
         gamma = 0.274
@@ -458,7 +510,7 @@ def print_horizon_micro_quanta() -> None:
     else:
         dA_std = 8.0 * pi * lP**2
         spacing_type = "Bekenstein-Mukhanov"
-    
+
     dA_cgm = dA_std / (1.0 + m_a)
     print(f"ℓ_P = {fmt_si(lP, 'm')}")
     print(f"G_eff on horizon = G/(1+m_a) = {G_eff:.3e} SI")
@@ -468,7 +520,7 @@ def print_horizon_micro_quanta() -> None:
     print(f"Area spacing: {spacing_type}")
     print(f"ΔA_std = {fmt_si(dA_std, 'm²')}")
     print(f"ΔA_CGM = ΔA_std/(1+m_a) = {fmt_si(dA_cgm, 'm²')}  (×{1.0/(1.0 + m_a):.3f})")
-    
+
     # Micro-quanta insight: bits per area quantum
     # Use a reference area for the calculation
     A_ref = 4.0 * pi * lP**2  # Reference area (Planck scale)
@@ -630,8 +682,8 @@ def print_ads_blackhole_analysis() -> None:
     print("=" * 60)
 
     # Choose (M, L) pair - AdS horizon exists for all M > 0
-    L_ads = 1.0e3     # 1 km AdS radius
-    M_ads = 1.0e27    # ~1/3 Earth mass
+    L_ads = 1.0e3  # 1 km AdS radius
+    M_ads = 1.0e27  # ~1/3 Earth mass
 
     # Solve for r_+ from exact AdS horizon equation
     r_plus = ads_horizon_radius(M_ads, L_ads)
@@ -640,9 +692,11 @@ def print_ads_blackhole_analysis() -> None:
         return
 
     # Exact thermodynamics (geometry-level)
-    A = 4.0*pi*r_plus**2
+    A = 4.0 * pi * r_plus**2
     S_std = k_B * c**3 * A / (4.0 * G * hbar)
-    T_std = (hbar * c) / (4.0 * pi * k_B * r_plus) * (1.0 + 3.0*(r_plus**2)/(L_ads**2))
+    T_std = (
+        (hbar * c) / (4.0 * pi * k_B * r_plus) * (1.0 + 3.0 * (r_plus**2) / (L_ads**2))
+    )
 
     # CGM scaling (thermo only)
     S_cgm = (1.0 + m_a) * S_std
@@ -654,7 +708,9 @@ def print_ads_blackhole_analysis() -> None:
     print(f"S_CGM  = {fmt_si(S_cgm,'J/K')}  (×{1.0+m_a:.3f})")
     print(f"T_std  = {fmt_si(T_std,'K')}")
     print(f"T_CGM  = {fmt_si(T_cgm,'K')}  (×{1.0/(1.0+m_a):.3f})")
-    print("AdS: unique horizon exists for all M > 0; geometry unchanged, thermodynamics rescaled.")
+    print(
+        "AdS: unique horizon exists for all M > 0; geometry unchanged, thermodynamics rescaled."
+    )
 
 
 def kerr_newman_cgm(M_kg: float, J: float, Q_C: float) -> Dict[str, float]:
@@ -731,10 +787,12 @@ def print_kerr_newman_example():
     a_len = a_star * r_g
     J = a_len * M * c
     Q = 0.0  # Astrophysical black holes have negligible charge
-    
+
     # Check charge neutrality bound
     q_star_val = q_star(Q, M)
-    assert abs(q_star_val) < 1e-15, f"Charge too large: |q*| = {abs(q_star_val):.2e} > 1e-15"
+    assert (
+        abs(q_star_val) < 1e-15
+    ), f"Charge too large: |q*| = {abs(q_star_val):.2e} > 1e-15"
 
     kn = kerr_newman_cgm(M, J, Q)
 

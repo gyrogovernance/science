@@ -49,7 +49,7 @@ def su3_hadron_checks():
     M_Omega = 1.6724  # Ω-
 
     # CGM invariants to compare
-     m_a = 1 / (2 * sqrt(2 * pi))
+    m_a = 1 / (2 * sqrt(2 * pi))
     rho = 0.195342176580 / m_a
     Delta = 1 - rho  # ~ 0.0206995539
 
