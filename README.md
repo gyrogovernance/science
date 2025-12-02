@@ -67,7 +67,7 @@ Derived predictions include:
 
 ## 📚 Documentation
 
-- 🧠 **[CGM Core](docs/CGM_Core.md)** – Formal axioms, derivations, and geometric invariants
+- 🧠 **[CGM Core](docs/CGM_Paper.md)** – Formal axioms, derivations, and geometric invariants
 - 🔭 **[CGM Program](docs/CGM_Program.md)** – Research roadmap, validation plan, and applied objectives
 - 📖 **[CHANGELOG.md](CHANGELOG.md)** - Latest Updates and Complete version history
 

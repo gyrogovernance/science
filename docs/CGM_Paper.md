@@ -1,7 +1,5 @@
 # The Common Governance Model: From Modal Logic to Physical Structure
 
-## A Comprehensive Technical Guide
-
 ## Table of Contents
 
 - [Executive Summary](#executive-summary)
