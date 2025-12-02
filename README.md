@@ -142,7 +142,10 @@ If you use this framework in your research, please cite:
 }
 ```
 
-**DOI:** [10.5281/zenodo.17521384](https://doi.org/10.5281/zenodo.17521384)
+**Paper Release (v1.2.4):** [10.5281/zenodo.17794470](https://doi.org/10.5281/zenodo.17794470) - Jan 1, 2025
+
+**General Citation (all versions):** [10.5281/zenodo.17521384](https://doi.org/10.5281/zenodo.17521384)
+
 ---
 
 <div style="border: 1px solid #ccc; padding: 1em; font-size: 0.6em; background-color: #f9f9f9; border-radius: 6px; line-height: 1.5;">
