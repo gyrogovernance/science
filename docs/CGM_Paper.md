@@ -1173,7 +1173,7 @@ A = ⟨y, P_cycle y⟩_W / ⟨y, y⟩_W = ||y_cycle||²_W / ||y||²_W
 **Operational ranges:**
 
 - **A < 0.01:** Excessive rigidity (collapse toward absolute unity, violates UNA)
-- **A ≈ 0.021:** Optimal balance (CGM prediction from BU geometry)
+- **A ≈ 0.0207:** Optimal balance (CGM prediction from BU geometry)
 - **A > 0.05:** Structural instability (loss of coherent closure, violates BU)
 
 **The canonical point A* = 0.0207 corresponds to:**
@@ -1324,7 +1324,7 @@ Evaluations on representative transformer architectures using the GyroDiagnostic
 | Claude Sonnet 4.5  | 0.161    | [0.080, 0.182] | 7.8×              |
 | Grok-4             | 0.169    | [0.052, 0.201] | 8.2×              |
 | ChatGPT-5          | 0.125    | [0.108, 0.283] | 6.0×              |
-| CGM target (A*)    | 0.021    | ---         | 1.0×              |
+| CGM target (A*)    | 0.0207   | ---         | 1.0×              |
 
 **Observations:**
 
@@ -1382,7 +1382,7 @@ This framing allows critiques of anthropomorphic safety narratives to be posed a
 
 The framework predicts that systems approaching optimal alignment should show:
 
-- A → 0.021 as training progresses
+- A → 0.0207 as training progresses
 - Pathology rates → 0 as A → A*
 - SI → 100 as depth-four closure is achieved
 
@@ -1553,7 +1553,7 @@ The framework is multiply falsifiable. Here are the specific ways to demonstrate
 
 #### 6. AI Aperture Absence
 
-**Test:** Large-scale evaluation (100+ models, 1000+ runs) shows no clustering near A* = 0.021.
+**Test:** Large-scale evaluation (100+ models, 1000+ runs) shows no clustering near A* = 0.0207.
 
 **Current status:** Pilot data (n=3 models, k=15 each) shows clustering at A ≈ 0.15, consistent with early differentiation regime.
 
@@ -1695,7 +1695,7 @@ The approaches are complementary, not competing:
 
 One describes what works, the other explains why it works that way. Combining them:
 
-- Use CGM to set target metrics (A* = 0.021)
+- Use CGM to set target metrics (A* = 0.0207)
 - Use RLHF/Constitutional AI to drive systems toward targets
 - Use GyroDiagnostics to verify achievement
 
@@ -1911,7 +1911,7 @@ Aperture Analysis:
   Aperture: A = 1.31/8.13 = 0.161
 
 Target comparison:
-  A* (CGM) = 0.021
+  A* (CGM) = 0.0207
   A (observed) = 0.161
   Deviation = 7.7× target
 
