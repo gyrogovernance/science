@@ -286,7 +286,6 @@ Notably, the five specified documents do not directly discuss:
 
 - **Thermal Capacity**: Mentioned in `Analysis_Balance_Index.md` (not in the specified set)
 - **Information Storage Capacity**: Mentioned in `Analysis_BH_Aperture.md` (not in the specified set)
-- **Transport Capacity**: Mentioned in `Analysis_Alignment.md` (not in the specified set)
 
 These suggest a broader capacity concept that extends beyond the five documents analyzed here.
 
@@ -364,7 +363,6 @@ Further investigation could:
 **Related Documents (Not in Primary Set):**
 - `Analysis_Balance_Index.md` - Thermal capacity of cosmological horizons
 - `Analysis_BH_Aperture.md` - Information storage capacity in black holes
-- `Analysis_Alignment.md` - Transport capacity in biological systems
 - `Analysis_Walking.md` - Information capacity in biomechanics
 
 ---

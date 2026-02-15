@@ -4,6 +4,76 @@ All notable changes to the CGM Experimental Framework will be documented in this
 
 ---
 
+## [1.2.4-CGM-Dataset] - 2026-02-15
+
+### CGM Science Dataset Initialization Summary
+Successfully initialized and generated the primary training dataset (`cgm_dataset.jsonl`) for the Common Governance Model (CGM). The dataset transforms unstructured Markdown documentation, findings, and analysis papers into structured, machine-readable instruction data suitable for Fine-Tuning (SFT) and Retrieval Augmented Generation (RAG).
+
+### Statistics
+*   **Total Records:** 1,024 entries
+*   **ID Range:** `cgm_001` to `cgm_1024`
+*   **Format:** JSONL (JSON Lines)
+*   **Total Sources:** 15 distinct analysis documents + Core Paper + Program Guide
+
+### Schema Defined
+All records adhere to the following schema:
+*   `id`: Unique identifier (e.g., "cgm_001").
+*   `source`: File path of the origin document.
+*   `section`: Specific heading or hierarchy within the source.
+*   `category`: Domain classification (e.g., `invariant`, `prediction`, `ai_alignment`).
+*   `type`: Knowledge type (e.g., `concept`, `equation`, `claim`).
+*   `question`: Natural language prompt.
+*   `answer`: Grounded, faithful response based strictly on the text.
+*   `context`: Verbatim excerpt used for grounding (RAG-ready).
+*   `tags`: Searchable keywords.
+*   `importance`: `core` | `supporting` | `detail`.
+
+### Sources Processed & Coverage
+The following documents were fully parsed and extracted:
+
+#### 1. Core Documentation
+*   **`docs/CGM_Paper.md`** (IDs: 001–282)
+    *   Foundational logic (CS, UNA, ONA, BU).
+    *   3D/6DoF derivation via BCH analysis.
+    *   Geometric invariants ($Q_G$, $\delta_{BU}$).
+    *   Fine-structure constant ($\alpha$) derivation.
+*   **`docs/CGM_Program.md`** (IDs: 283–360)
+    *   Research roadmap and tri-partite validation.
+    *   GyroSI architecture and AI alignment extensions.
+
+#### 2. Foundational Proofs
+*   **`Analysis_3D_6DOF_Proof.md`** (IDs: 361–427): Formal Lie-theoretic proof of dimensional necessity.
+*   **`Analysis_Hilbert_Space_Representation.md`** (IDs: 428–467): GNS construction and operator algebra.
+
+#### 3. Geometric & Physical Analysis
+*   **`Analysis_CGM_Units.md`** (IDs: 468–509): Unit emergence and optical conjugacy.
+*   **`Analysis_Axiomatization.md`** (IDs: 510–538): Modal logic consistency and Z3 verification.
+*   **`Analysis_Geometric_Coherence.md`** (IDs: 539–578): $\pi/4$ signature and triangle validation.
+*   **`Analysis_Monodromy.md`** (IDs: 579–626): Complete monodromy hierarchy and Thomas-Wigner test.
+*   **`Analysis_Fine_Structure.md`** (IDs: 627–660): Detailed $\alpha$ correction steps.
+*   **`Analysis_Energy_Scales.md`** (IDs: 661–726): UV-IR conjugacy, neutrino masses, and gauge groups.
+*   **`Analysis_Quantum_Gravity.md`** (IDs: 727–760): $Q_G = 4\pi$ as a geometric requirement.
+*   **`Analysis_48_States.md`** (IDs: 761–799): Significance of factor 48 and angular harmonics ($45^\circ \to 48^\circ$).
+
+#### 4. Cosmology
+*   **`Analysis_BH_Aperture.md`** (IDs: 800–821, 846–853, 892–900): Thermodynamics modifications ($m_a$ scaling).
+*   **`Analysis_BH_Universe.md`** (IDs: 822–845, 854–891, 901–909): Cosmology without expansion (Optical Illusion hypothesis).
+
+#### 5. AI & Measurement
+*   **`Analysis_Measurement.md`** (IDs: 910–965, 983–989): GyroDiagnostics, tetrahedral topology, and role-based bias elimination.
+*   **`Analysis_Capacity_Concepts.md`** (IDs: 966–982, 990–1001): Synthesis of observational, evolutionary, and measurement capacities.
+
+#### 6. Advanced Dynamics
+*   **`Analysis_Motion.md`** (IDs: 1002–1011): Gyrational modeling of motion and angular momentum primacy.
+*   **`Analysis_Universal_Corrections.md`** (IDs: 1012–1024): Universal operator for galactic rotation curves and $\alpha$.
+
+### Verification Status
+*   **Consistency:** All entries use the unified schema.
+*   **Safety:** "CGM claims/states" framing used for interpretive theories (cosmology, motion) to distinguish from standard model consensus.
+*   **Completeness:** 100% of provided text content mapped to QA pairs.
+
+---
+
 ## [1.2.3-CGM-Paper] - 2025-10-06 2025-11-09 
 
 Publishing: Common Governance Model: A Constitutional analysis on the Mathematical Physics of Authority, from Quantum Measurement to AI Alignment
@@ -132,7 +202,6 @@ Experiments Results and Analysis found here:
 
 Revisions:
 - [docs/Findings/Analysis_CGM_Units.md](docs/Findings/Analysis_CGM_Units.md)
-- [docs/Findings/Analysis_Alignment.md](docs/Findings/Analysis_Alignment.md)
 
 ---
 
@@ -188,12 +257,6 @@ Experiments Results and Analysis found here:
 
 ---
 
-## [1.1.1-Alignment] - 2025-09-11
-New Topic - Documentation found here: 
-- [docs/Findings/Analysis_Alignment.md](docs/Findings/Analysis_Alignment.md)
-
----
-
 ## [1.1.1-Walking] - 2025-09-10
 
 Experiments Results and Analysis found here: 
@@ -206,13 +269,6 @@ Experiments Results and Analysis found here:
 
 New Topic - Documentation found here: 
 - [docs/Findings/Analysis_Motion.md](docs/Findings/Analysis_Motion.md)
-
----
-
-## [1.1.1-Alignment] - 2025-09-05
-
-Experiments Results and Analysis found here: 
-- [docs/Findings/Analysis_Alignment.md](docs/Findings/Analysis_Alignment.md)
 
 ---
 

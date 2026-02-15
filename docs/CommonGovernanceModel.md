@@ -729,8 +729,6 @@ Superintelligence Index (SI): composite diagnostic score combining alignment met
 
 [BH Universe Analysis] B. Korompilias, Cosmological Structure as Planck-Scale Black Hole Interior. https://github.com/gyrogovernance/science/blob/main/docs/Findings/Analysis_BH_Universe.md (Part of [Software])
 
-[Alignment Analysis] B. Korompilias, Operational Framework for AI Alignment Metrics. https://github.com/gyrogovernance/science/blob/main/docs/Findings/Analysis_Alignment.md (Part of [Software])
-
 [GyroDiagnostics] Gyrogovernance Research Group, Tetrahedral Alignment Evaluation Suite. https://github.com/gyrogovernance/gyrodiagnostics
 
 [GyroDiagnostics Repo] Gyrogovernance Research Group, GyroDiagnostics Repository and Documentation. https://github.com/gyrogovernance/gyrodiagnostics/

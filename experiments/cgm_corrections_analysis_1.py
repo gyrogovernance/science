@@ -251,7 +251,6 @@ def main() -> None:
 
     # 2. K_QG as Fundamental Action Quantum
     print("\n2. K_QG Fundamental Action Quantum:")
-    # Correct CGM formula: K_QG = π²/√(2π) ≈ 3.937 (from docs/Findings/Analysis_Alignment.md)
     K_QG_exact = (pi_**2) / _sqrt(Decimal(2) * pi_)
     print("K_QG_exact = π²/√(2π):", f"{K_QG_exact:.12f}")
     print("K_QG_original:", f"{k_qg:.12f}")

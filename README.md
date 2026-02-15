@@ -71,6 +71,10 @@ Derived predictions include:
 - 🔭 **[CGM Program](docs/CGM_Program.md)** – Research roadmap, validation plan, and applied objectives
 - 📖 **[CHANGELOG.md](CHANGELOG.md)** - Latest Updates and Complete version history
 
+### 🧠 CGM Corpus Datasets
+
+- 🤖 **[Main "docs\datasets\cgm_dataset_main.jsonl"](docs/datasets/)** – A structured JSONL dataset of 1,000+ grounded Q&A pairs covering the entire CGM framework, designed for Fine-Tuning (SFT), RAG systems, and AI evaluation benchmarks.
+
 ### Foundational Verification Framework
 
 | Component | Documentation | Implementation |
