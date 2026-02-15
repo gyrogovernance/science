@@ -1,11 +1,8 @@
-Here is a comprehensive `README.md` for the dataset file. You should place this file in `docs/datasets/README.md` or alongside the `.jsonl` file.
-
-```markdown
 # CGM Science Dataset (Main)
 
 **File:** `cgm_dataset_main.jsonl`  
 **Version:** 1.0.0  
-**Date:** 2025-05-25  
+**Date:** 2026-02-15  
 **Total Records:** 1,024
 
 ## Overview
@@ -125,4 +122,3 @@ This dataset derives from the Common Governance Model framework.
 > Korompilias, B. (2025). Common Governance Model: Mathematical Physics Framework. Zenodo. https://doi.org/10.5281/zenodo.17521384
 
 **License:** MIT
-```
