@@ -87,6 +87,7 @@ Derived predictions include:
 
 | Version | Focus Area | Documentation | Implementation |
 |---------|------------|---------------|----------------|
+| **1.2.5** | 🌀 Gyroscopic Multiplication | [Analysis](docs/Findings/Analysis_Gyroscopic_Multiplication.md) | []() |
 | **1.1.2** | ⚡ Energy Scale Unification | [Analysis](docs/Findings/Analysis_Energy_Scales.md) | [Code](/experiments/cgm_energy_analysis.py) |
 | **1.1.0** | 📏 4pi Unification through Alignment | [Analysis](/docs/Findings/Analysis_4pi_Alignment.md) | []() |
 | **1.1.0** | 🎯 Fine-Structure Constant | [Analysis](docs/Findings/Analysis_Fine_Structure.md) | [Code](experiments/cgm_alpha_analysis.py) |

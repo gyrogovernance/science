@@ -2,6 +2,14 @@
 
 All notable changes to the CGM Experimental Framework will be documented in this file.
 
+
+---
+
+## [1.2.5-Gyroscopic-Multiplication] - 2026-03-31
+
+### Added
+- `docs/Findings/Analysis_Gyroscopic_Multiplication.md` — Gyroscopic Multiplication: Independence Roots and Aperture Reproducibility (multiplication, roots, and CGM aperture-related invariants).
+
 ---
 
 ## [1.2.4-CGM-Dataset] - 2026-02-15
