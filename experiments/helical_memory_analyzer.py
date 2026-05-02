@@ -531,7 +531,7 @@ class HelicalMemoryAnalyzer:
         Xi_anchor = 1.0
         r = Π / Xi_anchor
         if r <= 1.0:
-            # Degenerate case: no growth — fall back safely
+            # Degenerate case: no growth, fall back safely
             N_star = 1
             L_on_ladder = 3.861592e-13
         else:
@@ -1105,7 +1105,7 @@ class HelicalMemoryAnalyzer:
         print(
             f"   that corresponds to D-sugars (and typically L-amino acids for proteins)."
         )
-        print(f"   No claim about mechanism yet—just the selection bias.")
+        print(f"   No claim about mechanism yet; this is selection bias only.")
 
         return {
             "chirality_results": chirality_results,

@@ -673,7 +673,7 @@ def print_results():
     ), "Q_G aperture must equal 0.5"
     assert abs(phi - 1) < 1e-10, "ϕ must equal 1"
     print()
-    print("Closure vector (χ, τ, ϕ) = (2, 1, 1) — geometric necessities")
+    print("Closure vector (χ, τ, ϕ) = (2, 1, 1): geometric necessities")
     print()
 
     # Unit-neutral checks (dimensionless physics)

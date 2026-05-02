@@ -586,6 +586,8 @@ The same K4 law is evaluated without boolean compression. Correctness is unchang
 
 No approximation enters in the regime selection. The three regimes are exact chart specializations of one law.
 
+The carrier, spinorial, and dense regimes are not properties of weights to be detected. They are the three exact evaluations of the K4 lattice determined by the data values of H at runtime. Every Q8_0 dot product executes the full D₀₀ + B(D₀₁ + D₁₀) + B²D₁₁ form; the regime only selects which terms are zero by value, not by test.
+
 ---
 
 ### 10. Common-Source Factorization and Chart Defect
@@ -708,6 +710,7 @@ The following arithmetic-manifold correspondences hold:
 | Depth-4 cancellation | b⁴ = id, XYXY = id | Frame closure |
 | K4 cell index {00,01,10,11} | K4 gate group {id,S,C,F} | (ℤ/2)² phase organization |
 | Width 64 | |H| = 64, |GF(2)⁶| = 64 | Horizon-matched grain |
+| Krawtchouk radial basis | MacWilliams weight transform basis | Shared polynomial engine |
 
 The arithmetic radix satisfies:
 
@@ -746,6 +749,8 @@ Practical execution proceeds in this order:
 1. state structure (native manifold and charts)
 2. operator structure (exact transport and partition algebras)
 3. arithmetic lowering (K4 lattice realization and regime selection)
+
+The MacWilliams identity for the self-dual [12,6,2] mask code provides a further cross-layer connection. In coding theory, the MacWilliams transform relates the weight distribution of a code to that of its dual, expressed in the Krawtchouk polynomial basis. In the finite manifold layer, the same Krawtchouk basis diagonalizes shell-radial climate transport. For a self-dual code, the MacWilliams transform becomes a self-consistency condition, and the Plancherel identity on GF(2)^6 guarantees conservation between chirality-space and spectral-space representations. These three structures (MacWilliams weight transform, Krawtchouk radial harmonics, Plancherel spectral conservation) are expressions of a single algebraic duality on the 6-mode register.
 
 ---
 

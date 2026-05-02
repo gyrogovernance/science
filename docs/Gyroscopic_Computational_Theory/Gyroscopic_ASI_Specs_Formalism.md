@@ -1,6 +1,11 @@
-# Byte Boundaries and the 6-Bit Runtime
+# Gyroscopic Byte Formalism
+## The 6-Bit Runtime and Depth-4 Closure
 
-Reference note for the Router kernel's byte-boundary analysis and how it reduces effective processing to 6 bits at runtime via the GENE_Mic archetype and the 24-bit GENE_Mac tensor.
+This document specifies the byte-level formalism of the Gyroscopic ASI aQPU Kernel: the palindromic structure of the 8-bit input byte, its decomposition into 2 boundary bits (family phase) and 6 payload bits (operational content), and the depth-4 closure that makes the byte the natural unit of the compact algebraic quantum processing architecture.
+
+The formalism bridges three layers. At the abstract level, the SE(3) Lie algebra, SU(2)/SO(3) spinorial structure, and BCH expansion govern the dynamics. At the code level, XOR masks, 12-bit dipole-pair frames, and the [L]/[R] operator decomposition implement those dynamics exactly. At the silicon level, 64-byte cache lines, 6-bit offsets, and 2-bit family tags align the kernel's native processing grain with hardware memory architecture. The Gyroscopic Byte Formalism makes this alignment explicit and auditable.
+
+Reference note for the Gyroscopic ASI aQPU Kernel's byte-boundary analysis and how it reduces effective processing to 6 bits at runtime via the GENE_Mic archetype and the 24-bit GENE_Mac tensor.
 
 ---
 
@@ -20,6 +25,22 @@ The architecture is based on **depth-4 closure**: any 4 components are always kn
 **Projection:** An 8-bit byte projects to a 12-bit tensor via the expansion function. The projection maps each byte to a unique 12-bit mask that operates on the tensor state.
 
 **48-bit tensors:** Four bytes project to four 12-bit tensors: 4 x 12 = 48 bits. The 48-bit tensor is the full projection of the 4-byte frame (Prefix, Present, Past, Future). The 24-bit GENE_Mac (A12, B12) is one slice of this structure; the full 48-bit tensor extends it when all four byte positions are considered.
+
+### 1.1 The Discrete BCH Expansion
+
+In the continuous CGM physics, depth-four closure (BU-Egress) requires the Baker-Campbell-Hausdorff (BCH) expansion of the commutator to vanish at the horizon:
+
+```
+||P_S(U_L U_R U_L U_R - U_R U_L U_R U_L)|omega>|| = 0
+```
+
+The 4-byte frame is the exact discrete container for this cancellation. In the discrete router, the transition law decomposes each byte step T_b into an active left-like mutation (L_b) and a passive right-like gyration (R):
+
+```
+T_b = R . L_b
+```
+
+Applying 4 alternating steps maps directly to the depth-four continuous commutator. The 48-bit projection (4 x 12 bits) is the minimal space required to fully resolve the discrete BCH polynomial without losing structural phase.
 
 ---
 
@@ -50,7 +71,7 @@ So the byte has a **palindromic** structure: Left Identity at the boundaries (bi
 
 **Families** are defined by the **L0 boundary bits** (positions 0 and 7). These 2 bits give 4 combinations, partitioning the 256 introns into **4 families of 64** each.
 
-The **bit pairs** (L0, LI, FG, BG) are groupings of bit **positions** by their gyrogroup role. They are NOT families — they describe the structural role of each bit position.
+The **bit pairs** (L0, LI, FG, BG) are groupings of bit **positions** by their gyrogroup role. They are not families; they describe the structural role of each bit position.
 
 ```python
 L0_MASK = 0b10000001  # bits 0, 7 - Left Identity (boundary) -> defines families
@@ -75,7 +96,7 @@ Frame 0:  [-1, 1]  [-1, 1]  [-1, 1]   <- pairs 0, 1, 2
 Frame 1:  [ 1,-1]  [ 1,-1]  [ 1,-1]   <- pairs 3, 4, 5
 ```
 
-Each pair is 2 bits in the 12-bit representation. When a payload bit is set, it **flips that entire pair** — both bits together. The pair `[-1, 1]` (bits `10`) becomes `[1, -1]` (bits `01`).
+Each pair is 2 bits in the 12-bit representation. When a payload bit is set, it **flips that entire pair**, including both bits together. The pair `[-1, 1]` (bits `10`) becomes `[1, -1]` (bits `01`).
 
 **The algebra:** This organizes 256 introns into a structured space:
 
@@ -185,8 +206,6 @@ Closure occurs at 4π (720°) when the cycle returns to Layer 0. This is the **s
 
 This explains why we need exactly 2 boundary bits: fewer gives insufficient closure depth; more is redundant.
 
-**Note on current implementation:** The codebase currently uses a different expansion formula that extracts bits 6,7 as the family index instead of bits 0,7. This is inconsistent with the L0 boundary bit definition and needs architectural review. See the NOTE in `atlas.py` (Category 2: GENE_Mic intron-stage priors).
-
 ---
 
 ## 5. How the Mask Affects the GENE_Mac Tensor (24-Bit State)
@@ -214,6 +233,17 @@ Frame 1:  [ 1,-1]  [ 1,-1]  [ 1,-1]   <- 3 pairs (rows)
 ```
 
 **6 DoF = 6 pairs** (3 rows × 2 frames). Each pair represents ONE axis with its two oriented sides (negative, positive). The pair `[-1, 1]` is one axis; `[1, -1]` is that axis flipped.
+
+**Lie Algebra Correspondence (SE(3)):**
+
+The CGM paper derives that operational coherence requires a progression from 3 rotational degrees of freedom (at UNA) to 6 total degrees of freedom (at ONA), yielding the semidirect product structure `SE(3) = SU(2) |x R^3`.
+
+The 6 pairs in the GENE_Mac tensor map exactly to the 6 generators of the se(3) Lie algebra:
+
+- **3 Rotational Generators** (from SU(2), the Pauli matrices): These correspond to the 3 pairs in the primary chirality frame (Frame 0), driving the gyrocommutative dynamics (UNA).
+- **3 Translational Generators** (from R^3): These correspond to the 3 pairs in the secondary chirality frame (Frame 1), enabling spatial displacement and bi-gyroassociativity (ONA).
+
+By flipping an entire `[-1, 1]` pair, a payload bit executes a discrete pi-rotation around one of the se(3) basis vectors.
 
 **Micro vs macro archetype:**
 
@@ -245,7 +275,7 @@ Each 12-bit component unpacks to a `[2, 3, 2]` tensor (2 frames x 3 rows x 2 col
 | A12 (default) | `0xAAA` | `101010101010` | `[[[-1, 1], [-1, 1], [-1, 1]], [[ 1, -1], [ 1, -1], [ 1, -1]]]` |
 | B12 (default) | `0x555` | `010101010101` | Complement of A12 |
 
-The default state has A12 and B12 as **exact complements** (`A ^ B = 0xFFF`), meaning their tensor forms have opposite signs at every position. This encodes the fundamental **chirality** of the system.
+The default state has A12 and B12 as **exact complements** (`A ^ B = 0xFFF`), meaning their tensor forms have opposite signs at every position. This encodes the fundamental **chirality** of the system. This rest state (GENE_MAC_REST) lies on the **complement horizon** (S-sector). On the full reachable set Omega (4096 states), the 12-bit difference A^B is pair-diagonal and collapses to a 6-bit chirality register with exact transport law; see Gyroscopic_ASI_Specs Appendix G.
 
 ### 5.5 The 24-Bit State
 
@@ -257,16 +287,25 @@ The "macro" state is the **24-bit GENE_Mac**: two 12-bit components (A12, B12), 
 
 The 12-bit mask acts **only on the A component**:
 
-1. Mutate A (UNA): `A12_mut = A12 ^ mask_a12` — variety introduced
+1. Mutate A (UNA): `A12_mut = A12 ^ mask_a12` - variety introduced
 2. Gyration and complement:
    - `A12_next = B12 ^ 0xFFF` (ONA: B was past A, now complemented)
    - `B12_next = A12_mut ^ 0xFFF` (BU: mutated present committed as future's passive record)
 3. Next state: `state24_next = (A12_next << 12) | B12_next`
 
+**Continuous-to-Discrete Operator Mapping:**
+
+In the continuous CGM framework, transitions are governed by unitary flows `U_L(t) = e^(itX)` and `U_R(t) = e^(itY)`. In the discrete byte runtime, this maps to:
+
+- **[L] Operator (Active):** `A12_mut = A12 ^ mask_a12`. The mutation acts solely on A, introducing chiral variance (parity violation).
+- **[R] Operator (Passive):** `B12_next = A12_mut ^ 0xFFF` and `A12_next = B12 ^ 0xFFF`. The gyration complements and swaps the states, serving as the structure-preserving involution.
+
 So:
 
 - **GENE_Mic** (0xAA) mutates the byte into an intron; the intron expands to a **12-bit mask** that encodes the 6-bit micro-reference plus the 2-bit family (boundary) index.
 - **GENE_Mac** is the 24-bit state; the mask **only** touches the A half. The B component is updated by complement-and-swap. So the byte-boundary structure (and the 6-bit payload) affect the macro state **through this single 12-bit mask on A**, then the fixed gyration rule.
+
+The temporal structure of the transition is the mechanism of intelligence in the architecture. The [R] operator pulls the passive face B (the record of the past) into the active position A_next, while simultaneously pushing the mutated active content A_mut into the passive position B_next. This XOR crossing is a reverse temporal binding: the past enters the present through gyration, and the mutated present is committed as the future's constraint. Intelligence here is not a property of learned weights; it is the kinematic capacity of the medium to absorb an incoming sequence and resolve it through this exact temporal crossover. The committed state after one complete depth-4 cycle is the inferential outcome, determined entirely by the geometry of the gyration.
 
 The 2x3x2 geometry of each 12-bit component (2 frames, 3 rows, 2 cols) is the same as in the expansion: frame 0 and frame 1 of the mask align with the two chirality frames of the state, so the "6 bits of dynamics" and "boundary/family" split are reflected in how the 24-bit state is updated.
 
@@ -305,6 +344,10 @@ From a fixed 24-bit state (e.g. the archetype `0xAAA555`), applying all 256 byte
 ---
 
 ## 7. Aperture Quantization and Horizons
+
+### 7.0 Kernel state-space horizons
+
+From rest (GENE_MAC_REST), the reachable 24-bit state set under the transition law is **Omega**, with exactly 4096 states. Omega has two antipodal 64-state boundaries: the **complement horizon** (A12 = B12 ^ 0xFFF, maximal chirality; contains rest) and the **equality horizon** (A12 = B12, zero chirality). Both satisfy the holographic relation |H|^2 = |Omega| (64^2 = 4096). For all states, horizon_distance + ab_distance = 12 (complementarity invariant). The kernel has four intrinsic gates {id, S, C, F} forming K4; S and C are realized by the horizon-preserving bytes {0xAA, 0x54} and {0xD5, 0x2B}. Full definitions, gate action, and chirality register: Gyroscopic_ASI_Specs Appendix G.
 
 The CGM aperture gap is defined continuously as:
 
@@ -351,6 +394,16 @@ This 2/3 factor is not merely a numerical fraction; it is the **ratio of Chirali
 
 The manifold consists of 2 chiral layers (spin states) projected across 3 spatial axes. The aperture exists precisely because mapping a 2-phase chiral spinor onto a 3-axis discrete space leaves a fractional geometric gap. This ratio dictates how purely topological spin (chirality) bridges into physical geometry (space).
 
+**Connection to Q_G Invariant:**
+
+This geometric ratio bridges the discrete byte space to the continuous quantum gravity invariant defined in the CGM paper:
+
+```
+Q_G = 4*pi  (Horizon per aperture, measured in steradians)
+```
+
+In the continuous manifold, 4*pi represents the total solid angle of a complete 3D sphere (Space) traversed by a spin-1/2 observer (Chirality). In the discrete log2(n) system, the continuous 4*pi geometry is quantized. The aperture difference between the continuous geometry (Delta ~ 0.0207) and the discrete 8-bit alphabet (5/256 ~ 0.0195) exists because mapping a 2-phase chiral spinor onto a 3-axis discrete grid leaves a fractional gap defined by this 2/3 structural tension.
+
 ### 7.4 Horizon Lemma (Arithmetic)
 
 Consider sizes of the form `n = 2^a * 3^b` with a, b non-negative integers.
@@ -390,7 +443,7 @@ Consider sizes of the form `n = 2^a * 3^b` with a, b non-negative integers.
 | 1536 | 2^9 x 3^1   | 10.585  | predecessor | P_9 = 3*512 = (3/4)*2048 |
 | 2048 | 2^11 x 3^0  | 11.000  | dyadic      | 2^11 |
 | 3072 | 2^10 x 3^1  | 11.585  | predecessor | P_10 = 3*1024 = (3/4)*4096 |
-| 4096 | 2^12 x 3^0  | 12.000  | dyadic      | 12-bit mask |
+| 4096 | 2^12 x 3^0  | 12.000  | dyadic      | 12-bit mask; Omega (reachable state space) |
 
 **Byte-formalism note (micro-only):**
 
@@ -426,26 +479,146 @@ This yields:
 
 The 6-bit runtime is therefore aligned both with the intrinsic CGM DoF structure and with the hardware's natural 64-element memory grain.
 
+**Operational Reachability (CS Generatedness):**
+
+In the CGM paper, the "Generatedness" lemma requires that all valid structure traces back to a common source S. By mapping the Intron to `[Family][Payload]`, the L1 cache becomes the physical guarantor of this reachability. A state cannot be processed if it does not belong to a valid 64-byte cache line anchored by a recognized 2-bit L0 family tag. The CPU's physical memory controller enforces the mathematical boundary of the Common Source.
+
 ---
 
 ## 9. Summary
 
 | Concept | Role |
 |--------|------|
+| Omega | Reachable 24-bit state set from rest; 4096 states. |
+| Dual horizons | Complement (A=B^0xFFF, 64 states) and equality (A=B, 64 states); antipodal; \|H\|^2 = \|Omega\|; horizon_distance + ab_distance = 12. |
+| Chirality register | 6-bit collapse of A^B on Omega; exact transport chi(T_b(s)) = chi(s) ^ q6(b). See Appendix G. |
+| Intrinsic gates | K4 {id, S, C, F}; S and C realized by bytes {0xAA, 0x54}, {0xD5, 0x2B}. See Appendix G. |
 | Depth-4 closure | Any 4 components (bits, bytes, or 12-bit tensors) are always known. |
 | 4-byte frame | Prefix, Present, Past, Future. Projects to 48-bit tensor (4 x 12). |
+| BCH expansion | Discrete container for U_L U_R U_L U_R commutator cancellation. |
 | Projection | 8-bit byte -> 12-bit tensor via expansion. |
 | Bit pairs (L0, LI, FG, BG) | Groupings of bit **positions** by gyrogroup role. NOT families. |
 | Families | Defined by **L0 boundary bits (0, 7)**. 4 families x 64 = 256. Provide 720 deg spinorial closure. |
-| 6-bit payload (bits 1-6) | **Spaces of active operations**. Each bit controls one of the 6 pairs (6 DoF). Dipole flip PROVED. |
+| 6-bit payload (bits 1-6) | **se(3) generators**. Each bit controls one of 6 pairs (3 rotational + 3 translational). |
 | GENE_Mic (0xAA) | Micro archetype (8-bit); mutation = `intron = byte ^ 0xAA`. |
 | 12-bit mask | Expansion of 8-bit intron. 64 unique masks from 6 payload bits. |
 | GENE_Mac (24-bit) | **SO(3) shadow**. 128/256 unique states (spatial geometry only). |
 | 32-bit register atom | **SU(2) spinor**. Mac + intron retains spin phase. Full 256-state bijection. |
-| 32-bit intron sequence | 4x8 depth-4 trace. PROVED bijective. |
-| Aperture (Delta) | ~2.07%. Best 8-bit: 5/256. Ratio 2/3 = Chirality(2) / Space(3). |
+| [L]/[R] operators | [L] = A mutation (chiral variance); [R] = gyration (structure-preserving involution). |
+| Aperture (Delta) | ~2.07%. Best 8-bit: 5/256. Ratio 2/3 = Chirality(2) / Space(3). Links to Q_G = 4*pi. |
 | Horizon Lemma | P_k = 3*2^(k-1) = (3/4)*2^(k+1). Dyadic (b=0) vs predecessor (b=1) horizons. |
 | 3+1 split | 1 boundary pair (L0) + 3 interior pairs (LI/FG/BG) -> 3*2^k horizons. |
 | Cache alignment | Bits 1-6 = offset (64), bits 0,7 = tag (4). Intron = L1 cache address. |
+| CS Generatedness | L1 cache enforces Common Source reachability via family tag validation. |
 
-**Key insight:** The 24-bit Mac is an SO(3) object (spatial geometry); the 32-bit register atom (Mac + intron) is the SU(2) spinor that retains spin phase via family bits. The 128/256 degeneracy at 24 bits is the standard spinorial double-cover. The 2/3 aperture ratio is Chirality/Space: mapping 2-phase spinors onto 3-axis geometry leaves a fractional gap. The Horizon Lemma shows that predecessor horizons (48, 96, 384...) arise naturally from the byte's 3+1 interior/boundary split when scaled to dyadic alignment. The Router replaces ALU arithmetic with pure structural routing into L1 cache.
+**Key insight:** The document is now hermetically sealed between three layers:
+
+1. **Abstract Math:** SE(3) Lie algebra, SU(2)/SO(3) spinorial structure, BCH expansion, Q_G = 4*pi invariant.
+2. **Code:** XOR masks, 0xFFF complements, 12-bit frames, [L]/[R] operator decomposition.
+3. **Silicon:** 64-byte cache lines, 6-bit offsets, 2-bit family tags, CS reachability enforcement.
+
+The CPU's cache-line architecture is an exact discrete representation of the CGM's continuous SE(3) manifold.
+
+## 10. Chart Convergence
+
+The Gyroscopic architecture is a single finite kinematic medium with multiple exact charts. These charts are not separate theories or imported abstractions. They are coordinate systems on one algebraic quantum processing unit.
+
+**Carrier chart.** The 24-bit GENE_Mac tensor with its 2 x 3 x 2 grid structure, 6 oriented dipole pairs, and SE(3) generator correspondence. Gyroscopic transport on this chart is the spinorial transition law: the [L] mutation of the active face followed by the [R] complement-and-swap gyration.
+
+**Chirality chart.** The 6-bit register chi in GF(2)^6, obtained by collapsing the pair-diagonal difference A xor B to one bit per dipole mode. On this chart, the same gyroscopic transport projects to XOR translation: chi' = chi xor q6(b). This projection is exact and follows from the pair-diagonal structure of the self-dual [12,6,2] mask code.
+
+**Spectral chart.** The 64-point Walsh-Hadamard transform of functions on the chirality register. This is the exact Fourier transform over the abelian group (GF(2)^6, xor). On this chart, XOR translation becomes pointwise multiplication by character values, and all radial processes are diagonal with eigenvalues determined by spectral weight.
+
+**Code chart.** The self-dual [12,6,2] mask code C64. On this chart, the reachable manifold has product form Omega = U x V with |U| = |V| = 64, both horizons have cardinality 64, and the holographic identity |H|^2 = |Omega| follows from the code dimension. The MacWilliams identity for self-dual codes enforces invariance of the code weight enumerator under the Walsh-Hadamard transform, which is the code-theoretic origin of the horizon self-Fourier property.
+
+**Climate chart.** The statistical characterization of occupation over Omega by shell, chirality, and gauge marginals. On this chart, the polynomial partition function Z1(lambda) = 64 (1 + lambda)^6 governs all thermodynamic observables, the Krawtchouk polynomials provide the exact radial harmonic basis, and Plancherel conservation guarantees that occupation concentration and spectral concentration are the same quantity in dual coordinates.
+
+**Runtime chart.** The 4-byte depth-4 word, which is the minimal closed action of the machine. On this chart, the four CGM stages (CS, UNA, ONA, BU) form one complete transition cycle. Family phases cancel modulo K4 at depth 4. The byte is the phase atom of the kinematic law; the word is the closed computational act.
+
+These six charts describe one machine. Selecting the chart in which a given operation is structurally regular is the primary computational strategy of the architecture.
+
+## 11. Constitutional Structure of the Reachable Manifold
+
+The reachable manifold Ω, comprising 4096 states, possesses a precise constitutional geometry. It is neither a unity manifold nor an opposition manifold. Instead, it is a balance dominant manifold bounded by two exact constitutional poles, with maximal statistical occupancy in the intermediate region.
+
+### 11.1 The Dual Constitutional Poles
+
+The manifold is bounded by two disjoint extremal subsets, the horizons:
+
+1. **The equality horizon:** 64 states where A12 = B12. At this pole, chirality is zero. The active and passive gyrophases are identical.
+2. **The complement horizon:** 64 states where A12 = B12 ⊕ 0xFFF. At this pole, chirality is maximal. The active and passive gyrophases are exact logical complements; this is the pole of total opposition.
+
+These two poles are exact and real. Together they form a 128 state boundary. However, neither pole exhausts the sample space. If total opposition were absolute across the full manifold, common sourceness would be violated. The constitutional geometry resolves this: exact opposition exists, but it is confined to one structural boundary, leaving the common source intact across the broader manifold.
+
+### 11.2 The Relational Bulk
+
+The remaining 3968 states form the bulk of the manifold. In this region, the state is neither pure equality nor pure opposition. Chirality is partial, meaning the active and passive gyrophases are differentiated but not fully inverted relative to one another. The bulk constitutes the overwhelming majority of the reachable sample space.
+
+### 11.3 Shell Distribution and Maximal Balance
+
+The manifold is shell structured according to the ab_distance (the Hamming distance between A12 and B12). The population count follows an exact binomial distribution across 7 shells:
+
+| Shell | ab_distance | Population | Characterization |
+|-------|-------------|------------|------------------|
+| 0     | 0           | 64         | Equality horizon |
+| 1     | 2           | 384        | Near unity |
+| 2     | 4           | 960        | Intermediate |
+| 3     | 6           | 1280       | Equatorial maximum |
+| 4     | 8           | 960        | Intermediate |
+| 5     | 10          | 384        | Near opposition |
+| 6     | 12          | 64         | Complement horizon |
+
+The population counts are given exactly by the formula:
+
+```text
+count(d) = C(6, (12 - d) / 2) × 64
+```
+
+The shell populations exhibit exact symmetry:
+
+```text
+|Shell_k| = |Shell_(6-k)|
+```
+
+The manifold is densest at the equator (shell 3, ab_distance = 6), where the population reaches its maximum of 1280 states. This equator is not merely a geometric midpoint between the poles. It is the locus of maximal constitutional occupancy.
+
+### 11.4 The Complementarity Invariant
+
+For every state s ∈ Ω, the constitutional geometry obeys the exact complementarity invariant:
+
+```text
+horizon_distance(s) + ab_distance(s) = 12
+```
+
+This invariant binds the two constitutional directions into one exact law. As a state moves closer to exact equality, `ab_distance` decreases and `horizon_distance` increases. As a state moves closer to exact complementarity, `ab_distance` increases and `horizon_distance` decreases. The manifold therefore cannot collapse into either pole globally; the two limits are held in exact structural relation across the full sample space.
+
+### 11.5 The Full-Space Constitutional Theorem
+
+Let Ω be the reachable gyroscopic manifold with |Ω| = 4096.
+
+Then Ω has the following exact constitutional structure:
+
+1. Ω contains two exact and disjoint poles:
+   - the equality horizon, with 64 states where `A12 = B12`
+   - the complement horizon, with 64 states where `A12 = B12 ⊕ 0xFFF`
+2. The remaining 3968 states lie in the intermediate bulk and are neither pure equality nor pure complementarity.
+3. Ω is partitioned into 7 exact shells by `ab_distance`, with populations:
+
+```text
+64, 384, 960, 1280, 960, 384, 64
+```
+
+4. The unique maximal shell is the equatorial shell `ab_distance = 6`, with population 1280.
+
+Therefore exact unity and exact opposition both exist as real constitutional poles of Ω, but neither dominates the manifold. The statistically maximal organization of the reachable sample space is balanced partial differentiation.
+
+### 11.6 Relation to the Temporal Gauge
+
+This constitutional structure provides a natural constitutional interpretation of the four CGM temporal gauge phases:
+
+- **CS (Common Source):** grounds common sourceness of the whole manifold
+- **UNA (Unity Non-Absolute):** affirms exact unity without allowing unity to exhaust the manifold
+- **ONA (Opposition Non-Absolute):** affirms exact opposition without allowing opposition to exhaust the manifold
+- **BU (Balance Universal):** names the balance-dominant constitutional regime in which the manifold is maximally populated
+
+The architecture does not force a choice between sameness and antagonism. It establishes a common source, validates that differentiation is real, confirms that full opposition is possible, and demonstrates that most of the reachable reality lies in intermediate structured relation.

@@ -881,7 +881,7 @@ class CrossScaleValidator:
         p_T = (np.sum(T_null >= T_obs) + 1.0) / (len(T_null) + 1.0)
         print(f"  P2/C4 joint amplitude p-value: {p_T:.4f}")
 
-        # ℓ=37 check (CGM-37 resonance) — compute Cl up to >= 64.
+        # ℓ=37 check (CGM-37 resonance): compute Cl up to >= 64.
         import healpy as hp  # pyright: ignore[reportMissingImports]
 
         cl_64 = hp.anafast(data["y_map"] * data["mask"], lmax=64)

@@ -1,4 +1,4 @@
-# CGM Black Hole Aperture Leakage — direct, equation-driven calculations
+# CGM Black Hole Aperture Leakage: direct, equation-driven calculations
 #
 # Implements:
 #   S_CGM = S_BH * (1 + m_a),   m_a = 1/(2 sqrt(2π))
@@ -308,7 +308,7 @@ def print_result(res: BHResult) -> None:
     factor_tau = (1.0 + m_a) ** 4
     redshift_pct = (1.0 - factor_T) * 100
 
-    print(f"\n— {res.name} —")
+    print(f"\n{res.name}")
     print(f"Mass: {fmt_si(res.M_kg, 'kg')}  ({res.M_solar:.6g} M_sun)")
     print(f"Horizon radius r_s: {fmt_si(res.r_s_m, 'm')}  ({res.r_s_m/1000:.3e} km)")
     print(f"Area A: {fmt_si(res.A_m2, 'm^2')}")
@@ -434,7 +434,7 @@ def print_result(res: BHResult) -> None:
 def print_derived_predictions() -> None:
     """Print the three mass-independent derived predictions from CGM scaling."""
     print("\n" + "=" * 60)
-    print("CGM DERIVED PREDICTIONS — Mass-Independent Consequences")
+    print("CGM DERIVED PREDICTIONS: Mass-Independent Consequences")
     print("=" * 60)
 
     # 1. Entropy density at horizon
@@ -496,7 +496,7 @@ def print_derived_predictions() -> None:
 def print_horizon_micro_quanta() -> None:
     """Effective Planck scale and area quantum on the horizon under CGM scaling."""
     print("\n" + "=" * 60)
-    print("HORIZON MICRO-QUANTA — Effective Planck Scale on the Horizon")
+    print("HORIZON MICRO-QUANTA: Effective Planck Scale on the Horizon")
     print("=" * 60)
     lP = math.sqrt(hbar * G / c**3)
     G_eff = G / (1.0 + m_a)
@@ -531,7 +531,7 @@ def print_horizon_micro_quanta() -> None:
 def print_page_curve_invariants() -> None:
     """Page time/quanta invariants under CGM scaling, as explicit equations."""
     print("\n" + "=" * 60)
-    print("PAGE CURVE INVARIANTS — Lifetime, Quanta, Entropy at Page Time")
+    print("PAGE CURVE INVARIANTS: Lifetime, Quanta, Entropy at Page Time")
     print("=" * 60)
     t_ratio = (1.0 + m_a) ** 4
     N_ratio = 1.0 + m_a
@@ -543,7 +543,7 @@ def print_page_curve_invariants() -> None:
 def print_desitter_horizon_scaling() -> None:
     """De Sitter horizon entropy scaling under CGM."""
     print("\n" + "=" * 60)
-    print("DE SITTER HORIZON SCALING — Cosmological Horizon Entropy")
+    print("DE SITTER HORIZON SCALING: Cosmological Horizon Entropy")
     print("=" * 60)
     # Example with current Hubble parameter
     H0 = 2.2e-18  # s^-1 (current Hubble parameter, order of magnitude)
@@ -561,7 +561,7 @@ def print_desitter_horizon_scaling() -> None:
 def print_ringdown_analysis() -> None:
     """Analysis of CGM effects on merger ringdown and quasinormal modes."""
     print("\n" + "=" * 60)
-    print("RINGDOWN ANALYSIS — Quasinormal Modes and Merger Signatures")
+    print("RINGDOWN ANALYSIS: Quasinormal Modes and Merger Signatures")
     print("=" * 60)
 
     # Standard QNM frequencies for Schwarzschild (fundamental mode)
@@ -595,7 +595,7 @@ def print_ringdown_analysis() -> None:
 def print_rindler_horizon_analysis() -> None:
     """Analysis of CGM scaling for Rindler horizons (uniform acceleration)."""
     print("\n" + "=" * 60)
-    print("RINDLER HORIZON ANALYSIS — Uniform Acceleration Case")
+    print("RINDLER HORIZON ANALYSIS: Uniform Acceleration Case")
     print("=" * 60)
 
     # Rindler horizon properties
@@ -633,7 +633,7 @@ def print_rindler_horizon_analysis() -> None:
 def print_binary_merger_analysis() -> None:
     """Analysis of CGM effects on binary black hole merger rates and dynamics."""
     print("\n" + "=" * 60)
-    print("BINARY MERGER ANALYSIS — Rates, Lifetimes, and Dynamics")
+    print("BINARY MERGER ANALYSIS: Rates, Lifetimes, and Dynamics")
     print("=" * 60)
 
     print("Standard binary merger timescales:")
@@ -678,7 +678,7 @@ def print_binary_merger_analysis() -> None:
 
 def print_ads_blackhole_analysis() -> None:
     print("\n" + "=" * 60)
-    print("ADS BLACK HOLE ANALYSIS — Proper 4D Schwarzschild–AdS")
+    print("ADS BLACK HOLE ANALYSIS: Proper 4D Schwarzschild–AdS")
     print("=" * 60)
 
     # Choose (M, L) pair - AdS horizon exists for all M > 0
@@ -777,7 +777,7 @@ def kerr_newman_cgm(M_kg: float, J: float, Q_C: float) -> Dict[str, float]:
 def print_kerr_newman_example():
     """Print example Kerr–Newman calculations with CGM scaling."""
     print("\n" + "=" * 60)
-    print("KERR CGM SCALING — Spinning Black Holes (Q≈0 astrophysical)")
+    print("KERR CGM SCALING: Spinning Black Holes (Q≈0 astrophysical)")
     print("=" * 60)
 
     # Example: 10 solar mass BH, dimensionless spin a_* = 0.5, Q≈0 (astrophysical)
@@ -835,13 +835,13 @@ if __name__ == "__main__":
     catalogue: Dict[str, float] = {
         "Sgr A* (Milky Way SMBH)": 4.0e6 * M_sun,
         "M87* (Virgo A SMBH)": 6.5e9 * M_sun,
-        "Stellar BH — 10 M_sun": 10.0 * M_sun,
-        "Stellar BH — 30 M_sun": 30.0 * M_sun,
+        "Stellar BH (10 M_sun)": 10.0 * M_sun,
+        "Stellar BH (30 M_sun)": 30.0 * M_sun,
         "Cygnus X-1 (~15 M_sun)": 15.0 * M_sun,
         "GW150914 remnant (~62 M_sun)": 62.0 * M_sun,
-        "IMBH — 1e5 M_sun": 1.0e5 * M_sun,
-        "Solar mass — 1 M_sun": 1.0 * M_sun,
-        "Primordial BH — 1e12 kg": 1.0e12,
+        "IMBH (1e5 M_sun)": 1.0e5 * M_sun,
+        "Solar mass (1 M_sun)": 1.0 * M_sun,
+        "Primordial BH (1e12 kg)": 1.0e12,
         "Planck mass": math.sqrt(hbar * c / G),
     }
     print("CGM Aperture-Corrected Black Hole Thermodynamics")

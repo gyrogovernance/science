@@ -50,6 +50,7 @@ Derived predictions include:
 - The **quantum gravity invariant** `Q_G = 4π`, representing the complete solid angle for coherent observation.
 - A geometric estimate of the **fine structure constant** `α ≈ 1/137.036`, matching experiment without physical inputs.
 - A universal **2.07% aperture ratio**, connecting physical coupling to the optimal balance for AI alignment.
+- The **masses of the Higgs, Z, W, and top quark** derived from pure discrete geometry with no fitted parameters, matching experimental measurements to better than one part in a million.
 
 ---
 
@@ -87,6 +88,7 @@ Derived predictions include:
 
 | Version | Focus Area | Documentation | Implementation |
 |---------|------------|---------------|----------------|
+| **1.2.6** | 🧬 Compact Geometry: Spectral Algebra of the Electroweak Mass Spectrum | [Analysis](docs/Findings/Analysis_Compact_Geometry.md) | [Code](experiments/cgm_compact_geometry_core.py), [Run](experiments/cgm_compact_geometry_run.py) |
 | **1.2.5** | 🌀 Gyroscopic Multiplication | [Analysis](docs/Findings/Analysis_Gyroscopic_Multiplication.md) | []() |
 | **1.1.2** | ⚡ Energy Scale Unification | [Analysis](docs/Findings/Analysis_Energy_Scales.md) | [Code](/experiments/cgm_energy_analysis.py) |
 | **1.1.0** | 📏 4pi Unification through Alignment | [Analysis](/docs/Findings/Analysis_4pi_Alignment.md) | []() |
@@ -107,6 +109,9 @@ Derived predictions include:
 - ✅ Predicted gravitational coupling ζ = 23.155 from first principles
 - ✅ Established optical conjugacy law: E^UV × E^IR = (E_CS × E_EW)/(4π)²
 - ✅ Predicted neutrino masses ~0.06 eV via 48² quantization
+- ✅ Derived Higgs, Z, W, and top quark masses from discrete code geometry with zero free parameters
+- ✅ Predicted the weak mixing angle from the same structure, matching experiment to 9 decimal places
+- ✅ Showed quark flavors form a complete Boolean classification, with each flavor occupying a unique structural role
 
 ### Empirical Validations
 - ✅ CMB multipole enhancement at ℓ = 37 and harmonics (p = 0.0039)
@@ -114,11 +119,17 @@ Derived predictions include:
 - ✅ Cross-observable phase coherence (R = 0.743)
 - ✅ Machine-precision internal consistency (<10⁻¹⁶ errors)
 - ✅ Sterile neutrino non-observability consistent with null experimental results
+- ✅ Z boson mass predicted from Higgs and W masses alone to 1 part in 25 million
+- ✅ Z-to-W mass ratio predicted to better than 1 part in a billion
+- ✅ W/Z ratio-channel delta lock at 8.3×10⁻¹⁰ (8,323× improvement over backbone)
+- ✅ Four-point Delta consensus recovers aperture to 7.3×10⁻¹⁰
+- ✅ H/Z/W leave-one-out Z prediction at 3.7×10⁻⁸ relative error
 
 ### Active Development
-- 🔬 Standard Model particle spectrum derivation
-- 🔬 Cosmological dynamics from geometric evolution
-- 🔬 Experimental validation programs
+- 🔶 Deriving lepton masses (electron, muon, tau) from kernel shell structure
+- 🔶 Connecting compact geometry to quantum field theory radiative corrections
+- 🔶 Cosmological dynamics from geometric evolution
+- 🔶 Experimental validation programs
 
 ---
 

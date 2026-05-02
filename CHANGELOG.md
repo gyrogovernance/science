@@ -5,10 +5,18 @@ All notable changes to the CGM Experimental Framework will be documented in this
 
 ---
 
+## [1.2.6-Compact_Geometry] - 2026-05-02
+### Added
+- Added `docs/Findings/Analysis_Compact_Geometry.md` for the compact-spectral electroweak analysis.
+- Added `experiments/cgm_compact_geometry_core.py` as the shared implementation module.
+- Added `experiments/cgm_compact_geometry_run.py` for the formatted analysis workflow and reporting output.
+
+---
+
 ## [1.2.5-Gyroscopic-Multiplication] - 2026-03-31
 
 ### Added
-- `docs/Findings/Analysis_Gyroscopic_Multiplication.md` — Gyroscopic Multiplication: Independence Roots and Aperture Reproducibility (multiplication, roots, and CGM aperture-related invariants).
+- `docs/Findings/Analysis_Gyroscopic_Multiplication.md`: Gyroscopic Multiplication: Independence Roots and Aperture Reproducibility (multiplication, roots, and CGM aperture-related invariants).
 
 ---
 

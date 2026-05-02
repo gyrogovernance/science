@@ -83,11 +83,11 @@ Integration uses a fourth-order Runge-Kutta scheme over logarithmic steps with a
 ## 3. Results
 
 **Key Quantitative Results:**
-- Higgs mass: 124.97 GeV (predicted) vs 125.10 GeV (observed) — 0.10% error
-- Leptonic Yukawa slope/log(1/Δ): 1.051 — 5% agreement  
-- Vacuum deficit at μ*: 0.200 — consistent with 1/5
-- Structural identity: ζ = 16√(2π/3) — exact
-- Near-equality: λ₀/Δ ≈ 1/√5 — 1.17% deviation
+- Higgs mass: 124.97 GeV (predicted) vs 125.10 GeV (observed), with 0.10% error
+- Leptonic Yukawa slope/log(1/Δ): 1.051, with 5% agreement  
+- Vacuum deficit at μ*: 0.200, consistent with 1/5
+- Structural identity: ζ = 16√(2π/3), exact
+- Near-equality: λ₀/Δ ≈ 1/√5, with 1.17% deviation
 
 ### 3.1 Higgs Mass Prediction
 

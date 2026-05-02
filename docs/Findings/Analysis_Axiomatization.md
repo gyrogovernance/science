@@ -106,7 +106,7 @@ Computed over A1-A5 for n=3 (stable for n≥4):
 
 - **UNA (¬□E)**: [['A2'], ['A4', 'A5']]. Can be derived directly from A2 or via the reverse path through BU-Dual (A4 + A5).
 - **ONA (¬□¬E)**: [['A3'], ['A1', 'A4'], ['A4', 'A5']]. Can be derived from A3 directly, from CS+BU-Egress, or via BU-Dual.
-- **BU-Egress (□B)**: [['A4']]. Primitive postulate—cannot be derived from any other combination.
+- **BU-Egress (□B)**: [['A4']]. It is primitive and cannot be derived from any other combination.
 - **BU-Ingress**: [['A5'], ['A1', 'A2']]. Can be postulated directly (A5) or derived from CS and UNA (A1 + A2).
 - **BU-Dual**: [['A4', 'A5'], ['A1', 'A2', 'A4']]. The full dual balance can be achieved by postulating both A4 and A5, or by postulating CS, UNA, and BU-Egress (which then allows derivation of A5).
 

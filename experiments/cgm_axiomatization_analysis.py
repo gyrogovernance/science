@@ -4,11 +4,11 @@ Test suite for CGM's five foundational constraints using Z3 SMT solver.
 Tests consistency, entailments, independence, and toroidal structure.
 
 Terminology (canonical):
-  CS (A1): Assumption — chirality at horizon
-  UNA (A2): Lemma — depth‑2 equality non‑absolute (¬□E)
-  ONA (A3): Lemma — depth‑2 inequality non‑absolute (¬□¬E)
-  BU‑Egress (A4): Proposition — depth‑4 closure (□B)
-  BU‑Ingress (A5): Proposition — memory reconstruction (□B → CS∧UNA∧ONA)
+  CS (A1): Assumption: chirality at horizon
+  UNA (A2): Lemma: depth‑2 equality non‑absolute (¬□E)
+  ONA (A3): Lemma: depth‑2 inequality non‑absolute (¬□¬E)
+  BU‑Egress (A4): Proposition: depth‑4 closure (□B)
+  BU‑Ingress (A5): Proposition: memory reconstruction (□B → CS∧UNA∧ONA)
   BU := BU‑Egress ∧ BU‑Ingress (dual balance)
 
 Note: OA* tokens (OA1-OA5) are automatically canonicalized via canonicalize() function.
@@ -76,11 +76,11 @@ class ConstraintEncoder:
     """Encodes the five foundational constraints (CS, UNA, ONA, BU‑Egress, BU‑Ingress) in Z3.
 
     The system consists of:
-    - CS (A1): Assumption — chirality at horizon
-    - UNA (A2): Lemma — depth‑2 equality non‑absolute (¬□E)
-    - ONA (A3): Lemma — depth‑2 inequality non‑absolute (¬□¬E)
-    - BU‑Egress (A4): Proposition — depth‑4 closure (□B)
-    - BU‑Ingress (A5): Proposition — memory reconstruction (□B → CS∧UNA∧ONA)
+    - CS (A1): Assumption: chirality at horizon
+    - UNA (A2): Lemma: depth‑2 equality non‑absolute (¬□E)
+    - ONA (A3): Lemma: depth‑2 inequality non‑absolute (¬□¬E)
+    - BU‑Egress (A4): Proposition: depth‑4 closure (□B)
+    - BU‑Ingress (A5): Proposition: memory reconstruction (□B → CS∧UNA∧ONA)
     - BU := BU‑Egress ∧ BU‑Ingress (dual balance)
 
     Depth choice: 1 (chirality at horizon), 2 (non-commutation), 4 (minimal closure length

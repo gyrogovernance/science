@@ -125,7 +125,7 @@ The Balance Index dimensions emerge from identifying what's missing for complete
 
 3. **Area (L^2)**: Stabilizes at the BU horizon scale following the length progression (+1 → +2 → +3 → +2 → +2). Area becomes the equilibrium geometric structure, consistent with holographic principles.
 
-4. **Inverse mass-squared (M^-2)**: Extends G's gravitational opposition (M^-1) to full equilibrium normalization. The mass progression (0 → +1 → -1 → +1 → -2) reveals mass becoming the denominator of balance rather than its source—answering the "why mass appears" question from dimensional necessity.
+4. **Inverse mass-squared (M^-2)**: Extends G's gravitational opposition (M^-1) to full equilibrium normalization. The mass progression (0 → +1 → -1 → +1 → -2) reveals mass becoming the denominator of balance rather than its source, answering the "why mass appears" question from dimensional necessity.
 
 This dimensional structure positions B_i as the natural completion of the CGM fundamental constant progression, where timeless thermal-gravitational equilibrium emerges at the BU stage as a geometric requirement parallel to Q_G = 4π.
 
@@ -249,11 +249,11 @@ Testing holonomy-based phase curvature estimators:
 | 4-leg toroidal | 2.407×10^-18 | 2.000000000000 | 2.491×10^26 |
 | Aperture | 1.818×10^-18 | 2.000000000000 | 3.299×10^26 |
 
-The invariant I₁ = 2 holds across all methods, demonstrating that the Balance Index preserves closure under geometric transport—a signature of fundamental geometric quantities.
+The invariant I₁ = 2 holds across all methods, demonstrating that the Balance Index preserves closure under geometric transport, which is a signature of fundamental geometric quantities.
 
 ## 7. Signal-Level Structure
 
-Beyond the exact identities verified to machine precision, the Balance Index reveals emergent structure in particle physics. We term these "signal-level" patterns—robust and repeatable but not exact mathematical identities. These patterns emerge when using the Balance Index to construct the energy balance index Ξ(E) = (E/ℏ)/ℋ.
+Beyond the exact identities verified to machine precision, the Balance Index reveals emergent structure in particle physics. We term these "signal-level" patterns, which are robust and repeatable but not exact mathematical identities. These patterns emerge when using the Balance Index to construct the energy balance index Ξ(E) = (E/ℏ)/ℋ.
 
 ### 7.1 Three-Band Particle Structure
 
@@ -351,7 +351,7 @@ The ℏ-cancellation indicates B_i bridges classical and quantum regimes. While 
 
 The tri-partition of particle masses via Ξ(E) suggests mass hierarchies emerge from balance relative to the cosmological equilibrium curvature ℋ. 
 
-The M^-2 dimension in B_i extends the M^-1 pattern from G at the ONA stage, where gravitational opposition manifests through inverse mass dependence. The additional power of mass^-1 in B_i represents the complete equilibrium normalization—not just opposition (M^-1) but full balance (M^-2). This dimensional progression clarifies mass as not primitive but the denominator enabling equilibrium—exactly the "why mass appears" question from CGM's dimensional table analysis.
+The M^-2 dimension in B_i extends the M^-1 pattern from G at the ONA stage, where gravitational opposition manifests through inverse mass dependence. The additional power of mass^-1 in B_i represents the complete equilibrium normalization, not just opposition (M^-1) but full balance (M^-2). This dimensional progression clarifies mass as not primitive but the denominator enabling equilibrium and directly addresses the "why mass appears" question from CGM's dimensional table analysis.
 
 ### 8.5 Hubble Tension as Holonomy Artifact
 

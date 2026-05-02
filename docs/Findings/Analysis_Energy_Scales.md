@@ -241,7 +241,7 @@ All gauge anomalies cancel per generation:
 
 ### 6.3 Involution Property
 
-The optical conjugacy satisfies an involution property—applying the transformation twice returns the original energy:
+The optical conjugacy satisfies an involution property: applying the transformation twice returns the original energy.
 
 ```
 (E^UV → E^IR) → E^UV

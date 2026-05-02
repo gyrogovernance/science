@@ -102,7 +102,7 @@ The coherent helical structure in gait is quantified by CHSI, combining orthogon
 - **Geometric BOS margin (ML)**: ≈ 0.92
 - **Overall margin**: 0.72
 
-Using foot length 0.25 m, width 0.10 m, CMP-CenPen = 0.14×foot length, with a 0.3 ML projection factor (first-order bound, not a full stability metric). These margins quantify how much "space" the system has for corrective action before reaching a boundary. That's directly interpretable as **available information capacity for adaptation** — first-order information buffers that allow error signals to be meaningful rather than catastrophic.
+Using foot length 0.25 m, width 0.10 m, CMP-CenPen = 0.14×foot length, with a 0.3 ML projection factor (first-order bound, not a full stability metric). These margins quantify how much "space" the system has for corrective action before reaching a boundary. That's directly interpretable as **available information capacity for adaptation**, representing first-order information buffers that allow error signals to be meaningful rather than catastrophic.
 
 ### 3.3 Action-per-Stride Index
 
@@ -113,7 +113,7 @@ Using foot length 0.25 m, width 0.10 m, CMP-CenPen = 0.14×foot length, with a 0
 
 > *Sensitivity.* ASI depends on assumed mechanical efficiency and S_min. Varying either by ±10% moves ASI by ≈±0.3.
 
-The Action-per-Stride Index (ASI) is ASI = work per stride/S_min. With standard mechanical-efficiency assumptions, ASI ≈ 4.15 S_min (3.7% from 4). The near-integer result suggests control is implemented in discrete packets, rather than as unbroken continuous regulation. That is equivalent to **information discretisation**: packaging control into units for tractability. We interpret this not as literal quantum, but as evidence of **information quantisation** in motor control — discrete correction packets rather than continuous flow.
+The Action-per-Stride Index (ASI) is ASI = work per stride/S_min. With standard mechanical-efficiency assumptions, ASI ≈ 4.15 S_min (3.7% from 4). The near-integer result suggests control is implemented in discrete packets, rather than as unbroken continuous regulation. That is equivalent to **information discretisation**: packaging control into units for tractability. We interpret this not as literal quantum, but as evidence of **information quantisation** in motor control, with discrete correction packets rather than continuous flow.
 
 ### 3.4 Phase Relationships
 
@@ -146,7 +146,7 @@ The walking support polygon boundary exhibits scaling analogous to black hole ho
 - **Info leakage rate**: 0.1663 (16.6% information loss per cycle)
 - **Closure identity**: m_a²×Q_G = 0.5000 (holds by definition of m_a; serves as internal check, not external evidence)
 
-These are analogical **information-boundary markers**. The "horizon" is where control information saturates — the edge of stability. This scaling suggests the support polygon edge functions as an **information horizon** (limits of meaningful corrective information), not physical thermodynamics, similar to how black hole horizons mark the boundary of information preservation.
+These are analogical **information-boundary markers**. The "horizon" is where control information saturates, which is the edge of stability. This scaling suggests the support polygon edge functions as an **information horizon** (limits of meaningful corrective information), not physical thermodynamics, similar to how black hole horizons mark the boundary of information preservation.
 
 ### 3.7 Information Propagation Timescales
 
@@ -155,7 +155,7 @@ Walking operates on timescales consistent with CGM predictions:
 - **Stride duration**: 1.2857 s
 - **Policy update ratio**: 6.45 (stride time / τ_CGM)
 
-The 6.45× ratio indicates multi-cycle separation of timescales (stride ≈ 6.45× τ_CGM). This ratio reflects **multi-scale information updating**: the nervous system doesn't update continuously, but in coherent multiples of an underlying timescale. That's structured temporal information management — **harmonic policy updates** where the nervous system operates at harmonics of a fundamental timescale, which is an information-structuring property.
+The 6.45× ratio indicates multi-cycle separation of timescales. Stride time is approximately 6.45 × τ_CGM, and this ratio reflects **multi-scale information updating**: the nervous system does not update continuously, but in coherent multiples of an underlying timescale. That is structured temporal information management and appears as **harmonic policy updates**, where the nervous system operates at harmonics of a fundamental timescale as an information-structuring property.
 
 ### 3.8 Intelligence Metrics (Compression Analysis)
 
@@ -168,7 +168,7 @@ The nervous system achieves optimal information compression through principal co
 - **CGM theoretical optimum**: 0.316
 - **Intelligence ratio**: 0.928 (92.8% of theoretical maximum)
 
-This is the **clearest evidence of intelligence**: the nervous system reduces dimensionality, compressing redundant degrees of freedom into efficient control modes. That is canonical **information compression** — near-optimal lossy compression of control information, consistent with efficient intelligence.
+This is the **clearest evidence of intelligence**: the nervous system reduces dimensionality, compressing redundant degrees of freedom into efficient control modes. This is canonical **information compression** through near-optimal lossy compression of control information, consistent with efficient intelligence.
 
 ### 3.9 Predictive Tests
 
@@ -196,11 +196,11 @@ Components:
 
 ### 4.1 Physical Intelligence as Information Processing
 
-The results demonstrate that walking exemplifies physical intelligence through **information processing** at the physical level. The non-zero coherent helical structure, information discretisation in corrections, and maintained information buffers demonstrate that intelligence means efficiently processing and organizing information to maintain upright posture against gravity through structured geometric operations.
+The results demonstrate that walking exemplifies physical intelligence through **information processing** at the physical level. The non-zero coherent helical structure, information discretization in corrections, and maintained information buffers demonstrate that intelligence means efficiently processing and organizing information to maintain upright posture against gravity through structured geometric operations.
 
 ### 4.2 Scale Relationships
 
-The 14% walking defect is ~7× larger than CGM's 2.07% aperture. This scale difference is expected - biological systems require larger operational margins than fundamental physics. The key insight is that both operate through the same principle: maintaining closure with sufficient aperture for adaptation.
+The 14% walking defect is approximately seven times larger than CGM's 2.07% aperture. This scale difference is expected because biological systems require larger operational margins than fundamental physics. The key insight is that both operate through the same principle: maintaining closure with sufficient aperture for adaptation.
 
 ### 4.3 Information Discretisation in Motor Control
 
@@ -216,7 +216,7 @@ Using only 3 principal components to capture >90% variance while maintaining 6 d
 
 ### 4.6 Information Horizons and Boundaries
 
-The support polygon edge exhibits scaling analogous to black hole horizons, with 20% complexity increase and 17% variability reduction. This suggests the balance boundary functions as an **information horizon** where control information saturates — the edge of meaningful corrective information. The closure identity (m_a²×Q_G = 0.5000) serves as an internal consistency check for the geometric framework.
+The support polygon edge exhibits scaling analogous to black hole horizons, with 20% complexity increase and 17% variability reduction. This suggests the balance boundary functions as an **information horizon** where control information saturates, which is the edge of meaningful corrective information. The closure identity (m_a²×Q_G = 0.5000) serves as an internal consistency check for the geometric framework.
 
 Here is a section you could add, written in the same voice and register as your analysis. The most natural place is in **Discussion → 4.6 Information Horizons and Boundaries**, because that is where you already treat the support polygon as a horizon analogue. The finger example extends the argument to a finer scale, so it belongs immediately after that.
 
@@ -234,7 +234,7 @@ Hands and feet therefore represent complementary expressions of the same princip
 
 ### 4.7 Harmonic Policy Updates
 
-The 6.45× ratio between stride time and CGM timescale indicates **harmonic policy updates** — the nervous system operates at harmonics of a fundamental timescale, which is an information-structuring property. This provides a temporal framework for discrete correction deployment through structured temporal information management.
+The 6.45× ratio between stride time and CGM timescale indicates **harmonic policy updates**, where the nervous system operates at harmonics of a fundamental timescale, which is an information-structuring property. This provides a temporal framework for discrete correction deployment through structured temporal information management.
 
 ## 5. Implications
 

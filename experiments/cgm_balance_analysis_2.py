@@ -8,7 +8,7 @@ This script calculates the relationship between the Balance Index B_i
 and cosmological constant / dark energy density, examining the
 120-order vacuum energy discrepancy and scale hierarchies.
 
-No claims of "resolution" — just rigorous calculations of the relationships.
+No claims of "resolution"; this script performs only rigorous calculations of the relationships.
 """
 
 from decimal import Decimal, getcontext

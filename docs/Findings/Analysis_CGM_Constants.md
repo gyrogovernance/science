@@ -1,4 +1,4 @@
-# Analysis: CGM Constants — Mathematical Structure and the Aperture
+# Analysis: CGM Constants: Mathematical Structure and the Aperture
 
 This document is an extensive mathematical analysis of the fundamental constants of the Common Governance Model (CGM), with particular emphasis on the aperture parameter and how all quantities derive from and connect to it. Notation uses Unicode symbols throughout; no LaTeX.
 
@@ -226,7 +226,7 @@ Numerically, ζ ≈ 23.155240145865. So ζ is **exactly** determined by the aper
 
 ### 6.2 Einstein–Hilbert Connection
 
-From the Einstein–Hilbert action quantization in the CGM framework, the dimensionless action is expressed as S_EH/(E₀ T₀) = (σ K ξ)/ζ, with quantization S_EH = κ ν S_geometric. This yields ζ = (σ K ξ)/(ν S_geometric). For the canonical choice (ν, σ, ξ) = (3, 1, 1) and K = 12π, one obtains ζ = π/S_geo, and hence ζ = 2/(m_a √3) = 16√(2π/3), consistent with the definition above. So the aperture m_a, through S_geo, sets the gravitational coupling scale ζ in dimensionless form.
+From the Einstein–Hilbert action quantization in the CGM framework, the dimensionless action is expressed as S_EH/(E₀ T₀) = (σ K ξ)/ζ, with quantization S_EH = κ ν S_geometric. This yields ζ = (σ K ξ)/(ν S_geometric). For the canonical choice (ν, σ, ξ) = (3, 1, 1) and K = 12π, one obtains **ζ = (12π)/(3 S_geometric) = 4π/S_geometric**. Identifying S_geometric with **S_geo = m_a π √3/2** gives **ζ = Q_G/S_geo** with **Q_G = 4π**, i.e. **ζ = 8/(m_a √3) = 16√(2π/3)**. Therefore the aperture m_a, through S_geo, sets the gravitational coupling scale ζ in dimensionless form.
 
 ---
 

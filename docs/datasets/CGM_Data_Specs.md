@@ -73,17 +73,17 @@ To keep the dataset consistent, some fields use controlled vocabularies.
 
 Use one of:
 
-- `axiom` — Foundational constraints and logical axioms.
-- `derivation` — Mathematical or logical derivations (e.g., 3D necessity).
-- `invariant` — Geometric or physical invariants (e.g., `Q_G = 4π`).
-- `prediction` — Concrete predictions CGM makes about observables.
-- `cosmology` — Cosmological interpretation and results.
-- `particle_physics` — Particle physics and energy scales.
-- `ai_alignment` — GyroDiagnostics, GyroSI, and alignment metrics.
-- `method` — Methodological descriptions (tri-partite validation, etc.).
-- `empirical_result` — Data-driven results, p-values, observed correlations.
-- `reproducibility` — Code mapping and verification instructions.
-- `meta` — Author notes, project philosophy, versioning, etc.
+- `axiom`: Foundational constraints and logical axioms.
+- `derivation`: Mathematical or logical derivations (e.g., 3D necessity).
+- `invariant`: Geometric or physical invariants (e.g., `Q_G = 4π`).
+- `prediction`: Concrete predictions CGM makes about observables.
+- `cosmology`: Cosmological interpretation and results.
+- `particle_physics`: Particle physics and energy scales.
+- `ai_alignment`: GyroDiagnostics, GyroSI, and alignment metrics.
+- `method`: Methodological descriptions (tri-partite validation, etc.).
+- `empirical_result`: Data-driven results, p-values, observed correlations.
+- `reproducibility`: Code mapping and verification instructions.
+- `meta`: Author notes, project philosophy, versioning, etc.
 
 Choose the **single most relevant** category for each record.
 
@@ -91,23 +91,23 @@ Choose the **single most relevant** category for each record.
 
 Use one of:
 
-- `concept` — Definition or explanation of a single concept.  
+- `concept`: Definition or explanation of a single concept.  
   *Example:* “What is the Common Source (CS) constraint?”
-- `equation` — Exact formula or relationship.  
+- `equation`: Exact formula or relationship.  
   *Example:* “What is the optical conjugacy relation in CGM?”
-- `derivation` — Outline of how a result is derived.  
+- `derivation`: Outline of how a result is derived.  
   *Example:* “How does CGM derive 3D space as necessary?”
-- `claim` — CGM’s claim about the nature of reality, physics, or AI.  
+- `claim`: CGM’s claim about the nature of reality, physics, or AI.  
   *Example:* “What does CGM claim about the origin of time?”
-- `result` — Stated numeric or analytical result.  
+- `result`: Stated numeric or analytical result.  
   *Example:* “What value does CGM predict for the fine-structure constant?”
-- `comparison` — How two things relate.  
+- `comparison`: How two things relate.  
   *Example:* “How does CGM’s cosmology differ from standard expansion?”
-- `enumeration` — Lists/sets of items.  
+- `enumeration`: Lists/sets of items.  
   *Example:* “What are the five foundational constraints?”
-- `procedure` — Steps for verification, computation, or reproduction.  
+- `procedure`: Steps for verification, computation, or reproduction.  
   *Example:* “How to verify the axioms using the Z3 solver.”
-- `interpretation` — Conceptual or philosophical interpretation.  
+- `interpretation`: Conceptual or philosophical interpretation.  
   *Example:* “How does CGM interpret the CMB field?”
   
 Again, choose a single type per record.
@@ -153,9 +153,9 @@ You can use multiple tags per record.
 
 Use:
 
-- `core` — Central to understanding CGM (constraints, main derivations, key invariants).
-- `supporting` — Important but secondary (detailed examples, specific numbers).
-- `detail` — Fine points, edge cases, minor clarifications.
+- `core`: Central to understanding CGM (constraints, main derivations, key invariants).
+- `supporting`: Important but secondary (detailed examples, specific numbers).
+- `detail`: Fine points, edge cases, minor clarifications.
 
 ---
 

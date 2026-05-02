@@ -1,6 +1,6 @@
 {
   "include": [
-    "Experiments"
+    "experiments"
   ],
   "exclude": [
     "**/node_modules",
@@ -14,6 +14,14 @@
   "useLibraryCodeForTypes": true,
   "reportMissingImports": true,
   "reportMissingTypeStubs": false,
+  "executionEnvironments": [
+    {
+      "root": ".",
+      "extraPaths": [
+        "./experiments"
+      ]
+    }
+  ],
   "pythonVersion": "3.12.10",
   "pythonPlatform": "All"
 }
