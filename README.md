@@ -42,7 +42,7 @@
 
 ## Introduction
 
-The Common Governance Model (CGM) is a Hilbert style axiomatic system for fundamental physics and information science. As an axiomatic model, CGM begins with five foundational constraints (CS, UNA, ONA, BU Egress, BU Ingress), derives all subsequent structure through syntactic rules of inference, and interprets the results in physical geometry to produce empirically testable predictions.
+The Common Governance Model (CGM) is a Hilbert-style axiomatic system for fundamental physics and information science. As an axiomatic model, CGM begins with five foundational constraints (CS, UNA, ONA, BU Egress, BU Ingress), derives all subsequent structure through syntactic rules of inference, and interprets the results in physical geometry to produce empirically testable predictions.
 
 The model axiomatizes physics from logic, deriving **three dimensional space with six degrees of freedom** as a necessary consequence, not an assumption. Time emerges as the logical ordering of recursive operations, encoded by the memory inherent in gyrogroup geometry. The framework extends the tradition of Noether, Kolmogorov, and Wightman by applying axiomatic methods to spacetime structure itself, addressing the core challenge of Hilbert's sixth problem.
 
@@ -107,8 +107,8 @@ Derived predictions include:
 - ✅ Derived α = 1/137.036 from pure geometry (0.043 ppb accuracy)
 - ✅ Defined quantum gravity as Q_G = 4π (complete solid angle)
 - ✅ Predicted gravitational coupling ζ = 23.155 from first principles
-- ✅ Established optical conjugacy law: E^UV × E^IR = (E_CS × E_EW)/(4π)²
-- ✅ Predicted neutrino masses ~0.06 eV via 48² quantization
+- ✅ Established an optical conjugacy law linking ultraviolet and infrared energy scales through the electroweak scale and 4π²
+- ✅ Predicted neutrino masses ~0.06 eV from the depth-4 aperture frame
 - ✅ Derived Higgs, Z, W, and top quark masses from discrete code geometry with zero free parameters
 - ✅ Predicted the weak mixing angle from the same structure, matching experiment to 9 decimal places
 - ✅ Showed quark flavors form a complete Boolean classification, with each flavor occupying a unique structural role
@@ -121,9 +121,9 @@ Derived predictions include:
 - ✅ Sterile neutrino non-observability consistent with null experimental results
 - ✅ Z boson mass predicted from Higgs and W masses alone to 1 part in 25 million
 - ✅ Z-to-W mass ratio predicted to better than 1 part in a billion
-- ✅ W/Z ratio-channel delta lock at 8.3×10⁻¹⁰ (8,323× improvement over backbone)
-- ✅ Four-point Delta consensus recovers aperture to 7.3×10⁻¹⁰
-- ✅ H/Z/W leave-one-out Z prediction at 3.7×10⁻⁸ relative error
+- ✅ W/Z mass ratio predicted to 8.3×10⁻¹⁰ accuracy
+- ✅ Four electroweak masses jointly recover the aperture constant to 7.3×10⁻¹⁰
+- ✅ Z mass predicted from Higgs and W masses to 3.7×10⁻⁸ relative error
 
 ### Active Development
 - 🔶 Deriving lepton masses (electron, muon, tau) from kernel shell structure
