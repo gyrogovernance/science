@@ -109,9 +109,9 @@ Derived predictions include:
 - ✅ Predicted gravitational coupling ζ = 23.155 from first principles
 - ✅ Established an optical conjugacy law linking ultraviolet and infrared energy scales through the electroweak scale and 4π²
 - ✅ Predicted neutrino masses ~0.06 eV from the depth-4 aperture frame
-- ✅ Derived Higgs, Z, W, and top quark masses from discrete code geometry with zero free parameters
-- ✅ Predicted the weak mixing angle from the same structure, matching experiment to 9 decimal places
-- ✅ Showed quark flavors form a complete Boolean classification, with each flavor occupying a unique structural role
+- ✅ Derived Higgs, Z, W, and top quark masses from discrete code geometry with no continuously fitted parameters
+- ✅ Predicted the weak mixing angle from the same structure, matching experiment to a relative error of 7.7e-9
+- ✅ Showed quark flavors map onto a complete Boolean classification of compact residuals, with each flavor occupying a unique structural role
 
 ### Empirical Validations
 - ✅ CMB multipole enhancement at ℓ = 37 and harmonics (p = 0.0039)
@@ -119,14 +119,15 @@ Derived predictions include:
 - ✅ Cross-observable phase coherence (R = 0.743)
 - ✅ Machine-precision internal consistency (<10⁻¹⁶ errors)
 - ✅ Sterile neutrino non-observability consistent with null experimental results
-- ✅ Z boson mass predicted from Higgs and W masses alone to 1 part in 25 million
-- ✅ Z-to-W mass ratio predicted to better than 1 part in a billion
-- ✅ W/Z mass ratio predicted to 8.3×10⁻¹⁰ accuracy
+- ✅ Lepton masses (electron, muon, tau) derived from carrier-shell structure to 1e-9 precision (candidate, conditional on source-traceability axiom)
+- ✅ Z boson mass predicted from Higgs and W masses alone to 1 part in 27 million (rel err 3.7e-8)
+- ✅ W mass predicted from Z mass and the aperture constant to a relative error of 5.0e-9
+- ✅ Aperture constant Delta recovered from the W/Z mass ratio to an absolute accuracy of 8.3e-10
 - ✅ Four electroweak masses jointly recover the aperture constant to 7.3×10⁻¹⁰
 - ✅ Z mass predicted from Higgs and W masses to 3.7×10⁻⁸ relative error
 
 ### Active Development
-- 🔶 Deriving lepton masses (electron, muon, tau) from kernel shell structure
+- 🔶 Independent validation of lepton carrier-law derivation and connection to radiative corrections
 - 🔶 Connecting compact geometry to quantum field theory radiative corrections
 - 🔶 Cosmological dynamics from geometric evolution
 - 🔶 Experimental validation programs

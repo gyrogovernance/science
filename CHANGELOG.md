@@ -5,11 +5,11 @@ All notable changes to the CGM Experimental Framework will be documented in this
 
 ---
 
-## [1.2.6-Compact_Geometry] - 2026-05-02
+## [1.2.6-Compact_Geometry] - 2026-05-02 to 2026-05-05
 ### Added
 - Added `docs/Findings/Analysis_Compact_Geometry.md` for the compact-spectral electroweak analysis.
-- Added `experiments/cgm_compact_geometry_core.py` as the shared implementation module.
-- Added `experiments/cgm_compact_geometry_run.py` for the formatted analysis workflow and reporting output.
+- Added `experiments/cgm_compact_geom_core.py` as the shared implementation module.
+- Added `experiments/cgm_compact_geom_report.py` for the formatted analysis workflow and reporting output.
 
 ---
 
@@ -177,7 +177,7 @@ Experiments Results and Analysis found here:
 ## [1.1.4-Balance] - 2025-10-06 2025-10-07 
 New Topic - Balance Index
 Experiments Results and Analysis found here: 
-- [docs/Findings/Analysis_Balance_Constant.md](docs/Findings/Analysis_Balance_Index.md)
+- [docs/Findings/Analysis_Balance_Index.md](docs/Findings/Analysis_Balance_Index.md)
 - [experiments/cgm_balance_analysis.py](experiments/cgm_balance_analysis.py)
 
 ---

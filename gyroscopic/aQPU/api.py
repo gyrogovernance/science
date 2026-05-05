@@ -17,7 +17,7 @@ from typing import Final, Union
 
 import numpy as np
 
-from src.constants import (
+from gyroscopic.aQPU.constants import (
     CHIRALITY_MASK_6,
     CHIRALITY_QUBITS_6,
     EPSILON_6,

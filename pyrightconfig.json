@@ -3,8 +3,12 @@
     "experiments"
   ],
   "exclude": [
+    "**/.*",
+    "**/__pycache__",
     "**/node_modules",
-    "**/__pycache__"
+    ".venv",
+    "build",
+    "dist"
   ],
   "ignore": [
     "**/cgm_data_manager.py"
@@ -18,10 +22,11 @@
     {
       "root": ".",
       "extraPaths": [
-        "./experiments"
+        "./experiments",
+        "./gyroscopic/aQPU"
       ]
     }
   ],
-  "pythonVersion": "3.12.10",
+  "pythonVersion": "3.14",
   "pythonPlatform": "All"
 }

@@ -17,13 +17,13 @@ from __future__ import annotations
 from dataclasses import dataclass
 from fractions import Fraction
 
-from src.api import (
+from gyroscopic.aQPU.api import (
     OmegaState12,
     depth4_intron_sequence32,
     depth4_mask_projection48,
     try_state24_to_omega12,
 )
-from src.constants import (
+from gyroscopic.aQPU.constants import (
     GENE_MAC_REST,
     GENE_MIC_S,
     MASK_STATE24,
