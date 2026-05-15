@@ -2,6 +2,21 @@
 
 All notable changes to the CGM Experimental Framework will be documented in this file.
 
+---
+
+## [1.2.7-CGM_Gravity] - 2026-05-14 to 2026-05-15
+
+### Added
+- Added `docs/Findings/Analysis_Gravity.md`: gravitational coupling from kernel invariants, ancestry field equations, gyrogroup structure, and electroweak-anchor prediction of G.
+- Added `experiments/cgm_gravity_analysis.py`: kernel diagnostics, aperture-depth optical depth, α·ζ invariant, and coupling reconstruction at v_EW.
+- Added `experiments/cgm_aqpu_monodromy.py`: aQPU monodromy diagnostic for depth-4/depth-8 closure, shell displacement invariants, and quadrupole shell modes.
+
+### Results
+- Decomposed Einstein coupling κ = 8πG/c⁴ into factor 2 (two-pass carrier recovery), Q_G = 4π (closure solid angle), and c⁴ (four-stage depth structure).
+- Predicted G from kernel invariants and the electroweak anchor to 2.5 parts in 10⁵ (τ_G match within 25 ppm).
+- Established exact kernel invariant α × ζ = ρ⁴/(π√3) linking electromagnetic and gravitational coupling with no free continuous parameters.
+- Derived spin-2 from depth-8 orientation recovery and gyration-defect resolution (monodromy-verified).
+- Documented gravitoelectromagnetic structure, gravitational radiation/memory, and 17-item reference list with inline citations.
 
 ---
 

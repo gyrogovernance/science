@@ -1,1042 +1,652 @@
 #!/usr/bin/env python3
 """
-CGM Gravity Analysis
-Unified analysis of gravitational coupling in the Common Governance Model.
+cgm_gravity_analysis.py
+CGM gravitational coupling analysis.
 
-This module combines two complementary approaches:
-1. Geometric κ estimation: Probes CGM geometry to estimate the dimensionless
-   coupling κ in G = ħc/(κ² m_anchor²)
-2. Dimensional α_G analysis: Verifies gravitational coupling α_G = Gm²/(ħc)
-   scaling across different anchor masses
+The central principle: gravity is the cost of preserving common ancestry
+across scale. Mass is accumulated common-source structure; the ancestry
+credit field C_A measures that accumulation; the gravitational potential
+is Φ = −C_A.
 
-Both approaches aim to understand how CGM's geometric structure relates to
-gravitational physics through dimensional analysis and gyrovector operations.
+The finite CGM kernel supplies shell and horizon invariants that
+normalise the coupling. The depth-8 orientation-recovery cycle gives
+the factor of two in the relativistic coupling decomposition.
+
+Derived quantities are stratified:
+  - Deductive: field equation form, Q_G = 4π, G_kernel = π/6,
+    spin-2 from depth-8, shell displacement invariant = 24
+  - Invariant: Q_G, δ_BU, m_a, Δ, ρ (representation-independent)
+  - Matched (not yet derived): τ_G exponents (5,4), v_EW anchor
+  - Phenomenological: α(z) oscillation, α·ζ product
 """
-
-import numpy as np
-from typing import Dict, Any, List, Tuple
+import math
+import cmath
 import sys
-import os
-
-# Using absolute imports
-from functions.gyrovector_ops import GyroVectorSpace
-from functions.gyrogeometry import ThomasWignerRotation
-from functions.dimensions import DimensionalCalibrator, DimVec
-from tw_closure_test import TWClosureTester
-
-
-def compute_ladder_based_kappa(
-    m_anchor: float,
-    Xi: float,
-    Pi: float = 1.702935,
-    L_ref: float = 1.0,
-    verbose: bool = True,
-) -> Dict[str, Any]:
-    """
-    Compute κ using CGM's ladder geometry: κ = r^{N_eff}.
-
-    This implements the structural fix identified in the synthesis:
-    κ must come from a product over many steps, not a power of a local invariant.
-
-    Args:
-        m_anchor: Anchor mass in kg
-        Xi: CGM closure parameter (from CMB 2/3 closure constraint)
-        Pi: CGM pitch parameter (~1.703)
-        L_ref: Reference length scale (from CGM ladder)
-        verbose: Whether to print detailed output
-
-    Returns:
-        Dictionary with ladder-based κ prediction and analysis
-    """
-    # Fundamental constants
-    hbar = 1.054571817e-34  # J·s
-    c = 2.99792458e8  # m/s
-    m_e = 9.1093837015e-31  # kg
-
-    # Compute anchor's Compton wavelength
-    lambda_anchor = hbar / (m_anchor * c)  # m
-
-    # CGM ladder ratio: r = Π/Xi
-    r = Pi / Xi
-
-    # Effective step count: N_eff = round[ln(L_ref/λ̄(m)) / ln r]
-    log_ratio = np.log(L_ref / lambda_anchor)
-    log_r = np.log(r)
-    N_eff_raw = log_ratio / log_r
-    N_eff = round(N_eff_raw)
-
-    # Predict κ via ladder geometry: κ_geo = r^{N_eff}
-    kappa_geo = r**N_eff
-
-    # Compare to dimensional κ: κ_dim = mP/m_anchor
-    mP = np.sqrt(hbar * c / 6.67430e-11)  # Planck mass
-    kappa_dim = mP / m_anchor
-
-    # Compute residuals
-    kappa_ratio = kappa_geo / kappa_dim
-    log_residual = np.log(kappa_ratio)
-
-    if verbose:
-        print(f"  Ladder-based κ analysis for m = {m_anchor:.2e} kg:")
-        print(f"    Compton wavelength: λ̄ = {lambda_anchor:.2e} m")
-        print(f"    Ladder ratio: r = Π/Xi = {Pi:.6f}/{Xi:.6f} = {r:.6f}")
-        print(f"    Raw step count: N_eff_raw = {N_eff_raw:.3f}")
-        print(f"    Rounded step count: N_eff = {N_eff}")
-        print(f"    Predicted κ: κ_geo = {r:.6f}^{N_eff} = {kappa_geo:.3e}")
-        print(f"    Dimensional κ: κ_dim = mP/m = {kappa_dim:.3e}")
-        print(f"    Ratio: κ_geo/κ_dim = {kappa_ratio:.3f}")
-        print(f"    Log residual: ln(κ_geo/κ_dim) = {log_residual:.3f}")
-
-    return {
-        "m_anchor": m_anchor,
-        "lambda_anchor": lambda_anchor,
-        "Xi": Xi,
-        "Pi": Pi,
-        "r": r,
-        "N_eff_raw": N_eff_raw,
-        "N_eff": N_eff,
-        "kappa_geo": kappa_geo,
-        "kappa_dim": kappa_dim,
-        "kappa_ratio": kappa_ratio,
-        "log_residual": log_residual,
-        "method": "ladder_based",
-    }
-
-
-def test_ladder_kappa_across_anchors(
-    Xi: float, Pi: float = 1.702935, L_ref: float = 1.0
-) -> Dict[str, Any]:
-    """
-    Test ladder-based κ mapping across multiple Standard Model masses.
-
-    This provides the cross-check identified in the synthesis to verify
-    if a single Xi produces a coherent κ map across different anchors.
-
-    Args:
-        Xi: CGM closure parameter (from CMB 2/3 closure)
-        Pi: CGM pitch parameter
-        L_ref: Reference length scale
-
-    Returns:
-        Cross-anchor consistency test results
-    """
-    # Standard particle masses (kg)
-    masses = {
-        "electron": 9.1093837015e-31,
-        "muon": 1.883531627e-28,
-        "proton": 1.67262192369e-27,
-        "neutron": 1.67492749804e-27,
-        "tau": 3.16754e-27,
-    }
-
-    print(f"Testing ladder-based κ mapping across anchors")
-    print(f"  Xi = {Xi:.6f} (from CMB 2/3 closure)")
-    print(f"  Pi = {Pi:.6f}")
-    print(f"  L_ref = {L_ref:.6f}")
-    print()
-
-    results = {}
-    log_residuals = []
-
-    for name, mass in masses.items():
-        result = compute_ladder_based_kappa(mass, Xi, Pi, L_ref, verbose=False)
-        results[name] = result
-        log_residuals.append(result["log_residual"])
-
-        print(
-            f"{name:>8}: κ_geo = {result['kappa_geo']:.3e}, ratio = {result['kappa_ratio']:.3f}"
-        )
-
-    # Statistical analysis of residuals
-    log_residuals = np.array(log_residuals)
-    mean_residual = np.mean(log_residuals)
-    std_residual = np.std(log_residuals)
-
-    print(f"\nCross-anchor consistency:")
-    print(f"  Mean log residual: {mean_residual:.3f}")
-    print(f"  Std log residual: {std_residual:.3f}")
-    print(
-        f"  Residual range: [{np.min(log_residuals):.3f}, {np.max(log_residuals):.3f}]"
-    )
-
-    # Consistency check: residuals should be small if ladder mechanism works
-    consistency_passed = std_residual < 1.0  # Less than 1 order of magnitude spread
-
-    print(f"  Consistency test: {'✅ PASS' if consistency_passed else '❌ FAIL'}")
-
-    return {
-        "Xi": Xi,
-        "Pi": Pi,
-        "L_ref": L_ref,
-        "anchor_results": results,
-        "log_residuals": log_residuals.tolist(),
-        "mean_residual": mean_residual,
-        "std_residual": std_residual,
-        "consistency_passed": consistency_passed,
-        "method": "ladder_based_cross_anchor",
-    }
-
-
-class GravityCouplingAnalyzer:
-    """
-    Analyze gravitational coupling α_G across different anchor masses.
-
-    This implements the "anchor sweep" experiment to verify that:
-    1. α_G(m_anchor) ∝ m_anchor² (dimensional scaling)
-    2. α_G/m² is constant across anchors (dimensionless check)
-    3. The spread in α_G/m² is consistent with experimental uncertainties
-    """
-
-    def __init__(self):
-        """Initialize with CODATA 2018 constants."""
-        # CODATA 2018 recommended values
-        self.hbar = 1.054571817e-34  # J·s
-        self.c = 2.99792458e8  # m/s
-        self.G = 6.67430e-11  # m³/(kg·s²)
-
-        # Standard particle masses (kg)
-        self.masses = {
-            "electron": 9.1093837015e-31,
-            "muon": 1.883531627e-28,
-            "proton": 1.67262192369e-27,
-            "neutron": 1.67492749804e-27,
-            "tau": 3.16754e-27,
-            "charm": 1.27e-27,
-            "bottom": 4.18e-27,
-            "top": 1.73e-25,
-        }
-
-        # CODATA uncertainties (relative)
-        self.uncertainties = {
-            "hbar": 0.0,  # exact by definition
-            "c": 0.0,  # exact by definition
-            "G": 2.2e-5,  # 22 ppm
-        }
-
-    def compute_alpha_G(self, m_anchor: float) -> Dict[str, float]:
-        """
-        Compute gravitational coupling α_G for a given anchor mass.
-
-        Args:
-            m_anchor: Anchor mass in kg
-
-        Returns:
-            Dictionary with α_G, α_G/m² ratio, and anchor mass
-        """
-        # α_G(m_anchor) = G m_anchor² / (ħ c)
-        alpha_G = self.G * m_anchor**2 / (self.hbar * self.c)
-
-        # Dimensionless ratio α_G/m² = G/(ħ c) (should be constant across anchors)
-        alpha_over_m2 = alpha_G / (m_anchor**2)
-
-        return {
-            "alpha_G": alpha_G,
-            "alpha_over_m2": alpha_over_m2,
-            "m_anchor": m_anchor,
-        }
-
-    def anchor_sweep_experiment(self) -> Dict[str, Any]:
-        """
-        Sweep over different anchor masses to verify α_G scaling.
-
-        Returns:
-            Results of the anchor sweep experiment
-        """
-        print("Gravity Coupling: Anchor Sweep Experiment")
-        print("=" * 50)
-
-        results = {}
-        alpha_G_values = []
-        alpha_over_m2_values = []
-
-        print(f"CODATA G uncertainty: {self.uncertainties['G']*100:.3f}%")
-        print()
-
-        for name, mass in self.masses.items():
-            result = self.compute_alpha_G(mass)
-
-            print(f"{name:>8}: m = {mass:.2e} kg")
-            print(f"         α_G = {result['alpha_G']:.3e}")
-            print(f"         α_G/m² = {result['alpha_over_m2']:.3e}")
-            print()
-
-            results[name] = result
-            alpha_G_values.append(result["alpha_G"])
-            alpha_over_m2_values.append(result["alpha_over_m2"])
-
-        # Statistical analysis of dimensionless ratio
-        alpha_over_m2_mean = np.mean(alpha_over_m2_values)
-        alpha_over_m2_std = np.std(alpha_over_m2_values)
-        alpha_over_m2_cv = alpha_over_m2_std / (
-            alpha_over_m2_mean + 1e-30
-        )  # coefficient of variation
-
-        # Check if the spread is consistent with G uncertainty
-        g_uncertainty_expected = self.uncertainties["G"]  # α_G/m² ∝ G, so CV ≈ δG/G
-        spread_consistent = alpha_over_m2_cv < g_uncertainty_expected
-
-        print("Statistical Analysis (dimensionless):")
-        print(
-            f"  mean[α_G/m²] = {alpha_over_m2_mean:.6e} (should be constant across anchors)"
-        )
-        print(f"  std[α_G/m²] = {alpha_over_m2_std:.6e}")
-        print(f"  CV[α_G/m²] = {alpha_over_m2_cv:.2e}")
-        print(f"  Expected from G uncertainty: {g_uncertainty_expected:.2e}")
-        print(
-            f"  Spread consistent with G uncertainty: {'YES' if spread_consistent else 'NO'}"
-        )
-
-        return {
-            "individual_results": results,
-            "statistics": {
-                "alpha_over_m2_mean": alpha_over_m2_mean,
-                "alpha_over_m2_std": alpha_over_m2_std,
-                "alpha_over_m2_cv": alpha_over_m2_cv,
-                "g_uncertainty_expected": g_uncertainty_expected,
-                "spread_consistent": spread_consistent,
-            },
-            "alpha_G_values": alpha_G_values,
-            "alpha_over_m2_values": alpha_over_m2_values,
-        }
-
-    def verify_scaling_law(self, results: Dict[str, Any]) -> Dict[str, Any]:
-        """
-        Verify that α_G ∝ m_anchor² as predicted by dimensional analysis.
-
-        Args:
-            results: Results from anchor_sweep_experiment
-
-        Returns:
-            Verification of the scaling law
-        """
-        print("\nScaling Law Verification: α_G ∝ m_anchor²")
-        print("=" * 40)
-
-        masses = [
-            results["individual_results"][name]["m_anchor"]
-            for name in self.masses.keys()
-        ]
-        alpha_G_values = results["alpha_G_values"]
-
-        # Log-log fit: log(α_G) = 2*log(m) + const
-        log_masses = np.log(masses)
-        log_alpha_G = np.log(alpha_G_values)
-
-        # Linear fit: y = 2x + b
-        slope, intercept = np.polyfit(log_masses, log_alpha_G, 1)
-        expected_slope = 2.0
-
-        # R² goodness of fit
-        y_pred = slope * log_masses + intercept
-        ss_res = np.sum((log_alpha_G - y_pred) ** 2)
-        ss_tot = np.sum((log_alpha_G - np.mean(log_alpha_G)) ** 2)
-        r_squared = 1 - (ss_res / ss_tot)
-
-        slope_consistent = np.isclose(slope, expected_slope, rtol=1e-3)
-
-        print(f"Expected slope: {expected_slope}")
-        print(f"Fitted slope:   {slope:.6f}")
-        print(f"Slope consistent: {'YES' if slope_consistent else 'NO'}")
-        print(f"R² goodness of fit: {r_squared:.6f}")
-
-        return {
-            "expected_slope": expected_slope,
-            "fitted_slope": slope,
-            "slope_consistent": slope_consistent,
-            "r_squared": r_squared,
-            "intercept": intercept,
-        }
-
-    def uncertainty_propagation_analysis(self) -> Dict[str, Any]:
-        """
-        Analyze how uncertainties in G, ħ, c propagate to α_G.
-        """
-        print("\nUncertainty Propagation Analysis")
-        print("=" * 35)
-
-        # For α_G = G m² / (ħ c), the relative uncertainty is:
-        # δα_G/α_G = δG/G + 2δm/m + δħ/ħ + δc/c
-        # Since ħ and c are exact, and m is exact (we choose it):
-        # δα_G/α_G = δG/G
-
-        # For α_G/m² = G/(ħ c), the relative uncertainty is:
-        # δ(α_G/m²)/(α_G/m²) = δG/G
-
-        g_relative_uncertainty = self.uncertainties["G"]
-        alpha_g_relative_uncertainty = g_relative_uncertainty
-        alpha_over_m2_relative_uncertainty = g_relative_uncertainty
-
-        print(f"G relative uncertainty: {g_relative_uncertainty:.2e}")
-        print(f"α_G relative uncertainty: {alpha_g_relative_uncertainty:.2e}")
-        print(f"α_G/m² relative uncertainty: {alpha_over_m2_relative_uncertainty:.2e}")
-        print()
-        print("Expected spread in α_G/m² across anchors:")
-        print(f"  From G uncertainty: {alpha_over_m2_relative_uncertainty:.2e}")
-
-        return {
-            "g_relative_uncertainty": g_relative_uncertainty,
-            "alpha_g_relative_uncertainty": alpha_g_relative_uncertainty,
-            "alpha_over_m2_relative_uncertainty": alpha_over_m2_relative_uncertainty,
-        }
-
-    def run_dimensional_analysis(self) -> Dict[str, Any]:
-        """
-        Run dimensional analysis of gravity coupling.
-
-        Returns:
-            Comprehensive results from dimensional analysis experiments
-        """
-        print("CGM Gravity Coupling: Dimensional Analysis")
-        print("=" * 50)
-        print()
-
-        # Run all experiments
-        anchor_sweep = self.anchor_sweep_experiment()
-        scaling_verification = self.verify_scaling_law(anchor_sweep)
-        uncertainty_analysis = self.uncertainty_propagation_analysis()
-
-        # Summary
-        print("\n" + "=" * 50)
-        print("DIMENSIONAL ANALYSIS SUMMARY")
-        print("=" * 50)
-
-        print("✅ Anchor sweep: α_G ∝ m² verified")
-        print(f"   Slope: {scaling_verification['fitted_slope']:.3f} (expected: 2.000)")
-        print(f"   R²: {scaling_verification['r_squared']:.6f}")
-
-        print("✅ α_G/m² constant across anchors")
-        print(f"   Mean: {anchor_sweep['statistics']['alpha_over_m2_mean']:.3e}")
-        print(f"   CV: {anchor_sweep['statistics']['alpha_over_m2_cv']:.2e}")
-
-        print("✅ Uncertainty propagation: consistent with CODATA")
-        print(
-            f"   Expected spread: {uncertainty_analysis['alpha_over_m2_relative_uncertainty']:.2e}"
-        )
-        print(
-            f"   Observed spread: {anchor_sweep['statistics']['alpha_over_m2_cv']:.2e}"
-        )
-
-        return {
-            "anchor_sweep": anchor_sweep,
-            "scaling_verification": scaling_verification,
-            "uncertainty_analysis": uncertainty_analysis,
-            "summary": {
-                "all_experiments_passed": True,
-                "note": "Dimensional analysis complete - α_G scaling verified",
-            },
-        }
-
-
-def holonomy_invariants(
-    gs: GyroVectorSpace,
-    n: int = 500,
-    speed: float = 0.05,
-    seed: int = 0,
-    rotation_matrix: np.ndarray | None = None,
-) -> Dict[str, Any]:
-    """
-    Build dimensionless invariants from Thomas–Wigner rotation and holonomy.
-
-    Returns J = <θ_meas / θ_TW> and its scatter, plus validation metrics.
-
-    Args:
-        gs: GyroVectorSpace instance
-        n: Number of random velocity pairs to test
-        speed: Speed scale for velocity vectors (dimensionless β = v/c) - gated to ≤0.05
-        seed: Random seed for reproducibility
-
-    Returns:
-        Dictionary with J statistics and validation metrics
-    """
-    # Gate to validated small-β regime
-    speed = min(speed, 0.05)
-
-    rng = np.random.default_rng(seed)
-    J_vals = []
-    theta_meas_vals = []
-    theta_tw_vals = []
-
-    for _ in range(n):
-        # Generate random unit vectors for velocity directions
-        a = rng.normal(0, 1, 3)
-        a /= np.linalg.norm(a)
-        b = rng.normal(0, 1, 3)
-        b /= np.linalg.norm(b)
-
-        # Scale to desired speed
-        u, v = speed * a, speed * b
-
-        # Apply rotation if provided
-        if rotation_matrix is not None:
-            u = rotation_matrix @ u
-            v = rotation_matrix @ v
-
-        # Pairwise gyration (validated in tw_precession)
-        R = gs.gyration(u, v)
-        theta_meas = gs.rotation_angle_from_matrix(R)
-
-        # Thomas-Wigner small-angle prediction for the same pair
-        tw = ThomasWignerRotation(c=gs.c)
-        R_bch = tw.compute_bch_rotation(u, v, eps=1.0)
-        tw_props = tw.verify_rotation_properties(R_bch)
-        theta_tw = tw_props["rotation_angle"]
-
-        # Compute dimensionless ratio J = θ_meas / θ_TW
-        denom = max(theta_tw, 1e-15)  # Avoid division by zero
-        J = theta_meas / denom
-
-        J_vals.append(J)
-        theta_meas_vals.append(theta_meas)
-        theta_tw_vals.append(theta_tw)
-
-    J_vals = np.array(J_vals)
-    theta_meas_vals = np.array(theta_meas_vals)
-    theta_tw_vals = np.array(theta_tw_vals)
-
-    # Statistical analysis
-    J_mean = float(np.mean(J_vals))
-    J_std = float(np.std(J_vals))
-    J_median = float(np.median(J_vals))
-
-    # Speed scaling analysis (θ_meas vs θ_TW) - zero-intercept fit
-    # slope = (θ_TW · θ_meas) / (θ_TW · θ_TW)
-    slope = np.dot(theta_tw_vals, theta_meas_vals) / np.dot(
-        theta_tw_vals, theta_tw_vals
-    )
-    residuals = theta_meas_vals - slope * theta_tw_vals
-    max_residual = float(np.max(np.abs(residuals)))
-
-    # Validation checks
-    tw_orthogonality_errors = []
-    tw_det_errors = []
-
-    # Test a few TW rotations for properties
-    for _ in range(min(10, n)):
-        a = rng.normal(0, 1, 3)
-        a /= np.linalg.norm(a)
-        b = rng.normal(0, 1, 3)
-        b /= np.linalg.norm(b)
-        u, v = speed * a, speed * b
-
-        # Apply same rotation if provided
-        if rotation_matrix is not None:
-            u = rotation_matrix @ u
-            v = rotation_matrix @ v
-
-        tw = ThomasWignerRotation(c=gs.c)
-        R_bch = tw.compute_bch_rotation(u, v, eps=1.0)
-        props = tw.verify_rotation_properties(R_bch)
-        tw_orthogonality_errors.append(props["orthogonality_error"])
-        tw_det_errors.append(abs(props["determinant"] - 1.0))
-
-    return {
-        "J_mean": J_mean,
-        "J_std": J_std,
-        "J_median": J_median,
-        "J_vals": J_vals.tolist(),
-        "speed": speed,
-        "n": n,
-        "seed": seed,
-        "theta_meas_mean": float(np.mean(theta_meas_vals)),
-        "theta_tw_mean": float(np.mean(theta_tw_vals)),
-        "speed_scaling": {
-            "slope": slope,
-            "max_residual": max_residual,
-            "slope_theory": 1.0,
-            "slope_consistent": abs(slope - 1.0)
-            <= 2e-3,  # Relaxed tolerance for β ≤ 0.05
-        },
-        "validation": {
-            "tw_orthogonality_max_error": float(np.max(tw_orthogonality_errors)),
-            "tw_det_max_error": float(np.max(tw_det_errors)),
-            "tw_rotations_valid": all(e < 1e-10 for e in tw_orthogonality_errors)
-            and all(e < 1e-10 for e in tw_det_errors),
-        },
-    }
-
-
-def test_isotropy(
-    gs: GyroVectorSpace, n: int = 100, speed: float = 0.05, seed: int = 0
-) -> Dict[str, Any]:
-    """
-    Test isotropy of holonomy invariants under SO(3) rotations.
-
-    Args:
-        gs: GyroVectorSpace instance
-        n: Number of tests per rotation
-        speed: Speed scale for testing
-        seed: Random seed
-
-    Returns:
-        Isotropy test results
-    """
-    rng = np.random.default_rng(seed)
-
-    # Generate random SO(3) rotation
-    def random_so3():
-        # Generate random rotation matrix using QR decomposition
-        A = rng.normal(0, 1, (3, 3))
-        Q, R = np.linalg.qr(A)
-        # Ensure proper rotation (det = 1)
-        if np.linalg.det(Q) < 0:
-            Q[:, 2] *= -1
-        return Q
-
-    # Test without rotation
-    J_original = holonomy_invariants(gs, n=n, speed=speed, seed=seed)
-
-    # Test with random rotation
-    R = random_so3()
-    J_rotated = holonomy_invariants(gs, n=n, speed=speed, seed=seed, rotation_matrix=R)
-
-    # Compare distributions
-    J_diff = abs(J_original["J_mean"] - J_rotated["J_mean"])
-    J_diff_normalized = J_diff / J_original["J_std"]
-
-    return {
-        "J_original": J_original["J_mean"],
-        "J_rotated": J_rotated["J_mean"],
-        "J_difference": J_diff,
-        "J_difference_normalized": J_diff_normalized,
-        "isotropy_passed": J_diff_normalized < 2.0,  # Within 2σ
-        "rotation_matrix": R.tolist(),
-    }
-
-
-def map_invariant_to_kappa(
-    invariant: float, C: float = 1.0, p: float = 1.0, floor: float = 1e-12
-) -> float:
-    """
-    Map geometric invariant to κ via κ = C · (max(invariant, floor))^p.
-
-    Args:
-        invariant: Geometric invariant (e.g., |J_mean - 1|)
-        C: Calibration constant
-        p: Power law exponent
-        floor: Minimum value to avoid numerical issues
-
-    Returns:
-        κ estimate
-    """
-    x = max(abs(invariant), floor)
-    return float(C * (x**p))
-
-
-def estimate_kappa_via_holonomy(
-    gs: GyroVectorSpace,
-    n: int = 1000,
-    speed: float = 0.05,
-    C: float = 1.0,
-    p: float = 1.0,
-    seed: int = 0,
-) -> Dict[str, Any]:
-    """
-    Estimate κ using holonomy invariants.
-
-    Args:
-        gs: GyroVectorSpace instance
-        n: Number of velocity pairs for statistics
-        speed: Speed scale for testing (gated to ≤0.05)
-        C: Calibration constant (preregistered, not fit to G)
-        p: Power law exponent for κ mapping
-        seed: Random seed for reproducibility
-
-    Returns:
-        Complete κ estimation results with uncertainties
-    """
-    # Get holonomy invariants (pair-based, validated)
-    inv = holonomy_invariants(gs, n=n, speed=speed, seed=seed)
-
-    # Use excess over SR unity as invariant (if noise-free, J≈1)
-    X = float(abs(inv["J_mean"] - 1.0))
-
-    # Map to κ (explicitly experimental mapping)
-    kappa_estimate = map_invariant_to_kappa(X, C=C, p=p)
-
-    # Bootstrap uncertainty estimation
-    J_vals = np.array(inv["J_vals"])
-    bootstrap_kappas = []
-
-    for _ in range(100):  # Bootstrap resamples
-        # Resample J values with replacement
-        resampled_J = np.random.choice(J_vals, size=len(J_vals), replace=True)
-        resampled_X = float(abs(np.mean(resampled_J) - 1.0))
-        bootstrap_kappa = map_invariant_to_kappa(resampled_X, C=C, p=p)
-        bootstrap_kappas.append(bootstrap_kappa)
-
-    bootstrap_kappas = np.array(bootstrap_kappas)
-    kappa_std = float(np.std(bootstrap_kappas))
-
-    # 68% confidence interval
-    kappa_ci_lower = float(np.percentile(bootstrap_kappas, 16))
-    kappa_ci_upper = float(np.percentile(bootstrap_kappas, 84))
-
-    return {
-        "invariant_J_mean": inv["J_mean"],
-        "invariant_excess": X,
-        "p": p,
-        "C": C,
-        "kappa_estimate": kappa_estimate,
-        "kappa_std": kappa_std,
-        "kappa_ci": (kappa_ci_lower, kappa_ci_upper),
-        "holonomy_stats": inv,
-        "bootstrap_n": 100,
-        "speed": speed,
-        "n_samples": n,
-        "mapping_note": "Experimental mapping κ = C·|J-1|^p (not validated against dimensional κ)",
-    }
-
-
-def run_geometric_kappa_experiment(gs: GyroVectorSpace) -> Dict[str, Any]:
-    """
-    Run geometric κ estimation experiment.
-
-    Args:
-        gs: Gyrovector space instance
-
-    Returns:
-        Complete experimental results for κ estimation
-    """
-    print("CGM Gravity Coupling: Geometric κ Estimation")
-    print("=" * 50)
-    print("Probing CGM geometry for dimensionless coupling κ")
-    print("Goal: G = ħ c / (κ² m_anchor²)")
-    print("Method: Thomas-Wigner rotation vs. gyrovector holonomy")
-    print()
-
-    # Get geometry-only invariants
-    print("GEOMETRY-ONLY INVARIANTS:")
-    tw_tester = TWClosureTester(gs)
-    delta_bu = tw_tester.compute_bu_dual_pole_monodromy(verbose=False)
-    chi_stats = tw_tester.compute_anatomical_tw_ratio(verbose=False)
-
-    print(
-        f"  δ_BU = {delta_bu['delta_bu']:.6f} rad (ratio to m_a: {delta_bu['ratio_to_mp']:.3f})"
-    )
-    print(
-        f"  χ = {chi_stats['chi_mean']:.6f} ± {chi_stats['chi_std']:.6f} (CV: {chi_stats['coefficient_of_variation']:.1%})"
-    )
-    print(f"  δ_BU stable: {delta_bu['is_stable']}")
-    print(f"  χ stable: {chi_stats['stability']}")
-    print()
-
-    print("HOLONOMY-BASED APPROACH:")
-    # Test with fixed calibration constants (preregistered)
-    holonomy_result = estimate_kappa_via_holonomy(
-        gs, n=1000, speed=0.05, C=1.0, p=1.0, seed=42
-    )
-
-    print(f"  Holonomy invariant J_mean: {holonomy_result['invariant_J_mean']:.6f}")
-    print(f"  Excess over SR: {holonomy_result['invariant_excess']:.3e}")
-    print(
-        f"  κ (holonomy-based): {holonomy_result['kappa_estimate']:.3e} ± {holonomy_result['kappa_std']:.3e}"
-    )
-    print(
-        f"  68% CI: [{holonomy_result['kappa_ci'][0]:.3e}, {holonomy_result['kappa_ci'][1]:.3e}]"
-    )
-    print()
-
-    # Speed scaling validation
-    speed_scaling = holonomy_result["holonomy_stats"]["speed_scaling"]
-    print(f"  Speed scaling: slope = {speed_scaling['slope']:.6f} (theory: 1.000)")
-    print(f"  Max residual: {speed_scaling['max_residual']:.2e}")
-    print(f"  Scaling consistent: {speed_scaling['slope_consistent']}")
-    print()
-
-    # β-sweep analysis
-    beta_sweep_result = beta_sweep_analysis(
-        gs, beta_max_values=[0.02, 0.03, 0.05], n=300, seed=456
-    )
-
-    # Isotropy test
-    print("ISOTROPY TEST:")
-    isotropy_result = test_isotropy(gs, n=100, speed=0.05, seed=123)
-    print(f"  J_original: {isotropy_result['J_original']:.6f}")
-    print(f"  J_rotated: {isotropy_result['J_rotated']:.6f}")
-    print(f"  Difference: {isotropy_result['J_difference_normalized']:.2f}σ")
-    print(f"  Isotropy passed: {isotropy_result['isotropy_passed']}")
-    print()
-
-    # Validation checks
-    print("VALIDATION CHECKS:")
-    print(
-        f"  TW rotations valid: {holonomy_result['holonomy_stats']['validation']['tw_rotations_valid']}"
-    )
-    print(
-        f"  Max orthogonality error: {holonomy_result['holonomy_stats']['validation']['tw_orthogonality_max_error']:.2e}"
-    )
-    print(
-        f"  Max determinant error: {holonomy_result['holonomy_stats']['validation']['tw_det_max_error']:.2e}"
-    )
-    print()
-
-    # Combine results
-    results = {
-        "experiment_name": "Gravitational Field κ-Probe",
-        "geometry_invariants": {"delta_bu": delta_bu, "chi": chi_stats},
-        "holonomy_approach": holonomy_result,
-        "beta_sweep": beta_sweep_result,
-        "isotropy_test": isotropy_result,
-        "summary": {
-            "kappa_geometric_holonomy": holonomy_result["kappa_estimate"],
-            "invariant_J_mean": holonomy_result["invariant_J_mean"],
-            "invariant_excess": holonomy_result["invariant_excess"],
-            "calibration_constants": {"C": 1.0, "p": 1.0},
-            "geometry_only_invariants": {
-                "delta_bu": delta_bu["delta_bu"],
-                "chi_mean": chi_stats["chi_mean"],
-            },
-            "validation_passed": {
-                "speed_scaling": speed_scaling["slope_consistent"],
-                "isotropy": isotropy_result["isotropy_passed"],
-                "tw_rotations": holonomy_result["holonomy_stats"]["validation"][
-                    "tw_rotations_valid"
-                ],
-            },
-            "next_steps": [
-                "Test speed scaling: θ_meas ∝ speed² at small speeds",
-                "Verify orientation isotropy of J distribution",
-                "Check coordinate invariance under SO(3) rotations",
-            ],
-        },
-    }
-
-    return results
-
-
-def beta_sweep_analysis(
-    gs: GyroVectorSpace,
-    beta_max_values: List[float] = [0.02, 0.03, 0.05],
-    n: int = 500,
-    seed: int = 0,
-) -> Dict[str, Any]:
-    """
-    Analyze speed scaling behavior across different β values.
-
-    Args:
-        gs: GyroVectorSpace instance
-        beta_max_values: List of maximum β values to test
-        n: Number of samples per β value
-        seed: Random seed for reproducibility
-
-    Returns:
-        Dictionary with β-sweep analysis results
-    """
-    print("BETA SWEEP ANALYSIS:")
-    print("Testing speed scaling across different β regimes")
-    print()
-
-    results = {}
-    slopes = []
-    residuals = []
-    J_means = []
-
-    for beta_max in beta_max_values:
-        print(f"β_max = {beta_max:.2f}:")
-
-        # Get holonomy invariants for this β
-        inv = holonomy_invariants(gs, n=n, speed=beta_max, seed=seed)
-
-        slope = inv["speed_scaling"]["slope"]
-        max_residual = inv["speed_scaling"]["max_residual"]
-        J_mean = inv["J_mean"]
-
-        slopes.append(slope)
-        residuals.append(max_residual)
-        J_means.append(J_mean)
-
-        print(f"  Slope: {slope:.6f} (theory: 1.000)")
-        print(f"  Max residual: {max_residual:.2e}")
-        print(f"  J_mean: {J_mean:.6f}")
-        print(f"  Consistent: {inv['speed_scaling']['slope_consistent']}")
-        print()
-
-        results[f"beta_{beta_max:.2f}"] = {
-            "slope": slope,
-            "max_residual": max_residual,
-            "J_mean": J_mean,
-            "slope_consistent": inv["speed_scaling"]["slope_consistent"],
-        }
-
-    # Summary
-    print("BETA SWEEP SUMMARY:")
-    print(f"  β range: {min(beta_max_values):.2f} to {max(beta_max_values):.2f}")
-    print(f"  Slope range: {min(slopes):.6f} to {max(slopes):.6f}")
-    print(f"  J_mean range: {min(J_means):.6f} to {max(J_means):.6f}")
-    print(f"  Max residual range: {min(residuals):.2e} to {max(residuals):.2e}")
-
-    # Check if small-β regime is well-behaved
-    small_beta_consistent = all(
-        results[f"beta_{b:.2f}"]["slope_consistent"]
-        for b in beta_max_values
-        if b <= 0.05
-    )
-
-    print(f"  Small-β regime (≤0.05) consistent: {small_beta_consistent}")
-    print()
-
-    return {
-        "beta_values": beta_max_values,
-        "slopes": slopes,
-        "residuals": residuals,
-        "J_means": J_means,
-        "small_beta_consistent": small_beta_consistent,
-        "detailed_results": results,
-    }
-
-
-def run_comprehensive_gravity_analysis() -> Dict[str, Any]:
-    """
-    Run comprehensive gravity analysis combining both approaches.
-
-    Returns:
-        Complete analysis results from both dimensional and geometric approaches
-    """
-    print("CGM COMPREHENSIVE GRAVITY ANALYSIS")
-    print("=" * 60)
-    print("Combining dimensional analysis and geometric κ estimation")
-    print()
-
-    # Initialize components
-    analyzer = GravityCouplingAnalyzer()
-    gs = GyroVectorSpace(c=1.0)
-
-    # Run dimensional analysis
-    dimensional_results = analyzer.run_dimensional_analysis()
-
-    print("\n" + "=" * 60)
-    print()
-
-    # Run geometric κ estimation
-    geometric_results = run_geometric_kappa_experiment(gs)
-
-    # NEW: Ladder-based κ analysis using CMB 2/3 closure constraint
-    print("\n" + "=" * 50)
-    print("LADDER-BASED κ ANALYSIS (CMB-Informed)")
-    print("=" * 50)
-
-    # Use Xi from CMB 2/3 closure constraint (from synthesis analysis)
-    # P₂/C₄ ≈ 8/12 = 2/3 suggests Xi ≈ 0.667 × Pi
-    Pi = 1.702935
-    Xi_cmb = 0.667 * Pi  # CMB-informed closure parameter
-    L_ref = 1.0  # Reference length (can be refined from CGM ladder)
-
-    print(f"Using CMB-informed parameters:")
-    print(f"  Pi = {Pi:.6f} (CGM pitch)")
-    print(f"  Xi = {Xi_cmb:.6f} (from CMB 2/3 closure)")
-    print(f"  L_ref = {L_ref:.6f} (reference length)")
-    print()
-
-    # Test ladder-based κ across anchors
-    ladder_results = test_ladder_kappa_across_anchors(Xi_cmb, Pi, L_ref)
-
-    # Cross-comparison analysis
-    print("\n" + "=" * 50)
-    print("CROSS-COMPARISON ANALYSIS")
-    print("=" * 50)
-
-    # Get κ from dimensional analysis (using electron mass as example)
-    m_electron = analyzer.masses["electron"]
-    alpha_G_electron = analyzer.compute_alpha_G(m_electron)["alpha_G"]
-    kappa_dimensional = 1.0 / np.sqrt(alpha_G_electron)
-
-    # Get geometric κ estimates
-    kappa_geometric_holonomy = geometric_results["holonomy_approach"]["kappa_estimate"]
-    kappa_ladder_electron = ladder_results["anchor_results"]["electron"]["kappa_geo"]
-
-    # Compare approaches
-    kappa_ratio_holonomy = kappa_geometric_holonomy / kappa_dimensional
-    kappa_ratio_ladder = kappa_ladder_electron / kappa_dimensional
-
-    print(f"κ comparison for electron mass:")
-    print(f"  κ (dimensional): {kappa_dimensional:.3e}")
-    print(
-        f"  κ (holonomy): {kappa_geometric_holonomy:.3e} ± {geometric_results['holonomy_approach']['kappa_std']:.3e}"
-    )
-    print(f"  κ (ladder-based): {kappa_ladder_electron:.3e}")
-    print()
-    print(f"Ratio (holonomy): {kappa_ratio_holonomy:.3f}")
-    print(f"Ratio (ladder): {kappa_ratio_ladder:.3f}")
-    print()
-
-    # Holonomy invariant analysis
-    J_mean = geometric_results["holonomy_approach"]["invariant_J_mean"]
-    J_excess = geometric_results["holonomy_approach"]["invariant_excess"]
-
-    print(f"Holonomy invariant J_mean: {J_mean:.6f}")
-    print(f"Excess over SR (|J-1|): {J_excess:.3e}")
-    print()
-
-    # Geometry-only invariants
-    delta_bu = geometric_results["geometry_invariants"]["delta_bu"]["delta_bu"]
-    chi_mean = geometric_results["geometry_invariants"]["chi"]["chi_mean"]
-
-    print(f"Geometry-only invariants:")
-    print(f"  δ_BU = {delta_bu:.6f} rad")
-    print(f"  χ = {chi_mean:.6f}")
-    print()
-
-    # Ladder analysis summary
-    print(f"Ladder-based κ analysis:")
-    print(
-        f"  Cross-anchor consistency: {'✅ PASS' if ladder_results['consistency_passed'] else '❌ FAIL'}"
-    )
-    print(f"  Mean log residual: {ladder_results['mean_residual']:.3f}")
-    print(f"  Std log residual: {ladder_results['std_residual']:.3f}")
-
-    # Summary
-    consistency_check_holonomy = 0.1 < kappa_ratio_holonomy < 10.0
-    consistency_check_ladder = 0.1 < kappa_ratio_ladder < 10.0
-
-    print("\nOVERALL SUMMARY:")
-    print("✅ Dimensional analysis: α_G scaling verified")
-    print("✅ Geometric analysis: κ estimated via Thomas-Wigner holonomy")
-    print("✅ Ladder-based κ: CGM-consistent scale hierarchy")
-    print(
-        f"✅ Cross-consistency (holonomy): {'PASS' if consistency_check_holonomy else 'NEEDS REVIEW'}"
-    )
-    print(
-        f"✅ Cross-consistency (ladder): {'PASS' if consistency_check_ladder else 'NEEDS REVIEW'}"
-    )
-    print()
-    print("Key findings:")
-    print(f"  - α_G ∝ m² scaling confirmed (R² > 0.99)")
-    print(f"  - α_G/m² constant across anchors")
-    print(f"  - Holonomy-based κ provides dimensionless estimate")
-    print(f"  - Ladder-based κ uses CGM's recursive stepping mechanism")
-    print(f"  - J invariant: {J_mean:.6f} (excess: {J_excess:.3e})")
-    print(f"  - Geometry-only invariants: δ_BU={delta_bu:.6f}, χ={chi_mean:.6f}")
-    print(f"  - CMB-informed Xi = {Xi_cmb:.6f} produces coherent κ across anchors")
-
-    return {
-        "dimensional_analysis": dimensional_results,
-        "geometric_analysis": geometric_results,
-        "ladder_analysis": ladder_results,
-        "cross_comparison": {
-            "kappa_geometric_holonomy": kappa_geometric_holonomy,
-            "kappa_dimensional": kappa_dimensional,
-            "kappa_ladder_electron": kappa_ladder_electron,
-            "kappa_ratio_holonomy": kappa_ratio_holonomy,
-            "kappa_ratio_ladder": kappa_ratio_ladder,
-            "consistency_check_holonomy": consistency_check_holonomy,
-            "consistency_check_ladder": consistency_check_ladder,
-            "holonomy_invariant_J_mean": J_mean,
-            "holonomy_excess": J_excess,
-        },
-        "summary": {
-            "all_tests_passed": consistency_check_holonomy and consistency_check_ladder,
-            "note": "Comprehensive gravity analysis with holonomy invariants and ladder-based κ",
-        },
-    }
-
-
-def main():
-    """Run the comprehensive gravity analysis."""
-    results = run_comprehensive_gravity_analysis()
-
-    print(f"\n💾 Analysis completed.")
-    return results
-
+from typing import Any
+
+_reconfigure = getattr(sys.stdout, "reconfigure", None)
+if callable(_reconfigure):
+    try:
+        _reconfigure(encoding="utf-8", errors="replace")
+    except Exception:
+        pass
+
+# ================================================================
+# 1  Primitive measures and derived amplitudes
+# ================================================================
+s_p = math.pi / 2.0           # CS threshold
+u_p = 1.0 / math.sqrt(2.0)   # UNA threshold = cos(π/4)
+o_p = math.pi / 4.0           # ONA threshold
+
+# Zero-defect gyrotriangle: s_p + o_p + o_p = π
+Q_G = 4.0 * math.pi           # quantum-gravity horizon
+
+# Aperture from chiral seed distributed across L/R phase ranges
+# A² × (2π)_L × (2π)_R = s_p  ⟹  m_a² = s_p/(4π²)
+m_a = math.sqrt(s_p / (4.0 * math.pi * math.pi))
+
+d_BU  = 0.195342176580         # BU dual-pole monodromy
+rho   = d_BU / m_a             # closure ratio
+Delta = 1.0 - rho              # aperture gap
+S_geo = m_a * math.pi * math.sqrt(3.0) / 2.0
+zeta  = Q_G / S_geo
+alpha = d_BU**4 / m_a          # fine-structure constant (CGM geometric)
+phi_SU2 = 2.0 * math.acos((1.0 + 2.0 * math.sqrt(2.0)) / 4.0)
+
+# Dimensionless stage actions
+S_CS  = s_p / m_a
+S_UNA = u_p / m_a
+S_ONA = o_p / m_a
+S_BU  = 1.0                    # m_a / m_a
+
+# Product invariant: α·ζ = ρ⁴/(π√3)
+alpha_zeta_exact = rho**4 / (math.pi * math.sqrt(3.0))
+alpha_zeta_check = alpha * zeta
+
+# 48-fold structure
+AF = 48
+prod_48Delta = AF * Delta
+N_e = AF**2
+lam0 = Delta / math.sqrt(5.0)
+lam0_expected = 1.0 / (AF * math.sqrt(5.0))
+
+# ================================================================
+# 2  Physical anchors
+# ================================================================
+v_EW = 246.22                   # electroweak scale (GeV)
+G_measured_nat = 6.70881e-39     # GeV⁻²
+G_SI_measured  = 6.67430e-11     # m³ kg⁻¹ s⁻²
+alpha_G_meas   = G_measured_nat * v_EW**2
+
+# ================================================================
+# 3  Kernel invariants (from monodromy module)
+# ================================================================
+
+def _require_monodromy():
+    """Import the monodromy module or abort gracefully."""
+    try:
+        import cgm_aqpu_monodromy as mon
+        return mon
+    except Exception as exc:
+        print(f"  Monodromy module unavailable: {exc}")
+        return None
+
+
+def run_shell_displacement_invariant(mon):
+    """Section 3.2: verify shell displacement = 24 for all payloads."""
+    print("\n--- 3.2  Shell displacement invariant ---")
+    if mon is None:
+        print("  Skipped: monodromy module unavailable.")
+        return {"total": 0, "failed": 64}
+
+    fam_ok, d4_ok, inv_ok = mon.verify_family_shell_law_exhaustive()
+    print(f"  first-front law: family_shell={fam_ok}, "
+          f"depth4_return={d4_ok}, invariant={inv_ok}")
+
+    disp_vals = []
+    half_vals  = []
+    failures   = []
+    payload_hits = half_hits = mass_hits = depth_hits = 0
+
+    for micro in range(64):
+        pop  = mon.payload_popcount(micro)
+        word = mon.family_word_for_micro(micro) * 2
+        rows = mon.trace_word(word)
+        shells = [r.obs.arch_shell for r in rows]
+        if len(shells) != 9 or any(s < 0 for s in shells):
+            failures.append(micro)
+            continue
+        deltas = [abs(shells[i] - shells[i-1]) for i in range(1, len(shells))]
+        total  = sum(deltas)
+        half   = sum(deltas[:4])
+        first  = shells[1] if len(shells) > 1 else None
+        disp_vals.append(total)
+        half_vals.append(half)
+        if total == 24:     payload_hits += 1
+        if half  == 12:     half_hits    += 1
+        if first == pop:    mass_hits    += 1
+        if max(shells) == 6 and min(shells) == 0:  depth_hits += 1
+
+    print(f"  depth-8 displacement: unique values {sorted(set(disp_vals))}")
+    print(f"  depth-4 half-cycle:   unique values {sorted(set(half_vals))}")
+    print(f"  pass: {64 - len(failures)}/64  "
+          f"(disp={payload_hits}  half={half_hits}  "
+          f"mass-shell={mass_hits}  envelope={depth_hits})")
+    return {"total": 64, "failed": len(failures),
+            "disp_vals": disp_vals, "half_vals": half_vals}
+
+
+def run_gauss_map(shell_inv):
+    """Section 3.4: G_kernel = Q_G / 24."""
+    print("\n--- 3.4  Kernel Gauss map ---")
+    G_kernel = Q_G / 24.0
+    failed = shell_inv.get("failed", 0) if shell_inv else 64
+    total  = shell_inv.get("total", 0)  if shell_inv else 0
+    print(f"  displacement invariant holds: {failed == 0 and total == 64}")
+    print(f"  Q_G / 24 = π/6 = {G_kernel:.12f}")
+    return G_kernel
+
+
+def run_equality_horizon(mon):
+    """Section 3.5: chirality cancellation at equality horizon."""
+    print("\n--- 3.5  Equality horizon chirality cancellation ---")
+    if mon is None:
+        print("  Skipped.")
+        return {}
+    canonical = mon.family_word_for_micro(mon.FAMILY_RAY_REF)
+    rows = mon.trace_word(canonical * 2)
+    eq_steps = []
+    qx_vals  = []
+    for r in rows:
+        phase = mon.phase_name(r.obs, r.step)
+        if r.obs.equality_horizon:
+            eq_steps.append(r.step)
+            qx_vals.append(r.qxor & 0x3F)
+    all_flip = len(eq_steps) == 2 and all(v == 0x3F for v in qx_vals)
+    print(f"  equality steps: {eq_steps}")
+    print(f"  qx at equality: {qx_vals}")
+    print(f"  all six chirality bits flip: {all_flip}")
+    return {"eq_steps": eq_steps, "qx": qx_vals, "all_flip": all_flip}
+
+
+# ================================================================
+# 4  Orientation recovery and the factor two
+# ================================================================
+
+def run_monodromy_probes(mon):
+    """Section 4.1: depth-4 vs depth-8 closure."""
+    print("\n--- 4.1  Depth-4 / depth-8 closure ---")
+    if mon is None:
+        print("  Skipped.")
+        return False
+    try:
+        summaries = dict(mon.monodromy_probe_summaries())
+        s4 = summaries["canonical"]
+        s8 = summaries["canonical x2"]
+        s16 = summaries["canonical x4"]
+        print(f"  depth-4: terminal={s4.terminal_coordinate}, "
+              f"defect=0x{s4.closure_defect:06X}, rest={s4.carrier_revisits_rest}")
+        print(f"  depth-8: terminal={s8.terminal_coordinate}, "
+              f"defect=0x{s8.closure_defect:06X}, "
+              f"first_return={s8.first_revisit_of_start_step}")
+        ok = (s4.terminal_coordinate == "swapped"
+              and not s4.carrier_revisits_rest
+              and s8.carrier_revisits_rest
+              and s8.first_revisit_of_start_step == 8)
+        if ok:
+            print("  depth-4: swapped; depth-8: rest at step 8")
+        else:
+            print(f"  orientation recovery: {ok}")
+        return ok
+    except Exception as exc:
+        print(f"  Failed: {exc}")
+        return False
+
+
+def run_family_circulation(mon):
+    """Section 4.2: two-pass carrier return → spin-2."""
+    print("\n--- 4.2  Two-pass carrier return ---")
+    if mon is None:
+        print("  Skipped.")
+        return {}
+    canonical = mon.family_word_for_micro(mon.FAMILY_RAY_REF)
+    rows = mon.trace_word(canonical * 2)
+    fsums = [r.fsum for r in rows]
+    deltas = [fsums[i] - fsums[i-1] for i in range(1, len(fsums))]
+    egress  = deltas[:4]
+    ingress = deltas[4:]
+    net_e = sum(egress)
+    net_i = sum(ingress)
+    print(f"  family sequence: {fsums}")
+    print(f"  increments: {deltas}")
+    print(f"  egress circulation: {net_e:+d}")
+    print(f"  ingress circulation: {net_i:+d}")
+    print(f"  net cancellation: {net_e + net_i}")
+    print(f"  |circulation per half-cycle| = {abs(net_e)} (spin-2 signature)")
+    return {"fsums": fsums, "deltas": deltas,
+            "net_egress": net_e, "net_ingress": net_i}
+
+
+def run_gravitational_memory(mon):
+    """Section 6: gravitational memory from depth-4 defect."""
+    print("\n--- 6  Gravitational memory ---")
+    if mon is None:
+        print("  Skipped.")
+        return {}
+    try:
+        summaries = dict(mon.monodromy_probe_summaries())
+        s4 = summaries["canonical"]
+        s8 = summaries["canonical x2"]
+        xor = s4.final_state ^ s8.final_state
+        frac4 = xor.bit_count() / 24.0
+        frac8 = s8.closure_defect.bit_count() / 24.0
+        print(f"  depth-4 defect: 0x{s4.closure_defect:06X}  "
+              f"(full displacement memory retained)")
+        print(f"  depth-8 defect: 0x{s8.closure_defect:06X}  "
+              f"(memory cancelled)")
+        return {"frac4": frac4, "frac8": frac8}
+    except Exception as exc:
+        print(f"  Failed: {exc}")
+        return {}
+
+
+# ================================================================
+# 5  Gravitational radiation
+# ================================================================
+
+def run_gw_spectrum(mon):
+    """Section 5: dominant k=2 quadrupole mode."""
+    print("\n--- 5  Gravitational radiation ---")
+    if mon is None:
+        print("  Skipped.")
+        return {}
+    canonical = mon.family_word_for_micro(mon.FAMILY_RAY_REF)
+    rows = mon.trace_word(canonical * 2)
+    shells = [r.obs.arch_shell for r in rows][:-1]
+    baseline = shells[0]
+    strain = [s - baseline for s in shells]
+    n = len(strain)
+    mean = sum(strain) / n
+    centered = [v - mean for v in strain]
+    spectrum = []
+    for k in range(n // 2 + 1):
+        c = sum(centered[t] * cmath.exp(-2j * math.pi * k * t / n)
+                for t in range(n))
+        spectrum.append(abs(c) / n)
+    freqs = [k / n for k in range(len(spectrum))]
+    if len(spectrum) > 2:
+        dom_amp, dom_freq, dom_k = max(
+            (spectrum[k], freqs[k], k) for k in range(1, len(spectrum)))
+    else:
+        dom_k = None
+        dom_amp = dom_freq = 0.0
+    print(f"  shell path: {shells}")
+    print(f"  dominant mode: k={dom_k}, freq={dom_freq:.3f}, amp={dom_amp:.4f}")
+    print(f"  k=2 (quadrupole) amplitude: "
+          f"{spectrum[2]:.4f}" if len(spectrum) > 2 else "  N/A")
+    return {"dominant_k": dom_k, "spectrum": spectrum}
+
+
+# ================================================================
+# 7  Potential profile
+# ================================================================
+
+def run_potential_profile(G_kernel):
+    """Section 7: binomial interior potential and far-field check."""
+    print("\n--- 7  Potential profile ---")
+    shell_w = [math.comb(6, k) / 64.0 for k in range(7)]
+    total_w = sum(shell_w)
+    shell_d = [w / total_w for w in shell_w]
+
+    # Continuous radial model
+    enclosed = []
+    s = 0.0
+    for w in shell_w:
+        s += w
+        enclosed.append(s)
+
+    r_vals = [k / 6.0 for k in range(7)]
+    r_vals[0] = 1e-6
+    g_field = [0.0] * 7
+    for k in range(1, 7):
+        r = r_vals[k]
+        g_field[k] = -G_kernel * enclosed[k] / (r * r)
+    g_field[0] = g_field[1]
+
+    phi = [0.0] * 7
+    for k in range(5, -1, -1):
+        dr = r_vals[k+1] - r_vals[k]
+        phi[k] = phi[k+1] - 0.5 * (g_field[k] + g_field[k+1]) * dr
+
+    print("  r     M(r)    g(r)       C_A(r)     Phi(r)=-C_A")
+    for k in range(7):
+        c_a = phi[k]
+        phi_grav = -phi[k]
+        pr = phi_grav * r_vals[k]
+        print(f"  {r_vals[k]:.3f} {enclosed[k]:7.4f} "
+              f"{g_field[k]:10.6f} {c_a:10.6f} {phi_grav:10.6f}")
+    print(f"  boundary field = −G_kernel = {g_field[-1]:.6f}  "
+          f"(expected −π/6 = {-math.pi/6:.6f})")
+
+    # Extended far-field grid
+    N = 1000
+    r_ext = [1e-6 + i * (10.0 - 1e-6) / (N - 1) for i in range(N)]
+    rho_ext = []
+    mass_acc = 0.0
+    enc_ext = [0.0] * N
+    for i in range(N):
+        r = r_ext[i]
+        if r <= 1.0:
+            x = r * 6.0
+            k0 = min(int(x), 5)
+            k1 = k0 + 1
+            t = x - k0
+            rho_ext.append((1 - t) * shell_w[k0] + t * shell_w[k1])
+        else:
+            rho_ext.append(0.0)
+        if i > 0:
+            dV = (4.0 / 3.0) * math.pi * (r_ext[i]**3 - r_ext[i-1]**3)
+            mass_acc += rho_ext[i-1] * dV
+            enc_ext[i] = mass_acc
+
+    g_ext = [0.0] * N
+    for i in range(N):
+        r = r_ext[i]
+        if r > 0:
+            g_ext[i] = -G_kernel * enc_ext[i] / (r * r)
+
+    phi_ext = [0.0] * N
+    for i in range(N - 2, -1, -1):
+        dr = r_ext[i+1] - r_ext[i]
+        phi_ext[i] = phi_ext[i+1] - 0.5 * (g_ext[i] + g_ext[i+1]) * dr
+
+    far_idx = [i for i in range(N) if 1.5 <= r_ext[i] <= 9.0]
+    phi_r_far = [phi_ext[i] * r_ext[i] for i in far_idx]
+    if phi_r_far:
+        mean_pr = sum(phi_r_far) / len(phi_r_far)
+        std_pr  = (sum((x - mean_pr)**2 for x in phi_r_far)
+                   / len(phi_r_far))**0.5
+    else:
+        mean_pr = std_pr = 0.0
+
+    print(f"  far-field Phi*r: mean={mean_pr:.6f}, std={std_pr:.2e}")
+    rel_std = std_pr / (abs(mean_pr) + 1e-20)
+    if rel_std < 0.01:
+        print("  exterior 1/r: interior boundary normalisation ok; "
+              "full exterior match is a continuum-map item (Section 10).")
+    else:
+        print(f"  exterior 1/r: relative std={rel_std:.4f} "
+              "(continuum-map item, Section 10)")
+
+    return {"r": r_vals, "phi": phi, "g": g_field,
+            "mass_total": mass_acc}
+
+
+# ================================================================
+# 8  Coupling constant
+# ================================================================
+
+def run_coupling(G_kernel):
+    """Section 8: coupling form, optical depth, scale inference."""
+    print("\n--- 8  Coupling constant ---")
+
+    # 8.1  Form: G = G_kernel / E_CS²
+    E_CS = math.sqrt(G_kernel / G_measured_nat)
+    print(f"  8.1  G = G_kernel / E_CS²")
+    print(f"       G_kernel = π/6 = {G_kernel:.12f}")
+    print(f"       E_CS = √(G_kernel/G) = {E_CS:.6e} GeV")
+    print(f"       (≈ {E_CS/1.22e19:.2f} × E_Planck)")
+
+    # 8.2  Dimensionless coupling and optical depth
+    alpha_G_pred_kernel = G_kernel * v_EW**2 / E_CS**2
+    tau_G_from_scale = 2.0 * math.log(E_CS / v_EW)
+    print(f"\n  8.2  Dimensionless coupling at v_EW:")
+    print(f"       α_G(v) = G·v² = {alpha_G_meas:.6e}")
+    print(f"       α_G(v) = G_kernel · exp(−τ_G)")
+    print(f"       τ_G = 2·ln(E_CS/v) = {tau_G_from_scale:.6f}")
+    print(f"       (factor 2: two-pass carrier return, §4.2)")
+
+    # 8.3  Aperture-variable representation of τ_G
+    # NOTE: The exponents 5 and 4 in the formula below are
+    # motivated by the five shell checkpoints and four transitions
+    # of the canonical depth-4 word, but they are not yet derived
+    # from a first-principles path integral.  See Required
+    # Continuum Maps, item 1.
+    n_states = 4096.0
+    tau_0        = n_states * Delta
+    rho5         = rho**5
+    tau_parallel = tau_0 * rho5
+    f_ordered    = 1.0 - 4.0 * rho * Delta**2
+    tau_G        = tau_parallel * f_ordered
+
+    alpha_pred   = G_kernel * math.exp(-tau_G)
+    alpha_par    = G_kernel * math.exp(-tau_parallel)
+    G_pred       = alpha_pred / v_EW**2
+    G_par        = alpha_par  / v_EW**2
+
+    tau_req = -math.log(alpha_G_meas / G_kernel)
+    print(f"\n  8.3  Aperture-depth reconstruction:")
+    print(f"       |Omega|*Delta     = {tau_0:.6f}")
+    print(f"       rho^5             = {rho5:.12f}")
+    print(f"       |Omega|*Delta*rho^5 = {tau_parallel:.6f}  (no 4-transition term)")
+    print(f"       1−4ρΔ²      = {f_ordered:.12f}")
+    print(f"       τ_G         = {tau_G:.6f}")
+    print(f"       tau_required  = {tau_req:.6f}")
+    print(f"       tau_G - tau_req = {tau_G - tau_req:.2e}")
+    print(f"       α_G pred    = {alpha_pred:.6e}")
+    print(f"       α_G meas    = {alpha_G_meas:.6e}")
+    print(f"       G pred      = {G_pred:.6e} GeV⁻²")
+    print(f"       G meas      = {G_measured_nat:.6e} GeV⁻²")
+    print(f"       G_pred/G_meas − 1 = {G_pred/G_measured_nat - 1:.2e}")
+
+    # 8.4  Canonical-word per-cycle optical depth
+    mon = _require_monodromy()
+    if mon is not None:
+        binom = [math.comb(6, s) / 64.0 for s in range(7)]
+        chi6_full = 0x3F
+        tau_sum = 0.0
+        w_sum   = 0.0
+        per_pop = {}
+        for micro in range(64):
+            pop  = bin(micro).count("1")
+            word = mon.family_word_for_micro(micro) * 2
+            rows = mon.trace_word(word)
+            tau_path = 0.0
+            for idx in range(1, len(rows)):
+                obs = rows[idx].obs
+                s = obs.arch_shell
+                if s < 0 or s > 6:
+                    continue
+                sw = binom[s]
+                cf = 0.0 if obs.chi6 == chi6_full else 1.0
+                tau_path += Delta * sw * cf
+            pw = binom[pop]
+            tau_sum += tau_path * pw
+            w_sum   += pw
+            per_pop.setdefault(pop, []).append(tau_path)
+        if w_sum > 0:
+            tau_cycle = tau_sum / w_sum
+            n_cycles  = tau_G / tau_cycle if tau_cycle > 0 else 0
+            print(f"\n  8.4  Canonical-word optical depth:")
+            print(f"       τ per depth-8 cycle = {tau_cycle:.6f}")
+            print(f"       N cycles = τ_G/τ_cycle = {n_cycles:.1f}")
+            for p in sorted(per_pop):
+                vals = per_pop[p]
+                print(f"       pop={p}: τ={sum(vals)/len(vals):.6f} (n={len(vals)})")
+
+    return {"E_CS": E_CS, "tau_G": tau_G, "G_pred": G_pred,
+            "alpha_pred": alpha_pred}
+
+
+# ================================================================
+# 9  Testable predictions
+# ================================================================
+
+def run_predictions():
+    """Section 9: α·ζ product, α(z), higher-order sign."""
+    print("\n--- 9  Testable predictions ---")
+
+    # 9.1  α·ζ product
+    print("  9.1  α·ζ product (no free continuous parameter):")
+    print(f"       α·ζ = ρ⁴/(π√3) = {alpha_zeta_exact:.12f}")
+    print(f"       check: α·ζ = {alpha_zeta_check:.12f}")
+    print(f"       |diff| = {abs(alpha_zeta_exact - alpha_zeta_check):.2e}")
+
+    # 9.2  α(z) oscillation
+    print("\n  9.2  α(z) oscillation:")
+    period_z = Delta * math.log(2.0)
+    sub_z    = period_z / 7.0
+    shell_w  = [math.comb(6, k) for k in range(7)]
+    total_sw = float(sum(shell_w))
+    shell_wn = [w / total_sw for w in shell_w]
+    max_var  = 6 * 0.25
+
+    n_pts = 500
+    z_vals = [0.001 + (6.0 - 0.001) * i / (n_pts - 1) for i in range(n_pts)]
+    a_vals = []
+    for z in z_vals:
+        n = math.log1p(z) / Delta
+        p = min(1.0 - math.exp(-n * Delta), 1.0 - 1e-12)
+        probs = [math.comb(6, k) * p**k * (1 - p)**(6 - k) for k in range(7)]
+        norm = sum(probs)
+        var_k = sum(k * k * probs[k] for k in range(7)) / norm \
+              - (sum(k * probs[k] for k in range(7)) / norm)**2
+        amp = 1e-5 * var_k / max_var
+        osc = amp * math.cos(2 * math.pi * 7.0 * n)
+        a_vals.append(alpha * (1.0 + osc))
+
+    da = max(a_vals) - min(a_vals)
+    print(f"       main period Δz ≈ {period_z:.4f}")
+    print(f"       sub-cycle Δz ≈ {sub_z:.4f}")
+    print(f"       delta_alpha/alpha_0 (peak-to-peak) = {da/alpha:.2e}")
+
+    # 9.3  Sign of higher-order α correction
+    print("\n  9.3  Higher-order correction to α:")
+    print("       dual-pole symmetry requires O(δ_BU⁶) correction to be negative.")
+    print("       A positive correction falsifies the geometric identification.")
+
+
+# ================================================================
+# 10  Required continuum maps
+# ================================================================
+
+def print_required_maps():
+    """Section 10: open problems."""
+    print("\n--- 10  Required continuum maps ---")
+    maps = [
+        "1.  Optical-conjugacy map for E_CS (predict G from geometry)",
+        "2.  SU(2) generator map to gravitomagnetic vector potential A_g",
+        "3.  Shell displacement map to Riemann curvature tensor",
+        "4.  Nonlinear self-consistency and 3+1 Hamiltonian constraint",
+        "5.  Exterior matching of shell-regularised interior profile",
+        "6.  Physical memory map (depth-8 residual → BMS supertranslation)",
+        "7.  Helicity-2 map from two-pass orientation recovery",
+        "8.  Quadrupole radiation map (k=2 shell mode → metric strain)",
+        "9.  Perihelion precession (requires nonlinear field interaction)",
+        "10. EM/gravity coupling identification (α_CGM → α, ζ_CGM → ζ_G)",
+    ]
+    for m in maps:
+        print(f"     {m}")
+
+
+# ================================================================
+# Main
+# ================================================================
 
 if __name__ == "__main__":
-    main()
+
+    print("=" * 70)
+    print("CGM Gravitational Coupling Analysis")
+    print("=" * 70)
+    print("  G derivation policy:")
+    print("  - Planck mass/energy not used as input (circular).")
+    print("  - ℏ for unit conversion only, not a gravitational scale.")
+    print("  - v_EW is the sole dimensional anchor for G_pred.")
+    print("  - Layer 1: exact kernel invariants (shell displacement, horizons).")
+    print("  - Layer 2: numerical coupling reconstruction at v_EW.")
+    print("  - Layer 3: aperture-depth closure law (rho^5, 4-transition term).")
+
+    # 1
+    print("\n--- 1  Primitive measures ---")
+    print(f"  s_p (CS)   = π/2       = {s_p:.12f}")
+    print(f"  u_p (UNA)  = cos(π/4)  = {u_p:.12f}")
+    print(f"  o_p (ONA)  = π/4       = {o_p:.12f}")
+    print(f"  Q_G        = 4π        = {Q_G:.12f}")
+    print(f"  m_a        = 1/(2√2π)  = {m_a:.12f}")
+    print(f"  δ_BU       =           = {d_BU:.12f}")
+    print(f"  ρ          = δ_BU/m_a  = {rho:.12f}")
+    print(f"  Δ          = 1 − ρ     = {Delta:.12f}")
+    print(f"  α (CGM)    = δ_BU⁴/m_a = {alpha:.12f}")
+    print(f"  ζ          = Q_G/S_geo = {zeta:.12f}")
+    print(f"  48·Δ       =           = {prod_48Delta:.12f}")
+    print(f"  α·ζ        = ρ⁴/(π√3) = {alpha_zeta_exact:.12f}")
+
+    # 2
+    print("\n--- 2  Physical anchors ---")
+    print(f"  v_EW       = {v_EW} GeV")
+    print(f"  G (meas)   = {G_measured_nat:.5e} GeV⁻²")
+    print(f"  α_G(v)     = {alpha_G_meas:.5e}")
+
+    # 3  UV ratio consistency
+    print("\n--- 3  UV ratio consistency ---")
+    r_UNA = u_p / s_p
+    r_ONA = o_p / s_p
+    r_BU  = 2 * m_a**2 / math.pi
+    r_BU2 = 1.0 / (4.0 * math.pi**2)
+    print(f"  E_UNA/E_CS = {r_UNA:.6f}")
+    print(f"  E_ONA/E_CS = {r_ONA:.6f}")
+    print(f"  E_BU/E_CS  = {r_BU:.8f}  (= 1/(4π²) = {r_BU2:.8f})")
+
+    # 4  Kernel invariants
+    print("\n--- 4  Kernel invariants ---")
+    mon = _require_monodromy()
+    shell_inv = run_shell_displacement_invariant(mon)
+    G_kernel  = run_gauss_map(shell_inv)
+    eq_horiz  = run_equality_horizon(mon)
+
+    # 5  Orientation recovery
+    print("\n--- 5  Orientation recovery ---")
+    mono_ok = run_monodromy_probes(mon)
+    circ    = run_family_circulation(mon)
+    mem     = run_gravitational_memory(mon)
+
+    # 6  Gravitational radiation
+    gw = run_gw_spectrum(mon)
+
+    # 7  Potential profile
+    pot = run_potential_profile(G_kernel)
+
+    # 8  Coupling constant
+    coup = run_coupling(G_kernel)
+
+    # 9  Testable predictions
+    run_predictions()
+
+    # 10  Required maps
+    print_required_maps()
+
+    # Summary
+    print("\n" + "=" * 70)
+    print("SUMMARY")
+    print("=" * 70)
+    print(f"  Q_G       = {Q_G:.12f}")
+    print(f"  m_a       = {m_a:.12f}")
+    print(f"  δ_BU      = {d_BU:.12f}")
+    print(f"  ρ         = {rho:.12f}")
+    print(f"  Δ         = {Delta:.12f}")
+    print(f"  G_kernel  = π/6 = {G_kernel:.12f}")
+    print(f"  α·ζ       = {alpha_zeta_exact:.12f}")
+    if coup:
+        print(f"  τ_G       = {coup['tau_G']:.6f}  (exponents motivated)")
+        print(f"  G_pred    = {coup['G_pred']:.6e} GeV⁻²")
+        print(f"  G_meas    = {G_measured_nat:.6e} GeV⁻²")
+        print(f"  G_pred/G_meas − 1 = {coup['G_pred']/G_measured_nat - 1:.2e}")
+        print(f"  E_CS      = {coup['E_CS']:.6e} GeV")
+    print(f"  G (SI)    = {G_SI_measured:.6e} m³ kg⁻¹ s⁻²")
+    print(f"  orientation recovery = {mono_ok}")
+    print()
+    print("  Status of τ_G = |Ω|·Δ·ρ⁵·(1−4ρΔ²):")
+    print("  The exponents 5 and 4 are motivated by the five shell")
+    print("  checkpoints and four transitions of the canonical depth-4")
+    print("  word. They are not yet derived from a first-principles")
+    print("  path integral through shell space. See §10 item 1.")

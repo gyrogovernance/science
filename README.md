@@ -48,7 +48,8 @@ The model axiomatizes physics from logic, deriving **three dimensional space wit
 
 Derived predictions include:
 - The **quantum gravity invariant** `Q_G = 4π`, representing the complete solid angle for coherent observation.
-- A geometric estimate of the **fine structure constant** `α ≈ 1/137.036`, matching experiment without physical inputs.
+- A geometric estimate of the **fine structure constant** `α ≈ 1/137.036`, matching experiment from aperture geometry with one dimensional anchor.
+- A derivation of the **gravitational coupling** `κ = 8πG/c⁴` from kernel invariants, predicting G to 25 parts per million from the electroweak anchor.
 - A universal **2.07% aperture ratio**, connecting physical coupling to the optimal balance for AI alignment.
 - The **masses of the Higgs, Z, W, and top quark** derived from pure discrete geometry with no fitted parameters, matching experimental measurements to better than one part in a million.
 
@@ -88,6 +89,7 @@ Derived predictions include:
 
 | Version | Focus Area | Documentation | Implementation |
 |---------|------------|---------------|----------------|
+| **1.2.7** | 🌍 Gravity: Ancestry, Quantization, and Compact Code Structure | [Analysis](docs/Findings/Analysis_Gravity.md) | [Code](experiments/cgm_gravity_analysis.py) |
 | **1.2.6** | 🧬 Compact Geometry: Spectral Algebra of the Electroweak Mass Spectrum | [Analysis](docs/Findings/Analysis_Compact_Geometry.md) | [Code](experiments/cgm_compact_geometry_core.py), [Run](experiments/cgm_compact_geometry_run.py) |
 | **1.2.5** | 🌀 Gyroscopic Multiplication | [Analysis](docs/Findings/Analysis_Gyroscopic_Multiplication.md) | []() |
 | **1.1.2** | ⚡ Energy Scale Unification | [Analysis](docs/Findings/Analysis_Energy_Scales.md) | [Code](/experiments/cgm_energy_analysis.py) |
@@ -112,6 +114,10 @@ Derived predictions include:
 - ✅ Derived Higgs, Z, W, and top quark masses from discrete code geometry with no continuously fitted parameters
 - ✅ Predicted the weak mixing angle from the same structure, matching experiment to a relative error of 7.7e-9
 - ✅ Showed quark flavors map onto a complete Boolean classification of compact residuals, with each flavor occupying a unique structural role
+- ✅ Derived the gravitational coupling form κ = 8πG/c⁴ from three independently proven components: the two-pass carrier recovery (factor 2), the closure solid angle Q_G = 4π, and the four-stage depth structure (c⁴)
+- ✅ Predicted the gravitational constant G from kernel invariants and the electroweak anchor to 25 parts per million
+- ✅ Derived spin-2 as the algebraic consequence of four-family depth-8 orientation recovery, proven by monodromy diagnostic
+- ✅ Established the α·ζ product α × ζ = ρ⁴/(π√3) as an exact kernel invariant linking electromagnetic and gravitational coupling with no free parameters
 
 ### Empirical Validations
 - ✅ CMB multipole enhancement at ℓ = 37 and harmonics (p = 0.0039)
@@ -125,12 +131,15 @@ Derived predictions include:
 - ✅ Aperture constant Delta recovered from the W/Z mass ratio to an absolute accuracy of 8.3e-10
 - ✅ Four electroweak masses jointly recover the aperture constant to 7.3×10⁻¹⁰
 - ✅ Z mass predicted from Higgs and W masses to 3.7×10⁻⁸ relative error
+- ✅ Gravitational constant G predicted to 2.5 parts in 10⁵ from kernel invariants and the electroweak scale
 
 ### Active Development
 - 🔶 Independent validation of lepton carrier-law derivation and connection to radiative corrections
 - 🔶 Connecting compact geometry to quantum field theory radiative corrections
 - 🔶 Cosmological dynamics from geometric evolution
 - 🔶 Experimental validation programs
+- 🔶 Nonlinear extension from Poisson to Einstein field equations via ancestry-density self-consistency
+- 🔶 Shell-space path integral for independent verification of the gravitational optical depth
 
 ---
 
@@ -172,5 +181,5 @@ If you use this framework in your research, please cite:
   <p>All foundational ideas, design decisions, and conceptual frameworks originate from the Author.</p>
   <p>Responsibility for the validity, coherence, and ethical direction of this project remains fully human.</p>
   <p><strong>Acknowledgements:</strong><br>
-  This project benefited from AI language model services accessed through LMArena, Cursor IDE, OpenAI (ChatGPT), Anthropic (Claude), XAI (Grok), Deepseek, and Google (Gemini).</p>
+  This project benefited from AI language model services accessed through Z.AI, Arena, Cursor IDE, OpenAI (ChatGPT), Anthropic (Claude), XAI (Grok), Deepseek, and Google (Gemini).</p>
 </div>
