@@ -89,7 +89,7 @@ Derived predictions include:
 
 | Version | Focus Area | Documentation | Implementation |
 |---------|------------|---------------|----------------|
-| **1.2.7** | 🌍 Gravity: Ancestry, Quantization, and Compact Code Structure | [Analysis](docs/Findings/Analysis_Gravity.md) | [Code](experiments/cgm_gravity_analysis.py) |
+| **1.2.8** | 🌍 Gravity: Ancestry, Quantization, and Compact Code Structure | [Analysis](docs/Findings/Analysis_Gravity.md) | [Common](experiments/cgm_gravity_common.py), [Kernel](experiments/cgm_gravity_analysis_1.py), [Coupling](experiments/cgm_gravity_analysis_2.py) |
 | **1.2.6** | 🧬 Compact Geometry: Spectral Algebra of the Electroweak Mass Spectrum | [Analysis](docs/Findings/Analysis_Compact_Geometry.md) | [Code](experiments/cgm_compact_geometry_core.py), [Run](experiments/cgm_compact_geometry_run.py) |
 | **1.2.5** | 🌀 Gyroscopic Multiplication | [Analysis](docs/Findings/Analysis_Gyroscopic_Multiplication.md) | []() |
 | **1.1.2** | ⚡ Energy Scale Unification | [Analysis](docs/Findings/Analysis_Energy_Scales.md) | [Code](/experiments/cgm_energy_analysis.py) |
@@ -114,7 +114,7 @@ Derived predictions include:
 - ✅ Derived Higgs, Z, W, and top quark masses from discrete code geometry with no continuously fitted parameters
 - ✅ Predicted the weak mixing angle from the same structure, matching experiment to a relative error of 7.7e-9
 - ✅ Showed quark flavors map onto a complete Boolean classification of compact residuals, with each flavor occupying a unique structural role
-- ✅ Derived the gravitational coupling form κ = 8πG/c⁴ from three independently proven components: the two-pass carrier recovery (factor 2), the closure solid angle Q_G = 4π, and the four-stage depth structure (c⁴)
+- ✅ Derived the gravitational coupling form κ = 8πG/c⁴ from the two-pass carrier recovery (factor 2), the closure solid angle Q_G = 4π, and standard quadratic source–response scaling (c⁴)
 - ✅ Predicted the gravitational constant G from kernel invariants and the electroweak anchor to 25 parts per million
 - ✅ Derived spin-2 as the algebraic consequence of four-family depth-8 orientation recovery, proven by monodromy diagnostic
 - ✅ Established the α·ζ product α × ζ = ρ⁴/(π√3) as an exact kernel invariant linking electromagnetic and gravitational coupling with no free parameters
@@ -131,7 +131,7 @@ Derived predictions include:
 - ✅ Aperture constant Delta recovered from the W/Z mass ratio to an absolute accuracy of 8.3e-10
 - ✅ Four electroweak masses jointly recover the aperture constant to 7.3×10⁻¹⁰
 - ✅ Z mass predicted from Higgs and W masses to 3.7×10⁻⁸ relative error
-- ✅ Gravitational constant G predicted to 2.5 parts in 10⁵ from kernel invariants and the electroweak scale
+- ✅ Gravitational constant G predicted to 25 ppm from kernel invariants and the electroweak scale
 
 ### Active Development
 - 🔶 Independent validation of lepton carrier-law derivation and connection to radiative corrections

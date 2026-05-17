@@ -4,11 +4,25 @@ All notable changes to the CGM Experimental Framework will be documented in this
 
 ---
 
+## [1.2.8-CGM_Gravity] - 2026-05-16
+
+### Added
+- `experiments/cgm_gravity_common.py`: shared gravity invariants, τ_G helpers, and stress/current diagnostics.
+- `experiments/cgm_gravity_analysis_2.py`: ρ⁵ exponent checks, per-shell σ_A and J_A, τ_cycle proxies, and G prediction at v_EW.
+
+### Updated
+- `docs/Findings/Analysis_Gravity.md`: manuscript aligned with scripts and external review—translational-only σ_A definition, ranked τ_G = |Ω|Δρ⁵(1−4ρΔ²) derivation, weak-field propagation speed from GEM, exact 48Δ = 0.993578587835, 25 ppm G residual acknowledged as Δ⁴ subleading; removed speculative correction and perturbation sections.
+
+### Results
+- Leading closed form fixes G to 25 ppm; fractional residual −2.46×10⁻⁵ consistent with subleading Δ⁴ corrections.
+
+---
+
 ## [1.2.7-CGM_Gravity] - 2026-05-14 to 2026-05-15
 
 ### Added
 - Added `docs/Findings/Analysis_Gravity.md`: gravitational coupling from kernel invariants, ancestry field equations, gyrogroup structure, and electroweak-anchor prediction of G.
-- Added `experiments/cgm_gravity_analysis.py`: kernel diagnostics, aperture-depth optical depth, α·ζ invariant, and coupling reconstruction at v_EW.
+- Added `experiments/cgm_gravity_analysis_1.py`: kernel diagnostics, aperture-depth optical depth, α·ζ invariant, and coupling reconstruction at v_EW.
 - Added `experiments/cgm_aqpu_monodromy.py`: aQPU monodromy diagnostic for depth-4/depth-8 closure, shell displacement invariants, and quadrupole shell modes.
 
 ### Results
