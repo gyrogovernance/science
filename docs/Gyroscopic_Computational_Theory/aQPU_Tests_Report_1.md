@@ -601,7 +601,7 @@ The ratio δ_BU / m_a = 0.9793, where m_a = 1/(2√(2π)) is the CGM aperture sc
 Δ = 1 − δ_BU/m_a = 0.020699553913   (≈ 2.07%)
 ```
 
-The same constant, raised to the fourth power and normalised by m_a, yields the fine-structure constant α = δ_BU⁴/m_a = 0.007297352563 (matching experiment to nine significant digits; confirmed in the Physics Tests Report, Part 9.2).
+The same constant, raised to the fourth power and normalised by m_a, yields the kernel fine-structure coupling α₀ = δ_BU⁴/m_a ≈ 0.007299683 (+319 ppm relative to CODATA). The transport-corrected value matches experiment to nine significant figures (fine-structure analysis; Physics Tests Report, Part 9.2).
 
 ### 10.2 Distance from Clifford Angles
 

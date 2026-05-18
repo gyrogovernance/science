@@ -89,8 +89,9 @@ Derived predictions include:
 
 | Version | Focus Area | Documentation | Implementation |
 |---------|------------|---------------|----------------|
-| **1.2.8** | 🌍 Gravity: Ancestry, Quantization, and Compact Code Structure | [Analysis](docs/Findings/Analysis_Gravity.md) | [Common](experiments/cgm_gravity_common.py), [Kernel](experiments/cgm_gravity_analysis_1.py), [Coupling](experiments/cgm_gravity_analysis_2.py) |
-| **1.2.6** | 🧬 Compact Geometry: Spectral Algebra of the Electroweak Mass Spectrum | [Analysis](docs/Findings/Analysis_Compact_Geometry.md) | [Code](experiments/cgm_compact_geometry_core.py), [Run](experiments/cgm_compact_geometry_run.py) |
+| **1.2.9** | 🌍 Gravity: aQPU Holonomy and Exact Kernel Theorems | [Analysis](docs/Findings/Analysis_Gravity.md) | [aQPU-1](experiments/cgm_aqpu_wavefunction_1.py), [aQPU-2](experiments/cgm_aqpu_wavefunction_2.py), [3](experiments/cgm_gravity_analysis_3.py), [Common](experiments/cgm_gravity_common.py), [1](experiments/cgm_gravity_analysis_1.py), [2](experiments/cgm_gravity_analysis_2.py) |
+| **1.2.8** | 🌍 Gravity: Ancestry Field Law and 25 ppm G | [Analysis](docs/Findings/Analysis_Gravity.md) | [Common](experiments/cgm_gravity_common.py), [1](experiments/cgm_gravity_analysis_1.py), [2](experiments/cgm_gravity_analysis_2.py) |
+| **1.2.6** | 🧬 Compact Geometry: Spectral Algebra of the Electroweak Mass Spectrum | [Analysis](docs/Findings/Analysis_Compact_Geometry.md) | [Core](experiments/cgm_compact_geom_core.py), [Kernel](experiments/cgm_compact_geom_kernel.py), [Report](experiments/cgm_compact_geom_report.py) |
 | **1.2.5** | 🌀 Gyroscopic Multiplication | [Analysis](docs/Findings/Analysis_Gyroscopic_Multiplication.md) | []() |
 | **1.1.2** | ⚡ Energy Scale Unification | [Analysis](docs/Findings/Analysis_Energy_Scales.md) | [Code](/experiments/cgm_energy_analysis.py) |
 | **1.1.0** | 📏 4pi Unification through Alignment | [Analysis](/docs/Findings/Analysis_4pi_Alignment.md) | []() |
@@ -118,6 +119,7 @@ Derived predictions include:
 - ✅ Predicted the gravitational constant G from kernel invariants and the electroweak anchor to 25 parts per million
 - ✅ Derived spin-2 as the algebraic consequence of four-family depth-8 orientation recovery, proven by monodromy diagnostic
 - ✅ Established the α·ζ product α × ζ = ρ⁴/(π√3) as an exact kernel invariant linking electromagnetic and gravitational coupling with no free parameters
+- ✅ Verified K4 holonomy, shell traverse, and depth-4 confinement on the 4096-state aQPU manifold (`cgm_aqpu_wavefunction_1.py`, `cgm_aqpu_wavefunction_2.py`)
 
 ### Empirical Validations
 - ✅ CMB multipole enhancement at ℓ = 37 and harmonics (p = 0.0039)

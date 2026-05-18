@@ -167,7 +167,9 @@ From BU dual-pole monodromy through quartic scaling:
 
 α = (δ_BU)^4 /  m_a = 0.007299734
 
-Compared to CODATA value α = 0.007297353: +0.0316% deviation
+Compared to CODATA value α = 0.007297353: +0.0316% deviation (+319 ppm).
+
+The transport-corrected formula in the fine-structure analysis [24, 27] yields α ≈ 0.007297352563, matching CODATA to nine significant figures.
 
 The quartic dependence emerges from the geometric requirement for dual commutators and poles in BU traversal processes.
 

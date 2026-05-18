@@ -4,6 +4,32 @@ All notable changes to the CGM Experimental Framework will be documented in this
 
 ---
 
+## [1.2.9-CGM_Gravity&Beyond] - 2026-05-17 and 18
+
+### Added
+
+- `experiments/cgm_aqpu_wavefunction_1.py`: holonomy and modal-depth diagnostics on the 4096-state manifold—carrier rest, Z2 spectral holonomy, and BU egress/ingress readings tied to the canonical word.
+- `experiments/cgm_aqpu_wavefunction_2.py`: exhaustive K4 operator verification (W2, W2', F)—shell pole swap, depth-4 confinement, and chirality transport lemmas used by the gravity kernel.
+
+### Updated
+
+- `experiments/cgm_gravity_analysis_1.py`: residual closure, rho^5 STF split, kernel transport tables, and coupling summary aligned with the wavefunction invariants.
+- `experiments/cgm_gravity_analysis_2.py`: canonical kernel theorems (c4 from two routes, Gauss bridge, alpha·zeta, 8pi = 2·Q_G).
+- `experiments/cgm_gravity_analysis_3.py`: exact Fraction derivations—carrier trace C(q), ancestry stress, tau_cycle, tau_G factorization, and compact-geometry bridge for alpha_G(v).
+- `experiments/cgm_gravity_common.py`: shared invariants, tau_G helpers, shell-path transport, and stress/current diagnostics for all gravity scripts.
+
+- `experiments/cgm_compact_geom_core.py`: pure electroweak algebra layer (mass laws, lepton ladder, shell transitions).
+- `experiments/cgm_compact_geom_kernel.py`: finite 4096-state kernel proofs feeding the core module.
+- `experiments/cgm_compact_geom_report.py`: formatted report output from core and kernel (no standalone computation).
+- `docs/Findings/Analysis_Gravity.md`: kernel sections cite wavefunction diagnostics; shell traverse D=24, K4 holonomy, and exact C(q) trace routes tied to the new scripts.
+
+### Results
+
+- K4 algebra {id, W2, W2', F} verified on all 4096 states; path traverse D=24 invariant across 64 micro-refs.
+- Carrier traces C(1)=C(5)=28/9 and C(3)=52/25 confirmed by three independent routes in `cgm_gravity_analysis_3.py`.
+
+---
+
 ## [1.2.8-CGM_Gravity] - 2026-05-16
 
 ### Added

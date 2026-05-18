@@ -492,14 +492,14 @@ This is the normalization relation that connects the quantum gravity horizon (Q_
 
 ### 9.2 Fine-Structure Constant Prediction
 
-The intrinsic dimensionless coupling alpha is predicted as alpha = delta_BU^4 / m_a:
+The kernel coupling is alpha_0 = delta_BU^4 / m_a:
 ```
-alpha_CGM = delta_BU^4 / m_a = (0.195342)^4 / 0.199471 = 0.007297352563
+alpha_0 = delta_BU^4 / m_a = (0.195342)^4 / 0.199471 = 0.007299683322
 alpha_exp = 0.0072973525693
-|alpha_CGM - alpha_exp| / alpha_exp < 4 * 10^{-4}
+|alpha_0 - alpha_exp| / alpha_exp = 3.194e-4
 ```
 
-Agreement to within 0.04% (400 ppm). The test uses a tolerance of 4e-4, which is satisfied. The CGM paper quotes 9-digit agreement, though the test uses the less precise stored value of delta_BU.
+Agreement to within 319 ppm (0.0316%). The transport-corrected CGM value alpha = 0.007297352563 matches alpha_exp to nine significant figures (companion fine-structure derivation).
 
 ### 9.3 K_QG Identity
 

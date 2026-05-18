@@ -47,7 +47,7 @@ The Common Governance Model (CGM) demonstrates that coherent recursive measureme
 
 - **Deductive:** Three-dimensional structure follows necessarily from the foundational axiom through formal specifications plus requirements for continuous physical implementation. Alternative dimensionalities are constructively excluded.
 - **Invariants:** The constraints fix three representation-independent constants: the quantum gravity horizon `Q_G = 4π` steradians, the monodromy defect `δ_BU ≈ 0.1953` radians, and aperture scale `m_a ≈ 0.1995`. Their ratio `δ_BU/m_a = 0.9793` determines both physical coupling and informational aperture.
-- **Phenomenological:** At leading geometric order, the framework yields a fine-structure constant estimate of `α = 0.007297352563`, matching experimental synthesis within stated uncertainty. The same geometric ratio predicts a 2.07% optimal aperture for discrete alignment systems. Preliminary evaluations show transformer architectures operating at six to eight times this value.
+- **Phenomenological:** The kernel formula α₀ = δ_BU⁴/m_a gives α₀ ≈ 0.007299683 (+319 ppm relative to CODATA). With UV-IR transport corrections (companion analyses), α ≈ 0.007297352563 matches experimental synthesis to nine significant figures. The same geometric ratio predicts a 2.07% optimal aperture for discrete alignment systems. Preliminary evaluations show transformer architectures operating at six to eight times this value.
 
 **Falsification Paths:**
 
@@ -961,29 +961,36 @@ The 2.07% value emerges from the geometry of depth-four balance, not from empiri
 
 ##### The Fine-Structure Constant
 
-At leading order, the framework identifies the electromagnetic coupling at the BU focus with CGM geometric invariants:
+The kernel electromagnetic coupling at the BU focus is:
 
 ```
-α_CGM = δ_BU⁴/m_a
+α₀ = δ_BU⁴/m_a
 ```
 
-**Numerical evaluation:**
+**Kernel evaluation:**
 
 ```
-α_CGM = (0.195342)⁴ / 0.199471 = 0.007297352563
+α₀ = (0.195342)⁴ / 0.199471 = 0.007299683322
 ```
 
-**Experimental comparison:**  
-From Morel et al. (2020), the experimentally determined fine-structure constant is:
+**Experimental comparison (kernel):**  
+From Morel et al. (2020):
 
 ```
 α^(-1) = 137.035999084(21)
 α_exp ≈ 0.0072973525693(11)
 ```
 
-**Agreement:** The values match to nine significant digits.
+Relative deviation (α₀ vs α_exp): +319 ppm (+0.0316%).
 
-**Probability estimate:** A back-of-the-envelope calculation places the probability of matching nine digits via random geometric combinations of constraint-fixed invariants below 10^(-8).
+**Transport-corrected value:**  
+The full CGM formula (UV-IR curvature, holonomy transport, IR alignment; see companion fine-structure analysis) yields:
+
+```
+α = 0.007297352563
+```
+
+Agreement with α_exp: nine significant figures (0.043 ppb residual in the companion derivation).
 
 ##### Why This Predicts Electromagnetic Coupling
 
@@ -1070,7 +1077,7 @@ The construction is falsifiable through:
 - Positive O(δ_BU⁶) correction at the Thomson limit (violates dual-pole symmetry)
 - Alternative geometric construction achieving comparable match
 
-**Current status:** This is a phenomenological prediction requiring independent validation beyond leading geometric order. The nine-digit agreement is suggestive but not conclusive. Higher-order corrections and experimental verification remain necessary.
+**Current status:** Kernel α₀ is fixed at +319 ppm relative to experiment. The transport-corrected α matches experiment to nine significant figures; independent validation of the correction chain and higher-order terms remains necessary.
 
 ### Application to Artificial Intelligence
 
@@ -1533,9 +1540,9 @@ The framework is multiply falsifiable. Here are the specific ways to demonstrate
 
 #### 4. Experimental Disagreement with α
 
-**Test:** Precision measurements of fine-structure constant α(0) at Thomson limit disagree with α_CGM = 0.007297352563 beyond combined uncertainties.
+**Test:** Precision measurements of fine-structure constant α(0) at Thomson limit disagree with the transport-corrected CGM value α = 0.007297352563 beyond combined uncertainties.
 
-**Current status:** Morel et al. (2020) gives α^(-1) = 137.035999084(21), matching CGM to 9 digits.
+**Current status:** Morel et al. (2020) gives α^(-1) = 137.035999084(21), matching the transport-corrected CGM prediction to nine significant figures. The kernel value α₀ = 0.007299683322 differs by 319 ppm.
 
 **Required precision:** Future experiments with δα/α < 10^(-10) that systematically deviate from CGM prediction.
 
@@ -1878,10 +1885,14 @@ Aperture ratio:
   δ_BU/m_a = 0.9793
   Aperture = 1 - 0.9793 = 0.0207 = 2.07%
 
-Fine-structure prediction:
-  α = δ_BU⁴/m_a = 0.007297352563
+Fine-structure (kernel):
+  α₀ = δ_BU⁴/m_a = 0.007299683322
   Experimental: 0.0072973525693(11)
-  Agreement: 9 significant digits ✓
+  Deviation: +319 ppm
+
+Fine-structure (transport-corrected):
+  α = 0.007297352563
+  Agreement with experiment: 9 significant digits
 ```
 
 **5. GyroDiagnostics Evaluation**
