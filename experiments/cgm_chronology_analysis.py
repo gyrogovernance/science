@@ -664,7 +664,7 @@ def run_comprehensive_chronology_analysis() -> None:
     m_a = compute_aperture_parameter()
 
     print("CGM Chronology Analysis: CGM-Native Variables")
-    print("=" * 60)
+    print("=" * 9)
     print(f"Random seed: 42 (for reproducibility)")
     print(f"Planck time t_P = {t_planck:.6e} s")
     print(f"CGM time scale T₀ = {t0_cgm:.6e} s (16.54 × t_P)")
@@ -735,9 +735,9 @@ def run_comprehensive_chronology_analysis() -> None:
 
     # Summary comparison
     print("SUMMARY COMPARISON")
-    print("=" * 60)
+    print("=" * 9)
     print(f"{'Clock Variable':<20} {'Primary p-value':<15} {'Evidence'}")
-    print("-" * 60)
+    print("-" * 9)
 
     primary_p_time = float(stats_time.get("weighted_cgm_median_p", 1.0))
     primary_p_temp = float(stats_temp.get("weighted_cgm_median_p", 1.0))

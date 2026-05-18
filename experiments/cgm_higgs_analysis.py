@@ -525,7 +525,7 @@ class CGMAnalysis:
             )
 
         print("\nContinuous spins analysis (45° backbone + 3° aperture clicks):")
-        print("=" * 60)
+        print("=" * 9)
         print("Core physics: e-exponents sit on 45° lattice with quantized 3° offsets")
         print("Each 3° click multiplies mass ratio by ~1.033 (aperture impact)")
         print()
@@ -533,7 +533,7 @@ class CGMAnalysis:
         print("• Masses/Yukawas live on light-cone line (log-scale duality)")
         print("• Fine angular structure (45°, 3° clicks, 30-fold) lives on 2-torus")
         print("• 3° clicks = π/60 = 1/15 of π/4 threshold (15-fold subdivision)")
-        print("=" * 60)
+        print("=" * 9)
 
         for sector in ["up", "down", "lepton"]:
             s = self.calculate_continuous_spins(sector)

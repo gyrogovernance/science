@@ -573,7 +573,7 @@ class CGMKompaneyetsAnalyzer:
     def demonstrate_two_regimes(self) -> Dict[str, Any]:
         """Demonstrate early/high-density vs late/low-density regimes."""
         print("🔬 DEMONSTRATING TWO REGIMES")
-        print("=" * 60)
+        print("=" * 9)
 
         x = np.logspace(-2, 2, 100)
 
@@ -929,7 +929,7 @@ class CGMKompaneyetsAnalyzer:
             Validation results with correlation and significance
         """
         print(f"🔍 ENHANCED SHAPE-ONLY VALIDATION (HEALPix Geometry)")
-        print("-" * 60)
+        print("-" * 9)
 
         if not HEALPY_AVAILABLE:
             return {
@@ -1493,7 +1493,7 @@ class CGMKompaneyetsAnalyzer:
 def main():
     """Demonstrate unified CGM Kompaneyets analysis."""
     print("🔬 CGM KOMPANEYETS ANALYZER")
-    print("=" * 60)
+    print("=" * 9)
     print("Unified framework for spectral distortion analysis\n")
 
     # Standard analysis
@@ -1509,7 +1509,7 @@ def main():
     regimes = analyzer_enhanced.demonstrate_two_regimes()
 
     print("\n🎯 IMPLEMENTATION COMPLETE")
-    print("=" * 60)
+    print("=" * 9)
     print("✅ Standard Kompaneyets evolution")
     print("✅ Enhanced physics with photon production")
     print("✅ CGM domain mapping and validation")

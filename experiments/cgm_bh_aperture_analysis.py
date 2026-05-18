@@ -433,9 +433,9 @@ def print_result(res: BHResult) -> None:
 
 def print_derived_predictions() -> None:
     """Print the three mass-independent derived predictions from CGM scaling."""
-    print("\n" + "=" * 60)
+    print("\n" + "=" * 9)
     print("CGM DERIVED PREDICTIONS: Mass-Independent Consequences")
-    print("=" * 60)
+    print("=" * 9)
 
     # 1. Entropy density at horizon
     s_density = (k_B * c**3) / (4.0 * hbar * G) * (1.0 + m_a)
@@ -495,9 +495,9 @@ def print_derived_predictions() -> None:
 
 def print_horizon_micro_quanta() -> None:
     """Effective Planck scale and area quantum on the horizon under CGM scaling."""
-    print("\n" + "=" * 60)
+    print("\n" + "=" * 9)
     print("HORIZON MICRO-QUANTA: Effective Planck Scale on the Horizon")
-    print("=" * 60)
+    print("=" * 9)
     lP = math.sqrt(hbar * G / c**3)
     G_eff = G / (1.0 + m_a)
     lP_eff = math.sqrt(hbar * G_eff / c**3)
@@ -530,9 +530,9 @@ def print_horizon_micro_quanta() -> None:
 
 def print_page_curve_invariants() -> None:
     """Page time/quanta invariants under CGM scaling, as explicit equations."""
-    print("\n" + "=" * 60)
+    print("\n" + "=" * 9)
     print("PAGE CURVE INVARIANTS: Lifetime, Quanta, Entropy at Page Time")
-    print("=" * 60)
+    print("=" * 9)
     t_ratio = (1.0 + m_a) ** 4
     N_ratio = 1.0 + m_a
     print(f"t_Page,CGM = (1 + m_a)^4 · t_Page,std    ⇒ ratio = {t_ratio:.3f}")
@@ -542,9 +542,9 @@ def print_page_curve_invariants() -> None:
 
 def print_desitter_horizon_scaling() -> None:
     """De Sitter horizon entropy scaling under CGM."""
-    print("\n" + "=" * 60)
+    print("\n" + "=" * 9)
     print("DE SITTER HORIZON SCALING: Cosmological Horizon Entropy")
-    print("=" * 60)
+    print("=" * 9)
     # Example with current Hubble parameter
     H0 = 2.2e-18  # s^-1 (current Hubble parameter, order of magnitude)
     S_dS_std = pi * k_B * c**5 / (G * hbar * H0**2)
@@ -560,9 +560,9 @@ def print_desitter_horizon_scaling() -> None:
 
 def print_ringdown_analysis() -> None:
     """Analysis of CGM effects on merger ringdown and quasinormal modes."""
-    print("\n" + "=" * 60)
+    print("\n" + "=" * 9)
     print("RINGDOWN ANALYSIS: Quasinormal Modes and Merger Signatures")
-    print("=" * 60)
+    print("=" * 9)
 
     # Standard QNM frequencies for Schwarzschild (fundamental mode)
     # ω = c³/(GM) × f_lmn where f_lmn are dimensionless constants
@@ -594,9 +594,9 @@ def print_ringdown_analysis() -> None:
 
 def print_rindler_horizon_analysis() -> None:
     """Analysis of CGM scaling for Rindler horizons (uniform acceleration)."""
-    print("\n" + "=" * 60)
+    print("\n" + "=" * 9)
     print("RINDLER HORIZON ANALYSIS: Uniform Acceleration Case")
-    print("=" * 60)
+    print("=" * 9)
 
     # Rindler horizon properties
     # For uniform acceleration a, horizon at x = c²/a
@@ -632,9 +632,9 @@ def print_rindler_horizon_analysis() -> None:
 
 def print_binary_merger_analysis() -> None:
     """Analysis of CGM effects on binary black hole merger rates and dynamics."""
-    print("\n" + "=" * 60)
+    print("\n" + "=" * 9)
     print("BINARY MERGER ANALYSIS: Rates, Lifetimes, and Dynamics")
-    print("=" * 60)
+    print("=" * 9)
 
     print("Standard binary merger timescales:")
     print("  • Inspiral phase: t_inspiral ∝ a^4/(GM₁M₂(M₁+M₂))")
@@ -677,9 +677,9 @@ def print_binary_merger_analysis() -> None:
 
 
 def print_ads_blackhole_analysis() -> None:
-    print("\n" + "=" * 60)
+    print("\n" + "=" * 9)
     print("ADS BLACK HOLE ANALYSIS: Proper 4D Schwarzschild–AdS")
-    print("=" * 60)
+    print("=" * 9)
 
     # Choose (M, L) pair - AdS horizon exists for all M > 0
     L_ads = 1.0e3  # 1 km AdS radius
@@ -776,9 +776,9 @@ def kerr_newman_cgm(M_kg: float, J: float, Q_C: float) -> Dict[str, float]:
 
 def print_kerr_newman_example():
     """Print example Kerr–Newman calculations with CGM scaling."""
-    print("\n" + "=" * 60)
+    print("\n" + "=" * 9)
     print("KERR CGM SCALING: Spinning Black Holes (Q≈0 astrophysical)")
-    print("=" * 60)
+    print("=" * 9)
 
     # Example: 10 solar mass BH, dimensionless spin a_* = 0.5, Q≈0 (astrophysical)
     M = 10.0 * M_sun

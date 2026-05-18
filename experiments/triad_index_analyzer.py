@@ -775,7 +775,7 @@ class TriadIndexAnalyzer:
         """
         if self.verbose:
             print("🎯 TRIAD SOURCE INDEX ANALYSIS")
-            print("=" * 60)
+            print("=" * 9)
             print("Testing 3-point, log-based scale relationships")
             print("Implementing: an index is not absolute - it needs neighbors")
             print()
@@ -1940,7 +1940,7 @@ class TriadIndexAnalyzer:
         Run all sanity checks and return comprehensive results.
         """
         print("\n🩺 RUNNING SANITY CHECKS")
-        print("=" * 60)
+        print("=" * 9)
 
         results = {}
 

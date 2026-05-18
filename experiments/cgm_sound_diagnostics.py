@@ -371,7 +371,7 @@ class CGMAcousticDiagnostics:
         Run acoustic diagnostic suite.
         """
         print("🔬 CGM ACOUSTIC DIAGNOSTICS")
-        print("=" * 60)
+        print("=" * 9)
 
         all_results = {}
 
@@ -436,7 +436,7 @@ class CGMAcousticDiagnostics:
         all_results["odd_even_modulation"] = modulation
 
         # Overall Assessment
-        print("\n" + "=" * 60)
+        print("\n" + "=" * 9)
         print("🎯 OVERALL ASSESSMENT:")
 
         assessments = {

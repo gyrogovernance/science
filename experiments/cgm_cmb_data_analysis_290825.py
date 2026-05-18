@@ -843,9 +843,9 @@ def test_unified_toroidal_signature(cmb_result, sn_result, bao_result, config):
     tests_passed.append(("2/3 closure position", closure_test))
 
     # Report
-    print("\n" + "=" * 60)
+    print("\n" + "=" * 9)
     print("UNIFIED TOROIDAL SIGNATURE TESTS")
-    print("=" * 60)
+    print("=" * 9)
 
     for name, passed in tests_passed:
         status = "✓ PASS" if passed else "✗ FAIL"
@@ -1692,9 +1692,9 @@ def compute_TCS_from_results(
 
 def print_config(config: Config):
     """Print the preregistered configuration for reproducibility."""
-    print("=" * 60)
+    print("=" * 9)
     print("PREREGISTERED CONFIGURATION")
-    print("=" * 60)
+    print("=" * 9)
     print(
         f"Memory axis: [{config.memory_axis[0]:.3f}, {config.memory_axis[1]:.3f}, {config.memory_axis[2]:.3f}]"
     )
@@ -1709,7 +1709,7 @@ def print_config(config: Config):
     )
     print(f"RNG seed: {config.base_seed}")
     print(f"Inside-view: {config.inside_view}")
-    print("=" * 60)
+    print("=" * 9)
     print()
 
 
@@ -1775,9 +1775,9 @@ def main():
     # Report interference signature
     interference = cmb_result["interference"]
 
-    print("\n" + "=" * 60)
+    print("\n" + "=" * 9)
     print("INTERFERENCE PATTERN RESULTS")
-    print("=" * 60)
+    print("=" * 9)
     print(f"P₂/C₄ power ratio: {cmb_result['p2c4_ratio_pow']:.3f} (expected ≈12)")
     print(f"P₂/C₄ amplitude p-value: {cmb_result['p2c4_p']:.4f}")
     print(f"Interference score: {interference['interference_score']:.3f}")
@@ -1802,9 +1802,9 @@ def main():
         )
 
     # UNIFIED TOROIDAL SIGNATURE TEST
-    print("\n" + "=" * 60)
+    print("\n" + "=" * 9)
     print("UNIFIED TOROIDAL SIGNATURE ANALYSIS")
-    print("=" * 60)
+    print("=" * 9)
     print("Testing 2/3 closure position and cosmic tilt resonances...")
 
     unified_signature_result = test_unified_toroidal_signature(
@@ -1845,9 +1845,9 @@ def main():
     # Get unified signature result from earlier in the function
     unified_signature_result = locals().get("unified_signature_result", False)
 
-    print(f"\n" + "=" * 60)
+    print(f"\n" + "=" * 9)
     print("INTERFERENCE HYPOTHESIS ASSESSMENT")
-    print("=" * 60)
+    print("=" * 9)
     print(
         f"Test 1: Interference Pattern (CMB P2/C4): {'PASS' if p2c4_sig else 'FAIL'} (p={cmb_result['p2c4_p']:.4f})"
     )

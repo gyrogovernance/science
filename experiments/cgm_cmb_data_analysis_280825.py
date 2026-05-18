@@ -1051,9 +1051,9 @@ class CrossScaleValidator:
 
     def test_planck_only(self) -> Dict[str, Any]:
         """Test ONLY Planck data across all axes (fast, independent)."""
-        print("\n" + "=" * 60)
+        print("\n" + "=" * 9)
         print("PLANCK-ONLY VALIDATION (Fast Path)")
-        print("=" * 60)
+        print("=" * 9)
 
         axes_to_test = {
             "cmb_dipole": self.find_optimal_axis("cmb_dipole"),
@@ -1079,9 +1079,9 @@ class CrossScaleValidator:
         )
         best_p = results[best_axis]["p_values"]["sign_coherence"]
 
-        print("\n" + "=" * 60)
+        print("\n" + "=" * 9)
         print("PLANCK-ONLY SUMMARY")
-        print("=" * 60)
+        print("=" * 9)
         print(f"Best axis: {best_axis}")
         print(f"Best p-value: {best_p:.4f}")
         print(f"Significance: {'YES' if best_p < 0.05 else 'NO'}")
@@ -1101,9 +1101,9 @@ class CrossScaleValidator:
         """Test ONLY Supernova data (independent test)."""
         if memory_axis is None:
             memory_axis = self.find_optimal_axis("galactic")
-        print("\n" + "=" * 60)
+        print("\n" + "=" * 9)
         print("SUPERNOVA-ONLY VALIDATION")
-        print("=" * 60)
+        print("=" * 9)
         print(
             f"Testing axis: [{memory_axis[0]:.3f}, {memory_axis[1]:.3f}, {memory_axis[2]:.3f}]"
         )
@@ -1126,9 +1126,9 @@ class CrossScaleValidator:
 
     def test_cross_scale_consistency(self) -> Dict[str, Any]:
         """Test consistency across all scales (full integration)."""
-        print("\n" + "=" * 60)
+        print("\n" + "=" * 9)
         print("FULL CROSS-SCALE VALIDATION")
-        print("=" * 60)
+        print("=" * 9)
 
         # Test different candidate axes
         axes_to_test = {
@@ -1207,9 +1207,9 @@ class CrossScaleValidator:
             f"  P2 mean fraction: {np.nanmean(stats['p2']):.3f}, C4 mean fraction: {np.nanmean(stats['c4']):.3f}"
         )
 
-        print("\n" + "=" * 60)
+        print("\n" + "=" * 9)
         print("SUMMARY")
-        print("=" * 60)
+        print("=" * 9)
         print(f"Best axis: {best_axis}")
         print(f"Combined p-value: {best_p:.4f}")
         print(f"Significance: {'YES' if best_p < 0.05 else 'NO'}")

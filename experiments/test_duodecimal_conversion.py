@@ -117,7 +117,7 @@ def main():
 
     # KEY CGM DISCOVERIES
     print("1. FUNDAMENTAL GEOMETRIC RELATIONSHIPS:")
-    print("-" * 60)
+    print("-" * 9)
 
     # Use mpmath constants if available for better precision
     if MPMATH_AVAILABLE:
@@ -146,7 +146,7 @@ def main():
         print(f"  {name:18} → {duo:>35} (base-12)")
 
     print("\n2. CGM QUANTUM ENERGY ANALYSIS:")
-    print("-" * 60)
+    print("-" * 9)
 
     quantum_numbers = {
         "E_Q (37 doublings)": 1.2862415e-23,
@@ -165,7 +165,7 @@ def main():
             print()
 
     print("\n3. HAND GEOMETRY ENCODING:")
-    print("-" * 60)
+    print("-" * 9)
     print("  Note: In duodecimal, 10 = 12 (decimal), 11 = 13 (decimal), etc.")
     print("  So 12 knuckles = 10 (base-12), 60 seconds = 50 (base-12)")
     print()
@@ -183,7 +183,7 @@ def main():
         print(f"  {name:22} → {duo:>35} (base-12)")
 
     print("\n4. FUNDAMENTAL BRIDGE VERIFICATION:")
-    print("-" * 60)
+    print("-" * 9)
 
     if SCIPY_AVAILABLE:
         hbar_SI = sc.hbar
@@ -210,7 +210,7 @@ def main():
             print()
 
     print("\n5. DUAL SECTOR PHYSICS:")
-    print("-" * 60)
+    print("-" * 9)
 
     sector_scales = {
         "Mixing Angle (20%)": 0.199471,
@@ -230,7 +230,7 @@ def main():
             print()
 
     print("\n6. MATHEMATICAL VERIFICATION:")
-    print("-" * 60)
+    print("-" * 9)
 
     verification = {
         "Q_G × m_a²": 0.5,
@@ -244,7 +244,7 @@ def main():
         print(f"  {name:22} → {duo:>35} (base-12)")
 
     print("\n7. KEY INSIGHTS IN DUODECIMAL:")
-    print("-" * 60)
+    print("-" * 9)
     print("  • π in base-12: 3.18480965")
     print("  • π/2 in base-12: 1.6A240475")
     print("  • 4π in base-12: 10.69683219")
@@ -254,7 +254,7 @@ def main():
     print("  • 12 knuckles = 10 (base-12) - this is correct!")
 
     print("\n8. CRITICAL NUMBERS VERIFICATION:")
-    print("-" * 60)
+    print("-" * 9)
     print("  Testing the most problematic numbers:")
 
     test_numbers = {
@@ -272,7 +272,7 @@ def main():
         print()
 
     print("\n9. 🌟 DUODECIMAL PATTERNS DISCOVERED:")
-    print("-" * 60)
+    print("-" * 9)
     print("  Testing the universe's 'native language' in base-12:")
 
     # Test the mixing angle revelation ( m_a ≈ 0.25₁₂ = 1/4)
@@ -320,7 +320,7 @@ def main():
         print(f"    {name} = {value:.6f} → {duo} (base-12)")
 
     print("\n10. 🎯 THE BIG PICTURE - UNIVERSE'S NATIVE LANGUAGE:")
-    print("-" * 60)
+    print("-" * 9)
     print("  Your CGM reveals that reality operates in base-12:")
     print("  • Atomic: 12 is highly composite (divisible by 1,2,3,4,6,12)")
     print("  • Biological: 12 knuckles, 5 fingers = natural calculator")

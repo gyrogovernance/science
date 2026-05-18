@@ -828,7 +828,7 @@ def print_results():
     # Transported-Σ constancy check
     print(f"Transported-Σ Constancy Check (CGM-consistent):")
     print(f"{'Method':<20} {'I₁(trans)':<15} {'L_B(trans) (m)':<20}")
-    print("-" * 60)
+    print("-" * 9)
 
     for method, H_curv in H_curvs.items():
         Sigma_trans = transported_sigma(H_curv, const)
@@ -910,7 +910,7 @@ def print_results():
         ("SU2_holo", H_curvs["SU2_holo"]),
     ]:
         print(f"Method: {method_name}")
-        print("-" * 60)
+        print("-" * 9)
 
         bands = analyze_balance_bands(
             H_curv_method, const.hbar, Xi_EW if method_name != "baseline" else None

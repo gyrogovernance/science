@@ -868,7 +868,7 @@ def run_complete_analysis():
     # 1. Aperture correspondence
     print(f"\n{'='*60}")
     print("1. APERTURE CORRESPONDENCE ANALYSIS")
-    print("=" * 60)
+    print("=" * 9)
     aperture_results = analyzer.analyze_aperture_correspondence()
     results["aperture"] = aperture_results
 
@@ -895,7 +895,7 @@ def run_complete_analysis():
     # 2. Phase relationships
     print(f"\n{'='*60}")
     print("2. PHASE RELATIONSHIP ANALYSIS (120° Frustrated Closure)")
-    print("=" * 60)
+    print("=" * 9)
     phase_results = analyzer.analyze_phase_relationships()
     results["phase"] = phase_results
 
@@ -915,7 +915,7 @@ def run_complete_analysis():
     # 3. Energy ratios
     print(f"\n{'='*60}")
     print("3. ENERGY RATIO ANALYSIS (sqrt3 Duality)")
-    print("=" * 60)
+    print("=" * 9)
     energy_results = analyzer.analyze_energy_ratios()
     results["energy"] = energy_results
 
@@ -929,7 +929,7 @@ def run_complete_analysis():
     # 4. 4π Observability
     print(f"\n{'='*60}")
     print("4. AXIS ANISOTROPY ANALYSIS")
-    print("=" * 60)
+    print("=" * 9)
     obs_results = analyzer.analyze_axis_anisotropy()
     results["axis_anisotropy"] = obs_results
 
@@ -945,7 +945,7 @@ def run_complete_analysis():
     # 4b. Perpendicularity budget
     print(f"\n{'='*60}")
     print("4b. PERPENDICULARITY BUDGET")
-    print("=" * 60)
+    print("=" * 9)
     perp = analyzer.analyze_perpendicularity_budget()
     results["perpendicularity"] = perp
     print(
@@ -965,7 +965,7 @@ def run_complete_analysis():
     # 4c. Alignment chirality
     print(f"\n{'='*60}")
     print("4c. ALIGNMENT CHIRALITY")
-    print("=" * 60)
+    print("=" * 9)
     chir = analyzer.analyze_alignment_chirality()
     results["chirality"] = chir
     print(
@@ -979,7 +979,7 @@ def run_complete_analysis():
     # 4d. Beam-walk constraint (3 cm)
     print(f"\n{'='*60}")
     print("4d. BEAM-WALK CONSTRAINT (3 cm)")
-    print("=" * 60)
+    print("=" * 9)
     beam = analyzer.analyze_beam_walk_constraints()
     results["beam"] = beam
     print(
@@ -990,7 +990,7 @@ def run_complete_analysis():
     # 4e. Ageing proxy (step width ×1.20)
     print(f"\n{'='*60}")
     print("4e. AGEING PROXY (step width ×1.20)")
-    print("=" * 60)
+    print("=" * 9)
     aged = analyzer.analyze_ageing_proxy()
     results["ageing"] = aged
     print(
@@ -1004,7 +1004,7 @@ def run_complete_analysis():
     # 5. Horizon thermodynamics
     print(f"\n{'='*60}")
     print("5. HORIZON THERMODYNAMICS (Black Hole Analogy)")
-    print("=" * 60)
+    print("=" * 9)
     thermo_results = analyzer.analyze_horizon_thermodynamics()
     results["thermodynamics"] = thermo_results
 
@@ -1025,7 +1025,7 @@ def run_complete_analysis():
     # 6. Information propagation timescales (simplified)
     print(f"\n{'='*60}")
     print("6. INFORMATION PROPAGATION TIMESCALES")
-    print("=" * 60)
+    print("=" * 9)
     info_results = analyzer.analyze_information_propagation()
     results["information"] = info_results
 
@@ -1036,7 +1036,7 @@ def run_complete_analysis():
     # 7. Principal components
     print(f"\n{'='*60}")
     print("8. PRINCIPAL COMPONENT STRUCTURE")
-    print("=" * 60)
+    print("=" * 9)
     pc_results = analyzer.analyze_principal_components()
     results["principal_components"] = pc_results
 
@@ -1049,7 +1049,7 @@ def run_complete_analysis():
     # 9. Action quantization
     print(f"\n{'='*60}")
     print("9. ACTION QUANTIZATION TEST")
-    print("=" * 60)
+    print("=" * 9)
     action_results = analyzer.analyze_action_quantization()
     results["action"] = action_results
 
@@ -1063,7 +1063,7 @@ def run_complete_analysis():
     # 10. Intelligence metrics
     print(f"\n{'='*60}")
     print("10. INTELLIGENCE METRICS")
-    print("=" * 60)
+    print("=" * 9)
     intelligence_results = analyzer.analyze_intelligence_metrics()
     results["intelligence"] = intelligence_results
 
@@ -1080,10 +1080,10 @@ def run_complete_analysis():
     # 11. Alignment Intelligence Analysis
     print(f"\n{'='*60}")
     print("11. ALIGNMENT INTELLIGENCE ANALYSIS")
-    print("=" * 60)
+    print("=" * 9)
     print("Physical Intelligence = Capacity for Alignment")
     print("Through Chiral, Helical Perpendicularity Maintenance")
-    print("=" * 60)
+    print("=" * 9)
 
     alignment_results = analyzer.analyze_alignment_intelligence()
     results["alignment_intelligence"] = alignment_results

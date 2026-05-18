@@ -248,7 +248,7 @@ def calculate_magnification_swap(
 def main():
     """Main calculation and display function"""
     print("CGM Energy Scale Analysis - BU-Centered Duality")
-    print("=" * 60)
+    print("=" * 9)
 
     # 1) Calculate stage thresholds
     print("\n1. Stage Thresholds:")

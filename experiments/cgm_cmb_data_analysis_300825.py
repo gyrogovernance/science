@@ -760,9 +760,9 @@ def test_unified_interference_signature(cmb_result, config):
     tests_passed.append(("Zeeman splitting", zeeman_test))
 
     # Report results
-    print("\n" + "=" * 60)
+    print("\n" + "=" * 9)
     print("UNIFIED INTERFERENCE SIGNATURE TESTS")
-    print("=" * 60)
+    print("=" * 9)
 
     for name, passed in tests_passed:
         status = "✓ PASS" if passed else "✗ FAIL"
@@ -795,9 +795,9 @@ def test_unified_interference_signature(cmb_result, config):
 
 def print_config(config):
     """Print preregistered configuration."""
-    print("=" * 60)
+    print("=" * 9)
     print("PREREGISTERED CONFIGURATION")
-    print("=" * 60)
+    print("=" * 9)
     print(
         f"Memory axis: [{config.memory_axis[0]:.3f}, {config.memory_axis[1]:.3f}, {config.memory_axis[2]:.3f}]"
     )
@@ -812,7 +812,7 @@ def print_config(config):
     )
     print(f"RNG seed: {config.base_seed}")
     print(f"Inside-view: {config.inside_view}")
-    print("=" * 60)
+    print("=" * 9)
     print()
 
 
@@ -834,17 +834,17 @@ def main():
     cmb_result = validator.test_planck_interference(config.memory_axis, config)
 
     # UNIFIED INTERFERENCE SIGNATURE TEST
-    print("\n" + "=" * 60)
+    print("\n" + "=" * 9)
     print("UNIFIED INTERFERENCE SIGNATURE ANALYSIS")
-    print("=" * 60)
+    print("=" * 9)
     print("Testing micro-scale coherence and orbital analogy...")
 
     unified_signature_result = test_unified_interference_signature(cmb_result, config)
 
     # Report results
-    print("\n" + "=" * 60)
+    print("\n" + "=" * 9)
     print("RESULTS SUMMARY")
-    print("=" * 60)
+    print("=" * 9)
     print(f"P₂/C₄ ratio: {cmb_result['p2c4_ratio_pow']:.3f}")
     print(f"Template-predicted ratio: {cmb_result['template_pred_ratio']:.3f}")
     print(

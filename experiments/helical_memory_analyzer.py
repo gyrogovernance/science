@@ -880,9 +880,9 @@ class HelicalMemoryAnalyzer:
         Test the same Xi_bio on additional biological scales (out-of-sample validation).
         This tests if the bio-bridge has genuine predictive power beyond the training set.
         """
-        print("\n" + "=" * 60)
+        print("\n" + "=" * 9)
         print("🧬 BIO-BRIDGE OUT-OF-SAMPLE TEST")
-        print("=" * 60)
+        print("=" * 9)
         print("Testing: Can the same Ξ_bio predict additional biological scales?")
         print(f"Using: Ξ_bio = {Xi_bio:.4f} (from training set)")
         print()
@@ -1119,7 +1119,7 @@ class HelicalMemoryAnalyzer:
         Run comprehensive helical memory analysis.
         """
         print("HELICAL MEMORY ANALYSIS FOR CGM COSMOGENESIS")
-        print("=" * 60)
+        print("=" * 9)
         print("Testing hypotheses against experimental data")
         print("Framework: U(s) = exp(-iασ₃/2) · exp(+iβσ₁/2) · exp(+iγσ₂/2)")
         print()
@@ -1127,9 +1127,9 @@ class HelicalMemoryAnalyzer:
         results = self.analyze_helical_memory_structure(verbose=True)
 
         # Add bio-bridge analysis
-        print("\n" + "=" * 60)
+        print("\n" + "=" * 9)
         print("BIO-HELIX BRIDGE ANALYSIS")
-        print("=" * 60)
+        print("=" * 9)
         print(
             "Testing hypothesis: DNA helix scales emerge from same loop pitch as cosmic scales"
         )
@@ -1204,21 +1204,21 @@ class HelicalMemoryAnalyzer:
             print(f"  Joint fit failed: {e}")
 
         # Add timelessness analysis
-        print("\n" + "=" * 60)
+        print("\n" + "=" * 9)
 
         # Add chirality selection analysis
-        print("\n" + "=" * 60)
+        print("\n" + "=" * 9)
         print("CHIRALITY SELECTION ANALYSIS")
-        print("=" * 60)
+        print("=" * 9)
         print("Testing hypothesis: Signed holonomy ↔ homochirality")
 
         chirality_results = self.test_chirality_selection(results["psi_bu_field"])
         results["chirality_selection"] = chirality_results
 
         # Add validation tests
-        print("\n" + "=" * 60)
+        print("\n" + "=" * 9)
         print("🔮 VALIDATION TESTS")
-        print("=" * 60)
+        print("=" * 9)
         print("Testing framework's true predictive power beyond anchored quantities")
 
         # Test 1: CMB prediction without anchoring
@@ -1237,9 +1237,9 @@ class HelicalMemoryAnalyzer:
             results["bio_out_of_sample"] = bio_out_of_sample_results
 
         # Summary
-        print("\n" + "=" * 60)
+        print("\n" + "=" * 9)
         print("ANALYSIS SUMMARY")
-        print("=" * 60)
+        print("=" * 9)
 
         passed_tests = sum(
             1 for test in results["hypothesis_tests"].values() if test["passed"]
@@ -1335,9 +1335,9 @@ class HelicalMemoryAnalyzer:
         Test the prediction: Can we predict CMB temperature without anchoring to it?
         This uses only loop parameters and principled Xi (no hand tuning).
         """
-        print("\n" + "=" * 60)
+        print("\n" + "=" * 9)
         print("🔮 CMB PREDICTION TEST")
-        print("=" * 60)
+        print("=" * 9)
         print("Testing: Can loop parameters predict CMB without anchoring?")
         print("Framework: Use only Π_loop and principled Ξ from holonomy/coherence")
         print()

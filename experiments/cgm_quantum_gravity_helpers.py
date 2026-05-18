@@ -550,9 +550,9 @@ def main():
     Main function to run key diagnostic functions and display meaningful results.
     Focuses on essential insights without overwhelming analysis.
     """
-    print("=" * 60)
+    print("=" * 9)
     print("CGM QUANTUM GRAVITY HELPERS - KEY DIAGNOSTICS")
-    print("=" * 60)
+    print("=" * 9)
 
     try:
         # Run diagnostic functions and capture results
@@ -573,9 +573,9 @@ def main():
         abundance_result = report_abundance_indices()
 
         # Summary of key insights
-        print("\n" + "=" * 60)
+        print("\n" + "=" * 9)
         print("KEY PHYSICAL INSIGHTS SUMMARY")
-        print("=" * 60)
+        print("=" * 9)
         print("• Quadratic scaling: φ ∼ θ² confirmed")
         print("• Geometric constraint: δ = π/2 is natural")
         print("• Quartic enhancement: δ_BU⁴ scaling validated")
