@@ -20,6 +20,12 @@ Throughout this manuscript, natural units c = ℏ = 1 are used except where SI i
 
 | Symbol | Meaning |
 |--------|---------|
+| CS | Common Source |
+| UNA | Unity-Non-Absolute |
+| ONA | Opposition-Non-Absolute |
+| BU | Balance Universal |
+| BU-Egress | Balance Universal, depth-four closure |
+| BU-Ingress | Balance Universal, depth-eight reconstruction |
 | Q_G | Quantum of gravity (4π steradians) |
 | m_a | Observational aperture parameter |
 | ρ | Closure ratio (δ_BU / m_a) |
@@ -37,11 +43,11 @@ Additional symbols are defined at the point of first use.
 
 CGM adopts the postulate that distinguishable physical structure remains traceable to a common source.
 
-Let a system admit two primitive transition types. One transition preserves the relation to the common source and one transition modifies it. These transitions are denoted R and L respectively. The source-asymmetry constraint (CS) states that the two transitions are not equivalent in their action on the source.
+Let a system admit two primitive transition types. One transition preserves the relation to the common source and one transition modifies it. These transitions are denoted R and L respectively. The Common Source constraint (CS) states that the two transitions are not equivalent in their action on the source.
 
-At depth two, transition order becomes relevant. The depth-two compositions LR and RL need not coincide. CGM restricts this non-commutativity to be non-absolute (UNA), meaning that commutativity is neither enforced everywhere nor excluded everywhere. A parallel restriction applies to opposition at depth two (ONA). The outcomes of LR and RL are not forced to be contradictory in all cases and not forced to be identical in all cases. These two restrictions jointly prevent rigid lock-in and homogeneous collapse.
+At depth two, transition order becomes relevant. The depth-two compositions LR and RL need not coincide. CGM restricts this non-commutativity to be Unity-Non-Absolute (UNA), meaning that commutativity is neither enforced everywhere nor excluded everywhere. A parallel restriction applies to opposition at depth two, Opposition-Non-Absolute (ONA). The outcomes of LR and RL are not forced to be contradictory in all cases and not forced to be identical in all cases. These two restrictions jointly prevent rigid lock-in and homogeneous collapse.
 
-At depth four, the model requires universal closure (BU-Egress). At this depth, admissible compositions commute in the sense specified in Appendix A, and this closure holds across all accessible configurations. The closed state must also retain sufficient information to reconstruct the earlier constraints (BU-Ingress). These constraints include the original asymmetry between L and R, the contingent non-commutativity at depth two, and the contingent opposition at depth two. The conjunction of these two properties defines universal balance (BU). Both hold at depth four.
+At depth four, the model requires Balance Universal closure at egress (BU-Egress). At this depth, admissible compositions commute in the sense specified in Appendix A, and this closure holds across all accessible configurations. The closed state must also retain sufficient information to reconstruct the earlier constraints at ingress (BU-Ingress). These constraints include the original asymmetry between L and R, the contingent non-commutativity at depth two, and the contingent opposition at depth two. The conjunction of egress and ingress defines Balance Universal (BU). Both hold at depth four.
 
 The formal encoding of these constraints as a propositional modal logic, together with proofs of independence and consistency, appears in Appendix A.
 
@@ -320,7 +326,7 @@ The results carry implications for three areas: the structure of quantum gravity
 
 Quantum gravity programs face a structural obstacle in perturbative quantization. Gravity corresponds to the depth-eight closure holonomy of the operational cycle, making the quantization of h_μν as an independent excitation circular. The kernel construction encodes this holonomy in the carrier recovery. The BU invariants Q_G, δ_BU, and m_a set the aperture structure, with Q_G = 4π as the geometric quantum. The framework is quantum-mechanical at foundation, without requiring a graviton propagator. The relevant question becomes how the depth-eight holonomy manifests in the regime where both quantum and gravitational effects are significant.
 
-The derivation treats three-dimensional spatial structure as logically prior to four-dimensional spacetime. Time corresponds to the ordering of modal depth required to satisfy CS, UNA, ONA, and BU. The fourth coordinate remains a computational device in the continuum packaging rather than an ontological primitive. The algebraic kernel forces the 3+1 split through the SO(3)/SU(2) shadow projection. Four-dimensional tensors remain a valid packaging of the continuum limit, encoding a distinction between spatial and temporal domains that the kernel makes algebraically explicit.
+The derivation treats three-dimensional spatial structure as logically prior to four-dimensional spacetime. Time corresponds to the ordering of modal depth required to satisfy Common Source (CS), Unity-Non-Absolute (UNA), Opposition-Non-Absolute (ONA), and Balance Universal (BU). The fourth coordinate remains a computational device in the continuum packaging rather than an ontological primitive. The algebraic kernel forces the 3+1 split through the SO(3)/SU(2) shadow projection. Four-dimensional tensors remain a valid packaging of the continuum limit, encoding a distinction between spatial and temporal domains that the kernel makes algebraically explicit.
 
 Coupling constants emerge from the BU invariants Q_G, δ_BU, and m_a rather than as free parameters. The gravitational coupling follows from kernel invariants, aperture geometry, and one energy anchor. The electromagnetic coupling follows from the same aperture geometry at a different depth. Their product is fixed by the closure ratio alone. Should this pattern extend, other couplings may yield to similar constructions. The shell structure produces both a monopole (1 component) and quadrupole (5 components) decomposition, suggesting that the kernel contains sufficient spectral richness to accommodate the full Standard Model.
 
@@ -378,15 +384,15 @@ Absoluteness: Abs(φ) = □φ (φ is invariant under both transitions). NonAbs(�
 
 **The five foundational constraints:**
 
-| Constraint | Type | Formula |
-|------------|------|---------|
-| CS | Assumption | S → ([R]S ↔ S ∧ ¬([L]S ↔ S)) |
-| UNA | Lemma | S → ¬□E |
-| ONA | Lemma | S → ¬□¬E |
-| BU-Egress | Proposition | S → □B |
-| BU-Ingress | Proposition | S → (□B → ([R]S ↔ S ∧ ¬([L]S ↔ S) ∧ ¬□E ∧ ¬□¬E)) |
+| Constraint | Name | Type | Formula |
+|------------|------|------|---------|
+| CS | Common Source | Assumption | S → ([R]S ↔ S ∧ ¬([L]S ↔ S)) |
+| UNA | Unity-Non-Absolute | Lemma | S → ¬□E |
+| ONA | Opposition-Non-Absolute | Lemma | S → ¬□¬E |
+| BU-Egress | Balance Universal (egress) | Proposition | S → □B |
+| BU-Ingress | Balance Universal (ingress) | Proposition | S → (□B → ([R]S ↔ S ∧ ¬([L]S ↔ S) ∧ ¬□E ∧ ¬□¬E)) |
 
-CS establishes fundamental chirality. Right transitions preserve S while left transitions alter it. UNA prevents homogeneous collapse by ensuring non-commutativity is contingent at depth two. ONA prevents irreconcilable contradiction by ensuring opposition is contingent at depth two. BU-Egress achieves commutative closure at depth four. BU-Ingress guarantees that the balanced state contains sufficient information to reconstruct all prior conditions.
+Common Source (CS) establishes fundamental chirality. Right transitions preserve S while left transitions alter it. Unity-Non-Absolute (UNA) prevents homogeneous collapse by ensuring non-commutativity is contingent at depth two. Opposition-Non-Absolute (ONA) prevents irreconcilable contradiction by ensuring opposition is contingent at depth two. Balance Universal egress (BU-Egress) achieves commutative closure at depth four. Balance Universal ingress (BU-Ingress) guarantees that the balanced state contains sufficient information to reconstruct all prior conditions.
 
 In the core modal system with Kripke semantics, all five constraints are logically independent. Each admits counterexample frames falsifying it while preserving the others. Consistency is verified via a three-world Kripke frame satisfying all five simultaneously. In the operational regime with continuous flows, reachability from S, and simple Lie closure, UNA and ONA follow from CS. The two-layer structure (modal axioms plus operational requirements) prevents circular reasoning.
 
