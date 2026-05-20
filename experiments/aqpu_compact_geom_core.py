@@ -1,5 +1,5 @@
 ﻿"""
-cgm_compact_geom_core.py
+aqpu_compact_geom_core.py
 
 Pure algebra layer for the compact geometry electroweak analysis.
 No printing, no I/O, no side effects.
@@ -277,7 +277,7 @@ def _import_gravity_path():
     exp = Path(__file__).resolve().parent
     if str(exp) not in sys.path:
         sys.path.insert(0, str(exp))
-    import cgm_gravity_common as g
+    import aqpu_gravity_common as g
     return g
 
 def ew_channel_path_word(label: str, micro_ref: int) -> list[int]:

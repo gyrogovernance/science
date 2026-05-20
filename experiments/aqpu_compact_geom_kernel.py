@@ -1,11 +1,11 @@
 """
-cgm_compact_geom_kernel.py
+aqpu_compact_geom_kernel.py
 
 Finite kernel verification layer.
 Exhaustive enumeration of the 4096-state reachable manifold Omega,
 shell transition algebra verification, and r5 grammar probe.
 
-This module PROVES the algebraic claims that cgm_compact_geom_core.py uses
+This module PROVES the algebraic claims that aqpu_compact_geom_core.py uses
 as established inputs. It is self-contained and produces a KernelReport
 dataclass that summarises all verified kernel theorems.
 
@@ -56,7 +56,7 @@ pack_state = _aqpu.pack_state
 single_step_trace = _aqpu.single_step_trace
 unpack_state = _aqpu.unpack_state
 depth4_frame = _aqpu_sdk.depth4_frame
-from cgm_compact_geom_core import CHANNELS, CODE_C1, CODE_C2, CODE_C3, DELTA, DELTA_BU, HORIZON_CARDINALITY, LAMBDA_0, M_A, M_SHELL, P_BOUNDARY, Q_DENSITY, CARRIER_TRACES, carrier_trace, EW_CHANNEL_Q_WEIGHT, channel_by_label, ckm_ansatz, ew_couplings_from_masses, eval_law, qcd_aperture_cycle_residual_probe, compact_algebra, shell_transition_matrix, shell_trace, shell_return_trace
+from aqpu_compact_geom_core import CHANNELS, CODE_C1, CODE_C2, CODE_C3, DELTA, DELTA_BU, HORIZON_CARDINALITY, LAMBDA_0, M_A, M_SHELL, P_BOUNDARY, Q_DENSITY, CARRIER_TRACES, carrier_trace, EW_CHANNEL_Q_WEIGHT, channel_by_label, ckm_ansatz, ew_couplings_from_masses, eval_law, qcd_aperture_cycle_residual_probe, compact_algebra, shell_transition_matrix, shell_trace, shell_return_trace
 
 def _word6_to_pairdiag12(word6: int) -> int:
     """Embed a 6-bit word into a 12-bit pair-diagonal mask."""

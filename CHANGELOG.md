@@ -8,33 +8,33 @@ All notable changes to the CGM Experimental Framework will be documented in this
 
 ### Added
 
-- `experiments/cgm_aqpu_wavefunction_1.py`: holonomy and modal-depth diagnostics on the 4096-state manifold—carrier rest, Z2 spectral holonomy, and BU egress/ingress readings tied to the canonical word.
-- `experiments/cgm_aqpu_wavefunction_2.py`: exhaustive K4 operator verification (W2, W2', F)—shell pole swap, depth-4 confinement, and chirality transport lemmas used by the gravity kernel.
+- `experiments/aqpu_wavefunction_1.py`: holonomy and modal-depth diagnostics on the 4096-state manifold—carrier rest, Z2 spectral holonomy, and BU egress/ingress readings tied to the canonical word.
+- `experiments/aqpu_wavefunction_2.py`: exhaustive K4 operator verification (W2, W2', F)—shell pole swap, depth-4 confinement, and chirality transport lemmas used by the gravity kernel.
 
 ### Updated
 
-- `experiments/cgm_gravity_analysis_1.py`: residual closure, rho^5 STF split, kernel transport tables, and coupling summary aligned with the wavefunction invariants.
-- `experiments/cgm_gravity_analysis_2.py`: canonical kernel theorems (c4 from two routes, Gauss bridge, alpha·zeta, 8pi = 2·Q_G).
-- `experiments/cgm_gravity_analysis_3.py`: exact Fraction derivations—carrier trace C(q), ancestry stress, tau_cycle, tau_G factorization, and compact-geometry bridge for alpha_G(v).
-- `experiments/cgm_gravity_common.py`: shared invariants, tau_G helpers, shell-path transport, and stress/current diagnostics for all gravity scripts.
+- `experiments/aqpu_gravity_analysis_1.py`: residual closure, rho^5 STF split, kernel transport tables, and coupling summary aligned with the wavefunction invariants.
+- `experiments/aqpu_gravity_analysis_2.py`: canonical kernel theorems (c4 from two routes, Gauss bridge, alpha·zeta, 8pi = 2·Q_G).
+- `experiments/aqpu_gravity_analysis_3.py`: exact Fraction derivations—carrier trace C(q), ancestry stress, tau_cycle, tau_G factorization, and compact-geometry bridge for alpha_G(v).
+- `experiments/aqpu_gravity_common.py`: shared invariants, tau_G helpers, shell-path transport, and stress/current diagnostics for all gravity scripts.
 
-- `experiments/cgm_compact_geom_core.py`: pure electroweak algebra layer (mass laws, lepton ladder, shell transitions).
-- `experiments/cgm_compact_geom_kernel.py`: finite 4096-state kernel proofs feeding the core module.
-- `experiments/cgm_compact_geom_report.py`: formatted report output from core and kernel (no standalone computation).
+- `experiments/aqpu_compact_geom_core.py`: pure electroweak algebra layer (mass laws, lepton ladder, shell transitions).
+- `experiments/aqpu_compact_geom_kernel.py`: finite 4096-state kernel proofs feeding the core module.
+- `experiments/aqpu_compact_geom_report.py`: formatted report output from core and kernel (no standalone computation).
 - `docs/Findings/Analysis_Gravity.md`: kernel sections cite wavefunction diagnostics; shell traverse D=24, K4 holonomy, and exact C(q) trace routes tied to the new scripts.
 
 ### Results
 
 - K4 algebra {id, W2, W2', F} verified on all 4096 states; path traverse D=24 invariant across 64 micro-refs.
-- Carrier traces C(1)=C(5)=28/9 and C(3)=52/25 confirmed by three independent routes in `cgm_gravity_analysis_3.py`.
+- Carrier traces C(1)=C(5)=28/9 and C(3)=52/25 confirmed by three independent routes in `aqpu_gravity_analysis_3.py`.
 
 ---
 
 ## [1.2.8-CGM_Gravity] - 2026-05-16
 
 ### Added
-- `experiments/cgm_gravity_common.py`: shared gravity invariants, τ_G helpers, and stress/current diagnostics.
-- `experiments/cgm_gravity_analysis_2.py`: ρ⁵ exponent checks, per-shell σ_A and J_A, τ_cycle proxies, and G prediction at v_EW.
+- `experiments/aqpu_gravity_common.py`: shared gravity invariants, τ_G helpers, and stress/current diagnostics.
+- `experiments/aqpu_gravity_analysis_2.py`: ρ⁵ exponent checks, per-shell σ_A and J_A, τ_cycle proxies, and G prediction at v_EW.
 
 ### Updated
 - `docs/Findings/Analysis_Gravity.md`: manuscript aligned with scripts and external review—translational-only σ_A definition, ranked τ_G = |Ω|Δρ⁵(1−4ρΔ²) derivation, weak-field propagation speed from GEM, exact 48Δ = 0.993578587835, 25 ppm G residual acknowledged as Δ⁴ subleading; removed speculative correction and perturbation sections.
@@ -48,7 +48,7 @@ All notable changes to the CGM Experimental Framework will be documented in this
 
 ### Added
 - Added `docs/Findings/Analysis_Gravity.md`: gravitational coupling from kernel invariants, ancestry field equations, gyrogroup structure, and electroweak-anchor prediction of G.
-- Added `experiments/cgm_gravity_analysis_1.py`: kernel diagnostics, aperture-depth optical depth, α·ζ invariant, and coupling reconstruction at v_EW.
+- Added `experiments/aqpu_gravity_analysis_1.py`: kernel diagnostics, aperture-depth optical depth, α·ζ invariant, and coupling reconstruction at v_EW.
 - Added `experiments/cgm_aqpu_monodromy.py`: aQPU monodromy diagnostic for depth-4/depth-8 closure, shell displacement invariants, and quadrupole shell modes.
 
 ### Results
@@ -63,8 +63,8 @@ All notable changes to the CGM Experimental Framework will be documented in this
 ## [1.2.6-Compact_Geometry] - 2026-05-02 to 2026-05-05
 ### Added
 - Added `docs/Findings/Analysis_Compact_Geometry.md` for the compact-spectral electroweak analysis.
-- Added `experiments/cgm_compact_geom_core.py` as the shared implementation module.
-- Added `experiments/cgm_compact_geom_report.py` for the formatted analysis workflow and reporting output.
+- Added `experiments/aqpu_compact_geom_core.py` as the shared implementation module.
+- Added `experiments/aqpu_compact_geom_report.py` for the formatted analysis workflow and reporting output.
 
 ---
 
@@ -204,7 +204,7 @@ All experimental calculations now use 246.22 GeV consistently:
 - [experiments/cgm_balance_analysis.py](experiments/cgm_balance_analysis.py)
 - [experiments/cgm_bh_universe_analysis.py](experiments/cgm_bh_universe_analysis.py)
 - [experiments/cgm_higgs_analysis.py](experiments/cgm_higgs_analysis.py)
-- [experiments/cgm_corrections_analysis_1.py](experiments/cgm_corrections_analysis_1.py)
+- [experiments/aqpu_corrections_analysis_1.py](experiments/aqpu_corrections_analysis_1.py)
 - [experiments/cgm_proto_units_analysis.py](experiments/cgm_proto_units_analysis.py)
 
 Updated documentation for consistency:
@@ -268,8 +268,8 @@ Experiments found here:
 New Topic - Universal Correction Operator
 Experiments Results and Analysis found here: 
 - [docs/Findings/Analysis_Universal_Corrections.md](docs/Findings/Analysis_Universal_Corrections.md)
-- [experiments/cgm_corrections_analysis_1.py](experiments/cgm_corrections_analysis_1.py)
-- [experiments/cgm_corrections_analysis_2.py](experiments/cgm_corrections_analysis_2.py)
+- [experiments/aqpu_corrections_analysis_1.py](experiments/aqpu_corrections_analysis_1.py)
+- [experiments/aqpu_corrections_analysis_2.py](experiments/aqpu_corrections_analysis_2.py)
 
 Revisions:
 - [docs/Findings/Analysis_CGM_Units.md](docs/Findings/Analysis_CGM_Units.md)

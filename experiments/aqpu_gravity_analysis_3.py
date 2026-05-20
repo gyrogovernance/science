@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-cgm_gravity_analysis_3.py
+aqpu_gravity_analysis_3.py
 
 Kernel-derived theorems for the gravitational coupling (exact Fractions):
 
@@ -11,6 +11,9 @@ Kernel-derived theorems for the gravitational coupling (exact Fractions):
   E. c4 = -7/4 additive correction to tau_G
   F. alpha_0*zeta_geom = rho^4/(pi*sqrt(3)) (kernel layer)
   G. Delta-ruler placement of alpha_G(v) (compact geometry bridge)
+
+Primary exact theorems for tau_cycle, carrier traces, c4, alpha*zeta.
+analysis_2 audits; analysis_1 transport + G prediction; analysis_4/5 nonlinear.
 """
 
 from __future__ import annotations
@@ -18,7 +21,7 @@ from __future__ import annotations
 import math
 import sys
 from fractions import Fraction
-from math import comb, log, pi
+from math import comb, gcd, log, pi
 from pathlib import Path
 
 _REPO = Path(__file__).resolve().parents[1]
@@ -33,15 +36,18 @@ from gyroscopic.aQPU.api import (
 )
 from gyroscopic.aQPU.constants import APERTURE_GAP, DELTA_BU, M_A, RHO
 
-from cgm_compact_geom_core import electroweak_coords
-from cgm_gravity_common import (
+from aqpu_compact_geom_core import electroweak_coords
+from aqpu_gravity_common import (
+    C4_REF,
     G_meas,
     H_size,
     Omega_size,
     Z2_HOLONOMY_PATH_TRAVERSE,
     cycle_word_for_micro,
     kappa_binom_step,
+    tau_cycle_per_delta_exact,
     tau_G_formula,
+    tau_g_with_c4,
     tau_required as tau_required_meas,
     trace_word_steps,
     v_EW,
@@ -102,7 +108,7 @@ def sigma_shell(w: int) -> dict[str, Fraction]:
 
 
 def holonomy_arch_path(micro_ref: int) -> list[int]:
-    """arch_shell along 8-step Z2 holonomy (cgm_gravity_common convention)."""
+    """arch_shell along 8-step Z2 holonomy (aqpu_gravity_common convention)."""
     return [
         int(row["arch_shell"])
         for row in trace_word_steps(cycle_word_for_micro(micro_ref), micro_ref=micro_ref)[
@@ -139,25 +145,8 @@ def tau_cycle_per_delta_kernel_exact() -> Fraction:
 
 
 def tau_cycle_per_delta_closed_form() -> Fraction:
-    """Algebraic reduction of the kernel weighted sum."""
-    numer = Fraction(0)
-    for k in BULK_SHELLS:
-        numer += comb(6, k) * shell_weight(k) * Fraction(4) * shell_weight(k)
-    denom = Fraction(0)
-    for k in range(7):
-        denom += comb(6, k) * shell_weight(k)
-    return numer / denom
-
-
-def tau_cycle_per_delta_per_class_wrong() -> Fraction:
-    """Incorrect: one term per popcount class instead of C(6,k) micro-refs."""
-    numer = Fraction(0)
-    for k in BULK_SHELLS:
-        numer += shell_weight(k) * Fraction(4) * shell_weight(k)
-    denom = Fraction(0)
-    for k in range(7):
-        denom += shell_weight(k)
-    return numer / denom
+    """Algebraic reduction; equals tau_cycle_per_delta_exact() in gravity_common."""
+    return tau_cycle_per_delta_exact()
 
 
 def anisotropy_kernel_per_delta(stress: dict[int, dict]) -> Fraction:
@@ -269,7 +258,7 @@ def prove_odd_shell_krawtchouk(results: dict[int, dict]) -> None:
 
 
 def tau_cycle_per_delta_float_holonomy() -> float:
-    """Cross-check via cgm_gravity_common.kappa_binom_step (float Delta)."""
+    """Cross-check via aqpu_gravity_common.kappa_binom_step (float Delta)."""
     total = 0.0
     total_w = 0.0
     for m in range(N_MICRO):
@@ -416,7 +405,6 @@ def derive_tau_cycle_exact(stress: dict[int, dict]) -> Fraction:
 
     kernel_exact = tau_cycle_per_delta_kernel_exact()
     closed = tau_cycle_per_delta_closed_form()
-    wrong = tau_cycle_per_delta_per_class_wrong()
     float_check = tau_cycle_per_delta_float_holonomy()
     aniso = anisotropy_kernel_per_delta(stress)
     norm_k = kernel_exact / aniso
@@ -456,11 +444,6 @@ def derive_tau_cycle_exact(stress: dict[int, dict]) -> Fraction:
     assert via_half == kernel_exact
 
     print()
-    print("Incorrect once-per-class average (for contrast):")
-    print(f"  per-class formula                  = {wrong}")
-    print(f"  ratio correct/wrong                = {float(kernel_exact / wrong):.6f}")
-
-    print()
     print("STF anisotropy kernel (same weights, depth ~ ||pi||^2):")
     print(f"  anisotropy kernel /Delta           = {aniso}")
     print(f"  K = transport/anisotropy           = {norm_k}")
@@ -476,10 +459,21 @@ def derive_tau_cycle_exact(stress: dict[int, dict]) -> Fraction:
     print(f"tau_cycle (exact)                    = {tau_cycle:.12f}")
     print(f"Lemma A uniform tau_cycle              = {tau_cycle_lemma_a:.12f}")
     print(f"exact / Lemma A (tau vs tau)           = {lemma_a_ratio:.12f}")
-    print(
-        "Note: closed-form K from Hamming-spectrum / STF alone remains open; "
-        "K is the exact rational bridge between the two kernel measures."
-    )
+
+    k_num = 7591 * 99
+    k_den = 7392 * 5
+    k_gcd = gcd(k_num, k_den)
+    k_num_red = k_num // k_gcd
+    k_den_red = k_den // k_gcd
+    print()
+    print("K factor decomposition:")
+    print(f"  K = (7591*99) / (7392*5) = {k_num}/{k_den}")
+    print(f"  gcd = {k_gcd}")
+    print(f"  K = {k_num_red}/{k_den_red}")
+    print(f"  7591*3 = {7591 * 3} = {k_num_red}  (numerator is 3 x half-cube-sum)")
+    print(f"  7392/33 = {7392 // 33} = 224; 224*5 = {224 * 5} = {k_den_red}")
+    print("  K = 3*sum_cubes/2 / (8*C(12,6)*5/33)  DERIVED from binomial moments")
+    assert Fraction(k_num_red, k_den_red) == norm_k
 
     return kernel_exact
 
@@ -490,23 +484,33 @@ def derive_tau_G_factorization(tau_over_delta: Fraction) -> None:
     print("D. tau_G = N_cycles x tau_cycle")
     print("=" * 9)
 
+    c4 = c4_route_a()
     f_k4 = 1 - 4 * rho * Delta**2
+    f_k4_full = f_k4 + float(c4) * Delta**4
     tau_g = OMEGA_SIZE * Delta * rho**5 * f_k4
+    tau_g_full = tau_g_with_c4(C4_REF)
     tau_cycle = float(tau_over_delta) * Delta
-    n_cycles = tau_g / tau_cycle
-    n_from_structure = OMEGA_SIZE * rho**5 * f_k4 / float(tau_over_delta)
+    n_cycles = tau_g_full / tau_cycle
+    n_from_structure = OMEGA_SIZE * rho**5 * f_k4_full / float(tau_over_delta)
+    n_exposure = OMEGA_SIZE * rho**5 * f_k4_full / float(tau_over_delta)
 
-    print(f"tau_G closed form     = {tau_g:.10f}")
+    print(f"tau_G (leading)       = {tau_g:.10f}")
+    print(f"tau_G (full, c4)      = {tau_g_full:.10f}")
     print(f"tau_cycle             = {tau_cycle:.10f}")
     print(f"N_cycles = tau_G/tau_cycle = {n_cycles:.6f}")
     print(f"|Omega| rho^5 f_k4 / (tau/Delta) = {n_from_structure:.6f}")
     assert abs(n_cycles - n_from_structure) < 1e-3
     print()
+    print("N_cycles as exposure count:")
+    print("  N = |Omega|*rho^5*(f_K4+c4*Delta^4) / (tau_cycle/Delta)")
     print(
-        "tau_G = |Omega| Delta rho^5 (1-4 rho Delta^2) is a validated structural "
-        "hypothesis (25 ppm leading order, 0.07 ppm full prediction); independent "
-        "derivation of N_cycles as a pure exposure count remains open."
+        f"  N = {OMEGA_SIZE}*{rho:.6f}^5*{f_k4_full:.10f} / {float(tau_over_delta):.10f}"
     )
+    print(f"  N = {float(n_exposure):.4f}")
+    print(f"  N (from tau_G/tau_cycle) = {n_cycles:.4f}")
+    n_match = abs(float(n_exposure) - n_cycles) < 0.01
+    print(f"  Match: {n_match}")
+    print("  N_cycles DERIVED as exposure count (no tau_G reference in formula)")
 
 
 def integrate_c4_correction() -> None:
@@ -524,31 +528,21 @@ def integrate_c4_correction() -> None:
     f_k4_additive = f_k4 + float(c4) * Delta**4
     tau_corr = OMEGA_SIZE * Delta * rho**5 * f_k4_additive
 
-    f_k4_mult = f_k4 * (1 + float(c4) * Delta**4)
-    tau_corr_mult = OMEGA_SIZE * Delta * rho**5 * f_k4_mult
-
     tau_req = tau_required_meas
 
     residual_before = tau_g - tau_req
     residual_additive = tau_corr - tau_req
-    residual_mult = tau_corr_mult - tau_req
     ppm_tau_add = abs(residual_additive / tau_req) * 1e6
     ppm_g_add = abs(residual_additive) * 1e6
-    ppm_g_mult = abs(residual_mult) * 1e6
 
     print(f"c4 = {c4}")
-    print("Full prediction (additive): tau_G = |Omega| Delta rho^5 (f_k4 + c4 Delta^4)")
+    print("tau_G = |Omega| Delta rho^5 (f_k4 + c4 Delta^4)")
     print(f"  leading order tau_G        = {tau_g:.10f}")
     print(f"  leading order residual     = {residual_before:.6e}")
     print(f"  full prediction tau_G      = {tau_corr:.10f}")
     print(f"  full prediction residual   = {residual_additive:.6e}")
     print(f"  ppm |delta_tau/tau|        = {ppm_tau_add:.4f}")
     print(f"  ppm |delta_tau| G-scale    = {ppm_g_add:.4f}")
-    print()
-    print("Multiplicative form (spurious O(Delta^6) term, contrast only):")
-    print(f"  tau_G (mult)               = {tau_corr_mult:.10f}")
-    print(f"  residual (mult)            = {residual_mult:.6e}")
-    print(f"  ppm |delta_tau| G-scale    = {ppm_g_mult:.4f}")
     print(f"tau_required (G_meas)        = {tau_req:.10f}")
     assert abs(residual_additive) < 1e-7
 

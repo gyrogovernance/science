@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-cgm_corrections_analysis_2.py
+aqpu_corrections_analysis_2.py
 
 This script implements the Common Governance Model (CGM) framework for galaxy rotation curves,
 applying the universal correction operator C to gravitational fields. The key predictions are:

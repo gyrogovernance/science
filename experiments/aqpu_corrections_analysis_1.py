@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-cgm_corrections_analysis_1.py
+aqpu_corrections_analysis_1.py
 
 This script evaluates a universal correction operator consistent with the Common Governance Model (CGM) framework
 and applies it to the fine-structure constant at the BU/EW boundary. The same geometric parameters produce

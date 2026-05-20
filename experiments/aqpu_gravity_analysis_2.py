@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-cgm_gravity_analysis_2.py
+aqpu_gravity_analysis_2.py
 
 Canonical kernel gravity theorems.
 
@@ -16,9 +16,13 @@ Canonical kernel gravity theorems.
   S10  Gauss-law bridge
   S11  alpha * zeta product
   S12  8pi = 2 * Q_G decomposition
-  S13  Shell-projected spectral gap
-  S14  Classification
+  S13  Classification
+  S14  Anchor validation (optional)
   S15  Anchor validation (optional)
+
+Theorem registry / audit. Exact derivations: analysis_3.
+Transport + G prediction: analysis_1. Nonlinear: analysis_4/5.
+(Shell mixing Markov block removed: not optical depth tau_cycle.)
 """
 
 from __future__ import annotations
@@ -29,6 +33,8 @@ from dataclasses import dataclass
 from fractions import Fraction
 from math import comb, exp, log, pi, sqrt
 from pathlib import Path
+
+import numpy as np
 
 _REPO = Path(__file__).resolve().parents[1]
 if str(_REPO) not in sys.path:
@@ -50,16 +56,15 @@ from gyroscopic.aQPU.api import (
     state24_to_omega12,
 )
 
-from cgm_gravity_common import (
+from aqpu_gravity_common import (
     Q_G as Q_G_NUM,
     Z2_HOLONOMY_PATH_TRAVERSE as D_Z2,
     AF as AF_2D,
     configure_stdout_utf8,
+    tau_cycle_per_delta_exact,
     verify_alpha_zeta_product,
     verify_gauss_law_bridge,
 )
-
-from cgm_compact_geom_core import shell_transition_matrix
 
 configure_stdout_utf8()
 
@@ -302,12 +307,6 @@ def verify_shell_paths() -> dict:
 # ============================================================
 
 
-def tau_cycle_exact() -> Fraction:
-    sum_cubes_bulk = sum(comb(6, k) ** 3 for k in range(1, 6))
-    sum_squares = sum(comb(6, k) ** 2 for k in range(7))
-    return Fraction(4 * sum_cubes_bulk, 64 * sum_squares)
-
-
 def tau_cycle_computed() -> float:
     total_tau = 0.0
     total_w = 0.0
@@ -429,60 +428,6 @@ def eight_pi_decomposition() -> dict:
 
 
 # ============================================================
-# S13: Shell-projected spectral analysis
-# ============================================================
-
-
-def shell_spectral_gap() -> dict:
-    """Per-shell transition matrix eigenvalues (compact-geom shell algebra).
-
-    For each shell index q in 0..6, shell_transition_matrix(q) is a 7x7
-    stochastic transition matrix capturing how a state at width w moves
-    under one byte-step in the q-flavoured channel. The spectral gap
-    1 - |lambda_2| measures mixing rate per byte; the per-cycle depth-8
-    decay factor is |lambda_2|**8 averaged with binomial shell weights.
-    """
-    try:
-        import numpy as np
-    except Exception:
-        return {"available": False}
-
-    results: list[dict] = []
-    for q in range(7):
-        M = np.array(
-            [[float(x) for x in row] for row in shell_transition_matrix(q)],
-            dtype=float,
-        )
-        eigvals = np.linalg.eigvals(M)
-        absvals = np.sort(np.abs(eigvals))[::-1]
-        lam1 = float(absvals[0])
-        lam2 = float(absvals[1]) if len(absvals) > 1 else 0.0
-        gap = lam1 - lam2
-        decay8 = lam2**8
-        results.append({
-            "q": q,
-            "lambda_1": lam1,
-            "lambda_2": lam2,
-            "gap": gap,
-            "decay_per_cycle": decay8,
-        })
-
-    binom = [comb(6, k) / 64.0 for k in range(7)]
-    avg_lam2 = sum(binom[q] * results[q]["lambda_2"] for q in range(7))
-    avg_decay = sum(binom[q] * results[q]["decay_per_cycle"] for q in range(7))
-    tau_per_cycle_spectral = -log(avg_decay) if avg_decay > 0 else float("inf")
-
-    return {
-        "available": True,
-        "rows": results,
-        "binom_avg_lambda_2": avg_lam2,
-        "binom_avg_decay_per_cycle": avg_decay,
-        "tau_per_cycle_spectral": tau_per_cycle_spectral,
-        "tau_g_kernel_formula": OMEGA_SIZE * DELTA * RHO**5 * F_ORDERED,
-    }
-
-
-# ============================================================
 # Main
 # ============================================================
 
@@ -554,20 +499,10 @@ def main() -> None:
     print()
 
     # S5
-    tau_ex = tau_cycle_exact()
-    tau_co = tau_cycle_computed()
-    la = 48.0 * DELTA**2 / RHO**3
-    ratio = tau_co / la
-
     print("S5  Per-cycle optical depth")
     print("-" * 9)
-    print(f"tau/Delta exact     = {tau_ex} = {float(tau_ex):.12f}")
-    print(f"tau_cycle analytic  = {float(tau_ex) * DELTA:.12f}")
-    print(f"tau_cycle computed  = {tau_co:.12f}")
-    print(f"analytic == comput. = {abs(float(tau_ex) * DELTA - tau_co) < 1e-12}")
-    print(f"Lemma A (uniform)   = {la:.12f}")
-    print(f"binom/lemma ratio   = {ratio:.12f}")
-    print(f"gap                 = {1.0 - ratio:.12f}  (O(1), not O(Delta^4))")
+    tau_ex = tau_cycle_per_delta_exact()
+    print(f"  tau_cycle/Delta = {tau_ex} (definitive: analysis_3 section C)")
     print()
 
     # S6
@@ -633,13 +568,9 @@ def main() -> None:
 
     # S11
     az = verify_alpha_zeta_product(alpha_codata=1.0 / 137.035999084)
-    print("S11 alpha * zeta product")
+    print("S11 alpha * zeta (audit; derivation: analysis_3 F)")
     print("-" * 9)
-    print(f"alpha_kernel * zeta         = {az['lhs']:.12f}")
-    print(f"rho^4/(pi*sqrt(3))          = {az['rhs']:.12f}")
     print(f"exact identity              = {az['exact']}")
-    print(f"zeta_from_CODATA alpha      = {az['zeta_from_alpha']:.12f}")
-    print(f"zeta_geom                   = {az['zeta_geom']:.12f}")
     print(f"zeta_from/zeta_geom - 1     = {az['zeta_ratio']:.6e}")
     print()
 
@@ -651,34 +582,15 @@ def main() -> None:
     print(f"2 * Q_G                     = {epd['two_qg']:.12f}")
     print(f"8 * pi                      = {epd['eight_pi']:.12f}")
     print(f"2*Q_G == 8*pi               = {epd['two_qg_eq_eight_pi']}")
-    print(f"D = Z2 path traverse        = {epd['d']}")
+    print(f"D_traverse = Z2 path        = {epd['d']}")
     print(f"G_kernel                    = {epd['g_kernel']:.12f}")
-    print(f"D * G_kernel                = {epd['d_g_kernel']:.12f}")
-    print(f"D*G_kernel == Q_G           = {epd['d_g_eq_q_g']}")
-    print(f"AF = 2D                     = {epd['af_2d']}")
+    print(f"D_traverse * G_kernel       = {epd['d_g_kernel']:.12f}")
+    print(f"D_traverse*G_kernel == Q_G  = {epd['d_g_eq_q_g']}")
+    print(f"AF = 2*D_traverse           = {epd['af_2d']}")
     print()
 
     # S13
-    ss = shell_spectral_gap()
-    print("S13 Shell-projected spectral gap")
-    print("-" * 9)
-    if ss.get("available"):
-        print(f"{'q':>3} {'lambda_1':>12} {'lambda_2':>12} {'gap':>12} {'lam2^8':>12}")
-        for r in ss["rows"]:
-            print(
-                f"{r['q']:>3} {r['lambda_1']:>12.6f} {r['lambda_2']:>12.6f} "
-                f"{r['gap']:>12.6f} {r['decay_per_cycle']:>12.6f}"
-            )
-        print(f"binom-weighted <lambda_2>          = {ss['binom_avg_lambda_2']:.12f}")
-        print(f"binom-weighted decay per cycle     = {ss['binom_avg_decay_per_cycle']:.12f}")
-        print(f"tau per cycle (spectral)          = {ss['tau_per_cycle_spectral']:.12f}")
-        print(f"tau_G (kernel formula)            = {ss['tau_g_kernel_formula']:.12f}")
-    else:
-        print("numpy unavailable; skipping")
-    print()
-
-    # S14
-    print("S14 Classification")
+    print("S13 Classification")
     print("-" * 9)
     print("PROVEN (computational theorems, exhaustive):")
     print(f"  1. Z2 holonomy parity                      : {tp.ok()}")
@@ -698,7 +610,7 @@ def main() -> None:
     print(f" 15. O(Delta^3) vanishes (Z2)                 : structural")
     print()
 
-    # S15
+    # S14
     if not args.no_anchors:
         v_ew = args.v_ew
         g_m = args.g_meas
@@ -711,7 +623,7 @@ def main() -> None:
         g_geo = g_from_tau(tg, v_ew)
         g_cor = g_from_tau(tk, v_ew)
 
-        print("S15 Anchor validation (optional)")
+        print("S14 Anchor validation (optional)")
         print("-" * 9)
         print(f"v_EW               = {v_ew:.6f}")
         print(f"G_meas             = {g_m:.12e}")

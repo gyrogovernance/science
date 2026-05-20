@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-cgm_gravity_analysis_1.py
+aqpu_gravity_analysis_1.py
 
 CGM gravity coupling analysis:
 
@@ -10,9 +10,11 @@ CGM gravity coupling analysis:
   Part D  Delta expansion (series match closed form)
   Part E  Coupling summary
 
-The tau_G formula and the c4 correction are modeling identifications;
-canonical theorems (c4 = -7/4 from two routes, Gauss law, alpha*zeta)
-live in cgm_gravity_analysis_2.py.
+Ownership:
+  analysis_3: exact kernel theorems (tau_cycle, carrier traces, c4, alpha*zeta)
+  analysis_2: theorem registry / audit (Z2, Gauss, cross-checks)
+  analysis_1: G prediction, wavefunction checks, transport diagnostics (this file)
+  analysis_4/5: nonlinear G(psi), field derivations, shadow
 """
 
 from __future__ import annotations
@@ -35,7 +37,7 @@ from gyroscopic.aQPU.constants import (
     GENE_MAC_B12,
 )
 
-from cgm_gravity_common import (
+from aqpu_gravity_common import (
     AF,
     CHI6_FULL,
     Delta,
@@ -72,7 +74,11 @@ from cgm_gravity_common import (
     q_word6_for_items,
     rho,
     tau_conjugacy_depth,
+    D_traverse,
+    kernel_exposure_constants,
+    tau_cycle_per_delta_exact,
     tau_cycle_weighted,
+    tau_g_with_c4,
     tau_G_formula,
     tau_path_binom,
     tau_path_kappa,
@@ -215,30 +221,30 @@ def part_a_residual_closure() -> tuple[float, float]:
     print()
     print("4. Optical depth")
     print("-" * 9)
-    tau_corrected = tau_with_c4(c4_kernel)
-    print(f"tau_geometric                   = {tau_G_formula:.12f}")
+    tau_full = tau_with_c4(c4_kernel)
+    print(f"tau_G (leading order)           = {tau_G_formula:.12f}")
     print(f"tau_required                    = {tau_required:.12f}")
-    print(f"tau_corrected                   = {tau_corrected:.12f}")
-    print(f"geometric_residual              = {tau_G_formula - tau_required:.12e}")
-    print(f"corrected_residual              = {tau_corrected - tau_required:.12e}")
+    print(f"tau_G (full prediction)         = {tau_full:.12f}")
+    print(f"leading_residual                = {tau_G_formula - tau_required:.12e}")
+    print(f"full_residual                   = {tau_full - tau_required:.12e}")
 
     print()
     print("5. Gravitational coupling")
     print("-" * 9)
-    g_geo = g_from_tau(tau_G_formula)
-    g_corr = g_from_tau(tau_corrected)
-    print(f"G_geometric                     = {g_geo:.12e}")
-    print(f"G_corrected                     = {g_corr:.12e}")
+    g_leading = g_from_tau(tau_G_formula)
+    g_full = g_from_tau(tau_full)
+    print(f"G_pred (leading order)          = {g_leading:.12e}")
+    print(f"G_pred (full prediction)        = {g_full:.12e}")
     print(f"G_measured                      = {G_meas:.12e}")
-    print(f"ppm_geometric                   = {ppm_error(g_geo):+.6f}")
-    print(f"ppm_corrected                   = {ppm_error(g_corr):+.6f}")
+    print(f"ppm leading                     = {ppm_error(g_leading):+.6f}")
+    print(f"ppm full                        = {ppm_error(g_full):+.6f}")
 
     print()
     print("c4 = -(1 + Tr_sigma_iso)")
     print(f"   = -(1 + {tr_iso_frac})")
     print(f"   = {c4_kernel_frac}")
 
-    return c4_kernel, tau_corrected
+    return c4_kernel, tau_full
 
 
 # ============================================================
@@ -382,24 +388,19 @@ def part_c_kernel_transport() -> None:
     chi6_step_bit_stats(joint_table)
 
     print()
-    print("C.2  tau_cycle (Lemma A)")
-    w_sum = sum(weights_pop[m] for m in range(64))
-    tau_48 = 48.0 * Delta**2 / rho**3
-    tau_binom_cycle = sum(
-        weights_pop[m] * tau_path_binom(m) for m in range(64)
-    ) / w_sum
-    print(f"  tau_cycle = 48*Delta^2/rho^3    = {tau_48:.9f}")
-    print(f"  tau_cycle (binom, 64 micro avg) = {tau_binom_cycle:.9f}")
-    print(f"  ratio meas/pred                 = {tau_binom_cycle / tau_48:.6f}")
-    print(f"  tau_G formula                   = {tau_G_formula:.9f}")
+    print("C.2  tau_cycle")
+    tau_frac = tau_cycle_per_delta_exact()
+    tau_cycle_exact = float(tau_frac) * Delta
+    print("  Definitive derivation: aqpu_gravity_analysis_3.py section C")
+    print(f"  tau_cycle/Delta = {tau_frac} = {float(tau_frac):.12f}")
 
     print()
     print("C.3  Shell displacement")
-    print(f"  D = {Z2_HOLONOMY_PATH_TRAVERSE} per Z2 holonomy cycle")
+    print(f"  D_traverse = {D_traverse} per Z2 holonomy cycle")
     print(f"  W2 maps shell s -> 6-s, traverse from pole = {W2_SHELL_DISPLACEMENT}")
     print(f"  F = W2 o W2' preserves shell, path traverse = {F_CYCLE_PATH_TRAVERSE}")
     print(f"  Z2 holonomy (F o F = id): path traverse = {Z2_HOLONOMY_PATH_TRAVERSE}")
-    print(f"  tau_cycle(holonomy) = 2*D*Delta^2/rho^3 = 48*Delta^2/rho^3")
+    print(f"  tau_cycle(holonomy) = 2*D_traverse*Delta^2/rho^3 = 48*Delta^2/rho^3")
 
     print()
     print("C.4  Tr / ||pi|| along Z2 holonomy cycle (64 micro avg)")
@@ -448,25 +449,21 @@ def part_c_kernel_transport() -> None:
     print(f"  mean tau_word: {mean_tw:.9f}  var: {var_tw:.6e}")
 
     print()
-    print("C.6  Two-lemma factorization")
-    tau_cycle_pred_48 = AF * Delta**2 / rho**3
-    tau_binom = tau_cycle_weighted(weights_pop, binom_shell)
-    n_cycles_pred = (Omega_size / AF) * (rho**8 / Delta)
-    n_cycles_pred_k4 = n_cycles_pred * f_ordered
-    tau_g_lemma = n_cycles_pred_k4 * tau_cycle_pred_48
-    print(f"  Lemma A: tau_cycle = 48*Delta^2/rho^3 = {tau_cycle_pred_48:.9f}")
-    print(f"  Lemma B: N_cycles = (|Omega|/48)*(rho^8/Delta)*(1-4*rho*Delta^2) "
-          f"= {n_cycles_pred_k4:.6f}")
-    print(f"  Product: N * tau_cycle = {tau_g_lemma:.9f}")
-    print(f"  |Omega|*Delta*rho^5*K4 = {tau_G_formula:.9f}")
-    print(f"  product - tau_G                = {tau_g_lemma - tau_G_formula:.6e}")
-    print(f"  product - tau_required         = {tau_g_lemma - tau_required:.6e}")
-    print(f"  rho exponent: 8 - 3 = 5")
-    print(f"  AF = 2*D = {AF}")
+    print("C.6  N_cycles (from analysis_3 section D)")
+    print("  Definitive derivation: aqpu_gravity_analysis_3.py section D")
+    n_cycles, tau_cycle_exp, tau_g_full, tau_od = kernel_exposure_constants()
+    print(f"  tau_cycle/Delta     = {tau_od} (exact rational)")
+    print(f"  N_cycles            = {n_cycles:.4f}  (exposure count)")
+    print(f"  N * tau_cycle       = {n_cycles * tau_cycle_exp:.6f}")
+    print(f"  tau_G (full)        = {tau_g_full:.6f}")
+    rel = abs(n_cycles * tau_cycle_exp - tau_g_full) / tau_g_full
+    print(f"  Match N*tau = tau_G: rel err {rel:.2e}")
 
     print()
     print("C.7  tau_cycle (binom shell weights)")
-    print(f"  tau_binom: {tau_binom:.9f}  /pred_48={tau_binom/tau_cycle_pred_48:.6f}")
+    tau_binom = tau_cycle_weighted(weights_pop, binom_shell)
+    print(f"  tau_binom shell-weighted        = {tau_binom:.9f}")
+    print(f"  tau_binom / tau_cycle (exact)   = {tau_binom / tau_cycle_exact:.6f}")
     print("  Horizon steps (arch_shell 0,6): ||pi||=0, zero contribution.")
     per_pop: dict[int, list[float]] = {}
     for micro in range(64):
@@ -478,7 +475,7 @@ def part_c_kernel_transport() -> None:
     ]
     print(f"  per-pop tau: {' '.join(pop_parts)}")
 
-    n_cycles_meas = tau_G_formula / tau_binom if tau_binom > 0 else 0.0
+    n_cycles_meas = tau_G_formula / tau_cycle_exact if tau_cycle_exact > 0 else 0.0
 
     print()
     print("C.8  Effective rho exponent (data-driven)")
@@ -499,18 +496,18 @@ def part_c_kernel_transport() -> None:
     print(f"  b5/b6/diff/b5(k-1): {' | '.join(binom_rows)}")
     rho5_coeffs = [(-1) ** k * comb(5, k) for k in range(6)]
     gen6_coeffs = [comb(6, k) for k in range(7)]
-    print(f"  (1-D)^5 coeffs: {rho5_coeffs}")
-    print(f"  (1+D)^6 coeffs: {gen6_coeffs}")
+    print(f"  (1-Delta)^5 coeffs: {rho5_coeffs}")
+    print(f"  (1+Delta)^6 coeffs: {gen6_coeffs}")
     rho5_binom = sum((-1) ** k * comb(5, k) * Delta**k for k in range(6))
     print(f"  rho^5 numeric: {rho**5:.12f}")
-    print(f"  (1-D)^5 binom: {rho5_binom:.12f}")
+    print(f"  (1-Delta)^5 binom: {rho5_binom:.12f}")
 
     print()
     print("C.10 Residual scaled by |Omega|*Delta^n")
     residual_tau = tau_G_formula - tau_required
     base_od = Omega_size * Delta
     scale_parts = [
-        f"D^{n}={residual_tau / (base_od * Delta ** (n - 1)):.6f}"
+        f"Delta^{n}={residual_tau / (base_od * Delta ** (n - 1)):.6f}"
         for n in (3, 4, 5)
     ]
     print(f"  {' '.join(scale_parts)}")
@@ -565,7 +562,7 @@ def part_d_delta_expansion() -> None:
     cn_diff = float(np.max(np.abs(cn_ref - cn_meas))) if len(cn_ref) else 0.0
     tau_poly = sum(tau_coeffs[n] * Delta**n for n in range(len(tau_coeffs)))
 
-    print(f"Series = Delta*(1-D)^5*(1-4(1-D)D^2)")
+    print(f"Series = Delta*(1-Delta)^5*(1-4(1-Delta)*Delta^2)")
     print(f"  max |coeff_ref - coeff_meas|   = {cn_diff:.6e}")
     print(f"  max degree                     = {len(tau_coeffs) - 1}")
     print(f"  poly - closed form             = {tau_poly - tau_exact:.6e}")
@@ -588,9 +585,11 @@ def part_e_summary(
     print("Part E: Coupling summary")
     print("=" * 10)
 
-    tau_G = tau_G_formula
-    G_pred = g_pred_from_tau(tau_G)
-    alpha_G_pred = G_kernel * math.exp(-tau_G)
+    tau_leading = tau_G_formula
+    tau_full = tau_g_with_c4(-7.0 / 4.0)
+    G_leading = g_pred_from_tau(tau_leading)
+    G_pred = g_pred_from_tau(tau_full)
+    alpha_G_pred = G_kernel * math.exp(-tau_full)
 
     print("CGM invariants:")
     print(f"  Q_G    = {Q_G:.10f}")
@@ -605,16 +604,15 @@ def part_e_summary(
     print(f"  D        = {Z2_HOLONOMY_PATH_TRAVERSE}")
     print(f"  G_kernel = pi/6 = {G_kernel:.12f}")
     print()
-    print("Optical depth formula:")
-    print(f"  tau_G = |Omega|*Delta*rho^5*(1 - 4*rho*Delta^2) = {tau_G:.12f}")
+    print("Optical depth:")
+    print(f"  leading order tau_G = {tau_leading:.12f}")
+    print(f"  full prediction     = {tau_full:.12f}")
     print()
     print("Gravitational coupling:")
-    print(f"  alpha_G(v) predicted = {alpha_G_pred:.6e}")
-    print(f"  alpha_G(v) measured  = {alpha_G_meas:.6e}")
-    print(f"  G_pred = {G_pred:.6e} GeV^-2")
-    print(f"  G_meas = {G_meas:.6e} GeV^-2")
-    print(f"  G_pred/G_meas - 1    = {(G_pred/G_meas - 1):.6e}")
-    print(f"  residual tau_G - tau_required = {tau_G - tau_required:.6e}")
+    print(f"  G_pred (full)        = {G_pred:.6e} GeV^-2")
+    print(f"  G_meas               = {G_meas:.6e} GeV^-2")
+    print(f"  ppm (full)           = {(G_pred/G_meas - 1)*1e6:+.3f}")
+    print(f"  ppm (leading)        = {(G_leading/G_meas - 1)*1e6:+.3f}")
     print()
     print("Three routes to exponent 5:")
     print(f"  A (STF):    dim(STF(3)) = {n_STF}")
@@ -629,9 +627,8 @@ def part_e_summary(
     print(f"  rho = {rho:.12f}")
     print(f"  Delta = {Delta:.12f}")
     print(f"  STF dim = {n_STF}, bulk shells = {len(bulk_shells)}, |K4| = 4")
-    print(f"  tau_G = {tau_G:.6f}")
-    print(f"  G_pred/G_meas - 1 = {(G_pred/G_meas - 1) * 1e6:.1f} ppm")
-    print(f"  Residual: tau_G - tau_required = {tau_G - tau_required:.6e}")
+    print(f"  tau_G (full) = {tau_full:.6f}")
+    print(f"  G_pred/G_meas - 1 (full) = {(G_pred/G_meas - 1) * 1e6:.3f} ppm")
 
 
 # ============================================================

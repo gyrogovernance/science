@@ -109,7 +109,7 @@ def _run_32bit_probe(
 
 def _ratio_probe() -> tuple[Fraction, Fraction, float]:
     # Late-import to avoid broad module import side effects in non-workspace contexts.
-    from cgm_compact_geom_core import CARRIER_TRACES, lepton_d3_transition_costs
+    from aqpu_compact_geom_core import CARRIER_TRACES, lepton_d3_transition_costs
 
     c2 = CARRIER_TRACES[2]
     c4 = CARRIER_TRACES[4]
@@ -196,7 +196,7 @@ def run_148_51_closure_probe(
     full = by_label["full-byte length-2 words"]
 
     # Late import to avoid broad module import side effects.
-    from cgm_compact_geom_core import CODE_C2, CODE_C3
+    from aqpu_compact_geom_core import CODE_C2, CODE_C3
 
     numerator = (
         int(k4.max_family_paths_per_state)

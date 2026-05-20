@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-cgm_aqpu_wavefunction_1.py
+aqpu_wavefunction_1.py
 aQPU wavefunction holonomy diagnostics.
 
 Structural principles (corrected):

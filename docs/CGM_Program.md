@@ -21,6 +21,8 @@
   - [5.3 The Black Hole Universe and Aperture Thermodynamics](#53-the-black-hole-universe-and-aperture-thermodynamics)
   - [5.4 The Balance Index and Resolution of the Cosmological Constant Problem](#54-the-balance-index-and-resolution-of-the-cosmological-constant-problem)
   - [5.5 Particle Physics and Sterile Neutrino Non-Observability](#55-particle-physics-and-sterile-neutrino-non-observability)
+  - [5.6 Gravitational Coupling and Nonlinear Continuum](#56-gravitational-coupling-and-nonlinear-continuum)
+  - [5.7 Electroweak Mass Spectrum from Compact Geometry](#57-electroweak-mass-spectrum-from-compact-geometry)
 - [6. Cosmological Observations and Testable Predictions](#6-cosmological-observations-and-testable-predictions)
   - [6.1 The CMB as a Residual Observational Field](#61-the-cmb-as-a-residual-observational-field)
   - [6.2 Cosmic Multiplicity and the Illusion of Expansion](#62-cosmic-multiplicity-and-the-illusion-of-expansion)
@@ -39,7 +41,8 @@ The Common Governance Model (CGM) is a comprehensive theoretical framework that 
 This document serves as a high-level guide to the entire CGM research program, which extends far beyond the core deductive results presented in the main paper. It synthesizes findings from dozens of interconnected analyses, demonstrating how the framework provides a coherent and mathematically rigorous foundation for understanding:
 
 -   **The emergence of three-dimensional space** with six degrees of freedom as a logical necessity.
--   **The geometric origin of physical constants**, including the fine-structure constant and particle mass scales.
+-   **The geometric origin of physical constants**, including the fine-structure constant, Newton's constant, and electroweak particle masses.
+-   **A complete gravitational derivation**, from the CGM aQPU implementation through nonlinear continuum predictions (horizon, photon sphere, perihelion, shadows).
 -   **A new perspective on cosmology**, where the universe is the interior of a Planck-scale black hole and cosmic expansion is an optical illusion.
 -   **A resolution to fundamental problems in physics**, such as the cosmological constant problem, the Hubble tension, and the nature of quantum gravity.
 -   **A formal theory of intelligence**, including quantitative metrics for AI alignment and a constructive model (GyroSI) of recursive intelligence.
@@ -217,6 +220,26 @@ The energy scale hierarchy makes specific predictions for particle physics:
 -   **Proton Lifetime:** The geometric GUT scale predicts `τ_p ≈ 8.6 × 10^43 years`, consistent with the non-observation of proton decay.
 -   **Sterile Neutrinos:** These are predicted to be confined to the unobservable CS (UV) focus. They can have indirect effects (like generating light neutrino masses) but can *never* be directly detected as propagating particles. This is a strong, falsifiable prediction.
 
+### 5.6 Gravitational Coupling and Nonlinear Continuum
+
+The gravity program connects the finite algebraic kernel to continuum field theory and observational tests. Full derivation and status: [Analysis_Gravity](Findings/Analysis_Gravity.md).
+
+**Kernel layer (exact combinatorics).** The Gyroscopic ASI aQPU implements CGM as replayable software. Combinatorial invariants from that implementation fix the gravitational coupling at the electroweak scale without using measured G in the forward calculation. Current agreement with CODATA is 25 parts per million.
+
+**Continuum layer (nonlinear gravity).** Position-dependent coupling weakens with field strength. The static point-mass exterior has a closed-form solution. From it the code computes the horizon, photon sphere, impact parameter, Mercury perihelion advance (matching general relativity at solar-system precision), and shadow diameters for Event Horizon Telescope sources.
+
+**Verification stack.** Nine Python files form one reproducible suite: shared library (`aqpu_gravity_common.py`), five analysis passes, two state-model diagnostics, and a runner script. Execute:
+
+```
+python experiments/aqpu_gravity_run_all.py
+```
+
+The static spherical sector is computationally closed. Open work: full dynamical evolutions beyond static spherical symmetry, and an independent check of the gravitational coupling derivation.
+
+### 5.7 Electroweak Mass Spectrum from Compact Geometry
+
+The compact geometry program derives the Higgs, Z, W, and top quark masses from discrete spectral structure on the same opacity frame that governs aperture and coupling. The weak mixing angle follows from the same construction. Typical agreement is sub-ppm to parts-per-billion relative to experiment. Full write-up: [Analysis_Compact_Geometry](Findings/Analysis_Compact_Geometry.md). Verification: `aqpu_compact_geom_core.py`, `aqpu_compact_geom_kernel.py`, `aqpu_compact_geom_report.py`.
+
 ## 6. Cosmological Observations and Testable Predictions
 
 ### 6.1 The CMB as a Residual Observational Field
@@ -257,18 +280,37 @@ GyroSI is a computational implementation of CGM's principles, representing intel
 
 ## 8. Computational Verification and Reproducibility
 
-The entire CGM research program is grounded in reproducible computational analysis. Every major claim is supported by at least one dedicated Python script.
+Every major claim in this program is backed by runnable Python in `experiments/` and a matching analysis note in `docs/Findings/`. The repository currently contains:
 
--   **Axiomatization:** `cgm_axiomatization_analysis.py` (Z3 SMT verification)
--   **Hilbert Space:** `cgm_Hilbert_Space_analysis.py` (GNS construction, BCH scaling)
--   **3D/6DoF Proof:** `cgm_3D_6DoF_analysis.py` (Dimensional exclusion)
--   **Fine-Structure Constant:** `cgm_fine_structure_corrections.py` (Full 3-layer derivation)
--   **Energy Scales:** `cgm_energy_analysis.py` (UV-IR conjugacy)
--   **Balance Index:** `cgm_balance_analysis.py` (Cosmological constant resolution)
--   **Black Hole Physics:** `cgm_bh_universe_analysis.py`, `cgm_bh_aperture_analysis.py`
--   **CMB Analysis:** `cgm_cmb_data_analysis_290825.py` (ℓ=37 ladder detection)
+| Measure | Count |
+|---------|------:|
+| Analysis write-ups | 28 |
+| Runnable experiment scripts | 57 |
+| Shared libraries, stage modules, and tests | 21 |
+| Python in `experiments/` (all files) | ~44,000 lines |
 
-All artifacts are archived on Zenodo (DOI: 10.5281/zenodo.17521384) and GitHub (github.com/gyrogovernance/science).
+Scripts cover gravity, electroweak mass geometry, fine structure, quantum gravity, CMB data checks, axiomatization, Hilbert space representation, monodromy, energy scales, black-hole cosmology, balance index, and related topics. Each row below is the single entry point for that topic.
+
+| Topic | Analysis | Code |
+|-------|----------|------|
+| Gravity: discrete state geometry and nonlinear continuum | [Analysis_Gravity](Findings/Analysis_Gravity.md) | `aqpu_gravity_common.py`, `aqpu_gravity_analysis_1.py` through `5.py`, `aqpu_wavefunction_1.py`, `aqpu_wavefunction_2.py`. Run: `python experiments/aqpu_gravity_run_all.py` |
+| Electroweak mass spectrum | [Analysis_Compact_Geometry](Findings/Analysis_Compact_Geometry.md) | `aqpu_compact_geom_core.py`, `aqpu_compact_geom_kernel.py`, `aqpu_compact_geom_report.py` |
+| Fine-structure constant | [Analysis_Fine_Structure](Findings/Analysis_Fine_Structure.md) | `cgm_alpha_analysis.py` |
+| Quantum gravity invariant | [Analysis_Quantum_Gravity](Findings/Analysis_Quantum_Gravity.md) | `cgm_quantum_gravity_analysis.py` |
+| Energy scale unification | [Analysis_Energy_Scales](Findings/Analysis_Energy_Scales.md) | `cgm_energy_analysis.py` |
+| 4π unification | [Analysis_4pi_Alignment](Findings/Analysis_4pi_Alignment.md) | |
+| 3D space and six degrees of freedom | [Analysis_3D_6DOF_Proof](Findings/Analysis_3D_6DOF_Proof.md) | `cgm_3D_6DoF_analysis.py` |
+| Axiomatization | [Analysis_Axiomatization](Findings/Analysis_Axiomatization.md) | `cgm_axiomatization_analysis.py` |
+| Hilbert space representation | [Analysis_Hilbert_Space_Representation](Findings/Analysis_Hilbert_Space_Representation.md) | `cgm_Hilbert_Space_analysis.py` |
+| CMB patterns (Planck: ℓ=37 enhancement p=0.0039) | [Analysis_CMB](Findings/Analysis_CMB.md) | `cgm_cmb_data_analysis_300825.py` |
+| Monodromy / spin-2 orientation recovery | [Analysis_Monodromy](Findings/Analysis_Monodromy.md) | `tw_closure_test.py` |
+| Balance index / cosmological constant | [Analysis_Balance_Index](Findings/Analysis_Balance_Index.md) | `cgm_balance_analysis.py` |
+| Black hole universe and aperture thermodynamics | [Analysis_BH_Universe](Findings/Analysis_BH_Universe.md), [Analysis_BH_Aperture](Findings/Analysis_BH_Aperture.md) | `cgm_bh_universe_analysis.py`, `cgm_bh_aperture_analysis.py` |
+| Kompaneyets | [Analysis_Kompaneyets](Findings/Analysis_Kompaneyets.md) | `cgm_kompaneyets_analysis.py` |
+| Proto-units | [Analysis_CGM_Units](Findings/Analysis_CGM_Units.md) | `cgm_proto_units_analysis.py` |
+| Gyroscopic multiplication | [Analysis_Gyroscopic_Multiplication](Findings/Analysis_Gyroscopic_Multiplication.md) | |
+
+All artifacts are archived on [Zenodo](https://doi.org/10.5281/zenodo.17521384) and [GitHub](https://github.com/gyrogovernance/science). The main paper is [CGM.pdf](CGM.pdf); the README lists headline quantitative results and links to this program guide.
 
 ## 9. Conclusion and Future Directions
 
@@ -277,7 +319,10 @@ The Common Governance Model presents a radical yet internally consistent paradig
 While many aspects of the program are exploratory and require further validation, the convergence of results across logical, analytical, and geometric channels, combined with the precision of key predictions, suggests that CGM captures fundamental principles of our universe's structure.
 
 **Future work will focus on:**
--   Deriving the full dynamical equations of the theory.
--   Explaining fermion mass hierarchies and other Standard Model parameters.
--   Expanding cosmological tests with next-generation observatories (e.g., LISA, SKA).
--   Developing practical applications of GyroSI and GyroDiagnostics.
+
+-   Independent cross-check of lepton mass derivation against radiative corrections.
+-   Connecting compact geometry to standard model radiative corrections.
+-   Dynamical scalar-tensor evolutions beyond static spherical gravity.
+-   Shell-space path integral for independent verification of gravitational optical depth.
+-   Cosmological tests with next-generation observatories (e.g., LISA, SKA).
+-   Practical applications of GyroSI and GyroDiagnostics.

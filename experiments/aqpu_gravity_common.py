@@ -1,7 +1,7 @@
 """
 Shared CGM gravity kernel helpers and invariants.
 
-Used by cgm_gravity_analysis_{1,2,exp}.py.
+Used by aqpu_gravity_analysis_{1,2,3,4,5}.py.
 
 Convention: arch_shell = 6 - chi_shell, measuring distance from the complement
 horizon (0 = complement horizon, 6 = equality horizon).
@@ -18,12 +18,17 @@ from __future__ import annotations
 
 import math
 import sys
-from math import comb
+from fractions import Fraction
+from math import comb, exp, log, sqrt
 from pathlib import Path
 
 import numpy as np
+from scipy.optimize import brentq
+from scipy.special import lambertw
 
 from gyroscopic.aQPU.constants import (
+    GENE_MAC_A12,
+    GENE_MAC_B12,
     GENE_MAC_REST,
     GENE_MIC_S,
     CHIRALITY_MASK_6,
@@ -49,6 +54,7 @@ TR_SIGMA_SHELL = [0, 0.416667, 0.666667, 0.75, 0.666667, 0.416667, 0]
 FA_STF = math.sqrt(6) / 9
 CHI6_FULL = CHIRALITY_MASK_6
 FAMILY_RAY_REF = 1
+GENE_MAC_SWAPPED = (GENE_MAC_B12 << 12) | GENE_MAC_A12
 
 Q_G = 4 * np.pi
 m_a = 1 / (2 * np.sqrt(2 * np.pi))
@@ -61,6 +67,7 @@ H_size = 64
 W2_SHELL_DISPLACEMENT = 6  # per W2 depth-4 half-word (2 bytes); wavefunction_2 T2,T5
 F_CYCLE_PATH_TRAVERSE = 12  # F-cycle path length (4 bytes); F preserves shell per T4
 Z2_HOLONOMY_PATH_TRAVERSE = 24  # Z2 holonomy path length (8 bytes, 2 F-cycles); net disp 0
+D_traverse = Z2_HOLONOMY_PATH_TRAVERSE  # shell traverse invariant (not aperture Delta)
 AF = 2 * Z2_HOLONOMY_PATH_TRAVERSE  # Z2 double-cover: holonomy cycle path x 2 for optical depth round-trip (T6: F o F = id)
 v_EW = 246.22
 G_meas = 6.708810e-39
@@ -285,9 +292,372 @@ def tau_cycle_weighted(micro_weights, shell_w=None):
     return tau_sum / w_sum if w_sum > 0 else 0.0
 
 
+def tau_cycle_per_delta_exact() -> Fraction:
+    """tau_cycle/Delta from bulk shell transport (primary: analysis_3 section C)."""
+    sum_cubes = sum(comb(6, k) ** 3 for k in range(1, 6))
+    sum_sq = sum(comb(6, k) ** 2 for k in range(7))
+    return Fraction(4 * sum_cubes, 64 * sum_sq)
+
+
 def tau_g_with_c4(c4_val):
     f_ext = 1.0 - 4.0 * rho * Delta**2 + c4_val * Delta**4
     return Omega_size * Delta * rho**5 * f_ext
+
+
+def kernel_exposure_constants() -> tuple[float, float, float, Fraction]:
+    """
+    N_cycles, tau_cycle, tau_G (full), tau_cycle/Delta from analysis_3 section D.
+
+    Single source for exposure-count factorization (no two-lemma 3481 formula).
+    """
+    tau_over_delta = tau_cycle_per_delta_exact()
+    tau_cycle = float(tau_over_delta) * Delta
+    f_k4_full = f_ordered + float(C4_REF) * Delta**4
+    n_cycles = Omega_size * rho**5 * f_k4_full / float(tau_over_delta)
+    tau_g_full = tau_g_with_c4(C4_REF)
+    return n_cycles, tau_cycle, tau_g_full, tau_over_delta
+
+
+def dln_g_dpsi(tau_g_full: float | None = None) -> float:
+    """Slope d ln(G/G0) / d psi for G(psi) = G0 exp(g1 psi)."""
+    tau = tau_g_full if tau_g_full is not None else tau_g_with_c4(C4_REF)
+    eta = math.log(v_EW / E_CS)
+    return tau + 2.0 * eta
+
+
+def psi_analytic(s: float | np.ndarray, g1: float | None = None) -> float | np.ndarray:
+    """
+    Exact point-mass profile: psi(s) = -(1/g1) ln(1 - g1/s).
+
+    From d psi/ds = -exp(g1 psi)/s^2 with G/G0 = exp(g1 psi).
+    Uses log1p for numerical stability near weak field.
+    """
+    if g1 is None:
+        g1 = dln_g_dpsi()
+    s_arr = np.asarray(s, dtype=float)
+    arg = -g1 / s_arr
+    if np.any(1.0 + arg <= 0.0):
+        raise ValueError("s must exceed g1 for real psi (g1 < 0)")
+    return -np.log1p(arg) / g1
+
+
+def dpsi_ds_analytic(s: float | np.ndarray, g1: float | None = None) -> float | np.ndarray:
+    """Exact d psi/ds = -1/(s(s - g1))."""
+    if g1 is None:
+        g1 = dln_g_dpsi()
+    s_arr = np.asarray(s, dtype=float)
+    return -1.0 / (s_arr * (s_arr - g1))
+
+
+def horizon_s_analytic(g1: float | None = None) -> float:
+    """Horizon s_h from psi = 1/2: s_h = g1/(1 - exp(-g1/2))."""
+    if g1 is None:
+        g1 = dln_g_dpsi()
+    return g1 / (1.0 - exp(-g1 / 2.0))
+
+
+def s_from_psi(psi: float, g1: float | None = None) -> float:
+    """Invert psi(s): s = -g1 / expm1(-g1*psi) (stable near psi=0)."""
+    if g1 is None:
+        g1 = dln_g_dpsi()
+    return -g1 / math.expm1(-g1 * psi)
+
+
+def psi_point_mass(s: float, g1: float | None = None) -> float:
+    """Scalar exact psi(s); same as psi_analytic, uses math.log1p."""
+    if g1 is None:
+        g1 = dln_g_dpsi()
+    return -(1.0 / g1) * math.log1p(-g1 / s)
+
+
+def dpsi_ds_point_mass(s: float, g1: float | None = None) -> float:
+    """Scalar d psi/ds = -1/(s*(s-g1))."""
+    if g1 is None:
+        g1 = dln_g_dpsi()
+    return -1.0 / (s * (s - g1))
+
+
+def exp_g_path_ratio(psi: float, g1: float | None = None) -> float:
+    """G_path(psi)/G0 = exp(g1*psi) along the point-mass exterior ODE."""
+    if g1 is None:
+        g1 = dln_g_dpsi()
+    return math.exp(g1 * psi)
+
+
+def E_ref_quantile(psi: float) -> float:
+    """E_ref(psi) = E_CS * (v/E_CS)^(1-psi) (Delta ruler quantile)."""
+    return E_CS * (v_EW / E_CS) ** (1.0 - psi)
+
+
+def tau_of_psi(psi: float, tau_g_val: float | None = None) -> float:
+    """Algebraic tau(psi) = tau_G * (1 - psi)."""
+    tg = tau_g_val if tau_g_val is not None else tau_g_with_c4(C4_REF)
+    return tg * (1.0 - psi)
+
+
+def photon_sphere_closed(g1: float | None = None) -> tuple[float, float, float]:
+    """
+    Photon sphere (Lambert W): y = exp(g1*psi) solves y + 2*ln(y) = 1 + g1.
+    Returns (psi_ph, s_ph, b/r_g).
+    """
+    if g1 is None:
+        g1 = dln_g_dpsi()
+    z = 0.5 * math.exp(0.5 * (1.0 + g1))
+    u_w = float(lambertw(z).real)
+    y = 2.0 * u_w
+    psi_ph = math.log(y) / g1
+    s_ph = g1 * y / (y - 1.0)
+    f_ph = 1.0 - 2.0 * psi_ph
+    b_over_rg = s_ph / math.sqrt(max(f_ph, 1e-15))
+    return psi_ph, s_ph, b_over_rg
+
+
+def psi_photon_analytic(g1: float | None = None) -> float:
+    """Photon-sphere psi (same as photon_sphere_closed)."""
+    psi_ph, _, _ = photon_sphere_closed(g1)
+    return psi_ph
+
+
+def photon_geometry_analytic(
+    g1: float | None = None,
+) -> tuple[float, float, float]:
+    """Return (psi_ph, s_ph, b_over_rg) via Lambert-W closed form."""
+    return photon_sphere_closed(g1)
+
+
+photon_s_b = photon_geometry_analytic
+horizon_s = horizon_s_analytic
+
+
+def point_mass_profile(
+    n_eval: int = 500,
+    s_min: float | None = None,
+    s_max: float = 1e6,
+    g1: float | None = None,
+) -> tuple[np.ndarray, np.ndarray]:
+    """Log-spaced (s, psi) on the exact point-mass exterior (no ODE solver)."""
+    if g1 is None:
+        g1 = dln_g_dpsi()
+    if s_min is None:
+        s_min = horizon_s_analytic(g1) * 1.001
+    s_vals = np.logspace(math.log10(s_min), math.log10(s_max), n_eval)
+    u_vals = np.asarray(psi_analytic(s_vals, g1), dtype=float)
+    return s_vals, u_vals
+
+
+def precession_schwarzschild_per_orbit(s_a: float, e: float) -> float:
+    """GR perihelion advance per orbit (radians), s_a = a/r_g."""
+    return 6.0 * math.pi / (s_a * (1.0 - e**2))
+
+
+def mercury_precession_cgm_gr_ratio(
+    a_m: float = 5.791e10,
+    e: float = 0.205630,
+    m_sun_kg: float = 1.989e30,
+    g_si: float = 6.674e-11,
+    c_si: float = 3.0e8,
+    g1: float | None = None,
+) -> tuple[float, float, float, float]:
+    """
+    Weak-field CGM/GR perihelion ratio from effective PPN factor.
+
+    Returns (ratio, pre_gr, pre_cgm, s_a) with s_a in r_g units.
+    """
+    if g1 is None:
+        g1 = dln_g_dpsi()
+    r_g = g_si * m_sun_kg / c_si**2
+    s_a = a_m / r_g
+    pre_gr = precession_schwarzschild_per_orbit(s_a, e)
+    a2 = g1 / 2.0
+    beta_eff = 1.0 - a2 / s_a
+    pre_cgm = pre_gr * (4.0 - beta_eff) / 3.0
+    return pre_cgm / pre_gr, pre_gr, pre_cgm, s_a
+
+
+# Spin sector (J != 0): wavefunction holonomy -> metric deficit on f = 1 - 2*psi
+KAPPA_KERNEL = 3.0 / 4.0
+KAPPA_METRIC = W2_SHELL_DISPLACEMENT * KAPPA_KERNEL
+N_FAMILY = 4.0
+
+
+def helix_z2_activation(n_turns: int = 2) -> float:
+    """Fraction of helix steps with Z2 = swapped (canonical 4-family word)."""
+    word = family_word_for_micro(FAMILY_RAY_REF)
+    state = GENE_MAC_REST
+    swapped = 0
+    n = 0
+    for _ in range(n_turns):
+        for byte in word:
+            state = step_state_by_byte(state, byte)
+            if state == GENE_MAC_SWAPPED:
+                swapped += 1
+            if state in (GENE_MAC_REST, GENE_MAC_SWAPPED):
+                n += 1
+    return swapped / max(n, 1)
+
+
+def zeta_polar(theta_deg: float) -> float:
+    """Polar modulation: Z2 active at equator (sin^2 theta)."""
+    return float(np.sin(np.radians(theta_deg)) ** 2)
+
+
+def metric_spin_deficit(
+    s: float,
+    u: float,
+    a_star: float,
+    theta_o_deg: float,
+    z2_amp: float | None = None,
+) -> float:
+    """Gravitomagnetic deficit h on f = 1 - 2*u."""
+    if z2_amp is None:
+        z2_amp = helix_z2_activation()
+    zeta = zeta_polar(theta_o_deg)
+    geom = u / max(1.0 - 2.0 * u, 1e-6)
+    return (
+        KAPPA_METRIC
+        * N_FAMILY
+        * z2_amp
+        * zeta
+        * (a_star / max(s, 1e-6)) ** 2
+        * geom
+        * s
+        / float(W2_SHELL_DISPLACEMENT)
+    )
+
+
+def _spin_u_and_deriv(s: float, g1: float | None = None) -> tuple[float, float]:
+    """psi(s) and d psi/ds on the exact point-mass exterior."""
+    if g1 is None:
+        g1 = dln_g_dpsi()
+    u = float(psi_analytic(s, g1))
+    u_prime = float(dpsi_ds_point_mass(s, g1))
+    return u, u_prime
+
+
+def _h_derivs(
+    s: float,
+    u: float,
+    u_prime: float,
+    a_star: float,
+    theta_o_deg: float,
+    z2_amp: float,
+    g1: float | None = None,
+) -> tuple[float, float, float]:
+    """h and total dh/ds along the analytic exterior profile."""
+    if g1 is None:
+        g1 = dln_g_dpsi()
+    h = metric_spin_deficit(s, u, a_star, theta_o_deg, z2_amp)
+    ds = max(s * 1e-7, 1e-9)
+    du = 1e-8
+    if g1 is None:
+        g1 = dln_g_dpsi()
+    s_lo = horizon_s_analytic(g1) * 1.001
+    u_sp, _ = _spin_u_and_deriv(s + ds, g1)
+    u_sm, _ = _spin_u_and_deriv(max(s - ds, s_lo), g1)
+    h_sp = metric_spin_deficit(s + ds, u_sp, a_star, theta_o_deg, z2_amp)
+    h_sm = metric_spin_deficit(max(s - ds, s_lo), u_sm, a_star, theta_o_deg, z2_amp)
+    dh_ds = (h_sp - h_sm) / (2.0 * ds)
+    h_up = metric_spin_deficit(s, u + du, a_star, theta_o_deg, z2_amp)
+    dh_du = (h_up - h) / du
+    return h, dh_ds + dh_du * u_prime, h
+
+
+def photon_residual_spin(
+    s: float,
+    a_star: float,
+    theta_o_deg: float,
+    z2_amp: float | None = None,
+    g1: float | None = None,
+) -> float:
+    """Photon condition s*f_eff' - 2*f_eff = 0 with f_eff = 1 - 2*u - h."""
+    u, u_prime = _spin_u_and_deriv(s, g1)
+    if u >= 0.499:
+        return 1e6
+    if z2_amp is None:
+        z2_amp = helix_z2_activation()
+    h, dh_ds_total, _ = _h_derivs(
+        s, u, u_prime, a_star, theta_o_deg, z2_amp, g1
+    )
+    f_eff = 1.0 - 2.0 * u - h
+    f_eff_prime = -2.0 * u_prime - dh_ds_total
+    return s * f_eff_prime - 2.0 * f_eff
+
+
+def _spin_photon_bracket(
+    s_schw: float,
+    a_star: float,
+    theta_o_deg: float,
+    z2_amp: float,
+    g1: float | None = None,
+    s_max: float = 1e6,
+) -> tuple[float, float] | None:
+    """Bracket s where photon_residual_spin changes sign."""
+    if g1 is None:
+        g1 = dln_g_dpsi()
+    s_a = max(s_schw * 0.98, horizon_s_analytic(g1) * 1.001)
+    s_b = min(max(s_schw * 1.35, 4.0), s_max)
+    prev_s, prev_r = s_a, photon_residual_spin(
+        s_a, a_star, theta_o_deg, z2_amp, g1
+    )
+    for i in range(1, 49):
+        s = s_a + (s_b - s_a) * i / 48
+        r = photon_residual_spin(s, a_star, theta_o_deg, z2_amp, g1)
+        if prev_r * r <= 0.0 and abs(r) < 1e3:
+            return prev_s, s
+        prev_s, prev_r = s, r
+    return None
+
+
+def photon_impact_spin(
+    s_ph: float,
+    u_ph: float,
+    a_star: float,
+    theta_o_deg: float,
+    z2_amp: float | None = None,
+) -> float:
+    """Impact parameter b/r_g at fixed s_ph with spin metric deficit."""
+    h = metric_spin_deficit(s_ph, u_ph, a_star, theta_o_deg, z2_amp)
+    f_eff = max(1.0 - 2.0 * u_ph - h, 1e-9)
+    return s_ph / float(np.sqrt(f_eff))
+
+
+def find_photon_sphere_spin(
+    a_star: float,
+    theta_o_deg: float,
+    g1: float | None = None,
+    s_max: float = 1e6,
+):
+    """Photon sphere and b/r_g from spin-coupled null geodesic condition."""
+    if g1 is None:
+        g1 = dln_g_dpsi()
+    _, s_schw, _ = photon_geometry_analytic(g1)
+    u_schw = float(psi_analytic(s_schw, g1))
+    photon = (s_schw, u_schw, s_schw / math.sqrt(max(1.0 - 2.0 * u_schw, 1e-9)))
+    z2_amp = helix_z2_activation()
+    if a_star <= 0.0:
+        return photon
+    bracket = _spin_photon_bracket(
+        s_schw, a_star, theta_o_deg, z2_amp, g1, s_max
+    )
+    if bracket is None:
+        s_ph, u_ph, _ = photon
+        b = photon_impact_spin(s_ph, u_ph, a_star, theta_o_deg, z2_amp)
+        return s_ph, u_ph, b
+    s_lo, s_hi = bracket
+    s_ph = float(
+        brentq(
+            lambda s: photon_residual_spin(
+                s, a_star, theta_o_deg, z2_amp, g1
+            ),
+            s_lo,
+            s_hi,
+        )  # type: ignore[arg-type]
+    )
+    u_ph, _ = _spin_u_and_deriv(s_ph, g1)
+    h = metric_spin_deficit(s_ph, u_ph, a_star, theta_o_deg, z2_amp)
+    f_eff = max(1.0 - 2.0 * u_ph - h, 1e-9)
+    b = s_ph / float(np.sqrt(f_eff))
+    return s_ph, u_ph, b
 
 
 def g_pred_from_tau(tau_val):
@@ -357,7 +727,7 @@ def verify_gauss_law_bridge(*, n_ext: int = 40) -> dict:
 
 def alpha_lab_with_transport_corrections() -> float:
     """
-    alpha after AB, HC, IDE transport corrections (cgm_corrections_analysis_1).
+    alpha after AB, HC, IDE transport corrections (aqpu_corrections_analysis_1).
     """
     d = d_BU
     mp_ = m_a
@@ -421,12 +791,12 @@ def c4_from_anchors(g_gev2, v_ew_gev):
 def k4_pq_charges():
     """EW trace-free charges (p, q) per K4 channel from gyrotriangle closure.
 
-    Channel flags on the K4 edge walk (see cgm_compact_geom_core.CHANNELS):
+    Channel flags on the K4 edge walk (see aqpu_compact_geom_core.CHANNELS):
       b (base): breaks CS reference frame (Higgs path)
       r (rot):  ONA reversal increment on the edge
       bal:    BU balance increment on the edge
 
-    Formulas match _pq() in cgm_compact_geom_core: p = 1 + (-C1/2)*b + (C1/4)*r + 2*bal,
+    Formulas match _pq() in aqpu_compact_geom_core: p = 1 + (-C1/2)*b + (C1/4)*r + 2*bal,
     q = 5/4 - 2*r - bal with C1=6 (CODE_C1). Returns (p, q) per channel name.
     """
     p0, q0 = 1.0, 5.0 / 4.0

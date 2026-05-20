@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-cgm_compact_geom_report.py
+aqpu_compact_geom_report.py
 
 Report layer for the compact geometry electroweak analysis.
 No computation: formats and prints results from core and kernel.
@@ -22,7 +22,7 @@ import math
 from fractions import Fraction
 from typing import Sequence
 
-from cgm_compact_geom_core import (
+from aqpu_compact_geom_core import (
     ALPHA_GEOMETRIC,
     CHANNELS,
     CODE_C1,
@@ -85,7 +85,7 @@ from cgm_compact_geom_core import (
     all_laws,
 )
 
-from cgm_compact_geom_kernel import (
+from aqpu_compact_geom_kernel import (
     KernelReport,
     run_kernel_verification,
     ShellTransitionRow,
@@ -1435,7 +1435,7 @@ def run_report(
     print(f"Delta = {_fix(DELTA)}   v = {v} GeV")
 
     if skip_kernel:
-        from cgm_compact_geom_kernel import (
+        from aqpu_compact_geom_kernel import (
             KernelReport, shell_transition_algebra, uv_ir_shell_dpf,
             d6_residuals, orderwise_ladder,
         )

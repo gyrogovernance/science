@@ -35,23 +35,34 @@
 </div>
 
 ---
-    
+
 # 🌐 Common Governance Model (CGM)
 
-> CGM is a formal deductive framework that begins with a single foundational axiom: that all states in a coherent system must be traceable to a common source. Formalized using modal logic, this principle yields five constraints that any system, physical or informational, must satisfy to maintain coherence under recursive observation. The framework uses gyrogroup geometry to derive the structure of space, time, and physical constants, while also defining measurable alignment metrics for artificial intelligence.
+CGM is an axiomatic framework for fundamental physics and information science. It starts from one requirement: every state in a coherent system must be traceable to a common source. From that starting point, the model derives structure through formal logic and gyrogroup geometry, then checks the results against experiment.
 
-## Introduction
+The framework treats **three-dimensional space with six degrees of freedom** as a theorem, not an input. Time appears as the order in which recursive operations must be applied. The approach follows the Hilbert program tradition: define the rules, derive the consequences, compare with measurement. CGM is implemented as the [Gyroscopic ASI aQPU](#gyroscopic-asi-aqpu); the physics results below are verified on that implementation.
 
-The Common Governance Model (CGM) is a Hilbert-style axiomatic system for fundamental physics and information science. As an axiomatic model, CGM begins with five foundational constraints (CS, UNA, ONA, BU Egress, BU Ingress), derives all subsequent structure through syntactic rules of inference, and interprets the results in physical geometry to produce empirically testable predictions.
+## Headline results
 
-The model axiomatizes physics from logic, deriving **three dimensional space with six degrees of freedom** as a necessary consequence, not an assumption. Time emerges as the logical ordering of recursive operations, encoded by the memory inherent in gyrogroup geometry. The framework extends the tradition of Noether, Kolmogorov, and Wightman by applying axiomatic methods to spacetime structure itself, addressing the core challenge of Hilbert's sixth problem.
+- **Fine-structure constant** α ≈ 1/137.036 from aperture geometry (0.043 ppb vs experiment)
+- **Newton's constant** G from geometric invariants at the electroweak scale (25 ppm vs CODATA)
+- **Nonlinear gravity**: position-dependent G, analytic static exterior, horizon and photon sphere, Mercury precession, shadow geometry (computationally closed)
+- **Electroweak masses** (Higgs, Z, W, top) and **weak mixing angle** from discrete geometry (sub-ppm to parts-per-billion)
+- **Quantum gravity invariant** 4π steradians (full solid angle of observation)
 
-Derived predictions include:
-- The **quantum gravity invariant** `Q_G = 4π`, representing the complete solid angle for coherent observation.
-- A geometric estimate of the **fine structure constant** `α ≈ 1/137.036`, matching experiment from aperture geometry with one dimensional anchor.
-- A derivation of the **gravitational coupling** `κ = 8πG/c⁴` from kernel invariants, predicting G to 25 parts per million from the electroweak anchor.
-- A universal **2.07% aperture ratio**, connecting physical coupling to the optimal balance for AI alignment.
-- The **masses of the Higgs, Z, W, and top quark** derived from pure discrete geometry with no fitted parameters, matching experimental measurements to better than one part in a million.
+Neutrino mass scale, lepton ratios, quark flavor structure, and optical conjugacy between ultraviolet and infrared scales are derived in the linked analyses below.
+
+## Scale of verification
+
+| Measure | Count |
+|---------|------:|
+| Analysis write-ups (`docs/Findings/`) | 28 |
+| Runnable experiment scripts (`experiments/`) | 57 |
+| Physics experiments on the aQPU implementation | 14 |
+| Shared libraries, stage modules, and tests | 21 |
+| Python in `experiments/` (all files) | ~44,000 lines |
+
+The experiment scripts span gravity, electroweak mass geometry, fine structure, quantum gravity, CMB data checks, axiomatization, Hilbert space representation, monodromy, energy scales, and related topics. Each major result in the table below maps to one analysis note and its verification code.
 
 ---
 
@@ -67,81 +78,61 @@ Derived predictions include:
 
 </div>
 
-## 📚 Documentation
+## Documentation and verification
 
-- 🧠 **[CGM Core](docs/CGM_Paper.md)** – Formal axioms, derivations, and geometric invariants
-- 🔭 **[CGM Program](docs/CGM_Program.md)** – Research roadmap, validation plan, and applied objectives
-- 📖 **[CHANGELOG.md](CHANGELOG.md)** - Latest Updates and Complete version history
+Core writing: [CGM Core](docs/CGM_Paper.md), [CGM Program](docs/CGM_Program.md), [CHANGELOG](CHANGELOG.md).  
+Dataset: [CGM corpus](docs/datasets/) (1,000+ JSONL Q&A pairs for fine-tuning and RAG).
 
-### 🧠 CGM Corpus Datasets
+Each row below is the single entry point for that topic: one analysis note, one code location.
 
-- 🤖 **[Main "docs\datasets\cgm_dataset_main.jsonl"](docs/datasets/)** – A structured JSONL dataset of 1,000+ grounded Q&A pairs covering the entire CGM framework, designed for Fine-Tuning (SFT), RAG systems, and AI evaluation benchmarks.
+| Topic | Analysis | Code |
+|-------|----------|------|
+| Gravity and nonlinear continuum | [Analysis_Gravity](docs/Findings/Analysis_Gravity.md) | [aqpu_gravity_common.py](experiments/aqpu_gravity_common.py), `aqpu_gravity_analysis_1.py` through `5.py`, [wavefunction scripts](experiments/aqpu_wavefunction_1.py). Run: `python experiments/aqpu_gravity_run_all.py` |
+| Electroweak mass spectrum | [Analysis_Compact_Geometry](docs/Findings/Analysis_Compact_Geometry.md) | [aqpu_compact_geom_core.py](experiments/aqpu_compact_geom_core.py), [kernel](experiments/aqpu_compact_geom_kernel.py), [report](experiments/aqpu_compact_geom_report.py) |
+| Fine-structure constant | [Analysis_Fine_Structure](docs/Findings/Analysis_Fine_Structure.md) | [cgm_alpha_analysis.py](experiments/cgm_alpha_analysis.py) |
+| Quantum gravity invariant | [Analysis_Quantum_Gravity](docs/Findings/Analysis_Quantum_Gravity.md) | [cgm_quantum_gravity_analysis.py](experiments/cgm_quantum_gravity_analysis.py) |
+| Energy scale unification | [Analysis_Energy_Scales](docs/Findings/Analysis_Energy_Scales.md) | [cgm_energy_analysis.py](experiments/cgm_energy_analysis.py) |
+| 4π unification | [Analysis_4pi_Alignment](docs/Findings/Analysis_4pi_Alignment.md) | |
+| 3D space and six degrees of freedom | [Analysis_3D_6DOF_Proof](docs/Findings/Analysis_3D_6DOF_Proof.md) | [cgm_3D_6DoF_analysis.py](experiments/cgm_3D_6DoF_analysis.py) |
+| Axiomatization | [Analysis_Axiomatization](docs/Findings/Analysis_Axiomatization.md) | [cgm_axiomatization_analysis.py](experiments/cgm_axiomatization_analysis.py) |
+| Hilbert space representation | [Analysis_Hilbert_Space_Representation](docs/Findings/Analysis_Hilbert_Space_Representation.md) | [cgm_Hilbert_Space_analysis.py](experiments/cgm_Hilbert_Space_analysis.py) |
+| CMB patterns (Planck: enhanced power at ℓ=37, p=0.0039) | [Analysis_CMB](docs/Findings/Analysis_CMB.md) | [cgm_cmb_data_analysis_300825.py](experiments/cgm_cmb_data_analysis_300825.py) |
+| Spin-2 from orientation recovery | [Analysis_Monodromy](docs/Findings/Analysis_Monodromy.md) | [tw_closure_test.py](experiments/tw_closure_test.py) |
+| Kompaneyets | [Analysis_Kompaneyets](docs/Findings/Analysis_Kompaneyets.md) | [cgm_kompaneyets_analysis.py](experiments/cgm_kompaneyets_analysis.py) |
+| Proto-units | [Analysis_CGM_Units](docs/Findings/Analysis_CGM_Units.md) | [cgm_proto_units_analysis.py](experiments/cgm_proto_units_analysis.py) |
+| Gyroscopic multiplication | [Analysis_Gyroscopic_Multiplication](docs/Findings/Analysis_Gyroscopic_Multiplication.md) | |
 
-### Foundational Verification Framework
+### Gyroscopic ASI aQPU
 
-| Component | Documentation | Implementation |
-|-----------|---------------|----------------|
-| **Axiomatization** | [Analysis](docs/Findings/Analysis_Axiomatization.md) | [Code](experiments/cgm_axiomatization_analysis.py) |
-| **Hilbert Space Representation** | [Analysis](docs/Findings/Analysis_Hilbert_Space_Representation.md) | [Code](experiments/cgm_Hilbert_Space_analysis.py) |
-| **3D/6DoF Derivation** | [Analysis](docs/Findings/Analysis_3D_6DOF_Proof.md) | [Code](experiments/cgm_3D_6DoF_analysis.py) |
+The **Gyroscopic ASI aQPU** is CGM made executable. The theory derives space, chirality, and governance constraints from a single traceability requirement; the aQPU is the reference software that runs those constraints as physics. Each input byte advances a 24-bit coupled state whose geometry encodes three dimensions and six degrees of freedom. The machine is deterministic and replayable: the same byte ledger always yields the same trajectory, verifiable by any independent party with exact integer arithmetic on standard hardware.
 
-### Key Results & Experiments
+This is not a quantum-hardware simulator. It is an algebraic processing architecture whose state space and transition rules are built to match CGM's structural predictions. The reachable manifold has 4,096 states with holographic boundary-to-bulk scaling. Proven properties include exact mixing, compressed state encoding, and discrete realizations of quantum-information protocols, documented in the test reports linked below.
 
-| Version | Focus Area | Documentation | Implementation |
-|---------|------------|---------------|----------------|
-| **1.2.9** | 🌍 Gravity: aQPU Holonomy and Exact Kernel Theorems | [Analysis](docs/Findings/Analysis_Gravity.md) | [aQPU-1](experiments/cgm_aqpu_wavefunction_1.py), [aQPU-2](experiments/cgm_aqpu_wavefunction_2.py), [3](experiments/cgm_gravity_analysis_3.py), [Common](experiments/cgm_gravity_common.py), [1](experiments/cgm_gravity_analysis_1.py), [2](experiments/cgm_gravity_analysis_2.py) |
-| **1.2.8** | 🌍 Gravity: Ancestry Field Law and 25 ppm G | [Analysis](docs/Findings/Analysis_Gravity.md) | [Common](experiments/cgm_gravity_common.py), [1](experiments/cgm_gravity_analysis_1.py), [2](experiments/cgm_gravity_analysis_2.py) |
-| **1.2.6** | 🧬 Compact Geometry: Spectral Algebra of the Electroweak Mass Spectrum | [Analysis](docs/Findings/Analysis_Compact_Geometry.md) | [Core](experiments/cgm_compact_geom_core.py), [Kernel](experiments/cgm_compact_geom_kernel.py), [Report](experiments/cgm_compact_geom_report.py) |
-| **1.2.5** | 🌀 Gyroscopic Multiplication | [Analysis](docs/Findings/Analysis_Gyroscopic_Multiplication.md) | []() |
-| **1.1.2** | ⚡ Energy Scale Unification | [Analysis](docs/Findings/Analysis_Energy_Scales.md) | [Code](/experiments/cgm_energy_analysis.py) |
-| **1.1.0** | 📏 4pi Unification through Alignment | [Analysis](/docs/Findings/Analysis_4pi_Alignment.md) | []() |
-| **1.1.0** | 🎯 Fine-Structure Constant | [Analysis](docs/Findings/Analysis_Fine_Structure.md) | [Code](experiments/cgm_alpha_analysis.py) |
-| **1.0.9** | ⚛️ Proto-Units Framework | [Analysis](docs/Findings/Analysis_CGM_Units.md) | [Code](experiments/cgm_proto_units_analysis.py) |
-| **1.0.8** | 🌌 Quantum Gravity | [Analysis](docs/Findings/Analysis_Quantum_Gravity.md) | [Code](experiments/cgm_quantum_gravity_analysis.py) |
-| **1.0.7** | 🔄 Monodromy Structure | [Analysis](docs/Findings/Analysis_Monodromy.md) | [Code](experiments/tw_closure_test.py) |
-| **1.0.7** | 📡 Kompaneyets Analysis | [Analysis](docs/Findings/Analysis_Kompaneyets.md) | [Code](experiments/cgm_kompaneyets_analysis.py) |
-| **1.0.6** | 🌠 CMB Patterns | [Analysis](docs/Findings/Analysis_CMB.md) | [Code](experiments/cgm_cmb_data_analysis_300825.py) |
+In this repository, that implementation is the reference machine for physics verification: gravity, electroweak mass geometry, wavefunction diagnostics, and related analyses run directly on the aQPU package (14 experiment scripts in `experiments/`).
 
----
+Canonical repository: [superintelligence](https://github.com/gyrogovernance/superintelligence). Vendored implementation: [`gyroscopic/aQPU/`](gyroscopic/aQPU/).
 
-## 📊 Current Status
+Specification and test reports:
 
-### Theoretical Achievements
-- ✅ Derived α = 1/137.036 from pure geometry (0.043 ppb accuracy)
-- ✅ Defined quantum gravity as Q_G = 4π (complete solid angle)
-- ✅ Predicted gravitational coupling ζ = 23.155 from first principles
-- ✅ Established an optical conjugacy law linking ultraviolet and infrared energy scales through the electroweak scale and 4π²
-- ✅ Predicted neutrino masses ~0.06 eV from the depth-4 aperture frame
-- ✅ Derived Higgs, Z, W, and top quark masses from discrete code geometry with no continuously fitted parameters
-- ✅ Predicted the weak mixing angle from the same structure, matching experiment to a relative error of 7.7e-9
-- ✅ Showed quark flavors map onto a complete Boolean classification of compact residuals, with each flavor occupying a unique structural role
-- ✅ Derived the gravitational coupling form κ = 8πG/c⁴ from the two-pass carrier recovery (factor 2), the closure solid angle Q_G = 4π, and standard quadratic source–response scaling (c⁴)
-- ✅ Predicted the gravitational constant G from kernel invariants and the electroweak anchor to 25 parts per million
-- ✅ Derived spin-2 as the algebraic consequence of four-family depth-8 orientation recovery, proven by monodromy diagnostic
-- ✅ Established the α·ζ product α × ζ = ρ⁴/(π√3) as an exact kernel invariant linking electromagnetic and gravitational coupling with no free parameters
-- ✅ Verified K4 holonomy, shell traverse, and depth-4 confinement on the 4096-state aQPU manifold (`cgm_aqpu_wavefunction_1.py`, `cgm_aqpu_wavefunction_2.py`)
+| Document | Description |
+|----------|-------------|
+| [Gyroscopic_ASI_Specs](docs/Gyroscopic_Computational_Theory/Gyroscopic_ASI_Specs.md) | Normative specification |
+| [Gyroscopic_ASI_Specs_Formalism](docs/Gyroscopic_Computational_Theory/Gyroscopic_ASI_Specs_Formalism.md) | Formalism |
+| [Gyroscopic_ASI_Holography](docs/Gyroscopic_Computational_Theory/Gyroscopic_ASI_Holography.md) | Holography |
+| [Gyroscopic_ASI_SDK_Quantum_Computing](docs/Gyroscopic_Computational_Theory/Gyroscopic_ASI_SDK_Quantum_Computing.md) | SDK |
+| [aQPU_Tests_Report_1](docs/Gyroscopic_Computational_Theory/aQPU_Tests_Report_1.md) | Test report 1 |
+| [aQPU_Tests_Report_2](docs/Gyroscopic_Computational_Theory/aQPU_Tests_Report_2.md) | Test report 2 |
+| [Physics_Tests_Report](docs/Gyroscopic_Computational_Theory/Physics_Tests_Report.md) | Physics tests |
+| [QuBEC_Transform_Algebra](docs/Gyroscopic_Computational_Theory/QuBEC_Transform_Algebra.md) | Transform algebra |
+| [QuBEC_Climate_Dynamics](docs/Gyroscopic_Computational_Theory/QuBEC_Climate_Dynamics.md) | Climate dynamics |
 
-### Empirical Validations
-- ✅ CMB multipole enhancement at ℓ = 37 and harmonics (p = 0.0039)
-- ✅ P₂/C₄ harmonic anti-alignment in Planck data (p = 0.005)
-- ✅ Cross-observable phase coherence (R = 0.743)
-- ✅ Machine-precision internal consistency (<10⁻¹⁶ errors)
-- ✅ Sterile neutrino non-observability consistent with null experimental results
-- ✅ Lepton masses (electron, muon, tau) derived from carrier-shell structure to 1e-9 precision (candidate, conditional on source-traceability axiom)
-- ✅ Z boson mass predicted from Higgs and W masses alone to 1 part in 27 million (rel err 3.7e-8)
-- ✅ W mass predicted from Z mass and the aperture constant to a relative error of 5.0e-9
-- ✅ Aperture constant Delta recovered from the W/Z mass ratio to an absolute accuracy of 8.3e-10
-- ✅ Four electroweak masses jointly recover the aperture constant to 7.3×10⁻¹⁰
-- ✅ Z mass predicted from Higgs and W masses to 3.7×10⁻⁸ relative error
-- ✅ Gravitational constant G predicted to 25 ppm from kernel invariants and the electroweak scale
+## In progress
 
-### Active Development
-- 🔶 Independent validation of lepton carrier-law derivation and connection to radiative corrections
-- 🔶 Connecting compact geometry to quantum field theory radiative corrections
-- 🔶 Cosmological dynamics from geometric evolution
-- 🔶 Experimental validation programs
-- 🔶 Nonlinear extension from Poisson to Einstein field equations via ancestry-density self-consistency
-- 🔶 Shell-space path integral for independent verification of the gravitational optical depth
+- Independent cross-check of lepton mass derivation against radiative corrections
+- Connecting compact geometry to standard model radiative corrections
+- Cosmological dynamics from geometric evolution
+- Dynamical scalar-tensor evolutions beyond static spherical symmetry
+- Independent path-integral check of the gravitational coupling derivation
 
 ---
 
@@ -151,13 +142,9 @@ Derived predictions include:
 *Independent Researcher*  
 *Common Governance Model Framework*
 
-Developing mathematical tools for understanding the deep structure of physical reality through recursive geometry.
-
 ---
 
 ## 📚 Citation
-
-If you use this framework in your research, please cite:
 
 ```bibtex
 @software{gyrogovernancesciencerepo,
@@ -170,9 +157,8 @@ If you use this framework in your research, please cite:
 }
 ```
 
-**Paper Release (v1.2.4):** [10.5281/zenodo.17794470](https://doi.org/10.5281/zenodo.17794470) - Jan 1, 2025
-
-**General Citation (all versions):** [10.5281/zenodo.17521384](https://doi.org/10.5281/zenodo.17521384)
+**Paper (v1.2.4):** [10.5281/zenodo.17794470](https://doi.org/10.5281/zenodo.17794470)  
+**All versions:** [10.5281/zenodo.17521384](https://doi.org/10.5281/zenodo.17521384)
 
 ---
 

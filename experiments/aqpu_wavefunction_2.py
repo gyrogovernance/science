@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-cgm_aqpu_wavefunction_2.py
+aqpu_wavefunction_2.py
 K4 Operator Structure and Depth-4 Confinement.
 
 Theorems verified by exhaustive computation on Ω (4096 states):
@@ -505,10 +505,13 @@ def run_sweep(omega: list[int]) -> None:
 # ════════════════════════════════════════════════════════════════════════
 
 def main() -> None:
+    from aqpu_gravity_common import configure_stdout_utf8
+
+    configure_stdout_utf8()
     print("aQPU K4 Structure & Depth-4 Confinement")
     print("=" * 42)
     omega = _omega()
-    print(f"|Ω| = {len(omega)}")
+    print(f"|Omega| = {len(omega)}")
 
     run_T1(omega)
     run_T2_T4(omega)
@@ -519,6 +522,7 @@ def main() -> None:
     run_T10()
     run_comparison(omega)
     run_sweep(omega)
+    optical_depth_from_canonical_trajectory()
 
     print("\n" + "=" * 60)
     print("THEOREM SUMMARY")
@@ -537,6 +541,29 @@ def main() -> None:
     ]:
         print(f"  {t}")
     print("\n  All verified on 4096 states, exact integer arithmetic, no free params.")
+
+
+def optical_depth_from_canonical_trajectory() -> None:
+    """Per-cycle tau/Delta from depth-8 bulk transport (matches gravity_common)."""
+    from fractions import Fraction
+    from math import comb, gcd
+
+    from aqpu_gravity_common import tau_cycle_per_delta_exact
+
+    tau_frac = tau_cycle_per_delta_exact()
+    numer = 4 * sum(comb(6, k) ** 3 for k in range(1, 6))
+    denom = 64 * sum(comb(6, k) ** 2 for k in range(7))
+    g = gcd(numer, denom)
+
+    print()
+    print("=" * 9)
+    print("tau_cycle from canonical trajectory")
+    print("=" * 9)
+    print(f"  tau_cycle/Delta = {numer // g}/{denom // g}")
+    print(f"  gravity_common    = {tau_frac}")
+    print(f"  match             = {tau_frac == Fraction(numer // g, denom // g)}")
+    print()
+
 
 if __name__ == "__main__":
     main()

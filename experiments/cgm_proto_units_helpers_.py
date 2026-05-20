@@ -166,12 +166,12 @@ def nstr(x, d=12) -> str:
 
 
 def main():
-    print("=" * 78)
+    print("=" * 9)
     print("CGM GEOMETRIC COUPLING DERIVATION REPORT")
-    print("=" * 78)
+    print("=" * 9)
 
     print("\n[ASSUMPTIONS AND METHODS BOX]")
-    print("-" * 78)
+    print("-" * 9)
     print("Mathematical Framework:")
     print("  • Pure geometric derivation using dimensionless invariants")
     print("  • Q_G = 4π as complete solid angle for coherent observation")
@@ -186,7 +186,7 @@ def main():
     print("  • ζ = Q_G/S_geo (ratio of completeness to geometric action)")
     print("  • S_geo = √(S_fwd × S_rec) (geometric mean of dual modes)")
     print("  • No dimensional units introduced; pure geometric relationships")
-    print("-" * 78)
+    print("-" * 9)
 
     # Part A
     print("\n[A] Geometric coupling derivation from survey completeness")
@@ -230,7 +230,7 @@ def main():
     print("\nThe coupling ζ serves as a normalizer within the geometric framework.")
     print("When dimensional scales are needed, anchor to measured constants and")
     print("propagate via the dimensionless ratios derived here.")
-    print("=" * 78)
+    print("=" * 9)
 
 
 if __name__ == "__main__":
