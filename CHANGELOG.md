@@ -4,7 +4,7 @@ All notable changes to the CGM Experimental Framework will be documented in this
 
 ---
 
-## [1.2.9-CGM_Gravity&Beyond] - 2026-05-17 and 18
+## [1.2.9-CGM_Gravity&Beyond] - 2026-05-17 to 21
 
 ### Added
 
@@ -15,7 +15,7 @@ All notable changes to the CGM Experimental Framework will be documented in this
 
 - `experiments/aqpu_gravity_analysis_1.py`: residual closure, rho^5 STF split, kernel transport tables, and coupling summary aligned with the wavefunction invariants.
 - `experiments/aqpu_gravity_analysis_2.py`: canonical kernel theorems (c4 from two routes, Gauss bridge, alpha·zeta, 8pi = 2·Q_G).
-- `experiments/aqpu_gravity_analysis_3.py`: exact Fraction derivations—carrier trace C(q), ancestry stress, tau_cycle, tau_G factorization, and compact-geometry bridge for alpha_G(v).
+- `experiments/aqpu_gravity_analysis_3.py`: exact Fraction derivations—carrier trace C(q), translational payload stress, tau_cycle, tau_G factorization, and compact-geometry bridge for alpha_G(v).
 - `experiments/aqpu_gravity_common.py`: shared invariants, tau_G helpers, shell-path transport, and stress/current diagnostics for all gravity scripts.
 
 - `experiments/aqpu_compact_geom_core.py`: pure electroweak algebra layer (mass laws, lepton ladder, shell transitions).
@@ -34,10 +34,10 @@ All notable changes to the CGM Experimental Framework will be documented in this
 
 ### Added
 - `experiments/aqpu_gravity_common.py`: shared gravity invariants, τ_G helpers, and stress/current diagnostics.
-- `experiments/aqpu_gravity_analysis_2.py`: ρ⁵ exponent checks, per-shell σ_A and J_A, τ_cycle proxies, and G prediction at v_EW.
+- `experiments/aqpu_gravity_analysis_2.py`: ρ⁵ exponent checks, per-shell σ and J, τ_cycle proxies, and G prediction at v_EW.
 
 ### Updated
-- `docs/Findings/Analysis_Gravity.md`: manuscript aligned with scripts and external review—translational-only σ_A definition, ranked τ_G = |Ω|Δρ⁵(1−4ρΔ²) derivation, weak-field propagation speed from GEM, exact 48Δ = 0.993578587835, 25 ppm G residual acknowledged as Δ⁴ subleading; removed speculative correction and perturbation sections.
+- `docs/Findings/Analysis_Gravity.md`: manuscript aligned with scripts and external review—translational-only σ definition, ranked τ_G = |Ω|Δρ⁵(1−4ρΔ²) derivation, weak-field propagation speed from GEM, exact 48Δ = 0.993578587835, 25 ppm G residual acknowledged as Δ⁴ subleading; removed speculative correction and perturbation sections.
 
 ### Results
 - Leading closed form fixes G to 25 ppm; fractional residual −2.46×10⁻⁵ consistent with subleading Δ⁴ corrections.
@@ -47,7 +47,7 @@ All notable changes to the CGM Experimental Framework will be documented in this
 ## [1.2.7-CGM_Gravity] - 2026-05-14 to 2026-05-15
 
 ### Added
-- Added `docs/Findings/Analysis_Gravity.md`: gravitational coupling from kernel invariants, ancestry field equations, gyrogroup structure, and electroweak-anchor prediction of G.
+- Added `docs/Findings/Analysis_Gravity.md`: gravitational coupling from kernel invariants, gravitational field equations, gyrogroup structure, and electroweak-anchor prediction of G.
 - Added `experiments/aqpu_gravity_analysis_1.py`: kernel diagnostics, aperture-depth optical depth, α·ζ invariant, and coupling reconstruction at v_EW.
 - Added `experiments/cgm_aqpu_monodromy.py`: aQPU monodromy diagnostic for depth-4/depth-8 closure, shell displacement invariants, and quadrupole shell modes.
 

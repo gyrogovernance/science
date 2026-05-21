@@ -1,5 +1,5 @@
 CGM gravity script runner
-started: 2026-05-20T13:21:34+03:00
+started: 2026-05-20T22:08:13+03:00
 python: C:\Python314\python.exe
 scripts: 5
 
@@ -95,7 +95,7 @@ Eigenvectors Q_k(w) = K_w(k); eigenvalues lambda_k with M Q_k = lambda_k Q_k:
 Odd-shell routes: two-hop transition product, matrix squaring, Krawtchouk spectral sum (no Chu-Vandermonde on odd q).
 
 =========
-B. Ancestry stress tensor from hypergeometric combinatorics
+B. Translational payload stress from hypergeometric combinatorics
 =========
 
   w     sigma_ii     sigma_ij           Tr     ||pi||^2
@@ -242,7 +242,7 @@ EW mass coords (order 5, same Delta, compact geometry):
 ANALYSIS COMPLETE
 =========
 
-exit=0  duration=1.43s
+exit=0  duration=0.73s
 
 ######## aqpu_gravity_analysis_2.py ########
 
@@ -399,7 +399,7 @@ c4_anchor - kernel = -5.252780200913e-03
 G_geo              = 6.708644908597e-39  ppm=-24.608150
 G_corr             = 6.708809505940e-39  ppm=-0.073643
 
-exit=0  duration=3.13s
+exit=0  duration=1.64s
 
 ######## aqpu_gravity_analysis_1.py ########
 
@@ -476,7 +476,7 @@ STF basis verification:
   Off-diagonal max: 0.0e+00
 
 STF decomposition by payload population:
- pop  Tr(sigma)      p_A   ||pi||    STF amp    STF>0
+ pop  Tr(sigma)        p   ||pi||    STF amp    STF>0
 ---------
    0     0.0000   0.0000   0.0000     0.0000       NO
    1     0.4167   0.1389   0.1134     0.0507      YES
@@ -670,7 +670,7 @@ SUMMARY
   tau_G (full) = 76.237917
   G_pred/G_meas - 1 (full) = -0.074 ppm
 
-exit=0  duration=1.43s
+exit=0  duration=0.76s
 
 ######## aqpu_gravity_analysis_4.py ########
 
@@ -1063,9 +1063,9 @@ R. Einstein tensor and modified Gauss law
 =========
 
   Metric: ds^2 = -f dt^2 + f^{-1} dr^2 + r^2 dOmega^2,  f = 1 - 2*psi
-  G_tt / r^2 = 2(dpsi/dr)/r^2 = 8*pi*G(psi)*rho_A  (c=1)
-  div g = -4*pi*G(psi)*rho_A
-  div[(G_0/G(psi))*g] = -4*pi*G_0*rho_A = -Q_G*G_0*rho_A
+  G_tt / r^2 = 2(dpsi/dr)/r^2 = 8*pi*G(psi)*rho  (c=1)
+  div g = -4*pi*G(psi)*rho
+  div[(G_0/G(psi))*g] = -4*pi*G_0*rho = -Q_G*G_0*rho
   (analysis_5 J: Gauss law; Q: components; T: EFE closure + Bianchi probe)
 
 =========
@@ -1127,7 +1127,7 @@ F. CSM/MU gravity connection
       NS psi=1.7e-01: rho_MU/rho_MU(0) = 0.000002 (-99.9998%)
       BH psi=5.0e-01: rho_MU/rho_MU(0) = 0.000000 (-100.0000%)
 
-  Total closure credit rho_MU * E_ref^2 is preserved across all psi.
+  Total rho_MU * E_ref^2 is preserved across all psi.
 
 =========
 G. alpha*zeta and G(psi) chain
@@ -1163,20 +1163,20 @@ H. Complete nonlinear CGM gravity system
 
 Gravitoelectric sector:
   g = -grad Phi
-  div g = -Q_G * G(x) * rho_A(x)
+  div g = -Q_G * G(x) * rho(x)
   curl g = -dB_g/dtau
 
 Gravitomagnetic sector:
   div B_g = 0
-  curl B_g = -(Q_G * G(x)/c^2) * J_A + (1/c^2) * dg/dtau
+  curl B_g = -(Q_G * G(x)/c^2) * J + (1/c^2) * dg/dtau
 
 Source conservation:
-  d rho_A/dtau + div J_A = 0
-  d J_A/dtau + div sigma_A = rho_A * g + (1/c^2) * (J_A x B_g)
+  d rho/dtau + div J = 0
+  d J/dtau + div sigma = rho * g + (1/c^2) * (J x B_g)
 
 Stress closure (kernel-fixed):
-  sigma_A = p_A * I + pi_A  (1 + 5 decomposition)
-  ||pi_A||^2 / Tr(sigma_A)^2 = 2/75  (bulk shell invariant)
+  sigma = p * I + pi  (1 + 5 decomposition)
+  ||pi||^2 / Tr(sigma)^2 = 2/75  (bulk shell invariant)
 
 Position-dependent coupling:
   G(x) = G_kernel * exp(-tau(x)) / E_ref(x)^2
@@ -1206,7 +1206,7 @@ Sample G reductions:
 ANALYSIS COMPLETE
 =========
 
-exit=0  duration=1.63s
+exit=0  duration=1.19s
 
 ######## aqpu_gravity_analysis_5.py ########
 
@@ -1240,11 +1240,11 @@ B. STF accumulation vs algebraic tau
   tau_G - leading    = -0.000025
 
 =========
-C. Energy / ancestry conservation (static spherical)
+C. Energy conservation (static spherical)
 =========
 
-  Continuity: div J_A = 0  (steady state)
-  Source:     div g = -Q_G * G(psi) * rho_A
+  Continuity: div J = 0  (steady state)
+  Source:     div g = -Q_G * G(psi) * rho
   With g = -d Phi/dr, spherical mass M:
     g(r) = G(psi(r)) * M / r^2
     integral_0^r 4 pi r'^2 rho dr' = M(r)
@@ -1260,7 +1260,7 @@ C. Energy / ancestry conservation (static spherical)
 
   flux = 4*pi * G(psi)/G_global -> 4*pi in weak field (large s).
   Conserved quantity: (G_global/G(x)) * flux = 4*pi at all s.
-  Nonlinear Gauss law: div[(G_global/G(x))*g] = -Q_G*G_global*rho_A
+  Nonlinear Gauss law: div[(G_global/G(x))*g] = -Q_G*G_global*rho
   Binding energy (point mass):
     |Phi|(0) ~ integral g ds = 0.499725 (dimensionless)
     vs psi(inner) = 0.499573 from analytic profile
@@ -1269,17 +1269,17 @@ C. Energy / ancestry conservation (static spherical)
 D. Nonlinear PDE (general static spherical)
 =========
 
-  Closed system for static spherical ancestry density rho_A(r):
+  Closed system for static spherical mass-energy density rho(r):
     psi = |Phi|/Phi_Planck
     g = -dPhi/dr = G(psi) * M(r) / r^2
-    dM/dr = Q_G * rho_A(r) * r^2
+    dM/dr = Q_G * rho(r) * r^2
     G(psi) = G_kernel exp(-tau_G(1-psi)) / E_ref(psi)^2
     E_ref(psi) = E_CS (v/E_CS)^(1-psi)
 
-  Point mass (rho_A = M delta(r)): analytic psi(s) in aqpu_gravity_common; analysis_4 tables.
+  Point mass (rho = M delta(r)): analytic psi(s) in aqpu_gravity_common; analysis_4 tables.
     du/ds = -G(psi(u))/G_global / s^2
 
-  Extended density rho_A(r) propto r^n:
+  Extended density rho(r) propto r^n:
     rho ~ r^-2: psi(inner)=0.0057, psi(outer)=1.00e-06
     rho ~ r^ 0: psi(inner)=0.0005, psi(outer)=1.00e-06
     rho ~ r^ 1: psi(inner)=0.0003, psi(outer)=1.00e-06
@@ -1292,7 +1292,7 @@ D. Nonlinear PDE (general static spherical)
 E. Redshift: (1-psi) vs sqrt(1-2psi)
 =========
 
-  CGM ancestry redshift:  z_cgm = 1/(1-psi) - 1  ~ psi  (small psi)
+  CGM redshift:           z_cgm = 1/(1-psi) - 1  ~ psi  (small psi)
   GR metric redshift:     z_gr  = 1/sqrt(1-2psi) - 1
 
        psi      z_CGM       z_GR   rel diff  forced?
@@ -1385,7 +1385,7 @@ H. Neutron star interior with G(x)
 J. Modified Gauss law verification
 =========
 
-  div[(G_global/G(x))*g] = -Q_G * G_global * rho_A
+  div[(G_global/G(x))*g] = -Q_G * G_global * rho
   For point mass: (G_global/G(psi)) * 4*pi*s^2 * g = 4*pi
 
   (G_gl/G(x)) * 4*pi*s^2 * g at sampled points:
@@ -1545,8 +1545,8 @@ Step 3: Numerical components (dimensionless scaling)
    1000000.0 9.999997e-07  -6.4557e-25   2.0000e-12   1.0000e-12          nan
 
 Step 4: Stress-energy decomposition
-  T_munu = T_A + T_G;  T_G^tt ~ (G/G0 - 1) * rho_A
-  Weak field: T_G^tt/T_A^tt ~ dlnG/dpsi * psi ~ -0.646 * psi
+  T_munu = T_m + T_G;  T_G^tt ~ (G/G0 - 1) * rho
+  Weak field: T_G^tt/T_m^tt ~ dlnG/dpsi * psi ~ -0.646 * psi
   Solar System (psi ~ 1e-8): negligible
   NS surface (psi ~ 0.15): ~10%;  BH horizon (psi ~ 0.49): ~31%
 
@@ -1634,14 +1634,14 @@ Step 4: Variation w.r.t. g^mu_nu
   Weak field: G_munu = 8pi G(psi) T_munu^eff
 
 Step 5: Newtonian limit
-  00-component: nabla^2 psi = 4pi G(psi) rho_A  (CGM Poisson / analytic psi)
+  00-component: nabla^2 psi = 4pi G(psi) rho  (CGM Poisson / analytic psi)
 
 Step 6: Consistency with analytic psi(s)
   max |dpsi_num - dpsi_model| / |dpsi_model| = 5.00e-01
   Poisson (tt) satisfied; rr, th from metric + G-field stress
 
 Step 7: Final Lagrangian form
-  L = [1/(16piG0)] sqrt(-g) R exp(-g1*psi) + sqrt(-g) L_A
+  L = [1/(16piG0)] sqrt(-g) R exp(-g1*psi) + sqrt(-g) L_m
   g1 = -0.645568
   Static limit -> Poisson; full theory = coupled Einstein + psi
 
@@ -1674,11 +1674,11 @@ Step 3: Effective stress-energy (8*pi*G(psi) units, x r_g^2)
      36816.7 2.716132e-05   1.3980e-20   1.3981e-20  -4.9203e-15     1.0001
    1000000.0 9.999997e-07   2.5686e-26   2.5686e-26  -3.9789e-14     1.0000
 
-Step 4: T_munu = T_A + T_G (point-mass exterior: T_A = 0)
+Step 4: T_munu = T_m + T_G (point-mass exterior: T_m = 0)
   Exterior effective T_munu is G-field stress-energy.
 
 Step 5: Modified Bianchi identity
-  div T^mu_nu = -(d_mu G / G) T^mu_nu  (ancestry <-> G-field exchange)
+  div T^mu_nu = -(d_mu G / G) T^mu_nu  (matter <-> G-field exchange)
   Anisotropic G-field stress: barotropic TOV probe does not apply here.
   Correct exterior check: G_rr = G_tt/f^2 (step 2) and section Y.
 
@@ -1724,7 +1724,7 @@ Step 5: Mechanism
   Coupling sees geometry (psi), not material composition
 
 Step 6: Summary
-  WEP: rho_A universal;  EEP: SE(3) local structure;  SEP: G(psi) local
+  WEP: rho universal;  EEP: SE(3) local structure;  SEP: G(psi) local
   All three follow from CGM structure (not extra assumptions)
 
 =========
@@ -1833,8 +1833,8 @@ N. Spin-sector shadow (wavefunction)
 DERIVATIONS COMPLETE
 =========
 
-exit=0  duration=3.95s
+exit=0  duration=2.72s
 
-finished: 2026-05-20T13:21:45+03:00
-total_duration=11.57s
+finished: 2026-05-20T22:08:21+03:00
+total_duration=7.04s
 worst_exit=0

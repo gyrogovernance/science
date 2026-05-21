@@ -125,13 +125,13 @@ def reconcile_stf_tau(s_vals, u_vals):
     print()
 
 
-def energy_ancestry_conservation(s_vals, u_vals):
+def energy_conservation(s_vals, u_vals):
     print("=" * 9)
-    print("C. Energy / ancestry conservation (static spherical)")
+    print("C. Energy conservation (static spherical)")
     print("=" * 9)
     print()
-    print("  Continuity: div J_A = 0  (steady state)")
-    print("  Source:     div g = -Q_G * G(psi) * rho_A")
+    print("  Continuity: div J = 0  (steady state)")
+    print("  Source:     div g = -Q_G * G(psi) * rho")
     print("  With g = -d Phi/dr, spherical mass M:")
     print("    g(r) = G(psi(r)) * M / r^2")
     print("    integral_0^r 4 pi r'^2 rho dr' = M(r)")
@@ -149,7 +149,7 @@ def energy_ancestry_conservation(s_vals, u_vals):
     print()
     print("  flux = 4*pi * G(psi)/G_global -> 4*pi in weak field (large s).")
     print("  Conserved quantity: (G_global/G(x)) * flux = 4*pi at all s.")
-    print("  Nonlinear Gauss law: div[(G_global/G(x))*g] = -Q_G*G_global*rho_A")
+    print("  Nonlinear Gauss law: div[(G_global/G(x))*g] = -Q_G*G_global*rho")
     print("  Binding energy (point mass):")
     u_in = float(u_vals[0])
     integrand = np.array([G_ratio(float(np.interp(s, s_vals, u_vals))) / s**2 for s in s_vals])
@@ -164,17 +164,17 @@ def nonlinear_pde_general():
     print("D. Nonlinear PDE (general static spherical)")
     print("=" * 9)
     print()
-    print("  Closed system for static spherical ancestry density rho_A(r):")
+    print("  Closed system for static spherical mass-energy density rho(r):")
     print("    psi = |Phi|/Phi_Planck")
     print("    g = -dPhi/dr = G(psi) * M(r) / r^2")
-    print("    dM/dr = Q_G * rho_A(r) * r^2")
+    print("    dM/dr = Q_G * rho(r) * r^2")
     print("    G(psi) = G_kernel exp(-tau_G(1-psi)) / E_ref(psi)^2")
     print("    E_ref(psi) = E_CS (v/E_CS)^(1-psi)")
     print()
-    print("  Point mass (rho_A = M delta(r)): analytic psi(s) in aqpu_gravity_common; analysis_4 tables.")
+    print("  Point mass (rho = M delta(r)): analytic psi(s) in aqpu_gravity_common; analysis_4 tables.")
     print("    du/ds = -G(psi(u))/G_global / s^2")
     print()
-    print("  Extended density rho_A(r) propto r^n:")
+    print("  Extended density rho(r) propto r^n:")
     for n in [-2, 0, 1, 2]:
         s_test = np.logspace(0.5, 3.0, 200)
         s_outer = s_test[-1]
@@ -213,7 +213,7 @@ def compare_redshift_laws():
     print("E. Redshift: (1-psi) vs sqrt(1-2psi)")
     print("=" * 9)
     print()
-    print("  CGM ancestry redshift:  z_cgm = 1/(1-psi) - 1  ~ psi  (small psi)")
+    print("  CGM redshift:           z_cgm = 1/(1-psi) - 1  ~ psi  (small psi)")
     print("  GR metric redshift:     z_gr  = 1/sqrt(1-2psi) - 1")
     print()
     print(f"  {'psi':>8} {'z_CGM':>10} {'z_GR':>10} {'rel diff':>10} {'forced?':>8}")
@@ -783,8 +783,8 @@ def section_full_einstein_tensor(s_vals: np.ndarray, u_vals: np.ndarray) -> None
     print()
 
     print("Step 4: Stress-energy decomposition")
-    print("  T_munu = T_A + T_G;  T_G^tt ~ (G/G0 - 1) * rho_A")
-    print(f"  Weak field: T_G^tt/T_A^tt ~ dlnG/dpsi * psi ~ {dlnG_dpsi:.3f} * psi")
+    print("  T_munu = T_m + T_G;  T_G^tt ~ (G/G0 - 1) * rho")
+    print(f"  Weak field: T_G^tt/T_m^tt ~ dlnG/dpsi * psi ~ {dlnG_dpsi:.3f} * psi")
     print("  Solar System (psi ~ 1e-8): negligible")
     print("  NS surface (psi ~ 0.15): ~10%;  BH horizon (psi ~ 0.49): ~31%")
     print()
@@ -950,13 +950,13 @@ def section_EFE_closure(s_arr: np.ndarray, psi_arr: np.ndarray) -> None:
         print(f"  {s:10.1f} {psi:12.6e} {r:12.4e} {pr:12.4e} {pt:12.4e} {p_over_r:10.4f}")
     print()
 
-    print("Step 4: T_munu = T_A + T_G (point-mass exterior: T_A = 0)")
+    print("Step 4: T_munu = T_m + T_G (point-mass exterior: T_m = 0)")
     print("  Exterior effective T_munu is G-field stress-energy.")
     print()
 
     g1 = dlnG_dpsi
     print("Step 5: Modified Bianchi identity")
-    print("  div T^mu_nu = -(d_mu G / G) T^mu_nu  (ancestry <-> G-field exchange)")
+    print("  div T^mu_nu = -(d_mu G / G) T^mu_nu  (matter <-> G-field exchange)")
     print("  Anisotropic G-field stress: barotropic TOV probe does not apply here.")
     print("  Correct exterior check: G_rr = G_tt/f^2 (step 2) and section Y.")
     print()
@@ -1013,7 +1013,7 @@ def section_variational_einstein(s_vals: np.ndarray, u_vals: np.ndarray) -> None
     print()
 
     print("Step 5: Newtonian limit")
-    print("  00-component: nabla^2 psi = 4pi G(psi) rho_A  (CGM Poisson / analytic psi)")
+    print("  00-component: nabla^2 psi = 4pi G(psi) rho  (CGM Poisson / analytic psi)")
     print()
 
     print("Step 6: Consistency with analytic psi(s)")
@@ -1035,7 +1035,7 @@ def section_variational_einstein(s_vals: np.ndarray, u_vals: np.ndarray) -> None
     print()
 
     print("Step 7: Final Lagrangian form")
-    print("  L = [1/(16piG0)] sqrt(-g) R exp(-g1*psi) + sqrt(-g) L_A")
+    print("  L = [1/(16piG0)] sqrt(-g) R exp(-g1*psi) + sqrt(-g) L_m")
     print(f"  g1 = {g1:.6f}")
     print("  Static limit -> Poisson; full theory = coupled Einstein + psi")
     print()
@@ -1082,7 +1082,7 @@ def section_strong_equivalence() -> None:
     print()
 
     print("Step 6: Summary")
-    print("  WEP: rho_A universal;  EEP: SE(3) local structure;  SEP: G(psi) local")
+    print("  WEP: rho universal;  EEP: SE(3) local structure;  SEP: G(psi) local")
     print("  All three follow from CGM structure (not extra assumptions)")
     print()
 
@@ -1253,7 +1253,7 @@ def verify_modified_gauss_law(s_vals, u_vals):
     print("J. Modified Gauss law verification")
     print("=" * 9)
     print()
-    print("  div[(G_global/G(x))*g] = -Q_G * G_global * rho_A")
+    print("  div[(G_global/G(x))*g] = -Q_G * G_global * rho")
     print("  For point mass: (G_global/G(psi)) * 4*pi*s^2 * g = 4*pi")
     print()
 
@@ -1329,7 +1329,7 @@ def main():
     print_e_ref_quantile_note()
     s_vals, u_vals, _ = solve_point_mass_profile()
     reconcile_stf_tau(s_vals, u_vals)
-    energy_ancestry_conservation(s_vals, u_vals)
+    energy_conservation(s_vals, u_vals)
     nonlinear_pde_general()
     compare_redshift_laws()
     gravitational_radiation_feedback()

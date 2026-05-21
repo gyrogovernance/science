@@ -5,7 +5,7 @@ aqpu_gravity_analysis_3.py
 Kernel-derived theorems for the gravitational coupling (exact Fractions):
 
   A. Carrier trace C(q) from Vandermonde-Chu identity
-  B. Ancestry stress sigma(w) from hypergeometric combinatorics
+  B. Translational payload stress sigma(w) from hypergeometric combinatorics
   C. Exact tau_cycle / Delta from bulk shell transport (kernel holonomy)
   D. tau_G = N_cycles x tau_cycle factorization
   E. c4 = -7/4 additive correction to tau_G
@@ -338,10 +338,10 @@ def verify_vandermonde_chu(n: int = 6) -> dict[int, dict]:
     return results
 
 
-def derive_ancestry_stress() -> dict[int, dict]:
+def derive_translational_stress() -> dict[int, dict]:
     print()
     print("=" * 9)
-    print("B. Ancestry stress tensor from hypergeometric combinatorics")
+    print("B. Translational payload stress from hypergeometric combinatorics")
     print("=" * 9)
 
     results = {w: sigma_shell(w) for w in range(7)}
@@ -626,7 +626,7 @@ def main() -> None:
     print()
 
     verify_vandermonde_chu()
-    stress = derive_ancestry_stress()
+    stress = derive_translational_stress()
     tau_over_delta = derive_tau_cycle_exact(stress)
     derive_tau_G_factorization(tau_over_delta)
     integrate_c4_correction()

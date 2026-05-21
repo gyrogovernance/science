@@ -1,71 +1,156 @@
-# Gravitational Theory in the Common Governance Model
+# Gravitational Theory in the Common Governance Model: Preservation of Ancestry through Identity and Individuality
 
-## 1. Introduction
+Physics provides accurate field equations for gravity but treats two foundational inputs as assumptions: the dimensionality of space and the numerical value of the gravitational coupling constant. In Newtonian gravity, the 4π factor in the field law is a direct consequence of enclosing a mass in three spatial dimensions, yet the origin of those three dimensions remains unexplained [1]. In general relativity, the coupling κ = 8πG/c⁴ is fixed by requiring the Newtonian limit, leaving G as an externally measured parameter [4]. Similar dependence on unexplained prior assumptions occurs in Nordström's scalar theory [3], gravitoelectromagnetism [2], and linearized spin-2 formulations [5].
 
-Physics provides accurate field equations for gravity but treats two inputs as given: the dimensionality of space and the numerical value of the gravitational coupling constant. In Newtonian gravity, the factor 4π enters through the surface geometry of three-dimensional space, while the three-dimensional arena itself is not derived [1]. In general relativity, the coupling κ = 8πG/c⁴ is fixed by matching the Newtonian limit, leaving G as an external parameter [4]. Similar dependence on prior assumptions occurs in Nordström's scalar theory [3], gravitoelectromagnetism [2], and linearized spin-2 formulations [5].
+The Common Governance Model rests on a single axiom and establishes that reality is fundamentally organized by freedom, defined as the capacity for directional distinction and alignment from a common source. The conditions for this freedom to manifest generate the observable features of both spacetime and information. Physical conservation and informational coherence emerge as expressions of a single underlying order, the Preservation of Ancestry. Gravity, including its coupling strength and dimensional profile, arises solely from the requirement to preserve this ancestry. 
 
-The Common Governance Model (CGM) treats traceability to a common source as the primary constraint and derives both dimensionality and coupling from it.
+The mathematical and computational realization of these conditions is achieved through a compact holographic algorithm called the algebraic Quantum Processing Unit (aQPU). The CGM theory specifies space, chirality, and governance rules from the initial traceability axiom, and the aQPU operates as the reference architecture that executes them. This computational substrate provides the exact combinatorial invariants needed to anchor a continuous field theory, enabling the extraction of precise physical constants from purely formal foundations.
 
-**Definition 1.** *Gravity is the identity of individuality originating from a common source.*
+This analysis establishes the following results:
 
-The three terms in this definition carry specific meanings developed throughout the manuscript. Individuality is distinguishable variation across states: the fact that one configuration of a system can be told apart from another. Identity is continuity of structure across that variation: the fact that despite the differences, something persists that allows the variations to be recognized as belonging to the same lineage. Within the CGM interpretation, mass corresponds to accumulated common-source structure, the quantity of shared lineage concentrated in a region.
+* The quantum of gravity emerges as the invariant **Q_G = 4π**, representing the complete solid angle necessary for coherent observation in three dimensions (Sections 2, 3, and 4)
+* The **Poisson equation and its gravitoelectromagnetic decomposition** follow from the six degrees of freedom mandated by the traceability axiom (Section 5)
+* A position-dependent coupling produces a **nonlinear metric extension satisfying the Einstein field equations**, while the two-pass closure cycle dictates the **spin-2 character of gravitational radiation and the 8π normalization** (Sections 6 and 7)
+* The aQPU finite kernel supplies the exact combinatorial invariants and optical depth model that fix **the laboratory value of G to sub-ppm precision** (Sections 8 and 9)
+* The framework yields testable strong-field predictions, including **reduced black hole shadow sizes and coupling suppression in neutron star interiors** (Sections 10 and 11)
 
-The derivation yields three-dimensional space with six kinematic degrees of freedom, a geometric closure constant Q_G = 4π, the Poisson equation and its gravitoelectromagnetic decomposition, a nonlinear extension with an effective metric formulation, and a kernel-based normalization that fixes the laboratory value of G to sub-ppm precision.
-
-The manuscript is organized by derivation order. Sections 2 and 3 state the foundational constraints and the resulting dimensional structure. Section 4 introduces the closure constant Q_G. Section 5 derives the linear field equations. Sections 6 and 7 develop the nonlinear sector and gravitational radiation. Sections 8 and 9 present the finite kernel realization and the coupling prediction. Sections 10 and 11 collect strong-field and observational tests. Companion analyses are cited where their results are used, including the dimensional proof [15], the fine-structure constant derivation [24, 27], the UV-IR energy ladder [25, 26], the compact opacity construction [16], and the byte formalism [17].
+Companion analyses provide supporting results, including the dimensional proof [15], the fine-structure constant calculation [24, 27], the UV-IR energy ladder [25, 26], the compact opacity construction [16], and the byte formalism [17].
 
 ### 1.1 Notation and Units
 
-Throughout this manuscript, natural units c = ℏ = 1 are used except where SI is explicitly noted in observational predictions. The following symbols appear throughout and are collected here for reference.
+Throughout this manuscript, natural units c = ℏ = 1 are used except where SI is explicitly noted in observational predictions. The following symbols appear throughout and are collected here for reference. Additional symbols are defined at the point of first use.
 
-| Symbol | Meaning |
-|--------|---------|
-| CS | Common Source |
-| UNA | Unity-Non-Absolute |
-| ONA | Opposition-Non-Absolute |
-| BU | Balance Universal |
-| BU-Egress | Balance Universal, depth-four closure |
-| BU-Ingress | Balance Universal, depth-eight reconstruction |
-| Q_G | Quantum of gravity (4π steradians) |
-| m_a | Observational aperture parameter |
-| ρ | Closure ratio (δ_BU / m_a) |
-| Δ | Aperture gap (1 − ρ) |
-| ψ | Gravitational potential ratio \|Φ\| / Φ_Planck |
-| τ_G | Gravitational optical depth |
-| G_kernel | Kernel coupling constant (π/6) |
-| g₁ | Logarithmic coupling gradient d ln G / dψ |
-| E_CS | Planck-scale energy anchor (1.22 × 10¹⁹ GeV) |
-| v | Electroweak scale (246.22 GeV) |
+| Category | Symbol | Meaning |
+|---|---|---|
+| **Foundational Constraints** | CS | Common Source |
+| | UNA | Unity-Non-Absolute |
+| | ONA | Opposition-Non-Absolute |
+| | BU | Balance Universal |
+| | BU-Egress | Balance Universal, depth-four closure |
+| | BU-Ingress | Balance Universal, depth-eight reconstruction |
+| **Geometric Invariants** | Q_G | Quantum of gravity (4π steradians) |
+| | m_a | Observational aperture parameter |
+| | ρ | Closure ratio (δ_BU / m_a) |
+| | Δ | Aperture gap (1 − ρ) |
+| **Gravitational Parameters** | ψ | Gravitational potential ratio \|Φ\| / Φ_Planck |
+| | τ_G | Gravitational optical depth |
+| | G_kernel | Kernel coupling constant (π/6) |
+| | g₁ | Logarithmic coupling gradient d ln G / dψ |
+| **Energy Scales** | E_CS | Planck-scale energy anchor (1.22 × 10¹⁹ GeV) |
+| | v | Electroweak scale (246.22 GeV) |
 
-Additional symbols are defined at the point of first use.
+## 2. Foundations
 
-## 2. Foundational Postulate and Operational Constraints
+The Common Governance Model is formalized as a propositional modal logic with two primitive modal operators representing recursive operational transitions.
 
-CGM adopts the postulate that distinguishable physical structure remains traceable to a common source.
+**Primitive symbols:**
 
-Let a system admit two primitive transition types. One transition preserves the relation to the common source and one transition modifies it. These transitions are denoted R and L respectively. The Common Source constraint (CS) states that the two transitions are not equivalent in their action on the source.
+| Symbol | Description |
+|--------|-------------|
+| S | A propositional constant: the horizon constant |
+| ¬ | Logical connectives: negation |
+| → | Logical connectives: material implication |
+| [L] | Modal operators: left transition |
+| [R] | Modal operators: right transition |
 
-At depth two, transition order becomes relevant. The depth-two compositions LR and RL need not coincide. CGM restricts this non-commutativity to be Unity-Non-Absolute (UNA), meaning that commutativity is neither enforced everywhere nor excluded everywhere. A parallel restriction applies to opposition at depth two, Opposition-Non-Absolute (ONA). The outcomes of LR and RL are not forced to be contradictory in all cases and not forced to be identical in all cases. These two restrictions jointly prevent rigid lock-in and homogeneous collapse.
+Modal depth refers to the nesting level of modal operators. For instance, [L][R]S has depth two (two nested operators), while [L][R][L][R]S has depth four. Modal depth plays a critical role in CGM: depth-two operations exhibit contingent behavior (non-absolute unity and opposition), while depth-four operations achieve necessary closure (universal balance).
 
-At depth four, the model requires Balance Universal closure at egress (BU-Egress). At this depth, admissible compositions commute in the sense specified in Appendix A, and this closure holds across all accessible configurations. The closed state must also retain sufficient information to reconstruct the earlier constraints at ingress (BU-Ingress). These constraints include the original asymmetry between L and R, the contingent non-commutativity at depth two, and the contingent opposition at depth two. The conjunction of egress and ingress defines Balance Universal (BU). Both hold at depth four.
+Throughout the logical development we reserve the symbol S for the designated propositional constant anchoring the horizon worlds. When this constant is realized in the Hilbert-space representation, its expectation value equals the scalar horizon invariant of quantum gravity `Q_G = 4π`.
 
-The formal encoding of these constraints as a propositional modal logic, together with proofs of independence and consistency, appears in Appendix A.
+#### Core Definitions
 
-Depth denotes the number of sequential transitions. The constraints above operate at depths one, two, and four. A full return with memory occurs at depth eight. CGM identifies the gravitational cycle with this depth-eight structure, which yields a two-pass carrier return. Later sections derive the associated factorization that produces the standard 8π normalization and the spin-2 character of the radiative sector.
+Four formulas capture the structural properties required by the Common Governance Model, all anchored to the horizon constant S:
 
-A final restriction concerns observability. The common source does not appear as an observable state within the system. The measurement domain must therefore be closed in a finite manner. In three spatial dimensions, full angular closure corresponds to 4π steradians, which becomes the geometric closure constant Q_G used in subsequent sections.
+| Concept | Formula | Description |
+|---------|---------|-------------|
+| Unity (U) | [L]S ↔ [R]S | Unity holds when left and right transitions yield equivalent results at the horizon constant. |
+| Two-step Equality (E) | [L][R]S ↔ [R][L]S | Two-step equality holds when depth-two modal compositions commute at the horizon constant. |
+| Opposition (O) | [L][R]S ↔ ¬[R][L]S | Opposition holds when depth-two modal compositions yield contradictory results at the horizon constant. |
+| Balance (B) | [L][R][L][R]S ↔ [R][L][R][L]S | Balance holds when depth-four modal compositions commute at the horizon constant. |
 
-## 3. Dimensional Structure
+#### The Five Foundational Constraints
 
-The constraints of Section 2 force a specific dimensional structure. The argument proceeds in three steps.
+The framework relies on five foundational constraints: one assumption (CS), two lemmas (UNA, ONA), and two propositions (BU-Egress, BU-Ingress). For independence analysis in the core modal system we treat all five as primitives. In the operational regime, the continuous flows, reachability from S, and simple Lie closure allow UNA and ONA to be obtained from CS (hence the lemma designation). The conjunction of BU-Egress and BU-Ingress defines universal balance.
 
-First, the asymmetry between left and right transitions supplies a minimal directional distinction, called chirality. This is a directional bias that cannot be removed by rotation alone.
+### 2.1 Ancestry:  Common Source (CS) Assumption
 
-Second, chirality expands into full rotational structure once the possibility of absolute unity is excluded. SU(2) [10] is the minimal non-abelian group supporting this expansion, with three generators and a unique double cover of SO(3).
+The foundational postulate asserts that all distinguishable physical structure remains traceable to a Common Source (CS). 
 
-Third, excluding isolated rotational frames requires translation. The combined structure is SE(3) = SU(2) ⋉ R³, the group of rigid body motions. Every rigid motion rotates first, then translates in a frame-dependent direction. The result is six degrees of freedom: three rotational and three translational.
+```
+S → ([R]S ↔ S ∧ ¬([L]S ↔ S))
+```
 
-Translational change, once committed to record, defines time. The rotational and translational sectors map, in the relativistic limit, to gravitomagnetic and gravitoelectric structure respectively. Time has an arrow because distinctions accumulate in a fixed order. Achieving balanced closure requires first establishing non-absolute distinctions, and those distinctions require a traceable common source. The arrow of time is therefore a consequence of constraint ordering. Return to the original state is possible but requires traversing the full depth-eight cycle. The full derivation appears in [15].
+> The horizon constant S is preserved under right transitions but altered under left transitions. This establishes fundamental chirality, or "handedness," in the system. The reference state behaves asymmetrically under the two types of transitions.  
+
+Such traceability requires an ancestral parity violation, manifesting physically as chirality. Asymmetry governs the emergence of individuality, forming the dimensional identity called gravity. Directional bias enables coherent observation by distinguishing operational paths.
+
+> **Definition:** Gravity is the emergent balance establishing preservation of ancestry through freedom of identity and individuality.
+
+Gravitational alignment requires a distinct identity with accountable individuality (Unity and Opposition Non Absolute). Ancestry preserves a balance between these extreme operational modes, which necessitates energy conservation through gyration. 
+
+Systems gyrate within an emergent spacetime continuum while acting as self-referential states of space evolving through relative time. When displacements are composed in a curved geometry, the operation is non-associative. Gyrogroup algebra corrects this non-associativity via the gyration operator (Section 5.3). In the continuous physical limit, accumulated gyration manifests as rotational structure. Angular momentum emerges as the physical expression of this conserved gyration, ensuring that the system preserves its orientation relative to the common source while undergoing translation (Section 5.3).
+
+### 2.2 Identity of Individuality: Unity-Non-Absolute (UNA) Lemma
+
+Non-absolute unity (¬□E) ensures informational variety while maintaining ancestry preservation, preventing homogeneous collapse.
+
+```
+S → ¬□E    where E := [L][R]S ↔ [R][L]S
+```
+
+> At depth two (two nested modal operations), the order of transitions matters, but this non-commutativity is not absolute across all accessible states. The commutativity of depth-two operations is contingent, holding in some accessible states and failing in others.
+
+Transitions deviating from this gravitational alignment correspond, in the physical realization, to linear momentum (Section 5.3). These transitions function as a centrifugal tendency, establishing individual distinction.
+
+This contingency expands chirality into full rotational structure. SU(2) is the minimal algebra supporting this expansion, possessing three generators and a unique double cover of SO(3), yielding three rotational degrees of freedom.
+
+### 2.3 Individuality of Identity: Opposition-Non-Absolute (ONA) Lemma
+
+Non-absolute opposition (¬□¬E) ensures accountability of inference. Different operational paths remain comparable even when yielding different results, preventing structural fragmentation.
+
+```
+S → ¬□¬E
+```
+
+> While depth-two operations may yield opposite results ([L][R] vs. [R][L]), this opposition is not absolute. The system avoids both complete agreement and complete contradiction.  
+
+Transitions preserving this gravitational alignment correspond, in the physical realization, to angular momentum (Section 5.3). These transitions function as a centripetal binding tendency, sustaining shared identity.
+
+The combined structure is SE(3) = SU(2) ⋉ R³, the group of rigid body motions. Every rigid motion rotates first, then translates in a frame-dependent direction. The result is six degrees of freedom: three rotational and three translational.
+
+### 2.4 Balance Universal Proposition
+
+Gravitational attraction arises because linear displacement away from origination increases the energetic cost of maintaining relational coherence (Section 6.1). Mass and Energy correspond to the accumulated gravitational memory of ancestry (Section 5.1). The gravitational field describes how concentrated ancestry directs the trajectory of other structures seeking to preserve balance through alignment (Section 5.2).
+
+Translational change, once committed as gravitational memory, defines time. The rotational and translational sectors map, in the relativistic limit, to gravitomagnetic and gravitoelectric structure respectively. The arrow of time arises because distinctions accumulate in a fixed order to satisfy these necessities. Achieving balanced alignment requires first establishing non-absolute distinctions, making the arrow of time a consequence of the requirement ordering. Return to the original state requires traversing the full depth-eight cycle. The full derivation of the dimensional structure appears in [15].
+
+#### 2.4.1 BU-Egress: Depth-Four Closure
+
+Egress Balance Universal (BU-Egress) mandates that four-step compositions commute across all accessible configurations.
+
+```
+S → □B    where B := [L][R][L][R]S ↔ [R][L][R][L]S
+```
+
+At depth four (four nested operations), the system achieves commutative closure. All admissible orderings of alternating depth-four transitions converge to the same state. This closure is absolute (□B), meaning it holds across all accessible worlds.  
+
+This is the minimal depth at which coherent closure can occur while preserving depth-two contingency. Depth three still allows asymmetry. Depth four forces balance through the structure of the Baker-Campbell-Hausdorff expansion.  
+
+#### 2.4.2 BU-Ingress: Memory Reconstruction
+
+Ingress Balance Universal (BU-Ingress) requires the resulting closed state to retain sufficient information to reconstruct the original asymmetry and the contingency of earlier steps.
+
+```
+S → (□B → ([R]S ↔ S ∧ ¬([L]S ↔ S) ∧ ¬□E ∧ ¬□¬E))
+```
+
+The balanced state at depth four contains sufficient information to reconstruct all prior conditions: the original chirality (CS), the contingent unity (UNA), and the non-absolute opposition (ONA). Balance implies memory.  
+
+This ensures that achieving balanced closure doesn't erase the structural distinctions established by prior constraints. The future state preserves the information required to reconstitute past distinctions without collapsing them.
+
+---
+
+Balance necessitates governance through observability. Gravity, being the capacity for conservation of ancestry and not an end-point, cannot appear as an observable state within the system. Because the source cannot be observed as a discrete point, observation must encompass the complete sphere of possible orientations. The measurement domain must therefore be spatially closed and finite. In three spatial dimensions, complete angular closure requires 4π steradians. This geometric necessity establishes the quantum of gravity, Q_G = 4π, used throughout the subsequent analysis.
 
 ## 4. The Quantum of Gravity
 
@@ -87,45 +172,45 @@ Electromagnetic and gravitational couplings share this aperture geometry, produc
 
 cancels m_a entirely. Independent measurements of α and G can therefore falsify CGM should their product violate ρ⁴/(π√3). The laboratory fine-structure constant α_CODATA differs from α₀ by +319 ppm. The transport-corrected value from [24, 27] matches α_CODATA to sub-ppb accuracy. Gravity and the kernel invariant use α₀ and do not incorporate that correction chain, so the product test applies to α₀ specifically.
 
-## 5. Ancestry and the Field Equation
+## 5. The Field Equation
 
 The quantum of gravity and the aperture geometry of Section 4 fix the coupling structure. This section derives the field equation governing how the gravitational field is sourced. The argument proceeds in three stages: the definition of the source, the derivation of the Poisson equation, and the decomposition into gravitoelectric and gravitomagnetic sectors.
 
 ### 5.1 The Source
 
-The source of the gravitational field is the quantity of common-source structure concentrated in a region of space. Ancestry density, denoted ρ_A, is defined as common-source structure per unit volume. In standard physics, ρ_A corresponds to mass-energy density.
+In CGM, mass is accumulated common-source structure. Mass-energy density ρ measures how much traceable-to-common-origin structure is present per unit volume.
 
-The ancestry credit field C_A is the non-negative scalar measuring accumulated common-source structure at a point. The conventional gravitational potential is Φ = −C_A, with Φ ≤ 0 when the reference at infinity is C_A = 0. The acceleration field is g = −∇Φ = ∇C_A. Approaching greater ancestry credit lowers the action required to maintain relational traceability, which is why test bodies accelerate toward mass concentrations.
+The gravitational potential Φ measures the concentration of common-origin structure at a point. With Φ ≤ 0 when the reference at infinity sets Φ = 0, the acceleration field is g = −∇Φ. Approaching greater concentration lowers the action required to maintain relational traceability, which is why test bodies accelerate toward mass concentrations.
 
 ### 5.2 The Poisson Equation
 
 Rotational invariance and linearity in R³ uniquely determine a second-order operator of Laplacian form up to a scalar factor. The gravitational potential therefore satisfies
 
-    ∇² Φ = Q_G G ρ_A
+    ∇² Φ = Q_G G ρ
 
-where Q_G = 4π is the quantum of gravity derived in Section 4. This matches the standard Newtonian form. Curvature, in this framing, is the observable gradient of closure-density. Uniform closure-density gives a flat geometry with vanishing gradient while gravity remains present. Varying closure-density produces curvature in the standard sense.
+where Q_G = 4π is the quantum of gravity derived in Section 4. This matches the standard Newtonian form. Curvature, in this framing, is the observable gradient of mass-energy density. Uniform density gives a flat geometry with vanishing gradient while gravity remains present. Varying density produces curvature in the standard sense.
 
 ### 5.3 The Gravitoelectromagnetic Decomposition
 
 The six degrees of freedom derived in Section 3 decompose the gravitational field into two sectors. The gravitoelectric field g = −∇Φ carries the three translational degrees of freedom. The gravitomagnetic field B_g = curl A_g carries the three rotational degrees of freedom. Together they satisfy the gravitoelectromagnetic system:
 
-    ∇ · g = −Q_G G ρ_A
+    ∇ · g = −Q_G G ρ
 
     ∇ × g = −∂B_g / ∂τ
 
     ∇ · B_g = 0
 
-    ∇ × B_g = −(Q_G G / c²) J_A + (1/c²)(∂g / ∂τ)
+    ∇ × B_g = −(Q_G G / c²) J + (1/c²)(∂g / ∂τ)
 
-where J_A is the ancestry current and τ denotes the physical time parameter. Heaviside [2] wrote these equations in 1893 as the gravitational analog of Maxwell's equations. They emerge rigorously from the weak-field limit of general relativity. The CGM derivation identifies the two sectors with the translational and rotational degrees of freedom forced by the closure constraints.
+where J is the mass-energy current and τ denotes the physical time parameter. Heaviside [2] wrote these equations in 1893 as the gravitational analog of Maxwell's equations. They emerge rigorously from the weak-field limit of general relativity. The CGM derivation identifies the two sectors with the translational and rotational degrees of freedom forced by the closure constraints.
 
 The decomposition also follows from the algebraic structure of displacement composition. Composing non-collinear displacements in a curved geometry is non-associative, and the gyrogroup algebra corrects this non-associativity via an automorphism called the gyration operator [8]. In the continuous limit, accumulated gyration produces a circulation field. The gravitomagnetic vector potential A_g is the continuous manifestation of this accumulated gyration.
 
-In the weak-field regime, the gravitoelectromagnetic system implies wave propagation with characteristic speed c. Taking the curl of the gravitomagnetic equation and substituting the remaining identities yields a wave equation with the characteristic speed fixed by the same constant c that appears in the source response normalization. The multimessenger event GW170817 bounds any difference between the gravitational and electromagnetic propagation speeds to below 3 × 10⁻¹⁵ of c [28], consistent with this prediction. Static closure-density gradients extend across space without wave propagation, while perturbations propagate at c through the gravitomagnetic sector.
+In the weak-field regime, the gravitoelectromagnetic system implies wave propagation with characteristic speed c. Taking the curl of the gravitomagnetic equation and substituting the remaining identities yields a wave equation with the characteristic speed fixed by the same constant c that appears in the source response normalization. The multimessenger event GW170817 bounds any difference between the gravitational and electromagnetic propagation speeds to below 3 × 10⁻¹⁵ of c [28], consistent with this prediction. Static density gradients extend across space without wave propagation, while perturbations propagate at c through the gravitomagnetic sector.
 
 ## 6. Nonlinear Gravity
 
-The linear theory of Section 5 treats G as constant. This is a good approximation in the weak field but cannot hold self-consistently when the gravitational field is strong, because ancestry density modifies the geometry through which ancestry accumulates. The coupling must therefore depend on position. This section derives the position-dependent coupling, constructs the effective metric, verifies that the metric satisfies the Einstein equations, and extracts the equivalence principles and post-Newtonian parameters.
+The linear theory of Section 5 treats G as constant. This is a good approximation in the weak field but cannot hold self-consistently when the gravitational field is strong, because mass-energy density modifies the geometry through which the field is sourced. The coupling must therefore depend on position. This section derives the position-dependent coupling, constructs the effective metric, verifies that the metric satisfies the Einstein equations, and extracts the equivalence principles and post-Newtonian parameters.
 
 ### 6.1 The Position-Dependent Coupling
 
@@ -153,11 +238,11 @@ For a point mass, the potential satisfies dψ/ds = −exp(g₁ψ)/s². This equa
 
 which reduces to ψ = 1/s in the Newtonian limit g₁ → 0. The solution remains real and finite for all s > 1/g₁. The maximum potential attained is ψ_max = −1/g₁ ≈ 0.4996 at the minimum radius, which lies just inside the conventional Schwarzschild radius.
 
-For extended density distributions ρ_A(r), the full coupled system comprises the potential ratio ψ, the field equation g = −dΦ/dr = G(ψ) M(r)/r², the mass equation dM/dr = Q_G ρ_A(r) r², and the coupling function G(ψ) from above. This system closes for any specified density profile.
+For extended density distributions ρ(r), the full coupled system comprises the potential ratio ψ, the field equation g = −dΦ/dr = G(ψ) M(r)/r², the mass equation dM/dr = Q_G ρ(r) r², and the coupling function G(ψ) from above. This system closes for any specified density profile.
 
 ### 6.2 The Effective Metric and Einstein Equations
 
-Geometry responds to ancestry density through the potential ratio ψ. The effective metric for static spherical configurations is
+Geometry responds to mass-energy density through the potential ratio ψ. The effective metric for static spherical configurations is
 
     ds² = −f dt² + f⁻¹ dr² + r² dΩ²,    f(r) = 1 − 2ψ(r)
 
@@ -165,11 +250,11 @@ The horizon occurs where f = 0, at ψ = 1/2. For the exact point-mass solution, 
 
 The position-dependent coupling modifies the Gauss law to
 
-    ∇ · [(G₀/G(x)) g] = −Q_G G₀ ρ_A
+    ∇ · [(G₀/G(x)) g] = −Q_G G₀ ρ
 
 For a point mass, (G₀/G(ψ)) × 4π s² g = 4π at all radii, verified to relative precision 2.83 × 10⁻¹⁶. The modified flux is exactly conserved.
 
-The Einstein tensor for the metric f = 1 − 2ψ satisfies the component identity G_rr = G_tt/f² to relative precision 4.4 × 10⁻¹⁶ across all sampled radii. The position-dependent coupling introduces an effective anisotropic stress-energy in the exterior vacuum. The gradient of G(ψ) acts as a source term, producing a tangential pressure that structurally supports the coupling gradient. The modified Bianchi identity governs a continuous energy exchange between ancestry density and the gravitational field:
+The Einstein tensor for the metric f = 1 − 2ψ satisfies the component identity G_rr = G_tt/f² to relative precision 4.4 × 10⁻¹⁶ across all sampled radii. The position-dependent coupling introduces an effective anisotropic stress-energy in the exterior vacuum. The gradient of G(ψ) acts as a source term, producing a tangential pressure that structurally supports the coupling gradient. The modified Bianchi identity governs a continuous energy exchange between mass-energy density and the gravitational field:
 
     ∇_μ T^μ_ν = −(∂_ν G / G) T^μ_μ
 
@@ -177,7 +262,7 @@ This exchange is negligible in the weak field (s > 100) and becomes significant 
 
 The continuum limit admits a scalar-tensor representation in which ψ appears as a position-dependent coupling functional:
 
-    S = (1/16πG₀) ∫ R exp(−g₁ψ) √(−g) d⁴x + ∫ L_A √(−g) d⁴x
+    S = (1/16πG₀) ∫ R exp(−g₁ψ) √(−g) d⁴x + ∫ L_m √(−g) d⁴x
 
 Unlike Brans-Dicke constructions, ψ has no independent dynamical degree of freedom and is fixed algebraically by the closure structure through ψ = |Φ|/Φ_Planck. It is therefore a derived quantity, free of its own kinetic term and its own equation of motion. In the point-mass exterior, R = 0, ∇²ψ = 0, and dV/dψ = 0 at equilibrium. Energy conditions (null, weak, dominant) are satisfied for ψ ∈ [0, ½).
 
@@ -237,7 +322,7 @@ The shell transition operator for byte weight q has trace C(q) that evaluates to
 
 ### 8.1 Gauss Law Bridge
 
-Embedding the seven shell layers into a radial coordinate with the binomial mass profile verifies that the discrete quantities produce the continuum Poisson equation. The boundary flux equals −Q_G G_kernel to relative precision 10⁻¹⁶. In the continuum limit, spherical symmetry gives div g = −Q_G G_kernel ρ(r). Substituting G = G_kernel/E_CS² and identifying ρ as ancestry density produces the CGM field equation div g = −Q_G G ρ_A. This is the Poisson equation derived from the kernel Gauss law rather than assumed from rotational invariance alone. Three independent numerical checks confirm the inverse-square behavior. The product |g|r² is constant across the exterior to machine precision. A least-squares fit of log|g| versus log r gives an exponent of −2.000000 with uncertainty 9 × 10⁻¹⁶.
+Embedding the seven shell layers into a radial coordinate with the binomial mass profile verifies that the discrete quantities produce the continuum Poisson equation. The boundary flux equals −Q_G G_kernel to relative precision 10⁻¹⁶. In the continuum limit, spherical symmetry gives div g = −Q_G G_kernel ρ(r). Substituting G = G_kernel/E_CS² and matching the kernel profile to continuum mass-energy density ρ gives div g = −Q_G G ρ. This is the Poisson equation derived from the kernel Gauss law rather than assumed from rotational invariance alone. Three independent numerical checks confirm the inverse-square behavior. The product |g|r² is constant across the exterior to machine precision. A least-squares fit of log|g| versus log r gives an exponent of −2.000000 with uncertainty 9 × 10⁻¹⁶.
 
 ## 9. The Gravitational Coupling Constant
 
@@ -330,11 +415,11 @@ The derivation treats three-dimensional spatial structure as logically prior to 
 
 Coupling constants emerge from the BU invariants Q_G, δ_BU, and m_a rather than as free parameters. The gravitational coupling follows from kernel invariants, aperture geometry, and one energy anchor. The electromagnetic coupling follows from the same aperture geometry at a different depth. Their product is fixed by the closure ratio alone. Should this pattern extend, other couplings may yield to similar constructions. The shell structure produces both a monopole (1 component) and quadrupole (5 components) decomposition, suggesting that the kernel contains sufficient spectral richness to accommodate the full Standard Model.
 
-The ancestry density ρ_MU in a gravitational field scales as ρ_MU(ψ) = ρ_MU(0) (v/E_ref(ψ))². Near a black hole horizon, this depletes by a factor of order 10⁻⁶, reflecting the extreme redshift of the UV-IR conjugate pair. Total closure credit ρ_MU E_ref² is preserved across all ψ, consistent with the conservation of ancestry structure. At the Sun's surface, the depletion is 0.016%. At a neutron star surface, it reaches 99.9998%.
+The UV-IR interface density ρ_MU scales in a gravitational field as ρ_MU(ψ) = ρ_MU(0) (v/E_ref(ψ))². Near a black hole horizon, this depletes by a factor of order 10⁻⁶, reflecting the extreme redshift of the UV-IR conjugate pair. The product ρ_MU E_ref² is preserved across all ψ. At the Sun's surface, the depletion is 0.016%. At a neutron star surface, it reaches 99.9998%.
 
 ## 13. Conclusion
 
-This manuscript derived the gravitational field equation, the coupling constant structure, the spin-2 character of gravitational interaction, and the nonlinear extension to the Einstein equations from a single requirement: that distinguishable structure remain traceable to a common source.
+This manuscript derived the gravitational field equation, the coupling constant structure, the spin-2 character of gravitational interaction, and the nonlinear extension to the Einstein equations from a single requirement: the Preservation of Ancestry.
 
 Three results anchor the derivation. First, the shell displacement invariant D = 24, verified exhaustively across all 64 mass configurations, establishes the discrete Gauss law and fixes G_kernel = π/6. Second, the depth-four/depth-eight holonomy distinction proves that the gravitational cycle requires a two-pass carrier return, supplying the factor 2 in 8π = 2 Q_G and the spin-2 angular momentum structure. Third, the optical depth model τ_G = |Ω| Δ ρ⁵ [(1 − 4ρΔ²) + c₄Δ⁴] with c₄ = −7/4 yields G_pred within 0.074 ppm of the reference measurement, with the exponent 5 confirmed by three independent arguments.
 
@@ -456,13 +541,13 @@ The number of depth-8 cycles is N_cycles = |Ω| ρ⁵ (f_K4 + c₄ Δ⁴) / (τ_
 
 The per-family depth-4 optical depth is identical across all four family phases, with τ_word = 0.009408891 and zero variance. This uniformity supports the equal-weight assignment in the f_K4 correction factor.
 
-## Appendix D: Ancestry Stress Tensor
+## Appendix D: Translational Payload Stress
 
 ### D.1 Definition
 
-The ancestry stress σ_A is computed from the translational payload bits. With the translational activation vector v = (b₆, b₅, b₄) and components in {0,1}, the stress is the centered second moment
+The translational payload stress σ is computed from the translational payload bits. With the translational activation vector v = (b₆, b₅, b₄) and components in {0,1}, the stress is the centered second moment
 
-    σ_A^{ij} = ⟨v^i v^j⟩ − ⟨v^i⟩⟨v^j⟩
+    σ^{ij} = ⟨v^i v^j⟩ − ⟨v^i⟩⟨v^j⟩
 
 where the averages are taken over the micro-reference ensemble within a cell.
 
@@ -470,9 +555,9 @@ where the averages are taken over the micro-reference ensemble within a cell.
 
 The tensor decomposes into isotropic and trace-free parts:
 
-    σ_A^{ij} = p_A δ^{ij} + π_A^{ij}
+    σ^{ij} = p δ^{ij} + π^{ij}
 
-where p_A = (1/3) Tr(σ_A) and π_A^{ij} is symmetric and trace-free. The trace component represents isotropic pressure. The five independent components of π_A form the trace-free sector corresponding to the ℓ = 2 representation of SO(3).
+where p = (1/3) Tr(σ) and π^{ij} is symmetric and trace-free. The trace component represents isotropic pressure. The five independent components of π form the trace-free sector corresponding to the ℓ = 2 representation of SO(3).
 
 ### D.3 Shell-Conditioned Values
 

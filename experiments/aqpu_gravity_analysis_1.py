@@ -298,11 +298,11 @@ def part_b_rho5_structure() -> tuple[list[int], list[int], int]:
 
     print()
     print("STF decomposition by payload population:")
-    print(f"{'pop':>4} {'Tr(sigma)':>10} {'p_A':>8} {'||pi||':>8} {'STF amp':>10} {'STF>0':>8}")
+    print(f"{'pop':>4} {'Tr(sigma)':>10} {'p':>8} {'||pi||':>8} {'STF amp':>10} {'STF>0':>8}")
     print("-" * 9)
     for pop in range(7):
         tr_sigma = TR_SIGMA_SHELL[pop]
-        p_A = tr_sigma / 3.0
+        p = tr_sigma / 3.0
         if 1 <= pop <= 5:
             pi_norm = FA_STF * tr_sigma
             stf_amp = pi_norm / np.sqrt(5)
@@ -311,7 +311,7 @@ def part_b_rho5_structure() -> tuple[list[int], list[int], int]:
             pi_norm = 0.0
             stf_amp = 0.0
             stf_flag = "NO"
-        print(f"{pop:>4} {tr_sigma:>10.4f} {p_A:>8.4f} {pi_norm:>8.4f} "
+        print(f"{pop:>4} {tr_sigma:>10.4f} {p:>8.4f} {pi_norm:>8.4f} "
               f"{stf_amp:>10.4f} {stf_flag:>8}")
 
     print()
