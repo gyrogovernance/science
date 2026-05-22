@@ -4,7 +4,16 @@ All notable changes to the CGM Experimental Framework will be documented in this
 
 ---
 
-## [1.2.9-CGM_Gravity&Beyond] - 2026-05-17 to 21
+## [1.3.0-CGM_Gravity&Beyond] - 2026-05-21
+
+### Updated
+
+- `docs/Findings/Analysis_Gravity.md`: virial condition and rest-mass origin (Section 11); closure depth τ_G as mass-energy stress; extension script outputs aligned.
+- `experiments/aqpu_gravity_analysis_ext.py`, `aqpu_gravity_common.py`: virial-sector checks, self-energy theorem, strong-field and Hawking diagnostics.
+
+---
+
+## [1.2.9-CGM_Gravity&Beyond] - 2026-05-17 to 20
 
 ### Added
 
@@ -48,7 +57,7 @@ All notable changes to the CGM Experimental Framework will be documented in this
 
 ### Added
 - Added `docs/Findings/Analysis_Gravity.md`: gravitational coupling from kernel invariants, gravitational field equations, gyrogroup structure, and electroweak-anchor prediction of G.
-- Added `experiments/aqpu_gravity_analysis_1.py`: kernel diagnostics, aperture-depth optical depth, α·ζ invariant, and coupling reconstruction at v_EW.
+- Added `experiments/aqpu_gravity_analysis_1.py`: kernel diagnostics, aperture-depth closure depth, α·ζ invariant, and coupling reconstruction at v_EW.
 - Added `experiments/cgm_aqpu_monodromy.py`: aQPU monodromy diagnostic for depth-4/depth-8 closure, shell displacement invariants, and quadrupole shell modes.
 
 ### Results

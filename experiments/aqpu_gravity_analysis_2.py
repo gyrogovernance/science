@@ -8,7 +8,7 @@ Canonical kernel gravity theorems.
   S2   Omega enumeration (BFS)
   S3   Holographic mirror (W2 bijection)
   S4   Shell path [k,6,k,0] x2
-  S5   Per-cycle optical depth (exact)
+  S5   Per-cycle closure depth (exact)
   S6   Route A: Tr(sigma_iso) -> c4
   S7   Route B: q_W -> c4
   S8   Perturbation order (Z2)
@@ -22,7 +22,7 @@ Canonical kernel gravity theorems.
 
 Theorem registry / audit. Exact derivations: analysis_3.
 Transport + G prediction: analysis_1. Nonlinear: analysis_4/5.
-(Shell mixing Markov block removed: not optical depth tau_cycle.)
+(Shell mixing Markov block removed: not closure depth tau_cycle.)
 """
 
 from __future__ import annotations
@@ -303,7 +303,7 @@ def verify_shell_paths() -> dict:
 
 
 # ============================================================
-# S6: Per-cycle optical depth (exact)
+# S6: Per-cycle closure depth (exact)
 # ============================================================
 
 
@@ -499,7 +499,7 @@ def main() -> None:
     print()
 
     # S5
-    print("S5  Per-cycle optical depth")
+    print("S5  Per-cycle closure depth")
     print("-" * 9)
     tau_ex = tau_cycle_per_delta_exact()
     print(f"  tau_cycle/Delta = {tau_ex} (definitive: analysis_3 section C)")

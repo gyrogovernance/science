@@ -323,6 +323,6 @@ While many aspects of the program are exploratory and require further validation
 -   Independent cross-check of lepton mass derivation against radiative corrections.
 -   Connecting compact geometry to standard model radiative corrections.
 -   Dynamical scalar-tensor evolutions beyond static spherical gravity.
--   Shell-space path integral for independent verification of gravitational optical depth.
+-   Shell-space path integral for independent verification of gravitational closure depth.
 -   Cosmological tests with next-generation observatories (e.g., LISA, SKA).
 -   Practical applications of GyroSI and GyroDiagnostics.

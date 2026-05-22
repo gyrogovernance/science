@@ -302,7 +302,7 @@ all match template  = True
   pop=5 path=[5, 6, 5, 0, 5, 6, 5, 0] : 6 micro-refs
   pop=6 path=[6, 6, 6, 0, 6, 6, 6, 0] : 1 micro-refs
 
-S5  Per-cycle optical depth
+S5  Per-cycle closure depth
 ---------
   tau_cycle/Delta = 7591/7392 (definitive: analysis_3 section C)
 
@@ -435,7 +435,7 @@ Anchor check (inverse from G_meas, validation only):
 c4_anchor                       = -1.755252780201
 c4_anchor - c4_kernel           = -5.252780200913e-03
 
-4. Optical depth
+4. Closure depth
 ---------
 tau_G (leading order)           = 76.237941173390
 tau_required                    = 76.237916564937
@@ -486,12 +486,12 @@ STF decomposition by payload population:
    5     0.4167   0.1389   0.1134     0.0507      YES
    6     0.0000   0.0000   0.0000     0.0000       NO
 
-STF attenuation rho^5 and optical depth
+STF attenuation rho^5 and closure depth
 ---------
   dim(STF(3)) = 5; rho^5 = 0.9006991682
   per-channel tau_1 = -ln(rho) = 0.020917
 
-  Optical depth comparison:
+  Closure depth comparison:
     Naive (|Omega|*Delta):              84.785373
     With rho^5:                         76.366115
     With K4 (1-4*rho*Delta^2):          76.237941
@@ -646,7 +646,7 @@ Kernel invariants:
   D        = 24
   G_kernel = pi/6 = 0.523598775598
 
-Optical depth:
+Closure depth:
   leading order tau_G = 76.237941173390
   full prediction     = 76.237916638581
 
@@ -1080,7 +1080,7 @@ Premise 1: Optical conjugacy (CGM)
 Premise 2: Delta ruler
   n(E) = ln(E_CS/E) / (Delta*ln2)
 
-Premise 3: STF-verified optical depth
+Premise 3: STF-verified closure depth
   tau(psi) = tau_G * (1 - psi)  (machine precision vs STF)
 
 DERIVATION:

@@ -29,6 +29,7 @@ GRAVITY_SCRIPTS: tuple[str, ...] = (
     "aqpu_gravity_analysis_1.py",
     "aqpu_gravity_analysis_4.py",
     "aqpu_gravity_analysis_5.py",
+    "aqpu_gravity_analysis_ext.py",
 )
 
 

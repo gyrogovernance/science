@@ -337,7 +337,7 @@ def alpha_z_prediction(z_values: List[float]) -> List[Dict[str, float]]:
     """Predict α(z) oscillation from gravity analysis Section 12.2.
 
     The shell structure modulates the effective electromagnetic
-    coupling across cosmological optical depth. Predicted:
+    coupling across cosmological closure depth. Predicted:
     - Period: Δz ≈ 0.0143 in ln(1+z)
     - Amplitude: ~5×10⁻⁴ fractional
     - Seven sub-cycles per main period from shell structure
@@ -558,7 +558,7 @@ def main() -> None:
     print("  All 6 DoF become transparent simultaneously (equivalence).")
 
     # ------------------------------------------------------------------
-    # Section 4: Optical Depth at BU Faces
+    # Section 4: Closure Depth at BU Faces
     # ------------------------------------------------------------------
     print_section("4. OPTICAL DEPTH AT THE BU FACES")
     print(f"  BU-EGRESS FACE:")
@@ -677,7 +677,7 @@ def main() -> None:
     print_table(headers_m, rows_m)
     print("  At Oort distances (1-2 ly), ψ ~ 10⁻¹³:")
     print("  G corrections and frame-dragging are negligible.")
-    print("  The dominant effect is the optical depth / aperture opening.")
+    print("  The dominant effect is the closure depth / aperture opening.")
     print()
     print("  The internal metric is qualitatively different from the")
     print("  external Kerr metric. We solve the CGM field equations")

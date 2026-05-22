@@ -405,9 +405,9 @@ Net cancellation:     0
 
 The spin-2 signature of gravitation is the Z2 holonomy cycle: two applications of the canonical word to return the carrier to rest. This is not a fitted parameter; it is the algebraic consequence of F = W₂ ∘ W₂'.
 
-### 11.3 The Optical Depth as K4 Composition
+### 11.3 The Closure Depth as K4 Composition
 
-The gravitational optical depth formula:
+The gravitational closure depth formula:
 
 ```
 τ_G = |Ω| · Δ · ρ⁵ · (1 − 4ρΔ²)
@@ -420,7 +420,7 @@ decomposes into kernel invariants:
 - ρ⁵: the STF attenuation (5 bulk shells × ρ per shell)
 - (1 − 4ρΔ²): the K4 correction (4 intrinsic gates, each contributing ρΔ²)
 
-The K4 correction factor is the spectral signature of the Z2 holonomy structure. Without it (using only |Ω| · Δ · ρ⁵), the optical depth is 76.366; with it, the value drops to 76.238, matching the required 2 ln(E_CS/v_EW) = 76.238 to 25 ppm.
+The K4 correction factor is the spectral signature of the Z2 holonomy structure. Without it (using only |Ω| · Δ · ρ⁵), the closure depth is 76.366; with it, the value drops to 76.238, matching the required 2 ln(E_CS/v_EW) = 76.238 to 25 ppm.
 
 ---
 

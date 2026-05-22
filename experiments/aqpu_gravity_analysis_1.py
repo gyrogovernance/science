@@ -219,7 +219,7 @@ def part_a_residual_closure() -> tuple[float, float]:
     print(f"c4_anchor - c4_kernel           = {c4_anchor - c4_kernel:.12e}")
 
     print()
-    print("4. Optical depth")
+    print("4. Closure depth")
     print("-" * 9)
     tau_full = tau_with_c4(c4_kernel)
     print(f"tau_G (leading order)           = {tau_G_formula:.12f}")
@@ -315,7 +315,7 @@ def part_b_rho5_structure() -> tuple[list[int], list[int], int]:
               f"{stf_amp:>10.4f} {stf_flag:>8}")
 
     print()
-    print("STF attenuation rho^5 and optical depth")
+    print("STF attenuation rho^5 and closure depth")
     print("-" * 9)
     tau_per_channel = -np.log(rho)
     print(f"  dim(STF(3)) = {n_STF}; rho^5 = {rho**5:.10f}")
@@ -325,7 +325,7 @@ def part_b_rho5_structure() -> tuple[list[int], list[int], int]:
     tau_with_stf = Omega_size * Delta * rho**5
     tau_with_correction = Omega_size * Delta * rho**5 * (1 - 4 * rho * Delta**2)
     print()
-    print("  Optical depth comparison:")
+    print("  Closure depth comparison:")
     print(f"    Naive (|Omega|*Delta):              {tau_naive:.6f}")
     print(f"    With rho^5:                         {tau_with_stf:.6f}")
     print(f"    With K4 (1-4*rho*Delta^2):          {tau_with_correction:.6f}")
@@ -604,7 +604,7 @@ def part_e_summary(
     print(f"  D        = {Z2_HOLONOMY_PATH_TRAVERSE}")
     print(f"  G_kernel = pi/6 = {G_kernel:.12f}")
     print()
-    print("Optical depth:")
+    print("Closure depth:")
     print(f"  leading order tau_G = {tau_leading:.12f}")
     print(f"  full prediction     = {tau_full:.12f}")
     print()

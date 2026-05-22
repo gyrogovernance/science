@@ -1,56 +1,43 @@
 # Mathematical Physics Science
 > **Gyroscopic Alignment Research Lab**
-
 ![Science](/assets/gyro_cover_science.png)
-
 <h1>Common Governance Model</h1>
-<h3>Deep Physics</h3>
-<p><em>Cosmology, Biology, and Beyond...</em></p>
-
+<h3>Axiomatic Physics and Information Geometry</h3>
 <p>
-  <a href="https://doi.org/10.5281/zenodo.17521384">
-    <img src="https://zenodo.org/badge/DOI/10.5281/zenodo.17521384.svg" alt="DOI">
-  </a>
-  <a href="LICENSE">
-    <img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT">
-  </a>
-  <a href="https://www.python.org">
-    <img src="https://img.shields.io/badge/python-3.12+-blue.svg" alt="Python 3.12+">
-  </a>
+<a href="https://doi.org/10.5281/zenodo.17521384">
+<img src="https://zenodo.org/badge/DOI/10.5281/zenodo.17521384.svg" alt="DOI">
+</a>
+<a href="LICENSE">
+<img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT">
+</a>
+<a href="https://www.python.org">
+<img src="https://img.shields.io/badge/python-3.12+-blue.svg" alt="Python 3.12+">
+</a>
 </p>
-
 </div>
-
 <div align="center">
-
 ### G Y R O G O V E R N A N C E
-
 [![Home](/assets/menu/gg_icon_home.svg)](https://gyrogovernance.com)
 [![Apps](/assets/menu/gg_icon_apps.svg)](https://github.com/gyrogovernance/apps)
 [![Diagnostics](/assets/menu/gg_icon_diagnostics.svg)](https://github.com/gyrogovernance/diagnostics)
 [![Tools](/assets/menu/gg_icon_tools.svg)](https://github.com/gyrogovernance/tools)
 [![Science](/assets/menu/gg_icon_science.svg)](https://github.com/gyrogovernance/science)
 [![Superintelligence](/assets/menu/gg_icon_asi.svg)](https://github.com/gyrogovernance/superintelligence)
-
 </div>
-
 ---
-
 # 🌐 Common Governance Model (CGM)
 
-CGM is an axiomatic framework for fundamental physics and information science. It starts from one requirement: every state in a coherent system must be traceable to a common source. From that starting point, the model derives structure through formal logic and gyrogroup geometry, then checks the results against experiment.
-
-The framework treats **three-dimensional space with six degrees of freedom** as a theorem, not an input. Time appears as the order in which recursive operations must be applied. The approach follows the Hilbert program tradition: define the rules, derive the consequences, compare with measurement. CGM is implemented as the [Gyroscopic ASI aQPU](#gyroscopic-asi-aqpu); the physics results below are verified on that implementation.
+The Common Governance Model is an axiomatic framework for fundamental physics and information science. It rests on a single axiom: every distinguishable state in a coherent system must be traceable to a common source. The framework derives spatial dimensionality, chirality, and conservation laws from this requirement using formal modal logic and gyrogroup geometry. Three-dimensional space with six degrees of freedom emerges as a theorem, while time emerges as the ordering imposed by recursive operational closure. The theory is implemented and verified on the Gyroscopic ASI aQPU.
 
 ## Headline results
 
-- **Fine-structure constant** α ≈ 1/137.036 from aperture geometry (0.043 ppb vs experiment)
-- **Newton's constant** G from geometric invariants at the electroweak scale (25 ppm vs CODATA)
-- **Nonlinear gravity**: position-dependent G, analytic static exterior, horizon and photon sphere, Mercury precession, shadow geometry (computationally closed)
-- **Electroweak masses** (Higgs, Z, W, top) and **weak mixing angle** from discrete geometry (sub-ppm to parts-per-billion)
-- **Quantum gravity invariant** 4π steradians (full solid angle of observation)
+* **Fine-structure constant** α from aperture geometry (0.043 ppb vs experiment)
+* **Newton's constant** G from combinatorial kernel invariants and electroweak anchors (0.074 ppm consistency check vs CODATA)
+* **Nonlinear gravity** satisfying the Einstein equations via a position-dependent coupling, deriving the relativistic rest frame (E=mc²) from the Virial condition as an operational necessity, and yielding an exact 4/5 observable-to-bare mass dressing
+* **Electroweak masses** (Higgs, Z, W, top) and **weak mixing angle** from discrete geometry (sub-ppm to parts-per-billion)
+* **Quantum gravity invariant** 4π steradians (full solid angle of observation)
 
-Neutrino mass scale, lepton ratios, quark flavor structure, and optical conjugacy between ultraviolet and infrared scales are derived in the linked analyses below.
+Neutrino mass scales, lepton ratios, quark flavor structure, and optical conjugacy between ultraviolet and infrared scales are derived in the linked analyses.
 
 ## Scale of verification
 
@@ -65,29 +52,24 @@ Neutrino mass scale, lepton ratios, quark flavor structure, and optical conjugac
 The experiment scripts span gravity, electroweak mass geometry, fine structure, quantum gravity, CMB data checks, axiomatization, Hilbert space representation, monodromy, energy scales, and related topics. Each major result in the table below maps to one analysis note and its verification code.
 
 ---
-
 <div align="center">
-
 <a href="docs/CGM.pdf">
-  <img src="/assets/CGM_Cover_Letter.jpg" alt="Common Governance Model Paper" width="420">
+<img src="/assets/CGM_Cover_Letter.jpg" alt="Common Governance Model Paper" width="420">
 </a>
-
 <br>
-
 [![Read the paper](https://img.shields.io/badge/Read-CGM%20Paper-1f2937?style=for-the-badge&logo=book&logoColor=white)](docs/CGM.pdf)
-
 </div>
 
 ## Documentation and verification
 
-Core writing: [CGM Core](docs/CGM_Paper.md), [CGM Program](docs/CGM_Program.md), [CHANGELOG](CHANGELOG.md).  
+Core writing: [CGM Core](docs/CGM_Paper.md), [CGM Program](docs/CGM_Program.md), [CHANGELOG](CHANGELOG.md).
 Dataset: [CGM corpus](docs/datasets/) (1,000+ JSONL Q&A pairs for fine-tuning and RAG).
 
 Each row below is the single entry point for that topic: one analysis note, one code location.
 
 | Topic | Analysis | Code |
 |-------|----------|------|
-| Gravity and nonlinear continuum | [Analysis_Gravity](docs/Findings/Analysis_Gravity.md) | [aqpu_gravity_common.py](experiments/aqpu_gravity_common.py), `aqpu_gravity_analysis_1.py` through `5.py`, [wavefunction scripts](experiments/aqpu_wavefunction_1.py). Run: `python experiments/aqpu_gravity_run_all.py` |
+| Gravity, Virial condition, and nonlinear continuum | [Analysis_Gravity](docs/Findings/Analysis_Gravity.md) | [aqpu_gravity_common.py](experiments/aqpu_gravity_common.py), `aqpu_gravity_analysis_1.py` through `5.py`, [wavefunction scripts](experiments/aqpu_wavefunction_1.py). Run: `python experiments/aqpu_gravity_run_all.py` |
 | Electroweak mass spectrum | [Analysis_Compact_Geometry](docs/Findings/Analysis_Compact_Geometry.md) | [aqpu_compact_geom_core.py](experiments/aqpu_compact_geom_core.py), [kernel](experiments/aqpu_compact_geom_kernel.py), [report](experiments/aqpu_compact_geom_report.py) |
 | Fine-structure constant | [Analysis_Fine_Structure](docs/Findings/Analysis_Fine_Structure.md) | [cgm_alpha_analysis.py](experiments/cgm_alpha_analysis.py) |
 | Quantum gravity invariant | [Analysis_Quantum_Gravity](docs/Findings/Analysis_Quantum_Gravity.md) | [cgm_quantum_gravity_analysis.py](experiments/cgm_quantum_gravity_analysis.py) |
@@ -104,11 +86,9 @@ Each row below is the single entry point for that topic: one analysis note, one 
 
 ### Gyroscopic ASI aQPU
 
-The **Gyroscopic ASI aQPU** is CGM made executable. The theory derives space, chirality, and governance constraints from a single traceability requirement; the aQPU is the reference software that runs those constraints as physics. Each input byte advances a 24-bit coupled state whose geometry encodes three dimensions and six degrees of freedom. The machine is deterministic and replayable: the same byte ledger always yields the same trajectory, verifiable by any independent party with exact integer arithmetic on standard hardware.
+The Gyroscopic ASI aQPU executes the CGM axioms as an algebraic processing architecture. The theory derives space, chirality, and governance constraints; the aQPU operates as the reference machine that runs them. Each input byte advances a 24-bit coupled state encoding three dimensions and six degrees of freedom. The machine is deterministic and replayable: identical byte ledgers yield identical trajectories, verifiable by any independent party using exact integer arithmetic on standard hardware. The reachable manifold comprises 4,096 states with holographic boundary-to-bulk scaling. Verified properties include exact mixing, compressed state encoding, and discrete realizations of quantum-information protocols.
 
-This is not a quantum-hardware simulator. It is an algebraic processing architecture whose state space and transition rules are built to match CGM's structural predictions. The reachable manifold has 4,096 states with holographic boundary-to-bulk scaling. Proven properties include exact mixing, compressed state encoding, and discrete realizations of quantum-information protocols, documented in the test reports linked below.
-
-In this repository, that implementation is the reference machine for physics verification: gravity, electroweak mass geometry, wavefunction diagnostics, and related analyses run directly on the aQPU package (14 experiment scripts in `experiments/`).
+In this repository, the aQPU implementation serves as the reference machine for physics verification. Gravity, electroweak mass geometry, wavefunction diagnostics, and related analyses run directly on the aQPU package (14 experiment scripts in `experiments/`).
 
 Canonical repository: [superintelligence](https://github.com/gyrogovernance/superintelligence). Vendored implementation: [`gyroscopic/aQPU/`](gyroscopic/aQPU/).
 
@@ -126,48 +106,37 @@ Specification and test reports:
 | [QuBEC_Transform_Algebra](docs/Gyroscopic_Computational_Theory/QuBEC_Transform_Algebra.md) | Transform algebra |
 | [QuBEC_Climate_Dynamics](docs/Gyroscopic_Computational_Theory/QuBEC_Climate_Dynamics.md) | Climate dynamics |
 
-## In progress
-
-- Independent cross-check of lepton mass derivation against radiative corrections
-- Connecting compact geometry to standard model radiative corrections
-- Cosmological dynamics from geometric evolution
-- Dynamical scalar-tensor evolutions beyond static spherical symmetry
-- Independent path-integral check of the gravitational coupling derivation
-
 ---
-
 ## 👨‍🔬 Author
 
-**Basil Korompilias**  
-*Independent Researcher*  
+**Basil Korompilias**
+*Independent Researcher*
 *Common Governance Model Framework*
 
 ---
-
 ## 📚 Citation
 
 ```bibtex
 @software{gyrogovernancesciencerepo,
-  title={Common Governance Model: Mathematical Physics Framework},
-  author={Korompilias, Basil},
-  year={2025},
-  doi={10.5281/zenodo.17521384},
-  url={https://github.com/gyrogovernance/science},
-  orcid={0009-0006-4967-1245}
+title={Common Governance Model: Mathematical Physics Framework},
+author={Korompilias, Basil},
+year={2025},
+doi={10.5281/zenodo.17521384},
+url={https://github.com/gyrogovernance/science},
+orcid={0009-0006-4967-1245}
 }
 ```
 
-**Paper (v1.2.4):** [10.5281/zenodo.17794470](https://doi.org/10.5281/zenodo.17794470)  
+**Paper (v1.2.4):** [10.5281/zenodo.17794470](https://doi.org/10.5281/zenodo.17794470)
 **All versions:** [10.5281/zenodo.17521384](https://doi.org/10.5281/zenodo.17521384)
 
 ---
-
 <div style="border: 1px solid #ccc; padding: 1em; font-size: 0.6em; background-color: #f9f9f9; border-radius: 6px; line-height: 1.5;">
-  <p><strong>🤖 AI Disclosure</strong></p>
-  <p>All software architecture, design, implementation, documentation, and evaluation frameworks in this project were authored and engineered by its Author.</p>
-  <p>Artificial intelligence was employed solely as a technical assistant, limited to code drafting, formatting, verification, and editorial services, always under direct human supervision.</p>
-  <p>All foundational ideas, design decisions, and conceptual frameworks originate from the Author.</p>
-  <p>Responsibility for the validity, coherence, and ethical direction of this project remains fully human.</p>
-  <p><strong>Acknowledgements:</strong><br>
-  This project benefited from AI language model services accessed through Z.AI, Arena, Cursor IDE, OpenAI (ChatGPT), Anthropic (Claude), XAI (Grok), Deepseek, and Google (Gemini).</p>
+<p><strong>🤖 AI Disclosure</strong></p>
+<p>All software architecture, design, implementation, documentation, and evaluation frameworks in this project were authored and engineered by its Author.</p>
+<p>Artificial intelligence was employed solely as a technical assistant, limited to code drafting, formatting, verification, and editorial services, always under direct human supervision.</p>
+<p>All foundational ideas, design decisions, and conceptual frameworks originate from the Author.</p>
+<p>Responsibility for the validity, coherence, and ethical direction of this project remains fully human.</p>
+<p><strong>Acknowledgements:</strong><br>
+This project benefited from AI language model services accessed through Z.AI, Arena, Cursor IDE, OpenAI (ChatGPT), Anthropic (Claude), XAI (Grok), Deepseek, and Google (Gemini).</p>
 </div>

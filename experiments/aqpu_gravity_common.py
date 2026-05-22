@@ -1,7 +1,7 @@
 """
 Shared CGM gravity kernel helpers and invariants.
 
-Used by aqpu_gravity_analysis_{1,2,3,4,5}.py.
+Used by aqpu_gravity_analysis_{1,2,3,4,5,ext}.py.
 
 Convention: arch_shell = 6 - chi_shell, measuring distance from the complement
 horizon (0 = complement horizon, 6 = equality horizon).
@@ -23,6 +23,7 @@ from math import comb, exp, log, sqrt
 from pathlib import Path
 
 import numpy as np
+from scipy.integrate import quad
 from scipy.optimize import brentq
 from scipy.special import lambertw
 
@@ -68,7 +69,7 @@ W2_SHELL_DISPLACEMENT = 6  # per W2 depth-4 half-word (2 bytes); wavefunction_2 
 F_CYCLE_PATH_TRAVERSE = 12  # F-cycle path length (4 bytes); F preserves shell per T4
 Z2_HOLONOMY_PATH_TRAVERSE = 24  # Z2 holonomy path length (8 bytes, 2 F-cycles); net disp 0
 D_traverse = Z2_HOLONOMY_PATH_TRAVERSE  # shell traverse invariant (not aperture Delta)
-AF = 2 * Z2_HOLONOMY_PATH_TRAVERSE  # Z2 double-cover: holonomy cycle path x 2 for optical depth round-trip (T6: F o F = id)
+AF = 2 * Z2_HOLONOMY_PATH_TRAVERSE  # Z2 double-cover: holonomy cycle path x 2 for closure depth round-trip (T6: F o F = id)
 v_EW = 246.22
 G_meas = 6.708810e-39
 
@@ -82,7 +83,7 @@ f_ordered = 1.0 - 4.0 * rho * Delta**2
 tau_required = -math.log(alpha_G_meas / G_kernel)
 tau_req_meas = tau_required
 
-# Consistency check: Z2 optical depth vs UV-IR conjugacy ladder (not a G derivation).
+# Consistency check: Z2 closure depth vs UV-IR conjugacy ladder (not a G derivation).
 tau_conjugacy_depth = 2.0 * math.log(E_CS / v_EW)
 tau_G_formula = Omega_size * Delta * rho**5 * f_ordered
 binom_shell = [comb(6, s) / 64.0 for s in range(7)]
@@ -145,6 +146,35 @@ def F_cycle_word(micro_ref: int) -> list[int]:
 def cycle_word_for_micro(micro_ref: int) -> list[int]:
     """Z2 holonomy cycle word: F o F = id (carrier Z2 round-trip). 8 bytes; two F-cycles completing Z2 holonomy. Carrier returns to rest, NOT to CS."""
     return family_word_for_micro(micro_ref) * 2
+
+
+def reversed_cycle_word(micro_ref: int) -> list[int]:
+    """Chirality-reversed Z2 holonomy: families 3,2,1,0 per F-cycle, twice."""
+    word: list[int] = []
+    for _ in range(2):
+        for fam in (3, 2, 1, 0):
+            word.append(byte_from_family_and_micro(fam, micro_ref))
+    return word
+
+
+def W2p_then_W2_cycle_word(micro_ref: int) -> list[int]:
+    """Two-pass holonomy probe: W2' then W2, repeated (GW echo / shell order)."""
+    half = W2p_word(micro_ref) + W2_word(micro_ref)
+    return half + half
+
+
+def arch_path_displacement(word: list[int], micro_ref: int = 0) -> int:
+    """Sum of |Delta arch_shell| along a byte word (Z2 path length = 24)."""
+    rows = trace_word_steps(word, micro_ref=micro_ref)
+    return sum(
+        abs(rows[i]["arch_shell"] - rows[i - 1]["arch_shell"])
+        for i in range(1, len(rows))
+    )
+
+
+def holonomy_qxor_final(word: list[int], micro_ref: int = 0) -> int:
+    """Accumulated chi6 XOR along word; zero <=> net chirality closure."""
+    return trace_word_steps(word, micro_ref=micro_ref)[-1]["qxor"]
 
 
 def apply_word_to_state(word: list[int], state24: int = GENE_MAC_REST) -> int:
@@ -375,6 +405,31 @@ def dpsi_ds_point_mass(s: float, g1: float | None = None) -> float:
     if g1 is None:
         g1 = dln_g_dpsi()
     return -1.0 / (s * (s - g1))
+
+
+def field_integral_exterior_exact(
+    s_lo: float, g1: float | None = None, psi_inf: float = 0.0
+) -> float:
+    """int_{s_lo}^inf exp(g1*psi)/s^2 ds = psi(s_lo) - psi(inf); exterior ODE."""
+    return psi_point_mass(s_lo, g1) - psi_inf
+
+
+def exterior_integral_numeric_lo(s_h: float, g1: float) -> float:
+    """Numeric lower limit: above horizon and above the s=g1 integrand pole."""
+    eps = max(1e-8, 1e-5 * abs(s_h))
+    return max(s_h * (1.0 + 1e-4), g1 + eps)
+
+
+def field_integral_exterior_numeric(
+    s_lo: float, g1: float | None = None, s_hi: float = 1e5
+) -> tuple[float, float]:
+    """Numeric exterior field integral; stable integrand 1/(s*(s-g1)) + analytic tail."""
+    if g1 is None:
+        g1 = dln_g_dpsi()
+    s_lo = max(s_lo, exterior_integral_numeric_lo(s_lo, g1))
+    val, err = quad(lambda s: 1.0 / (s * (s - g1)), s_lo, s_hi, limit=200)
+    tail = -(1.0 / g1) * math.log1p(g1 / (s_hi - g1))
+    return val + tail, err
 
 
 def exp_g_path_ratio(psi: float, g1: float | None = None) -> float:
