@@ -39,8 +39,8 @@ The Common Governance Model (CGM) is an axiomatic framework for fundamental phys
 ## Headline results
 
 * **Fine-structure constant** α from aperture geometry (0.043 ppb vs experiment)
-* **Newton's constant** G from combinatorial kernel invariants and electroweak anchors (0.074 ppm consistency check vs CODATA)
-* **Nonlinear gravity** satisfying the Einstein equations via a position-dependent coupling, deriving the relativistic rest frame (E=mc²) from the Virial condition as an operational necessity, and yielding an exact 4/5 observable-to-bare mass dressing
+* **Newton's constant** G from holographic algorithm invariants and electroweak anchors (0.074 ppm consistency check vs CODATA)
+* **Nonlinear gravity** satisfying the Einstein equations via a position-dependent coupling, deriving the relativistic rest frame (E=mc²) from the Virial condition as an operational necessity
 * **Electroweak masses** (Higgs, Z, W, top) and **weak mixing angle** from discrete geometry (sub-ppm to parts-per-billion)
 * **Quantum gravity invariant** 4π steradians (full solid angle of observation)
 
