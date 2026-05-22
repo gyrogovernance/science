@@ -1,30 +1,41 @@
 # Mathematical Physics Science
 > **Gyroscopic Alignment Research Lab**
+
 ![Science](/assets/gyro_cover_science.png)
+
 <h1>Common Governance Model</h1>
-<h3>Axiomatic Physics and Information Geometry</h3>
+<h3>Deep Physics</h3>
+<p><em>Cosmology, Biology, and Beyond...</em></p>
+
 <p>
-<a href="https://doi.org/10.5281/zenodo.17521384">
-<img src="https://zenodo.org/badge/DOI/10.5281/zenodo.17521384.svg" alt="DOI">
-</a>
-<a href="LICENSE">
-<img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT">
-</a>
-<a href="https://www.python.org">
-<img src="https://img.shields.io/badge/python-3.12+-blue.svg" alt="Python 3.12+">
-</a>
+  <a href="https://doi.org/10.5281/zenodo.17521384">
+    <img src="https://zenodo.org/badge/DOI/10.5281/zenodo.17521384.svg" alt="DOI">
+  </a>
+  <a href="LICENSE">
+    <img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT">
+  </a>
+  <a href="https://www.python.org">
+    <img src="https://img.shields.io/badge/python-3.12+-blue.svg" alt="Python 3.12+">
+  </a>
 </p>
+
 </div>
+
 <div align="center">
+
 ### G Y R O G O V E R N A N C E
+
 [![Home](/assets/menu/gg_icon_home.svg)](https://gyrogovernance.com)
 [![Apps](/assets/menu/gg_icon_apps.svg)](https://github.com/gyrogovernance/apps)
 [![Diagnostics](/assets/menu/gg_icon_diagnostics.svg)](https://github.com/gyrogovernance/diagnostics)
 [![Tools](/assets/menu/gg_icon_tools.svg)](https://github.com/gyrogovernance/tools)
 [![Science](/assets/menu/gg_icon_science.svg)](https://github.com/gyrogovernance/science)
 [![Superintelligence](/assets/menu/gg_icon_asi.svg)](https://github.com/gyrogovernance/superintelligence)
+
 </div>
+
 ---
+
 
 # 🌐 Common Governance Model (CGM)
 
