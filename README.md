@@ -25,6 +25,7 @@
 [![Superintelligence](/assets/menu/gg_icon_asi.svg)](https://github.com/gyrogovernance/superintelligence)
 </div>
 ---
+
 # 🌐 Common Governance Model (CGM)
 
 The Common Governance Model is an axiomatic framework for fundamental physics and information science. It rests on a single axiom: every distinguishable state in a coherent system must be traceable to a common source. The framework derives spatial dimensionality, chirality, and conservation laws from this requirement using formal modal logic and gyrogroup geometry. Three-dimensional space with six degrees of freedom emerges as a theorem, while time emerges as the ordering imposed by recursive operational closure. The theory is implemented and verified on the Gyroscopic ASI aQPU.
