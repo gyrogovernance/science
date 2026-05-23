@@ -4,12 +4,26 @@ All notable changes to the CGM Experimental Framework will be documented in this
 
 ---
 
+## [1.3.1-CGM_Gravity&Beyond] - 2026-05-22
+
+### Added
+
+- `experiments/aqpu_gravity_analysis_7.py`: refractive vacuum, horizon criticality, and the time-light-gravity conversion factor. Treats the CGM exterior as a polarizable medium (epsilon_g = G_0/G(psi), optical depth tau_opt = |g1|*psi) with distinct coupling and propagation channels. Derives the scalar Klein-Gordon equation on the CGM metric, proves scalar wave impedance Z = f*k = omega is constant across sharp metric steps (zero Fresnel reflection at interfaces; all vacuum scattering from the smooth Regge-Wheeler potential V_l), and verifies flux conservation R + T = 1 numerically. Computes null-geodesic deflection Delta_phi(b), capture at b <= b_c, and the geodesic escape fraction P_esc(s). Establishes horizon criticality (n -> inf, P_esc -> 0) while coupling remains finite at psi = 1/2, the kernel-locked conversion kappa_GR * T_Z2 = [D/(4*Q_G)]*c = 3c/(2*pi), the universal luminosity scale L_0 = pi*c^5/(24*G), and the four-phase causal cycle (Source -> Act -> Retrieve -> Commit) with phase-availability tables. Constants and geometry imported from `aqpu_gravity_common` (no duplicate re-derivation of results owned by scripts 5-6).
+
+### Updated
+
+- `docs/Findings/Analysis_Gravity.md`: refractive permittivity and Klein-Gordon impedance theorem (Section 7); scalar reflection and flux conservation; geodesic deflection and observational signatures; kappa*T_Z2 conversion rate and four-phase causality in implications (Sections 8-9).
+- `experiments/aqpu_gravity_runner.py`: includes `aqpu_gravity_analysis_7.py` in the combined gravity run.
+- `docs/CGM_Program.md`: gravity script list extended through `analysis_7.py`; run command points to `aqpu_gravity_runner.py`.
+
+---
+
 ## [1.3.0-CGM_Gravity&Beyond] - 2026-05-21
 
 ### Updated
 
-- `docs/Findings/Analysis_Gravity.md`: virial condition and rest-mass origin (Section 11); closure depth τ_G as mass-energy stress; extension script outputs aligned.
-- `experiments/aqpu_gravity_analysis_ext.py`, `aqpu_gravity_common.py`: virial-sector checks, self-energy theorem, strong-field and Hawking diagnostics.
+- `docs/Findings/Analysis_Gravity.md`: virial condition and rest-mass origin (Section 11); Refractive Depth τ_G as mass-energy stress; extension script outputs aligned.
+- `experiments/aqpu_gravity_analysis_6.py`, `aqpu_gravity_common.py`: virial-sector checks, self-energy theorem, strong-field and Hawking diagnostics.
 
 ---
 
@@ -57,7 +71,7 @@ All notable changes to the CGM Experimental Framework will be documented in this
 
 ### Added
 - Added `docs/Findings/Analysis_Gravity.md`: gravitational coupling from kernel invariants, gravitational field equations, gyrogroup structure, and electroweak-anchor prediction of G.
-- Added `experiments/aqpu_gravity_analysis_1.py`: kernel diagnostics, aperture-depth closure depth, α·ζ invariant, and coupling reconstruction at v_EW.
+- Added `experiments/aqpu_gravity_analysis_1.py`: kernel diagnostics, aperture-depth Refractive Depth, α·ζ invariant, and coupling reconstruction at v_EW.
 - Added `experiments/cgm_aqpu_monodromy.py`: aQPU monodromy diagnostic for depth-4/depth-8 closure, shell displacement invariants, and quadrupole shell modes.
 
 ### Results

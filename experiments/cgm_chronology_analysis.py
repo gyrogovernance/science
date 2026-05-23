@@ -674,7 +674,7 @@ def run_comprehensive_chronology_analysis() -> None:
 
     # Test 1: FRW time with T0_CGM reference (CGM-pure scaling)
     print("TEST 1: FRW Time with T0_CGM Reference")
-    print("-" * 40)
+    print("-" * 9)
     milestones_time = default_milestones(t_planck)
     results_time, stats_time, test_stats_time = monte_carlo_analysis_time(
         milestones_time, t0_cgm, m_a, n_samples=10_000, exclude_anchors=True, rng=rng
@@ -684,7 +684,7 @@ def run_comprehensive_chronology_analysis() -> None:
 
     # Test 2: Early universe temperature scale
     print("TEST 2: Early Universe Temperature Scale")
-    print("-" * 40)
+    print("-" * 9)
     milestones_temp = early_universe_temperature_milestones()
     # Use Planck temperature as reference
     t_planck_gev = 1.22e19  # GeV
@@ -701,7 +701,7 @@ def run_comprehensive_chronology_analysis() -> None:
 
     # Test 3: Late universe scale factor
     print("TEST 3: Late Universe Scale Factor")
-    print("-" * 40)
+    print("-" * 9)
     milestones_scale = late_universe_scale_factor_milestones()
     # Use a_0 = 1 as reference
     a_reference = 1.0
@@ -718,7 +718,7 @@ def run_comprehensive_chronology_analysis() -> None:
 
     # Test 4: Temperature scale with λ = √3 (duality ratio)
     print("TEST 4: Temperature Scale with λ = √3")
-    print("-" * 40)
+    print("-" * 9)
     lambda_sqrt3 = math.sqrt(3)
     results_temp_sqrt3, stats_temp_sqrt3, test_stats_temp_sqrt3 = (
         monte_carlo_analysis_temperature(

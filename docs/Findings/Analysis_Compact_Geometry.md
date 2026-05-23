@@ -330,7 +330,7 @@ n = log2(E0/E)/Delta.
 
 For electroweak mass coordinates, `E0` is the electroweak scale `v = 246.22 GeV`. Pairwise ratios are anchor-independent.
 
-The closure depth interpretation is:
+The Refractive Depth interpretation is:
 
 ```text
 tau = n * Delta * ln2.

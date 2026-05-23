@@ -579,7 +579,7 @@ class CGMKompaneyetsAnalyzer:
 
         # Regime 1: Early/high-density
         print("\n📊 REGIME 1: Early/High-Density (μ → 0 fast)")
-        print("-" * 40)
+        print("-" * 9)
 
         T_e1, n_e1, t_max1 = 1e6, 1e8, 1e4
         n_initial1 = 1 / (np.exp(x + 0.1) - 1)
@@ -595,7 +595,7 @@ class CGMKompaneyetsAnalyzer:
 
         # Regime 2: Late/low-density
         print("\n📊 REGIME 2: Late/Low-Density")
-        print("-" * 40)
+        print("-" * 9)
 
         T_e2, n_e2, t_max2 = 1e4, 1e3, 1e5
         n_initial2 = 1 / (np.exp(x + 0.05) - 1)
@@ -1324,7 +1324,7 @@ class CGMKompaneyetsAnalyzer:
 
         # NEW: Load real Planck thermal SZ data for validation
         print("📡 LOADING REAL PLANCK THERMAL SZ DATA")
-        print("-" * 40)
+        print("-" * 9)
         planck_data = self.load_planck_tsz_data()
 
         if not planck_data.get("success", False):
@@ -1345,7 +1345,7 @@ class CGMKompaneyetsAnalyzer:
         }
 
         print("\n📊 ANALYZING DOMAIN DEVIATIONS")
-        print("-" * 40)
+        print("-" * 9)
         for domain, delta in example_deltas.items():
             print(f"{domain:15}: δ = {delta:8.6f}")
         print()
@@ -1354,9 +1354,9 @@ class CGMKompaneyetsAnalyzer:
 
         # Test anisotropic sky and validate against Planck
         print("\n🔍 VALIDATION AGAINST REAL PLANCK DATA")
-        print("-" * 40)
+        print("-" * 9)
         print("🌐 ANISOTROPIC SKY TEST (Photon Domain)")
-        print("-" * 40)
+        print("-" * 9)
 
         photon_delta = example_deltas["photon"]
         T_e, n_e, dt = 1e6, 1e-5, 1e15
@@ -1372,18 +1372,18 @@ class CGMKompaneyetsAnalyzer:
 
         # NEW: Validate against real Planck data
         print("🔍 VALIDATING AGAINST PLANCK THERMAL SZ")
-        print("-" * 40)
+        print("-" * 9)
         planck_validation = self.validate_against_planck_tsz(planck_data)
 
         # Test tSZ identity using pure spectral evolution
         print("\n🔍 SPECTRAL TSZ IDENTITY VALIDATION")
-        print("-" * 40)
+        print("-" * 9)
         frac_energy = self.map_delta_dom_to_energy_fraction(photon_delta, coupling=1e-1)
         tsz_validation = self.test_tsz_identity_theory(frac_energy, T_e, n_e, dt)
 
         # Cross-module coherence
         print("\n🔗 CROSS-MODULE COHERENCE TEST")
-        print("-" * 40)
+        print("-" * 9)
         coherence_test = self.cross_module_coherence_test(
             photon_delta, coupling=1e-1, T_e=T_e, n_e=n_e, dt=dt
         )
@@ -1498,13 +1498,13 @@ def main():
 
     # Standard analysis
     print("📊 STANDARD KOMPANEYETS ANALYSIS")
-    print("-" * 40)
+    print("-" * 9)
     analyzer = CGMKompaneyetsAnalyzer(use_photon_sources=False)
     results_standard = analyzer.run_comprehensive_analysis()
 
     # Enhanced analysis with photon sources
     print("\n📊 ENHANCED ANALYSIS WITH PHOTON SOURCES")
-    print("-" * 40)
+    print("-" * 9)
     analyzer_enhanced = CGMKompaneyetsAnalyzer(use_photon_sources=True)
     regimes = analyzer_enhanced.demonstrate_two_regimes()
 

@@ -377,7 +377,7 @@ class CGMAcousticDiagnostics:
 
         # Test 1: Sound Speed Consistency
         print("\n📊 TEST 1: SOUND SPEED CONSISTENCY")
-        print("-" * 40)
+        print("-" * 9)
 
         ss = self.test_sound_speed_consistency()
         status = "✅" if ss["passes"] else "❌"
@@ -389,7 +389,7 @@ class CGMAcousticDiagnostics:
 
         # Test 2: Peak Location Confrontation
         print("\n📊 TEST 2: PEAK LOCATION CONFRONTATION")
-        print("-" * 40)
+        print("-" * 9)
 
         peak_results = self.confront_peak_locations()
         print(f"   Sound horizon: r_s = {peak_results['r_s']:.1f} Mpc")
@@ -407,7 +407,7 @@ class CGMAcousticDiagnostics:
 
         # Test 3: Phase Coherence
         print("\n📊 TEST 3: PHASE COHERENCE")
-        print("-" * 40)
+        print("-" * 9)
 
         gyration_seq = [i * np.pi / 4 for i in range(8)]
         mapping = self.map_gyration_to_acoustic_modes_enhanced(gyration_seq)
@@ -424,7 +424,7 @@ class CGMAcousticDiagnostics:
 
         # Test 4: Odd/Even Modulation
         print("\n📊 TEST 4: ODD/EVEN PEAK MODULATION")
-        print("-" * 40)
+        print("-" * 9)
 
         modulation = self.test_odd_even_modulation(gyration_seq)
         status = "✅" if modulation["passes"] else "❌"

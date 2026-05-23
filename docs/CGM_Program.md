@@ -293,7 +293,7 @@ Scripts cover gravity, electroweak mass geometry, fine structure, quantum gravit
 
 | Topic | Analysis | Code |
 |-------|----------|------|
-| Gravity: discrete state geometry and nonlinear continuum | [Analysis_Gravity](Findings/Analysis_Gravity.md) | `aqpu_gravity_common.py`, `aqpu_gravity_analysis_1.py` through `5.py`, `aqpu_wavefunction_1.py`, `aqpu_wavefunction_2.py`. Run: `python experiments/aqpu_gravity_run_all.py` |
+| Gravity: discrete state geometry and nonlinear continuum | [Analysis_Gravity](Findings/Analysis_Gravity.md) | `aqpu_gravity_common.py`, `aqpu_gravity_analysis_1.py` through `7.py`, `aqpu_wavefunction_1.py`, `aqpu_wavefunction_2.py`. Run: `python experiments/aqpu_gravity_runner.py` |
 | Electroweak mass spectrum | [Analysis_Compact_Geometry](Findings/Analysis_Compact_Geometry.md) | `aqpu_compact_geom_core.py`, `aqpu_compact_geom_kernel.py`, `aqpu_compact_geom_report.py` |
 | Fine-structure constant | [Analysis_Fine_Structure](Findings/Analysis_Fine_Structure.md) | `cgm_alpha_analysis.py` |
 | Quantum gravity invariant | [Analysis_Quantum_Gravity](Findings/Analysis_Quantum_Gravity.md) | `cgm_quantum_gravity_analysis.py` |
@@ -323,6 +323,6 @@ While many aspects of the program are exploratory and require further validation
 -   Independent cross-check of lepton mass derivation against radiative corrections.
 -   Connecting compact geometry to standard model radiative corrections.
 -   Dynamical scalar-tensor evolutions beyond static spherical gravity.
--   Shell-space path integral for independent verification of gravitational closure depth.
+-   Shell-space path integral for independent verification of gravitational Refractive Depth.
 -   Cosmological tests with next-generation observatories (e.g., LISA, SKA).
 -   Practical applications of GyroSI and GyroDiagnostics.

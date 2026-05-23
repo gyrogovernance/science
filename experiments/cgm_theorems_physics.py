@@ -48,7 +48,7 @@ class CoreTheoremTester:
             CS stage validation results
         """
         print("Testing Axiom (CS): The Source is Common")
-        print("=" * 40)
+        print("=" * 9)
 
         # Test vectors for CS stage analysis (relativistic speeds)
         scale = 0.6  # relativistic but subluminal
@@ -466,7 +466,7 @@ def main():
     Standalone main function to run core CGM experiments
     """
     print("CGM Core Experiments - Standalone Test")
-    print("=" * 40)
+    print("=" * 9)
 
     try:
         # Initialize gyrovector space

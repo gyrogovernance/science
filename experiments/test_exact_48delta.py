@@ -59,7 +59,7 @@ def test_exact_48delta():
 
     # Test key predictions
     print("KEY PREDICTIONS WITH EXACT 48Δ = 1:")
-    print("-" * 40)
+    print("-" * 9)
 
     # Check geometric identities
     print(f"48Δ = {48 * summary_exact.cgm.delta_BU}")

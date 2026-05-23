@@ -668,9 +668,9 @@ def run_analysis(verbose: bool = True) -> Dict[str, Any]:
 
     if verbose:
         print("CGM BYTE FORMALISM ANALYSIS")
-        print("-" * 40)
+        print("-" * 9)
         print("\n0. ROUTER ARCHITECTURE (depth-4 closure)")
-        print("-" * 40)
+        print("-" * 9)
         print("   Depth-4: 4 components (bytes or 12-bit tensors) always known")
         print(f"   4-byte frame -> 4 x 12 = {arch['depth_4_projection_bits']} bits (CGM 48)")
         print("   Prefix(CS) | Present(UNA) | Past(ONA) | Future(BU)")
@@ -687,7 +687,7 @@ def run_analysis(verbose: bool = True) -> Dict[str, Any]:
     aq = analyze_aperture_quantization(c)
     if verbose:
         print("\n2. APERTURE GAP (Delta) QUANTIZATION")
-        print("-" * 40)
+        print("-" * 9)
         print(f"   256 * Delta = {256 * c.Delta:.10f}")
         print(f"   round(256 * Delta) = {aq['Q_256_numerator']}")
         print(f"   Q_256(Delta) = {aq['Q_256_numerator']}/256 = {aq['Q_256_Delta']:.10f}")
@@ -706,7 +706,7 @@ def run_analysis(verbose: bool = True) -> Dict[str, Any]:
 
     if verbose:
         print("\n3. TICK SPACES (must not be conflated)")
-        print("-" * 40)
+        print("-" * 9)
         print("   T_256^(frac): fraction line for Delta, rho (dimensionless)")
         print("   T_256^(turn): circle for angles, normalized by 2*pi")
         print(f"\n   T_256^(frac): Delta = 5 ticks = 5/256")
@@ -717,7 +717,7 @@ def run_analysis(verbose: bool = True) -> Dict[str, Any]:
 
     if verbose:
         print("\n4. (32, 48) PAIR - dimensionally clean ratio 2/3")
-        print("-" * 40)
+        print("-" * 9)
         print(f"   delta_BU ~ 1/32 turn, Delta ~ 1/48")
         print(f"   Ratio (1/48)/(1/32) = {r32_48['ratio_2_3']:.6f} = 2/3")
         print("   (2x3 skeleton: two chirality layers, three axes)")
@@ -726,7 +726,7 @@ def run_analysis(verbose: bool = True) -> Dict[str, Any]:
 
     if verbose:
         print("\n5. CROSS-SCALE COHERENCE")
-        print("-" * 40)
+        print("-" * 9)
         print(f"   48 * (5/256) = {coherence['product']:.4f}")
         print(f"   round(48 * 5/256) = {coherence['rounded']}")
         print(f"   5 ticks at 256-scale -> 1 tick at 48-scale: {coherence['coherent']}")
@@ -739,7 +739,7 @@ def run_analysis(verbose: bool = True) -> Dict[str, Any]:
 
     if verbose:
         print("\n6. EXPANSION AND DEPTH-4 CLOSURE")
-        print("-" * 40)
+        print("-" * 9)
         print("   Dipole flip (payload bits 1-6 -> pairs 0-5):")
         print(f"      Status: {dipole['status']}")
         for r in dipole["results"]:
@@ -764,7 +764,7 @@ def run_analysis(verbose: bool = True) -> Dict[str, Any]:
 
     if verbose:
         print("\n7. CACHE-LINE HARDWARE MAPPING")
-        print("-" * 40)
+        print("-" * 9)
         print(f"   L1 cache line: {cache['cache_line_bytes']} bytes ({cache['cache_line_bits']} bits)")
         print(f"   Offset bits needed: {cache['offset_bits']} (2^6 = 64)")
         print(f"   Tag bits: {cache['tag_bits']} (4 cache lines)")
@@ -777,7 +777,7 @@ def run_analysis(verbose: bool = True) -> Dict[str, Any]:
     q48 = analyze_48_vs_256(c)
     if verbose:
         print("\n8. 48-BIT PROJECTION AND TWO DEPTH-4 OBJECTS")
-        print("-" * 40)
+        print("-" * 9)
         print(f"   Depth-4 projection: 4 x 12 = {q48['depth_4_projection_bits']} bits (manifold)")
         print(f"   Depth-4 atoms: 4 x 32 = {q48['depth_4_atom_bits']} bits (execution)")
         print(f"   CGM: 48*Delta = 1 (geometric quantization)")
@@ -788,7 +788,7 @@ def run_analysis(verbose: bool = True) -> Dict[str, Any]:
     horiz = analyze_horizon_types()
     if verbose:
         print("\n9. HORIZON LEMMA (n = 2^a * 3^b)")
-        print("-" * 40)
+        print("-" * 9)
         print(f"   log2(3) = {horiz['log2_3']:.6f} (irrational)")
         print("   log2(n) integer iff b=0 (pure power of two)")
         print()
@@ -822,9 +822,9 @@ def run_analysis(verbose: bool = True) -> Dict[str, Any]:
 
 def main():
     results = run_analysis(verbose=True)
-    print("\n" + "-" * 40)
+    print("\n" + "-" * 9)
     print("SUMMARY")
-    print("-" * 40)
+    print("-" * 9)
     aq = results["aperture_quantization"]
     print(f"5/256 is best 8-bit quantization of Delta: {aq['is_5_over_256']}")
     print(f"Quantization error at 8-bit: {aq['Q_256_error']:.12f}")

@@ -1,7 +1,7 @@
 CGM gravity script runner
-started: 2026-05-20T22:08:13+03:00
+started: 2026-05-23T10:45:47+03:00
 python: C:\Python314\python.exe
-scripts: 5
+scripts: 7
 
 ######## aqpu_gravity_analysis_3.py ########
 
@@ -242,7 +242,7 @@ EW mass coords (order 5, same Delta, compact geometry):
 ANALYSIS COMPLETE
 =========
 
-exit=0  duration=0.73s
+exit=0  duration=1.14s
 
 ######## aqpu_gravity_analysis_2.py ########
 
@@ -302,7 +302,7 @@ all match template  = True
   pop=5 path=[5, 6, 5, 0, 5, 6, 5, 0] : 6 micro-refs
   pop=6 path=[6, 6, 6, 0, 6, 6, 6, 0] : 1 micro-refs
 
-S5  Per-cycle closure depth
+S5  Per-cycle Refractive Depth
 ---------
   tau_cycle/Delta = 7591/7392 (definitive: analysis_3 section C)
 
@@ -399,7 +399,7 @@ c4_anchor - kernel = -5.252780200913e-03
 G_geo              = 6.708644908597e-39  ppm=-24.608150
 G_corr             = 6.708809505940e-39  ppm=-0.073643
 
-exit=0  duration=1.64s
+exit=0  duration=2.55s
 
 ######## aqpu_gravity_analysis_1.py ########
 
@@ -435,7 +435,7 @@ Anchor check (inverse from G_meas, validation only):
 c4_anchor                       = -1.755252780201
 c4_anchor - c4_kernel           = -5.252780200913e-03
 
-4. Closure depth
+4. Refractive Depth
 ---------
 tau_G (leading order)           = 76.237941173390
 tau_required                    = 76.237916564937
@@ -486,12 +486,12 @@ STF decomposition by payload population:
    5     0.4167   0.1389   0.1134     0.0507      YES
    6     0.0000   0.0000   0.0000     0.0000       NO
 
-STF attenuation rho^5 and closure depth
+STF attenuation rho^5 and Refractive Depth
 ---------
   dim(STF(3)) = 5; rho^5 = 0.9006991682
   per-channel tau_1 = -ln(rho) = 0.020917
 
-  Closure depth comparison:
+  Refractive Depth comparison:
     Naive (|Omega|*Delta):              84.785373
     With rho^5:                         76.366115
     With K4 (1-4*rho*Delta^2):          76.237941
@@ -646,7 +646,7 @@ Kernel invariants:
   D        = 24
   G_kernel = pi/6 = 0.523598775598
 
-Closure depth:
+Refractive Depth:
   leading order tau_G = 76.237941173390
   full prediction     = 76.237916638581
 
@@ -670,7 +670,7 @@ SUMMARY
   tau_G (full) = 76.237917
   G_pred/G_meas - 1 (full) = -0.074 ppm
 
-exit=0  duration=0.76s
+exit=0  duration=1.21s
 
 ######## aqpu_gravity_analysis_4.py ########
 
@@ -1080,7 +1080,7 @@ Premise 1: Optical conjugacy (CGM)
 Premise 2: Delta ruler
   n(E) = ln(E_CS/E) / (Delta*ln2)
 
-Premise 3: STF-verified closure depth
+Premise 3: STF-verified Refractive Depth
   tau(psi) = tau_G * (1 - psi)  (machine precision vs STF)
 
 DERIVATION:
@@ -1206,7 +1206,7 @@ Sample G reductions:
 ANALYSIS COMPLETE
 =========
 
-exit=0  duration=1.19s
+exit=0  duration=1.36s
 
 ######## aqpu_gravity_analysis_5.py ########
 
@@ -1771,11 +1771,11 @@ Step 3: Modified Bianchi identity
   div T^mu_nu = -(d_mu G / G) T^mu_nu
            s          psi        dpsi/ds       exchange
   ------------------------------------------------------
-           2   4.3336e-01    -1.8899e-01     4.5025e-04
-           5   1.8813e-01    -3.5425e-02     1.2558e-05
-          10   9.6920e-02    -9.3935e-03     2.9184e-07
-          50   1.9873e-02    -3.9490e-04     2.5039e-11
-         100   9.9685e-03    -9.9359e-05     4.1052e-13
+           2   4.3332e-01    -1.8900e-01     4.5014e-04
+           5   1.8810e-01    -3.5426e-02     1.2523e-05
+          10   9.6905e-02    -9.3936e-03     2.9029e-07
+          50   1.9872e-02    -3.9490e-04     2.4857e-11
+         100   9.9679e-03    -9.9359e-05     4.0236e-13
 
   Exchange negligible in weak field; significant near compact objects.
 
@@ -1833,8 +1833,880 @@ N. Spin-sector shadow (wavefunction)
 DERIVATIONS COMPLETE
 =========
 
-exit=0  duration=2.72s
+exit=0  duration=4.02s
 
-finished: 2026-05-20T22:08:21+03:00
-total_duration=7.04s
+######## aqpu_gravity_analysis_6.py ########
+
+CGM gravity analysis 6: Antimatter, GW, Virial, Self-energy
+Delta = 0.020699553913, rho = 0.979300446087
+g1 = -0.645568, tau_G = 76.2379166386
+s_h = 1.6946 r_g, s_ph = 2.5856 r_g, b/r_g = 4.6477
+
+========= A. Antimatter gravitational interaction =========
+
+
+A.1  Antimatter involution C
+----------------------------
+  C(A12, B12) = (B12, A12); reversed word uses families (3,2,1,0).
+
+A.2  Gravitoelectric invariants (EVEN under C)
+----------------------------------------------
+  D=24 displacement, q(F)=0, cycle->REST: aqpu_gravity_analysis_2 S1/S4.
+  Mass popcount(A12) even under face-swap: verified on Omega in A.5.
+
+A.3  H_spin observable (ODD under C on chi6)
+--------------------------------------------
+  chi6(s) = chirality_word6(s) in GF(2)^6; N = popcount(chi6) (shell index).
+  H_spin(s) = 3 - N  (signed distance from equatorial shell N=3).
+  Gravitomagnetic C: chi6 -> chi6 xor 63; range H_spin in {-3,-2,-1,0,1,2,3}.
+  State                     | H_spin | H_spin(C) |   mass | mass(C)
+  REST (complement horizon) |     -3 |     +3 |      6 |      6
+  SWAPPED                   |     -3 |     +3 |      6 |      6
+  Equality horizon          |     +3 |     -3 |      6 |      6
+  Bulk (shell 3)            |     +0 |     +0 |      6 |      6
+
+
+A.4  Holonomy path H_spin (micro_ref=0)
+---------------------------------------
+  Step | H_spin(REST,W) | H_spin(SWAPPED,W_rev)
+  ---------------------------------------------
+     0 |             -3 |             -3
+     1 |             -3 |             -3
+     2 |             +3 |             +3
+     3 |             -3 |             -3
+     4 |             -3 |             -3
+     5 |             -3 |             -3
+     6 |             +3 |             +3
+     7 |             -3 |             -3
+     8 |             -3 |             -3
+  micro_ref=7 (popcount 3), REST+W:
+  Step | H_spin
+  ------------------
+     0 |     -3
+     1 |     +0
+     2 |     +3
+     3 |     +0
+     4 |     -3
+     5 |     +0
+     6 |     +3
+     7 |     +0
+     8 |     -3
+  delta_B_g/B_g ~ (4/75)*psi^2:
+         psi       delta_B/B            G/G0
+      0.0100    5.333333e-06        0.993565
+      0.0500    1.333333e-04        0.968237
+      0.1000    5.333333e-04        0.937483
+      0.1500    1.200000e-03        0.907706
+      0.2000    2.133333e-03        0.878874
+      0.3000    4.800000e-03        0.823929
+
+
+A.5  H_spin parity on full Omega (BFS from analysis_2)
+------------------------------------------------------
+  |Omega| = 4096
+  H_spin(C_spin) = -H_spin: 4096/4096
+  Equator H_spin=0 (N=3):     1280/4096
+  H_spin != 0:                2816/4096
+  mass(face-swap C) = mass:   4096/4096
+  H_spin range: [-3, 3]
+
+A.6  Chiral gravitomagnetic coupling
+------------------------------------
+  ||pi||^2/Tr^2 = 2/75 (bulk): aqpu_gravity_analysis_3 B.
+  delta_B_g/B_g = (4/75)*psi^2 at psi=0.15 (NS surface): 0.001200  (0.1200%)
+========= B. Gravitational wave extensions =========
+
+  Vacuum Gauss / HT strain calibration: aqpu_gravity_analysis_5 J, P.
+
+
+B.0  Quadrupole shell spectrum and depth-8 closure
+--------------------------------------------------
+  Shell modulation 2*C(6,2)/C(6,3) = 1.5000
+  Half-cycle (F, 4 bytes) DFT k=2: |A_2| = 1.2000
+  Full Z2 cycle (8 bytes) DFT k=2: |A_2| = 1.2529
+  Full Z2 DFT spectrum (arch_shell-3):
+    k=0: |A_k| = 1.6667
+    k=1: |A_k| = 0.2315
+    k=2: |A_k| = 1.2529
+    k=3: |A_k| = 0.6667
+    k=4: |A_k| = 1.0214
+    k=5: |A_k| = 1.0214
+    k=6: |A_k| = 0.6667
+    k=7: |A_k| = 1.2529
+    k=8: |A_k| = 0.2315
+  k=4 mode |A_4| = 1.0214 (81.5% of |A_2|); hexadecapole (l=4) precursor
+  Depth-8 holonomy (m_ref=0):
+    step 4: arch_shell=0  qxor=0  state=REST? False
+    step 8: arch_shell=0  qxor=0  state=REST? True
+
+B.2  Inspiral phasing
+---------------------
+  Phase correction: delta_Phi/Phi_GR ~ 1 + (5*g1/8)*(v/c)^2
+  g1 = -0.645568
+
+         v/c   delta_Phi/Phi    % correction
+        0.10       -0.004035           -0.40%
+        0.20       -0.016139           -1.61%
+        0.30       -0.036313           -3.63%
+        0.40       -0.064557           -6.46%
+        0.50       -0.100870          -10.09%
+  GW150914 (v/c=0.4): -6.46%
+
+B.3  Tortoise coordinate, potential, echoes
+-------------------------------------------
+  Tortoise coordinate r*/r_g = integral ds / (1 - 2*psi(s)):
+
+           s            f(s)          r*/r_g
+      1.7115      0.00847353          4.5808
+      1.7793      0.04096766          7.8402
+      1.8640      0.07868701          9.2999
+      2.0000      0.13335660         10.6052
+      2.5856      0.30948642         13.3174
+      3.0000      0.39619094         14.4914
+      5.0000      0.62379516         18.3416
+     10.0000      0.80619063         25.1798
+     50.0000      0.96025603         68.6980
+
+  r*(s_ph)/r_g = 13.3174
+
+  Effective potential V(s) = f(s)[6/s^2 - 6*psi/s^2]:
+  CGM:           peak at s = 2.8368 r_g, V_max = 0.185597
+  Schwarzschild: peak at s = 3.2789 r_g, V_max = 0.151287
+  Analytic: peak at s = (9+sqrt(17))/4 = 3.2808, V_max = 0.151287
+  V at photon sphere (s=3): 0.148148 (= 4/27 = 0.148148)
+
+  Photon sphere: GR s_ph=3, CGM s_ph=2.5856 r_g
+  Echo delays (r*-based, order-of-magnitude):
+  eps=0.001: Delta_r*/r_g=13.3174  Delta_t(10 Msun)=1.3095 ms
+  eps=0.010: Delta_r*/r_g=8.7367  Delta_t(10 Msun)=0.8591 ms
+  eps=0.050: Delta_r*/r_g=5.4772  Delta_t(10 Msun)=0.5386 ms
+  eps=0.100: Delta_r*/r_g=4.0175  Delta_t(10 Msun)=0.3950 ms
+  G(psi)/G0 at horizon (psi=1/2): 0.724130
+
+
+B.4  Ringdown (Poschl-Teller estimate, ell=2, n=0)
+--------------------------------------------------
+  Effective potential barrier (Regge-Wheeler axial, s = r/r_g):
+  CGM peak: s = 2.8336 r_g, V0 = 0.185598
+  GR  peak: s = 3.2808 r_g, V0 = 0.151287
+
+  Pöschl-Teller n=0 (omega*M, c=1; r_g=2M => omega*r_g = 2*omega*M):
+                           omega_R          omega_I
+  ------------------------------------------------
+  CGM (PT)                0.420384         0.094205
+  GR (PT)                 0.378271         0.090541
+  GR (exact)              0.373670         0.088960
+
+  CGM/GR ratio (PT): 1.1113 (+11.1%)
+  CGM vs GR exact n=0 QNM: 1.1250 (+12.5%)
+  Photon-sphere scale: s_ph_GR/s_ph_CGM = 1.1603 (+16.0%)
+========= C. Virial, self-energy, UV regulation =========
+
+
+C.1  Virial condition (CS/BU)
+-----------------------------
+  2T + V = 0 => E_total = T + V = -T (bound system, negative total energy).
+  Zero net displacement/momentum flux per cycle (not zero total energy).
+  q(F)=0: analysis_2 S1; Tr_iso = E[Tr|w]+3Var: analysis_3 B.
+  Point-mass sector: E_rest_frame/Mc^2 = +0.2500, E_self/Mc^2 = -0.2500, sum = 0.0000
+  (Isolated exterior: local E_self+E_rest_frame=0; 2T+V is cosmological/global.)
+
+C.4  Exterior integral theorem (I = 1/2)
+----------------------------------------
+  Theorem: I = int_{s_h}^inf exp(g1*psi)/s^2 ds = psi(s_h) - psi(inf) = 1/2
+  Proof: ODE dpsi/ds = -exp(g1*psi)/s^2 => integrand = -dpsi/ds.
+  Holds for any g1 (horizon psi(s_h) = 1/2, psi(inf) = 0).
+
+        g1           s_h     I (exact)   I (numeric)
+   -0.5000        1.7604  0.5000000000  0.4998915317
+   -0.6456        1.6946  0.5000000000  0.4998945448
+   -1.0000        1.5415  0.5000000000  0.4999013149
+   -2.0000        1.1640  0.5000000000  0.4999167936
+  All sampled g1: I = 1/2 = True
+
+  CGM vs Newtonian exterior integral (UV regulation):
+       s_inner      I_Newton         I_CGM    CGM/Newton
+        0.5000      2.000000           n/a           n/a
+        1.0000      1.000000           n/a           n/a
+        1.5000      0.666667           n/a           n/a
+        1.6946      0.590127           n/a           n/a
+        2.0000      0.500000      0.433264      0.866528
+        3.0000      0.333333      0.301857      0.905571
+        5.0000      0.200000      0.188065      0.940324
+       10.0000      0.100000      0.096875      0.968753
+  CGM I -> 1/2 at s_h; Newtonian I -> inf as s -> 0.
+
+C.5  Local self-energy (point mass)
+-----------------------------------
+  Rest-frame energy: E_rest_frame = +(Mc^2/2)*I = +Mc^2/4.
+  Gravitational self-energy: E_self = -Mc^2/4 (M = observable mass).
+  Local balance: E_self + E_rest_frame = 0 per unit M_obs.
+
+  Self-consistent dressing (field sourced by M_obs):
+    M_obs = M_UNA + E_self/c^2 = M_UNA - M_obs/4
+    M_obs/M_UNA = 4/5
+  psi(s_h)=1/2 => E_self/M_obs c^2 = -1/4; E_rest_frame = +1/4.
+  u(s=5) = |g|^2/(8*pi*G(psi)) = 5.638226e-05 (G0=1 units)
+
+  Self-energy vs compactness:
+           Object    psi_surf        G/G0   E_self/Mc^2   E_self(3/5)
+            Earth  7.0000e-10    1.000000     -0.000000     -0.000000
+              Sun  2.1000e-06    0.999999     -0.000001     -0.000001
+      White dwarf  3.0000e-04    0.999806     -0.000150     -0.000180
+  NS (12 km, CGM TOV)  1.5300e-01    0.905949     -0.076500     -0.083166
+  NS (12 km, Newtonian)  1.7200e-01    0.894905     -0.086000     -0.092354
+       BH horizon  5.0000e-01    0.724130     -0.250000     -0.217239
+  Shell self-energy weights:
+  Shell         Pop   Tr(sigma)  ||pi|| est   Self-E prop
+      0    0.015625    0.000000    0.000000  0.000000e+00
+      1    0.093750    0.416667    0.113402  8.802671e-04
+      2    0.234375    0.666667    0.181444  3.521067e-03
+      3    0.312500    0.750000    0.204124  5.281598e-03
+      4    0.234375    0.666667    0.181444  3.521067e-03
+      5    0.093750    0.416667    0.113402  8.802671e-04
+      6    0.015625    0.000000    0.000000  0.000000e+00
+
+C.6  Cosmological virial closure (BU)
+-------------------------------------
+  Local theorem (C.5): E_self = -Mc^2/4 for one point mass.
+  Cosmological: strictly bound structure under global BU closure.
+  Not implied by local I=1/2 alone; needs cosmic virial balance.
+  Expansion: tau(z) = tau_G*(1-psi(z)) (Refractive Depth, not Hubble flow).
+
+C.7  Hawking temperature and BU-Ingress
+---------------------------------------
+  Surface gravity (geometric units, r_g=2M):
+    kappa_CGM = |dpsi/ds| at s_h = 0.252178 / r_g
+    kappa_GR  = 1/(4 r_g) = 0.250000 / r_g
+    kappa_CGM/kappa_GR = 1.008713 (+0.87%)
+    4*exp(g1/2)/s_h^2 check = 1.008713
+  Horizon area ratio (r_h = r_g*s_h vs 2*r_g): 0.717876
+  Hawking luminosity ~ T^4 * Area:
+    L_CGM/L_GR = (kappa ratio)^4 * area ratio = 0.743223 (-25.7%)
+  Hawking T (10 Msun): T_GR = 6.1815e-09 K, T_CGM = 6.2354e-09 K (+0.87%)
+  Depth-8 cycle: BU-Egress (depth 4) pair creation; BU-Ingress (depth 8)
+    completes closure. Hawking flux = escaping partner when Ingress fails
+    for the infalling member (horizon absorption).
+========= E. Synthesis, discoveries, and falsification =========
+
+
+E.1  Falsification tests
+------------------------
+
+  Test                           | CGM Prediction                      | Current Status 
+  -------------------------------------------------------------------------------------
+  Antimatter free-fall           | Same as matter (WEP)                | ALPHA-g pending
+  Antimatter spin precession     | Opposite sign at O(psi^2)           | Untestable     
+  GW scalar polarization         | None (psi slaved)                   | LIGO consistent
+  GW inspiral phase              | ~6.5% shift at v/c=0.4              | Degenerate     
+  Ringdown frequency             | ~12.5% above GR exact (PT est.)     | Unresolved     
+  GW echoes                      | ~0.86 ms (10 Msun)                  | Undetected     
+  Omega_total != 1               | Falsifies cosmological virial closure | Tension exists 
+  Wormhole/alcubierre realized   | Excluded by BU closure              | Speculative    
+
+
+E.2  Checks unique to this script
+---------------------------------
+  E_self/M_obs c^2 = -1/4: -0.250000 = True
+  Field integral = 1/2: numeric err=4.90e-04 exact err=1.11e-16 = OK
+  Weak energy condition at s=2,5,10,50: True
+  M_obs/M_UNA = 4/5: 0.800000 = True
+  Local E_self + E_rest_frame = 0 (per M_obs): OK
+  H_spin odd under C_spin on Omega (4096): True
+  mass even under face-swap on Omega: True
+  Equator shell count (N=3): 1280 = True
+  H_spin != 0: 2816 = True
+  PT ringdown CGM/GR: 1.1113; vs exact: 1.1250 = OK
+  Hawking kappa ratio ~1: 1.0087 = True
+  Hawking L ratio < 1: 0.7432 = True
+  Exterior I = 1/2 all g1: True
+
+  Scalar-tensor action (psi slaved): aqpu_gravity_analysis_5 S.
+
+
+E.4  Summary
+------------
+  A: C-odd H_spin on |Omega|=4096; chiral (4/75)psi^2.
+  B: k=2 |A_2|=1.25; inspiral -6.5%; ringdown +12.5% (PT).
+  C: I=1/2; E_self=-Mc^2/4; M_obs/M_UNA=4/5; Hawking L -26%.
+  GW HT / vacuum: analysis_5 J, P.
+========= DONE =========
+
+exit=0  duration=2.56s
+
+######## aqpu_gravity_analysis_7.py ########
+
+CGM gravity analysis 7: Refractive vacuum and time-light conversion
+Delta = 0.020699553913, rho = 0.979300446087, g1 = -0.645568
+tau_G = 76.237917
+Q_G = 12.566371, G_kernel = 0.523599, D = 24
+D/(4*Q_G) = 0.477465 = 3/(2*pi)
+kappa_GR*T_Z2 = 143140354.78 m/s = 0.477465 c
+kappa_CGM*T_Z2 = 144387488.29 m/s = 0.481625 c
+L_0 = 4.7494e+51 W
+s_h = 1.6946 r_g, s_ph = 2.5856 r_g, b_c/r_g = 4.6477
+
+=========
+A. Gravitational permittivity and the polarizable vacuum
+=========
+
+Modified vacuum equation: div[exp(-g1*psi) grad psi] = 0
+  => epsilon_g = G_0/G(psi) = exp(-g1*psi)
+  => G(psi)/G_0 = exp(g1*psi)  (Beer-Lambert transmission)
+  => tau_opt = |g1|*psi = 0.645568*psi
+  G/G_0 and rho_MU/rho_0: analysis_4, analysis_5 G.
+
+     psi     eps_g   tau_opt          n
+----------------------------------------
+0.0000e+00   1.00000   0.00000    1.00000
+1.0000e-03   1.00065   0.00065    1.00100
+1.0000e-02   1.00648   0.00646    1.01015
+5.0000e-02   1.03280   0.03228    1.05409
+1.0000e-01   1.06669   0.06456    1.11803
+1.5000e-01   1.10168   0.09684    1.19523
+2.0000e-01   1.13782   0.12911    1.29099
+3.0000e-01   1.21370   0.19367    1.58114
+4.0000e-01   1.29463   0.25823    2.23607
+4.9000e-01   1.37208   0.31633    7.07107
+5.0000e-01   1.38097   0.32278        inf
+
+At psi=1/2: tau_opt = |g1|/2 = 0.3228 (finite).
+Coupling transmission T_coupl = 0.724 (coupling survives).
+But n -> inf: light is trapped. Coupling and propagation
+are distinct optical channels.
+
+REFRACTIVE INDEX COMPARISON
+--------------------------------------------------------------
+  E1911 (variable c only): n = 1 + psi_N
+  GR first-order (isotropic): n = 1 + 2*psi_N
+  CGM: factor 2 from two Z2 gyrophase sheets (8pi = 2*Q_G)
+  GR (Schwarzschild exact): n = 1/sqrt(1-2*psi_N)
+  CGM (exact): n = 1/sqrt(1-2*psi_CGM), psi_CGM < psi_N
+
+  CGM: psi algebraically slaved => no independent scalar DOF.
+  PV: kappa has own EOM => WEP violation (CGM avoids).
+  PV: no horizon at psi_N=0.5 (kappa finite).
+  CGM: horizon at psi=1/2 (n -> inf, complete light trapping).
+
+     psi_N    n_E1911    n_GR1st       n_PV       n_GR      n_CGM
+--------------------------------------------------------------
+1.0000e-06   1.000001   1.000002   1.000001   1.000001   1.000001
+1.0000e-04   1.000100   1.000200   1.000100   1.000100   1.000100
+1.0000e-02   1.010000   1.020000   1.010050   1.010153   1.010119
+5.0000e-02   1.050000   1.100000   1.051271   1.054093   1.053169
+1.0000e-01   1.100000   1.200000   1.105171   1.118034   1.113733
+2.0000e-01   1.200000   1.400000   1.221403   1.290994   1.266132
+3.0000e-01   1.300000   1.600000   1.349859   1.581139   1.488162
+5.0000e-01   1.500000   2.000000   1.648721        inf   2.738374
+
+=========
+B. Wave equation, impedance, and reflection
+=========
+
+SCALAR WAVE EQUATION ON THE CGM METRIC
+--------------------------------------------------------------
+
+Metric: ds^2 = -f dt^2 + f^{-1} dr^2 + r^2 dOmega^2, f = 1-2*psi
+
+Klein-Gordon: box Phi = 0. Separation Phi = (u/r) Y_lm e^{-iwt}.
+Radial equation in tortoise coordinate r* (dr*/dr = 1/f):
+  d^2u/dr*^2 + [w^2 - V_l(r)] u = 0
+
+Scalar Regge-Wheeler potential:
+  V_l(r) = f(r) [ l(l+1)/r^2 + f'(r)/r ]
+  f' = 2 exp(g1*psi)/(r_g s^2)   [exact CGM ODE]
+
+Dimensionless Vtilde_l = V_l * r_g^2:
+  Vtilde_l(s) = (f/s^2) [ l(l+1) + 2 exp(g1*psi)/s ]
+  GR limit (g1->0): 2 exp(g1*psi)/s -> 2/s  (Schwarzschild)
+
+POTENTIAL VALUES (Vtilde at key radii):
+         s        psi          f        V_0        V_1        V_2
+  ------------------------------------------------------------
+    1.7115   0.495763   0.008474   0.002455   0.008240   0.019811
+    2.0000   0.433322   0.133357   0.025204   0.091882   0.225239
+    2.5856   0.345257   0.309486   0.028655   0.121242   0.306417
+    3.0000   0.301905   0.396191   0.024151   0.112193   0.288278
+      5.00   0.188102   0.623795   0.008839   0.058743   0.158550
+     10.00   0.096905   0.806191   0.001515   0.017638   0.049886
+     50.00   0.019872   0.960256   0.000015   0.000783   0.002320
+
+IMPEDANCE DERIVATION FROM INTERFACE MATCHING
+--------------------------------------------------------------
+
+The radial equation in coordinate r is:
+  f d^2u/dr^2 + f' du/dr + (w^2/f - V_l/f) u = 0
+  => (f du/dr)' + (w^2 - V_l) u / f = 0
+
+Integrating across a sharp interface at r = r_i where f
+jumps from f_1 to f_2 (with V_l ~ 0 on each side):
+
+  (1) u continuous: u_1 = u_2
+  (2) f du/dr continuous: f_1 u_1' = f_2 u_2'
+
+On each side (f constant), the equation reduces to
+u'' + (w/f)^2 u = 0, with solutions exp(+-i k r),
+k = w/f. The matching conditions give:
+
+  Interior:  u = A_in exp(-ik_1 r) + A_out exp(+ik_1 r)
+  Exterior:  u = B_trans exp(-ik_2 r)
+
+  Condition 1: A_in + A_out = B_trans
+  Condition 2: f_1 k_1 (-A_in + A_out) = -f_2 k_2 B_trans
+
+Since f_1 k_1 = f_1 * w/f_1 = w  and  f_2 k_2 = f_2 * w/f_2 = w:
+
+  w(-A_in + A_out) = -w B_trans
+  => -A_in + A_out = -B_trans
+
+Adding to condition 1: 2 A_out = 0 => A_out = 0
+
+THEOREM: For the scalar wave equation on the CGM metric,
+R = 0 at any sharp step in f. The impedance Z = f*k = w
+is constant across the interface: no impedance mismatch,
+no reflection.
+
+This is a structural property of the Klein-Gordon equation
+on a static, spherically symmetric metric. It does NOT
+apply to electromagnetic waves, where the matching
+conditions involve E and H fields and the Fresnel formula
+R = ((n1-n2)/(n1+n2))^2 with n = 1/sqrt(f) applies.
+
+Physical implication: for scalar (and gravitational)
+perturbations, ALL vacuum reflection comes from the smooth
+Regge-Wheeler potential V_l(s), not from metric steps.
+At a real stellar surface, the matter stress-energy
+tensor modifies the interior wave equation, producing
+reflection from the density/pressure discontinuity.
+
+VACUUM SCATTERING WITH FLUX CONSERVATION (R + T = 1)
+--------------------------------------------------------------
+
+Flux F = Im(conj(u) * v) where v = f * du/ds.
+Conservation: F(start) = F(end) => R + T = 1.
+
+     omega  ell       R_true       T_true        R+T-1  F_end/F_start
+  ------------------------------------------------------------------
+       0.5    0   7.0146e-05   9.9993e-01     0.00e+00       1.000000
+       0.5    2   7.9523e-01   2.0477e-01     0.00e+00       1.000000
+       1.0    0   8.4531e-08   1.0000e+00     0.00e+00       1.000000
+       1.0    2   1.6050e-06   1.0000e+00     0.00e+00       1.000000
+       2.0    0   6.0106e-09   1.0000e+00     0.00e+00       1.000000
+       2.0    2   3.8691e-07   1.0000e+00     0.00e+00       1.000000
+       5.0    0   1.5571e-10   1.0000e+00     0.00e+00       1.000000
+       5.0    2   1.0044e-08   1.0000e+00     0.00e+00       1.000000
+
+Flux conservation verified: R + T = 1 to solver precision.
+All vacuum reflection comes from V_l(s) tunneling; zero
+reflection from metric steps (scalar wave impedance = omega).
+
+=========
+C. Geodesic deflection and shadow
+=========
+
+Null geodesics: (dr/dlam)^2 = E^2 [1 - f(s)*beta^2/s^2]
+Deflection: Delta_phi = 2*int_{s_min}^{inf} beta/(s^2*sqrt(1-f*beta^2/s^2)) ds - pi
+  b_c/r_g = 4.647712, s_ph = 2.585592 r_g
+
+  Integral uses u=1/s compactification and t^2 substitution
+  near the turning point to remove the sqrt singularity.
+
+    beta/b_c   beta/r_g  s_min/r_g Delta_phi(rad) Delta_phi(deg)
+  --------------------------------------------------------------
+       1.001     4.6524     2.6571       7.043337       403.5535
+       1.005     4.6710     2.7524       5.324847       305.0912
+       1.010     4.6942     2.8291       4.591842       263.0932
+       1.050     4.8801     3.2065       2.939979       168.4484
+       1.100     5.1125     3.5515       2.275910       130.4000
+       1.200     5.5773     4.1403       1.667786        95.5571
+       1.500     6.9716     5.6951       0.995722        57.0507
+       2.000     9.2954     8.1194       0.617153        35.3603
+       3.000    13.9431    12.8400       0.356142        20.4054
+       5.000    23.2386    22.1818       0.194242        11.1292
+      10.000    46.4771    45.4504       0.091170         5.2237
+
+CONVERGENCE NEAR b_c:
+  beta/b_c = 1.1000: Delta_phi = 2.2759 rad = 130.40 deg
+  beta/b_c = 1.0100: Delta_phi = 4.5918 rad = 263.09 deg  delta=2.32e+00
+  beta/b_c = 1.0050: Delta_phi = 5.3248 rad = 305.09 deg  delta=7.33e-01
+  beta/b_c = 1.0020: Delta_phi = 6.3015 rad = 361.05 deg  delta=9.77e-01
+  beta/b_c = 1.0010: Delta_phi = 7.0433 rad = 403.55 deg  delta=7.42e-01
+  Delta_phi diverges as beta -> b_c^+; numeric method stable.
+
+CAPTURE VERIFICATION:
+  beta/b_c = 0.50: CAPTURED
+  beta/b_c = 0.80: CAPTURED
+  beta/b_c = 0.95: CAPTURED
+  beta/b_c = 0.99: CAPTURED
+  beta/b_c = 1.00: CAPTURED
+
+SHADOW: b_c/r_g from photon_sphere_closed (analysis_4 N, analysis_6 B.3).
+  This script (geodesic geometry): b_c/r_g = 4.647712
+
+=========
+D. Metric refractive index, impedance, escape profile
+=========
+
+Photon sphere: s_ph = 2.585592 r_g  (psi = 0.345257)
+  b_c/r_g = 4.647712
+
+   s=r/r_g        psi          n    Z/Z_0  c_coord theta_c(deg)    P_esc
+----------------------------------------------------------------------
+    1.7000   0.498630    19.1017   0.0524 0.002741       3.0009   0.0051
+    1.8000   0.474761     4.4509   0.2247 0.050477      12.9836   0.0927
+    2.0000   0.433322     2.7384   0.3652 0.133357      21.4187   0.2355
+    2.5856   0.345257     1.7975   0.5563 0.309486      33.8013   0.0000
+    3.0000   0.301905     1.5887   0.6294 0.396191      39.0086   0.6108
+      5.00   0.188102     1.2661   0.7898 0.623795      52.1675   0.8395
+     10.00   0.096905     1.1137   0.8979 0.806191      63.8809   0.9544
+     50.00   0.019872     1.0205   0.9799 0.960256      78.5005   0.9979
+    100.00   0.009968     1.0101   0.9900 0.980064      81.8831   0.9995
+
+P_esc = (1 +/- sqrt(1-R))/2, R = b_c^2*f/s^2: geodesic escape fraction.
+P_esc = 0.5 at photon sphere; -> 1 far out; -> 0 at horizon.
+
+REDSHIFT: CGM vs GR AT SAME RADIUS
+--------------------------------------------------------------
+  s=10.00  psi_N=0.100000  psi_CGM=0.096905  z_GR=0.118034  z_CGM=0.113733
+  s=5.00  psi_N=0.200000  psi_CGM=0.188102  z_GR=0.290994  z_CGM=0.266132
+  s=3.0000  psi_N=0.333333  psi_CGM=0.301905  z_GR=0.732051  z_CGM=0.588721
+  s=2.5856  psi_N=0.386759  psi_CGM=0.345257  z_GR=1.101273  z_CGM=0.797543
+  s=2.0000  psi_N=0.500000  psi_CGM=0.433322  z_GR=inf  z_CGM=1.738374
+  s=1.8000  psi_N=0.555556  psi_CGM=0.474761  z_GR=inf  z_CGM=3.450945
+  s=1.7000  psi_N=0.588235  psi_CGM=0.498630  z_GR=inf  z_CGM=18.101720
+
+=========
+E. Optical depth: coupling vs propagation channels
+=========
+
+1. COUPLING CHANNEL: G(psi)/G_0 = exp(g1*psi)
+   tau_coupl = |g1|*psi. At horizon: tau = 0.3228.
+   T_coupl = 0.7241 (coupling survives).
+
+2. PROPAGATION CHANNEL: n = 1/sqrt(1-2*psi)
+   P_esc -> 0 at horizon. Scalar R=0 at interfaces;
+   all reflection from smooth V_l(s).
+
+Exterior integral I = 1/2: analysis_6 C.4 (Z2-protected).
+ODE dpsi/ds = -exp(g1*psi)/s^2: analysis_5 S step 6.
+
+  tau_coupl(horizon) = 0.322784
+  T_coupl = exp(-tau) = 0.724130 = G(psi=1/2)/G_0
+  tau_G (energy ladder) = 76.237917 (distinct scale)
+
+=========
+F. Horizon criticality: WHERE and WHEN
+=========
+
+WHERE: s_h = 1.6946 r_g, s_ph = 2.5856 r_g (common: horizon_s, photon_sphere_closed)
+  n -> inf, Z -> 0, c_coord -> 0, P_esc -> 0
+  rho_MU/rho0 = 2.02e-17
+  epsilon_g = 1.380967
+
+The vacuum microcell density drops 17 orders of magnitude
+from weak field to horizon. Flat space (mass) converts to
+curved time (energy). The coupling channel remains partially
+transparent (T=0.724) while propagation is fully opaque.
+This is the Balance closure: identity (coupling) survives
+while individuality (propagation) is fully confined.
+Structurally, the first three causal phases (Source, Act,
+Retrieve) remain operational at psi = 1/2, while the
+fourth (Commit) is geometrically blocked (section J).
+
+WHEN: the Balance clock
+  T_Z2 = (6/pi)*GM/c^3 = 1.9099*GM/c^3
+  D = 24 steps per holonomy cycle.
+
+              Object       M/Msun           T_Z2           f_Z2
+--------------------------------------------------------------
+               Earth     3.00e-06       28.25 ps      35.39 GHz
+                 Sun     1.00e+00        9.41 us     106.27 kHz
+       NS (1.4 Msun)     1.40e+00       13.17 us      75.91 kHz
+        BH (10 Msun)     1.00e+01       94.10 us      10.63 kHz
+              Sgr A*     4.00e+06      37.6391 s    26.5681 mHz
+                M87*     6.50e+09       16.99 hr  1.6350e-05 Hz
+
+T_Z2 = 24 hr => M = 9.18e+09 Msun
+
+MASS-ENERGY TRANSITION AT psi = 1/2
+  psi -> 0: flat space, mass dominates, n -> 1.
+  psi = 1/2: curved time, energy dominates, n -> inf.
+  E_self = -Mc^2/4, M_obs/M_UNA = 4/5: analysis_6 C.5.
+
+=========
+G. Time-light conversion factor
+=========
+
+THEOREM: kappa_GR * T_Z2 = [D/(4*Q_G)] * c = 3c/(2*pi)
+
+  D/(4*Q_G) = 24/(16*pi) = 0.477465 = 3/(2*pi)  [kernel-locked]
+
+CGM SURFACE GRAVITY FROM CGM METRIC:
+  kappa_CGM/kappa_GR = 4*exp(g1/2)/s_h^2 = 1.008713
+
+  kappa_GR  * T_Z2 = 143140354.78 m/s = 0.477465 c
+  kappa_CGM * T_Z2 = 144387488.29 m/s = 0.481625 c
+
+DEPTH-DEPENDENT CONVERSION (kappa_CGM):
+                      Depth        psi          n   k_CGM*T(m/s)  k_CGM*T/c
+------------------------------------------------------------------------
+                Far field 0.0000e+00     1.0000   144387488.29   0.481625
+              Sun surface 2.1200e-06     1.0000   144387182.19   0.481624
+               WD surface 3.0000e-04     1.0003   144344165.55   0.481480
+               NS surface 1.5000e-01     1.1952   120803239.79   0.402956
+            Photon sphere 3.4526e-01     1.7975    80324930.97   0.267935
+             Near horizon 4.9000e-01     7.0711    20419474.42   0.068112
+                  Horizon 5.0000e-01        inf           0.00   0.000000
+
+Conversion vanishes at the horizon: gravitational time
+cannot be further converted to light (E_self: analysis_6 C.5).
+
+=========
+H. Self-energy: luminosity scale
+=========
+
+I = 1/2 and E_self = -Mc^2/4: analysis_6 C.4/C.5 (not re-derived here).
+
+Phase deficit per cycle: 0.004128963621 rad (2.0700% of m_a)
+Accumulated over N=3586.5: 14.8086 rad = 2.3569 cycles
+
+UNIVERSAL LUMINOSITY SCALE
+L_0 = |E_self|/T_Z2 = pi*c^5/(24*G) = (G_kernel/4)*L_Planck
+  L_Planck   = 3.6283e+52 W
+  L_0        = 4.7494e+51 W
+  L_0/L_Planck = pi/24 = 0.130900
+
+HAWKING LUMINOSITY vs L_0 (greybody = 1)
+                Object       M/Msun         L_H(W)      L_H/L_0
+  ------------------------------------------------------------
+            10 Msun BH     1.00e+01       6.70e-31   1.4097e-82
+                Sgr A*     4.00e+06       4.18e-42   8.8105e-94
+
+Hawking luminosity: analysis_6 C.7. Gravitomagnetic split: analysis_6 A.6.
+
+=========
+I. Vacuum excitation and the light/photon distinction
+=========
+
+Z2 PROTECTION OF c:
+  F^2 = id on Omega => g_tt*g_rr = -1 (metric reciprocity)
+  => local speed of light = 1 in geometric units.
+  Two Z2 gyrophase sheets => factor 2 in f = 1 - 2*psi
+  => GR first-order refractive index n = 1 + 2*psi.
+
+DERIVATION CHAIN FOR c:
+  Kernel: Q_G, G_kernel, tau_G, Delta, m_a
+  => G to 0.074 ppm => alpha_0 = delta_BU^4/m_a
+  => hbar from alpha = e^2/(4*pi*eps_0*hbar*c)
+  => c from M_Planck = sqrt(hbar*c/G)
+
+  Alternative: kappa*T_Z2 = [3/(2*pi) or CGM-corrected]*c
+  derives c from surface gravity and the Balance clock
+  (no hbar required).
+
+LIGHT vs PHOTON:
+Light (c) is the maximum refresh rate of the aQPU manifold:
+1 state per tick rendered as spatial translation.
+It is a property of the spacetime continuum itself.
+
+A photon is an excitation of the microcell enclosure: the
+boundary of the spacetime microcell that encloses the Planck
+well. Photons carry no rest mass because they emerge from
+the inner environment of these microcells, not from the mass
+distribution within the spacetime they compose.
+
+Illumination originates in vacuum excitation. The photon is
+the carrier of that excitation; light (c) is the rate at
+which the excitation can traverse the manifold.
+
+  E_CS = 1.2200e+19 GeV  (Planck energy, well depth)
+      Cs-133 hyperfine: E/E_CS = 3.1162e-33
+      Optical (500 nm): E/E_CS = 2.0325e-28
+         Gamma (1 MeV): E/E_CS = 5.1502e-22
+
+  Microcell length = c/f(Cs) = 3.26 cm
+
+=========
+J. The four-phase causal cycle
+=========
+
+J.1 KERNEL FRAME TO CONTINUOUS CHANNEL MAPPING
+--------------------------------------------------------------
+
+The aQPU depth-4 frame (Prefix, Present, Past, Future)
+maps to the four CGM stages and their continuous channels:
+
+  Phase     Kernel operation          Continuous channel
+  ----------------------------------------------------------
+  Prefix    intron = byte XOR 0xAA     epsilon_g = exp(-g1*psi)
+   (CS)     Source registration        Source registration capacity
+
+  Present   A(mut) = A12 XOR mask      G(psi)/G_0 = exp(g1*psi)
+   (UNA)    Active mutation            Coupling transmission
+
+  Past      A(next) = B12 XOR inv(a)   Bianchi exchange
+   (ONA)    Ancestry retrieval          |(dG/G)*T^mu_mu|
+
+  Future    B(next) = A(mut) XOR inv(b) P_esc(s), r*(s)
+   (BU)     Result commit               Outward propagation
+
+CAUSAL ORDERING: Source -> Act -> Retrieve -> Commit
+  NOT: Past -> Present -> Future.
+  The Past (ONA) is consulted AFTER the Present (UNA) acts.
+  Mutation precedes retrieval: the field accumulates psi,
+  then consults stored ancestry via Bianchi exchange.
+  The 'past' is a database queried after action, not a
+  force that pushes the present.
+
+  This ordering follows from CS: [R]S <-> S establishes
+  right-transitions as source-preserving. Family 00 (the
+  [R]-preserving transition) executes first, mutating A
+  relative to the archetype. The gyration then retrieves B
+  into the active position. Action precedes retrieval.
+
+J.2 CAUSAL PHASE AVAILABILITY
+--------------------------------------------------------------
+
+  Z2 protection: F^2 = id on Omega guarantees Prefix, Present,
+  and Past at all gravitational depths. Only Future depends
+  on the metric (f = 1 - 2*psi > 0).
+
+  Dimensionless phase availabilities at s = r/r_g:
+    Phi_CS  = epsilon_g(psi) = exp(-g1*psi)  [source capacity]
+    Phi_UNA = G(psi)/G_0    = exp(g1*psi)   [coupling transmit]
+    Phi_ONA = |g1|*exp(g1*psi)/s^2          [retrieval rate]
+    Phi_BU  = P_esc(s)                      [commit fraction]
+
+         s        psi   Phi_CS  Phi_UNA    Phi_ONA   Phi_BU    r*(r_g)
+  ------------------------------------------------------------------
+    1.7000   0.498630   1.3797   0.7248 1.6190e-01   0.0051     2.3197
+    1.7500   0.486400   1.3689   0.7305 1.5399e-01   0.0505     6.9701
+    1.8000   0.474761   1.3586   0.7360 1.4665e-01   0.0927     8.2949
+    2.0000   0.433322   1.3228   0.7560 1.2201e-01   0.2355    10.6052
+    2.5856   0.345257   1.2497   0.8002 7.7272e-02   0.0000    13.3174
+    3.0000   0.301905   1.2152   0.8229 5.9028e-02   0.6108    14.4914
+      5.00   0.188102   1.1291   0.8857 2.2870e-02   0.8395    18.3416
+     10.00   0.096905   1.0646   0.9394 6.0642e-03   0.9544    25.1798
+     50.00   0.019872   1.0129   0.9873 2.5494e-04   0.9979    68.6980
+    100.00   0.009968   1.0065   0.9936 6.4143e-05   0.9995   120.1187
+
+  Phi_CS >= 1 at all depths: source registration amplifies
+  with gravitational depth (identity becomes more fixed).
+  Phi_UNA < 1 at all depths: coupling weakens with depth.
+  Phi_ONA peaks near s ~ 2: ancestry retrieval most active
+  where the G gradient is steepest (Bianchi exchange).
+  Phi_BU -> 0 at s_h: commit blocked at horizon.
+
+J.3 HORIZON CHANNEL SPLIT (detail: section F)
+  Identity (CS+UNA+ONA): Phi_CS, Phi_UNA, Phi_ONA finite at psi=1/2.
+  Individuality (BU): Phi_BU = P_esc -> 0; tortoise r* diverges (analysis_6 B.3).
+  I = 1/2, E_self: analysis_6 C.4/C.5.
+
+J.4 TIME-LIGHT CONVERSION (section G)
+  kappa_CGM * T_Z2 = Future-phase advance rate; depth table in G.
+
+J.5 THE CGM CAUSAL MODEL
+--------------------------------------------------------------
+
+  Standard causality: binary classifier via light cones.
+  Events are causally connected or not. The cone is primitive.
+
+  CGM causality: four-phase operational cycle with graded
+  availability. Causal influence requires all four phases:
+    Source -> Act -> Retrieve -> Commit
+  The first three are Z2-guaranteed (algebraic). The fourth
+  is geometrically conditional (requires f > 0).
+
+  The light cone is the shadow of the commit phase projected
+  onto the propagation channel. It is derived, not primitive.
+
+  Compared to causal set theory (Sorkin): both take causal
+  structure as fundamental rather than derived from a metric.
+  CGM refines the partial order into a four-phase cycle where
+  each phase can independently open or close. The causal set
+  partial order is the commit-phase projection of this cycle.
+
+  The commit advance rate per cycle is kappa*T_Z2 = 3c/(2*pi)
+  at flat space, decreasing as 1/n_grav with depth. The
+  causal boundary is where Balance achieves egress closure
+  (W_2^2 = id) without ingress propagation. Causality is the
+  operational expression of Preservation of Ancestry: every
+  action must be traceable to the common source, retrievable
+  from the stored record, and committable to the future.
+  The first two are algebraically guaranteed; the third is
+  geometrically conditional.
+
+=========
+K. Summary
+=========
+
+1. epsilon_g = exp(-g1*psi): gravitational permittivity.
+   Coupling channel: T_coupl = G/G_0 = exp(g1*psi), tau = 0.6456*psi.
+
+2. n = 1/sqrt(1-2*psi): metric refractive index.
+   Scalar wave impedance Z = f*k = omega is CONSTANT
+   across sharp metric interfaces: R = 0 at steps.
+   All vacuum reflection from smooth V_l(s).
+   Flux conservation R + T = 1 verified numerically.
+   Coupling partially transparent at horizon (T=0.724);
+   propagation totally opaque (n->inf, P_esc->0).
+
+3. Horizon at psi = 1/2: mass converts to energy (analysis_6 C.5).
+   E_self = -Mc^2/4; I = 1/2 (analysis_6 C.4).
+   rho_MU/rho0 ~ 10^-17: vacuum enclosure nearly depleted.
+   Tortoise coordinate diverges: causal boundary.
+   Identity channel (CS+UNA+ONA) survives; individuality
+   channel (BU) blocked. Four-phase causal cycle (section J).
+
+4. kappa_GR * T_Z2 = [D/(4*Q_G)]*c = 3c/(2*pi) = 0.4775 c
+   kappa_CGM * T_Z2 = 0.4816 c  (factor 1.0087)
+
+5. L_0 = pi*c^5/(24*G) = 4.7494e+51 W = (G_kernel/4)*L_Planck
+
+6. T_Z2 = (6/pi)*GM/c^3: Balance clock, full Z2 cycle.
+
+7. C-parity: analysis_6 A (gravitoelectric C-even, gravitomagnetic C-odd).
+
+8. Photons: excitations of microcell enclosure. Light (c):
+   manifold refresh rate. Illumination originates in vacuum
+   excitation.
+
+9. alpha*zeta = rho^4/(pi*sqrt(3)): analysis_3 F, analysis_5 G.
+   alpha(z) oscillation: analysis_5 O. Bianchi exchange: analysis_5 Y.
+
+10. Deflection curve and shadow from null geodesics.
+    Capture at b <= b_c confirmed. Stable near b_c.
+
+11. Causality: four-phase cycle (Source->Act->Retrieve->Commit);
+    first three Z2-protected, fourth geometrically conditional.
+    Tortoise coordinate diverges at horizon; coupling finite.
+    Causality is the operational expression of Preservation
+    of Ancestry. The light cone is the commit-phase shadow.
+
+RIGOR STATUS:
+  P1 PASS: Wave equation and V_l derived from metric.
+           Scalar Z = omega constant across interfaces => R=0.
+  P2 PASS: R_true(vacuum) computed; flux conservation
+           R+T=1 verified; distinct from interface process.
+  P3 PASS: Deflection Delta_phi(b) stable near b_c;
+           capture confirmed; shadow edge from geodesics.
+  P4 PASS: Tortoise coordinate divergence at horizon;
+           coupling finite. Causal boundary = Balance closure.
+  P5 PASS: Four-phase causal cycle (J.1-J.2, J.5); phase
+           availability table; identity vs individuality split.
+           I=1/2 and E_self cited from analysis_6 C.4/C.5.
+
+Cross-script ownership:
+  analysis_5: vacuum Gauss, Hulse-Taylor, Bianchi, alpha(z), TOV
+  analysis_6: I=1/2, E_self, Hawking, H_spin, ringdown, echoes
+  analysis_7: refractive vacuum, horizon criticality, time-light
+              conversion, luminosity scale, photon distinction,
+              wave-equation reflection, geodesic deflection,
+              four-phase causal structure
+========== DONE ==========
+
+exit=0  duration=24.98s
+
+finished: 2026-05-23T10:46:25+03:00
+total_duration=37.82s
 worst_exit=0

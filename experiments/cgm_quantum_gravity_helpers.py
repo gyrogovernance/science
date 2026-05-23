@@ -557,19 +557,19 @@ def main():
     try:
         # Run diagnostic functions and capture results
         print("\n1. QUADRATIC SCALING VERIFICATION")
-        print("-" * 40)
+        print("-" * 9)
         small_angle_result = small_angle_commutator_limit()
 
         print("\n2. GEOMETRIC CONSTRAINTS")
-        print("-" * 40)
+        print("-" * 9)
         holonomy_result = holonomy_delta_probe()
 
         print("\n3. PARAMETER SPACE CHARACTERIZATION")
-        print("-" * 40)
+        print("-" * 9)
         phi_theta_result = characterize_phi_theta_curve(phi_target=np.pi / 6)
 
         print("\n4. ABUNDANCE INDICES")
-        print("-" * 40)
+        print("-" * 9)
         abundance_result = report_abundance_indices()
 
         # Summary of key insights

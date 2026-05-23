@@ -1136,7 +1136,7 @@ def section_E_ref_formal_proof() -> None:
     print("Premise 2: Delta ruler")
     print("  n(E) = ln(E_CS/E) / (Delta*ln2)")
     print()
-    print("Premise 3: STF-verified closure depth")
+    print("Premise 3: STF-verified Refractive Depth")
     print("  tau(psi) = tau_G * (1 - psi)  (machine precision vs STF)")
     print()
     print("DERIVATION:")

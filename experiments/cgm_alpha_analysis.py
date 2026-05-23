@@ -255,7 +255,7 @@ def main():
 
     # BASE PREDICTION (lead with this)
     print("\nBASE PREDICTION (IR Focus Geometry)")
-    print("-" * 40)
+    print("-" * 9)
     alpha_base = (delta_BU**4) / m_a
     print(f"alpha_0 = delta_BU^4 /  m_a = {float(alpha_base):.12f}")
     print("  Pure geometric IR focus coupling at BU stage.")

@@ -56,7 +56,7 @@ def test_tw_precession_velocity_scaling():
 def run_all_tw_tests():
     """Run all Thomas-Wigner precession tests."""
     print("Running Thomas-Wigner Precession Tests")
-    print("=" * 40)
+    print("=" * 9)
 
     try:
         test_tw_precession_small_angle()

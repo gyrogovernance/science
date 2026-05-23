@@ -911,7 +911,7 @@ class HelicalMemoryAnalyzer:
         passed_tests = 0
 
         print("Out-of-sample predictions:")
-        print("-" * 40)
+        print("-" * 9)
 
         for scale_name, target_length in out_of_sample_targets.items():
             # Find nearest integer N

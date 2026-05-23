@@ -441,7 +441,7 @@ The circuit compiler tracks two distinct depth measures:
 
 **Reachability depth.** The minimum number of bytes required to reach the target state from rest. For any state in Ω, this is at most 2.
 
-**Closure depth.** The number of bytes required for phase-closure properties. Depth 4 is the closure horizon: any byte applied four times returns to the starting state; any alternation XYXY returns to the starting state; family-phase contributions cancel.
+**Refractive Depth.** The number of bytes required for phase-closure properties. Depth 4 is the closure horizon: any byte applied four times returns to the starting state; any alternation XYXY returns to the starting state; family-phase contributions cancel.
 
 Additional bytes beyond reachability depth 2 contribute:
 - provenance (distinct ledger histories reaching the same state)

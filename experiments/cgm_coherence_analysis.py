@@ -457,7 +457,7 @@ class CGMGeometricCoherence:
 
         # ===== Stage 1: CGM Thresholds =====
         print("\n1. CGM STAGE THRESHOLDS")
-        print("-" * 40)
+        print("-" * 9)
         print(
             f"   CS (Common Source - Chirality Seed):     {self.cs_threshold:.6f} = π/2"
         )
@@ -481,7 +481,7 @@ class CGMGeometricCoherence:
         # ===== Stage 2: UNA Analysis =====
         una = self.calculate_una_geometry()
         print("\n2. UNA GEOMETRY: ROTATIONAL COHERENCE")
-        print("-" * 40)
+        print("-" * 9)
         print("   Circle/Sphere = Maximum rotational symmetry")
         print(f"\n   2D Circle (inscribed, r=0.5):")
         print(f"   • Area:                      {una['circle_area']:.6f} = π/4")
@@ -507,7 +507,7 @@ class CGMGeometricCoherence:
         # ===== Stage 3: ONA Analysis =====
         ona = self.calculate_ona_geometry()
         print("\n3. ONA GEOMETRY: AXIAL STRUCTURE")
-        print("-" * 40)
+        print("-" * 9)
         print("   Square/Cube = Discrete axial organization")
         print(f"\n   2D Square (unit side):")
         print(f"   • Area:                      {ona['square_area']:.6f} = 1.0")
@@ -534,7 +534,7 @@ class CGMGeometricCoherence:
         # ===== Stage 4: Triangles =====
         triangles = self.calculate_triangles()
         print("\n4. TRIANGLE ANALYSIS")
-        print("-" * 40)
+        print("-" * 9)
 
         print(f"   45-45-90 Triangle (ONA diagonal):")
         t45 = triangles["triangle_45_45_90"]
@@ -560,7 +560,7 @@ class CGMGeometricCoherence:
         # ===== Stage 5: CS Bridge =====
         cs = self.calculate_cs_bridge()
         print("\n5. CS BRIDGE: ANGULAR MOMENTUM RELATIONSHIPS")
-        print("-" * 40)
+        print("-" * 9)
         print(f"   Angular Storage Ratios (ONA/UNA):")
         print(f"   • 2D ratio:                  {cs['angular_ratio_2d']:.6f} = 4/3")
         print(f"   • 3D ratio:                  {cs['angular_ratio_3d']:.6f} = 5/3")
@@ -591,7 +591,7 @@ class CGMGeometricCoherence:
         # ===== Stage 6: Dimensional Transitions =====
         dim = self.calculate_dimensional_transitions()
         print("\n6. DIMENSIONAL TRANSITIONS: 2D → 3D SCALING")
-        print("-" * 40)
+        print("-" * 9)
         print(f"   2D Ratios (UNA/ONA):")
         print(
             f"   • Area ratio:                {dim['una_over_ona_2d_area']:.6f} = π/4"
@@ -621,7 +621,7 @@ class CGMGeometricCoherence:
         # ===== Stage 7: Aperture Pair =====
         aperture_pair = self.calculate_aperture_pair()
         print("\n7. APERTURE PAIR ANALYSIS (45°-48°)")
-        print("-" * 40)
+        print("-" * 9)
         print("   Auxiliary construction showing beat frequencies")
         print(
             f"   • 45° angle:                 {aperture_pair['angle_45_rad']:.6f} rad = π/4"
@@ -641,7 +641,7 @@ class CGMGeometricCoherence:
 
         # ===== Stage 8: Continued Fractions =====
         print("\n8. CONTINUED FRACTION ANALYSIS")
-        print("-" * 40)
+        print("-" * 9)
         rho_bu = self.bu_monodromy / (2 * math.pi)
         cf = self.continued_fraction(rho_bu)
         convs = self.convergents(cf)
@@ -656,7 +656,7 @@ class CGMGeometricCoherence:
         # ===== Stage 9: Normalizations =====
         norms = self.calculate_normalizations()
         print("\n9. NORMALIZATION MODES")
-        print("-" * 40)
+        print("-" * 9)
 
         eq_p = norms["equal_perimeter"]
         print(f"   Equal Perimeter (P=4):")
@@ -685,7 +685,7 @@ class CGMGeometricCoherence:
         # ===== Stage 10: Packing =====
         packing = self.calculate_packing()
         print("\n10. CIRCLE PACKING DENSITIES")
-        print("-" * 40)
+        print("-" * 9)
         print(f"   Square lattice:              {packing['square_packing']:.6f} = π/4")
         print(
             f"   Triangular lattice:          {packing['triangular_packing']:.6f} = π/(2√3)"
@@ -697,7 +697,7 @@ class CGMGeometricCoherence:
         # ===== Stage 11: Curvature =====
         curv = self.calculate_curvature_invariants()
         print("\n11. CURVATURE AND TURNING INVARIANTS")
-        print("-" * 40)
+        print("-" * 9)
         print(f"   Total turning (2D closed):   {curv['total_turning_2d']:.6f} = 2π")
         print(
             f"   Sphere Gaussian curvature:   {curv['sphere_total_gaussian']:.6f} = 4π"
@@ -708,7 +708,7 @@ class CGMGeometricCoherence:
         # ===== Stage 12: Aperture Balance =====
         aperture = self.calculate_aperture_balance()
         print("\n12. BU APERTURE BALANCE: THE 97.93%/2.07% SPLIT")
-        print("-" * 40)
+        print("-" * 9)
         print(
             f"   Quantum Gravity Constant:    Q_G = {aperture['quantum_gravity_qg']:.6f} = 4π"
         )
@@ -737,7 +737,7 @@ class CGMGeometricCoherence:
 
         # ===== Final Summary =====
         print("\n13. KEY INSIGHTS: THE GEOMETRIC STORY")
-        print("-" * 40)
+        print("-" * 9)
         print("   CS seeds chirality through angular momentum L")
         print("   UNA captures it with perfect rotational coherence (circles/spheres)")
         print("   ONA converts it to discrete axial structure (squares/cubes)")
@@ -760,7 +760,7 @@ class CGMGeometricCoherence:
         # ===== Stage 13: Quantum Gravity Q_G = 4π Connections =====
         qg_conn = self.calculate_qg_connections()
         print("\n14. QUANTUM GRAVITY Q_G = 4π CONNECTIONS")
-        print("-" * 40)
+        print("-" * 9)
         print("   How the quantum gravity invariant Q_G = 4π appears everywhere:")
         print(f"   • Q_G value:                    {qg_conn['q_g_value']:.6f} = 4π")
         print(

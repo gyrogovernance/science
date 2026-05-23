@@ -115,7 +115,7 @@ def test_compton_scales():
 def run_all_dimensional_tests():
     """Run all dimensional engine tests"""
     print("DIMENSIONAL ENGINE VALIDATION")
-    print("=" * 40)
+    print("=" * 9)
 
     tests = [test_monomial_audit, test_c_invariance, test_compton_scales]
 

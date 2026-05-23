@@ -76,7 +76,7 @@ Each row below is the single entry point for that topic: one analysis note, one 
 
 | Topic | Analysis | Code |
 |-------|----------|------|
-| Gravity, Virial condition, and nonlinear continuum | [Analysis_Gravity](docs/Findings/Analysis_Gravity.md) | [aqpu_gravity_common.py](experiments/aqpu_gravity_common.py), `aqpu_gravity_analysis_1.py` through `5.py`, [wavefunction scripts](experiments/aqpu_wavefunction_1.py). Run: `python experiments/aqpu_gravity_run_all.py` |
+| Gravity, Virial condition, and nonlinear continuum | [Analysis_Gravity](docs/Findings/Analysis_Gravity.md) | [aqpu_gravity_common.py](experiments/aqpu_gravity_common.py), `aqpu_gravity_analysis_1.py` through `7.py`, [wavefunction scripts](experiments/aqpu_wavefunction_1.py). Run: `python experiments/aqpu_gravity_runner.py` |
 | Electroweak mass spectrum | [Analysis_Compact_Geometry](docs/Findings/Analysis_Compact_Geometry.md) | [aqpu_compact_geom_core.py](experiments/aqpu_compact_geom_core.py), [kernel](experiments/aqpu_compact_geom_kernel.py), [report](experiments/aqpu_compact_geom_report.py) |
 | Fine-structure constant | [Analysis_Fine_Structure](docs/Findings/Analysis_Fine_Structure.md) | [cgm_alpha_analysis.py](experiments/cgm_alpha_analysis.py) |
 | Quantum gravity invariant | [Analysis_Quantum_Gravity](docs/Findings/Analysis_Quantum_Gravity.md) | [cgm_quantum_gravity_analysis.py](experiments/cgm_quantum_gravity_analysis.py) |

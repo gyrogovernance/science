@@ -508,7 +508,7 @@ def print_table(headers: list[str], rows: list[list[str]], title: str = "") -> N
 def run_decomposition_verify() -> None:
     canonical = family_word_for_micro(FAMILY_RAY_REF)
     print("\nDecomposition Verify: T_b = R o L")
-    print("-" * 40)
+    print("-" * 9)
     ok = True
     for byte in canonical:
         for start in [GENE_MAC_REST, GENE_MAC_SWAPPED]:
@@ -532,7 +532,7 @@ def run_omega_census(omega: list[int]) -> None:
         chi_weight_counts[cls.chi_weight] += 1
 
     print("\nOmega Constitutional Census")
-    print("=" * 40)
+    print("=" * 9)
     print(f"  |Omega| = {len(omega)}")
     for sector in ["comp-horizon", "eq-horizon", "bulk"]:
         print(f"  {sector:20s} {sector_counts.get(sector, 0)}")
@@ -964,7 +964,7 @@ def run_probe_suite(omega: list[int]) -> None:
 
 def main() -> None:
     print("aQPU Wavefunction Holonomy Diagnostic")
-    print("=" * 40)
+    print("=" * 9)
     print(f"GENE_MIC_S (CS frame):  0x{GENE_MIC_S:02X}")
     print(f"GENE_MAC_REST (carrier): 0x{GENE_MAC_REST:06X}  NOT CS")
     print(f"GENE_MAC_SWAPPED:        0x{GENE_MAC_SWAPPED:06X}")

@@ -771,7 +771,7 @@ class SingularityInfinityValidator:
             Spin deformation validation results
         """
         print("\nValidating Spin-Induced Deformation")
-        print("=" * 40)
+        print("=" * 9)
         print("Testing CGM gravity as gyroscopic gradient matter")
 
         def _rodrigues_rotate(vec, axis, angle):

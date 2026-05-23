@@ -93,7 +93,7 @@ def cubic_C4(theta, phi):
 # DEPRECATED: Use torus_template + tau_from_template instead
 def toroidal_opacity(nhat, axis=(0, 0, 1), tau0=1e-3, eps_polar=0.2, eps_card=0.1):
     """
-    DEPRECATED: Directional closure depth with non-zero mean.
+    DEPRECATED: Directional Refractive Depth with non-zero mean.
 
     Use tau_from_template() instead for consistent zero-mean behavior.
     """

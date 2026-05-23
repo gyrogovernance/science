@@ -474,7 +474,7 @@ class RecursiveMemory:
             Comprehensive results from memory experiment
         """
         print("CGM Recursive Memory Experiment")
-        print("=" * 40)
+        print("=" * 9)
 
         # Generate memory paths
         print(f"Generating {n_paths} memory paths of length {path_length}...")

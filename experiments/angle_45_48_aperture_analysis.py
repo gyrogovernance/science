@@ -202,7 +202,7 @@ class Angle45_48ApertureAnalyzer:
 
         # Angular analysis
         output.append("ANGULAR TRANSITION ANALYSIS:")
-        output.append("-" * 40)
+        output.append("-" * 9)
         ang = aperture_data["angular_analysis"]
         output.append(f"45° = {ang['angle_45_deg']}° = {ang['angle_45_rad']:.6f} rad")
         output.append(f"48° = {ang['angle_48_deg']}° = {ang['angle_48_rad']:.6f} rad")

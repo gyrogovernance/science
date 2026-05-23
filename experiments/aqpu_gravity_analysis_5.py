@@ -14,7 +14,7 @@ from __future__ import annotations
 import math
 import sys
 from fractions import Fraction
-from math import comb, exp, gcd, log, pi, sqrt
+from math import comb, exp, gcd, log, pi, sin, sqrt
 from pathlib import Path
 
 import numpy as np
@@ -30,11 +30,13 @@ from aqpu_gravity_common import (
     W2_SHELL_DISPLACEMENT,
     binom_shell,
     d_BU,
+    dpsi_ds_analytic,
     find_photon_sphere_spin,
     helix_z2_activation,
     kernel_exposure_constants,
     m_a,
     photon_geometry_analytic,
+    psi_analytic,
     tau_cycle_per_delta_exact,
     tau_g_with_c4,
 )
@@ -524,6 +526,49 @@ CARRIER_TRACE_BULK = {1: 28 / 9, 2: 7 / 3, 3: 52 / 25, 4: 7 / 5, 5: 28 / 9}
 APERTURE_FRAME = 48
 
 
+def alpha_z_oscillation_params() -> dict[str, float]:
+    """Shell-opacity alpha(z) oscillation parameters (section O)."""
+    shell_pop = np.array(binom_shell, dtype=float)
+    pop_sum = float(shell_pop.sum())
+    sensitivity = 4.0 / rho_val
+    deviations_norm = [shell_pop[k] / pop_sum - 1.0 / 7.0 for k in range(7)]
+    a_f1 = abs(
+        (2.0 / 7.0)
+        * sum(deviations_norm[k] * np.cos(2 * pi * k / 7) for k in range(7))
+    )
+    damping = float(np.exp(-Delta / (7.0 * log(2.0))))
+    bu_closure = 1.0 - rho_val
+    period_sub = Delta / 7.0
+    a_dominant = sensitivity * Delta * 2.0 * a_f1
+    a_alpha_damped = a_dominant * damping * bu_closure
+    return {
+        "period_main": Delta,
+        "period_sub": period_sub,
+        "amplitude": a_alpha_damped,
+        "alpha_0": float(d_BU**4 / m_a),
+        "damping": damping,
+    }
+
+
+def alpha_z_at_redshift(
+    z: float, params: dict[str, float] | None = None
+) -> dict[str, float]:
+    """alpha(z) sample at redshift z using section O shell-opacity model."""
+    if params is None:
+        params = alpha_z_oscillation_params()
+    ln1pz = log(1.0 + z)
+    phase = (ln1pz / params["period_sub"]) % 1.0
+    d_alpha = params["amplitude"] * sin(2 * pi * phase)
+    alpha_0 = params["alpha_0"]
+    return {
+        "z": z,
+        "ln1pz": ln1pz,
+        "phase": phase,
+        "d_alpha": d_alpha,
+        "alpha_pred": alpha_0 * (1.0 + d_alpha),
+    }
+
+
 def section_alpha_z_oscillation() -> None:
     """alpha(z) oscillation amplitude from shell-weight projection on Delta ruler."""
     print("=" * 9)
@@ -616,23 +661,20 @@ def section_alpha_z_oscillation() -> None:
     print(f"  Damped amplitude:   {a_alpha_damped:.2e}  ({a_alpha_damped * 1e4:.2f} x 1e-4)")
     print()
 
-    alpha_0 = d_BU**4 / m_a
+    az_params = alpha_z_oscillation_params()
     print("Step 7: Sample alpha(z) predictions")
     print(f"  {'z':>6} {'ln(1+z)':>10} {'phase':>8} {'dalpha':>12} {'alpha_pred':>14}")
     print("  " + "-" * 54)
     for z in [0.01, 0.05, 0.1, 0.5, 1.0, 2.0, 3.0, 5.0, 10.0]:
-        ln1pz = log(1.0 + z)
-        phase = (ln1pz / period_sub) % 1.0
-        delta_alpha = a_alpha_damped * np.sin(2 * pi * phase)
-        alpha_pred = alpha_0 * (1.0 + delta_alpha)
+        row = alpha_z_at_redshift(z, az_params)
         print(
-            f"  {z:6.2f} {ln1pz:10.4f} {phase:8.4f} {delta_alpha:+12.2e} "
-            f"{alpha_pred:14.10f}"
+            f"  {row['z']:6.2f} {row['ln1pz']:10.4f} {row['phase']:8.4f} "
+            f"{row['d_alpha']:+12.2e} {row['alpha_pred']:14.10f}"
         )
     print()
     z_falsify = exp(Delta) - 1.0
     print("FALSIFICATION: survey spanning >= 1 period in ln(1+z)")
-    print(f"  (Delta z from 0 to {z_falsify:.4f}) with no oscillation at ~{a_alpha_damped:.1e}")
+    print(f"  (Delta z from 0 to {z_falsify:.4f}) with no oscillation at ~{az_params['amplitude']:.1e}")
     print("  would falsify shell-opacity / EM coupling link.")
     print()
 
@@ -1110,6 +1152,50 @@ def section_spin_final() -> None:
     print()
 
 
+def bianchi_exchange_at_s(
+    s: float,
+    g1_val: float | None = None,
+) -> dict[str, float]:
+    """
+    Modified Bianchi exchange at dimensionless radius s = r/r_g.
+
+    div T^mu_nu = -(d_mu G / G) T^mu_nu  =>  exchange = g1 * (dpsi/ds) * rho_eff
+    with rho_eff = -G_tt from f = 1 - 2*psi (section Y step 3).
+    """
+    if g1_val is None:
+        g1_val = dlnG_dpsi
+    if s <= 0:
+        raise ValueError("s must be positive")
+    psi = float(psi_analytic(s, g1_val))
+    dps = float(dpsi_ds_analytic(s, g1_val))
+    f_val = 1.0 - 2.0 * psi
+    rho_eff = -(f_val / s**2) * (-2.0 * s * dps - 2.0 * psi)
+    exchange = float(g1_val * dps * rho_eff)
+    g_ratio = float(G_of_psi(psi) / G_global)
+    trace_scale = abs(rho_eff)
+    return {
+        "s": s,
+        "psi": psi,
+        "G_ratio": g_ratio,
+        "dpsi_ds": dps,
+        "rho_eff": rho_eff,
+        "exchange": exchange,
+        "exchange_over_trace": (
+            abs(exchange) / trace_scale if trace_scale > 0 else float("nan")
+        ),
+    }
+
+
+def bianchi_exchange_table(
+    s_values: list[float] | tuple[float, ...] | None = None,
+    g1_val: float | None = None,
+) -> list[dict[str, float]]:
+    """Sample Bianchi exchange rows (default s grid matches section Y step 3)."""
+    if s_values is None:
+        s_values = [2.0, 3.0, 5.0, 10.0, 50.0, 100.0]
+    return [bianchi_exchange_at_s(s, g1_val) for s in s_values]
+
+
 def section_anisotropic_equilibrium(
     s_vals: np.ndarray, u_vals: np.ndarray
 ) -> None:
@@ -1185,15 +1271,11 @@ def section_anisotropic_equilibrium(
     print("  div T^mu_nu = -(d_mu G / G) T^mu_nu")
     print(f"  {'s':>10} {'psi':>12} {'dpsi/ds':>14} {'exchange':>14}")
     print("  " + "-" * 54)
-    for s_test in [2.0, 5.0, 10.0, 50.0, 100.0]:
-        psi = float(np.interp(s_test, s_vals, u_vals))
-        gr = G_of_psi(psi) / G_global
-        dpsi_ds = -gr / s_test**2
-        rho_eff = -(1.0 - 2.0 * psi) / s_test**2 * (
-            -2.0 * s_test * dpsi_ds - 2.0 * psi
+    for row in bianchi_exchange_table([2.0, 5.0, 10.0, 50.0, 100.0], g1):
+        print(
+            f"  {row['s']:10.0f} {row['psi']:12.4e} "
+            f"{row['dpsi_ds']:14.4e} {row['exchange']:14.4e}"
         )
-        exchange = g1 * dpsi_ds * rho_eff
-        print(f"  {s_test:10.0f} {psi:12.4e} {dpsi_ds:14.4e} {exchange:14.4e}")
     print()
     print("  Exchange negligible in weak field; significant near compact objects.")
     print()

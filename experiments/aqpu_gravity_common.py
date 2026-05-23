@@ -69,7 +69,7 @@ W2_SHELL_DISPLACEMENT = 6  # per W2 depth-4 half-word (2 bytes); wavefunction_2 
 F_CYCLE_PATH_TRAVERSE = 12  # F-cycle path length (4 bytes); F preserves shell per T4
 Z2_HOLONOMY_PATH_TRAVERSE = 24  # Z2 holonomy path length (8 bytes, 2 F-cycles); net disp 0
 D_traverse = Z2_HOLONOMY_PATH_TRAVERSE  # shell traverse invariant (not aperture Delta)
-AF = 2 * Z2_HOLONOMY_PATH_TRAVERSE  # Z2 double-cover: holonomy cycle path x 2 for closure depth round-trip (T6: F o F = id)
+AF = 2 * Z2_HOLONOMY_PATH_TRAVERSE  # Z2 double-cover: holonomy cycle path x 2 for Refractive Depth round-trip (T6: F o F = id)
 v_EW = 246.22
 G_meas = 6.708810e-39
 
@@ -83,7 +83,7 @@ f_ordered = 1.0 - 4.0 * rho * Delta**2
 tau_required = -math.log(alpha_G_meas / G_kernel)
 tau_req_meas = tau_required
 
-# Consistency check: Z2 closure depth vs UV-IR conjugacy ladder (not a G derivation).
+# Consistency check: Z2 Refractive Depth vs UV-IR conjugacy ladder (not a G derivation).
 tau_conjugacy_depth = 2.0 * math.log(E_CS / v_EW)
 tau_G_formula = Omega_size * Delta * rho**5 * f_ordered
 binom_shell = [comb(6, s) / 64.0 for s in range(7)]
@@ -445,7 +445,7 @@ def E_ref_quantile(psi: float) -> float:
 
 
 def tau_of_psi(psi: float, tau_g_val: float | None = None) -> float:
-    """Algebraic tau(psi) = tau_G * (1 - psi)."""
+    """Refractive depth gradient tau(psi) = tau_G * (1 - psi)."""
     tg = tau_g_val if tau_g_val is not None else tau_g_with_c4(C4_REF)
     return tg * (1.0 - psi)
 

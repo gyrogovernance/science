@@ -146,9 +146,9 @@ def _ptable(hdr: list[str], rows: list[list[str]], title: str = "") -> None:
 # ════════════════════════════════════════════════════════════════════════
 
 def run_T1(omega: list[int]) -> None:
-    print("\n" + "=" * 60)
+    print("\n" + "=" * 9)
     print("T1: K4 OPERATOR ALGEBRA {id, W₂, W₂', F}")
-    print("=" * 60)
+    print("=" * 9)
 
     m = 1
     sw2  = omega_word_signature(W2(m))
@@ -196,9 +196,9 @@ def run_T1(omega: list[int]) -> None:
 # ════════════════════════════════════════════════════════════════════════
 
 def run_T2_T4(omega: list[int]) -> None:
-    print("\n" + "=" * 60)
+    print("\n" + "=" * 9)
     print("T2-T4: SHELL MAPPING")
-    print("=" * 60)
+    print("=" * 9)
 
     m = 1
     p_w2 = _perm(W2(m), omega)
@@ -239,9 +239,9 @@ def run_T2_T4(omega: list[int]) -> None:
 # ════════════════════════════════════════════════════════════════════════
 
 def run_T5(omega: list[int]) -> None:
-    print("\n" + "=" * 60)
+    print("\n" + "=" * 9)
     print("T5: DEPTH-4 CONFINEMENT")
-    print("=" * 60)
+    print("=" * 9)
 
     m = 1
     p_w2 = _perm(W2(m), omega)
@@ -269,9 +269,9 @@ def run_T5(omega: list[int]) -> None:
 # ════════════════════════════════════════════════════════════════════════
 
 def run_T6(omega: list[int]) -> None:
-    print("\n" + "=" * 60)
+    print("\n" + "=" * 9)
     print("T6: DEPTH-8 = K4 COMPOSITION")
-    print("=" * 60)
+    print("=" * 9)
 
     m = 1
     w2, w2p, wf = W2(m), W2p(m), Wfull(m)
@@ -301,9 +301,9 @@ def run_T6(omega: list[int]) -> None:
 # ════════════════════════════════════════════════════════════════════════
 
 def run_T7() -> None:
-    print("\n" + "=" * 60)
+    print("\n" + "=" * 9)
     print("T7: CS FORCES CANONICAL ORDERING")
-    print("=" * 60)
+    print("=" * 9)
 
     print("\n  CS: [R]S↔S ∧ ¬([L]S↔S)")
     print("  Family 00: ε_a=0, ε_b=0  →  R preserves horizon (like [R]S↔S)")
@@ -340,9 +340,9 @@ def run_T7() -> None:
 # ════════════════════════════════════════════════════════════════════════
 
 def run_T8_T9(omega: list[int]) -> None:
-    print("\n" + "=" * 60)
+    print("\n" + "=" * 9)
     print("T8-T9: BU-EGRESS / INGRESS AS SPECTRAL")
-    print("=" * 60)
+    print("=" * 9)
 
     m = 1
     pw2 = _perm(W2(m), omega)
@@ -381,9 +381,9 @@ def run_T8_T9(omega: list[int]) -> None:
 # ════════════════════════════════════════════════════════════════════════
 
 def run_T10() -> None:
-    print("\n" + "=" * 60)
+    print("\n" + "=" * 9)
     print("T10: CHIRALITY TRANSPORT OF HALF-WORDS")
-    print("=" * 60)
+    print("=" * 9)
 
     print("\n  Per-byte q_word6 decomposition:")
     print("    byte(fam 00, m): L0 parity = 0  →  q = m")
@@ -443,9 +443,9 @@ def run_T10() -> None:
 # ════════════════════════════════════════════════════════════════════════
 
 def run_comparison(omega: list[int]) -> None:
-    print("\n" + "=" * 60)
+    print("\n" + "=" * 9)
     print("SPECTRAL COMPARISON: W₂ vs W₂' vs F")
-    print("=" * 60)
+    print("=" * 9)
 
     m = 1
     ops = [("W2", W2(m)), ("W2p", W2p(m)), ("F", Wfull(m))]
@@ -475,9 +475,9 @@ def run_comparison(omega: list[int]) -> None:
 # ════════════════════════════════════════════════════════════════════════
 
 def run_sweep(omega: list[int]) -> None:
-    print("\n" + "=" * 60)
+    print("\n" + "=" * 9)
     print("MICRO_REF SWEEP (all 64)")
-    print("=" * 60)
+    print("=" * 9)
 
     k4_ok = conf_ok = True
     for mt in range(64):
@@ -524,9 +524,9 @@ def main() -> None:
     run_sweep(omega)
     optical_depth_from_canonical_trajectory()
 
-    print("\n" + "=" * 60)
+    print("\n" + "=" * 9)
     print("THEOREM SUMMARY")
-    print("=" * 60)
+    print("=" * 9)
     for t in [
         "T1.  {id,W₂,W₂',F} is K4 for every m.          [VERIFIED]",
         "T2.  W₂ maps shell s→6-s (chi⊕63).              [VERIFIED]",

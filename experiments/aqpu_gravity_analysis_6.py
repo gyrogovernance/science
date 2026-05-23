@@ -1,14 +1,14 @@
 """
-CGM gravity analysis extension:
+CGM gravity analysis 6:
   A. Antimatter gravitational interaction (chirality-reversal invariance)
-  B. Gravitational wave extensions (polarization, phasing, ringdown, echoes)
-  C. Virial condition and rest-mass confinement (BU closure, bound energy)
-  D. Self-energy (UV regulation through G(psi), exact theorem)
+  B. Gravitational wave extensions (spectrum, phasing, ringdown, echoes)
+  C. Virial, self-energy, UV regulation (BU closure, I=1/2, Hawking)
 
 Ownership (reuse, do not duplicate):
-  analysis_2/3: Z2 holonomy, q(F)=0, D=24 (kernel theorems)
+  analysis_2: Z2 holonomy, q(F)=0, D=24, Omega BFS (S1/S2/S4)
+  analysis_3: UNA/ONA stress trace, bulk anisotropy (B)
   analysis_4: point-mass psi(s), horizon, photon sphere (field ODE)
-  analysis_5: gravitomagnetic spin sector (linear); GW HT calibration
+  analysis_5: vacuum Gauss law, GW HT strain calibration (J, P, S)
   common: cycle words, field integrals, geometry helpers
 """
 from __future__ import annotations
@@ -28,29 +28,33 @@ if str(_REPO) not in sys.path:
 if str(_EXPERIMENTS) not in sys.path:
     sys.path.insert(0, str(_EXPERIMENTS))
 
+from aqpu_gravity_analysis_2 import enumerate_omega
 from aqpu_gravity_common import (
     configure_stdout_utf8,
-    Q_G, rho, Delta,
-    Omega_size, H_size,
-    tau_g_with_c4, C4_REF,
+    Q_G,
+    rho,
+    Delta,
+    tau_g_with_c4,
+    C4_REF,
     binom_shell,
-    dln_g_dpsi, psi_analytic, psi_point_mass,
-    dpsi_ds_analytic, dpsi_ds_point_mass, horizon_s_analytic,
+    dln_g_dpsi,
+    psi_analytic,
+    psi_point_mass,
+    dpsi_ds_analytic,
+    dpsi_ds_point_mass,
+    horizon_s_analytic,
     photon_geometry_analytic,
     field_integral_exterior_exact,
     field_integral_exterior_numeric,
     exterior_integral_numeric_lo,
-    GENE_MAC_REST, GENE_MAC_SWAPPED,
-    Z2_HOLONOMY_PATH_TRAVERSE,
+    GENE_MAC_REST,
+    GENE_MAC_SWAPPED,
     cycle_word_for_micro,
     F_cycle_word,
     reversed_cycle_word,
-    W2p_then_W2_cycle_word,
-    arch_path_displacement,
-    holonomy_qxor_final,
-    apply_word_to_state,
     trace_word_steps,
-    FA_STF, TR_SIGMA_SHELL,
+    FA_STF,
+    TR_SIGMA_SHELL,
 )
 from gyroscopic.aQPU.api import chirality_word6
 from gyroscopic.aQPU.constants import CHIRALITY_MASK_6, step_state_by_byte
@@ -108,10 +112,7 @@ def tortoise_integral(s_hi, s_lo=None, g1_val=None):
 
 
 def effective_potential_full(s, g1_val=None, ell=2):
-    """Full axial effective potential for spin-2 perturbations.
-    V = f * [ell(ell+1)/s^2 - 6*psi/s^2] in dimensionless (r_g) units.
-    For Schwarzschild (psi=1/s, f=1-2/s) this becomes:
-    V_schw = (1-2/s)[6/s^2 - 6/s^3]; peak at s=(9+sqrt(17))/4."""
+    """Full axial effective potential for spin-2 perturbations."""
     if g1_val is None:
         g1_val = g1
     fs = f_metric(s, g1_val)
@@ -125,32 +126,13 @@ def effective_potential_schwarzschild(s, ell=2):
     return fs * (ell * (ell + 1) / s ** 2 - 6.0 / s ** 3)
 
 
-def enumerate_omega_bfs(start: int = GENE_MAC_REST) -> set[int]:
-    """BFS over all 256 byte transitions; |Omega| = 4096 from REST."""
-    visited: set[int] = {start}
-    queue = [start]
-    head = 0
-    while head < len(queue):
-        s = queue[head]
-        head += 1
-        for b in range(256):
-            ns = step_state_by_byte(s, b)
-            if ns not in visited:
-                visited.add(ns)
-                queue.append(ns)
-    return visited
-
-
 def poschl_teller_qnm(
     v_at_s,
     f_at_s,
     s_lo: float,
     s_hi: float = 10.0,
 ) -> tuple[float, float, float, float]:
-    """
-    Pöschl-Teller n=0 from barrier peak: omega_R, omega_I in omega*M units (c=1).
-    v_at_s(s), f_at_s(s) supply V(s) and f(s)=1-2*psi at the peak.
-    """
+    """Pöschl-Teller n=0 from barrier peak: omega_R, omega_I in omega*M units (c=1)."""
     res = minimize_scalar(lambda s: -v_at_s(s), bounds=(s_lo, s_hi), method="bounded")
     s_peak = float(getattr(res, "x", res))
     V0 = float(v_at_s(s_peak))
@@ -195,11 +177,6 @@ def g_over_g0(psi: float) -> float:
     return math.exp(g1 * psi)
 
 
-def bulk_anisotropy_ratio_sq() -> float:
-    """Shell-conditional ||pi||^2/Tr^2 = 2/75 (aqpu_gravity_analysis_3 section B)."""
-    return 2.0 / 75.0
-
-
 def exterior_field_integral_I(g1_val: float) -> tuple[float, float]:
     """I = int_{s_h}^inf exp(g1*psi)/s^2 ds = psi(s_h)-psi(inf); returns (I, s_h)."""
     sh = horizon_s_analytic(g1_val)
@@ -230,18 +207,16 @@ HBAR_SI = 1.054571817e-34
 K_B_SI = 1.380649e-23
 
 
-def hawking_temperature_si(
-    mass_kg: float, kappa_per_rg: float
-) -> float:
+def hawking_temperature_si(mass_kg: float, kappa_per_rg: float) -> float:
     """T = hbar*c^3/(8*pi*G*M*k_B) scaled by kappa_ratio (CGM/GR surface gravity)."""
     return (
-        HBAR_SI * C_SI**3 * kappa_per_rg
+        HBAR_SI * C_SI ** 3 * kappa_per_rg
         / (8.0 * math.pi * G_SI * mass_kg * K_B_SI)
     )
 
 
-def closure_work_density_u(s: float, g1_val: float | None = None) -> float:
-    """u = |g|^2 / (8*pi*G(psi)) with |g| = exp(g1*psi)/s^2 from exterior flux identity."""
+def refractive_stress_density_u(s: float, g1_val: float | None = None) -> float:
+    """Refractive stress density u = |g|^2 / (8*pi*G(psi)); |g| = exp(g1*psi)/s^2."""
     if g1_val is None:
         g1_val = g1
     psi_s = float(psi_analytic(s, g1_val))
@@ -251,29 +226,16 @@ def closure_work_density_u(s: float, g1_val: float | None = None) -> float:
 
 
 def local_exterior_energy_balance() -> dict[str, float]:
-    """Virial-sector balance: E_closure = +Mc^2/4, E_self = -Mc^2/4 per M_obs."""
+    """Virial-sector balance: E_rest_frame = +Mc^2/4, E_self = -Mc^2/4 per M_obs."""
     i_ext = 0.5
-    e_closure = 0.5 * i_ext
+    e_rest_frame = 0.5 * i_ext
     e_self = -0.5 * 0.5
     return {
         "I": i_ext,
-        "E_closure_frac": e_closure,
+        "E_rest_frame_frac": e_rest_frame,
         "E_self_frac": e_self,
-        "sum": e_closure + e_self,
+        "sum": e_rest_frame + e_self,
     }
-
-
-def modified_gauss_psi_residual(s: float, g1_val: float | None = None) -> tuple[float, float, float]:
-    """Spherical: nabla^2 psi - g1|grad psi|^2 (should be 0). Returns (lap, g1*grad^2, residual)."""
-    if g1_val is None:
-        g1_val = g1
-    psi_s = float(psi_analytic(s, g1_val))
-    d1 = float(dpsi_ds_analytic(s, g1_val))
-    denom = s * s - g1_val * s
-    d2 = (2.0 * s - g1_val) / (denom * denom)
-    lap = d2 + (2.0 / s) * d1
-    g1_grad_sq = g1_val * d1 * d1
-    return lap, g1_grad_sq, lap - g1_grad_sq
 
 
 def shell_cycle_fourier_amps(word: list[int], micro_ref: int = 0) -> list[tuple[int, float]]:
@@ -318,7 +280,7 @@ def section(title: str) -> None:
     print("-" * len(title))
 
 
-print("CGM gravity analysis extension: Antimatter, GW, Virial, Self-energy")
+print("CGM gravity analysis 6: Antimatter, GW, Virial, Self-energy")
 print("Delta = {:.12f}, rho = {:.12f}".format(Delta, rho))
 print("g1 = {:.6f}, tau_G = {:.10f}".format(g1, tau_G_full))
 print("s_h = {:.4f} r_g, s_ph = {:.4f} r_g, b/r_g = {:.4f}".format(s_h, s_ph, b_ph))
@@ -334,20 +296,8 @@ section("A.1  Antimatter involution C")
 print("  C(A12, B12) = (B12, A12); reversed word uses families (3,2,1,0).")
 
 section("A.2  Gravitoelectric invariants (EVEN under C)")
-disp_std = [arch_path_displacement(cycle_word_for_micro(m), m) for m in range(64)]
-disp_rev = [arch_path_displacement(reversed_cycle_word(m), m) for m in range(64)]
-disp_W2p = [arch_path_displacement(W2p_then_W2_cycle_word(m), m) for m in range(64)]
-ret_std = [apply_word_to_state(cycle_word_for_micro(m), GENE_MAC_REST) for m in range(64)]
-ret_rev = [apply_word_to_state(reversed_cycle_word(m), GENE_MAC_REST) for m in range(64)]
-ret_W2p = [apply_word_to_state(W2p_then_W2_cycle_word(m), GENE_MAC_REST) for m in range(64)]
-ret_std_sw = [apply_word_to_state(cycle_word_for_micro(m), GENE_MAC_SWAPPED) for m in range(64)]
-d_z2 = Z2_HOLONOMY_PATH_TRAVERSE
-ok_D24 = all(d == d_z2 for d in disp_std) and all(d == d_z2 for d in disp_rev) and all(d == d_z2 for d in disp_W2p)
-ok_rest = all(s == GENE_MAC_REST for s in ret_std) and all(s == GENE_MAC_REST for s in ret_rev) and all(s == GENE_MAC_REST for s in ret_W2p)
-ok_swap = all(s == GENE_MAC_SWAPPED for s in ret_std_sw)
-print("  D={}: all 64 micro-refs x 3 words -> {}".format(d_z2, ok_D24))
-print("  cycle -> REST: {}".format(ok_rest))
-print("  cycle from SWAPPED -> SWAPPED: {}".format(ok_swap))
+print("  D=24 displacement, q(F)=0, cycle->REST: aqpu_gravity_analysis_2 S1/S4.")
+print("  Mass popcount(A12) even under face-swap: verified on Omega in A.5.")
 
 section("A.3  H_spin observable (ODD under C on chi6)")
 print("  chi6(s) = chirality_word6(s) in GF(2)^6; N = popcount(chi6) (shell index).")
@@ -425,8 +375,9 @@ for pv in [0.01, 0.05, 0.10, 0.15, 0.20, 0.30]:
     g_ratio = math.exp(g1 * pv)
     print("  {:10.4f}  {:14.6e}  {:14.6f}".format(pv, chiral_corr, g_ratio))
 print()
-section("A.5  H_spin parity on full Omega (BFS)")
-omega_list = sorted(enumerate_omega_bfs())
+
+section("A.5  H_spin parity on full Omega (BFS from analysis_2)")
+omega_list = sorted(enumerate_omega())
 odd_count, equator_count, h_nonzero_count, mass_invariant_count, n_omega = (
     verify_h_spin_under_C(omega_list))
 h_spin_values = [compute_H_spin_state(s) for s in omega_list]
@@ -437,21 +388,19 @@ print("  H_spin != 0:                {}/{}".format(h_nonzero_count, n_omega))
 print("  mass(face-swap C) = mass:   {}/{}".format(mass_invariant_count, n_omega))
 print("  H_spin range: [{}, {}]".format(min(h_spin_values), max(h_spin_values)))
 
-section("A.6  Bulk anisotropy and chiral coupling")
-aniso_sq = bulk_anisotropy_ratio_sq()
-fa_stf_sq = FA_STF * FA_STF
-print("  ||pi||^2/Tr^2 (shell-conditional, bulk) = {:.12f}  (= 2/75)".format(aniso_sq))
-print("  FA_STF^2 (mean ||pi||/Tr closure)       = {:.12f}  (= 2/27, not used in chiral)".format(
-    fa_stf_sq))
+section("A.6  Chiral gravitomagnetic coupling")
+print("  ||pi||^2/Tr^2 = 2/75 (bulk): aqpu_gravity_analysis_3 B.")
 psi_ns = 0.15
 chiral_ns = (4.0 / 75.0) * psi_ns ** 2
-print("  delta_B_g/B_g at psi=0.15 (NS surface): {:.6f}  ({:.4f}%)".format(
+print("  delta_B_g/B_g = (4/75)*psi^2 at psi=0.15 (NS surface): {:.6f}  ({:.4f}%)".format(
     chiral_ns, chiral_ns * 100.0))
 
 # =====================================================================
 # SECTION B: GRAVITATIONAL WAVE EXTENSIONS
 # =====================================================================
 print("=" * 9, "B. Gravitational wave extensions", "=" * 9)
+print()
+print("  Vacuum Gauss / HT strain calibration: aqpu_gravity_analysis_5 J, P.")
 print()
 
 section("B.0  Quadrupole shell spectrum and depth-8 closure")
@@ -478,31 +427,6 @@ print("    step 4: arch_shell={}  qxor={}  state=REST? {}".format(
     r4["arch_shell"], r4["qxor"], r4["state24"] == GENE_MAC_REST))
 print("    step 8: arch_shell={}  qxor={}  state=REST? {}".format(
     r8["arch_shell"], r8["qxor"], r8["state24"] == GENE_MAC_REST))
-print("    D(path) = {}".format(arch_path_displacement(word8, 0)))
-
-section("B.1  Vacuum equation (no scalar mode)")
-s_test = np.array([2.0, 3.0, 5.0, 10.0, 50.0, 100.0, 1000.0])
-psi_test_vals = np.asarray(psi_analytic(s_test, g1), dtype=float)
-dpsi_test = np.abs(np.asarray(dpsi_ds_analytic(s_test, g1), dtype=float))
-mod_flux = s_test ** 2 * np.exp(-g1 * psi_test_vals) * dpsi_test
-
-print("  Modified Gauss law: div[(G0/G(psi)) grad(Phi)] = 0 in vacuum")
-print("  Equivalently: s^2 * exp(-g1*psi) * |dpsi/ds| = const = 1")
-print()
-print("  {:>10s}  {:>12s}  {:>14s}".format("s", "psi", "modified flux"))
-for i in range(len(s_test)):
-    print("  {:10.1f}  {:12.6f}  {:14.10f}".format(
-        s_test[i], psi_test_vals[i], mod_flux[i]))
-print()
-max_flux_dev = float(np.max(np.abs(mod_flux - 1.0)))
-print("  max |modified_flux - 1| = {:.2e}".format(max_flux_dev))
-print("  Two tensor modes (h+, hx); psi slaved to metric.")
-s_gauss = 5.0
-lap_s, g1_grad_s, res_s = modified_gauss_psi_residual(s_gauss)
-print("  Modified Gauss law at s={} (spherical):".format(s_gauss))
-print("    nabla^2 psi = {:.6e}".format(lap_s))
-print("    g1|grad psi|^2 = {:.6e}".format(g1_grad_s))
-print("    residual = {:.6e}".format(res_s))
 
 section("B.2  Inspiral phasing")
 v_over_c_values = [0.1, 0.2, 0.3, 0.4, 0.5]
@@ -511,11 +435,9 @@ print("  g1 = {:.6f}".format(g1))
 print()
 print("  {:>10s}  {:>14s}  {:>14s}".format("v/c", "delta_Phi/Phi", "% correction"))
 for vc in v_over_c_values:
-    phase_corr = (5.0 * g1 / 8.0) * vc**2
+    phase_corr = (5.0 * g1 / 8.0) * vc ** 2
     print("  {:10.2f}  {:14.6f}  {:14.2f}%".format(vc, phase_corr, phase_corr * 100))
-print()
-# GW150914 peak v/c ~ 0.4
-gw150914_phase = (5.0 * g1 / 8.0) * 0.4**2
+gw150914_phase = (5.0 * g1 / 8.0) * 0.4 ** 2
 print("  GW150914 (v/c=0.4): {:.2f}%".format(gw150914_phase * 100))
 
 section("B.3  Tortoise coordinate, potential, echoes")
@@ -560,7 +482,6 @@ print("  Analytic: peak at s = (9+sqrt(17))/4 = {:.4f}, V_max = {:.6f}".format(
 print("  V at photon sphere (s=3): {:.6f} (= 4/27 = {:.6f})".format(
     V_at_photon_schw, 4.0 / 27.0))
 print()
-
 print("  Photon sphere: GR s_ph=3, CGM s_ph={:.4f} r_g".format(s_ph))
 print("  Echo delays (r*-based, order-of-magnitude):")
 for eps_frac in [0.001, 0.01, 0.05, 0.1]:
@@ -604,65 +525,20 @@ print("  CGM vs GR exact n=0 QNM: {:.4f} ({:+.1f}%)".format(
 print("  Photon-sphere scale: s_ph_GR/s_ph_CGM = {:.4f} ({:+.1f}%)".format(
     3.0 / s_ph, (3.0 / s_ph - 1) * 100))
 
-section("B.5  GW strain calibration (Hulse-Taylor, NS-NS)")
-m1_ht = 1.4398 * M_SUN_KG
-m2_ht = 1.3886 * M_SUN_KG
-m_tot_ht = m1_ht + m2_ht
-p_b_ht = 7.7519 * 3600.0
-ecc_ht = 0.617
-a_orb_ht = (G_SI * m_tot_ht * p_b_ht ** 2 / (4.0 * math.pi ** 2)) ** (1.0 / 3.0)
-r_g_ht = G_SI * m_tot_ht / C_SI ** 2
-psi_ht = 1.0 / (a_orb_ht / r_g_ht)
-g_ht = g_over_g0(psi_ht)
-m_ns = 1.4 * M_SUN_KG
-a_ns = 20000.0
-psi_ns_bin = G_SI * m_ns / (a_ns * C_SI ** 2)
-g_ns = g_over_g0(psi_ns_bin)
-print("  {:>18s}  {:>12s}  {:>10s}  {:>12s}  {:>12s}".format(
-    "Source", "psi", "G/G0", "h ratio", "Lum (G^2.5)"))
-print("  " + "-" * 70)
-for label, psi_s, g_r in [
-    ("Hulse-Taylor", psi_ht, g_ht),
-    ("NS-NS 20 km", psi_ns_bin, g_ns),
-]:
-    lum_pct = (g_r ** 2.5 - 1.0) * 100.0
-    h_pct = (g_r - 1.0) * 100.0
-    print("  {:>18s}  {:12.4e}  {:10.7f}  {:11.4f}%  {:11.4f}%".format(
-        label, psi_s, g_r, h_pct, lum_pct))
-print("  HT orbital dP/dt shift (G^2.5-1): {:.4f}%".format((g_ht ** 2.5 - 1.0) * 100.0))
-
 # =====================================================================
-# SECTION C: VIRIAL CONDITION AND REST MASS
+# SECTION C: VIRIAL, SELF-ENERGY, UV REGULATION
 # =====================================================================
-print("=" * 9, "C. Virial condition (BU closure, bound energy)", "=" * 9)
+print("=" * 9, "C. Virial, self-energy, UV regulation", "=" * 9)
 print()
 
 section("C.1  Virial condition (CS/BU)")
 print("  2T + V = 0 => E_total = T + V = -T (bound system, negative total energy).")
 print("  Zero net displacement/momentum flux per cycle (not zero total energy).")
+print("  q(F)=0: analysis_2 S1; Tr_iso = E[Tr|w]+3Var: analysis_3 B.")
 bal = local_exterior_energy_balance()
-print("  Point-mass sector: E_closure/Mc^2 = +{:.4f}, E_self/Mc^2 = {:.4f}, sum = {:.4f}".format(
-    bal["E_closure_frac"], bal["E_self_frac"], bal["sum"]))
-print("  (Isolated exterior: local E_self+E_closure=0; 2T+V is cosmological/global.)")
-
-section("C.2  Kernel bookkeeping")
-all_qF_zero = all(
-    holonomy_qxor_final(cycle_word_for_micro(m), m) == 0 for m in range(64)
-)
-
-print("  q(F) = 0 for all 64 micro-refs: {}".format(all_qF_zero))
-print("  |H|^2 = |Omega|: {}^2 = {} = {}".format(H_size, H_size**2, Omega_size))
-print("  D = 24 invariant under reversal: {}".format(ok_D24))
-
-section("C.3  UNA/ONA stress trace")
-e_tr_w = 5.0 / 8.0
-var_term = 3.0 / 24.0
-tr_iso = 3.0 / 4.0
-print("  Tr(sigma_iso) = E[Tr|w] + 3*Var(E[v|w]) = {:.6f} + {:.6f} = {:.6f}".format(
-    e_tr_w, var_term, tr_iso))
-print("  Identity (ONA, binding):    E[Tr|w]  = 5/8 = {:.6f}".format(e_tr_w))
-print("  Individuality (UNA, kinetic): 3*Var   = 1/8 = {:.6f}".format(var_term))
-print("  Sum = 3/4")
+print("  Point-mass sector: E_rest_frame/Mc^2 = +{:.4f}, E_self/Mc^2 = {:.4f}, sum = {:.4f}".format(
+    bal["E_rest_frame_frac"], bal["E_self_frac"], bal["sum"]))
+print("  (Isolated exterior: local E_self+E_rest_frame=0; 2T+V is cosmological/global.)")
 
 section("C.4  Exterior integral theorem (I = 1/2)")
 print("  Theorem: I = int_{s_h}^inf exp(g1*psi)/s^2 ds = psi(s_h) - psi(inf) = 1/2")
@@ -683,26 +559,75 @@ for g1s in g1_samples:
         g1s, sh_s, I_ex, I_num))
 print("  All sampled g1: I = 1/2 = {}".format(all_I_half))
 print()
+print("  CGM vs Newtonian exterior integral (UV regulation):")
+print("  {:>12s}  {:>12s}  {:>12s}  {:>12s}".format(
+    "s_inner", "I_Newton", "I_CGM", "CGM/Newton"))
+for s_inner in [0.5, 1.0, 1.5, s_h, 2.0, 3.0, 5.0, 10.0]:
+    I_newt = 1.0 / s_inner
+    if s_inner > s_h * 1.001:
+        I_cgm, _ = field_integral_exterior_numeric(s_inner, g1)
+        ratio = I_cgm / I_newt
+        i_cgm_str = "{:12.6f}".format(I_cgm)
+        ratio_str = "{:12.6f}".format(ratio)
+    else:
+        i_cgm_str = "         n/a"
+        ratio_str = "         n/a"
+    print("  {:12.4f}  {:12.6f}  {}  {}".format(s_inner, I_newt, i_cgm_str, ratio_str))
+print("  CGM I -> 1/2 at s_h; Newtonian I -> inf as s -> 0.")
 
 section("C.5  Local self-energy (point mass)")
-print("  Field closure work: E_field = +(Mc^2/2)*I = +Mc^2/4.")
+print("  Rest-frame energy: E_rest_frame = +(Mc^2/2)*I = +Mc^2/4.")
 print("  Gravitational self-energy: E_self = -Mc^2/4 (M = observable mass).")
-print("  Local balance: E_self + E_field = 0 per unit M_obs.")
+print("  Local balance: E_self + E_rest_frame = 0 per unit M_obs.")
 print()
 print("  Self-consistent dressing (field sourced by M_obs):")
 print("    M_obs = M_UNA + E_self/c^2 = M_UNA - M_obs/4")
 print("    M_obs/M_UNA = 4/5")
 mass_ratio_obs = 4.0 / 5.0
 binding_frac = -0.25
+E_self_frac = -0.25
+E_rest_frame_frac = 0.25
 
 integral_numeric, _ = field_integral_exterior_numeric(s_h * 1.001, g1)
 integral_exact = field_integral_exterior_exact(s_h, g1)
+
+s_u = 5.0
+u5 = refractive_stress_density_u(s_u)
+print("  psi(s_h)=1/2 => E_self/M_obs c^2 = -1/4; E_rest_frame = +1/4.")
+print("  u(s=5) = |g|^2/(8*pi*G(psi)) = {:.6e} (G0=1 units)".format(u5))
+print()
+print("  Self-energy vs compactness:")
+print("  {:>15s}  {:>10s}  {:>10s}  {:>12s}  {:>12s}".format(
+    "Object", "psi_surf", "G/G0", "E_self/Mc^2", "E_self(3/5)"))
+objects = [
+    ("Earth", 7.0e-10),
+    ("Sun", 2.1e-6),
+    ("White dwarf", 3.0e-4),
+    ("NS (12 km, CGM TOV)", 0.153),
+    ("NS (12 km, Newtonian)", 0.172),
+    ("BH horizon", 0.5),
+]
+for name, psi_s in objects:
+    g_ratio = math.exp(g1 * psi_s)
+    E_simple = -0.5 * psi_s
+    E_sphere = -0.6 * psi_s * g_ratio
+    print("  {:>15s}  {:10.4e}  {:10.6f}  {:12.6f}  {:12.6f}".format(
+        name, psi_s, g_ratio, E_simple, E_sphere))
+print("  Shell self-energy weights:")
+print("  {:>5s}  {:>10s}  {:>10s}  {:>10s}  {:>12s}".format(
+    "Shell", "Pop", "Tr(sigma)", "||pi|| est", "Self-E prop"))
+for k in range(7):
+    tr_k = TR_SIGMA_SHELL[k]
+    pi_k = FA_STF * tr_k if k not in (0, 6) else 0.0
+    se_k = pi_k * Delta * binom_shell[k] * 4
+    print("  {:5d}  {:10.6f}  {:10.6f}  {:10.6f}  {:12.6e}".format(
+        k, binom_shell[k], tr_k, pi_k, se_k))
 
 section("C.6  Cosmological virial closure (BU)")
 print("  Local theorem (C.5): E_self = -Mc^2/4 for one point mass.")
 print("  Cosmological: strictly bound structure under global BU closure.")
 print("  Not implied by local I=1/2 alone; needs cosmic virial balance.")
-print("  Expansion: tau(z) = tau_G*(1-psi(z)) (closure depth, not Hubble flow).")
+print("  Expansion: tau(z) = tau_G*(1-psi(z)) (Refractive Depth, not Hubble flow).")
 
 section("C.7  Hawking temperature and BU-Ingress")
 hk = hawking_cgm_vs_gr(g1)
@@ -724,67 +649,6 @@ print("  Hawking T (10 Msun): T_GR = {:.4e} K, T_CGM = {:.4e} K ({:+.2f}%)".form
 print("  Depth-8 cycle: BU-Egress (depth 4) pair creation; BU-Ingress (depth 8)")
 print("    completes closure. Hawking flux = escaping partner when Ingress fails")
 print("    for the infalling member (horizon absorption).")
-
-# =====================================================================
-# SECTION D: SELF-ENERGY AND UV REGULATION
-# =====================================================================
-print("=" * 9, "D. Self-energy and UV regulation", "=" * 9)
-print()
-
-section("D.1  Point-mass self-energy")
-psi_horizon = 0.5
-E_self_frac = -0.5 * psi_horizon
-E_closure_frac = 0.5 * 0.5
-print("  psi(s_h) = 1/2 => E_self/M_obs c^2 = -1/4 = {:.10f}".format(E_self_frac))
-print("  Closure work E_field/M_obs c^2 = +1/4 = {:.10f}".format(E_closure_frac))
-print("  M_obs/M_UNA = 4/5 (self-consistent field mass).")
-s_u = 5.0
-u5 = closure_work_density_u(s_u)
-print("  u(s=5) = |g|^2/(8*pi*G(psi)) = {:.6e} (G0=1 units; |g|=exp(g1*psi)/s^2)".format(u5))
-
-section("D.2  Exterior integral: CGM vs Newtonian")
-print("  {:>12s}  {:>12s}  {:>12s}  {:>12s}".format(
-    "s_inner", "I_Newton", "I_CGM", "CGM/Newton"))
-for s_inner in [0.5, 1.0, 1.5, s_h, 2.0, 3.0, 5.0, 10.0]:
-    I_newt = 1.0 / s_inner  # Newtonian: integral 1/s^2 ds = 1/s_inner
-    if s_inner > s_h * 1.001:
-        I_cgm, _ = field_integral_exterior_numeric(s_inner, g1)
-        ratio = I_cgm / I_newt
-        i_cgm_str = "{:12.6f}".format(I_cgm)
-        ratio_str = "{:12.6f}".format(ratio)
-    else:
-        i_cgm_str = "         n/a"
-        ratio_str = "         n/a"
-    print("  {:12.4f}  {:12.6f}  {}  {}".format(s_inner, I_newt, i_cgm_str, ratio_str))
-
-print("  CGM I -> 1/2 at s_h; Newtonian I -> inf as s -> 0.")
-
-section("D.3  Self-energy vs compactness")
-print("  {:>15s}  {:>10s}  {:>10s}  {:>12s}  {:>12s}".format(
-    "Object", "psi_surf", "G/G0", "E_self/Mc^2", "E_self(3/5)"))
-objects = [
-    ("Earth", 7.0e-10),
-    ("Sun", 2.1e-6),
-    ("White dwarf", 3.0e-4),
-    ("NS (12 km, CGM TOV)", 0.153),
-    ("NS (12 km, Newtonian)", 0.172),
-    ("BH horizon", 0.5),
-]
-for name, psi_s in objects:
-    g_ratio = math.exp(g1 * psi_s)
-    E_simple = -0.5 * psi_s
-    E_sphere = -0.6 * psi_s * g_ratio  # (3/5) * psi * G/G0 approximation
-    print("  {:>15s}  {:10.4e}  {:10.6f}  {:12.6f}  {:12.6f}".format(
-        name, psi_s, g_ratio, E_simple, E_sphere))
-section("D.4  Shell self-energy weights")
-print("  {:>5s}  {:>10s}  {:>10s}  {:>10s}  {:>12s}".format(
-    "Shell", "Pop", "Tr(sigma)", "||pi|| est", "Self-E prop"))
-for k in range(7):
-    tr_k = TR_SIGMA_SHELL[k]
-    pi_k = FA_STF * tr_k if k not in (0, 6) else 0.0
-    se_k = pi_k * Delta * binom_shell[k] * 4
-    print("  {:5d}  {:10.6f}  {:10.6f}  {:10.6f}  {:12.6e}".format(
-        k, binom_shell[k], tr_k, pi_k, se_k))
 
 # =====================================================================
 # SECTION E: SYNTHESIS AND FALSIFICATION
@@ -814,19 +678,10 @@ print("  {:30s} | {:35s} | {:15s}".format(
     "Wormhole/alcubierre realized", "Excluded by BU closure", "Speculative"))
 print()
 
-section("E.2  Consistency checks")
+section("E.2  Checks unique to this script")
 check1 = abs(E_self_frac + 0.25) < 1e-12
 print("  E_self/M_obs c^2 = -1/4: {:.6f} = {}".format(E_self_frac, check1))
 
-# Check 2: Cycle reversal returns to REST
-check2 = ok_rest
-print("  Cycle reversal returns to REST: {}".format(check2))
-
-# Check 3: Displacement invariance
-check3 = ok_D24
-print("  Displacement D=24 invariant under reversal: {}".format(check3))
-
-# Check 4: Field integral = 1/2 (numeric vs horizon ODE identity)
 check4 = (
     abs(integral_numeric - 0.5) < 1e-3
     and abs(integral_exact - 0.5) < 1e-9
@@ -834,13 +689,12 @@ check4 = (
 print("  Field integral = 1/2: numeric err={:.2e} exact err={:.2e} = {}".format(
     abs(integral_numeric - 0.5), abs(integral_exact - 0.5), "OK" if check4 else "FAIL"))
 
-# Check 5: Energy conditions at sampled radii
 check5 = True
 for s in [2.0, 5.0, 10.0, 50.0]:
     psi_s = psi_point_mass(s, g1)
     dpsi = dpsi_ds_point_mass(s, g1)
     f_val = 1.0 - 2.0 * psi_s
-    G_tt = -2.0 * f_val * (psi_s + s * dpsi) / s**2
+    G_tt = -2.0 * f_val * (psi_s + s * dpsi) / s ** 2
     if G_tt > 0:
         check5 = False
 print("  Weak energy condition at s=2,5,10,50: {}".format(check5))
@@ -848,10 +702,10 @@ print("  Weak energy condition at s=2,5,10,50: {}".format(check5))
 check6 = abs(mass_ratio_obs - 0.8) < 1e-12
 print("  M_obs/M_UNA = 4/5: {:.6f} = {}".format(mass_ratio_obs, check6))
 
-check7 = abs(binding_frac + 0.25) < 1e-12 and abs(E_closure_frac + binding_frac) < 1e-12
-print("  Local E_self + E_closure = 0 (per M_obs): {}".format("OK" if check7 else "FAIL"))
+check7 = abs(binding_frac + 0.25) < 1e-12 and abs(E_rest_frame_frac + binding_frac) < 1e-12
+print("  Local E_self + E_rest_frame = 0 (per M_obs): {}".format("OK" if check7 else "FAIL"))
 
-check8 = odd_count == n_omega and n_omega == Omega_size
+check8 = odd_count == n_omega
 print("  H_spin odd under C_spin on Omega ({}): {}".format(n_omega, check8))
 
 check8b = mass_invariant_count == n_omega
@@ -859,12 +713,8 @@ print("  mass even under face-swap on Omega: {}".format(check8b))
 
 check8c = equator_count == 1280
 check8d = h_nonzero_count == 2816
-check_aniso = abs(aniso_sq - 2.0 / 75.0) < 1e-12
-check_fk2 = abs(f_k2 - 1.5) < 1e-12
 print("  Equator shell count (N=3): {} = {}".format(equator_count, check8c))
 print("  H_spin != 0: {} = {}".format(h_nonzero_count, check8d))
-print("  ||pi||^2/Tr^2 = 2/75: {}".format(check_aniso))
-print("  2*C(6,2)/C(6,3) = 1.5: {}".format(check_fk2))
 
 check10 = (
     not math.isnan(omega_R_pt_cgm)
@@ -878,27 +728,15 @@ print("  PT ringdown CGM/GR: {:.4f}; vs exact: {:.4f} = {}".format(
 print("  Hawking kappa ratio ~1: {:.4f} = {}".format(hk["kappa_ratio"], check_hk))
 print("  Hawking L ratio < 1: {:.4f} = {}".format(hk["lum_ratio"], check_lum))
 print("  Exterior I = 1/2 all g1: {}".format(all_I_half))
-
-check9 = max_flux_dev < 1e-10
-check_gauss = abs(res_s) < 1e-10
-print("  Modified flux = 1 (vacuum equation): max dev = {:.2e} = {}".format(
-    max_flux_dev, "OK" if check9 else "FAIL"))
-print("  Modified Gauss law at s=5: residual = {:.2e} = {}".format(
-    res_s, "OK" if check_gauss else "FAIL"))
-
+print()
+print("  Scalar-tensor action (psi slaved): aqpu_gravity_analysis_5 S.")
 print()
 
-section("E.3  Scalar-tensor action (constrained psi)")
-print("  S = (1/16pi G0) int R exp(-g1 psi) sqrt(-g) d4x")
-print("    - int lambda (psi - |Phi|/Phi_Planck) sqrt(-g) d4x + int L_m sqrt(-g) d4x")
-print("  psi slaved by lambda (no scalar kinetic term).")
-print("  Exterior vacuum: div[exp(-g1*psi) grad psi]=0; no scalar wave mode.")
-
 section("E.4  Summary")
-print("  A: C-even mass/D=24; C-odd H_spin on |Omega|={}.".format(n_omega))
-print("  B: k=2 amp {:.2f}; HT dP {:.4f}%; inspiral {:.1f}%; ringdown {:+.1f}%.".format(
-    f_k2, (g_ht ** 2.5 - 1.0) * 100.0, gw150914_phase * 100, (ratio_pt_exact - 1) * 100))
+print("  A: C-odd H_spin on |Omega|={}; chiral (4/75)psi^2.".format(n_omega))
+print("  B: k=2 |A_2|={:.2f}; inspiral {:.1f}%; ringdown {:+.1f}% (PT).".format(
+    a_k2_z2, gw150914_phase * 100, (ratio_pt_exact - 1) * 100))
 print("  C: I=1/2; E_self=-Mc^2/4; M_obs/M_UNA=4/5; Hawking L -{:.0f}%.".format(
     (1.0 - hk["lum_ratio"]) * 100.0))
-print("  D: UV finite via G(psi); integral I=1/2 for all g1.")
+print("  GW HT / vacuum: analysis_5 J, P.")
 print("=" * 9, "DONE", "=" * 9)

@@ -410,7 +410,7 @@ class TriadIndexAnalyzer:
         Sets self.domain_factors for TW-based out-of-sample predictions.
         """
         print("\n🔧 DOMAIN CALIBRATION")
-        print("=" * 40)
+        print("=" * 9)
 
         for report in reports:
             if "error" in report:
@@ -713,7 +713,7 @@ class TriadIndexAnalyzer:
         Test out-of-sample predictions using TW-calibrated domain factors.
         """
         print("\n🧪 OUT-OF-SAMPLE TW TESTING")
-        print("=" * 40)
+        print("=" * 9)
 
         predictions = []
 
@@ -786,7 +786,7 @@ class TriadIndexAnalyzer:
 
         if self.verbose:
             print("🔍 ANALYZING TRIADS")
-            print("=" * 40)
+            print("=" * 9)
 
         # 1. Particle triad (Higgs → proton → electron)
         if self.verbose:
@@ -1102,7 +1102,7 @@ class TriadIndexAnalyzer:
 
         # Summary analysis
         print("\n📊 TRIAD ANALYSIS SUMMARY")
-        print("=" * 40)
+        print("=" * 9)
 
         loop_pitch = self.loop_pitch()
         print(f"Loop pitch Π_loop: {loop_pitch:.6f}")
@@ -1166,7 +1166,7 @@ class TriadIndexAnalyzer:
 
         # Sanity check: verify delta_dom calculation
         print("\n🔍 SANITY CHECK: delta_dom calculation")
-        print("-" * 40)
+        print("-" * 9)
         sanity_errors = []
         for report in reports:
             if "error" not in report and "delta_dom" in report:
@@ -1299,7 +1299,7 @@ class TriadIndexAnalyzer:
         Validate TW implementation against CGM's established tests.
         """
         print("\n🔬 VALIDATING TW IMPLEMENTATION")
-        print("=" * 40)
+        print("=" * 9)
 
         # Test small rapidity approximation
         test_results = {}
@@ -1455,7 +1455,7 @@ class TriadIndexAnalyzer:
         Pick the anchor that minimizes RMS of ε_i across all triads.
         """
         print("\n🎯 ANCHOR SWEEP ANALYSIS")
-        print("=" * 40)
+        print("=" * 9)
 
         # Get loop pitch
         Pi_loop = self.loop_pitch()

@@ -772,9 +772,9 @@ def test_unified_interference_signature(cmb_result, config):
     print(f"\nOverall: {total_passed}/{len(tests_passed)} tests passed")
 
     # Micro-scale analysis details
-    print("\n" + "=" * 40)
+    print("\n" + "=" * 9)
     print("MICRO-SCALE ORBITAL ANALYSIS")
-    print("=" * 40)
+    print("=" * 9)
     print(
         f"Micro-coherence score: {micro_coherence.get('micro_coherence_score', 0.0):.3f}"
     )

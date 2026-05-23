@@ -204,7 +204,7 @@ Closure occurs at 4π (720°) when the cycle returns to Layer 0. This is the **s
 
 **Key insight:** The family bits don't define transformation content. They define **which phase of the spinorial cycle** the transformation operates in. The payload (bits 1-6) transforms A; the family (bits 0,7) selects the closure layer.
 
-This explains why we need exactly 2 boundary bits: fewer gives insufficient closure depth; more is redundant.
+This explains why we need exactly 2 boundary bits: fewer gives insufficient Refractive Depth; more is redundant.
 
 ---
 

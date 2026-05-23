@@ -307,7 +307,7 @@ def test_property_based_homomorphism():
 def run_all_proofs():
     """Run all CGM theorem proofs."""
     print("CGM Theorem Proof Runner")
-    print("=" * 40)
+    print("=" * 9)
     print()
 
     tests = [
@@ -332,7 +332,7 @@ def run_all_proofs():
             print(f"❌ {test.__name__} failed: {e}")
             print()
 
-    print("=" * 40)
+    print("=" * 9)
     print(f"Proof Summary: {passed}/{total} theorems validated")
 
     if passed == total:

@@ -428,7 +428,7 @@ class TWClosureTester:
         """
         if verbose:
             print("\nTesting Canonical TW Configurations")
-            print("=" * 40)
+            print("=" * 9)
 
         results = {}
 
@@ -1263,7 +1263,7 @@ class TWClosureTester:
         """
         if verbose:
             print("\n🔍 PROBING δ_BU =  m_a IDENTITY")
-            print("=" * 40)
+            print("=" * 9)
 
         # Method 1: SU(2) composition (validated method)
         method1 = self.compute_bu_dual_pole_monodromy(verbose=False)

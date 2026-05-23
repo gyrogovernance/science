@@ -442,7 +442,7 @@ class CGMAnalysis:
 
     def run(self, rho_union: Optional[List[float]] = None) -> None:
         print("CGM Fermion Mass Analysis")
-        print("=" * 40)
+        print("=" * 9)
         print(f" m_a = {self.c.m_a:.12f}")
         print(f"Δ = {self.c.Delta:.6f}, 1/√Δ = {1/self.c.sqrt_Delta:.6f}")
         print(

@@ -2,6 +2,7 @@
 """
 Run all executable CGM gravity scripts and save combined stdout/stderr to a text file.
 
+Scripts (in run order): analysis_3, 2, 1, 4, 5, 6, 7.
 Skips aqpu_gravity_common.py (library only).
 """
 
@@ -21,7 +22,7 @@ if str(_REPO_ROOT) not in sys.path:
 
 from aqpu_gravity_common import configure_stdout_utf8
 
-DEFAULT_OUTPUT = _EXPERIMENTS / "gravity_run_output.txt"
+DEFAULT_OUTPUT = _EXPERIMENTS / "aqpu_gravity_analysis.txt"
 
 GRAVITY_SCRIPTS: tuple[str, ...] = (
     "aqpu_gravity_analysis_3.py",
@@ -29,7 +30,8 @@ GRAVITY_SCRIPTS: tuple[str, ...] = (
     "aqpu_gravity_analysis_1.py",
     "aqpu_gravity_analysis_4.py",
     "aqpu_gravity_analysis_5.py",
-    "aqpu_gravity_analysis_ext.py",
+    "aqpu_gravity_analysis_6.py",
+    "aqpu_gravity_analysis_7.py",
 )
 
 
@@ -52,8 +54,8 @@ def run_script(script_name: str, timeout_s: float | None) -> tuple[int, str, str
     except subprocess.TimeoutExpired as exc:
         dt = time.perf_counter() - t0
         out = exc.stdout or ""
-        err = (exc.stderr or "") + f"\nTIMEOUT after {timeout_s}s\n"
-        return 124, out, err, dt
+        err = str(exc.stderr or "") + f"\nTIMEOUT after {timeout_s}s\n"
+        return 124, str(out), str(err), dt
 
     return proc.returncode, proc.stdout or "", proc.stderr or "", time.perf_counter() - t0
 
