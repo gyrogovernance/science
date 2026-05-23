@@ -29,11 +29,14 @@ if str(_EXPERIMENTS) not in sys.path:
     sys.path.insert(0, str(_EXPERIMENTS))
 
 from aqpu_gravity_analysis_2 import enumerate_omega
+from aqpu_compact_geom_core import electroweak_coords
 from aqpu_gravity_common import (
     configure_stdout_utf8,
     Q_G,
     rho,
     Delta,
+    G_meas,
+    v_EW,
     tau_g_with_c4,
     C4_REF,
     binom_shell,
@@ -47,6 +50,7 @@ from aqpu_gravity_common import (
     field_integral_exterior_exact,
     field_integral_exterior_numeric,
     exterior_integral_numeric_lo,
+    stage_mass_fractions,
     GENE_MAC_REST,
     GENE_MAC_SWAPPED,
     cycle_word_for_micro,
@@ -403,7 +407,7 @@ print()
 print("  Vacuum Gauss / HT strain calibration: aqpu_gravity_analysis_5 J, P.")
 print()
 
-section("B.0  Quadrupole shell spectrum and depth-8 closure")
+section("B.0  Quadrupole shell spectrum and 8-byte Z2 holonomy")
 f_k2 = 2.0 * math.comb(6, 2) / math.comb(6, 3)
 print("  Shell modulation 2*C(6,2)/C(6,3) = {:.4f}".format(f_k2))
 amps_f = shell_cycle_fourier_amps(F_cycle_word(0))
@@ -422,7 +426,7 @@ word8 = cycle_word_for_micro(0)
 rows8 = trace_word_steps(word8, micro_ref=0)
 r4 = rows8[4]
 r8 = rows8[-1]
-print("  Depth-8 holonomy (m_ref=0):")
+print("  8-byte Z2 holonomy (m_ref=0):")
 print("    step 4: arch_shell={}  qxor={}  state=REST? {}".format(
     r4["arch_shell"], r4["qxor"], r4["state24"] == GENE_MAC_REST))
 print("    step 8: arch_shell={}  qxor={}  state=REST? {}".format(
@@ -534,6 +538,8 @@ print()
 section("C.1  Virial condition (CS/BU)")
 print("  2T + V = 0 => E_total = T + V = -T (bound system, negative total energy).")
 print("  Zero net displacement/momentum flux per cycle (not zero total energy).")
+print("  Stage map: T ~ ONA; V ~ UNA; BU = depth-4 closure on 6 DOF.")
+print("    See C.5b.")
 print("  q(F)=0: analysis_2 S1; Tr_iso = E[Tr|w]+3Var: analysis_3 B.")
 bal = local_exterior_energy_balance()
 print("  Point-mass sector: E_rest_frame/Mc^2 = +{:.4f}, E_self/Mc^2 = {:.4f}, sum = {:.4f}".format(
@@ -581,8 +587,8 @@ print("  Gravitational self-energy: E_self = -Mc^2/4 (M = observable mass).")
 print("  Local balance: E_self + E_rest_frame = 0 per unit M_obs.")
 print()
 print("  Self-consistent dressing (field sourced by M_obs):")
-print("    M_obs = M_UNA + E_self/c^2 = M_UNA - M_obs/4")
-print("    M_obs/M_UNA = 4/5")
+print("    M_obs = M_bare + E_self/c^2 = M_bare - M_obs/4")
+print("    M_obs/M_bare = 4/5")
 mass_ratio_obs = 4.0 / 5.0
 binding_frac = -0.25
 E_self_frac = -0.25
@@ -623,6 +629,44 @@ for k in range(7):
     print("  {:5d}  {:10.6f}  {:10.6f}  {:10.6f}  {:12.6e}".format(
         k, binom_shell[k], tr_k, pi_k, se_k))
 
+section("C.5b Stage-mass decomposition")
+sm = stage_mass_fractions()
+print("  Bare mass from UV energy ratios (Analysis_Energy_Scales 3.1):")
+print("    E_UNA/E_CS = {:.6f}".format(sm["E_UNA/E_CS"]))
+print("    E_ONA/E_CS = {:.6f}".format(sm["E_ONA/E_CS"]))
+print("    E_BU/E_CS  = {:.6f}".format(sm["E_BU/E_CS"]))
+print()
+print("  M_bare = M_UNA + M_ONA + M_BU")
+print("  {:>6s}  {:>10s}  {:>12s}".format("Stage", "Fraction", "Role"))
+print("  {:>6s}  {:>10.4f}  {:>12s}".format("UNA", sm["f_UNA"], "potential V"))
+print("  {:>6s}  {:>10.4f}  {:>12s}".format("ONA", sm["f_ONA"], "kinetic T"))
+print("  {:>6s}  {:>10.4f}  {:>12s}".format("BU", sm["f_BU"], "closure"))
+print("  Sum fractions = {:.6f}".format(sm["f_UNA"] + sm["f_ONA"] + sm["f_BU"]))
+print()
+print("  6 DOF = 3 UNA (rotational) + 3 ONA (translational)")
+print("    Gravitating sector: f_STF = {:.4f} = UNA + ONA".format(sm["f_STF"]))
+print("  Stress split (1+5, analysis_1 Part B):")
+print("    5 STF components: gravitational signal")
+print("    1 trace component: isotropic pressure (non-gravitating)")
+print("    Within STF: UNA {:.4f}, ONA {:.4f} (energy-weighted)".format(
+    sm["f_UNA/STF"], sm["f_ONA/STF"]))
+print("  BU: depth-4 closure condition on the 6 DOF (no DOF assigned)")
+print("    Closure energy: f_BU = {:.4f} of M_bare".format(sm["f_BU"]))
+print()
+print("  Virial stage check: 2T + V = 0 with T ~ f_ONA, V ~ -f_UNA")
+print("    2*f_ONA - f_UNA = {:.6f}".format(sm["virial_residual"]))
+print("  UV ratios are bare-mass fractions; virial is a dressed bound-state")
+print("  condition. No closure is expected between these two objects.")
+alpha_g = G_meas * v_EW ** 2
+n_g = -math.log(alpha_g) / Delta
+ew = electroweak_coords(delta=Delta, order=5)
+print("  Delta-ruler mass coordinates (compact geometry, analysis_3 G):")
+print("    Top     n = {:.1f}".format(ew.n_top))
+print("    Higgs   n = {:.1f}".format(ew.n_higgs))
+print("    Z       n = {:.1f}".format(ew.n_z))
+print("    W       n = {:.1f}".format(ew.n_w))
+print("    Gravity n_G = {:.1f}  (alpha_G at v)".format(n_g))
+
 section("C.6  Cosmological virial closure (BU)")
 print("  Local theorem (C.5): E_self = -Mc^2/4 for one point mass.")
 print("  Cosmological: strictly bound structure under global BU closure.")
@@ -646,9 +690,9 @@ t_gr = hawking_temperature_si(m_bh, 1.0)
 t_cgm = hawking_temperature_si(m_bh, hk["kappa_ratio"])
 print("  Hawking T (10 Msun): T_GR = {:.4e} K, T_CGM = {:.4e} K ({:+.2f}%)".format(
     t_gr, t_cgm, (t_cgm / t_gr - 1.0) * 100.0))
-print("  Depth-8 cycle: BU-Egress (depth 4) pair creation; BU-Ingress (depth 8)")
-print("    completes closure. Hawking flux = escaping partner when Ingress fails")
-print("    for the infalling member (horizon absorption).")
+print("  Z2 holonomy (8 bytes): BU-Egress = W2 involution at depth 4; BU-Ingress =")
+print("    depth-4 spectral memory (W2 pole-pairing). F o F restores carrier rest.")
+print("    Hawking flux = escaping partner when commit (Future phase) fails at horizon.")
 
 # =====================================================================
 # SECTION E: SYNTHESIS AND FALSIFICATION
@@ -700,7 +744,11 @@ for s in [2.0, 5.0, 10.0, 50.0]:
 print("  Weak energy condition at s=2,5,10,50: {}".format(check5))
 
 check6 = abs(mass_ratio_obs - 0.8) < 1e-12
-print("  M_obs/M_UNA = 4/5: {:.6f} = {}".format(mass_ratio_obs, check6))
+print("  M_obs/M_bare = 4/5: {:.6f} = {}".format(mass_ratio_obs, check6))
+
+sm_check = stage_mass_fractions()
+check6b = abs(sm_check["f_UNA"] + sm_check["f_ONA"] + sm_check["f_BU"] - 1.0) < 1e-9
+print("  Stage fractions sum to 1: {}".format(check6b))
 
 check7 = abs(binding_frac + 0.25) < 1e-12 and abs(E_rest_frame_frac + binding_frac) < 1e-12
 print("  Local E_self + E_rest_frame = 0 (per M_obs): {}".format("OK" if check7 else "FAIL"))
@@ -736,7 +784,7 @@ section("E.4  Summary")
 print("  A: C-odd H_spin on |Omega|={}; chiral (4/75)psi^2.".format(n_omega))
 print("  B: k=2 |A_2|={:.2f}; inspiral {:.1f}%; ringdown {:+.1f}% (PT).".format(
     a_k2_z2, gw150914_phase * 100, (ratio_pt_exact - 1) * 100))
-print("  C: I=1/2; E_self=-Mc^2/4; M_obs/M_UNA=4/5; Hawking L -{:.0f}%.".format(
+print("  C: I=1/2; E_self=-Mc^2/4; M_obs/M_bare=4/5; Hawking L -{:.0f}%.".format(
     (1.0 - hk["lum_ratio"]) * 100.0))
 print("  GW HT / vacuum: analysis_5 J, P.")
 print("=" * 9, "DONE", "=" * 9)

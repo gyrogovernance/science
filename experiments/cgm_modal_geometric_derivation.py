@@ -8,7 +8,7 @@ logic definitions (BU-Egress and BU-Ingress) using the SU(2) representation.
 
 Key Theorem:
 Given BU-Egress (S -> □B) and BU-Ingress (S -> (□B -> (CS ∧ UNA ∧ ONA))),
-in the unique simple SU(2)/gyro representation satisfying these constraints
+in the unique simple SU(2)/gyro representation satisfying these conditions
 with CGM thresholds, prove that:
 1. BU must be realized as dual poles at ±m_a
 2. The BU cycle holonomy equals delta_BU = 0.195342 rad
@@ -38,7 +38,7 @@ from functions.gyrovector_ops import GyroVectorSpace
 
 class ModalGeometricDerivation:
     """
-    Derives geometric realization from modal logic constraints.
+    Derives geometric realization from modal logic conditions.
     """
 
     def __init__(self):
@@ -298,13 +298,13 @@ class ModalGeometricDerivation:
             print()
             print("This value is unique because:")
             print("  - The thresholds are fixed by CGM principles")
-            print("  - The gyro/Wigner structure is forced by the modal constraints")
+            print("  - The gyro/Wigner structure is forced by the modal conditions")
             print("  - The dual-pole structure is forced by BU-Ingress")
             print("  - The holonomy value is computed from the same machinery as")
             print("    the validated TW closure test")
             print()
             print("Conclusion: delta_BU = 0.195342 rad is DETERMINED by")
-            print("the modal constraints BU-Egress and BU-Ingress, computed using")
+            print("the modal conditions BU-Egress and BU-Ingress, computed using")
             print("the same gyro/Wigner representation as the validated holonomy pipeline.")
             print()
 
@@ -313,7 +313,7 @@ class ModalGeometricDerivation:
             "delta_BU_computed": float(delta_BU_computed),
             "delta_BU_expected": 0.195342176580,
             "deviation": float(abs(delta_BU_computed - 0.195342176580)),
-            "conclusion": "delta_BU is uniquely determined by modal constraints",
+            "conclusion": "delta_BU is uniquely determined by modal conditions",
         }
 
     def theorem_3_uniqueness(self, verbose: bool = True) -> Dict[str, Any]:
@@ -365,7 +365,7 @@ class ModalGeometricDerivation:
             print("Conclusion: The geometric realization is UNIQUE.")
             print("  - BU must be at ±m_a on z-axis")
             print("  - delta_BU must equal 0.195342 rad")
-            print("  - This is the only realization satisfying the modal constraints")
+            print("  - This is the only realization satisfying the modal conditions")
             print()
 
         return {

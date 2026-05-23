@@ -414,7 +414,7 @@ class CGMDataManager:
         # Load BAO consensus results and covariance
         bao_dir = (
             self.data_dir
-            / "ALAM_ET_AL_2016_consensus_and_individual_Gaussian_constraints"
+            / "ALAM_ET_AL_2016_consensus_and_individual_Gaussian_conditions"
             / "COMBINEDDR12_BAO_consensus_dV_FAP"
         )
 

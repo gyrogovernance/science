@@ -1,5 +1,5 @@
 CGM gravity script runner
-started: 2026-05-23T10:45:47+03:00
+started: 2026-05-24T00:04:56+03:00
 python: C:\Python314\python.exe
 scripts: 7
 
@@ -242,7 +242,7 @@ EW mass coords (order 5, same Delta, compact geometry):
 ANALYSIS COMPLETE
 =========
 
-exit=0  duration=1.14s
+exit=0  duration=0.86s
 
 ######## aqpu_gravity_analysis_2.py ########
 
@@ -399,7 +399,7 @@ c4_anchor - kernel = -5.252780200913e-03
 G_geo              = 6.708644908597e-39  ppm=-24.608150
 G_corr             = 6.708809505940e-39  ppm=-0.073643
 
-exit=0  duration=2.55s
+exit=0  duration=1.78s
 
 ######## aqpu_gravity_analysis_1.py ########
 
@@ -670,7 +670,7 @@ SUMMARY
   tau_G (full) = 76.237917
   G_pred/G_meas - 1 (full) = -0.074 ppm
 
-exit=0  duration=1.21s
+exit=0  duration=0.92s
 
 ######## aqpu_gravity_analysis_4.py ########
 
@@ -1206,7 +1206,7 @@ Sample G reductions:
 ANALYSIS COMPLETE
 =========
 
-exit=0  duration=1.36s
+exit=0  duration=0.98s
 
 ######## aqpu_gravity_analysis_5.py ########
 
@@ -1607,7 +1607,7 @@ Step 8: PPN summary
   beta  = 1.322784  (leading: 1 - g1/2)
   eta_N = 0 (SEP)
   xi_1  = dlnG/dpsi = -0.645568
-  Solar System constraints satisfied; strong-field tests at psi > 0.01
+  Solar System conditions satisfied; strong-field tests at psi > 0.01
 
 =========
 S. Einstein equations from variational principle
@@ -1833,7 +1833,7 @@ N. Spin-sector shadow (wavefunction)
 DERIVATIONS COMPLETE
 =========
 
-exit=0  duration=4.02s
+exit=0  duration=2.86s
 
 ######## aqpu_gravity_analysis_6.py ########
 
@@ -1919,8 +1919,8 @@ A.6  Chiral gravitomagnetic coupling
   Vacuum Gauss / HT strain calibration: aqpu_gravity_analysis_5 J, P.
 
 
-B.0  Quadrupole shell spectrum and depth-8 closure
---------------------------------------------------
+B.0  Quadrupole shell spectrum and 8-byte Z2 holonomy
+-----------------------------------------------------
   Shell modulation 2*C(6,2)/C(6,3) = 1.5000
   Half-cycle (F, 4 bytes) DFT k=2: |A_2| = 1.2000
   Full Z2 cycle (8 bytes) DFT k=2: |A_2| = 1.2529
@@ -1935,7 +1935,7 @@ B.0  Quadrupole shell spectrum and depth-8 closure
     k=7: |A_k| = 1.2529
     k=8: |A_k| = 0.2315
   k=4 mode |A_4| = 1.0214 (81.5% of |A_2|); hexadecapole (l=4) precursor
-  Depth-8 holonomy (m_ref=0):
+  8-byte Z2 holonomy (m_ref=0):
     step 4: arch_shell=0  qxor=0  state=REST? False
     step 8: arch_shell=0  qxor=0  state=REST? True
 
@@ -2007,6 +2007,8 @@ C.1  Virial condition (CS/BU)
 -----------------------------
   2T + V = 0 => E_total = T + V = -T (bound system, negative total energy).
   Zero net displacement/momentum flux per cycle (not zero total energy).
+  Stage map: T ~ ONA; V ~ UNA; BU = depth-4 closure on 6 DOF.
+    See C.5b.
   q(F)=0: analysis_2 S1; Tr_iso = E[Tr|w]+3Var: analysis_3 B.
   Point-mass sector: E_rest_frame/Mc^2 = +0.2500, E_self/Mc^2 = -0.2500, sum = 0.0000
   (Isolated exterior: local E_self+E_rest_frame=0; 2T+V is cosmological/global.)
@@ -2043,8 +2045,8 @@ C.5  Local self-energy (point mass)
   Local balance: E_self + E_rest_frame = 0 per unit M_obs.
 
   Self-consistent dressing (field sourced by M_obs):
-    M_obs = M_UNA + E_self/c^2 = M_UNA - M_obs/4
-    M_obs/M_UNA = 4/5
+    M_obs = M_bare + E_self/c^2 = M_bare - M_obs/4
+    M_obs/M_bare = 4/5
   psi(s_h)=1/2 => E_self/M_obs c^2 = -1/4; E_rest_frame = +1/4.
   u(s=5) = |g|^2/(8*pi*G(psi)) = 5.638226e-05 (G0=1 units)
 
@@ -2066,6 +2068,40 @@ C.5  Local self-energy (point mass)
       5    0.093750    0.416667    0.113402  8.802671e-04
       6    0.015625    0.000000    0.000000  0.000000e+00
 
+C.5b Stage-mass decomposition
+-----------------------------
+  Bare mass from UV energy ratios (Analysis_Energy_Scales 3.1):
+    E_UNA/E_CS = 0.450158
+    E_ONA/E_CS = 0.500000
+    E_BU/E_CS  = 0.025330
+
+  M_bare = M_UNA + M_ONA + M_BU
+   Stage    Fraction          Role
+     UNA      0.4615   potential V
+     ONA      0.5126     kinetic T
+      BU      0.0260       closure
+  Sum fractions = 1.000000
+
+  6 DOF = 3 UNA (rotational) + 3 ONA (translational)
+    Gravitating sector: f_STF = 0.9740 = UNA + ONA
+  Stress split (1+5, analysis_1 Part B):
+    5 STF components: gravitational signal
+    1 trace component: isotropic pressure (non-gravitating)
+    Within STF: UNA 0.4738, ONA 0.5262 (energy-weighted)
+  BU: depth-4 closure condition on the 6 DOF (no DOF assigned)
+    Closure energy: f_BU = 0.0260 of M_bare
+
+  Virial stage check: 2T + V = 0 with T ~ f_ONA, V ~ -f_UNA
+    2*f_ONA - f_UNA = 0.563658
+  UV ratios are bare-mass fractions; virial is a dressed bound-state
+  condition. No closure is expected between these two objects.
+  Delta-ruler mass coordinates (compact geometry, analysis_3 G):
+    Top     n = 24.7
+    Higgs   n = 47.2
+    Z       n = 69.2
+    W       n = 78.0
+    Gravity n_G = 3714.3  (alpha_G at v)
+
 C.6  Cosmological virial closure (BU)
 -------------------------------------
   Local theorem (C.5): E_self = -Mc^2/4 for one point mass.
@@ -2084,9 +2120,9 @@ C.7  Hawking temperature and BU-Ingress
   Hawking luminosity ~ T^4 * Area:
     L_CGM/L_GR = (kappa ratio)^4 * area ratio = 0.743223 (-25.7%)
   Hawking T (10 Msun): T_GR = 6.1815e-09 K, T_CGM = 6.2354e-09 K (+0.87%)
-  Depth-8 cycle: BU-Egress (depth 4) pair creation; BU-Ingress (depth 8)
-    completes closure. Hawking flux = escaping partner when Ingress fails
-    for the infalling member (horizon absorption).
+  Z2 holonomy (8 bytes): BU-Egress = W2 involution at depth 4; BU-Ingress =
+    depth-4 spectral memory (W2 pole-pairing). F o F restores carrier rest.
+    Hawking flux = escaping partner when commit (Future phase) fails at horizon.
 ========= E. Synthesis, discoveries, and falsification =========
 
 
@@ -2110,7 +2146,8 @@ E.2  Checks unique to this script
   E_self/M_obs c^2 = -1/4: -0.250000 = True
   Field integral = 1/2: numeric err=4.90e-04 exact err=1.11e-16 = OK
   Weak energy condition at s=2,5,10,50: True
-  M_obs/M_UNA = 4/5: 0.800000 = True
+  M_obs/M_bare = 4/5: 0.800000 = True
+  Stage fractions sum to 1: True
   Local E_self + E_rest_frame = 0 (per M_obs): OK
   H_spin odd under C_spin on Omega (4096): True
   mass even under face-swap on Omega: True
@@ -2128,11 +2165,11 @@ E.4  Summary
 ------------
   A: C-odd H_spin on |Omega|=4096; chiral (4/75)psi^2.
   B: k=2 |A_2|=1.25; inspiral -6.5%; ringdown +12.5% (PT).
-  C: I=1/2; E_self=-Mc^2/4; M_obs/M_UNA=4/5; Hawking L -26%.
+  C: I=1/2; E_self=-Mc^2/4; M_obs/M_bare=4/5; Hawking L -26%.
   GW HT / vacuum: analysis_5 J, P.
 ========= DONE =========
 
-exit=0  duration=2.56s
+exit=0  duration=1.77s
 
 ######## aqpu_gravity_analysis_7.py ########
 
@@ -2431,7 +2468,7 @@ T_Z2 = 24 hr => M = 9.18e+09 Msun
 MASS-ENERGY TRANSITION AT psi = 1/2
   psi -> 0: flat space, mass dominates, n -> 1.
   psi = 1/2: curved time, energy dominates, n -> inf.
-  E_self = -Mc^2/4, M_obs/M_UNA = 4/5: analysis_6 C.5.
+  E_self = -Mc^2/4, M_obs/M_bare = 4/5: analysis_6 C.5.
 
 =========
 G. Time-light conversion factor
@@ -2631,8 +2668,8 @@ J.5 THE CGM CAUSAL MODEL
   causal boundary is where Balance achieves egress closure
   (W_2^2 = id) without ingress propagation. Causality is the
   operational expression of Preservation of Ancestry: every
-  action must be traceable to the common source, retrievable
-  from the stored record, and committable to the future.
+  action must preserve ancestry, remain retrievable from the
+  stored record, and be committable to the future.
   The first two are algebraically guaranteed; the third is
   geometrically conditional.
 
@@ -2705,8 +2742,8 @@ Cross-script ownership:
               four-phase causal structure
 ========== DONE ==========
 
-exit=0  duration=24.98s
+exit=0  duration=20.37s
 
-finished: 2026-05-23T10:46:25+03:00
-total_duration=37.82s
+finished: 2026-05-24T00:05:25+03:00
+total_duration=29.54s
 worst_exit=0

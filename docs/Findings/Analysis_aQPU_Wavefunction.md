@@ -6,7 +6,7 @@
 
 ## 1. Introduction and Scope
 
-This analysis presents the wavefunction structure of the Gyroscopic ASI aQPU kernel as a concrete finite-dimensional realization of the Common Governance Model (CGM) constraints. All results are verified by exhaustive computation on the 4096-state reachable manifold Ω using exact integer arithmetic.
+This analysis presents the wavefunction structure of the Gyroscopic ASI aQPU kernel as a concrete finite-dimensional realization of the Common Governance Model (CGM) conditions. All results are verified by exhaustive computation on the 4096-state reachable manifold Ω using exact integer arithmetic.
 
 The central finding is that the CGM constraint structure manifests in the kernel as a **Klein four-group (K4) of operators** acting on a Hilbert space over Ω. The BU-Egress/Ingress duality, far from being two sequential stages, emerges as two dual readings of a single depth-4 spectral property: the W₂ involution that pairs the two constitutional poles of Ω.
 

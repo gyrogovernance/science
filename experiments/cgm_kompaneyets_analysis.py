@@ -9,7 +9,7 @@ Key Components:
 1. Standard Kompaneyets equation for photon occupation evolution
 2. Enhanced physics with double-Compton and bremsstrahlung source terms
 3. Mapping from CGM delta_dom to effective μ and y parameters
-4. Validation against FIRAS constraints
+4. Validation against FIRAS conditions
 5. Connection to CGM's observability cascade mechanism
 6. Cross-module coherence with Etherington duality
 
@@ -331,13 +331,13 @@ class SkyMapGenerator:
 
 
 class FIRASValidator:
-    """Validation against FIRAS constraints."""
+    """Validation against FIRAS conditions."""
 
     def __init__(self, constants: PhysicalConstants):
         self.const = constants
 
     def validate_distortions(self, distortions: Dict[str, float]) -> Dict[str, Any]:
-        """Validate predicted distortions against FIRAS constraints."""
+        """Validate predicted distortions against FIRAS conditions."""
         mu_eff = distortions.get("mu_effective", 0)
         y_eff = distortions.get("y_effective", 0)
 

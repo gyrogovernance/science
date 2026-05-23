@@ -642,7 +642,7 @@ class CGMWalkingTheory:
             "helical_index": helical_index,
         }
 
-    def analyze_beam_walk_constraints(
+    def analyze_beam_walk_conditions(
         self, beam_width: float = 0.03, foot_length: float = 0.25
     ) -> Dict:
         """
@@ -980,7 +980,7 @@ def run_complete_analysis():
     print(f"\n{'='*60}")
     print("4d. BEAM-WALK CONSTRAINT (3 cm)")
     print("=" * 9)
-    beam = analyzer.analyze_beam_walk_constraints()
+    beam = analyzer.analyze_beam_walk_conditions()
     results["beam"] = beam
     print(
         f"Required defect factor: {beam['required_defect_factor']:.3f}  → "

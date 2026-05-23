@@ -1,7 +1,7 @@
 """
 Three-Dimensional Necessity and Six Degrees of Freedom Analysis
 
-This experiment verifies the formal proof that the five foundational constraints uniquely determine
+This experiment verifies the formal proof that the five foundational conditions uniquely determine
 exactly 3 spatial dimensions with 6 degrees of freedom (3 rotational + 3 translational).
 
 Verification includes:
@@ -175,7 +175,7 @@ try:
     print("  enter at higher order (O(t⁵)/O(t⁷)) in the full Dynkin series expansion.")
     print("  See extended proof or experiments verifying equality to O(t⁷) in the")
     print(
-        "  supplementary code. These higher-order constraints enforce a 3D Lie algebra"
+        "  supplementary code. These higher-order conditions enforce a 3D Lie algebra"
     )
     print("  closure of span{X,Y,[X,Y]}. With Simplicity Constraint (single simple")
     print("  compact factor), this uniquely selects su(2).")
@@ -183,7 +183,7 @@ try:
     print(
         "CONCLUSION: Proposition BU-Egress (A4) (sectoral) + unitary representation +"
     )
-    print("  higher-order BCH constraints + simplicity uniquely select su(2).")
+    print("  higher-order BCH conditions + simplicity uniquely select su(2).")
     print()
     print("Reference: Hall, Lie Groups, Lie Algebras, and Representations (2nd ed.),")
     print("  the BCH expansion to third order.")
@@ -315,7 +315,7 @@ print("Minimality verification:")
 print("  - Fewer than 3 translations: insufficient for bi-gyrogroup consistency")
 print("  - More than 3 translations: violates minimality (no traceable origin)")
 print(
-    "  - Non-abelian N: would require additional structure not in foundational constraints"
+    "  - Non-abelian N: would require additional structure not in foundational conditions"
 )
 print(f"\n  SE(3) is the unique minimal bi-gyrogroup completion -> n=3, d=6")
 print()
@@ -327,8 +327,8 @@ print()
 print("5. MODAL DEPTH REQUIREMENTS")
 print("-" * 80)
 
-# Verify depth constraints for n=3
-print("Modal depth constraints for n=3:")
+# Verify depth conditions for n=3
+print("Modal depth conditions for n=3:")
 
 # Depth one: [L]S != [R]S (UNA)
 print("  Depth 1 (UNA): [L]S != [R]S")
@@ -448,9 +448,9 @@ for stage, dof, description in stages:
     print(f"  {stage:4s}: {dof} DOF - {description}")
 
 print("\nProgression uniqueness:")
-print("  - Each stage follows necessarily from foundational constraints")
+print("  - Each stage follows necessarily from foundational conditions")
 print(
-    "  - Structural constraints from the five foundational constraints prevent alternative pathways"
+    "  - Structural conditions from the five foundational conditions prevent alternative pathways"
 )
 print("  - Closure constraint delta=0 uniquely determines angles")
 print()
@@ -522,11 +522,11 @@ def test_closure_nd(
         # SO(2) is abelian, cannot realize non-commutative gyrations
         delta = np.pi - (alpha + beta + gamma)
         closes = (
-            False  # Degenerate closure incompatible with CGM foundational constraints
+            False  # Degenerate closure incompatible with CGM foundational conditions
         )
     else:
         # For n>=4, δ is not used for exclusion (triangles are 2D objects).
-        # Exclusion relies on algebraic/simplicity arguments (excess generators, BCH constraints).
+        # Exclusion relies on algebraic/simplicity arguments (excess generators, BCH conditions).
         delta = None  # Not used for exclusion in n≥4
         closes = False
 
@@ -551,7 +551,7 @@ for n in dimensions_to_test:
         )
 
 print(
-    f"\nConclusion: Only n=3 achieves exact closure (delta=0) compatible with CGM foundational constraints"
+    f"\nConclusion: Only n=3 achieves exact closure (delta=0) compatible with CGM foundational conditions"
 )
 
 # Assert key claim for CI/testing
@@ -592,7 +592,7 @@ print()
 print("11. BRIDGE AXIOM VERIFICATION")
 print("-" * 80)
 
-print("Structural constraints from the five foundational constraints:")
+print("Structural conditions from the five foundational conditions:")
 print("  - Depth-2 non-absolute commutation (UNA, ONA) requires non-trivial gyration")
 print("  - Depth-4 closure (BU-Egress) requires commutative balance")
 print("  - Simplicity Constraint requires single simple factor")
@@ -600,14 +600,14 @@ print()
 
 print("For n=3 (SE(3) structure):")
 print("  - Single path from CS seed through UNA, ONA to BU-Egress")
-print("  - All constraints satisfied by construction")
+print("  - All conditions satisfied by construction")
 print("  Status: [Compatible]")
 print()
 
 print("For n=4 (SO(4) =~ (SU(2) x SU(2))/Z_2):")
 print("  - Two independent SU(2) factors create independent paths")
 print("  - Violates Simplicity Constraint (multiple simple factors)")
-print("  Status: [Violates foundational constraints]")
+print("  Status: [Violates foundational conditions]")
 print()
 
 # ============================================================================
@@ -617,7 +617,7 @@ print()
 print("12. SUMMARY AND CONCLUSION")
 
 
-print("\nTHEOREM: The five foundational constraints uniquely determine n=3, d=6")
+print("\nTHEOREM: The five foundational conditions uniquely determine n=3, d=6")
 print()
 
 print("PROOF SUMMARY:")

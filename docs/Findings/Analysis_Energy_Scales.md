@@ -40,7 +40,7 @@ All actions are dimensionless. The BU stage serves as a fixed point where S_BU =
 
 ### 2.3 GUT Action Construction
 
-The GUT action emerges from treating UNA and ONA as parallel constraints with CS memory:
+The GUT action emerges from treating UNA and ONA as parallel conditions with CS memory:
 
 ```
 1/S_GUT = 1/S_UNA + 1/S_ONA + η/S_CS
@@ -177,7 +177,7 @@ The framework hypothesizes a primordial sterile neutrino background residing at 
 - Cannot be directly detected by any experiment
 - May influence large-scale structure formation through gravitational effects alone
 
-We hypothesise that no future cosmological probe (CMB-S4, 21cm, structure surveys) will ever see sterile features. Only indirect gravitational constraints (e.g. effective N_eff) are consistent.
+We hypothesise that no future cosmological probe (CMB-S4, 21cm, structure surveys) will ever see sterile features. Only indirect gravitational conditions (e.g. effective N_eff) are consistent.
 
 ### 4.4.5 Experimental Predictions and Falsification
 

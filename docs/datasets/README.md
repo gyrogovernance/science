@@ -54,7 +54,7 @@ The dataset is provided in **JSON Lines (JSONL)** format. Each line is a valid J
 
 The dataset covers the full breadth of the CGM research program:
 
-*   **Foundational Logic:** The 5 constraints (CS, UNA, ONA, BU-Egress, BU-Ingress) and modal logic proofs.
+*   **Foundational Logic:** The 5 conditions (CS, UNA, ONA, BU-Egress, BU-Ingress) and modal logic proofs.
 *   **Geometric Derivations:** Proof of 3D space, 6 Degrees of Freedom (DOF), and Gyrogroup algebra.
 *   **Physical Constants:** Geometric derivation of the Fine-Structure Constant ($\alpha$), Proton Lifetime, and Neutrino Masses.
 *   **Cosmology:** The Black Hole Universe hypothesis, Optical Illusion of expansion, and UV-IR Optical Conjugacy.

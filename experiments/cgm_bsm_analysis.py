@@ -798,7 +798,7 @@ class HiggsFirstFramework:
         }
 
     def solve_electroweak_sector_anchor_minimal(self) -> Dict[str, Any]:
-        """Solve EW sector self-consistently using only CGM constraints."""
+        """Solve EW sector self-consistently using only CGM conditions."""
         # Get boundary conditions
         bc = self.cgm_boundary_conditions()
         lambda_CS = bc["lambda_CS"]
@@ -811,7 +811,7 @@ class HiggsFirstFramework:
         )
         lambda_IR = (self.M_H / v_weak_higgs) ** 2 / 2.0  # ≈ 0.128815
 
-        # CGM self-consistency constraints
+        # CGM self-consistency conditions
         # M_Z/M_W = 1 + 6.5Δ (CGM relation)
         MZ_MW_ratio = 1 + 6.5 * self.Delta
 
@@ -835,7 +835,7 @@ class HiggsFirstFramework:
             "M_Z": M_Z,
             "MZ_MW_ratio": MZ_MW_ratio,
             "sin2_theta_W": sin2_theta_W,
-            "insight": "EW sector solved from CGM constraints only",
+            "insight": "EW sector solved from CGM conditions only",
         }
 
     def dimensionless_predictions(self) -> Dict[str, Any]:

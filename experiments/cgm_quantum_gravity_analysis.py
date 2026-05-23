@@ -65,7 +65,7 @@ def delta_BU_from_CGM(
     Intrinsic derivation of δ_BU from CGM primitives.
 
     This implements the provisional rule: δ_BU = f(α, β, γ, m_a)
-    where the function is derived from geometric constraints.
+    where the function is derived from geometric conditions.
 
     Current implementation: δ_BU =  m_a × (α/π) × cos(β_ang) × sin(γ_ang)
     This gives δ_BU ≈ 0.9793 × m_a, matching the observed ratio.
@@ -504,7 +504,7 @@ class QuantumGravityHorizon:
     # This diagnostic helper provided closed-form solution for θ given target φ and δ
     # PHYSICAL INSIGHT: Demonstrated mathematical relationship between θ and φ through
     # geometric structure, showing that arbitrary targets may not be achievable with
-    # given constraints, motivating the use of geometrically determined parameters
+    # given conditions, motivating the use of geometrically determined parameters
 
     # REMOVED: solve_target_holonomy()
     # This deprecated helper solved for θ given target φ and δ
@@ -519,7 +519,7 @@ class QuantumGravityHorizon:
     # REMOVED: characterize_phi_theta_curve()
     # This exploratory helper explored the φ(θ,δ) parameter space
     # PHYSICAL INSIGHT: Showed that target φ values require specific θ-δ combinations,
-    # motivating why we use geometric constraints (δ = π/2, θ = π/4) rather than
+    # motivating why we use geometric conditions (δ = π/2, θ = π/4) rather than
     # fitting to arbitrary targets
 
     def report_bu_rotor(self) -> Dict[str, Any]:

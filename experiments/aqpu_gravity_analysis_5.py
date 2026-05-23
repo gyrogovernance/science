@@ -921,7 +921,7 @@ def section_ppn_analytical_final(s_vals: np.ndarray, u_vals: np.ndarray) -> None
     print(f"  beta  = {beta:.6f}  (leading: 1 - g1/2)")
     print("  eta_N = 0 (SEP)")
     print(f"  xi_1  = dlnG/dpsi = {g1:.6f}")
-    print("  Solar System constraints satisfied; strong-field tests at psi > 0.01")
+    print("  Solar System conditions satisfied; strong-field tests at psi > 0.01")
     print()
 
 

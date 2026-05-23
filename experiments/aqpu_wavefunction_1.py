@@ -7,7 +7,7 @@ Structural principles (corrected):
 - CS (GENE_Mic/0xAA) = reference frame, not a state in Ω
 - Carrier rest (0xAAA555) = point on complement horizon, NOT CS
 - Each byte = one full [L][R] operation with 4 internal CGM sub-phases
-- CGM constraints activate at their modal depths:
+- CGM conditions activate at their modal depths:
     CS:  depth 0 (origin, chirality at horizon)
     UNA: depth 2 (after byte 1: variety observable, carrier departs horizon)
     ONA: depth 4 (after byte 2: opposition observable as transient equality)

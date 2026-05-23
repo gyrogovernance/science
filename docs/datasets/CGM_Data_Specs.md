@@ -73,7 +73,7 @@ To keep the dataset consistent, some fields use controlled vocabularies.
 
 Use one of:
 
-- `axiom`: Foundational constraints and logical axioms.
+- `axiom`: Foundational conditions and logical axioms.
 - `derivation`: Mathematical or logical derivations (e.g., 3D necessity).
 - `invariant`: Geometric or physical invariants (e.g., `Q_G = 4π`).
 - `prediction`: Concrete predictions CGM makes about observables.
@@ -104,7 +104,7 @@ Use one of:
 - `comparison`: How two things relate.  
   *Example:* “How does CGM’s cosmology differ from standard expansion?”
 - `enumeration`: Lists/sets of items.  
-  *Example:* “What are the five foundational constraints?”
+  *Example:* “What are the five foundational conditions?”
 - `procedure`: Steps for verification, computation, or reproduction.  
   *Example:* “How to verify the axioms using the Z3 solver.”
 - `interpretation`: Conceptual or philosophical interpretation.  
@@ -116,7 +116,7 @@ Again, choose a single type per record.
 
 Tags are flexible, but using a common vocabulary makes the dataset easier to work with. Recommended tags include:
 
-#### Constraints and Logic
+#### Conditions and Logic
 - `CS`, `UNA`, `ONA`, `BU_EGRESS`, `BU_INGRESS`
 - `modal_logic`, `bimodal_logic`
 - `axiomatization`
@@ -153,7 +153,7 @@ You can use multiple tags per record.
 
 Use:
 
-- `core`: Central to understanding CGM (constraints, main derivations, key invariants).
+- `core`: Central to understanding CGM (conditions, main derivations, key invariants).
 - `supporting`: Important but secondary (detailed examples, specific numbers).
 - `detail`: Fine points, edge cases, minor clarifications.
 
@@ -201,7 +201,7 @@ Example:
   e.g., `README.md`, `docs/CGM_Program.md`, `docs/Findings/Analysis_Quantum_Gravity.md`.
 - `section`: use the section heading or heading path.  
   For example:
-  - `"section": "2.1 The Five Foundational Constraints"`
+  - `"section": "2.1 The Five Foundational Conditions"`
   - `"section": "4. Geometric Invariants and Physical Constants > 4.1 The Quantum Gravity Invariant: Q_G = 4π"`
 
 Use simple `>`-separated paths if you want to encode hierarchy.
@@ -223,7 +223,7 @@ Use simple `>`-separated paths if you want to encode hierarchy.
 {
   "id": "cgm_001",
   "source": "docs/CGM_Program.md",
-  "section": "2.1 The Five Foundational Constraints",
+  "section": "2.1 The Five Foundational Conditions",
   "category": "axiom",
   "type": "concept",
   "question": "According to the Common Governance Model, what is the CS (Common Source) constraint and what does it enforce?",
@@ -257,7 +257,7 @@ Use simple `>`-separated paths if you want to encode hierarchy.
 
 Over time, the dataset should aim to include records covering at least:
 
-- The five foundational constraints (CS, UNA, ONA, BU-Egress, BU-Ingress).
+- The five foundational conditions (CS, UNA, ONA, BU-Egress, BU-Ingress).
 - The derived operational requirements (continuity, reachability, simplicity).
 - The central 3D/6-DoF derivation and exclusion of other dimensions.
 - The 1–3–6–6 degrees-of-freedom progression.

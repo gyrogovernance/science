@@ -242,7 +242,7 @@ The 6.45× ratio between stride time and CGM timescale indicates **harmonic poli
 
 - Walking can be understood as continuous geometric realignment
 - The 14% CMP-CenPen defect represents an optimal aperture for human scale
-- Phase relationships encode geometric constraints, not just timing
+- Phase relationships encode geometric conditions, not just timing
 
 ### 5.2 For Motor Control
 
@@ -278,7 +278,7 @@ The horizon thermodynamics parallel is conceptual, not literal. Walking "horizon
 
 ### 6.4 Causation vs Correlation
 
-While walking exhibits CGM-predicted patterns, this doesn't prove CGM causes walking mechanics. The relationship may reflect shared geometric constraints on any system maintaining dynamic stability.
+While walking exhibits CGM-predicted patterns, this doesn't prove CGM causes walking mechanics. The relationship may reflect shared geometric conditions on any system maintaining dynamic stability.
 
 ## 7. Conclusions
 

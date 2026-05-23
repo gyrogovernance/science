@@ -353,7 +353,7 @@ For n = 3, the non-trivial cube roots of unity have real part −1/2 and imagina
 
 The cube roots form an equilateral triangle inscribed in the unit circle. The altitude of this triangle, √3/2, is the maximal orthogonal extension and appears throughout the CGM framework as the three-dimensional projection factor.
 
-#### 6.5 Fourth roots and depth-four closure
+#### 6.5 Fourth roots and depth-four order
 
 For n = 4, the cyclotomic polynomial is:
 
@@ -851,10 +851,10 @@ The CGM dual-pole monodromy defect is δ_BU = 0.195342 radians. The lemon billia
 | Geometry | Two-circle intersection | Two modal operators |
 | Regular structures | Exactly 3 island chains | 3 rotational DOF (su(2)) |
 | Mixed phase space | Regular tori coexist with chaotic sea | 97.93% closure, 2.07% aperture |
-| No stickiness | Clean separation, no partial barriers | Clean depth-four closure |
+| No stickiness | Clean separation, no partial barriers | Clean depth-four order |
 | Semiclassical condensation | Mixed states decay as power law | Aperture is fixed geometric invariant |
 
-The three island chains at B = 0.1953 are particularly notable. Three is the number of independent generators in su(2), the Lie algebra that the CGM framework derives as the unique solution to its foundational constraints.
+The three island chains at B = 0.1953 are particularly notable. Three is the number of independent generators in su(2), the Lie algebra that the CGM framework derives as the unique solution to its foundational conditions.
 
 #### P2.4 Status
 
@@ -913,7 +913,7 @@ Leonel et al. propose four questions for investigating dynamical phase transitio
 
 #### P3.5 The lemon billiard as open problem
 
-Leonel et al. explicitly identify the lemon billiard as an open problem. The CGM framework suggests a specific prediction: the critical value of the shape parameter is B = δ_BU = 0.195342, determined by the toroidal holonomy of the depth-four closure cycle. Computing the critical exponent and order parameter of the lemon billiard as a function of B would constitute a direct test.
+Leonel et al. explicitly identify the lemon billiard as an open problem. The CGM framework suggests a specific prediction: the critical value of the shape parameter is B = δ_BU = 0.195342, determined by the toroidal holonomy of the depth-four order cycle. Computing the critical exponent and order parameter of the lemon billiard as a function of B would constitute a direct test.
 
 ---
 

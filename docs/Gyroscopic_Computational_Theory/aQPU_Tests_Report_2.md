@@ -310,7 +310,7 @@ This is why the 2-step uniformization works: step 1 randomizes the shell coordin
 
 ### Relationship to CGM physics
 
-The tests implicitly verify the discrete realization of the CGM constraints:
+The tests implicitly verify the discrete realization of the CGM conditions:
 
 - **CS (Common Source):** GENE_MIC_S = 0xAA as unique transcription origin; non-cloning verified by the structure of the q-map
 - **UNA (Non-absolute unity):** Commutativity rate 1/64, which is non-trivial but bounded

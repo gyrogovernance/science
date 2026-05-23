@@ -544,7 +544,7 @@ Row 2:  XZ,  ZX,  YY
 
 satisfies: each row product = +I₄ (precision 10^(−12)), columns 0 and 1 products = +I₄, column 2 product = −I₄.
 
-Any noncontextual hidden-variable assignment that assigns definite ±1 values consistent with the product constraints produces a contradiction: the product of all row assignments is (+1)³ = +1, while the product of all column assignments is (+1)²(−1) = −1. Since both compute the same product of nine values, such an assignment is impossible.
+Any noncontextual hidden-variable assignment that assigns definite ±1 values consistent with the product conditions produces a contradiction: the product of all row assignments is (+1)³ = +1, while the product of all column assignments is (+1)²(−1) = −1. Since both compute the same product of nine values, such an assignment is impossible.
 
 ### 8.7 Mutually Unbiased Bases
 

@@ -24,7 +24,7 @@ KEY PHYSICAL INSIGHTS FROM THESE HELPERS:
    - This motivated the quartic scaling: dual-pole traversal → δ_BU⁴
    - Confirmed by small_angle_commutator_limit
 
-2. Geometric Constraints:
+2. Geometric Conditions:
    - δ = π/2 separation is geometrically determined
    - No real δ achieves φ = π/4 (impossible target)
    - Parameter space exploration validated the physics
@@ -59,7 +59,7 @@ def holonomy_delta_probe(
 
     This was used to understand how the SU(2) commutator holonomy depends on
     the axis separation angle δ. It showed that φ_eff changes with δ, which
-    helped motivate why we fix δ = π/2 by geometric constraints in the
+    helped motivate why we fix δ = π/2 by geometric conditions in the
     canonical derivation.
 
     Physical Insight: Demonstrated that δ is not arbitrary but must be
@@ -110,11 +110,11 @@ def characterize_phi_theta_curve(
     EXPLORATORY HELPER: Characterize the φ(θ,δ) parameter space.
 
     This was used to explore how different combinations of θ and δ can achieve
-    target φ values. It helped understand the parameter space and constraints
+    target φ values. It helped understand the parameter space and conditions
     before settling on the canonical geometric values.
 
     Physical Insight: Showed that target φ values require specific θ-δ combinations,
-    motivating why we use geometric constraints (δ = π/2, θ = π/4) rather than
+    motivating why we use geometric conditions (δ = π/2, θ = π/4) rather than
     fitting to arbitrary targets.
 
     Args:
@@ -297,7 +297,7 @@ def solve_delta_for_target_phi(
     """
     EXPLORATORY HELPER: Solve for δ given target φ and θ.
 
-    This was used to explore the parameter space and understand constraints
+    This was used to explore the parameter space and understand conditions
     before settling on the canonical geometric values. It helped show that
     achieving specific φ targets requires specific δ-θ combinations.
 
@@ -406,7 +406,7 @@ def solve_theta_for_target_phi_numpy(
 
     Physical Insight: This mathematical solution shows how θ and φ are
     related through the geometric structure, demonstrating that arbitrary
-    targets may not be achievable with given constraints.
+    targets may not be achievable with given conditions.
 
     Args:
         phi_target: Target φ value
@@ -527,7 +527,7 @@ KEY PHYSICAL INSIGHTS ESTABLISHED BY THESE HELPERS:
 
 5. PARAMETER SPACE EXPLORATION:
    - Understanding how φ depends on θ and δ
-   - Mathematical solutions show geometric constraints
+   - Mathematical solutions show geometric conditions
    - Abundance indices quantify 3-cycle nature
    - δ_BU ≈  m_a relationship crucial for α_fs prediction
 
@@ -538,7 +538,7 @@ KEY PHYSICAL INSIGHTS ESTABLISHED BY THESE HELPERS:
    - Connection to fundamental constants through closure structure
 
 These helpers established the mathematical foundation and geometric
-constraints that make the main analysis robust and physically meaningful.
+conditions that make the main analysis robust and physically meaningful.
 They demonstrated that the fine-structure constant emerges from pure
 geometry through the dual-pole monodromy structure, with no need for
 electrodynamic inputs.

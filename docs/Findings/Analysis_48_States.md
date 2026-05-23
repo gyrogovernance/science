@@ -74,7 +74,7 @@ The factor 48 is a fundamental geometric quantization unit in the CGM framework,
 - `test_exact_48delta.py`: Testing framework for 48Δ = 1 hypothesis
 
 ## Summary
-The factor 48 is a fundamental geometric quantization unit in CGM that emerges from the structure of the geometric space. It enables exact predictions across cosmology, particle physics, and gravity through the relationships 48Δ = 1 and N_e = 48², providing a geometric foundation for physical constants without requiring external constraints.
+The factor 48 is a fundamental geometric quantization unit in CGM that emerges from the structure of the geometric space. It enables exact predictions across cosmology, particle physics, and gravity through the relationships 48Δ = 1 and N_e = 48², providing a geometric foundation for physical constants without requiring external conditions.
 
 # Geometric Closure and Aperture Analysis: Angular Harmonics in CGM Framework
 
@@ -155,7 +155,7 @@ The 30-fold division reveals fundamental geometric structure:
 
 ### 5.1 Angular Momentum and Spin
 
-The 48° angle creates specific geometric constraints for angular momentum:
+The 48° angle creates specific geometric conditions for angular momentum:
 
 **Regular Polygon Properties:**
 - **Sides**: 7.5 (fractional polygon - geometric impossibility)

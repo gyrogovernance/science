@@ -87,7 +87,7 @@ Across all black hole masses examined, the CGM modifications produce consistent 
 
 These ratios remain constant across 10 orders of magnitude in mass, confirming the universal nature of the geometric correction.
 
-### 4.2 Primordial Black Hole Constraints
+### 4.2 Primordial Black Hole Conditions
 
 For primordial black holes (PBHs) evaporating over the current age of the universe (13.797 Gyr), the critical mass shifts from:
 - Standard: M_crit,std = 1.730 × 10^11 kg

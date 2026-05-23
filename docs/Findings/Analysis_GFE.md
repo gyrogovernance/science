@@ -139,7 +139,7 @@ The extension of CGM to cosmic scales through observational coherence breakdown 
 
 This framework makes specific, testable predictions about galaxy distributions, CMB patterns, and boundary structures. While individual source matching remains impractical, statistical patterns in large-scale surveys can validate or refute the multiplicity mechanism.
 
-The key insight is that observational limitations are not mere technical constraints but fundamental features that shape what we perceive as cosmic reality. The universe we observe is as much a product of how we observe as what exists to be observed.
+The key insight is that observational limitations are not mere technical conditions but fundamental features that shape what we perceive as cosmic reality. The universe we observe is as much a product of how we observe as what exists to be observed.
 
 ===
 
@@ -349,7 +349,7 @@ While the geometric framework is established, full dynamical equations for the o
 
 ### 19.2 Quantum-Classical Transition
 
-The precise mechanism by which quantum behavior emerges from geometric constraints requires further elaboration. The 97.93% closure with 2.07% aperture suggests a natural decoherence scale.
+The precise mechanism by which quantum behavior emerges from geometric conditions requires further elaboration. The 97.93% closure with 2.07% aperture suggests a natural decoherence scale.
 
 ### 19.3 Biological and Consciousness Connections
 

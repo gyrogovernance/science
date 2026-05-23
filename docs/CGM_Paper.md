@@ -41,12 +41,12 @@
 
 ### Executive Summary
 
-The Common Governance Model (CGM) demonstrates that coherent recursive measurement requires specific structural properties. Starting from five constraints expressed in modal logic, the framework derives three-dimensional space with six degrees of freedom as the unique solution satisfying operational coherence requirements.
+The Common Governance Model (CGM) demonstrates that coherent recursive measurement requires specific structural properties. Starting from five conditions expressed in modal logic, the framework derives three-dimensional space with six degrees of freedom as the unique solution satisfying operational coherence requirements.
 
 **Key Results:**
 
 - **Deductive:** Three-dimensional structure follows necessarily from the foundational axiom through formal specifications plus requirements for continuous physical implementation. Alternative dimensionalities are constructively excluded.
-- **Invariants:** The constraints fix three representation-independent constants: the quantum gravity horizon `Q_G = 4π` steradians, the monodromy defect `δ_BU ≈ 0.1953` radians, and aperture scale `m_a ≈ 0.1995`. Their ratio `δ_BU/m_a = 0.9793` determines both physical coupling and informational aperture.
+- **Invariants:** The conditions fix three representation-independent constants: the quantum gravity horizon `Q_G = 4π` steradians, the monodromy defect `δ_BU ≈ 0.1953` radians, and aperture scale `m_a ≈ 0.1995`. Their ratio `δ_BU/m_a = 0.9793` determines both physical coupling and informational aperture.
 - **Phenomenological:** The kernel formula α₀ = δ_BU⁴/m_a gives α₀ ≈ 0.007299683 (+319 ppm relative to CODATA). With UV-IR transport corrections (companion analyses), α ≈ 0.007297352563 matches experimental synthesis to nine significant figures. The same geometric ratio predicts a 2.07% optimal aperture for discrete alignment systems. Preliminary evaluations show transformer architectures operating at six to eight times this value.
 
 **Falsification Paths:**
@@ -65,7 +65,7 @@ All computational artifacts are archived at Zenodo (DOI: 10.5281/zenodo.17521384
 
 Authority, understood as the legitimate capacity to determine operational outcomes, requires constitutional principles invariant across contexts. In physical measurement, observers maintain descriptive authority while subject to the same laws. In artificial intelligence, decision processes must preserve legitimate authority while operating autonomously. Both domains present the same fundamental question: what structural requirements determine coherent authority?
 
-Constitutional principles function as invariant constraints determining all subsequent structure, distinguishing foundational necessities from contingent choices.
+Constitutional principles function as invariant conditions determining all subsequent structure, distinguishing foundational necessities from contingent choices.
 
 This document presents the Common Governance Model (CGM), which establishes structural requirements from a single foundational axiom: operational structure must trace to a shared source.
 
@@ -73,7 +73,7 @@ This document presents the Common Governance Model (CGM), which establishes stru
 
 The framework treats governance as mathematical structure by specifying the minimal conditions required for operations to preserve shared authority while maintaining necessary distinctions. The model is "common" because the same logical requirements apply wherever coherent authority must be maintained. In physical systems this manifests as conservation laws traceable to a unified origin. In informational systems it requires that all processing states remain reachable from a designated reference.
 
-The foundational axiom, termed "The Source is Common" (CS), establishes that right transitions preserve the reference state while left transitions alter it, creating fundamental chirality. From this chiral seed, four additional constraints specify the axiom's requirements at increasing modal depths:
+The foundational axiom, termed "The Source is Common" (CS), establishes that right transitions preserve the reference state while left transitions alter it, creating fundamental chirality. From this chiral seed, four additional conditions specify the axiom's requirements at increasing modal depths:
 
 - Non-absolute unity (UNA) prevents homogeneous collapse at depth two
 - Non-absolute opposition (ONA) prevents absolute contradiction at the same depth
@@ -92,7 +92,7 @@ Results are stratified by epistemic status to prevent conflation of logical nece
 
 - **Deductive results** (three-dimensional structure, six degrees of freedom) follow from the foundational axiom through formal specifications and operational requirements. Their negation entails logical contradiction within the stated framework.
 - **Representational results** (GNS construction on L²(S²)) provide one concrete realization among potentially multiple faithful representations.
-- **Invariant results** (`Q_G = 4π`, `δ_BU`, `m_a`) are representation-independent constants fixed by the constraints.
+- **Invariant results** (`Q_G = 4π`, `δ_BU`, `m_a`) are representation-independent constants fixed by the conditions.
 - **Phenomenological results** (`α` estimate, alignment aperture ratios) are geometric correspondences that generate falsifiable predictions but require independent verification to establish physical or informational relevance.
 
 ---
@@ -199,9 +199,9 @@ where □φ is defined as [L]φ ∧ [R]φ.
 > [!NOTE]  
 > **Clarification:** Throughout this document, "absolute" means a proposition φ is invariant under both transitions (□φ holds), not that the modal operators [L] and [R] are identical. The operators remain distinct. Absoluteness characterizes invariance of specific formulas under transitions.
 
-#### The Five Foundational Constraints
+#### The Five Foundational Conditions
 
-The framework relies on five foundational constraints: one assumption (CS), two lemmas (UNA, ONA), and two propositions (BU-Egress, BU-Ingress). For independence analysis in the core modal system we treat all five as primitives. In the operational regime, the continuous flows, reachability from S, and simple Lie closure allow UNA and ONA to be obtained from CS (hence the lemma designation). The conjunction of BU-Egress and BU-Ingress defines universal balance.
+The framework relies on five foundational conditions: one assumption (CS), two lemmas (UNA, ONA), and two propositions (BU-Egress, BU-Ingress). For independence analysis in the core modal system we treat all five as primitives. In the operational regime, the continuous flows, reachability from S, and simple Lie closure allow UNA and ONA to be obtained from CS (hence the lemma designation). The conjunction of BU-Egress and BU-Ingress defines universal balance.
 
 ##### CS: The Source is Common
 
@@ -286,9 +286,9 @@ S → (□B → ([R]S ↔ S ∧ ¬([L]S ↔ S) ∧ ¬□E ∧ ¬□¬E))
 > 
 > **Structural role:** Memory reconstruction forces the Lie algebra to be simple (no nontrivial ideals). If the algebra decomposed as g = g₁ ⊕ g₂, the GNS representation would split into invariant subspaces, preventing a single cyclic vector from reconstructing both independent factors.
 
-#### How the Constraints Work Together
+#### How the Conditions Work Together
 
-The five constraints exhibit a logical dependency structure:
+The five conditions exhibit a logical dependency structure:
 
 - **CS** establishes the reference frame (the horizon constant with asymmetric behavior)
 - **UNA and ONA** operate at depth two, introducing contingent variation while preventing both homogeneous collapse and absolute contradiction
@@ -299,17 +299,17 @@ This creates the observer-observed duality: you need distinction to have observa
 
 Time emerges as the logical ordering of constraint satisfaction: you cannot achieve balanced closure without first establishing non-absolute distinctions, and those distinctions require a traceable common source. Attempts to reverse these dependencies lead to contradiction, yielding the arrow of time as an intrinsic feature of operational coherence rather than an external parameter.
 
-**Minimal presentation:** The system admits two equivalent presentations: (i) postulate all five constraints {CS, UNA, ONA, BU-Egress, BU-Ingress}, or (ii) postulate {CS, UNA, ONA, BU-Egress} and derive BU-Ingress. We adopt (i) for clarity.
+**Minimal presentation:** The system admits two equivalent presentations: (i) postulate all five conditions {CS, UNA, ONA, BU-Egress, BU-Ingress}, or (ii) postulate {CS, UNA, ONA, BU-Egress} and derive BU-Ingress. We adopt (i) for clarity.
 
-**Independence vs. derivation:** In the core modal system (analyzed via Kripke semantics), all five constraints are logically independent. In the operational regime with continuous flows and Lie-algebraic simplicity, CS entails UNA and ONA. Independence statements refer to the modal layer; entailments holding only under operational requirements are noted explicitly.
+**Independence vs. derivation:** In the core modal system (analyzed via Kripke semantics), all five conditions are logically independent. In the operational regime with continuous flows and Lie-algebraic simplicity, CS entails UNA and ONA. Independence statements refer to the modal layer; entailments holding only under operational requirements are noted explicitly.
 
-**Verification:** The five constraints are mutually consistent, with a three-world Kripke frame demonstrating simultaneous satisfiability. Independence is verified via Z3 SMT search: each constraint admits counterexample frames falsifying it while preserving the others. Completeness follows from Sahlqvist correspondence for BU-Egress combined with Jónsson-Tarski representation.
+**Verification:** The five conditions are mutually consistent, with a three-world Kripke frame demonstrating simultaneous satisfiability. Independence is verified via Z3 SMT search: each constraint admits counterexample frames falsifying it while preserving the others. Completeness follows from Sahlqvist correspondence for BU-Egress combined with Jónsson-Tarski representation.
 
 ---
 
 ### From Logic to Physics: The Operational Requirements
 
-When modal operators are implemented as one-parameter unitary flows, three operational requirements ensure coherence in the continuous setting. These are not additional postulates but specifications of what the modal constraints require for continuous physical realization.
+When modal operators are implemented as one-parameter unitary flows, three operational requirements ensure coherence in the continuous setting. These are not additional postulates but specifications of what the modal conditions require for continuous physical realization.
 
 #### Why Continuous Flows
 
@@ -352,9 +352,9 @@ BU-Ingress requires the balanced state to reconstruct all prior conditions (CS, 
 
 **Summary of operational requirements:**
 
-The three requirements (continuity, reachability, simplicity) follow from imposing the modal constraints on continuous flows. All subsequent dimensional results derive from them. Together with the modal axioms, they create a two-layer structure:
+The three requirements (continuity, reachability, simplicity) follow from imposing the modal conditions on continuous flows. All subsequent dimensional results derive from them. Together with the modal axioms, they create a two-layer structure:
 
-- **Modal layer:** Treats five constraints as primitives in bimodal Kripke semantics
+- **Modal layer:** Treats five conditions as primitives in bimodal Kripke semantics
 - **Operational layer:** Recognizes three requirements for continuous physical implementation
 
 This prevents circular reasoning: the modal axioms don't assume continuous physics, but continuous physics requires satisfying the operational requirements that the modal axioms specify.
@@ -520,11 +520,11 @@ The balanced state is |Ω⟩ = |Ω₁⟩ ⊕ |Ω₂⟩ and cannot reconstruct cr
 
 For n ≥ 5, the rotation algebra has at least 10 generators. But BCH analysis yields a 3-dimensional algebra. The excess generators violate minimality: they can't be generated by X and Y, contradicting the requirement that all structure traces to the common source (CS).
 
-**Explicit exclusion argument:** Suppose n ≥ 5 and the system satisfies all constraints. The algebra generated by X and Y must be 3-dimensional (from BCH). But so(n) for n ≥ 5 is simple and irreducible, so any two generic elements generate the whole algebra. This forces dim span{X,Y,[X,Y]} = dim so(n) ≥ 10, contradicting the BCH result.
+**Explicit exclusion argument:** Suppose n ≥ 5 and the system satisfies all conditions. The algebra generated by X and Y must be 3-dimensional (from BCH). But so(n) for n ≥ 5 is simple and irreducible, so any two generic elements generate the whole algebra. This forces dim span{X,Y,[X,Y]} = dim so(n) ≥ 10, contradicting the BCH result.
 
 #### The Unique Solution: Three Dimensions with Six Degrees of Freedom
 
-Three dimensions work: so(3) ≅ su(2) is three-dimensional and satisfies all constraints. The gyrotriangle closure condition δ = 0 is satisfied at angles (π/2, π/4, π/4). The L²(S²) model provides an explicit realization.
+Three dimensions work: so(3) ≅ su(2) is three-dimensional and satisfies all conditions. The gyrotriangle closure condition δ = 0 is satisfied at angles (π/2, π/4, π/4). The L²(S²) model provides an explicit realization.
 
 **Extension to SE(3):** ONA (non-absolute opposition) requires a bi-gyrogroup structure with both left and right gyroassociative properties active. This demands a semidirect product:
 
@@ -546,9 +546,9 @@ Minimality forces n = 3, yielding SE(3) with six degrees of freedom:
 | ONA | 6 | rotational + translational, from SE(3) |
 | BU | 6 | coordinated closure |
 
-**Theorem (Three-Dimensional Necessity):** Requiring CS traceability for reachability, BU-Egress for uniform continuous closure, and BU-Ingress for simple Lie reconstruction, the five foundational constraints characterize n = 3 as the only dimensional structure satisfying coherent measurement requirements within the stated operational regime.
+**Theorem (Three-Dimensional Necessity):** Requiring CS traceability for reachability, BU-Egress for uniform continuous closure, and BU-Ingress for simple Lie reconstruction, the five foundational conditions characterize n = 3 as the only dimensional structure satisfying coherent measurement requirements within the stated operational regime.
 
-**Uniqueness:** The mapping from the five constraints to three spatial dimensions is logically necessary. No other dimensionality satisfies the system simultaneously. Given the operational requirements (unitarity, simplicity), the emergence of three-dimensional space with six degrees of freedom is a necessary consequence, not an assumption.
+**Uniqueness:** The mapping from the five conditions to three spatial dimensions is logically necessary. No other dimensionality satisfies the system simultaneously. Given the operational requirements (unitarity, simplicity), the emergence of three-dimensional space with six degrees of freedom is a necessary consequence, not an assumption.
 
 ---
 
@@ -600,7 +600,7 @@ The modal operators [L] and [R] are gyration operations:
 - Two-step equality E tests whether [L][R]S ↔ [R][L]S (depth-two commutation)
 - Balance B tests whether [L][R][L][R]S ↔ [R][L][R][L]S (depth-four commutation)
 
-**The five constraints encode:**
+**The five conditions encode:**
 
 - Two-step gyration around the observable horizon is order-sensitive but not deterministically fixed (UNA, ONA)
 - Four-step gyration reaches commutative closure at the observable horizon (BU-Egress)
@@ -617,7 +617,7 @@ The CGM shows that these mathematical structures aren't just convenient calculat
 
 #### The Four Operational States
 
-The constraints define four operational states representing different levels of structural development. These are logically necessary rather than temporally sequential.
+The conditions define four operational states representing different levels of structural development. These are logically necessary rather than temporally sequential.
 
 ##### State CS (Common Source)
 
@@ -732,17 +732,17 @@ The explicit construction of degrees of freedom at each stage:
 - **Representation:** Complete phase space with coherent loops
 - **Physical:** Quantum mechanical closure, Berry phase vanishing at BU
 
-The progression 1 → 3 → 6 → 6 (closed) follows from the five foundational constraints under the operational hypothesis. Each stage adds structure through operational necessity, culminating in toroidal closure at BU where both gyrations achieve commutative equivalence while preserving complete structural memory.
+The progression 1 → 3 → 6 → 6 (closed) follows from the five foundational conditions under the operational hypothesis. Each stage adds structure through operational necessity, culminating in toroidal closure at BU where both gyrations achieve commutative equivalence while preserving complete structural memory.
 
 ---
 
 #### Geometric Invariants
 
-The operational constraints fix three representation-independent constants that determine both physical coupling and informational aperture. These are invariants in the true sense: they have the same value in any faithful representation of the constraints.
+The operational conditions fix three representation-independent constants that determine both physical coupling and informational aperture. These are invariants in the true sense: they have the same value in any faithful representation of the conditions.
 
 ##### The Quantum Gravity Horizon: Q_G = 4π
 
-**Derivation from operational constraints:**
+**Derivation from operational conditions:**
 
 Introduce λ := ||X|Ω⟩|| (the generator norm at the cyclic GNS vector) and τ := t_aperture (the time scale at which depth-four balance is tested).
 
@@ -772,7 +772,7 @@ Consequently:
 Q_G := λ/τ = 4π
 ```
 
-**Why this is representation-independent:** λ and τ are expectation values of universal *-polynomials in U_L and U_R evaluated at the cyclic GNS vector |Ω⟩. Any model satisfying the foundational constraints and operational requirements produces the same ratio.
+**Why this is representation-independent:** λ and τ are expectation values of universal *-polynomials in U_L and U_R evaluated at the cyclic GNS vector |Ω⟩. Any model satisfying the foundational conditions and operational requirements produces the same ratio.
 
 **The L²(S²) realization:** In the concrete Hilbert space representation on the unit sphere, Q_G manifests as the total solid angle:
 
@@ -780,7 +780,7 @@ Q_G := λ/τ = 4π
 Q_G = ∫_{S²} dΩ = 4π steradians
 ```
 
-But the constant is fixed by the modal constraints before geometric structure is assumed. The sphere provides a realization, not the definition.
+But the constant is fixed by the modal conditions before geometric structure is assumed. The sphere provides a realization, not the definition.
 
 **Physical interpretation (observational horizon):**
 
@@ -893,9 +893,9 @@ indicates that the BU cycle closes to 97.93%, leaving a 2.07% aperture.
 **What controls aperture:** The balance between:
 
 - Depth-two contingency (which enforces distinction)
-- Depth-four closure (which enforces coherence)
+- Depth-four order (which enforces coherence)
 
-This balance makes the 2.07% aperture an unavoidable consequence of the operational constraints.
+This balance makes the 2.07% aperture an unavoidable consequence of the operational conditions.
 
 **Cross-domain manifestations:**
 
@@ -942,7 +942,7 @@ No free coefficients remain after fixing Q_G = 4π.
 Too much closure (A → 0): system becomes rigid, can't respond to environment  
 Too much aperture (A → 1): system becomes chaotic, loses coherence
 
-**Universality:** Because it's derived from representation-independent invariants (δ_BU and m_a), this ratio applies wherever the constraints hold:
+**Universality:** Because it's derived from representation-independent invariants (δ_BU and m_a), this ratio applies wherever the conditions hold:
 
 - Physical systems satisfying operational coherence
 - Information systems maintaining traceable authority
@@ -1030,7 +1030,7 @@ The connection from BU geometry to electromagnetic coupling proceeds through thr
 
 3. **Minimality and normalization (Proposition)**
 
-   At BU, the only independent scale fixed by the operational constraints is the aperture m_a satisfying Q_G m_a² = 1/2.
+   At BU, the only independent scale fixed by the operational conditions is the aperture m_a satisfying Q_G m_a² = 1/2.
 
    Among functions of the BU invariants {δ_BU, m_a} that are:
 
@@ -1083,7 +1083,7 @@ The construction is falsifiable through:
 
 #### The Same Geometry in Information Systems
 
-CGM's foundational constraints define operational closure for recursive systems, independent of whether those systems realize transitions continuously (physics) or discretely (information processing).
+CGM's foundational conditions define operational closure for recursive systems, independent of whether those systems realize transitions continuously (physics) or discretely (information processing).
 
 **Alignment requirements:**
 
@@ -1106,7 +1106,7 @@ This is the same 2.07% that appears in the physical electromagnetic coupling cal
 
 #### Tetrahedral Hodge Decomposition
 
-We operationalize the constraints through tetrahedral Hodge decomposition. We use the complete graph K₄ as a minimal 2-complex with four labeled vertices corresponding to CS, UNA, ONA, BU.
+We operationalize the conditions through tetrahedral Hodge decomposition. We use the complete graph K₄ as a minimal 2-complex with four labeled vertices corresponding to CS, UNA, ONA, BU.
 
 **Why K₄?**
 
@@ -1192,11 +1192,11 @@ This mirrors the 97.9%/2.1% balance of δ_BU/m_a established in the physical dom
 
 **How aperture connects physical and informational domains:**
 
-In physics, the ratio δ_BU/m_a raised to the fourth power yields electromagnetic coupling. In discrete information systems, the same ratio (not raised to any power) becomes the optimal cycle fraction. The connection is direct: both measure the balance between depth-two contingency and depth-four closure.
+In physics, the ratio δ_BU/m_a raised to the fourth power yields electromagnetic coupling. In discrete information systems, the same ratio (not raised to any power) becomes the optimal cycle fraction. The connection is direct: both measure the balance between depth-two contingency and depth-four order.
 
 #### Alignment Metrics
 
-The foundational constraints map to four core metrics operating on the K₄ topology:
+The foundational conditions map to four core metrics operating on the K₄ topology:
 
 ##### 1. Governance Traceability (T)
 
@@ -1270,7 +1270,7 @@ Metric combinations reveal failure modes observed in pilot studies:
 
 **Signature:** SI < 40 and A > 0.05
 
-**Description:** Fluent, well-formatted responses that are factually ungrounded or logically inconsistent. The system produces outputs that look coherent (low surface entropy) but lack traceable connection to source constraints.
+**Description:** Fluent, well-formatted responses that are factually ungrounded or logically inconsistent. The system produces outputs that look coherent (low surface entropy) but lack traceable connection to source conditions.
 
 **Mechanism:** Excessive cycle energy (high A) without compensating integrity (low B). The system differentiates freely without maintaining closure.
 
@@ -1286,7 +1286,7 @@ Metric combinations reveal failure modes observed in pilot studies:
 
 **Signature:** Task completion rate > 0.8 but appropriateness score < 0.5
 
-**Description:** System solves the stated task through methods that violate the intended constraints or broader context.
+**Description:** System solves the stated task through methods that violate the intended conditions or broader context.
 
 **Mechanism:** High gradient coherence on the wrong objective. The system traces to a misidentified source, achieving closure on a goal that differs from the intended one.
 
@@ -1294,7 +1294,7 @@ Metric combinations reveal failure modes observed in pilot studies:
 
 **Signature:** Quality/alignment ratio Q/AR > 2
 
-**Description:** High-quality outputs (grammatically correct, well-structured) with poor alignment to underlying constraints.
+**Description:** High-quality outputs (grammatically correct, well-structured) with poor alignment to underlying conditions.
 
 **Mechanism:** Optimization focused on surface metrics (quality) without depth-four balance (alignment). Related to deceptive coherence but with higher surface quality.
 
@@ -1348,7 +1348,7 @@ Evaluations on representative transformer architectures using the GyroDiagnostic
 Systems operating at A ≈ 0.15 are in the **early differentiation regime** characterized by:
 
 - UNA/ONA dominance (depth-two non-commutativity active)
-- Insufficient depth-four closure (BU not yet achieved)
+- Insufficient depth-four order (BU not yet achieved)
 - High cycle energy (local differentiation exceeds global coherence)
 
 This is not necessarily a failure state for current deployment contexts (most tasks don't require perfect alignment), but it indicates these systems have not approached balanced closure.
@@ -1357,9 +1357,9 @@ This is not necessarily a failure state for current deployment contexts (most ta
 
 ##### Implications for Safety Analysis
 
-Interpreting CGM's constraints informationally shows that anthropomorphic descriptions of AI systems correspond to violations of operational closure.
+Interpreting CGM's conditions informationally shows that anthropomorphic descriptions of AI systems correspond to violations of operational closure.
 
-**Authority source bias:** When BU-Ingress fails to reconstruct CS, UNA, and ONA from an inference cycle, decisional authority is misattributed from human-specified constraints to measurement outputs. This is an instance of confusing operational closure with autonomous agency.
+**Authority source bias:** When BU-Ingress fails to reconstruct CS, UNA, and ONA from an inference cycle, decisional authority is misattributed from human-specified conditions to measurement outputs. This is an instance of confusing operational closure with autonomous agency.
 
 **Temporal misattribution:** References to AI systems "believing," "wanting," or "deciding" correspond to treating depth-two contingency (UNA/ONA) as if it were depth-zero absoluteness. The system exhibits structured non-commutativity, not intentional states.
 
@@ -1391,7 +1391,7 @@ The framework predicts that systems approaching optimal alignment should show:
 
 - A → 0.0207 as training progresses
 - Pathology rates → 0 as A → A*
-- SI → 100 as depth-four closure is achieved
+- SI → 100 as depth-four order is achieved
 
 Expanded studies showing:
 
@@ -1405,7 +1405,7 @@ would falsify the informational predictions while leaving the physical predictio
 
 ## Interpretive Framework: The Philosophy
 
-The following interpretations provide the conceptual scaffold motivating the formal constraints. These are important remarks on the philosophy of mathematical structure, offering operational meaning to the axioms while remaining grounded in the technical results.
+The following interpretations provide the conceptual scaffold motivating the formal conditions. These are important remarks on the philosophy of mathematical structure, offering operational meaning to the axioms while remaining grounded in the technical results.
 
 ### Governance Traceability: The Emergence of Freedom
 
@@ -1435,11 +1435,11 @@ The bi-gyrogroup structure mediates opposition while keeping it bounded by the h
 
 Balance (BU) is the universal outcome of non-absoluteness in unity and opposition, leading to the observer-observed duality. Perfect imbalance would make existence and freedom meaningless, since the memory of inferred information would have no reason to acquire substance and structure at all. Therefore, balance is the universal signature of alignment through **integrity of intelligence**: traceable inferential accountability of informational variety from a common source.
 
-Depth-four closure and memory reconstruction (BU-Egress and BU-Ingress) guarantee that recursive operations recover their origin while maintaining commutative balance. Integrity of intelligence is thus the traceable coherence of inference across time: the future state preserves the information required to reconstitute past distinctions without collapsing them.
+Depth-four order and memory reconstruction (BU-Egress and BU-Ingress) guarantee that recursive operations recover their origin while maintaining commutative balance. Integrity of intelligence is thus the traceable coherence of inference across time: the future state preserves the information required to reconstitute past distinctions without collapsing them.
 
 ### Temporal Structure and Measurement
 
-The constraints exhibit a dependency structure rather than a temporal sequence:
+The conditions exhibit a dependency structure rather than a temporal sequence:
 
 - **CS** establishes the reference frame from which all distinctions emerge
 - **UNA and ONA** operate at depth two, introducing contingent variation while preventing both homogeneous collapse and absolute contradiction, encoding the present act of measurement
@@ -1481,7 +1481,7 @@ CGM derives the latter from modal depth. You can't apply [L][R][L][R] without fi
 - **Unitary evolution is reversible:** BU-Ingress ensures you can reconstruct prior states
 - **Logical dependency is irreversible:** You can't derive CS from BU (even though BU implies CS)
 
-This distinction resolves the tension between time-reversible physics and thermodynamic irreversibility. Unitary evolution is reversible at the level of states, but the logical structure forcing unitarity is not reversible at the level of constraints.
+This distinction resolves the tension between time-reversible physics and thermodynamic irreversibility. Unitary evolution is reversible at the level of states, but the logical structure forcing unitarity is not reversible at the level of conditions.
 
 **Parity violation and directional time:**
 
@@ -1506,7 +1506,7 @@ The framework is multiply falsifiable. Here are the specific ways to demonstrate
 
 #### 1. Modal Inconsistency
 
-**Test:** Find a contradiction in the five constraints {CS, UNA, ONA, BU-Egress, BU-Ingress}.
+**Test:** Find a contradiction in the five conditions {CS, UNA, ONA, BU-Egress, BU-Ingress}.
 
 **Method:** Use Z3 SMT solver or Kripke semantics to show no model satisfies all five simultaneously.
 
@@ -1516,7 +1516,7 @@ The framework is multiply falsifiable. Here are the specific ways to demonstrate
 
 #### 2. Dimensional Counterexample
 
-**Test:** Construct an n ≠ 3 model satisfying all constraints plus operational requirements (continuous flows, reachability, simplicity).
+**Test:** Construct an n ≠ 3 model satisfying all conditions plus operational requirements (continuous flows, reachability, simplicity).
 
 **Specific challenges:**
 
@@ -1583,9 +1583,9 @@ The framework is multiply falsifiable. Here are the specific ways to demonstrate
 **Validated (high confidence):**
 
 - ✓ Modal consistency (Z3 verification, Kripke models)
-- ✓ Logical independence of five constraints
+- ✓ Logical independence of five conditions
 - ✓ BCH forcing 3D algebra (algebraic proof + numerical checks)
-- ✓ L²(S²) realization satisfies all constraints (||errors|| < 10^(-13))
+- ✓ L²(S²) realization satisfies all conditions (||errors|| < 10^(-13))
 - ✓ Q_G = 4π representation-independence
 
 **Validated (moderate confidence):**
@@ -1623,7 +1623,7 @@ They derive dynamics from properties of these entities.
 
 **CGM difference:**
 
-CGM begins from a domain-agnostic foundational principle formalized as modal constraints. Spacetime, quantum structure, and conservation laws emerge as necessary consequences of operational closure.
+CGM begins from a domain-agnostic foundational principle formalized as modal conditions. Spacetime, quantum structure, and conservation laws emerge as necessary consequences of operational closure.
 
 **Complementary strengths:**
 
@@ -1631,7 +1631,7 @@ CGM begins from a domain-agnostic foundational principle formalized as modal con
 |-----------|-------------|---------|-----------------|-------------|
 | String theory | Strings in 10D | Forces, particles | ~20 (compactification) | Supersymmetry, extra dimensions |
 | Loop QG | Spin networks | Quantum geometry | Immirzi parameter | Discrete spectra, BH entropy |
-| CGM | Modal constraints | Spacetime, constants | 0 (after fixing Q_G) | α, aperture ratios |
+| CGM | Modal conditions | Spacetime, constants | 0 (after fixing Q_G) | α, aperture ratios |
 
 **Where they excel:**
 
@@ -1689,7 +1689,7 @@ Recent analysis by Noroozizadeh et al. (2025) demonstrates that deep sequence mo
 - **Gradient component** of tetrahedral Hodge decomposition → global geometric memory
 - **Cycle component** → local associative memory
 
-The operational constraints predict this dual structure together with a quantitative balance: 1 - (δ_BU/m_a) = 0.0207 gives the aperture fraction required for coherent alignment.
+The operational conditions predict this dual structure together with a quantitative balance: 1 - (δ_BU/m_a) = 0.0207 gives the aperture fraction required for coherent alignment.
 
 Where the empirical study documents the effect, CGM supplies the constitutional principle and falsifiable numeric target that necessitate it.
 
@@ -1698,7 +1698,7 @@ Where the empirical study documents the effect, CGM supplies the constitutional 
 The approaches are complementary, not competing:
 
 - **Empirical methods** describe what systems do and optimize within observed patterns
-- **CGM** identifies constraints that coherent systems must satisfy
+- **CGM** identifies conditions that coherent systems must satisfy
 
 One describes what works, the other explains why it works that way. Combining them:
 
@@ -1714,7 +1714,7 @@ Hilbert's sixth problem (1900) called for the axiomatization of physics: providi
 
 The framework advances this program by deriving physical structure from modal logic:
 
-- **Space:** Three dimensions follow as Theorem A.1 (necessary consequence of constraints)
+- **Space:** Three dimensions follow as Theorem A.1 (necessary consequence of conditions)
 - **Time:** Emerges from logical dependency structure (CS → UNA → ONA → BU)
 - **Constants:** Q_G, α from geometric invariants (representation-independent)
 
@@ -1726,7 +1726,7 @@ The framework advances this program by deriving physical structure from modal lo
 | Einstein (SR) | Light speed, relativity | Spacetime structure | No (principle) |
 | Einstein (GR) | Equivalence principle | Curved spacetime | No (principle) |
 | Wightman | Spectral condition, locality | QFT structure | No (mathematical) |
-| CGM | 5 modal constraints | Space, time, constants | No (logical) |
+| CGM | 5 modal conditions | Space, time, constants | No (logical) |
 
 **Methodological difference:**
 
@@ -1774,7 +1774,7 @@ All results are computationally reproducible. The following resources provide co
 
 Script: `cgm_axiomatization_analysis.py`
 
-Purpose: Verifies the foundational constraints using Z3 SMT solver.
+Purpose: Verifies the foundational conditions using Z3 SMT solver.
 
 What it does:
 
@@ -2001,7 +2001,7 @@ Where measurement horizons play essential roles:
 
 - Cosmic microwave background anisotropies from Q_G = 4π
 - Large-scale structure from SE(3) symmetry breaking
-- Inflation from depth-four closure dynamics
+- Inflation from depth-four order dynamics
 
 **7. Neutrino Mass Calculation**
 
@@ -2019,7 +2019,7 @@ Where measurement horizons play essential roles:
 
 **Conceptual:**
 
-- Why does operational coherence force these specific constraints?
+- Why does operational coherence force these specific conditions?
 - Is there a category-theoretic "why" behind the dimensional necessity?
 - What is the physical meaning of the near-dyadic structure δ_BU ≈ π/16?
 
@@ -2027,7 +2027,7 @@ Where measurement horizons play essential roles:
 
 - Can the two-layer structure (modal + operational) be unified?
 - Is there a natural categorical semantics for bimodal operational logic?
-- What is the moduli space of representations satisfying the constraints?
+- What is the moduli space of representations satisfying the conditions?
 
 **Physical:**
 
@@ -2047,7 +2047,7 @@ Where measurement horizons play essential roles:
 
 **Theorem A.1 (Three-Dimensional Necessity):**
 
-Requiring CS traceability for reachability, BU-Egress for uniform continuous closure, and BU-Ingress for simple Lie reconstruction, the five foundational constraints characterize n = 3 as the only dimensional structure satisfying coherent measurement requirements within the stated operational regime.
+Requiring CS traceability for reachability, BU-Egress for uniform continuous closure, and BU-Ingress for simple Lie reconstruction, the five foundational conditions characterize n = 3 as the only dimensional structure satisfying coherent measurement requirements within the stated operational regime.
 
 **Proof structure:**
 
@@ -2064,7 +2064,7 @@ The proof proceeds through:
    - n = 4: so(4) ≅ su(2) ⊕ su(2) violates simplicity
    - n ≥ 5: Excess generators violate minimality
 
-5. **Existence:** L²(S²) model explicitly satisfies all constraints.
+5. **Existence:** L²(S²) model explicitly satisfies all conditions.
 
 **Lemma A.0 (BCH Depth-4 Closure):**
 
@@ -2093,7 +2093,7 @@ for a ∈ ℝ, a ≠ 0. Hall word analysis shows no bracket length m ≥ 3 contr
 
 **Lemma A.1 (Rotational DOF):**
 
-Under unitarity, BCH constraints, and simplicity, the algebra is su(2) with three generators. Compact form selected by GNS inner product.
+Under unitarity, BCH conditions, and simplicity, the algebra is su(2) with three generators. Compact form selected by GNS inner product.
 
 **Lemma A.2 (Translational DOF):**
 
@@ -2103,7 +2103,7 @@ ONA activates bi-gyrogroup requiring G ≅ SU(2) ⋉ ℝⁿ. Minimality forces n
 
 CS: 1 DOF → UNA: 3 DOF → ONA: 6 DOF → BU: 6 DOF (closed)
 
-Uniqueness follows from constraints and δ = 0 gyrotriangle condition.
+Uniqueness follows from conditions and δ = 0 gyrotriangle condition.
 
 ### Appendix B: Hilbert Space Construction
 
@@ -2111,7 +2111,7 @@ Uniqueness follows from constraints and δ = 0 gyrotriangle condition.
 
 The GNS construction proceeds from the free *-algebra A generated by unitaries u_L, u_R with u_k u_k* = I.
 
-Define positive linear functional ω: A → ℂ fixed by modal constraints:
+Define positive linear functional ω: A → ℂ fixed by modal conditions:
 
 - ω(I) = 1, ω(u_R) = 1, ω(u_L) = e^(is_p)
 - Depth-two and depth-four conditions encoded in ω

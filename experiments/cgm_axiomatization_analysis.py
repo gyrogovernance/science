@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Test suite for CGM's five foundational constraints using Z3 SMT solver.
+Test suite for CGM's five foundational conditions using Z3 SMT solver.
 Tests consistency, entailments, independence, and toroidal structure.
 
 Terminology (canonical):
@@ -18,7 +18,7 @@ Geometric mapping:
 - S: Horizon worlds (observable boundary, solid angle 4π)
 - Depth-2 (E): Tests commutation of gyrations ([L][R] vs [R][L])
 - Depth-4 (B): Tests closure of gyrations (holonomy cancellation)
-- Unification: The five foundational constraints derive 3D structure from operational closure,
+- Unification: The five foundational conditions derive 3D structure from operational closure,
   with gyrations corresponding to SU(2) rotations and R^3 translations (6DoF total)
 """
 
@@ -73,7 +73,7 @@ def canonicalize(token: str) -> str:
 
 
 class ConstraintEncoder:
-    """Encodes the five foundational constraints (CS, UNA, ONA, BU‑Egress, BU‑Ingress) in Z3.
+    """Encodes the five foundational conditions (CS, UNA, ONA, BU‑Egress, BU‑Ingress) in Z3.
 
     The system consists of:
     - CS (A1): Assumption: chirality at horizon
@@ -273,14 +273,14 @@ class ConstraintEncoder:
 
 
 def test_consistency(
-    constraints: List[str], n: int = 3, timeout: int = 10000, generated: bool = False
+    conditions: List[str], n: int = 3, timeout: int = 10000, generated: bool = False
 ) -> Optional[Dict[str, Any]]:
-    """Test if given constraints are consistent. Supports canonical tokens."""
+    """Test if given conditions are consistent. Supports canonical tokens."""
     oa = ConstraintEncoder(n)
     s = Solver()
     s.set("timeout", timeout)
 
-    for constraint in constraints:
+    for constraint in conditions:
         token = canonicalize(constraint)
         oa.encode(token, s)
     oa.encode_frame_conditions(s)
@@ -568,11 +568,11 @@ def format_frame(frame: Dict[str, Any]) -> str:
     )
 
 
-def expand_to_atomics(constraints: List[str]) -> List[str]:
+def expand_to_atomics(conditions: List[str]) -> List[str]:
     """Expand constraint tokens to atomic postulates (A1-A5). Uses flat expansion.
 
     Args:
-        constraints: List of constraint tokens (canonical or OA* - will be canonicalized)
+        conditions: List of constraint tokens (canonical or OA* - will be canonicalized)
     """
     # Map to canonical first, then to atomics (flat expansion only)
     canon_to_atomic = {
@@ -585,7 +585,7 @@ def expand_to_atomics(constraints: List[str]) -> List[str]:
     }
 
     atomics = []
-    for constraint in constraints:
+    for constraint in conditions:
         canon = canonicalize(constraint)
         if canon in canon_to_atomic:
             atomics.extend(canon_to_atomic[canon])
@@ -607,23 +607,23 @@ def test_entailment_atomics(
 
 def find_minimal_entailing_subsets(
     target: str,
-    all_constraints: List[str],
+    all_conditions: List[str],
     n: int = 3,
     timeout: int = 10000,
     use_atomics: bool = True,
 ) -> List[List[str]]:
-    """Find minimal subsets of constraints that entail target.
+    """Find minimal subsets of conditions that entail target.
 
     Args:
         target: Target constraint (supports canonical tokens)
-        all_constraints: List of constraint tokens (canonical or OA*)
+        all_conditions: List of constraint tokens (canonical or OA*)
         use_atomics: If True, expand to atomic postulates (A1..A5) using flat expansion
     """
     minimal = []
     from itertools import combinations
 
     if use_atomics:
-        all_atomics = expand_to_atomics(all_constraints)
+        all_atomics = expand_to_atomics(all_conditions)
         for r in range(1, len(all_atomics) + 1):
             for subset in combinations(all_atomics, r):
                 subset_list = sorted(list(subset))
@@ -641,8 +641,8 @@ def find_minimal_entailing_subsets(
                             minimal.pop(i)
                         minimal.append(subset_list)
     else:
-        for r in range(1, len(all_constraints) + 1):
-            for subset in combinations(all_constraints, r):
+        for r in range(1, len(all_conditions) + 1):
+            for subset in combinations(all_conditions, r):
                 subset_list = list(subset)
                 if test_entailment(subset_list, target, n=n, timeout=timeout):
                     to_remove = []
@@ -736,12 +736,12 @@ def test_entailment_E(
 
 
 def main() -> None:
-    """Run complete test suite for the five foundational constraints."""
+    """Run complete test suite for the five foundational conditions."""
 
     print(
         "CGM FOUNDATIONAL CONSTRAINTS TEST SUITE (CS, UNA, ONA, BU‑Egress, BU‑Ingress)"
     )
-    print("Testing the five foundational constraints with Z3 SMT solver")
+    print("Testing the five foundational conditions with Z3 SMT solver")
 
     print("\n1. CONSISTENCY OF INDIVIDUAL CONSTRAINTS")
     for constraint in ["CS", "UNA", "ONA", "BU_EGRESS", "BU_INGRESS"]:
@@ -760,10 +760,10 @@ def main() -> None:
         (["CS", "UNA", "ONA"], "CS + UNA + ONA"),
         (["CS", "UNA", "ONA", "BU_EGRESS"], "Forward chain"),
         (["BU_EGRESS", "BU_INGRESS"], "BU‑Egress + BU‑Ingress"),
-        (["CS", "UNA", "ONA", "BU_EGRESS", "BU_INGRESS"], "All five constraints"),
+        (["CS", "UNA", "ONA", "BU_EGRESS", "BU_INGRESS"], "All five conditions"),
     ]
-    for constraints, desc in cumulative:
-        frame = test_consistency(constraints)
+    for conditions, desc in cumulative:
+        frame = test_consistency(conditions)
         if frame:
             print(f"{desc}: Consistent")
             print(f"  {format_frame(frame)}")
@@ -864,10 +864,10 @@ def main() -> None:
         )
 
     print("\n7. COMPLETE TOROIDAL CYCLE")
-    all_constraints = test_consistency(["CS", "UNA", "ONA", "BU_EGRESS", "BU_INGRESS"])
-    if all_constraints:
-        print("All five constraints are consistent together")
-        print(f"  {format_frame(all_constraints)}")
+    all_conditions = test_consistency(["CS", "UNA", "ONA", "BU_EGRESS", "BU_INGRESS"])
+    if all_conditions:
+        print("All five conditions are consistent together")
+        print(f"  {format_frame(all_conditions)}")
 
         forward = test_entailment(["CS", "UNA", "ONA", "BU_EGRESS"], "BU_EGRESS")
         reverse = test_entailment(["BU_EGRESS", "BU_INGRESS"], "CS")
@@ -986,7 +986,7 @@ def main() -> None:
     #         print(f"  {target}: {minimal}")
 
     print("\n17. COMPLETENESS PROBE")
-    # Test if constraints force non-triviality (exists frame where L ≠ R globally)
+    # Test if conditions force non-triviality (exists frame where L ≠ R globally)
     oa = ConstraintEncoder(4)
     s = Solver()
     for constraint in ["CS", "UNA", "ONA", "BU_EGRESS", "BU_INGRESS"]:
@@ -999,9 +999,9 @@ def main() -> None:
     )
     s.add(exists_diff)
     if s.check() == sat:
-        print("Constraints allow non-trivial L/R distinction")
+        print("Conditions allow non-trivial L/R distinction")
     else:
-        print("Constraints force L/R collapse (unexpected)")
+        print("Conditions force L/R collapse (unexpected)")
 
 
 if __name__ == "__main__":

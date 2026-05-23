@@ -56,7 +56,7 @@ Here is the schema I have been using for every JSONL record.
 4. `category`  
    - Coarse topic or domain label  
    - Values I have actually used so far include:
-     - `"axiom"` – logical constraints and postulates
+     - `"axiom"` – logical conditions and postulates
      - `"invariant"` – geometric or representation independent quantities
      - `"prediction"` – physical or informational predictions
      - `"empirical_result"` – data backed or numeric verification
@@ -153,7 +153,7 @@ In the AI world, benchmarks like MMLU test general knowledge. You can create **C
     *   Split your dataset. Keep `importance: "core"` items as a training set (few-shot examples).
     *   Use `importance: "detail"` or `empirical_result` items as test questions.
     *   Feed these questions to Claude 3.5, GPT-4, and Grok.
-    *   See which model best adheres to the CGM logic constraints rather than reverting to standard model physics.
+    *   See which model best adheres to the CGM logic conditions rather than reverting to standard model physics.
 
 ### 5. Educational Tools and Documentation Generation
 The `question` and `answer` pairs are essentially flashcards.

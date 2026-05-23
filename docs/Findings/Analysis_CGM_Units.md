@@ -92,7 +92,7 @@ These ratios express the geometric requirements for maintaining observational co
 
 ### 3.3 GUT Scale Emergence
 
-The Grand Unified Theory (GUT) scale emerges from parallel UNA/ONA constraints with CS memory:
+The Grand Unified Theory (GUT) scale emerges from parallel UNA/ONA conditions with CS memory:
 
 1/S_GUT = 1/S_UNA + 1/S_ONA + η/S_CS
 
@@ -200,7 +200,7 @@ Rather than seeking mathematical unification of forces, CGM unifies physics thro
 - Quantum effects: From commutator preventing simultaneous eigenvalues
 - Gravitational effects: From monodromy creating spacetime memory  
 - Electromagnetic structure: From aperture balance requirements
-- Nuclear forces: From geometric constraints at different scales
+- Nuclear forces: From geometric conditions at different scales
 
 Optical conjugacy provides the mechanism for this unification, ensuring that high-energy processes that probe small scales maintain observational coherence with their low-energy manifestations at large scales.
 
@@ -229,7 +229,7 @@ The framework makes precise quantitative predictions testable with current techn
 Beyond reproducing known physics, CGM predicts:
 - Specific monodromy relationships in quantum systems
 - Cross-scale correlations following optical conjugacy
-- Geometric constraints on particle spectra
+- Geometric conditions on particle spectra
 - Observable signatures in analog gravity systems
 
 ### 8.3 Falsification Criteria
@@ -261,7 +261,7 @@ The framework suggests new approaches to:
 ### 9.3 Quantum Information
 
 CGM's emphasis on observation suggests deep connections to:
-- Quantum error correction through geometric constraints
+- Quantum error correction through geometric conditions
 - Entanglement as shared observational processes
 - Information paradoxes resolved through monodromy
 - Holographic principles from aperture requirements

@@ -76,6 +76,33 @@ G_meas = 6.708810e-39
 # E_CS = E_Planck (Analysis_Energy_Scales 3.2). Not for deriving G (circular).
 E_CS = 1.22e19
 
+# Stage UV energy ratios (Analysis_Energy_Scales 3.1; dimensionless).
+E_UNA_OVER_CS = 2.0 / (math.pi * math.sqrt(2))
+E_ONA_OVER_CS = 0.5
+E_BU_OVER_CS = (2.0 * m_a * m_a) / math.pi
+
+
+def stage_mass_fractions() -> dict[str, float]:
+    """Bare-mass stage fractions from UV energy ratios (UNA + ONA + BU)."""
+    e_sum = E_UNA_OVER_CS + E_ONA_OVER_CS + E_BU_OVER_CS
+    f_una = E_UNA_OVER_CS / e_sum
+    f_ona = E_ONA_OVER_CS / e_sum
+    f_bu = E_BU_OVER_CS / e_sum
+    stf = f_una + f_ona
+    return {
+        "f_UNA": f_una,
+        "f_ONA": f_ona,
+        "f_BU": f_bu,
+        "E_UNA/E_CS": E_UNA_OVER_CS,
+        "E_ONA/E_CS": E_ONA_OVER_CS,
+        "E_BU/E_CS": E_BU_OVER_CS,
+        "f_STF": stf,
+        "f_UNA/STF": f_una / stf,
+        "f_ONA/STF": f_ona / stf,
+        "virial_residual": 2.0 * f_ona - f_una,
+    }
+
+
 alpha_G_meas = G_meas * v_EW**2
 f_ordered = 1.0 - 4.0 * rho * Delta**2
 

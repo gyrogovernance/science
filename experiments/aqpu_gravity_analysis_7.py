@@ -647,7 +647,7 @@ def section_F():
     print("MASS-ENERGY TRANSITION AT psi = 1/2")
     print("  psi -> 0: flat space, mass dominates, n -> 1.")
     print("  psi = 1/2: curved time, energy dominates, n -> inf.")
-    print("  E_self = -Mc^2/4, M_obs/M_UNA = 4/5: analysis_6 C.5.")
+    print("  E_self = -Mc^2/4, M_obs/M_bare = 4/5: analysis_6 C.5.")
 
 
 # ============================================================
@@ -913,8 +913,8 @@ def section_J():
     print("  causal boundary is where Balance achieves egress closure")
     print("  (W_2^2 = id) without ingress propagation. Causality is the")
     print("  operational expression of Preservation of Ancestry: every")
-    print("  action must be traceable to the common source, retrievable")
-    print("  from the stored record, and committable to the future.")
+    print("  action must preserve ancestry, remain retrievable from the")
+    print("  stored record, and be committable to the future.")
     print("  The first two are algebraically guaranteed; the third is")
     print("  geometrically conditional.")
 

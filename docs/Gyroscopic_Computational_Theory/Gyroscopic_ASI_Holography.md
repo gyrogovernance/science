@@ -118,7 +118,7 @@ Let Ω be the set of all 24-bit states reachable from GENE_MAC_REST under the tr
 - Depth 1: 127 new states (128 total)
 - Depth 2: 3,968 new states (4,096 total)
 
-Thus \|Ω\| = 4,096. Ω is a proper subset of the 2²⁴ possible 24-bit values and respects the topological constraints of the 2 × 3 × 2 grid and the spinorial gyration rule. Ω has product form:
+Thus \|Ω\| = 4,096. Ω is a proper subset of the 2²⁴ possible 24-bit values and respects the topological conditions of the 2 × 3 × 2 grid and the spinorial gyration rule. Ω has product form:
 
 - U = {A_rest XOR c : c in C₆₄}
 - V = {B_rest XOR c : c in C₆₄}

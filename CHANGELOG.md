@@ -4,6 +4,13 @@ All notable changes to the CGM Experimental Framework will be documented in this
 
 ---
 
+## [1.3.1-CGM_Gravity&Beyond] - 2026-05-23
+
+### Updated
+- `docs/Findings/Analysis_Gravity.md`: Improvements and Corrections.
+
+---
+
 ## [1.3.1-CGM_Gravity&Beyond] - 2026-05-22
 
 ### Added
@@ -187,7 +194,7 @@ Rewrote `cgm_axiomatization_analysis.py` to rigorously prove the modal axiomatiz
 - **Bundle-Level Analysis**: Tests conceptual pairs (CS, UNA, ONA bundles) as independent units
 - **Entailment Chain Verification**: Proves forward chain (CS → UNA → ONA → BU) and reverse/cyclic relationships
 - **Minimality Checks**: Verifies both members of pairs are necessary for their theorems
-- **Derivability Analysis**: Identifies which axioms are derivable under foundational constraints
+- **Derivability Analysis**: Identifies which axioms are derivable under foundational conditions
 
 **Hilbert Space Analysis Updates:**
 
@@ -628,7 +635,7 @@ Clean up organizing and merging tests and gathering discoveries.
   - Closure condition verification
   - Side parameter computations
   - Defect asymmetry testing (positive vs negative sequences)
-  - Recursive closure amplitude constraints
+  - Recursive closure amplitude conditions
 
 - **Experimental Framework**
   - Comprehensive theorem testing suite

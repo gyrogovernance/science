@@ -355,7 +355,7 @@ All monodromy values are consistent with each other:
 
 - **SU(2) commutator**: Closed-form analytical expression
 - **Gyrotriangle closure**: Exact analytical proof (δ = 0)
-- **Geometric constraints**: Derived from first principles
+- **Geometric conditions**: Derived from first principles
 - **No ad-hoc factors**: All values emerge from geometric necessity
 
 ## 8. Experimental Predictions

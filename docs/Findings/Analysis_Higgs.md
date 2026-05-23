@@ -218,7 +218,7 @@ The CGM framework predicts 36 phase space regions based on toroidal structure wi
 
 ### 4.1 Physical Interpretation
 
-Our results suggest that the Higgs mechanism may not be fundamental but rather emergent from geometric requirements. The successful prediction of the Higgs mass from pure geometry implies that electroweak symmetry breaking could be determined by structural constraints rather than dynamical accident.
+Our results suggest that the Higgs mechanism may not be fundamental but rather emergent from geometric requirements. The successful prediction of the Higgs mass from pure geometry implies that electroweak symmetry breaking could be determined by structural conditions rather than dynamical accident.
 
 The patterns consistent with five-fold vacuum structure discovered in our analysis (vacuum deficit ≈ 1/5, slope ratio ≈ 5) represent a potentially fundamental organizing principle. This possible quintuple symmetry could relate to:
 - Kaluza-Klein theories with a fifth dimension
@@ -226,7 +226,7 @@ The patterns consistent with five-fold vacuum structure discovered in our analys
 - A new symmetry principle governing vacuum dynamics
 
 **Topological Origin of Geometric Constants:**
-The appearance of √3 and √5 in our analysis has a deep topological origin through the Gauss-Bonnet theorem. For regular polyhedra on a sphere, the total angular deficit equals 4π. The icosahedron (12 vertices × π/3 deficit) and dodecahedron (20 vertices × π/5 deficit) both sum to 4π = Q_G. This explains why triangular (√3) and pentagonal (√5) geometries naturally emerge alongside our fundamental constant Q_G = 4π, suggesting the five-fold patterns in vacuum structure reflect genuine topological constraints rather than numerical coincidence.
+The appearance of √3 and √5 in our analysis has a deep topological origin through the Gauss-Bonnet theorem. For regular polyhedra on a sphere, the total angular deficit equals 4π. The icosahedron (12 vertices × π/3 deficit) and dodecahedron (20 vertices × π/5 deficit) both sum to 4π = Q_G. This explains why triangular (√3) and pentagonal (√5) geometries naturally emerge alongside our fundamental constant Q_G = 4π, suggesting the five-fold patterns in vacuum structure reflect genuine topological conditions rather than numerical coincidence.
 
 We treat the apparent five-fold structure as a working hypothesis. Its persistence under variations of input parameters, renormalization schemes, and threshold matching will decide whether it reflects a genuine organizing principle or a numerical coincidence.
 

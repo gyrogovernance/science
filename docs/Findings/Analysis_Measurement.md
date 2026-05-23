@@ -25,7 +25,7 @@ In quantum mechanics, choosing a measurement basis collapses possibilities into 
 
 **Measurement Axiom**: Observation positions must emerge from geometric necessity rather than social convention to avoid systematic bias.
 
-### 1.3 CGM Principles as Constraints
+### 1.3 CGM Principles as Conditions
 
 The Common Governance Model establishes two principles directly relevant to measurement:
 

@@ -951,7 +951,7 @@ class TWClosureTester:
                 print("✅ χ is STABLE: Candidate dimensionless CGM constant")
                 print("   This can be used in κ prediction without fitting")
             else:
-                print("⚠️  χ is VARIABLE: May need additional constraints")
+                print("⚠️  χ is VARIABLE: May need additional conditions")
                 print("   Consider averaging over more canonical paths")
 
             # DIAGNOSTIC: Analyze the χ variation pattern

@@ -54,7 +54,7 @@ The correlation between different observables demonstrates participation in the 
 
 ## Physical Consistency Through Kompaneyets Evolution
 
-The spectral distortion tests confirm alignment operates within physical constraints. All domain deviations remain within FIRAS limits by more than 10 orders of magnitude. The tSZ identity (Δρ/ρ ≈ 4y) holds with 0.00% deviation. Cross-module coherence (ρ = 0.324) confirms unified alignment geometry across different physical implementations.
+The spectral distortion tests confirm alignment operates within physical conditions. All domain deviations remain within FIRAS limits by more than 10 orders of magnitude. The tSZ identity (Δρ/ρ ≈ 4y) holds with 0.00% deviation. Cross-module coherence (ρ = 0.324) confirms unified alignment geometry across different physical implementations.
 
 ## The Alignment Aperture: Why "97.9% Closure"
 

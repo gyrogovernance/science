@@ -4,7 +4,7 @@
 
 - [1. Introduction: A Map of the Research Program](#1-introduction-a-map-of-the-research-program)
 - [2. Core Foundations: From Logic to Structure](#2-core-foundations-from-logic-to-structure)
-  - [2.1 The Five Foundational Constraints](#21-the-five-foundational-constraints)
+  - [2.1 The Five Foundational Conditions](#21-the-five-foundational-conditions)
   - [2.2 The Operational Requirements](#22-the-operational-requirements)
 - [3. The Central Derivation: Three-Dimensional Necessity](#3-the-central-derivation-three-dimensional-necessity)
   - [3.1 The Baker-Campbell-Hausdorff Analysis](#31-the-baker-campbell-hausdorff-analysis)
@@ -57,9 +57,9 @@ This guide provides a map to this extensive body of work, connecting the foundat
 
 ## 2. Core Foundations: From Logic to Structure
 
-### 2.1 The Five Foundational Constraints
+### 2.1 The Five Foundational Conditions
 
-The entire CGM framework rests on five constraints formalized in bimodal propositional logic. These are not arbitrary rules but the minimal requirements for a system to maintain coherent recursive observation.
+The entire CGM framework rests on five conditions formalized in bimodal propositional logic. These are not arbitrary rules but the minimal requirements for a system to maintain coherent recursive observation.
 
 -   **CS (Common Source):** `S → ([R]S ↔ S ∧ ¬([L]S ↔ S))`
     Establishes fundamental chirality. Right transitions preserve the reference state (horizon `S`), while left transitions alter it. This is the seed of parity violation.
@@ -76,11 +76,11 @@ The entire CGM framework rests on five constraints formalized in bimodal proposi
 -   **BU-Ingress (Memory Reconstruction):** `S → (□B → (CS ∧ UNA ∧ ONA))`
     Ensures the balanced state at depth-four contains the memory of all prior conditions.
 
-Detailed axiomatization analysis shows these constraints form a consistent, complete, and toroidal logical structure, with BU-Egress as a primitive and BU-Ingress as derivable from the initial conditions.
+Detailed axiomatization analysis shows these conditions form a consistent, complete, and toroidal logical structure, with BU-Egress as a primitive and BU-Ingress as derivable from the initial conditions.
 
 ### 2.2 The Operational Requirements
 
-When the modal operators `[L]` and `[R]` are implemented in a continuous physical system, the five constraints impose three non-negotiable operational requirements:
+When the modal operators `[L]` and `[R]` are implemented in a continuous physical system, the five conditions impose three non-negotiable operational requirements:
 
 1.  **Continuity (from BU-Egress):** Transitions must form continuous one-parameter unitary groups (`U(t) = exp(itX)`), as uniform validity of depth-four balance cannot be satisfied by discrete-only transitions.
 2.  **Reachability (from CS):** All states must be reachable from the horizon constant `S`, implying a single cyclic state vector.
@@ -112,14 +112,14 @@ The framework constructively excludes all other dimensionalities:
 
 ### 3.3 The 1-3-6-6 DOF Progression
 
-The emergence of three dimensions with six degrees of freedom follows a unique, necessary sequence dictated by the constraints:
+The emergence of three dimensions with six degrees of freedom follows a unique, necessary sequence dictated by the conditions:
 
 -   **CS (1 DOF):** Establishes a single chiral distinction (left vs. right).
 -   **UNA (3 DOF):** Activates rotational freedom, requiring the minimal non-abelian compact group `SU(2)`, which has 3 generators.
 -   **ONA (6 DOF):** Activates bi-gyrogroup structure, forcing a semidirect product `SU(2) ⋉ ℝ³ ≅ SE(3)`, adding 3 translational degrees of freedom.
 -   **BU (6 DOF, closed):** Coordinates the 6 DOFs into a stable, closed toroidal structure, achieving balance while preserving memory.
 
-This progression is not a choice but a logical entailment of satisfying the constraints sequentially.
+This progression is not a choice but a logical entailment of satisfying the conditions sequentially.
 
 ## 4. Geometric Invariants and Physical Constants
 
@@ -129,7 +129,7 @@ The 3D/6-DOF structure fixes a set of representation-independent geometric invar
 
 CGM defines **Quantum Gravity** as the geometric invariant `Q_G = 4π` steradians, representing the complete solid angle required for coherent observation in 3D space.
 
--   **Derivation:** `Q_G` is derived as the ratio of the horizon length `λ = √(2π)` to the aperture time `τ = m_a`, both fixed by the UNA and BU constraints.
+-   **Derivation:** `Q_G` is derived as the ratio of the horizon length `λ = √(2π)` to the aperture time `τ = m_a`, both fixed by the UNA and BU conditions.
 -   **Physical Meaning:** It is the quantum of observability, the minimal cost for spacetime observation itself. Its ubiquitous appearance in physics (Gauss's law, Einstein's equations, quantum normalization) is a signature of this fundamental geometric requirement.
 
 ### 4.2 The Monodromy Hierarchy and the 2.07% Aperture

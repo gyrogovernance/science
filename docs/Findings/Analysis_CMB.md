@@ -88,7 +88,7 @@ These results provide support for the geometric framework, though the failure of
 
 1. **Novel methodology**: The comb filter and specific statistical tests are tailored to CGM predictions
 2. **Limited independent validation**: These patterns have not been reported by other research groups
-3. **Sample constraints**: BAO analysis uses only 3 data points; broader datasets would be valuable
+3. **Sample conditions**: BAO analysis uses only 3 data points; broader datasets would be valuable
 4. **Theoretical assumptions**: The framework makes specific geometric assumptions that influence the analysis
 
 ## 6. Scientific Significance
@@ -113,7 +113,7 @@ The results present an interesting case for further investigation. The consisten
 1. Explore alternative explanations for the observed patterns
 2. Develop specific, testable predictions for upcoming surveys
 3. Investigate potential systematic effects that could produce similar signatures
-4. Refine the theoretical framework based on empirical constraints
+4. Refine the theoretical framework based on empirical conditions
 
 ## 8. Conclusion
 

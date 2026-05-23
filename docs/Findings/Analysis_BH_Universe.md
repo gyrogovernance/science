@@ -201,7 +201,7 @@ The framework provides natural explanations for several puzzles:
 
 **Horizon Problem**: No horizon problem exists if the universe is a closed, static structure viewed from within.
 
-## 6. Comparison with Observational Constraints
+## 6. Comparison with Observational Conditions
 
 ### 6.1 Agreement with Current Data
 

@@ -13,7 +13,7 @@ Normative terms MUST, MUST NOT, SHOULD, SHOULD NOT, and MAY are interpreted as r
 
 ## 1.1 Intelligence as Structural Coherence
 
-Traditional artificial intelligence approaches intelligence as a statistical optimization problem. These systems achieve surface-level fluency by superimposing correlations within high-dimensional abstract spaces through massive datasets. Because such architectures lack internal structural constraints, coherence and ethics are typically treated as post-hoc semantic overlays or external filters.
+Traditional artificial intelligence approaches intelligence as a statistical optimization problem. These systems achieve surface-level fluency by superimposing correlations within high-dimensional abstract spaces through massive datasets. Because such architectures lack internal structural conditions, coherence and ethics are typically treated as post-hoc semantic overlays or external filters.
 
 The Gyroscopic ASI aQPU Kernel represents a different paradigm. It treats intelligence as an intrinsic structural property that emerges from the recursive alignment of operations. Grounded in the Common Governance Model (CGM), the framework demonstrates how intelligence emerges naturally from the self-referential dynamics of structured space. Rather than approximating a target function, the router navigates a deterministic byte-driven state trajectory on the 24-bit GENE_Mac tensor carrier where alignment is constitutive. Coherence is not a policy choice but a requirement of the internal physics of the state space.
 
@@ -1079,7 +1079,7 @@ Current verified properties are established by the physics and moments reports. 
 
 # Appendix C. Application-Layer GGG Aperture
 
-This appendix restates the normative aperture definition and implementation constraints.
+This appendix restates the normative aperture definition and implementation conditions.
 
 ## C.1 Scope
 
@@ -1150,7 +1150,7 @@ Policy maintains differentiation across the 256 byte actions and their induced t
 ## D.4 Mode BU: Intelligence Cooperation
 
 Policy enforces closure and parity structure:
-- enforcement of closure constraints as checks
+- enforcement of closure conditions as checks
 - verification of trajectory parity commitments
 - verification of depth-4 alternation identity
 - verification of published frame records where used
@@ -1194,7 +1194,7 @@ The complete CGM Byte Formalism is incorporated by reference from `docs/Gyroscop
 
 # Appendix G. Algebraic Quantum Structure
 
-This appendix documents the intrinsic quantum-algebraic properties of the kernel that emerge from the transition law and the CGM constraints. These properties are not imposed by design but are discovered through exhaustive verification of the kernel physics. They ground the kernel's role as an algebraic quantum processing unit (aQPU).
+This appendix documents the intrinsic quantum-algebraic properties of the kernel that emerge from the transition law and the CGM conditions. These properties are not imposed by design but are discovered through exhaustive verification of the kernel physics. They ground the kernel's role as an algebraic quantum processing unit (aQPU).
 
 ## G.1 The Kernel as Algebraic Quantum Processing Unit
 
@@ -1214,7 +1214,7 @@ The following quantum-structural properties are exhaustively verified by the phy
 
 **Constant density.** Every state in Omega has component density exactly 0.5 (popcount 6 out of 12 bits per component). The density product d_A x d_B = 0.25 is constant across all 4096 reachable states. No state has more "weight" in one component than the other. This constant-density property is a consequence of the pair-diagonal structure of the mask code: XOR with any codeword preserves the popcount of each component.
 
-The term "algebraic quantum processing unit" (aQPU) designates a system possessing these properties over a finite algebraic field. The kernel processes bytes through quantum-algebraic operations on a discrete state space whose structure is determined by the CGM constraints.
+The term "algebraic quantum processing unit" (aQPU) designates a system possessing these properties over a finite algebraic field. The kernel processes bytes through quantum-algebraic operations on a discrete state space whose structure is determined by the CGM conditions.
 
 ## G.2 Dual Horizons
 
@@ -1457,7 +1457,7 @@ At the equality horizon (UNA degeneracy), the archetype's structural effect is m
 
 This is the discrete measurement problem. The archetype governs all measurement outcomes but cannot itself be directly observed as a state. It is the reference frame, not an element of the state space. The non-cloning theorem prevents circumventing this: you cannot duplicate the reference frame by any operation defined within it.
 
-Both extremes are non-absolute (64 states each out of 4096). The bulk of Omega exhibits partial visibility of the hidden variable: intermediate chirality where the archetype's influence is detectable but not fully determinate. This is the structured contingency that the CGM constraints require.
+Both extremes are non-absolute (64 states each out of 4096). The bulk of Omega exhibits partial visibility of the hidden variable: intermediate chirality where the archetype's influence is detectable but not fully determinate. This is the structured contingency that the CGM conditions require.
 
 ## G.5 Toroidal Monodromy
 
@@ -1503,7 +1503,7 @@ The predecessor horizons P_k = 3 x 2^(k-1) = (3/4) x 2^(k+1) encode the 2/3 rati
 - **2** = chirality (the two frames A and B; the spinorial double-cover; the two elements per gate orbit)
 - **3** = spatial dimensions (the X, Y, Z axes; the 3 rows per frame; the 3 rotational DoF from SU(2))
 
-The depth-4 mask projection (48 bits) is the predecessor of the payload horizon (64): 48 = (3/4) x 64. This expresses the fact that the depth-4 structure (4 bytes x 12-bit masks) lives at the boundary between the spatial structure (3 axes) and the chirality structure (2 frames), precisely where the CGM constraints force balanced closure.
+The depth-4 mask projection (48 bits) is the predecessor of the payload horizon (64): 48 = (3/4) x 64. This expresses the fact that the depth-4 structure (4 bytes x 12-bit masks) lives at the boundary between the spatial structure (3 axes) and the chirality structure (2 frames), precisely where the CGM conditions force balanced closure.
 
 The gate orbit count (32) is half the horizon state count (64), reflecting the chirality fraction: each gate orbit pairs two states by exchanging or complementing the chirality. The factor of 2 is the same 2-to-1 that produces the shadow projection (256 -> 128) and the spinorial double-cover (SU(2) -> SO(3)).
 

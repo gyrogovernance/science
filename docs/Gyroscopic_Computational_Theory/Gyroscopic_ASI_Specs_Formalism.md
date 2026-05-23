@@ -28,7 +28,7 @@ The architecture is based on **depth-4 closure**: any 4 components are always kn
 
 ### 1.1 The Discrete BCH Expansion
 
-In the continuous CGM physics, depth-four closure (BU-Egress) requires the Baker-Campbell-Hausdorff (BCH) expansion of the commutator to vanish at the horizon:
+In the continuous CGM physics, depth-four order (BU-Egress) requires the Baker-Campbell-Hausdorff (BCH) expansion of the commutator to vanish at the horizon:
 
 ```
 ||P_S(U_L U_R U_L U_R - U_R U_L U_R U_L)|omega>|| = 0

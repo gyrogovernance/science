@@ -517,7 +517,7 @@ def main():
         f"  For fixed a*, UV-IR area products are stage-independent to ~10⁻¹⁶ precision"
     )
     print(
-        f"  Note: Spin dependence aligns with LIGO area theorem constraints (δA/A ~3-18%)"
+        f"  Note: Spin dependence aligns with LIGO area theorem conditions (δA/A ~3-18%)"
     )
 
     # Stage properties table

@@ -1220,9 +1220,9 @@ def source_traceability_probe() -> SourceTraceabilityProbe:
 
 def lepton_horizon_wrap_exhaustion_probe(max_k: int=16) -> LeptonHorizonWrapExhaustionProbe:
     """
-    Exhaustively test the current lepton anchor constraints.
+    Exhaustively test the current lepton anchor conditions.
 
-    Broad constraints:
+    Broad conditions:
       - k_tau < k_mu < k_e <= max_k
       - the tau/muon 64-normalised D3 budget closes to |H|
 
@@ -1231,7 +1231,7 @@ def lepton_horizon_wrap_exhaustion_probe(max_k: int=16) -> LeptonHorizonWrapExha
       - k_mu - k_tau = C1/2
       - k_e - k_mu = C1
 
-    The broad constraints intentionally do not force a unique path. If only
+    The broad conditions intentionally do not force a unique path. If only
     the horizon-wrap rule gives uniqueness, the probe identifies that rule as
     the missing theorem target.
     """

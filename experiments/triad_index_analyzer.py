@@ -487,11 +487,11 @@ class TriadIndexAnalyzer:
 
     def fit_tw_parameters(self, reports: List[Dict[str, Any]]) -> None:
         """
-        Fit Thomas-Wigner parameters with rigorous constraints and cross-validation.
+        Fit Thomas-Wigner parameters with rigorous conditions and cross-validation.
 
         This implements falsifiable parameter fitting with:
         - Minimum triad requirements (≥3 per domain)
-        - Theoretical parameter bounds based on CGM constraints
+        - Theoretical parameter bounds based on CGM conditions
         - k-fold cross-validation for statistical significance
         - Fixed γ=1 constraint for photon domain (no arbitrary scale)
         """
@@ -535,7 +535,7 @@ class TriadIndexAnalyzer:
             # Physically motivated parameter ranges
             k_values = np.geomspace(1e-2, 1e1, 15)  # Rapidity scale: 0.01 to 10
 
-            # Angular constraints based on boost geometry
+            # Angular conditions based on boost geometry
             if domain_name == "photon":
                 # Photon domain should have θ near π/4 (CGM universal angle)
                 theta_values = np.linspace(np.pi / 6, np.pi / 2, 12)  # 30° to 90°

@@ -7,7 +7,7 @@ based on CGM theory with aperture parameter m_a.
 
 Based on the clean hierarchy:
 - CS: Top scale (ToE/Planck sector)
-- UNA + ONA: GUT sector (parallel constraints)
+- UNA + ONA: GUT sector (parallel conditions)
 - BU: Dual/IR endpoint (fixed point)
 """
 
@@ -54,11 +54,11 @@ def calculate_stage_actions(thresholds: Dict[str, float]) -> Dict[str, float]:
 
 def calculate_gut_action(actions: Dict[str, float], eta: float = 1.0) -> float:
     """
-    Calculate GUT action as parallel constraints (UNA + ONA + CS memory):
+    Calculate GUT action as parallel conditions (UNA + ONA + CS memory):
     1/S_GUT = 1/S_UNA + 1/S_ONA + eta/S_CS
 
     This models UNA (rotations) and ONA (translations) as complementary
-    constraints on the same helical path, with optional CS memory weight.
+    conditions on the same helical path, with optional CS memory weight.
 
     Args:
         actions: Dictionary of stage actions

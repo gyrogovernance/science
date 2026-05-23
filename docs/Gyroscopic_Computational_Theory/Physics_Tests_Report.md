@@ -571,7 +571,7 @@ This is the exact discrete-to-continuous correspondence law. The test confirms i
 
 ## Part 11: Depth-4 Fiber Bundle and Intrinsic K4 Geometry (test_physics_6)
 
-This section establishes that the tetrahedral (K4) geometry used in the governance measurement layer is not an external overlay but emerges intrinsically from the depth-4 structure of the kernel. The K4 vertex set is the fiber of the depth-4 frame bundle, the K4 edges are commutator defects, and the K4 partition of the horizon induces a uniform covering of the full state space. The sixth physics test file verifies the emergence of this structure along with additional information-theoretic and representation-theoretic constraints.
+This section establishes that the tetrahedral (K4) geometry used in the governance measurement layer is not an external overlay but emerges intrinsically from the depth-4 structure of the kernel. The K4 vertex set is the fiber of the depth-4 frame bundle, the K4 edges are commutator defects, and the K4 partition of the horizon induces a uniform covering of the full state space. The sixth physics test file verifies the emergence of this structure along with additional information-theoretic and representation-theoretic conditions.
 
 ### 11.1 K4 as the Depth-4 Fiber of the Frame Bundle
 

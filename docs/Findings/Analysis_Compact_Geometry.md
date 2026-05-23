@@ -4,7 +4,7 @@
 
 ### 1.1 Scope
 
-The Common Governance Model (CGM) derives the structure of physical space and its fundamental constants from five logical constraints on coherent recursive measurement. Within this framework, the finite kernel is a discrete algebraic system with 4,096 reachable states, organised into seven shells by a binomial distribution and carrying a self-dual [12,6,2] binary code. The kernel supplies exact combinatorial and spectral data with no freely adjustable parameters.
+The Common Governance Model (CGM) derives the structure of physical space and its fundamental constants from five logical conditions on coherent recursive measurement. Within this framework, the finite kernel is a discrete algebraic system with 4,096 reachable states, organised into seven shells by a binomial distribution and carrying a self-dual [12,6,2] binary code. The kernel supplies exact combinatorial and spectral data with no freely adjustable parameters.
 
 This report uses the finite kernel as the sole algebraic input for a mass-coordinate law covering the four principal electroweak observables: the top quark, Higgs boson, Z boson, and W boson. The law expresses each mass as a spectral expansion in powers of the aperture parameter Delta, which measures the fractional non-closure of the CGM depth-four cycle relative to the observational aperture scale. Delta is fixed independently of the electroweak masses by the CGM geometric invariants. The expansion extends from Delta^1 through Delta^5, and every coefficient is a fixed rational number drawn from the kernel's discrete grammar of shell multiplicities, horizon cardinalities, code weights, and gyroscopic stage flags. At fifth order, the maximum tick error across the four channels is 6.15 × 10⁻⁹, and the W/Z ratio recovers the independently defined aperture Delta to 8.34 × 10⁻¹⁰.
 
@@ -424,7 +424,7 @@ The stage flags for the four electroweak channels are:
 | Z       | 1    | 1   | 0   |
 | W       | 1    | 1   | 1   |
 
-Using the trace-free constraints, the base offsets are fixed:
+Using the trace-free conditions, the base offsets are fixed:
 
 ```text
 4*p0 + sum(p increments over channels) = 0
@@ -605,7 +605,7 @@ The null-model audit uses the following declared filter table:
 | Filter | Surviving candidates |
 | ------ | -------------------: |
 | Raw flag assignments | 4096 |
-| Trace-free p and q constraints | 96 |
+| Trace-free p and q conditions | 96 |
 | max abs tick error <= 5e-3 | 96 |
 | max abs tick error <= 1e-3 | 93 |
 | max abs tick error <= 5e-4 | 31 |
@@ -763,7 +763,7 @@ The muon coordinate uses the equatorial code multiplicity at first order:
 n_mu = 540 + C3*Delta = 540 + 20*Delta.
 ```
 
-An executable horizon-wrap exhaustion probe tests whether these anchors are forced by the current algebraic constraints. With only optical ordering and the tau/muon 64-cost budget, there are 680 valid increasing k triples up to k <= 16. Adding the candidate horizon-wrap rule:
+An executable horizon-wrap exhaustion probe tests whether these anchors are forced by the current algebraic conditions. With only optical ordering and the tau/muon 64-cost budget, there are 680 valid increasing k triples up to k <= 16. Adding the candidate horizon-wrap rule:
 
 ```text
 k_tau = q_source = 5
@@ -771,7 +771,7 @@ k_mu - k_tau = C1/2 = 3
 k_e - k_mu = C1 = 6
 ```
 
-selects the unique path (5, 8, 14). Broad carrier-budget constraints alone yield 680 valid triples; imposing the horizon-wrap rule selects exactly one. The lepton anchor path is therefore the unique path under the combined constraints.
+selects the unique path (5, 8, 14). Broad carrier-budget conditions alone yield 680 valid triples; imposing the horizon-wrap rule selects exactly one. The lepton anchor path is therefore the unique path under the combined conditions.
 
 ### 7.1 Carrier Algebra
 
