@@ -13,11 +13,11 @@ This analysis establishes the following results:
 *   The quantum of gravity emerges as the invariant **Q_G = 4π**, representing the complete solid angle necessary for coherent observation in three dimensions (Sections 2 and 3)
 *   The framework identifies **gravity as the dynamical origin of rest mass** through the Virial condition, deriving the relativistic rest frame from operational closure (Section 4)
 *   The aQPU kernel supplies the exact combinatorial invariants that fix **G_kernel**, the discrete Gauss law, and the continuum normalization required by the field equations (Section 5)
-*   The **Poisson equation, gravitoelectromagnetic decomposition, nonlinear metric extension, and laboratory value of G to sub-ppm precision** follow from the six degrees of freedom and aQPU kernel invariants (Section 6)
+*   The **Poisson equation, gravitoelectromagnetic decomposition, nonlinear metric extension, and a closed-form expression for the dimensionless coupling Gv²/G_kernel** follow from the six degrees of freedom and aQPU kernel invariants; with the electroweak scale as energy anchor, numerical evaluation matches the CODATA reference value for G to within 0.074 ppm (Section 6)
 *   **Causality is redefined as a four-phase operational cycle** (Source, Act, Retrieve, Commit). The standard light cone is the geometric projection of the commit phase. The first three phases are algebraically guaranteed, explaining how identity persists at gravitational horizons where propagation fails (Sections 6 and 8)
 *   The framework yields **testable observational signatures**, including reduced black hole shadow sizes, coupling suppression in neutron star interiors, and strict constant-product falsification thresholds (Section 7)
 
-Companion analyses provide supporting results, including the dimensional proof [15], the fine-structure constant calculation [24, 27], the UV-IR energy ladder [25, 26], the compact opacity construction [16], and the byte formalism [17].
+Companion analyses provide supporting results, including the dimensional proof [15], the fine-structure constant calculation [24, 27], the UV-IR energy ladder [25, 26], the compact opacity construction [16], and the byte formalism [17]. These companion documents are archived at Zenodo under the same DOI as the core CGM framework [14].
 
 ### 1.1 Units
 Throughout this manuscript, natural units c = ℏ = 1 are used except where SI is explicitly noted in observational predictions.
@@ -37,7 +37,7 @@ The Common Governance Model is formalized as a propositional modal logic with tw
 
 Modal depth refers to the nesting level of modal operators. For instance, [L][R]S has depth two (two nested operators), while [L][R][L][R]S has depth four. Modal depth plays a critical role in CGM: depth-two operations exhibit contingent behavior (non-absolute unity and opposition), while depth-four operations achieve necessary closure (universal balance).
 
-Throughout the logical development we reserve the symbol S for the designated propositional constant anchoring the horizon worlds. When this constant is realized in the Hilbert-space representation, its expectation value equals the scalar horizon invariant of quantum gravity Q_G = 4π.
+Throughout the logical development we reserve the symbol S for the designated propositional constant anchoring the horizon worlds. When this constant is realized in the Hilbert-space representation via the GNS construction, its expectation value in the cyclic vector state equals the horizon normalization Q_G = 4π. This value arises as the ratio λ/τ of two parameters fixed by the operational conditions [14] and is imposed as the GNS normalization that selects the compact real form, rather than derived as an eigenvalue of S.
 
 #### Core Definitions
 Four formulas capture the structural properties required by the Common Governance Model, all anchored to the horizon constant S:
@@ -76,7 +76,7 @@ Non-absolute unity (¬□E) ensures informational variety while maintaining ance
 S → ¬□E    where E := [L][R]S ↔ [R][L]S
 ```
 
-At depth two, the order of transitions matters, yet this non-commutativity remains contingent across all accessible states, holding in some and failing in others. This non-absolute behavior expands the initial chirality into a rotational structure. SU(2) provides the minimal algebraic framework for this expansion, yielding exactly three rotational degrees of freedom.
+At depth two, the order of transitions matters, yet this non-commutativity remains contingent across all accessible states, holding in some and failing in others. This non-absolute behavior expands the initial chirality into a rotational structure. The BCH expansion of the depth-four commutator condition forces the algebra to close on three generators as sl(2) [15]. SU(2) provides the minimal algebraic framework for this expansion, yielding exactly three rotational degrees of freedom.
 
 ### 2.3 Individuality of Identity: Opposition-Non-Absolute (ONA) Lemma
 Non-absolute opposition (¬□¬E) ensures accountability of inference. Different operational paths remain comparable even when yielding different results, preventing structural fragmentation.
@@ -110,19 +110,23 @@ S → (□B → ([R]S ↔ S ∧ ¬([L]S ↔ S) ∧ ¬□E ∧ ¬□¬E))
 
 The depth-four state preserves the full operational history, including the original chirality, rotational variety, and translational expansion. Balance implies memory, and ingress represents the centripetal binding reconstructing the original context without erasing structural distinctions.
 
+The following results are theorems of the modal system proven in [15]. The BCH expansion of the depth-four commutator condition forces the generated Lie algebra to close on three generators as sl(2) (Hall word exclusion of bracket length ≥ 3). The simplicity requirement from BU-Ingress excludes direct-sum algebras such as so(4). The GNS construction selects the compact real form su(2). ONA's bi-gyrogroup consistency forces the semidirect product SE(3) = SU(2) ⋉ R³ with exactly three translational parameters. The dimensional proof in [15] establishes n = 3 as the unique dimension satisfying all five conditions simultaneously, with constructive exclusions of n = 2 and n ≥ 4. The aQPU kernel in Section 5 is a concrete finite realization of these theorems, not an independent postulate. In the GNS representation of [14], the modal operators [L] and [R] are realized as one-parameter unitary groups U_L(t) = exp(itX) and U_R(t) = exp(itY) on L²(S²), providing the Lie algebra elements X and Y on which the BCH expansion operates.
+
 ---
 
 Gravity operates as the continuous capacity for conserving ancestry, functioning independently of discrete internal states. Ancestry is not localized to a single spatial point; each local measurement must remain accountable to the full operational history without directional bias. A sphere is the only geometry satisfying this requirement, demanding exactly 4π steradians for complete angular closure in a spatially closed and finite measurement domain. This geometric necessity establishes the quantum of gravity, Q_G = 4π. Mass and energy emerge as the accumulated operational memory required to sustain this spherical alignment against displacement.
 
 ## 3. The Quantum of Gravity
 
-The geometric requirement of 4π steradians established in Section 2 dictates the quantum of gravity. Gravity also requires quantization, meaning this continuous sphere must resolve into discrete operational passes. The aperture parameter m_a governs this resolution. Normalizing the directional asymmetry across both transition directions yields the bridge identity:
+The geometric requirement of 4π steradians established in Section 2 dictates the quantum of gravity. Q_G = 4π is the ratio λ/m_a of two parameters fixed by the operational conditions before any geometric structure is assumed [14]. The solid angle of a sphere in three dimensions is a downstream realization of this algebraic fact. Gravity also requires quantization, meaning this continuous sphere must resolve into discrete operational passes. The aperture parameter m_a governs this resolution. Normalizing the directional asymmetry across both transition directions yields the bridge identity:
 
 ```text
 m_a² × (2π)_L × (2π)_R = π/2
 m_a² = 1/(8π)
 Q_G × m_a² = 1/2
 ```
+
+Here (2π)_L and (2π)_R denote the angular coverage contributed by the left and right transition directions respectively. Each contributes 2π because a full cycle in either direction covers one complete angular revolution.
 
 The continuous 4π sphere thus resolves into a half-integer quantum pass, reflecting the underlying SU(2) double-cover structure established by the rotational degrees of freedom. The closure ratio ρ measures how close the balanced state comes to filling the aperture, while the aperture gap Δ = 1 − ρ measures the deviation from full closure. Numerically, m_a ≈ 0.199471 and Δ ≈ 0.0207.
 
@@ -164,7 +168,7 @@ The continuous field theory requires exact combinatorial normalization. The Comm
 
 The kernel organizes its state space around the six degrees of freedom derived in Section 2. An 8-bit input byte decomposes into two structural domains comprised of 2 boundary bits governing spinorial closure and 6 payload bits governing the SE(3) generators. The 6 payload bits map exactly to the 6 oriented dipole pairs of the 24-bit macro state tensor (GENE_Mac).
 
-From the rest state, the transition law generates a reachable manifold Ω of exactly 4,096 states. The manifold distributes across seven concentric shells indexed by the Hamming distance between the active and passive gyrophases (ab_distance). Shell populations follow the binomial distribution C(6,k)/64.
+From the rest state, the transition law generates a reachable manifold Ω of exactly 4,096 states. The manifold distributes across seven concentric shells indexed by the Hamming distance between the active and passive gyrophases (ab_distance). Shell populations follow |shell_k| = C(6,k) × 64, where C(6,k) counts payload configurations at popcount k and 64 counts the boundary-bit and micro-reference configurations per payload class. The ergodic weight is C(6,k)/64.
 
 | Shell | ab_distance | Population | Characterization |
 |-------|-------------|------------|------------------|
@@ -182,7 +186,7 @@ Two shells are horizons (shells 0 and 6) where all directional bias cancels and 
 
 The minimal closure unit in the kernel is a 4-byte frame (Prefix, Present, Past, Future) mapping directly to the four CGM stages (CS, UNA, ONA, BU). This depth-4 frame is the exact discrete container for the Baker-Campbell-Hausdorff (BCH) commutator cancellation required by BU-Egress.
 
-The shell displacement D measures the total distance traversed through shell space during a complete operational cycle, yielding D = 24 per complete round-trip across all 64 mass configurations.
+The shell displacement D measures the total distance traversed through shell space during a complete Z2 holonomy cycle. Each depth-4 half-word performs a pole swap mapping shell s to 6−s (Theorem T2), so the shell path for a carrier starting at shell k follows [k, 6, k, 0] per half-cycle. The Hamming distance traversed is (6−k) + (6−k) + k + k = 12 per half-cycle, independent of k. The full Z2 cycle composes two half-cycles, giving D = 24, verified for all 64 micro-refs across all 4096 states.
 
 The kernel Gauss map converts this integer to the dimensionless coupling.
 
@@ -214,9 +218,25 @@ div g = −Q_G G ρ
 
 Three independent numerical checks confirm the inverse-square behavior. The product |g|r² is constant across the exterior to machine precision. A least-squares fit of log|g| versus log r gives an exponent of −2.000000 with uncertainty 9 × 10⁻¹⁶.
 
+### 5.5 Axiom Derivation of Kernel Features
+
+| Kernel feature | CGM condition that forces it | Not a free choice because |
+|---|---|---|
+| 6 payload bits | 6 DOF from SE(3) = SU(2) ⋉ R³ (Lemmas 1, 2 in [15]) | Changing DOF count would violate the BCH closure or bi-gyrogroup consistency |
+| 2 boundary bits | SU(2) double cover gives 4 family phases | SU(2) is the unique double cover of SO(3) selected by the GNS construction |
+| L-step mutates A only | CS axiom: left transitions alter S while right transitions preserve it | The asymmetry between active and passive faces is the natural discrete realization of CS chirality. Alternative implementations preserving the L/R asymmetry would produce isomorphic kernel structures |
+| R-step is complement-and-swap | [R] preserves the horizon: right transitions must return the carrier to the S-sector | Any R-step that did not preserve the horizon would violate CS |
+| 4096-state manifold | BFS enumeration from rest under the transition law | The manifold size is a consequence of the transition law, not a parameter |
+| Binomial shell populations | 6-bit payload structure and pair-diagonal mask code | The binomial distribution follows from the 6 independent chirality bits |
+| K4 gate algebra | Depth-4 closure forces four-gate structure (Theorem T1) | The Klein four-group is the unique group of order 4 that is not cyclic |
+
+The kernel contains no free parameters. Every structural feature traces to a specific CGM condition or to a mathematical consequence of the transition law.
+
 ## 6. Gravitational Field Theory
 
 The quantum of gravity and the aperture geometry of Section 3 fix the coupling structure, while the Virial condition of Section 4 establishes that this coupling arises from the mass-energy stress required to enforce rest mass. This section derives the field equations governing how this stress is sourced, extends them to the nonlinear regime using the aQPU kernel invariants, constructs the effective metric, and computes the exact mass dressing and horizon limits.
+
+Section 6 derives the field theory in six steps, each entailed by the previous. Step 1 computes G_kernel = Q_G/D = π/6 from the horizon invariant Q_G (Section 3) and the shell displacement D = 24 (Section 5.2), both established as kernel theorems. Step 2 integrates the STF attenuation across the five bulk shells to obtain the Refractive Depth τ_G = |Ω|Δρ⁵(1 − 4ρΔ² + c₄Δ⁴) with c₄ = −7/4 fixed by two independent kernel routes (Appendix C). Step 3 evaluates the weak-field coupling G₀ = G_kernel exp(−τ_G)/v². Step 4 derives the position-dependent coupling G(ψ) = G₀ exp(g₁ψ) from the Refractive Depth gradient and E_ref(ψ). Step 5 constructs the effective metric f = 1 − 2ψ from the exact point-mass solution. Step 6 verifies the Einstein tensor, modified Gauss law, and equivalence principles. The dimensionless coupling Gv²/G_kernel = exp(−τ_G) is determined entirely by kernel invariants. Converting to the dimensional G requires the electroweak scale v as an energy anchor. This anchor is the single measured input to the prediction. Q_G = 4π is fixed by the GNS normalization as the ratio λ/m_a of two representation-independent parameters [14]. With Q_G fixed, the bridge identity Q_G m_a² = 1/2 determines m_a uniquely. The remaining kernel invariants (|Ω|, D, ρ, Δ, c₄) are all theorems about the computational system. The parameter count is: zero free parameters from the axioms, zero free parameters from the kernel, one measured input (v) to set the dimensional scale.
 
 ### 6.1 Continuum Limit of the Kernel Gauss Law
 
@@ -249,9 +269,9 @@ In the weak-field regime, the gravitoelectromagnetic system implies wave propaga
 
 ### 6.3 The Position-Dependent Coupling
 
-The linear theory treats G as constant, which cannot hold self-consistently when the gravitational field is strong because mass-energy density modifies the geometry through which the field is sourced. Coupling must therefore depend on position. The gravitational potential ratio ψ = |Φ|/Φ_Planck measures field strength relative to the Planck scale. In dimensionless units with r_g = GM/c², the coordinate s = r/r_g gives ψ(s) = GM/(rc²) in the Newtonian limit. The potential ratio ranges from 0 in the weak field to approximately 0.5 near compact-object horizons.
+The linear theory treats G as constant, which cannot hold self-consistently when the gravitational field is strong because mass-energy density modifies the geometry through which the field is sourced. Coupling must therefore depend on position. The gravitational potential ratio ψ = |Φ|/Φ_Planck measures field strength relative to the Planck scale. The symbol u is reserved for the radial wave function in the Regge-Wheeler analysis (Appendix E.2). In dimensionless units with r_g = GM/c², the coordinate s = r/r_g gives ψ(s) = GM/(rc²) in the Newtonian limit. The potential ratio ranges from 0 in the weak field to approximately 0.5 near compact-object horizons.
 
-Coupling at a given point depends on how much ancestry structure has accumulated there. This dependence enters through a reference energy scale E_ref(ψ) that shifts with gravitational depth. Optical conjugacy requires the UV and IR energy conjugates to satisfy E_UV E_IR = E_CS v/(4π²), establishing the Planck scale and the electroweak scale as paired foci of the system [25, 26]. The energy ladder positions energy scales on a ruler with tick spacing Δ, such that n(E) = ln(E_CS/E)/(Δ ln 2). The Refractive depth gradient, derived from the aQPU kernel's 8-byte Z2 holonomy transport (Section 5), dictates that the accumulated depth scales as τ(ψ) = τ_G(1 − ψ), confirmed to machine precision against the kernel spectral accumulation.
+Coupling at a given point depends on how much ancestry structure has accumulated there. This dependence enters through a reference energy scale E_ref(ψ) that shifts with gravitational depth. Optical conjugacy requires the UV and IR energy conjugates to satisfy E_UV E_IR = E_CS v/(4π²), establishing the Planck scale and the electroweak scale as paired foci of the system [25, 26]. Optical conjugacy is derived in [25, 26] from the CGM stage structure and the energy ladder, not postulated independently. The energy ladder positions energy scales on a ruler with tick spacing Δ, such that n(E) = ln(E_CS/E)/(Δ ln 2). The Refractive depth gradient, derived from the aQPU kernel's 8-byte Z2 holonomy transport (Section 5), dictates that the accumulated depth scales as τ(ψ) = τ_G(1 − ψ). Premise 3 is verified to machine precision against the kernel's spectral accumulation but is not derived from the modal axioms alone. Its status is that of a kernel-verified empirical regularity that enters the E_ref derivation as a premise. A heuristic argument for the linear form: τ measures position on the energy ladder with tick spacing Δ and total length τ_G from v to E_CS. Gravitational redshift shifts E_ref from v toward E_CS by a fraction ψ of the total span, leaving τ_G(1−ψ) ticks remaining. The linearity follows from the first-order redshift (1−ψ) common to both CGM and GR in the weak-field limit.
 
 Combining these three premises yields the reference energy as a function of gravitational depth.
 
@@ -268,11 +288,11 @@ G(ψ) = G_kernel exp(−τ_G(1−ψ)) / E_ref(ψ)²
       = G₀ exp(g₁ ψ)
 ```
 
-Here G₀ = G_kernel exp(−τ_G)/v² is the weak-field coupling and g₁ = τ_G + 2η with η = ln(v/E_CS). Numerically, g₁ = −0.6456.
+Here G₀ = G_kernel exp(−τ_G)/v² is the weak-field coupling and g₁ = τ_G + 2η with η = ln(v/E_CS). Here v = 246.22 GeV denotes the Higgs vacuum expectation value in the standard electroweak normalization v = (√2 G_F)^{-1/2}, related to the Fermi constant. The sensitivity is ∂G/∂v = −2G/v, so the loop-level ambiguity in v at the MeV level contributes approximately 20 ppm to G, below the current experimental uncertainty. Numerically, g₁ = −0.6456.
 
 Since d ln G / dψ = g₁ < 0, the coupling decreases with increasing ψ. As mass accumulates and the local potential deepens, E_ref(ψ) shifts from the electroweak scale toward the Planck scale, weakening G(ψ) where ψ is largest. At the electroweak anchor (ψ = 0), G = G₀. At the Planck anchor (ψ = 1), G ≈ 0.524 G₀.
 
-The coupling function exhibits strict Beer-Lambert attenuation as G(ψ) = G₀ exp(g₁ψ). This transmission law identifies the vacuum as a polarizable medium with position-dependent gravitational permittivity. The Refractive Depth τ_G aggregates the total attenuation over all closure cycles between the Planck and electroweak anchors. Because gravity couples exclusively to the five bulk shells identified in Section 5.1, coherent survival across this sector produces an attenuation factor of exactly five powers of the closure ratio. The Refractive Depth is therefore the exact integral of this symmetric trace-free mass-energy stress accumulated across Z2 holonomy cycles (8 bytes per cycle). The STF attenuation governs how the coupling constant G is determined and how the gravitational signal propagates, while the Poisson equation sources from total mass-energy density including all stages.
+Because gravity couples exclusively to the five bulk shells identified in Section 5.1, coherent survival across this sector produces an attenuation factor of exactly five powers of the closure ratio ρ per holonomy cycle. The three routes to the exponent 5 share the 6-bit kernel structure as a common axiom but verify the exponent through different mathematical objects (STF dimension, shell count, carrier trace polynomial), providing mathematical cross-checks rather than axiomatic independence. The Refractive Depth τ_G is the integral of this symmetric trace-free attenuation accumulated across Z2 holonomy cycles (8 bytes per cycle) between the Planck and electroweak anchors. Substituting the Refractive Depth gradient and E_ref(ψ) into the coupling formula yields G(ψ) = G₀ exp(g₁ψ). This shares the mathematical structure of Beer-Lambert transmission, though the physical mechanism is STF attenuation through the kernel shell structure rather than electromagnetic absorption. The transmission law identifies the vacuum as a polarizable medium with position-dependent gravitational permittivity. The STF attenuation governs how the coupling constant G is determined and how the gravitational signal propagates, while the Poisson equation sources from total mass-energy density including all stages.
 
 ```text
 τ_G⁰ = |Ω| Δ ρ⁵ (1 − 4ρ Δ²)
@@ -286,7 +306,7 @@ Here |Ω| = 4096, Δ = 1 − ρ, and ρ is the closure ratio from Section 3. The
 
 The full model is τ_G = τ_G⁰ + δτ. The constant c₄ = −7/4 is fixed by two independent routes (Appendix C.4). The Z2 involution of the holonomy cycle eliminates all odd-order corrections in Δ, enforcing exact symmetry at leading order. The c₄ Δ⁴ correction represents a soft breaking of this Z2 symmetry by the isotropic pressure component of the stress tensor, providing the monopole contribution to the mass-energy stress budget that the five STF components miss.
 
-Numerical evaluation gives τ_G⁰ alone a 25 ppm offset in G relative to the reference measurement. Adding δτ with c₄ = −7/4 leaves a residual of 7.36 × 10⁻⁸ in τ, corresponding to a difference of 0.074 ppm between prediction and reference measurement. This agreement is far tighter than present experimental uncertainty on G, which is of order 10⁻⁵ relative in CODATA 2018 [13]. The comparison is a consistency check against the chosen reference value, distinct from a metrological verification at that precision. A decisive test requires substantially improved G measurements or an independent observable that constrains the same τ_G structure. Because the prediction equals G_kernel exp(−τ_G)/v², a fractional change in τ maps directly to the same fractional change in G with opposite sign. The prediction is stable at the precision to which Δ and ρ are fixed, and the sub-ppm residual is free of fine-tuned cancellation among poorly determined inputs.
+Numerical evaluation gives τ_G⁰ alone a 25 ppm offset in G relative to the reference measurement. Adding δτ with c₄ = −7/4 leaves a residual of 7.36 × 10⁻⁸ in τ, corresponding to a difference of 0.074 ppm between prediction and reference measurement. This agreement is far tighter than present experimental uncertainty on G, which is of order 10⁻⁵ relative in CODATA 2018 [13]. The comparison is a consistency check against the chosen reference value, distinct from a metrological verification at that precision. The experimental uncertainty on G in CODATA 2018 is approximately 22 ppm, orders of magnitude larger than the 0.074 ppm residual. The sub-ppm agreement therefore tests the internal consistency of the dimensionless formula rather than providing a metrological verification at that precision. A decisive test requires substantially improved G measurements or an independent observable that constrains the same τ_G structure. Because the prediction equals G_kernel exp(−τ_G)/v², a fractional change in τ maps directly to the same fractional change in G with opposite sign. The prediction is stable at the precision to which Δ and ρ are fixed, and the sub-ppm residual is free of fine-tuned cancellation among poorly determined inputs.
 
 ### 6.4 The Effective Metric and Einstein Equations
 
@@ -317,7 +337,7 @@ The position-dependent coupling modifies the Gauss law to
 
 For a point mass, (G₀/G(ψ)) × 4π s² g = 4π at all radii, verified to relative precision 2.83 × 10⁻¹⁶. The modified flux is exactly conserved.
 
-The Einstein tensor for the metric f = 1 − 2ψ satisfies the component identity G_rr = G_tt/f² to relative precision 4.4 × 10⁻¹⁶ across all sampled radii. The position-dependent coupling introduces an effective anisotropic stress-energy in the exterior vacuum. The gradient of G(ψ) acts as a source term, producing a tangential pressure that structurally supports the coupling gradient. The modified Bianchi identity governs a continuous energy exchange between mass-energy density and the gravitational field.
+The Einstein tensor for the metric f = 1 − 2ψ satisfies the component identity G_rr = G_tt/f² (exact by construction for this metric, verified numerically to 4.4 × 10⁻¹⁶ as a computational consistency check) across all sampled radii. The position-dependent coupling introduces an effective anisotropic stress-energy in the exterior vacuum. The gradient of G(ψ) acts as a source term, producing a tangential pressure that structurally supports the coupling gradient. The modified Bianchi identity governs a continuous energy exchange between mass-energy density and the gravitational field.
 
 ```text
 ∇_μ T^μ_ν = −(∂_ν G / G) T^μ_μ
@@ -339,6 +359,8 @@ div[exp(−g₁ψ)∇ψ] = 0
 ```
 
 The modified vacuum equation identifies exp(−g₁ψ) as an effective gravitational permittivity. The vacuum responds to the potential with position-dependent screening, weakening the effective coupling where the field is strongest. This is conceptually distinct from the Newtonian and GR formulations. The constraint is elliptic rather than hyperbolic, preventing ψ from propagating as an independent scalar wave. Energy conditions (null, weak, dominant) are satisfied for ψ ∈ [0, ½).
+
+The general field equations for non-static, non-spherical sources follow from the scalar-tensor action of Appendix E.4 but require derivation of the dynamical consistency conditions for the algebraic constraint ψ = |Φ|/Φ_Planck under time-dependent sources. This derivation is outside the scope of the present work. The static spherically symmetric case developed here establishes the core coupling structure, metric form, and observational predictions that can be tested independently of the general equations.
 
 ### 6.5 Self-Energy and Mass Dressing
 
@@ -414,7 +436,7 @@ The CGM deviation arises because ψ_CGM < ψ_Newton at every finite radius. The 
 
 The weak-field limit of both formulas is z ≈ ψ, which is the first-order expansion common to CGM and GR. This first-order form, 1 − ψ, appears in the physical motivation for the Refractive depth gradient τ(ψ) = τ_G(1 − ψ) used in the E_ref derivation. The E_ref formula depends only on its three founding premises, independent of the exact redshift formula, while the exact CGM redshift follows directly from the metric via the equivalence principle.
 
-Three equivalence principles follow from the CGM structure. The Weak Equivalence Principle holds because free-fall acceleration depends on the local field ψ alone, independent of the test body composition. The Einstein Equivalence Principle holds because the rotational-translational structure at each point guarantees local isotropy and frame equivalence, with the gravitational redshift matching the metric prediction. The Strong Equivalence Principle holds because G(ψ) depends on position alone, independent of the internal structure of the body. The Nordtvedt parameter η_N = 0, consistent with lunar laser ranging bounds |η_N| < 2.2 × 10⁻⁵ [29].
+Three equivalence principles follow from the CGM structure. The Weak Equivalence Principle holds because free-fall acceleration depends on the local field ψ alone, independent of the test body composition. The Einstein Equivalence Principle holds because the rotational-translational structure at each point guarantees local isotropy and frame equivalence, with the gravitational redshift matching the metric prediction. The Strong Equivalence Principle holds because G(ψ) depends on position alone, independent of the internal structure of the body. The Nordtvedt parameter η_N = 0, consistent with lunar laser ranging bounds |η_N| < 2.2 × 10⁻⁵ [29]. For the Earth-Moon system in the solar field, both bodies have ψ ≈ 10⁻⁹, so the self-potential contribution to ψ is negligible compared to the external potential. G(ψ) is therefore identical for both bodies at the same position to a precision far exceeding the lunar ranging bound.
 
 The perturbative expansion of the exact point-mass solution in powers of 1/s gives
 
@@ -449,7 +471,7 @@ The CGM nonlinearity is controlled by the dimensionless potential ψ rather than
 
 At Mercury's potential this evaluates to β_eff = 1 + 1.6 × 10⁻⁹, indistinguishable from the GR value of unity. The value β = 1.3228 extracted from the 1/s² coefficient reflects higher-order structure that activates only when ψ is appreciable. This depth-dependent activation is a structural property of CGM with no analogue in constant-parameter theories. The nonlinearity becomes observationally significant at ψ > 0.01, placing the observable deviation firmly in the compact-object regime. Table 1 summarizes the effective parameters and precession ratios across the full range of gravitational depth.
 
-**Table 1.** Effective PPN parameters and perihelion precession by gravitational depth.
+**Table 1.** Effective PPN parameters and perihelion precession by gravitational depth. β_eff is defined for comparison with PPN analyses and is not a fundamental parameter of the theory.
 
 | ψ | β_eff | Precession/GR |
 |--------|-------|---------------|
@@ -460,6 +482,8 @@ At Mercury's potential this evaluates to β_eff = 1 + 1.6 × 10⁻⁹, indisting
 | 10⁻¹ | 1.0323 | 0.9892 |
 | 2 × 10⁻¹ | 1.0646 | 0.9785 |
 | 3 × 10⁻¹ | 1.0968 | 0.9677 |
+
+The coefficient a₂ = g₁/2 yielding β = 1.3228 at leading order is a property of the 1/s² term in the exact potential expansion. It has no direct physical interpretation as a constant PPN parameter because CGM's position-dependent coupling generates an infinite series of independent correction terms. The physically meaningful object is the full metric f = 1 − 2ψ(s), from which all observable effects must be computed.
 
 ### 7.2 Gravitational Radiation
 The canonical operational cycle traces a shell path with two symmetric excursions per half-cycle. Fourier decomposition of the shell displacement signal reveals the dominant spectral component at k = 2, with the shell modulation factor reaching 2C(6,2)/C(6,3) = 1.5 for the depth-four half-cycle. The full Z2 holonomy path gives |A₂| ≈ 1.25 as the dominant non-DC mode (`aqpu_gravity_analysis_6.py`). The next-strongest mode at k = 4 has |A₄| ≈ 1.02, about 82% of |A₂|. This mode is the discrete precursor of the hexadecapole (ℓ = 4) correction to gravitational radiation, subdominant to but structurally paired with the quadrupole channel. The quadrupolar character of gravitational radiation arises directly as the dominant spectral mode of the finite kernel's shell dynamics, independent of symmetry arguments or continuum limits. Two equal peaks per cycle identify the quadrupole structure at the level of the finite shell dynamics. In the continuous limit, a spin-2 field radiates predominantly through quadrupole emission, matching the kernel dominant spectral mode at k = 2.
@@ -485,7 +509,7 @@ The modified Gauss law acts as a Klein-Gordon equation on the CGM metric. For a 
 Gravitational wave strain is calibrated against the Hulse-Taylor binary pulsar. For the Hulse-Taylor system, ψ_orbital ≈ 2.1 × 10⁻⁶, giving G(ψ)/G₀ = 0.9999986. The resulting orbital period derivative differs from the GR prediction by 0.0003%, below current observational precision. Strong-field sources exhibit larger corrections. A neutron-star binary at 20 km orbital separation has ψ ≈ 0.10, yielding G/G₀ ≈ 0.935 and a 6.5% reduction in gravitational wave luminosity.
 
 ### 7.3 Strong-Field Compact Objects
-The coupling function G(ψ) produces distinct observational consequences across a range of compact objects. The photon sphere yields an impact parameter b/r_g = 4.648, giving a shadow area 80% of the GR Schwarzschild prediction. Table 2 gives shadow angular diameters for two Event Horizon Telescope targets. CGM predictions fall 1.7 to 2.0 standard deviations below EHT measurements [31, 32]. Next-generation EHT observations at improved precision will distinguish CGM from GR at the 2σ level. Spin corrections use the wavefunction two-pass deficit method, with helix activation factor 0.5 and metric κ = 4.5, valid for spin parameter a* < 0.3.
+The coupling function G(ψ) produces distinct observational consequences across a range of compact objects. The photon sphere yields an impact parameter b/r_g = 4.648, giving a shadow area 80% of the GR Schwarzschild prediction. Table 2 gives shadow angular diameters for two Event Horizon Telescope targets. CGM predictions fall 1.7 to 2.0 standard deviations below EHT measurements [31, 32]. At this precision both CGM and GR remain consistent with the data. Improved EHT observations at 1 μas or better would distinguish the models at the 3σ level. If next-generation EHT observations at ≤1 μas precision confirm shadow diameters consistent with GR Kerr and exclude CGM predictions at the 3σ level, the specific coupling function G(ψ) = G₀ exp(g₁ψ) with the kernel-derived g₁ would be falsified for the Schwarzschild sector. For the Kerr sector, the current spin correction is valid for a* < 0.3. A full Kerr-CGM metric for higher spin parameters is required before a quantitative falsification threshold can be established. The direction of the correction (shadow sizes below GR Kerr) is robust, but the magnitude at high spin remains approximate. Spin corrections use the wavefunction two-pass deficit method, with helix activation factor 0.5 and metric κ = 4.5, valid for spin parameter a* < 0.3. Both M87* and Sgr A* are estimated to have a* > 0.5 based on GR-based analyses. The CGM spin corrections in Table 2 should therefore be treated as order-of-magnitude estimates rather than precise predictions. A full Kerr-CGM metric derived from the position-dependent coupling G(ψ) applied to axisymmetric spacetimes is required for definitive comparison with EHT data at high spin.
 
 **Table 2.** Shadow angular diameters (μas).
 
@@ -525,6 +549,8 @@ Table 4 details the redshift comparison across the neutron star and compact obje
 | 12 | 0.172 | 0.153 | 0.235 | 0.200 | −15% |
 | 10 | 0.207 | 0.183 | 0.306 | 0.254 | −17% |
 | 8 | 0.258 | 0.227 | 0.439 | 0.342 | −22% |
+
+Existing neutron star redshift measurements (e.g., EXO 0748-676 at z = 0.35, measured via Fe absorption lines) probe systems with higher compactness than the 1.4 M☉ models in Table 4. A systematic comparison of CGM redshift predictions against NICER and XMM-Newton observations is a priority for future work.
 
 ### 7.4 Coupling and Constant Signatures
 Electromagnetic and gravitational couplings share the aperture geometry, producing a testable relationship between them. With ζ = 8/(m_a √3) = 16√(2π/3) ≈ 23.155 and α₀ = δ_BU⁴/m_a, the product
@@ -629,7 +655,7 @@ In the core modal system with Kripke semantics, all five conditions are logicall
 
 ## Appendix B: Kernel Topology and Combinatorics
 ### B.1 The Reachable Manifold
-The kernel is a finite algebraic system with 4096 reachable states organized into seven shells. Shell k has ab-distance 2k for k = 0 through 6, with shell 0 at the equality horizon and shell 6 at the complement horizon. Shell populations follow |shell_k| = C(6,k)/64.
+The kernel is a finite algebraic system with 4096 reachable states organized into seven shells. Shell k has ab-distance 2k for k = 0 through 6, with shell 0 at the equality horizon and shell 6 at the complement horizon. Shell populations follow |shell_k| = C(6,k) × 64.
 
 ### B.2 The K4 Operator Algebra
 The depth-4 canonical half-word W₂ maps shell s to 6 − s, producing a pole swap. Its square is the identity on all 4096 states, with eigenspace dimensions dim(+1) = dim(−1) = 2048. The full canonical word F = W₂ ∘ W₂' composes two such involutions through the Klein four-group (K4) algebra {id, W₂, W₂', F}. Gate F preserves shell while acting as a two-state flip on the positional coordinate within each shell. The holonomy cycle requires F ∘ F = id.
@@ -674,7 +700,7 @@ The transport measure τ_cycle/Δ = 7591/7392 and the anisotropy measure 5/99 (f
 Expanding the closed form τ_G = |Ω| Δ (1−Δ)⁵ (1−4(1−Δ)Δ²) as a polynomial in Δ produces a finite series through degree nine with coefficients c_n/|Ω| = [0, 1, −5, 6, 14, −55, 79, −60, 24, −4]. The series converges to the closed form exactly at machine precision.
 
 ### C.4 The c₄ Correction
-The additive correction δτ = |Ω| Δ ρ⁵ c₄ Δ⁴ with c₄ = −7/4 is fixed by two independent routes. Route A gives c₄ = −(1 + Tr(σ_iso)) = −7/4 from the isotropic stress trace. Route B gives c₄ = q_W from the closure charge on gyroscopic edge increments, yielding the same value. Including δτ reduces the τ residual from 2.46 × 10⁻⁵ to 7.36 × 10⁻⁸.
+The additive correction δτ = |Ω| Δ ρ⁵ c₄ Δ⁴ with c₄ = −7/4 is fixed by two independent routes. Route A gives c₄ = −(1 + Tr(σ_iso)) = −7/4 from the isotropic stress trace. Route B gives c₄ = q_W from the closure charge on gyroscopic edge increments, yielding the same value. The two routes are mathematically independent: Route A derives c₄ from the second-moment structure of the payload bit distribution, while Route B derives it from the edge-increment structure of the K4 gate composition. They share the kernel as a common framework but use different theorems about different objects. Including δτ reduces the τ residual from 2.46 × 10⁻⁵ to 7.36 × 10⁻⁸.
 
 ### C.5 Cycle Count
 The number of Z2 holonomy cycles (8 bytes each) is N_cycles = |Ω| ρ⁵ (f_K4 + c₄ Δ⁴) / (τ_cycle/Δ), where f_K4 = 1 − 4ρΔ². This evaluates to N_cycles ≈ 3586.5. The product N_cycles × τ_cycle = τ_G confirms exact agreement with the closed form.
