@@ -34,17 +34,25 @@
 
 </div align="center">
 
-The Common Governance Model (CGM) is an axiomatic framework for fundamental physics and information science. It rests on a single axiom: every distinguishable state in a coherent system must be traceable to a common source. The framework derives spatial dimensionality, chirality, and conservation laws from this requirement using formal modal logic and gyrogroup geometry. Three-dimensional space with six degrees of freedom emerges as a theorem, while time emerges as the ordering imposed by recursive operational closure. The theory is implemented and verified on the Gyroscopic ASI aQPU.
+The Common Governance Model (CGM) is an axiomatic framework for fundamental physics and information science. It rests on a single axiom: every distinguishable state in a coherent system must trace to a common source. From this requirement, formal modal logic and gyrogroup geometry derive spatial dimensionality, chirality, and conservation laws. Three-dimensional space with six degrees of freedom emerges as a theorem; time is the ordering imposed by recursive operational closure. The theory is implemented and verified on the Gyroscopic ASI aQPU.
+
+### Gyroscopic ASI aQPU
+
+The aQPU is the executable form of the framework. It is a deterministic algebraic machine that runs the CGM axioms as integer arithmetic on standard hardware, producing the same trajectories on every run and on any computer. The same machine is used both as a research tool and as an alignment kernel for AI systems. In this repository it serves as the reference implementation against which the physical predictions are checked: gravity, electroweak masses, wavefunction structure, and related analyses are computed directly on it (14 experiment scripts in `experiments/`).
+
+Canonical repository: [superintelligence](https://github.com/gyrogovernance/superintelligence). Vendored implementation: [`gyroscopic/aQPU/`](gyroscopic/aQPU/). Specifications and test reports are listed in the documentation section below.
 
 ## Headline results
 
-* **Fine-structure constant** α from aperture geometry (0.043 ppb vs experiment)
-* **Newton's constant** G from holographic algorithm invariants and electroweak anchors (0.074 ppm consistency check vs CODATA)
-* **Nonlinear gravity** satisfying the Einstein equations via a position-dependent coupling, deriving the relativistic rest frame (E=mc²) from the Virial condition as an operational necessity
-* **Electroweak masses** (Higgs, Z, W, top) and **weak mixing angle** from discrete geometry (sub-ppm to parts-per-billion)
-* **Quantum gravity invariant** 4π steradians (full solid angle of observation)
+* **Newton's constant G** computed from the geometry of the framework using the electroweak Higgs scale as the only measured input. The result matches the CODATA reference value to 0.074 ppm.
+* **Fine-structure constant α** computed from the same geometry, matching the experimental value to 0.043 parts per billion.
+* **Three-dimensional space with six degrees of freedom** (three rotations and three translations) appears as a theorem of the framework, with explicit proofs that two-dimensional and higher-dimensional alternatives are excluded.
+* **Electroweak particle masses** (Higgs, Z, W, top quark) and the **weak mixing angle**, all from the same geometric structure that fixes G, with accuracy ranging from sub-ppm to parts per billion.
+* **Gravity as a nonlinear theory of geometry**, with a position-dependent coupling that recovers Newtonian and general-relativistic predictions in the appropriate limits and gives an exact, finite gravitational self-energy of −Mc²/4 for a point mass.
+* **A complete solid angle of 4π** as the geometric invariant of gravity, fixing the structure of Newton's and Einstein's field equations and the spin-2 character of gravitational waves.
+* **The relation E = mc²** appears as a structural consequence of operational closure, anchoring the rest frame as a dynamical condition rather than a coordinate choice.
 
-Neutrino mass scales, lepton ratios, quark flavor structure, and optical conjugacy between ultraviolet and infrared scales are derived in the linked analyses.
+Neutrino mass scales, lepton ratios, quark flavour structure, and the optical conjugacy linking the Planck and electroweak scales are also derived in the linked analyses.
 
 ## Scale of verification
 
@@ -56,7 +64,7 @@ Neutrino mass scales, lepton ratios, quark flavor structure, and optical conjuga
 | Shared libraries, stage modules, and tests | 21 |
 | Python in `experiments/` (all files) | ~44,000 lines |
 
-The experiment scripts span gravity, electroweak mass geometry, fine structure, quantum gravity, CMB data checks, axiomatization, Hilbert space representation, monodromy, energy scales, and related topics. Each major result in the table below maps to one analysis note and its verification code.
+Each major result in the table below maps to one analysis note and its verification code. The scripts cover gravity, electroweak mass geometry, fine structure, quantum gravity, CMB checks, axiomatization, Hilbert-space representation, monodromy, and energy scales.
 
 ---
 <div align="center">
@@ -71,8 +79,6 @@ The experiment scripts span gravity, electroweak mass geometry, fine structure, 
 
 Core writing: [CGM Core](docs/CGM_Paper.md), [CGM Program](docs/CGM_Program.md), [CHANGELOG](CHANGELOG.md).
 Dataset: [CGM corpus](docs/datasets/) (1,000+ JSONL Q&A pairs for fine-tuning and RAG).
-
-Each row below is the single entry point for that topic: one analysis note, one code location.
 
 | Topic | Analysis | Code |
 |-------|----------|------|
@@ -91,15 +97,7 @@ Each row below is the single entry point for that topic: one analysis note, one 
 | Proto-units | [Analysis_CGM_Units](docs/Findings/Analysis_CGM_Units.md) | [cgm_proto_units_analysis.py](experiments/cgm_proto_units_analysis.py) |
 | Gyroscopic multiplication | [Analysis_Gyroscopic_Multiplication](docs/Findings/Analysis_Gyroscopic_Multiplication.md) | |
 
-### Gyroscopic ASI aQPU
-
-The Gyroscopic ASI aQPU executes the CGM axioms as an algebraic processing architecture. The theory derives space, chirality, and governance conditions; the aQPU operates as the reference machine that runs them. Each input byte advances a 24-bit coupled state encoding three dimensions and six degrees of freedom. The machine is deterministic and replayable: identical byte ledgers yield identical trajectories, verifiable by any independent party using exact integer arithmetic on standard hardware. The reachable manifold comprises 4,096 states with holographic boundary-to-bulk scaling. Verified properties include exact mixing, compressed state encoding, and discrete realizations of quantum-information protocols.
-
-In this repository, the aQPU implementation serves as the reference machine for physics verification. Gravity, electroweak mass geometry, wavefunction diagnostics, and related analyses run directly on the aQPU package (14 experiment scripts in `experiments/`).
-
-Canonical repository: [superintelligence](https://github.com/gyrogovernance/superintelligence). Vendored implementation: [`gyroscopic/aQPU/`](gyroscopic/aQPU/).
-
-Specification and test reports:
+### aQPU specifications and test reports
 
 | Document | Description |
 |----------|-------------|
