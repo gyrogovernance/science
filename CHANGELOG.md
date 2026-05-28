@@ -4,6 +4,13 @@ All notable changes to the CGM Experimental Framework will be documented in this
 
 ---
 
+## [1.3.1-CGM_Gravity&Beyond] - 2026-05-25
+
+### Updated
+- `docs/Findings/Analysis_Gravity.md`: Editorial Improvements and Corrections.
+
+---
+
 ## [1.3.1-CGM_Gravity&Beyond] - 2026-05-23
 
 ### Updated

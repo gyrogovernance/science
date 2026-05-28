@@ -69,10 +69,12 @@ Each major result in the table below maps to one analysis note and its verificat
 ---
 <div align="center">
 <a href="docs/CGM.pdf">
-<img src="/assets/CGM_Cover_Letter.jpg" alt="Common Governance Model Paper" width="420">
+<img src="assets/CGM_Cover_Letter.jpg" alt="Common Governance Model Paper" width="420">
 </a>
-<br>
-[![Read the paper](https://img.shields.io/badge/Read-CGM%20Paper-1f2937?style=for-the-badge&logo=book&logoColor=white)](docs/CGM.pdf)
+<br><br>
+<a href="docs/CGM.pdf">
+<img src="https://img.shields.io/badge/Read-CGM%20Paper-1f2937?style=for-the-badge&amp;logo=book&amp;logoColor=white" alt="Read the CGM Paper">
+</a>
 </div>
 
 ## Documentation and verification
