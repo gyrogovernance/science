@@ -130,7 +130,7 @@ try:
 
     print("Computing Baker-Campbell-Hausdorff expansion for depth-4 closure...")
     print(
-        "Proposition BU-Egress (A4) requires: [L][R][L][R]S ↔ [R][L][R][L]S (depth-four balance)"
+        "Proposition BU (Eg/In) (A4) requires: [L][R][L][R]S ↔ [R][L][R][L]S (depth-four balance)"
     )
     print(
         "Under RA: e^{tX}e^{tY}e^{tX}e^{tY} = e^{tY}e^{tX}e^{tY}e^{tX} for all small t"
@@ -162,7 +162,7 @@ try:
 
     print("INTERPRETATION:")
     print("  Δ = 2 t² [X,Y] to O(t³). The t³ terms cancel exactly in the difference.")
-    print("  For Proposition BU-Egress (A4) to hold as □B (from S), we require")
+    print("  For Proposition BU (Eg/In) (A4) to hold as □B (from S), we require")
     print("  P_S Δ P_S = 0 (sectoral equality) uniformly for all small |t| < δ.")
     print("  Uniform sectoral equality (P_S ... P_S = 0 for all |t|<δ) is verified")
     print(
@@ -181,7 +181,7 @@ try:
     print("  compact factor), this uniquely selects su(2).")
     print()
     print(
-        "CONCLUSION: Proposition BU-Egress (A4) (sectoral) + unitary representation +"
+        "CONCLUSION: Proposition BU (Eg/In) (A4) (sectoral) + unitary representation +"
     )
     print("  higher-order BCH conditions + simplicity uniquely select su(2).")
     print()
@@ -191,7 +191,7 @@ try:
 except ImportError:
     print("SymPy not available for symbolic BCH computation.")
     print(
-        "Theoretical result: Proposition BU-Egress (A4) (depth-4 balance) under unitary"
+        "Theoretical result: Proposition BU (Eg/In) (A4) (depth-4 balance) under unitary"
     )
     print(
         "representation (one-parameter flows) gives Δ = 2 t² [X,Y] to O(t³) (t³ terms cancel)."
@@ -340,10 +340,10 @@ print("  Depth 2 (UNA, ONA): [L][R]S and [R][L]S do not commute absolutely")
 print("    Realized by: gyr[a,b] non-trivial in SU(2)")
 print("    Status: [Satisfied] (non-commutative but not absolute)")
 
-# Depth four: absolute commutation (BU-Egress)
-print("  Depth 4 (BU-Egress): [L][R][L][R]S <-> [R][L][R][L]S")
+# Depth four: absolute commutation (BU (Eg/In))
+print("  Depth 4 (BU (Eg/In)): [L][R][L][R]S <-> [R][L][R][L]S")
 print("    Realized by: Four-step gyration exhausts degrees of freedom")
-print("    Status: [Satisfied] (absolute commutation at BU-Egress)")
+print("    Status: [Satisfied] (absolute commutation at BU (Eg/In))")
 print()
 
 # ============================================================================
@@ -364,7 +364,7 @@ print("    (a) Abelian: [X,Y] = 0, violating Lemma UNA (non-absolute commutation
 print("    (b) Affine (non-compact): Cannot be represented by bounded")
 print("        skew-adjoint generators as a compact unitary group")
 print(
-    "  Conclusion: 2D cannot satisfy Lemma UNA + Proposition BU-Egress under unitary representation"
+    "  Conclusion: 2D cannot satisfy Lemma UNA + Proposition BU (Eg/In) under unitary representation"
 )
 print()
 
@@ -594,12 +594,12 @@ print("-" * 80)
 
 print("Structural conditions from the five foundational conditions:")
 print("  - Depth-2 non-absolute commutation (UNA, ONA) requires non-trivial gyration")
-print("  - Depth-4 closure (BU-Egress) requires commutative balance")
+print("  - Depth-4 closure (BU (Eg/In)) requires commutative balance")
 print("  - Simplicity Constraint requires single simple factor")
 print()
 
 print("For n=3 (SE(3) structure):")
-print("  - Single path from CS seed through UNA, ONA to BU-Egress")
+print("  - Single path from CS seed through UNA, ONA to BU (Eg/In)")
 print("  - All conditions satisfied by construction")
 print("  Status: [Compatible]")
 print()

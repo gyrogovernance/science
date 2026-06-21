@@ -2,7 +2,7 @@
 """
 Run all executable CGM gravity scripts and save combined stdout/stderr to a text file.
 
-Scripts (in run order): analysis_3, 2, 1, 4, 5, 6, 7.
+Scripts (in run order): analysis_3, 2, 1, 4, 5, 6, 7, 8, 9, 10.
 Skips aqpu_gravity_common.py (library only).
 """
 
@@ -32,6 +32,9 @@ GRAVITY_SCRIPTS: tuple[str, ...] = (
     "aqpu_gravity_analysis_5.py",
     "aqpu_gravity_analysis_6.py",
     "aqpu_gravity_analysis_7.py",
+    "aqpu_gravity_analysis_8.py",
+    "aqpu_gravity_analysis_9.py",
+    "aqpu_gravity_analysis_10.py",
 )
 
 

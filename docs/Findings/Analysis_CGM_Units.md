@@ -47,18 +47,18 @@ Stage 1: CS (Common Source)
 
 Stage 2: UNA (Unity Non-Absolute)  
 - Threshold: u_p = cos(π/4) = 1/√2
-- Meaning: Orthogonal split enabling rotational degrees of freedom
+- Meaning: Rotational motion (three axes); orthogonal split enabling three rotational degrees of freedom
 - Right gyration activates while left gyration persists
 
 Stage 3: ONA (Opposition Non-Absolute)
 - Threshold: o_p = π/4
-- Meaning: Diagonal tilt activating translational degrees of freedom
+- Meaning: Translational motion (three axes); diagonal tilt activating three translational degrees of freedom
 - Both gyrations reach maximum non-identity
 
 Stage 4: BU (Balance Universal)
 - Threshold:  m_a = 1/(2√(2π)) ≈ 0.199471
-- Meaning: Aperture parameter ensuring observational coherence
-- Both gyrations return to identity with complete memory preserved
+- Meaning: Vibrational motion at the IR observation focus; bounded oscillation amplitude m_a about the depth-four closed configuration
+- Depth-four commutative closure (both gyrations equivalent at □B); monodromy phase defect encodes memory of the vibrational mode
 
 ### 2.3 Geometric Necessity
 
@@ -147,10 +147,10 @@ This makes spacetime metric components into operators since [g_μν(X), P] ≠ 0
 
 ### 5.2 The Aperture Constraint
 
-The fundamental balance requirement:
+The identity that fixes the observational aperture scale:
 Q_G × m_a² = 1/2
 
-This creates exactly 97.93% closure with 2.07% aperture, providing sufficient structure for physical stability while maintaining sufficient openness for observational processes. The half-integer value connects to SU(2) double-cover properties and the fundamental nature of spin-1/2 particles.
+This links the solid angle Q_G = 4π to m_a. It is distinct from the closure ratio ρ = δ_BU/m_a ≈ 0.9793 and the aperture gap Δ = 1 − ρ ≈ 0.0207 (about 2.07%). The latter pair measures how BU dual-pole monodromy fills the aperture scale: ρ is structural phase closure, Δ is the residual vibrational amplitude that keeps observation possible. The half-integer in Q_G m_a² = 1/2 connects to SU(2) double-cover structure (spin-1/2).
 
 ### 5.3 Monodromy and Memory
 

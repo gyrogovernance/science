@@ -248,7 +248,7 @@ The CGM aperture is defined from the BU monodromy defect and the observational a
 | Closure ratio          | rho = d_BU/m_a       | 0.979300446087 |
 | Aperture gap           | Delta = 1 - rho      | 0.020699553913 |
 
-Delta measures the fractional non-closure of the BU cycle relative to the observational aperture scale.
+Delta measures the fractional gap between BU dual-pole monodromy and the observational aperture scale m_a. Algebraically, depth-four commutative closure holds in the kernel; Delta is the residual vibrational amplitude (about 2.07%) of oscillation about that closed configuration, not a failure of gyrotriangle closure.
 
 | Aperture            |                  Value | Origin                        |
 | ------------------- | ---------------------: | ----------------------------- |

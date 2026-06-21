@@ -265,7 +265,7 @@ S → □B    where B := [L][R][L][R]S ↔ [R][L][R][L]S
 > 
 > **Why it matters:** This is the minimal depth at which coherent closure can occur while preserving depth-two contingency. Depth three still allows asymmetry. Depth four forces balance through the structure of the Baker-Campbell-Hausdorff expansion.  
 > 
-> **Physical interpretation:** This corresponds to the closure of phase space loops in quantum mechanics. After a complete cycle of transformations, the system returns to a consistent state (up to a phase factor). The depth-four requirement explains why quantum mechanics has its particular mathematical structure.  
+> **Physical interpretation:** This corresponds to the closure of phase space loops in quantum mechanics. After a complete cycle of transformations, the system returns to a consistent state (up to a phase factor). The depth-four requirement explains why quantum mechanics has its particular mathematical structure. Closure does not freeze the configuration: at BU the system still undergoes vibrational motion, bounded oscillation between the depth-four poles at the 2.07% aperture amplitude.  
 > 
 > **Technical note:** In the operational regime with continuous unitary flows, this translates to: there exists δ > 0 such that for all |t| < δ, the S-projected difference between U_L(t)U_R(t)U_L(t)U_R(t) and U_R(t)U_L(t)U_R(t)U_L(t) vanishes. This uniform neighborhood validity is what forces continuous one-parameter groups.
 
@@ -282,7 +282,7 @@ S → (□B → ([R]S ↔ S ∧ ¬([L]S ↔ S) ∧ ¬□E ∧ ¬□¬E))
 > 
 > **Why it matters:** This ensures that achieving balanced closure doesn't erase the structural distinctions that made the system interesting in the first place. The future state preserves the information required to reconstitute past distinctions without collapsing them.  
 > 
-> **Physical interpretation:** In quantum mechanics, this corresponds to the fact that unitary evolution is reversible. Information is conserved even as systems evolve. In information theory, this is the requirement that compression doesn't lose essential structure.  
+> **Physical interpretation:** In quantum mechanics, this corresponds to the fact that unitary evolution is reversible. Information is conserved even as systems evolve. In information theory, this is the requirement that compression doesn't lose essential structure. The record of that reversibility is the monodromy phase defect of the vibrational oscillation at BU.  
 > 
 > **Structural role:** Memory reconstruction forces the Lie algebra to be simple (no nontrivial ideals). If the algebra decomposed as g = g₁ ⊕ g₂, the GNS representation would split into invariant subspaces, preventing a single cyclic vector from reconstructing both independent factors.
 
@@ -544,7 +544,7 @@ Minimality forces n = 3, yielding SE(3) with six degrees of freedom:
 | CS | 1 | chirality |
 | UNA | 3 | rotational, from su(2) |
 | ONA | 6 | rotational + translational, from SE(3) |
-| BU | 6 | coordinated closure |
+| BU | 6 | coordinated closure; vibrational mode (2.07% aperture) |
 
 **Theorem (Three-Dimensional Necessity):** Requiring CS traceability for reachability, BU-Egress for uniform continuous closure, and BU-Ingress for simple Lie reconstruction, the five foundational conditions characterize n = 3 as the only dimensional structure satisfying coherent measurement requirements within the stated operational regime.
 
@@ -731,8 +731,9 @@ The explicit construction of degrees of freedom at each stage:
 - **Condition:** δ = 0 (gyrotriangle defect vanishes)
 - **Representation:** Complete phase space with coherent loops
 - **Physical:** Quantum mechanical closure, Berry phase vanishing at BU
+- **Vibrational motion:** Bounded oscillation about the closed configuration (2.07% aperture). Not a seventh degree of freedom. Same category as molecular vibration: back-and-forth exchange about equilibrium while rotational and translational freedoms are already fixed at SE(3).
 
-The progression 1 → 3 → 6 → 6 (closed) follows from the five foundational conditions under the operational hypothesis. Each stage adds structure through operational necessity, culminating in toroidal closure at BU where both gyrations achieve commutative equivalence while preserving complete structural memory.
+The progression 1 → 3 → 6 → 6 (closed) follows from the five foundational conditions under the operational hypothesis. Each stage adds structure through operational necessity. At BU, rotational motion (UNA), translational motion (ONA), and vibrational motion (oscillation at the aperture) are all active. Commutative closure at depth four is algebraic; the vibrational mode is the residual dynamics that sustains observation and encodes memory as monodromy phase defect.
 
 ---
 

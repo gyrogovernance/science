@@ -7,7 +7,7 @@ from modal conditions, WITHOUT assuming unitarity or Hilbert space representatio
 The approach:
 1. Works in the completed free Lie algebra L_hat(X,Y) over formal symbols X, Y
 2. Interprets [L] and [R] as formal exponentials exp(X) and exp(Y)
-3. Uses BU-Egress as formal identity: exp(X)exp(Y)exp(X)exp(Y) = exp(Y)exp(X)exp(Y)exp(X)
+3. Uses BU (Eg/In) as formal identity: exp(X)exp(Y)exp(X)exp(Y) = exp(Y)exp(X)exp(Y)exp(X)
 4. Expands both sides using Dynkin formula and compares coefficients degree by degree
 5. Solves the linear system to derive sl(2) structure
 6. Only then mentions representations (L^2(S^2) selects compact real form su(2))
@@ -92,7 +92,7 @@ if SYMPY_AVAILABLE:
     # For any element φ, the S-sector projection is s·φ·s
     print("S-sector formalization:")
     print(
-        "  - BU-Egress at S: s·exp(X)exp(Y)exp(X)exp(Y)·s = s·exp(Y)exp(X)exp(Y)exp(X)·s"
+        "  - BU (Eg/In) at S: s·exp(X)exp(Y)exp(X)exp(Y)·s = s·exp(Y)exp(X)exp(Y)exp(X)·s"
     )
     print("  - UNA: [X,Y] ≠ 0 globally (non-absolute commutation)")
     print("  - BU at S then forces: s[X,Y]s = 0")
@@ -127,14 +127,15 @@ else:
 
 
 # ============================================================================
-# 3. BU-EGRESS AS FORMAL IDENTITY
+# 3. BU (Eg/In) AS FORMAL IDENTITY
 # ============================================================================
 
-print("3. BU-EGRESS AS FORMAL IDENTITY")
+print("3. BU (Eg/In) AS FORMAL IDENTITY")
 print("-" * 80)
 
-print("Proposition BU-Egress (depth-4 balance) requires:")
+print("Proposition BU (Eg/In) (A4, depth-4 balance) requires:")
 print("  [L][R][L][R]S <-> [R][L][R][L]S")
+print("  Egress (A4): closure at S (□B); Ingress (A5): shadow memory (dual kernel reading)")
 print()
 print("Under formal exponential interpretation:")
 print("  exp(X)exp(Y)exp(X)exp(Y) = exp(Y)exp(X)exp(Y)exp(X)")
@@ -243,7 +244,7 @@ print("5. COEFFICIENT MATCHING")
 print("-" * 80)
 
 if SYMPY_AVAILABLE:
-    print("For BU-Egress to hold, we require Delta = 0 as a formal identity.")
+    print("For BU (Eg/In) to hold, we require Delta = 0 as a formal identity.")
     print("This means all coefficients must vanish.")
     print()
     print("Degree-by-degree analysis:")
@@ -260,7 +261,7 @@ if SYMPY_AVAILABLE:
     print(
         "    -> Delta = 2(BCH(X,Y) - BCH(Y,X)) contains antisymmetric Lie polynomials"
     )
-    print("    -> For BU-Egress at S, we require s·Delta·s = 0")
+    print("    -> For BU (Eg/In) at S, we require s·Delta·s = 0")
     print("    -> This means s·(2[X,Y] + higher-order antisymmetric terms)·s = 0")
     print("    -> UNA requires [X,Y] ≠ 0 globally (non-absolute commutation)")
     print("    -> Therefore: s[X,Y]s = 0 (kills antisymmetric degree-2 component at S)")
@@ -455,7 +456,7 @@ print("=" * 80)
 print()
 print("Pure Algebraic Derivation Path:")
 print("  1. Modal operators [L], [R] -> formal exponentials exp(X), exp(Y)")
-print("  2. BU-Egress -> formal identity in completed free Lie group")
+print("  2. BU (Eg/In) -> formal identity in completed free Lie group")
 print("  3. Dynkin expansion -> coefficient matching degree by degree")
 print("  4. Linear system solution -> sl(2) structure (dim = 3)")
 print("  5. Representation selection -> su(2) on L^2(S^2) via GNS + Q_G")

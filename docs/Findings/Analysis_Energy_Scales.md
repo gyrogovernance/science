@@ -19,11 +19,11 @@ The Common Governance Model (CGM) provides an alternative approach based on geom
 The CGM framework identifies four stages of geometric evolution, each characterized by a threshold parameter:
 
 - **CS (Common Source)**: s_p = π/2 [dimensionless]
-- **UNA (Unity Non-Absolute)**: u_p = cos(π/4) = 1/√2 [dimensionless]
-- **ONA (Opposition Non-Absolute)**: o_p = π/4 [dimensionless]
-- **BU (Balance Universal)**:  m_a = 1/(2√(2π)) ≈ 0.1995 [dimensionless]
+- **UNA (Unity Non-Absolute)**: u_p = cos(π/4) = 1/√2 [dimensionless]; rotational motion (3 DOF)
+- **ONA (Opposition Non-Absolute)**: o_p = π/4 [dimensionless]; translational motion (3 DOF)
+- **BU (Balance Universal)**:  m_a = 1/(2√(2π)) ≈ 0.1995 [dimensionless]; vibrational motion at depth-four closure (oscillation amplitude, not a 7th DOF)
 
-The parameter  m_a serves as the fundamental aperture parameter, governing the relationship between different stages.
+The parameter m_a is the observational aperture scale. It bounds vibrational amplitude at BU and governs normalization of stage actions. Optical conjugacy places the observable IR focus at E_BU^IR (electroweak scale).
 
 ### 2.2 Action Mapping
 

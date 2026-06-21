@@ -71,10 +71,10 @@ The entire CGM framework rests on five conditions formalized in bimodal proposit
     Prevents absolute contradiction. The system avoids both perfect agreement and perfect opposition, ensuring accountability.
 
 -   **BU-Egress (Balance Universal):** `S → □([L][R][L][R]S ↔ [R][L][R][L]S)`
-    Enforces commutative closure at depth-four. This is a primitive, non-derivable requirement for coherent observation cycles.
+    Enforces commutative closure at depth-four. The closed configuration still undergoes vibrational motion: bounded back-and-forth between the depth-four poles, with amplitude set by the 2.07% aperture.
 
 -   **BU-Ingress (Memory Reconstruction):** `S → (□B → (CS ∧ UNA ∧ ONA))`
-    Ensures the balanced state at depth-four contains the memory of all prior conditions.
+    Ensures the balanced state at depth-four contains the memory of all prior conditions. Memory is encoded as the monodromy phase defect of that oscillation.
 
 Detailed axiomatization analysis shows these conditions form a consistent, complete, and toroidal logical structure, with BU-Egress as a primitive and BU-Ingress as derivable from the initial conditions.
 
@@ -115,11 +115,11 @@ The framework constructively excludes all other dimensionalities:
 The emergence of three dimensions with six degrees of freedom follows a unique, necessary sequence dictated by the conditions:
 
 -   **CS (1 DOF):** Establishes a single chiral distinction (left vs. right).
--   **UNA (3 DOF):** Activates rotational freedom, requiring the minimal non-abelian compact group `SU(2)`, which has 3 generators.
--   **ONA (6 DOF):** Activates bi-gyrogroup structure, forcing a semidirect product `SU(2) ⋉ ℝ³ ≅ SE(3)`, adding 3 translational degrees of freedom.
--   **BU (6 DOF, closed):** Coordinates the 6 DOFs into a stable, closed toroidal structure, achieving balance while preserving memory.
+-   **UNA (3 DOF):** Activates rotational freedom, forcing the minimal non-abelian compact group `SU(2)` with 3 generators.
+-   **ONA (6 DOF):** Activates translational freedom, forcing a semidirect product `SU(2) ⋉ ℝ³ ≅ SE(3)`. The 6 DOF comprise 3 rotational and 3 translational kinematic freedoms.
+-   **BU (6 DOF, closed):** Coordinates the six kinematic degrees of freedom (3 rotational, 3 translational) at depth-four closure. Balance is not static: a residual vibrational mode with 2.07% amplitude sustains observation. Memory is the monodromy phase defect of that oscillation. Vibrational motion is not a seventh degree of freedom; it is oscillation about the closed SE(3) configuration.
 
-This progression is not a choice but a logical entailment of satisfying the conditions sequentially.
+This progression is a logical entailment of satisfying the conditions sequentially. It maps the three kinematic motions in three dimensions: rotational (UNA), translational (ONA), and vibrational (BU).
 
 ## 4. Geometric Invariants and Physical Constants
 
@@ -139,7 +139,7 @@ The framework reveals a rich hierarchy of monodromy values, which represent the 
 -   **BU Dual-Pole Monodromy (δ_BU):** The key value `δ_BU = 0.195342 rad`, which features in the fine-structure constant.
 -   **The Aperture Ratio:** The ratio `δ_BU / m_a = 0.9793` is a fundamental constant of the model. It establishes a universal balance:
     -   **97.93% Structural Closure:** Providing stability.
-    -   **2.07% Dynamic Aperture:** Enabling interaction and observation.
+    -   **2.07% Dynamic Aperture:** The residual oscillation amplitude enabling interaction and observation.
 -   **Monodromy Hierarchy:** A consistent scale of memory effects is observed, from the elementary `ω(ONA↔BU) = 0.097671 rad` to the system-level `4-leg toroidal holonomy = 0.862833 rad`. The exact equality `δ_BU = 8-leg holonomy` provides a powerful internal consistency check.
 
 ### 4.3 Geometric Coherence and Angular Harmonics
@@ -147,7 +147,7 @@ The framework reveals a rich hierarchy of monodromy values, which represent the 
 Analysis shows that CGM's threshold angles correspond to fundamental geometric invariants.
 
 -   **The π/4 Signature:** The ONA threshold `π/4` appears independently in the circle/square area ratio, the square's isoperimetric quotient, and square lattice packing density, confirming its geometric necessity.
--   **Angular Momentum Costs:** The transition from rotational coherence (UNA) to axial structure (ONA) has a quantifiable cost in angular momentum, following simple rational fractions (4/3 in 2D, 5/3 in 3D).
+-   **Angular Momentum Costs:** The transition from rotational motion (UNA) to translational motion (ONA), with exchange through the vibrational mode at BU, has a quantifiable cost in angular momentum, following simple rational fractions (4/3 in 2D, 5/3 in 3D).
 -   **Universal Scaling:** A universal 2/3 scaling factor appears in dimensional transitions from 2D to 3D.
 
 ### 4.4 The Significance of 48 as a Quantization Unit

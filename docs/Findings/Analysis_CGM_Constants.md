@@ -19,11 +19,11 @@ Within CGM, observation is treated as a self-referential process: spacetime obse
 - CS (Common Source): α = s_p = π/2  
 - UNA (Unity Non-Absolute): β such that u_p = cos(π/4) = 1/√2  
 - ONA (Opposition Non-Absolute): γ = o_p = π/4  
-- BU (Balance Universal): the balance condition that closes the gyrotriangle
+- BU (Balance Universal): the balance condition that closes the gyrotriangle algebraically
 
-The **gyrotriangle defect** is δ = π − (α + β + γ) = π − (π/2 + π/4 + π/4) = 0. Closure is exact: the three angles sum to π, so the defect vanishes. This uniquely fixes the angular structure.
+The **gyrotriangle defect** is δ = π − (α + β + γ) = π − (π/2 + π/4 + π/4) = 0. Algebraic closure is exact: the three angles sum to π, so the defect vanishes. This uniquely fixes the angular structure. At BU the six kinematic degrees of freedom (three rotational from UNA, three translational from ONA) are coordinated at depth-four commutative closure. A separate **vibrational** degree of motion remains: bounded back-and-forth oscillation about that closed configuration, not a seventh kinematic DOF.
 
-The amplitude A of the oscillation that fits within one observable horizon is constrained by the requirement that left and right SU(2) phase ranges (each 2π) combine with the chiral seed α = π/2. The condition is:
+The amplitude A of that oscillation, which fits within one observable horizon, is constrained by the requirement that left and right SU(2) phase ranges (each 2π) combine with the chiral seed α = π/2. The condition is:
 
 **A² × (2π)_L × (2π)_R = α**
 
@@ -107,8 +107,8 @@ Numerically, Δ ≈ 0.020699553913. This is the dimensionless **gap** (about 2.0
 
 Interpretation:
 
-- **ρ**: fraction of the aperture “used” by the BU dual-pole path (closure).  
-- **Δ**: fraction of the aperture “open” (aperture gap). Observation is possible precisely because Δ > 0; full closure would leave no room for observation. So Δ is both the small parameter in perturbation and the geometric reason observation can occur.
+- **ρ**: fraction of the aperture scale “used” by the BU dual-pole monodromy (structural closure in phase).  
+- **Δ**: fractional **vibrational** amplitude remaining open (about 2.07%). Observation is possible precisely because Δ > 0; if the monodromy saturated the full aperture scale with no residual oscillation, there would be no room for observation. So Δ is both the perturbation expansion parameter and the geometric measure of vibrational motion at BU.
 
 ### 2.4 Relation to Q_G and m_a
 

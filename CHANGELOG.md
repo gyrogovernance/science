@@ -4,6 +4,32 @@ All notable changes to the CGM Experimental Framework will be documented in this
 
 ---
 
+## [1.3.3-CGM_Gravity&Beyond] - 2026-05-30 to 2026-06-21
+
+### Added
+- `docs/Findings/Analysis_Gravity_Quadratic_Note.md`: Discussion note linking CGM kernel structure to Liu–Quintin–Afshordi quadratic-gravity inflation; seven QQG prerequisites mapped from combinatorial invariants, with r ≈ 0.0024 as the sharpest experimental contrast to r ≳ 0.01.
+- `experiments/aqpu_gravity_analysis_9.py`: UV completion—f(R) quadratic dictionary, RG flow and asymptotic freedom, N_eff from plaquette census, inflation observables (n_s, r, A_s), Weyl sector, and reheating on the energy ladder.
+- `experiments/aqpu_gravity_analysis_10.py`: E_CS as continuous Planck boundary—optical conjugacy, Δ-ruler depth, metric vs optical vs ruler redshift, exterior limits, and inflation read as optical depth rather than cosmic time.
+
+### Updated
+- `docs/Findings/Analysis_Gravity.md`: §7.5 ultraviolet completion and inflationary limit; Appendix F (optical conjugacy and Δ ruler); appendix renumbering F–I; BU vibrational motion and operational intelligence in §2; plaquette–Regge τ_G bridge consolidated in §5.6.
+- `docs/CGM_Paper.md`, `docs/CGM_Program.md`, `docs/Findings/Analysis_3D_6DOF_Proof.md`: BU clarified as bounded vibrational motion at 2.07% aperture over six closed kinematic DOF (not a seventh); memory encoded as monodromy phase defect.
+- `experiments/aqpu_gravity_runner.py`, `README.md`: combined gravity run extended through `analysis_10.py`; README splits short Note and full Analysis_Gravity manuscripts.
+
+---
+
+## [1.3.2-CGM_Gravity&Beyond] - 2026-05-29
+
+### Added (work in progress)
+- `docs\Findings\Analysis_Gravity_Note.md`: Short-form gravity note with operational intelligence definition, Regge τ_G bridge in §4.2, and appendices B.3 (plaquette D=24 census) and C.7 (Regge action verification).
+
+- `experiments\aqpu_gravity_analysis_8.py`: Executable chain from plaquette holonomy and binomial defect spectrum through STF-weighted Regge sum to τ_G, BCH/Z₂ order selection, and BU (Eg/In) kernel bridge.
+
+### Updated
+- `docs/Findings/Analysis_Gravity.md`: §5.0 discrete geometry dictionary, §5.6 plaquette–Regge action (S_cycle, k_eff=3), operational intelligence in §2.1, and continuum–kernel curvature bridges in §6.1–6.3.
+
+---
+
 ## [1.3.1-CGM_Gravity&Beyond] - 2026-05-25
 
 ### Updated

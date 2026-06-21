@@ -324,7 +324,7 @@ From the axiom structure:
 
 **ONA (6 DOF):** Lemma ONA (¬□¬E) forces bi-gyrogroup structure. By Lemma 2.1, this requires exactly 3 translational parameters. Total: 3 + 3 = 6 degrees of freedom.
 
-**BU (6 DOF closed):** Lemma BU (□B) forces both gyrations to achieve commutative closure at modal depth four. The 6 degrees of freedom remain but become coordinated (no longer independently variable). The system retains complete structural memory while achieving closure.
+**BU (6 DOF closed):** Lemma BU (□B) forces both gyrations to achieve commutative closure at modal depth four. The six kinematic degrees of freedom (three rotational, three translational) remain but become coordinated. Closure is algebraic. At BU the configuration also undergoes vibrational motion: bounded back-and-forth oscillation about the closed state at the 2.07% aperture amplitude. This is not a seventh degree of freedom. Memory is the monodromy phase defect of that oscillation.
 
 The progression is unique because:
 - Each stage follows necessarily from the previous via the foundational assumption and lemmas
