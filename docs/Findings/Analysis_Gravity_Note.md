@@ -85,45 +85,6 @@ Composing displacements in a curved geometry yields a non-associative operation,
 
 The axioms of CGM are constructive. The necessity of preserving ancestry under operational displacement forces a specific computational architecture. The operational sequence of balance dictates the architecture of the machine that realizes it.
 
-
-===
-
-## Interpretive Framework: The Philosophy
-
-The following interpretations provide the conceptual scaffold motivating the formal conditions. These are important remarks on the philosophy of mathematical structure, offering operational meaning to the axioms while remaining grounded in the technical results.
-
-### Governance Traceability: The Emergence of Freedom
-
-The axiom "The Source is Common" (CS) establishes that all phenomena are traceable through a single principle of common origination, which is **freedom: the capacity for governance through directional distinction**. This conservation of asymmetry (parity violation) encodes patterns of chirality (left- and right-handedness). Alignment thus becomes the organizing principle by which locality generates structure via recursive gyration instead of remaining mere potential.
-
-Common origination is operational, not historical:
-
-- It is the cyclical accumulation of action through shared interactions (dynamics, forces, relativity, fields)
-- These gyrations produce curvature (geometric phase), defining space and time within a self-referential condition (matter)
-- The "Authority" acts as a projection operator that distinguishes orthogonal states and turns reference into inference through measurement
-
-The object domain of inference is physical reality itself, expressed as semantic weighting through projection. Each perspective defines measurable roles governed by the quantum gravity invariant Q_G = 4π. This geometric and topological necessity defines cause and effect as recursive unfolding, since the origin point of observation cannot observe itself, only its consequences.
-
-### Information Variety
-
-Non-absolute unity (UNA) is the first minimal necessity for indirect observation of a common source. Absolute unity would make existence and freedom impossible, since perfect homogeneity would allow no distinctions between origin and structure. Therefore, non-absolute unity ensures alignment is possible through **informational variety**: the traceable signature of a common origin.
-
-In gyrogroup terms, both left and right gyrations become active, producing distinguishable trajectories that still emanate from the horizon constant.
-
-### Inference Accountability
-
-Non-absolute opposition (ONA) is the first minimal necessity for direct observation of non-absolute unity and the second condition for indirect observation of a common source. Absolute opposition would also make existence and freedom impossible, since perfect contradiction would allow no conservation of structure. Therefore, non-absolute opposition ensures alignment is possible through **accountability of inference**: traceable informational variety of a common origin.
-
-The bi-gyrogroup structure mediates opposition while keeping it bounded by the horizon constant. Logical necessity and operational recurrence are therefore aligned.
-
-### Intelligence Integrity
-
-Balance (BU) is the universal outcome of non-absoluteness in unity and opposition, leading to the observer-observed duality. Perfect imbalance would make existence and freedom meaningless, since the memory of inferred information would have no reason to acquire substance and structure at all. Therefore, balance is the universal signature of alignment through **integrity of intelligence**: traceable inferential accountability of informational variety from a common source.
-
-Depth-four order and memory reconstruction (BU-Egress and BU-Ingress) guarantee that recursive operations recover their origin while maintaining commutative balance. Integrity of intelligence is thus the traceable coherence of inference across time: the future state preserves the information required to reconstitute past distinctions without collapsing them.
-
-===
-
 ## 2. Computational Theory
 
 The necessity of preserving ancestry under operational displacement forces a specific computational architecture. An algorithmic kernel (algebraic Quantum Processing Unit aQPU) [12] realises the CGM conditions computationally. The kernel supplies the exact combinatorial invariants needed to anchor a continuous field theory, fixing physical constants directly from compact geometry.
