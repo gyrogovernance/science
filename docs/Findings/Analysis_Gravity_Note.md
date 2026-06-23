@@ -1,4 +1,5 @@
 # Gravitational Theory in the Common Governance Model: Causal Preservation of Ancestry through Identity and Individuality
+[Work in Progress]
 
 ## 1. Introduction
 
@@ -9,7 +10,7 @@ The following four conditions (CS, UNA, ONA, BU) define a scale-agnostic operati
 **1.1. Governance Traceability**
 
 > Foundational Assumption: The Source is Common (CS)
-> **Degrees of freedom:** 1 (the chiral phase, directional distinction)
+>> **Degrees of freedom:** 1 (the chiral phase, directional distinction)
 
 Every observable reference is traceable to a common unobservable self-referential source: the capacity for governance through asymptotic freedom.
 
@@ -32,7 +33,7 @@ Here → is material implication, ↔ is biconditional equivalence, and ¬ is ne
 **1.2. Information Variety**
 
 > Lemma: Unity-Non-Absolute (UNA)
-> **Degrees of freedom:** 3 (rotational, Pauli matrices σ₁, σ₂, σ₃)
+>> **Degrees of freedom:** 3 (rotational, Pauli matrices σ₁, σ₂, σ₃)
 
 Common origination necessitates non-absolute unity (¬□E) as individuality prevents homogeneous collapse:
 
@@ -45,7 +46,7 @@ Here □E denotes that two-step equality E holds in all accessible states, and �
 **1.3. Inference Accountability**
 
 > Lemma: Opposition-Non-Absolute (ONA)
-> **Degrees of freedom:** 6 (3 rotational + 3 translational)
+>> **Degrees of freedom:** 6 (3 rotational + 3 translational)
 
 Individuality necessitates non-absolute opposition (¬□¬E) as identity prevents structural fragmentation:
 
@@ -58,7 +59,7 @@ The formula states that depth-two opposition (contradictory composition outcomes
 **1.4. Intelligence Integrity**
 
 > Propositions: Balance Universal (BU)
-> **Degrees of freedom:** 6 (coordinated closure with δ = 0)
+>> **Degrees of freedom:** 6 (coordinated closure with δ = 0)
 
 Gravity is the universal principle of balance establishing freedom of identity and individuality through preservation of ancestry. Balance Universal comprises two propositions.
 
