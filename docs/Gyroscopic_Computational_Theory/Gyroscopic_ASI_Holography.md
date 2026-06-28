@@ -41,7 +41,7 @@ The fundamental unit of computation is a 24-bit state S, decomposed into two cou
 Each 12-bit component represents a topological grid of dimensions 2 times 3 times 2:
 
 - 2 Frames: Represent the two fundamental phases or chiral components of the system. In CGM terms, this corresponds to the active and passive phases.
-- 3 Rows: Represent the three spatial dimensions. The division of the parameters by 3 maps directly to the reconstruction of the monodromy defect angle in the kernel dynamics, linking the discrete grid to physical 3D space.
+- 3 Rows: Represent the three spatial dimensions. The division of intrinsic parameters by 3 maps directly to the reconstruction of the monodromy defect angle in the kernel dynamics, linking the discrete grid to physical 3D space.
 - 2 Columns: Represent the binary orientation within each spatial dimension.
 
 The bit positions are indexed as follows. Bit k of a 12-bit component is defined as the value of the k-th power of 2 in the binary representation, where bit 0 is the least significant and bit 11 is the most significant. The coordinate mapping assigns bits 0 through 5 to frame 0 and bits 6 through 11 to frame 1, with each frame containing 3 rows of 2 columns.
@@ -227,7 +227,7 @@ The depth-4 fiber structure of the kernel produces an emergent K4 geometry that 
 
 ### K4 as the Depth-4 Fiber
 
-For a fixed depth-4 frame of four bytes, the 48-bit payload projection is invariant under the 4^4 possible family-phase assignments. Varying all 256 family combinations for fixed micro-references produces exactly 4 distinct output states from rest, indexed by the surviving net family-phase invariants (phi_a, phi_b) in (Z/2)^2. This is the K4 vertex set. The depth-4 fiber has cardinality 4 and provides an emergent four-vertex quotient attached to each fixed depth-4 base. This identification is verified exhaustively in the physics test suite.
+For a fixed depth-4 frame of four bytes, the 48-bit payload projection is invariant under the 4^4 possible family-phase assignments. Varying all 256 family combinations for fixed micro-references produces exactly 4 distinct output states from rest, indexed by the surviving net family-phase invariants (phi_a, phi_b) in (Z/2)^2. This is the K4 vertex set. The depth-4 fiber has cardinality 4 and provides an intrinsic four-vertex quotient attached to each fixed depth-4 base. This identification is verified exhaustively in the physics test suite.
 
 ### Horizon Partition into K4 Vertex Classes
 
@@ -493,5 +493,5 @@ The Hodge ledgers decompose governance dynamics into gradient and cycle componen
 
 The CSM provides the physical capacity medium, derived from atomic constants with the speed of light canceling exactly. The coverage margin exceeds a trillion years of global Unconditional High Income at current population scales. The Hilbert space lift exhibits standard bipartite structure, with zero entropy for product subsets and maximal entropy (6 bits) for bijection graphs.
 
-The kernel is a Holonomic Quantum Virtual Machine (hQVM) whose computational properties—spinorial closure, exact two-step uniformisation, holographic compression, and native error detection—are all realised on standard silicon with deterministic integer arithmetic.
+The kernel is a Holonomic Quantum Virtual Machine (hQVM) whose computational properties (spinorial closure, exact two-step uniformisation, holographic compression, and intrinsic error detection) are all realised on standard silicon with deterministic integer arithmetic.
 
