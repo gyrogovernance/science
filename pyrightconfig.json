@@ -23,7 +23,7 @@
       "root": ".",
       "extraPaths": [
         "./experiments",
-        "./gyroscopic/aQPU"
+        "./gyroscopic/hQVM"
       ]
     }
   ],

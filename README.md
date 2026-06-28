@@ -34,13 +34,13 @@
 
 </div align="center">
 
-The Common Governance Model (CGM) is an axiomatic framework for fundamental physics and information science. It rests on a single axiom: every distinguishable state in a coherent system must trace to a common source. From this requirement, formal modal logic and gyrogroup geometry derive spatial dimensionality, chirality, and conservation laws. Three-dimensional space with six degrees of freedom emerges as a theorem; time is the ordering imposed by recursive operational closure. The theory is implemented and verified on the Gyroscopic ASI aQPU.
+The Common Governance Model (CGM) is an axiomatic framework for fundamental physics and information science. It rests on a single axiom: every distinguishable state in a coherent system must trace to a common source. From this requirement, formal modal logic and gyrogroup geometry derive spatial dimensionality, chirality, and conservation laws. Three-dimensional space with six degrees of freedom emerges as a theorem; time is the ordering imposed by recursive operational closure. The theory is implemented and verified on the **Gyroscopic ASI Holonomic Quantum Virtual Machine (hQVM)**.
 
-### Gyroscopic ASI aQPU
+### Gyroscopic ASI Holonomic Quantum Virtual Machine (hQVM)
 
-The aQPU is the executable form of the framework. It is a deterministic algebraic machine that runs the CGM axioms as integer arithmetic on standard hardware, producing the same trajectories on every run and on any computer. The same machine is used both as a research tool and as an alignment kernel for AI systems. In this repository it serves as the reference implementation against which the physical predictions are checked: gravity, electroweak masses, wavefunction structure, and related analyses are computed directly on it (14 experiment scripts in `experiments/`).
+The hQVM is the executable form of the framework: a **Holonomic Quantum Virtual Machine** instantiated as a reversible GF(2) finite-state machine on standard silicon. It is a replayable algebraic machine that runs the CGM axioms as integer arithmetic, producing the same trajectories on every run and on any computer. Computation proceeds via geometric phases (monodromies) of closed SE(3) spinorial loops. These are the same holonomic structures that the quantum computing literature recognizes as a universal computational model (Zanardi and Rasetti 1999; Pachos et al. 2000). The same machine is used both as a research tool and as an alignment kernel for AI systems. In this repository it serves as the reference implementation against which the physical predictions are checked: gravity, electroweak masses, wavefunction structure, and related analyses are computed directly on it (14 experiment scripts in `experiments/`).
 
-Canonical repository: [superintelligence](https://github.com/gyrogovernance/superintelligence). Vendored implementation: [`gyroscopic/aQPU/`](gyroscopic/aQPU/). Specifications and test reports are listed in the documentation section below.
+Canonical repository: [superintelligence](https://github.com/gyrogovernance/superintelligence). Vendored implementation: [`gyroscopic/hQVM/`](gyroscopic/hQVM/). Specifications and test reports are listed in the documentation section below.
 
 ## Headline results
 
@@ -60,7 +60,7 @@ Neutrino mass scales, lepton ratios, quark flavour structure, and the optical co
 |---------|------:|
 | Analysis write-ups (`docs/Findings/`) | 28 |
 | Runnable experiment scripts (`experiments/`) | 57 |
-| Physics experiments on the aQPU implementation | 14 |
+| Physics experiments on the hQVM implementation | 14 |
 | Shared libraries, stage modules, and tests | 21 |
 | Python in `experiments/` (all files) | ~44,000 lines |
 
@@ -84,8 +84,8 @@ Dataset: [CGM corpus](docs/datasets/) (1,000+ JSONL Q&A pairs for fine-tuning an
 
 | Topic | Analysis | Code |
 |-------|----------|------|
-| Gravity, Virial condition, and nonlinear continuum | [Analysis_Gravity - Note](docs/Findings/Analysis_Gravity_Note.md) [Analysis_Gravity - Full](docs/Findings/Analysis_Gravity.md) | [aqpu_gravity_common.py](experiments/aqpu_gravity_common.py), `aqpu_gravity_analysis_1.py` through `8.py`, [wavefunction scripts](experiments/aqpu_wavefunction_1.py). Run: `python experiments/aqpu_gravity_runner.py` |
-| Electroweak mass spectrum | [Analysis_Compact_Geometry](docs/Findings/Analysis_Compact_Geometry.md) | [aqpu_compact_geom_core.py](experiments/aqpu_compact_geom_core.py), [kernel](experiments/aqpu_compact_geom_kernel.py), [report](experiments/aqpu_compact_geom_report.py) |
+| Gravity, Virial condition, and nonlinear continuum | [Analysis_Gravity - Note](docs/Findings/Analysis_Gravity_Note.md) [Analysis_Gravity - Full](docs/Findings/Analysis_Gravity.md) | [hqvm_gravity_common.py](experiments/hqvm_gravity_common.py), `hqvm_gravity_analysis_1.py` through `8.py`, [wavefunction scripts](experiments/hqvm_wavefunction_1.py). Run: `python experiments/hqvm_gravity_runner.py` |
+| Electroweak mass spectrum | [Analysis_Compact_Geometry](docs/Findings/Analysis_Compact_Geometry.md) | [hqvm_compact_geom_core.py](experiments/hqvm_compact_geom_core.py), [kernel](experiments/hqvm_compact_geom_kernel.py), [report](experiments/hqvm_compact_geom_report.py) |
 | Fine-structure constant | [Analysis_Fine_Structure](docs/Findings/Analysis_Fine_Structure.md) | [cgm_alpha_analysis.py](experiments/cgm_alpha_analysis.py) |
 | Quantum gravity invariant | [Analysis_Quantum_Gravity](docs/Findings/Analysis_Quantum_Gravity.md) | [cgm_quantum_gravity_analysis.py](experiments/cgm_quantum_gravity_analysis.py) |
 | Energy scale unification | [Analysis_Energy_Scales](docs/Findings/Analysis_Energy_Scales.md) | [cgm_energy_analysis.py](experiments/cgm_energy_analysis.py) |
@@ -99,7 +99,7 @@ Dataset: [CGM corpus](docs/datasets/) (1,000+ JSONL Q&A pairs for fine-tuning an
 | Proto-units | [Analysis_CGM_Units](docs/Findings/Analysis_CGM_Units.md) | [cgm_proto_units_analysis.py](experiments/cgm_proto_units_analysis.py) |
 | Gyroscopic multiplication | [Analysis_Gyroscopic_Multiplication](docs/Findings/Analysis_Gyroscopic_Multiplication.md) | |
 
-### aQPU specifications and test reports
+### hQVM specifications and test reports
 
 | Document | Description |
 |----------|-------------|
@@ -107,8 +107,8 @@ Dataset: [CGM corpus](docs/datasets/) (1,000+ JSONL Q&A pairs for fine-tuning an
 | [Gyroscopic_ASI_Specs_Formalism](docs/Gyroscopic_Computational_Theory/Gyroscopic_ASI_Specs_Formalism.md) | Formalism |
 | [Gyroscopic_ASI_Holography](docs/Gyroscopic_Computational_Theory/Gyroscopic_ASI_Holography.md) | Holography |
 | [Gyroscopic_ASI_SDK_Quantum_Computing](docs/Gyroscopic_Computational_Theory/Gyroscopic_ASI_SDK_Quantum_Computing.md) | SDK |
-| [aQPU_Tests_Report_1](docs/Gyroscopic_Computational_Theory/aQPU_Tests_Report_1.md) | Test report 1 |
-| [aQPU_Tests_Report_2](docs/Gyroscopic_Computational_Theory/aQPU_Tests_Report_2.md) | Test report 2 |
+| [hQVM_Tests_Report_1](docs/Gyroscopic_Computational_Theory/hQVM_Tests_Report_1.md) | Test report 1 |
+| [hQVM_Tests_Report_2](docs/Gyroscopic_Computational_Theory/hQVM_Tests_Report_2.md) | Test report 2 |
 | [Physics_Tests_Report](docs/Gyroscopic_Computational_Theory/Physics_Tests_Report.md) | Physics tests |
 | [QuBEC_Transform_Algebra](docs/Gyroscopic_Computational_Theory/QuBEC_Transform_Algebra.md) | Transform algebra |
 | [QuBEC_Climate_Dynamics](docs/Gyroscopic_Computational_Theory/QuBEC_Climate_Dynamics.md) | Climate dynamics |

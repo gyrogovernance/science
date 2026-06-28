@@ -86,7 +86,7 @@ def expand_intron_to_mask_a12(intron: int) -> Tuple[int, int]:
 
 def step_state_spinorial(state24: int, byte_val: int) -> int:
     """
-    The 24-bit transition law with 720-degree Spinorial Closure.
+    The 24-bit transition rule with 720-degree Spinorial Closure.
 
     - Payload (bits 1-6) defines mutation on A (64 masks)
     - L0 anchors (bits 0, 7) define the Spin Gyration phase (4 families)

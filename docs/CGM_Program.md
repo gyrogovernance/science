@@ -42,7 +42,7 @@ This document serves as a high-level guide to the entire CGM research program, w
 
 -   **The emergence of three-dimensional space** with six degrees of freedom as a logical necessity.
 -   **The geometric origin of physical constants**, including the fine-structure constant, Newton's constant, and electroweak particle masses.
--   **A complete gravitational derivation**, from the CGM aQPU implementation through nonlinear continuum predictions (horizon, photon sphere, perihelion, shadows).
+-   **A complete gravitational derivation**, from the CGM hQVM implementation through nonlinear continuum predictions (horizon, photon sphere, perihelion, shadows).
 -   **A new perspective on cosmology**, where the universe is the interior of a Planck-scale black hole and cosmic expansion is an optical illusion.
 -   **A resolution to fundamental problems in physics**, such as the cosmological constant problem, the Hubble tension, and the nature of quantum gravity.
 -   **A formal theory of intelligence**, including quantitative metrics for AI alignment and a constructive model (GyroSI) of recursive intelligence.
@@ -224,21 +224,21 @@ The energy scale hierarchy makes specific predictions for particle physics:
 
 The gravity program connects the finite algebraic kernel to continuum field theory and observational tests. Full derivation and status: [Analysis_Gravity](Findings/Analysis_Gravity.md).
 
-**Kernel layer (exact combinatorics).** The Gyroscopic ASI aQPU implements CGM as replayable software. Combinatorial invariants from that implementation fix the gravitational coupling at the electroweak scale without using measured G in the forward calculation. Current agreement with CODATA is 25 parts per million.
+**Kernel layer (exact combinatorics).** The Gyroscopic ASI hQVM implements CGM as replayable software. Combinatorial invariants from that implementation fix the gravitational coupling at the electroweak scale without using measured G in the forward calculation. Current agreement with CODATA is 25 parts per million.
 
 **Continuum layer (nonlinear gravity).** Position-dependent coupling weakens with field strength. The static point-mass exterior has a closed-form solution. From it the code computes the horizon, photon sphere, impact parameter, Mercury perihelion advance (matching general relativity at solar-system precision), and shadow diameters for Event Horizon Telescope sources.
 
-**Verification stack.** Nine Python files form one reproducible suite: shared library (`aqpu_gravity_common.py`), five analysis passes, two state-model diagnostics, and a runner script. Execute:
+**Verification stack.** Nine Python files form one reproducible suite: shared library (`hqvm_gravity_common.py`), five analysis passes, two state-model diagnostics, and a runner script. Execute:
 
 ```
-python experiments/aqpu_gravity_run_all.py
+python experiments/hqvm_gravity_runner.py
 ```
 
 The static spherical sector is computationally closed. Open work: full dynamical evolutions beyond static spherical symmetry, and an independent check of the gravitational coupling derivation.
 
 ### 5.7 Electroweak Mass Spectrum from Compact Geometry
 
-The compact geometry program derives the Higgs, Z, W, and top quark masses from discrete spectral structure on the same opacity frame that governs aperture and coupling. The weak mixing angle follows from the same construction. Typical agreement is sub-ppm to parts-per-billion relative to experiment. Full write-up: [Analysis_Compact_Geometry](Findings/Analysis_Compact_Geometry.md). Verification: `aqpu_compact_geom_core.py`, `aqpu_compact_geom_kernel.py`, `aqpu_compact_geom_report.py`.
+The compact geometry program derives the Higgs, Z, W, and top quark masses from discrete spectral structure on the same opacity frame that governs aperture and coupling. The weak mixing angle follows from the same construction. Typical agreement is sub-ppm to parts-per-billion relative to experiment. Full write-up: [Analysis_Compact_Geometry](Findings/Analysis_Compact_Geometry.md). Verification: `hqvm_compact_geom_core.py`, `hqvm_compact_geom_kernel.py`, `hqvm_compact_geom_report.py`.
 
 ## 6. Cosmological Observations and Testable Predictions
 
@@ -272,7 +272,7 @@ The same geometric principles apply to discrete information systems, leading to 
 
 ### 7.2 GyroSI: A Constructive Theory of Intelligence
 
-GyroSI is a computational implementation of CGM's principles, representing intelligence as an intrinsic structural property.
+GyroSI is a computational implementation of CGM's principles, representing intelligence as a structural property.
 
 -   **Holographic Architecture:** It operates on a finite, discovered state space of 788,986 states. Every 8-bit input (`intron`) acts holographically on the full 48-bit state tensor.
 -   **Physics-Based Operations:** The system uses a single, non-associative, path-dependent learning operator (the Monodromic Fold) derived from gyrogroup algebra. There are no learned weights, scores, or probabilities.
@@ -293,8 +293,8 @@ Scripts cover gravity, electroweak mass geometry, fine structure, quantum gravit
 
 | Topic | Analysis | Code |
 |-------|----------|------|
-| Gravity: discrete state geometry and nonlinear continuum | [Analysis_Gravity](Findings/Analysis_Gravity.md) | `aqpu_gravity_common.py`, `aqpu_gravity_analysis_1.py` through `7.py`, `aqpu_wavefunction_1.py`, `aqpu_wavefunction_2.py`. Run: `python experiments/aqpu_gravity_runner.py` |
-| Electroweak mass spectrum | [Analysis_Compact_Geometry](Findings/Analysis_Compact_Geometry.md) | `aqpu_compact_geom_core.py`, `aqpu_compact_geom_kernel.py`, `aqpu_compact_geom_report.py` |
+| Gravity: discrete state geometry and nonlinear continuum | [Analysis_Gravity](Findings/Analysis_Gravity.md) | `hqvm_gravity_common.py`, `hqvm_gravity_analysis_1.py` through `7.py`, `hqvm_wavefunction_1.py`, `hqvm_wavefunction_2.py`. Run: `python experiments/hqvm_gravity_runner.py` |
+| Electroweak mass spectrum | [Analysis_Compact_Geometry](Findings/Analysis_Compact_Geometry.md) | `hqvm_compact_geom_core.py`, `hqvm_compact_geom_kernel.py`, `hqvm_compact_geom_report.py` |
 | Fine-structure constant | [Analysis_Fine_Structure](Findings/Analysis_Fine_Structure.md) | `cgm_alpha_analysis.py` |
 | Quantum gravity invariant | [Analysis_Quantum_Gravity](Findings/Analysis_Quantum_Gravity.md) | `cgm_quantum_gravity_analysis.py` |
 | Energy scale unification | [Analysis_Energy_Scales](Findings/Analysis_Energy_Scales.md) | `cgm_energy_analysis.py` |

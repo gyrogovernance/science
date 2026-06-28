@@ -12,13 +12,13 @@ ROOT = Path(__file__).resolve().parent.parent
 if str(ROOT) not in sys.path:
     sys.path.append(str(ROOT))
 
-from gyroscopic.aQPU.api import byte_to_intron, depth4_intron_sequence32, q_word6_for_items
-from gyroscopic.aQPU.constants import (
+from gyroscopic.hQVM.api import byte_to_intron, depth4_intron_sequence32, q_word6_for_items
+from gyroscopic.hQVM.constants import (
     GENE_MAC_REST,
     byte_family,
     byte_micro_ref,
 )
-from gyroscopic.aQPU.sdk import byte_transition
+from gyroscopic.hQVM.sdk import byte_transition
 
 
 K4_BYTES = (0xAA, 0x54, 0xD5, 0x2B)
@@ -109,7 +109,7 @@ def _run_32bit_probe(
 
 def _ratio_probe() -> tuple[Fraction, Fraction, float]:
     # Late-import to avoid broad module import side effects in non-workspace contexts.
-    from aqpu_compact_geom_core import CARRIER_TRACES, lepton_d3_transition_costs
+    from hqvm_compact_geom_core import CARRIER_TRACES, lepton_d3_transition_costs
 
     c2 = CARRIER_TRACES[2]
     c4 = CARRIER_TRACES[4]
@@ -196,7 +196,7 @@ def run_148_51_closure_probe(
     full = by_label["full-byte length-2 words"]
 
     # Late import to avoid broad module import side effects.
-    from aqpu_compact_geom_core import CODE_C2, CODE_C3
+    from hqvm_compact_geom_core import CODE_C2, CODE_C3
 
     numerator = (
         int(k4.max_family_paths_per_state)

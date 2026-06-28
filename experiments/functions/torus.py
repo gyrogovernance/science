@@ -221,7 +221,7 @@ def project_P2_C4(y_map, thetas, phis):
 
 
 # =============================================================================
-# CGM PHYSICS SCALES AND CONSTANTS
+# CGM FRAMEWORK SCALES AND CONSTANTS
 # =============================================================================
 
 # CGM-predicted amplitudes from Kompaneets analysis

@@ -4,17 +4,29 @@ All notable changes to the CGM Experimental Framework will be documented in this
 
 ---
 
+## [1.3.4-CGM_HolonomicQVM]
+
+The Gyroscopic kernel is now positioned as a **Holonomic Quantum Virtual Machine (hQVM)** within the Holonomic Quantum Computing paradigm (Zanardi and Rasetti 1999; Pachos et al. 2000). Computation proceeds via geometric phases (monodromies) of closed SE(3) spinorial loops on a reversible GF(2) finite-state machine. This grounding connects the kernel's native algebra to the established HQC literature on geometric gate realization and holonomy-based universality.
+
+- **aQPU to hQVM** across the entire repository (code, docs, filenames)
+- **HQC positioning** added to core specifications and key reports, establishing that the hQVM instantiates HQC geometric structure on standard silicon
+- **Three Computational Charts** (Carrier, Chirality, Wavefunction) and **Code-first hierarchy** (CODE to ALGEBRA to WAVEFUNCTION) formalized as normative specification text
+- **Wavefunction chart** added to Specs Formalism and QuBEC Theory as the chart where holonomic phases and eigenspace decomposition are manifest
+- All specifications, theory documents, reports, source code, and the vendored kernel implementation updated consistently
+
+---
+
 ## [1.3.3-CGM_Gravity&Beyond] - 2026-05-30 to 2026-06-21
 
 ### Added
 - `docs/Findings/Analysis_Gravity_Quadratic_Note.md`: Discussion note linking CGM kernel structure to Liu–Quintin–Afshordi quadratic-gravity inflation; seven QQG prerequisites mapped from combinatorial invariants, with r ≈ 0.0024 as the sharpest experimental contrast to r ≳ 0.01.
-- `experiments/aqpu_gravity_analysis_9.py`: UV completion—f(R) quadratic dictionary, RG flow and asymptotic freedom, N_eff from plaquette census, inflation observables (n_s, r, A_s), Weyl sector, and reheating on the energy ladder.
-- `experiments/aqpu_gravity_analysis_10.py`: E_CS as continuous Planck boundary—optical conjugacy, Δ-ruler depth, metric vs optical vs ruler redshift, exterior limits, and inflation read as optical depth rather than cosmic time.
+- `experiments/hqvm_gravity_analysis_9.py`: UV completion—f(R) quadratic dictionary, RG flow and asymptotic freedom, N_eff from plaquette census, inflation observables (n_s, r, A_s), Weyl sector, and reheating on the energy ladder.
+- `experiments/hqvm_gravity_analysis_10.py`: E_CS as continuous Planck boundary—optical conjugacy, Δ-ruler depth, metric vs optical vs ruler redshift, exterior limits, and inflation read as optical depth rather than cosmic time.
 
 ### Updated
 - `docs/Findings/Analysis_Gravity.md`: §7.5 ultraviolet completion and inflationary limit; Appendix F (optical conjugacy and Δ ruler); appendix renumbering F–I; BU vibrational motion and operational intelligence in §2; plaquette–Regge τ_G bridge consolidated in §5.6.
 - `docs/CGM_Paper.md`, `docs/CGM_Program.md`, `docs/Findings/Analysis_3D_6DOF_Proof.md`: BU clarified as bounded vibrational motion at 2.07% aperture over six closed kinematic DOF (not a seventh); memory encoded as monodromy phase defect.
-- `experiments/aqpu_gravity_runner.py`, `README.md`: combined gravity run extended through `analysis_10.py`; README splits short Note and full Analysis_Gravity manuscripts.
+- `experiments/hqvm_gravity_runner.py`, `README.md`: combined gravity run extended through `analysis_10.py`; README splits short Note and full Analysis_Gravity manuscripts.
 
 ---
 
@@ -23,7 +35,7 @@ All notable changes to the CGM Experimental Framework will be documented in this
 ### Added (work in progress)
 - `docs\Findings\Analysis_Gravity_Note.md`: Short-form gravity note with operational intelligence definition, Regge τ_G bridge in §4.2, and appendices B.3 (plaquette D=24 census) and C.7 (Regge action verification).
 
-- `experiments\aqpu_gravity_analysis_8.py`: Executable chain from plaquette holonomy and binomial defect spectrum through STF-weighted Regge sum to τ_G, BCH/Z₂ order selection, and BU (Eg/In) kernel bridge.
+- `experiments\hqvm_gravity_analysis_8.py`: Executable chain from plaquette holonomy and binomial defect spectrum through STF-weighted Regge sum to τ_G, BCH/Z₂ order selection, and BU (Eg/In) kernel bridge.
 
 ### Updated
 - `docs/Findings/Analysis_Gravity.md`: §5.0 discrete geometry dictionary, §5.6 plaquette–Regge action (S_cycle, k_eff=3), operational intelligence in §2.1, and continuum–kernel curvature bridges in §6.1–6.3.
@@ -48,13 +60,13 @@ All notable changes to the CGM Experimental Framework will be documented in this
 
 ### Added
 
-- `experiments/aqpu_gravity_analysis_7.py`: refractive vacuum, horizon criticality, and the time-light-gravity conversion factor. Treats the CGM exterior as a polarizable medium (epsilon_g = G_0/G(psi), optical depth tau_opt = |g1|*psi) with distinct coupling and propagation channels. Derives the scalar Klein-Gordon equation on the CGM metric, proves scalar wave impedance Z = f*k = omega is constant across sharp metric steps (zero Fresnel reflection at interfaces; all vacuum scattering from the smooth Regge-Wheeler potential V_l), and verifies flux conservation R + T = 1 numerically. Computes null-geodesic deflection Delta_phi(b), capture at b <= b_c, and the geodesic escape fraction P_esc(s). Establishes horizon criticality (n -> inf, P_esc -> 0) while coupling remains finite at psi = 1/2, the kernel-locked conversion kappa_GR * T_Z2 = [D/(4*Q_G)]*c = 3c/(2*pi), the universal luminosity scale L_0 = pi*c^5/(24*G), and the four-phase causal cycle (Source -> Act -> Retrieve -> Commit) with phase-availability tables. Constants and geometry imported from `aqpu_gravity_common` (no duplicate re-derivation of results owned by scripts 5-6).
+- `experiments/hqvm_gravity_analysis_7.py`: refractive vacuum, horizon criticality, and the time-light-gravity conversion factor. Treats the CGM exterior as a polarizable medium (epsilon_g = G_0/G(psi), optical depth tau_opt = |g1|*psi) with distinct coupling and propagation channels. Derives the scalar Klein-Gordon equation on the CGM metric, proves scalar wave impedance Z = f*k = omega is constant across sharp metric steps (zero Fresnel reflection at interfaces; all vacuum scattering from the smooth Regge-Wheeler potential V_l), and verifies flux conservation R + T = 1 numerically. Computes null-geodesic deflection Delta_phi(b), capture at b <= b_c, and the geodesic escape fraction P_esc(s). Establishes horizon criticality (n -> inf, P_esc -> 0) while coupling remains finite at psi = 1/2, the kernel-locked conversion kappa_GR * T_Z2 = [D/(4*Q_G)]*c = 3c/(2*pi), the universal luminosity scale L_0 = pi*c^5/(24*G), and the four-phase causal cycle (Source -> Act -> Retrieve -> Commit) with phase-availability tables. Constants and geometry imported from `hqvm_gravity_common` (no duplicate re-derivation of results owned by scripts 5-6).
 
 ### Updated
 
 - `docs/Findings/Analysis_Gravity.md`: refractive permittivity and Klein-Gordon impedance theorem (Section 7); scalar reflection and flux conservation; geodesic deflection and observational signatures; kappa*T_Z2 conversion rate and four-phase causality in implications (Sections 8-9).
-- `experiments/aqpu_gravity_runner.py`: includes `aqpu_gravity_analysis_7.py` in the combined gravity run.
-- `docs/CGM_Program.md`: gravity script list extended through `analysis_7.py`; run command points to `aqpu_gravity_runner.py`.
+- `experiments/hqvm_gravity_runner.py`: includes `hqvm_gravity_analysis_7.py` in the combined gravity run.
+- `docs/CGM_Program.md`: gravity script list extended through `analysis_7.py`; run command points to `hqvm_gravity_runner.py`.
 
 ---
 
@@ -63,7 +75,7 @@ All notable changes to the CGM Experimental Framework will be documented in this
 ### Updated
 
 - `docs/Findings/Analysis_Gravity.md`: virial condition and rest-mass origin (Section 11); Refractive Depth τ_G as mass-energy stress; extension script outputs aligned.
-- `experiments/aqpu_gravity_analysis_6.py`, `aqpu_gravity_common.py`: virial-sector checks, self-energy theorem, strong-field and Hawking diagnostics.
+- `experiments/hqvm_gravity_analysis_6.py`, `hqvm_gravity_common.py`: virial-sector checks, self-energy theorem, strong-field and Hawking diagnostics.
 
 ---
 
@@ -71,33 +83,33 @@ All notable changes to the CGM Experimental Framework will be documented in this
 
 ### Added
 
-- `experiments/aqpu_wavefunction_1.py`: holonomy and modal-depth diagnostics on the 4096-state manifold—carrier rest, Z2 spectral holonomy, and BU egress/ingress readings tied to the canonical word.
-- `experiments/aqpu_wavefunction_2.py`: exhaustive K4 operator verification (W2, W2', F)—shell pole swap, depth-4 confinement, and chirality transport lemmas used by the gravity kernel.
+- `experiments/hqvm_wavefunction_1.py`: holonomy and modal-depth diagnostics on the 4096-state manifold—carrier rest, Z2 spectral holonomy, and BU egress/ingress readings tied to the canonical word.
+- `experiments/hqvm_wavefunction_2.py`: exhaustive K4 operator verification (W2, W2', F)—shell pole swap, depth-4 confinement, and chirality transport lemmas used by the gravity kernel.
 
 ### Updated
 
-- `experiments/aqpu_gravity_analysis_1.py`: residual closure, rho^5 STF split, kernel transport tables, and coupling summary aligned with the wavefunction invariants.
-- `experiments/aqpu_gravity_analysis_2.py`: canonical kernel theorems (c4 from two routes, Gauss bridge, alpha·zeta, 8pi = 2·Q_G).
-- `experiments/aqpu_gravity_analysis_3.py`: exact Fraction derivations—carrier trace C(q), translational payload stress, tau_cycle, tau_G factorization, and compact-geometry bridge for alpha_G(v).
-- `experiments/aqpu_gravity_common.py`: shared invariants, tau_G helpers, shell-path transport, and stress/current diagnostics for all gravity scripts.
+- `experiments/hqvm_gravity_analysis_1.py`: residual closure, rho^5 STF split, kernel transport tables, and coupling summary aligned with the wavefunction invariants.
+- `experiments/hqvm_gravity_analysis_2.py`: canonical kernel theorems (c4 from two routes, Gauss bridge, alpha·zeta, 8pi = 2·Q_G).
+- `experiments/hqvm_gravity_analysis_3.py`: exact Fraction derivations—carrier trace C(q), translational payload stress, tau_cycle, tau_G factorization, and compact-geometry bridge for alpha_G(v).
+- `experiments/hqvm_gravity_common.py`: shared invariants, tau_G helpers, shell-path transport, and stress/current diagnostics for all gravity scripts.
 
-- `experiments/aqpu_compact_geom_core.py`: pure electroweak algebra layer (mass laws, lepton ladder, shell transitions).
-- `experiments/aqpu_compact_geom_kernel.py`: finite 4096-state kernel proofs feeding the core module.
-- `experiments/aqpu_compact_geom_report.py`: formatted report output from core and kernel (no standalone computation).
+- `experiments/hqvm_compact_geom_core.py`: pure electroweak algebra layer (mass laws, lepton ladder, shell transitions).
+- `experiments/hqvm_compact_geom_kernel.py`: finite 4096-state kernel proofs feeding the core module.
+- `experiments/hqvm_compact_geom_report.py`: formatted report output from core and kernel (no standalone computation).
 - `docs/Findings/Analysis_Gravity.md`: kernel sections cite wavefunction diagnostics; shell traverse D=24, K4 holonomy, and exact C(q) trace routes tied to the new scripts.
 
 ### Results
 
 - K4 algebra {id, W2, W2', F} verified on all 4096 states; path traverse D=24 invariant across 64 micro-refs.
-- Carrier traces C(1)=C(5)=28/9 and C(3)=52/25 confirmed by three independent routes in `aqpu_gravity_analysis_3.py`.
+- Carrier traces C(1)=C(5)=28/9 and C(3)=52/25 confirmed by three independent routes in `hqvm_gravity_analysis_3.py`.
 
 ---
 
 ## [1.2.8-CGM_Gravity] - 2026-05-16
 
 ### Added
-- `experiments/aqpu_gravity_common.py`: shared gravity invariants, τ_G helpers, and stress/current diagnostics.
-- `experiments/aqpu_gravity_analysis_2.py`: ρ⁵ exponent checks, per-shell σ and J, τ_cycle proxies, and G prediction at v_EW.
+- `experiments/hqvm_gravity_common.py`: shared gravity invariants, τ_G helpers, and stress/current diagnostics.
+- `experiments/hqvm_gravity_analysis_2.py`: ρ⁵ exponent checks, per-shell σ and J, τ_cycle proxies, and G prediction at v_EW.
 
 ### Updated
 - `docs/Findings/Analysis_Gravity.md`: manuscript aligned with scripts and external review—translational-only σ definition, ranked τ_G = |Ω|Δρ⁵(1−4ρΔ²) derivation, weak-field propagation speed from GEM, exact 48Δ = 0.993578587835, 25 ppm G residual acknowledged as Δ⁴ subleading; removed speculative correction and perturbation sections.
@@ -111,8 +123,8 @@ All notable changes to the CGM Experimental Framework will be documented in this
 
 ### Added
 - Added `docs/Findings/Analysis_Gravity.md`: gravitational coupling from kernel invariants, gravitational field equations, gyrogroup structure, and electroweak-anchor prediction of G.
-- Added `experiments/aqpu_gravity_analysis_1.py`: kernel diagnostics, aperture-depth Refractive Depth, α·ζ invariant, and coupling reconstruction at v_EW.
-- Added `experiments/cgm_aqpu_monodromy.py`: aQPU monodromy diagnostic for depth-4/depth-8 closure, shell displacement invariants, and quadrupole shell modes.
+- Added `experiments/hqvm_gravity_analysis_1.py`: kernel diagnostics, aperture-depth Refractive Depth, α·ζ invariant, and coupling reconstruction at v_EW.
+- Added `experiments/cgm_hqvm_monodromy.py`: hQVM monodromy diagnostic for depth-4/depth-8 closure, shell displacement invariants, and quadrupole shell modes.
 
 ### Results
 - Decomposed Einstein coupling κ = 8πG/c⁴ into factor 2 (two-pass carrier recovery), Q_G = 4π (closure solid angle), and c⁴ (four-stage depth structure).
@@ -126,8 +138,8 @@ All notable changes to the CGM Experimental Framework will be documented in this
 ## [1.2.6-Compact_Geometry] - 2026-05-02 to 2026-05-05
 ### Added
 - Added `docs/Findings/Analysis_Compact_Geometry.md` for the compact-spectral electroweak analysis.
-- Added `experiments/aqpu_compact_geom_core.py` as the shared implementation module.
-- Added `experiments/aqpu_compact_geom_report.py` for the formatted analysis workflow and reporting output.
+- Added `experiments/hqvm_compact_geom_core.py` as the shared implementation module.
+- Added `experiments/hqvm_compact_geom_report.py` for the formatted analysis workflow and reporting output.
 
 ---
 
@@ -267,7 +279,7 @@ All experimental calculations now use 246.22 GeV consistently:
 - [experiments/cgm_balance_analysis.py](experiments/cgm_balance_analysis.py)
 - [experiments/cgm_bh_universe_analysis.py](experiments/cgm_bh_universe_analysis.py)
 - [experiments/cgm_higgs_analysis.py](experiments/cgm_higgs_analysis.py)
-- [experiments/aqpu_corrections_analysis_1.py](experiments/aqpu_corrections_analysis_1.py)
+- [experiments/hqvm_corrections_analysis_1.py](experiments/hqvm_corrections_analysis_1.py)
 - [experiments/cgm_proto_units_analysis.py](experiments/cgm_proto_units_analysis.py)
 
 Updated documentation for consistency:
@@ -331,8 +343,8 @@ Experiments found here:
 New Topic - Universal Correction Operator
 Experiments Results and Analysis found here: 
 - [docs/Findings/Analysis_Universal_Corrections.md](docs/Findings/Analysis_Universal_Corrections.md)
-- [experiments/aqpu_corrections_analysis_1.py](experiments/aqpu_corrections_analysis_1.py)
-- [experiments/aqpu_corrections_analysis_2.py](experiments/aqpu_corrections_analysis_2.py)
+- [experiments/hqvm_corrections_analysis_1.py](experiments/hqvm_corrections_analysis_1.py)
+- [experiments/hqvm_corrections_analysis_2.py](experiments/hqvm_corrections_analysis_2.py)
 
 Revisions:
 - [docs/Findings/Analysis_CGM_Units.md](docs/Findings/Analysis_CGM_Units.md)

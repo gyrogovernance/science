@@ -18,7 +18,7 @@ from pathlib import Path
 from typing import Iterable, List, Sequence
 from urllib.request import Request, urlopen
 
-import aqpu_compact_geom_core as compact
+import hqvm_compact_geom_core as compact
 
 try:
     from pypdf import PdfReader

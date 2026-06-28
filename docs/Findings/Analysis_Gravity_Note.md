@@ -1,6 +1,7 @@
 # Gravitational Theory in the Common Governance Model: Causal Preservation of Ancestry through Identity and Individuality
 [Work in Progress]
 
+
 ## 1. Introduction
 
 The Common Governance Model (CGM) [10] is a Hilbert-style axiomatization of fundamental physics and information science. As an axiomatic model, CGM begins from a single foundational principle and derives all subsequent structure through logical necessity.
@@ -14,7 +15,7 @@ The following four conditions (CS, UNA, ONA, BU) define a scale-agnostic operati
 
 Every observable reference is traceable to a common unobservable self-referential source: the capacity for governance through asymptotic freedom.
 
-The Virial Lagrangian records freedom as the difference between kinetic and potential sectors:
+Common origination is operational, not historical: each subsequent state must admit a recoverable path back to the same reference through the cyclical accumulation of asymmetric action. The Virial Lagrangian records freedom as the difference between kinetic and potential sectors:
 
 ```text
 L = T - V
@@ -28,7 +29,7 @@ The Common Source assumption requires that all distinguishable physical structur
 S → ([R]S ↔ S ∧ ¬([L]S ↔ S))
 ```
 
-Here → is material implication, ↔ is biconditional equivalence, and ¬ is negation. The formula states that from S it follows that right transitions preserve the reference state ([R]S ↔ S) while left transitions alter it (¬([L]S ↔ S)). This establishes fundamental chirality: the reference behaves asymmetrically under the two transition types. Such traceability requires an ancestral parity violation, manifesting physically as chirality.
+Here → is material implication, ↔ is biconditional equivalence, and ¬ is negation. The formula states that from S it follows that right transitions preserve the reference state ([R]S ↔ S) while left transitions alter it (¬([L]S ↔ S)). Identity requires that the reference remain recoverable across transitions; individuality requires that transitions produce distinguishable outcomes. The asymmetry between preservation and alteration satisfies both simultaneously, establishing fundamental chirality. Such traceability requires an ancestral parity violation, manifesting physically as chirality.
 
 **1.2. Information Variety**
 
@@ -41,7 +42,7 @@ Common origination necessitates non-absolute unity (¬□E) as individuality pre
 S → ¬□E    where E := [L][R]S ↔ [R][L]S
 ```
 
-Here □E denotes that two-step equality E holds in all accessible states, and ¬□E denotes that this equality is not necessary everywhere. At depth two, the order of transitions may matter, but non-commutativity remains contingent. The lemma expands the initial chirality into rotational structure with exactly three generators.
+Here □E denotes that two-step equality E holds in all accessible states, and ¬□E denotes that this equality is not necessary everywhere. If two-step equality held universally, no path-dependent structure could exist and the chiral distinction fixed by CS would carry no observable consequence. Non-absolute unity is therefore the minimal condition for indirect observation of the common source: the traceable signature of common origination requires informational variety. At depth two, the order of transitions may matter, but non-commutativity remains contingent. The lemma expands the initial chirality into rotational structure with exactly three generators.
 
 **1.3. Inference Accountability**
 
@@ -54,14 +55,16 @@ Individuality necessitates non-absolute opposition (¬□¬E) as identity preven
 S → ¬□¬E
 ```
 
-The formula states that depth-two opposition (contradictory composition outcomes) is contingent rather than absolute. The system avoids both perfect agreement and perfect contradiction. ONA introduces three translational degrees of freedom atop the three rotational ones, yielding the algebra of rigid-body motions SE(3).
+The formula states that depth-two opposition (contradictory composition outcomes) is contingent rather than absolute. If contradiction held universally, the structural distinctions introduced by UNA would bear no recoverable relation to the common source. Non-absolute opposition is therefore the minimal condition for direct observation of non-absolute unity and the second condition for indirect observation of the common source: the accountability of inference requires that distinguishable structure remain traceable to common origination. The system avoids both perfect agreement and perfect contradiction. ONA introduces three translational degrees of freedom atop the three rotational ones, yielding the algebra of rigid-body motions SE(3).
 
 **1.4. Intelligence Integrity**
 
 > Propositions: Balance Universal (BU)
 >> **Degrees of freedom:** 6 (coordinated closure with δ = 0)
 
-Gravity is the universal principle of balance establishing freedom of identity and individuality through preservation of ancestry. Balance Universal comprises two propositions.
+Gravity is the universal principle of balance establishing freedom of identity and individuality through preservation of ancestry.
+
+Identity requires preservation of ancestry; individuality requires distinguishable displacement from that ancestry. If either requirement were absent, the other would be meaningless: preservation without variance erases structure, while variance without preservation erases origin. Balance is the condition under which both remain simultaneously satisfiable under recursive operations. Without depth-four closure, the operational variance from UNA and the reference preservation from ONA would diverge irreconcilably, and the system would lose all memory of its origin. Balance Universal comprises two propositions.
 
 Balance Egress (BU-Eg) mandates depth-four algebraic closure:
 
@@ -87,7 +90,7 @@ The axioms of CGM are constructive. The necessity of preserving ancestry under o
 
 ## 2. Computational Theory
 
-The necessity of preserving ancestry under operational displacement forces a specific computational architecture. An algorithmic kernel (algebraic Quantum Processing Unit aQPU) [12] realises the CGM conditions computationally. The kernel supplies the exact combinatorial invariants needed to anchor a continuous field theory, fixing physical constants directly from compact geometry.
+The necessity of preserving ancestry under operational displacement forces a specific computational architecture. An algorithmic kernel (Holonomic Quantum Virtual Machine hQVM) [12] realises the CGM conditions computationally. The kernel supplies the combinatorial invariants needed to anchor a continuous field theory, fixing physical constants directly from compact geometry.
 
 **2.1. The Common Source and the Archetype**
 
@@ -147,7 +150,7 @@ State = (A, B)   where A, B ∈ {0,1}¹²
 
 where A is the active face and B is the passive record face.
 
-The transition law is the discrete realization of the gyrogroup composition. The left transition mutates the active face while the right transition applies the complement-and-swap gyration, pulling the past forward and committing the mutated present to the passive record.
+The transition rule is the discrete realization of the gyrogroup composition. The left transition mutates the active face while the right transition applies the complement-and-swap gyration, pulling the past forward and committing the mutated present to the passive record.
 
 ```text
 A_mut = A ⊕ Mask
@@ -185,7 +188,7 @@ The two-pass structure implies that the bulk degrees of freedom accessible to th
 
 where G is the gravitational coupling constant and Q_G = 4π is the horizon flux quantum. The factor 2 records the two depth-four passes of the holonomy cycle.
 
-This closure structure defines intelligence operationally. Intelligence is the capacity to preserve ancestry while maintaining both identity and individuality under recursive operations. The single-byte transition law realises this cycle as four required acts:
+This closure structure defines intelligence operationally. Intelligence is the capacity to preserve ancestry while maintaining both identity and individuality under recursive operations. The single-byte transition rule realises this cycle as four required acts:
 
 ```text
 Measure:   intron = byte XOR 0xAA            (CS, common reference)
@@ -366,7 +369,7 @@ where α₀ is the base electromagnetic coupling and ζ is the gravitational ape
 
 This analysis has derived the gravitational field, its coupling constants, and its observational signatures from a single foundational requirement: the preservation of ancestry through identity and individuality. Gravity is the emergent balance that allows coherent observation to persist against operational displacement.
 
-The necessity of this preservation forces a specific computational architecture. The algebraic Quantum Processing Unit kernel is the minimal finite system satisfying the conditions for coherent observation. Its structure is a mathematical consequence of the spinorial double cover, the SE(3) algebra of spatial generators, and the depth-4 commutator closure. The kernel supplies exact combinatorial invariants that anchor the continuous field theory without free parameters.
+The necessity of this preservation forces a specific computational architecture. The Holonomic Quantum Virtual Machine kernel is the minimal finite system satisfying the conditions for coherent observation. Its structure is a mathematical consequence of the spinorial double cover, the SE(3) algebra of spatial generators, and the depth-4 commutator closure. The kernel supplies combinatorial invariants that anchor the continuous field theory without free parameters.
 
 The quantum of gravity and the aperture gap fix the dimensionless coupling through the discrete Gauss law and the symmetric trace-free attenuation across the bulk shells. The dimensional gravitational coupling requires only the electroweak scale as a single energy anchor. The resulting position-dependent coupling weakens where the gravitational field is strongest, acting as a geometric regulator that resolves the divergent self-energy of Newtonian gravity into the exact finite result.
 
@@ -409,7 +412,7 @@ The dimensional proof establishes n = 3 as the unique spatial dimension satisfyi
 
 ## Appendix B: Proof of the Shell Displacement Invariant D = 24
 
-The main text states that the shell displacement D = 24 is invariant across all mass configurations, fixing the discrete Gauss law. This appendix derives that invariant from the kernel transition law [12].
+The main text states that the shell displacement D = 24 is invariant across all mass configurations, fixing the discrete Gauss law. This appendix derives that invariant from the kernel transition rule [12].
 
 The 24-bit state (A, B) decomposes into two 12-bit gyrophases over a 2 x 3 x 2 binary grid. The 6-bit chirality register χ = A ⊕ B collapses to one bit per dipole pair. The Hamming distance between A and B distributes the 4096 reachable states across seven concentric shells, with populations following the binomial distribution |shell_k| = C(6,k) x 64.
 
