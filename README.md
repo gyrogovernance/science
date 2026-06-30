@@ -51,6 +51,7 @@ Canonical repository: [superintelligence](https://github.com/gyrogovernance/supe
 * **Gravity as a nonlinear theory of geometry**, with a position-dependent coupling that recovers Newtonian and general-relativistic predictions in the appropriate limits and gives an exact, finite gravitational self-energy of −Mc²/4 for a point mass.
 * **A complete solid angle of 4π** as the geometric invariant of gravity, fixing the structure of Newton's and Einstein's field equations and the spin-2 character of gravitational waves.
 * **The relation E = mc²** appears as a structural consequence of operational closure, anchoring the rest frame as a dynamical condition rather than a coordinate choice.
+* **The byte carries internal curvature**: 240 of 256 bytes have a Z2 fold disagreement at the BU boundary, inducing a fiber bundle structure with 50% holographic redundancy at every scale and a Householder reflection (Grover-type quantum search primitive) at the carrier level.
 
 Neutrino mass scales, lepton ratios, quark flavour structure, and the optical conjugacy linking the Planck and electroweak scales are also derived in the linked analyses.
 
@@ -85,6 +86,7 @@ Dataset: [CGM corpus](docs/datasets/) (1,000+ JSONL Q&A pairs for fine-tuning an
 | Topic | Analysis | Code |
 |-------|----------|------|
 | Gravity, Virial condition, and nonlinear continuum | [Analysis_Gravity - Note](docs/Findings/Analysis_Gravity_Note.md) [Analysis_Gravity - Full](docs/Findings/Analysis_Gravity.md) | [hqvm_gravity_common.py](experiments/hqvm_gravity_common.py), `hqvm_gravity_analysis_1.py` through `8.py`, [wavefunction scripts](experiments/hqvm_wavefunction_1.py). Run: `python experiments/hqvm_gravity_runner.py` |
+| Wavefunction: fiber bundle structure of the byte | [Analysis_hQVM_Wavefunction](docs/Findings/Analysis_hQVM_Wavefunction.md) | [hqvm_wavefunction_kernel.py](experiments/hqvm_wavefunction_kernel.py) |
 | Electroweak mass spectrum | [Analysis_Compact_Geometry](docs/Findings/Analysis_Compact_Geometry.md) | [hqvm_compact_geom_core.py](experiments/hqvm_compact_geom_core.py), [kernel](experiments/hqvm_compact_geom_kernel.py), [report](experiments/hqvm_compact_geom_report.py) |
 | Fine-structure constant | [Analysis_Fine_Structure](docs/Findings/Analysis_Fine_Structure.md) | [cgm_alpha_analysis.py](experiments/cgm_alpha_analysis.py) |
 | Quantum gravity invariant | [Analysis_Quantum_Gravity](docs/Findings/Analysis_Quantum_Gravity.md) | [cgm_quantum_gravity_analysis.py](experiments/cgm_quantum_gravity_analysis.py) |
@@ -112,6 +114,8 @@ Dataset: [CGM corpus](docs/datasets/) (1,000+ JSONL Q&A pairs for fine-tuning an
 | [Physics_Tests_Report](docs/Gyroscopic_Computational_Theory/Physics_Tests_Report.md) | Physics tests |
 | [QuBEC_Transform_Algebra](docs/Gyroscopic_Computational_Theory/QuBEC_Transform_Algebra.md) | Transform algebra |
 | [QuBEC_Climate_Dynamics](docs/Gyroscopic_Computational_Theory/QuBEC_Climate_Dynamics.md) | Climate dynamics |
+| [QuBEC_Theory](docs/Gyroscopic_Computational_Theory/QuBEC_Theory.md) | QuBEC theory |
+| [Alignment_Measurement_Report](docs/Gyroscopic_Computational_Theory/Alignment_Measurement_Report.md) | Alignment measurement |
 
 ---
 ## 👨‍🔬 Author
