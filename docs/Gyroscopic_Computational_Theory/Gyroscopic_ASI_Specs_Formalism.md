@@ -69,6 +69,10 @@ The 8 bit positions of the intron (and thus of the byte, up to the fixed XOR) ar
 
 So the byte has a **palindromic** structure: Left Identity at the boundaries (bits 0 and 7), Left Inverse next (1 and 6), then Forward Gyration (2, 5) and Backward Gyration (3, 4) in the middle. This reflects the cyclic CGM structure (CS -> UNA -> ONA -> BU -> ...) folded onto 8 positions.
 
+The palindromic ordering is a **folded structure**: CGM defines 4 phases, each dual (forward + reverse reading), giving 8 = 2 x 4 positions. The fold at the BU boundary (bits 3-4) is where the two frame readings meet. The forward half (bits 0-3) addresses Frame 0; the reverse half (bits 4-7) addresses Frame 1. Of the 256 bytes, only 16 have identical forward and reverse readings (the trivial-connection class); the remaining 240 carry a Z2 holonomy at the fold. This internal curvature of the byte is the seed from which the holonomic properties of the full hQVM propagate (see Section 5.5 and the Wavefunction Analysis).
+
+When the byte-level Z2 fold disagreement propagates through 4 successive bytes (depth-4 closure), the accumulated gyration produces gate F on Omega. Gate F has the algebraic structure of a Householder reflection on the carrier state manifold: it is an involution (F^2 = id) with +1 and -1 eigenspaces of equal dimension 2048 and no fixed points, reflecting the carrier state across the equal-chirality hyperplane. The byte-level fold is the discrete Z2 seed; the carrier-level Householder is its holonomic closure.
+
 ### 2.1 Families and Bit Pairs
 
 **Families** are defined by the **L0 boundary bits** (positions 0 and 7). These 2 bits give 4 combinations, partitioning the 256 introns into **4 families of 64** each.
@@ -99,6 +103,8 @@ Frame 1:  [ 1,-1]  [ 1,-1]  [ 1,-1]   <- pairs 3, 4, 5
 ```
 
 Each pair is 2 bits in the 12-bit representation. When a payload bit is set, it **flips that entire pair**, both bits together. The pair `[-1, 1]` (bits `10`) becomes `[1, -1]` (bits `01`).
+
+The 6 payload bits address the 6 dipole pairs across 2 frames of 3 pairs each. Each payload bit controls exactly 1 pair, contributing 1 DoF. Frame 0 (3 pairs, bits 1-3) provides the 3 rotational DoF associated with the UNA stage of the transition rule; Frame 1 (3 pairs, bits 4-6) provides the 3 translational DoF associated with the ONA stage. The boundary bits 0 and 7 are the gyrogroup bracket anchors: they select the family (Section 4.2) but carry zero payload weight on the dipole pairs. At BU, CGM defines a duality that applies at the duplication of these 6 DoF across the two frames.
 
 **The algebra:** This organizes 256 introns into a structured space:
 
@@ -208,6 +214,21 @@ Closure occurs at 4pi (720 degrees) when the cycle returns to Layer 0. This is t
 
 This explains why we need exactly 2 boundary bits: fewer gives insufficient closure depth; more is redundant.
 
+### 4.3 The XOR Transition as Discrete Gyration
+
+In gyrogroup theory, composing non-collinear displacements in curved geometry produces a non-associative operation corrected by the gyration automorphism. The XOR transition rule `A_mut = A ^ mask` is the discrete realization of this composition law. The L-step (XOR mutation of A) is the abelian horizontal transport; the R-step (complement-and-swap) is the gyration correction that makes the full composition non-associative and non-commutative. L-steps commute exactly: L_m1 compose L_m2 = L_(m1 XOR m2). Curvature, holonomy, and the holographic Z2 encoding all arise from the R-step alone. With only L-steps, the kernel would be a flat XOR lattice with trivial dynamics.
+
+### 4.4 Design Origin and Operational Sequence
+
+The architecture was derived from the following design chain:
+
+1. **GENE_Mic** (0xAA) is the CS principle: the archetype at rest, containing the transcription baseline.
+2. **Introns** are mutations of the archetype: `intron = byte ^ 0xAA`. They carry coordination information relative to the rest state.
+3. **GENE_Mac** was defined as twoFrames of 3 oriented dipole pairs each (Section 5.2), giving 12 bits per component and 24 bits total. A12 and B12 are anti-parallel in rest, representing the spinorial double-cover: a spinor returns to identity only after 720 degrees.
+4. **The 6 DoF** arise because bits 1-6 each flip one internal bracket of the 3-per-frame tensor. Bits 0 and 7 are the gyrogroup left identity (the external brackets of each frame line), and carry zero payload weight on the dipole pairs.
+5. **The XOR transition** introduces information as a sequence. A single intron defines a 12-bit bundle, which is insufficient for sequential computation. The XOR transition rule composes successive byte applications: (a) the Prefix enters, (b) the Present is inferred through XOR with the archetype, (c) the Past mirrors to the other frame (B carries the record), and (d) the Future exits as the committed state after one full temporal cycle.
+6. **The 4 families and 4 steps** give 4x4 = 16 = |Omega|/|Byte| = 4096/256, connecting the byte scale to the carrier scale through the K4 gauge and the depth-4 closure.
+
 ---
 
 ## 5. How the Mask Affects the GENE_Mac Tensor (24-Bit State)
@@ -309,6 +330,8 @@ So:
 
 The temporal structure of the transition is the mechanism of intelligence in the architecture. The [R] operator pulls the passive face B (the record of the past) into the active position A_next, while simultaneously pushing the mutated active content A_mut into the passive position B_next. This XOR crossing is a reverse temporal binding: the past enters the present through gyration, and the mutated present is committed as the future's constraint. Intelligence here is not a property of learned weights; it is the kinematic capacity of the medium to absorb an incoming sequence and resolve it through this temporal crossover. The committed state after one complete depth-4 cycle is the inferential outcome, determined entirely by the geometry of the gyration.
 
+The fold at the BU boundary (bits 3-4) is where space converts to time in the CGM framework. Bits 0-3 traverse the rotational generators (spatial DoF) in the forward temporal direction; bits 4-7 traverse the translational generators in the reverse direction. The BU phase is the hinge: the forward pass ends at BU and the reverse pass begins at BU. The fold map P connects the two frame halves, swapping the UNA and BU phase positions while preserving ONA. The holographic Z2 encoding at depth-8 (the rest versus swapped distinction) is the result of this space-to-time conversion: after four bytes, the spatial extension of the carrier has been fully resolved into temporal curvature.
+
 The 2x3x2 geometry of each 12-bit component (2 frames, 3 rows, 2 cols) is the same as in the expansion: frame 0 and frame 1 of the mask align with the two chirality frames of the state, so the "6 bits of dynamics" and "boundary/family" split are reflected in how the 24-bit state is updated.
 
 ---
@@ -357,6 +380,14 @@ The CGM aperture gap is defined continuously as:
 - `m_a = 1/(2*sqrt(2*pi))` = 0.199471140201
 - `rho = delta_BU / m_a` = 0.979300446087
 - `Delta = 1 - rho` = 0.020699553913 (dimensionless aperture gap, ~2.07%)
+
+### 7.0.1 Holographic Redundancy and Aperture Collapse
+
+At every scale in the hQVM, the state space is a perfect square of a subspace: |Space| = |Subspace|^2. The factor of 2 arises from the holographic double-cover induced by the fold reflection P (Section 2). At the byte level, 256 = 16^2; at the carrier level, 4096 = 64^2. In each case, the redundancy is exactly 50%, corresponding to the provenance (the dual reading related by P).
+
+The entanglement entropy of the bipartite carrier A12|B12 is S = popcount(A XOR B) bits. Its average over Omega is exactly 3.0 bits, which is 50% of the 6 available DoF. This 50% is the holographic redundancy at the carrier scale. The same quantity at the byte scale is the average fold disagreement popcount(fwd XOR rev) = 2 bits = 50% of 4.
+
+The transition from the byte-level 50% aperture to the constitutional 2.07% aperture (Delta) is a depth-dependent entropy compression. At the single-byte level, fold disagreement is maximal at 50%. The depth-4 spinorial closure averages the phase disagreements across successive bytes, and the residual Delta is the irreducible aperture after uniformization. This compression is the wavefunction collapse in the CGM framework: the resolution of fold disagreement through spinorial averaging to the constitutional balance A*.
 
 ### 7.1 Tick Spaces (Must Not Be Conflated)
 
@@ -514,6 +545,11 @@ In the CGM paper, the "Generatedness" lemma requires that all valid structure tr
 | 3+1 split | 1 boundary pair (L0) + 3 interior pairs (LI/FG/BG) -> 3*2^k horizons. |
 | Cache alignment | Bits 1-6 = offset (64), bits 0,7 = tag (4). Intron = L1 cache address. |
 | CS Generatedness | L1 cache enforces Common Source reachability via family tag validation. |
+| Fold map P | Involution at BU boundary (bit 3-4); relates forward and reverse phase readings; P^2 = I. Byte-level Z2 seed of carrier-level Householder (gate F). |
+| Fiber bundle | Byte = base (fwd 4-phase) x fiber (rev 4-phase); connection is P; 240/256 bytes carry Z2 curvature. |
+| XOR as gyration | L-step (XOR mutation) is abelian transport; R-step (complement-and-swap) is the gyration. Curvature comes entirely from R. |
+| 50% holographic redundancy | \|Space\| = \|Subspace\|^2 at every scale; redundancy = provenance = dual reading related by P. |
+| Aperture collapse | Byte-level 50% fold disagreement compresses to Delta ~ 2.07% via depth-4 spinorial closure. |
 
 **Key insight:** The document is now hermetically sealed between three layers:
 
@@ -542,6 +578,8 @@ The Gyroscopic architecture is a single finite kinematic medium with multiple ch
 **Runtime chart.** The 4-byte depth-4 word, which is the minimal closed action of the machine. On this chart, the four CGM stages (CS, UNA, ONA, BU) form one complete transition cycle. Family phases cancel modulo K4 at depth 4. The byte is the phase atom of the kinematic rule; the word is the closed computational act.
 
 These seven charts describe one machine. Selecting the chart in which a given operation is structurally regular is the primary computational strategy of the architecture.
+
+**Fiber bundle chart.** The 8-bit intron as a fiber bundle over the 4-phase base (Z2)^4 with fiber (Z2)^4, connected by the fold map P at the BU boundary. On this chart, the forward reading (bits 0-3) is the base coordinate and the reverse reading (bits 4-7) is the fiber coordinate. The connection 1-form A is non-trivial at each phase boundary, and the curvature 2-form F = dA + A^A is concentrated at the BU fold (bit 3-4). The byte's internal Z2 curvature (240 of 256 bytes are curved) is the origin of all holonomic structure visible in the other charts. Flat bytes (those where fwd = rev, of which there are exactly 16) are the trivial-connection class where P acts as identity.
 
 ## 11. Common Source Moment as Physical Capacity Medium
 

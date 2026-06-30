@@ -781,7 +781,7 @@ def section_e_chain_verification(
     ]
 
     print(f"{'Stage':<36} {'OK':>4}  Detail")
-    print("-" * 60)
+    print("-" * 5)
     all_ok = True
     for name, ok, detail in steps:
         all_ok = all_ok and bool(ok)

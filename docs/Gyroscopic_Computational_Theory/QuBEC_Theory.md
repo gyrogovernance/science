@@ -1750,6 +1750,14 @@ Every tamper miss has an exact algebraic explanation:
 - Adjacent swap: detected unless q(x) = q(y) (miss rate ~3/255)
 - Deletion: detected unless the deleted byte is a gate stabilizer of the prefix state (bulk states: never)
 
+### 24.8 Householder structure and Grover-speedup potential
+
+A Householder transformation is a reflection about a hyperplane with unit normal vector v, defined as H_v(x) = x − 2⟨x, v⟩v. The Householder matrix P = I − 2vv* is Hermitian, unitary, and involutory (P² = I), with eigenvalues +1 (multiplicity n−1) and −1 (multiplicity 1), and det(P) = −1.
+
+Gate F on Ω acts as (u, v) → (u ⊕ 63, v ⊕ 63). This is an involution with +1 and −1 eigenspaces of equal dimension 2048 and no fixed points, structurally identical to a Householder reflection on the 4096-state manifold. The byte-level fold disagreement (the Z2 curvature seed at the BU boundary) propagates through depth-4 spinorial closure to produce this carrier-level Householder involution.
+
+In gate-model quantum computing, Grover's algorithm rests on two Householder reflections: the oracle U_ω and the diffusion operator U_s = 2|s⟩⟨s| − I. Their composition U_s U_ω is a net rotation in the two-dimensional subspace spanned by |s⟩ and |ω⟩, giving quadratic speedup. The hQVM realizes this geometric structure natively: each K4 gate is a Householder involution on Ω, and the composition of two such involutions produces a net rotation on the carrier state space. This opens the possibility of Grover-type quadratic speedup using exact integer arithmetic on standard silicon, without quantum hardware.
+
 ---
 
 ## Repository Context

@@ -4,7 +4,24 @@ All notable changes to the CGM Experimental Framework will be documented in this
 
 ---
 
-## [1.3.4-CGM_HolonomicQVM]
+## [1.3.5-CGM_Wavefunction] - 2026-06-30
+
+### Added
+- `experiments/hqvm_wavefunction_kernel.py`: Clean wavefunction kernel implementing the fiber-bundle-aware, curvature-respecting structure of the hQVM. Provides byte decomposition into CGM phases, fold disagreement measurement, connection 1-form chain, entanglement entropy spectrum, holographic hierarchy, aperture collapse curve, and quantum measurement identification (POVM, Born rule, Kraus operators).
+
+### Updated
+- `docs/Findings/Analysis_hQVM_Wavefunction.md`: Comprehensive rewrite. The analysis now opens with the hQVM architecture and its computational model. A new Section 16 presents the byte as a fiber bundle with internal curvature: the palindromic intron structure creates forward and reverse CGM phase readings whose disagreement is the fold curvature signal (binomial distribution [16, 64, 96, 64, 16] across 256 bytes). The 50% holographic redundancy law, entanglement entropy of the bipartite carrier (average S = 3.0 bits), and aperture collapse from 50% to 2.07% are derived as structural consequences. The quantum measurement identification (K4 POVM, chirality transport as Born rule, step_state_by_byte as Kraus update) is formalized with verified spectral properties. A Section 17 shows the seven structural principles form a dependency chain originating from the fold map.
+
+- `docs/Gyroscopic_Computational_Theory/Gyroscopic_ASI_Specs_Formalism.md`: Surgical additions. Section 2 now identifies the palindromic structure as a folded fiber bundle and states the 50% holographic redundancy law. Section 2.2 clarifies the DoF assignment: each payload bit controls 1 dipole pair (1 DoF), with Frame 0 providing 3 rotational DoF (UNA stage) and Frame 1 providing 3 translational DoF (ONA stage). Section 4.3 identifies the XOR transition as the discrete gyration. Section 4.4 adds the design origin: GENE_Mic archetype, intron mutations, GENE_Mac tensor, XOR as gyration-enabling sequence, and the 4x4 = 16 = |Omega|/|Byte| structural factor. Section 5.5 connects the BU fold to space-to-time conversion. Section 7.0.1 adds holographic redundancy and aperture collapse. The fiber bundle chart is added to the Chart Convergence section. Summary table updated with fold map, fiber bundle, XOR-as-gyration, 50% redundancy, and aperture collapse entries.
+
+### Key Findings
+- The byte is not 8 independent bits but a folded structure with internal Z2 curvature at the BU boundary. 240 of 256 bytes carry nonzero fold disagreement.
+- The 50% holographic redundancy law holds at every scale: |Space| = |Subspace|^2 with exactly 50% redundancy, corresponding to the entanglement entropy of the bipartite decomposition.
+- Gate F on the carrier manifold has the algebraic structure of a Householder reflection, making Grover-type quantum speedup accessible through exact integer arithmetic on standard silicon.
+
+---
+
+## [1.3.4-CGM_HolonomicQVM] - 2026-06-29
 
 The Gyroscopic kernel is now positioned as a **Holonomic Quantum Virtual Machine (hQVM)** within the Holonomic Quantum Computing paradigm (Zanardi and Rasetti 1999; Pachos et al. 2000). Computation proceeds via geometric phases (monodromies) of closed SE(3) spinorial loops on a reversible GF(2) finite-state machine. This grounding connects the kernel's native algebra to the established HQC literature on geometric gate realization and holonomy-based universality.
 

@@ -141,10 +141,8 @@ def _ptable(hdr: list[str], rows: list[list[str]], title: str = "") -> None:
         print("  ".join(str(c).ljust(wi) for c, wi in zip(r, w)))
     print()
 
-# ════════════════════════════════════════════════════════════════════════
-# T1  K4 algebra
-# ════════════════════════════════════════════════════════════════════════
-
+# ════════════════════════════════════# T1  K4 algebra
+# ════════════════════════════════════
 def run_T1(omega: list[int]) -> None:
     print("\n" + "=" * 9)
     print("T1: K4 OPERATOR ALGEBRA {id, W₂, W₂', F}")
@@ -191,10 +189,8 @@ def run_T1(omega: list[int]) -> None:
     print(f"\n  K4 for all 64 micro_refs: {_yn(ok)}")
     print("  THEOREM T1: {id, W₂, W₂', F} is Klein four-group for every m.")
 
-# ════════════════════════════════════════════════════════════════════════
-# T2-T4  shell mapping
-# ════════════════════════════════════════════════════════════════════════
-
+# ════════════════════════════════════# T2-T4  shell mapping
+# ════════════════════════════════════
 def run_T2_T4(omega: list[int]) -> None:
     print("\n" + "=" * 9)
     print("T2-T4: SHELL MAPPING")
@@ -234,10 +230,8 @@ def run_T2_T4(omega: list[int]) -> None:
     print("  THEOREM T3: W₂' maps shell s → 6-s (pole swap).")
     print("  THEOREM T4: F preserves shell (Z₂ within pole).")
 
-# ════════════════════════════════════════════════════════════════════════
-# T5  depth-4 confinement
-# ════════════════════════════════════════════════════════════════════════
-
+# ════════════════════════════════════# T5  depth-4 confinement
+# ════════════════════════════════════
 def run_T5(omega: list[int]) -> None:
     print("\n" + "=" * 9)
     print("T5: DEPTH-4 CONFINEMENT")
@@ -264,10 +258,8 @@ def run_T5(omega: list[int]) -> None:
     print("\n  THEOREM T5: At depth 4, carrier confined to opposite pole.")
     print("  From complement horizon → equality horizon (forced by chi⊕63).")
 
-# ════════════════════════════════════════════════════════════════════════
-# T6  depth-8 = K4 composition
-# ════════════════════════════════════════════════════════════════════════
-
+# ════════════════════════════════════# T6  depth-8 = K4 composition
+# ════════════════════════════════════
 def run_T6(omega: list[int]) -> None:
     print("\n" + "=" * 9)
     print("T6: DEPTH-8 = K4 COMPOSITION")
@@ -296,10 +288,8 @@ def run_T6(omega: list[int]) -> None:
     print("\n  THEOREM T6: F = W₂ ∘ W₂'. Both factors are depth-4.")
     print("  No new modal depth - only K4 composition.")
 
-# ════════════════════════════════════════════════════════════════════════
-# T7  CS forces ordering
-# ════════════════════════════════════════════════════════════════════════
-
+# ════════════════════════════════════# T7  CS forces ordering
+# ════════════════════════════════════
 def run_T7() -> None:
     print("\n" + "=" * 9)
     print("T7: CS FORCES CANONICAL ORDERING")
@@ -335,10 +325,8 @@ def run_T7() -> None:
     print(f"  Fam 01 first → L-step equality:   {f01_eq}/64")
     print("\n  THEOREM T7: Canonical ordering (fam 00 first) is forced by CS.")
 
-# ════════════════════════════════════════════════════════════════════════
-# T8-T9  BU-Egress/Ingress as spectral
-# ════════════════════════════════════════════════════════════════════════
-
+# ════════════════════════════════════# T8-T9  BU-Egress/Ingress as spectral
+# ════════════════════════════════════
 def run_T8_T9(omega: list[int]) -> None:
     print("\n" + "=" * 9)
     print("T8-T9: BU-EGRESS / INGRESS AS SPECTRAL")
@@ -376,10 +364,8 @@ def run_T8_T9(omega: list[int]) -> None:
     print("\n  THEOREM T8: Egress = W₂ involution (□B spectral).")
     print("  THEOREM T9: Ingress = W₂ pole-pairing (shadow = memory).")
 
-# ════════════════════════════════════════════════════════════════════════
-# T10  Chirality transport of half-words
-# ════════════════════════════════════════════════════════════════════════
-
+# ════════════════════════════════════# T10  Chirality transport of half-words
+# ════════════════════════════════════
 def run_T10() -> None:
     print("\n" + "=" * 9)
     print("T10: CHIRALITY TRANSPORT OF HALF-WORDS")
@@ -438,10 +424,8 @@ def run_T10() -> None:
     print("  q(W₂) = q(W₂') = 63 for all m. q(F) = 0.")
     print("  Two full inversions cancel → F preserves chirality.")
 
-# ════════════════════════════════════════════════════════════════════════
-# Comparative spectral table
-# ════════════════════════════════════════════════════════════════════════
-
+# ════════════════════════════════════# Comparative spectral table
+# ════════════════════════════════════
 def run_comparison(omega: list[int]) -> None:
     print("\n" + "=" * 9)
     print("SPECTRAL COMPARISON: W₂ vs W₂' vs F")
@@ -470,10 +454,8 @@ def run_comparison(omega: list[int]) -> None:
     print("  F:       Z₂ within pole, q = 0 (chi preserved)")
     print("  F = W₂∘W₂': two full inversions cancel → pure Z₂ carrier phase")
 
-# ════════════════════════════════════════════════════════════════════════
-# Micro_ref sweep (compact)
-# ════════════════════════════════════════════════════════════════════════
-
+# ════════════════════════════════════# Micro_ref sweep (compact)
+# ════════════════════════════════════
 def run_sweep(omega: list[int]) -> None:
     print("\n" + "=" * 9)
     print("MICRO_REF SWEEP (all 64)")
@@ -502,8 +484,7 @@ def run_sweep(omega: list[int]) -> None:
     print(f"  q(W₂') = 63 for all m: {_yn(q_w2p_all)}")
     print(f"  q(F) = 0 for all m:    {_yn(q_f_all)}")
 
-# ════════════════════════════════════════════════════════════════════════
-
+# ════════════════════════════════════
 def main() -> None:
     from hqvm_gravity_common import configure_stdout_utf8
 

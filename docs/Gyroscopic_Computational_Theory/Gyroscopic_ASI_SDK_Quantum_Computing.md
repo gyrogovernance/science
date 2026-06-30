@@ -780,6 +780,48 @@ The hQVM and gate-model quantum computers share quantum-algebraic foundations bu
 
 The hQVM achieves structural quantum advantage on Ω through algebraic structure. It computes interference in the wavefunction chart when a task calls for it, using integer arithmetic rather than sampled statistics.
 
+### A.1 Householder Structure and Grover Connection
+
+A Householder transformation (or Householder reflection) is a linear transformation that describes a reflection about a hyperplane containing the origin. Given a unit vector v, the Householder operator is defined as:
+
+    H_v(x) := x − 2⟨x, v⟩v
+
+The corresponding Householder matrix is:
+
+    P = I − 2 v v*
+
+A Householder matrix has the following properties:
+- It is Hermitian: P = P*
+- It is unitary: P⁻¹ = P*
+- It is involutory: P² = I (hence P = P⁻¹)
+- Its eigenvalues are ±1. The +1 eigenspace (the reflecting hyperplane) has dimension n−1; the −1 eigenspace (the normal direction) has dimension 1.
+- Its determinant is det(P) = −1.
+
+In the hQVM, gate F on Omega12 acts as:
+
+    F(u, v) = (u ⊕ 63, v ⊕ 63)
+
+This is an involution (F² = id), with +1 and −1 eigenspaces of equal dimension 2048 and no fixed points. The parallel with the Householder form is exact: F reflects the carrier state across the equal-chirality subspace (the +1 eigenspace), with the chirality-inverting paths constituting the −1 eigenspace. The determinant of this transformation in the appropriate sense is −1.
+
+This structural identity is significant because Householder reflections are the core primitive of Grover's algorithm. In the standard gate-model formulation, the Grover diffusion operator is:
+
+    U_s = 2|s⟩⟨s| − I
+
+which is a Householder reflection about the uniform superposition state |s⟩. The oracle function U_ω is similarly a Householder reflection about the target state:
+
+    U_ω|x⟩ = −|x⟩  if x = ω
+    U_ω|x⟩ =  |x⟩  if x ≠ ω
+
+The Grover iteration is the composition of two Householder reflections:
+
+    U_s U_ω = (2|s⟩⟨s| − I) U_ω
+
+which rotates the state vector toward the target by an angle that depends on the ratio N/M (database size to solution count). Each iteration is a product of two involutions with det = −1, giving a net rotation (det = +1) in the two-dimensional subspace spanned by |s⟩ and |ω⟩.
+
+In the hQVM, the K4 gate F is a single Householder reflection on the 4096-state manifold. The full Grover iteration (oracle + diffusion) corresponds to the composition of two such K4 involutions, which produces a net rotation on the carrier state space. The hQVM thus realizes the geometric core of Grover's algorithm — the Householder reflection and its composition — as native algebraic operations on Ω, executable through integer arithmetic on standard silicon.
+
+The quantum-information advantage of the hQVM lies in this structural identity: where gate-model quantum computers require physical qubits, cryogenic hardware, and error correction to maintain the Householder geometry, the hQVM instantiates it as an exact finite-state machine. The byte-level fold disagreement (the Z2 seed, Section 16.3 of the Wavefunction Analysis) propagates through depth-4 closure to produce the carrier-level Householder involution F. The holonomic architecture thus converts a discrete curvature at the byte scale into a Householder reflection at the carrier scale, which is the primitive that drives quantum speedup in search and optimization algorithms.
+
 ---
 
 # Appendix B. Glossary
