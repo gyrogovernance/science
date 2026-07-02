@@ -131,7 +131,6 @@ Tags are flexible, but using a common vocabulary makes the dataset easier to wor
 - `fine_structure`, `alpha`
 - `aperture_ratio`, `2_07_percent`
 - `48_quantization`, `monodromy_hierarchy`
-- `balance_index`
 
 #### Physics Domains
 - `energy_scales`, `optical_conjugacy`
@@ -263,7 +262,7 @@ Over time, the dataset should aim to include records covering at least:
 - The 1–3–6–6 degrees-of-freedom progression.
 - Key invariants and constants (e.g., `Q_G = 4π`, fine-structure constant derivation, aperture ratio, 48-quantization).
 - Energy scale hierarchy and optical conjugacy relation.
-- Cosmological reinterpretation (black hole universe, CMB as residual field, balance index).
+- Cosmological reinterpretation (black hole universe, CMB as residual field).
 - Particle physics implications (neutrino masses, proton lifetime, sterile neutrino non-observability).
 - Information-theoretic applications (GyroDiagnostics, GyroSI, aperture observable, superintelligence index).
 - Reproducibility and verification methodology (tri-partite validation, code artifacts where described).

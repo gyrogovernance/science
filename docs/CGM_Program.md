@@ -19,11 +19,10 @@
   - [5.1 The UV-IR Optical Conjugacy and Energy Scale Hierarchy](#51-the-uv-ir-optical-conjugacy-and-energy-scale-hierarchy)
   - [5.2 The Fine-Structure Constant: A Complete Geometric Derivation](#52-the-fine-structure-constant-a-complete-geometric-derivation)
   - [5.3 The Black Hole Universe and Aperture Thermodynamics](#53-the-black-hole-universe-and-aperture-thermodynamics)
-  - [5.4 The Balance Index and Resolution of the Cosmological Constant Problem](#54-the-balance-index-and-resolution-of-the-cosmological-constant-problem)
-  - [5.5 Particle Physics and Sterile Neutrino Non-Observability](#55-particle-physics-and-sterile-neutrino-non-observability)
-  - [5.6 Gravitational Coupling and Nonlinear Continuum](#56-gravitational-coupling-and-nonlinear-continuum)
-  - [5.7 Wavefunction Structure and the Fiber Bundle Byte](#57-wavefunction-structure-and-the-fiber-bundle-byte)
-  - [5.8 Electroweak Mass Spectrum from Compact Geometry](#58-electroweak-mass-spectrum-from-compact-geometry)
+  - [5.4 Particle Physics and Sterile Neutrino Non-Observability](#54-particle-physics-and-sterile-neutrino-non-observability)
+  - [5.5 Gravitational Coupling and Nonlinear Continuum](#55-gravitational-coupling-and-nonlinear-continuum)
+  - [5.6 Wavefunction Structure and the Fiber Bundle Byte](#56-wavefunction-structure-and-the-fiber-bundle-byte)
+  - [5.7 Electroweak Mass Spectrum from Compact Geometry](#57-electroweak-mass-spectrum-from-compact-geometry)
 - [6. Cosmological Observations and Testable Predictions](#6-cosmological-observations-and-testable-predictions)
   - [6.1 The CMB as a Residual Observational Field](#61-the-cmb-as-a-residual-observational-field)
   - [6.2 Cosmic Multiplicity and the Illusion of Expansion](#62-cosmic-multiplicity-and-the-illusion-of-expansion)
@@ -203,25 +202,7 @@ The framework leads to a radical reinterpretation of cosmology:
     -   107% lifetime extension (`τ_CGM = τ_std × (1+m_a)⁴`).
 -   **Expansion as Optical Illusion:** Apparent cosmic expansion is an optical effect arising from the UV-IR geometric inversion when viewed from an interior perspective. This eliminates the need for dark energy.
 
-### 5.4 The Balance Index and Resolution of the Cosmological Constant Problem
-
-*Tier C (formal/exploratory): structural consequences of the CGM axioms; independent null-model audits at Tier A/B rigor are pending.*
-
-A new quantity, the **Balance Index**, emerges from cosmological horizon thermodynamics:
-
-```
-B_i = 2Gc / (k_B H_0) ≈ 1.3 × 10^39 m²·K·kg^-2
-```
-
-This timeless, ℏ-independent index provides a rigorous resolution to the cosmological constant problem. It recontextualizes "dark energy" as a geometric equilibrium property, not a quantum vacuum energy. The observed density is determined entirely by `B_i`:
-
-```
-ρ_Λ,obs = (3G c²) / (2π k_B² B_i²)
-```
-
-This eliminates the 120-order-of-magnitude discrepancy by showing that quantum vacuum energy does not gravitate in the conventional sense within this equilibrium framework.
-
-### 5.5 Particle Physics and Sterile Neutrino Non-Observability
+### 5.4 Particle Physics and Sterile Neutrino Non-Observability
 
 The energy scale hierarchy makes specific predictions for particle physics:
 
@@ -229,7 +210,7 @@ The energy scale hierarchy makes specific predictions for particle physics:
 -   **Proton Lifetime:** The geometric GUT scale predicts `τ_p ≈ 8.6 × 10^43 years`, consistent with the non-observation of proton decay.
 -   **Sterile Neutrinos:** These are predicted to be confined to the unobservable CS (UV) focus. They can have indirect effects (like generating light neutrino masses) but can *never* be directly detected as propagating particles. This is a strong, falsifiable prediction.
 
-### 5.6 Gravitational Coupling and Nonlinear Continuum
+### 5.5 Gravitational Coupling and Nonlinear Continuum
 
 The gravity program connects the finite algebraic kernel to continuum field theory and observational tests. Full derivation and status: [Analysis_Gravity](Findings/Analysis_Gravity.md).
 
@@ -245,7 +226,7 @@ python experiments/hqvm_gravity_runner.py
 
 The static spherical sector is computationally closed. Open work: full dynamical evolutions beyond static spherical symmetry, and an independent check of the gravitational coupling derivation.
 
-### 5.7 Wavefunction Structure and the Fiber Bundle Byte
+### 5.6 Wavefunction Structure and the Fiber Bundle Byte
 
 The hQVM kernel carrier admits a complete wavefunction analysis verified on all 4096 states with exact integer arithmetic. Full write-up: [Analysis_hQVM_Wavefunction](Findings/Analysis_hQVM_Wavefunction.md). Verification: `hqvm_wavefunction_kernel.py`, `hqvm_wavefunction_1.py`, `hqvm_wavefunction_2.py`.
 
@@ -257,7 +238,7 @@ The kernel's 4096-state manifold Omega is organized into seven concentric shells
 -   **Aperture collapse:** Byte-level 50% fold disagreement compresses to 2.07% at the carrier level through depth-four spinorial closure.
 -   **Quantum-information certificates:** The canonical Hilbert-space lift yields CHSH values saturating Tsirelson's bound and verifies stabilizer-quantum-information properties (teleportation, contextuality), derived from the intrinsic self-dual code structure.
 
-### 5.8 Electroweak Mass Spectrum from Compact Geometry
+### 5.7 Electroweak Mass Spectrum from Compact Geometry
 
 Masses are placed on a logarithmic ruler whose tick spacing is the aperture gap Δ. The ruler coordinate n of a particle of mass m relative to the electroweak scale v is n = log₂(v/m) / Δ. The expansion expresses these coordinates as polynomials in Δ with coefficients drawn from the kernel's shell multiplicities and horizon structure. Full write-up: [Analysis_Compact_Geometry](Findings/Analysis_Compact_Geometry.md). Verification: `hqvm_compact_geom_core.py`, `hqvm_compact_geom_kernel.py`, `hqvm_compact_geom_report.py`, `hqvm_compact_geom_derivations.py`.
 
@@ -316,14 +297,14 @@ The repository currently contains:
 
 | Measure | Count |
 |---------|------:|
-| Analysis write-ups (`docs/Findings/Analysis_*.md`) | 30 |
-| Runnable experiment scripts (`experiments/*.py`) | 68 |
+| Analysis write-ups (`docs/Findings/Analysis_*.md`) | 29 |
+| Runnable experiment scripts (`experiments/*.py`) | 66 |
 | hQVM physics scripts (`experiments/hqvm_*.py`) | 22 |
 | Shared library and kernel modules (`experiments/`) | 7 |
 | hQVM verified features (Tiers A-C) | 243 |
 | Python in `experiments/` (all files) | 48,700 lines |
 
-Scripts cover gravity, electroweak mass geometry, fine structure, quantum gravity, CMB data checks, axiomatization, Hilbert space representation, monodromy, energy scales, black-hole cosmology, balance index, and related topics. Each row below is the single entry point for that topic.
+Scripts cover gravity, electroweak mass geometry, fine structure, quantum gravity, CMB data checks, axiomatization, Hilbert space representation, monodromy, energy scales, black-hole cosmology, and related topics. Each row below is the single entry point for that topic.
 
 | Topic | Analysis | Code |
 |-------|----------|------|
@@ -339,7 +320,6 @@ Scripts cover gravity, electroweak mass geometry, fine structure, quantum gravit
 | Hilbert space representation | [Analysis_Hilbert_Space_Representation](Findings/Analysis_Hilbert_Space_Representation.md) | `cgm_Hilbert_Space_analysis.py` |
 | CMB patterns (Planck: ℓ=37 enhancement p=0.0039) | [Analysis_CMB](Findings/Analysis_CMB.md) | `cgm_cmb_data_analysis_300825.py` |
 | Monodromy / spin-2 orientation recovery | [Analysis_Monodromy](Findings/Analysis_Monodromy.md) | `tw_closure_test.py` |
-| Balance index / cosmological constant | [Analysis_Balance_Index](Findings/Analysis_Balance_Index.md) | `cgm_balance_analysis.py` |
 | Black hole universe and aperture thermodynamics | [Analysis_BH_Universe](Findings/Analysis_BH_Universe.md), [Analysis_BH_Aperture](Findings/Analysis_BH_Aperture.md) | `cgm_bh_universe_analysis.py`, `cgm_bh_aperture_analysis.py` |
 | Kompaneyets | [Analysis_Kompaneyets](Findings/Analysis_Kompaneyets.md) | `cgm_kompaneyets_analysis.py` |
 | Proto-units | [Analysis_CGM_Units](Findings/Analysis_CGM_Units.md) | `cgm_proto_units_analysis.py` |

@@ -61,8 +61,8 @@ Neutrino mass scales, lepton ratios, and the optical conjugacy linking the Planc
 
 | Measure | Count |
 |---------|------:|
-| Analysis write-ups (`docs/Findings/Analysis_*.md`) | 30 |
-| Runnable experiment scripts (`experiments/*.py`) | 68 |
+| Analysis write-ups (`docs/Findings/Analysis_*.md`) | 29 |
+| Runnable experiment scripts (`experiments/*.py`) | 66 |
 | hQVM physics scripts (`experiments/hqvm_*.py`) | 22 |
 | Shared library and kernel modules (`experiments/`) | 7 |
 | hQVM verified features (Tiers A-C) | 243 |

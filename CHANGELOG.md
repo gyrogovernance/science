@@ -317,7 +317,6 @@ Corrected the electroweak anchor E_BU from 240 GeV to the proper Higgs vacuum ex
 **Affected Files:**
 All experimental calculations now use 246.22 GeV consistently:
 - [experiments/cgm_energy_analysis.py](experiments/cgm_energy_analysis.py)
-- [experiments/cgm_balance_analysis.py](experiments/cgm_balance_analysis.py)
 - [experiments/cgm_bh_universe_analysis.py](experiments/cgm_bh_universe_analysis.py)
 - [experiments/cgm_higgs_analysis.py](experiments/cgm_higgs_analysis.py)
 - [experiments/hqvm_corrections_analysis_1.py](experiments/hqvm_corrections_analysis_1.py)
@@ -329,7 +328,6 @@ Updated documentation for consistency:
 - [docs/Findings/Analysis_CGM_Units.md](docs/Findings/Analysis_CGM_Units.md)
 - [docs/Findings/Analysis_BH_Universe.md](docs/Findings/Analysis_BH_Universe.md)
 - [docs/Findings/Analysis_GFE.md](docs/Findings/Analysis_GFE.md)
-- [docs/Findings/Analysis_Balance_Index.md](docs/Findings/Analysis_Balance_Index.md)
 
 **Note:** UV energy scales (E_GUT^UV, E_UNA^UV, etc.) are purely geometric and remain unchanged at 2.34×10^18 GeV, 5.50×10^18 GeV respectively.
 
@@ -342,14 +340,6 @@ Experiments Results and Analysis found here:
 - [experiments/cgm_Hilbert_Space_analysis.py](experiments/cgm_Hilbert_Space_analysis.py)
 - [docs/Findings/Analysis_3D_6DOF_Proof.md](docs/Findings/Analysis_3D_6DOF_Proof.md)
 - [docs/Findings/Analysis_Hilbert_Space_Representation.md](docs/Findings/Analysis_Hilbert_Space_Representation.md)
-
----
-
-## [1.1.4-Balance] - 2025-10-06 2025-10-07 
-New Topic - Balance Index
-Experiments Results and Analysis found here: 
-- [docs/Findings/Analysis_Balance_Index.md](docs/Findings/Analysis_Balance_Index.md)
-- [experiments/cgm_balance_analysis.py](experiments/cgm_balance_analysis.py)
 
 ---
 
