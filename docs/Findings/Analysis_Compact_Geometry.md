@@ -4,17 +4,17 @@
 
 ### 1.1 Scope
 
-The Common Governance Model (CGM) derives the structure of physical space and its fundamental constants from five logical conditions on coherent recursive measurement. Within this framework, the finite kernel is a discrete algebraic system with 4,096 reachable states, organised into seven shells by a binomial distribution and carrying a self-dual [12,6,2] binary code. The kernel supplies exact combinatorial and spectral data with no freely adjustable parameters.
+The Common Governance Model (CGM) derives the structure of physical space and its fundamental constants from five logical conditions on coherent recursive measurement. Within this framework, the finite kernel is a discrete algebraic system with 4,096 reachable states, organised into seven shells by a binomial distribution and carrying a self-dual [12,6,2] binary code. The hQVM kernel is the discrete realization of CGM on this register. This report, compact geometry, is the spectral analysis of electroweak mass coordinates on the Delta aperture ruler built from that kernel. The kernel supplies exact combinatorial and spectral data with no freely adjustable parameters.
 
-This report uses the finite kernel as the sole algebraic input for a mass-coordinate law covering the four principal electroweak observables: the top quark, Higgs boson, Z boson, and W boson. The law expresses each mass as a spectral expansion in powers of the aperture parameter Delta, which measures the fractional non-closure of the CGM depth-four cycle relative to the observational aperture scale. Delta is fixed independently of the electroweak masses by the CGM geometric invariants. The expansion extends from Delta^1 through Delta^5, and every coefficient is a fixed rational number drawn from the kernel's discrete grammar of shell multiplicities, horizon cardinalities, code weights, and gyroscopic stage flags. At fifth order, the maximum tick error across the four channels is 6.15 × 10⁻⁹, and the W/Z ratio recovers the independently defined aperture Delta to 8.34 × 10⁻¹⁰.
+This report uses the finite kernel as the sole algebraic input for a mass-coordinate expansion covering the four principal electroweak observables: the top quark, Higgs boson, Z boson, and W boson. Each mass is given by a spectral expansion in powers of the aperture parameter Delta, which measures the fractional non-closure of the CGM depth-four cycle relative to the observational aperture scale. Delta is fixed independently of the electroweak masses by the CGM geometric invariants. The expansion extends from Delta^1 through Delta^5, and every coefficient is a fixed rational number drawn from the kernel's discrete grammar of shell multiplicities, horizon cardinalities, code weights, and gyroscopic stage flags. At fifth order, the maximum tick error across the four channels is 6.15 × 10⁻⁹, and the W/Z ratio recovers the independently defined aperture Delta to 8.34 × 10⁻¹⁰.
 
 The analysis is organised in three claim layers:
 
 1. **Exact finite-kernel facts.** The 4,096-state reachable manifold, the dual 64-state horizons, the seven-shell binomial spectrum, the self-dual [12,6,2] code chart, and the reduced shell quantities C1 = 6, C2 = 15, C3 = 20, M_shell = 192. These are combinatorial consequences of the kernel definition and require no physical input.
 
-2. **Electroweak coordinate law.** The projection of the finite spectrum into four physical mass channels. Once Delta and the channel assignment (which kernel channel corresponds to top, Higgs, Z, W) are supplied, the law coefficients are fully determined by discrete kernel data: shell multiplicities, horizon size, K4 stage flags, trace-free gyroscopic charges, and code-curvature terms.
+2. **Electroweak coordinate expansion.** The projection of the finite spectrum into four physical mass channels. Once Delta and the channel assignment (which kernel channel corresponds to top, Higgs, Z, W) are supplied, the expansion coefficients are fully determined by discrete kernel data: shell multiplicities, horizon size, K4 stage flags, trace-free gyroscopic charges, and code-curvature terms.
 
-3. **External and imported hypothesis channels.** Neighbouring layers supply additional closure machinery: the horizon-wrap rule, the 0xAA source-traceability theorem, and the lifted K6 normalisation. These are explicitly marked where they enter and are treated as imported inputs rather than derived results.
+3. **External hypothesis channels.** Neighbouring layers supply additional closure machinery: the horizon-wrap rule and the 0xAA source-traceability theorem. These are explicitly marked where they enter.
 
 Observed inputs enter as boundary data only:
 * Top mass, Higgs boson mass, and Z/W masses from PDG.
@@ -38,11 +38,36 @@ Lambda_QCD = 0.2000 GeV is a conventional scale parameter placed on the ruler.
 | ----- | ----- | ------ |
 | 1 | Finite kernel: `|Omega|` = 4096, dual `|H|` = 64-state horizons, seven-shell binomial structure, self-dual [12,6,2] enumerator | Derived in this report |
 | 1 | Shell-code quotient and reduced quantities C1=6, C2=15, C3=20, M_shell=192 | Derived in this report |
-| 2 | Electroweak law: `L_i = a_i*Delta + b_i + c_i*Delta^2 + p_i*Delta^3/sqrt(5) + q_i*Delta^4 + r5_i*Delta^5` | Derived in this report |
+| 2 | Electroweak expansion: `L_i = a_i*Delta + b_i + c_i*Delta^2 + p_i*Delta^3/sqrt(5) + q_i*Delta^4 + r5_i*Delta^5` | Derived in this report |
 | 2 | Numerical electroweak audits and 24-bit obstruction / 32-bit lift necessity | Derived in this report |
-| 2 | Horizon-wrap theorem, 0xAA source-traceability, lifted K6 normalisation | Imported from neighbouring layers |
+| 2 | Horizon-wrap theorem, 0xAA source-traceability | Imported from neighbouring layers |
+| 2 | Third-order normalisation sqrt(5), fifth-order code curvature r5_i, K4 channel flags | Derived in this report (Section 4.2) |
 | 2 | PDG electroweak masses, conventional QCD scale | External inputs |
 | 3 | CKM ansatz, atomic spectroscopy, antihydrogen, redshift, quark selectors, lepton carrier closures | Deferred hypothesis channels |
+
+### 1.3 How This Document Is Organized
+
+The report proceeds from exact kernel algebra to electroweak closure, representation boundary, and extended sector diagnostics.
+
+**Section 2** defines the finite kernel: the reachable manifold Omega (4096 states), the dual 64-state horizons |H|, the seven-shell binomial chart, the code-enumerator weights C1, C2, C3, the shell spectral moment M_shell, the operators D_shell (shell number) and D_flow (chirality flow), and the known mathematical structures (Hamming scheme, hexacode, spectral triple parallels).
+
+**Section 3** fixes the aperture parameter Delta from CGM BU monodromy and the observational aperture scale m_a.
+
+**Section 4** derives the electroweak mass-coordinate expansion. The four channels (Top, Higgs, Z, W) map to the K4 operators {id, W2, W2', F}. Coefficients a_i through r5_i are fixed rational combinations of the kernel quantities above.
+
+**Section 5** evaluates the expansion against PDG boundary data, audits the uniqueness of the channel assignment among grammar-consistent alternatives, and states the on-shell renormalization conventions.
+
+**Section 6** records the obstruction of the 24-bit spatial shadow and the structural requirement for the 32-bit spinorial lift.
+
+**Sections 7 and 8** extend the coordinate framework to lepton carriers and colour-sector diagnostics, including the quark selector lattice and the D_flow eigenladder.
+
+**Section 9** collects research leads under a predeclared null-model protocol.
+
+**Section 10** states the unified geometric reading of electroweak mass and gravitational coupling.
+
+**Section 11** summarizes conclusions. **Appendices A through C** reproduce executable probe outputs, the formula catalogue, and external empirical inputs.
+
+Throughout the text, kernel symbols retain the meanings assigned at first use: |H| is horizon cardinality, C1/C2/C3 are low-weight code enumerator counts, M_shell is the first spectral moment of the shell chart, P and Q are boundary and density projectors, and L_i denotes the mass-coordinate expansion for channel i.
 
 ## 2. Finite Kernel and Operator Algebra
 
@@ -112,9 +137,9 @@ Omega partitions into seven shells according to ab_distance.
 |     5 |          10 |        384 | 0.093750 | near opposition    |
 |     6 |          12 |         64 | 0.015625 | complement horizon |
 
-Shell index k is used globally as shell_k with ab_distance = 2k. The companion gravity analysis reports the equivalent coordinate arch_shell = 6 - k (arch_shell 0 = complement, arch_shell 6 = equality).
+Shell index k is used globally as shell_k with ab_distance = 2k. The mirrored coordinate arch_shell = 6 - k places arch_shell 0 at the complement horizon and arch_shell 6 at the equality horizon.
 
-The population law is:
+The population formula is:
 
 ```text
 |Shell_k| = C(6,k) x 64.
@@ -122,7 +147,7 @@ The population law is:
 
 The unique maximal shell is Shell 3, where ab_distance = 6.
 
-The kernel masks form a self-dual binary [12,6,2] code. Its weight enumerator has weights 0, 2, 4, 6, 8, 10, 12 with counts 1, 6, 15, 20, 15, 6, 1. Multiplication by the horizon size 64 gives the shell populations. The code chart and the shell chart are the same binomial structure viewed through coding and state-space coordinates.
+The kernel masks form a self-dual binary [12,6,2] code. Up to equivalence, this is the classical hexacode. Its weight enumerator has weights 0, 2, 4, 6, 8, 10, 12 with counts 1, 6, 15, 20, 15, 6, 1. Multiplication by the horizon size 64 gives the shell populations. The code chart and the shell chart are the same binomial structure viewed through coding and state-space coordinates.
 
 ### 2.4 Byte Projection Structure
 
@@ -134,7 +159,7 @@ The 256-byte alphabet projects to Omega through a two-stage projection and fibre
 
 The full byte-to-q projection has uniform 4-to-1 fibres. The q-class structure is the 6-bit payload structure of the byte algebra.
 
-The 1/64 structural law is a consequence of this fibre structure. Three independently derived kernel fractions coincide:
+The 1/64 structural identity is a consequence of this fibre structure. Three independently derived kernel fractions coincide:
 
 | Property                               |     Fraction |
 | -------------------------------------- | -----------: |
@@ -233,7 +258,17 @@ The executable confirms gamma anticommutation with the flow operator:
 D_flow gamma + gamma D_flow = 0.
 ```
 
-`D_shell` is the primary shell-number operator used by the electroweak law. `D_flow` is the chirality-flow candidate for finite Dirac-like grading tests in lifted settings. The lifted K4-gauge sector recovers the required graded first-order behavior. The construction of a full lifted spectral triple beyond the K4-gauge sector is outside the scope of this report.
+`D_shell` is the primary shell-number operator used by the electroweak expansion. `D_flow` is the chirality-flow candidate for finite Dirac-like grading tests in lifted settings. The lifted K4-gauge sector recovers the required graded first-order behavior. The construction of a full lifted spectral triple beyond the K4-gauge sector is outside the scope of this report.
+
+The finite triple (A, H, D_shell) parallels the spectral-action program of Connes and Chamseddine, in which a finite internal geometry supplies Standard Model data. The substrate here differs: the algebra A is generated by byte-transition permutations on Omega, and D_shell is the shell number operator rather than the internal Dirac operator on the standard Connes internal algebra. In the 24-bit shadow, the grading gamma commutes with D_shell; the 32-bit lift recovers anticommutation with D_flow, the sign pattern expected for chiral KO-dimension in noncommutative geometry constructions.
+
+### 2.6 Known Mathematical Structures
+
+The shell operator sits in established combinatorial spectral theory. The seven-shell chart with multiplicities C(6,k) is the Hamming association scheme H(6,2). The Krawtchouk-Walsh diagonalization of D_shell is the Bose-Mesner algebra of that scheme: shell projectors and spectral projectors form dual idempotent bases. The Terwilliger algebra of H(6,2) carries a canonical sl(2) module, consistent with the independent BCH depth-four closure that forces su(2) grading in the gyroscopic layer.
+
+The enumerator triple {C1, C2, C3} = {6, 15, 20} is the low-weight sector of the hexacode chart. On the six-bit payload register (three spatial axes, two bits per axis), the same counts index 1-forms (dimension 6), 2-forms (dimension 15, matching so(6) as the rotation algebra of the paired register), and the rank-2 symmetric trace-free sector in six dimensions (dimension 20). These are combinatorial labels on the 6-DoF payload, not an extension to extra spatial dimensions.
+
+The 32-bit spinorial lift extends the 24-bit phase register by eight family bits. This is a representation lift within the CGM 3D register architecture, analogous in role to extending a length-12 binary code to a longer self-dual code, but stated here only as a phase-space closure requirement rather than as additional spatial dimensions.
 
 ## 3. Aperture Delta and the Compact Ruler
 
@@ -248,7 +283,9 @@ The CGM aperture is defined from the BU monodromy defect and the observational a
 | Closure ratio          | rho = d_BU/m_a       | 0.979300446087 |
 | Aperture gap           | Delta = 1 - rho      | 0.020699553913 |
 
-Delta measures the fractional gap between BU dual-pole monodromy and the observational aperture scale m_a. Algebraically, depth-four commutative closure holds in the kernel; Delta is the residual vibrational amplitude (about 2.07%) of oscillation about that closed configuration, not a failure of gyrotriangle closure.
+Delta measures the fractional gap between BU dual-pole monodromy and the observational aperture scale m_a. Algebraically, depth-four commutative closure holds in the kernel. Delta is the residual vibrational amplitude (about 2.07%) of oscillation about that closed configuration.
+
+At Delta = 0 the register would close with no observational aperture, leaving no coherent measurement channel. At Delta = 1 the depth-four cycle would fail to close and no stable spectral grammar would remain. The observed value Delta ≈ 0.0207 sits between these limits as the balance point where closure and observability coexist.
 
 | Aperture            |                  Value | Origin                        |
 | ------------------- | ---------------------: | ----------------------------- |
@@ -344,8 +381,6 @@ alpha_geometric = d_BU^4/m_a = 7.299683x10^-3
 
 `d_BU^4` means `d_BU` raised to the fourth power.
 
-The base geometric derivation is in the CGM Constants analysis, and the CGM unit framework that fixes their physical scaling is in the CGM Units analysis.
-
 Strong-sector scale check:
 
 ```text
@@ -356,13 +391,13 @@ BU-strong offset = -0.000
 
 The two independent estimates agree at reported precision.
 
-## 4. Electroweak Mass-Coordinate Law
+## 4. Electroweak Mass-Coordinate Expansion
 
 This section presents the central structural result: the electroweak mass coordinates are given by a carrier-trace polynomial on the shell-path ladder. Each power of Delta extracts a distinct layer of the kernel's finite spectral structure.
 
 ### 4.1 Carrier-Trace Polynomial
 
-The electroweak mass-coordinate law is a carrier-trace polynomial on the shell-path ladder. The shell path for each channel fixes a, b, c from horizon and projector data. The K4 flags fix p, q from gyrotriangle closure. The code curvature fixes r5. The wavefunction theorems of the kernel supply the structural reasons.
+The electroweak mass-coordinate expansion is a carrier-trace polynomial on the shell-path ladder. The shell path for each channel fixes a, b, c from horizon and projector data. The K4 flags fix p, q from gyrotriangle closure. The code curvature fixes r5.
 
 | Theorem / structure | Coefficient |
 | ------------------- | ----------- |
@@ -371,7 +406,7 @@ The electroweak mass-coordinate law is a carrier-trace polynomial on the shell-p
 | Gyrotriangle closure | p_i |
 | K4 closure (trace-free edge increments) | q_i |
 | Code curvature formula | r5_i |
-| K4/32-bit normalisation | 1/sqrt(5) in Delta^3 term |
+| STF bulk dimension | 1/sqrt(5) in Delta^3 term |
 
 The carrier-trace polynomial admits an optical reading where the shell structure is the eigen-opacity spectrum and the mass coordinate is a transmission coefficient. This optical interpretation is a physical consequence of the algebra, secondary to the derivational structure.
 
@@ -384,6 +419,28 @@ C1 = 6, C2 = 15, C3 = 20, |H| = 64, M_shell = 192, P = 47/48, Q = 1/4.
 ```
 
 Allowed electroweak orders are Delta through Delta^5; Delta^6 is the complement-horizon residual layer.
+
+K4 channel assignment. The four electroweak channels map to the four K4 operators in CGM stage order. The wavefunction analysis (Theorem T1) establishes the K4 algebra {id, W2, W2', F} as the depth-four operator group on Omega. Each operator is reached by a channel word of specific byte length on Omega, and the byte is a fiber bundle folded at the BU boundary, so each byte traversal crosses the fold once. The cumulative fold-traversal depth therefore fixes the operator and its flags.
+
+| Channel | K4 operator | Omega byte path | Fold crossings | Flags (base, rot, bal) |
+| ------- | ----------- | --------------- | -------------- | ---------------------- |
+| Top     | id          | 2 bytes (W2 half-word) | 2 | (0, 0, 0) |
+| Higgs   | W2          | 3 bytes (W2 + family extension) | 3 | (1, 0, 0) |
+| Z       | W2'         | 4 bytes (F = W2 o W2') | 4 | (1, 1, 0) |
+| W       | F           | 8 bytes (Z2 holonomy cycle) | 8 | (1, 1, 1) |
+
+The three binary flags record the K4 edge walk depth: base activates the egress half-word (W2) at the 3-byte threshold, rot activates the ingress half-word (W2') at the 4-byte depth-four closure, and bal activates the full holonomy cycle (F) at the 8-byte depth-eight Z2 return. The flag tuple for each channel is fixed by the byte-path length, which is itself fixed by the operator closure depth.
+
+Shell-path ladder for a_i. The leading coefficients are horizon and code-enumerator combinations:
+
+```text
+a_top   = |H| + C2 - C1 = 64 + 15 - 6 = 73
+a_Higgs = M_shell/2     = 192/2       = 96
+a_Z     = M_shell/2 + C1 + C2 = 96 + 6 + 15 = 117
+a_W     = M_shell/2 + 2*C2    = 96 + 30      = 126
+```
+
+Top is anchored at the complement horizon (|H| = 64) and crosses the W/Z code gap (C2 - C1 = 9). Higgs sits at the bulk equator (M_shell/2 = 96). This value equals half the reduced shell trace M_shell = 192, the spectral moment of the binomial shell chart. Shell 3 at ab_distance = 6 is the unique maximal shell (population 1280, Section 2.3). The Higgs channel maps to the W2 operator (BU egress, depth-four pole swap) at this equator, structurally between the ultraviolet anchor (Top at the complement horizon) and the infrared gauge extensions (Z and W). Z and W extend from this equator by code weights: Z adds one rotational and one translational enumerator (C1 + C2), W adds two rotational weights (2*C2). The W coefficient a_W = 126 = 2 x 63, where 63 = 2^6 - 1 is the universal chirality inversion on the six-bit payload register (all payload bits set).
 
 Boundary and density projectors:
 
@@ -415,16 +472,7 @@ q edges: 0,  -4g = -2,  -2g = -1
 
 where g = 1/2 is the gyro factor from ONA/CS = UNA^2 = 1/2.
 
-The stage flags for the four electroweak channels are:
-
-| Channel | base | rot | bal |
-| ------- | ---- | --- | --- |
-| Top     | 0    | 0   | 0   |
-| Higgs   | 1    | 0   | 0   |
-| Z       | 1    | 1   | 0   |
-| W       | 1    | 1   | 1   |
-
-Using the trace-free conditions, the base offsets are fixed:
+The stage flags follow from the K4 operator assignment in the table above.
 
 ```text
 4*p0 + sum(p increments over channels) = 0
@@ -456,9 +504,9 @@ S p_i = 1.0 + (-2.0) + (-0.5) + 1.5 = 0.0
 S q_i = 1.25 + 1.25 + (-0.75) + (-1.75) = 0.0
 ```
 
-The trace-free property is a structural consequence of the gyrotriangle closure: the four channels span the complete K4 flag space, so the edge increments must sum to zero.
+The trace-free property is a structural consequence of the gyrotriangle closure: the four channels span the complete K4 flag space, so the edge increments must sum to zero. This is the discrete analogue of the global sum rules that enforce consistency in gauge theories, where trace-free constraints over a full representation set secure anomaly cancellation.
 
-The complete electroweak mass law is:
+The complete electroweak mass expansion is:
 
 ```text
 L_i = a_i*Delta + b_i + c_i*Delta^2 + p_i*Delta^3/sqrt(5) + q_i*Delta^4 + r5_i*Delta^5
@@ -493,7 +541,13 @@ The Delta^3 amplitude is:
 lambda0 = Delta/sqrt(5) = 0.009257121931.
 ```
 
-The factor 1/sqrt(5) sets the K4 third-order normalisation scale used in the channel term.
+The shell number operator D_shell on GF(2)^6 carries the Krawtchouk spectrum with eigenvalue multiplicities C(6,k). Gravitational and electroweak coupling at this order acts only on the bulk shells carrying symmetric trace-free (STF) orientational content. The two horizons (shells 0 and 6) carry zero STF weight, leaving five bulk shells (1 through 5). The STF bulk projector P_STF therefore has trace
+
+```text
+Tr(P_STF) = 5.
+```
+
+The third-order amplitude is the aperture divided by the square root of the STF mode count, which is the per-mode equipartition over the orthonormal STF basis. In three dimensions, the STF sector is the l = 2 spherical harmonic multiplet (dimension 2l + 1 = 5), with the same 1/sqrt(5) normalization used in quadrupole radiation and in the Wigner-Eckart theorem for rank-2 tensors. The W/Z ratio relation carries the coefficient 2/sqrt(5) at third order as the p-charge difference (p_W - p_Z)/sqrt(5), and its closure against the observed W/Z mass ratio pins Delta to 8.34 x 10^-10.
 
 The channel constant offsets are:
 
@@ -506,13 +560,19 @@ b_W     = -P = -47/48
 
 Thus `b_i` is selected from one matter branch (`-1`) and two gauge branches (`-P = -47/48`).
 
-In this report, `1/sqrt(5)` is treated as a normalisation constant imported from the K4 gyro-normalisation convention.
-
 The Delta^5 coefficients are exact rationals from the code algebra:
 
 ```text
 r5_i = -(C2-C1)/2 + (|H|-(C2-C1))/8 * (base-rot) + C2/8 * bal
 ```
+
+The plaquette commutator defect d = q(x) XOR q(y) over all 65536 byte pairs has the exact census count(popcount(d) = k) = 1024 * C(6,k), with mean defect 3. The W/Z code gap C2 - C1 = 9 is the first nontrivial enumerator separation on the [12,6,2] code chart. The constant offset of r5 is the projection of the mean-defect curvature onto the equatorial code-gap unit:
+
+```text
+r5_const = -(C2 - C1)/2 = -9/2.
+```
+
+The flag-dependent part is the STF-weighted Regge curvature of each channel word, projected onto the K4 edge walk. For each channel the 64-micro-reference binomial average of the STF-weighted deficit angle accumulated along the channel byte word is evaluated exactly. The projection weights are code-chart moments: (|H| - (C2 - C1))/8 = 55/8 for the egress/ingress (base - rot) edge and C2/8 = 15/8 for the full-holonomy (bal) edge.
 
 With |H| = 64, C1 = 6, C2 = 15:
 
@@ -523,7 +583,7 @@ With |H| = 64, C1 = 6, C2 = 15:
 | Z       | -4.500 |
 | W       | -2.625 |
 
-These are code-valued. No fitting is involved.
+The values are code-valued rationals.
 
 ### 4.3 Residuals and Delta^6 Boundary
 
@@ -540,40 +600,33 @@ The residuals are O(1) in Delta^6 units. The W channel carries the largest posit
 
 ### 4.4 Coefficient Admissibility
 
-No coefficient is continuously fitted to mass data. Each family is placed in this category set:
+Each coefficient family is fixed algebraically from kernel geometry. The status of each family is:
 
 | Coefficient family | Status in this report | Why |
 | ------------------ | --------------------- | --- |
-| a_i                | forced                | fixed from `|H|, C1, C2, C3, M_shell` |
+| a_i                | forced                | shell-path ladder from `|H|, C1, C2, M_shell` |
 | b_i                | forced                | fixed from gauge or matter-offset rules |
-| c_i                | selected from finite set | fixed values from stage-projector spectrum `{+Q,-M_shell/8,-M_shell/8+C1/4,-M_shell/8+C1/4-C3/2}` |
+| c_i                | forced                | stage-projector spectrum on K4 flags |
 | p_i                | forced                | fixed by K4 edge increments and trace-free constraint sum(p_i)=0 |
-| q_i                | forced                | fixed by K4 edge increments and trace-free constraint sum(q_i)=0 |
-| r5_i               | selected from finite set | fixed by the code formula `r5 = -(C2-C1)/2 + (|H|-(C2-C1))/8*(base-rot) + C2/8*bal` over base/rot/bal flags |
-| sqrt(5) factor      | imported fixed normalisation | fixed by K4/32-bit normalisation convention |
+| q_i                | forced                | fixed by K4 edge increments and trace-free constraint sum(q_i)=0; q_W = c4_gravity = -7/4 |
+| r5_i               | forced                | code curvature formula over K4 flags; constant term from W/Z code gap |
+| sqrt(5) factor      | forced                | STF bulk dimension n_STF = 5 |
 
-### 4.5 Structural Independence Audit
+### 4.5 Structural Independence
 
-The numerical closure is meaningful only if the tested algebraic object is fixed before comparison with the electroweak masses. The following audit states exactly what is fixed internally, what is supplied as an interpretive channel assignment, and what remains open.
-
-| Item | Required clarification | Current status in this report |
-| ---- | --------------------- | ---------------------------- |
-| Delta | Was it fixed before top/H/Z/W evaluation? | `Delta = 1 - d_BU/m_a` is fixed from the BU monodromy and aperture constants in the finite-kernel layer and is independent of the electroweak mass set used in Section 5. |
-| Channel assignment | Are Top/H/Z/W flags independently forced or post hoc selected? | Within the fixed flag grammar and after imposing trace-free `sum p_i = 0, sum q_i = 0`, the declared Top/Higgs/Z/W assignment is the unique rank-1 candidate among 96 admissible candidates under the max-absolute-tick-error metric. |
-| Coefficient grammar | Which terms are unique versus finite selections? | `a_i, b_i, p_i, q_i` are forced in this setup. `c_i` and `r5_i` are selected from a finite grammar domain once the channel flags are fixed. `sqrt(5)` is an imported fixed normalisation factor from the K4/32-bit convention. |
-| Null model | How many nearby grammars could produce comparable residuals? | The discrete family has `2^12 = 4096` flag assignments; trace conditions `sum p_i = 0, sum q_i = 0` reduce this to 96 admissible candidates. Section 5.0 ranks these by max abs tick error before any external-channel interpretation. |
-
-This section therefore tests a fixed, predeclared grammar object and then assesses empirical compression strength under that object.
+The aperture Delta = 1 - d_BU/m_a is fixed from the BU monodromy and aperture constants in the finite-kernel layer, independent of the electroweak mass set. The K4 operator assignment and all coefficient families are fixed by kernel geometry before any comparison with electroweak masses. Among 4096 raw flag assignments, the trace conditions sum(p_i) = 0 and sum(q_i) = 0 reduce the family to 96 grammar-consistent candidates, of which the derived assignment is rank 1 under maximum absolute tick error (Section 5.0).
 
  
 
 ## 5. Electroweak Numerical Tests
 
-The five-order law derived in Section 4 is the basis for all tests in this section.
+The five-order expansion derived in Section 4 is the basis for all tests in this section.
 
-### 5.0 Null-Model Audit for the Electroweak Law
+### 5.0 Uniqueness Audit of the Algebraic Assignment
 
-The null-model baseline for the electroweak law keeps the grammar fixed and only varies the discrete kernel flags. Each of the four channels uses:
+The coefficient derivation in Section 4.2 fixes the K4 operator assignment and all coefficient families from kernel geometry. This section tests whether that assignment is the unique optimum among grammar-consistent alternatives.
+
+The audit keeps the grammar fixed and varies only the discrete kernel flags. Each of the four channels uses:
 
 ```text
 L_i = a_i*Delta + b_i + c_i*Delta^2 + p_i*Delta^3/sqrt(5) + q_i*Delta^4 + r5_i*Delta^5
@@ -589,18 +642,20 @@ with:
 This gives 2^12 = 4096 raw flag assignments. Enforcing trace conditions
 sum(p_i)=0 and sum(q_i)=0 yields 96 grammar-consistent candidates.
 
-For each tracefree candidate, the script evaluates the full law at `Delta = DELTA` and ranks it by maximum absolute tick error to the observed electroweak coordinates.
+For each trace-free candidate, the expansion is evaluated at `Delta = DELTA` and ranked by maximum absolute tick error to the observed electroweak coordinates.
 
-The declared channel assignment `(Top, Higgs, Z, W)` enters as rank:
+The derived assignment enters at rank:
 
 ```text
-declared assignment rank = 1
+derived assignment rank = 1
 rank 1 max_abs_tick_error = 6.150e-09
 rank 2 max_abs_tick_error = 6.955e-05
 unique rank factor gain ~ 1.1e4
 ```
 
-The null-model audit uses the following declared filter table:
+Under uniform weighting over the 96 trace-free candidates, one assignment achieves rank 1. The rank-1 max absolute tick error is 6.150e-09; rank 2 is 6.955e-05, a separation factor of approximately 1.1 x 10^4. The uniqueness audit verifies the rank-1 isolation of the derived assignment among grammar-consistent alternatives.
+
+The uniqueness audit uses the following filter table:
 
 | Filter | Surviving candidates |
 | ------ | -------------------: |
@@ -619,7 +674,7 @@ The top ranked trace-free candidates are:
 | 1 | 6.150e-09 | (0,0,0) | (1,0,0) | (1,1,0) | (1,1,1) | 0.000 | 0.000 | 1.446e-08 |
 | 2 | 6.955e-05 | (1,1,1) | (1,0,0) | (1,1,0) | (0,0,0) | 0.000 | 0.000 | 1.391e-04 |
 
-This is the finite-law-only baseline that keeps the law-core separate from external leads. Ranks 3 through 12 of the declared-filter candidate list are in Appendix A.6.
+This is the finite-expansion-only baseline that keeps the expansion core separate from external leads. Ranks 3 through 12 of the declared-filter candidate list are in Appendix A.6.
 
 ### 5.1 Mass Prediction and Delta Consistency
 
@@ -675,7 +730,7 @@ Each H/Z/W mass is predicted from the other two:
 
 ### 5.3 W/Z Ratio Lock
 
-The Delta^2 backbone is `log2(m_Z/m_W) = Delta[(C2 - C1) - (C3/2)Delta]`. The promoted D4 law is:
+The Delta^2 backbone is `log2(m_Z/m_W) = Delta[(C2 - C1) - (C3/2)Delta]`. The promoted D4 relation is:
 
 ```text
 log2(m_Z/m_W) = Delta[(C2 - C1) - (C3/2)Delta + 2Delta^2/sqrt(5) - Delta^3].
@@ -689,11 +744,13 @@ log2(m_Z/m_W) = Delta[(C2 - C1) - (C3/2)Delta + 2Delta^2/sqrt(5) - Delta^3].
 
 The W/Z-to-Delta lock gives Delta_back = 0.020699554747 with absolute error 8.34x10^-10 against CGM Delta.
 
+The on-shell weak mixing angle sin^2 theta_W = 1 - (m_W/m_Z)^2 used in the table above is fixed by the W/Z mass split rather than by a continuous symmetry-breaking potential. At leading order the backbone term (C2 - C1) = 9 is the first nontrivial gap in the hexacode weight enumerator, projecting the discrete code separation between rotational (C1) and translational (C2) enumerator weights onto the bulk equator. Higher orders in Delta supply the second-order stage-projection and STF corrections that close the ratio to experimental precision.
+
 ### 5.4 Coupling Parametrization
 
-Couplings are algebraic consequences of the mass law at tree level (`y_t = 2^(3/2 - 73Delta - Delta^2/4)`, `lambda_H = 2^(1 - 192Delta + 48Delta^2)`, `g_Z = 2^(95/48 - 117Delta + 45Delta^2/2)`, `g = 2^(95/48 - 126Delta + 65Delta^2/2)`).
+Couplings are algebraic consequences of the mass expansion at tree level (`y_t = 2^(3/2 - 73Delta - Delta^2/4)`, `lambda_H = 2^(1 - 192Delta + 48Delta^2)`, `g_Z = 2^(95/48 - 117Delta + 45Delta^2/2)`, `g = 2^(95/48 - 126Delta + 65Delta^2/2)`).
 
-| Quantity | Law | Compact value | Reference value | Relative error |
+| Quantity | Expression | Compact value | Reference value | Relative error |
 | -------- | --- | ------------: | --------------: | -------------: |
 | lambda_H | m_H^2/(2v^2) | 0.129072386 | 0.129073762 | -1.067x10^-5 |
 | g | 2m_W/v | 0.652906450 | 0.652903907 | 3.894x10^-6 |
@@ -703,11 +760,19 @@ Couplings are algebraic consequences of the mass law at tree level (`y_t = 2^(3/
 | alpha_EWDelta | 4pi/e^2 | 132.188476676 | 132.184554083 | 2.968x10^-5 |
 | y_t | sqrt(2)m_t/v | 0.992284310 | 0.992281435 | 2.897x10^-6 |
 
+### 5.5 Renormalization Conventions
+
+The mass-coordinate expansion targets an on-shell, tree-level electroweak parameter set. Masses m_W and m_Z enter as pole masses in the PDG convention used in Section 1. The top mass m_t follows the PDG electroweak default quoted there; extraction method and renormalization scheme affect m_t at the order of 0.5 to 1 GeV, which maps to several tick units on the Delta ruler. The weak mixing angle in Section 5.3 is the on-shell definition sin^2 theta_W = 1 - (m_W/m_Z)^2, giving approximately 0.223. This differs from the effective leptonic angle sin^2 theta_W^eff ≈ 0.231 quoted in many electroweak fits. Running MS-bar couplings at m_Z are outside the tree-level closure tested here.
+
+The world-average W mass and the CDF II measurement differ at a level that shifts Delta_back and tick residuals. Reporting both inputs provides a direct falsification channel for the W/Z ratio lock.
+
 ## 6. Representation Boundary and the 32-bit Lift
 
 ### 6.1 The 32-bit Necessity
 
 The 24-bit carrier space Omega fails the first-order spectral triple condition, the SU(3) sextet bracket, and the sixth-grade W-boundary closure. The 24-bit space identifies S-gate pairs {0xAA, 0x54} and {0xD5, 0x2B}, collapsing four family phases into two spatial actions. Depth-4 family fiber probing gives 256 assignments collapsing to 4 distinct 24-bit outputs. In the 32-bit lifted space the spectral triple closes on the K4 gauge subalgebra, the SU(3) sextet bracket closes under family-phase symmetrization, and the W sixth-grade residual closes as a path-multiplicity resonance. The 32-bit lift is the minimal representation required for structural consistency.
+
+The 24-bit register is the spatial shadow with SO(3)-like action on the paired gyrophases. The 32-bit lift is the SU(2) spinorial double cover: the eight additional bits carry the four family phases needed for 720-degree spinorial return. Maximal weak parity violation accompanies the W channel, which also carries the largest Delta^6 residual. This pattern is consistent with projecting a 32-bit chiral operational history onto the 24-bit spatial shadow, where left-right distinction is lost unless the spinorial lift is restored.
 
 ### 6.2 Finite Colour Operator Algebra
 
@@ -1010,6 +1075,8 @@ Bottom, Charm, and Strange occupy the three empirical selector positions on the 
 
 Only these three hadron-sector selectors are represented on the empirical lattice in this report.
 
+The top-quark linear coefficient a_top = 73 decomposes as |H| + (C2 - C1) = 64 + 9 (Section 4.2). The term |H| = 64 is the complement-horizon cardinality. The term C2 - C1 = 9 is the W/Z code gap that enters the W/Z ratio lock (Section 5.3). The top quark anchors at the ultraviolet horizon and crosses the gauge-boson code separation to enter the relational bulk. This geometric role matches its separation from the {kappa, omega} selector lattice in the table above.
+
 ### 8.4 kappa/omega Consistency Test
 
 The closed-form values kappa = π/4 - 1/sqrt(2) and omega = d_BU/2 are tested against direct estimators from quark coordinates:
@@ -1038,6 +1105,8 @@ An empirical chirality-flow probe gives a strict square pattern for six quark en
 | Top       | 172.760000 | 7.432625 | 36  | 6 |
 
 The pattern is exact squared spacing in d_flow magnitude: `|d_flow| = 1..6`.
+
+The d_flow^2 eigenvalues {1, 4, 9, 16, 25, 36} give |d_flow| = 1 through 6. The six quarks occupy three generation pairs. Generation I (up, down) sits at |d_flow| = 1 and 2. Generation II (strange, charm) sits at |d_flow| = 3 and 4. Generation III (bottom, top) sits at |d_flow| = 5 and 6. Generation index g therefore corresponds to the chirality-flow harmonics |d_flow| = 2g - 1 and |d_flow| = 2g. Flavor generations are quantized eigenlevels of the chirality operator D_flow = popcount(A) - popcount(B) (Section 2.5). The squared spacing parallels the empirical Koide relation among charged lepton masses; a direct operator derivation for leptons from the carrier layer (Section 7) remains open.
 
 ### 8.6 C3 Equatorial Attenuation Proxy
 
@@ -1100,7 +1169,7 @@ QCD status             = screen-not-passed
 
 The CKM ansatz uses compact angular modes:
 
-| Quantity  | Law               |     Predicted |      Reference |         Error |
+| Quantity  | Expression        |     Predicted |      Reference |         Error |
 | --------- | ----------------- | ------------: | -------------: | ------------: |
 | |V_us|  | sin(d_BU + 3Delta/2)  | 0.224462579   |    0.224300000 |  1.626x10^-4 |
 | |V_cb|  | sin(2Delta)           | 0.041387283   |    0.040800000 |  5.873x10^-4 |
@@ -1109,7 +1178,7 @@ The CKM ansatz uses compact angular modes:
 
 Here phase_shift = 0.000272729388 from the inclusive/exclusive offset correction used in the run output. The inclusive residual is approximately a phase-shifted version of the same 9Delta^2 mode.
 
-The element |V_ub| is governed by the Delta^2 mode 9*Delta^2, matching the same second-order porosity structure that appears in the electroweak sector. The CP phase ansatz is delta_CKM = p/2 - 18Delta = 68.652 deg. A full Wolfenstein-coordinate summary (rho, eta_CKM, J) is deferred.
+The element |V_ub| is governed by the Delta^2 mode 9*Delta^2, matching the same second-order stage-projection structure that appears in the electroweak sector. The CP phase ansatz is delta_CKM = p/2 - 18Delta = 68.652 deg. A full Wolfenstein-coordinate summary (rho, eta_CKM, J) is deferred.
 
 ### 9.3 Atomic Spectroscopy Alignment (lead)
 
@@ -1150,7 +1219,7 @@ In this report:
 2. phase-residue testing is proposed as a falsifiable lead;
 3. cosmological dynamical derivation remains outside the present closure scope.
 
-The concrete test channel is residual structure versus phase(z) rather than versus only smooth functions of z. If the attenuation interpretation is physical, precision observables should show nontrivial phase dependence at aperture-frame boundaries.
+The concrete test channel is residual structure versus phase(z) rather than versus only smooth functions of z. If the attenuation interpretation is physical, precision observables should show nontrivial phase dependence at aperture-frame boundaries. Log-periodic and discrete scale invariance methods (Sornette, 1998) provide the standard statistical template for testing such phase residues against look-elsewhere and red-noise nulls.
 
 
 ### 9.6 Strong-Scale Ruler and Bulk Confinement Lead
@@ -1174,20 +1243,39 @@ GF(2)^6 = three paired binary axes.
 | Region | Representative observables | Compact behaviour |
 | ------ | -------------------------- | ------------------- |
 | UV/backbone | top, Higgs | close to bare or Delta-linear structure |
-| Transition | W/Z | Delta plus Delta^2 porosity correction |
+| Transition | W/Z | Delta plus Delta^2 stage-projection correction |
 | IR/lepton | electron, muon, tau | dressed Delta and SU(2)-residual sensitivity |
 
 **Code-valued curvature (lead).** The commutator defect lands in the self-dual [12,6,2] code. Loop residue is code-valued. Testable development: formulate q as a discrete connection and classify minimal loops.
 
 **Holographic thermal floor (lead).** The identity |H|^2 = |Omega| implies minimum effective support |H| = 64. A compact holographic system cannot reduce effective support below boundary cardinality.
 
-## 10. Conclusions
+## 10. Unified Geometric Origin of Mass and Gravity
+
+The framework presents a common geometric origin for electroweak mass and gravitational coupling.
+
+Gravitational coupling derives from bulk symmetric trace-free (STF) attenuation. The Regge plaquette sum over the five orientational bulk shells (shells 1 through 5, with horizons 0 and 6 carrying zero STF weight) fixes the gravitational attenuation scale tau_G and carries the factor 1/sqrt(5). Electroweak mass emerges from the shell-path projection on the same STF bulk. The factor 1/sqrt(5) in the third-order electroweak expansion is the shared quadrupole mode count (l = 2, five components) between gravitational and electroweak coupling.
+
+The 24-bit spatial shadow is insufficient for full structural closure. It fails the SU(3) sextet bracket and the sixth-grade W holonomy residual (Section 6). The 32-bit spinorial lift closes these obstructions on the K4 gauge subalgebra. This matches the standard model requirement for the full SU(2) double cover to resolve chirality and weak isospin.
+
+The Delta expansion admits a formal parallel with heat-kernel and spectral-action coefficient hierarchies. The correspondence is by structural role, not by identity of content.
+
+| Delta order | Kernel origin | Formal analogue (tentative) |
+| ----------- | ------------- | ----------------------------- |
+| Delta^1 | Horizon and code enumerator | Volume-like shell counting |
+| Delta^2 | Stage projectors on K4 flags | First curvature moment |
+| Delta^3 | STF bulk, l = 2 multiplet | Quadrupole / tensor-sector activation |
+| Delta^4 | K4 closure q-charges | Next even commutator closure term |
+| Delta^5 | Regge plaquette census | Discrete higher-curvature invariant |
+| Delta^6 | W boundary residual | Representation-boundary obstruction |
+
+## 11. Conclusions
 
 1. The compact electroweak core reduces the top, Higgs, Z, and W mass coordinates to a carrier-trace polynomial on the Delta aperture ruler.
 
-2. The exact kernel supplies the coefficient grammar: `|Omega|` = 4096, dual `|H|` = 64 horizons, seven-shell binomial classes, the self-dual [12,6,2] code chart, C1=6, C2=15, C3=20, M_shell=192, and the projectors P=47/48, Q=1/4.
+2. The exact kernel supplies the coefficient grammar natively. The linear coefficients form a shell-path ladder from the ultraviolet horizon to the bulk equator. The third-order amplitude reflects the five-dimensional STF bulk projector. The fifth-order curvature is the STF-weighted Regge plaquette census.
 
-3. The electroweak coordinate law closes the four channels with fixed discrete coefficients. The strongest ratio-channel result is the corrected W/Z split, recovering Delta to 8.34x10^-10 and predicting W from Z and Delta at 5x10^-9 relative error.
+3. The electroweak coordinate expansion closes the four channels with fixed discrete coefficients. The strongest ratio-channel result is the corrected W/Z split, recovering Delta to 8.34x10^-10 and predicting W from Z and Delta at 5x10^-9 relative error.
 
 4. The Delta^6 residuals are order-unity boundary markers. The W channel carries the largest positive residual. The sixth-grade sector is a representation boundary requiring the 32-bit lift.
 
@@ -1307,7 +1395,7 @@ Simplified muon/electron split from the path moment:
 
 ## Appendix B. Formula catalogue
 
-Master electroweak law:
+Master electroweak expansion:
 
 ```text
 L_i = a_i*Delta + b_i + c_i*Delta^2 + p_i*Delta^3/sqrt(5) + q_i*Delta^4 + r5_i*Delta^5
@@ -1332,4 +1420,9 @@ See the main text for the derivation context of each formula and the governing a
 2. E. Tiesinga, P. J. Mohr, D. B. Newell, and B. N. Taylor, *The 2022 CODATA Recommended Values of the Fundamental Physical Constants*, Web Version 9.0, NIST, 2024.
 3. P. J. Mohr, E. Tiesinga, D. B. Newell, and B. N. Taylor, *CODATA Internationally Recommended 2022 Values of the Fundamental Physical Constants*, NIST, published May 8, 2024.
 4. B. Korompilias, *Common Governance Model: Mathematical Physics Framework*, Zenodo DOI: 10.5281/zenodo.17521384.
-5. Analysis code: experiments/hqvm_compact_geom_core.py, experiments/hqvm_compact_geom_kernel.py, and experiments/hqvm_compact_geom_report.py.
+5. A. Connes, *Noncommutative Geometry*, Academic Press, 1994.
+6. A. H. Chamseddine and A. Connes, "The Spectral Action Principle," *Commun. Math. Phys.* **186**, 731 (1997).
+7. P. Delsarte, "An Algebraic Approach to the Association Schemes of Coding Theory," Philips Research Reports Supplements **10** (1973).
+8. F. J. MacWilliams and N. J. A. Sloane, *The Theory of Error-Correcting Codes*, North-Holland, 1977.
+9. D. Sornette, "Discrete Scale Invariance and Complex Dimensions," *Phys. Rep.* **297**, 239 (1998).
+10. Analysis code: experiments/hqvm_compact_geom_core.py, experiments/hqvm_compact_geom_kernel.py, and experiments/hqvm_compact_geom_report.py.

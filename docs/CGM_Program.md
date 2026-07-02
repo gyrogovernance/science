@@ -22,7 +22,8 @@
   - [5.4 The Balance Index and Resolution of the Cosmological Constant Problem](#54-the-balance-index-and-resolution-of-the-cosmological-constant-problem)
   - [5.5 Particle Physics and Sterile Neutrino Non-Observability](#55-particle-physics-and-sterile-neutrino-non-observability)
   - [5.6 Gravitational Coupling and Nonlinear Continuum](#56-gravitational-coupling-and-nonlinear-continuum)
-  - [5.7 Electroweak Mass Spectrum from Compact Geometry](#57-electroweak-mass-spectrum-from-compact-geometry)
+  - [5.7 Wavefunction Structure and the Fiber Bundle Byte](#57-wavefunction-structure-and-the-fiber-bundle-byte)
+  - [5.8 Electroweak Mass Spectrum from Compact Geometry](#58-electroweak-mass-spectrum-from-compact-geometry)
 - [6. Cosmological Observations and Testable Predictions](#6-cosmological-observations-and-testable-predictions)
   - [6.1 The CMB as a Residual Observational Field](#61-the-cmb-as-a-residual-observational-field)
   - [6.2 Cosmic Multiplicity and the Illusion of Expansion](#62-cosmic-multiplicity-and-the-illusion-of-expansion)
@@ -142,6 +143,8 @@ The framework reveals a rich hierarchy of monodromy values, which represent the 
     -   **2.07% Dynamic Aperture:** The residual oscillation amplitude enabling interaction and observation.
 -   **Monodromy Hierarchy:** A consistent scale of memory effects is observed, from the elementary `ω(ONA↔BU) = 0.097671 rad` to the system-level `4-leg toroidal holonomy = 0.862833 rad`. The exact equality `δ_BU = 8-leg holonomy` provides a powerful internal consistency check.
 
+**The aperture gap Δ and the mass coordinate ruler.** The aperture gap Δ ≈ 0.0207 is the small parameter of the framework. It measures the fractional shortfall of actual closure relative to perfect closure. Because Δ is small, it serves as a natural expansion parameter: physical quantities (masses, couplings, corrections) can be expressed as power series in Δ, analogous to how perturbative expansions use a small coupling constant. The coefficients of these expansions are fixed rational numbers from the kernel's combinatorics, not fitted parameters. A "tick" is one unit on the Δ-ruler, corresponding to a multiplicative factor of 2^Δ ≈ 1.0145 in energy.
+
 ### 4.3 Geometric Coherence and Angular Harmonics
 
 Analysis shows that CGM's threshold angles correspond to fundamental geometric invariants.
@@ -157,6 +160,8 @@ The factor 48 emerges as a fundamental geometric quantization unit, not a fitted
 -   **Inflation E-folds:** `N_e = 48² = 2304`
 -   **Aperture Quantization:** `48Δ = 1`, where `Δ = 1 - ρ` is the aperture gap.
 -   **Particle Physics:** This quantization is essential for the neutrino mass predictions.
+
+The integer 48 also equals the order of the binary octahedral group, the SU(2) double cover of cubic rotation symmetry, and the root count of the F₄ exceptional Lie algebra. CGM derives 48 from `3 × |K4|²` on the 3D register; the group-theoretic coincidences are recorded as structural parallels.
 
 ## 5. The Physical Universe: Energy, Cosmology, and Black Holes
 
@@ -187,6 +192,8 @@ The final predicted value `α = 0.007297352563` matches the experimental value t
 
 ### 5.3 The Black Hole Universe and Aperture Thermodynamics
 
+*Tier C (formal/exploratory): structural consequences of the CGM axioms; independent null-model audits at Tier A/B rigor are pending.*
+
 The framework leads to a radical reinterpretation of cosmology:
 
 -   **The Universe as a Black Hole:** Our observable universe sits precisely on the Schwarzschild threshold, with `r_s / R_H = 1.0000 ± 0.0126`. We are observing from *within* a Planck-scale black hole.
@@ -197,6 +204,8 @@ The framework leads to a radical reinterpretation of cosmology:
 -   **Expansion as Optical Illusion:** Apparent cosmic expansion is an optical effect arising from the UV-IR geometric inversion when viewed from an interior perspective. This eliminates the need for dark energy.
 
 ### 5.4 The Balance Index and Resolution of the Cosmological Constant Problem
+
+*Tier C (formal/exploratory): structural consequences of the CGM axioms; independent null-model audits at Tier A/B rigor are pending.*
 
 A new quantity, the **Balance Index**, emerges from cosmological horizon thermodynamics:
 
@@ -224,11 +233,11 @@ The energy scale hierarchy makes specific predictions for particle physics:
 
 The gravity program connects the finite algebraic kernel to continuum field theory and observational tests. Full derivation and status: [Analysis_Gravity](Findings/Analysis_Gravity.md).
 
-**Kernel layer (exact combinatorics).** The Gyroscopic ASI hQVM implements CGM as replayable software. Combinatorial invariants from that implementation fix the gravitational coupling at the electroweak scale without using measured G in the forward calculation. Current agreement with CODATA is 25 parts per million.
+**Kernel layer (exact combinatorics).** The Gyroscopic ASI hQVM implements CGM as replayable software. Combinatorial invariants from that implementation fix the gravitational coupling at the electroweak scale without using measured G in the forward calculation. The leading Regge sum τ_G⁰ alone gives a 25 ppm offset; adding the K4 correction δτ with c₄ = −7/4 closes the residual to **0.074 parts per million** against CODATA.
 
 **Continuum layer (nonlinear gravity).** Position-dependent coupling weakens with field strength. The static point-mass exterior has a closed-form solution. From it the code computes the horizon, photon sphere, impact parameter, Mercury perihelion advance (matching general relativity at solar-system precision), and shadow diameters for Event Horizon Telescope sources.
 
-**Verification stack.** Nine Python files form one reproducible suite: shared library (`hqvm_gravity_common.py`), five analysis passes, two state-model diagnostics, and a runner script. Execute:
+**Verification stack.** The gravity program is implemented by `hqvm_gravity_common.py`, `hqvm_gravity_analysis_1.py` through `10.py`, and `hqvm_gravity_runner.py`, with wavefunction diagnostics in `hqvm_wavefunction_1.py` and `hqvm_wavefunction_2.py`. Execute:
 
 ```
 python experiments/hqvm_gravity_runner.py
@@ -236,13 +245,32 @@ python experiments/hqvm_gravity_runner.py
 
 The static spherical sector is computationally closed. Open work: full dynamical evolutions beyond static spherical symmetry, and an independent check of the gravitational coupling derivation.
 
-### 5.7 Electroweak Mass Spectrum from Compact Geometry
+### 5.7 Wavefunction Structure and the Fiber Bundle Byte
 
-The compact geometry program derives the Higgs, Z, W, and top quark masses from discrete spectral structure on the same opacity frame that governs aperture and coupling. The weak mixing angle follows from the same construction. Typical agreement is sub-ppm to parts-per-billion relative to experiment. Full write-up: [Analysis_Compact_Geometry](Findings/Analysis_Compact_Geometry.md). Verification: `hqvm_compact_geom_core.py`, `hqvm_compact_geom_kernel.py`, `hqvm_compact_geom_report.py`.
+The hQVM kernel carrier admits a complete wavefunction analysis verified on all 4096 states with exact integer arithmetic. Full write-up: [Analysis_hQVM_Wavefunction](Findings/Analysis_hQVM_Wavefunction.md). Verification: `hqvm_wavefunction_kernel.py`, `hqvm_wavefunction_1.py`, `hqvm_wavefunction_2.py`.
+
+The kernel's 4096-state manifold Omega is organized into seven concentric shells by the Hamming distance between its two 12-bit components. Within each shell, states carry a binary "rest vs. swapped" coordinate. The depth-four operators act on this space as permutations with precise algebraic properties.
+
+-   **K4 operator algebra (T1-T10):** The depth-four operators {id, W₂, W₂', F} form a Klein four-group for every micro-reference. W₂ and W₂' perform complete chirality inversion (pole swap); F preserves shell while acting as a Z₂ carrier flip.
+-   **Byte as fiber bundle:** Palindromic phase assignment creates a fold at the BU boundary (bits 3-4). Of 256 bytes, 240 carry Z₂ fold disagreement, giving internal curvature at the byte level. The fold map P is the seed of holonomic structure.
+-   **50% holographic redundancy:** At every scale, |Space| = |Subspace|². Average entanglement entropy is half the available degrees of freedom.
+-   **Aperture collapse:** Byte-level 50% fold disagreement compresses to 2.07% at the carrier level through depth-four spinorial closure.
+-   **Quantum-information certificates:** The canonical Hilbert-space lift yields CHSH values saturating Tsirelson's bound and verifies stabilizer-quantum-information properties (teleportation, contextuality), derived from the intrinsic self-dual code structure.
+
+### 5.8 Electroweak Mass Spectrum from Compact Geometry
+
+Masses are placed on a logarithmic ruler whose tick spacing is the aperture gap Δ. The ruler coordinate n of a particle of mass m relative to the electroweak scale v is n = log₂(v/m) / Δ. The expansion expresses these coordinates as polynomials in Δ with coefficients drawn from the kernel's shell multiplicities and horizon structure. Full write-up: [Analysis_Compact_Geometry](Findings/Analysis_Compact_Geometry.md). Verification: `hqvm_compact_geom_core.py`, `hqvm_compact_geom_kernel.py`, `hqvm_compact_geom_report.py`, `hqvm_compact_geom_derivations.py`.
+
+-   **Electroweak particle masses:** The Higgs, Z, W, and top quark masses are derived from the same geometric structure that fixes G and α.
+-   **W/Z boson mass ratio test:** The framework gives a closed-form relation for m_W/m_Z in terms of the independently derived parameter Δ ≈ 0.0207. Using PDG (Particle Data Group) masses, the implied Δ differs from the monodromy-derived Δ by 8.34 × 10⁻¹⁰ (absolute).
+-   **Quark generation pattern (scheme dependent):** Under the mass conventions used in the compact-geometry analysis, the six quark masses fall on an integer-spaced ladder in the framework's logarithmic mass coordinate, grouping naturally into three generation pairs.
+-   **Lepton closure:** Lepton coordinates close via a unique horizon-wrap path (5, 8, 14) among 680 candidates.
 
 ## 6. Cosmological Observations and Testable Predictions
 
 ### 6.1 The CMB as a Residual Observational Field
+
+*Tier C (formal/exploratory): structural consequences of the CGM axioms; independent null-model audits at Tier A/B rigor are pending.*
 
 CGM reinterprets the Cosmic Microwave Background (CMB):
 
@@ -253,6 +281,8 @@ CGM reinterprets the Cosmic Microwave Background (CMB):
 Empirical analysis of Planck data shows a statistically significant signal (`Z=47.22`, `p=0.0039`) for an enhanced power ladder at multipoles `ℓ = 37, 74, 111,...`, corresponding to the fundamental recursive index `N*=37` predicted by the theory.
 
 ### 6.2 Cosmic Multiplicity and the Illusion of Expansion
+
+*Tier C (formal/exploratory): structural consequences of the CGM axioms; independent null-model audits at Tier A/B rigor are pending.*
 
 The breakdown of observational coherence beyond a radius `R_coh ≈ c/(4H₀)` generates **apparent multiplicity**:
 
@@ -280,21 +310,26 @@ GyroSI is a computational implementation of CGM's principles, representing intel
 
 ## 8. Computational Verification and Reproducibility
 
-Every major claim in this program is backed by runnable Python in `experiments/` and a matching analysis note in `docs/Findings/`. The repository currently contains:
+Every major claim in this program is backed by runnable Python in `experiments/` and a matching analysis note in `docs/Findings/`. The hQVM kernel test suite documents **243 verified features** across three verification tiers: 165 kernel pytests (Tier A), 72 science-repo executables (Tier B), and 6 formal manuscript proofs (Tier C). This includes CHSH-Tsirelson saturation, quantum teleportation, Peres-Mermin contextuality, and the complete K4/wavefunction/holography closure chain. See [hQVM Features Report](Gyroscopic_Computational_Theory/hQVM_Features_Report.md).
+
+The repository currently contains:
 
 | Measure | Count |
 |---------|------:|
-| Analysis write-ups | 28 |
-| Runnable experiment scripts | 57 |
-| Shared libraries, stage modules, and tests | 21 |
-| Python in `experiments/` (all files) | ~44,000 lines |
+| Analysis write-ups (`docs/Findings/Analysis_*.md`) | 30 |
+| Runnable experiment scripts (`experiments/*.py`) | 68 |
+| hQVM physics scripts (`experiments/hqvm_*.py`) | 22 |
+| Shared library and kernel modules (`experiments/`) | 7 |
+| hQVM verified features (Tiers A-C) | 243 |
+| Python in `experiments/` (all files) | 48,700 lines |
 
 Scripts cover gravity, electroweak mass geometry, fine structure, quantum gravity, CMB data checks, axiomatization, Hilbert space representation, monodromy, energy scales, black-hole cosmology, balance index, and related topics. Each row below is the single entry point for that topic.
 
 | Topic | Analysis | Code |
 |-------|----------|------|
-| Gravity: discrete state geometry and nonlinear continuum | [Analysis_Gravity](Findings/Analysis_Gravity.md) | `hqvm_gravity_common.py`, `hqvm_gravity_analysis_1.py` through `7.py`, `hqvm_wavefunction_1.py`, `hqvm_wavefunction_2.py`. Run: `python experiments/hqvm_gravity_runner.py` |
-| Electroweak mass spectrum | [Analysis_Compact_Geometry](Findings/Analysis_Compact_Geometry.md) | `hqvm_compact_geom_core.py`, `hqvm_compact_geom_kernel.py`, `hqvm_compact_geom_report.py` |
+| Gravity: discrete state geometry and nonlinear continuum | [Analysis_Gravity](Findings/Analysis_Gravity.md) | `hqvm_gravity_common.py`, `hqvm_gravity_analysis_1.py` through `10.py`, `hqvm_wavefunction_1.py`, `hqvm_wavefunction_2.py`. Run: `python experiments/hqvm_gravity_runner.py` |
+| Wavefunction: fiber bundle structure of the byte | [Analysis_hQVM_Wavefunction](Findings/Analysis_hQVM_Wavefunction.md) | `hqvm_wavefunction_kernel.py`, `hqvm_wavefunction_1.py`, `hqvm_wavefunction_2.py` |
+| Electroweak mass spectrum | [Analysis_Compact_Geometry](Findings/Analysis_Compact_Geometry.md) | `hqvm_compact_geom_core.py`, `hqvm_compact_geom_kernel.py`, `hqvm_compact_geom_report.py`, `hqvm_compact_geom_derivations.py` |
 | Fine-structure constant | [Analysis_Fine_Structure](Findings/Analysis_Fine_Structure.md) | `cgm_alpha_analysis.py` |
 | Quantum gravity invariant | [Analysis_Quantum_Gravity](Findings/Analysis_Quantum_Gravity.md) | `cgm_quantum_gravity_analysis.py` |
 | Energy scale unification | [Analysis_Energy_Scales](Findings/Analysis_Energy_Scales.md) | `cgm_energy_analysis.py` |

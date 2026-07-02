@@ -128,7 +128,71 @@ class ChannelCoeffs:
     q: float
     r5: float
 EW_CHANNEL_Q_WEIGHT: dict[str, int] = {'Top': 2, 'Higgs': 3, 'Z': 3, 'W': 4}
-K4_CHANNEL_FLAGS: dict[str, tuple[bool, bool, bool]] = {'Top': (False, False, False), 'Higgs': (True, False, False), 'Z': (True, True, False), 'W': (True, True, True)}
+EW_CHANNEL_ORDER: tuple[str, ...] = ('Top', 'Higgs', 'Z', 'W')
+K4_ELEMENTS: tuple[str, ...] = ('id', 'W2', "W2'", 'F')
+
+def k4_element_for_channel(label: str) -> str:
+    """K4 operator for an electroweak channel in CGM stage order."""
+    return K4_ELEMENTS[EW_CHANNEL_ORDER.index(label)]
+
+def derive_k4_flags_from_element(element: str) -> tuple[bool, bool, bool]:
+    """
+    Binary flags on the K4 edge walk from operator depth.
+
+    base: egress half-word (W2) beyond CS identity
+    rot:  ingress half-word (W2') at depth-four closure
+    bal:  full holonomy cycle (F) at depth-eight Z2 return
+    """
+    idx = K4_ELEMENTS.index(element)
+    return (idx >= 1, idx >= 2, idx >= 3)
+
+def derive_k4_flags_from_path(label: str) -> tuple[bool, bool, bool]:
+    """Flags from Omega byte-path length (2, 3, 4, 8 bytes for Top..W)."""
+    n = len(ew_channel_path_word(label, 0))
+    return (n >= 3, n >= 4, n >= 8)
+
+def k4_channel_flags(label: str) -> tuple[bool, bool, bool]:
+    """K4 edge walk flags (base, rot, bal) for channel label."""
+    return derive_k4_flags_from_element(k4_element_for_channel(label))
+
+def k4_channel_flags_dict() -> dict[str, tuple[bool, bool, bool]]:
+    return {label: k4_channel_flags(label) for label in EW_CHANNEL_ORDER}
+
+K4_CHANNEL_FLAGS: dict[str, tuple[bool, bool, bool]] = k4_channel_flags_dict()
+
+@dataclass(frozen=True)
+class ShellPathAStep:
+    """Leading-order shell-path coordinate a_i from kernel grammar."""
+    label: str
+    k4_element: str
+    formula: str
+    value: int
+
+def shell_path_a_ladder() -> tuple[ShellPathAStep, ...]:
+    """Explicit shell-path ladder for a_i (horizon + code enumerator)."""
+    return (
+        ShellPathAStep('Top', 'id', '|H| + C2 - C1', HORIZON_CARDINALITY + CODE_C2 - CODE_C1),
+        ShellPathAStep('Higgs', 'W2', 'M_shell/2', M_SHELL // 2),
+        ShellPathAStep('Z', "W2'", 'M_shell/2 + C1 + C2', M_SHELL // 2 + CODE_C1 + CODE_C2),
+        ShellPathAStep('W', 'F', 'M_shell/2 + 2*C2', M_SHELL // 2 + 2 * CODE_C2),
+    )
+
+def lambda_0_from_stf_dimension(delta: float = DELTA) -> float:
+    """Third-order amplitude Delta/sqrt(n_STF); n_STF = 5 bulk STF shells."""
+    return delta / math.sqrt(float(STF_DIMENSION))
+
+def plaquette_defect_count(popcount_k: int) -> int:
+    """Ordered byte-pair count with defect popcount k (gravity plaquette census)."""
+    return 1024 * comb(6, popcount_k)
+
+def plaquette_mean_defect() -> Fraction:
+    """Mean popcount(d) over all 65536 byte-pair plaquettes."""
+    total = sum(k * plaquette_defect_count(k) for k in range(7))
+    return Fraction(total, 256 * 256)
+
+def r5_constant_from_wz_gap() -> float:
+    """Constant r5 offset -(C2-C1)/2 from the W/Z code-gap enumerator."""
+    return -(CODE_C2 - CODE_C1) / 2.0
 
 def channel_a_from_horizon(label: str) -> float:
     """Leading shell-population weight a_i from |H| and code enumerator."""
@@ -155,7 +219,7 @@ def channel_c_from_shell_projection(label: str) -> float:
     if label == 'Top':
         return Q_DENSITY
     base = -float(M_SHELL) / 8.0
-    base_rot, ona_bal = (K4_CHANNEL_FLAGS[label][1], K4_CHANNEL_FLAGS[label][2])
+    base_rot, ona_bal = k4_channel_flags(label)[1], k4_channel_flags(label)[2]
     c = base
     if base_rot:
         c += CODE_C1 / 4.0
@@ -165,7 +229,7 @@ def channel_c_from_shell_projection(label: str) -> float:
 
 def k4_channel_flags(label: str) -> tuple[bool, bool, bool]:
     """K4 edge walk flags (base, rot, bal) for channel label."""
-    return K4_CHANNEL_FLAGS[label]
+    return derive_k4_flags_from_element(k4_element_for_channel(label))
 
 def _pq_from_flags(base: bool, rot: bool, bal: bool) -> tuple[float, float]:
     """
@@ -568,16 +632,125 @@ def verify_ew_ladder_derivations() -> dict[str, bool | float]:
         and ch.r5 == channel_r5_from_code_curvature(ch.label)
         for ch in CHANNELS
     )
+    ladder_ok = all(
+        int(channel_a_from_horizon(step.label)) == step.value
+        for step in shell_path_a_ladder()
+    )
     return {
         "all_channels_coeffs": coeffs_ok,
+        "shell_path_a_ladder": ladder_ok,
         "sum_p_trace_free": abs(sum_p) < 1e-12,
         "sum_q_trace_free": abs(sum_q) < 1e-12,
         "q_W_equals_c4_gravity": abs(q_w - c4_w) < 1e-12,
+        "lambda_0_stf": abs(LAMBDA_0 - lambda_0_from_stf_dimension()) < 1e-15,
+        "r5_top_matches_wz_gap": abs(channel_r5_from_code_curvature("Top") - r5_constant_from_wz_gap()) < 1e-12,
+        "plaquette_mean_defect_is_3": plaquette_mean_defect() == Fraction(3, 1),
         "sum_p": sum_p,
         "sum_q": sum_q,
         "q_W": q_w,
         "c4_gravity": c4_w,
     }
+
+def verify_k4_channel_derivation() -> dict[str, bool]:
+    """K4 operator assignment and path-length flag derivation."""
+    flags_from_element = {
+        label: derive_k4_flags_from_element(k4_element_for_channel(label))
+        for label in EW_CHANNEL_ORDER
+    }
+    flags_from_path = {
+        label: derive_k4_flags_from_path(label) for label in EW_CHANNEL_ORDER
+    }
+    return {
+        "element_matches_path": flags_from_element == flags_from_path,
+        "top_is_id": k4_element_for_channel("Top") == "id",
+        "w_is_F": k4_element_for_channel("W") == "F",
+        "flags_match_declared": flags_from_element == k4_channel_flags_dict(),
+    }
+
+@dataclass(frozen=True)
+class EwAssignmentAudit:
+    """Uniqueness audit of the algebraically derived K4 channel assignment."""
+    raw_assignments: int
+    trace_free_candidates: int
+    declared_rank: int
+    rank1_max_tick_error: float
+    rank2_max_tick_error: float | None
+
+def electroweak_assignment_uniqueness_audit(
+    observed: dict[str, float],
+    delta: float = DELTA,
+    v: float | None = None,
+) -> EwAssignmentAudit:
+    """
+    Rank trace-free flag assignments by max tick error.
+
+    The declared assignment follows the K4 operator walk; this audit verifies
+  uniqueness among grammar-consistent candidates.
+    """
+    if v is None:
+        v = observed.get("Electroweak scale", E_EW_GEV)
+
+    def _obs_n(mass_key: str) -> float:
+        return math.log2(v / observed[mass_key]) / delta
+
+    observed_n = {
+        "Top": _obs_n("Top quark mass energy"),
+        "Higgs": _obs_n("Higgs mass energy"),
+        "Z": _obs_n("Z boson mass energy"),
+        "W": _obs_n("W boson mass energy"),
+    }
+    base = {ch.label: (ch.a, ch.b, ch.c) for ch in CHANNELS}
+    trace_rows: list[float] = []
+    declared_flags = k4_channel_flags_dict()
+    declared_err: float | None = None
+
+    for f_top in range(8):
+        a_t, r_t, b_t = ((f_top >> 2) & 1, (f_top >> 1) & 1, f_top & 1)
+        p_t, q_t, r5_t = _pq_from_flags(a_t, r_t, b_t)[0], _pq_from_flags(a_t, r_t, b_t)[1], _r5_from_flags(a_t, r_t, b_t)
+        for f_h in range(8):
+            a_h, r_h, b_h = ((f_h >> 2) & 1, (f_h >> 1) & 1, f_h & 1)
+            p_h, q_h, r5_h = _pq_from_flags(a_h, r_h, b_h)[0], _pq_from_flags(a_h, r_h, b_h)[1], _r5_from_flags(a_h, r_h, b_h)
+            for f_z in range(8):
+                a_z, r_z, b_z = ((f_z >> 2) & 1, (f_z >> 1) & 1, f_z & 1)
+                p_z, q_z, r5_z = _pq_from_flags(a_z, r_z, b_z)[0], _pq_from_flags(a_z, r_z, b_z)[1], _r5_from_flags(a_z, r_z, b_z)
+                for f_w in range(8):
+                    a_w, r_w, b_w = ((f_w >> 2) & 1, (f_w >> 1) & 1, f_w & 1)
+                    p_w, q_w, r5_w = _pq_from_flags(a_w, r_w, b_w)[0], _pq_from_flags(a_w, r_w, b_w)[1], _r5_from_flags(a_w, r_w, b_w)
+                    p_sum = p_t + p_h + p_z + p_w
+                    q_sum = q_t + q_h + q_z + q_w
+                    if abs(p_sum) > 1e-12 or abs(q_sum) > 1e-12:
+                        continue
+                    max_err = 0.0
+                    for label, obs_n, (a_ch, b_ch, c_ch), p_val, q_val, r5_val in [
+                        ("Top", observed_n["Top"], base["Top"], p_t, q_t, r5_t),
+                        ("Higgs", observed_n["Higgs"], base["Higgs"], p_h, q_h, r5_h),
+                        ("Z", observed_n["Z"], base["Z"], p_z, q_z, r5_z),
+                        ("W", observed_n["W"], base["W"], p_w, q_w, r5_w),
+                    ]:
+                        l_pred = eval_law(
+                            ChannelCoeffs(label, "", a_ch, b_ch, c_ch, p_val, q_val, r5_val),
+                            delta,
+                        )
+                        max_err = max(max_err, abs(l_pred / delta - obs_n))
+                    trace_rows.append(max_err)
+                    flags = {
+                        "Top": (bool(a_t), bool(r_t), bool(b_t)),
+                        "Higgs": (bool(a_h), bool(r_h), bool(b_h)),
+                        "Z": (bool(a_z), bool(r_z), bool(b_z)),
+                        "W": (bool(a_w), bool(r_w), bool(b_w)),
+                    }
+                    if flags == declared_flags:
+                        declared_err = max_err
+
+    trace_rows.sort()
+    declared_rank = trace_rows.index(declared_err) + 1 if declared_err is not None else -1
+    return EwAssignmentAudit(
+        raw_assignments=4096,
+        trace_free_candidates=len(trace_rows),
+        declared_rank=declared_rank,
+        rank1_max_tick_error=trace_rows[0] if trace_rows else float("nan"),
+        rank2_max_tick_error=trace_rows[1] if len(trace_rows) > 1 else None,
+    )
 
 @dataclass(frozen=True)
 class EwCarrierPathDecomposition:

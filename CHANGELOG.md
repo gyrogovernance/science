@@ -4,6 +4,30 @@ All notable changes to the CGM Experimental Framework will be documented in this
 
 ---
 
+## [1.3.6-hQVM_Compact-Geometry] - 2026-07-02
+
+Compact geometry completes the electroweak mass program on the hQVM kernel: four pole masses (top, Higgs, Z, W) are expressed as spectral coordinates on the aperture gap ruler Δ ≈ 0.0207, with coefficients fixed by the 4096-state register algebra rather than fitted to data.
+
+### Added
+
+- `docs/Findings/Analysis_Compact_Geometry.md`: spectral analysis of electroweak mass coordinates on the Δ ruler, from exact kernel combinatorics through fifth-order closure, W/Z ratio lock, lepton carrier layer, quark D_flow ladder, and unified mass-gravity geometric origin.
+- `experiments/hqvm_compact_geom_derivations.py`: native derivations of third-order amplitude (STF bulk projector), fifth-order code curvature (Regge plaquette census), and K4 channel flags from fold geometry, verified against core coefficients without mass input.
+
+### Updated
+
+- `experiments/hqvm_compact_geom_core.py`, `hqvm_compact_geom_kernel.py`, `hqvm_compact_geom_report.py`: electroweak expansion through Δ⁵, leave-one-out mass prediction, coupling parametrization, lepton horizon-wrap exhaustion, and 32-bit spinorial lift probes.
+
+### Results
+
+- Electroweak masses map to carrier-trace polynomials L_i = a_iΔ + b_i + c_iΔ² + … + r5_iΔ⁵ with rational coefficients from shell multiplicities (C1=6, C2=15, C3=20), horizon cardinality |H|=64, and K4 stage flags. Maximum tick error across four channels at fifth order: 6.15 × 10⁻⁹.
+- W/Z ratio lock: promoted D₄ relation for log₂(m_Z/m_W) recovers monodromy Δ with absolute difference 8.34 × 10⁻¹⁰ from PDG masses; W predicted from Z and Δ at 5 × 10⁻⁹ relative error. On-shell sin²θ_W = 0.223013218 vs 0.223013225.
+- Tree-level couplings (g, g_Z, g', e, y_t, λ_H) follow algebraically from the mass expansion at parts-per-million accuracy.
+- Quark sector: six quark masses sit on integer-spaced rungs of the logarithmic mass coordinate under the stated PDG mass conventions; D_flow² eigenladder groups them into three generation pairs.
+- Lepton carriers close via a unique horizon-wrap path (5, 8, 14) among 680 grammar-consistent candidates.
+- Δ⁶ residuals mark a representation boundary: the 24-bit spatial shadow obstructs full closure; the 32-bit spinorial lift is structurally required.
+
+---
+
 ## [1.3.5-CGM_Wavefunction] - 2026-06-30
 
 ### Added

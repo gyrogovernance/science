@@ -84,6 +84,7 @@ from hqvm_compact_geom_core import (
     lepton_ladder_residuals,
     all_laws,
 )
+from hqvm_compact_geom_derivations import run_derivations
 
 from hqvm_compact_geom_kernel import (
     KernelReport,
@@ -399,6 +400,35 @@ def print_aperture_and_coordinates(
 # Section 3: Electroweak mass law
 # ---------------------------------------------------------------------------
 
+def _print_native_derivation_body() -> None:
+    """Print the three native coefficient derivations (no mass input)."""
+    rep = run_derivations()
+    print()
+    print("  Native derivation audit (kernel geometry only, no mass input)")
+    print("  D1  Lambda_0 = Delta/sqrt(Tr(P_STF))")
+    print(f"      STF bulk projector trace      = {rep.lambda_0.stf_projector_trace}")
+    print(f"      Lambda_0 derived              = {rep.lambda_0.lambda0_derived:.12f}")
+    print(f"      Lambda_0 existing             = {rep.lambda_0.lambda0_existing:.12f}")
+    print(f"      W/Z D^3 coefficient = 2/sqrt(5)   {_ok(rep.lambda_0.wz_third_order_matches)}")
+    print("  D2  r5 from plaquette census + STF Regge projection")
+    r = rep.r5_plaquette
+    print(f"      mean plaquette defect         = {r['mean_plaquette_defect']}")
+    print(f"      W/Z code gap C2-C1            = {r['wz_code_gap']}")
+    print(f"      r5 constant -(C2-C1)/2        = {r['r5_constant']}")
+    print(f"      (base-rot) weight = 55/8      {_ok(bool(r['base_rot_weight_is_55_over_8']))}")
+    print(f"      bal weight = 15/8             {_ok(bool(r['bal_weight_is_15_over_8']))}")
+    print(f"      {'Ch':6} {'K4':4} {'regge':>9} {'r5_alg':>8} {'r5_der':>8} {'match':>5}")
+    for s in rep.regge_sums:
+        print(f"      {s.label:6} {s.k4_element:4} {s.regge_sum:>9.6f} "
+              f"{s.r5_algebraic:>8.3f} {s.r5_derived:>8.3f} {_ok(s.matches):>5}")
+    print("  D3  K4 channel flags from fold geometry (byte-path lengths)")
+    print(f"      {'Ch':6} {'K4':4} {'len':>3} {'flags':>8} {'match':>5}")
+    for f in rep.fold_flags:
+        flags_s = "".join("1" if x else "0" for x in f.flags_from_fold)
+        print(f"      {f.label:6} {f.k4_element:4} {f.word_length:>3} {flags_s:>8} {_ok(f.matches):>5}")
+    _row("All native derivations close", _ok(rep.all_native))
+
+
 def _print_coefficient_derivation_body(
     observed: dict[str, float],
     delta: float = DELTA,
@@ -465,7 +495,9 @@ def _print_coefficient_derivation_body(
     print(f"  sum p_i = {checks['sum_p']:.4f}  sum q_i = {checks['sum_q']:.4f}")
     print("  Source: T_gyrotriangle_p, T_k4_closure_q -- trace-free K4 edge increments")
     print("  r5 = -(C2-C1)/2 + (|H|-(C2-C1))/8*(base-rot) + C2/8*bal")
-    print("  Source: T_code_curvature_r5 -- [12,6,2] enumerator + |H| correction")
+    print("  Source: T_code_curvature_r5 -- plaquette census + STF Regge projection")
+
+    _print_native_derivation_body()
 
     _row("All coefficients match eval_law", _ok(bool(om["all_L_polynomial_matches_eval_law"])))
     _row("bulk W matches gravity cycle", _ok(bool(om["bulk_W_matches_gravity_cycle"])))

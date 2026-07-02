@@ -38,32 +38,35 @@ The Common Governance Model (CGM) is an axiomatic framework for fundamental phys
 
 ### Gyroscopic ASI Holonomic Quantum Virtual Machine (hQVM)
 
-The hQVM is the executable form of the framework: a **Holonomic Quantum Virtual Machine** instantiated as a reversible GF(2) finite-state machine on standard silicon. It is a replayable algebraic machine that runs the CGM axioms as integer arithmetic, producing the same trajectories on every run and on any computer. Computation proceeds via geometric phases (monodromies) of closed SE(3) spinorial loops. These are the same holonomic structures that the quantum computing literature recognizes as a universal computational model (Zanardi and Rasetti 1999; Pachos et al. 2000). The same machine is used both as a research tool and as an alignment kernel for AI systems. In this repository it serves as the reference implementation against which the physical predictions are checked: gravity, electroweak masses, wavefunction structure, and related analyses are computed directly on it (14 experiment scripts in `experiments/`).
+The hQVM is the executable form of the framework: a **Holonomic Quantum Virtual Machine** instantiated as a reversible GF(2) finite-state machine on standard silicon. It is a replayable algebraic machine that runs the CGM axioms as integer arithmetic, producing the same trajectories on every run and on any computer. Computation proceeds via geometric phases (monodromies) of closed SE(3) spinorial loops. These are the same holonomic structures that the quantum computing literature recognizes as a universal computational model (Zanardi and Rasetti 1999; Pachos et al. 2000). The same machine is used both as a research tool and as an alignment kernel for AI systems. In this repository it serves as the reference implementation against which the physical predictions are checked: gravity, electroweak masses, wavefunction structure, and related analyses are computed directly on it (22 `hqvm_*.py` scripts in `experiments/`).
 
 Canonical repository: [superintelligence](https://github.com/gyrogovernance/superintelligence). Vendored implementation: [`gyroscopic/hQVM/`](gyroscopic/hQVM/). Specifications and test reports are listed in the documentation section below.
 
 ## Headline results
 
-* **Newton's constant G** computed from the geometry of the framework using the electroweak Higgs scale as the only measured input. The result matches the CODATA reference value to 0.074 ppm.
+* **Newton's constant G** computed from kernel geometry using the electroweak Higgs scale as the sole measured input. The result matches the CODATA reference value to 0.074 parts per million.
 * **Fine-structure constant α** computed from the same geometry, matching the experimental value to 0.043 parts per billion.
-* **Three-dimensional space with six degrees of freedom** (three rotations and three translations) appears as a theorem of the framework, with explicit proofs that two-dimensional and higher-dimensional alternatives are excluded.
-* **Electroweak particle masses** (Higgs, Z, W, top quark) and the **weak mixing angle**, all from the same geometric structure that fixes G, with accuracy ranging from sub-ppm to parts per billion.
-* **Gravity as a nonlinear theory of geometry**, with a position-dependent coupling that recovers Newtonian and general-relativistic predictions in the appropriate limits and gives an exact, finite gravitational self-energy of −Mc²/4 for a point mass.
-* **A complete solid angle of 4π** as the geometric invariant of gravity, fixing the structure of Newton's and Einstein's field equations and the spin-2 character of gravitational waves.
-* **The relation E = mc²** appears as a structural consequence of operational closure, anchoring the rest frame as a dynamical condition rather than a coordinate choice.
-* **The byte carries internal curvature**: 240 of 256 bytes have a Z2 fold disagreement at the BU boundary, inducing a fiber bundle structure with 50% holographic redundancy at every scale and a Householder reflection (Grover-type quantum search primitive) at the carrier level.
+* **Three-dimensional space with six degrees of freedom** derived as a theorem of the framework. Explicit proofs exclude two-dimensional and higher-dimensional alternatives.
+* **Electroweak particle masses** (Higgs, Z, W, top) and the **weak mixing angle** derived from the same geometric structure that fixes G.
+* **W/Z boson mass ratio test:** The framework gives a closed-form relation for m_W/m_Z in terms of the independently derived parameter Δ ≈ 0.0207. Using PDG (Particle Data Group) masses, the implied Δ differs from the monodromy-derived Δ by 8.34 × 10⁻¹⁰ (absolute).
+* **Quark generation pattern (scheme dependent):** Under the mass conventions used in the compact-geometry analysis, the six quark masses fall on an integer-spaced ladder in the framework's logarithmic mass coordinate, grouping naturally into three generation pairs.
+* **Gravity as a nonlinear theory of geometry** with a position-dependent coupling. The static point-mass exterior closes analytically, recovering Newtonian and general-relativistic limits and yielding an exact, finite gravitational self-energy of −Mc²/4.
+* **A complete solid angle of 4π** steradians as the geometric invariant of gravity, fixing the structure of Newton's and Einstein's field equations and the spin-2 character of gravitational waves.
+* **The relation E = mc²** derived as a consequence of the Virial condition (2T + V = 0), which follows from the requirement that coherent operational closure forces net displacement to zero every cycle, making the rest frame a dynamical necessity rather than a coordinate choice.
+* **Quantum-information certificates from the kernel:** The canonical Hilbert-space lift yields CHSH values saturating Tsirelson's bound and verifies stabilizer-quantum-information properties (teleportation, contextuality), derived from the intrinsic self-dual code structure.
 
-Neutrino mass scales, lepton ratios, quark flavour structure, and the optical conjugacy linking the Planck and electroweak scales are also derived in the linked analyses.
+Neutrino mass scales, lepton ratios, and the optical conjugacy linking the Planck and electroweak scales are also derived in the linked analyses.
 
 ## Scale of verification
 
 | Measure | Count |
 |---------|------:|
-| Analysis write-ups (`docs/Findings/`) | 28 |
-| Runnable experiment scripts (`experiments/`) | 57 |
-| Physics experiments on the hQVM implementation | 14 |
-| Shared libraries, stage modules, and tests | 21 |
-| Python in `experiments/` (all files) | ~44,000 lines |
+| Analysis write-ups (`docs/Findings/Analysis_*.md`) | 30 |
+| Runnable experiment scripts (`experiments/*.py`) | 68 |
+| hQVM physics scripts (`experiments/hqvm_*.py`) | 22 |
+| Shared library and kernel modules (`experiments/`) | 7 |
+| hQVM verified features (Tiers A-C) | 243 |
+| Python in `experiments/` (all files) | 48,700 lines |
 
 Each major result in the table below maps to one analysis note and its verification code. The scripts cover gravity, electroweak mass geometry, fine structure, quantum gravity, CMB checks, axiomatization, Hilbert-space representation, monodromy, and energy scales.
 
@@ -85,9 +88,9 @@ Dataset: [CGM corpus](docs/datasets/) (1,000+ JSONL Q&A pairs for fine-tuning an
 
 | Topic | Analysis | Code |
 |-------|----------|------|
-| Gravity, Virial condition, and nonlinear continuum | [Analysis_Gravity - Note](docs/Findings/Analysis_Gravity_Note.md) [Analysis_Gravity - Full](docs/Findings/Analysis_Gravity.md) | [hqvm_gravity_common.py](experiments/hqvm_gravity_common.py), `hqvm_gravity_analysis_1.py` through `8.py`, [wavefunction scripts](experiments/hqvm_wavefunction_1.py). Run: `python experiments/hqvm_gravity_runner.py` |
+| Gravity, Virial condition, and nonlinear continuum | [Analysis_Gravity - Note](docs/Findings/Analysis_Gravity_Note.md) [Analysis_Gravity - Full](docs/Findings/Analysis_Gravity.md) | [hqvm_gravity_common.py](experiments/hqvm_gravity_common.py), `hqvm_gravity_analysis_1.py` through `10.py`, [wavefunction scripts](experiments/hqvm_wavefunction_1.py). Run: `python experiments/hqvm_gravity_runner.py` |
 | Wavefunction: fiber bundle structure of the byte | [Analysis_hQVM_Wavefunction](docs/Findings/Analysis_hQVM_Wavefunction.md) | [hqvm_wavefunction_kernel.py](experiments/hqvm_wavefunction_kernel.py) |
-| Electroweak mass spectrum | [Analysis_Compact_Geometry](docs/Findings/Analysis_Compact_Geometry.md) | [hqvm_compact_geom_core.py](experiments/hqvm_compact_geom_core.py), [kernel](experiments/hqvm_compact_geom_kernel.py), [report](experiments/hqvm_compact_geom_report.py) |
+| Electroweak mass spectrum | [Analysis_Compact_Geometry](docs/Findings/Analysis_Compact_Geometry.md) | [hqvm_compact_geom_core.py](experiments/hqvm_compact_geom_core.py), [kernel](experiments/hqvm_compact_geom_kernel.py), [report](experiments/hqvm_compact_geom_report.py), [derivations](experiments/hqvm_compact_geom_derivations.py) |
 | Fine-structure constant | [Analysis_Fine_Structure](docs/Findings/Analysis_Fine_Structure.md) | [cgm_alpha_analysis.py](experiments/cgm_alpha_analysis.py) |
 | Quantum gravity invariant | [Analysis_Quantum_Gravity](docs/Findings/Analysis_Quantum_Gravity.md) | [cgm_quantum_gravity_analysis.py](experiments/cgm_quantum_gravity_analysis.py) |
 | Energy scale unification | [Analysis_Energy_Scales](docs/Findings/Analysis_Energy_Scales.md) | [cgm_energy_analysis.py](experiments/cgm_energy_analysis.py) |
@@ -112,10 +115,9 @@ Dataset: [CGM corpus](docs/datasets/) (1,000+ JSONL Q&A pairs for fine-tuning an
 | [hQVM_Tests_Report_1](docs/Gyroscopic_Computational_Theory/hQVM_Tests_Report_1.md) | Test report 1 |
 | [hQVM_Tests_Report_2](docs/Gyroscopic_Computational_Theory/hQVM_Tests_Report_2.md) | Test report 2 |
 | [Physics_Tests_Report](docs/Gyroscopic_Computational_Theory/Physics_Tests_Report.md) | Physics tests |
-| [QuBEC_Transform_Algebra](docs/Gyroscopic_Computational_Theory/QuBEC_Transform_Algebra.md) | Transform algebra |
-| [QuBEC_Climate_Dynamics](docs/Gyroscopic_Computational_Theory/QuBEC_Climate_Dynamics.md) | Climate dynamics |
 | [QuBEC_Theory](docs/Gyroscopic_Computational_Theory/QuBEC_Theory.md) | QuBEC theory |
 | [Alignment_Measurement_Report](docs/Gyroscopic_Computational_Theory/Alignment_Measurement_Report.md) | Alignment measurement |
+| [hQVM_Features_Report](docs/Gyroscopic_Computational_Theory/hQVM_Features_Report.md) | 243 verified features (Tiers A-C) |
 
 ---
 ## 👨‍🔬 Author
