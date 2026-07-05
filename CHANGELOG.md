@@ -4,16 +4,26 @@ All notable changes to the CGM Experimental Framework will be documented in this
 
 ---
 
-## [1.3.7-hQVM_Percolation] - 2026-07-02 to 2026-07-04
+## [1.3.7-hQVM_Percolation] - 2026-07-02 to 2026-07-06
 
 Ancestry preservation is not an abstract axiom alone. On the hQVM kernel it fixes the shape of connectivity. The 4096-state reachable set Omega is a holographic product of two 64-element constitutional horizons, and restricting the 256 byte generators severs access to that root in a controlled way. The reachable cluster from rest then shrinks as the square of the surviving transport dimension, not as a generic bond-percolation cluster built from scalar nodes.
 
-This release delivers a percolation programme on that architecture. The Square-Root Cluster Theorem states the rule under fiber-complete restriction. Byte operators act as unclosed spinorial half-cycles on the full product and connect maximally; canonical word operators compose depth-four closure and confine reachability to the 128 horizon states from rest. Five separable percolation thresholds turn on at distinct generator fractions on a single restriction dial, each a stronger recovery of the same root. Every label is exact because reachability, shell support, and event flags are computed by exhaustive census on 4096 states. Percolation-derived transport closes to the gravitational self-energy identities of the gravity manuscript, linking discrete generator restriction to the exterior integral already established there.
+This release delivers a percolation programme on that architecture. The Square-Root Cluster Theorem states the rule under fiber-complete restriction. Byte operators act as unclosed spinorial half-cycles on the full product and connect maximally; canonical word operators compose depth-four closure and confine reachability to the 128 horizon states from rest. Five separable percolation thresholds turn on at distinct generator fractions on a single restriction dial, each a stronger recovery of the same root. Every label is exact because reachability, shell support, and event flags are computed by exhaustive census on 4096 states. The hQVM(d) family generalizes the kernel across chirality dimension d with closed-form register-protocol thresholds and square-root scaling verified for d = 1 through 8. Percolation-derived transport closes to the gravitational self-energy identities of the gravity manuscript, linking discrete generator restriction to the exterior integral already established there.
 
 ### Added
 
-- `docs/Findings/Analysis_hQVM_Percolation.md`: universality rule of ancestry preservation; spinorial state space; theorem, byte and word regimes, critical hierarchy, structural observables, gravity bridge, representation-study task constructions.
+- `docs/Findings/Analysis_hQVM_Percolation.md`: universality rule of ancestry preservation; spinorial state space; square-root theorem; byte and word regimes; Q6-class and micro-reference register protocols; critical hierarchy; structural observables; gravity bridge; Appendix A benchmark specification for representation studies.
+- `docs/Findings/Analysis_hQVM_Percolation_Note.md`: companion note with cross-disciplinary reading paths, document and repository map, observable-to-mechanism structure, composition-depth regimes, and Hilbert-lift connection.
 - `experiments/hqvm_percolation_analysis_1.py` through `_4.py`, `hqvm_percolation_analysis_run.py`, and `hqvm_percolation_analysis_results.txt`: byte-regime percolation, word-regime confinement, structural completeness, and deterministic verification gates.
+- `experiments/hqvm_percolation_analysis_5.py` and `hqvm_percolation_analysis_5_results.txt`: hQVM(d) finite-size scaling, exact GF(2) rank distributions, and asymptotic register-protocol thresholds.
+- `gyroscopic/hQVM/family.py`: parameterized hQVM(d) kernel for family scaling and exact rank machinery.
+
+### Results
+
+- Square-root cluster identity `|Reach_d(A)| = (2^r(A))^2` verified across d = 1 through 8 (52/52 gates).
+- Exact rank thresholds at d = 6: micro-reference p_c ≈ 0.0908, Q6-class p_c ≈ 0.1053.
+- Five coverage observables turn on at separable byte fractions on identical generator subsets.
+- Appendix A specifies four supervised task families (rank recovery, dynamics shuffle, threshold depth, anchor dependence) with census-exact labels.
 
 ---
 

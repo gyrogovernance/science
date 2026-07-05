@@ -1,10 +1,14 @@
 # Percolation in the Common Governance Model: The Universality Rule of Ancestry Preservation
 
-[Under Development - Not Final]
-
 **Citation:** Korompilias, B. (2025). Common Governance Model: Mathematical Physics Framework. Zenodo. https://doi.org/10.5281/zenodo.17521384
 
-**Reproducibility:** `experiments/hqvm_percolation_analysis_results.txt`. Scripts and protocol: Appendix B. Cross-references to `docs/Findings/Analysis_Gravity.md` denote the full findings manuscript (Sections 1 through 8 and Appendices A through H), not the shorter Gravity Note unless explicitly cited.
+**Reproducibility:** `experiments/hqvm_percolation_analysis_results.txt` and `experiments/hqvm_percolation_analysis_5_results.txt`. Scripts and protocol: Appendix B. Cross-references to `docs/Findings/Analysis_Gravity.md` denote the full findings manuscript (Sections 1 through 8 and Appendices A through H), not the shorter Gravity Note unless explicitly cited.
+
+**Subject classes (arXiv-style):** math-ph; cs.LG; cs.IT; math.PR; math.CO; cs.AI
+
+**Keywords:** Common Governance Model, generator-restricted percolation, GF(2) transport rank, finite transformation semigroups, exact enumeration benchmark, matroid rank, coding theory, mechanistic interpretability, representation learning ground truth, mathematical physics
+
+**Scope and intended reader.** This document assumes familiarity with finite algebra, coding theory, and percolation on random subgraphs, and treats the CGM axiomatic kernel as a first-class mathematical object rather than illustrative metaphor. The percolation census and square-root identities are verified by exhaustive enumeration on the fixed 4096-state kernel. Readers interested in benchmark design for mechanistic interpretability may begin with Section 1.8 and Appendix A. Audience, cross-references, and extended reading paths are collected in `docs/Findings/Analysis_hQVM_Percolation_Note.md`.
 
 ## Abstract
 
@@ -24,9 +28,9 @@ Here U and V are the two 64-element marginal factors of the product, H is the co
 |Reach(A)| = root(A)^2 = (2^r(A))^2
 ```
 
-In log2 coordinates this is the linear identity log2|Reach(A)| = 2 r(A), with slope 2 set by the product geometry. The identity holds at every transport rank under fiber-complete restriction and for the hQVM(d) kernel family, where chirality dimension d generalizes the physical instance d = 6 studied here. Five separable coverage thresholds turn on at distinct generator fractions p as inclusion depth increases, from full transport rank through uniform defect coverage to depth-four holonomy closure.
+In log2 coordinates this is the linear identity log2|Reach(A)| = 2 r(A), with slope 2 set by the product geometry. The identity holds at every transport rank under fiber-complete restriction and across the hQVM(d) kernel family, where chirality dimension d generalizes the physical instance d = 6 studied here. For one restriction protocol, generator inclusion by micro-reference payload, the full percolation event admits an exact closed-form probability distribution, derived from the coset structure of the byte's family gauge, and the resulting threshold converges to a finite constant as d grows. Five separable coverage thresholds turn on at distinct generator fractions p as inclusion depth increases, from full transport rank through uniform defect coverage to depth-four holonomy closure.
 
-The percolation census reports how plaquette normalization D(A), holonomy coverage micro_cov(p), and shell connectivity C(k) saturate to kernel limits at the complete alphabet and degrade under partial generator access. Principal limits are D = 24, tau_cycle/Delta = 7591/7392, and the full-alphabet inward connectivity profile C(k).
+The percolation census reports how plaquette normalization D(A), holonomy coverage micro_cov(p), and shell connectivity C(k) saturate to kernel limits at the complete alphabet and degrade under partial generator access. Principal limits are D = 24, tau_cycle/Delta = 7591/7392, and the full-alphabet inward connectivity profile C(k). Appendix A specifies supervised benchmark tasks on this verified generative structure for studies in representation learning and mechanistic interpretability.
 
 ## 1. Introduction
 
@@ -36,7 +40,7 @@ Percolation theory describes the emergence of large-scale connectivity in system
 
 The standard formulation assumes a pre-existing graph whose connectivity is otherwise undetermined, so randomness is the only tool available to discover its large-scale structure. Universality in this setting means that different microscopic models share the same macroscopic critical behavior near p_c because a small set of invariants controls connectivity at the scaling limit. Correlation length diverges, and critical exponents classify the approach to p_c on families of graphs whose size grows without bound.
 
-The present study operates on a fixed finite kernel with 4096 states. The reported values p_c are 50% onset points of monotone Boolean coverage events under independent byte inclusion, estimated by Monte Carlo with n = 150 through 300 samples (Appendix B). They are coupon-collector and matroid-rank thresholds on a fixed alphabet. The universality object of this document is a functional identity on cluster size at every transport rank, together with the restriction scalars pi_j(A), D(A), and Delta that track how open each transport channel remains as p varies.
+The present study operates on a fixed finite kernel with 4096 states. Byte-fraction and structural coverage thresholds are 50% onset points estimated by Monte Carlo with n = 150 through 300 samples (Appendix B). Register-protocol thresholds for Q6-class and micro-reference restriction are exact rank thresholds from closed-form GF(2) rank distributions. Binary matroid structure has appeared as an organizing principle for percolation through blocking clutters (McDiarmid, 1981). The hQVM kernel is a finite realization in which transport rank, cluster size, and coverage observables close exactly under fiber-complete restriction. The universality object of this document is a functional identity on cluster size at every transport rank, together with the restriction scalars pi_j(A), D(A), and Delta that track how open each transport channel remains as p varies.
 
 ### 1.2 Generator Restriction, Porosity, and the Functional Universality Identity
 
@@ -58,7 +62,20 @@ r(A) is the GF(2) transport rank of the allowed byte set A. The slope 2 is the e
 |Reach_d(A)| = (2^r(A))^2,    log2|Reach_d(A)| = 2 r(A)
 ```
 
-When each of the 2^d transport classes is included independently with probability p, full rank r = d is a sharp-threshold spanning event on GF(2)^d. The micro-reference sweep at d = 6 gives p_c(full) approximately 0.089. The hQVM(d) family is the algebraic generalization; thresholds at other d are not measured in this census.
+Two distinct restriction protocols act on the transport register GF(2)^d. Under Q6-class restriction, each of the 2^d transport values is included independently with probability p, and full rank is the direct spanning event on GF(2)^d. Under micro-reference restriction, each of the 2^d payloads is included independently with probability p; each included payload contributes two transport values through the family action (Section 2.5). The two protocols have distinct closed-form thresholds (Section 4.3.5). At d = 6, the exact rank thresholds are p_c approximately 0.1053 (Q6-class) and p_c approximately 0.0908 (micro-reference).
+
+| d | \|Omega_d\| | \|A_d\| |
+|---|-------------|---------|
+| 1 | 4 | 8 |
+| 2 | 16 | 16 |
+| 3 | 64 | 32 |
+| 4 | 256 | 64 |
+| 5 | 1024 | 128 |
+| 6 | 4096 | 256 |
+| 7 | 16384 | 512 |
+| 8 | 65536 | 1024 |
+
+The hQVM(d) family. d = 6 is the physical chirality dimension of the executable kernel; other values of d verify structural identities and carry exact register-protocol thresholds for d = 4 through 8 (Section 4.3.5).
 
 ### 1.3 The Square Root in Standard Percolation
 
@@ -101,9 +118,13 @@ The alphabet is the product K4 x GF(2)^6: four family phases over 64 transport c
 
 This study defines percolation on the generator semigroup of byte transition operators. The native percolation parameter is p, the independent inclusion probability of each byte in the allowed set A. Opening a byte includes its global transition on Omega. Closing a byte excludes that transition entirely.
 
+Random restriction here acts on generators for a finite transformation semigroup on Omega, and threshold phenomena are transitions in semigroup generation.
+
 The allowed set restricts generators of a permutation semigroup on Omega. In random generation of finite groups, a small random set of permutations often generates the full symmetric group (Dixon, 1969). The CGM byte set is structured by four family phases and 64 chirality transport classes. Reaching all 4096 states requires diversity across transport classes, and the precise condition is the rank condition r(A) = 6 on the transport register.
 
 Two percolation events are tracked throughout, namely horizon spanning and full reachability from rest. Horizon spanning requires a path from the rest anchor on one horizon to the opposite horizon, while full reachability requires the reachable set to equal all 4096 states.
+
+Generator restriction appears in two natural forms throughout this study. Restriction by transport value acts directly on the chirality register: each of the 2^d transport classes is included as a unit. Restriction by payload acts on micro-reference groups whose transport images are paired under the family action. Both forms are used below; the exact rank thresholds differ (Section 4.3.5).
 
 ### 1.7 The Universal Scaling Rule
 
@@ -132,7 +153,9 @@ The scaling rule has five consequences established in this study.
 
 **Coupon-collector scaling.** Grouped restriction protocols follow independent-group sampling baselines with distinct thresholds across family, Q6-class, and permutation-class protocols.
 
-**Hierarchy of coverage thresholds.** Orbit reachability, defect-spectrum completion, channel isotropy, two-step uniformization, and holonomy transport turn on at separable generator fractions p as each coverage criterion requires more included bytes or deeper word closure.
+**Exact thermodynamics under micro-reference restriction.** For the micro-reference protocol, every coverage rank has a closed-form probability, yielding an exact equation of state for the reachable fraction and its susceptibility, and an asymptotic threshold law as d grows.
+
+**Hierarchy of coverage thresholds.** Orbit reachability, defect-spectrum completion, channel isotropy, two-step uniformization, and holonomy transport turn on at separable generator fractions p as each coverage criterion requires more included bytes or deeper word closure (Section 5). The layered onsets provide a controllable hierarchy of coverage criteria on identical generator subsets, useful when testing which level of structure a probe or learned model encodes.
 
 **Kernel census saturation.** Plaquette normalization D(A) and holonomy transport reach census limits D = 24 and tau_cycle/Delta = 7591/7392 at the complete alphabet (Sections 5.4 and 6.6).
 
@@ -140,9 +163,15 @@ The scaling rule has five consequences established in this study.
 
 ### 1.8 A Verified Ground-Truth System for Representation Studies
 
-Beyond its role in the CGM programme, this system has a second use. Research on learned representations, in particular mechanistic interpretability, relies on synthetic datasets whose generative structure is known in full, so a probing method can be scored against enumerated ground truth. Percolation-structured data is one such family, but statistical percolation at criticality carries a difficulty, because the target structure is subtle, models can fit spurious correlates of it, and verifying which of the two a probe has detected is itself hard.
+Beyond its role in the CGM programme, this system supports supervised benchmark design for representation learning and mechanistic interpretability. Appendix A specifies the task families; the percolation census in the main text supplies the verified generative structure those tasks assume.
 
-This finite-state system offers a complementary testbed with three properties. First, every label is exact, because for any generator subset A the reachable set, its cardinality, the shell profile, and all event flags are computed by enumeration on 4096 states, so ground truth is proved by exhaustive census. Second, the system carries a hidden mechanistic variable with a closed-form rank relation under fiber-complete restriction. Third, the system has a built-in mechanism switch, since shuffling the byte-to-dynamics map preserves all label statistics while destroying word-regime confinement. Appendix A specifies benchmark tasks built from these properties. Execution of those benchmarks against trained models is outside the scope of this study.
+Research on learned representations relies on synthetic datasets whose generative structure is known in full, so a probing method can be scored against enumerated ground truth. Statistical percolation at criticality carries a familiar difficulty: the target structure is subtle, models can fit spurious correlates, and verifying which correlate a probe has detected is itself hard. This kernel avoids that ambiguity for its own labels because every reachable set, shell profile, and coverage flag is computed by enumeration on 4096 states.
+
+The testbed has four structural properties relevant to such evaluations. First, labels are exact by census, not by sampling. Second, the hidden mechanistic variable is GF(2) transport rank, with a closed-form map to cluster size under fiber-complete restriction, derived from the axiomatic kernel verified across tiered feature gates (`docs/Gyroscopic_Computational_Theory/hQVM_Features_Report.md`). Third, the latent computation follows a fixed chain: allowed bytes determine transport values, their span defines rank r(A), and |Reach(A)| = (2^r(A))^2. A model trained on membership vectors to predict cluster size could satisfy the labels by counting active generators or by reconstructing the span; Appendix A.1 separates those routes with size-controlled strata. Fourth, a built-in dynamics shuffle preserves marginal label statistics while replacing the label-to-dynamics map (Appendix A.2), giving a matched-pair control for mechanism-versus-correlate studies. Training models, running probes, and reporting interpretability outcomes remain outside the scope of this percolation study.
+
+Under fiber-incomplete restriction, identical cluster cardinalities can arise from different transport spans (Section 3.5), so cluster size alone does not determine the generating set. The fiber structure of Section 2.6 makes the point at the generator level: four bytes share one transport value and are indistinguishable from the chirality register alone, so transport measurement alone does not identify which generator acted. This many-to-one map from generators to observables corresponds to the structure interpretability research calls superposition, where one measured quantity is consistent with more than one underlying feature. The same code family also carries a verified Hilbert-space lift with graph-state factorization into Bell pairs and CHSH values at the Tsirelson bound (`docs/Gyroscopic_Computational_Theory/hQVM_Features_Report.md`, Formal Quantum Certification). Whether methods applied to models trained on Appendix A tasks recover transport rank or only squared cluster observables remains an open evaluation question.
+
+Transport rank is collective: no single byte carries it, and the parity obstruction in Section 3.4 gives large alphabets with matched local byte statistics but different global reachability. Byte operators and canonical words share the same 256 generators yet produce different reachability regimes at different composition depth (Section 4.1). Shell reflection s maps to 6 - s is global, while word-level confinement depends on the start anchor; Appendix A.4 states two hypotheses about how a trained model might represent that anchor dependence. These patterns are candidates for structural comparison with context-dependent behavior in learned systems; the appendix tasks specify how to test them.
 
 ## 2. Spinorial State Space and Generators
 
@@ -228,7 +257,7 @@ The CGM fiber-bundle structure of the byte provides multiple classification axes
 
 **K4 gate.** Classification by the Klein four-group element determined by the boundary bits. The four gates are id (identity), S (pole swap via family 01), C (pole swap via family 10), and F (Z2 carrier flip). Each gate class contains 64 bytes.
 
-**Q6 transport class** (6 payload bits, positions 1 through 6 of the intron). 64 classes of 4 bytes each, the four family variants of the same micro-reference. The Q6 weight is popcount(q6(b)), ranging from 0 to 6, with distribution {0:4, 1:24, 2:60, 3:80, 4:60, 5:24, 6:4}. The value q6(b) in GF(2)^6 is the chirality transport value. It is the per-byte increment applied to the chirality register under the transition.
+**Q6 transport class** (6 payload bits, positions 1 through 6 of the intron). The map from byte to q6(b) is 4-to-1, giving 64 classes of 4 bytes each. A class at value v comprises the id and F bytes at payload v together with the S and C bytes at payload v XOR epsilon_6, where epsilon_6 = 63 is the all-ones six-bit vector (Section 3.4, Table 1, weight-6 layer). The family boundary bits (Section 2.4) determine which of these two payloads a given byte's transport value points to. The Q6 weight is popcount(q6(b)), ranging from 0 to 6, with distribution {0:4, 1:24, 2:60, 3:80, 4:60, 5:24, 6:4}. The value q6(b) in GF(2)^6 is the chirality transport value. It is the per-byte increment applied to the chirality register under the transition.
 
 **Fold disagreement.** For each of four CGM phase pairs, compare forward and reverse readings of the palindromic byte. Fold disagreement counts how many pairs disagree. Distribution: {0:16, 1:64, 2:96, 3:64, 4:16}.
 
@@ -240,9 +269,11 @@ The CGM fiber-bundle structure of the byte provides multiple classification axes
 
 ### 2.6 Fiber-Complete Generator Restrictions
 
-Each byte b has a chirality transport value q6(b) in GF(2)^6. Four bytes, one in each family, share the same micro-reference and the same transport value. These four bytes form the **fiber** over that value.
+Each byte b has a chirality transport value q6(b) in GF(2)^6. Four bytes sharing one transport value q form the **fiber** over q. A micro-reference groups the four family variants at one payload m; because id and F carry q = m while S and C carry q = m XOR epsilon_6, a payload group spans two distinct transport values.
 
 A generator restriction A is **fiber-complete** when, for every transport value q represented in A, all four bytes with that value are included. This is percolation on the quotient by the four-fold family fiber over each transport class. Including the full fiber ensures that payload increments act symmetrically on the conjugate factors U and V. Fiber-complete restrictions produce clusters whose size equals the square of the reached factor cardinality. Fiber-incomplete restrictions break the product form.
+
+This is completeness at the level of a single transport value: for the value to be included fully, all four bytes carrying it must be present. A coarser completeness holds at the level of one payload: the four family variants of a single micro-reference (Section 2.7) are present together as a group. A payload group's four bytes carry two distinct transport values (Section 2.5). Payload-complete restriction yields the product-cluster structure of Theorem 3.1 through a rank relation adapted to this coarser completeness.
 
 A **micro-reference** is the six-bit payload index in the byte (intron bits 1 through 6) that selects one of 64 mask patterns. Word operators use label m for this index.
 
@@ -288,15 +319,15 @@ A single byte acts as a gyration, a half-cycle that inverts chirality without re
 
 ### 3.1 Statement
 
-The CGM spinorial transition rule induces an affine GF(2)^6 action on the chirality register (Steps 1 and 2 of the proof). The transport increment q6(b) is determined by the byte payload, and commutation of byte pairs collapses to equality of q6 values. This structure follows from the byte update rule. Fiber-completeness is percolation on the quotient by the four-fold family fiber over each transport value, so the same affine action applies on the conjugate factors U and V.
+The CGM spinorial transition rule induces an affine GF(2)^d action on the chirality register (Steps 1 and 2 of the proof). The transport increment q_d(b) is determined by the byte payload, and commutation of byte pairs collapses to equality of q_d values. This structure follows from the byte update rule. Fiber-completeness is percolation on the quotient by the four-fold family fiber over each transport value, so the same affine action applies on the conjugate factors U and V.
 
 Let A be a fiber-complete generator restriction. Define the **transport rank**:
 
 ```
-r(A) = rank_GF(2)( span{ q6(b) : b in A } )
+r(A) = rank_GF(2)( span{ q_d(b) : b in A } )
 ```
 
-where q6(b) is the 6-bit chirality transport value of byte b, and the span is taken in the vector space GF(2)^6 over all bytes in the allowed set A. Define the **root dimension**
+where q_d(b) is the d-bit chirality transport value of byte b, and the span is taken in the vector space GF(2)^d over all bytes in the allowed set A. Define the **root dimension**
 
 ```
 root(A) = 2^r(A)   for r(A) >= 1
@@ -315,27 +346,35 @@ root(A) is the cardinality of the surviving transport subspace on each marginal 
 
 The root of the cluster is root(A). The cluster is the holographic square of this root for r(A) at least 1. When root(A) = |H| = 64, equivalently r(A) = 6, the full root is recovered and |Reach| = |Omega| = 4096. When root(A) is smaller, ancestry is partially lost and the cluster shrinks as the square of the surviving root dimension.
 
+**Corollary (normalized coverage).** Under fiber-complete restriction, the coverage fraction
+
+```
+|Reach(A)| / |Omega_d| = (root(A) / |H_d|)^2 = (2^r(A) / 2^d)^2
+```
+
+for r(A) at least 1. Cluster geometry, transport rank, and expected coverage share one normalized object: the square of the root fraction on each conjugate face.
+
 ### 3.2 Proof
 
 The proof connects three ingredients, namely the per-byte transport rule on the chirality register, the product structure Omega = U x V, and breadth-first search reachability from rest.
 
-**Step 1. Chirality transport is an affine GF(2)^6 action.** The chirality register is chi(s) = pair-collapse(A12 XOR B12). Under a byte transition T_b, the active gyrophase is mutated by the mask mu(b) and the two gyrophases are complemented and swapped. The chirality transforms as:
+**Step 1. Chirality transport is an affine GF(2)^d action.** The chirality register is chi(s) = pair-collapse(A12 XOR B12). Under a byte transition T_b, the active gyrophase is mutated by the mask mu(b) and the two gyrophases are complemented and swapped. The chirality transforms as:
 
 ```
-chi(T_b(s)) = chi(s) XOR q6(b)
+chi(T_b(s)) = chi(s) XOR q_d(b)
 ```
 
-T_b is the global permutation induced by byte b on state s. The increment q6(b) is the six-bit transport value determined by the payload bits of b. The chirality register therefore evolves by XOR addition in GF(2)^6, independent of the family (gauge) bits.
+T_b is the global permutation induced by byte b on state s. The increment q_d(b) is the d-bit transport value determined by the payload bits of b. The chirality register therefore evolves by XOR addition in GF(2)^d, independent of the family (gauge) bits.
 
 **Step 2. The transport root is the affine span of the allowed values.** From the rest anchor, the reachable chirality values form the affine coset:
 
 ```
-chi(Reach(A)) = chi(rest) + Q(A),   Q(A) = span_GF(2){ q6(b) : b in A }
+chi(Reach(A)) = chi(rest) + Q(A),   Q(A) = span_GF(2){ q_d(b) : b in A }
 ```
 
-Q(A) is the linear transport subspace spanned by allowed q6 values. chi(rest) is the chirality at the rest anchor. The reachable chirality set is the affine coset chi(rest) + Q(A). It contains 2^r(A) values. The set of reachable chirality values is a coset of Q(A) and has the same cardinality 2^r(A).
+Q(A) is the linear transport subspace spanned by allowed q_d values. chi(rest) is the chirality at the rest anchor. The reachable chirality set is the affine coset chi(rest) + Q(A). It contains 2^r(A) values. The set of reachable chirality values is a coset of Q(A) and has the same cardinality 2^r(A).
 
-**Step 3. The product structure splits the root across the two factors.** The map s maps to (u(s), v(s)) is a bijection Omega to U x V. Each factor is a 64-element C64 coset. The chirality chi(s) is recovered from the pair (u(s), v(s)). A fiber-complete restriction includes, for every transport value q present in A, all four family bytes carrying q. The four family bytes act symmetrically on the two factors, because the family bits select the gauge variant of the same payload increment. Under fiber-completeness, the action of A on U and on V is the same affine action by Q(A).
+**Step 3. The product structure splits the root across the two factors.** The map s maps to (u(s), v(s)) is a bijection Omega to U x V. Each factor is a 2^d-element C64 coset. The chirality chi(s) is recovered from the pair (u(s), v(s)). A fiber-complete restriction includes, for every transport value q present in A, all four family bytes carrying q. The four family bytes act symmetrically on the two factors, because the family bits select the gauge variant of the same payload increment. Under fiber-completeness, the action of A on U and on V is the same affine action by Q(A).
 
 **Step 4. The reachable factors are affine subspaces of dimension r(A).** Within each factor, the reachable set is the affine subspace reached by applying the increments Q(A) to the rest coordinate. Its cardinality equals |Q(A)| = 2^r(A). Symmetry across factors gives |U_R| = |V_R| = 2^r(A), and the product structure is preserved:
 
@@ -355,6 +394,8 @@ U_R and V_R are the reached subsets of the marginal factors U and V under genera
 
 This completes the proof. The cluster is a perfect square because ancestry preservation forces a conjugate product structure and the root acts symmetrically on both factors under fiber-completeness.
 
+This derivation depends only on the affine transport rule and the product structure Omega = U x V, both of which hold for every chirality dimension d in the hQVM(d) family. The proof is unchanged under d, with GF(2)^6 replaced by GF(2)^d throughout.
+
 ### 3.3 The Root Dimension and the Holographic Square
 
 The theorem restates the holographic identity |Omega| = |H|^2 at every level of restriction. The full state space corresponds to r = 6, root = 64, cluster = 4096. Partial restriction lowers r and shrinks the cluster as the square of the surviving root:
@@ -370,6 +411,8 @@ The theorem restates the holographic identity |Omega| = |H|^2 at every level of 
 
 Every row in the structured case table matches the predicted cluster size from transport rank. The square-root column is the measure of preserved ancestry. The cluster shrinks as the square of the lost root dimension when r(A) decreases from 6.
 
+Across the hQVM(d) family for d = 1 through 8, 52 of 52 fiber-complete weight and cumulative layers match breadth-first reachability exactly.
+
 This is the functional universality identity in percolation form. Connectivity is controlled by the transport rank r(A) of the allowed generator set. Spanning, full coverage, and intermediate plateaus form one coverage hierarchy on the same restricted generator graph; rank sets cluster size at each plateau, and p_c marks the onset of each event.
 
 ### 3.4 Parity Obstruction
@@ -381,6 +424,8 @@ The even-weight transport subspace illustrates a rank-5 plateau. The set of byte
 Chirality popcount changes parity under an odd-weight increment and is preserved under an even-weight increment. From rest on shell 6, which has even popcount 6, only even shells remain reachable when every increment is even. Full coverage of all seven shells therefore requires at least one odd-weight transport value, which lifts the rank to 6 once the span is otherwise full.
 
 **Case r = 0.** When the allowed alphabet contains only bytes with q6 = 0, the transport span is {0} and r(A) = 0. The four weight-0 bytes (one per family) share a zero payload and differ only in gauge phase. Their gauge action on rest produces the 2-state swap doublet {(u, v), (v, u)}, both on shell 6, with |U_R| = |V_R| = 2 and rectangularity 0.5. The measured cluster is 2 (Table 1). The deterministic gate confirms this prediction.
+
+**Generalization across d.** The even-weight transport subspace has dimension d - 1 at every d, since parity is a fixed linear functional on GF(2)^d and its kernel is always a hyperplane. At even d, the even-weight restriction reaches exactly (2^(d-1))^2 states, matching Theorem 3.1 without correction, as at d = 6. At odd d, the same restriction reaches exactly twice this count. The distinction tracks the parity of d rather than any property specific to d = 6: epsilon_d, the all-ones transport vector, has weight d, so it lies inside the even-weight subspace when d is even and outside it when d is odd. Whether this placement is the direct cause of the factor of two, through a failure of the symmetric U/V action required in Step 3 of the proof of Theorem 3.1, is a natural next question; it has not been derived here and is stated as an open structural observation, verified for d = 1 through 8.
 
 ### 3.5 Fiber-Incompleteness
 
@@ -398,7 +443,7 @@ The bipartite structure is the discrete expression of ancestry preservation, in 
 
 ### 3.7 Computational Validation
 
-Deterministic verification gates are implemented in `experiments/hqvm_percolation_analysis_4.py`. The square-root cluster identity is checked on the structured case table of fiber-complete alphabets, which covers every Q6 weight layer, every cumulative Q6 layer, the even-weight subspace, and the family-complete alphabets. Each case reports the rank r(A), the BFS reachable set size from rest, and the PASS or FAIL flag against the predicted cluster size (root(A)^2 for r at least 1, |Reach| = 2 at r = 0). The 27 deterministic gates are summarized in Appendix B.2. The structured case table is the executable form of the theorem.
+Deterministic verification gates cover the structured case table at d = 6 (every Q6 weight layer, cumulative layer, even-weight subspace, and family-complete alphabet) and the hQVM(d) family for d = 1 through 8. Each case reports rank r(A), BFS reachable set size, and PASS or FAIL against the predicted cluster size. The structured case table is the executable form of the theorem.
 
 ## 4. The Two Operator Regimes: Roots and Squares
 
@@ -549,9 +594,95 @@ Constitutional spanning and full-Omega reachability are distinct algebraic event
 
 Here p is the probability of including each of the four families. Each family alone reaches full Omega. The full-Omega threshold is p_c approximately 0.15, matching the coupon-collector baseline p_null = 1 - 0.5^(1/4) approximately 0.159 for four independent groups.
 
-#### 4.3.5 Q6-Class and Micro-Reference Sweeps
+#### 4.3.5 The Two Register Protocols: Q6-Class and Micro-Reference
 
-The Q6-class sweep (64 groups of 4 bytes) yields p_c(full) approximately 0.112. The micro-reference sweep (64 groups, each bringing all four family variants) yields p_c(full) approximately 0.089. Micro-reference inclusion is more efficient because it activates the full K4 fiber per payload dial, preserving the symmetric action on both factors that the square-root theorem requires.
+**Q6-class restriction** includes each of the 2^d transport values independently with probability p, bringing all four bytes carrying that value at once. This is value-complete by construction (Section 2.6), so Theorem 3.1 applies directly: the rank of the included values is the rank of a random subset of GF(2)^d under independent Bernoulli(p) inclusion of its 2^d points. At d = 6, the exact rank threshold is p_c approximately 0.1053, with excess coordinate z = 2^d p - d equal to approximately 0.740 at onset.
+
+**Micro-reference restriction** includes each of the 2^d payloads independently with probability p, bringing the four family variants of that payload at once. Because the id and F families leave the transport value at the included payload m unchanged, while the S and C families shift it to m XOR epsilon_d (Section 2.5), a single included payload contributes two transport values, not one:
+
+```
+q_d(G(m)) = {m, m XOR epsilon_d},   epsilon_d = 2^d - 1
+```
+
+where G(m) denotes the four-byte micro-reference group at payload m. Every included payload therefore brings epsilon_d into the transport span for free.
+
+**The quotient reduction.** The map pi that sends m and m XOR epsilon_d to the same class is well defined because epsilon_d generates a subgroup of order two in GF(2)^d. The quotient GF(2)^d / {0, epsilon_d} is itself a GF(2) vector space, of dimension d - 1, since a quotient by a one-dimensional subspace loses exactly one dimension. It has 2^(d-1) classes, each the image of exactly one payload pair {m, m XOR epsilon_d}.
+
+Let M denote a set of included payloads, and let r(M) be the rank of the transport values generated by M, as in Theorem 3.1. Because every included payload brings epsilon_d into the span, r(M) decomposes as
+
+```
+r(M) = [1 if M is nonempty, else 0] + rank_{GF(2)^(d-1)}( pi(M) )
+```
+
+where pi(M) is the image of M under the quotient projection, and the second rank is computed inside the (d-1)-dimensional quotient space.
+
+**Bridge to reachability.** Combining this decomposition with Theorem 3.1 gives, for the micro-reference protocol:
+
+**Corollary (rank-reachability equivalence).** Under micro-reference restriction, the reachable set from rest equals all of Omega_d if and only if r(M) = d.
+
+**The percolation process.** Under independent payload inclusion with probability p, a quotient class {m, m XOR epsilon_d} is activated, meaning its image enters pi(M), exactly when at least one of its two constituent payloads is included. Since the two payloads of a class are disjoint and independently sampled, the activation probability per class is
+
+```
+p_pair = 1 - (1 - p)^2
+```
+
+and activations are independent across the 2^(d-1) classes, because different classes draw from disjoint payload pairs. The rank rank_{GF(2)^(d-1)}(pi(M)) is therefore the rank of a random subset of a (d-1)-dimensional GF(2) vector space, each of its points included independently with probability p_pair.
+
+**The scaling coordinate.** The expected number of activated classes at inclusion probability p_pair is 2^(d-1) p_pair. The natural excess coordinate, the expected number of activated classes above the (d-1) needed to span the quotient space, is
+
+```
+z_root = 2^(d-1) p_pair - (d - 1) = 2^(d-1) ( 1 - (1-p)^2 ) - (d - 1)
+```
+
+This plays the role for the micro-reference protocol that the plain excess z = 2^d p - d plays for the Q6-class protocol. The factor-of-two reduction in effective dimension is the algebraic signature of the payload pairing.
+
+**Exact rank distribution.** The probability that a random subset of an n-dimensional GF(2) vector space, each of its 2^n points included independently with probability q, has rank exactly k, is given in closed form by Mobius inversion on the lattice of GF(2) subspaces (Fulman and Goldstein, 2014; MacWilliams and Sloane, 1977):
+
+```
+P(rank = k) = [n choose k]_2 * sum_{j=0}^{k} mu(j,k) [k choose j]_2 (1-q)^(2^n - 2^j)
+```
+
+where [n choose k]_2 is the Gaussian binomial coefficient and mu(j,k) = (-1)^(k-j) 2^((k-j)(k-j-1)/2) is the Mobius function of that subspace lattice.
+
+Applying this with n = d - 1 and q = p_pair gives the exact distribution of the quotient rank, and through the decomposition above, the exact distribution of the full transport rank r(M), and through Theorem 3.1, the exact distribution of the reachable set size.
+
+**Exact equation of state.** Write theta(p, d) for the expected coverage fraction E[|Reach(M)|] / |Omega_d|. Since |Reach(M)| = (2^r(M))^2 for r(M) at least 1 and |Reach(M)| = 2 at r(M) = 0, theta is a finite sum over the exact rank distribution:
+
+```
+theta(p, d) = sum_{k=1}^{d} P(r(M) = k) (2^k)^2 / 2^(2d) + P(r(M) = 0) * 2 / 2^(2d)
+```
+
+Its derivative with respect to z_root,
+
+```
+chi(z_root, d) = d theta / d z_root
+```
+
+is the susceptibility of the coverage transition. Under micro-reference restriction, P(rank = k), theta(p, d), chi, and p_c(d) are exact functionals of the transport rank distribution.
+
+**Asymptotic threshold.** Let p_c(d) be the value of p at which P(r(M) = d) = 1/2, and let z_root,c(d) be z_root evaluated at p_c(d). This sequence converges as d grows:
+
+```
+z_root,c(d) = c_inf - a/d + o(1/d),   c_inf approximately 1.2665,   a approximately 1.1385
+```
+
+Equivalently, to leading order for large d,
+
+```
+p_c(d) approximately 1 - sqrt( 1 - (d - 1 + c_inf) / 2^(d-1) )
+```
+
+At d = 6 the exact threshold is p_c approximately 0.0908; the asymptotic formula evaluates to approximately 0.10 at that d, reflecting the 1/d finite-size correction visible through d = 16 in the scaling analysis (Appendix B).
+
+| d | p_c(rank), exact | z_root,c(d) |
+|---|------------------|-------------|
+| 4 | 0.2188 | 0.118 |
+| 5 | 0.1458 | 0.324 |
+| 6 | 0.0908 | 0.547 |
+| 7 | 0.0541 | 0.740 |
+| 8 | 0.0313 | 0.888 |
+
+The Q6-class threshold uses the same rank distribution with n = d and q = p, giving at d = 6 an exact p_c approximately 0.1053 with z = 2^d p - d equal to approximately 0.740 at onset. Under both protocols, P(full Omega) and P(rank = d) coincide for d at most 4 by exhaustive payload enumeration and for d at most 8 through the exact rank distribution.
 
 ### 4.4 Shell-Resolved Thresholds
 
@@ -718,7 +849,8 @@ Each observable imposes a stronger condition on the root than the previous one. 
 | E_span | byte fraction | ~0.022 | ~5.5 bytes |
 | E_full | byte fraction | ~0.029 | ~7.4 bytes |
 | E_full | family fraction | ~0.15 | ~0.6 families |
-| E_full | q6-class fraction | ~0.11 | ~7 classes |
+| E_full | q6-class fraction | ~0.105 | ~6.7 classes |
+| E_full | micro-ref fraction | ~0.091 | ~5.8 refs |
 | E_pair | word micro-ref fraction | ~0.103 | ~6.6 refs |
 | E_spectrum | byte fraction | ~0.054 | ~14 bytes |
 | Two-step cover (mean E[cover]) | byte fraction | ~0.7 | ~179 bytes |
@@ -811,6 +943,14 @@ The weak event E_hit_eq_word has p_c approximately 0.005 (E[#m] approximately 0.
 
 ### 5.5 Aperture Threshold Comparison
 
+The aperture Delta generalizes across the hQVM(d) family. The mean byte-level fold disagreement, normalized by the number of palindromic phase pairs (Section 2.5), equals 1/2 exactly at every d from 1 through 8. The corresponding depth-four aperture follows directly:
+
+```
+Delta(d) = 1/(8d)
+```
+
+so that 8d times Delta(d) equals 1 exactly at every d. At d = 6 this gives Delta(6) = 1/48 = 0.020833, close to but distinct from the continuum CGM aperture Delta = 0.020700 used in the comparison below; the two differ by about 6 * 10^-4, a resolution-scale distinction already discussed in the wavefunction analysis (Analysis_hQVM_Wavefunction.md, Sections 16.5 through 16.7) and not reopened here.
+
 CGM dimensionless constants were compared to empirically determined thresholds. The aperture gap Delta = 0.0207 is the residual informational aperture after depth-4 spinorial closure of byte-level fold disagreements (`docs/Findings/Analysis_hQVM_Wavefunction.md`, Sections 16.5 through 16.7). It equals 1 - rho to leading order, with rho the closure ratio, and matches the holonomic ratio delta_BU / m_a from `docs/Findings/Analysis_Monodromy.md`.
 
 | Constant | Value |
@@ -833,7 +973,7 @@ The weak threshold is closer to Delta (ratio approximately 1.04) than the strong
 
 The strong threshold is governed by the combinatorial requirement to include enough Q6 diversity to cover all seven shells, typically requiring at least one Q6 weight-6 byte or an equivalent combination of lower-weight bytes. Equivalently, E_full requires r(A) = 6 with odd-shell access.
 
-Family-fraction (p_c approximately 0.15) and Q6-class (p_c approximately 0.11) thresholds follow coupon-collector scaling for 4 and 64 groups. Delta and m_a are the closure limits of the same hierarchy: coupon-collector thresholds are the group-sampling expression of rank coverage at finite d, and Delta = 1/(8d) is the spinorial residual at depth-4 saturation.
+Family-fraction (p_c approximately 0.15) and register-protocol thresholds (Q6-class p_c approximately 0.105, micro-reference p_c approximately 0.091) follow coupon-collector and exact-rank scaling respectively. Delta and m_a are the closure limits of the same hierarchy: coupon-collector thresholds are the group-sampling expression of rank coverage at finite d, and Delta = 1/(8d) is the spinorial residual at depth-4 saturation.
 
 ### 5.6 Critical-Size Fold-Triple Restriction
 
@@ -882,7 +1022,7 @@ The square-root theorem predicts rect = 1 for fiber-complete restrictions. The s
 
 ### 6.3 Shell Enrichment and Mean Entanglement
 
-For reachable sets R from rest, shell enrichment E(k) is the ratio of the fraction of R in shell k to the Omega baseline C(6,k)/64. Mean S(chi) = popcount(chi) over R equals 3.0 (the Omega mean) for all tested p at least 0.1 with enrichment 1.0 in every shell. Once the giant component forms, the reachable set preserves the binomial shell distribution even when |R| is below 4096. Below the giant threshold, enrichment departs from unity while mean S remains near 3.0. The compression from 50% byte-level fold disagreement at level 0 to the 2.07% structural aperture Delta is the percolation signature of depth-4 spinorial averaging over the reachable set.
+For reachable sets R from rest, shell enrichment E(k) is the ratio of the fraction of R in shell k to the Omega baseline C(6,k)/64. Mean S(chi) = popcount(chi) over R equals 3.0 (the Omega mean) for all tested p at least 0.1 with enrichment 1.0 in every shell. This mean equals d/2 exactly at every d in the hQVM(d) family; the d = 6 value of 3.0 is the physical instance. Once the giant component forms, the reachable set preserves the binomial shell distribution even when |R| is below 4096. Below the giant threshold, enrichment departs from unity while mean S remains near 3.0. The compression from 50% byte-level fold disagreement at level 0 to the 2.07% structural aperture Delta is the percolation signature of depth-4 spinorial averaging over the reachable set.
 
 ### 6.4 Permutation-Class Percolation
 
@@ -1019,31 +1159,33 @@ The complement horizon is fully reached (64 states) for p at least 0.05, before 
 
 ## 7. Conclusions
 
-Generator-restricted percolation on the CGM 4096-state kernel is governed by a functional universality identity. Ancestry preservation forces a conjugate product structure, so every observable cluster is the square of a transport root on each face. Under fiber-complete restriction, for r(A) at least 1,
+Generator-restricted percolation on the CGM kernel closes algebraically on transport rank. Ancestry preservation forces a conjugate product structure, so under fiber-complete restriction cluster geometry, coverage fractions, and register-protocol thresholds are determined by the same transport object. For r(A) at least 1,
 
 ```
-log2|Reach(A)| = 2 r(A),    |Reach(A)| = (2^r(A))^2
+log2|Reach(A)| = 2 r(A),    |Reach(A)| = (2^r(A))^2,    |Reach(A)| / |Omega_d| = (2^r(A) / 2^d)^2
 ```
 
-|Reach(A)| is the reachable set cardinality from rest. r(A) is the GF(2) transport rank. At r(A) = 0, root(A) = 2 and |Reach(A)| = 2. The slope 2 is fixed by the product geometry Omega = U x V. Percolation measures how transport rank r(A) and the restriction scalars pi_j(A), D(A), and Delta vary with generator fraction p.
+At r(A) = 0, root(A) = 2 and |Reach(A)| = 2. The observable cluster is the square of its transport root throughout the hQVM(d) family.
 
-**Square-root state space.** The state space Omega is a holographic product U x V with |U| = |V| = 64. The square root is the coordinate form of observables on a product state space forced by ancestry preservation, so the cluster size is a perfect square at every transport rank.
+**Square-root state space.** Omega is a holographic product U x V with |U| = |V| = 64 at d = 6. The square root is the coordinate form of observables on a product state space forced by ancestry preservation.
 
-**The two regimes.** A single byte is a half-cycle, an unclosed root acting on the full product, while a four-byte canonical word composes two half-cycles into a closed invariant acting within the root. Bytes connect maximally because they operate on the full square, and words confine from horizon anchors because they operate on the root at shells 0 and 6.
+**The two regimes.** A single byte is a half-cycle acting on the full product; a four-byte canonical word composes two half-cycles into a closed invariant within the root at shells 0 and 6.
 
-**The hierarchy of root completion.** Five separable coverage observables turn on at distinct generator fractions p, from full transport rank through uniform defect coverage to depth-four holonomy closure. Bulk reachability at p_c(full) approximately 0.029 precedes spectrum completion at p_c approximately 0.054, channel saturation, two-step uniformization near p = 0.7, and holonomy transport governed by 1 - (1 - p^4)^64.
+**Two register protocols.** Restriction by transport value spans GF(2)^d directly. Restriction by payload reduces to a rank problem on a quotient of dimension d - 1, because the transport map pairs each payload with its complement under the all-ones vector epsilon_d. Both protocols obey Theorem 3.1; the micro-reference protocol admits closed-form rank thermodynamics (Section 4.3.5).
 
-**Counting and stabilizers.** The identity |H|^2 = |Omega| survives partial generator access above a byte fraction threshold. Horizon stabilizers vanish under random byte inclusion.
+**Root completion hierarchy.** Five coverage observables under byte-fraction restriction turn on at distinct p, from full transport rank through defect-spectrum completion, channel isotropy, two-step uniformization, and holonomy transport. Bulk reachability at p_c(full) approximately 0.029 precedes spectrum completion at p_c approximately 0.054 and holonomy transport governed by 1 - (1 - p^4)^64.
 
-**Geometry and aperture.** Boundary porosity and fold-curvature restriction place constitutional spanning near the aperture scale Delta.
+**Counting and stabilizers.** The identity |H|^2 = |Omega| survives partial generator access above a byte-fraction threshold. Horizon stabilizers vanish under random byte inclusion.
 
-**Kernel census saturation.** Plaquette normalization D(A) saturates at D = 24, holonomy transport at tau_cycle/Delta = 7591/7392, and inward connectivity C(k) reaches the full-alphabet profile at p = 1. Restriction percolation tracks how each functional degrades under partial generator access.
+**Geometry and aperture.** Constitutional spanning lies near the aperture scale Delta. Delta(d) = 1/(8d) across the hQVM(d) family.
 
-**Scaling.** Kernel invariants emerge as large-generator-set limits of restricted observables. Grouped restriction protocols follow coupon-collector scaling.
+**Kernel census saturation.** Plaquette normalization D(A) saturates at D = 24, holonomy transport at tau_cycle/Delta = 7591/7392, and inward connectivity C(k) reaches the full-alphabet profile at p = 1.
 
 ## Appendix A. Benchmark Specification for Mechanistic Interpretability
 
-This appendix specifies four supervised task families built on the percolation system for future studies that train models on data with known generative structure and test whether analysis tools recover that structure from model internals. Each task states the input encoding, the exact label function, the control that separates mechanism from correlate, and the failure mode the task is designed to expose. All labels are computed by enumeration. No label is statistical. Training models, running probes, and reporting interpretability outcomes are outside the scope of this percolation study.
+This appendix specifies four supervised task families built on the percolation system for future studies that train models on data with known generative structure and test whether analysis tools recover that structure from model internals. Each task states the input encoding, the exact label function, the control that separates mechanism from correlate, and the failure mode the task is designed to expose. All labels are computed by enumeration. No label is statistical.
+
+The tasks target readers who want ground-truth algebra independent of any trained model. They do not assume that linear probes, sparse autoencoders, causal tracing, or activation patching will recover transport rank or the true dynamics map; they supply exact labels and paired controls under which such recovery can be scored. Training models and reporting interpretability outcomes remain outside the scope of the percolation census in the main text.
 
 ### A.1 Task 1: Rank Recovery Under Size-Controlled Evaluation
 
@@ -1057,6 +1199,8 @@ This appendix specifies four supervised task families built on the percolation s
 
 **Difficulty dial.** The gap between the correlated and rank-restricted strata is continuous, because mixing fraction lambda of rank-restricted examples into training tunes how strongly the shortcut is penalized, from lambda = 0 (shortcut viable) to lambda large (rank computation forced).
 
+**Sparse feature alignment (open).** When sparse autoencoders or similar methods are applied to models trained on this task, the generative process defines exact candidates at several levels (individual generators, transport directions, span basis, rank). Which level, if any, appears in learned features is an evaluation question, not a property of the kernel.
+
 ### A.2 Task 2: Mechanism Versus Correlate via the Dynamics Shuffle
 
 **Input.** A set of micro-references M in {0,...,63} (64-bit membership vector), plus a start state, under one of two data-generating conditions.
@@ -1067,7 +1211,7 @@ This appendix specifies four supervised task families built on the percolation s
 
 **Label.** Reachability of a query state from the start state under the given micro-reference set.
 
-**What this isolates.** Marginal input statistics are identical between conditions by construction. Any representation difference between a model trained on T and a model trained on S is attributable to the label-to-dynamics map. This gives a matched-pair benchmark for whether an interpretability tool detects the generative mechanism, since the tool should report a two-cluster horizon structure (a union of 64-node matchings) for the T-model and a diffuse reachability structure for the S-model.
+**What this isolates.** Marginal input statistics are identical between conditions by construction. Any representation difference between a model trained on T and a model trained on S is attributable to the label-to-dynamics map. This gives a matched-pair benchmark for whether an interpretability tool detects the generative mechanism, since the tool should report a two-cluster horizon structure (a union of 64-node matchings) for the T-model and a diffuse reachability structure for the S-model. The same paired inputs support comparing probes, sparse autoencoders, or causal methods under matched statistics; whether those methods diverge between T and S is left to experiment.
 
 ### A.3 Task 3: Which Threshold Does a Probe See
 
@@ -1083,7 +1227,7 @@ This appendix specifies four supervised task families built on the percolation s
 
 **Label.** The shell profile of the word-reachable set. From horizon anchors this is {0, 6}. From a shell-k bulk anchor it is {k, 6-k}.
 
-**Purpose.** The correct internal model is a single global rule (shell s maps to 6 - s) that produces different observable confinement depending on the anchor. A model may instead memorize per-anchor lookup behavior. The two hypotheses agree on all training anchors and separate on held-out shells. An internals analysis should find one shared reflection circuit governing all shells.
+**Purpose.** The correct internal model is a single global rule (shell s maps to 6 - s) that produces different observable confinement depending on the anchor. A model may instead memorize per-anchor lookup behavior. The two hypotheses agree on all training anchors and separate on held-out shells. An internals analysis should find one shared reflection circuit governing all shells. Whether this pattern of anchor-dependent confinement offers a useful structural comparison for context-dependent behavior in trained systems is left for the benchmarks in this appendix to test.
 
 ### A.5 Scope
 
@@ -1091,9 +1235,9 @@ The four tasks above specify benchmarks for recovery of CGM generative structure
 
 ## Appendix B. Reproducibility and Supplementary Output
 
-Scripts in `experiments/`: `hqvm_percolation_analysis_1.py` (byte regime), `_2.py` (word regime), `_3.py` (structural observables), `_4.py` (theorem gates and kernel census). Runner `_run.py` executes parts 1 through 4. Combined stdout: `hqvm_percolation_analysis_results.txt`. Random seed 20260702. Monte Carlo n = 300 per sweep in parts 1 and 2 unless a table states otherwise, 150 through 200 in part 3. Part 4 is deterministic. Transition-table precompute dominates wall time (about 2 minutes per fresh process). Parts 1 through 3 add tens of minutes at n = 300 on a single Python 3.14 thread.
+Scripts in `experiments/`: `hqvm_percolation_analysis_1.py` through `_5.py` (byte, word, structural, theorem gates, and hQVM(d) family scaling). Runner `_run.py` executes parts 1 through 4. Combined stdout: `hqvm_percolation_analysis_results.txt` (parts 1 through 4) and `hqvm_percolation_analysis_5_results.txt` (family scaling and exact rank machinery). Random seed 20260702. Monte Carlo n = 300 per sweep in parts 1 and 2 unless a table states otherwise, 150 through 200 in part 3. Part 4 and the family gates are deterministic. Transition-table precompute dominates wall time (about 2 minutes per fresh process). Parts 1 through 3 add tens of minutes at n = 300 on a single Python 3.14 thread.
 
-The subsections below map supplementary tables in the results file to main-text content. Principal tables appear in the byte, word, and structural layers.
+The subsections below map supplementary tables in the results files to main-text content. Principal tables appear in the byte, word, and structural layers.
 
 ### B.1 Part 1 supplements
 
@@ -1102,9 +1246,11 @@ The subsections below map supplementary tables in the results file to main-text 
 | I.5, II.H | Family restrictions, horizon stabilizers |
 | III.B, VIII | Byte-fraction sweep tables, threshold comparisons |
 
-### B.2 Part 4 verification
+### B.2 Verification gates
 
-27 deterministic PASS gates: holographic identity, fiber-complete product cluster (structured case table, including r = 0 gauge doublet), parity obstruction, word confinement, criticality ordering (weak_threshold_ordering: span < full < spectrum < h1_wk < word_evt), holonomy scaling, plaquette census D = 24. The structured case table is the executable form of the Square-Root Cluster Theorem.
+27 deterministic PASS gates from part 4: holographic identity, fiber-complete product cluster (structured case table at d = 6, including r = 0 gauge doublet), parity obstruction, word confinement, criticality ordering (weak_threshold_ordering: span < full < spectrum < h1_wk < word_evt), holonomy scaling, plaquette census D = 24.
+
+Family and register-protocol gates from part 5: square-root identity across d = 1 through 8 (52 of 52 PASS); rank-reachability equivalence under micro-reference restriction (exhaustive for d up to 4); exact rank distribution (brute force through d = 4, pair-quotient at d = 5, algebraic through d = 8); asymptotic threshold constant c_inf approximately 1.2665 fitted at d = 28 and 32; Delta(d) = 1/(8d) and mean entanglement d/2 at every d from 1 through 8. Source: `gyroscopic/hQVM/family.py`.
 
 ### B.3 Part 3 supplements
 
@@ -1177,6 +1323,12 @@ Alon, N., Benjamini, I., and Stacey, A. (2004). Percolation on finite graphs and
 Broadbent, S. R., and Hammersley, J. M. (1957). Percolation processes I. Crystals and mazes. *Mathematical Proceedings of the Cambridge Philosophical Society*, 53(3), 629-641.
 
 Dixon, J. D. (1969). The probability of generating the symmetric and alternating groups. *American Mathematical Monthly*, 76(6), 689-691.
+
+Fulman, J., and Goldstein, L. (2014). Stein's method and the rank distribution of random matrices over finite fields. *Annals of Probability*, 42(3), 975-1001.
+
+MacWilliams, F. J., and Sloane, N. J. A. (1977). *The Theory of Error-Correcting Codes*. North-Holland.
+
+McDiarmid, C. (1981). General percolation and random graphs. *Advances in Applied Probability*, 13(1), 40-60.
 
 Regge, T. (1961). General relativity without coordinates. *Il Nuovo Cimento*, 19(3), 558-571.
 
