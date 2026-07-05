@@ -4,7 +4,20 @@ All notable changes to the CGM Experimental Framework will be documented in this
 
 ---
 
-## [1.3.6-hQVM_Compact-Geometry] - 2026-07-02
+## [1.3.7-hQVM_Percolation] - 2026-07-02 to 2026-07-04
+
+Ancestry preservation is not an abstract axiom alone. On the hQVM kernel it fixes the shape of connectivity. The 4096-state reachable set Omega is a holographic product of two 64-element constitutional horizons, and restricting the 256 byte generators severs access to that root in a controlled way. The reachable cluster from rest then shrinks as the square of the surviving transport dimension, not as a generic bond-percolation cluster built from scalar nodes.
+
+This release delivers a percolation programme on that architecture. The Square-Root Cluster Theorem states the rule under fiber-complete restriction. Byte operators act as unclosed spinorial half-cycles on the full product and connect maximally; canonical word operators compose depth-four closure and confine reachability to the 128 horizon states from rest. Five separable percolation thresholds turn on at distinct generator fractions on a single restriction dial, each a stronger recovery of the same root. Every label is exact because reachability, shell support, and event flags are computed by exhaustive census on 4096 states. Percolation-derived transport closes to the gravitational self-energy identities of the gravity manuscript, linking discrete generator restriction to the exterior integral already established there.
+
+### Added
+
+- `docs/Findings/Analysis_hQVM_Percolation.md`: universality rule of ancestry preservation; spinorial state space; theorem, byte and word regimes, critical hierarchy, structural observables, gravity bridge, representation-study task constructions.
+- `experiments/hqvm_percolation_analysis_1.py` through `_4.py`, `hqvm_percolation_analysis_run.py`, and `hqvm_percolation_analysis_results.txt`: byte-regime percolation, word-regime confinement, structural completeness, and deterministic verification gates.
+
+---
+
+## [1.3.6-hQVM_Compact-Geometry] - 2026-07-01
 
 Compact geometry completes the electroweak mass program on the hQVM kernel: four pole masses (top, Higgs, Z, W) are expressed as spectral coordinates on the aperture gap ruler Δ ≈ 0.0207, with coefficients fixed by the 4096-state register algebra rather than fitted to data.
 

@@ -38,7 +38,7 @@ The Common Governance Model (CGM) is an axiomatic framework for fundamental phys
 
 ### Gyroscopic ASI Holonomic Quantum Virtual Machine (hQVM)
 
-The hQVM is the executable form of the framework: a **Holonomic Quantum Virtual Machine** instantiated as a reversible GF(2) finite-state machine on standard silicon. It is a replayable algebraic machine that runs the CGM axioms as integer arithmetic, producing the same trajectories on every run and on any computer. Computation proceeds via geometric phases (monodromies) of closed SE(3) spinorial loops. These are the same holonomic structures that the quantum computing literature recognizes as a universal computational model (Zanardi and Rasetti 1999; Pachos et al. 2000). The same machine is used both as a research tool and as an alignment kernel for AI systems. In this repository it serves as the reference implementation against which the physical predictions are checked: gravity, electroweak masses, wavefunction structure, and related analyses are computed directly on it (22 `hqvm_*.py` scripts in `experiments/`).
+The hQVM is the executable form of the framework: a **Holonomic Quantum Virtual Machine** instantiated as a reversible GF(2) finite-state machine on standard silicon. It is a replayable algebraic machine that runs the CGM axioms as integer arithmetic, producing the same trajectories on every run and on any computer. Computation proceeds via geometric phases (monodromies) of closed SE(3) spinorial loops. These are the same holonomic structures that the quantum computing literature recognizes as a universal computational model (Zanardi and Rasetti 1999; Pachos et al. 2000). The same machine is used both as a research tool and as an alignment kernel for AI systems. In this repository it serves as the reference implementation against which the physical predictions are checked: gravity, electroweak masses, wavefunction structure, generator-restricted percolation, and related analyses are computed directly on it (22 `hqvm_*.py` scripts in `experiments/`).
 
 Canonical repository: [superintelligence](https://github.com/gyrogovernance/superintelligence). Vendored implementation: [`gyroscopic/hQVM/`](gyroscopic/hQVM/). Specifications and test reports are listed in the documentation section below.
 
@@ -83,13 +83,21 @@ Each major result in the table below maps to one analysis note and its verificat
 
 ## Documentation and verification
 
-Core writing: [CGM Core](docs/CGM_Paper.md), [CGM Program](docs/CGM_Program.md), [CHANGELOG](CHANGELOG.md).
-Dataset: [CGM corpus](docs/datasets/) (1,000+ JSONL Q&A pairs for fine-tuning and RAG).
+| Category | Document | Description |
+|----------|----------|-------------|
+| **Framework** | [CGM Core](docs/CGM_Paper.md) | Axiomatic paper: modal logic, gyrogroup geometry, dimensional emergence, and physical structure |
+| | [CGM Program](docs/CGM_Program.md) | Research programme guide: foundations, derivation map, and links across the corpus |
+| | [CHANGELOG](CHANGELOG.md) | Release history and version notes |
+| **hQVM manuscript** | [Analysis_Gravity](docs/Findings/Analysis_Gravity.md) | Gravitational theory on the kernel: nonlinear coupling, exterior closure, self-energy identities |
+| | [Analysis_hQVM_Wavefunction](docs/Findings/Analysis_hQVM_Wavefunction.md) | Fiber bundle structure of the byte; canonical word theorems and kernel invariants |
+| | [Analysis_hQVM_Percolation](docs/Findings/Analysis_hQVM_Percolation.md) | Generator-restricted percolation on Omega; Square-Root Cluster Theorem; hierarchy of critical thresholds |
+| **Dataset** | [CGM corpus](docs/datasets/) | 1,000+ JSONL Q&A pairs for fine-tuning and RAG |
 
 | Topic | Analysis | Code |
 |-------|----------|------|
 | Gravity, Virial condition, and nonlinear continuum | [Analysis_Gravity - Note](docs/Findings/Analysis_Gravity_Note.md) [Analysis_Gravity - Full](docs/Findings/Analysis_Gravity.md) | [hqvm_gravity_common.py](experiments/hqvm_gravity_common.py), `hqvm_gravity_analysis_1.py` through `10.py`, [wavefunction scripts](experiments/hqvm_wavefunction_1.py). Run: `python experiments/hqvm_gravity_runner.py` |
 | Wavefunction: fiber bundle structure of the byte | [Analysis_hQVM_Wavefunction](docs/Findings/Analysis_hQVM_Wavefunction.md) | [hqvm_wavefunction_kernel.py](experiments/hqvm_wavefunction_kernel.py) |
+| Generator-restricted percolation; square-root cluster theorem | [Analysis_hQVM_Percolation](docs/Findings/Analysis_hQVM_Percolation.md) | [hqvm_percolation_analysis_run.py](experiments/hqvm_percolation_analysis_run.py) (`_1.py` through `_4.py`; results in [hqvm_percolation_analysis_results.txt](experiments/hqvm_percolation_analysis_results.txt)) |
 | Electroweak mass spectrum | [Analysis_Compact_Geometry](docs/Findings/Analysis_Compact_Geometry.md) | [hqvm_compact_geom_core.py](experiments/hqvm_compact_geom_core.py), [kernel](experiments/hqvm_compact_geom_kernel.py), [report](experiments/hqvm_compact_geom_report.py), [derivations](experiments/hqvm_compact_geom_derivations.py) |
 | Fine-structure constant | [Analysis_Fine_Structure](docs/Findings/Analysis_Fine_Structure.md) | [cgm_alpha_analysis.py](experiments/cgm_alpha_analysis.py) |
 | Quantum gravity invariant | [Analysis_Quantum_Gravity](docs/Findings/Analysis_Quantum_Gravity.md) | [cgm_quantum_gravity_analysis.py](experiments/cgm_quantum_gravity_analysis.py) |

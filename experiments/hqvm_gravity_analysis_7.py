@@ -675,7 +675,7 @@ def section_G():
     print("DEPTH-DEPENDENT CONVERSION (kappa_CGM):")
     print(f"  {'Depth':>25s} {'psi':>10s} {'n':>10s} "
           f"{'k_CGM*T(m/s)':>14s} {'k_CGM*T/c':>10s}")
-    print("-" * 72)
+    print("-" * 5)
     for name, psi in [("Far field", 0.0), ("Sun surface", 2.12e-6),
                        ("WD surface", 3e-4), ("NS surface", 0.15),
                        ("Photon sphere", psi_ph), ("Near horizon", 0.49),
