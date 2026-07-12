@@ -227,10 +227,6 @@ def channel_c_from_shell_projection(label: str) -> float:
         c -= CODE_C3 / 2.0
     return c
 
-def k4_channel_flags(label: str) -> tuple[bool, bool, bool]:
-    """K4 edge walk flags (base, rot, bal) for channel label."""
-    return derive_k4_flags_from_element(k4_element_for_channel(label))
-
 def _pq_from_flags(base: bool, rot: bool, bal: bool) -> tuple[float, float]:
     """
     Gyrotriangle closure (delta=0) on the K4 edge walk.
@@ -705,16 +701,16 @@ def electroweak_assignment_uniqueness_audit(
     declared_err: float | None = None
 
     for f_top in range(8):
-        a_t, r_t, b_t = ((f_top >> 2) & 1, (f_top >> 1) & 1, f_top & 1)
+        a_t, r_t, b_t = (bool((f_top >> 2) & 1), bool((f_top >> 1) & 1), bool(f_top & 1))
         p_t, q_t, r5_t = _pq_from_flags(a_t, r_t, b_t)[0], _pq_from_flags(a_t, r_t, b_t)[1], _r5_from_flags(a_t, r_t, b_t)
         for f_h in range(8):
-            a_h, r_h, b_h = ((f_h >> 2) & 1, (f_h >> 1) & 1, f_h & 1)
+            a_h, r_h, b_h = (bool((f_h >> 2) & 1), bool((f_h >> 1) & 1), bool(f_h & 1))
             p_h, q_h, r5_h = _pq_from_flags(a_h, r_h, b_h)[0], _pq_from_flags(a_h, r_h, b_h)[1], _r5_from_flags(a_h, r_h, b_h)
             for f_z in range(8):
-                a_z, r_z, b_z = ((f_z >> 2) & 1, (f_z >> 1) & 1, f_z & 1)
+                a_z, r_z, b_z = (bool((f_z >> 2) & 1), bool((f_z >> 1) & 1), bool(f_z & 1))
                 p_z, q_z, r5_z = _pq_from_flags(a_z, r_z, b_z)[0], _pq_from_flags(a_z, r_z, b_z)[1], _r5_from_flags(a_z, r_z, b_z)
                 for f_w in range(8):
-                    a_w, r_w, b_w = ((f_w >> 2) & 1, (f_w >> 1) & 1, f_w & 1)
+                    a_w, r_w, b_w = (bool((f_w >> 2) & 1), bool((f_w >> 1) & 1), bool(f_w & 1))
                     p_w, q_w, r5_w = _pq_from_flags(a_w, r_w, b_w)[0], _pq_from_flags(a_w, r_w, b_w)[1], _r5_from_flags(a_w, r_w, b_w)
                     p_sum = p_t + p_h + p_z + p_w
                     q_sum = q_t + q_h + q_z + q_w

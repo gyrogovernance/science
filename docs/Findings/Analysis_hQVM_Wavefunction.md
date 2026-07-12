@@ -111,8 +111,8 @@ On the Omega12 chart, the four K4 elements have signatures:
 | Operator | Parity | tau_u6 | tau_v6 | K4 gate |
 |----------|--------|--------|--------|---------|
 | id | 0 | 0 | 0 | identity |
-| W2 | 0 | 62 | 1 | pole swap (comp -> eq) |
-| W2' | 0 | 1 | 62 | pole swap (comp -> eq) |
+| W2 | 0 | 63 | 0 | pole swap (comp -> eq) |
+| W2' | 0 | 0 | 63 | pole swap (comp -> eq) |
 | F | 0 | 63 | 63 | Z2 carrier flip |
 
 The signatures are micro_ref-dependent for W2 and W2' (tau values shift), but the K4 structure is universal.
@@ -128,20 +128,20 @@ The signatures are micro_ref-dependent for W2 and W2' (tau values shift), but th
 **Algebraic proof:** In Omega12 coordinates, W2 acts as:
 
 ```
-(u, v) -> (v XOR m XOR 63, u XOR m)
+(u, v) -> (u XOR m XOR 63, v XOR m)
 ```
 
 Therefore:
 
 ```
-chi' = u' XOR v' = (v XOR m XOR 63) XOR (u XOR m) = (u XOR v) XOR 63 = chi XOR 63
+chi' = u' XOR v' = (u XOR m XOR 63) XOR (v XOR m) = (u XOR v) XOR 63 = chi XOR 63
 ```
 
 Since popcount(chi XOR 63) = 6 - popcount(chi), we have shell' = 6 - shell.
 
 **Theorem T3.** W2' maps shell s to 6 - s identically.
 
-The algebraic proof is symmetric: W2' acts as (u, v) -> (v XOR m, u XOR m XOR 63), giving the same chi' = chi XOR 63.
+The algebraic proof is symmetric: W2' acts as (u, v) -> (u XOR m, v XOR m XOR 63), giving the same chi' = chi XOR 63.
 
 **Consequence:** Both W2 and W2' map the complement horizon (shell 0) to the equality horizon (shell 6), and vice versa. The two constitutional poles are linked by the depth-4 operation.
 
@@ -180,7 +180,7 @@ The carrier trajectory through the decomposition:
 | Stage | Operator | Carrier position | Constitutional |
 |-------|----------|-----------------|----------------|
 | Start | - | (0, 63) | Complement horizon, rest |
-| After W2 | depth 4 | (62, 62) | Equality horizon |
+| After W2 | depth 4 | (63, 63) | Equality horizon |
 | After W2' | depth 8 | (63, 0) | Complement horizon, swapped |
 
 No new modal depth is introduced at depth 8. The second depth-4 operation (W2') composes with the first via the K4 algebra, producing the Z2 carrier flip.
@@ -224,15 +224,15 @@ The CGM BU-Ingress condition `S -> (Box B -> (CS AND UNA AND ONA))` requires the
 
 - **W2 pairs** 64 complement-horizon states with 64 equality-horizon states (and 3968 bulk states with bulk states in antipodal shells)
 - **Each pairing is invertible:** W2(W2(s)) = s for all s in Omega
-- **The shadow encodes the origin:** For rest, W2(rest) = (62, 62) on the equality horizon. This equality-horizon state carries the structural information that the origin was on the complement horizon at shell 0.
+- **The shadow encodes the origin:** For rest, W2(rest) = (63, 63) on the equality horizon. This equality-horizon state carries the structural information that the origin was on the complement horizon at shell 0.
 
 The representative shadow pairs illustrate the structure:
 
 | Complement horizon | Equality horizon shadow |
 |-------------------|----------------------|
 | (63, 0) chi=111111 swapped | (1, 1) chi=000000 |
-| (62, 1) chi=111111 | (0, 0) chi=000000 |
-| (0, 63) chi=111111 rest | (62, 62) chi=000000 |
+| (62, 1) chi=111111 | (1, 1) chi=000000 |
+| (0, 63) chi=111111 rest | (63, 63) chi=000000 |
 
 Each complement-horizon state (shell 0, maximal chirality) is paired with an equality-horizon state (shell 6, zero chirality). The shadow is the "memory" of the original: it is the unique state that, when W2 is applied again, reconstructs the original.
 
@@ -448,8 +448,8 @@ The K4 correction factor is the spectral signature of the Z2 holonomy structure.
 
 | Operator | Signature | Chirality map | dim(+1) | dim(-1) | rest -> | q |
 |----------|-----------|---------------|---------|---------|--------|---|
-| W2 | (62, 1) | s -> 6-s | 2048 | 2048 | equality | 63 |
-| W2' | (1, 62) | s -> 6-s | 2048 | 2048 | equality | 63 |
+| W2 | (63, 0) | s -> 6-s | 2048 | 2048 | equality | 63 |
+| W2' | (0, 63) | s -> 6-s | 2048 | 2048 | equality | 63 |
 | F | (63, 63) | s -> s | 2048 | 2048 | swapped | 0 |
 | id | (0, 0) | s -> s | 4096 | 0 | rest | 0 |
 
