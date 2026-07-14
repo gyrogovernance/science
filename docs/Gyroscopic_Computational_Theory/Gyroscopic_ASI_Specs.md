@@ -6,7 +6,7 @@ This document is the normative technical specification of the Gyroscopic ASI hQV
 
 Normative terms MUST, MUST NOT, SHOULD, SHOULD NOT, and MAY are interpreted as requirement keywords for conformance.
 
-Related specifications: [SDK](specs/hQVM_SDK_Quantum_Computing.md), [QuBEC Theory](specs/hQVM_QuBEC_Theory.md), [Runtime](specs/Gyroscopic_ASI_Runtime_Specs.md). Verification inventory: [hQVM Features Report](reports/hQVM_Features_Report.md).
+Related specifications: [SDK](Gyroscopic_ASI_SDK_Quantum_Computing.md), [QuBEC Theory](QuBEC_Theory.md), [Runtime](Gyroscopic_ASI_Runtime_Specs.md). Verification inventory: [hQVM Features Report](hQVM_Features_Report.md).
 
 ---
 
@@ -714,7 +714,7 @@ Edges are ordered as the six undirected pairs:
 
 All ledgers `y ∈ ℝ^6` and all GovernanceEvents must use this canonical ordering.
 
-This K4 topology is not an external overlay chosen for convenience. It emerges intrinsically from the kernel's depth-4 fiber structure: for fixed mask payloads, the 4^4 family-phase combinations collapse to exactly 4 distinct output states indexed by (Z/2)^2, which is the K4 vertex set. The governance measurement layer inherits the same geometry that the kernel dynamics produces. The four holonomic gates {id, S, C, F} and their horizon action are specified in [QuBEC Theory](specs/hQVM_QuBEC_Theory.md) Part II §10.
+This K4 topology is not an external overlay chosen for convenience. It emerges intrinsically from the kernel's depth-4 fiber structure: for fixed mask payloads, the 4^4 family-phase combinations collapse to exactly 4 distinct output states indexed by (Z/2)^2, which is the K4 vertex set. The governance measurement layer inherits the same geometry that the kernel dynamics produces. The four holonomic gates {id, S, C, F} and their horizon action are specified in [QuBEC Theory](QuBEC_Theory.md) Part II §10.
 
 ## 4.7 Hodge Decomposition on K₄
 
@@ -1209,7 +1209,7 @@ Implementations MAY include a deterministic safeguard for near-zero gradient cas
 
 # Appendix F. CGM Byte Formalism
 
-The complete CGM Byte Formalism is specified in `docs/specs/hQVM_Specs_Formalism.md`.
+The complete CGM Byte Formalism is specified in [Gyroscopic_ASI_Specs_Formalism.md](Gyroscopic_ASI_Specs_Formalism.md).
 
 ---
 
