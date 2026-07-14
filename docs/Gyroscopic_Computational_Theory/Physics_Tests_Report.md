@@ -266,7 +266,7 @@ The reachable state space Omega has:
 
 The cardinality |Omega| = 4,096 = 2^12 reflects the 6 dipole pairs per component: each component A12 and B12 ranges over a 64-element coset (2^6) of the mask code C64, and Omega is their Cartesian product 64 x 64.
 
-### 5.2 The Holographic Identity
+### 5.2 The Holographic Ratio
 
 The critical observation is:
 
@@ -552,7 +552,7 @@ UNA: 64   reachable states   = 2^(2*3)   = 2^6
 ONA: 4096 reachable states   = 2^(2*6)   = 2^12
 ```
 
-### 10.2 The Doubling Theorem
+### 10.2 The Doubling Law
 
 The continuous CGM theory gives degrees of freedom:
 - CS: 1 DOF (chirality)
@@ -569,7 +569,7 @@ This is the exact discrete-to-continuous correspondence rule. The test confirms 
 
 ---
 
-## Part 11: Depth-4 Fiber Bundle and Emergent K4 Geometry (test_physics_6)
+## Part 11: Depth-4 Fiber Bundle and Intrinsic K4 Geometry (test_physics_6)
 
 This section establishes that the tetrahedral (K4) geometry used in the governance measurement layer is not an external overlay but emerges intrinsically from the depth-4 structure of the kernel. The K4 vertex set is the fiber of the depth-4 frame bundle, the K4 edges are commutator defects, and the K4 partition of the horizon induces a uniform covering of the full state space. The sixth physics test file verifies the emergence of this structure along with additional information-theoretic and representation-theoretic constraints.
 
@@ -581,11 +581,11 @@ projection48 = (mask(b0), mask(b1), mask(b2), mask(b3))
 
 is gauge-blind with respect to family selection. For fixed micro-references at the four positions, varying the 4^4 family assignments produces exactly 4 distinct output states from the rest state.
 
-These four outcomes are indexed by the two surviving family-phase invariants (phi_a, phi_b) in (Z/2)^2. The fiber therefore has cardinality 4 and provides an emergent four-vertex quotient attached to each fixed depth-4 base.
+These four outcomes are indexed by the two surviving family-phase invariants (phi_a, phi_b) in (Z/2)^2. The fiber therefore has cardinality 4 and provides an intrinsic four-vertex quotient attached to each fixed depth-4 base.
 
 This identifies a canonical K4 object at depth 4: the K4 vertex set is the fiber (Z/2)^2 that survives family-phase cancellation.
 
-### 11.2 Fiber Composition Rule on Net Displacements
+### 11.2 Fiber Composition Law on Net Displacements
 
 Let W be a depth-4 frame word and let disp(W) denote the net displacement from the rest state in 24-bit space. The displacement composition rule is additive under XOR: disp(W1 then W2) = disp(W1) XOR disp(W2). This is the (Z/2)^2 group law acting on displacements, not on states directly.
 
@@ -661,7 +661,7 @@ These checks establish standard bipartite entropy behavior under the code lift.
 
 ## Summary: What the Tests Establish
 
-The physics tests collectively establish the following properties of the Gyroscopic ASI hQVM Kernel:
+The physics tests collectively establish the following properties of the Gyroscopic ASI hQVM Kernel kernel:
 
 **Conformance** (test_physics_1): The implementation correctly realizes all specification requirements including state packing, transcription, intron decomposition, mask expansion, spinorial transition, inverse, shadow count, and depth-4 alternation.
 
@@ -671,7 +671,7 @@ The physics tests collectively establish the following properties of the Gyrosco
 
 **Spinorial universe** (test_physics_4): Omega has 4096 states, radius 2, 64 horizon states, and satisfies the holographic identity 64^2 = 4096. The reference byte has 64 fixed points and 2016 two-cycles on Omega. Every non-reference byte has order 4 on Omega. Commutator defects live in C64.
 
-**Depth-4 fiber bundle and emergent K4** (test_physics_6): For fixed depth-4 payload geometry, family-phase gauge freedom collapses to a 4-element fiber indexed by (phi_a, phi_b) in (Z/2)^2. Horizon states partition into four 16-element cosets, and the induced boundary wedges form a uniform 2-fold cover of Omega. Additional exact multiplicity laws are verified (4 horizon stabilizers, 4-to-1 q-map, uniform 16-to-1 length-2 provenance).
+**Depth-4 fiber bundle and holonomic K4** (test_physics_6): For fixed depth-4 payload geometry, family-phase gauge freedom collapses to a 4-element fiber indexed by (phi_a, phi_b) in (Z/2)^2. Horizon states partition into four 16-element cosets, and the induced boundary wedges form a uniform 2-fold cover of Omega. Additional exact multiplicity identities are verified (4 horizon stabilizers, 4-to-1 q-map, uniform 16-to-1 length-2 provenance).
 
 **Theory bridge** (test_physics_5): The kernel constants satisfy all CGM continuous invariants including Q_G * m_a^2 = 1/2, the fine-structure constant prediction to 0.04%, the K_QG identity, the stage action ratios, and the aperture quantization chain (5/256, 1/48, 8/256 turn). The DOF doubling theorem 2^(2*DOF) connects continuous degrees of freedom to discrete state counts. The product structure Omega = U x V implements optical conjugacy with constant density 0.5 at every state.
 

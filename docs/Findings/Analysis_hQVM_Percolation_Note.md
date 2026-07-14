@@ -1,4 +1,6 @@
-# Generator-Restricted Percolation on the hQVM Kernel: Companion Note
+# Analysis: hQVM Percolation Note
+
+## Generator-Restricted Percolation on the hQVM Kernel: Companion Note
 
 **Basil Korompilias**
 
@@ -44,9 +46,9 @@ The labels physics-informed, physics-guided, and physics-constrained in current 
 
 | Document | Role |
 |----------|------|
-| [`hQVM_Features_Report.md`](../Gyroscopic_Computational_Theory/hQVM_Features_Report.md) | Inventory of verified quantum and physics features; CHSH-Tsirelson certificates; script map |
-| [`QuBEC_Theory.md`](../Gyroscopic_Computational_Theory/QuBEC_Theory.md) | QuBEC formalism and thermodynamic structure |
-| [`Gyroscopic_ASI_Specs.md`](../Gyroscopic_Computational_Theory/Gyroscopic_ASI_Specs.md) | Normative hQVM and SDK specification |
+| [`hQVM_Features_Report.md`](../reports/hQVM_Features_Report.md) | Inventory of verified quantum and physics features; CHSH-Tsirelson certificates; script map |
+| [`QuBEC_Theory.md`](../specs/hQVM_QuBEC_Theory.md) | QuBEC formalism and thermodynamic structure |
+| [`Gyroscopic_ASI_Foundations.md`](../Gyroscopic_ASI_Foundations.md) | Normative hQVM and SDK specification |
 | [`CGM_Paper.md`](../CGM_Paper.md) | Consolidated CGM manuscript |
 | [`CommonGovernanceModel.md`](../CommonGovernanceModel.md) | Programme overview and bibliography |
 

@@ -1,4 +1,7 @@
-# Gravitational Theory in the Common Governance Model: Causal Preservation of Ancestry through Identity and Individuality
+# Analysis: Gravity Note
+
+## Gravitational Theory in the Common Governance Model: Causal Preservation of Ancestry through Identity and Individuality
+
 [Work in Progress]
 
 
@@ -614,7 +617,7 @@ The rest-frame energy equals +M_obs c²/4, balancing the self-energy locally. Se
 
 [11] Korompilias, B. (2025). Formal proof of three-dimensional necessity and six degrees of freedom in the Common Governance Model. Companion analysis (docs/Findings/Analysis_3D_6DOF_Proof.md).
 
-[12] Korompilias, B. (2025). Gyroscopic byte formalism: The 6-bit runtime and depth-4 closure. Companion specification (docs/Gyroscopic_Computational_Theory/Gyroscopic_ASI_Specs.md).
+[12] Korompilias, B. (2025). Gyroscopic byte formalism: The 6-bit runtime and depth-4 closure. Companion specification (docs/specs/hQVM_Specs_Formalism.md).
 
 [13] Korompilias, B. (2025). The fine-structure constant from geometric first principles. Companion analysis (docs/Findings/Analysis_Fine_Structure.md).
 

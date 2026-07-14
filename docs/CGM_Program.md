@@ -1,6 +1,6 @@
-# The Common Governance Model: A Comprehensive Research Guide
+# CGM Program
 
-## Table of Contents
+## A Comprehensive Research Guide
 
 - [1. Introduction: A Map of the Research Program](#1-introduction-a-map-of-the-research-program)
 - [2. Core Foundations: From Logic to Structure](#2-core-foundations-from-logic-to-structure)
@@ -291,7 +291,7 @@ GyroSI is a computational implementation of CGM's principles, representing intel
 
 ## 8. Computational Verification and Reproducibility
 
-Every major claim in this program is backed by runnable Python in `experiments/` and a matching analysis note in `docs/Findings/`. The hQVM kernel test suite documents **243 verified features** across three verification tiers: 165 kernel pytests (Tier A), 72 science-repo executables (Tier B), and 6 formal manuscript proofs (Tier C). This includes CHSH-Tsirelson saturation, quantum teleportation, Peres-Mermin contextuality, and the complete K4/wavefunction/holography closure chain. See [hQVM Features Report](Gyroscopic_Computational_Theory/hQVM_Features_Report.md).
+Every major claim in this program is backed by runnable Python in `experiments/` and a matching analysis note in `docs/Findings/`. The hQVM kernel test suite documents **243 verified features** across three verification tiers: 165 kernel pytests (Tier A), 72 science-repo executables (Tier B), and 6 formal manuscript proofs (Tier C). This includes CHSH-Tsirelson saturation, quantum teleportation, Peres-Mermin contextuality, and the complete K4/wavefunction/holography closure chain. See [hQVM Features Report](../reports/hQVM_Features_Report.md).
 
 The repository currently contains:
 

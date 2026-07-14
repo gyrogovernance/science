@@ -1,4 +1,6 @@
-# Étale Cohomology and Grothendieck Structure in CGM and hQVM
+# Analysis: hQVM Cohomology
+
+## Étale Cohomology and Grothendieck Structure in CGM and hQVM
 
 ## Abstract
 

@@ -1,4 +1,6 @@
-# Holonomic Quantum Virtual Machine: Wavefunction Analysis of the hQVM Kernel
+# Analysis: hQVM Wavefunction
+
+## Holonomic Quantum Virtual Machine: Wavefunction Analysis of the hQVM Kernel
 
 **Citation:** Korompilias, B. (2025). Common Governance Model: Mathematical Physics Framework. Zenodo. https://doi.org/10.5281/zenodo.17521384
 
