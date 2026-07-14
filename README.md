@@ -87,7 +87,8 @@ Each major result in the table below maps to one analysis note and its verificat
 
 | Document | Description |
 |----------|-------------|
-| [CGM Core](docs/CGM_Paper.md) | Axiomatic paper: modal logic, gyrogroup geometry, dimensional emergence, and physical structure |
+| [CGM Logic](docs/CGM_Logic.md) | Construction logic of the framework and shared foundations across the formal layers |
+| [CGM Paper](docs/CGM_Paper.md) | Axiomatic paper: modal logic, gyrogroup geometry, dimensional emergence, and physical structure |
 | [CGM Program](docs/CGM_Program.md) | Research programme guide: foundations, derivation map, and links across the corpus |
 | [CHANGELOG](CHANGELOG.md) | Release history and version notes |
 | [CGM corpus](docs/datasets/) | Dataset of 1,000+ JSONL Q&A pairs for fine-tuning and RAG |
@@ -103,6 +104,7 @@ Each analysis note maps to the experiment scripts that verify it.
 | Gravity, Virial condition, and nonlinear continuum | [Note](docs/Findings/Analysis_Gravity_Note.md), [Full](docs/Findings/Analysis_Gravity.md) | [hqvm_gravity_common.py](experiments/hqvm_gravity_common.py), `hqvm_gravity_analysis_1.py` through `10.py`. Run: `python experiments/hqvm_gravity_runner.py` |
 | Wavefunction: fiber bundle structure of the byte | [Analysis_hQVM_Wavefunction](docs/Findings/Analysis_hQVM_Wavefunction.md) | [hqvm_wavefunction_kernel.py](experiments/hqvm_wavefunction_kernel.py), [_1.py](experiments/hqvm_wavefunction_1.py), [_2.py](experiments/hqvm_wavefunction_2.py) |
 | Generator-restricted percolation; Square-Root Cluster Theorem; hQVM(d) scaling; benchmark specification | [Analysis](docs/Findings/Analysis_hQVM_Percolation.md), [Note](docs/Findings/Analysis_hQVM_Percolation_Note.md) | [hqvm_percolation_analysis_run.py](experiments/hqvm_percolation_analysis_run.py) (`_1.py`–`_4.py`, [results](experiments/hqvm_percolation_analysis_results.txt)), [hqvm_percolation_analysis_5.py](experiments/hqvm_percolation_analysis_5.py) ([results](experiments/hqvm_percolation_analysis_5_results.txt)) |
+| Cohomology layer: finite hQVM transition site, parity 1-cocycle obstruction, shell exterior-algebra grading with discrete Poincare duality, Grothendieck constant K_G^R(2) = sqrt(2) from the CHSH comparison, Lefschetz and dynamical zeta census | [Analysis](docs/Findings/Analysis_hQVM_Cohomology.md) | [hqvm_Cohomology_analysis_run.py](experiments/hqvm_Cohomology_analysis_run.py) (`_1.py`–`_4.py`, [results](experiments/hqvm_Cohomology_analysis_results.txt)) |
 | Electroweak mass spectrum | [Analysis_Compact_Geometry](docs/Findings/Analysis_Compact_Geometry.md) | [core](experiments/hqvm_compact_geom_core.py), [kernel](experiments/hqvm_compact_geom_kernel.py), [report](experiments/hqvm_compact_geom_report.py), [derivations](experiments/hqvm_compact_geom_derivations.py) |
 
 **Framework and constants analyses**

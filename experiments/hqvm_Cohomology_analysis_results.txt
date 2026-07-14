@@ -1,0 +1,751 @@
+hQVM Cohomology analysis
+started: 2026-07-14T22:33:02+03:00
+python: C:\Python314\python.exe
+
+######## hqvm_Cohomology_analysis_1.py ########
+
+hQVM Cohomology analysis -- experiment library
+=====
+seed=20260702
+
+=====
+A. CONSTANT AND IDENTITY AUDIT
+=====
+
+Values:
+  s_p=pi/2                                 = 1.5707963267948966
+  u_p=1/sqrt2                              = 0.7071067811865475
+  o_p=pi/4                                 = 0.7853981633974483
+  m_a=1/(2 sqrt(2 pi))                     = 0.19947114020071635
+  Q_G=4 pi                                 = 12.566370614359172
+  DELTA_BU                                 = 0.19534217658
+  RHO=DELTA_BU/m_a                         = 0.9793004460867792
+  APERTURE_GAP=1-RHO                       = 0.02069955391322076
+  phi_SU2=2 arccos((1+2 sqrt2)/4)          = 0.5879007626540199
+  Krivine=pi/(2 ln(1+sqrt2))               = 1.7822139781913693
+  arsinh(1)                                = 0.881373587019543
+  artanh(1/sqrt2)                          = 0.8813735870195429
+  tan(3 pi/8)                              = 2.414213562373095
+  zeta=8/(m_a sqrt3)                       = 23.155240145864564
+  alpha0=DELTA_BU^4/m_a                    = 0.0072996833224724085
+  (pi/2)/Krivine                           = 0.8813735870195429
+
+Identity checks (residual, tol 1e-12):
+  Q_G * m_a^2 == 1/2                       = +1.110e-16  PASS
+  m_a^2 * 4 pi^2 == pi/2                   = +0.000e+00  PASS
+  ln(1+sqrt2)==arsinh(1)                   = -1.110e-16  PASS
+  ln(1+sqrt2)==artanh(1/sqrt2)             = +0.000e+00  PASS
+  1+sqrt2==tan(3 pi/8)                     = +0.000e+00  PASS
+  Krivine==pi/(2*arsinh1)                  = +2.220e-16  PASS
+  alpha0*zeta==RHO^4/(pi sqrt3)            = +0.000e+00  PASS
+  (pi/2)/Krivine==arsinh(1)                = -1.110e-16  PASS
+  (pi/2)/Krivine==artanh(u_p)              = +0.000e+00  PASS
+  arsinh(1)==artanh(u_p)                   = +1.110e-16  PASS
+
+  ALL_IDENTITIES: PASS
+
+=====
+B. ARCSIN / HYPERPLANE-ROUNDING LAW ON CHIRALITY REGISTER
+=====
+  dim=6 basis pairs tested: 15
+  n_gauss per pair:         20000
+  MC vs analytic max err:   1.005e-02
+  MC vs analytic mean err:  5.203e-03
+  fitted coefficient c:     0.637385
+  target 2/pi:              0.636620
+  c relative error:         +0.1202%
+  COEFFICIENT_WITHIN_5PCT:  PASS
+
+=====
+B2. ARCSIN LAW ON KERNEL WALSH OBSERVABLE VECTORS
+=====
+  ensemble:               complement_horizon
+  n_feature_vectors:       63
+  n_pairs_tested:          200
+  MC vs analytic max err:  4.200e-02
+  law_holds_on_kernel:     True
+
+=====
+C. FINITE GROTHENDIECK GAP (n=6)
+=====
+  trials:                   200
+  bool mean/min/max:          18.8179 / 11.1556 / 25.5813
+  hilb_lb mean/min/max:       19.8087 / 12.3420 / 25.8195
+  ratio hilb/bool mean/min/max: 1.0557 / 1.0000 / 1.1520
+  ratios below 1 (tol 0.0001): 0/200
+  K_G^R(2)=sqrt2:     1.4142
+  K_G^R(4)=pi/2:      1.5708
+  Krivine:            1.7822
+  note: Achieved ratio = Hilb_lb/Bool. Hilb_lb is a feasible LOWER BOUND on gamma2 (altmax); Bool is exact for n<=9. So the ratio is a lower bound on (true Hilb)/Bool, NOT a K_G estimator. Max random ratio ~1.20; Walsh block 1.21. The sharp kernel instance of K_G^R(2) is the CHSH gap (section D2), not these random matrices.
+
+  Structured kernel matrices:
+    Kernel_signed_64:
+      max_abs=0.166667 fro=3.7238 row_sum=[-0.000,-0.000]
+      bool_lb=39.2000 hilb_lb=42.6667 ratio=1.0884 ratio>=1=True
+    Walsh_block_first6:
+      max_abs=1.000000 fro=6.0000 row_sum=[0.000,6.000]
+      bool_lb=14.0000 hilb_lb=16.9706 ratio=1.2122 ratio>=1=True
+    Walsh_block_split:
+      max_abs=1.000000 fro=6.0000 row_sum=[0.000,6.000]
+      bool_lb=14.0000 hilb_lb=16.9706 ratio=1.2122 ratio>=1=True
+    Hamming_block_split:
+      max_abs=1.000000 fro=6.0000 row_sum=[0.000,0.000]
+      bool_lb=36.0000 hilb_lb=36.0000 ratio=1.0000 ratio>=1=True
+
+=====
+D. CHSH / TSIRELSON (HILBERT LIFT)
+=====
+  Tsirelson bound:     2.828427124746
+  classical bound:     2.0000
+  CHSH |Phi+>:          2.828427124746  residual -8.882e-16
+  CHSH |Psi+>:          2.828427124746  residual -8.882e-16
+  graph t6=42 pair CHSH:
+    pair 0: 2.828427124746  residual -4.441e-16
+    pair 1: 2.828427124746  residual -4.441e-16
+    pair 2: 2.828427124746  residual -4.441e-16
+    pair 3: 2.828427124746  residual -4.441e-16
+    pair 4: 2.828427124746  residual -4.441e-16
+    pair 5: 2.828427124746  residual -4.441e-16
+  angle grid n=10 max CHSH: 2.798133329357
+  checks:
+    phi_plus_saturates           PASS
+    psi_plus_saturates           PASS
+    graph_state_pairs_saturate   PASS
+    angle_grid_le_tsirelson      PASS
+  ALL_CHSH: PASS
+
+=====
+D2. GROTHENDIECK CHSH INTEGRALITY GAP (D -> I)
+=====
+  Hilbert CHSH (D, Tsirelson lift): 2.828427124746
+  Boolean CHSH (I, horizon ensembles): 2.0000
+  uniform Boolean CHSH (Omega):      0.0000  (not used in ratio)
+  ratio Hilb/Bool:       1.414213562373
+  K_G^R(2) = sqrt2:    1.414213562373
+  ratio == K_G^R(2):    True
+
+=====
+E. HORIZON BIPARTITION (CENSUS + SIGNED UxV KERNEL)
+=====
+  vertices per side:    64
+  shell0->shell6 bytes: 4 (qw [6])
+  expected sum:         256.0
+  transition sum:       256.0  (matches: True)
+  census (nonnegative counts):
+    max_abs=2.0000 fro=22.6274 row_sum=[4.000,4.000]
+    bool_cut=232.0000 spec=4.0000
+    role: nonnegative transition census (not Grothendieck probe)
+  signed_uv_from_rest (pools w=1 vs w=5):
+    max_abs=0.083333 fro=0.4082 is_nonzero=True
+    bool_lb=2.0000 hilb_lb=2.0000 ratio=1.0000 ratio>=1=True
+  K_G^R(4)=pi/2:  1.5708
+  Krivine:        1.7822
+  note: census T is sparse counts; signed_uv_from_rest is the Grothendieck probe (sign-indefinite UxV kernel difference from rest). Horizon-to-horizon pool differences are zero by depth-2 typicality, so no eq->comp signed block exists.
+
+=====
+F. DEPTH-4 / K_G^R(4)=pi/2 GAP CANDIDATES
+=====
+  K_G^R(4) = pi/2:      1.570796
+  Krivine:              1.782214
+  phi_SU2:              0.587901
+  Gate F split:         +1=2048 -1=2048 balanced=True
+  g1 (holonomy resid):  0.003198
+  g2 (aperture gap):    0.020700
+  g3 (pi/2/Krivine):    0.881374
+  g4 (pi/2-Krivine):    -0.211418
+
+=====
+G. SHANNON TRIAD
+=====
+  single-step images:        128 (expect 128)
+  single-step equivocation:   1.0000 bit
+  depth-2 distinct states:    4096 (expect 4096)
+  depth-2 entropy:            12.000000 bit (expect 12.0)
+  WHT Plancherel err:         0.000e+00
+  SHANNON_TRIAD: PASS
+
+=====
+H. SQUARE-ROOT PRODUCT SPOT-CHECK
+=====
+  full_alphabet: n_allow=256 rank=6 reach=4096 predicted=4096 reach_ok=True E_full=True
+       |U|=64 |V|=64 product=4096 rect=1.0000 rect_is_product=True
+       |Reach(rank=6)|=4096
+  even_weight_qspan: n_allow=128 rank=5 reach=1024 predicted=1024 reach_ok=True E_full=False
+       |U|=32 |V|=32 product=1024 rect=1.0000 rect_is_product=True
+       expect rank=5, Reach=1024 (parity obstruction)
+  single_qclass_fibercomplete: n_allow=4 rank=1 reach=4 predicted=4 reach_ok=True E_full=False
+       |U|=2 |V|=2 product=4 rect=1.0000 rect_is_product=True
+       q_class=63
+       one q-class q=63 (4 bytes); rank=1 => Reach=4
+
+=====
+SUMMARY
+=====
+  A constant audit:        see PASS/FAIL above
+  B arcsin coefficient:    see coefficient vs 2/pi
+  C Grothendieck gap:        see ratio hilb/bool vs K_G(d)
+  D CHSH/Tsirelson:        see ALL_CHSH
+  D2 Grothendieck CHSH gap: see ratio == K_G^R(2)
+  E horizon bipartition:   see signed_uv_* ratio
+  F depth-4 gaps:          candidate relations reported
+  G Shannon triad:         see SHANNON_TRIAD
+  H square-root:           see reach_ok and rect_is_product
+
+exit=0  duration=30.21s
+
+######## hqvm_Cohomology_analysis_2.py ########
+
+hQVM Cohomology analysis 2 -- categorical architecture
+=====
+seed=20260702
+
+=====
+I. CARRIER CHSH (BOOLEAN/IP EXTREME, WALSH OBSERVABLES)
+=====
+  ensembles:           8
+  masks per face:      63
+  uniform Omega CHSH:  0.000000  (correlators vanish: True)
+  ensemble max CHSH Boolean / max|corr|:
+    uniform_Omega        CHSH=0.0000  max|corr|=0.0000
+    shell_0              CHSH=2.0000  max|corr|=1.0000
+    shell_3              CHSH=1.2000  max|corr|=1.0000
+    shell_6              CHSH=2.0000  max|corr|=1.0000
+    fixed_chi_0          CHSH=2.0000  max|corr|=1.0000
+    fixed_chi_1          CHSH=2.0000  max|corr|=1.0000
+    fixed_chi_63         CHSH=2.0000  max|corr|=1.0000
+    complement_horizon   CHSH=2.0000  max|corr|=1.0000
+  classical bound:     2.0000
+  Hilbert CHSH:        2.828427
+
+=====
+II. SHELL BETTI PROFILE AND POINCARE DUALITY
+=====
+  populations: (64, 384, 960, 1280, 960, 384, 64)
+  scaled binomial (//64): (1, 6, 15, 20, 15, 6, 1)
+  total: 4096 (expect 4096)
+  Poincare duality b_k=b_6-k: True
+  Euler char: 0
+  P(-1) = 0  (==0: True)
+
+=====
+III. GATE F FIXED POINTS AND EULER CHARACTERISTIC
+=====
+  |Omega|:          4096
+  F fixed points:   0
+  F 2-cycles:       2048
+  2*cycles+fixed:   4096 (==|Omega|: True)
+  fixed-point-free: True
+  Lefschetz L(F)=fixed: 0
+  => Euler chi = 0: True
+
+=====
+IV. LEFSCHETZ NUMBERS OF BYTE OPERATORS
+=====
+  n_bytes:            256
+  L range:            [0.0, 64.0]  mean=1.000
+  fixed pts range:    0..64
+  bytes w/ fixed pts: 4
+  corr(fixed, L):     1.0
+  corr(qweight, L):   -0.30860669992418377
+  L constant across bytes: False
+  special bytes (have fixed points):
+    byte 0x2B fam=3 q6=0x00 qw=0 fixed=64 L=64
+    byte 0x54 fam=2 q6=0x00 qw=0 fixed=64 L=64
+    byte 0xAA fam=0 q6=0x00 qw=0 fixed=64 L=64
+    byte 0xD5 fam=1 q6=0x00 qw=0 fixed=64 L=64
+  horizon-stabilizer note: special fixed-point bytes ['0x2B', '0x54', '0xAA', '0xD5'] == horizon stabilizers ['0x2B', '0x54', '0xD5', '0xAA']: True
+
+=====
+V. DYNAMICAL ZETA OF GATE F
+=====
+  max_n: 12
+  fix counts: {1: 0, 2: 4096, 3: 0, 4: 4096, 5: 0, 6: 4096, 7: 0, 8: 4096, 9: 0, 10: 4096, 11: 0, 12: 4096}
+  fitted exponent c: 2048.0
+  predicted 2048:    2048.0
+  exponent consistent: True
+  zeta form: (1 - t^2)^(-2048)
+  functional eq Z(1/t)=t^(-4096) Z(t): True
+
+=====
+VI. K4 AS GALOIS GROUP OF FAMILY-FIBER COVER
+=====
+  |Q6 classes|:        64
+  fiber size all 4:    True
+  fiber sizes sample:  [4, 4, 4, 4, 4, 4, 4, 4]
+  each fiber 4 fams:   True
+  cover transitive K4: True
+  cover 4-to-1:        True
+
+=====
+VII. LEFSCHETZ + CHAR-POLY OF DEPTH-4 WORDS
+=====
+  W2(m=0):
+    cycle signature: {2: 2048}
+    fixed/shell:     (0, 0, 0, 0, 0, 0, 0)
+    Lefschetz L:     0  (mod 12 = 0)
+    poly deg:        4096
+    poly factors:    {2: 2048}
+    roots unit mod:  True
+    integer roots:   [1, -1]
+  W2'(m=0):
+    cycle signature: {2: 2048}
+    fixed/shell:     (0, 0, 0, 0, 0, 0, 0)
+    Lefschetz L:     0  (mod 12 = 0)
+    poly deg:        4096
+    poly factors:    {2: 2048}
+    roots unit mod:  True
+    integer roots:   [1, -1]
+  F-cycle(m=0):
+    cycle signature: {2: 2048}
+    fixed/shell:     (0, 0, 0, 0, 0, 0, 0)
+    Lefschetz L:     0  (mod 12 = 0)
+    poly deg:        4096
+    poly factors:    {2: 2048}
+    roots unit mod:  True
+    integer roots:   [1, -1]
+  shell map W2 s->6-s:    True
+  shell map W2' s->6-s:   True
+  shell map F preserves:  True
+  F fixed points:         0
+  F two-cycles:           2048
+  F poly == (x^2-1)^2048: True
+  all words roots on UC:  True
+  note: Graded Lefschetz + permutation char poly of the depth-4 words. F-cycle poly is (x^2-1)^2048; W2/W2' are shell-swap involutions. All roots on unit circle (RH analogue).
+  shell grading note: W2, W2', F share L=0, (x^2-1)^2048, zeta=(1-t^2)^-2048
+    => shell grading cannot separate pole-swap (W2) from Z2 flip (F);
+       a finer (shell, Z2-sheet) or chirality grading is needed.
+
+=====
+VIIb. DEPTH-4 LEFSCHETZ ACROSS MICRO-REFS
+=====
+  micro-refs: [0, 1, 31, 32, 63]
+  W2 L constant:  True  value=0
+  W2' L constant: True  value=0
+  F L constant:    True  value=0
+  all L zero:      True
+
+=====
+VIII. CHAR-POLY OF ALL 256 BYTE OPERATORS
+=====
+  n_bytes:              256
+  all poly deg = 4096:  True
+  bytes w/ fixed pt:    4
+  max cycle length:     4
+  all roots on UC:      True
+  note: All byte operators are unitary permutations; roots = roots of unity
+
+=====
+VIIIb. BYTE CYCLE-STRUCTURE AGGREGATES
+=====
+  distinct structures:    2
+  pure-4-cycle bytes:   252
+  bytes w/ fixed pts:   4
+  bytes w/ 2-cycles:   4
+  top signatures:
+    ((4, 1024),): 252
+    ((1, 64), (2, 2016)): 4
+
+=====
+VIIIc. BYTE ZETA (byte 0xA8)
+=====
+  cycle signature: {4: 1024}
+  fix counts:       {1: 0, 2: 0, 3: 0, 4: 4096, 5: 0, 6: 0, 7: 0, 8: 4096, 9: 0, 10: 0, 11: 0, 12: 4096}
+  zeta form:        (1-t^4)^-1024
+  log-zeta ident:   True
+
+=====
+IX. COMPLEMENTARITY INVARIANT (h + ab = 12)
+=====
+  n_states:           4096
+  sum distribution:   {12: 4096}
+  min_sum:            12
+  max_sum:            12
+  sum constant:      True
+  sum == 12:          True
+  invariant check:     True
+
+=====
+X. BYTE T^2 FIXED POINTS (byte 0xA8)
+=====
+  cycle signature:     {4: 1024}
+  Fix(T^2) explicit:  0
+  Fix(T^2) sig:      0
+  matches:             True
+
+=====
+XI. W2 / W2' DYNAMICAL ZETA
+=====
+  W2: sig={2: 2048} two_cycles=2048
+    zeta form: (1 - t^2)^(-2048)  matches_F: True
+  W2': sig={2: 2048} two_cycles=2048
+    zeta form: (1 - t^2)^(-2048)  matches_F: True
+
+=====
+XII. TORSION vs HILBERT SPECTRUM (byte 0xA8)
+=====
+  cycle signature:     {4: 1024}
+  torsion orders:      [4]
+  hilbert orders:      [4]
+  torsion subset hilbert: True
+  note: sanity check only; for a permutation matrix the torsion
+        orders are the Hilbert roots by construction (same cycle set).
+
+=====
+XIII. K4 GROUP COHOMOLOGY H^1
+=====
+  |K4|:               4
+  module:             trivial
+  n cocycles:         4096
+  dim Z^1 (cocycles):  12
+  dim B^1 (coboundaries): 0
+  dim H^1(GF(2)^6):  12
+  expected dim H^1:   12
+  dim matches:        True
+
+=====
+SUMMARY
+=====
+  I  carrier CHSH (Boolean):     see max_CHSH vs classical bound
+  II shell Betti / Poincare:    see duality, P(-1)=0
+  III gate F fixed points:      see fixed_point_free, chi=0
+  IV Lefschetz of bytes:        see L range and correlations
+  V dynamical zeta of F:        see exponent vs 2048, func eq
+  VI K4 cover:                  see transitive, 4-to-1
+  VII depth-4 words:            see L(W2/W2'/F), char poly
+  VIIb micro-ref Lefschetz:       see L constant across m
+  VIII byte char poly:          see deg=4096, roots on UC
+  VIIIb byte cycle aggr:        see pure-4-cycle count
+  VIIIc byte zeta:               see zeta form, log-zeta ident
+  IX complementarity:           see h+ab=12, invariant
+  X byte T^2 fixed pts:         see Fix(T^2) vs signature
+  XI W2/W2' zeta:              see (1-t^2)^-2048 form
+  XII torsion vs Hilbert:        see torsion subset Hilbert
+  XIII K4 H^1 dim:              see dim H^1(GF(2)^6)
+
+exit=0  duration=3.60s
+
+######## hqvm_Cohomology_analysis_3.py ########
+
+hQVM Cohomology analysis 3 -- closure experiments
+=====
+seed=20260702
+
+=====
+A. CHSH ENSEMBLE DICTIONARY (BOOLEAN EXTREME)
+=====
+  classical bound: 2.0000
+  Hilbert CHSH:    2.828427
+  uniform Omega max CHSH: 0.0000
+  some ensembles saturate classical: True
+  all ensembles saturate classical: False
+  ensemble -> max_CHSH_Boolean / max|corr| / Kg_ratio:
+    uniform_Omega          n=4096  CHSH=0.0000  |corr|=0.0000  Kg=n/a
+    shell_0                n=64    CHSH=2.0000  |corr|=1.0000  Kg=1.4142
+    shell_1                n=384   CHSH=1.6667  |corr|=1.0000  Kg=1.6971
+    shell_2                n=960   CHSH=2.0000  |corr|=1.0000  Kg=1.4142
+    shell_3                n=1280  CHSH=1.2000  |corr|=1.0000  Kg=2.3570
+    shell_4                n=960   CHSH=2.0000  |corr|=1.0000  Kg=1.4142
+    shell_5                n=384   CHSH=1.6667  |corr|=1.0000  Kg=1.6971
+    shell_6                n=64    CHSH=2.0000  |corr|=1.0000  Kg=1.4142
+    fixed_chi_0            n=64    CHSH=2.0000  |corr|=1.0000  Kg=1.4142
+    fixed_chi_1            n=64    CHSH=2.0000  |corr|=1.0000  Kg=1.4142
+    fixed_chi_31           n=64    CHSH=2.0000  |corr|=1.0000  Kg=1.4142
+    fixed_chi_32           n=64    CHSH=2.0000  |corr|=1.0000  Kg=1.4142
+    fixed_chi_63           n=64    CHSH=2.0000  |corr|=1.0000  Kg=1.4142
+    complement_horizon     n=64    CHSH=2.0000  |corr|=1.0000  Kg=1.4142
+  K_G^R(2)=sqrt2: 1.4142
+  note: Kg = Hilbert CHSH (2*sqrt(2), structural) / Boolean CHSH on the
+        ensemble. 2/1.2 = 2.357 at the equator (shell 3) vs sqrt2 at poles.
+  note: Boolean non-locality is ensemble-stratified: uniform Omega=0 (typicality), conditioned ensembles hit the classical bound 2. Hilbert lift is structural at 2*sqrt(2).
+
+=====
+B. STABILIZER FIXED-SHELL LOCALIZATION
+=====
+  0x2B: fixed=64 per_shell=(0, 0, 0, 0, 0, 0, 64)
+       shells_occupied=[6]
+  0x54: fixed=64 per_shell=(64, 0, 0, 0, 0, 0, 0)
+       shells_occupied=[0]
+  0xD5: fixed=64 per_shell=(0, 0, 0, 0, 0, 0, 64)
+       shells_occupied=[6]
+  0xAA: fixed=64 per_shell=(64, 0, 0, 0, 0, 0, 0)
+       shells_occupied=[0]
+  all have 64 fixed: True
+  fixed on horizon shells (0,6): True
+  concentrated single shell: True
+  note: Stabilizer fixed sets are 100% on a single complement horizon (shell 0 for 0xAA/0x54, shell 6 for 0x2B/0xD5); they do not spread into the bulk (shells 1-5).
+
+=====
+C. BYTE MONODROMY BY FAMILY
+=====
+  family_0: n=64 pure4=63 mixed=1 structs=2
+  family_1: n=64 pure4=63 mixed=1 structs=2
+  family_2: n=64 pure4=63 mixed=1 structs=2
+  family_3: n=64 pure4=63 mixed=1 structs=2
+  all families have 64 bytes: True
+  note: Pure-4-cycle monodromy is uniform across the 4 families; the 4 stabilizers (mixed) are split across families (one each).
+
+=====
+D. FINER LEFSCHETZ GRADING (shell x Z2-sheet)
+=====
+  W2:
+    fine fixed/cell: (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Lefschetz L_fine:  0
+    fixed/shell:     (0, 0, 0, 0, 0, 0, 0)
+  W2':
+    fine fixed/cell: (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Lefschetz L_fine:  0
+    fixed/shell:     (0, 0, 0, 0, 0, 0, 0)
+  F:
+    fine fixed/cell: (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Lefschetz L_fine:  0
+    fixed/shell:     (0, 0, 0, 0, 0, 0, 0)
+  all L zero (fine): True
+  note: Finer (shell, Z2-sheet) grading still yields L=0 for W2/W2'/F: the distinction between pole-swap and Z2-flip is not in fixed-point counts under this grading either; it lives in the pairing map, not the Lefschetz fixed-point set.
+
+=====
+E. GAP-SPECTRUM DICTIONARY
+=====
+  K_G^R(2) = sqrt2 (CHSH integrality gap, exact): 1.4142135624
+  K_G^R(4) = pi/2 (depth-4 / CS threshold): 1.5707963268
+  Krivine upper bound = (pi/2)/arsinh(1): 1.7822139782
+  arsinh(1) = artanh(1/sqrt2) (UNA rapidity): 0.8813735870
+  aperture_gap Delta = 1 - rho: 0.0206995539
+  g1 holonomy residual: 0.0031980000
+  numeric_distinct: True
+  note: Multiple distinct gaps (sqrt2, pi/2, Krivine, Delta, g1) share one architecture; they are numerically distinct and must not be forced into a single identity.
+
+=====
+F. FIBER-INCOMPLETE SQUARE-ROOT BOUNDARY
+=====
+  n_allow:           4
+  q_span_rank:       2
+  fiber_complete:     False
+  reach pairs:        16
+  per_factor_rank:    2
+  |U|=4  |V|=4  rect=1.000000
+  rect_is_product:    True
+  qspan_matches_reach: True
+  note: Fiber-incomplete single-family alphabet (one byte per q6 class). Reach = 16 = 4x4 product (|U|=|V|=4), so the per-factor rank is log2(16)/2 = 2, equal to the q6-span rank 2. The square-root theorem |Reach| = (2^r)^2 holds with r = r(q6); fiber-incompleteness does NOT inflate the per-factor rank. The product form is preserved.
+
+=====
+G. OBSERVABLE CORRELATION-MATRIX GROTHENDIECK INSTANCE
+=====
+  uniform_Omega        n=4096  ||C||_F=0.0000  bool_lb=0.0000  hilb_raw=0.0000  hilb_monotone=0.0000  ratio=nan
+  complement_horizon   n=64    ||C||_F=7.9373  bool_lb=63.0000  hilb_raw=63.0000  hilb_monotone=63.0000  ratio=1.0000
+  shell_0              n=64    ||C||_F=7.9373  bool_lb=63.0000  hilb_raw=63.0000  hilb_monotone=63.0000  ratio=1.0000
+  shell_3              n=1280  ||C||_F=1.4832  bool_lb=7.0000  hilb_raw=7.0000  hilb_monotone=7.0000  ratio=1.0000
+  shell_6              n=64    ||C||_F=7.9373  bool_lb=63.0000  hilb_raw=63.0000  hilb_monotone=63.0000  ratio=1.0000
+  note: Grothendieck ratio of the 63x63 observable correlation matrix C on conditioned ensembles. uniform Omega has near-zero C (typicality) so the ratio is unstable there; horizon/fixed-chi ensembles give nontrivial C. Ratio uses the monotone Hilbert bound max(hilb_raw, bool_lb).
+
+=====
+H. OPEN ITEMS (DEPTH / K4-GATE / q6=0 / 5/3)
+=====
+  depth-dependent Boolean CHSH (from rest, full alphabet):
+    depth_0: 2.0000
+    depth_1: 0.0000
+    depth_2: 0.0000
+    depth_3: 0.0000
+    depth_4: 0.0000
+  K4 gate action on CHSH (image of Omega):
+    gate id : 0.0000
+    gate S  : 0.0000
+    gate C  : 0.0000
+    gate F  : 0.0000
+  q6=0 bytes:      ['0x2B', '0x54', '0xAA', '0xD5']
+  fixed-point bytes: ['0x2B', '0x54', '0xAA', '0xD5']
+  q6=0 iff stabilizer: True
+  shell_1: CHSH=1.6667  equals 5/3: True
+  shell_5: CHSH=1.6667  equals 5/3: True
+
+exit=0  duration=7.06s
+
+######## hqvm_Cohomology_analysis_4.py ########
+
+{
+  "A_horizon_cut_norm": {
+    "matrix_shape": [
+      64,
+      64
+    ],
+    "total_transitions_Hc_to_He": 256,
+    "row_sums_uniform": true,
+    "col_sums_uniform": true,
+    "cut_norm_unsigned": 256.0,
+    "boolean_opt_unsigned": 1024.0,
+    "sdp_lb_unsigned": 128.0,
+    "ratio_SDP_over_Bool_unsigned": 0.125,
+    "cut_norm_signed": 184.0,
+    "boolean_opt_signed": 736.0,
+    "sdp_lb_signed": 128.0,
+    "ratio_SDP_over_Bool_signed": 0.17391304347826086
+  },
+  "B_graph_grothendieck_K": {
+    "n_vertices": 64,
+    "degree": 1,
+    "edges": 32,
+    "lambda_min": -1.0,
+    "lambda_max": 1.0,
+    "alpha_complement_hoffman": 32.0,
+    "theta_complement_lb": 2.0,
+    "K_G_graph_bound": 1.7822139781913688,
+    "note": "1-regular horizon graph => K(G)=1; nontrivial instance is the bipartite Hc<->He cut norm in section A"
+  },
+  "C_lefschetz_bytes": {
+    "n_bytes": 256,
+    "L_min": 0,
+    "L_max": 64,
+    "L_mean": 1.0,
+    "bytes_with_fixed_points": 4,
+    "fixed_min": 0,
+    "fixed_max": 64,
+    "corr_fixed_vs_L": 1.0,
+    "corr_qweight_vs_L_all": -0.30860669992418377,
+    "corr_qweight_vs_L_generic": NaN,
+    "special_fixed_point_bytes": [
+      {
+        "byte": 43,
+        "hex": "0x2B",
+        "family": 3,
+        "micro": 0,
+        "q_weight": 0,
+        "fixed_total": 64,
+        "L": 64,
+        "fixed_per_shell": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          64
+        ]
+      },
+      {
+        "byte": 84,
+        "hex": "0x54",
+        "family": 2,
+        "micro": 63,
+        "q_weight": 0,
+        "fixed_total": 64,
+        "L": 64,
+        "fixed_per_shell": [
+          64,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "byte": 170,
+        "hex": "0xAA",
+        "family": 0,
+        "micro": 0,
+        "q_weight": 0,
+        "fixed_total": 64,
+        "L": 64,
+        "fixed_per_shell": [
+          64,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "byte": 213,
+        "hex": "0xD5",
+        "family": 1,
+        "micro": 63,
+        "q_weight": 0,
+        "fixed_total": 64,
+        "L": 64,
+        "fixed_per_shell": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          64
+        ]
+      }
+    ],
+    "L_constant_over_generic": true,
+    "L_generic_value": 0,
+    "horizon_stabilizer_note": "fixed-point bytes ['0x2B', '0x54', '0xAA', '0xD5'] == horizon stabilizers ['0x2B', '0x54', '0xD5', '0xAA']: True"
+  },
+  "D_arcsin_chirality": {
+    "n_chirality_vectors": 64,
+    "dim": 6,
+    "fitted_coefficient_c": 0.6367683882047737,
+    "target_2_over_pi": 0.6366197723675814,
+    "rel_error_vs_2pi": 0.0002334452111651795,
+    "rmse": 0.0022690216788590887,
+    "law_holds_on_chirality_vectors": true,
+    "walsh_hadamard_is_orthogonal": true
+  },
+  "E_trace_angle_delta_bu": {
+    "delta_BU": 0.19534217658,
+    "m_a": 0.19947114020071635,
+    "rho": 0.9793004460867792,
+    "trace_half_loop": 1.9904679398310985,
+    "cos_delta_bu_over_2_from_trace": 0.9952339699155492,
+    "delta_bu_from_trace_angle": 0.19534217658000036,
+    "abs_delta_diff": 3.608224830031759e-16,
+    "trace_full_loop": 2.0,
+    "full_loop_angle_from_trace": 0.0,
+    "trace_angle_identity_holds": true
+  },
+  "F_word_char_polys": {
+    "W2": {
+      "n_m": 64,
+      "cycle_structure_types": [
+        {
+          "2": 2048
+        }
+      ],
+      "example_m0": {
+        "2": 2048
+      }
+    },
+    "W2p": {
+      "n_m": 64,
+      "cycle_structure_types": [
+        {
+          "2": 2048
+        }
+      ],
+      "example_m0": {
+        "2": 2048
+      }
+    },
+    "F": {
+      "n_m": 64,
+      "cycle_structure_types": [
+        {
+          "2": 2048
+        }
+      ],
+      "example_m0": {
+        "2": 2048
+      }
+    },
+    "rh_analogue": {
+      "cycle_lengths_present": [
+        2
+      ],
+      "all_eigs_on_unit_circle": true
+    }
+  }
+}
+
+exit=0  duration=3.62s
+
+finished: 2026-07-14T22:33:46+03:00
+total_duration=44.50s
+worst_exit=0

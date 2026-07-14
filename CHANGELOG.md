@@ -4,6 +4,27 @@ All notable changes to the CGM Experimental Framework will be documented in this
 
 ---
 
+## [1.3.8-hQVM_Cohomology] - 2026-07-13 to 2026-07-15
+
+The hQVM carrier is a finite state machine, yet its transport graph carries richer local structure than reachability records. This release builds the cohomology layer of the CGM construction chain: a finite covering system on the hQVM transition category that classifies the algebraic obstructions preventing a generator restriction from preserving ancestry globally. Where percolation reports the size of the reachable set, cohomology reports the type of the obstruction that shrank it.
+
+The shell populations are derived from the exterior-algebra grading on the six chirality modes, giving a discrete Poincare duality that explains the binomial census instead of only enumerating it. The parity homomorphism is the 1-cocycle whose kernel excludes odd shells under even-weight restriction. The Grothendieck comparison of Boolean Walsh sections against the Hilbert lift on the bipartite carrier delivers a measured constant, K_G^R(2) = square root of 2, and the relaxation gap localizes to the CHSH 2x2 projection. Lefschetz fixed-point and dynamical zeta counts complete the finite obstruction census. The residual aperture Delta = 1 - rho links the BU monodromy to the closure fraction as the obstruction scalar of the same story.
+
+### Added
+
+- `docs/Findings/Analysis_hQVM_Cohomology.md`: finite hQVM transition site and Grothendieck topology; Boolean and Hilbert observable section classes; exterior-algebra shell grading with discrete Poincare duality; family-fiber group cohomology H^1(K4, GF(2)^6); parity 1-cocycle obstruction; Lefschetz fixed-point and dynamical zeta census of byte and word operators; Grothendieck constant K_G^R(2) = square root of 2 from the CHSH comparison; aperture obstruction bridge.
+- `experiments/hqvm_Cohomology_analysis_1.py` through `_4.py`, `hqvm_Cohomology_analysis_run.py`, and `hqvm_Cohomology_analysis_results.txt`: site and section-class construction, group and shell cohomology, Lefschetz and zeta enumeration, Grothendieck and CHSH comparison.
+
+### Results
+
+- Shell census derived as graded dimensions of the exterior algebra on GF(2)^6: population profile 64, 384, 960, 1280, 960, 384, 64 with discrete Poincare duality.
+- Parity obstruction: even-weight generator restriction confines reachability to even shells; reachable cluster 32^2 = 1024.
+- Grothendieck constant on horizon ensembles: Boolean CHSH 2, Hilbert lift CHSH 2 square root of 2, ratio square root of 2 = K_G^R(2); gap localizes to the CHSH 2x2 projection (full 63x63 observable matrix gives ratio 1).
+- Lefschetz census: 252 of 256 bytes have zero fixed points, 4 bytes fix 64 states; dynamical zeta fitted from fixed-point counts.
+- Aperture bridge: Delta = 1 - delta_BU / m_a identifies the finite transport obstruction dim GF(2)^6 / Q(A) with the BU closure residual.
+
+---
+
 ## [1.3.7-hQVM_Percolation] - 2026-07-02 to 2026-07-06
 
 Ancestry preservation is not an abstract axiom alone. On the hQVM kernel it fixes the shape of connectivity. The 4096-state reachable set Omega is a holographic product of two 64-element constitutional horizons, and restricting the 256 byte generators severs access to that root in a controlled way. The reachable cluster from rest then shrinks as the square of the surviving transport dimension, not as a generic bond-percolation cluster built from scalar nodes.

@@ -1,0 +1,500 @@
+hQVM Cohomology Analysis — Interpretation
+==========================================
+Source: hqvm_Cohomology_analysis_results.txt
+Scripts: hqvm_Cohomology_analysis_{1,2,3}.py
+
+These notes state what the measurements mean within the Common Governance
+Model (CGM) and the hQVM kernel. Every number below is reproduced from the
+results file.
+
+
+1. Central result: ensemble-stratified K_G^R(2) via CHSH
+--------------------------------------------------------
+
+  Hilbert CHSH (Tsirelson lift, section D):   2.828427124746 = 2*sqrt(2)
+  Boolean CHSH (pole ensembles, section I): 2.0000
+  Boolean CHSH (uniform Omega, section I):  0.0000
+
+  ratio = Hilbert / Boolean(pole) = sqrt(2) = K_G^R(2)     [exact]
+
+On the hQVM bipartite face, the ratio of the Hilbert optimum to the Boolean
+optimum on horizon-type ensembles equals K_G^R(2) at machine precision. The
+Boolean side is not uniform Omega: under the full product measure, Walsh
+face-face correlators vanish and Boolean CHSH is zero (depth-2 Shannon
+typicality). Boolean CHSH reaches the classical bound 2 only after
+conditioning on horizons, fixed chirality words, or complement-horizon
+shells. The Hilbert side is structural and saturates Tsirelson on Bell and
+graph-state pairs.
+
+Claim grade: **kernel-exact theorem** for
+  CHSH_Hilbert / CHSH_Boolean(pole) = K_G^R(2).
+
+
+2. Boolean CHSH ensemble structure (analysis_3 A)
+---------------------------------------------------
+
+  ensemble              n       max Boolean CHSH   Kg = Hilbert/Bool
+  uniform_Omega         4096    0.0000            n/a
+  shell_0               64      2.0000            1.4142
+  shell_1               384     1.6667            1.6971
+  shell_2               960     2.0000            1.4142
+  shell_3               1280    1.2000            2.3570
+  shell_4               960     2.0000            1.4142
+  shell_5               384     1.6667            1.6971
+  shell_6               64      2.0000            1.4142
+  fixed_chi_*           64      2.0000            1.4142  (chi = 0,1,31,32,63)
+  complement_horizon    64      2.0000            1.4142
+
+Even shells (0, 2, 4, 6) saturate the classical bound and give
+Kg = sqrt(2) = K_G^R(2). Odd shells (1, 5) reach 1.6667 = 5/3, Kg = 1.6971.
+Shell 3, the equator with maximum population (1280 states), has the weakest
+Boolean CHSH at 1.2, so Kg = 2*sqrt(2)/1.2 = 2.3570.
+
+The Hilbert optimum is constant (2*sqrt(2)) across all ensembles. The varied
+Kg is therefore a property of the Boolean ensemble, not of K_G^R(2). The pole
+value K_G^R(2) = sqrt(2) is recovered on horizon and fixed-chirality
+ensembles where Boolean CHSH = 2; in the bulk, Boolean CHSH falls below the
+classical bound and the Hilbert-to-Boolean ratio rises above sqrt(2). Shell
+1 and shell 5 give exactly 5/3.
+
+This parallels the parity structure of the square-root theorem and the
+percolation even q-span obstruction: even-weight restrictions change reachable
+geometry, here expressed as Bell correlators.
+
+Claim grade: **kernel-verified pattern** (even-shell saturation; equatorial
+weakening; measured Kg column in section A of analysis_3).
+
+
+3. Constant and identity audit (analysis_1 A)
+---------------------------------------------
+
+All listed CGM/Krivine identities PASS at tolerance 1e-12:
+
+  (pi/2) / Krivine = arsinh(1) = artanh(u_p) = 0.881374
+  Krivine = pi / (2 * ln(1 + sqrt(2)))
+  1 + sqrt(2) = tan(3*pi/8)
+
+Here u_p = 1/sqrt(2) is the CGM UNA threshold; the Krivine upper bound divides
+the chirality seed s_p = pi/2 by the rapidity ln(1 + sqrt(2)), the hyperbolic
+parameter associated with u_p.
+
+Claim grade: **exact identities** (algebraic closure of CGM constants).
+
+
+4. Arcsin rounding coefficient (analysis_1 B, B2)
+-------------------------------------------------
+
+Fitted coefficient c = 0.637385 vs target 2/pi = 0.636620, relative error
++0.12%, within 5% tolerance. The same rounding identity
+  E[sign(<g,x>) sign(<g,y>)] = (2/pi) arcsin(<x,y>)
+holds on the hQVM's own 63 Walsh observable vectors over the complement-
+horizon ensemble (law_holds_on_kernel = True): the sign-to-vector conversion
+is exact in the kernel's observable feature space.
+
+Claim grade: **exact identity** (hyperplane-rounding law, generic and
+kernel-derived vectors).
+
+
+5. Shannon triad and typicality (analysis_1 G)
+----------------------------------------------
+
+  single-step images:     128 (expect 128)
+  equivocation:           1 bit per step
+  depth-2 distinct:       4096 (expect 4096)
+  depth-2 entropy:        12.0 bit
+  WHT Plancherel:         0 error
+
+Exact typicality at depth 2 explains uniform-Omega Boolean CHSH = 0: under
+the product measure, face correlations average to zero. Boolean non-locality
+requires conditioning away from bulk typicality.
+
+Claim grade: **kernel-verified** (exact finite typicality).
+
+
+6. Square-root product geometry (analysis_1 H; analysis_3 F)
+------------------------------------------------------------
+
+Fiber-complete spot-checks (analysis_1 H):
+
+  full alphabet (256 bytes, rank 6):  Reach = 4096 = 64^2,  rect = 1
+  even-weight q-span (rank 5):       Reach = 1024 = 32^2,  rect = 1
+  single fiber-complete q-class:     Reach = 4   = 2^2,    rect = 1
+
+Under fiber-completeness, reachable (u,v) pairs form a product and
+|Reach| = (2^r)^2 where r is the q-span rank.
+
+Fiber-incomplete case (analysis_3 F): 4 q6 values spanning rank 2, one family
+byte each, Reach = 16 = 4x4 product, per-factor rank log2(16)/2 = 2, equal to
+the q6-span rank 2. The square-root theorem |Reach| = (2^r)^2 holds with
+per-factor rank r = r(q6) under both fiber-complete and fiber-incomplete
+selection; the product form is preserved.
+
+Claim grade: **theorem (spot-checked)** for fiber-complete case;
+**kernel-verified** for per-factor rank = r(q6) under fiber-incompleteness.
+
+
+7. Shell geometry and complementarity (analysis_2 II, IX)
+-------------------------------------------------------
+
+Shell populations: (64, 384, 960, 1280, 960, 384, 64) = 64 * C(6,k).
+Poincare duality b_k = b_{6-k} holds; the alternating shell sum is 0.
+
+Complementarity invariant: horizon_distance + ab_distance = 12 on all 4096
+states. Since d = 6 is the chirality dimension, 12 = 2d. This is the
+Poincare-duality total for the constitutional chart on each 12-bit face.
+
+Claim grade: **exact invariant** (complementarity); **kernel-verified**
+(shell Betti profile).
+
+
+8. K4 cover and H^1 dimension (analysis_2 VI, XIII)
+---------------------------------------------------
+
+The byte map pi: {0..255} -> GF(2)^6 via q6(b) is 4-to-1. Each fiber contains
+all four family bytes; the K4 deck group acts transitively on fibers.
+
+H^1(K4, GF(2)^6) with trivial module: dim = 12 = 2 * 6, the Hom-dimension
+Hom(K4, V) with K4 = (Z/2)^2 of rank 2 over GF(2). The dimension 12 matches
+the 2d face width and the complementarity total h + ab = 12; all three arise
+from the same bipartite 6-DoF structure but none causes the others.
+
+Claim grade: **kernel-verified** (cover); **exact** (Hom dimension, trivial
+module).
+
+
+9. Byte alphabet monodromy (analysis_2 IV, VIIIb; analysis_3 B, C, H)
+-------------------------------------------------------------------
+
+Cycle structure over all 256 bytes:
+
+  252 bytes: pure 1024 x (4-cycles), Lefschetz L = 0,
+    zeta = (1 - t^4)^(-1024)
+  4 bytes:   type (1^64, 2^2016), L = 64, fixed = 64,
+    bytes 0xAA, 0x54, 0x2B, 0xD5
+
+The four fixed-point bytes are exactly the four q6 = 0 bytes (verified:
+fixed-point bytes = q6=0 bytes). Each fixes exactly 64 states, all on a single
+complement horizon shell:
+
+  0xAA, 0x54  ->  shell 0 only
+  0x2B, 0xD5  ->  shell 6 only
+
+No stabilizer fixes bulk points (shells 1-5). Mean Lefschetz over the alphabet
+E[L] = (4 * 64) / 256 = 1.0. Per family: 63 pure-4-cycle bytes + 1 stabilizer.
+
+Generic single-byte dynamics has order 4 on Omega. Depth-4 closure words W2,
+W2', F have order 2 (involutions, 2048 two-cycles); composing two half-cycles
+squares the monodromy from period 4 to period 2.
+
+Claim grade: **kernel-verified** (stabilizer = horizon gates, fixed locus =
+full single horizon; q6=0 iff stabilizer; order-4 generic monodromy).
+
+
+10. Depth-4 words: zeta, char poly, Lefschetz (analysis_2 VII)
+-------------------------------------------------------------
+
+W2, W2', F-cycle (all micro-refs):
+
+  cycle signature: {2: 2048}
+  Lefschetz L (shell grading): 0
+  char poly: (x^2 - 1)^2048
+  zeta: (1 - t^2)^(-2048)
+  shell map: W2/W2' swap shell s <-> 6-s; F preserves shell
+
+Gate F alone: fixed-point-free, 2048 two-cycles, alternating shell sum 0.
+Zeta functional equation Z(1/t) = t^(-4096) Z(t) holds.
+
+Finer grading (analysis_3 D): the (shell, Z2-sheet) grading also gives L = 0
+for W2, W2', F. Pole-swap (W2) and Z2 flip (F) are not distinguished by
+fixed-point counts; the distinction is a pairing-map invariant.
+
+Claim grade: **exact** (zeta and char poly from cycle type); the dynamical
+zeta cannot distinguish W2 from F, the distinction is in the pairing map.
+
+
+11. Horizon transport census (analysis_1 E)
+------------------------------------------
+
+Only 4 weight-6 bytes connect shell 0 to shell 6 in one step; transition sum
+256 = 64 vertices x 4 bytes.
+
+Claim grade: **kernel-verified census**.
+
+
+12. Gap spectrum (analysis_1 F; analysis_3 E)
+--------------------------------------------
+
+Measured distinct gaps (not collapsed into one number):
+
+  K_G^R(2) = sqrt(2)   1.4142   CHSH integrality gap (exact)
+  K_G^R(4) = pi/2      1.5708   depth-4 / CS threshold (value)
+  Krivine              1.7822   upper bound = (pi/2)/arsinh(1)
+  arsinh(1)=artanh(u_p) 0.8814   UNA rapidity
+  aperture gap Delta   0.0207   constitutional (1 - rho)
+  g1 holonomy residual  0.0032   phi_SU2/(3*delta_BU) - 1
+
+The architecture shares multiple geometric deficits; the scalars remain
+distinct. s_p = pi/2 = K_G^R(4) as a numerical value; the role assignment
+(chirality seed vs depth-4 constant) is structural analogy.
+
+Claim grade: **exact** for sqrt(2) CHSH gap; **exact value / role analogy**
+for pi/2.
+
+
+13. Observable correlation-matrix Grothendieck instance (analysis_3 G)
+--------------------------------------------------------------------
+
+The 63x63 A-mask x B-mask correlation matrix C on each ensemble, compared by
+Boolean cut norm (greedy) and Hilbert relaxation (k=32, monotone bound
+max(hilb_raw, bool_lb)):
+
+  uniform_Omega       C = 0        ratio unstable (nan)
+  complement_horizon  bool_lb = hilb = 63   ratio 1.0000
+  shell_0             bool_lb = hilb = 63   ratio 1.0000
+  shell_3             bool_lb = hilb = 7    ratio 1.0000
+  shell_6             bool_lb = hilb = 63   ratio 1.0000
+
+On a single conditioned ensemble the full observable correlation matrix has
+Grothendieck ratio ~1 (Boolean and Hilbert optima coincide). The sharp gap is
+specific to the CHSH 2x2 projection, not to the ambient observable algebra:
+this localizes where the Grothendieck gap lives.
+
+Claim grade: **kernel-verified** (ratio ~1 on conditioned ensembles; uniform
+Omega C = 0 by typicality).
+
+
+14. Depth-dependent and K4-gate CHSH (analysis_3 H)
+--------------------------------------------------
+
+Depth-dependent Boolean CHSH (BFS from rest over the full 256-byte alphabet):
+  depth_0 = 2.0000, depth_1..4 = 0.0000.
+The full-alphabet closure from rest reaches the uniform bulk by depth 1, so
+correlators vanish. The integrality gap is present only on conditioned
+horizon/fixed-chi ensembles; it closes under unconditioned depth evolution.
+
+K4 gate action on CHSH (each gate applied to the full carrier):
+  id = S = C = F = 0.0000.
+Every K4 gate maps uniform Omega to uniform Omega, so the image CHSH is 0; the
+gauge acts trivially on the uniform ensemble's CHSH.
+
+Claim grade: **kernel-verified** (depth closure to typicality; K4 trivial on
+uniform Omega).
+
+
+15. Claim grades (summary)
+--------------------------
+
+  Theorem (kernel-exact)
+    CHSH_Hilbert / CHSH_Boolean(pole) = K_G^R(2) = sqrt(2)
+
+  Kernel-verified
+    Hilbert CHSH = 2*sqrt(2) on lift
+    Boolean CHSH = 0 uniform Omega; = 2 on horizons/fixed chi
+    4-to-1 K4 cover, transitive on families
+    252/256 pure order-4 monodromy; 4 stabilizers = horizon gates
+    Stabilizer fixed sets = full single horizon (shell 0 or 6)
+    q6 = 0 iff stabilizer (fixed-point byte)
+    Shannon triad exact; complementarity h+ab=12
+    |Reach| = (2^r)^2, per-factor r = r(q6) (fiber-complete and -incomplete)
+    Observable correlation matrix C ratio ~1 on conditioned ensembles
+
+  Kernel-verified pattern
+    Even-shell Boolean CHSH = 2; odd shells = 5/3; shell 3 weakest (1.2)
+    Ensemble-variant Hilbert/Boolean ratio: poles sqrt(2), equator 2.357
+    All 256 byte eigenvalues on unit circle (RH analogue holds)
+    Stabilizer one-per-family; bulk pure-4-cycle
+
+  Exact identities
+    CGM/Krivine constant tower (section A)
+    Arcsin hyperplane-rounding law (generic and kernel vectors)
+    zeta_F = zeta_W2 = (1-t^2)^(-2048), functional equation holds
+    zeta_byte = (1-t^4)^(-1024) for generic byte
+    Hom(K4, GF(2)^6) dimension 12 (trivial module)
+
+  Negative theorem (verified)
+    Lefschetz / zeta cannot distinguish W2 from F; the distinction is in the
+    pairing map, not the cycle structure.
+
+
+16. Spine (one paragraph)
+-------------------------
+
+On the hQVM carrier, the Grothendieck gap is an ensemble-stratified
+integrality gap. The Hilbert lift saturates Tsirelson (CHSH = 2*sqrt(2)). The
+Boolean carrier saturates the classical bound (CHSH = 2) on horizon and
+fixed-chirality ensembles, while bulk typicality on uniform Omega forces
+correlators to vanish (CHSH = 0). Their ratio is K_G^R(2) = sqrt(2) on
+horizons and fixed-chirality ensembles; in the bulk equator the Boolean CHSH
+drops to 1.2 and the Hilbert-to-Boolean ratio rises to 2.357. The byte
+alphabet is a 4-to-1 K4 cover of GF(2)^6; the fixed-point bytes are exactly
+the four q6 = 0 bytes, each fixing one full complement horizon. Generic
+monodromy has order 4; depth-4 closure operators are fixed-point-free
+involutions with zeta (1-t^2)^(-2048). The square-root theorem |Reach| =
+(2^r)^2 holds with per-factor rank r = r(q6) under both fiber-complete and
+fiber-incomplete selection. On a single conditioned ensemble the full 63x63
+observable correlation matrix has Grothendieck ratio ~1, so the sharp gap is
+specific to the CHSH 2x2 projection. Multiple geometric gaps (sqrt(2), pi/2,
+Krivine, Delta, g1) share this architecture but remain numerically distinct.
+
+17. New leads: horizon cut norm, per-byte Lefschetz, arcsin, trace-angle, word zeta
+-------------------------------------------------------------------------------
+
+Source: hqvm_Cohomology_analysis_4.py (new). Leads from docs/Notes/12/
+Grothendieck.md and unofficial notes (Notes_28_BHC, Notes_29_pi, Notes_30_Aperture).
+
+17.1 Cut norm of the bipartite horizon transition (section A)
+------------------------------------------------------------
+
+The doc proposed the Grothendieck constant of the 64x64 horizon transition
+matrix. Within a single horizon (shell 0) the transition rule is closed and
+1-regular (each state maps to exactly one other horizon state), so the
+single-horizon graph has K(G) = 1 and the cut norm degenerates to total mass.
+The nontrivial Grothendieck object is the bipartite complement-horizon
+(Hc, shell 0) to equality-horizon (He, shell 6) transition matrix.
+
+  Hc->He total transitions:          256 (4 per Hc state, uniform rows/cols)
+  unsigned cut norm:                 256,  Boolean opt = 1024,  SDP lb = 128
+  signed cut norm (L0-bit signs):    184,  Boolean opt = 736,   SDP lb = 128
+
+Both SDP lower bounds collapse to 128 because the matrices are rank-deficient
+(symmetric part is a permutation adjacency); the cut norm exceeds the SDP
+lower bound, so the Grothendieck ratio on this kernel instance is < 1 rather
+than > 1. This horizon-to-horizon matrix is NOT the sharp K_G^R(2) channel:
+the CHSH 2x2 projection (section 1) remains the only place the gap equals
+sqrt(2). Recorded as a distinct finite Grothendieck instance, not a new
+constant.
+
+Claim grade: **kernel-verified** (bipartite Hc<->He cut norm computed;
+single-horizon K(G)=1 confirmed).
+
+17.2 Per-byte Lefschetz census (section C)
+-----------------------------------------
+
+L(T_b) = sum_k (-1)^k Fix_k(T_b) over shells 0..6, for all 256 bytes.
+
+  bytes with fixed points:  4  (0x2B, 0x54, 0xAA, 0xD5)
+  fixed-point bytes L:      64 each (on shells 0 or 6 only)
+  generic bytes (252):      L = 0 (no fixed points in any shell)
+  corr(fixed_total, L):     1.0
+  corr(q_weight, L) all:    -0.309
+
+The 4 fixed-point bytes are exactly the q6 = 0 horizon stabilizers; each
+fixes one full horizon (0xAA, 0x54 -> shell 0; 0x2B, 0xD5 -> shell 6). Every
+generic byte has zero fixed points across all shells, so L = 0 uniformly on
+the 252 generic bytes. The Lefschetz number is therefore a horizon-stabilizer
+indicator: nonzero iff the byte is a q6 = 0 stabilizer.
+
+Claim grade: **kernel-verified** (per-byte Lefschetz; stabilizer = horizon
+gate confirmed; generic L constant 0).
+
+17.3 Arcsin rounding on the native chirality vectors (section D)
+---------------------------------------------------------------
+
+E[sign(<g,x>) sign(<g,y>)] = c * arcsin(x.y) fitted on the 64 chirality
+words as +/-1 vectors in R^6, under 200000 Gaussian roundings.
+
+  fitted c:              0.6367684
+  target 2/pi:          0.6366198
+  rel error:             +0.023%
+  rmse:                  0.00227
+  law holds:            True
+  WHT(64) orthogonal:    True
+
+The (2/pi) hyperplane-rounding law holds on the actual chirality register
+(the Boolean side of the gap), not only on the Walsh observable vectors
+(section 4). The 64x64 Walsh-Hadamard transform is orthogonal on GF(2)^6.
+
+Claim grade: **exact identity** (sign<->vector conversion; chirality vectors).
+
+17.4 Trace-angle standardization of delta_BU (section E)
+------------------------------------------------------
+
+delta_BU read in SU(2) fundamental rep via the depth-4 dual-pole loop
+R_y(delta_BU) R_x(pi) R_y(delta_BU) R_x(pi); half-turn trace gives the
+class-function identity.
+
+  delta_BU:                    0.195342176580
+  rho = delta_BU/m_a:          0.979300446087
+  Re Tr(U_half):               1.99046794
+  cos(delta_BU/2) from trace:  0.99523397
+  delta_BU from trace angle:   0.19534217658000036
+  abs diff:                    3.6e-16
+  Re Tr(U_full loop):          2.0  (full loop closes to identity)
+
+cos(delta_BU/2) = (1/2) Re Tr(U_loop) recovers delta_BU to machine precision,
+so delta_BU is a conjugation-invariant class function of the loop element.
+This is the gauge-invariant standardization proposed in Notes_28_BHC.
+
+Claim grade: **exact identity** (trace-angle; delta_BU as SU(2) class function).
+
+17.5 Word-operator characteristic polynomials / RH analogue (section F)
+---------------------------------------------------------------------
+
+Cycle structure of W2(m), W2'(m), F(m) for all m in 0..63.
+
+  all three: cycle signature {2: 2048} for every m
+  eigenvalues on unit circle:  Yes (all cycles length 2, eigs = +/-1)
+
+Every depth-4 word operator (all m, all three families) is a fixed-point-free
+involution with 2048 two-cycles; its permutation eigenvalues are exactly
++/-1, on the unit circle. This extends the section 10 zeta result from
+m = 0 to all 64 m and confirms the RH analogue (all word-operator eigenvalues
+on the unit circle) for the depth-4 closure family. The Lefschetz number of
+each is L = 0, consistent with the Euler characteristic chi = 0 (section 7).
+
+Claim grade: **exact** (word char polys; RH analogue over all m).
+
+18. External fact carried into the notes (no computation)
+--------------------------------------------------------
+
+From the Grothendieck Wikipedia article (docs/Notes/12/wiki_drop.md):
+
+K_G^R(2) = sqrt(2) is the unique finite dimension d for which the Grothendieck
+constant is known exactly (Krivine, 1979). The bounds tables list sqrt(2)
+approx 1.41421 for d = 2 in both the lower- and upper-bound columns; all
+other finite d have strict gaps. Our central theorem (section 1) measures
+CHSH_Hilbert / CHSH_Boolean(pole) = sqrt(2) at machine precision, which is
+therefore not a numerical coincidence with Grothendieck but the exact,
+uniquely-known member K_G^R(2) of the family realized on the carrier.
+
+Tsirelson (1987): the CHSH violation for a bipartite system of local dimension
+d is bounded by K_G^R(2 d^2). Our 2x2 CHSH (one binary outcome per party) lands
+on K_G^R(2) (d = 1 per party). This is the smallest nontrivial case of the
+Tsirelson bound and the only case with a known exact Grothendieck constant.
+Local dimension d > 1 is a lead, not a measurement (section 1 already states
+the Hilbert lift saturates Tsirelson on Bell/graph-state pairs).
+
+19. Leads retained for later (not computed here)
+------------------------------------------------
+
+L7 (Tsirelson at larger local dimension d): enlarge the per-party outcome
+space in the kernel and check the K_G^R(2 d^2) bound. Larger, untested.
+
+L9 (delta_BU approx pi/16): pi/16 = 0.1963495 vs delta_BU = 0.1953422,
+relative difference 0.52%. Precision observation; motivates checking whether
+delta_BU = pi/16 holds in a contraction limit (Notes_28_BHC). Not a claim.
+
+L10 (Robnik lemon billiard B = 0.1953): the doc claims the lemon billiard at
+B = 0.1953 has a regular-phase-space fraction near rho = 0.9793, matching our
+closure ratio. This is a hypothesis in Notes_30_Aperture; it requires checking
+Robnik's published Berry-Robnik regular fraction at that B. Until then it
+stays a lead, not a fact.
+
+L11 (Heisenberg contraction of su(2) near the BU pole): Notes_28_BHC notes
+su(2) contracts to Heisenberg in the large-spin / near-pole limit, where the
+BU residual behaves like the central Weyl phase. Conceptual lead; suggests a
+concrete test as the holonomy is taken toward a Bloch-sphere pole. Borderline
+relevance; recorded as a direction.
+
+20. Spine addition (lead-driven)
+--------------------------------
+
+The kernel admits a second finite Grothendieck instance (the bipartite
+Hc<->He cut norm), distinct from the CHSH K_G^R(2) channel and not
+exceeding it. The per-byte Lefschetz census closes the monodromy table: the
+only nonzero Lefschetz numbers are the four q6 = 0 horizon stabilizers, each
+fixing one full horizon. The (2/pi) rounding law is exact on the native
+chirality +/-1 vectors, and delta_BU is recovered to machine precision as a
+conjugation-invariant trace-angle of the depth-4 SU(2) loop. Every depth-4
+word operator (all 64 m, all three families) is a fixed-point-free involution
+with eigenvalues on the unit circle, extending the RH analogue beyond m = 0.
