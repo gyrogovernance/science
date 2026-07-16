@@ -26,7 +26,7 @@ The labels physics-informed, physics-guided, and physics-constrained in current 
 |-------------------|------------|------|
 | Mechanistic interpretability, AI safety | Findings §1.8, Appendix A | Findings §3 (rank theorem), §5 (threshold hierarchy) |
 | Percolation, probability | Findings §1.1-1.2, §4.3.5 | Findings §5-6 (census), Appendix B (protocol) |
-| Mathematical physics, CGM | Findings §2-3, [hQVM Features Report](docs/Gyroscopic_Computational_Theory/hQVM_Features_Report.md) | `Analysis_hQVM_Wavefunction.md`, `Analysis_Gravity.md` |
+| Mathematical physics, CGM | Findings §2-3, [hQVM Features Report](https://github.com/gyrogovernance/superintelligence/blob/main/docs/reports/hQVM_Features_Report.md) | `Analysis_hQVM_Wavefunction.md`, `Analysis_Gravity.md` |
 | Implementation, reproduction | Appendix B, `experiments/hqvm_percolation_analysis*.py` | `gyroscopic/hQVM/`, superintelligence repository tests |
 
 ## 2. Document and repository map
@@ -42,13 +42,13 @@ The labels physics-informed, physics-guided, and physics-constrained in current 
 | [`Analysis_Gravity_Note.md`](Analysis_Gravity_Note.md) | Shorter gravitational theory note | Manuscript arguments |
 | [`Analysis_Gravity_Quadratic_Note.md`](Analysis_Gravity_Quadratic_Note.md) | Quadratic-gravity inflation prerequisites from combinatorial axioms | Cross-reference to gravity analysis |
 
-### 2.2 Theory, specifications, and verification inventory (docs/Gyroscopic_Computational_Theory/)
+### 2.2 Theory, specifications, and verification inventory (superintelligence repository)
 
 | Document | Role |
 |----------|------|
-| [hQVM Features Report](docs/Gyroscopic_Computational_Theory/hQVM_Features_Report.md) | Inventory of verified quantum and physics features; CHSH-Tsirelson certificates; script map |
-| [QuBEC Theory](docs/Gyroscopic_Computational_Theory/QuBEC_Theory.md) | QuBEC formalism and thermodynamic structure |
-| [Gyroscopic ASI Foundations](docs/Gyroscopic_Computational_Theory/Gyroscopic_ASI_Specs.md) | Normative hQVM and SDK specification |
+| [hQVM Features Report](https://github.com/gyrogovernance/superintelligence/blob/main/docs/reports/hQVM_Features_Report.md) | Inventory of verified quantum and physics features; CHSH-Tsirelson certificates; script map |
+| [QuBEC Theory](https://github.com/gyrogovernance/superintelligence/blob/main/docs/specs/hQVM_QuBEC_Theory.md) | QuBEC formalism and thermodynamic structure |
+| [Gyroscopic ASI Foundations](https://github.com/gyrogovernance/superintelligence/blob/main/docs/Gyroscopic_ASI_Foundations.md) | Normative hQVM and SDK specification |
 | [`CGM_Paper.md`](../CGM_Paper.md) | Consolidated CGM manuscript |
 | [`CommonGovernanceModel.md`](../CommonGovernanceModel.md) | Programme overview and bibliography |
 
@@ -58,9 +58,9 @@ Canonical implementation: [github.com/gyrogovernance/superintelligence](https://
 
 | Location | Role |
 |----------|------|
-| `guides/GyroSI_Specs.md`, `guides/GyroSI_Holography.md` | Architecture and holographic foundations |
+| [Gyroscopic_ASI_Foundations.md](https://github.com/gyrogovernance/superintelligence/blob/main/docs/Gyroscopic_ASI_Foundations.md), [hQVM_QuBEC_Holography.md](https://github.com/gyrogovernance/superintelligence/blob/main/docs/specs/hQVM_QuBEC_Holography.md) | Architecture and holographic foundations |
 | `tests/test_hQVM_*.py`, `tests/test_physics_*.py`, `tests/test_moments_physics_*.py` | Kernel pytest verification (~464 documented tests per the Features Report) |
-| `hQVM_Tests_Report_*.md`, `Physics_Tests_Report.md` | Test report manuscripts |
+| [hQVM_Tests_Report_1.md](https://github.com/gyrogovernance/superintelligence/blob/main/docs/reports/hQVM_Tests_Report_1.md), [hQVM_Tests_Report_2.md](https://github.com/gyrogovernance/superintelligence/blob/main/docs/reports/hQVM_Tests_Report_2.md), [Physics_Tests_Report.md](https://github.com/gyrogovernance/superintelligence/blob/main/docs/reports/Physics_Tests_Report.md) | Test report manuscripts |
 
 The science repository holds a vendored copy at [`gyroscopic/hQVM/`](../../gyroscopic/hQVM/). Percolation experiment scripts live only in science.
 
@@ -98,7 +98,7 @@ The shell reflection rule s maps to 6 - s is global and identical everywhere. Th
 
 ## 7. The Hilbert lift and continuous representations
 
-The kernel's self-dual mask code C64 lifts to a 12-qubit graph state over GF(2) that factorizes exactly into six independent two-qubit Bell pairs, with CHSH correlators at the Tsirelson bound 2*sqrt(2) ([hQVM Features Report](docs/Gyroscopic_Computational_Theory/hQVM_Features_Report.md), Formal Quantum Certification). Byte stepping remains deterministic exact-integer carrier dynamics on GF(2)^24; the Bell certificates are evaluated on the canonical Hilbert lift of the intrinsic stabilizer code, where the symplectic carrier data define states in a complex amplitude space in the standard stabilizer manner.
+The kernel's self-dual mask code C64 lifts to a 12-qubit graph state over GF(2) that factorizes exactly into six independent two-qubit Bell pairs, with CHSH correlators at the Tsirelson bound 2*sqrt(2) ([hQVM Features Report](https://github.com/gyrogovernance/superintelligence/blob/main/docs/reports/hQVM_Features_Report.md), Formal Quantum Certification). Byte stepping remains deterministic exact-integer carrier dynamics on GF(2)^24; the Bell certificates are evaluated on the canonical Hilbert lift of the intrinsic stabilizer code, where the symplectic carrier data define states in a complex amplitude space in the standard stabilizer manner.
 
 This lift is the setting in which the product geometry of Section 3 and the tensor structure of quantum superposition coincide. The reachable set Omega = U x V and the graph-state factorization into Bell pairs are two expressions of the same conjugate product built from the mask code. The square-root relation between cluster size and transport rank is the percolation-side reading of the same structure that yields pairwise entanglement on the lift-side reading. For a reader coming from interpretability, this gives one finite system where the algebraic sense of superposition, meaning many-to-one maps from generators to observables, and the physical sense of superposition, meaning amplitude structure on a tensor product, are the same object viewed through two representations.
 

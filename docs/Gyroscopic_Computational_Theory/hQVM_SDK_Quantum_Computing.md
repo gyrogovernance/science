@@ -2,7 +2,7 @@
 
 ## Holonomic Quantum Computing SDK Specification
 
-Verified properties: [hQVM Features Report](hQVM_Features_Report.md).
+Verified properties: [hQVM Features Report](reports/hQVM_Features_Report.md).
 
 The hQVM is a new class of holonomic virtual machine. It achieves structural quantum advantage on Ω and oracle/query advantage on the 6-bit chirality register through exact integer arithmetic on standard silicon. Where HQC literature realises gates through adiabatic or non-adiabatic control loops on quantum hardware, the hQVM instantiates the same geometric structure as a GF(2) finite-state machine on silicon, opening the possibility of structural quantum advantage without quantum hardware. Its computational primitive is the Moment: the algebraic quantum state produced by a public byte ledger under the kernel transition rule. When multiple independent parties replay the same ledger prefix, they occupy the same Moment. This collective occupation is the QuBEC, the condensed computational object of the architecture.
 
@@ -526,7 +526,7 @@ A conforming SDK implementation must:
 - produce Results with complete provenance
 - support at least one target with full state inspection
 - maintain the canonical trajectory as append-only
-- pass the verified structural property tests documented in [QuBEC Theory](QuBEC_Theory.md) Part VII §24
+- pass the verified structural property tests documented in [QuBEC Theory](hQVM_QuBEC_Theory.md) Part VII §24
 - produce identical canonical observables across all targets for the same compiled circuit and initial state
 
 ## 10.2 Target Conformance

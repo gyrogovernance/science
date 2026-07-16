@@ -128,15 +128,13 @@ Each analysis note maps to the experiment scripts that verify it.
 
 | Document | Description |
 |----------|-------------|
-| [Gyroscopic_ASI_Specs](docs/Gyroscopic_Computational_Theory/Gyroscopic_ASI_Specs.md) | Normative specification |
-| [Gyroscopic_ASI_Specs_Formalism](docs/Gyroscopic_Computational_Theory/Gyroscopic_ASI_Specs_Formalism.md) | Formalism |
-| [Gyroscopic_ASI_Holography](docs/Gyroscopic_Computational_Theory/Gyroscopic_ASI_Holography.md) | Holography |
-| [Gyroscopic_ASI_SDK_Quantum_Computing](docs/Gyroscopic_Computational_Theory/Gyroscopic_ASI_SDK_Quantum_Computing.md) | SDK |
+| [hQVM_Specs_Formalism](docs/Gyroscopic_Computational_Theory/hQVM_Specs_Formalism.md) | Formalism |
+| [hQVM_SDK_Quantum_Computing](docs/Gyroscopic_Computational_Theory/hQVM_SDK_Quantum_Computing.md) | SDK |
+| [hQVM_QuBEC_Theory](docs/Gyroscopic_Computational_Theory/hQVM_QuBEC_Theory.md) | QuBEC theory |
 | [hQVM_Tests_Report_1](docs/Gyroscopic_Computational_Theory/hQVM_Tests_Report_1.md) | Test report 1 |
 | [hQVM_Tests_Report_2](docs/Gyroscopic_Computational_Theory/hQVM_Tests_Report_2.md) | Test report 2 |
 | [Physics_Tests_Report](docs/Gyroscopic_Computational_Theory/Physics_Tests_Report.md) | Physics tests |
-| [QuBEC_Theory](docs/Gyroscopic_Computational_Theory/QuBEC_Theory.md) | QuBEC theory |
-| [Alignment_Measurement_Report](docs/Gyroscopic_Computational_Theory/Alignment_Measurement_Report.md) | Alignment measurement |
+| [Measurement_Tests_Report](docs/Gyroscopic_Computational_Theory/Measurement_Tests_Report.md) | Alignment measurement |
 | [hQVM_Features_Report](docs/Gyroscopic_Computational_Theory/hQVM_Features_Report.md) | 243 verified features (Tiers A-C) |
 
 ---
