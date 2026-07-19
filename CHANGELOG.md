@@ -4,9 +4,27 @@ All notable changes to the CGM Experimental Framework will be documented in this
 
 ---
 
-## [1.3.8-CGM_hQVM_Trestleboard] - 2026-07-17 to 2026-07-19
+## [1.3.8-CGM_hQVM_Trestleboard] - 2026-07-17 to 2026-07-20
 
+Compact geometry and percolation fixed the electroweak ruler and the coverage hierarchy on the hQVM kernel. This release carries that same discrete geometry into nuclear structure and fusion phenomenology. Electroweak masses, nuclear binding energies, isomeric excitations, and Coulomb barriers are placed on one logarithmic energy coordinate whose spacing unit is the aperture gap Δ recovered from the W and Z mass ratio. Three readout procedures, the Level, the Square, and the Compass, locate energies, report percolation coverage, and trace explicit move sequences between scales. The shared workspace is the trestleboard.
 
+The forced nuclear class predicts the Th-229m optical isomer and the strong bare scale plus tensor correction reconstructs the deuteron binding energy, both with relative errors near 10⁻⁴ and with no free nuclear parameters. Alpha and beta transitions act as carrier words that preserve chirality shell and shell-parity across the IAEA LiveChart ground-state census. Fusion barriers for seven fuels land on the strong-family rung of the ruler. Measured resonances for five of seven fuels align with percolation landmarks, and the kernel coverage θ(p) supplies a resonance-independent floor under the astrophysical S-factor baseline.
+
+### Added
+
+- `docs/Findings/Analysis_hQVM_CGM_Trestleboard.md`: shared Δ-ruler and grammar classes, Level/Square/Compass instruments, Th-229m and deuteron placements, alpha and beta carrier census, fusion barrier map, resonance hierarchy, reactivity and Rider cutoff discriminant, design hypotheses appendix, external data provenance.
+- `experiments/hqvm_cgm_trestleboard_1.py` through `_4.py`, `hqvm_cgm_trestleboard_common.py`, `hqvm_cgm_trestleboard_run.py`, and `hqvm_cgm_trestleboard_results.txt`: ruler and grammar gates, nuclear isomer and deuteron checks, decay census, fusion barrier and resonance map.
+- `experiments/hqvm_cgm_trestleboard_ensdf_data_ingest.py` and frozen catalogs under `data/catalogs/ensdf/` and `data/catalogs/fusion/`: LiveChart and ENSDF snapshots, S-factor holdout tables, provenance SOURCE files.
+
+### Results
+
+- Aperture gap from W/Z mass-ratio identity agrees with the constants-chain Δ_ref to absolute error 8.34 × 10⁻¹⁰.
+- Th-229m: predicted E_min = 8.3563 eV versus Zhang CaF₂ 8.3557335(8) eV (relative error 7.19 × 10⁻⁵, 0.005 tick residual on forced class (6,2)).
+- Deuteron: E_d = v·Δ³ + v·Δ⁴·(2/√5) = 2.2242 MeV versus PDG 2.2240 MeV (relative error 8.89 × 10⁻⁵).
+- Alpha Gate F: shell, shell-parity, and daughter |N−Z| mod 7 preserved on 314/314 LiveChart alpha parents with catalogued daughter.
+- Beta: shell-parity and daughter-shell closure on 801/801 β⁻ parents. Daughter J agreement is 402/402 on the depth-1 stratum |ΔJ| ≤ 1.
+- Fusion barriers for seven fuels land on k = 3 strong-family classes. Resonance map places 5/7 literature peaks within tolerance of percolation landmarks (null single-hit probability ≈ 0.033 on the suite).
+- Dual dial (τ and Δ) covers the four-fuel stress set. Model-2 cross-section uses θ(E/V_b) as a coverage floor under Gamow. Rider cutoff discriminant from barrier ticks separates Z₁Z₂ accessibility with p-B11 as the noted geometric anomaly.
 
 ---
 
