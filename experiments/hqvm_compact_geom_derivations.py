@@ -21,6 +21,7 @@ All results are produced by exact integer / rational arithmetic and
 compared against the algebraic coefficients in hqvm_compact_geom_core.
 No mass data is used in any derivation.
 """
+
 from __future__ import annotations
 
 import math
@@ -270,7 +271,10 @@ def channel_regge_sum(label: str, micro_ref: int = 63) -> ChannelReggeSum:
     #   bal weight        = C2/8               [full holonomy closure]
     # These are the STF shell-weight moments of the plaquette defect
     # distribution restricted to the K4 edge directions.
-    regge_proj = plaquette_edge_projection_weight("base_rot") * (base_f - rot_f) + plaquette_edge_projection_weight("bal") * bal_f
+    regge_proj = (
+        plaquette_edge_projection_weight("base_rot") * (base_f - rot_f)
+        + plaquette_edge_projection_weight("bal") * bal_f
+    )
     r5_der = r5_constant_from_wz_gap() + regge_proj
     return ChannelReggeSum(
         label=label,
@@ -465,7 +469,9 @@ def _main() -> None:
     print(f"  Lambda_0 derived              = {rep.lambda_0.lambda0_derived:.15f}")
     print(f"  Lambda_0 existing             = {rep.lambda_0.lambda0_existing:.15f}")
     print(f"  match                         = {rep.lambda_0.matches}")
-    print(f"  W/Z D^3 coefficient           = {float(rep.lambda_0.wz_third_order_coefficient)}/sqrt(5)")
+    print(
+        f"  W/Z D^3 coefficient           = {float(rep.lambda_0.wz_third_order_coefficient)}/sqrt(5)"
+    )
     print(f"  W/Z D^3 = 2/sqrt(5)           = {rep.lambda_0.wz_third_order_matches}")
 
     print()
@@ -480,10 +486,14 @@ def _main() -> None:
     print(f"  Top r5 equals constant        = {r['top_r5_equals_constant']}")
     print()
     print("  Channel Regge sums (STF-weighted deficit on channel word):")
-    print(f"  {'Ch':6} {'K4':4} {'len':>3} {'bulk':>4} {'regge':>10} {'r5_alg':>8} {'r5_der':>8} {'match':>5}")
+    print(
+        f"  {'Ch':6} {'K4':4} {'len':>3} {'bulk':>4} {'regge':>10} {'r5_alg':>8} {'r5_der':>8} {'match':>5}"
+    )
     for s in rep.regge_sums:
-        print(f"  {s.label:6} {s.k4_element:4} {s.word_length:>3} {s.bulk_steps_mean:>4.2f} "
-              f"{s.regge_sum:>10.6f} {s.r5_algebraic:>8.3f} {s.r5_derived:>8.3f} {str(s.matches):>5}")
+        print(
+            f"  {s.label:6} {s.k4_element:4} {s.word_length:>3} {s.bulk_steps_mean:>4.2f} "
+            f"{s.regge_sum:>10.6f} {s.r5_algebraic:>8.3f} {s.r5_derived:>8.3f} {str(s.matches):>5}"
+        )
 
     print()
     print("D3. K4 channel flags from fold geometry")
@@ -491,7 +501,9 @@ def _main() -> None:
     print(f"  {'Ch':6} {'K4':4} {'len':>3} {'flags':>14} {'match':>5}")
     for f in rep.fold_flags:
         flags_str = "".join("1" if x else "0" for x in f.flags_from_fold)
-        print(f"  {f.label:6} {f.k4_element:4} {f.word_length:>3} {flags_str:>14} {str(f.matches):>5}")
+        print(
+            f"  {f.label:6} {f.k4_element:4} {f.word_length:>3} {flags_str:>14} {str(f.matches):>5}"
+        )
 
     print()
     print(f"  All derivations native        = {rep.all_native}")

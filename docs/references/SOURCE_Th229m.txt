@@ -1,0 +1,19 @@
+Th-229m references (nuclear optical clock isomer)
+=================================================
+
+Zhang_2024_Th229m_Nature633_63-70.pdf
+  C. Zhang et al., "Frequency ratio of the 229mTh nuclear isomeric
+  transition and the 87Sr atomic clock", Nature 633, 63–70 (2024).
+  DOI: 10.1038/s41586-024-07839-6
+  Source copy: NSF PAR accepted/published PDF (purl/10589701).
+  Reported energy used in trestleboard: 8.3557335(8) eV
+  (ν_Th = 2,020,407,384.335(2) MHz; CaF2 host).
+
+Zhang_2024_Th229m_arXiv2406.18719.pdf
+  Same collaboration preprint: https://arxiv.org/abs/2406.18719
+
+CGM note:
+  Forced class (k=6,d=2) predicts ≈8.3563 eV; |tick|≈0.005 to Zhang.
+  This is the primary PASS gate — not the U-235m ×9 lead.
+
+Downloaded: 2026-07-18

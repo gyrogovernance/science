@@ -1,0 +1,778 @@
+=====
+CGM TRESTLEBOARD — Square · Compass · Level · Percolation · σ · ⟨σv⟩
+=====
+
+0) THRESHOLDS & NORMALIZATIONS
+=====
+  s_p=π/2  S_CS=7.8748 | u_p=1/√2 S_UNA=3.5449 | o_p=π/4 S_ONA=3.9374 | S_BU=m_a=0.199471
+  Q_G·m_a²=0.500000 (½) | ρ=0.979300 Δ=0.020700 δ_BU=0.195342
+  D=24 G_kernel=0.523599 α0=0.007299683
+  α0·ζ=0.169025920321  target=0.169025920321  PASS=True
+  optical 1/(4π²)=0.02533030 | 2^(C3Δ²)=1.00595755
+  ticks/K=270.26 ticks/ρ=1.458 ticks/oct=48.31 C3Δ=0.4140
+  protocol=micro_ref  d=6  fusion_model=2  dial=delta  p_c_rank=0.0908 (exact micro-ref rank threshold)
+
+  Holonomy dress d → meaning:
+    d=0: bare (no holonomy)
+    d=2: Z2 two-pass spinorial (F = W2∘W2′)
+    d=4: EM-depth dress (dual commutator scale)
+    d=5: STF gravity bulk (5 shells, ρ^5)
+
+1) SHELL CENSUS & PERCOLATION LAW
+=====
+  |Ω|=4096 |H|=64 holographic PASS=True ⟨S⟩=3.000
+  pops=[64, 384, 960, 1280, 960, 384, 64]
+    r=0: |Reach|=    2 θ=0.000488 NOT fiber-complete | r=0 gauge doublet
+    r=1: |Reach|=    4 θ=0.000977 fiber-complete | |Reach|=(2^1)^2=4; θ=0.000977
+    r=2: |Reach|=   16 θ=0.003906 fiber-complete | |Reach|=(2^2)^2=16; θ=0.003906
+    r=3: |Reach|=   64 θ=0.015625 fiber-complete | |Reach|=(2^3)^2=64; θ=0.015625
+    r=4: |Reach|=  256 θ=0.062500 fiber-complete | |Reach|=(2^4)^2=256; θ=0.062500
+    r=5: |Reach|= 1024 θ=0.250000 fiber-complete | |Reach|=(2^5)^2=1024; θ=0.250000 | even-weight plateau (parity-obstructed)
+    r=6: |Reach|= 4096 θ=1.000000 fiber-complete | |Reach|=(2^6)^2=4096; θ=1.000000
+  hierarchy p_c (kernel MC, n=150):
+    rank=d  0.0908  (exact bisect_p_c_rank_micro_ref)
+    span    0.0219  full    0.0273  spectrum 0.0402  word 0.3086
+  d=6 api↔family  PASS=True  (q_word and step_uv match api at d=6)
+
+2) CLOSURE GRAMMAR
+=====
+  FORCED   (k=3,d=0) n=   810.78 E=  2.1838e+06 eV  Strong bare (v·Δ³)
+  FORCED   (k=6,d=2) n=  1680.15 E=  8.3563e+00 eV  Nuclear spinorial (v·ρ²·Δ⁶/√5·2^(C3Δ²))
+  optional (k=6,d=0) n=  1621.56 E=  1.9368e+01 eV  Boundary bare (v·Δ⁶)
+  optional (k=6,d=4) n=  1683.48 E=  7.9665e+00 eV  Boundary EM (v·ρ⁴·Δ⁶/√5)
+  optional (k=6,d=5) n=  1684.93 E=  7.8016e+00 eV  Boundary gravity (v·ρ⁵·Δ⁶/√5)
+  optional (k=4,d=0) n=  1081.04 E=  4.5203e+04 eV  keV bare (v·Δ⁴)
+  optional (k=4,d=2) n=  1140.04 E=  1.9387e+04 eV  keV spinorial (v·ρ²·Δ⁴/√5)
+  optional (k=3,d=2) n=   869.78 E=  9.3660e+05 eV  Strong spinorial (v·ρ²·Δ³/√5)
+  optional (k=3,d=5) n=   874.15 E=  8.7963e+05 eV  Strong gravity (v·ρ⁵·Δ³/√5)
+
+3) LEVEL
+=====
+  Th-229m: n=1680.15
+    all    : Nuclear spinorial (v·ρ²·Δ⁶/√5·2^(C3Δ²))  tick=+0.00501 rel=-7.189e-05  [Z2 two-pass spinorial (F = W2∘W2′)]
+    forced : Nuclear spinorial (v·ρ²·Δ⁶/√5·2^(C3Δ²))  tick=+0.00501
+  Deuteron BE: n=809.51
+    all    : Strong bare (v·Δ³)  tick=-1.27239 rel=+1.842e-02  [bare (no holonomy)]
+    forced : Strong bare (v·Δ³)  tick=-1.27239
+  Deuteron bare:  E = v·Δ³ = 2.1838 MeV  rel=-1.809e-02
+  Deuteron full:  E = v·Δ³ + v·Δ⁴·(2/√5) = 2.2242 MeV
+  Deuteron meas:  2.2240 MeV
+  full |rel| = 8.891e-05
+
+4) SQUARE
+=====
+  EW v             n=      0.00  sector=EW/UV
+  Z                n=     69.23  sector=EW/UV
+  W                n=     78.02  sector=EW/UV
+  Deuteron         n=    809.51  sector=Strong/IR
+  10 keV plasma    n=   1186.18  sector=keV/Plasma
+  Th-229m          n=   1680.15  sector=Nuclear/Boundary
+  Cs hyperfine     n=   2537.48  sector=Atomic/Deep IR
+
+  Optical conjugacy samples (E_IR = K/E_UV):
+    EW v     → conjugate 3.090296e+26 eV  n=-2423.08
+    Z        → conjugate 8.344256e+26 eV  n=-2492.31
+
+  Optical-conjugacy verification (Note §3.4): E·E_conj=K, n_UV+n_IR=const
+    EW v   E·E_conj resid=+0.00e+00  n_sum resid=+0.000e+00
+    Z      E·E_conj resid=+0.00e+00  n_sum resid=+0.000e+00
+    W      E·E_conj resid=+0.00e+00  n_sum resid=+0.000e+00
+
+  Horizon Lemma audit (2^a·3^b table; P_k=3·2^(k-1)):
+    n=    6 = 2^1·3^1  on_table=True  predecessor
+    n=    9 = 2^0·3^2  on_table=True  2^a3^b
+    n=   64 = 2^6·3^0  on_table=True  dyadic
+    n= 4096 = 2^12·3^0  on_table=True  dyadic
+    n=   24 = 2^3·3^1  on_table=True  predecessor
+    n=  192 = 2^6·3^1  on_table=True  predecessor
+    n= 1536 = 2^9·3^1  on_table=True  predecessor
+
+5) COMPASS (undress → Δ-step → dress → octave → code/offset)
+=====
+  10keV → Deuteron
+    start (k=4,d=2) keV spinorial (v·ρ²·Δ⁴/√5)
+    end   (k=3,d=0) Strong bare (v·Δ³)
+    1. [undress] ρ^-1: d=2→d=0 [ONA|BU→BU|BU→BU|ONA]  Δticks=59.00  E 1.939e+04→4.520e+04  | F⁻¹=F (involution)  W2=(0xaa,0xab)
+    2. [Δ-step ] Δ^-1: k=4→k=3 [CS|UNA]  Δticks=270.26  E 4.520e+04→2.184e+06  | aperture grade Δ^-1
+    3. [offset ] empirical offset -1.272 ticks (no code atom match) [BU|ONA]  Δticks=1.27  E 2.184e+06→2.224e+06  | empirical bound state
+  Deuteron → Th-229m
+    start (k=3,d=0) Strong bare (v·Δ³)
+    end   (k=6,d=2) Nuclear spinorial (v·ρ²·Δ⁶/√5·2^(C3Δ²))
+    1. [Δ-step ] Δ^+1: k=3→k=4 [CS|UNA]  Δticks=270.26  E 2.184e+06→4.520e+04  | aperture grade Δ^+1
+    2. [Δ-step ] Δ^+1: k=4→k=5 [CS|UNA]  Δticks=270.26  E 4.520e+04→9.357e+02  | aperture grade Δ^+1
+    3. [Δ-step ] Δ^+1: k=5→k=6 [CS|UNA]  Δticks=270.26  E 9.357e+02→1.937e+01  | aperture grade Δ^+1
+    4. [dress  ] ρ^+2: d=0→d=2 [ONA|BU→BU|BU→BU|ONA]  Δticks=58.59  E 1.937e+01→8.356e+00  | F=W2∘W2′  W2=(0xaa,0xab) W2′=(0x2a,0x2b)
+  EW → Deuteron
+    start (k=0,d=0) k=0 bare (anchor)
+    end   (k=3,d=0) Strong bare (v·Δ³)
+    1. [Δ-step ] Δ^+1: k=0→k=1 [CS|UNA]  Δticks=270.26  E 2.462e+11→5.097e+09  | aperture grade Δ^+1
+    2. [Δ-step ] Δ^+1: k=1→k=2 [CS|UNA]  Δticks=270.26  E 5.097e+09→1.055e+08  | aperture grade Δ^+1
+    3. [Δ-step ] Δ^+1: k=2→k=3 [CS|UNA]  Δticks=270.26  E 1.055e+08→2.184e+06  | aperture grade Δ^+1
+    4. [offset ] empirical offset -1.272 ticks (no code atom match) [BU|ONA]  Δticks=1.27  E 2.184e+06→2.224e+06  | empirical bound state
+  Barrier~0.44MeV → Deuteron
+    start (k=3,d=5) Strong gravity (v·ρ⁵·Δ³/√5)
+    end   (k=3,d=0) Strong bare (v·Δ³)
+    1. [undress] ρ^-1: d=5→d=4 [ONA|BU→BU|BU→BU|ONA]  Δticks=1.46  E 8.796e+05→8.982e+05  | STF-1 (gravity bulk shell)
+    2. [undress] ρ^-1: d=4→d=2 [ONA|BU→BU|BU→BU|ONA]  Δticks=2.92  E 8.982e+05→9.366e+05  | EM-depth⁻¹ (dual commutator scale)
+    3. [undress] ρ^-1: d=2→d=0 [ONA|BU→BU|BU→BU|ONA]  Δticks=59.00  E 9.366e+05→2.184e+06  | F⁻¹=F (involution)  W2=(0xaa,0xab)
+    4. [offset ] empirical offset -1.272 ticks (no code atom match) [BU|ONA]  Δticks=1.27  E 2.184e+06→2.224e+06  | empirical bound state
+  10keV → Barrier
+    start (k=4,d=2) keV spinorial (v·ρ²·Δ⁴/√5)
+    end   (k=3,d=5) Strong gravity (v·ρ⁵·Δ³/√5)
+    1. [undress] ρ^-1: d=2→d=0 [ONA|BU→BU|BU→BU|ONA]  Δticks=59.00  E 1.939e+04→4.520e+04  | F⁻¹=F (involution)  W2=(0xaa,0xab)
+    2. [Δ-step ] Δ^-1: k=4→k=3 [CS|UNA]  Δticks=270.26  E 4.520e+04→2.184e+06  | aperture grade Δ^-1
+    3. [dress  ] ρ^+2: d=0→d=2 [ONA|BU→BU|BU→BU|ONA]  Δticks=59.00  E 2.184e+06→9.366e+05  | F=W2∘W2′  W2=(0xaa,0xab) W2′=(0x2a,0x2b)
+    4. [dress  ] ρ^+2: d=2→d=4 [ONA|BU→BU|BU→BU|ONA]  Δticks=2.92  E 9.366e+05→8.982e+05  | EM-depth (dual commutator scale)
+    5. [dress  ] ρ^+1: d=4→d=5 [ONA|BU→BU|BU→BU|ONA]  Δticks=1.46  E 8.982e+05→8.796e+05  | STF+1 (gravity bulk shell)
+    6. [octave ] octave: E→E/2 (dyadic IR) [UNA|CS]  Δticks=48.31  E 8.796e+05→4.398e+05  | Horizon Lemma (dyadic)
+    7. [offset ] empirical offset -0.660 ticks (no code atom match) [BU|ONA]  Δticks=0.66  E 4.398e+05→4.440e+05  | empirical bound state
+
+5b) W/Z LOCK: recover Δ from m_W/m_Z
+=====
+  m_Z/m_W = 1.134470
+  log2(m_Z/m_W) = 0.182019026  (n_W - n_Z)
+  W/Z code gap C2-C1 = 9  (promoted D4: -(C3/2)Δ+2Δ²/√5-Δ³)
+  Δ from W/Z = 0.020699554747
+  Δ reference = 0.020699553913
+  absolute error = 8.340e-10
+  relative error = 4.029e-08
+  doc target: |Δ_back − Δ| = 8.34e-10 (absolute, 4th-order D4)
+  W/Z lock PASS (<1e-9 abs) ............. True
+
+5c) PERCOLATION HIERARCHY (exact kernel θ(p), §4.3.5/5.1)
+=====
+  Exact coverage fraction θ(p,d)=Σ_k P(rank=k)·(2^k)²/2^(2d)
+  unconditional (cond=False) — percolation-law audit only.
+        p      θ(p)          event (structural scale)
+   0.0219  0.025530  E_span (weak, p/Δ≈1.04)
+   0.0273  0.043530  E_full (strong, r=6)
+   0.0402  0.112578  E_spectrum (defect completion)
+   0.0908  0.579325  P(rank=d)=1/2 (micro-ref p_c)
+   0.3086  0.999831  E_word (holonomy transport)
+  θ saturates by p≈0.30 (exact kernel, not at V_b).
+  θ(p_c_rank=0.0908) = 0.5793  (fuel-independent: defined as p=p_c)
+
+6) FUSION / CROSS-SECTION (D-T)
+=====
+  V_barrier≈0.444 MeV  E_G≈1.175 MeV
+  E_rank(T=p_c)≈72.50 keV  (T=exp(−τ) reaches p_c_rank=0.0908)
+  plasma n=1186.2  barrier n=921.8  resonance n=810.8
+  Model 2: σ∝(S/E)·P_Gamow·θ(p_Δ), p_Δ=E/V_b (no Gamow double-count)
+  τ-dial audit: τ=√(E_G/E)−√(E_G/V_b), T=exp(−τ), p_τ=p_c·T (at/above V_b: τ=0 ⇒ p_τ=p_c)
+  p_c_span/Δ=1.056  (doc §5.5 target ≈1.04)
+  model σ max (transmission max): E=300.0 keV
+  Gamow-only σ max (analytic EG/4): E=293.7 keV
+  σ max shift Gamow→CGM ............... 300.0 → 300.0 keV
+
+  E_cm   n       p_inc  r_eff  θ         P_Gamow   σG/σG0    σCGM/σ0
+     1.0  1346.7 0.0023  2.343 6.287e-03 1.298e-15 6.622e-10 1.166e-10
+     2.0  1298.4 0.0045  2.383 6.639e-03 2.976e-11 7.588e-06 1.411e-06
+     5.0  1234.5 0.0113  2.826 1.228e-02 2.200e-07 2.244e-02 7.722e-03
+    10.0  1186.2 0.0225  3.596 3.569e-02 1.961e-05 1.000e+00 1.000e+00
+    20.0  1137.9 0.0450  4.659 1.558e-01 4.691e-04 1.196e+01 5.220e+01
+    30.0  1109.6 0.0676  5.259 3.582e-01 1.915e-03 3.255e+01 3.266e+02
+    50.0  1074.0 0.1126  5.791 7.481e-01 7.847e-03 8.004e+01 1.677e+03
+    64.0  1056.8 0.1441  5.921 8.963e-01 1.378e-02 1.098e+02 2.757e+03
+    75.0  1045.7 0.1689  5.966 9.533e-01 1.910e-02 1.299e+02 3.469e+03
+   100.0  1025.7 0.2252  5.996 9.941e-01 3.246e-02 1.655e+02 4.610e+03
+   120.0  1013.0 0.2702  5.999 9.991e-01 4.376e-02 1.860e+02 5.205e+03
+   150.0   997.4 0.3378  6.000 1.000e+00 6.089e-02 2.070e+02 5.799e+03
+   200.0   977.4 0.4504  6.000 1.000e+00 8.858e-02 2.259e+02 6.328e+03
+   250.0   961.8 0.5630  6.000 1.000e+00 1.144e-01 2.334e+02 6.539e+03
+   300.0   949.1 0.6755  6.000 1.000e+00 1.382e-01 2.349e+02 6.582e+03
+   400.0   929.1 0.9007  6.000 1.000e+00 1.802e-01 2.297e+02 6.435e+03
+   500.0   913.5 1.0000  6.000 1.000e+00 2.159e-01 2.202e+02 6.169e+03
+   600.0   900.8 1.0000  6.000 1.000e+00 2.468e-01 2.097e+02 5.876e+03
+   800.0   880.8 1.0000  6.000 1.000e+00 2.976e-01 1.897e+02 5.315e+03
+  1000.0   865.2 1.0000  6.000 1.000e+00 3.383e-01 1.725e+02 4.833e+03
+
+  peak pure Gamow : E=300.0 keV  σG/σ0=2.349e+02
+  peak CGM model  : E=300.0 keV  σC/σ0=6.582e+03  r=6.000
+  model σ max shifted by θ ........... False
+  NOTE: model σ max coincides with Gamow on this grid/fuel.
+
+6b) REACTIVITY ⟨σv⟩(T) relative (D-T)
+=====
+  T_keV   ⟨σv⟩G/⟨σv⟩G0   ⟨σv⟩CGM/⟨σv⟩CGM0   R=CGM/G
+     1.0    3.5713e-06    1.7732e-07  2.4770e-02
+     2.0    3.6347e-04    4.1155e-05  5.6488e-02
+     5.0    5.2041e-02    2.5321e-02  2.4274e-01
+    10.0    1.0000e+00    1.0000e+00  4.9888e-01
+    20.0    1.2301e+01    1.9240e+01  7.8034e-01
+    30.0    4.4385e+01    7.8269e+01  8.7974e-01
+    50.0    1.8801e+02    3.5732e+02  9.4812e-01
+    64.0    3.5615e+02    6.8978e+02  9.6620e-01
+    75.0    5.2736e+02    1.0301e+03  9.7444e-01
+   100.0    1.0395e+03    2.0517e+03  9.8467e-01
+   120.0    1.5636e+03    3.0994e+03  9.8890e-01
+   150.0    2.5142e+03    5.0017e+03  9.9247e-01
+   200.0    4.4243e+03    8.8271e+03  9.9533e-01
+   250.0    6.5654e+03    1.3117e+04  9.9668e-01
+   300.0    8.7793e+03    1.7553e+04  9.9743e-01
+   400.0    1.3064e+04    2.6139e+04  9.9819e-01
+   500.0    1.6908e+04    3.3843e+04  9.9857e-01
+
+  T_peak Gamow (grid edge) .... 500.0 keV
+  T_peak CGM (grid edge) ...... 500.0 keV
+  ⟨σv⟩ absolute peak shifted .. False  (monotone integrand; expect False)
+  T(max dR/dlnT) .............. 20.0 keV
+  enhancement growth interior . True
+
+6c) PROTOCOL SENSITIVITY θ(p) at sample E
+=====
+   E_keV       τ       T   p_inc     p_Δ    θ_micro       θ_q6
+    10.0   9.213  0.0001  0.0225  0.0225  3.569e-02  1.239e-02
+    20.0   6.038  0.0024  0.0450  0.0450  1.558e-01  7.795e-02
+    30.0   4.632  0.0097  0.0676  0.0676  3.582e-01  2.307e-01
+    50.0   3.221  0.0399  0.1126  0.1126  7.481e-01  6.359e-01
+   100.0   1.801  0.1651  0.2252  0.2252  9.941e-01  9.888e-01
+    72.5   2.399  0.0908  0.1633  0.1633  9.436e-01  9.049e-01
+  p_inc feeds θ under fusion_model=2 dial=delta; p_Δ is the Δ-ruler twin.
+  Physics θ uses cond=True (nonempty generators).
+
+6d) MULTI-FUEL STRESS SUITE
+=====
+  Dual dial: E_τ from T=exp(−τ)=p_c; E_Δ from p_Δ=E/V_b=p_c.
+  fuel         E_τ hitτ     E_Δ hitΔ     Res   TOL best
+  D-T         72.5    Y    40.3    Y    64.0  25.0 both
+  D-D         66.6    Y    43.2    N   100.0  40.0    τ
+  D-3He      212.8    Y    80.6    N   250.0 100.0    τ
+  p-B11      650.9    N   169.0    Y   148.0  60.0    Δ
+  dual-dial coverage: 4/4 fuels hit on τ and/or Δ
+
+  p-B11 detail:
+  V_barrier≈1.861 MeV  E_G≈22.438 MeV  E_τ≈650.88 keV  E_Δ≈168.98 keV
+  E_cm   p_inc  θ         P_Gamow   σG/σG0    σCGM/σ0
+     1.0 0.0005 1.098e-02 8.812e-66 2.822e-57 1.362e-58
+     2.0 0.0011 7.638e-03 9.982e-47 1.598e-38 5.367e-40
+     5.0 0.0027 6.219e-03 8.064e-30 5.165e-22 1.412e-23
+    10.0 0.0054 7.060e-03 2.678e-21 8.577e-14 2.662e-15
+    20.0 0.0107 1.166e-02 2.840e-15 4.547e-08 2.332e-09
+    30.0 0.0161 1.991e-02 1.326e-12 1.416e-05 1.239e-06
+    50.0 0.0269 5.078e-02 6.307e-10 4.040e-03 9.019e-04
+    64.0 0.0344 8.606e-02 7.381e-09 3.694e-02 1.397e-02
+    75.0 0.0403 1.220e-01 3.077e-08 1.314e-01 7.048e-02
+   100.0 0.0537 2.275e-01 3.123e-07 1.000e+00 1.000e+00
+   120.0 0.0645 3.281e-01 1.152e-06 3.074e+00 4.433e+00
+   150.0 0.0806 4.862e-01 4.878e-06 1.042e+01 2.226e+01
+   200.0 0.1075 7.136e-01 2.511e-05 4.021e+01 1.262e+02
+   250.0 0.1343 8.611e-01 7.684e-05 9.843e+01 3.726e+02
+   300.0 0.1612 9.397e-01 1.754e-04 1.873e+02 7.736e+02
+   400.0 0.2149 9.912e-01 5.588e-04 4.474e+02 1.949e+03
+   500.0 0.2687 9.990e-01 1.232e-03 7.892e+02 3.466e+03
+   600.0 0.3224 9.999e-01 2.209e-03 1.179e+03 5.182e+03
+   800.0 0.4299 1.000e+00 5.011e-03 2.006e+03 8.820e+03
+  1000.0 0.5373 1.000e+00 8.766e-03 2.807e+03 1.234e+04
+  1500.0 0.8060 1.000e+00 2.091e-02 4.464e+03 1.962e+04
+  2250.0 1.0000 1.000e+00 4.251e-02 6.051e+03 2.660e+04
+  3375.0 1.0000 1.000e+00 7.589e-02 7.201e+03 3.166e+04
+  5062.0 1.0000 1.000e+00 1.218e-01 7.706e+03 3.388e+04
+  7593.0 1.0000 1.000e+00 1.792e-01 7.560e+03 3.323e+04
+  11389.0 1.0000 1.000e+00 2.457e-01 6.909e+03 3.037e+04
+
+6e) PERCOLATION HIERARCHY AS RESONANCE MAP
+=====
+  τ-dial: T=exp(−τ) inversion.  Δ-dial: E=p_c·V_b.
+  fuel         Res  E_span  E_full  E_spec     E_τ  E_word     E_Δ
+  D-T         64.0    39.6    43.0    50.1    72.5   149.6    40.3
+  D-D        100.0    35.4    38.6    45.3    66.6   143.8    43.2
+  D-3He      250.0   125.3   134.9   154.6   212.8   389.0    80.6
+  p-B11      148.0   421.6   448.5   501.9   650.9  1038.6   169.0
+  Light fuels sit on the τ-band; p-B11 sits on the Δ-dial.
+
+6f) MINIMUM EXCITATION + NUCLEAR OPTICAL AUDIT
+=====
+  E_min = v·ρ²·Δ⁶/√5·2^(C3Δ²) = 8.3563 eV
+  Th-229m Zhang = 8.3557335 eV
+  rel_err = 7.190e-05  |tick| = 0.0050
+  Δ W/Z abs_err = 8.340e-10  locked = True
+  free_params = 0  exponent_scan = False  grammar_rank = 1
+  ENSDF eV-band isomers only (require_halflife=True)
+  ENSDF eV-band: ensdf_ev_band_levels.csv  level_files=214
+  window |tick|≤tol [8.3444, 8.3683] eV
+  E_min census (no isomer below) . PASS=True
+  status         label                      E_eV near(k,d)     tick |tick62|
+  PASS           Th-229m (Zhang CaF2)     8.3557     (6,2)   +0.005    0.005
+  UNCLASSIFIED   U-235 ENSDF/iso         76.0000     (6,0)  -95.283  153.871
+  PASS=1  UNCLASSIFIED=1  SUPERSEDED=0
+  null P(≥1 on (6,2)|N=1) log=0.0004
+  Refresh: python experiments/hqvm_cgm_trestleboard_ensdf_data_ingest.py
+
+6g) ATOMIC SPECTROSCOPY (compact-geom §9.3)
+=====
+  Same-element spectral line pairs align to compact code levels.
+  Conversion rule not implemented as a self-check; table from findings:
+  level compact role                     best pair      err(t)
+     12 constitutional diameter          He 10917/12968  0.001
+     16 mask-code weight 2               Cs 8047/10124   0.001
+     32 mask-code weight 4               Na 2839/4494    0.000
+     48 mask-code weight 6 / depth-4     Na 3094/6161    0.008
+     64 mask-code weight 8 / |H|         Cs 5466/13693   0.006
+     80 mask-code weight 10              Na 2905/9154    0.001
+     96 mask-code weight 12              He 4713/18685   0.001
+  Antihydrogen mirror-tick eta_X = log2(nu_H/nu_Hbar)/Δ:
+    σ-tick scale 9.4e-3; current sens ~1.35× from probe.
+
+6h) FUSION BARRIER-PLACEMENT GATE
+=====
+  Claim 1: CGM Coulomb barrier V_b is a placed grammar
+  coordinate on the strong-family ladder (k=3, d); d varies
+  with Z1Z2. No free parameters; V_b from standard radii.
+  Claim 2: CGM transmission max argmax[P_Gamow·θ(E/V_b)/E]
+  coincides with n(V_b) for non-resonant fuels.
+  True resonances (D-T 50 keV, p-B11 600 keV) reported as
+  measured offsets below the barrier; not a universal claim.
+  Tol = 7 ticks (~10% energy, fusion peak precision floor).
+  D-T       Z1Z2= 1 Vb= 0.444 n(Vb)= 921.79 n_peak= 921.86 d= +0.07 class=(3,5) Strong gravity (v·ρ⁵·Δ³/√5) barrier=True peak@Vb=True
+      resonance 50 keV -> n=1074.01 offset from barrier = +152.22 ticks (measured)
+  D-D       Z1Z2= 1 Vb= 0.476 n(Vb)= 916.92 n_peak= 916.99 d= +0.07 class=(3,5) Strong gravity (v·ρ⁵·Δ³/√5) barrier=True peak@Vb=True
+  D-3He     Z1Z2= 2 Vb= 0.888 n(Vb)= 873.48 n_peak= 873.55 d= +0.07 class=(3,5) Strong gravity (v·ρ⁵·Δ³/√5) barrier=True peak@Vb=True
+  T-T       Z1Z2= 1 Vb= 0.416 n(Vb)= 926.34 n_peak= 926.41 d= +0.07 class=(3,5) Strong gravity (v·ρ⁵·Δ³/√5) barrier=True peak@Vb=True
+  3He-3He   Z1Z2= 4 Vb= 1.664 n(Vb)= 829.72 n_peak= 829.79 d= +0.07 class=(3,0) Strong bare (v·Δ³) barrier=True peak@Vb=True
+  p-6Li     Z1Z2= 3 Vb= 1.278 n(Vb)= 848.13 n_peak= 848.19 d= +0.07 class=(3,2) Strong spinorial (v·ρ²·Δ³/√5) barrier=True peak@Vb=True
+  p-B11     Z1Z2= 5 Vb= 1.861 n(Vb)= 821.92 n_peak= 821.99 d= +0.07 class=(3,0) Strong bare (v·Δ³) barrier=True peak@Vb=True
+      resonance 600 keV -> n=900.82 offset from barrier = +78.89 ticks (measured)
+  barrier placement (all on strong ladder k=3) ... PASS=True
+  transmission peak @ barrier (non-resonant) ... PASS=True
+
+6h.2) FUSION RESONANCE MAP GATE
+=====
+  Claim: measured fusion resonances land on a percolation
+  hierarchy event (span/full/spec/τ/word/Δ + rank ladder +
+  Gamow peak), on the same Δ-ruler as electroweak and
+  nuclear optical structure. Each row: nearest event + tick
+  offset; PASS if within the literature tolerance (keV ->
+  ticks). sub-thresh = E_res below the weakest rank p_c.
+  role = power / aneutronic / CNO; Z1Z2>=7 = Rider 2023 LLNL cutoff (Coulomb; Pbrem separate).
+  (label, Z1, Z2, A1, A2, E_res_keV, tol_keV)
+  D-T 1+1 A2/3       power      Z1Z2= 1 E_res=  50.0 n_res=1074.01 -> E_spec      E=   50.1 n=1073.81 off= +0.20 tol= 6.64 PASS=True
+  p-B11 1+5 A1/11    aneutronic Z1Z2= 5 E_res= 600.0 n_res= 900.82 -> E_tau       E=  650.9 n= 895.15 off= +5.67 tol= 6.64 PASS=True
+  10B-p 1+5 A10/11   aneutronic Z1Z2= 5 E_res=  10.0 n_res=1186.18 -> E_tau_r0    E=   48.8 n=1075.71 off=+110.47 tol=48.31 PASS=FalseSUB
+  12C-p 1+6 A12/13   CNO        Z1Z2= 6 E_res= 461.0 n_res= 919.19 -> E_delta_r1  E=  454.4 n= 920.19 off= +1.00 tol= 6.63 PASS=True
+  15N-p 1+7 A15/16   CNO        Z1Z2= 7 E_res= 325.0 n_res= 943.55 -> E_delta_r2  E=  368.6 n= 934.78 off= +8.77 tol= 6.74 PASS=FalseCUT
+  7Li-p 1+3 A7/8     aneutronic Z1Z2= 3 E_res= 330.0 n_res= 942.49 -> E_span      E=  342.3 n= 939.93 off= +2.56 tol= 7.97 PASS=True
+  6Li-p 1+3 A6/7     aneutronic Z1Z2= 3 E_res= 440.0 n_res= 922.44 -> E_tau       E=  464.3 n= 918.69 off= +3.75 tol= 6.06 PASS=True
+  Z1Z2<7 non-SUB placements ... PASS=5/5
+  declared events (percol+Gamow+2xrank) ... n=17
+  p_single (log-uniform window) ......... 0.0334
+  expected hits under null .............. 0.23
+  passed 5/7 ... P(K>=5)=0.0000
+  Bonferroni p (x17) ............ 0.0000
+
+7) SELF-CHECKS
+=====
+  Q_G m_a² = 1/2 ................ PASS=True
+  α0·ζ identity ................. PASS=True
+  holographic |H|²=|Ω| .......... PASS=True
+  ⟨S⟩=3 ......................... PASS=True
+  d=6 api↔family ................ PASS=True
+  p_c rank (exact) .............. 0.0908
+  p_c span<full<spec<word ....... PASS=True
+  Th-229m class (6,2) ........... PASS=True
+  Th-229m |tick|<0.1 ............ PASS=True
+  ENSDF isomer census loaded .... PASS=True
+  primary Zhang hit (6,2) ....... PASS=True
+  E_min census (no isomer below)  PASS=True
+  all ENSDF isomers outside (6,2) UNCLASSIFIED .. PASS=True
+  Pu-239 E1st > 1 keV ........... PASS=True
+  Deuteron class (3,0) .......... PASS=True
+  Deuteron bare |rel|<5% ........ PASS=True
+  Deuteron full |rel|<5e-4 ...... PASS=True
+  E_min free_params=0 ........... PASS=True
+  E_min |rel| vs Zhang <1e-3 .... PASS=True
+  r=6 Reach=4096 ................ PASS=True
+  r=5 Reach=1024 ................ PASS=True
+  Compass Deuteron→Th has steps . PASS=True
+  Compass dress d∈{0,2,4,5} ..... PASS=True
+  Compass 10keV→D has Δ-step .... PASS=True
+  Compass 10keV→Barrier octave .. PASS=True
+  10keV→D empirical offset ...... PASS=True
+  Deuteron→Th no offset ......... PASS=True
+  Deuteron |tick|≳1 (off grid) .. PASS=True
+  Th-229m |tick|<0.1 (on grid) .. PASS=True
+  E_rank in 5–500 keV ........... PASS=True
+  θ(10 keV) < 0.5 ............... PASS=True
+  θ(10)<θ(30)<θ(100) ............ PASS=True
+  θ(10)/θ(100) < 0.5 ............ PASS=True
+  T(E_rank)≈p_c_rank ............ PASS=True
+  p_τ(E>V_b)=p_c ................ PASS=True
+  r_eff(θ₀=2/|Ω|)=0 ............. PASS=True
+  p_c_span/Δ ≈ 1.04 ............. PASS=True
+  p-B11 E_τ > D-T E_τ ........... PASS=True
+  Compass dress cites F=W2∘W2′ .. PASS=True
+  E_τ D-T < D-3He < p-B11 ....... PASS=True
+  dual-dial covers all fuels .... PASS=True
+  p-B11 hits on Δ-dial .......... PASS=True
+  D-T hits on τ-dial ............ PASS=True
+  enhancement growth interior . PASS=True
+  W/Z Δ recovery abs err < 1e-9 . PASS=True
+  optical conjugacy E·E_conj=K ..... PASS=True
+  optical n_UV+n_IR=const ........ PASS=True
+  Horizon Lemma 2^a·3^b ......... PASS=True
+  predecessor horizons P_k ...... PASS=True
+
+8) 32-BIT LIFT (wavefunction fiber bundle, [4] §16)
+=====
+  F=W2∘W2′ depth-4 involution: 64/64 micro-refs F(F(rest))=rest
+  K4 word algebra d=6 api↔family .. q_word and step_uv match api at d=6
+  exact rank-lock P(rank=d) match ... PASS (PMF=0.999667 exact=0.999667)
+  32-bit spinorial lift closed (K4 + Householder F + rank-lock) .. True
+
+8.5) WAVEFUNCTION-KERNEL ANCHOR & SPECTRAL ENERGY
+=====
+  H = l²(Ω), dim |Ω| = 4096 ; |horizon| = 64
+  shell populations 64·C(6,k): [64, 384, 960, 1280, 960, 384, 64]
+  M_shell = Tr(D_shell) = 192 (spectral moment of binomial chart)
+  carrier traces C(q) (exact rationals, kernel M_q):
+    q=0: C=7
+    q=1: C=28/9
+    q=2: C=7/3
+    q=3: C=52/25
+    q=4: C=7/5
+    q=5: C=28/9
+    q=6: C=1
+  K4 channel flags (base,rot,bal) -> spectral expansion coeffs:
+    Top  : (False, False, False)
+    Higgs: (True, False, False)
+    Z    : (True, True, False)
+    W    : (True, True, True)
+  spectral mass recovery m_i = v/2^L_i(Δ), L_i from carrier traces:
+    Top  : 172.7600 GeV
+    Higgs: 125.1000 GeV
+    Z    : 91.1876 GeV
+    W    : 80.3790 GeV
+  W/Z ratio from spectral law: 0.88146853
+  W/Z ratio measured (PDG):    0.88146853
+  Δ recovered from W/Z spectral ratio abs err: 2.203e-11
+
+9) UNIVERSAL EQUATION (root → cluster → aperture → fusion)
+=====
+  |Reach(A)| = (2^r(A))²            [percolation root, fiber-complete]
+  Δ = 1 − δ_BU / m_a               [gravity aperture gap, [1] §5.1]
+  τ(E) = √(E_G/E)−√(E_G/V_b)        [Beer-Lambert depth, [1] §6.3 / [3] §6.7]
+  Model 2: p_Δ=E/V_b, σ∝(S/E)·P_Gamow·θ(p_Δ)  [default; no double-count]
+  θ(p) = Σ_k P(rank=k) (2^k)²/2^(2d) [exact micro-ref PMF, [3] §4.3.5]
+  Physics θ: cond=True (nonempty). Audit tables: cond=False.
+  All share: root(A) = 2^r(A), and Δ fixes the p→E scale.
+  Fusion σ normalized to σ₀=1 at E_ref; absolute S-factor is
+  empirical (outside the CGM kernel).
+
+10) DYNAMIC DECAY TRANSITIONS (kernel stage operators)
+=====
+  β⁻: UNA/LI double-pair payload, |Δshell|=2 (isospin, fixed A).
+  α : Gate F word (W2∘W2'), Z2 holonomy, shell-preserving (N=Z cluster).
+  Half-lives: Fermi f (β) / τ-dial T (α) × kernel |M|², H_L=C(L)/C(0).
+  Beta (³H → ³He):
+    intron L0|LI = 0xc3  (L0=0x81 LI=0x42)
+    byte = intron⊕GENE_MIC = 0x69  (archetype 0xaa)
+    parent GENE_MAC_REST = 0xaaa555
+    daughter             = 0xaaa956  (shell 6 → 4, Δshell=-2)
+    Q_β = 18.591 keV  |M_kernel|²=1.0  f(Z=2,Q)=2.880e-06  ft=10^3.05
+    T½ est = 2.700e+08 s  meas = 3.885e+08 s  ratio=0.69
+  Alpha (Th-229 → Ra-225):
+    F word bytes = (0x96, 0x97, 0x16, 0x17)
+    parent → daughter = 0xaaa555 → 0x555aaa  (shell 6 → 6, preserved=True)
+    Q_α = 5.168 MeV  L=2  T_tunnel = 4.135e-38  H_L=C(2)/C(0)=0.3333
+    P_α = 5/2^20 = 4.7684e-06 (5 bulk STF shells / phase space)
+    T½ est (structural) = 2.397e+11 s  meas = 2.498e+11 s  ratio=0.96
+    residual = -1.007e+10 s (-4.0%)
+  Fusion (third path): see §6 multi-fuel (ΔZ by combining nuclei).
+  β intron == L0|LI ............. PASS=True
+  β byte == intron⊕0xAA ......... PASS=True
+  β |Δshell| == 2 (isospin) ..... PASS=True
+  β daughter ≠ parent ........... PASS=True
+  α emission is 4-byte F word .... PASS=True
+  α daughter ≠ parent (emission)  PASS=True
+  α shell preserved (N-Z conserved) PASS=True
+  α T_tunnel in (0,1) ........... PASS=True
+  α H_L == C(2)/C(0) == 1/3 ..... PASS=True
+  α reformation F² closes rest .. PASS=True
+
+11) NUCLEAR STATE SELECTOR (oriented atom + β shell routing)
+=====
+  Map (Z,N,J,P) -> 32-bit atom: oriented chi6 (|chi|=|N-Z| mod 7),
+  J/parity in intron. α = Gate F (shell-preserving). β shell =
+  FWD (3 UNA) / REFL (W2 0x2A) / DERIVED-SRCH (XOR-transport rule,
+  no frozen residue) in beta_daughter_shell_step. Bulk census §4.
+  α 90,139->88,137: shell=0 parity_ok=True formula_ok=True
+  α 92,146->90,144: shell=5 parity_ok=True formula_ok=True
+  α 88,138->86,136: shell=1 parity_ok=True formula_ok=True
+  α 84,128->82,126: shell=2 parity_ok=True formula_ok=True
+  α 94,144->92,142: shell=1 parity_ok=True formula_ok=True
+  β 1,2->2,1: wp=1 d_shell=1 landed=1 byte=0x54 ok=True
+  β 6,8->7,7: wp=2 d_shell=0 landed=0 byte=0x58 ok=True
+  β 27,33->28,32: wp=6 d_shell=4 landed=4 byte=0x69 ok=True
+  β 90,140->91,139: wp=1 d_shell=6 landed=6 byte=0x6a ok=True
+  α spot shell/parity .......... 5/5  PASS=True
+  β spot daughter-shell closure  4/4  PASS=True
+  (full census: hqvm_cgm_trestleboard_3 — 314/314 α, 801/801 β shell)
+  β daughter-shell closure is DERIVED via XOR-transport constraint;
+  the DERIVED-SRCH byte emits ΔJ∈{-1,0,+1} at depth-1 (single UNA
+  half-cycle). Larger catalog |ΔJ| resolve at higher percolation
+  depth: 402 depth-1 + 198 depth-2 + 201 depth-3+ = 801 (§9c).
+
+=====
+END TRESTLEBOARD
+=====
+=====
+BULK SELECTOR CENSUS (IAEA LiveChart ground states)
+=====
+catalog entries with usable Jp = 2572
+=====
+1. ALPHA (decay_1=A, Gate F, shell-preserving)
+=====
+A parents with daughter in catalog = 314
+  shell preserved (Gate F) .... 314/314  PASS=True
+  shell-parity conserved ...... 314/314  PASS=True
+  shell == |N-Z| mod 7 dau .... 314/314  PASS=True
+structural T1/2 (P_a=5/2^20) with qa+halflife = 310
+  ratio within [0.5,2] ........ 113/310
+  ratio within [0.1,10] ....... 271/310
+  median ratio ................ 0.697
+  examples:
+  Te-104 -> Sn-100 Q=5.096 L=0 T1/2est=4.467e-09 meas=1.800e-08 ratio=0.25
+  Te-105 -> Sn-101 Q=5.069 L=0 T1/2est=5.367e-09 meas=6.200e-07 ratio=0.01
+  Te-106 -> Sn-102 Q=4.290 L=0 T1/2est=9.277e-06 meas=7.000e-05 ratio=0.13
+  Xe-108 -> Te-104 Q=4.570 L=0 T1/2est=7.247e-06 meas=5.400e-05 ratio=0.13
+  Xe-109 -> Te-105 Q=4.217 L=1 T1/2est=7.473e-04 meas=1.300e-02 ratio=0.06
+  Xe-110 -> Te-106 Q=3.872 L=0 T1/2est=2.312e-02 meas=9.300e-02 ratio=0.25
+  Nd-144 -> Ce-140 Q=1.901 L=0 T1/2est=1.311e+23 meas=7.227e+22 ratio=1.81
+  Sm-146 -> Nd-142 Q=2.529 L=0 T1/2est=2.352e+15 meas=2.146e+15 ratio=1.10
+=====
+2. BETA- (decay_1=B-, UNA byte, shell-parity)
+=====
+B- parents with daughter in catalog = 801
+  parent J round-trip .......... 801/801  PASS=True
+  shell-parity conserved ...... 801/801  PASS=True
+  decoded J-rule vs parent .... 801/801
+  decoded J vs catalog dau .... 402/801
+  branch shell match (any) .... 87/801
+  branch shell+J match (any) .. 44/801
+  catalog |dJ|<=1 (depth-1) ... 402
+    Jok vs parent ............. 402/402
+    Jok vs catalog dau ........ 402/402
+  catalog |dJ|>1 (depth-2+) ... 399
+    of which Jok rejects ...... 0/399
+  catalog dJ histogram:
+    dJ_cat=0.0: 139
+    dJ_cat=1.0: 263
+    dJ_cat=2.0: 198
+    dJ_cat=3.0: 98
+    dJ_cat=4.0: 48
+    dJ_cat=5.0: 24
+    dJ_cat=6.0: 12
+    dJ_cat=7.0: 9
+    dJ_cat=8.0: 8
+    dJ_cat=23.0: 2
+=====
+4. ORIENTED CHI: beta residue analysis (incremental)
+=====
+oriented selector  (n=801)
+  FWD  : UNA branch reaches daughter shell .... 243/801
+  REFL : needs W2 reflection (6-wp) .......... 70/801
+  SRCH : only non-UNA byte reaches it ........ 488/801
+
+  REFL residue (70): parents needing the W2 reflection op
+  Be-12 Z4 N8 wp=4 d_shell=2 (=6-wp) Jp=0.0 Jd=1.0
+  B-14 Z5 N9 wp=4 d_shell=2 (=6-wp) Jp=2.0 Jd=0.0
+  C-16 Z6 N10 wp=4 d_shell=2 (=6-wp) Jp=0.0 Jd=2.0
+  N-18 Z7 N11 wp=4 d_shell=2 (=6-wp) Jp=1.0 Jd=0.0
+  Na-26 Z11 N15 wp=4 d_shell=2 (=6-wp) Jp=3.0 Jd=0.0
+  Mg-28 Z12 N16 wp=4 d_shell=2 (=6-wp) Jp=0.0 Jd=3.0
+  Al-30 Z13 N17 wp=4 d_shell=2 (=6-wp) Jp=3.0 Jd=0.0
+  Si-32 Z14 N18 wp=4 d_shell=2 (=6-wp) Jp=0.0 Jd=1.0
+  Si-39 Z14 N25 wp=4 d_shell=2 (=6-wp) Jp=2.5 Jd=0.5
+  P-34 Z15 N19 wp=4 d_shell=2 (=6-wp) Jp=1.0 Jd=0.0
+  S-43 Z16 N27 wp=4 d_shell=2 (=6-wp) Jp=1.5 Jd=0.5
+  K-42 Z19 N23 wp=4 d_shell=2 (=6-wp) Jp=2.0 Jd=0.0
+  ... +58 more
+
+  SRCH residue (488): parents needing a non-UNA byte
+  n-1 Z0 N1 wp=1 d_shell=1 (fwd-target 5) need_byte=0x04 Jp=0.5 Jd=0.5
+  H-3 Z1 N2 wp=1 d_shell=1 (fwd-target 5) need_byte=0x03 Jp=0.5 Jd=0.5
+  He-6 Z2 N4 wp=2 d_shell=0 (fwd-target 4) need_byte=0x10 Jp=0.0 Jd=1.0
+  Li-9 Z3 N6 wp=3 d_shell=1 (fwd-target 3) need_byte=0x04 Jp=1.5 Jd=1.5
+  Li-11 Z3 N8 wp=5 d_shell=3 (fwd-target 1) need_byte=0x02 Jp=1.5 Jd=0.5
+  Be-10 Z4 N6 wp=2 d_shell=0 (fwd-target 4) need_byte=0x34 Jp=0.0 Jd=3.0
+  Be-11 Z4 N7 wp=3 d_shell=1 (fwd-target 3) need_byte=0x04 Jp=0.5 Jd=1.5
+  B-12 Z5 N7 wp=2 d_shell=0 (fwd-target 4) need_byte=0x34 Jp=1.0 Jd=0.0
+  B-13 Z5 N8 wp=3 d_shell=1 (fwd-target 3) need_byte=0x08 Jp=1.5 Jd=0.5
+  B-17 Z5 N12 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=1.5 Jd=1.5
+  B-19 Z5 N14 wp=2 d_shell=0 (fwd-target 4) need_byte=0x34 Jp=1.5 Jd=0.5
+  C-14 Z6 N8 wp=2 d_shell=0 (fwd-target 4) need_byte=0x27 Jp=0.0 Jd=1.0
+  ... +476 more
+
+  DETERMINISTIC CLOSURE (FWD+REFL+DERIVED-SRCH): 801/801  PASS=True
+  derived-byte dJ == catalog dJ ........ 145/801
+  depth-1 (|dJ|<=1) dJ match ........... 145/402
+
+  BRANCHING BY PERCOLATION DEPTH (UNA sector):
+    depth-1 single half-cycle (|dJ|<=1) .. 402/801
+    depth-2 two-step (|dJ|<=2) .......... 198/801
+    depth-3+ holonomy coverage (|dJ|>2) . 201/801
+    catalog dJ resolved at depth<=2 ..... 600/801
+
+  residue written -> hqvm_cgm_trestleboard_beta_residue.txt
+=====
+3. SUMMARY CHECKS
+=====
+alpha shell preserved 100% ........ PASS=True
+alpha shell-parity 100% ........... PASS=True
+alpha shell==|N-Z|mod7 100% ....... PASS=True
+beta shell-parity 100% ............ PASS=True
+beta parent J round-trip 100% ..... PASS=True
+beta Jok vs catalog (|dJ|<=1) ..... 402/402  PASS=True
+beta daughter-shell closure ...... 801/801  PASS=True
+
+A. RESONANCE WIDTHS FROM PERCOLATION SUSCEPTIBILITY
+=====
+  chi(p) = d theta_micro_ref_exact / dp (exact, central diff)
+  landmark         p_c      chi(p_c)  rank    Gamma_struct
+  r=0         0.0000001909194.165055   0.0  -  
+  r=1         0.292893      0.015388   1.0124070943.031947
+  r=2         0.218779      0.295041   2.0  6470941.963574
+  r=3         0.145759      3.035960   3.0   628860.207740
+  r=4         0.090795      8.848690   4.0   215760.084823
+  Gamma_struct = chi_ref / chi(p_c); sharp transition = narrow width.
+
+  Per-fuel landmark widths (E = p_c * V_b, keV):
+  fuel      E_landmark_keV         chi    rank    Gamma_struct
+  D-T             130.0702    0.015388     r=1124070943.031947
+  D-T              97.1570    0.295041     r=2  6470941.963574
+  D-T              64.7298    3.035960     r=3   628860.207740
+  D-T              40.3211    8.848690     r=4   215760.084823
+  p-B11           545.0900    0.015388     r=1124070943.031947
+  p-B11           407.1597    0.295041     r=2  6470941.963574
+  p-B11           271.2657    3.035960     r=3   628860.207740
+  p-B11           168.9753    8.848690     r=4   215760.084823
+  10B-p           557.1075    0.015388     r=1124070943.031947
+  10B-p           416.1362    0.295041     r=2  6470941.963574
+  10B-p           277.2463    3.035960     r=3   628860.207740
+  10B-p           172.7007    8.848690     r=4   215760.084823
+  12C-p           641.0935    0.015388     r=1124070943.031947
+  12C-p           478.8703    0.295041     r=2  6470941.963574
+  12C-p           319.0421    3.035960     r=3   628860.207740
+  12C-p           198.7359    8.848690     r=4   215760.084823
+  15N-p           709.7959    0.015388     r=1124070943.031947
+  15N-p           530.1881    0.295041     r=2  6470941.963574
+  15N-p           353.2321    3.035960     r=3   628860.207740
+  15N-p           220.0333    8.848690     r=4   215760.084823
+
+B. BETA-DECAY MATRIX ELEMENTS FROM C(q)
+=====
+  Carrier traces C(q) = Tr(M_q^2) [odd q] / Tr(M_q) [even q]:
+    C(0) = 7
+    C(1) = 28/9
+    C(2) = 7/3
+    C(3) = 52/25
+    C(4) = 7/5
+    C(5) = 28/9
+    C(6) = 1
+  Fermi proxy   |M_F|^2  = C(0) = 7
+  GT proxy      |M_GT|^2 = C(1) = 28/9
+  F/GT carrier ratio = M_F^2 / M_GT^2 = 9/4
+  GT/F carrier ratio = 4/9
+  Forbidden ladder C(3)/C(1) = 117/175  C(5)/C(1) = 1
+  Alpha H_L = C(2)/C(0) = 1/3  (known discrete result)
+
+C. MAGIC NUMBERS FROM ENUMERATOR {C1,C2,C3}
+=====
+  shell capacities C(6,k)*64 = [64, 384, 960, 1280, 960, 384, 64]
+  cumulative capacities     = [64, 448, 1408, 2688, 3648, 4032, 4096]
+  code-gap arithmetic       = {'C1': 6, 'C2': 15, 'C3': 20, 'WZ_gap': 9, 'horizon': 64, 'omega': 4096, 'M_shell': 192, 'pred_P4': 24, 'pred_P7': 192, 'pred_P10': 1536}
+  nuclear magic: [2, 8, 20, 28, 50, 82, 126]
+   magic       structural limit
+         2         no-coincidence
+         8         no-coincidence
+        20    code-gap-arithmetic
+        28         no-coincidence
+        50         no-coincidence
+        82         no-coincidence
+       126         no-coincidence
+  coincidences: 1/7
+
+D. TENSOR FORCE AND THE PION OPERATOR FROM DELTA_4
+=====
+  E_bare (v*Delta^3)      = 2.183767 MeV
+  E_tensor (v*Delta^4*2/√5) = 0.040431 MeV
+  E_total                 = 2.224198 MeV
+  tensor fraction          = 0.018178
+  Delta_4 / Delta_3 ratio = 0.02069955391322076
+  pion proxy (tensor energy) = 0.040431 MeV
+  discrete pion operator  = Delta_shell=2 (two-dipole-flip byte step)
+  pion carrier move       = q_weight=2 return trace C(2)=7/3
+  note: Delta_4 gap = chiral-symmetry-breaking scale in the discrete frame; the q=2 carrier move is the spin-0 isospin-1 Goldstone counterpart.
+
+E. WIDTH SCALING LAW  Gamma_struct(r) ~ chi(p_c(r))^-1
+=====
+  chi_ref = 8.848690
+  fuel      r         p_c       E_keV         chi    Gamma_struct
+  D-T       1    0.292893    130.0702    0.015388      575.041223
+  D-T       2    0.218779     97.1570    0.295041       29.991377
+  D-T       3    0.145759     64.7298    3.035960        2.914627
+  D-T       4    0.090795     40.3211    8.848690        1.000000
+  D-D       1    0.292893    139.4817    0.015388      575.041223
+  D-D       2    0.218779    104.1871    0.295041       29.991377
+  D-D       3    0.145759     69.4135    3.035960        2.914627
+  D-D       4    0.090795     43.2387    8.848690        1.000000
+  D-3He     1    0.292893    260.1404    0.015388      575.041223
+  D-3He     2    0.218779    194.3141    0.295041       29.991377
+  D-3He     3    0.145759    129.4597    3.035960        2.914627
+  D-3He     4    0.090795     80.6423    8.848690        1.000000
+  T-T       1    0.292893    121.8485    0.015388      575.041223
+  T-T       2    0.218779     91.0158    0.295041       29.991377
+  T-T       3    0.145759     60.6383    3.035960        2.914627
+  T-T       4    0.090795     37.7724    8.848690        1.000000
+  3He-3He   1    0.292893    487.3940    0.015388      575.041223
+  3He-3He   2    0.218779    364.0631    0.295041       29.991377
+  3He-3He   3    0.145759    242.5531    3.035960        2.914627
+  3He-3He   4    0.090795    151.0898    8.848690        1.000000
+  p-6Li     1    0.292893    374.2884    0.015388      575.041223
+  p-6Li     2    0.218779    279.5779    0.295041       29.991377
+  p-6Li     3    0.145759    186.2658    3.035960        2.914627
+  p-6Li     4    0.090795    116.0276    8.848690        1.000000
+  p-B11     1    0.292893    545.0900    0.015388      575.041223
+  p-B11     2    0.218779    407.1597    0.295041       29.991377
+  p-B11     3    0.145759    271.2657    3.035960        2.914627
+  p-B11     4    0.090795    168.9753    8.848690        1.000000
+  monotone inverse (Gamma shrinks as r rises) ... PASS=True
+
+F. CGM SURROGATE ON PREDICTIVE HOLDOUT
+=====
+  calibration=even idx, holdout=odd idx; 1 DOF scale C
+  fuel     n_cal n_hold           C   RMSE(log10)   Pearson r
+  D-T         48     486.981040e+06        0.5777     -0.1175
+  D-D         48     481.295281e+07        0.2308      0.9384
+  D-3He       48     481.098683e+05        0.4526      0.9985
+  T-T         48     488.610077e+04        0.2283      0.9888
+  3He-3He     48     486.392496e+03        0.8175      0.9955
+  p-6Li       48     482.958208e+03        0.7425      0.9904
+  p-B11       61     603.205214e+05        0.7906      0.9710
+  pooled RMSE(log10) = 0.5962  pooled mean Pearson r = 0.8236
+
+G. RIDER CUTOFF AS INTERNAL DISCRIMINANT R(Z1Z2)
+=====
+  cutoff Z1Z2 = 7
+  fuel     Z1Z2     n(Vb)   gap(r5)           R   below
+  reference tick at cutoff (Z1Z2=7) = 828.86 ticks
+  D-T         1    921.79     92.93       92.93    True
+  D-D         1    916.92     88.06       88.06    True
+  D-3He       2    873.48     44.62       44.62    True
+  p-6Li       3    848.13     19.26       19.26    True
+  p-B11       5    821.92     -6.94       -6.94    True  <- CGM-ANOMALY
+  10B-p       5    843.26     14.39       14.39    True
+  12C-p       6    834.61      5.74        5.74    True
+  15N-p       7    828.86      0.00        0.00   False
+  sign separation (strict) ... PASS=False
+  CGM-identified anomaly(s): ['p-B11'] (barrier tick below cutoff ref -> marginal, cf. Rider p-B11)
+
+H. SPARSE-DATA PREDICTION TARGET (CGM window vs CSV silence)
+=====
+  fuel     first_CSV_keV CGM_landmark_keV  untested_keVnote
+  D-T               10.0         130.0702         120.1untested band [10,130] keV = 120 keV wide
+  D-D               10.0         139.4817         129.5untested band [10,139] keV = 129 keV wide
+  D-3He             10.0         260.1404         250.1untested band [10,260] keV = 250 keV wide
+  T-T               10.0         121.8485         111.8untested band [10,122] keV = 112 keV wide
+  3He-3He           10.0         487.3940         477.4untested band [10,487] keV = 477 keV wide
+  p-6Li             10.0         374.2884         364.3untested band [10,374] keV = 364 keV wide
+  p-B11             10.0         545.0900         535.1untested band [10,545] keV = 535 keV wide

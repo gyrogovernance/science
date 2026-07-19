@@ -18,7 +18,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from math import comb, sqrt
-from typing import Iterable, List, Sequence, Tuple
+from typing import Dict, Iterable, List, Sequence, Tuple
 
 
 def mask_d(d: int) -> int:
@@ -374,7 +374,7 @@ def exact_root_rank_pmf(q: float, n_dim: int) -> List[float]:
         ]
 
     f_vals = [_root_span_subset_prob(q, n_dim, k) for k in range(n_dim + 1)]
-    g_vals = [0.0] * (n_dim + 1)
+    g_float: List[float] = [0.0] * (n_dim + 1)
     for k in range(n_dim + 1):
         total = 0.0
         for j in range(k + 1):
@@ -382,8 +382,8 @@ def exact_root_rank_pmf(q: float, n_dim: int) -> List[float]:
             if mu == 0:
                 continue
             total += gaussian_binomial(k, j, q=2) * mu * f_vals[j]
-        g_vals[k] = total
-    return [gaussian_binomial(n_dim, k, q=2) * g_vals[k] for k in range(n_dim + 1)]
+        g_float[k] = total
+    return [gaussian_binomial(n_dim, k, q=2) * g_float[k] for k in range(n_dim + 1)]
 
 
 def exact_micro_ref_rank_pmf(p: float, d: int) -> List[float]:
@@ -489,7 +489,7 @@ def verify_exact_micro_ref_rank_distribution_pair_brute(
                 q_set.add(m ^ mask)
             vectors = [v for v in q_set if v != 0]
             r = gf2_rank(vectors, d) if vectors else 0
-            prob = pp ** size * (1.0 - pp) ** (n_pairs - size)
+            prob = pp**size * (1.0 - pp) ** (n_pairs - size)
             brute[r] += prob
     exact = exact_micro_ref_rank_pmf(p_test, d)
     ok = all(abs(brute[i] - exact[i]) < 1e-9 for i in range(d + 1))
@@ -533,7 +533,7 @@ def verify_exact_micro_ref_rank_distribution_brute(
                 q_set.add(m ^ mask)
             vectors = [v for v in q_set if v != 0]
             r = gf2_rank(vectors, d) if vectors else 0
-            prob = p_test ** size * (1.0 - p_test) ** (n - size)
+            prob = p_test**size * (1.0 - p_test) ** (n - size)
             brute[r] += prob
     exact = exact_micro_ref_rank_pmf(p_test, d)
     ok = all(abs(brute[i] - exact[i]) < 1e-9 for i in range(d + 1))
@@ -603,7 +603,7 @@ def rank_excess_limit_c_root_extrapolated(d1: int = 28, d2: int = 32) -> float:
 
 
 def holonomy_micro_cov(p: float, d: int, word_len: int = 4) -> float:
-    return 1.0 - (1.0 - p ** word_len) ** (1 << d)
+    return 1.0 - (1.0 - p**word_len) ** (1 << d)
 
 
 @dataclass(frozen=True)
@@ -638,8 +638,7 @@ def build_hqvm_d(d: int) -> HqvmD:
     bytes_by_q = tuple(tuple(v) for v in q_buckets)
 
     micro_groups = tuple(
-        tuple(byte_from_family_micro(f, m, d) for f in range(4))
-        for m in range(1 << d)
+        tuple(byte_from_family_micro(f, m, d) for f in range(4)) for m in range(1 << d)
     )
     q_class_groups = bytes_by_q
 
@@ -753,7 +752,9 @@ def fiber_complete(allowed: Sequence[int], eng: HqvmD) -> bool:
     fams: Dict[int, set[int]] = {}
     for b in allowed:
         q = eng.q_by_byte[b]
-        fams.setdefault(q, set()).add(intron_family_d(intron_from_byte(b, eng.d), eng.d))
+        fams.setdefault(q, set()).add(
+            intron_family_d(intron_from_byte(b, eng.d), eng.d)
+        )
     return all(len(s) == 4 for s in fams.values())
 
 

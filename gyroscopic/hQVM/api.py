@@ -38,25 +38,17 @@ from gyroscopic.hQVM.constants import (
 # Precomputed per-byte tables
 # ----------------------------------------
 
-INTRON_BY_BYTE: tuple[int, ...] = tuple(
-    byte_to_intron(b) for b in range(256)
-)
-FAMILY_BY_BYTE: tuple[int, ...] = tuple(
-    intron_family(i) for i in INTRON_BY_BYTE
-)
-MICRO_REF_BY_BYTE: tuple[int, ...] = tuple(
-    intron_micro_ref(i) for i in INTRON_BY_BYTE
-)
+INTRON_BY_BYTE: tuple[int, ...] = tuple(byte_to_intron(b) for b in range(256))
+FAMILY_BY_BYTE: tuple[int, ...] = tuple(intron_family(i) for i in INTRON_BY_BYTE)
+MICRO_REF_BY_BYTE: tuple[int, ...] = tuple(intron_micro_ref(i) for i in INTRON_BY_BYTE)
 MASK12_BY_BYTE: tuple[int, ...] = tuple(
     expand_intron_to_mask12(i) for i in INTRON_BY_BYTE
 )
 EPS_A6_BY_BYTE: tuple[int, ...] = tuple(
-    EPSILON_6 if (INTRON_BY_BYTE[b] & 0x01) else 0
-    for b in range(256)
+    EPSILON_6 if (INTRON_BY_BYTE[b] & 0x01) else 0 for b in range(256)
 )
 EPS_B6_BY_BYTE: tuple[int, ...] = tuple(
-    EPSILON_6 if (INTRON_BY_BYTE[b] & 0x80) else 0
-    for b in range(256)
+    EPSILON_6 if (INTRON_BY_BYTE[b] & 0x80) else 0 for b in range(256)
 )
 
 
@@ -121,9 +113,7 @@ def component12_to_spin6(component12: int) -> tuple[int, ...]:
         elif pair == 0x1:
             spins.append(-1)
         else:
-            raise ValueError(
-                f"Component is not in spin-pair form: {component12:#05x}"
-            )
+            raise ValueError(f"Component is not in spin-pair form: {component12:#05x}")
     return tuple(spins)
 
 
@@ -162,17 +152,11 @@ def state24_to_spin6_pair(
 def _compute_c_perp() -> tuple[int, ...]:
     """Dual code: all 12-bit vectors orthogonal to every mask codeword."""
     masks = set(MASK12_BY_BYTE)
-    return tuple(
-        s
-        for s in range(1 << 12)
-        if all(dot12(s, c) == 0 for c in masks)
-    )
+    return tuple(s for s in range(1 << 12) if all(dot12(s, c) == 0 for c in masks))
 
 
 C_PERP_12: tuple[int, ...] = _compute_c_perp()
-assert len(C_PERP_12) == 64, (
-    f"Expected |C_PERP_12|=64, got {len(C_PERP_12)}"
-)
+assert len(C_PERP_12) == 64, f"Expected |C_PERP_12|=64, got {len(C_PERP_12)}"
 
 
 def syndrome_is_valid_mask(m12: int) -> bool:
@@ -334,9 +318,7 @@ BYTES_BY_Q6: tuple[tuple[int, ...], ...] = tuple(
     tuple(b for b in range(256) if q_word6(b) == q6) for q6 in range(64)
 )
 Q_KERNEL_BYTES: tuple[int, ...] = BYTES_BY_Q6[0]
-Q_WEIGHT_BY_BYTE: tuple[int, ...] = tuple(
-    q_word6(b).bit_count() for b in range(256)
-)
+Q_WEIGHT_BY_BYTE: tuple[int, ...] = tuple(q_word6(b).bit_count() for b in range(256))
 
 
 def q_word6_for_items(items: Iterable[ByteItem]) -> int:
@@ -456,6 +438,7 @@ class OmegaState12:
       A12 = GENE_MAC_A12 ^ word6_to_pairdiag12(u6)
       B12 = GENE_MAC_A12 ^ word6_to_pairdiag12(v6)
     """
+
     u6: int
     v6: int
 
@@ -714,12 +697,14 @@ def k4_orbit(state24: int) -> frozenset[int]:
     Full K4 orbit of a state under {id, S, C, F}.
     """
     s = int(state24) & 0xFFFFFF
-    return frozenset((
-        s,
-        apply_gate(s, "S"),
-        apply_gate(s, "C"),
-        apply_gate(s, "F"),
-    ))
+    return frozenset(
+        (
+            s,
+            apply_gate(s, "S"),
+            apply_gate(s, "C"),
+            apply_gate(s, "F"),
+        )
+    )
 
 
 def k4_stabilizer(state24: int) -> frozenset[str]:
@@ -742,10 +727,7 @@ def fixed_locus(gate_name: str) -> frozenset[int]:
     name = str(gate_name)
     if name not in ("id", "S", "C", "F"):
         raise ValueError(f"Unknown gate name: {gate_name!r}")
-    return frozenset(
-        s for s in OMEGA_STATES_4096
-        if apply_gate(s, name) == s
-    )
+    return frozenset(s for s in OMEGA_STATES_4096 if apply_gate(s, name) == s)
 
 
 def fixed_states_of_gate(gate_name: str) -> frozenset[int]:
@@ -755,9 +737,7 @@ def fixed_states_of_gate(gate_name: str) -> frozenset[int]:
     return fixed_locus(gate_name)
 
 
-SHADOW_PARTNER_BY_BYTE: tuple[int, ...] = tuple(
-    (b ^ 0xFE) & 0xFF for b in range(256)
-)
+SHADOW_PARTNER_BY_BYTE: tuple[int, ...] = tuple((b ^ 0xFE) & 0xFF for b in range(256))
 
 
 def shadow_partner_byte(byte: int) -> int:
@@ -814,7 +794,9 @@ def optical_coordinates_from_omega12(
     return (omega.optical_eq, omega.optical_comp, omega.optical_mu)
 
 
-def optical_coordinates_from_state24(state24: int) -> tuple[Fraction, Fraction, Fraction]:
+def optical_coordinates_from_state24(
+    state24: int,
+) -> tuple[Fraction, Fraction, Fraction]:
     return optical_coordinates_from_omega12(state24_to_omega12(state24))
 
 
@@ -866,6 +848,7 @@ class OmegaSignature12:
     parity = 0 -> identity linear part
     parity = 1 -> swap linear part
     """
+
     parity: int
     tau_u6: int
     tau_v6: int
@@ -943,9 +926,7 @@ def shell_population(shell: int) -> int:
     return comb(6, w) * 64
 
 
-SHELL_POPULATIONS_7: tuple[int, ...] = tuple(
-    shell_population(w) for w in range(7)
-)
+SHELL_POPULATIONS_7: tuple[int, ...] = tuple(shell_population(w) for w in range(7))
 
 
 def shell_transition_probability(
@@ -1006,10 +987,7 @@ def shell_markov_step(
         raise ValueError(f"Expected length-7 shell distribution, got {len(d)}")
 
     T = shell_transition_matrix_for_q_weight(int(q_weight))
-    return tuple(
-        Fraction(sum(d[w] * T[w][wp] for w in range(7)))
-        for wp in range(7)
-    )
+    return tuple(Fraction(sum(d[w] * T[w][wp] for w in range(7))) for wp in range(7))
 
 
 FULL_BYTE_SHELL_DISTRIBUTION: tuple[Fraction, ...] = tuple(
@@ -1049,8 +1027,7 @@ def shell_krawtchouk_transform_exact(
     out = []
     for k in range(7):
         numer = sum(
-            Fraction(comb(6, w) * KRAWTCHOUK_7[w][k], 1) * f[w]
-            for w in range(7)
+            Fraction(comb(6, w) * KRAWTCHOUK_7[w][k], 1) * f[w] for w in range(7)
         )
         denom = 64 * comb(6, k)
         out.append(numer / denom)
@@ -1139,12 +1116,8 @@ def _verify_mask_structure() -> None:
         f = intron_family(intron)
         masks.add(m)
         pairs.add((f, m))
-    assert len(masks) == 64, (
-        f"Expected 64 distinct masks, got {len(masks)}"
-    )
-    assert len(pairs) == 256, (
-        f"Expected 256 (family, mask) pairs, got {len(pairs)}"
-    )
+    assert len(masks) == 64, f"Expected 64 distinct masks, got {len(masks)}"
+    assert len(pairs) == 256, f"Expected 256 (family, mask) pairs, got {len(pairs)}"
 
 
 _verify_mask_structure()

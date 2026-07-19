@@ -70,6 +70,7 @@ HORIZON_STABILIZER_BYTES = (0x2B, 0x54, 0xD5, 0xAA)
 # A. Cut norm of the bipartite horizon-to-horizon transition matrix
 # ================================================================
 
+
 def _shell0_index(state24: int) -> int:
     """Index 0..63 of a complement-horizon (shell 0) state, given by u6."""
     return state24_to_omega12(state24).u6 & 0x3F
@@ -173,17 +174,22 @@ def experiment_horizon_cut_norm() -> dict[str, object]:
         "cut_norm_unsigned": cut_cnt,
         "boolean_opt_unsigned": bool_cnt,
         "sdp_lb_unsigned": hilb_cnt,
-        "ratio_SDP_over_Bool_unsigned": (hilb_cnt / bool_cnt) if bool_cnt > 0 else float("nan"),
+        "ratio_SDP_over_Bool_unsigned": (
+            (hilb_cnt / bool_cnt) if bool_cnt > 0 else float("nan")
+        ),
         "cut_norm_signed": cut_sgn,
         "boolean_opt_signed": bool_sgn,
         "sdp_lb_signed": hilb_sgn,
-        "ratio_SDP_over_Bool_signed": (hilb_sgn / bool_sgn) if bool_sgn > 0 else float("nan"),
+        "ratio_SDP_over_Bool_signed": (
+            (hilb_sgn / bool_sgn) if bool_sgn > 0 else float("nan")
+        ),
     }
 
 
 # ================================================================
 # B. Grothendieck constant K(G) of the horizon-transition graph
 # ================================================================
+
 
 def experiment_graph_grothendieck_K() -> dict[str, object]:
     """L6: K(G) for the 64-vertex horizon graph; compare to Lovasz theta.
@@ -240,6 +246,7 @@ def experiment_graph_grothendieck_K() -> dict[str, object]:
 # C. Per-byte Lefschetz numbers in the shell grading
 # ================================================================
 
+
 def experiment_lefschetz_bytes() -> dict[str, object]:
     """L2: L(T_b) = sum_k (-1)^k Fix_k(T_b) for each byte; correlate."""
     shell_of, idx_of = shell_grading()
@@ -249,10 +256,10 @@ def experiment_lefschetz_bytes() -> dict[str, object]:
         fixed = perm == np.arange(OMEGA_SIZE)
         for i in np.nonzero(fixed)[0]:
             fixed_per_shell[b, shell_of[i]] += 1
-    L = np.array([
-        sum((-1) ** k * fixed_per_shell[b, k] for k in range(7))
-        for b in range(256)
-    ], dtype=np.int64)
+    L = np.array(
+        [sum((-1) ** k * fixed_per_shell[b, k] for k in range(7)) for b in range(256)],
+        dtype=np.int64,
+    )
     fixed_total = fixed_per_shell.sum(axis=1)
     qw = np.array([q_word6(b).bit_count() for b in range(256)], dtype=np.int64)
 
@@ -264,16 +271,18 @@ def experiment_lefschetz_bytes() -> dict[str, object]:
     special = []
     for b in range(256):
         if fixed_total[b] > 0:
-            special.append({
-                "byte": b,
-                "hex": f"0x{b:02X}",
-                "family": int(FAMILY_BY_BYTE[b]),
-                "micro": int(MICRO_REF_BY_BYTE[b]),
-                "q_weight": int(qw[b]),
-                "fixed_total": int(fixed_total[b]),
-                "L": int(L[b]),
-                "fixed_per_shell": [int(x) for x in fixed_per_shell[b]],
-            })
+            special.append(
+                {
+                    "byte": b,
+                    "hex": f"0x{b:02X}",
+                    "family": int(FAMILY_BY_BYTE[b]),
+                    "micro": int(MICRO_REF_BY_BYTE[b]),
+                    "q_weight": int(qw[b]),
+                    "fixed_total": int(fixed_total[b]),
+                    "L": int(L[b]),
+                    "fixed_per_shell": [int(x) for x in fixed_per_shell[b]],
+                }
+            )
     special_bytes = {b["byte"] for b in special}
     stab_note = (
         f"fixed-point bytes {sorted(f'0x{b:02X}' for b in special_bytes)} "
@@ -291,9 +300,13 @@ def experiment_lefschetz_bytes() -> dict[str, object]:
         "fixed_max": int(fixed_total.max()),
         "corr_fixed_vs_L": pearson(fixed_total, L),
         "corr_qweight_vs_L_all": pearson(qw, L),
-        "corr_qweight_vs_L_generic": pearson(qw[generic], L[generic]) if generic.sum() > 1 else float("nan"),
+        "corr_qweight_vs_L_generic": (
+            pearson(qw[generic], L[generic]) if generic.sum() > 1 else float("nan")
+        ),
         "special_fixed_point_bytes": special,
-        "L_constant_over_generic": bool(np.all(L[generic] == L[generic][0])) if generic.sum() > 0 else False,
+        "L_constant_over_generic": (
+            bool(np.all(L[generic] == L[generic][0])) if generic.sum() > 0 else False
+        ),
         "L_generic_value": int(L[generic][0]) if generic.sum() > 0 else None,
         "horizon_stabilizer_note": stab_note,
     }
@@ -303,15 +316,17 @@ def experiment_lefschetz_bytes() -> dict[str, object]:
 # D. Arcsin rounding law on the native 64 chirality +/-1 vectors
 # ================================================================
 
+
 def experiment_arcsin_chirality_vectors() -> dict[str, object]:
     """L3: E[sign(<g,x>)sign(<g,y>)] = (2/pi) arcsin(x.y) on 64 GF(2)^6 words.
 
     Build the 64 chirality words as +/-1 vectors in R^6, fit the
     hyperplane-rounding coefficient c in c * arcsin(x.y), compare to 2/pi.
     """
-    spins = np.array([
-        [1 if ((w >> i) & 1) else -1 for i in range(6)] for w in range(64)
-    ], dtype=np.float64)
+    spins = np.array(
+        [[1 if ((w >> i) & 1) else -1 for i in range(6)] for w in range(64)],
+        dtype=np.float64,
+    )
     X = spins / np.sqrt(6.0)
     dot_prods = X @ X.T
     rng = np.random.default_rng(2024)
@@ -343,6 +358,7 @@ def experiment_arcsin_chirality_vectors() -> dict[str, object]:
 # E. Trace-angle standardization of the BU monodromy delta_BU
 # ================================================================
 
+
 def _su2_general(angle: float, axis: np.ndarray) -> np.ndarray:
     """SU(2) fundamental rep of a rotation by `angle` about unit `axis`."""
     ax = np.asarray(axis, dtype=np.float64)
@@ -350,10 +366,13 @@ def _su2_general(angle: float, axis: np.ndarray) -> np.ndarray:
     a = math.cos(angle / 2.0)
     s = math.sin(angle / 2.0)
     i, j, k = ax
-    return np.array([
-        [complex(a, -s * k), complex(-s * j, -s * i)],
-        [complex(s * j, -s * i), complex(a, s * k)],
-    ], dtype=complex)
+    return np.array(
+        [
+            [complex(a, -s * k), complex(-s * j, -s * i)],
+            [complex(s * j, -s * i), complex(a, s * k)],
+        ],
+        dtype=complex,
+    )
 
 
 def experiment_trace_angle_delta_bu() -> dict[str, object]:
@@ -392,6 +411,7 @@ def experiment_trace_angle_delta_bu() -> dict[str, object]:
 # F. Characteristic polynomials of word operators / RH analogue
 # ================================================================
 
+
 def experiment_word_char_polys() -> dict[str, object]:
     """L4: characteristic polynomials of W2(m), W2'(m), F(m); RH analogue."""
     _, idx_of = shell_grading()
@@ -417,12 +437,18 @@ def experiment_word_char_polys() -> dict[str, object]:
         "cycle_lengths_present": sorted(sig_union),
         "all_eigs_on_unit_circle": bool(all(L <= 2 for L in sig_union)),
     }
-    return {"W2": results["W2"], "W2p": results["W2'"], "F": results["F"], "rh_analogue": rh}
+    return {
+        "W2": results["W2"],
+        "W2p": results["W2'"],
+        "F": results["F"],
+        "rh_analogue": rh,
+    }
 
 
 # ================================================================
 # Runner
 # ================================================================
+
 
 def all_experiments() -> dict[str, object]:
     return {
@@ -437,4 +463,5 @@ def all_experiments() -> dict[str, object]:
 
 if __name__ == "__main__":
     import json
+
     print(json.dumps(all_experiments(), indent=2, default=str))

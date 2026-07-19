@@ -32,7 +32,11 @@ if str(_EXPERIMENTS) not in sys.path:
 from gyroscopic.hQVM.api import FULL_BYTE_SHELL_DISTRIBUTION, q_word6, q_word6_for_items
 from gyroscopic.hQVM.constants import step_state_by_byte
 
-from hqvm_gravity_analysis_2 import arch_shell, enumerate_omega, verify_holographic_mirror
+from hqvm_gravity_analysis_2 import (
+    arch_shell,
+    enumerate_omega,
+    verify_holographic_mirror,
+)
 from hqvm_gravity_analysis_3 import sigma_shell, tr_sigma_iso_exact
 from hqvm_wavefunction_1 import (
     build_permutation,
@@ -271,9 +275,7 @@ def section_b_regge_sum(a_stats: dict) -> dict[str, float | bool]:
         for y in range(N_BYTES):
             pc = defect_popcount(qx ^ q_word6(y))
             if pc in HORIZON_SHELLS:
-                horizon_plaq += (
-                    alpha_deficit_from_popcount(pc) * shell_weight(pc)
-                )
+                horizon_plaq += alpha_deficit_from_popcount(pc) * shell_weight(pc)
 
     print("Holonomy cycle (64 micro-refs, bulk steps 1/3/5/7):")
     print(f"  Regge / cycle (bulk)    = {regge_cycle:.12f}")
@@ -325,9 +327,7 @@ def bch_explicit_pair(
     pyx = apply_word_on_omega([y, x], omega)
     px3 = apply_word_on_omega([x, x, x], omega)
     py3 = apply_word_on_omega([y, y, y], omega)
-    p_comm = compose_perms(
-        compose_perms(compose_perms(py, px), py3), px3
-    )
+    p_comm = compose_perms(compose_perms(compose_perms(py, px), py3), px3)
 
     n_diff = sum(1 for s in omega if pxy[s] != pyx[s])
     n_comm = sum(1 for s in omega if p_comm[s] != s)
@@ -417,8 +417,12 @@ def section_c_bch_decomposition(omega: list[int]) -> dict[str, bool | float]:
     b = bch_explicit_pair(BCH_X, BCH_Y, omega)
     print()
     print(f"Explicit BCH on bytes x=0x{b['x']:02X}, y=0x{b['y']:02X}:")
-    print(f"  q(x)                    = {int(b['qx']):06b}  pop={defect_popcount(int(b['qx']))}")
-    print(f"  q(y)                    = {int(b['qy']):06b}  pop={defect_popcount(int(b['qy']))}")
+    print(
+        f"  q(x)                    = {int(b['qx']):06b}  pop={defect_popcount(int(b['qx']))}"
+    )
+    print(
+        f"  q(y)                    = {int(b['qy']):06b}  pop={defect_popcount(int(b['qy']))}"
+    )
     print(f"  defect d = q(x) XOR q(y) = {b['d']:06b}  pop={b['pc']}")
     print(f"  alpha(d)                = {b['alpha_d']:.12f} rad")
     print()
@@ -491,7 +495,9 @@ def formal_depth4_delta() -> tuple[bool, str]:
     return ok, str(delta)
 
 
-def kernel_modal_depth4(micro_ref: int, omega: list[int]) -> dict[str, int | bool | float]:
+def kernel_modal_depth4(
+    micro_ref: int, omega: list[int]
+) -> dict[str, int | bool | float]:
     """
     Map modal [L],[R] to kernel W2, W2' and verify BU-Egress / BU-Ingress / UNA.
     """
@@ -515,9 +521,7 @@ def kernel_modal_depth4(micro_ref: int, omega: list[int]) -> dict[str, int | boo
     pw2p_twice = apply_word_on_omega(w_r + w_r, omega)
     w2_involution = all(pw2_twice[s] == s for s in omega)
     w2p_involution = all(pw2p_twice[s] == s for s in omega)
-    comp_to_eq = sum(
-        1 for s in omega if arch_shell(s) == 0 and arch_shell(pw2[s]) == 6
-    )
+    comp_to_eq = sum(1 for s in omega if arch_shell(s) == 0 and arch_shell(pw2[s]) == 6)
     rest = GENE_MAC_REST
     ingress_memory = rest in pw2 and pw2_twice.get(rest, -1) == rest
 
@@ -611,14 +615,18 @@ def section_c2_modal_kernel_bridge(
     print()
     print(f"UNA (global, generic bytes 0x{BCH_X:02X}, 0x{BCH_Y:02X}):")
     print(f"  defect d = q(x) XOR q(y)  = {km['generic_defect_pop']} (non-zero)")
-    print(f"  antisymmetric tau/2       = {0.5 * (tau_word([BCH_X, BCH_Y], m_ref) - tau_word([BCH_Y, BCH_X], m_ref)):.12f}")
+    print(
+        f"  antisymmetric tau/2       = {0.5 * (tau_word([BCH_X, BCH_Y], m_ref) - tau_word([BCH_Y, BCH_X], m_ref)):.12f}"
+    )
     print(f"  order swap on |Omega|      = {km['una_order_diff_states']}")
     print("  -> [X,Y] != 0 globally off S-sector")
     print()
     print("Delta^n bridge (formal -> kernel f_k4):")
     print(f"  formal degree-2 Delta      = 2[X,Y]")
     print(f"  kernel f_k4 Delta^2 coeff   = {-4.0 * rho:.12f}")
-    print(f"  kernel f_k4 Delta^4 coeff   = {float(C4_REF):.12f}  (sl(2) trace / [[X,Y],[X,Y]])")
+    print(
+        f"  kernel f_k4 Delta^4 coeff   = {float(C4_REF):.12f}  (sl(2) trace / [[X,Y],[X,Y]])"
+    )
     print(f"  k_eff = 3 (bulk shells)     = spatial dim from sl(2) closure")
     print(f"  Q_G = 4*pi                  = {Q_G:.10f}  (representation anchor)")
 
@@ -754,7 +762,11 @@ def section_e_chain_verification(
         ),
         ("Delta^1 absent (Z2)", c_stats["delta1_absent"], "f_k4[1]=0"),
         ("Delta^3 absent (Z2)", c_stats["delta3_absent"], "f_k4[3]=0"),
-        ("BCH pair explicit", c_stats["bch_pair_ok"], f"x=0x{BCH_X:02X} y=0x{BCH_Y:02X}"),
+        (
+            "BCH pair explicit",
+            c_stats["bch_pair_ok"],
+            f"x=0x{BCH_X:02X} y=0x{BCH_Y:02X}",
+        ),
         ("Formal Delta = 2[X,Y]", c2_stats["sympy_delta_ok"], "cgm_3D_6DoF"),
         ("BU-Egress q(F)=0", c2_stats["bu_egress_ok"], "closure at S"),
         ("BU-Ingress W2 shadow", c2_stats["bu_ingress_ok"], "comp<->eq memory"),
@@ -789,6 +801,7 @@ def section_e_chain_verification(
     print()
     print(f"Chain closed at computational level: {all_ok}")
     return all_ok
+
 
 def run_kernel_chain(verbose: bool = True) -> tuple[bool, dict]:
     """Run sections A-E; return (chain_ok, d_stats for analysis_9)."""

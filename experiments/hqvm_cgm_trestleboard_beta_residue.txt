@@ -1,0 +1,562 @@
+# beta- residue (oriented) n=801
+# FWD=243 REFL=70 SRCH=488
+# [REFL] needs W2 reflection
+  Be-12 Z4 N8 wp=4 d_shell=2 (=6-wp) Jp=0.0 Jd=1.0
+  B-14 Z5 N9 wp=4 d_shell=2 (=6-wp) Jp=2.0 Jd=0.0
+  C-16 Z6 N10 wp=4 d_shell=2 (=6-wp) Jp=0.0 Jd=2.0
+  N-18 Z7 N11 wp=4 d_shell=2 (=6-wp) Jp=1.0 Jd=0.0
+  Na-26 Z11 N15 wp=4 d_shell=2 (=6-wp) Jp=3.0 Jd=0.0
+  Mg-28 Z12 N16 wp=4 d_shell=2 (=6-wp) Jp=0.0 Jd=3.0
+  Al-30 Z13 N17 wp=4 d_shell=2 (=6-wp) Jp=3.0 Jd=0.0
+  Si-32 Z14 N18 wp=4 d_shell=2 (=6-wp) Jp=0.0 Jd=1.0
+  Si-39 Z14 N25 wp=4 d_shell=2 (=6-wp) Jp=2.5 Jd=0.5
+  P-34 Z15 N19 wp=4 d_shell=2 (=6-wp) Jp=1.0 Jd=0.0
+  S-43 Z16 N27 wp=4 d_shell=2 (=6-wp) Jp=1.5 Jd=0.5
+  K-42 Z19 N23 wp=4 d_shell=2 (=6-wp) Jp=2.0 Jd=0.0
+  Sc-46 Z21 N25 wp=4 d_shell=2 (=6-wp) Jp=4.0 Jd=0.0
+  Cr-59 Z24 N35 wp=4 d_shell=2 (=6-wp) Jp=0.5 Jd=2.5
+  Cu-69 Z29 N40 wp=4 d_shell=2 (=6-wp) Jp=1.5 Jd=0.5
+  Zn-71 Z30 N41 wp=4 d_shell=2 (=6-wp) Jp=0.5 Jd=1.5
+  Zn-78 Z30 N48 wp=4 d_shell=2 (=6-wp) Jp=0.0 Jd=3.0
+  Ga-73 Z31 N42 wp=4 d_shell=2 (=6-wp) Jp=0.5 Jd=4.5
+  Ge-75 Z32 N43 wp=4 d_shell=2 (=6-wp) Jp=0.5 Jd=1.5
+  Ge-82 Z32 N50 wp=4 d_shell=2 (=6-wp) Jp=0.0 Jd=2.0
+  As-84 Z33 N51 wp=4 d_shell=2 (=6-wp) Jp=3.0 Jd=0.0
+  Se-93 Z34 N59 wp=4 d_shell=2 (=6-wp) Jp=0.5 Jd=2.5
+  Kr-97 Z36 N61 wp=4 d_shell=2 (=6-wp) Jp=1.5 Jd=1.5
+  Rb-99 Z37 N62 wp=4 d_shell=2 (=6-wp) Jp=1.5 Jd=1.5
+  Sr-94 Z38 N56 wp=4 d_shell=2 (=6-wp) Jp=0.0 Jd=2.0
+  Y-96 Z39 N57 wp=4 d_shell=2 (=6-wp) Jp=0.0 Jd=0.0
+  Y-103 Z39 N64 wp=4 d_shell=2 (=6-wp) Jp=2.5 Jd=2.5
+  Zr-98 Z40 N58 wp=4 d_shell=2 (=6-wp) Jp=0.0 Jd=1.0
+  Zr-105 Z40 N65 wp=4 d_shell=2 (=6-wp) Jp=2.5 Jd=2.5
+  Nb-100 Z41 N59 wp=4 d_shell=2 (=6-wp) Jp=1.0 Jd=0.0
+  Mo-109 Z42 N67 wp=4 d_shell=2 (=6-wp) Jp=2.5 Jd=2.5
+  Rh-108 Z45 N63 wp=4 d_shell=2 (=6-wp) Jp=1.0 Jd=0.0
+  Pd-117 Z46 N71 wp=4 d_shell=2 (=6-wp) Jp=2.5 Jd=0.5
+  Pd-124 Z46 N78 wp=4 d_shell=2 (=6-wp) Jp=0.0 Jd=3.0
+  Ag-119 Z47 N72 wp=4 d_shell=2 (=6-wp) Jp=3.5 Jd=0.5
+  Cd-121 Z48 N73 wp=4 d_shell=2 (=6-wp) Jp=1.5 Jd=4.5
+  In-116 Z49 N67 wp=4 d_shell=2 (=6-wp) Jp=1.0 Jd=0.0
+  In-123 Z49 N74 wp=4 d_shell=2 (=6-wp) Jp=4.5 Jd=5.5
+  Sn-125 Z50 N75 wp=4 d_shell=2 (=6-wp) Jp=5.5 Jd=3.5
+  Sb-134 Z51 N83 wp=4 d_shell=2 (=6-wp) Jp=0.0 Jd=0.0
+  Te-129 Z52 N77 wp=4 d_shell=2 (=6-wp) Jp=1.5 Jd=3.5
+  Xe-133 Z54 N79 wp=4 d_shell=2 (=6-wp) Jp=1.5 Jd=3.5
+  Xe-140 Z54 N86 wp=4 d_shell=2 (=6-wp) Jp=0.0 Jd=1.0
+  Cs-135 Z55 N80 wp=4 d_shell=2 (=6-wp) Jp=3.5 Jd=1.5
+  Cs-142 Z55 N87 wp=4 d_shell=2 (=6-wp) Jp=0.0 Jd=0.0
+  Ba-144 Z56 N88 wp=4 d_shell=2 (=6-wp) Jp=0.0 Jd=3.0
+  La-146 Z57 N89 wp=4 d_shell=2 (=6-wp) Jp=2.0 Jd=0.0
+  Ce-141 Z58 N83 wp=4 d_shell=2 (=6-wp) Jp=3.5 Jd=2.5
+  Ce-148 Z58 N90 wp=4 d_shell=2 (=6-wp) Jp=0.0 Jd=1.0
+  Pr-150 Z59 N91 wp=4 d_shell=2 (=6-wp) Jp=1.0 Jd=0.0
+  Pr-157 Z59 N98 wp=4 d_shell=2 (=6-wp) Jp=1.5 Jd=2.5
+  Sm-156 Z62 N94 wp=4 d_shell=2 (=6-wp) Jp=0.0 Jd=0.0
+  Tb-162 Z65 N97 wp=4 d_shell=2 (=6-wp) Jp=1.0 Jd=0.0
+  Ho-166 Z67 N99 wp=4 d_shell=2 (=6-wp) Jp=0.0 Jd=0.0
+  Ho-173 Z67 N106 wp=4 d_shell=2 (=6-wp) Jp=3.5 Jd=3.5
+  Er-175 Z68 N107 wp=4 d_shell=2 (=6-wp) Jp=4.5 Jd=0.5
+  Ta-185 Z73 N112 wp=4 d_shell=2 (=6-wp) Jp=3.5 Jd=1.5
+  W-187 Z74 N113 wp=4 d_shell=2 (=6-wp) Jp=1.5 Jd=2.5
+  Re-189 Z75 N114 wp=4 d_shell=2 (=6-wp) Jp=2.5 Jd=1.5
+  Os-191 Z76 N115 wp=4 d_shell=2 (=6-wp) Jp=4.5 Jd=1.5
+  Tl-208 Z81 N127 wp=4 d_shell=2 (=6-wp) Jp=5.0 Jd=0.0
+  Pb-210 Z82 N128 wp=4 d_shell=2 (=6-wp) Jp=0.0 Jd=1.0
+  Bi-219 Z83 N136 wp=4 d_shell=2 (=6-wp) Jp=4.5 Jd=4.5
+  Rn-225 Z86 N139 wp=4 d_shell=2 (=6-wp) Jp=3.5 Jd=1.5
+  Th-233 Z90 N143 wp=4 d_shell=2 (=6-wp) Jp=0.5 Jd=1.5
+  Pa-235 Z91 N144 wp=4 d_shell=2 (=6-wp) Jp=1.5 Jd=3.5
+  U-237 Z92 N145 wp=4 d_shell=2 (=6-wp) Jp=0.5 Jd=2.5
+  U-244 Z92 N152 wp=4 d_shell=2 (=6-wp) Jp=0.0 Jd=7.0
+  Np-239 Z93 N146 wp=4 d_shell=2 (=6-wp) Jp=2.5 Jd=0.5
+  Pu-241 Z94 N147 wp=4 d_shell=2 (=6-wp) Jp=2.5 Jd=2.5
+# [SRCH] needs non-UNA byte
+  n-1 Z0 N1 wp=1 d_shell=1 (fwd-target 5) need_byte=0x04 Jp=0.5 Jd=0.5
+  H-3 Z1 N2 wp=1 d_shell=1 (fwd-target 5) need_byte=0x03 Jp=0.5 Jd=0.5
+  He-6 Z2 N4 wp=2 d_shell=0 (fwd-target 4) need_byte=0x10 Jp=0.0 Jd=1.0
+  Li-9 Z3 N6 wp=3 d_shell=1 (fwd-target 3) need_byte=0x04 Jp=1.5 Jd=1.5
+  Li-11 Z3 N8 wp=5 d_shell=3 (fwd-target 1) need_byte=0x02 Jp=1.5 Jd=0.5
+  Be-10 Z4 N6 wp=2 d_shell=0 (fwd-target 4) need_byte=0x34 Jp=0.0 Jd=3.0
+  Be-11 Z4 N7 wp=3 d_shell=1 (fwd-target 3) need_byte=0x04 Jp=0.5 Jd=1.5
+  B-12 Z5 N7 wp=2 d_shell=0 (fwd-target 4) need_byte=0x34 Jp=1.0 Jd=0.0
+  B-13 Z5 N8 wp=3 d_shell=1 (fwd-target 3) need_byte=0x08 Jp=1.5 Jd=0.5
+  B-17 Z5 N12 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=1.5 Jd=1.5
+  B-19 Z5 N14 wp=2 d_shell=0 (fwd-target 4) need_byte=0x34 Jp=1.5 Jd=0.5
+  C-14 Z6 N8 wp=2 d_shell=0 (fwd-target 4) need_byte=0x27 Jp=0.0 Jd=1.0
+  C-15 Z6 N9 wp=3 d_shell=1 (fwd-target 3) need_byte=0x08 Jp=0.5 Jd=0.5
+  C-17 Z6 N11 wp=5 d_shell=3 (fwd-target 1) need_byte=0x02 Jp=1.5 Jd=0.5
+  C-19 Z6 N13 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=0.5 Jd=0.5
+  C-20 Z6 N14 wp=1 d_shell=6 (fwd-target 5) need_byte=0x15 Jp=0.0 Jd=2.0
+  C-22 Z6 N16 wp=3 d_shell=1 (fwd-target 3) need_byte=0x05 Jp=0.0 Jd=0.0
+  N-16 Z7 N9 wp=2 d_shell=0 (fwd-target 4) need_byte=0x2d Jp=2.0 Jd=0.0
+  N-17 Z7 N10 wp=3 d_shell=1 (fwd-target 3) need_byte=0x03 Jp=0.5 Jd=2.5
+  N-21 Z7 N14 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=0.5 Jd=2.5
+  N-22 Z7 N15 wp=1 d_shell=6 (fwd-target 5) need_byte=0x15 Jp=0.0 Jd=0.0
+  O-19 Z8 N11 wp=3 d_shell=1 (fwd-target 3) need_byte=0x03 Jp=2.5 Jd=0.5
+  O-23 Z8 N15 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=0.5 Jd=2.5
+  O-24 Z8 N16 wp=1 d_shell=6 (fwd-target 5) need_byte=0x28 Jp=0.0 Jd=3.0
+  F-20 Z9 N11 wp=2 d_shell=0 (fwd-target 4) need_byte=0x1b Jp=2.0 Jd=0.0
+  F-25 Z9 N16 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=2.5 Jd=0.5
+  F-26 Z9 N17 wp=1 d_shell=6 (fwd-target 5) need_byte=0x3a Jp=1.0 Jd=0.0
+  F-27 Z9 N18 wp=2 d_shell=0 (fwd-target 4) need_byte=0x03 Jp=2.5 Jd=1.5
+  Ne-23 Z10 N13 wp=3 d_shell=1 (fwd-target 3) need_byte=0x04 Jp=2.5 Jd=1.5
+  Ne-27 Z10 N17 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=1.5 Jd=2.5
+  Ne-28 Z10 N18 wp=1 d_shell=6 (fwd-target 5) need_byte=0x0a Jp=0.0 Jd=1.0
+  Ne-29 Z10 N19 wp=2 d_shell=0 (fwd-target 4) need_byte=0x1b Jp=1.5 Jd=1.5
+  Na-24 Z11 N13 wp=2 d_shell=0 (fwd-target 4) need_byte=0x04 Jp=4.0 Jd=0.0
+  Na-25 Z11 N14 wp=3 d_shell=1 (fwd-target 3) need_byte=0x03 Jp=2.5 Jd=2.5
+  Na-27 Z11 N16 wp=5 d_shell=3 (fwd-target 1) need_byte=0x02 Jp=2.5 Jd=0.5
+  Na-29 Z11 N18 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=1.5 Jd=1.5
+  Na-30 Z11 N19 wp=1 d_shell=6 (fwd-target 5) need_byte=0x0a Jp=2.0 Jd=0.0
+  Mg-27 Z12 N15 wp=3 d_shell=1 (fwd-target 3) need_byte=0x04 Jp=0.5 Jd=2.5
+  Mg-29 Z12 N17 wp=5 d_shell=3 (fwd-target 1) need_byte=0x02 Jp=1.5 Jd=2.5
+  Mg-32 Z12 N20 wp=1 d_shell=6 (fwd-target 5) need_byte=0x15 Jp=0.0 Jd=1.0
+  Mg-34 Z12 N22 wp=3 d_shell=1 (fwd-target 3) need_byte=0x03 Jp=0.0 Jd=4.0
+  Mg-38 Z12 N26 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=0.0 Jd=0.0
+  Al-28 Z13 N15 wp=2 d_shell=0 (fwd-target 4) need_byte=0x34 Jp=3.0 Jd=0.0
+  Al-29 Z13 N16 wp=3 d_shell=1 (fwd-target 3) need_byte=0x05 Jp=2.5 Jd=0.5
+  Al-34 Z13 N21 wp=1 d_shell=6 (fwd-target 5) need_byte=0x15 Jp=4.0 Jd=0.0
+  Si-31 Z14 N17 wp=3 d_shell=1 (fwd-target 3) need_byte=0x0e Jp=1.5 Jd=0.5
+  Si-33 Z14 N19 wp=5 d_shell=3 (fwd-target 1) need_byte=0x02 Jp=1.5 Jd=0.5
+  Si-36 Z14 N22 wp=1 d_shell=6 (fwd-target 5) need_byte=0x15 Jp=0.0 Jd=4.0
+  Si-37 Z14 N23 wp=2 d_shell=0 (fwd-target 4) need_byte=0x34 Jp=2.5 Jd=0.5
+  Si-38 Z14 N24 wp=3 d_shell=1 (fwd-target 3) need_byte=0x05 Jp=0.0 Jd=2.0
+  P-32 Z15 N17 wp=2 d_shell=0 (fwd-target 4) need_byte=0x33 Jp=1.0 Jd=0.0
+  P-33 Z15 N18 wp=3 d_shell=1 (fwd-target 3) need_byte=0x03 Jp=0.5 Jd=1.5
+  P-37 Z15 N22 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=0.5 Jd=3.5
+  P-38 Z15 N23 wp=1 d_shell=6 (fwd-target 5) need_byte=0x15 Jp=2.0 Jd=0.0
+  S-35 Z16 N19 wp=3 d_shell=1 (fwd-target 3) need_byte=0x0f Jp=1.5 Jd=1.5
+  S-40 Z16 N24 wp=1 d_shell=6 (fwd-target 5) need_byte=0x28 Jp=0.0 Jd=2.0
+  S-42 Z16 N26 wp=3 d_shell=1 (fwd-target 3) need_byte=0x05 Jp=0.0 Jd=2.0
+  S-46 Z16 N30 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=0.0 Jd=2.0
+  Cl-36 Z17 N19 wp=2 d_shell=0 (fwd-target 4) need_byte=0x1b Jp=2.0 Jd=0.0
+  Cl-41 Z17 N24 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=0.5 Jd=3.5
+  Cl-42 Z17 N25 wp=1 d_shell=6 (fwd-target 5) need_byte=0x22 Jp=2.0 Jd=0.0
+  Cl-44 Z17 N27 wp=3 d_shell=1 (fwd-target 3) need_byte=0x03 Jp=2.0 Jd=0.0
+  Ar-44 Z18 N26 wp=1 d_shell=6 (fwd-target 5) need_byte=0x0a Jp=0.0 Jd=2.0
+  Ar-52 Z18 N34 wp=2 d_shell=0 (fwd-target 4) need_byte=0x0f Jp=0.0 Jd=2.0
+  K-40 Z19 N21 wp=2 d_shell=0 (fwd-target 4) need_byte=0x10 Jp=4.0 Jd=0.0
+  K-43 Z19 N24 wp=5 d_shell=3 (fwd-target 1) need_byte=0x02 Jp=1.5 Jd=3.5
+  K-45 Z19 N26 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=1.5 Jd=3.5
+  K-46 Z19 N27 wp=1 d_shell=6 (fwd-target 5) need_byte=0x0a Jp=2.0 Jd=0.0
+  K-47 Z19 N28 wp=2 d_shell=0 (fwd-target 4) need_byte=0x10 Jp=0.5 Jd=3.5
+  K-52 Z19 N33 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=2.0 Jd=0.0
+  K-53 Z19 N34 wp=1 d_shell=6 (fwd-target 5) need_byte=0x0a Jp=1.5 Jd=0.5
+  K-54 Z19 N35 wp=2 d_shell=0 (fwd-target 4) need_byte=0x03 Jp=2.0 Jd=0.0
+  Ca-45 Z20 N25 wp=5 d_shell=3 (fwd-target 1) need_byte=0x02 Jp=3.5 Jd=3.5
+  Ca-47 Z20 N27 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=3.5 Jd=3.5
+  Ca-49 Z20 N29 wp=2 d_shell=0 (fwd-target 4) need_byte=0x1c Jp=1.5 Jd=3.5
+  Ca-50 Z20 N30 wp=3 d_shell=1 (fwd-target 3) need_byte=0x03 Jp=0.0 Jd=5.0
+  Ca-55 Z20 N35 wp=1 d_shell=6 (fwd-target 5) need_byte=0x0a Jp=2.5 Jd=3.5
+  Ca-56 Z20 N36 wp=2 d_shell=0 (fwd-target 4) need_byte=0x1c Jp=0.0 Jd=1.0
+  Sc-47 Z21 N26 wp=5 d_shell=3 (fwd-target 1) need_byte=0x02 Jp=3.5 Jd=2.5
+  Sc-49 Z21 N28 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=3.5 Jd=3.5
+  Sc-50 Z21 N29 wp=1 d_shell=6 (fwd-target 5) need_byte=0x15 Jp=5.0 Jd=0.0
+  Sc-56 Z21 N35 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=1.0 Jd=0.0
+  Ti-51 Z22 N29 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=1.5 Jd=3.5
+  Ti-52 Z22 N30 wp=1 d_shell=6 (fwd-target 5) need_byte=0x15 Jp=0.0 Jd=3.0
+  Ti-54 Z22 N32 wp=3 d_shell=1 (fwd-target 3) need_byte=0x05 Jp=0.0 Jd=3.0
+  Ti-56 Z22 N34 wp=5 d_shell=3 (fwd-target 1) need_byte=0x02 Jp=0.0 Jd=1.0
+  Ti-58 Z22 N36 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=0.0 Jd=1.0
+  V-53 Z23 N30 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=3.5 Jd=1.5
+  V-54 Z23 N31 wp=1 d_shell=6 (fwd-target 5) need_byte=0x15 Jp=3.0 Jd=0.0
+  V-55 Z23 N32 wp=2 d_shell=0 (fwd-target 4) need_byte=0x39 Jp=3.5 Jd=1.5
+  V-56 Z23 N33 wp=3 d_shell=1 (fwd-target 3) need_byte=0x0e Jp=1.0 Jd=0.0
+  V-58 Z23 N35 wp=5 d_shell=3 (fwd-target 1) need_byte=0x02 Jp=1.0 Jd=0.0
+  V-63 Z23 N40 wp=3 d_shell=1 (fwd-target 3) need_byte=0x02 Jp=3.5 Jd=0.5
+  Cr-55 Z24 N31 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=1.5 Jd=2.5
+  Cr-56 Z24 N32 wp=1 d_shell=6 (fwd-target 5) need_byte=0x28 Jp=0.0 Jd=3.0
+  Cr-58 Z24 N34 wp=3 d_shell=1 (fwd-target 3) need_byte=0x05 Jp=0.0 Jd=1.0
+  Cr-62 Z24 N38 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=0.0 Jd=1.0
+  Cr-63 Z24 N39 wp=1 d_shell=6 (fwd-target 5) need_byte=0x15 Jp=0.5 Jd=2.5
+  Cr-65 Z24 N41 wp=3 d_shell=1 (fwd-target 3) need_byte=0x05 Jp=0.5 Jd=2.5
+  Mn-57 Z25 N32 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=2.5 Jd=0.5
+  Mn-58 Z25 N33 wp=1 d_shell=6 (fwd-target 5) need_byte=0x3a Jp=1.0 Jd=0.0
+  Mn-59 Z25 N34 wp=2 d_shell=0 (fwd-target 4) need_byte=0x1b Jp=2.5 Jd=1.5
+  Mn-60 Z25 N35 wp=3 d_shell=1 (fwd-target 3) need_byte=0x0f Jp=1.0 Jd=0.0
+  Mn-65 Z25 N40 wp=1 d_shell=6 (fwd-target 5) need_byte=0x3a Jp=2.5 Jd=0.5
+  Mn-67 Z25 N42 wp=3 d_shell=1 (fwd-target 3) need_byte=0x03 Jp=2.5 Jd=2.5
+  Fe-59 Z26 N33 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=1.5 Jd=3.5
+  Fe-60 Z26 N34 wp=1 d_shell=6 (fwd-target 5) need_byte=0x0a Jp=0.0 Jd=5.0
+  Fe-61 Z26 N35 wp=2 d_shell=0 (fwd-target 4) need_byte=0x09 Jp=1.5 Jd=3.5
+  Fe-66 Z26 N40 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=0.0 Jd=3.0
+  Fe-67 Z26 N41 wp=1 d_shell=6 (fwd-target 5) need_byte=0x3a Jp=2.5 Jd=3.5
+  Fe-68 Z26 N42 wp=2 d_shell=0 (fwd-target 4) need_byte=0x0f Jp=0.0 Jd=7.0
+  Co-61 Z27 N34 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=3.5 Jd=1.5
+  Co-63 Z27 N36 wp=2 d_shell=0 (fwd-target 4) need_byte=0x04 Jp=3.5 Jd=0.5
+  Co-68 Z27 N41 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=7.0 Jd=0.0
+  Co-69 Z27 N42 wp=1 d_shell=6 (fwd-target 5) need_byte=0x0a Jp=3.5 Jd=4.5
+  Co-71 Z27 N44 wp=3 d_shell=1 (fwd-target 3) need_byte=0x04 Jp=3.5 Jd=4.5
+  Ni-63 Z28 N35 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=0.5 Jd=1.5
+  Ni-66 Z28 N38 wp=3 d_shell=1 (fwd-target 3) need_byte=0x03 Jp=0.0 Jd=1.0
+  Ni-68 Z28 N40 wp=5 d_shell=3 (fwd-target 1) need_byte=0x02 Jp=0.0 Jd=1.0
+  Ni-70 Z28 N42 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=0.0 Jd=6.0
+  Ni-73 Z28 N45 wp=3 d_shell=1 (fwd-target 3) need_byte=0x04 Jp=4.5 Jd=1.5
+  Ni-77 Z28 N49 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=4.5 Jd=2.5
+  Cu-66 Z29 N37 wp=1 d_shell=6 (fwd-target 5) need_byte=0x15 Jp=1.0 Jd=0.0
+  Cu-67 Z29 N38 wp=2 d_shell=0 (fwd-target 4) need_byte=0x34 Jp=1.5 Jd=2.5
+  Cu-68 Z29 N39 wp=3 d_shell=1 (fwd-target 3) need_byte=0x04 Jp=1.0 Jd=0.0
+  Cu-70 Z29 N41 wp=5 d_shell=3 (fwd-target 1) need_byte=0x02 Jp=6.0 Jd=0.0
+  Cu-73 Z29 N44 wp=1 d_shell=6 (fwd-target 5) need_byte=0x15 Jp=1.5 Jd=0.5
+  Cu-77 Z29 N48 wp=5 d_shell=3 (fwd-target 1) need_byte=0x02 Jp=2.5 Jd=3.5
+  Zn-69 Z30 N39 wp=2 d_shell=0 (fwd-target 4) need_byte=0x34 Jp=0.5 Jd=1.5
+  Zn-72 Z30 N42 wp=5 d_shell=3 (fwd-target 1) need_byte=0x02 Jp=0.0 Jd=3.0
+  Zn-74 Z30 N44 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=0.0 Jd=3.0
+  Zn-75 Z30 N45 wp=1 d_shell=6 (fwd-target 5) need_byte=0x15 Jp=3.5 Jd=1.5
+  Zn-81 Z30 N51 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=2.5 Jd=2.5
+  Zn-82 Z30 N52 wp=1 d_shell=6 (fwd-target 5) need_byte=0x15 Jp=0.0 Jd=2.0
+  Zn-84 Z30 N54 wp=3 d_shell=1 (fwd-target 3) need_byte=0x03 Jp=0.0 Jd=0.0
+  Ga-70 Z31 N39 wp=1 d_shell=6 (fwd-target 5) need_byte=0x15 Jp=1.0 Jd=0.0
+  Ga-72 Z31 N41 wp=3 d_shell=1 (fwd-target 3) need_byte=0x05 Jp=3.0 Jd=0.0
+  Ga-74 Z31 N43 wp=5 d_shell=3 (fwd-target 1) need_byte=0x02 Jp=3.0 Jd=0.0
+  Ga-78 Z31 N47 wp=2 d_shell=0 (fwd-target 4) need_byte=0x34 Jp=3.0 Jd=0.0
+  Ga-81 Z31 N50 wp=5 d_shell=3 (fwd-target 1) need_byte=0x02 Jp=2.5 Jd=4.5
+  Ga-84 Z31 N53 wp=1 d_shell=6 (fwd-target 5) need_byte=0x15 Jp=0.0 Jd=0.0
+  Ge-78 Z32 N46 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=0.0 Jd=2.0
+  Ge-80 Z32 N48 wp=2 d_shell=0 (fwd-target 4) need_byte=0x2d Jp=0.0 Jd=1.0
+  Ge-81 Z32 N49 wp=3 d_shell=1 (fwd-target 3) need_byte=0x02 Jp=4.5 Jd=1.5
+  Ge-87 Z32 N55 wp=2 d_shell=0 (fwd-target 4) need_byte=0x34 Jp=2.5 Jd=1.5
+  As-76 Z33 N43 wp=3 d_shell=1 (fwd-target 3) need_byte=0x03 Jp=2.0 Jd=0.0
+  As-80 Z33 N47 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=1.0 Jd=0.0
+  As-81 Z33 N48 wp=1 d_shell=6 (fwd-target 5) need_byte=0x3a Jp=1.5 Jd=0.5
+  As-82 Z33 N49 wp=2 d_shell=0 (fwd-target 4) need_byte=0x21 Jp=2.0 Jd=0.0
+  As-83 Z33 N50 wp=3 d_shell=1 (fwd-target 3) need_byte=0x03 Jp=2.5 Jd=4.5
+  As-87 Z33 N54 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=1.5 Jd=1.5
+  Se-83 Z34 N49 wp=1 d_shell=6 (fwd-target 5) need_byte=0x3a Jp=4.5 Jd=1.5
+  Se-84 Z34 N50 wp=2 d_shell=0 (fwd-target 4) need_byte=0x0f Jp=0.0 Jd=2.0
+  Se-89 Z34 N55 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=2.5 Jd=2.5
+  Br-84 Z35 N49 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=2.0 Jd=0.0
+  Br-85 Z35 N50 wp=1 d_shell=6 (fwd-target 5) need_byte=0x0a Jp=1.5 Jd=4.5
+  Br-86 Z35 N51 wp=2 d_shell=0 (fwd-target 4) need_byte=0x09 Jp=1.0 Jd=0.0
+  Br-87 Z35 N52 wp=3 d_shell=1 (fwd-target 3) need_byte=0x04 Jp=2.5 Jd=2.5
+  Br-93 Z35 N58 wp=2 d_shell=0 (fwd-target 4) need_byte=0x1b Jp=2.5 Jd=0.5
+  Kr-87 Z36 N51 wp=1 d_shell=6 (fwd-target 5) need_byte=0x0a Jp=2.5 Jd=1.5
+  Kr-88 Z36 N52 wp=2 d_shell=0 (fwd-target 4) need_byte=0x1c Jp=0.0 Jd=2.0
+  Kr-93 Z36 N57 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=0.5 Jd=2.5
+  Kr-100 Z36 N64 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=0.0 Jd=4.0
+  Rb-86 Z37 N49 wp=5 d_shell=3 (fwd-target 1) need_byte=0x02 Jp=2.0 Jd=0.0
+  Rb-88 Z37 N51 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=2.0 Jd=0.0
+  Rb-89 Z37 N52 wp=1 d_shell=6 (fwd-target 5) need_byte=0x15 Jp=1.5 Jd=2.5
+  Rb-90 Z37 N53 wp=2 d_shell=0 (fwd-target 4) need_byte=0x1c Jp=0.0 Jd=0.0
+  Rb-93 Z37 N56 wp=5 d_shell=3 (fwd-target 1) need_byte=0x02 Jp=2.5 Jd=2.5
+  Rb-95 Z37 N58 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=2.5 Jd=0.5
+  Rb-97 Z37 N60 wp=2 d_shell=0 (fwd-target 4) need_byte=0x1c Jp=1.5 Jd=0.5
+  Sr-90 Z38 N52 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=0.0 Jd=2.0
+  Sr-91 Z38 N53 wp=1 d_shell=6 (fwd-target 5) need_byte=0x15 Jp=2.5 Jd=0.5
+  Sr-92 Z38 N54 wp=2 d_shell=0 (fwd-target 4) need_byte=0x34 Jp=0.0 Jd=2.0
+  Sr-93 Z38 N55 wp=3 d_shell=1 (fwd-target 3) need_byte=0x04 Jp=2.5 Jd=0.5
+  Sr-95 Z38 N57 wp=5 d_shell=3 (fwd-target 1) need_byte=0x02 Jp=0.5 Jd=0.5
+  Sr-97 Z38 N59 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=0.5 Jd=0.5
+  Sr-98 Z38 N60 wp=1 d_shell=6 (fwd-target 5) need_byte=0x15 Jp=0.0 Jd=0.0
+  Sr-99 Z38 N61 wp=2 d_shell=0 (fwd-target 4) need_byte=0x04 Jp=1.5 Jd=2.5
+  Y-90 Z39 N51 wp=5 d_shell=3 (fwd-target 1) need_byte=0x02 Jp=2.0 Jd=0.0
+  Y-92 Z39 N53 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=2.0 Jd=0.0
+  Y-93 Z39 N54 wp=1 d_shell=6 (fwd-target 5) need_byte=0x15 Jp=0.5 Jd=2.5
+  Y-94 Z39 N55 wp=2 d_shell=0 (fwd-target 4) need_byte=0x34 Jp=2.0 Jd=0.0
+  Y-95 Z39 N56 wp=3 d_shell=1 (fwd-target 3) need_byte=0x08 Jp=0.5 Jd=2.5
+  Y-97 Z39 N58 wp=5 d_shell=3 (fwd-target 1) need_byte=0x02 Jp=0.5 Jd=0.5
+  Y-99 Z39 N60 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=2.5 Jd=0.5
+  Y-101 Z39 N62 wp=2 d_shell=0 (fwd-target 4) need_byte=0x34 Jp=2.5 Jd=1.5
+  Y-109 Z39 N70 wp=3 d_shell=1 (fwd-target 3) need_byte=0x0f Jp=2.5 Jd=2.5
+  Zr-95 Z40 N55 wp=1 d_shell=6 (fwd-target 5) need_byte=0x15 Jp=2.5 Jd=4.5
+  Zr-97 Z40 N57 wp=3 d_shell=1 (fwd-target 3) need_byte=0x02 Jp=0.5 Jd=4.5
+  Zr-99 Z40 N59 wp=5 d_shell=3 (fwd-target 1) need_byte=0x02 Jp=0.5 Jd=4.5
+  Zr-101 Z40 N61 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=1.5 Jd=2.5
+  Zr-102 Z40 N62 wp=1 d_shell=6 (fwd-target 5) need_byte=0x15 Jp=0.0 Jd=4.0
+  Zr-103 Z40 N63 wp=2 d_shell=0 (fwd-target 4) need_byte=0x34 Jp=2.5 Jd=2.5
+  Zr-104 Z40 N64 wp=3 d_shell=1 (fwd-target 3) need_byte=0x05 Jp=0.0 Jd=1.0
+  Zr-106 Z40 N66 wp=5 d_shell=3 (fwd-target 1) need_byte=0x02 Jp=0.0 Jd=1.0
+  Zr-108 Z40 N68 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=0.0 Jd=2.0
+  Zr-109 Z40 N69 wp=1 d_shell=6 (fwd-target 5) need_byte=0x15 Jp=2.5 Jd=2.5
+  Nb-96 Z41 N55 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=6.0 Jd=0.0
+  Nb-97 Z41 N56 wp=1 d_shell=6 (fwd-target 5) need_byte=0x28 Jp=4.5 Jd=2.5
+  Nb-98 Z41 N57 wp=2 d_shell=0 (fwd-target 4) need_byte=0x3f Jp=1.0 Jd=0.0
+  Nb-99 Z41 N58 wp=3 d_shell=1 (fwd-target 3) need_byte=0x05 Jp=4.5 Jd=0.5
+  Nb-103 Z41 N62 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=2.5 Jd=1.5
+  Nb-104 Z41 N63 wp=1 d_shell=6 (fwd-target 5) need_byte=0x15 Jp=1.0 Jd=0.0
+  Nb-105 Z41 N64 wp=2 d_shell=0 (fwd-target 4) need_byte=0x21 Jp=2.5 Jd=2.5
+  Nb-106 Z41 N65 wp=3 d_shell=1 (fwd-target 3) need_byte=0x05 Jp=1.0 Jd=0.0
+  Nb-108 Z41 N67 wp=5 d_shell=3 (fwd-target 1) need_byte=0x02 Jp=2.0 Jd=0.0
+  Mo-99 Z42 N57 wp=1 d_shell=6 (fwd-target 5) need_byte=0x3a Jp=0.5 Jd=4.5
+  Mo-101 Z42 N59 wp=3 d_shell=1 (fwd-target 3) need_byte=0x0f Jp=0.5 Jd=4.5
+  Mo-105 Z42 N63 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=2.5 Jd=1.5
+  Mo-107 Z42 N65 wp=2 d_shell=0 (fwd-target 4) need_byte=0x33 Jp=2.5 Jd=1.5
+  Mo-112 Z42 N70 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=0.0 Jd=2.0
+  Tc-100 Z43 N57 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=1.0 Jd=0.0
+  Tc-101 Z43 N58 wp=1 d_shell=6 (fwd-target 5) need_byte=0x0a Jp=4.5 Jd=2.5
+  Tc-102 Z43 N59 wp=2 d_shell=0 (fwd-target 4) need_byte=0x1b Jp=1.0 Jd=0.0
+  Tc-103 Z43 N60 wp=3 d_shell=1 (fwd-target 3) need_byte=0x08 Jp=2.5 Jd=1.5
+  Tc-109 Z43 N66 wp=2 d_shell=0 (fwd-target 4) need_byte=0x03 Jp=2.5 Jd=2.5
+  Tc-110 Z43 N67 wp=3 d_shell=1 (fwd-target 3) need_byte=0x03 Jp=23.0 Jd=0.0
+  Ru-103 Z44 N59 wp=1 d_shell=6 (fwd-target 5) need_byte=0x0a Jp=1.5 Jd=0.5
+  Ru-105 Z44 N61 wp=3 d_shell=1 (fwd-target 3) need_byte=0x04 Jp=1.5 Jd=3.5
+  Ru-109 Z44 N65 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=2.5 Jd=3.5
+  Ru-110 Z44 N66 wp=1 d_shell=6 (fwd-target 5) need_byte=0x0a Jp=0.0 Jd=1.0
+  Ru-111 Z44 N67 wp=2 d_shell=0 (fwd-target 4) need_byte=0x1b Jp=2.5 Jd=3.5
+  Ru-116 Z44 N72 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=0.0 Jd=1.0
+  Rh-104 Z45 N59 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=1.0 Jd=0.0
+  Rh-105 Z45 N60 wp=1 d_shell=6 (fwd-target 5) need_byte=0x15 Jp=3.5 Jd=2.5
+  Rh-106 Z45 N61 wp=2 d_shell=0 (fwd-target 4) need_byte=0x04 Jp=1.0 Jd=0.0
+  Rh-107 Z45 N62 wp=3 d_shell=1 (fwd-target 3) need_byte=0x0f Jp=3.5 Jd=2.5
+  Rh-109 Z45 N64 wp=5 d_shell=3 (fwd-target 1) need_byte=0x02 Jp=3.5 Jd=2.5
+  Rh-111 Z45 N66 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=3.5 Jd=2.5
+  Rh-112 Z45 N67 wp=1 d_shell=6 (fwd-target 5) need_byte=0x0a Jp=1.0 Jd=0.0
+  Rh-113 Z45 N68 wp=2 d_shell=0 (fwd-target 4) need_byte=0x10 Jp=3.5 Jd=2.5
+  Rh-114 Z45 N69 wp=3 d_shell=1 (fwd-target 3) need_byte=0x04 Jp=1.0 Jd=0.0
+  Rh-116 Z45 N71 wp=5 d_shell=3 (fwd-target 1) need_byte=0x02 Jp=1.0 Jd=0.0
+  Pd-107 Z46 N61 wp=1 d_shell=6 (fwd-target 5) need_byte=0x15 Jp=2.5 Jd=0.5
+  Pd-109 Z46 N63 wp=3 d_shell=1 (fwd-target 3) need_byte=0x04 Jp=2.5 Jd=0.5
+  Pd-111 Z46 N65 wp=5 d_shell=3 (fwd-target 1) need_byte=0x02 Jp=2.5 Jd=0.5
+  Pd-113 Z46 N67 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=2.5 Jd=0.5
+  Pd-114 Z46 N68 wp=1 d_shell=6 (fwd-target 5) need_byte=0x15 Jp=0.0 Jd=1.0
+  Pd-116 Z46 N70 wp=3 d_shell=1 (fwd-target 3) need_byte=0x03 Jp=0.0 Jd=0.0
+  Pd-122 Z46 N76 wp=2 d_shell=0 (fwd-target 4) need_byte=0x1c Jp=0.0 Jd=3.0
+  Ag-108 Z47 N61 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=1.0 Jd=0.0
+  Ag-110 Z47 N63 wp=2 d_shell=0 (fwd-target 4) need_byte=0x34 Jp=1.0 Jd=0.0
+  Ag-111 Z47 N64 wp=3 d_shell=1 (fwd-target 3) need_byte=0x08 Jp=0.5 Jd=0.5
+  Ag-113 Z47 N66 wp=5 d_shell=3 (fwd-target 1) need_byte=0x02 Jp=0.5 Jd=0.5
+  Ag-115 Z47 N68 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=0.5 Jd=0.5
+  Ag-116 Z47 N69 wp=1 d_shell=6 (fwd-target 5) need_byte=0x15 Jp=0.0 Jd=0.0
+  Ag-117 Z47 N70 wp=2 d_shell=0 (fwd-target 4) need_byte=0x34 Jp=0.5 Jd=0.5
+  Ag-122 Z47 N75 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=3.0 Jd=0.0
+  Ag-124 Z47 N77 wp=2 d_shell=0 (fwd-target 4) need_byte=0x04 Jp=3.0 Jd=0.0
+  Ag-125 Z47 N78 wp=3 d_shell=1 (fwd-target 3) need_byte=0x03 Jp=4.5 Jd=1.5
+  Ag-129 Z47 N82 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=4.5 Jd=5.5
+  Cd-113 Z48 N65 wp=3 d_shell=1 (fwd-target 3) need_byte=0x02 Jp=0.5 Jd=4.5
+  Cd-115 Z48 N67 wp=5 d_shell=3 (fwd-target 1) need_byte=0x02 Jp=0.5 Jd=4.5
+  Cd-117 Z48 N69 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=0.5 Jd=4.5
+  Cd-118 Z48 N70 wp=1 d_shell=6 (fwd-target 5) need_byte=0x15 Jp=0.0 Jd=1.0
+  Cd-119 Z48 N71 wp=2 d_shell=0 (fwd-target 4) need_byte=0x34 Jp=0.5 Jd=4.5
+  Cd-120 Z48 N72 wp=3 d_shell=1 (fwd-target 3) need_byte=0x05 Jp=0.0 Jd=1.0
+  Cd-122 Z48 N74 wp=5 d_shell=3 (fwd-target 1) need_byte=0x02 Jp=0.0 Jd=1.0
+  Cd-125 Z48 N77 wp=1 d_shell=6 (fwd-target 5) need_byte=0x15 Jp=1.5 Jd=4.5
+  Cd-127 Z48 N79 wp=3 d_shell=1 (fwd-target 3) need_byte=0x04 Jp=1.5 Jd=4.5
+  Cd-129 Z48 N81 wp=5 d_shell=3 (fwd-target 1) need_byte=0x02 Jp=5.5 Jd=4.5
+  Cd-131 Z48 N83 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=3.5 Jd=4.5
+  Cd-132 Z48 N84 wp=1 d_shell=6 (fwd-target 5) need_byte=0x15 Jp=0.0 Jd=7.0
+  Cd-133 Z48 N85 wp=2 d_shell=0 (fwd-target 4) need_byte=0x1c Jp=3.5 Jd=4.5
+  In-114 Z49 N65 wp=2 d_shell=0 (fwd-target 4) need_byte=0x3f Jp=1.0 Jd=0.0
+  In-115 Z49 N66 wp=3 d_shell=1 (fwd-target 3) need_byte=0x05 Jp=4.5 Jd=0.5
+  In-119 Z49 N70 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=4.5 Jd=0.5
+  In-120 Z49 N71 wp=1 d_shell=6 (fwd-target 5) need_byte=0x15 Jp=1.0 Jd=0.0
+  In-121 Z49 N72 wp=2 d_shell=0 (fwd-target 4) need_byte=0x2d Jp=4.5 Jd=1.5
+  In-122 Z49 N73 wp=3 d_shell=1 (fwd-target 3) need_byte=0x02 Jp=1.0 Jd=0.0
+  In-127 Z49 N78 wp=1 d_shell=6 (fwd-target 5) need_byte=0x15 Jp=4.5 Jd=5.5
+  In-129 Z49 N80 wp=3 d_shell=1 (fwd-target 3) need_byte=0x05 Jp=4.5 Jd=1.5
+  In-131 Z49 N82 wp=5 d_shell=3 (fwd-target 1) need_byte=0x02 Jp=4.5 Jd=1.5
+  In-133 Z49 N84 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=4.5 Jd=3.5
+  Sn-121 Z50 N71 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=1.5 Jd=2.5
+  Sn-123 Z50 N73 wp=2 d_shell=0 (fwd-target 4) need_byte=0x2d Jp=5.5 Jd=3.5
+  Sn-128 Z50 N78 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=0.0 Jd=8.0
+  Sn-129 Z50 N79 wp=1 d_shell=6 (fwd-target 5) need_byte=0x15 Jp=1.5 Jd=3.5
+  Sn-130 Z50 N80 wp=2 d_shell=0 (fwd-target 4) need_byte=0x2d Jp=0.0 Jd=8.0
+  Sn-131 Z50 N81 wp=3 d_shell=1 (fwd-target 3) need_byte=0x02 Jp=1.5 Jd=3.5
+  Sn-133 Z50 N83 wp=5 d_shell=3 (fwd-target 1) need_byte=0x02 Jp=3.5 Jd=3.5
+  Sn-135 Z50 N85 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=3.5 Jd=3.5
+  Sn-136 Z50 N86 wp=1 d_shell=6 (fwd-target 5) need_byte=0x15 Jp=0.0 Jd=1.0
+  Sn-138 Z50 N88 wp=3 d_shell=1 (fwd-target 3) need_byte=0x05 Jp=0.0 Jd=3.0
+  Sb-124 Z51 N73 wp=1 d_shell=6 (fwd-target 5) need_byte=0x22 Jp=3.0 Jd=0.0
+  Sb-125 Z51 N74 wp=2 d_shell=0 (fwd-target 4) need_byte=0x03 Jp=3.5 Jd=0.5
+  Sb-126 Z51 N75 wp=3 d_shell=1 (fwd-target 3) need_byte=0x05 Jp=8.0 Jd=0.0
+  Sb-130 Z51 N79 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=8.0 Jd=0.0
+  Sb-131 Z51 N80 wp=1 d_shell=6 (fwd-target 5) need_byte=0x22 Jp=3.5 Jd=1.5
+  Sb-133 Z51 N82 wp=3 d_shell=1 (fwd-target 3) need_byte=0x03 Jp=3.5 Jd=1.5
+  Sb-137 Z51 N86 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=3.5 Jd=3.5
+  Sb-139 Z51 N88 wp=2 d_shell=0 (fwd-target 4) need_byte=0x21 Jp=3.5 Jd=3.5
+  Te-127 Z52 N75 wp=2 d_shell=0 (fwd-target 4) need_byte=0x1b Jp=1.5 Jd=2.5
+  Te-132 Z52 N80 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=0.0 Jd=4.0
+  Te-133 Z52 N81 wp=1 d_shell=6 (fwd-target 5) need_byte=0x3a Jp=1.5 Jd=3.5
+  Te-135 Z52 N83 wp=3 d_shell=1 (fwd-target 3) need_byte=0x05 Jp=3.5 Jd=3.5
+  Te-139 Z52 N87 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=3.5 Jd=3.5
+  Te-140 Z52 N88 wp=1 d_shell=6 (fwd-target 5) need_byte=0x22 Jp=0.0 Jd=4.0
+  I-128 Z53 N75 wp=1 d_shell=6 (fwd-target 5) need_byte=0x0a Jp=1.0 Jd=0.0
+  I-129 Z53 N76 wp=2 d_shell=0 (fwd-target 4) need_byte=0x10 Jp=3.5 Jd=0.5
+  I-130 Z53 N77 wp=3 d_shell=1 (fwd-target 3) need_byte=0x04 Jp=5.0 Jd=0.0
+  I-135 Z53 N82 wp=1 d_shell=6 (fwd-target 5) need_byte=0x0a Jp=3.5 Jd=1.5
+  I-136 Z53 N83 wp=2 d_shell=0 (fwd-target 4) need_byte=0x03 Jp=1.0 Jd=0.0
+  Xe-137 Z54 N83 wp=1 d_shell=6 (fwd-target 5) need_byte=0x0a Jp=3.5 Jd=3.5
+  Xe-138 Z54 N84 wp=2 d_shell=0 (fwd-target 4) need_byte=0x1c Jp=0.0 Jd=3.0
+  Xe-143 Z54 N89 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=2.5 Jd=1.5
+  Xe-146 Z54 N92 wp=3 d_shell=1 (fwd-target 3) need_byte=0x08 Jp=0.0 Jd=1.0
+  Cs-134 Z55 N79 wp=3 d_shell=1 (fwd-target 3) need_byte=0x04 Jp=4.0 Jd=0.0
+  Cs-136 Z55 N81 wp=5 d_shell=3 (fwd-target 1) need_byte=0x02 Jp=5.0 Jd=0.0
+  Cs-138 Z55 N83 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=3.0 Jd=0.0
+  Cs-139 Z55 N84 wp=1 d_shell=6 (fwd-target 5) need_byte=0x15 Jp=3.5 Jd=3.5
+  Cs-140 Z55 N85 wp=2 d_shell=0 (fwd-target 4) need_byte=0x1c Jp=1.0 Jd=0.0
+  Cs-143 Z55 N88 wp=5 d_shell=3 (fwd-target 1) need_byte=0x02 Jp=1.5 Jd=2.5
+  Cs-145 Z55 N90 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=1.5 Jd=2.5
+  Cs-146 Z55 N91 wp=1 d_shell=6 (fwd-target 5) need_byte=0x0a Jp=1.0 Jd=0.0
+  Cs-147 Z55 N92 wp=2 d_shell=0 (fwd-target 4) need_byte=0x1c Jp=1.5 Jd=2.5
+  Ba-140 Z56 N84 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=0.0 Jd=3.0
+  Ba-142 Z56 N86 wp=2 d_shell=0 (fwd-target 4) need_byte=0x34 Jp=0.0 Jd=2.0
+  Ba-145 Z56 N89 wp=5 d_shell=3 (fwd-target 1) need_byte=0x02 Jp=2.5 Jd=2.5
+  Ba-147 Z56 N91 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=2.5 Jd=2.5
+  Ba-148 Z56 N92 wp=1 d_shell=6 (fwd-target 5) need_byte=0x15 Jp=0.0 Jd=2.0
+  Ba-152 Z56 N96 wp=5 d_shell=3 (fwd-target 1) need_byte=0x02 Jp=0.0 Jd=2.0
+  Ba-154 Z56 N98 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=0.0 Jd=2.0
+  La-140 Z57 N83 wp=5 d_shell=3 (fwd-target 1) need_byte=0x02 Jp=3.0 Jd=0.0
+  La-142 Z57 N85 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=2.0 Jd=0.0
+  La-144 Z57 N87 wp=2 d_shell=0 (fwd-target 4) need_byte=0x34 Jp=3.0 Jd=0.0
+  La-145 Z57 N88 wp=3 d_shell=1 (fwd-target 3) need_byte=0x05 Jp=2.5 Jd=2.5
+  La-147 Z57 N90 wp=5 d_shell=3 (fwd-target 1) need_byte=0x02 Jp=2.5 Jd=2.5
+  La-150 Z57 N93 wp=1 d_shell=6 (fwd-target 5) need_byte=0x15 Jp=3.0 Jd=0.0
+  La-151 Z57 N94 wp=2 d_shell=0 (fwd-target 4) need_byte=0x34 Jp=0.5 Jd=2.5
+  La-152 Z57 N95 wp=3 d_shell=1 (fwd-target 3) need_byte=0x03 Jp=2.0 Jd=0.0
+  La-154 Z57 N97 wp=5 d_shell=3 (fwd-target 1) need_byte=0x02 Jp=2.0 Jd=0.0
+  La-156 Z57 N99 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=4.0 Jd=0.0
+  Ce-144 Z58 N86 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=0.0 Jd=0.0
+  Ce-145 Z58 N87 wp=1 d_shell=6 (fwd-target 5) need_byte=0x15 Jp=2.5 Jd=3.5
+  Ce-146 Z58 N88 wp=2 d_shell=0 (fwd-target 4) need_byte=0x2d Jp=0.0 Jd=2.0
+  Ce-147 Z58 N89 wp=3 d_shell=1 (fwd-target 3) need_byte=0x05 Jp=2.5 Jd=1.5
+  Ce-149 Z58 N91 wp=5 d_shell=3 (fwd-target 1) need_byte=0x02 Jp=1.5 Jd=2.5
+  Ce-151 Z58 N93 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=2.5 Jd=1.5
+  Ce-152 Z58 N94 wp=1 d_shell=6 (fwd-target 5) need_byte=0x15 Jp=0.0 Jd=4.0
+  Ce-154 Z58 N96 wp=3 d_shell=1 (fwd-target 3) need_byte=0x05 Jp=0.0 Jd=3.0
+  Ce-156 Z58 N98 wp=5 d_shell=3 (fwd-target 1) need_byte=0x02 Jp=0.0 Jd=1.0
+  Ce-158 Z58 N100 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=0.0 Jd=5.0
+  Pr-142 Z59 N83 wp=3 d_shell=1 (fwd-target 3) need_byte=0x03 Jp=2.0 Jd=0.0
+  Pr-146 Z59 N87 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=2.0 Jd=0.0
+  Pr-147 Z59 N88 wp=1 d_shell=6 (fwd-target 5) need_byte=0x28 Jp=1.5 Jd=2.5
+  Pr-148 Z59 N89 wp=2 d_shell=0 (fwd-target 4) need_byte=0x2d Jp=1.0 Jd=0.0
+  Pr-149 Z59 N90 wp=3 d_shell=1 (fwd-target 3) need_byte=0x03 Jp=2.5 Jd=2.5
+  Pr-154 Z59 N95 wp=1 d_shell=6 (fwd-target 5) need_byte=0x15 Jp=3.0 Jd=0.0
+  Pr-156 Z59 N97 wp=3 d_shell=1 (fwd-target 3) need_byte=0x02 Jp=1.0 Jd=0.0
+  Pr-158 Z59 N99 wp=5 d_shell=3 (fwd-target 1) need_byte=0x02 Jp=5.0 Jd=0.0
+  Nd-149 Z60 N89 wp=1 d_shell=6 (fwd-target 5) need_byte=0x28 Jp=2.5 Jd=3.5
+  Nd-151 Z60 N91 wp=3 d_shell=1 (fwd-target 3) need_byte=0x03 Jp=1.5 Jd=2.5
+  Nd-155 Z60 N95 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=1.5 Jd=2.5
+  Nd-157 Z60 N97 wp=2 d_shell=0 (fwd-target 4) need_byte=0x2d Jp=2.5 Jd=2.5
+  Nd-162 Z60 N102 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=0.0 Jd=2.0
+  Pm-150 Z61 N89 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=1.0 Jd=0.0
+  Pm-151 Z61 N90 wp=1 d_shell=6 (fwd-target 5) need_byte=0x0a Jp=2.5 Jd=2.5
+  Pm-152 Z61 N91 wp=2 d_shell=0 (fwd-target 4) need_byte=0x1b Jp=1.0 Jd=0.0
+  Pm-157 Z61 N96 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=2.5 Jd=1.5
+  Sm-153 Z62 N91 wp=1 d_shell=6 (fwd-target 5) need_byte=0x0a Jp=1.5 Jd=2.5
+  Sm-159 Z62 N97 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=2.5 Jd=2.5
+  Sm-160 Z62 N98 wp=1 d_shell=6 (fwd-target 5) need_byte=0x0a Jp=0.0 Jd=5.0
+  Sm-168 Z62 N106 wp=2 d_shell=0 (fwd-target 4) need_byte=0x03 Jp=0.0 Jd=6.0
+  Eu-154 Z63 N91 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=3.0 Jd=0.0
+  Eu-155 Z63 N92 wp=1 d_shell=6 (fwd-target 5) need_byte=0x15 Jp=2.5 Jd=1.5
+  Eu-156 Z63 N93 wp=2 d_shell=0 (fwd-target 4) need_byte=0x04 Jp=0.0 Jd=0.0
+  Eu-157 Z63 N94 wp=3 d_shell=1 (fwd-target 3) need_byte=0x0f Jp=2.5 Jd=1.5
+  Eu-159 Z63 N96 wp=5 d_shell=3 (fwd-target 1) need_byte=0x02 Jp=2.5 Jd=1.5
+  Eu-168 Z63 N105 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=6.0 Jd=0.0
+  Gd-159 Z64 N95 wp=3 d_shell=1 (fwd-target 3) need_byte=0x0f Jp=1.5 Jd=1.5
+  Gd-161 Z64 N97 wp=5 d_shell=3 (fwd-target 1) need_byte=0x02 Jp=2.5 Jd=1.5
+  Gd-164 Z64 N100 wp=1 d_shell=6 (fwd-target 5) need_byte=0x15 Jp=0.0 Jd=5.0
+  Gd-168 Z64 N104 wp=5 d_shell=3 (fwd-target 1) need_byte=0x02 Jp=0.0 Jd=4.0
+  Tb-160 Z65 N95 wp=2 d_shell=0 (fwd-target 4) need_byte=0x34 Jp=3.0 Jd=0.0
+  Tb-161 Z65 N96 wp=3 d_shell=1 (fwd-target 3) need_byte=0x05 Jp=1.5 Jd=2.5
+  Tb-163 Z65 N98 wp=5 d_shell=3 (fwd-target 1) need_byte=0x02 Jp=1.5 Jd=2.5
+  Tb-165 Z65 N100 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=1.5 Jd=3.5
+  Tb-166 Z65 N101 wp=1 d_shell=6 (fwd-target 5) need_byte=0x15 Jp=2.0 Jd=0.0
+  Tb-167 Z65 N102 wp=2 d_shell=0 (fwd-target 4) need_byte=0x34 Jp=1.5 Jd=0.5
+  Tb-172 Z65 N107 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=6.0 Jd=0.0
+  Dy-165 Z66 N99 wp=5 d_shell=3 (fwd-target 1) need_byte=0x02 Jp=3.5 Jd=3.5
+  Dy-167 Z66 N101 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=0.5 Jd=3.5
+  Dy-168 Z66 N102 wp=1 d_shell=6 (fwd-target 5) need_byte=0x15 Jp=0.0 Jd=3.0
+  Dy-170 Z66 N104 wp=3 d_shell=1 (fwd-target 3) need_byte=0x05 Jp=0.0 Jd=6.0
+  Dy-174 Z66 N108 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=0.0 Jd=8.0
+  Ho-169 Z67 N102 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=3.5 Jd=0.5
+  Ho-170 Z67 N103 wp=1 d_shell=6 (fwd-target 5) need_byte=0x15 Jp=6.0 Jd=0.0
+  Ho-171 Z67 N104 wp=2 d_shell=0 (fwd-target 4) need_byte=0x33 Jp=3.5 Jd=2.5
+  Ho-174 Z67 N107 wp=5 d_shell=3 (fwd-target 1) need_byte=0x02 Jp=8.0 Jd=0.0
+  Ho-177 Z67 N110 wp=1 d_shell=6 (fwd-target 5) need_byte=0x15 Jp=3.5 Jd=0.5
+  Er-171 Z68 N103 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=2.5 Jd=0.5
+  Er-172 Z68 N104 wp=1 d_shell=6 (fwd-target 5) need_byte=0x22 Jp=0.0 Jd=2.0
+  Er-173 Z68 N105 wp=2 d_shell=0 (fwd-target 4) need_byte=0x2d Jp=3.5 Jd=0.5
+  Tm-173 Z69 N104 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=0.5 Jd=2.5
+  Tm-175 Z69 N106 wp=2 d_shell=0 (fwd-target 4) need_byte=0x03 Jp=0.5 Jd=3.5
+  Tm-176 Z69 N107 wp=3 d_shell=1 (fwd-target 3) need_byte=0x03 Jp=4.0 Jd=0.0
+  Yb-175 Z70 N105 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=3.5 Jd=3.5
+  Yb-177 Z70 N107 wp=2 d_shell=0 (fwd-target 4) need_byte=0x1b Jp=4.5 Jd=3.5
+  Yb-184 Z70 N114 wp=2 d_shell=0 (fwd-target 4) need_byte=0x03 Jp=0.0 Jd=3.0
+  Lu-177 Z71 N106 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=3.5 Jd=3.5
+  Lu-180 Z71 N109 wp=3 d_shell=1 (fwd-target 3) need_byte=0x04 Jp=5.0 Jd=0.0
+  Lu-184 Z71 N113 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=3.0 Jd=0.0
+  Hf-184 Z72 N112 wp=5 d_shell=3 (fwd-target 1) need_byte=0x02 Jp=0.0 Jd=5.0
+  Hf-186 Z72 N114 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=0.0 Jd=3.0
+  Ta-182 Z73 N109 wp=1 d_shell=6 (fwd-target 5) need_byte=0x15 Jp=3.0 Jd=0.0
+  Ta-183 Z73 N110 wp=2 d_shell=0 (fwd-target 4) need_byte=0x34 Jp=3.5 Jd=0.5
+  Ta-184 Z73 N111 wp=3 d_shell=1 (fwd-target 3) need_byte=0x0f Jp=5.0 Jd=0.0
+  Ta-186 Z73 N113 wp=5 d_shell=3 (fwd-target 1) need_byte=0x02 Jp=3.0 Jd=0.0
+  Ta-188 Z73 N115 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=1.0 Jd=0.0
+  W-185 Z74 N111 wp=2 d_shell=0 (fwd-target 4) need_byte=0x34 Jp=1.5 Jd=2.5
+  W-188 Z74 N114 wp=5 d_shell=3 (fwd-target 1) need_byte=0x02 Jp=0.0 Jd=1.0
+  Re-186 Z75 N111 wp=1 d_shell=6 (fwd-target 5) need_byte=0x15 Jp=1.0 Jd=0.0
+  Re-187 Z75 N112 wp=2 d_shell=0 (fwd-target 4) need_byte=0x27 Jp=2.5 Jd=0.5
+  Re-188 Z75 N113 wp=3 d_shell=1 (fwd-target 3) need_byte=0x05 Jp=1.0 Jd=0.0
+  Re-195 Z75 N120 wp=3 d_shell=1 (fwd-target 3) need_byte=0x02 Jp=1.5 Jd=1.5
+  Os-194 Z76 N118 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=0.0 Jd=1.0
+  Os-195 Z76 N119 wp=1 d_shell=6 (fwd-target 5) need_byte=0x15 Jp=1.5 Jd=1.5
+  Os-196 Z76 N120 wp=2 d_shell=0 (fwd-target 4) need_byte=0x21 Jp=0.0 Jd=0.0
+  Os-201 Z76 N125 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=0.5 Jd=1.5
+  Os-203 Z76 N127 wp=2 d_shell=0 (fwd-target 4) need_byte=0x34 Jp=4.5 Jd=1.5
+  Ir-192 Z77 N115 wp=3 d_shell=1 (fwd-target 3) need_byte=0x03 Jp=4.0 Jd=0.0
+  Ir-196 Z77 N119 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=0.0 Jd=0.0
+  Ir-197 Z77 N120 wp=1 d_shell=6 (fwd-target 5) need_byte=0x22 Jp=1.5 Jd=0.5
+  Ir-203 Z77 N126 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=1.5 Jd=0.5
+  Ir-205 Z77 N128 wp=2 d_shell=0 (fwd-target 4) need_byte=0x27 Jp=1.5 Jd=4.5
+  Pt-199 Z78 N121 wp=1 d_shell=6 (fwd-target 5) need_byte=0x2e Jp=2.5 Jd=1.5
+  Pt-200 Z78 N122 wp=2 d_shell=0 (fwd-target 4) need_byte=0x03 Jp=0.0 Jd=1.0
+  Pt-201 Z78 N123 wp=3 d_shell=1 (fwd-target 3) need_byte=0x05 Jp=2.5 Jd=1.5
+  Pt-205 Z78 N127 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=4.5 Jd=1.5
+  Au-200 Z79 N121 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=1.0 Jd=0.0
+  Au-201 Z79 N122 wp=1 d_shell=6 (fwd-target 5) need_byte=0x0a Jp=1.5 Jd=1.5
+  Au-202 Z79 N123 wp=2 d_shell=0 (fwd-target 4) need_byte=0x03 Jp=1.0 Jd=0.0
+  Au-209 Z79 N130 wp=2 d_shell=0 (fwd-target 4) need_byte=0x03 Jp=1.5 Jd=4.5
+  Hg-203 Z80 N123 wp=1 d_shell=6 (fwd-target 5) need_byte=0x0a Jp=2.5 Jd=0.5
+  Hg-209 Z80 N129 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=4.5 Jd=0.5
+  Tl-204 Z81 N123 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=2.0 Jd=0.0
+  Tl-209 Z81 N128 wp=5 d_shell=3 (fwd-target 1) need_byte=0x02 Jp=0.5 Jd=4.5
+  Tl-212 Z81 N131 wp=1 d_shell=6 (fwd-target 5) need_byte=0x0a Jp=5.0 Jd=0.0
+  Pb-209 Z82 N127 wp=3 d_shell=1 (fwd-target 3) need_byte=0x04 Jp=4.5 Jd=4.5
+  Pb-211 Z82 N129 wp=5 d_shell=3 (fwd-target 1) need_byte=0x02 Jp=4.5 Jd=4.5
+  Pb-213 Z82 N131 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=4.5 Jd=4.5
+  Pb-214 Z82 N132 wp=1 d_shell=6 (fwd-target 5) need_byte=0x15 Jp=0.0 Jd=1.0
+  Pb-215 Z82 N133 wp=2 d_shell=0 (fwd-target 4) need_byte=0x04 Jp=4.5 Jd=4.5
+  Bi-210 Z83 N127 wp=2 d_shell=0 (fwd-target 4) need_byte=0x34 Jp=1.0 Jd=0.0
+  Bi-213 Z83 N130 wp=5 d_shell=3 (fwd-target 1) need_byte=0x02 Jp=4.5 Jd=4.5
+  Bi-215 Z83 N132 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=4.5 Jd=4.5
+  Bi-217 Z83 N134 wp=2 d_shell=0 (fwd-target 4) need_byte=0x34 Jp=4.5 Jd=4.5
+  Po-219 Z84 N135 wp=2 d_shell=0 (fwd-target 4) need_byte=0x34 Jp=4.5 Jd=4.5
+  Rn-221 Z86 N135 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=3.5 Jd=2.5
+  Rn-228 Z86 N142 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=0.0 Jd=2.0
+  Rn-231 Z86 N145 wp=3 d_shell=1 (fwd-target 3) need_byte=0x08 Jp=0.5 Jd=0.5
+  Fr-225 Z87 N138 wp=2 d_shell=0 (fwd-target 4) need_byte=0x1b Jp=1.5 Jd=0.5
+  Fr-226 Z87 N139 wp=3 d_shell=1 (fwd-target 3) need_byte=0x03 Jp=1.0 Jd=0.0
+  Fr-231 Z87 N144 wp=1 d_shell=6 (fwd-target 5) need_byte=0x22 Jp=0.5 Jd=2.5
+  Fr-233 Z87 N146 wp=3 d_shell=1 (fwd-target 3) need_byte=0x03 Jp=0.5 Jd=0.5
+  Ra-225 Z88 N137 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=0.5 Jd=1.5
+  Ra-227 Z88 N139 wp=2 d_shell=0 (fwd-target 4) need_byte=0x1b Jp=1.5 Jd=1.5
+  Ra-232 Z88 N144 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=0.0 Jd=1.0
+  Ra-233 Z88 N145 wp=1 d_shell=6 (fwd-target 5) need_byte=0x3a Jp=0.5 Jd=0.5
+  Ac-227 Z89 N138 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=1.5 Jd=0.5
+  Ac-228 Z89 N139 wp=1 d_shell=6 (fwd-target 5) need_byte=0x0a Jp=3.0 Jd=0.0
+  Ac-229 Z89 N140 wp=2 d_shell=0 (fwd-target 4) need_byte=0x10 Jp=1.5 Jd=2.5
+  Ac-230 Z89 N141 wp=3 d_shell=1 (fwd-target 3) need_byte=0x02 Jp=1.0 Jd=0.0
+  Th-231 Z90 N141 wp=2 d_shell=0 (fwd-target 4) need_byte=0x04 Jp=2.5 Jd=1.5
+  Th-234 Z90 N144 wp=5 d_shell=3 (fwd-target 1) need_byte=0x02 Jp=0.0 Jd=4.0
+  Th-237 Z90 N147 wp=1 d_shell=6 (fwd-target 5) need_byte=0x0a Jp=2.5 Jd=0.5
+  Th-238 Z90 N148 wp=2 d_shell=0 (fwd-target 4) need_byte=0x10 Jp=0.0 Jd=3.0
+  Pa-232 Z91 N141 wp=1 d_shell=6 (fwd-target 5) need_byte=0x15 Jp=2.0 Jd=0.0
+  Pa-233 Z91 N142 wp=2 d_shell=0 (fwd-target 4) need_byte=0x34 Jp=1.5 Jd=2.5
+  Pa-234 Z91 N143 wp=3 d_shell=1 (fwd-target 3) need_byte=0x04 Jp=4.0 Jd=0.0
+  Pa-238 Z91 N147 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=3.0 Jd=0.0
+  U-240 Z92 N148 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=0.0 Jd=5.0
+  U-242 Z92 N150 wp=2 d_shell=0 (fwd-target 4) need_byte=0x34 Jp=0.0 Jd=1.0
+  Np-238 Z93 N145 wp=3 d_shell=1 (fwd-target 3) need_byte=0x02 Jp=2.0 Jd=0.0
+  Np-240 Z93 N147 wp=5 d_shell=3 (fwd-target 1) need_byte=0x02 Jp=5.0 Jd=0.0
+  Np-242 Z93 N149 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=1.0 Jd=0.0
+  Np-244 Z93 N151 wp=2 d_shell=0 (fwd-target 4) need_byte=0x34 Jp=7.0 Jd=0.0
+  Pu-246 Z94 N152 wp=2 d_shell=0 (fwd-target 4) need_byte=0x27 Jp=0.0 Jd=7.0
+  Am-242 Z95 N147 wp=3 d_shell=1 (fwd-target 3) need_byte=0x03 Jp=1.0 Jd=0.0
+  Am-246 Z95 N151 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=7.0 Jd=0.0
+  Cm-249 Z96 N153 wp=1 d_shell=6 (fwd-target 5) need_byte=0x3a Jp=0.5 Jd=3.5
+  Cm-251 Z96 N155 wp=3 d_shell=1 (fwd-target 3) need_byte=0x09 Jp=0.5 Jd=1.5
+  Bk-250 Z97 N153 wp=0 d_shell=5 (fwd-target 6) need_byte=0x0a Jp=2.0 Jd=0.0
+  Bk-251 Z97 N154 wp=1 d_shell=6 (fwd-target 5) need_byte=0x0a Jp=1.5 Jd=0.5
+  Cf-253 Z98 N155 wp=1 d_shell=6 (fwd-target 5) need_byte=0x0a Jp=3.5 Jd=3.5
+  Cf-255 Z98 N157 wp=3 d_shell=1 (fwd-target 3) need_byte=0x04 Jp=3.5 Jd=3.5
+  Es-255 Z99 N156 wp=1 d_shell=6 (fwd-target 5) need_byte=0x15 Jp=3.5 Jd=3.5

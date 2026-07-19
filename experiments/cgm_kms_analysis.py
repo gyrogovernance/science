@@ -24,7 +24,7 @@ Then the CGM-bridge reference point is the β* satisfying A_KMS(β*) = A*:
 
     β* = βc / (1 - A*).
 
-Important notes (to keep this honest)
+Important notes
 -------------------------------------
 - A_KMS(β*) = A* is algebraic by construction; it is not evidence.
 - The empirical question is whether other KMS observables (similarity breaking,
@@ -93,6 +93,7 @@ def clip_prob(x: np.ndarray, eps: float = 1e-15) -> np.ndarray:
 @dataclass(frozen=True)
 class CGM:
     """CGM constants used here only to define A* and related derived values."""
+
     m_a: float = 1.0 / (2.0 * math.sqrt(2.0 * math.pi))
     delta_BU: float = 0.195342176580
 
@@ -233,7 +234,9 @@ def load_edgelist_csv(
     return A, idx, stats
 
 
-def load_numeric_matrix_csv(path: str) -> Tuple[np.ndarray, Dict[str, int], Dict[str, float]]:
+def load_numeric_matrix_csv(
+    path: str,
+) -> Tuple[np.ndarray, Dict[str, int], Dict[str, float]]:
     """
     Attempt to load a CSV as a numeric adjacency matrix.
     Handles:
@@ -254,12 +257,16 @@ def load_numeric_matrix_csv(path: str) -> Tuple[np.ndarray, Dict[str, int], Dict
         n = raw.shape[0]
         idx = {str(i): i for i in range(n)}
         A = raw.astype(float)
-        return A, idx, {
-            "nodes": float(n),
-            "edges_rows_used": float("nan"),
-            "nnz": float(np.count_nonzero(A)),
-            "total_weight": float(np.nansum(A)),
-        }
+        return (
+            A,
+            idx,
+            {
+                "nodes": float(n),
+                "edges_rows_used": float("nan"),
+                "nnz": float(np.count_nonzero(A)),
+                "total_weight": float(np.nansum(A)),
+            },
+        )
 
     # Case 2: likely labeled; try dropping first row/col if that yields a finite square
     # Common layout: first row labels, first col labels
@@ -270,18 +277,22 @@ def load_numeric_matrix_csv(path: str) -> Tuple[np.ndarray, Dict[str, int], Dict
         with open(path, "r", newline="", encoding="utf-8") as f:
             rows = list(csv.reader(f))
         # labels often in first row, starting at col 1
-        col_labels = [c.strip() for c in rows[0][1:1 + n]]
+        col_labels = [c.strip() for c in rows[0][1 : 1 + n]]
         # If labels are empty, fall back to indices
         if all(lbl == "" for lbl in col_labels):
             col_labels = [str(i) for i in range(n)]
         idx = {name: i for i, name in enumerate(col_labels)}
         A = sub.astype(float)
-        return A, idx, {
-            "nodes": float(n),
-            "edges_rows_used": float("nan"),
-            "nnz": float(np.count_nonzero(A)),
-            "total_weight": float(np.sum(A)),
-        }
+        return (
+            A,
+            idx,
+            {
+                "nodes": float(n),
+                "edges_rows_used": float("nan"),
+                "nnz": float(np.count_nonzero(A)),
+                "total_weight": float(np.sum(A)),
+            },
+        )
 
     raise ValueError("matrix could not be interpreted as a finite square adjacency")
 
@@ -308,7 +319,7 @@ class KMSSystem:
         self.beta_c = float(math.log(self.r)) if self.r > 1.0 else 0.0
 
         self.out_strength = np.sum(self.A, axis=0)  # column sums
-        self.in_strength = np.sum(self.A, axis=1)   # row sums
+        self.in_strength = np.sum(self.A, axis=1)  # row sums
 
     def kms_matrix(self, beta: float) -> np.ndarray:
         """
@@ -406,7 +417,7 @@ def mean_pair_similarity(
     Xj = X[:, j2]
     Xk = X[:, k2]
     bc = np.sum(np.sqrt(clip_prob(Xj * Xk)), axis=0)  # Bhattacharyya coefficient
-    return float(np.mean(bc ** 2))
+    return float(np.mean(bc**2))
 
 
 def entropy_of_mixed(X: np.ndarray, p: np.ndarray) -> float:
@@ -446,13 +457,17 @@ def build_beta_grid(beta_c: float, include_points: List[float]) -> np.ndarray:
     # Extra resolution near βc (where things can change fast)
     near = np.linspace(beta_c * 1.0005, beta_c * 1.10, 25)
 
-    betas = np.unique(np.concatenate([coarse, near, np.array(include_points, dtype=float)]))
+    betas = np.unique(
+        np.concatenate([coarse, near, np.array(include_points, dtype=float)])
+    )
     betas = betas[betas > beta_c]
     betas.sort()
     return betas
 
 
-def analyze_one(A: np.ndarray, name: str, cgm: CGM, stats: Optional[Dict[str, float]] = None) -> None:
+def analyze_one(
+    A: np.ndarray, name: str, cgm: CGM, stats: Optional[Dict[str, float]] = None
+) -> None:
     """
     Run the CGM-KMS diagnostics on one adjacency.
     Prints factual values only.
@@ -465,12 +480,20 @@ def analyze_one(A: np.ndarray, name: str, cgm: CGM, stats: Optional[Dict[str, fl
     print(SEPARATOR)
     print(name)
     print(SUBSEP)
-    print(f"N={n} nnz={nnz} total_weight={total_w:.0f} r(A)={kms.r:.6f} beta_c={kms.beta_c:.6f}")
+    print(
+        f"N={n} nnz={nnz} total_weight={total_w:.0f} r(A)={kms.r:.6f} beta_c={kms.beta_c:.6f}"
+    )
 
     if stats is not None:
         # Print a few loader stats if present
         extra = []
-        for k in ["edges_rows_used", "type_rows_chemical", "type_rows_electrical", "type_weight_chemical", "type_weight_electrical"]:
+        for k in [
+            "edges_rows_used",
+            "type_rows_chemical",
+            "type_rows_electrical",
+            "type_weight_chemical",
+            "type_weight_electrical",
+        ]:
             if k in stats and not math.isnan(stats[k]):
                 extra.append(f"{k}={stats[k]:.0f}")
         if extra:
@@ -540,17 +563,31 @@ def analyze_one(A: np.ndarray, name: str, cgm: CGM, stats: Optional[Dict[str, fl
     sim_at_star = float(sims[idx_star])
 
     # Print summary
-    print(f"beta_star={beta_star:.6f} A_KMS(beta_star)={margin_at_star:.6f} A*={A_star:.6f}")
-    print(f"beta_break={beta_break:.6f} rel_err_vs_beta_star={(abs(beta_break-beta_star)/beta_star)*100:.2f}% sim_at_beta_star≈{sim_at_star:.6f}")
-    print(f"beta_fit={beta_fit:.6f} beta_fit/beta_c={(beta_fit/kms.beta_c):.3f} fit_norm={float(fit[idx_fit]):.4f}")
+    print(
+        f"beta_star={beta_star:.6f} A_KMS(beta_star)={margin_at_star:.6f} A*={A_star:.6f}"
+    )
+    print(
+        f"beta_break={beta_break:.6f} rel_err_vs_beta_star={(abs(beta_break-beta_star)/beta_star)*100:.2f}% sim_at_beta_star≈{sim_at_star:.6f}"
+    )
+    print(
+        f"beta_fit={beta_fit:.6f} beta_fit/beta_c={(beta_fit/kms.beta_c):.3f} fit_norm={float(fit[idx_fit]):.4f}"
+    )
     print(f"beta_target_2.5bc={(kms.beta_c*2.5):.6f}")
 
-    print(f"entropy_uniform_at_beta_star={float(ent_uniform[idx_star]):.4f} logN={math.log(n):.4f}")
-    print(f"entropy_peaks_beta: uniform={beta_ent_peak_u:.6f} out_strength={beta_ent_peak_out:.6f} in_strength={beta_ent_peak_in:.6f}")
-    print(f"entropy_max_slope_beta: uniform={beta_ent_slope_u:.6f} out_strength={beta_ent_slope_out:.6f} in_strength={beta_ent_slope_in:.6f}")
+    print(
+        f"entropy_uniform_at_beta_star={float(ent_uniform[idx_star]):.4f} logN={math.log(n):.4f}"
+    )
+    print(
+        f"entropy_peaks_beta: uniform={beta_ent_peak_u:.6f} out_strength={beta_ent_peak_out:.6f} in_strength={beta_ent_peak_in:.6f}"
+    )
+    print(
+        f"entropy_max_slope_beta: uniform={beta_ent_slope_u:.6f} out_strength={beta_ent_slope_out:.6f} in_strength={beta_ent_slope_in:.6f}"
+    )
 
 
-def load_all_csvs(data_dir: str = "data") -> List[Tuple[str, np.ndarray, Optional[Dict[str, float]]]]:
+def load_all_csvs(
+    data_dir: str = "data",
+) -> List[Tuple[str, np.ndarray, Optional[Dict[str, float]]]]:
     """
     Scan data_dir for .csv files and attempt to load each as either:
     - edge list with Source/Target/Weight/Type
@@ -576,7 +613,9 @@ def load_all_csvs(data_dir: str = "data") -> List[Tuple[str, np.ndarray, Optiona
         try:
             if {"Source", "Target", "Weight", "Type"}.issubset(set(header)):
                 # Build two variants: chemical-only and all-types (directed as given)
-                A_chem, _, stats_chem = load_edgelist_csv(path, allowed_types=("chemical",))
+                A_chem, _, stats_chem = load_edgelist_csv(
+                    path, allowed_types=("chemical",)
+                )
                 outputs.append((f"{fn} [chemical]", A_chem, stats_chem))
 
                 A_all, _, stats_all = load_edgelist_csv(path, allowed_types=None)

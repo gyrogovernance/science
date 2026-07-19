@@ -40,10 +40,12 @@ SHELL_RATIO: float = COMPLEMENTARITY_INV / NUM_SHELLS
 TAU_PER_LY: float = (7591 / 7392) * DELTA
 SHELL_POP: List[int] = [math.comb(6, k) * HORIZON_SIZE for k in range(7)]
 C4_GRAV: float = -7 / 4
-TAU_G: float = (OMEGA_SIZE * DELTA * RHO**5
-               * ((1 - 4 * RHO * DELTA**2) + C4_GRAV * DELTA**4))
+TAU_G: float = (
+    OMEGA_SIZE * DELTA * RHO**5 * ((1 - 4 * RHO * DELTA**2) + C4_GRAV * DELTA**4)
+)
 PHI_SU2: float = 2 * math.acos((1 + 2 * math.sqrt(2)) / 4)
 ALPHA_GEOM: float = DELTA_BU**4 / M_A  # ~0.007299734
+
 
 # =====================================================================
 # 2. Physical Constants (Astropy)
@@ -51,8 +53,10 @@ ALPHA_GEOM: float = DELTA_BU**4 / M_A  # ~0.007299734
 def _astro(name: str) -> Any:
     return getattr(astro_constants, name)
 
+
 def _to_si(val: Any, unit: u.UnitBase) -> float:
     return float(val.to_value(unit))
+
 
 C_SI: float = _to_si(_astro("c"), u.m / u.s)
 YEAR_S: float = _to_si(1.0 * u.year, u.s)
@@ -85,30 +89,40 @@ LAMBDA_RED_PDG2024_LY: float = LAMBDA_FULL_PDG2024_LY / (2 * math.pi)
 def tau_at_distance(d_ly: float) -> float:
     return d_ly * TAU_PER_LY
 
+
 def coherence_at_distance(d_ly: float) -> float:
     return math.exp(-tau_at_distance(d_ly))
 
+
 def aperture_at_distance(d_ly: float) -> float:
     return 1 - coherence_at_distance(d_ly)
+
 
 def psi_at_distance(d_AU: float, M_kg: float = M_SUN_KG) -> float:
     r_m = d_AU * AU_M
     return G_SI * M_kg / (r_m * C_SI**2)
 
+
 def G_ratio_approx(psi: float) -> float:
     return 1 - 0.645568 * psi
 
-def find_crossing(target_value: float, param: str = "coherence",
-                  d_min: float = 0.01, d_max: float = 100.0
-                  ) -> Optional[float]:
+
+def find_crossing(
+    target_value: float,
+    param: str = "coherence",
+    d_min: float = 0.01,
+    d_max: float = 100.0,
+) -> Optional[float]:
     funcs = {
         "coherence": coherence_at_distance,
         "tau": tau_at_distance,
         "aperture": aperture_at_distance,
     }
     f = funcs[param]
+
     def objective(d: float) -> float:
         return f(d) - target_value
+
     if objective(d_min) * objective(d_max) >= 0:
         return None
     return float(brentq(objective, d_min, d_max, xtol=1e-12))  # type: ignore[arg-type]
@@ -135,24 +149,63 @@ def gyration_trajectory() -> List[Dict[str, Any]]:
     before jumping to the equality horizon at d=2 ly.
     """
     steps = [
-        (0.0, 0, "complement", 6, "111111", "rest",
-         "Carrier rest (CS frame)"),
-        (0.5, 1, "bulk", 5, "111110", "-",
-         "L-step byte 1: UNA variety introduced"),
-        (1.0, 1, "bulk", 5, "111110", "-",
-         "R-step byte 1: UNA complete, departed horizon"),
-        (1.5, 0, "complement", 6, "111111", "-",
-         "L-step byte 2: BRIEF return to complement"),
-        (2.0, 6, "equality", 0, "000000", "-",
-         "R-step byte 2: BU-Egress, equality horizon, chi cancels"),
-        (2.5, 5, "bulk", 1, "000001", "-",
-         "L-step byte 3: departed equality, BU approach"),
-        (3.0, 1, "bulk", 5, "111110", "-",
-         "R-step byte 3: bulk traversal continues"),
-        (3.5, 0, "complement", 6, "111111", "swapped",
-         "L-step byte 4: complement horizon, Z2 flips"),
-        (4.0, 0, "complement", 6, "111111", "swapped",
-         "R-step byte 4: BU-Ingress, Z2 encoded"),
+        (0.0, 0, "complement", 6, "111111", "rest", "Carrier rest (CS frame)"),
+        (0.5, 1, "bulk", 5, "111110", "-", "L-step byte 1: UNA variety introduced"),
+        (
+            1.0,
+            1,
+            "bulk",
+            5,
+            "111110",
+            "-",
+            "R-step byte 1: UNA complete, departed horizon",
+        ),
+        (
+            1.5,
+            0,
+            "complement",
+            6,
+            "111111",
+            "-",
+            "L-step byte 2: BRIEF return to complement",
+        ),
+        (
+            2.0,
+            6,
+            "equality",
+            0,
+            "000000",
+            "-",
+            "R-step byte 2: BU-Egress, equality horizon, chi cancels",
+        ),
+        (
+            2.5,
+            5,
+            "bulk",
+            1,
+            "000001",
+            "-",
+            "L-step byte 3: departed equality, BU approach",
+        ),
+        (3.0, 1, "bulk", 5, "111110", "-", "R-step byte 3: bulk traversal continues"),
+        (
+            3.5,
+            0,
+            "complement",
+            6,
+            "111111",
+            "swapped",
+            "L-step byte 4: complement horizon, Z2 flips",
+        ),
+        (
+            4.0,
+            0,
+            "complement",
+            6,
+            "111111",
+            "swapped",
+            "R-step byte 4: BU-Ingress, Z2 encoded",
+        ),
     ]
     trajectory = []
     for d, arch_sh, sector, compact_sh, chi, z2, desc in steps:
@@ -265,7 +318,7 @@ def compute_bu_interval(system: StarSystem) -> Dict[str, Any]:
 
     # Tidal radius for this star
     nu_gal = 74e3 / (3.086e19)
-    r_tidal_m = (G_SI * system["M_star_kg"] / nu_gal**2) ** (1/3)
+    r_tidal_m = (G_SI * system["M_star_kg"] / nu_gal**2) ** (1 / 3)
     r_tidal_ly = r_tidal_m / (C_SI * YEAR_S)
 
     return {
@@ -286,9 +339,8 @@ def compute_bu_interval(system: StarSystem) -> Dict[str, Any]:
 # 6. Internal Metric Framework
 # =====================================================================
 def compute_internal_metric_profile(
-        n_points: int = 50,
-        d_max_ly: float = 4.0
-        ) -> List[Dict[str, float]]:
+    n_points: int = 50, d_max_ly: float = 4.0
+) -> List[Dict[str, float]]:
     """Compute CGM internal metric quantities across the BU interval.
 
     Inside the shell:
@@ -318,15 +370,17 @@ def compute_internal_metric_profile(
         else:
             omega_LT = 0
 
-        profile.append({
-            "d_ly": d_ly,
-            "d_au": d_au,
-            "psi": psi,
-            "G_ratio": g_ratio,
-            "tau": tau_at_distance(d_ly),
-            "coherence": coherence_at_distance(d_ly),
-            "omega_LT": omega_LT,
-        })
+        profile.append(
+            {
+                "d_ly": d_ly,
+                "d_au": d_au,
+                "psi": psi,
+                "G_ratio": g_ratio,
+                "tau": tau_at_distance(d_ly),
+                "coherence": coherence_at_distance(d_ly),
+                "omega_LT": omega_LT,
+            }
+        )
     return profile
 
 
@@ -358,16 +412,17 @@ def alpha_z_prediction(z_values: List[float]) -> List[Dict[str, float]]:
         phase_sub = (ln_1z / sub_period) * 2 * math.pi
         # Combined modulation
         delta_alpha = amplitude * (
-            0.7 * math.sin(phase_main)
-            + 0.3 * math.sin(phase_sub)
+            0.7 * math.sin(phase_main) + 0.3 * math.sin(phase_sub)
         )
         alpha_pred = ALPHA_GEOM * (1 + delta_alpha)
-        results.append({
-            "z": z,
-            "ln_1z": ln_1z,
-            "delta_alpha_over_alpha": delta_alpha,
-            "alpha_pred": alpha_pred,
-        })
+        results.append(
+            {
+                "z": z,
+                "ln_1z": ln_1z,
+                "delta_alpha_over_alpha": delta_alpha,
+                "alpha_pred": alpha_pred,
+            }
+        )
     return results
 
 
@@ -434,8 +489,7 @@ def print_section(title: str) -> None:
     print(f"{'=' * 9}\n")
 
 
-def print_table(headers: List[str], rows: List[List[str]],
-                title: str = "") -> None:
+def print_table(headers: List[str], rows: List[List[str]], title: str = "") -> None:
     if title:
         print(f"  {title}\n")
     widths = [len(h) for h in headers]
@@ -497,20 +551,21 @@ def main() -> None:
     print()
 
     traj = gyration_trajectory()
-    headers = ["d (ly)", "Sector", "Shell*", "chi", "Z2", "τ",
-               "Coh", "Event"]
+    headers = ["d (ly)", "Sector", "Shell*", "chi", "Z2", "τ", "Coh", "Event"]
     rows = []
     for step in traj:
-        rows.append([
-            f"{step['d_ly']:.1f}",
-            step["sector"][:4],
-            str(step["arch_shell"]),
-            step["chirality"][:6],
-            step["z2"][:5],
-            f"{step['tau']:.4f}",
-            f"{step['coherence']:.4f}",
-            step["description"][:45],
-        ])
+        rows.append(
+            [
+                f"{step['d_ly']:.1f}",
+                step["sector"][:4],
+                str(step["arch_shell"]),
+                step["chirality"][:6],
+                step["z2"][:5],
+                f"{step['tau']:.4f}",
+                f"{step['coherence']:.4f}",
+                step["description"][:45],
+            ]
+        )
     print_table(headers, rows)
     print("  *arch_shell: 0=complement, 6=equality")
     print()
@@ -526,13 +581,15 @@ def main() -> None:
     rows_z2 = []
     for step in ext:
         if step["d_ly"] in [0, 1, 2, 4, 8] or step["d_ly"] % 1 == 0:
-            rows_z2.append([
-                f"{step['d_ly']:.0f}",
-                step["sector"][:4],
-                step["z2"][:7],
-                f"{step['tau']:.4f}",
-                f"{step['coherence']:.4f}",
-            ])
+            rows_z2.append(
+                [
+                    f"{step['d_ly']:.0f}",
+                    step["sector"][:4],
+                    step["z2"][:7],
+                    f"{step['tau']:.4f}",
+                    f"{step['coherence']:.4f}",
+                ]
+            )
     print_table(headers_z2, rows_z2)
     print("  Z2 trajectory: rest → swapped → rest (period 8 ly)")
 
@@ -542,8 +599,7 @@ def main() -> None:
     print_section("3. INVERTED SHELL: INTERNAL OBSERVER PERSPECTIVE")
     print("  We inhabit the INTERIOR of an observational shell.")
     print()
-    headers_kerr = ["Kerr BH (external)", "CGM Shell (internal)",
-                    "Kernel Object"]
+    headers_kerr = ["Kerr BH (external)", "CGM Shell (internal)", "Kernel Object"]
     rows_kerr = [
         ["Exterior (flat)", "Interior <1 ly", "Complement horizon"],
         ["Event horizon", "Egress face ~1 ly", "Aperture opens"],
@@ -586,10 +642,8 @@ def main() -> None:
     # Section 5: Conversion Zone Profile
     # ------------------------------------------------------------------
     print_section("5. CONVERSION ZONE PROFILE [1 ly, 2 ly]")
-    distances = [0.1, 0.5, 0.97, 1.0, 1.2, 1.5, 1.71, 2.0,
-                 3.0, 4.0, 8.0]
-    headers = ["d (ly)", "d (AU)", "τ", "Coh", "Apt%", "Zone",
-               "Carrier"]
+    distances = [0.1, 0.5, 0.97, 1.0, 1.2, 1.5, 1.71, 2.0, 3.0, 4.0, 8.0]
+    headers = ["d (ly)", "d (AU)", "τ", "Coh", "Apt%", "Zone", "Carrier"]
     rows = []
     for d in distances:
         e_tau = tau_at_distance(d)
@@ -613,10 +667,17 @@ def main() -> None:
             carrier = "equality"
         elif d >= 4.0:
             carrier = "complement"
-        rows.append([
-            f"{d:.2f}", f"{d*LY_AU:,.0f}", f"{e_tau:.4f}",
-            f"{e_coh:.4f}", f"{e_apt:.2f}", zone, carrier
-        ])
+        rows.append(
+            [
+                f"{d:.2f}",
+                f"{d*LY_AU:,.0f}",
+                f"{e_tau:.4f}",
+                f"{e_coh:.4f}",
+                f"{e_apt:.2f}",
+                zone,
+                carrier,
+            ]
+        )
     print_table(headers, rows)
 
     # ------------------------------------------------------------------
@@ -627,20 +688,29 @@ def main() -> None:
     print("  or structurally necessary for any star system?")
     print()
 
-    headers_ss = ["System", "M/M☉", "T_orb(yr)", "d₀(ly)",
-                  "Egress(ly)", "Ingress(ly)", "Z₂(ly)"]
+    headers_ss = [
+        "System",
+        "M/M☉",
+        "T_orb(yr)",
+        "d₀(ly)",
+        "Egress(ly)",
+        "Ingress(ly)",
+        "Z₂(ly)",
+    ]
     rows_ss = []
     for name, sys_data in STAR_SYSTEMS.items():
         bu = compute_bu_interval(sys_data)
-        rows_ss.append([
-            name,
-            f"{sys_data['M_star_kg']/M_SUN_KG:.3f}",
-            f"{sys_data['period_yr']:.3f}",
-            f"{bu['d_0']:.3f}",
-            f"{bu['d_egress']:.3f}",
-            f"{bu['d_ingress']:.3f}",
-            f"{bu['z2_period']:.1f}",
-        ])
+        rows_ss.append(
+            [
+                name,
+                f"{sys_data['M_star_kg']/M_SUN_KG:.3f}",
+                f"{sys_data['period_yr']:.3f}",
+                f"{bu['d_0']:.3f}",
+                f"{bu['d_egress']:.3f}",
+                f"{bu['d_ingress']:.3f}",
+                f"{bu['z2_period']:.1f}",
+            ]
+        )
     print_table(headers_ss, rows_ss)
     print("  Every star system has a BU interval at its own gyration scale.")
     print("  The structure is universal; the 1-ly calibration is Earth-specific.")
@@ -662,18 +732,19 @@ def main() -> None:
     print()
 
     profile = compute_internal_metric_profile(n_points=12)
-    headers_m = ["d (ly)", "ψ", "G/G₀", "τ", "Coh",
-                 "ω_LT (rad/s)"]
+    headers_m = ["d (ly)", "ψ", "G/G₀", "τ", "Coh", "ω_LT (rad/s)"]
     rows_m = []
     for p in profile:
-        rows_m.append([
-            f"{p['d_ly']:.2f}",
-            f"{p['psi']:.2e}",
-            f"{p['G_ratio']:.8f}",
-            f"{p['tau']:.4f}",
-            f"{p['coherence']:.4f}",
-            f"{p['omega_LT']:.3e}",
-        ])
+        rows_m.append(
+            [
+                f"{p['d_ly']:.2f}",
+                f"{p['psi']:.2e}",
+                f"{p['G_ratio']:.8f}",
+                f"{p['tau']:.4f}",
+                f"{p['coherence']:.4f}",
+                f"{p['omega_LT']:.3e}",
+            ]
+        )
     print_table(headers_m, rows_m)
     print("  At Oort distances (1-2 ly), ψ ~ 10⁻¹³:")
     print("  G corrections and frame-dragging are negligible.")
@@ -728,12 +799,14 @@ def main() -> None:
     headers_a = ["z", "ln(1+z)", "Δα/α", "α_pred"]
     rows_a = []
     for r in alpha_results:
-        rows_a.append([
-            f"{r['z']:.2f}",
-            f"{r['ln_1z']:.4f}",
-            f"{r['delta_alpha_over_alpha']:.2e}",
-            f"{r['alpha_pred']:.7f}",
-        ])
+        rows_a.append(
+            [
+                f"{r['z']:.2f}",
+                f"{r['ln_1z']:.4f}",
+                f"{r['delta_alpha_over_alpha']:.2e}",
+                f"{r['alpha_pred']:.7f}",
+            ]
+        )
     print_table(headers_a, rows_a)
     print("  Falsification: detecting this oscillation with the predicted")
     print("  period and amplitude would confirm the shell structure")
@@ -751,20 +824,29 @@ def main() -> None:
         ("Outer Oort extended", 100000),
         ("Outer Oort max", 200000),
     ]
-    headers_o = ["Region", "d (AU)", "d (ly)", "τ", "Coh", "Apt%",
-                 "Zone"]
+    headers_o = ["Region", "d (AU)", "d (ly)", "τ", "Coh", "Apt%", "Zone"]
     rows_o = []
     for name, d_au in oort_data:
         d_ly = d_au / LY_AU
         e_tau = tau_at_distance(d_ly)
         e_coh = coherence_at_distance(d_ly)
         e_apt = (1 - e_coh) * 100
-        zone = "Spatial" if d_ly < (d_delta_cross or 0.97) else (
-            "CONVERT" if d_ly < 2.0 else "Temporal")
-        rows_o.append([
-            name, f"{d_au:,}", f"{d_ly:.3f}", f"{e_tau:.4f}",
-            f"{e_coh:.4f}", f"{e_apt:.2f}", zone
-        ])
+        zone = (
+            "Spatial"
+            if d_ly < (d_delta_cross or 0.97)
+            else ("CONVERT" if d_ly < 2.0 else "Temporal")
+        )
+        rows_o.append(
+            [
+                name,
+                f"{d_au:,}",
+                f"{d_ly:.3f}",
+                f"{e_tau:.4f}",
+                f"{e_coh:.4f}",
+                f"{e_apt:.2f}",
+                zone,
+            ]
+        )
     print_table(headers_o, rows_o)
     print("  Predicted properties from kernel structure:")
     print("  1. ISOTROPY: spherical aperture (Q_G = 4π)")
@@ -871,8 +953,10 @@ def main() -> None:
     print(f"  Conversion zone:    [{d_delta_cross:.2f}, 2.00] ly")
     print(f"  Z₂ period:          8 ly  (F∘F = id)")
     print(f"  Graviton:           m_g = 0  (infinite range)")
-    print(f"  Sgr A* shadow:      ~{shadow['theta_CGM_uas']:.0f} μas "
-          f"({shadow['reduction_pct']:.0f}% below GR)")
+    print(
+        f"  Sgr A* shadow:      ~{shadow['theta_CGM_uas']:.0f} μas "
+        f"({shadow['reduction_pct']:.0f}% below GR)"
+    )
     print(f"  α(z) period:        Δ ≈ {DELTA:.4f} in ln(1+z)")
     print()
     print("  Three independent kernel anchors on the ~1 ly scale:")

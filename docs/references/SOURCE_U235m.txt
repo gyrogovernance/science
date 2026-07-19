@@ -1,0 +1,22 @@
+U-235m references (optical isomer)
+==================================
+
+Shigekawa_2026_U235m_uranyl_chemical_effects_arXiv2603.01699.pdf
+  Y. Shigekawa et al., "Chemical effects on nuclear decay of 235U isomer
+  in the uranyl form", arXiv:2603.01699 (v1 2 Mar 2026, v2 3 Mar 2026).
+  https://arxiv.org/abs/2603.01699
+  Half-lives of 235mU in uranyl F/Cl/Br/I; mechanism via molecular orbitals
+  and IC-electron spectra. Uses E = 76.737(18) eV from Ponce et al. 2018.
+
+Ponce_2018_U235m_energy_76p737eV_PhysRevC97_054310.pdf
+  F. Ponce, E. Swanberg, J. Burke, R. Henderson, S. Friedrich,
+  "Accurate measurement of the first excited nuclear state in 235U",
+  Phys. Rev. C 97, 054310 (2018). DOI: 10.1103/PhysRevC.97.054310
+  Accepted manuscript via OSTI/CHORUS (OSTI ID 1436587).
+  Measured energy: 76.737 ± 0.018 eV.
+
+CGM trestleboard note (hypothesis lead only):
+  E_(6,2)*(C2-C1) = E_nuc*9 ≈ 75.207 eV vs Ponce 76.737 eV.
+  Rel ~ -2%; still OPEN until a predeclared selector justifies ×9.
+
+Downloaded: 2026-07-18

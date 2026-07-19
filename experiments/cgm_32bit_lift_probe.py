@@ -12,7 +12,11 @@ ROOT = Path(__file__).resolve().parent.parent
 if str(ROOT) not in sys.path:
     sys.path.append(str(ROOT))
 
-from gyroscopic.hQVM.api import byte_to_intron, depth4_intron_sequence32, q_word6_for_items
+from gyroscopic.hQVM.api import (
+    byte_to_intron,
+    depth4_intron_sequence32,
+    q_word6_for_items,
+)
 from gyroscopic.hQVM.constants import (
     GENE_MAC_REST,
     byte_family,
@@ -92,14 +96,16 @@ def _run_32bit_probe(
         padded = tuple(word) + (0, 0, 0, 0)
         intron32 = depth4_intron_sequence32(*padded[:4])
         state24 = state & 0xFFFFFF
-        rows.append(LiftedWordRow(
-            word=tuple(word),
-            q_weight=_q_weight(word),
-            final_state24=state24,
-            intron32=intron32,
-            family_path=tuple(families),
-            micro_path=tuple(micros),
-        ))
+        rows.append(
+            LiftedWordRow(
+                word=tuple(word),
+                q_weight=_q_weight(word),
+                final_state24=state24,
+                intron32=intron32,
+                family_path=tuple(families),
+                micro_path=tuple(micros),
+            )
+        )
         final_to_introns[state24].add(intron32)
 
     max_multiplicity = max(len(v) for v in final_to_introns.values())
@@ -150,7 +156,9 @@ def run_32bit_lift_summary() -> tuple[LiftedCarrierScanSummary, ...]:
 
         family_counts = [len(v) for v in family_paths_by_state.values()]
         micro_counts = [len(v) for v in micro_paths_by_state.values()]
-        mean_family = (sum(family_counts) / len(family_counts)) if family_counts else 0.0
+        mean_family = (
+            (sum(family_counts) / len(family_counts)) if family_counts else 0.0
+        )
         mean_micro = (sum(micro_counts) / len(micro_counts)) if micro_counts else 0.0
 
         out.append(
@@ -203,7 +211,9 @@ def run_148_51_closure_probe(
         + int(full.max_family_paths_per_state)
         + int(full.max_micro_paths_per_state)
     )
-    denominator = int(CODE_C3) + int(CODE_C2) + int(round(full.mean_family_paths_per_state))
+    denominator = (
+        int(CODE_C3) + int(CODE_C2) + int(round(full.mean_family_paths_per_state))
+    )
     ratio = Fraction(numerator, denominator)
     target = Fraction(148, 51)
 
@@ -235,8 +245,12 @@ def main() -> None:
     print(f"final 24-bit states                 {len(final_to_introns)}")
     print(f"states with multiple 32-bit introns   {collapsed}")
     print(f"max intron32 multiplicity per state  {max_mult}")
-    print(f"carrier-only squared ratio           {c_ratio.numerator}/{c_ratio.denominator}")
-    print(f"dyadic mu/e ratio                   {d_ratio.numerator}/{d_ratio.denominator}")
+    print(
+        f"carrier-only squared ratio           {c_ratio.numerator}/{c_ratio.denominator}"
+    )
+    print(
+        f"dyadic mu/e ratio                   {d_ratio.numerator}/{d_ratio.denominator}"
+    )
     print(f"ratio mismatch                       {mismatch:.6e}")
 
     if rows:
@@ -275,6 +289,7 @@ def main() -> None:
         print("q-weight histogram over full-byte length-2 words:")
         for q in sorted(q_by_weight):
             print(f"  q={q}: {q_by_weight[q]}")
+
 
 if __name__ == "__main__":
     main()

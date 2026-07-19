@@ -162,9 +162,7 @@ class Gyroscopic:
         """48-bit mask projection over 4 consecutive bytes."""
         return depth4_mask_projection48(b0, b1, b2, b3)
 
-    def depth4_introns32(
-        self, b0: int, b1: int, b2: int, b3: int
-    ) -> int:
+    def depth4_introns32(self, b0: int, b1: int, b2: int, b3: int) -> int:
         """32-bit intron sequence over 4 consecutive bytes (bijective)."""
         return depth4_intron_sequence32(b0, b1, b2, b3)
 

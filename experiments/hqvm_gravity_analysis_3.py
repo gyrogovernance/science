@@ -111,9 +111,9 @@ def holonomy_arch_path(micro_ref: int) -> list[int]:
     """arch_shell along 8-step Z2 holonomy (hqvm_gravity_common convention)."""
     return [
         int(row["arch_shell"])
-        for row in trace_word_steps(cycle_word_for_micro(micro_ref), micro_ref=micro_ref)[
-            1:
-        ]
+        for row in trace_word_steps(
+            cycle_word_for_micro(micro_ref), micro_ref=micro_ref
+        )[1:]
     ]
 
 
@@ -171,10 +171,9 @@ def return_trace_two_hop(q: int) -> Fraction:
     total = Fraction(0)
     for w in range(7):
         for k in range(7):
-            total += (
-                shell_transition_probability(w, q, k)
-                * shell_transition_probability(k, q, w)
-            )
+            total += shell_transition_probability(
+                w, q, k
+            ) * shell_transition_probability(k, q, w)
     return total
 
 
@@ -224,7 +223,9 @@ def prove_odd_shell_krawtchouk(results: dict[int, dict]) -> None:
         assert sym
 
     print()
-    print("Eigenvectors Q_k(w) = K_w(k); eigenvalues lambda_k with M Q_k = lambda_k Q_k:")
+    print(
+        "Eigenvectors Q_k(w) = K_w(k); eigenvalues lambda_k with M Q_k = lambda_k Q_k:"
+    )
     expected: dict[int, Fraction] = {
         1: Fraction(28, 9),
         3: Fraction(52, 25),
@@ -437,9 +438,7 @@ def derive_tau_cycle_exact(stress: dict[int, dict]) -> Fraction:
         f"  tau/Delta = 4*sum_cubes/(64*sum_sq) = "
         f"{Fraction(numer_4cubes, denom_64sq)}"
     )
-    print(
-        f"            = (1/2)*sum_cubes / (8*C(12,6)) = {via_half}"
-    )
+    print(f"            = (1/2)*sum_cubes / (8*C(12,6)) = {via_half}")
     assert Fraction(numer_4cubes, denom_64sq) == kernel_exact
     assert via_half == kernel_exact
 
@@ -455,7 +454,9 @@ def derive_tau_cycle_exact(stress: dict[int, dict]) -> Fraction:
     lemma_a_ratio = tau_cycle / tau_cycle_lemma_a
 
     print()
-    print(f"tau_cycle / Delta                    = {kernel_exact} = {float(kernel_exact):.12f}")
+    print(
+        f"tau_cycle / Delta                    = {kernel_exact} = {float(kernel_exact):.12f}"
+    )
     print(f"tau_cycle (exact)                    = {tau_cycle:.12f}")
     print(f"Lemma A uniform tau_cycle              = {tau_cycle_lemma_a:.12f}")
     print(f"exact / Lemma A (tau vs tau)           = {lemma_a_ratio:.12f}")
@@ -599,7 +600,9 @@ def delta_ruler_placement() -> None:
     print()
     print("Kernel ratios:")
     print(f"  n_G / |Omega|                       = {n_g / Omega_size:.6f}")
-    print(f"  n_G / D                             = {n_g / Z2_HOLONOMY_PATH_TRAVERSE:.4f}")
+    print(
+        f"  n_G / D                             = {n_g / Z2_HOLONOMY_PATH_TRAVERSE:.4f}"
+    )
     print(f"  n_G / |H|                           = {n_g / H_size:.4f}")
     print(f"  n_G / (|Omega|*rho^5)               = {ratio_bulk:.4f}")
     print(f"  |Omega|*rho^5 / ln(2)               = {omega_rho5 / ln2:.4f}")

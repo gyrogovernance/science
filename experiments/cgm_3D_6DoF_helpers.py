@@ -135,7 +135,9 @@ print("-" * 80)
 
 print("Proposition BU (Eg/In) (A4, depth-4 balance) requires:")
 print("  [L][R][L][R]S <-> [R][L][R][L]S")
-print("  Egress (A4): closure at S (□B); Ingress (A5): shadow memory (dual kernel reading)")
+print(
+    "  Egress (A4): closure at S (□B); Ingress (A5): shadow memory (dual kernel reading)"
+)
 print()
 print("Under formal exponential interpretation:")
 print("  exp(X)exp(Y)exp(X)exp(Y) = exp(Y)exp(X)exp(Y)exp(X)")

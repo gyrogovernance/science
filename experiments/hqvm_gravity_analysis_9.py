@@ -318,9 +318,7 @@ def weyl_lambda_from_kernel(g1: float) -> dict[str, float]:
     }
 
 
-def rg_operator_one_step(
-    g1: float, psi: float, d_ln_mu: float
-) -> dict[str, float]:
+def rg_operator_one_step(g1: float, psi: float, d_ln_mu: float) -> dict[str, float]:
     """
     Explicit coarse-grain operator R (one shell-tick step).
 
@@ -341,9 +339,9 @@ def rg_operator_one_step(
     beta_lam_cont = -beta_xi_cont
     lam_th = lambda0_cgm() / FOURPI_SQ
     xi_ref = xi0
-    beta_xi_qqg = -(
-        xi_ref**2 - 36.0 * lam_th * xi_ref - 2520.0 * lam_th**2
-    ) / (36.0 * FOURPI_SQ)
+    beta_xi_qqg = -(xi_ref**2 - 36.0 * lam_th * xi_ref - 2520.0 * lam_th**2) / (
+        36.0 * FOURPI_SQ
+    )
     return {
         "psi": psi,
         "psi_next": psi_next,
@@ -413,9 +411,7 @@ def tensor_quadratic_action_cgm(
     }
 
 
-def inflation_amplitude_A_s(
-    g1: float, n_target: float = 55.0
-) -> dict[str, float]:
+def inflation_amplitude_A_s(g1: float, n_target: float = 55.0) -> dict[str, float]:
     """
     A_s from native slow-roll (Mpl units) times holographic Pi_H (kernel theorem).
 
@@ -446,7 +442,11 @@ def inflation_amplitude_A_s(
     log_as_planck = math.log10(AS_PLANCK)
     tens = tensor_quadratic_action_cgm(g1, 2048, 2048)
     r_boosted = infl["r"] * tens["r_native_times_boost"]
-    as_ok = abs(log_as - log_as_planck) < AS_MATCH_LOG10_TOL if math.isfinite(log_as) else False
+    as_ok = (
+        abs(log_as - log_as_planck) < AS_MATCH_LOG10_TOL
+        if math.isfinite(log_as)
+        else False
+    )
     return {
         "ok": True,
         "A_s": a_s,
@@ -522,7 +522,11 @@ def reheating_dynamics_toy(g1: float, infl: dict[str, float]) -> dict[str, float
         if abs(dlnf_dlnr(r_kin)) > 1.0:
             break
         r_kin *= 0.95
-    psi_kin = max(0.0, psi_end - d_ln_mu_ef / ln_span) if infl.get("native_ok") else psi_from_R_dS(r_kin)
+    psi_kin = (
+        max(0.0, psi_end - d_ln_mu_ef / ln_span)
+        if infl.get("native_ok")
+        else psi_from_R_dS(r_kin)
+    )
     tau_frac_reh = 1.0 - 1.0 / math.e
     psi_reh_derived = 1.0 / math.e
     e_reh = float(E_ref_quantile(psi_reh_derived))
@@ -547,9 +551,7 @@ def f_cgm(R: float, g1: float, r0: float, ln_span: float) -> float:
 
 def df_cgm_dR(R: float, g1: float, r0: float, ln_span: float) -> float:
     h = max(1e-8 * abs(R), 1e-30)
-    return (
-        f_cgm(R + h, g1, r0, ln_span) - f_cgm(R - h, g1, r0, ln_span)
-    ) / (2.0 * h)
+    return (f_cgm(R + h, g1, r0, ln_span) - f_cgm(R - h, g1, r0, ln_span)) / (2.0 * h)
 
 
 def einstein_frame_from_R(
@@ -633,9 +635,7 @@ def inflation_cgm_native(g1: float, n_target: float = 55.0) -> dict[str, float]:
             dphi = phis[idx + 1] - phis[idx - 1]
             if abs(dphi) > 1e-30 and vs[idx] > 0.0:
                 dv = (vs[idx + 1] - vs[idx - 1]) / dphi
-                d2v = (vs[idx + 1] - 2.0 * vs[idx] + vs[idx - 1]) / (
-                    0.25 * dphi * dphi
-                )
+                d2v = (vs[idx + 1] - 2.0 * vs[idx] + vs[idx - 1]) / (0.25 * dphi * dphi)
                 d2 = d2v / vs[idx]
         eta = d2
         return eps, eta
@@ -892,9 +892,7 @@ def beta_xi_cgm_form(g1: float) -> dict[str, float]:
     }
 
 
-def inflation_efold_integration(
-    g1: float, n_target: float = 55.0
-) -> dict[str, float]:
+def inflation_efold_integration(g1: float, n_target: float = 55.0) -> dict[str, float]:
     """
     Slow-roll for the RG-improved f(R) of QQG with CGM-fixed parameters.
 
@@ -1043,9 +1041,7 @@ def n_eff_weighted_counts() -> dict[str, float]:
     n_vector = n_holo * (3.0 / 7.0)
     n_fermion = n_holo * (3.0 / 7.0)
     n_weighted = (
-        (1.0 / 60.0) * n_scalar
-        + (1.0 / 5.0) * n_vector
-        + (1.0 / 20.0) * n_fermion
+        (1.0 / 60.0) * n_scalar + (1.0 / 5.0) * n_vector + (1.0 / 20.0) * n_fermion
     )
     return {
         "n_holo": n_holo,
@@ -1074,9 +1070,13 @@ def section_f_qqg_bridge(d_stats: dict) -> dict[str, float | int | bool]:
     psi_uv = 0.95
     psi_ir = 0.05
     print(f"  g1 = {g1:.6f}  (d ln G/d psi, AF when g1 < 0)")
-    print(f"  f(R) Taylor: c_R = {fr['c_R_linear']:.5f}, c_R2/2 = {fr['c_R2_half']:.5f}")
-    print(f"  Jordan factor exp(-g1 psi): psi=0 -> {f_r_jordan(0.0, g1):.4f}, "
-          f"psi=1 -> {f_r_jordan(1.0, g1):.4f}")
+    print(
+        f"  f(R) Taylor: c_R = {fr['c_R_linear']:.5f}, c_R2/2 = {fr['c_R2_half']:.5f}"
+    )
+    print(
+        f"  Jordan factor exp(-g1 psi): psi=0 -> {f_r_jordan(0.0, g1):.4f}, "
+        f"psi=1 -> {f_r_jordan(1.0, g1):.4f}"
+    )
     print(f"  S_eff: a(mu)=1/xi = {seff['one_over_xi']:.6e}, xi = {seff['xi_eff']:.3f}")
     print(f"  S_eff: b/a (C^2, conjecture) = {seff['b2_over_a2_conjecture']:.6f}")
     print(f"  xi_eff (1/[R^2 weight]) = {xi_eff:.5f}  (QQG xi analog)")
@@ -1196,7 +1196,9 @@ def section_f_qqg_bridge(d_stats: dict) -> dict[str, float | int | bool]:
         print(f"    A_s^pl intrinsic log10 = {ampl['log10_A_s_intrinsic']:.3f}")
         print(f"    Pi_H = rho^8 Delta^4/(pi^2|Omega|) = {ampl['Pi_H']:.4e}")
         print(f"    A_s (projected) = {ampl['A_s']:.4e}  log10={ampl['log10_A_s']:.3f}")
-        print(f"    Planck A_s      = {AS_PLANCK:.2e}  match={ampl['A_s_match_planck']}")
+        print(
+            f"    Planck A_s      = {AS_PLANCK:.2e}  match={ampl['A_s_match_planck']}"
+        )
         print(f"    A_s Staro check = {ampl['A_s_staro_check']:.4e}")
         print(f"    r_weyl_boosted  = {ampl['r_weyl_boosted']:.5f}")
         print(f"    r native vs PRL typical ~0.01: {ampl['below_qqg_r_min']}")
@@ -1240,7 +1242,9 @@ def section_f_qqg_bridge(d_stats: dict) -> dict[str, float | int | bool]:
     print(f"  beta_xi (leading)        = {bx['beta_xi_leading']:.6e}")
     betas = rg_beta_functions_cgm(g1)
     print("F6b. RG operator R: discrete beta_xi, beta_lambda [LEMMA]")
-    print(f"  psi: {betas['psi']:.3f} -> {betas['psi_next']:.3f}  d ln mu = {betas['d_ln_mu']:.6f}")
+    print(
+        f"  psi: {betas['psi']:.3f} -> {betas['psi_next']:.3f}  d ln mu = {betas['d_ln_mu']:.6f}"
+    )
     print(f"  beta_xi (discrete)       = {betas['beta_xi_discrete']:.6f}")
     print(f"  beta_lambda (discrete)   = {betas['beta_lambda_discrete']:.6f}")
     print(f"  beta_xi (continuum)      = {betas['beta_xi_continuum']:.6f}")
@@ -1249,9 +1253,7 @@ def section_f_qqg_bridge(d_stats: dict) -> dict[str, float | int | bool]:
     print()
 
     print("F8. Reheating chain [LEMMA: optical exit + tau saturation]")
-    rh_u = reheating_unified(
-        g1, infl_nat if infl_nat.get("native_ok") else {}
-    )
+    rh_u = reheating_unified(g1, infl_nat if infl_nat.get("native_ok") else {})
     print(f"  psi_end (N_e on Delta-ruler)  = {rh_u['psi_slow_roll_end']:.4f}")
     print(f"  psi_kination                  = {rh_u['psi_kination_onset']:.4f}")
     print(f"  psi_reheat (tau/tau_G>=1-1/e) = {rh_u['psi_reheat']:.4f}")
@@ -1352,7 +1354,9 @@ def main() -> None:
     r_n = f_stats["r_native"]
     if math.isfinite(ns_n) and math.isfinite(r_n):
         eq6 = f_stats["ns_qqg_eq6"]
-        print(f"  native n_s={ns_n:.4f} r={r_n:.4f} (QQG eq.6 n_s={eq6:.4f} compare-only)")
+        print(
+            f"  native n_s={ns_n:.4f} r={r_n:.4f} (QQG eq.6 n_s={eq6:.4f} compare-only)"
+        )
     else:
         print("  native inflation: not computed (QQG eq.6 compare-only)")
 

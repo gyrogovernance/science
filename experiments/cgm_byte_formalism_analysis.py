@@ -75,7 +75,7 @@ def expand_intron_to_mask_a12(intron: int) -> Tuple[int, int]:
     mask12 = 0
     for i in range(6):
         if (payload >> i) & 1:
-            mask12 |= (0b11 << (2 * i))
+            mask12 |= 0b11 << (2 * i)
 
     # Extract family index from L0 bits (0 and 7)
     # bit0 -> position 0, bit7 -> position 1
@@ -167,12 +167,14 @@ def test_dipole_flip_property() -> Dict[str, Any]:
             if (xor_mask >> lo) & 1 or (xor_mask >> hi) & 1:
                 pairs_changed.append(p)
 
-        results.append({
-            "bit": bit_idx,
-            "bits_changed": bits_changed,
-            "pairs_changed": pairs_changed,
-            "exactly_one_pair": bits_changed == 2 and len(pairs_changed) == 1,
-        })
+        results.append(
+            {
+                "bit": bit_idx,
+                "bits_changed": bits_changed,
+                "pairs_changed": pairs_changed,
+                "exactly_one_pair": bits_changed == 2 and len(pairs_changed) == 1,
+            }
+        )
 
     all_pass = all(r["exactly_one_pair"] for r in results)
     return {
@@ -262,7 +264,7 @@ def project_4byte_to_48bit(b0: int, b1: int, b2: int, b3: int) -> int:
     for i, b in enumerate([b0, b1, b2, b3]):
         intron = b ^ 0xAA
         mask12, _ = expand_intron_to_mask_a12(intron)
-        result |= (mask12 << (12 * i))
+        result |= mask12 << (12 * i)
     return result
 
 
@@ -277,7 +279,7 @@ def project_4byte_full(b0: int, b1: int, b2: int, b3: int) -> int:
     result = 0
     for i, b in enumerate([b0, b1, b2, b3]):
         intron = b ^ 0xAA
-        result |= (intron << (8 * i))
+        result |= intron << (8 * i)
     return result
 
 
@@ -367,7 +369,7 @@ def analyze_cache_line_mapping() -> Dict[str, Any]:
     TAG_BITS = 2  # 4 cache lines
 
     # Verify the mapping
-    total_addressable = (2 ** TAG_BITS) * (2 ** OFFSET_BITS)
+    total_addressable = (2**TAG_BITS) * (2**OFFSET_BITS)
 
     return {
         "cache_line_bytes": CACHE_LINE_BYTES,
@@ -577,10 +579,10 @@ def analyze_horizon_types() -> Dict[str, Any]:
     # Paired horizons: (predecessor P_k, dyadic 2^(k+1))
     paired_horizons = [
         # (P_k, 2^(k+1), k)
-        (48, 64, 4),    # 3*2^4 = 48, 2^6 = 64
-        (96, 128, 5),   # 3*2^5 = 96, 2^7 = 128
+        (48, 64, 4),  # 3*2^4 = 48, 2^6 = 64
+        (96, 128, 5),  # 3*2^5 = 96, 2^7 = 128
         (384, 512, 7),  # 3*2^7 = 384, 2^9 = 512
-        (768, 1024, 8), # 3*2^8 = 768, 2^10 = 1024
+        (768, 1024, 8),  # 3*2^8 = 768, 2^10 = 1024
     ]
 
     # Full horizon table with roles
@@ -605,27 +607,31 @@ def analyze_horizon_types() -> Dict[str, Any]:
         log2_n = a + b * log2_3
         is_dyadic = b == 0
         htype = "dyadic" if is_dyadic else "predecessor"
-        results.append({
-            "n": n,
-            "form": f"2^{a} x 3^{b}" if b > 0 else f"2^{a}",
-            "log2_n": log2_n,
-            "horizon_type": htype,
-            "role": role,
-        })
+        results.append(
+            {
+                "n": n,
+                "form": f"2^{a} x 3^{b}" if b > 0 else f"2^{a}",
+                "log2_n": log2_n,
+                "horizon_type": htype,
+                "role": role,
+            }
+        )
 
     # Verify the lemma: P_k = 3*2^(k-1) = (3/4)*2^(k+1)
     lemma_checks = []
     for P_k, dyadic, k in paired_horizons:
         computed_P = 3 * (2 ** (k - 1))
         ratio_check = P_k / dyadic
-        lemma_checks.append({
-            "k": k,
-            "P_k": P_k,
-            "dyadic": dyadic,
-            "3*2^(k-1)": computed_P,
-            "P_k/dyadic": ratio_check,
-            "is_3/4": abs(ratio_check - 0.75) < 1e-10,
-        })
+        lemma_checks.append(
+            {
+                "k": k,
+                "P_k": P_k,
+                "dyadic": dyadic,
+                "3*2^(k-1)": computed_P,
+                "P_k/dyadic": ratio_check,
+                "is_3/4": abs(ratio_check - 0.75) < 1e-10,
+            }
+        )
 
     return {
         "log2_3": log2_3,
@@ -672,10 +678,16 @@ def run_analysis(verbose: bool = True) -> Dict[str, Any]:
         print("\n0. ROUTER ARCHITECTURE (depth-4 closure)")
         print("-" * 9)
         print("   Depth-4: 4 components (bytes or 12-bit tensors) always known")
-        print(f"   4-byte frame -> 4 x 12 = {arch['depth_4_projection_bits']} bits (CGM 48)")
+        print(
+            f"   4-byte frame -> 4 x 12 = {arch['depth_4_projection_bits']} bits (CGM 48)"
+        )
         print("   Prefix(CS) | Present(UNA) | Past(ONA) | Future(BU)")
-        print(f"   Bit pairs: L0={hex(arch['l0_mask'])} LI={hex(arch['li_mask'])} FG={hex(arch['fg_mask'])} BG={hex(arch['bg_mask'])}")
-        print(f"   Families: L0 bits (0,7) -> {arch['families']} families x {arch['members_per_family']} = {arch['introns_total']}")
+        print(
+            f"   Bit pairs: L0={hex(arch['l0_mask'])} LI={hex(arch['li_mask'])} FG={hex(arch['fg_mask'])} BG={hex(arch['bg_mask'])}"
+        )
+        print(
+            f"   Families: L0 bits (0,7) -> {arch['families']} families x {arch['members_per_family']} = {arch['introns_total']}"
+        )
         print("   6 payload bits (1-6) -> 6 DoF (each bit controls one pair)")
         print("\n1. EXACT DEFINITIONS (from CGM construction)")
         print(f"   delta_BU = {c.delta_BU:.12f} rad")
@@ -690,13 +702,19 @@ def run_analysis(verbose: bool = True) -> Dict[str, Any]:
         print("-" * 9)
         print(f"   256 * Delta = {256 * c.Delta:.10f}")
         print(f"   round(256 * Delta) = {aq['Q_256_numerator']}")
-        print(f"   Q_256(Delta) = {aq['Q_256_numerator']}/256 = {aq['Q_256_Delta']:.10f}")
+        print(
+            f"   Q_256(Delta) = {aq['Q_256_numerator']}/256 = {aq['Q_256_Delta']:.10f}"
+        )
         print(f"   5/256 = {aq['5_over_256']:.10f}")
         print(f"   Is 5/256 the best 8-bit quantization? {aq['is_5_over_256']}")
         print(f"   Quantization error: Delta - Q_256(Delta) = {aq['Q_256_error']:.12f}")
-        print(f"\n   For rho: Q_256(rho) = {aq['Q_256_rho_numerator']}/256 = {aq['Q_256_rho']:.10f}")
+        print(
+            f"\n   For rho: Q_256(rho) = {aq['Q_256_rho_numerator']}/256 = {aq['Q_256_rho']:.10f}"
+        )
         print(f"   251/256 = {aq['251_over_256']:.10f}")
-        print(f"\n   12-bit (4096): Q_4096(Delta) = {aq['Q_4096_numerator']}/4096 = {aq['Q_4096_Delta']:.12f}")
+        print(
+            f"\n   12-bit (4096): Q_4096(Delta) = {aq['Q_4096_numerator']}/4096 = {aq['Q_4096_Delta']:.12f}"
+        )
         print(f"   Error: {aq['Q_4096_error']:.2e}")
 
     ticks = analyze_tick_spaces(c)
@@ -710,9 +728,13 @@ def run_analysis(verbose: bool = True) -> Dict[str, Any]:
         print("   T_256^(frac): fraction line for Delta, rho (dimensionless)")
         print("   T_256^(turn): circle for angles, normalized by 2*pi")
         print(f"\n   T_256^(frac): Delta = 5 ticks = 5/256")
-        print(f"   T_256^(turn): delta_BU = {ticks['Q_256_tau_numerator']} ticks = {ticks['Q_256_tau_numerator']}/256 = 1/32 turn")
+        print(
+            f"   T_256^(turn): delta_BU = {ticks['Q_256_tau_numerator']} ticks = {ticks['Q_256_tau_numerator']}/256 = 1/32 turn"
+        )
         print(f"   delta_BU - pi/16 = {ticks['delta_BU_minus_pi_16']:.2e}")
-        print("\n   WARNING: '10' relation (50/256 rad vs 5/256) uses implicit 1 rad=256 ticks")
+        print(
+            "\n   WARNING: '10' relation (50/256 rad vs 5/256) uses implicit 1 rad=256 ticks"
+        )
         print("   which is NOT canonical. Canonical angle scale is full-turn.")
 
     if verbose:
@@ -745,27 +767,39 @@ def run_analysis(verbose: bool = True) -> Dict[str, Any]:
         for r in dipole["results"]:
             pair_idx = r["pairs_changed"][0] if len(r["pairs_changed"]) == 1 else "?"
             print(f"        bit {r['bit']} -> pair {pair_idx}")
-        print(f"   Mask uniqueness: {uniqueness['unique_masks_12bit']}/64 (6 payload bits)")
+        print(
+            f"   Mask uniqueness: {uniqueness['unique_masks_12bit']}/64 (6 payload bits)"
+        )
         print(f"   Family structure (4x64): {family_struct['status']}")
 
         print(f"\n   24-BIT SINGLE-STEP (shadow projection):")
-        print(f"      Unique states: {spinorial_24['unique_states']}/256 (expected {spinorial_24['expected']})")
+        print(
+            f"      Unique states: {spinorial_24['unique_states']}/256 (expected {spinorial_24['expected']})"
+        )
         print(f"      Note: {spinorial_24['note']}")
 
         print(f"\n   DEPTH-4 PROJECTION TESTS:")
-        m = spinorial_48['mask_only_48bit']
-        f = spinorial_48['full_32bit']
-        print(f"      Mask-only (48-bit, 4x12): {m['unique']}/{spinorial_48['sample_size']} unique")
+        m = spinorial_48["mask_only_48bit"]
+        f = spinorial_48["full_32bit"]
+        print(
+            f"      Mask-only (48-bit, 4x12): {m['unique']}/{spinorial_48['sample_size']} unique"
+        )
         print(f"         {m['note']}")
-        print(f"      Full intron (32-bit, 4x8): {f['unique']}/{spinorial_48['sample_size']} unique")
+        print(
+            f"      Full intron (32-bit, 4x8): {f['unique']}/{spinorial_48['sample_size']} unique"
+        )
         print(f"         {f['note']}")
-        print(f"      Single-byte bijective positions: {spinorial_48['single_byte_positions_bijective']}")
+        print(
+            f"      Single-byte bijective positions: {spinorial_48['single_byte_positions_bijective']}"
+        )
         print(f"      Overall status: {spinorial_48['status']}")
 
     if verbose:
         print("\n7. CACHE-LINE HARDWARE MAPPING")
         print("-" * 9)
-        print(f"   L1 cache line: {cache['cache_line_bytes']} bytes ({cache['cache_line_bits']} bits)")
+        print(
+            f"   L1 cache line: {cache['cache_line_bytes']} bytes ({cache['cache_line_bits']} bits)"
+        )
         print(f"   Offset bits needed: {cache['offset_bits']} (2^6 = 64)")
         print(f"   Tag bits: {cache['tag_bits']} (4 cache lines)")
         print(f"   Total addressable: {cache['total_addressable']} = alphabet horizon")
@@ -778,12 +812,16 @@ def run_analysis(verbose: bool = True) -> Dict[str, Any]:
     if verbose:
         print("\n8. 48-BIT PROJECTION AND TWO DEPTH-4 OBJECTS")
         print("-" * 9)
-        print(f"   Depth-4 projection: 4 x 12 = {q48['depth_4_projection_bits']} bits (manifold)")
+        print(
+            f"   Depth-4 projection: 4 x 12 = {q48['depth_4_projection_bits']} bits (manifold)"
+        )
         print(f"   Depth-4 atoms: 4 x 32 = {q48['depth_4_atom_bits']} bits (execution)")
         print(f"   CGM: 48*Delta = 1 (geometric quantization)")
         print(f"   Measured: 48*Delta = {q48['48_Delta']:.10f}")
         print(f"   Deviation from 1: {q48['48_deviation']:.2e}")
-        print(f"   Byte: 256 = 4 families x 64; 256*Delta -> numerator {q48['round_256_Delta']}")
+        print(
+            f"   Byte: 256 = 4 families x 64; 256*Delta -> numerator {q48['round_256_Delta']}"
+        )
 
     horiz = analyze_horizon_types()
     if verbose:
@@ -798,7 +836,9 @@ def run_analysis(verbose: bool = True) -> Dict[str, Any]:
         print("   | n    | Form      | log2(n) | Type        | Role")
         print("   |------|-----------|---------|-------------|-----")
         for h in horiz["horizons"]:
-            print(f"   | {h['n']:4d} | {h['form']:9s} | {h['log2_n']:7.3f} | {h['horizon_type']:11s} | {h['role']}")
+            print(
+                f"   | {h['n']:4d} | {h['form']:9s} | {h['log2_n']:7.3f} | {h['horizon_type']:11s} | {h['role']}"
+            )
         print(f"\n   Lemma: {horiz['lemma']}")
         print(f"   Byte: {horiz['byte_note']}")
 
@@ -816,7 +856,12 @@ def run_analysis(verbose: bool = True) -> Dict[str, Any]:
         "cache_line_mapping": cache,
         "48_vs_256": q48,
         "horizon_types": horiz,
-        "constants": {"delta_BU": c.delta_BU, "m_a": c.m_a, "rho": c.rho, "Delta": c.Delta},
+        "constants": {
+            "delta_BU": c.delta_BU,
+            "m_a": c.m_a,
+            "rho": c.rho,
+            "Delta": c.Delta,
+        },
     }
 
 
@@ -831,11 +876,15 @@ def main():
 
     print("\nEXPANSION & DEPTH-4 CLOSURE:")
     print(f"- Dipole flip: {results['dipole_flip']['status']}")
-    print(f"- 12-bit mask: {results['mask_uniqueness']['unique_masks_12bit']}/64 unique")
+    print(
+        f"- 12-bit mask: {results['mask_uniqueness']['unique_masks_12bit']}/64 unique"
+    )
     print(f"- Family structure (4x64): {results['family_structure']['status']}")
 
     print("\nDEPTH-4 CLOSURE:")
-    print(f"- 24-bit single-step: {results['spinorial_24bit']['unique_states']}/256 (shadow projection)")
+    print(
+        f"- 24-bit single-step: {results['spinorial_24bit']['unique_states']}/256 (shadow projection)"
+    )
     print(f"- 32-bit full 4-frame: {results['spinorial_48bit']['status']} (bijective)")
     print("- 720-degree closure operates across 4-byte frame")
     print("- Family bits encode spinorial phase, resolved over trajectory")

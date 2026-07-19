@@ -78,6 +78,7 @@ def load_common() -> Any:
 
 # Grading and permutations
 
+
 def shell_grading() -> tuple[np.ndarray, dict[int, int]]:
     """Per-state shell index and a state->index lookup over OMEGA_STATES_4096."""
     shell_of = np.zeros(OMEGA_SIZE, dtype=np.int64)
@@ -135,6 +136,7 @@ def all_byte_perms(idx_of: dict[int, int]) -> list[np.ndarray]:
 
 # CHSH Boolean extreme (Walsh observables)
 
+
 def spin_pair_of_face(face12: int) -> tuple[int, ...]:
     """Six dipole spins in {-1,+1} from a 12-bit face (pair 10 -> +1, 01 -> -1)."""
     return component12_to_spin6(int(face12) & LAYER_MASK_12)
@@ -185,8 +187,8 @@ def max_chsh_on_index_set(idx: list[int]) -> dict[str, object]:
     C = (A_obs[:, masks].T @ B_obs[:, masks]) / N
 
     M = C.shape[0]
-    C_add = C[:, None, :] + C[None, :, :]   # (a0, a1, b0)
-    C_sub = C[:, None, :] - C[None, :, :]   # (a0, a1, b1)
+    C_add = C[:, None, :] + C[None, :, :]  # (a0, a1, b0)
+    C_sub = C[:, None, :] - C[None, :, :]  # (a0, a1, b1)
     S = np.max(C_add, axis=2) + np.max(C_sub, axis=2)
     best = float(np.max(S))
     a0, a1 = divmod(int(np.argmax(S)), M)
@@ -244,10 +246,17 @@ def run_script(
         err = str(exc.stderr or "") + f"\nTIMEOUT after {timeout_s}s\n"
         return 124, str(out), str(err), dt
 
-    return proc.returncode, proc.stdout or "", proc.stderr or "", time.perf_counter() - t0
+    return (
+        proc.returncode,
+        proc.stdout or "",
+        proc.stderr or "",
+        time.perf_counter() - t0,
+    )
 
 
-def format_block(script_name: str, code: int, stdout: str, stderr: str, dt: float) -> str:
+def format_block(
+    script_name: str, code: int, stdout: str, stderr: str, dt: float
+) -> str:
     lines = [f"######## {script_name} ########", ""]
     if stdout:
         lines.append(stdout.rstrip())
@@ -300,7 +309,9 @@ def run_all(output_path: Path, timeout_s: float | None) -> int:
     code = max(code, code4)
     dt = dt + dt4
 
-    blocks.append(f"finished: {datetime.now().astimezone().isoformat(timespec='seconds')}")
+    blocks.append(
+        f"finished: {datetime.now().astimezone().isoformat(timespec='seconds')}"
+    )
     blocks.append(f"total_duration={dt:.2f}s")
     blocks.append(f"worst_exit={code}")
 

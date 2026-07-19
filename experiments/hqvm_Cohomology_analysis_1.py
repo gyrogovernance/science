@@ -77,6 +77,7 @@ clamp = lambda x: max(-1.0, min(1.0, x))
 # A. Constant and identity audit
 # ================================================================
 
+
 def experiment_constants() -> dict[str, object]:
     """Audit CGM constants and the algebraic identities that tie them to
     the Grothendieck/Krivine constants."""
@@ -124,11 +125,11 @@ def experiment_constants() -> dict[str, object]:
 
     # zeta and alpha correction factors
     zeta = 8.0 / (m_a * math.sqrt(3.0))
-    alpha0 = DELTA_BU ** 4 / m_a
+    alpha0 = DELTA_BU**4 / m_a
     ident["zeta=8/(m_a sqrt3)"] = zeta
     ident["alpha0=DELTA_BU^4/m_a"] = alpha0
     lhs = alpha0 * zeta
-    rhs = RHO ** 4 / (math.pi * math.sqrt(3.0))
+    rhs = RHO**4 / (math.pi * math.sqrt(3.0))
     checks["alpha0*zeta==RHO^4/(pi sqrt3)"] = lhs - rhs
 
     # pi/2 vs Krivine ratio
@@ -145,6 +146,7 @@ def experiment_constants() -> dict[str, object]:
 # ================================================================
 # B. Arcsin / hyperplane-rounding law on the chirality register
 # ================================================================
+
 
 def _sign(x: float) -> int:
     return 1 if x >= 0.0 else -1
@@ -219,8 +221,12 @@ def experiment_arcsin_rounding(n_gauss: int = 20000) -> dict[str, float]:
         xi = rng.randint(0, 1)
         xj = rng.randint(0, 1)
         # random +/-1 vectors of dim 6
-        vx = np.array([(1 if rng.randint(0, 1) else -1) for _ in range(dim)], dtype=np.float64)
-        vy = np.array([(1 if rng.randint(0, 1) else -1) for _ in range(dim)], dtype=np.float64)
+        vx = np.array(
+            [(1 if rng.randint(0, 1) else -1) for _ in range(dim)], dtype=np.float64
+        )
+        vy = np.array(
+            [(1 if rng.randint(0, 1) else -1) for _ in range(dim)], dtype=np.float64
+        )
         ip = float(np.dot(vx, vy)) / dim  # normalized inner product in [-1,1]
         fit_x.append(vx)
         fit_y.append(vy)
@@ -230,7 +236,13 @@ def experiment_arcsin_rounding(n_gauss: int = 20000) -> dict[str, float]:
     # identity is E[sign<g,x> sign<g,y>] = (2/pi) arcsin(<x_hat, y_hat>),
     # so the fitted coefficient a should equal 2/pi.
     design = np.array([math.asin(clamp(ip)) for ip in fit_ip], dtype=np.float64)
-    obs = np.array([_arcsin_expectation_mc(vx, vy, max(200, n_gauss // 20)) for vx, vy in zip(fit_x, fit_y)], dtype=np.float64)
+    obs = np.array(
+        [
+            _arcsin_expectation_mc(vx, vy, max(200, n_gauss // 20))
+            for vx, vy in zip(fit_x, fit_y)
+        ],
+        dtype=np.float64,
+    )
     if np.std(design) < 1e-9:
         a_fit = float("nan")
     else:
@@ -238,15 +250,20 @@ def experiment_arcsin_rounding(n_gauss: int = 20000) -> dict[str, float]:
         a_fit = float(a_fit[0])
 
     target = 2.0 / math.pi
-    max_err = max(abs(m - a) for m, a in zip(mc_vals, analytic_vals)) if mc_vals else 0.0
-    mean_err = (sum(abs(m - a) for m, a in zip(mc_vals, analytic_vals)) / len(mc_vals)) if mc_vals else 0.0
+    max_err = (
+        max(abs(m - a) for m, a in zip(mc_vals, analytic_vals)) if mc_vals else 0.0
+    )
+    mean_err = (
+        (sum(abs(m - a) for m, a in zip(mc_vals, analytic_vals)) / len(mc_vals))
+        if mc_vals
+        else 0.0
+    )
 
     # Analytic identity check: for each basis pair the exact expectation is
     # (2/pi) * arcsin(<x_hat, y_hat>); verify the coefficient equals 2/pi
     # on the normalized inner products directly (no MC).
     analytic_coeff_resid = max(
-        abs((2.0 / math.pi) * math.asin(clamp(ip))
-            - _arcsin_expectation_analytic(x, y))
+        abs((2.0 / math.pi) * math.asin(clamp(ip)) - _arcsin_expectation_analytic(x, y))
         for x, y in pairs
     )
 
@@ -263,7 +280,8 @@ def experiment_arcsin_rounding(n_gauss: int = 20000) -> dict[str, float]:
 
 
 def experiment_arcsin_rounding_kernel(
-    n_gauss: int = 4000, n_pairs: int = 200,
+    n_gauss: int = 4000,
+    n_pairs: int = 200,
 ) -> dict[str, object]:
     """Grothendieck rounding identity on kernel-derived observable vectors.
 
@@ -276,7 +294,8 @@ def experiment_arcsin_rounding_kernel(
     from hqvm_Cohomology_analysis_run import walsh_matrix
 
     comp_idx = [
-        i for i, s in enumerate(OMEGA_STATES_4096)
+        i
+        for i, s in enumerate(OMEGA_STATES_4096)
         if (s >> 12) & LAYER_MASK_12 == ((s & LAYER_MASK_12) ^ LAYER_MASK_12)
     ]
     spins = []
@@ -285,10 +304,12 @@ def experiment_arcsin_rounding_kernel(
         a12 = (s >> 12) & LAYER_MASK_12
         b12 = s & LAYER_MASK_12
         try:
-            spins.append(np.array(
-                component12_to_spin6(a12) + component12_to_spin6(b12),
-                dtype=np.float64,
-            ))
+            spins.append(
+                np.array(
+                    component12_to_spin6(a12) + component12_to_spin6(b12),
+                    dtype=np.float64,
+                )
+            )
         except ValueError:
             continue
     obs = walsh_matrix(np.array(spins, dtype=np.float64))  # (N, 64)
@@ -318,6 +339,7 @@ def experiment_arcsin_rounding_kernel(
 # C. Finite Grothendieck ratio on the sign norm
 # ================================================================
 
+
 def bool_norm(A: np.ndarray) -> float:
     """Exact ||A||_{inf->1} = max_{eps, delta in {+/-1}^n} sum_ij A_ij eps_i delta_j.
 
@@ -344,8 +366,12 @@ def bool_cut_norm_local(A: np.ndarray, restarts: int = 32, sweeps: int = 50) -> 
     n_rows, n_cols = A.shape
     best = 0.0
     for _ in range(restarts):
-        eps = np.array([(1 if rng.randint(0, 1) else -1) for _ in range(n_rows)], dtype=np.float64)
-        delta = np.array([(1 if rng.randint(0, 1) else -1) for _ in range(n_cols)], dtype=np.float64)
+        eps = np.array(
+            [(1 if rng.randint(0, 1) else -1) for _ in range(n_rows)], dtype=np.float64
+        )
+        delta = np.array(
+            [(1 if rng.randint(0, 1) else -1) for _ in range(n_cols)], dtype=np.float64
+        )
         for _ in range(sweeps):
             # flip eps_i if it increases objective
             for i in range(n_rows):
@@ -465,10 +491,18 @@ def experiment_finite_grothendieck(
 
     structured = {}
     if n == 6:
+
         def pop(x: int) -> int:
             return int(x).bit_count()
-        W = np.array([[(-1) ** pop(i & j) for j in range(64)] for i in range(64)], dtype=np.float64)
-        H = np.array([[(-1) ** pop(i ^ j) for j in range(64)] for i in range(64)], dtype=np.float64)
+
+        W = np.array(
+            [[(-1) ** pop(i & j) for j in range(64)] for i in range(64)],
+            dtype=np.float64,
+        )
+        H = np.array(
+            [[(-1) ** pop(i ^ j) for j in range(64)] for i in range(64)],
+            dtype=np.float64,
+        )
         C = _kernel_signed_block()
         structured["Kernel_signed_64"] = _structured_grothendieck_entry(
             C,
@@ -511,12 +545,14 @@ def experiment_finite_grothendieck(
         "K_G^R(2)=sqrt2": math.sqrt(2.0),
         "K_G^R(4)=pi/2": pi2,
         "Krivine_bound": krivine,
-        "note": ("Achieved ratio = Hilb_lb/Bool. Hilb_lb is a feasible LOWER "
-                 "BOUND on gamma2 (altmax); Bool is exact for n<=9. So the "
-                 "ratio is a lower bound on (true Hilb)/Bool, NOT a K_G "
-                 "estimator. Max random ratio ~1.20; Walsh block 1.21. The "
-                 "sharp kernel instance of K_G^R(2) is the CHSH gap (section D2), "
-                 "not these random matrices."),
+        "note": (
+            "Achieved ratio = Hilb_lb/Bool. Hilb_lb is a feasible LOWER "
+            "BOUND on gamma2 (altmax); Bool is exact for n<=9. So the "
+            "ratio is a lower bound on (true Hilb)/Bool, NOT a K_G "
+            "estimator. Max random ratio ~1.20; Walsh block 1.21. The "
+            "sharp kernel instance of K_G^R(2) is the CHSH gap (section D2), "
+            "not these random matrices."
+        ),
         "structured": structured,
     }
 
@@ -724,6 +760,7 @@ def experiment_chsh_tsirelson() -> dict[str, object]:
 # D2. Grothendieck CHSH integrality gap (bridge D -> I)
 # ================================================================
 
+
 def experiment_chsh_grothendieck_bridge() -> dict[str, object]:
     """K_G^R(2) as the CHSH integrality gap on the hQVM carrier.
 
@@ -740,7 +777,8 @@ def experiment_chsh_grothendieck_bridge() -> dict[str, object]:
     from hqvm_Cohomology_analysis_run import max_chsh_on_index_set
 
     comp_idx = [
-        i for i, s in enumerate(OMEGA_STATES_4096)
+        i
+        for i, s in enumerate(OMEGA_STATES_4096)
         if (s >> 12) & LAYER_MASK_12 == ((s & LAYER_MASK_12) ^ LAYER_MASK_12)
     ]
     boolean_chsh = cast("float", max_chsh_on_index_set(comp_idx)["max_CHSH_Boolean"])
@@ -761,12 +799,15 @@ def experiment_chsh_grothendieck_bridge() -> dict[str, object]:
 # E. Cut-norm gap on a kernel-native bipartition
 # ================================================================
 
+
 def _horizon_transition_kernel(pool: list[int]) -> np.ndarray:
     """Row-normalized eq-horizon -> complement-horizon transition kernel."""
     from gyroscopic.hQVM.constants import step_state_by_byte
 
     eq_states = [omega12_to_state24((u6, u6)) for u6 in range(64)]
-    comp_index = {omega12_to_state24((u6, u6 ^ 0x3F)): j for j, u6 in enumerate(range(64))}
+    comp_index = {
+        omega12_to_state24((u6, u6 ^ 0x3F)): j for j, u6 in enumerate(range(64))
+    }
     T = np.zeros((64, 64))
     for i, s in enumerate(eq_states):
         for b in pool:
@@ -833,8 +874,11 @@ def experiment_cut_horizon() -> dict[str, object]:
 
     s0 = eq_states[0]
     shell0 = state24_to_omega12(s0).shell
-    flip_bytes = [b for b in range(256)
-                  if state24_to_omega12(step_state_by_byte(s0, b)).shell == 6]
+    flip_bytes = [
+        b
+        for b in range(256)
+        if state24_to_omega12(step_state_by_byte(s0, b)).shell == 6
+    ]
     expected_sum = 64 * len(flip_bytes)
     trans_sum = float(np.sum(T))
 
@@ -875,16 +919,19 @@ def experiment_cut_horizon() -> dict[str, object]:
         },
         "K_G^R(4)=pi/2": pi2,
         "Krivine": krivine,
-        "note": ("census T is sparse counts; signed_uv_from_rest is the "
-                 "Grothendieck probe (sign-indefinite UxV kernel difference "
-                 "from rest). Horizon-to-horizon pool differences are zero by "
-                 "depth-2 typicality, so no eq->comp signed block exists."),
+        "note": (
+            "census T is sparse counts; signed_uv_from_rest is the "
+            "Grothendieck probe (sign-indefinite UxV kernel difference "
+            "from rest). Horizon-to-horizon pool differences are zero by "
+            "depth-2 typicality, so no eq->comp signed block exists."
+        ),
     }
 
 
 # ================================================================
 # F. Depth-4 / K_G^R(4) = pi/2 gap candidates
 # ================================================================
+
 
 def experiment_depth4_gaps() -> dict[str, float]:
     """Collect stable numerical relations between CGM geometric invariants and
@@ -934,6 +981,7 @@ def experiment_depth4_gaps() -> dict[str, float]:
 # G. Shannon triad on the same run
 # ================================================================
 
+
 def experiment_shannon_triad() -> dict[str, float]:
     """Exact finite Shannon faces on the kernel.
 
@@ -952,6 +1000,7 @@ def experiment_shannon_triad() -> dict[str, float]:
 
     # depth-2 occupancy from rest (future_cone cached uniform)
     from gyroscopic.hQVM.sdk import future_cone_measure
+
     fc2 = future_cone_measure(GENE_MAC_REST, 2)
     n_distinct_d2 = len(fc2.state_counts)
     entropy_d2 = fc2.entropy_bits
@@ -978,6 +1027,7 @@ def experiment_shannon_triad() -> dict[str, float]:
 # ================================================================
 # H. Square-root product spot-check
 # ================================================================
+
 
 def _bfs_reached_indices(
     eng,
@@ -1103,6 +1153,7 @@ def experiment_square_root_spotcheck() -> dict[str, object]:
 # main: dispatch and print
 # ================================================================
 
+
 def _print_constants(res: dict) -> None:
     print("\n" + "=" * 5)
     print("A. CONSTANT AND IDENTITY AUDIT")
@@ -1151,10 +1202,18 @@ def _print_finite_groth(res: dict) -> None:
     print("C. FINITE GROTHENDIECK GAP (n={})".format(res["n"]))
     print("=" * 5)
     print(f"  trials:                   {res['n_trials']}")
-    print(f"  bool mean/min/max:          {res['bool_mean']:.4f} / {res['bool_min']:.4f} / {res['bool_max']:.4f}")
-    print(f"  hilb_lb mean/min/max:       {res['hilb_mean']:.4f} / {res['hilb_min']:.4f} / {res['hilb_max']:.4f}")
-    print(f"  ratio hilb/bool mean/min/max: {res['ratio_mean']:.4f} / {res['ratio_min']:.4f} / {res['ratio_max']:.4f}")
-    print(f"  ratios below 1 (tol {res['ratio_tol']}): {res['ratios_below_1_tol']}/{res['n_trials']}")
+    print(
+        f"  bool mean/min/max:          {res['bool_mean']:.4f} / {res['bool_min']:.4f} / {res['bool_max']:.4f}"
+    )
+    print(
+        f"  hilb_lb mean/min/max:       {res['hilb_mean']:.4f} / {res['hilb_min']:.4f} / {res['hilb_max']:.4f}"
+    )
+    print(
+        f"  ratio hilb/bool mean/min/max: {res['ratio_mean']:.4f} / {res['ratio_min']:.4f} / {res['ratio_max']:.4f}"
+    )
+    print(
+        f"  ratios below 1 (tol {res['ratio_tol']}): {res['ratios_below_1_tol']}/{res['n_trials']}"
+    )
     print(f"  K_G^R(2)=sqrt2:     {res['K_G^R(2)=sqrt2']:.4f}")
     print(f"  K_G^R(4)=pi/2:      {res['K_G^R(4)=pi/2']:.4f}")
     print(f"  Krivine:            {res['Krivine_bound']:.4f}")
@@ -1162,10 +1221,14 @@ def _print_finite_groth(res: dict) -> None:
     print("\n  Structured kernel matrices:")
     for label, d in res["structured"].items():
         print(f"    {label}:")
-        print(f"      max_abs={d['max_abs']:.6f} fro={d['fro_norm']:.4f} "
-              f"row_sum=[{d['row_sum_min']:.3f},{d['row_sum_max']:.3f}]")
-        print(f"      bool_lb={d['bool_lb']:.4f} hilb_lb={d['hilb_lb']:.4f} "
-              f"ratio={d['ratio_hilb_over_bool']:.4f} ratio>=1={d['ratio_ge_1']}")
+        print(
+            f"      max_abs={d['max_abs']:.6f} fro={d['fro_norm']:.4f} "
+            f"row_sum=[{d['row_sum_min']:.3f},{d['row_sum_max']:.3f}]"
+        )
+        print(
+            f"      bool_lb={d['bool_lb']:.4f} hilb_lb={d['hilb_lb']:.4f} "
+            f"ratio={d['ratio_hilb_over_bool']:.4f} ratio>=1={d['ratio_ge_1']}"
+        )
 
 
 def _print_chsh(res: dict) -> None:
@@ -1174,12 +1237,20 @@ def _print_chsh(res: dict) -> None:
     print("=" * 5)
     print(f"  Tsirelson bound:     {res['tsirelson']:.12f}")
     print(f"  classical bound:     {res['classical_bound']:.4f}")
-    print(f"  CHSH |Phi+>:          {res['chsh_phi_plus']:.12f}  residual {res['chsh_phi_residual']:+.3e}")
-    print(f"  CHSH |Psi+>:          {res['chsh_psi_plus']:.12f}  residual {res['chsh_psi_residual']:+.3e}")
+    print(
+        f"  CHSH |Phi+>:          {res['chsh_phi_plus']:.12f}  residual {res['chsh_phi_residual']:+.3e}"
+    )
+    print(
+        f"  CHSH |Psi+>:          {res['chsh_psi_plus']:.12f}  residual {res['chsh_psi_residual']:+.3e}"
+    )
     print(f"  graph t6={res['graph_t6']} pair CHSH:")
-    for k, (s, dr) in enumerate(zip(res["graph_pair_chsh"], res["graph_pair_residuals"])):
+    for k, (s, dr) in enumerate(
+        zip(res["graph_pair_chsh"], res["graph_pair_residuals"])
+    ):
         print(f"    pair {k}: {s:.12f}  residual {dr:+.3e}")
-    print(f"  angle grid n={res['angle_grid_n']} max CHSH: {res['angle_grid_max_chsh']:.12f}")
+    print(
+        f"  angle grid n={res['angle_grid_n']} max CHSH: {res['angle_grid_max_chsh']:.12f}"
+    )
     print("  checks:")
     for name, ok in res["checks"].items():
         if name == "all_pass":
@@ -1194,7 +1265,9 @@ def _print_chsh_bridge(res: dict) -> None:
     print("=" * 5)
     print(f"  Hilbert CHSH (D, Tsirelson lift): {res['Hilbert_CHSH_Tsirelson']:.12f}")
     print(f"  Boolean CHSH (I, horizon ensembles): {res['Boolean_CHSH_classical']:.4f}")
-    print(f"  uniform Boolean CHSH (Omega):      {res['uniform_Boolean_CHSH']:.4f}  (not used in ratio)")
+    print(
+        f"  uniform Boolean CHSH (Omega):      {res['uniform_Boolean_CHSH']:.4f}  (not used in ratio)"
+    )
     print(f"  ratio Hilb/Bool:       {res['ratio_Hilb_over_Bool']:.12f}")
     print(f"  K_G^R(2) = sqrt2:    {res['K_G^R(2)_exact']:.12f}")
     print(f"  ratio == K_G^R(2):    {res['ratio_equals_KG_R_2']}")
@@ -1205,20 +1278,30 @@ def _print_cut(res: dict) -> None:
     print("E. HORIZON BIPARTITION (CENSUS + SIGNED UxV KERNEL)")
     print("=" * 5)
     print(f"  vertices per side:    {res['n_vertices_per_side']}")
-    print(f"  shell0->shell6 bytes: {res['shell0_to_shell6_bytes']} (qw {res['flip_byte_qweights']})")
+    print(
+        f"  shell0->shell6 bytes: {res['shell0_to_shell6_bytes']} (qw {res['flip_byte_qweights']})"
+    )
     print(f"  expected sum:         {res['expected_transition_sum']:.1f}")
-    print(f"  transition sum:       {res['transition_sum']:.1f}  (matches: {res['transition_sum_matches']})")
+    print(
+        f"  transition sum:       {res['transition_sum']:.1f}  (matches: {res['transition_sum_matches']})"
+    )
     cen = res["census"]
     print("  census (nonnegative counts):")
-    print(f"    max_abs={cen['max_abs']:.4f} fro={cen['fro_norm']:.4f} "
-          f"row_sum=[{cen['row_sum_min']:.3f},{cen['row_sum_max']:.3f}]")
+    print(
+        f"    max_abs={cen['max_abs']:.4f} fro={cen['fro_norm']:.4f} "
+        f"row_sum=[{cen['row_sum_min']:.3f},{cen['row_sum_max']:.3f}]"
+    )
     print(f"    bool_cut={cen['bool_cut_norm']:.4f} spec={cen['spectral_norm']:.4f}")
     print(f"    role: {cen['role']}")
     sv = res["signed_uv_from_rest"]
     print(f"  signed_uv_from_rest (pools w={sv['pool_w1']} vs w={sv['pool_w5']}):")
-    print(f"    max_abs={sv['max_abs']:.6f} fro={sv['fro_norm']:.4f} is_nonzero={sv['fro_norm'] > 1e-12}")
-    print(f"    bool_lb={sv['bool_lb']:.4f} hilb_lb={sv['hilb_lb']:.4f} "
-          f"ratio={sv['ratio_hilb_over_bool']:.4f} ratio>=1={sv['ratio_ge_1']}")
+    print(
+        f"    max_abs={sv['max_abs']:.6f} fro={sv['fro_norm']:.4f} is_nonzero={sv['fro_norm'] > 1e-12}"
+    )
+    print(
+        f"    bool_lb={sv['bool_lb']:.4f} hilb_lb={sv['hilb_lb']:.4f} "
+        f"ratio={sv['ratio_hilb_over_bool']:.4f} ratio>=1={sv['ratio_ge_1']}"
+    )
     print(f"  K_G^R(4)=pi/2:  {res['K_G^R(4)=pi/2']:.4f}")
     print(f"  Krivine:        {res['Krivine']:.4f}")
     print(f"  note: {res['note']}")
@@ -1231,7 +1314,9 @@ def _print_depth4(res: dict) -> None:
     print(f"  K_G^R(4) = pi/2:      {res['K_G_R(4)=pi/2']:.6f}")
     print(f"  Krivine:              {res['Krivine']:.6f}")
     print(f"  phi_SU2:              {res['phi_SU2']:.6f}")
-    print(f"  Gate F split:         +1={res['gate_F_dim_plus1']} -1={res['gate_F_dim_minus1']} balanced={res['gate_F_balanced_2048']}")
+    print(
+        f"  Gate F split:         +1={res['gate_F_dim_plus1']} -1={res['gate_F_dim_minus1']} balanced={res['gate_F_balanced_2048']}"
+    )
     print(f"  g1 (holonomy resid):  {res['g1_holonomy_residual']:.6f}")
     print(f"  g2 (aperture gap):    {res['g2_aperture_gap']:.6f}")
     print(f"  g3 (pi/2/Krivine):    {res['g3_pi2_over_Krivine']:.6f}")
@@ -1242,13 +1327,24 @@ def _print_shannon(res: dict) -> None:
     print("\n" + "=" * 5)
     print("G. SHANNON TRIAD")
     print("=" * 5)
-    print(f"  single-step images:        {res['single_step_images']} (expect {res['expected_128']})")
-    print(f"  single-step equivocation:   {res['single_step_equivocation_bits']:.4f} bit")
-    print(f"  depth-2 distinct states:    {res['depth2_distinct_states']} (expect {res['expected_4096']})")
-    print(f"  depth-2 entropy:            {res['depth2_entropy_bits']:.6f} bit (expect {res['expected_entropy_12']})")
+    print(
+        f"  single-step images:        {res['single_step_images']} (expect {res['expected_128']})"
+    )
+    print(
+        f"  single-step equivocation:   {res['single_step_equivocation_bits']:.4f} bit"
+    )
+    print(
+        f"  depth-2 distinct states:    {res['depth2_distinct_states']} (expect {res['expected_4096']})"
+    )
+    print(
+        f"  depth-2 entropy:            {res['depth2_entropy_bits']:.6f} bit (expect {res['expected_entropy_12']})"
+    )
     print(f"  WHT Plancherel err:         {res['wht_plancherel_err']:.3e}")
-    ok = (res['single_step_images'] == 128 and res['depth2_distinct_states'] == 4096
-          and abs(res['depth2_entropy_bits'] - 12.0) < 1e-9)
+    ok = (
+        res["single_step_images"] == 128
+        and res["depth2_distinct_states"] == 4096
+        and abs(res["depth2_entropy_bits"] - 12.0) < 1e-9
+    )
     print(f"  SHANNON_TRIAD: {'PASS' if ok else 'FAIL'}")
 
 
@@ -1258,11 +1354,15 @@ def _print_square_root(res: dict) -> None:
     print("=" * 5)
     for d, info in res.items():
         rect = info["rect"]
-        print(f"  {d}: n_allow={info['n_allow']} rank={info['rank']} "
-              f"reach={info['reach']} predicted={info['predicted_2_2r']} "
-              f"reach_ok={info['reach_ok']} E_full={info['E_full']}")
-        print(f"       |U|={rect['|U|']} |V|={rect['|V|']} product={rect['product']} "
-              f"rect={rect['rect']:.4f} rect_is_product={info['rect_is_product']}")
+        print(
+            f"  {d}: n_allow={info['n_allow']} rank={info['rank']} "
+            f"reach={info['reach']} predicted={info['predicted_2_2r']} "
+            f"reach_ok={info['reach_ok']} E_full={info['E_full']}"
+        )
+        print(
+            f"       |U|={rect['|U|']} |V|={rect['|V|']} product={rect['product']} "
+            f"rect={rect['rect']:.4f} rect_is_product={info['rect_is_product']}"
+        )
         if "q_class" in info:
             print(f"       q_class={info['q_class']}")
         print(f"       {info['note']}")

@@ -48,8 +48,8 @@ GENE_MAC_REST: int = (GENE_MAC_A12 << 12) | GENE_MAC_B12
 # Holonomic gates (Appendix G: horizon-preserving operations)
 # ================================================================
 
-GATE_S_BYTES: tuple[int, int] = (0xAA, 0x54)   # Swap: (A,B) -> (B,A)
-GATE_C_BYTES: tuple[int, int] = (0xD5, 0x2B)   # Complement-swap: (A,B) -> (B^F,A^F)
+GATE_S_BYTES: tuple[int, int] = (0xAA, 0x54)  # Swap: (A,B) -> (B,A)
+GATE_C_BYTES: tuple[int, int] = (0xD5, 0x2B)  # Complement-swap: (A,B) -> (B^F,A^F)
 HORIZON_GATE_BYTES: tuple[int, ...] = GATE_S_BYTES + GATE_C_BYTES
 
 # ----------------------------------------
@@ -221,9 +221,7 @@ _MASK12_BY_INTRON: tuple[int, ...] = tuple(
 # ================================================================
 
 
-def _transition_internals(
-    state24: int, byte: int
-) -> tuple[int, int, int, int, int]:
+def _transition_internals(state24: int, byte: int) -> tuple[int, int, int, int, int]:
     """
     Returns (intron, a_mut, a_next, b_next, next_state24).
     Single canonical implementation for step and trace.
@@ -279,9 +277,7 @@ def single_step_trace(state24: int, byte: int) -> dict[str, int]:
 
     Returns: cs (intron), una (a_mut), ona (a_next), bu (b_next), state24.
     """
-    intron, a_mut, a_next, b_next, next_state24 = _transition_internals(
-        state24, byte
-    )
+    intron, a_mut, a_next, b_next, next_state24 = _transition_internals(state24, byte)
     return {
         "cs": intron,
         "una": a_mut,

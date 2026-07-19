@@ -98,7 +98,9 @@ def _spin_pair_of_face(face12: int) -> np.ndarray | None:
     from gyroscopic.hQVM.api import component12_to_spin6
 
     try:
-        return np.array(component12_to_spin6(int(face12) & LAYER_MASK_12), dtype=np.float64)
+        return np.array(
+            component12_to_spin6(int(face12) & LAYER_MASK_12), dtype=np.float64
+        )
     except ValueError:
         return None
 
@@ -129,6 +131,7 @@ def _gf2_rank_ints(vecs: list[int]) -> int:
 # ================================================================
 # A. CHSH ensemble dictionary
 # ================================================================
+
 
 def experiment_chsh_ensemble_table() -> dict[str, object]:
     """Boolean CHSH extreme per carrier ensemble -> max|corr|.
@@ -170,16 +173,13 @@ def experiment_chsh_ensemble_table() -> dict[str, object]:
         for name, v in rows.items()
     }
     non_uniform = [
-        name for name in table
-        if table[name]["n"] > 0 and name != "uniform_Omega"
+        name for name in table if table[name]["n"] > 0 and name != "uniform_Omega"
     ]
     some_saturate = any(
-        table[name]["max_CHSH_Boolean"] >= 2.0 - 1e-9
-        for name in non_uniform
+        table[name]["max_CHSH_Boolean"] >= 2.0 - 1e-9 for name in non_uniform
     )
     all_saturate = all(
-        table[name]["max_CHSH_Boolean"] >= 2.0 - 1e-9
-        for name in non_uniform
+        table[name]["max_CHSH_Boolean"] >= 2.0 - 1e-9 for name in non_uniform
     )
     return {
         "classical_bound": 2.0,
@@ -188,9 +188,11 @@ def experiment_chsh_ensemble_table() -> dict[str, object]:
         "uniform_max_CHSH": uniform["max_CHSH_Boolean"],
         "some_ensembles_saturate_classical": some_saturate,
         "all_ensembles_saturate_classical": all_saturate,
-        "note": ("Boolean non-locality is ensemble-stratified: uniform Omega=0 "
-                 "(typicality), conditioned ensembles hit the classical bound 2. "
-                 "Hilbert lift is structural at 2*sqrt(2)."),
+        "note": (
+            "Boolean non-locality is ensemble-stratified: uniform Omega=0 "
+            "(typicality), conditioned ensembles hit the classical bound 2. "
+            "Hilbert lift is structural at 2*sqrt(2)."
+        ),
     }
 
 
@@ -224,8 +226,7 @@ def experiment_stabilizer_fixed_shells() -> dict[str, object]:
         for b in STABILIZER_BYTES
     )
     concentrated_single = all(
-        len(out[f"0x{b:02X}"]["shells_occupied"]) == 1
-        for b in STABILIZER_BYTES
+        len(out[f"0x{b:02X}"]["shells_occupied"]) == 1 for b in STABILIZER_BYTES
     )
     return {
         "stabilizer_bytes": [f"0x{b:02X}" for b in STABILIZER_BYTES],
@@ -234,14 +235,15 @@ def experiment_stabilizer_fixed_shells() -> dict[str, object]:
         "fixed_on_horizon_shells_06": on_horizon_shells,
         "concentrated_single_shell": concentrated_single,
         "note": "Stabilizer fixed sets are 100% on a single complement horizon "
-                "(shell 0 for 0xAA/0x54, shell 6 for 0x2B/0xD5); "
-                "they do not spread into the bulk (shells 1-5).",
+        "(shell 0 for 0xAA/0x54, shell 6 for 0x2B/0xD5); "
+        "they do not spread into the bulk (shells 1-5).",
     }
 
 
 # ================================================================
 # C. Byte monodromy vs family
 # ================================================================
+
 
 def experiment_byte_monodromy_by_family() -> dict[str, object]:
     """Cycle-structure census of all 256 bytes, aggregated by family.
@@ -269,18 +271,21 @@ def experiment_byte_monodromy_by_family() -> dict[str, object]:
             "non_pure_4cycle": mixed,
             "distinct_structures": len(cnt),
         }
-    all_pure4 = all(v["pure_4cycle"] + v["non_pure_4cycle"] == 64 for v in summary.values())
+    all_pure4 = all(
+        v["pure_4cycle"] + v["non_pure_4cycle"] == 64 for v in summary.values()
+    )
     return {
         "per_family": summary,
         "all_families_have_64_bytes": all_pure4,
         "note": "Pure-4-cycle monodromy is uniform across the 4 families; "
-                "the 4 stabilizers (mixed) are split across families (one each).",
+        "the 4 stabilizers (mixed) are split across families (one each).",
     }
 
 
 # ================================================================
 # D. Finer Lefschetz grading (shell x Z2-sheet) for W2 vs F
 # ================================================================
+
 
 def _f_sheet_map(idx_of: dict[int, int]) -> dict[int, int]:
     """Canonical Z2 sheet via the F pairing.
@@ -334,8 +339,11 @@ def experiment_fine_lefschetz() -> dict[str, object]:
     for name, word_fn in (("W2", W2_word), ("W2'", W2p_word), ("F", F_cycle_word)):
         perm = _word_permutation(word_fn(0), idx_of)
         fine = _graded_traces_fine(perm, shell_of)
-        L = sum(((-1) ** (sh + sheet)) * fine[sh * 2 + sheet]
-                 for sh in range(7) for sheet in (0, 1))
+        L = sum(
+            ((-1) ** (sh + sheet)) * fine[sh * 2 + sheet]
+            for sh in range(7)
+            for sheet in (0, 1)
+        )
         fixed_per_shell = [0] * 7
         for sh in range(7):
             fixed_per_shell[sh] = fine[sh * 2 + 0] + fine[sh * 2 + 1]
@@ -348,16 +356,19 @@ def experiment_fine_lefschetz() -> dict[str, object]:
     return {
         "words": out,
         "all_L_zero_fine": all_L_zero,
-        "note": ("Finer (shell, Z2-sheet) grading still yields L=0 for W2/W2'/F: "
-                 "the distinction between pole-swap and Z2-flip is not in fixed-point "
-                 "counts under this grading either; it lives in the pairing map, not "
-                 "the Lefschetz fixed-point set."),
+        "note": (
+            "Finer (shell, Z2-sheet) grading still yields L=0 for W2/W2'/F: "
+            "the distinction between pole-swap and Z2-flip is not in fixed-point "
+            "counts under this grading either; it lives in the pairing map, not "
+            "the Lefschetz fixed-point set."
+        ),
     }
 
 
 # ================================================================
 # E. Gap-spectrum dictionary
 # ================================================================
+
 
 def experiment_gap_spectrum() -> dict[str, object]:
     """Measured Grothendieck-related gaps as a spectrum, no forced identity.
@@ -381,15 +392,18 @@ def experiment_gap_spectrum() -> dict[str, object]:
             "g1 holonomy residual": g1,
         },
         "numeric_distinct": True,
-        "note": ("Multiple distinct gaps (sqrt2, pi/2, Krivine, Delta, g1) share "
-                 "one architecture; they are numerically distinct and must not be "
-                 "forced into a single identity."),
+        "note": (
+            "Multiple distinct gaps (sqrt2, pi/2, Krivine, Delta, g1) share "
+            "one architecture; they are numerically distinct and must not be "
+            "forced into a single identity."
+        ),
     }
 
 
 # ================================================================
 # F. Fiber-incomplete square-root counterexample
 # ================================================================
+
 
 def experiment_fiber_incomplete_rank6() -> dict[str, object]:
     """Square-root cluster theorem: q6-span rank vs EFFECTIVE reachable rank.
@@ -415,8 +429,9 @@ def experiment_fiber_incomplete_rank6() -> dict[str, object]:
         if bs:
             chosen.append(bs[0])  # one family byte only -> not fiber-complete
     n_allow = len(chosen)
-    vecs = [np.array([(q >> i) & 1 for i in range(6)], dtype=np.int64)
-            for q in deficient_q6]
+    vecs = [
+        np.array([(q >> i) & 1 for i in range(6)], dtype=np.int64) for q in deficient_q6
+    ]
     q_span_rank = _gf2_rank_ints([int(v.dot(1 << np.arange(6))) for v in vecs])
 
     # enumerate reachable (u6, v6) pairs from rest under this alphabet
@@ -432,9 +447,7 @@ def experiment_fiber_incomplete_rank6() -> dict[str, object]:
             nxt = step_state_by_byte(s, b)
             if nxt not in seen:
                 stack.append(nxt)
-    pairs = set(
-        (state24_to_omega12(s).u6, state24_to_omega12(s).v6) for s in seen
-    )
+    pairs = set((state24_to_omega12(s).u6, state24_to_omega12(s).v6) for s in seen)
     reach = len(pairs)
     U = {p[0] for p in pairs}
     V = {p[1] for p in pairs}
@@ -442,8 +455,7 @@ def experiment_fiber_incomplete_rank6() -> dict[str, object]:
     rect = reach / product if product > 0 else float("nan")
     # Square-root theorem: |Reach| = (2^r)^2, so log2|Reach| = 2r.
     # r_per_factor is the per-factor rank to compare against q6-span rank.
-    r_per_factor = (round(0.5 * math.log2(reach))
-                    if reach > 0 and rect == 1.0 else -1)
+    r_per_factor = round(0.5 * math.log2(reach)) if reach > 0 and rect == 1.0 else -1
     return {
         "n_allow": n_allow,
         "q_span_rank": q_span_rank,
@@ -455,17 +467,20 @@ def experiment_fiber_incomplete_rank6() -> dict[str, object]:
         "rect_is_product": abs(rect - 1.0) < 1e-9,
         "per_factor_rank_from_reach": r_per_factor,
         "qspan_matches_reach": (r_per_factor == q_span_rank),
-        "note": ("Fiber-incomplete single-family alphabet (one byte per q6 class). "
-                 "Reach = 16 = 4x4 product (|U|=|V|=4), so the per-factor rank is "
-                 "log2(16)/2 = 2, equal to the q6-span rank 2. The square-root "
-                 "theorem |Reach| = (2^r)^2 holds with r = r(q6); fiber-incompleteness "
-                 "does NOT inflate the per-factor rank. The product form is preserved."),
+        "note": (
+            "Fiber-incomplete single-family alphabet (one byte per q6 class). "
+            "Reach = 16 = 4x4 product (|U|=|V|=4), so the per-factor rank is "
+            "log2(16)/2 = 2, equal to the q6-span rank 2. The square-root "
+            "theorem |Reach| = (2^r)^2 holds with r = r(q6); fiber-incompleteness "
+            "does NOT inflate the per-factor rank. The product form is preserved."
+        ),
     }
 
 
 # ================================================================
 # G. Observable correlation-matrix Grothendieck instance
 # ================================================================
+
 
 def _correlation_matrix(idx: list[int]) -> np.ndarray:
     """63x63 A-mask x B-mask correlation matrix on a state subset.
@@ -494,7 +509,9 @@ def _correlation_matrix(idx: list[int]) -> np.ndarray:
 
 
 def experiment_correlation_grothendieck(
-    k: int = 32, restarts: int = 40, sweeps: int = 60,
+    k: int = 32,
+    restarts: int = 40,
+    sweeps: int = 60,
 ) -> dict[str, object]:
     """Kernel-native Grothendieck ratio of the observable correlation matrix C.
 
@@ -538,16 +555,19 @@ def experiment_correlation_grothendieck(
         }
     return {
         "ensembles": rows,
-        "note": ("Grothendieck ratio of the 63x63 observable correlation matrix C "
-                 "on conditioned ensembles. uniform Omega has near-zero C (typicality) "
-                 "so the ratio is unstable there; horizon/fixed-chi ensembles give "
-                 "nontrivial C. Ratio uses the monotone Hilbert bound max(hilb_raw, bool_lb)."),
+        "note": (
+            "Grothendieck ratio of the 63x63 observable correlation matrix C "
+            "on conditioned ensembles. uniform Omega has near-zero C (typicality) "
+            "so the ratio is unstable there; horizon/fixed-chi ensembles give "
+            "nontrivial C. Ratio uses the monotone Hilbert bound max(hilb_raw, bool_lb)."
+        ),
     }
 
 
 # ================================================================
 # H. Closure of open within-scope items (reviewer 3.2-3.5)
 # ================================================================
+
 
 def experiment_open_items() -> dict[str, object]:
     """Four small kernel-probing checks requested in review 3.2-3.5.
@@ -566,7 +586,9 @@ def experiment_open_items() -> dict[str, object]:
     reach = {GENE_MAC_REST}
     for d in range(5):
         idxs = [idx_of[s] for s in reach if s in idx_of]
-        depth_chsh[f"depth_{d}"] = float(_max_chsh_on_index_set(idxs)["max_CHSH_Boolean"])
+        depth_chsh[f"depth_{d}"] = float(
+            _max_chsh_on_index_set(idxs)["max_CHSH_Boolean"]
+        )
         # one BFS step over all 256 bytes
         nxt = set()
         for s in reach:
@@ -619,6 +641,7 @@ def experiment_open_items() -> dict[str, object]:
 # main: dispatch and print
 # ================================================================
 
+
 def _print_chsh_table(res: dict) -> None:
     print("\n" + "=" * 5)
     print("A. CHSH ENSEMBLE DICTIONARY (BOOLEAN EXTREME)")
@@ -626,8 +649,12 @@ def _print_chsh_table(res: dict) -> None:
     print(f"  classical bound: {res['classical_bound']:.4f}")
     print(f"  Hilbert CHSH:    {res['hilbert_chsh']:.6f}")
     print(f"  uniform Omega max CHSH: {res['uniform_max_CHSH']:.4f}")
-    print(f"  some ensembles saturate classical: {res['some_ensembles_saturate_classical']}")
-    print(f"  all ensembles saturate classical: {res['all_ensembles_saturate_classical']}")
+    print(
+        f"  some ensembles saturate classical: {res['some_ensembles_saturate_classical']}"
+    )
+    print(
+        f"  all ensembles saturate classical: {res['all_ensembles_saturate_classical']}"
+    )
     print("  ensemble -> max_CHSH_Boolean / max|corr| / Kg_ratio:")
     hilb = float(res["hilbert_chsh"])
     for name, v in res["table"].items():
@@ -665,8 +692,10 @@ def _print_monodromy(res: dict) -> None:
     print("C. BYTE MONODROMY BY FAMILY")
     print("=" * 5)
     for fam, v in res["per_family"].items():
-        print(f"  {fam}: n={v['n_bytes']} pure4={v['pure_4cycle']} "
-              f"mixed={v['non_pure_4cycle']} structs={v['distinct_structures']}")
+        print(
+            f"  {fam}: n={v['n_bytes']} pure4={v['pure_4cycle']} "
+            f"mixed={v['non_pure_4cycle']} structs={v['distinct_structures']}"
+        )
     print(f"  all families have 64 bytes: {res['all_families_have_64_bytes']}")
     print(f"  note: {res['note']}")
 
@@ -714,10 +743,12 @@ def _print_correlation(res: dict) -> None:
     print("G. OBSERVABLE CORRELATION-MATRIX GROTHENDIECK INSTANCE")
     print("=" * 5)
     for name, r in res["ensembles"].items():
-        print(f"  {name:<20s} n={r['n_states']:<5d} ||C||_F={r['C_frobenius']:.4f}"
-              f"  bool_lb={r['bool_lb']:.4f}  hilb_raw={r['hilb_raw']:.4f}"
-              f"  hilb_monotone={r['hilb_monotone']:.4f}"
-              f"  ratio={r['ratio_hilb_bool']:.4f}")
+        print(
+            f"  {name:<20s} n={r['n_states']:<5d} ||C||_F={r['C_frobenius']:.4f}"
+            f"  bool_lb={r['bool_lb']:.4f}  hilb_raw={r['hilb_raw']:.4f}"
+            f"  hilb_monotone={r['hilb_monotone']:.4f}"
+            f"  ratio={r['ratio_hilb_bool']:.4f}"
+        )
     print(f"  note: {res['note']}")
 
 

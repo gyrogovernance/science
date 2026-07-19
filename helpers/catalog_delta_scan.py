@@ -246,7 +246,9 @@ def parse_nist_strong_lines(path: Path, element: str) -> List[StrongLine]:
     const = compact.build_constants()
     current_medium = "unknown"
     lines: List[StrongLine] = []
-    row_pattern = re.compile(r"^\s*(\d+)\s+(?:P|w|c|P,c)?\s*([0-9]+(?:\.[0-9]+)?)\s+([A-Za-z]+\s+[IVX]+)\b")
+    row_pattern = re.compile(
+        r"^\s*(\d+)\s+(?:P|w|c|P,c)?\s*([0-9]+(?:\.[0-9]+)?)\s+([A-Za-z]+\s+[IVX]+)\b"
+    )
 
     for raw_line in pre.splitlines():
         line = re.sub(r"<[^>]+>", " ", raw_line)
@@ -409,7 +411,9 @@ def build_horizon_levels(max_delta: float, include_zero: bool = False) -> List[i
     return sorted(set(unique))
 
 
-def make_hydrogen_observables(lines: Iterable[HydrogenLine]) -> List[compact.Observable]:
+def make_hydrogen_observables(
+    lines: Iterable[HydrogenLine],
+) -> List[compact.Observable]:
     observables: List[compact.Observable] = []
     for line in lines:
         observables.append(
@@ -425,7 +429,9 @@ def make_hydrogen_observables(lines: Iterable[HydrogenLine]) -> List[compact.Obs
     return observables
 
 
-def make_strong_line_observables(lines: Iterable[StrongLine]) -> List[compact.Observable]:
+def make_strong_line_observables(
+    lines: Iterable[StrongLine],
+) -> List[compact.Observable]:
     return [
         compact.Observable(
             name=line.name,
@@ -490,7 +496,9 @@ def match_pair(
     rhs: compact.CoordinateResult,
 ) -> MatchRow:
     delta_tick = abs(lhs.coordinate - rhs.coordinate)
-    residue, nearest_landmark, landmark_error = compact.nearest_phase_landmark(delta_tick)
+    residue, nearest_landmark, landmark_error = compact.nearest_phase_landmark(
+        delta_tick
+    )
     nearest_horizon = nearest_landmark
     horizon_levels = build_horizon_levels(max(0.0, delta_tick), include_zero=True)
     if horizon_levels:
@@ -601,15 +609,15 @@ def print_header(title: str) -> None:
     print("=" * len(title))
 
 
-def print_match_table(title: str, matches: Sequence[MatchRow], key: str, limit: int = 10) -> None:
+def print_match_table(
+    title: str, matches: Sequence[MatchRow], key: str, limit: int = 10
+) -> None:
     print_header(title)
     deduped = dedupe_matches(matches)
     if not deduped:
         print("No matches available.")
         return
-    print(
-        f"{'Pair':58} {'Delta':>10} {'Nearest':>10} {'Error':>10}"
-    )
+    print(f"{'Pair':58} {'Delta':>10} {'Nearest':>10} {'Error':>10}")
     print("-" * 92)
     if key == "horizon":
         ordered = sorted(deduped, key=lambda row: (row.horizon_error, row.delta_tick))
@@ -692,8 +700,7 @@ def print_best_landmark_identities(
     print("-" * 96)
     for target in landmarks:
         candidates = [
-            row for row in deduped
-            if abs(row.nearest_landmark - target) < 1.0e-9
+            row for row in deduped if abs(row.nearest_landmark - target) < 1.0e-9
         ]
         if not candidates:
             continue
@@ -713,8 +720,12 @@ def print_catalog_status(pdg_masses: Sequence[PdgMass]) -> None:
     print(f"pdg index csv = {PDG_INDEX_CSV}")
     print(f"pdg mass csv = {PDG_MASS_CSV}")
     print(f"match csv = {MATCHES_CSV}")
-    print(f"hydrogen lines loaded = {sum(1 for _ in NIST_LINES_CSV.open('r', encoding='utf-8')) - 1}")
-    print(f"pdg listings indexed = {sum(1 for _ in PDG_INDEX_CSV.open('r', encoding='utf-8')) - 1}")
+    print(
+        f"hydrogen lines loaded = {sum(1 for _ in NIST_LINES_CSV.open('r', encoding='utf-8')) - 1}"
+    )
+    print(
+        f"pdg listings indexed = {sum(1 for _ in PDG_INDEX_CSV.open('r', encoding='utf-8')) - 1}"
+    )
     print(f"pdg masses loaded = {len(pdg_masses)}")
     if not PYPDF_AVAILABLE and pdg_masses:
         print("pdg pdf extraction = cached csv")
@@ -768,10 +779,14 @@ def main() -> None:
     )
     named_hydrogen_self = scan_self_pairs("hydrogen-self-named", named_hydrogen_rows)
     pdg_mass_pairs = scan_self_pairs("pdg-mass-self", pdg_mass_rows_delta)
-    pdg_vs_core = scan_cross_pairs("pdg-vs-core-energy", pdg_mass_rows_delta, build_rows(
-        [obs for obs in repo_observables if obs.dimension == "energy"],
-        planck,
-    ))
+    pdg_vs_core = scan_cross_pairs(
+        "pdg-vs-core-energy",
+        pdg_mass_rows_delta,
+        build_rows(
+            [obs for obs in repo_observables if obs.dimension == "energy"],
+            planck,
+        ),
+    )
     all_matches = sorted(
         [
             *hydrogen_self,

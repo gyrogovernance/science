@@ -107,6 +107,7 @@ from cgm_32bit_lift_probe import run_148_51_closure_probe
 # Formatting helpers
 # ---------------------------------------------------------------------------
 
+
 def _hdr(title: str) -> None:
     print()
     print(title)
@@ -156,7 +157,11 @@ def _null_model_flags(a: int, r: int, b: int) -> tuple[float, float, float]:
     p = 1.0 - (CODE_C1 / 2.0) * a_f + (CODE_C1 / 4.0) * r_f + (4.0 * g) * b_f
     q = 1.25 - (4.0 * g) * r_f - (2.0 * g) * b_f
     diff = CODE_C2 - CODE_C1
-    r5 = -diff / 2.0 + (HORIZON_CARDINALITY - diff) / 8.0 * (a_f - r_f) + CODE_C2 / 8.0 * b_f
+    r5 = (
+        -diff / 2.0
+        + (HORIZON_CARDINALITY - diff) / 8.0 * (a_f - r_f)
+        + CODE_C2 / 8.0 * b_f
+    )
     return p, q, r5
 
 
@@ -164,27 +169,32 @@ def _null_model_flags(a: int, r: int, b: int) -> tuple[float, float, float]:
 # Section 1: Kernel structure
 # ---------------------------------------------------------------------------
 
+
 def print_kernel_structure(report: KernelReport) -> None:
     _hdr("1. Finite Kernel Algebra")
 
     print()
     print("  Reachable manifold Omega")
-    _row("states",        str(report.omega_size))
-    _row("form",          "2^12 = 16^3 = 64^2")
+    _row("states", str(report.omega_size))
+    _row("form", "2^12 = 16^3 = 64^2")
     _row("component density", "popcount(A) = popcount(B) = 6")
-    _row("density product",   "d(A) x d(B) = 1/4")
+    _row("density product", "d(A) x d(B) = 1/4")
 
     print()
     print("  Shell distribution  |Shell_k| = C(6,k) * 64")
-    print(f"  {'Shell':>6} {'ab_dist':>8} {'population':>12} {'fraction':>10} "
-          f"{'expected':>10} {'ok':>4}")
+    print(
+        f"  {'Shell':>6} {'ab_dist':>8} {'population':>12} {'fraction':>10} "
+        f"{'expected':>10} {'ok':>4}"
+    )
     print("  " + "-" * 10)
     all_ok = True
     for s in report.shell_stats:
         ok = "ok" if s.matches_binomial else "FAIL"
         all_ok = all_ok and s.matches_binomial
-        print(f"  {s.shell:6d} {s.shell*2:8d} {s.population:12d} "
-              f"{s.fraction:10.6f} {s.expected_population:10d} {ok:>4}")
+        print(
+            f"  {s.shell:6d} {s.shell*2:8d} {s.population:12d} "
+            f"{s.fraction:10.6f} {s.expected_population:10d} {ok:>4}"
+        )
     print(f"  All binomial: {'yes' if all_ok else 'NO'}")
 
     print()
@@ -193,14 +203,17 @@ def print_kernel_structure(report: KernelReport) -> None:
         print("  Dual horizons: unavailable")
     else:
         h = report.horizon
-        _row("equality horizon  |Shell_0|",  str(h.equality_count))
+        _row("equality horizon  |Shell_0|", str(h.equality_count))
         _row("complement horizon |Shell_6|", str(h.complement_count))
-        _row("total boundary",               str(h.total_boundary))
-        _row("|H|^2 = |Omega|",
-             f"{HORIZON_CARDINALITY}^2 = {HORIZON_CARDINALITY**2} "
-             f"{'ok' if h.holographic_identity else 'FAIL'}")
-        _row("complementarity invariant",
-             "holds" if h.complementarity_holds else "FAIL")
+        _row("total boundary", str(h.total_boundary))
+        _row(
+            "|H|^2 = |Omega|",
+            f"{HORIZON_CARDINALITY}^2 = {HORIZON_CARDINALITY**2} "
+            f"{'ok' if h.holographic_identity else 'FAIL'}",
+        )
+        _row(
+            "complementarity invariant", "holds" if h.complementarity_holds else "FAIL"
+        )
 
     print()
     print("  Boundary-to-bulk projection")
@@ -209,26 +222,27 @@ def print_kernel_structure(report: KernelReport) -> None:
     else:
         b = report.boundary_to_bulk
         _row("complement states (|H|)", str(b.complement_states))
-        _row("total fanout |H|*256",    str(b.total_fanout))
-        _row("unique targets reached",  str(b.unique_targets))
-        _row("min/max multiplicity",
-             f"{b.min_multiplicity}/{b.max_multiplicity} "
-             f"{'ok' if b.exact_uniform_multiplicity else 'FAIL'}")
+        _row("total fanout |H|*256", str(b.total_fanout))
+        _row("unique targets reached", str(b.unique_targets))
+        _row(
+            "min/max multiplicity",
+            f"{b.min_multiplicity}/{b.max_multiplicity} "
+            f"{'ok' if b.exact_uniform_multiplicity else 'FAIL'}",
+        )
 
     if report.byte_transitions is not None:
         bt = report.byte_transitions
         print()
         print("  Byte transition exhaustive check (4096 * 256 = 1,048,576 ops)")
-        _row("active swap failures",   str(bt.active_swap_failures))
+        _row("active swap failures", str(bt.active_swap_failures))
         _row("passive commit failures", str(bt.passive_commit_failures))
-        _row("complement swap fraction",
-             _fix(bt.complement_swap_fraction, 6))
-        _row("complement commit fraction",
-             _fix(bt.complement_commit_fraction, 6))
-        _row("equality horizon hit fraction",
-             _fix(bt.equality_horizon_hit_fraction, 6))
-        _row("complement horizon hit fraction",
-             _fix(bt.complement_horizon_hit_fraction, 6))
+        _row("complement swap fraction", _fix(bt.complement_swap_fraction, 6))
+        _row("complement commit fraction", _fix(bt.complement_commit_fraction, 6))
+        _row("equality horizon hit fraction", _fix(bt.equality_horizon_hit_fraction, 6))
+        _row(
+            "complement horizon hit fraction",
+            _fix(bt.complement_horizon_hit_fraction, 6),
+        )
         print()
         print("  q-weight byte distribution")
         for k, cnt in enumerate(bt.q_weight_counts):
@@ -241,18 +255,24 @@ def print_kernel_structure(report: KernelReport) -> None:
     print(f"  {'q':>3} {'Tr(M)':>8} {'Tr(M^2)':>10} {'carrier':>10}")
     print("  " + "-" * 10)
     for r in report.shell_transition_rows:
-        print(f"  {r.q_weight:3d} {_fmt_frac(r.trace):>8} "
-              f"{_fmt_frac(r.return_trace):>10} {_fmt_frac(r.carrier):>10}")
+        print(
+            f"  {r.q_weight:3d} {_fmt_frac(r.trace):>8} "
+            f"{_fmt_frac(r.return_trace):>10} {_fmt_frac(r.carrier):>10}"
+        )
 
     print()
     print("  UV-IR shell DPF (carrier-trace ratios)")
-    print(f"  {'UV':10} {'IR':10} {'q_uv':>5} {'q_ir':>5} "
-          f"{'C_uv':>8} {'C_ir':>8} {'ratio':>10}")
+    print(
+        f"  {'UV':10} {'IR':10} {'q_uv':>5} {'q_ir':>5} "
+        f"{'C_uv':>8} {'C_ir':>8} {'ratio':>10}"
+    )
     print("  " + "-" * 10)
     for d in report.uv_ir_dpf:
-        print(f"  {d.uv_label:10} {d.ir_label:10} {d.uv_q:5d} {d.ir_q:5d} "
-              f"{_fmt_frac(d.uv_carrier):>8} {_fmt_frac(d.ir_carrier):>8} "
-              f"{d.ratio:10.6f}")
+        print(
+            f"  {d.uv_label:10} {d.ir_label:10} {d.uv_q:5d} {d.ir_q:5d} "
+            f"{_fmt_frac(d.uv_carrier):>8} {_fmt_frac(d.ir_carrier):>8} "
+            f"{d.ratio:10.6f}"
+        )
 
     print()
     print("  Kernel operator group")
@@ -269,67 +289,72 @@ def print_kernel_structure(report: KernelReport) -> None:
     _row("two-step uniformisation", "exact translation surjection")
 
     print()
-    _row("ALL KERNEL AUDITS PASS",
-         "YES" if report.all_kernel_theorems_pass else "NO: see above")
+    _row(
+        "ALL KERNEL AUDITS PASS",
+        "YES" if report.all_kernel_theorems_pass else "NO: see above",
+    )
 
 
 # ---------------------------------------------------------------------------
 # Section 2: Compact algebra constants
 # ---------------------------------------------------------------------------
 
+
 def _print_aperture_scalars_and_projectors(delta: float = DELTA) -> None:
     alg = compact_algebra(delta)
 
     print()
     print("  Primary aperture")
-    _row("Delta  = 1 - rho",           _fix(DELTA))
-    _row("rho    = delta_BU / m_a",    _fix(RHO))
-    _row("m_a    = 1/(2 sqrt(2pi))",   _fix(M_A))
-    _row("delta_BU",                   _fix(DELTA_BU))
+    _row("Delta  = 1 - rho", _fix(DELTA))
+    _row("rho    = delta_BU / m_a", _fix(RHO))
+    _row("m_a    = 1/(2 sqrt(2pi))", _fix(M_A))
+    _row("delta_BU", _fix(DELTA_BU))
 
     print()
     print("  Aperture Scalars")
-    _row("epsilon = 1/Delta - 48",     _fix(alg.epsilon))
-    _row("eta     = m_a - delta_BU",   _fix(alg.eta))
+    _row("epsilon = 1/Delta - 48", _fix(alg.epsilon))
+    _row("eta     = m_a - delta_BU", _fix(alg.eta))
     _row("d_H     = epsilon + 24*Delta", _fix(alg.d_h))
-    _row("omega   = delta_BU / 2",     _fix(alg.omega))
+    _row("omega   = delta_BU / 2", _fix(alg.omega))
     _row("kappa   = pi/4 - 1/sqrt(2)", _fix(alg.kappa))
-    _row("sigma   = SU2_RESIDUAL",     _fix(alg.sigma))
+    _row("sigma   = SU2_RESIDUAL", _fix(alg.sigma))
 
     print()
     print("  Projectors")
-    _row("P_boundary = 47/48",         _fix(P_BOUNDARY))
-    _row("Q_density  = 1/4",           _fix(Q_DENSITY))
-    _row("APERTURE_FRAME = 3*|K4|^2",  "48")
-    _row("|H| horizon cardinality",    str(HORIZON_CARDINALITY))
-    _row("|Omega| reachable states",   str(OMEGA_SIZE))
+    _row("P_boundary = 47/48", _fix(P_BOUNDARY))
+    _row("Q_density  = 1/4", _fix(Q_DENSITY))
+    _row("APERTURE_FRAME = 3*|K4|^2", "48")
+    _row("|H| horizon cardinality", str(HORIZON_CARDINALITY))
+    _row("|Omega| reachable states", str(OMEGA_SIZE))
 
     print()
     print("  Discrete aperture ordering")
     _row("5/256  (bare byte aperture)", _fix(KERNEL_BYTE_APERTURE))
-    _row("Delta  (continuous)",         _fix(DELTA))
-    _row("1/48   (depth-4 frame)",      _fix(1.0 / 48.0))
-    _row("5/256 < Delta < 1/48",
-         f"{'yes' if KERNEL_BYTE_APERTURE < DELTA < 1/48 else 'NO'}")
-    _row("48 * Delta",                  _fix(48.0 * DELTA))
-    _row("epsilon = 1/Delta - 48",      _fix(alg.epsilon))
+    _row("Delta  (continuous)", _fix(DELTA))
+    _row("1/48   (depth-4 frame)", _fix(1.0 / 48.0))
+    _row(
+        "5/256 < Delta < 1/48",
+        f"{'yes' if KERNEL_BYTE_APERTURE < DELTA < 1/48 else 'NO'}",
+    )
+    _row("48 * Delta", _fix(48.0 * DELTA))
+    _row("epsilon = 1/Delta - 48", _fix(alg.epsilon))
 
     print()
     print("  Delta self-consistency")
     rhs_d2 = delta_self_consistency_rhs(DELTA, include_third_order=False)
     rhs_d3 = delta_self_consistency_rhs(DELTA, include_third_order=True)
     solved, resid = solve_delta_self_consistency(DELTA, include_third_order=True)
-    _row("rhs at D^2 order",  _fix(rhs_d2))
-    _row("rhs at D^3 order",  _fix(rhs_d3))
+    _row("rhs at D^2 order", _fix(rhs_d2))
+    _row("rhs at D^3 order", _fix(rhs_d3))
     _row("fixed-point delta", _fix(solved))
-    _row("residual",          _sci(resid))
+    _row("residual", _sci(resid))
     _row("gap from CGM Delta", _sci(solved - DELTA))
 
     print()
     print("  Geometric constants")
-    _row("Lambda_0 = Delta/sqrt(5)",   _fix(LAMBDA_0))
+    _row("Lambda_0 = Delta/sqrt(5)", _fix(LAMBDA_0))
     _row("alpha_geometric = dBU^4/m_a", _sci(ALPHA_GEOMETRIC))
-    _row("UV-IR gyration (2pi)^2",     _fix(UV_IR_GYRATION_SQ))
+    _row("UV-IR gyration (2pi)^2", _fix(UV_IR_GYRATION_SQ))
 
 
 def _print_mass_coordinate_gaps(
@@ -400,6 +425,7 @@ def print_aperture_and_coordinates(
 # Section 3: Electroweak mass law
 # ---------------------------------------------------------------------------
 
+
 def _print_native_derivation_body() -> None:
     """Print the three native coefficient derivations (no mass input)."""
     rep = run_derivations()
@@ -409,23 +435,35 @@ def _print_native_derivation_body() -> None:
     print(f"      STF bulk projector trace      = {rep.lambda_0.stf_projector_trace}")
     print(f"      Lambda_0 derived              = {rep.lambda_0.lambda0_derived:.12f}")
     print(f"      Lambda_0 existing             = {rep.lambda_0.lambda0_existing:.12f}")
-    print(f"      W/Z D^3 coefficient = 2/sqrt(5)   {_ok(rep.lambda_0.wz_third_order_matches)}")
+    print(
+        f"      W/Z D^3 coefficient = 2/sqrt(5)   {_ok(rep.lambda_0.wz_third_order_matches)}"
+    )
     print("  D2  r5 from plaquette census + STF Regge projection")
     r = rep.r5_plaquette
     print(f"      mean plaquette defect         = {r['mean_plaquette_defect']}")
     print(f"      W/Z code gap C2-C1            = {r['wz_code_gap']}")
     print(f"      r5 constant -(C2-C1)/2        = {r['r5_constant']}")
-    print(f"      (base-rot) weight = 55/8      {_ok(bool(r['base_rot_weight_is_55_over_8']))}")
-    print(f"      bal weight = 15/8             {_ok(bool(r['bal_weight_is_15_over_8']))}")
-    print(f"      {'Ch':6} {'K4':4} {'regge':>9} {'r5_alg':>8} {'r5_der':>8} {'match':>5}")
+    print(
+        f"      (base-rot) weight = 55/8      {_ok(bool(r['base_rot_weight_is_55_over_8']))}"
+    )
+    print(
+        f"      bal weight = 15/8             {_ok(bool(r['bal_weight_is_15_over_8']))}"
+    )
+    print(
+        f"      {'Ch':6} {'K4':4} {'regge':>9} {'r5_alg':>8} {'r5_der':>8} {'match':>5}"
+    )
     for s in rep.regge_sums:
-        print(f"      {s.label:6} {s.k4_element:4} {s.regge_sum:>9.6f} "
-              f"{s.r5_algebraic:>8.3f} {s.r5_derived:>8.3f} {_ok(s.matches):>5}")
+        print(
+            f"      {s.label:6} {s.k4_element:4} {s.regge_sum:>9.6f} "
+            f"{s.r5_algebraic:>8.3f} {s.r5_derived:>8.3f} {_ok(s.matches):>5}"
+        )
     print("  D3  K4 channel flags from fold geometry (byte-path lengths)")
     print(f"      {'Ch':6} {'K4':4} {'len':>3} {'flags':>8} {'match':>5}")
     for f in rep.fold_flags:
         flags_s = "".join("1" if x else "0" for x in f.flags_from_fold)
-        print(f"      {f.label:6} {f.k4_element:4} {f.word_length:>3} {flags_s:>8} {_ok(f.matches):>5}")
+        print(
+            f"      {f.label:6} {f.k4_element:4} {f.word_length:>3} {flags_s:>8} {_ok(f.matches):>5}"
+        )
     _row("All native derivations close", _ok(rep.all_native))
 
 
@@ -457,14 +495,10 @@ def _print_coefficient_derivation_body(
 
     print()
     print("  D^1 linear a_i")
-    _row("Top:   |H| + C2 - C1",
-         f"{HORIZON_CARDINALITY + CODE_C2 - CODE_C1}  = 73")
-    _row("Higgs: M_shell/2",
-         f"{M_SHELL//2}  = 96")
-    _row("Z:     M_shell/2 + C1 + C2",
-         f"{M_SHELL//2 + CODE_C1 + CODE_C2}  = 117")
-    _row("W:     M_shell/2 + 2*C2",
-         f"{M_SHELL//2 + 2*CODE_C2}  = 126")
+    _row("Top:   |H| + C2 - C1", f"{HORIZON_CARDINALITY + CODE_C2 - CODE_C1}  = 73")
+    _row("Higgs: M_shell/2", f"{M_SHELL//2}  = 96")
+    _row("Z:     M_shell/2 + C1 + C2", f"{M_SHELL//2 + CODE_C1 + CODE_C2}  = 117")
+    _row("W:     M_shell/2 + 2*C2", f"{M_SHELL//2 + 2*CODE_C2}  = 126")
     print("  Source: T_shells -- shell populations determine linear coefficients")
 
     print()
@@ -499,7 +533,10 @@ def _print_coefficient_derivation_body(
 
     _print_native_derivation_body()
 
-    _row("All coefficients match eval_law", _ok(bool(om["all_L_polynomial_matches_eval_law"])))
+    _row(
+        "All coefficients match eval_law",
+        _ok(bool(om["all_L_polynomial_matches_eval_law"])),
+    )
     _row("bulk W matches gravity cycle", _ok(bool(om["bulk_W_matches_gravity_cycle"])))
     _row("Full derivation closes", _ok(bool(checks["all_channels_coeffs"])))
 
@@ -512,7 +549,9 @@ def _print_coefficient_derivation_body(
             f"  {r.label:6} {r.mass_obs_gev:12.6f} {r.mass_pred_gev:12.6f} "
             f"{r.mass_ppm:10.3f} {r.shell_residual_ticks:9.4f}"
         )
-    sub_ppm = all(abs(r.mass_ppm) < 1.0 for r in mass_rows if r.label in ("Top", "Z", "W"))
+    sub_ppm = all(
+        abs(r.mass_ppm) < 1.0 for r in mass_rows if r.label in ("Top", "Z", "W")
+    )
     _row("sub-ppm Top/Z/W", _ok(sub_ppm))
 
     print()
@@ -527,32 +566,42 @@ def _print_five_order_ladder_body(
     delta: float = DELTA,
 ) -> None:
     print()
-    print("  L_i(Delta) = a*Delta + b + c*Delta^2 + p*Delta^3/sqrt(5) + q*Delta^4 + r5*Delta^5")
+    print(
+        "  L_i(Delta) = a*Delta + b + c*Delta^2 + p*Delta^3/sqrt(5) + q*Delta^4 + r5*Delta^5"
+    )
     print("  Identification: L_i(Delta) = log2(v/m_i)  [mass-coordinate gap]")
     print()
     print("  Order-by-order n-residuals  (n_err = (L_obs - L_pred) / Delta)")
-    print(f"  {'Ch':8} {'p':>6} {'q':>6} {'r5':>8} {'D2_err':>10} {'D3_err':>10} {'D4_err':>10} {'D5_err':>10} {'L_err/D6':>10}")
+    print(
+        f"  {'Ch':8} {'p':>6} {'q':>6} {'r5':>8} {'D2_err':>10} {'D3_err':>10} {'D4_err':>10} {'D5_err':>10} {'L_err/D6':>10}"
+    )
     print("  " + "-" * 10)
 
     max_d2 = max_d3 = max_d4 = max_d5 = 0.0
     for r in ladder_rows:
-        print(f"  {r.channel_label:8} {r.p:6.2f} {r.q:6.2f} {r.r5:8.3f} "
-              f"{r.n_err_d2:10.3e} {r.n_err_d3:10.3e} "
-              f"{r.n_err_d4:10.3e} {r.n_err_d5:10.3e} "
-              f"{r.l_err_over_d6:10.6f}")
+        print(
+            f"  {r.channel_label:8} {r.p:6.2f} {r.q:6.2f} {r.r5:8.3f} "
+            f"{r.n_err_d2:10.3e} {r.n_err_d3:10.3e} "
+            f"{r.n_err_d4:10.3e} {r.n_err_d5:10.3e} "
+            f"{r.l_err_over_d6:10.6f}"
+        )
         max_d2 = max(max_d2, abs(r.n_err_d2))
         max_d3 = max(max_d3, abs(r.n_err_d3))
         max_d4 = max(max_d4, abs(r.n_err_d4))
         max_d5 = max(max_d5, abs(r.n_err_d5))
 
     print("  " + "-" * 10)
-    print(f"  max |n_err|  D2={max_d2:.3e}  D3={max_d3:.3e}  "
-          f"D4={max_d4:.3e}  D5={max_d5:.3e}")
+    print(
+        f"  max |n_err|  D2={max_d2:.3e}  D3={max_d3:.3e}  "
+        f"D4={max_d4:.3e}  D5={max_d5:.3e}"
+    )
     if max_d3 > 0:
-        print(f"  reduction D2->D3 = {max_d2/max_d3:.1f}x   "
-              f"D3->D4 = {max_d3/max_d4:.1f}x   "
-              f"D4->D5 = {max_d4/max_d5:.1f}x   "
-              f"total D2->D5 = {max_d2/max_d5:.0f}x")
+        print(
+            f"  reduction D2->D3 = {max_d2/max_d3:.1f}x   "
+            f"D3->D4 = {max_d3/max_d4:.1f}x   "
+            f"D4->D5 = {max_d4/max_d5:.1f}x   "
+            f"total D2->D5 = {max_d2/max_d5:.0f}x"
+        )
     print("  D^6 column: see Representation Boundary section.")
 
 
@@ -580,26 +629,41 @@ def _evaluate_null_candidate(
     r5: float,
 ) -> float:
     l0 = a * delta + b
-    l0 += c * delta ** 2
-    l0 += p * delta ** 3 / math.sqrt(5.0)
-    l0 += q * delta ** 4
-    l0 += r5 * delta ** 5
+    l0 += c * delta**2
+    l0 += p * delta**3 / math.sqrt(5.0)
+    l0 += q * delta**4
+    l0 += r5 * delta**5
     return l0
 
 
 def _print_null_audit_rows(
     rows: Sequence[
-        tuple[float, tuple[int, int, int], tuple[int, int, int], tuple[int, int, int], tuple[int, int, int], float, float, float]
+        tuple[
+            float,
+            tuple[int, int, int],
+            tuple[int, int, int],
+            tuple[int, int, int],
+            tuple[int, int, int],
+            float,
+            float,
+            float,
+        ]
     ],
     *,
     show: int = 12,
 ) -> None:
-    print(f"  {'rank':>4} {'max_err':>11} {'Top':>10} {'H':>5} {'Z':>5} {'W':>5} {'p_sum':>7} {'q_sum':>7} {'sum_abs_err':>12}")
+    print(
+        f"  {'rank':>4} {'max_err':>11} {'Top':>10} {'H':>5} {'Z':>5} {'W':>5} {'p_sum':>7} {'q_sum':>7} {'sum_abs_err':>12}"
+    )
     print("  " + "-" * 10)
-    for i, (max_err, top_f, h_f, z_f, w_f, p_sum, q_sum, abs_sum) in enumerate(rows[:show], start=1):
-        print(f"  {i:4d} {max_err:11.3e} {str(top_f):>10} "
-              f"{str(h_f):>5} {str(z_f):>5} {str(w_f):>5} "
-              f"{p_sum:7.3f} {q_sum:7.3f} {abs_sum:12.3e}")
+    for i, (max_err, top_f, h_f, z_f, w_f, p_sum, q_sum, abs_sum) in enumerate(
+        rows[:show], start=1
+    ):
+        print(
+            f"  {i:4d} {max_err:11.3e} {str(top_f):>10} "
+            f"{str(h_f):>5} {str(z_f):>5} {str(w_f):>5} "
+            f"{p_sum:7.3f} {q_sum:7.3f} {abs_sum:12.3e}"
+        )
 
 
 def _print_electroweak_null_model_audit_body(
@@ -609,18 +673,28 @@ def _print_electroweak_null_model_audit_body(
 ) -> None:
     """Null-model audit over 4096 base/rot/bal flag assignments."""
     observed_n = {
-        "Top": ew_delta_n(observed["Top quark mass energy"], ew_scale_gev=v, delta=delta),
+        "Top": ew_delta_n(
+            observed["Top quark mass energy"], ew_scale_gev=v, delta=delta
+        ),
         "Higgs": ew_delta_n(observed["Higgs mass energy"], ew_scale_gev=v, delta=delta),
         "Z": ew_delta_n(observed["Z boson mass energy"], ew_scale_gev=v, delta=delta),
         "W": ew_delta_n(observed["W boson mass energy"], ew_scale_gev=v, delta=delta),
     }
 
-    base = {
-        ch.label: (ch.a, ch.b, ch.c)
-        for ch in CHANNELS
-    }
+    base = {ch.label: (ch.a, ch.b, ch.c) for ch in CHANNELS}
 
-    trace_rows: list[tuple[float, tuple[int, int, int], tuple[int, int, int], tuple[int, int, int], tuple[int, int, int], float, float, float]] = []
+    trace_rows: list[
+        tuple[
+            float,
+            tuple[int, int, int],
+            tuple[int, int, int],
+            tuple[int, int, int],
+            tuple[int, int, int],
+            float,
+            float,
+            float,
+        ]
+    ] = []
 
     for f_top in range(8):
         a_t, r_t, b_t = ((f_top >> 2) & 1, (f_top >> 1) & 1, f_top & 1)
@@ -651,7 +725,9 @@ def _print_electroweak_null_model_audit_body(
                         ("W", observed_n["W"], base["W"], p_w, q_w, r5_w),
                     ]:
                         _ = label
-                        l_pred = _evaluate_null_candidate(delta, a_ch, b_ch, c_ch, p_val, q_val, r5)
+                        l_pred = _evaluate_null_candidate(
+                            delta, a_ch, b_ch, c_ch, p_val, q_val, r5
+                        )
                         n_pred = l_pred / delta
                         err = n_pred - obs_n
                         sum_abs += abs(err)
@@ -684,9 +760,9 @@ def _print_electroweak_null_model_audit_body(
         ):
             target_rank = i
             break
-    assert target_rank is not None, (
-        "Declared channel flags must appear in trace-free null-model candidates"
-    )
+    assert (
+        target_rank is not None
+    ), "Declared channel flags must appear in trace-free null-model candidates"
 
     print()
     _row("Raw flag assignments", "4096")
@@ -708,6 +784,7 @@ def _print_electroweak_null_model_audit_body(
 # Section 5: Delta backsolves and four-point consensus
 # ---------------------------------------------------------------------------
 
+
 def _print_backsolves_body(
     observed: dict[str, float],
     backsolves: tuple[DeltaBacksolve, ...],
@@ -719,30 +796,33 @@ def _print_backsolves_body(
     print(f"  {'Source':8} {'Equation':38} {'Delta_back':>16} {'Delta_err':>16}")
     print("  " + "-" * 10)
     for bs in backsolves:
-        print(f"  {bs.source:8} {bs.equation:38} "
-              f"{_fix(bs.delta_back):>16} {_sci(bs.delta_err):>16}")
+        print(
+            f"  {bs.source:8} {bs.equation:38} "
+            f"{_fix(bs.delta_back):>16} {_sci(bs.delta_err):>16}"
+        )
 
     print()
     consensus = four_point_consensus(backsolves)
     wz = next((bs for bs in backsolves if bs.source == "W/Z"), None)
 
     _row("Four-point mean (Top+H+Z+W)", _fix(consensus.delta_back))
-    _row("Four-point error",            _sci(consensus.delta_err))
+    _row("Four-point error", _sci(consensus.delta_err))
 
     top = next(bs for bs in backsolves if bs.source == "Top")
-    h   = next(bs for bs in backsolves if bs.source == "Higgs")
-    z   = next(bs for bs in backsolves if bs.source == "Z")
-    w   = next(bs for bs in backsolves if bs.source == "W")
-    spread = (max(top.delta_back, h.delta_back, z.delta_back, w.delta_back)
-              - min(top.delta_back, h.delta_back, z.delta_back, w.delta_back))
-    _row("Four-point spread",           _sci(spread))
+    h = next(bs for bs in backsolves if bs.source == "Higgs")
+    z = next(bs for bs in backsolves if bs.source == "Z")
+    w = next(bs for bs in backsolves if bs.source == "W")
+    spread = max(top.delta_back, h.delta_back, z.delta_back, w.delta_back) - min(
+        top.delta_back, h.delta_back, z.delta_back, w.delta_back
+    )
+    _row("Four-point spread", _sci(spread))
 
     if wz is not None:
         print()
-        _row("W/Z promoted backsolve",     _fix(wz.delta_back))
-        _row("W/Z error vs CGM Delta",     _sci(wz.delta_err))
+        _row("W/Z promoted backsolve", _fix(wz.delta_back))
+        _row("W/Z error vs CGM Delta", _sci(wz.delta_err))
         gap_base_to_consensus = abs(wz.delta_back - consensus.delta_back)
-        _row("W/Z vs four-point mean",     _sci(gap_base_to_consensus))
+        _row("W/Z vs four-point mean", _sci(gap_base_to_consensus))
 
     print()
     print("  Matter-gauge dichotomy (Q = 1/4 support)")
@@ -756,17 +836,18 @@ def _print_backsolves_body(
     ratio_quadratic = abs(top.delta_err) / hzw_max if hzw_max else float("nan")
     ratio_linear = abs(err_linear) / hzw_max if hzw_max else float("nan")
 
-    _row("Top error (with Q=1/4 term)",    _sci(abs(top.delta_err)))
-    _row("Top error (linear only, no Q)",  _sci(abs(err_linear)))
-    _row("H/Z/W max error",                _sci(hzw_max))
-    _row("ratio Top/HZW (with Q)",         f"{ratio_quadratic:.2f}")
-    _row("ratio Top/HZW (no Q)",           f"{ratio_linear:.2f}")
+    _row("Top error (with Q=1/4 term)", _sci(abs(top.delta_err)))
+    _row("Top error (linear only, no Q)", _sci(abs(err_linear)))
+    _row("H/Z/W max error", _sci(hzw_max))
+    _row("ratio Top/HZW (with Q)", f"{ratio_quadratic:.2f}")
+    _row("ratio Top/HZW (no Q)", f"{ratio_linear:.2f}")
     _row("Status", "Q=1/4 lowers Top residual by ~27x")
 
 
 # ---------------------------------------------------------------------------
 # Section 6: W/Z ratio lock and sin^2 theta_W
 # ---------------------------------------------------------------------------
+
 
 def _print_wz_ratio_lock_body(
     observed: dict[str, float],
@@ -775,29 +856,29 @@ def _print_wz_ratio_lock_body(
 ) -> None:
     m_z = observed["Z boson mass energy"]
     m_w = observed["W boson mass energy"]
-    v   = observed["Electroweak scale"]
+    v = observed["Electroweak scale"]
 
     wz_bs = next(bs for bs in backsolves if bs.source == "W/Z")
     consensus = four_point_consensus(backsolves)
 
-    cos_obs  = m_w / m_z
-    sin2_obs = 1.0 - cos_obs ** 2
+    cos_obs = m_w / m_z
+    sin2_obs = 1.0 - cos_obs**2
     l_wz_obs = math.log2(m_z / m_w)
 
     split_pred = wz_split(delta, promoted=True)
     split_base = wz_split(delta, promoted=False)
-    sin2_pred  = sin2_theta_w(delta, promoted=True)
-    w_pred     = w_mass_from_z(m_z, delta)
-    cos_pred   = 2.0 ** (-delta * split_pred)
+    sin2_pred = sin2_theta_w(delta, promoted=True)
+    w_pred = w_mass_from_z(m_z, delta)
+    cos_pred = 2.0 ** (-delta * split_pred)
 
     def _solve_wz_base(l: float) -> float:
         return (9.0 - math.sqrt(81.0 - 40.0 * l)) / 20.0
 
     delta_wz_base = _solve_wz_base(l_wz_obs)
 
-    base_gap      = abs(delta_wz_base - consensus.delta_back)
+    base_gap = abs(delta_wz_base - consensus.delta_back)
     corrected_gap = abs(wz_bs.delta_back - consensus.delta_back)
-    improvement   = base_gap / corrected_gap if corrected_gap > 0 else float("inf")
+    improvement = base_gap / corrected_gap if corrected_gap > 0 else float("inf")
 
     print()
     print("  Charged-neutral split law")
@@ -806,56 +887,60 @@ def _print_wz_ratio_lock_body(
 
     print()
     print("  Backbone (D2 only)")
-    _row("split predicted",  _fix(split_base, 12))
-    _row("split observed",   _fix(l_wz_obs / delta, 12))
-    _row("split error",      _sci(l_wz_obs / delta - split_base))
-    _row("Delta_wz_base",    _fix(delta_wz_base))
+    _row("split predicted", _fix(split_base, 12))
+    _row("split observed", _fix(l_wz_obs / delta, 12))
+    _row("split error", _sci(l_wz_obs / delta - split_base))
+    _row("Delta_wz_base", _fix(delta_wz_base))
     _row("base vs consensus gap", _sci(base_gap))
 
     print()
     print("  Promoted split (D4 law)")
-    _row("split predicted",  _fix(split_pred, 12))
-    _row("split observed",   _fix(l_wz_obs / delta, 12))
-    _row("split error",      _sci(l_wz_obs / delta - split_pred))
+    _row("split predicted", _fix(split_pred, 12))
+    _row("split observed", _fix(l_wz_obs / delta, 12))
+    _row("split error", _sci(l_wz_obs / delta - split_pred))
     _row("Delta_wz_corrected", _fix(wz_bs.delta_back))
     _row("corrected vs consensus gap", _sci(corrected_gap))
     _row("consensus improvement factor", f"{improvement:.0f}x")
 
     print()
     print("  sin^2 theta_W")
-    _row("predicted",  _fix(sin2_pred))
-    _row("observed",   _fix(sin2_obs))
-    _row("error",      _sci(sin2_pred - sin2_obs))
+    _row("predicted", _fix(sin2_pred))
+    _row("observed", _fix(sin2_obs))
+    _row("error", _sci(sin2_pred - sin2_obs))
 
     print()
     print("  W mass from Z and Delta")
-    _row("predicted W",   _fix(w_pred, 9) + " GeV")
-    _row("observed  W",   _fix(m_w,    9) + " GeV")
+    _row("predicted W", _fix(w_pred, 9) + " GeV")
+    _row("observed  W", _fix(m_w, 9) + " GeV")
     _row("relative error", _sci((w_pred - m_w) / m_w))
 
     print()
     print("  theta_W")
     _row("cos theta_W predicted", _fix(cos_pred))
-    _row("cos theta_W observed",  _fix(cos_obs))
-    _row("theta_W predicted",
-         f"{math.degrees(math.acos(cos_pred)):.9f} deg")
+    _row("cos theta_W observed", _fix(cos_obs))
+    _row("theta_W predicted", f"{math.degrees(math.acos(cos_pred)):.9f} deg")
 
 
 # ---------------------------------------------------------------------------
 # Section 7: H/Z/W leave-one-out
 # ---------------------------------------------------------------------------
 
+
 def _print_leave_one_out_body(
     results: tuple[LeaveOneOutResult, ...],
 ) -> None:
     print()
-    print(f"  {'Target':8} {'Delta source':14} {'Delta used':>16} "
-          f"{'m_pred (GeV)':>16} {'m_ref (GeV)':>14} {'rel_err':>14}")
+    print(
+        f"  {'Target':8} {'Delta source':14} {'Delta used':>16} "
+        f"{'m_pred (GeV)':>16} {'m_ref (GeV)':>14} {'rel_err':>14}"
+    )
     print("  " + "-" * 10)
     for r in results:
-        print(f"  {r.target:8} {r.delta_source:14} {_fix(r.delta_used):>16} "
-              f"{r.predicted_mass:16.9f} {r.reference_mass:14.9f} "
-              f"{_sci(r.relative_error):>14}")
+        print(
+            f"  {r.target:8} {r.delta_source:14} {_fix(r.delta_used):>16} "
+            f"{r.predicted_mass:16.9f} {r.reference_mass:14.9f} "
+            f"{_sci(r.relative_error):>14}"
+        )
 
 
 def _print_couplings_body(
@@ -869,28 +954,36 @@ def _print_couplings_body(
     m_h = observed["Higgs mass energy"]
     m_z = observed["Z boson mass energy"]
     m_w = observed["W boson mass energy"]
-    rc  = ew_couplings_from_masses(m_t, m_h, m_z, m_w, v)
+    rc = ew_couplings_from_masses(m_t, m_h, m_z, m_w, v)
 
     print()
     print("  Coupling exponents (log2 form):")
     laws = all_laws(delta, order=2)
     print(f"    y_t  = 2^(3/2 - {channel_by_label('Top').a}*D - D^2/4)")
-    print(f"    lambda_H = 2^(1 - {int(2*channel_by_label('Higgs').a)}*Delta + {int(-2*channel_by_label('Higgs').c)}*Delta^2)")
-    print(f"    g_Z  = 2^(95/48 - {int(channel_by_label('Z').a)}*Delta + {int(-channel_by_label('Z').c*2)}/2*Delta^2)")
-    print(f"    g    = 2^(95/48 - {int(channel_by_label('W').a)}*Delta + {int(-channel_by_label('W').c*2)}/2*Delta^2)")
+    print(
+        f"    lambda_H = 2^(1 - {int(2*channel_by_label('Higgs').a)}*Delta + {int(-2*channel_by_label('Higgs').c)}*Delta^2)"
+    )
+    print(
+        f"    g_Z  = 2^(95/48 - {int(channel_by_label('Z').a)}*Delta + {int(-channel_by_label('Z').c*2)}/2*Delta^2)"
+    )
+    print(
+        f"    g    = 2^(95/48 - {int(channel_by_label('W').a)}*Delta + {int(-channel_by_label('W').c*2)}/2*Delta^2)"
+    )
 
     print()
-    print(f"  {'Quantity':12} {'Model value':>16} {'PDG reference':>16} {'rel error':>14}")
+    print(
+        f"  {'Quantity':12} {'Model value':>16} {'PDG reference':>16} {'rel error':>14}"
+    )
     print("  " + "-" * 10)
 
     fields = [
         ("lambda_H", mc.lambda_H, rc.lambda_H),
-        ("g",        mc.g,        rc.g),
-        ("g_Z",      mc.g_z,      rc.g_z),
-        ("g'",       mc.g_prime,  rc.g_prime),
-        ("e",        mc.e,        rc.e),
+        ("g", mc.g, rc.g),
+        ("g_Z", mc.g_z, rc.g_z),
+        ("g'", mc.g_prime, rc.g_prime),
+        ("e", mc.e, rc.e),
         ("alpha^-1", mc.alpha_ew_inv, rc.alpha_ew_inv),
-        ("y_t",      mc.y_t,      rc.y_t),
+        ("y_t", mc.y_t, rc.y_t),
     ]
     for name, model_val, ref_val in fields:
         rel = (model_val / ref_val - 1.0) if ref_val != 0.0 else float("nan")
@@ -921,6 +1014,7 @@ def print_numerical_validation(
 # Section 5: Lepton sector
 # ---------------------------------------------------------------------------
 
+
 def print_lepton_sector(
     observed: dict[str, float],
     delta: float = DELTA,
@@ -934,15 +1028,19 @@ def print_lepton_sector(
     print("  Lepton coordinate: n = k*|H| + r(lepton) + residual")
     print(f"  |H| = {HORIZON_CARDINALITY},  M_shell = {M_SHELL}")
     print()
-    print(f"  {'Lep':10} {'k':>3} {'r(lep)':>8} {'resid_D1':>12} "
-          f"{'resid_D2':>12} {'resid_D3':>12}  law")
+    print(
+        f"  {'Lep':10} {'k':>3} {'r(lep)':>8} {'resid_D1':>12} "
+        f"{'resid_D2':>12} {'resid_D3':>12}  law"
+    )
     print("  " + "-" * 10)
 
     max_d1 = max_d2 = max_d3 = 0.0
     for row in rows:
-        print(f"  {row.label:10} {row.k:3d} {row.r:8.3f} "
-              f"{row.resid_d1:12.3e} {row.resid_d2:12.3e} "
-              f"{row.resid_d3:12.3e}  {row.law_d1}")
+        print(
+            f"  {row.label:10} {row.k:3d} {row.r:8.3f} "
+            f"{row.resid_d1:12.3e} {row.resid_d2:12.3e} "
+            f"{row.resid_d3:12.3e}  {row.law_d1}"
+        )
         max_d1 = max(max_d1, abs(row.resid_d1))
         max_d2 = max(max_d2, abs(row.resid_d2))
         max_d3 = max(max_d3, abs(row.resid_d3))
@@ -950,16 +1048,19 @@ def print_lepton_sector(
     print()
     print(f"  max |resid|  D1={max_d1:.3e}  D2={max_d2:.3e}  D3={max_d3:.3e}")
     if max_d2 > 0:
-        print(f"  reduction D1->D2 = {max_d1/max_d2:.1f}x   "
-              f"D2->D3 = {max_d2/max_d3:.1f}x   "
-              f"total D1->D3 = {max_d1/max_d3:.0f}x")
+        print(
+            f"  reduction D1->D2 = {max_d1/max_d2:.1f}x   "
+            f"D2->D3 = {max_d2/max_d3:.1f}x   "
+            f"total D1->D3 = {max_d1/max_d3:.0f}x"
+        )
 
     print()
     print("  Law by order:")
     for row in rows:
         law_d2 = row.law_d2 if row.law_d2 else "none"
-        print(f"    {row.label:8}  D1: {row.law_d1}  "
-              f"D2: {law_d2}  D3: {row.law_d3}")
+        print(
+            f"    {row.label:8}  D1: {row.law_d1}  " f"D2: {law_d2}  D3: {row.law_d3}"
+        )
 
     print()
     print("  Horizon/shell anchor:")
@@ -984,11 +1085,14 @@ def print_lepton_sector(
     if obs_e is not None:
         n_obs_e = ew_delta_n(obs_e, ew_scale_gev=v, delta=delta)
         obs_resid = n_obs_e - lepton_base_n(14, "electron")
-        _row("SU2 holonomy sigma",          f"{sigma:.9f}  ({sigma/obs_resid*100:.2f}%)")
-        _row("Higgs memory (5/256)/n_H",    f"{higgs_mem:.9f}  ({higgs_mem/obs_resid*100:.2f}%)")
-        _row("sum",                         f"{total:.9f}")
-        _row("observed residual",           f"{obs_resid:.9f}")
-        _row("pre-carrier match error",      _sci(total - obs_resid))
+        _row("SU2 holonomy sigma", f"{sigma:.9f}  ({sigma/obs_resid*100:.2f}%)")
+        _row(
+            "Higgs memory (5/256)/n_H",
+            f"{higgs_mem:.9f}  ({higgs_mem/obs_resid*100:.2f}%)",
+        )
+        _row("sum", f"{total:.9f}")
+        _row("observed residual", f"{obs_resid:.9f}")
+        _row("pre-carrier match error", _sci(total - obs_resid))
 
     lepton_max = max((abs(r.resid_d3) for r in rows), default=float("nan"))
     print()
@@ -1035,7 +1139,10 @@ def print_lepton_sector(
 
     closure_148 = run_148_51_closure_probe()
     print()
-    _row("148/51 closure", f"{closure_148.ratio_num}/{closure_148.ratio_den} {_ok(closure_148.closes_exactly)}")
+    _row(
+        "148/51 closure",
+        f"{closure_148.ratio_num}/{closure_148.ratio_den} {_ok(closure_148.closes_exactly)}",
+    )
 
     arch = byte_archetype_shadow_probe()
     src = source_traceability_probe()
@@ -1075,6 +1182,7 @@ def print_lepton_sector(
 # Section 10: Quark and strong-sector diagnostics
 # ---------------------------------------------------------------------------
 
+
 def print_quark_and_strong_sector(
     observed: dict[str, float],
     delta: float = DELTA,
@@ -1085,9 +1193,16 @@ def print_quark_and_strong_sector(
     alg = compact_algebra(delta)
 
     quark_specs = [
-        ("Bottom",  "Bottom quark mass energy",  284.0, alg.kappa,  None,        "+kappa"),
-        ("Charm",   "Charm quark mass energy",   367.0, None,       alg.omega,   "+omega+D/2"),
-        ("Strange", "Strange quark mass energy", 548.0, alg.kappa,  alg.omega,   "-(omega+kappa)"),
+        ("Bottom", "Bottom quark mass energy", 284.0, alg.kappa, None, "+kappa"),
+        ("Charm", "Charm quark mass energy", 367.0, None, alg.omega, "+omega+D/2"),
+        (
+            "Strange",
+            "Strange quark mass energy",
+            548.0,
+            alg.kappa,
+            alg.omega,
+            "-(omega+kappa)",
+        ),
     ]
 
     print()
@@ -1096,8 +1211,10 @@ def print_quark_and_strong_sector(
     print(f"  omega = delta_BU/2       = {_fix(alg.omega)}")
     print()
     print("  Boolean lattice on {kappa, omega}:")
-    print(f"  {'Quark':10} {'kappa':>6} {'omega':>6} {'n_int':>6} "
-          f"{'selector':>12} {'n_model':>12} {'n_obs':>12} {'n_resid':>12}")
+    print(
+        f"  {'Quark':10} {'kappa':>6} {'omega':>6} {'n_int':>6} "
+        f"{'selector':>12} {'n_model':>12} {'n_obs':>12} {'n_resid':>12}"
+    )
     print("  " + "-" * 10)
 
     for label, obs_name, n_int, kap, omg, sel_str in quark_specs:
@@ -1116,13 +1233,15 @@ def print_quark_and_strong_sector(
                     n_mod -= omg
                 else:
                     n_mod += omg + 0.5 * delta
-            n_obs_str   = f"{n_obs:12.6f}"
+            n_obs_str = f"{n_obs:12.6f}"
             n_resid_str = f"{n_obs - n_mod:12.3e}"
 
         has_kap = "yes" if kap is not None else "no"
         has_omg = "yes" if omg is not None else "no"
-        print(f"  {label:10} {has_kap:>6} {has_omg:>6} {int(n_int):>6} "
-              f"{sel_str:>12} {n_mod:12.6f} {n_obs_str} {n_resid_str}")
+        print(
+            f"  {label:10} {has_kap:>6} {has_omg:>6} {int(n_int):>6} "
+            f"{sel_str:>12} {n_mod:12.6f} {n_obs_str} {n_resid_str}"
+        )
 
     print()
     print("  Top is excluded from lattice vertices.")
@@ -1136,14 +1255,14 @@ def print_quark_and_strong_sector(
         n_c = math.log2(v / c_mass) / delta
         n_s = math.log2(v / s_mass) / delta
 
-        kap_from_b  = n_b - 284.0
-        omg_from_c  = n_c - 367.0 - 0.5 * delta
-        sum_from_s  = 548.0 - n_s
-        internal    = sum_from_s - (kap_from_b + omg_from_c)
+        kap_from_b = n_b - 284.0
+        omg_from_c = n_c - 367.0 - 0.5 * delta
+        sum_from_s = 548.0 - n_s
+        internal = sum_from_s - (kap_from_b + omg_from_c)
 
         print("  Residuals against closed forms:")
-        _row("kappa from Bottom",  _sci(kap_from_b - alg.kappa))
-        _row("omega from Charm",   _sci(omg_from_c - alg.omega))
+        _row("kappa from Bottom", _sci(kap_from_b - alg.kappa))
+        _row("omega from Charm", _sci(omg_from_c - alg.omega))
         _row("kappa+omega from Strange", _sci(sum_from_s - (alg.kappa + alg.omega)))
         _row("internal (no closed form used)", _sci(internal))
         print()
@@ -1157,9 +1276,13 @@ def print_quark_and_strong_sector(
     if mapping_rows:
         print()
         print("  D_flow^2 ladder mapping probe")
-        print("  Quark masses are ordered and mapped to non-zero D_flow eigenvalue squares.")
-        print(f"  {'Quark':8} {'mass (GeV)':>12} {'log2(mass)':>12} "
-              f"{'d_flow^2':>8} {'|d_flow|':>8}")
+        print(
+            "  Quark masses are ordered and mapped to non-zero D_flow eigenvalue squares."
+        )
+        print(
+            f"  {'Quark':8} {'mass (GeV)':>12} {'log2(mass)':>12} "
+            f"{'d_flow^2':>8} {'|d_flow|':>8}"
+        )
         print("  " + "-" * 10)
         for row in mapping_rows:
             label = row.quark_label
@@ -1200,6 +1323,7 @@ def print_quark_and_strong_sector(
 # Section 11: Representation boundary and 32-bit lift
 # ---------------------------------------------------------------------------
 
+
 def print_representation_boundary_and_lift(
     d6_rows: Sequence,
     observed: dict[str, float],
@@ -1209,7 +1333,9 @@ def print_representation_boundary_and_lift(
     _hdr("7. Representation Boundary and 32-bit Lift")
 
     print()
-    print("  D^5 residuals are O(1) in Delta^6 units; these are representation boundary markers.")
+    print(
+        "  D^5 residuals are O(1) in Delta^6 units; these are representation boundary markers."
+    )
     print(f"  P_6 shell = {P6_SHELL_INDEX}, |support| = {P6_SUPPORT_STATES}")
     print()
     print(f"  {'Ch':6} {'L_err/D6':>12} {'K4 flags':>12} {'C(q)':>10} {'full?':>6}")
@@ -1243,7 +1369,9 @@ def print_representation_boundary_and_lift(
 
     print()
     print("  24-bit obstructions")
-    print("  Spectral triple: gamma commutes with D_shell; first-order condition fails.")
+    print(
+        "  Spectral triple: gamma commutes with D_shell; first-order condition fails."
+    )
     print("  No J in 24-bit satisfies first-order spectral triple.")
     sob = spinorial_shadow_obstruction_probe()
     _row("shadow collapses spinorial phase", _ok(sob.shadow_collapses_spinorial_phase))
@@ -1261,6 +1389,7 @@ def print_representation_boundary_and_lift(
 # Section 12: External channels (CKM)
 # ---------------------------------------------------------------------------
 
+
 def print_external_channels(delta: float = DELTA) -> None:
     _hdr("8. External Channels")
 
@@ -1272,8 +1401,8 @@ def print_external_channels(delta: float = DELTA) -> None:
     print("  " + "-" * 10)
 
     ckm_rows = [
-        ("|V_us|", ckm["V_us"],      0.2243,   "sin(dBU + 3D/2)"),
-        ("|V_cb|", ckm["V_cb"],      0.0408,   "sin(2D)"),
+        ("|V_us|", ckm["V_us"], 0.2243, "sin(dBU + 3D/2)"),
+        ("|V_cb|", ckm["V_cb"], 0.0408, "sin(2D)"),
         ("|V_ub| excl", ckm["V_ub_excl"], 0.00382, "sin(9D^2)"),
         ("|V_ub| incl", ckm["V_ub_incl"], 0.00413, "sin(9D^2+phi_conv)"),
     ]
@@ -1287,7 +1416,9 @@ def print_external_channels(delta: float = DELTA) -> None:
     print()
     print("  Antihydrogen aperture")
     print(f"    12*Delta = {12*delta:.6f}")
-    print(f"    1/4 - 12*Delta = {0.25 - 12*delta:.6f}  (residual from quarter closure)")
+    print(
+        f"    1/4 - 12*Delta = {0.25 - 12*delta:.6f}  (residual from quarter closure)"
+    )
     print(f"    predicted a_Hbar/g = 1 - 12*Delta = {1.0 - 12*delta:.6f}")
     print("  Current experimental precision is above the predicted offset scale.")
     print()
@@ -1309,6 +1440,7 @@ def print_external_channels(delta: float = DELTA) -> None:
 # Section 14: Compact algebra audit
 # ---------------------------------------------------------------------------
 
+
 def print_algebra_audit(delta: float = DELTA) -> None:
     _hdr("9. Consistency Audit")
 
@@ -1316,10 +1448,10 @@ def print_algebra_audit(delta: float = DELTA) -> None:
     checks: list[tuple[str, float, float, float]] = []
 
     checks += [
-        ("C1 = C(6,1)",  float(CODE_C1),  float(math.comb(6, 1)),  0.0),
-        ("C2 = C(6,2)",  float(CODE_C2),  float(math.comb(6, 2)),  0.0),
-        ("C3 = C(6,3)",  float(CODE_C3),  float(math.comb(6, 3)),  0.0),
-        ("M_shell",      float(M_SHELL),  192.0,                   0.0),
+        ("C1 = C(6,1)", float(CODE_C1), float(math.comb(6, 1)), 0.0),
+        ("C2 = C(6,2)", float(CODE_C2), float(math.comb(6, 2)), 0.0),
+        ("C3 = C(6,3)", float(CODE_C3), float(math.comb(6, 3)), 0.0),
+        ("M_shell", float(M_SHELL), 192.0, 0.0),
     ]
 
     vld = verify_ew_ladder_derivations()
@@ -1331,25 +1463,27 @@ def print_algebra_audit(delta: float = DELTA) -> None:
     ]
 
     for label, expected_r5 in [
-        ("Top", -4.5), ("Higgs", 2.375), ("Z", -4.5), ("W", -2.625)
+        ("Top", -4.5),
+        ("Higgs", 2.375),
+        ("Z", -4.5),
+        ("W", -2.625),
     ]:
         ch = channel_by_label(label)
         checks.append((f"{label} r5-coeff", ch.r5, expected_r5, 0.0))
 
     checks += [
-        ("epsilon*eta = 48*dBU - 47*m_a",
-         alg.epsilon * alg.eta,
-         48.0 * DELTA_BU - 47.0 * M_A,
-         1e-12),
-        ("WZ_OFFSET = C2 - C1",
-         float(WZ_OFFSET), float(CODE_C2 - CODE_C1), 0.0),
-        ("WZ_APERTURE_COEFF = C3/2",
-         WZ_APERTURE_COEFF, CODE_C3 / 2.0, 0.0),
+        (
+            "epsilon*eta = 48*dBU - 47*m_a",
+            alg.epsilon * alg.eta,
+            48.0 * DELTA_BU - 47.0 * M_A,
+            1e-12,
+        ),
+        ("WZ_OFFSET = C2 - C1", float(WZ_OFFSET), float(CODE_C2 - CODE_C1), 0.0),
+        ("WZ_APERTURE_COEFF = C3/2", WZ_APERTURE_COEFF, CODE_C3 / 2.0, 0.0),
     ]
 
     print()
-    print(f"  {'Check':30} {'value':>11} {'exp':>11} "
-          f"{'resid':>12} {'ok':>4}")
+    print(f"  {'Check':30} {'value':>11} {'exp':>11} " f"{'resid':>12} {'ok':>4}")
     print("  " + "-" * 10)
 
     all_pass = True
@@ -1359,8 +1493,10 @@ def print_algebra_audit(delta: float = DELTA) -> None:
         status = "ok" if ok else "FAIL"
         if not ok:
             all_pass = False
-        print(f"  {label[:30]:30} {value:11.6g} {expected:11.6g} "
-              f"{resid:12.3e} {status:>4}")
+        print(
+            f"  {label[:30]:30} {value:11.6g} {expected:11.6g} "
+            f"{resid:12.3e} {status:>4}"
+        )
 
     print()
     print(f"  All checks pass: {'YES' if all_pass else 'NO'}")
@@ -1370,34 +1506,35 @@ def print_algebra_audit(delta: float = DELTA) -> None:
 # Master report entry point
 # ---------------------------------------------------------------------------
 
+
 def build_observed(
-    top: float   = 172.76,
+    top: float = 172.76,
     higgs: float = 125.10,
-    z: float     = 91.1876,
-    w: float     = 80.379,
-    tau: float   = 1.77686,
-    muon: float  = 0.1056583745,
+    z: float = 91.1876,
+    w: float = 80.379,
+    tau: float = 1.77686,
+    muon: float = 0.1056583745,
     electron: float = ELECTRON_MASS_GEV,
     bottom: float = 4.18,
-    charm: float  = 1.27,
+    charm: float = 1.27,
     strange: float = 0.095,
-    v: float     = E_EW_GEV,
+    v: float = E_EW_GEV,
 ) -> dict[str, float]:
     """
     Construct the observed-mass dict from PDG inputs.
     Override individual values to test sensitivity.
     """
     return {
-        "Electroweak scale":       v,
-        "Top quark mass energy":   top,
-        "Higgs mass energy":       higgs,
-        "Z boson mass energy":     z,
-        "W boson mass energy":     w,
-        "Tau mass energy":         tau,
-        "Muon mass energy":        muon,
-        "Electron mass energy":    electron,
+        "Electroweak scale": v,
+        "Top quark mass energy": top,
+        "Higgs mass energy": higgs,
+        "Z boson mass energy": z,
+        "W boson mass energy": w,
+        "Tau mass energy": tau,
+        "Muon mass energy": muon,
+        "Electron mass energy": electron,
         "Bottom quark mass energy": bottom,
-        "Charm quark mass energy":  charm,
+        "Charm quark mass energy": charm,
         "Strange quark mass energy": strange,
     }
 
@@ -1462,15 +1599,21 @@ def run_report(
 
     v = observed["Electroweak scale"]
 
-    print("Compact Geometry: Spectral Algebra of the Electroweak Mass Spectrum and Beyond")
+    print(
+        "Compact Geometry: Spectral Algebra of the Electroweak Mass Spectrum and Beyond"
+    )
     print("=" * 69)
     print(f"Delta = {_fix(DELTA)}   v = {v} GeV")
 
     if skip_kernel:
         from hqvm_compact_geom_kernel import (
-            KernelReport, shell_transition_algebra, uv_ir_shell_dpf,
-            d6_residuals, orderwise_ladder,
+            KernelReport,
+            shell_transition_algebra,
+            uv_ir_shell_dpf,
+            d6_residuals,
+            orderwise_ladder,
         )
+
         report = KernelReport(
             OMEGA_SIZE,
             (),
@@ -1502,9 +1645,7 @@ def run_report(
         print_kernel_structure(report)
 
     print_aperture_and_coordinates(observed, coords, delta)
-    print_electroweak_mass_law(
-        observed, report.order_ladder, delta, v
-    )
+    print_electroweak_mass_law(observed, report.order_ladder, delta, v)
     print_numerical_validation(observed, backsolves, loo, delta, v)
     print_lepton_sector(observed, delta, v)
     print_quark_and_strong_sector(observed, delta, v)
@@ -1530,20 +1671,25 @@ if __name__ == "__main__":
         description="Compact Geometry electroweak mass spectrum and beyond report"
     )
     parser.add_argument(
-        "--fast", action="store_true",
-        help="Skip byte-transition exhaustive check (~20 s saved)"
+        "--fast",
+        action="store_true",
+        help="Skip byte-transition exhaustive check (~20 s saved)",
     )
     parser.add_argument(
-        "--algebra-only", action="store_true",
-        help="Skip all kernel enumeration (algebra sections only)"
+        "--algebra-only",
+        action="store_true",
+        help="Skip all kernel enumeration (algebra sections only)",
     )
     parser.add_argument(
-        "--structural-law", action="store_true",
-        help="Include 256^2 commutativity check (slow, several minutes)"
+        "--structural-law",
+        action="store_true",
+        help="Include 256^2 commutativity check (slow, several minutes)",
     )
     parser.add_argument(
-        "--output", metavar="PATH", default=None,
-        help="Write full report to file as well as stdout"
+        "--output",
+        metavar="PATH",
+        default=None,
+        help="Write full report to file as well as stdout",
     )
     args = parser.parse_args()
 

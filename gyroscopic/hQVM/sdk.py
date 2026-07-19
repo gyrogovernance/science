@@ -123,6 +123,7 @@ def compare_ledgers_pair(
 
     return 1, common
 
+
 ObservableInt: TypeAlias = Callable[[int], int]
 ObservableNum: TypeAlias = Callable[[int], int | float]
 
@@ -709,12 +710,8 @@ class SpectralOps:
     walsh_matrix = staticmethod(walsh_hadamard64)
     q_class = staticmethod(q_word6)
     q_transport = staticmethod(q_word6_for_items)
-    shell_krawtchouk_transform_exact = staticmethod(
-        shell_krawtchouk_transform_exact
-    )
-    shell_krawtchouk_inverse_exact = staticmethod(
-        shell_krawtchouk_inverse_exact
-    )
+    shell_krawtchouk_transform_exact = staticmethod(shell_krawtchouk_transform_exact)
+    shell_krawtchouk_inverse_exact = staticmethod(shell_krawtchouk_inverse_exact)
 
 
 __all__ = [
@@ -756,6 +753,3 @@ __all__ = [
     "MomentOps",
     "SpectralOps",
 ]
-
-
-

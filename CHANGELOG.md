@@ -4,6 +4,12 @@ All notable changes to the CGM Experimental Framework will be documented in this
 
 ---
 
+## [1.3.8-CGM_hQVM_Trestleboard] - 2026-07-17 to 2026-07-19
+
+
+
+---
+
 ## [1.3.8-hQVM_Cohomology] - 2026-07-13 to 2026-07-15
 
 The hQVM carrier is a finite state machine, yet its transport graph carries richer local structure than reachability records. This release builds the cohomology layer of the CGM construction chain: a finite covering system on the hQVM transition category that classifies the algebraic obstructions preventing a generator restriction from preserving ancestry globally. Where percolation reports the size of the reachable set, cohomology reports the type of the obstruction that shrank it.

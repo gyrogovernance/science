@@ -17,9 +17,9 @@ import sys
 import io
 
 # Fix Windows console encoding
-if sys.platform == 'win32':
-    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
-    sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8', errors='replace')
+if sys.platform == "win32":
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
+    sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding="utf-8", errors="replace")
 
 import numpy as np
 import mpmath as mp
@@ -43,7 +43,7 @@ class ModalGeometricDerivation:
 
     def __init__(self):
         self.gyrospace = GyroVectorSpace(c=1.0)
-        
+
         # CGM thresholds
         self.s_p = mp.pi / 2  # CS threshold
         self.u_p = mp.mpf(1) / mp.sqrt(2)  # UNA threshold
@@ -53,12 +53,12 @@ class ModalGeometricDerivation:
     def theorem_1_duality_from_memory(self, verbose: bool = True) -> Dict[str, Any]:
         """
         Theorem 1: BU-Ingress forces dual-pole structure
-        
+
         Statement: BU-Ingress (□B → (CS ∧ UNA ∧ ONA)) requires that the
         balanced state can reconstruct all prior conditions. This forces
         a dual structure encoding both egress (forward) and ingress (backward)
         information.
-        
+
         Proof Strategy:
         1. BU-Ingress requires memory reconstruction from balanced state
         2. Memory reconstruction requires encoding of both directions
@@ -168,10 +168,10 @@ class ModalGeometricDerivation:
     def theorem_2_holonomy_from_closure(self, verbose: bool = True) -> Dict[str, Any]:
         """
         Theorem 2: BU-Egress determines delta_BU value
-        
+
         Statement: BU-Egress (S → □B) constrains the depth-4 closure,
         which in the SU(2) representation determines the holonomy delta_BU.
-        
+
         Proof Strategy:
         1. BU-Egress requires [L][R][L][R]S ↔ [R][L][R][L]S
         2. In SU(2), this becomes a constraint on the commutator
@@ -241,10 +241,16 @@ class ModalGeometricDerivation:
             print("between the thresholds. The dual-pole loop holonomy delta_BU is")
             print("computed from this constraint.")
             print()
-            print("Using the same GyroVectorSpace machinery as the validated TW closure test:")
+            print(
+                "Using the same GyroVectorSpace machinery as the validated TW closure test:"
+            )
             print("  - This ensures consistency with the published holonomy pipeline")
-            print("  - Uses the gyro/Wigner (Lorentz) realization, not pure SU(2) rotations")
-            print("  - ONA is treated as a boost+rotation composition, not a simple rotation")
+            print(
+                "  - Uses the gyro/Wigner (Lorentz) realization, not pure SU(2) rotations"
+            )
+            print(
+                "  - ONA is treated as a boost+rotation composition, not a simple rotation"
+            )
             print()
 
         # Use the same GyroVectorSpace computation as tw_closure_test.py
@@ -257,15 +263,17 @@ class ModalGeometricDerivation:
 
         # Compute gyration from ONA to BU+ (same as tw_closure_test.py)
         G_on_to_bu = self.gyrospace.gyration(v["ONA"], v["BU+"])
-        
+
         # Extract rotation angle from gyration matrix
         omega_on_to_bu = float(self.gyrospace.rotation_angle_from_matrix(G_on_to_bu))
-        
+
         # δ_BU = 2 × ω(ONA ↔ BU) (same formula as tw_closure_test.py)
         delta_BU_computed = 2.0 * omega_on_to_bu
 
         if verbose:
-            print(f"Computed delta_BU using GyroVectorSpace: {delta_BU_computed:.12f} rad")
+            print(
+                f"Computed delta_BU using GyroVectorSpace: {delta_BU_computed:.12f} rad"
+            )
             print(f"Expected delta_BU (from TW closure test): 0.195342176580 rad")
             print(f"Deviation: {abs(delta_BU_computed - 0.195342176580):.12e} rad")
             print()
@@ -289,7 +297,9 @@ class ModalGeometricDerivation:
             print("  delta_BU = 2 * omega(ONA <-> BU)")
             print()
             print("where ω(ONA ↔ BU) is determined by the gyration (Thomas-Wigner")
-            print("rotation) between ONA (at π/4 on y-axis) and BU (at ±m_a on z-axis).")
+            print(
+                "rotation) between ONA (at π/4 on y-axis) and BU (at ±m_a on z-axis)."
+            )
             print()
             print("This computation uses the GyroVectorSpace machinery, which:")
             print("  - Treats ONA as a boost+rotation composition (not pure rotation)")
@@ -305,7 +315,9 @@ class ModalGeometricDerivation:
             print()
             print("Conclusion: delta_BU = 0.195342 rad is DETERMINED by")
             print("the modal conditions BU-Egress and BU-Ingress, computed using")
-            print("the same gyro/Wigner representation as the validated holonomy pipeline.")
+            print(
+                "the same gyro/Wigner representation as the validated holonomy pipeline."
+            )
             print()
 
         return {
@@ -319,7 +331,7 @@ class ModalGeometricDerivation:
     def theorem_3_uniqueness(self, verbose: bool = True) -> Dict[str, Any]:
         """
         Theorem 3: Uniqueness of the Realization
-        
+
         Statement: The dual-pole structure at +/-m_a and the holonomy delta_BU
         are the unique geometric realization satisfying BU-Egress and BU-Ingress
         with the CGM thresholds.
@@ -354,7 +366,9 @@ class ModalGeometricDerivation:
             print("3. Dual-pole structure is necessary:")
             print("   - BU-Ingress requires memory reconstruction")
             print("   - Memory reconstruction requires dual encoding")
-            print("   - Dual encoding in gyro/Wigner representation forces ±m_a structure")
+            print(
+                "   - Dual encoding in gyro/Wigner representation forces ±m_a structure"
+            )
             print()
             print("4. Holonomy value is determined:")
             print("   - delta_BU computed from dual-pole loop using GyroVectorSpace")
@@ -423,4 +437,3 @@ class ModalGeometricDerivation:
 if __name__ == "__main__":
     derivation = ModalGeometricDerivation()
     results = derivation.run_full_derivation(verbose=True)
-

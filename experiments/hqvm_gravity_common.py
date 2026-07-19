@@ -67,9 +67,13 @@ Omega_size = 4096
 H_size = 64
 W2_SHELL_DISPLACEMENT = 6  # per W2 depth-4 half-word (2 bytes); wavefunction_2 T2,T5
 F_CYCLE_PATH_TRAVERSE = 12  # F-cycle path length (4 bytes); F preserves shell per T4
-Z2_HOLONOMY_PATH_TRAVERSE = 24  # Z2 holonomy path length (8 bytes, 2 F-cycles); net disp 0
+Z2_HOLONOMY_PATH_TRAVERSE = (
+    24  # Z2 holonomy path length (8 bytes, 2 F-cycles); net disp 0
+)
 D_traverse = Z2_HOLONOMY_PATH_TRAVERSE  # shell traverse invariant (not aperture Delta)
-AF = 2 * Z2_HOLONOMY_PATH_TRAVERSE  # Z2 double-cover: holonomy cycle path x 2 for Refractive Depth round-trip (T6: F o F = id)
+AF = (
+    2 * Z2_HOLONOMY_PATH_TRAVERSE
+)  # Z2 double-cover: holonomy cycle path x 2 for Refractive Depth round-trip (T6: F o F = id)
 v_EW = 246.22
 G_meas = 6.708810e-39
 
@@ -224,39 +228,43 @@ def trace_word_steps(
     s = int(start_state24) & 0xFFFFFF
     q_acc = 0
     chi0, arch0 = _shell_fields(s)
-    rows = [{
-        "step": 0,
-        "byte": None,
-        "state24": s,
-        "shell": chi0,
-        "arch_shell": arch0,
-        "chi6": chirality_word6(s),
-        "qxor": 0,
-        "family": 0,
-        "micro": micro_ref & 0x3F,
-        "intron": None,
-        "on_horizon": is_on_horizon(s),
-        "on_equality_horizon": is_on_equality_horizon(s),
-    }]
+    rows = [
+        {
+            "step": 0,
+            "byte": None,
+            "state24": s,
+            "shell": chi0,
+            "arch_shell": arch0,
+            "chi6": chirality_word6(s),
+            "qxor": 0,
+            "family": 0,
+            "micro": micro_ref & 0x3F,
+            "intron": None,
+            "on_horizon": is_on_horizon(s),
+            "on_equality_horizon": is_on_equality_horizon(s),
+        }
+    ]
     for step, byte in enumerate(word, start=1):
         s = step_state_by_byte(s, byte)
         q_acc = (q_acc ^ q_word6(byte)) & CHI6_FULL
         intron = byte_to_intron(byte)
         chi_sh, arch_sh = _shell_fields(s)
-        rows.append({
-            "step": step,
-            "byte": byte,
-            "state24": s,
-            "shell": chi_sh,
-            "arch_shell": arch_sh,
-            "chi6": chirality_word6(s),
-            "qxor": q_acc,
-            "family": intron_family(intron),
-            "micro": intron_micro_ref(intron),
-            "intron": intron,
-            "on_horizon": is_on_horizon(s),
-            "on_equality_horizon": is_on_equality_horizon(s),
-        })
+        rows.append(
+            {
+                "step": step,
+                "byte": byte,
+                "state24": s,
+                "shell": chi_sh,
+                "arch_shell": arch_sh,
+                "chi6": chirality_word6(s),
+                "qxor": q_acc,
+                "family": intron_family(intron),
+                "micro": intron_micro_ref(intron),
+                "intron": intron,
+                "on_horizon": is_on_horizon(s),
+                "on_equality_horizon": is_on_equality_horizon(s),
+            }
+        )
     return rows
 
 
@@ -282,20 +290,22 @@ def build_joint_table() -> list[dict]:
         weight = comb(6, pop_m) / 64.0
         word = cycle_word_for_micro(m_ref)
         for row in trace_word_steps(word, micro_ref=m_ref)[1:]:
-            table.append({
-                "m_ref": m_ref,
-                "pop": pop_m,
-                "weight": weight,
-                "step": row["step"],
-                "byte": row["byte"],
-                "state24": row["state24"],
-                "arch_shell": int(row["arch_shell"]),
-                "intron": row["intron"],
-                "family": row["family"],
-                "micro": row["micro"],
-                "qxor": row["qxor"],
-                "chi6": row["chi6"],
-            })
+            table.append(
+                {
+                    "m_ref": m_ref,
+                    "pop": pop_m,
+                    "weight": weight,
+                    "step": row["step"],
+                    "byte": row["byte"],
+                    "state24": row["state24"],
+                    "arch_shell": int(row["arch_shell"]),
+                    "intron": row["intron"],
+                    "family": row["family"],
+                    "micro": row["micro"],
+                    "qxor": row["qxor"],
+                    "chi6": row["chi6"],
+                }
+            )
     return table
 
 
@@ -398,7 +408,9 @@ def psi_analytic(s: float | np.ndarray, g1: float | None = None) -> float | np.n
     return -np.log1p(arg) / g1
 
 
-def dpsi_ds_analytic(s: float | np.ndarray, g1: float | None = None) -> float | np.ndarray:
+def dpsi_ds_analytic(
+    s: float | np.ndarray, g1: float | None = None
+) -> float | np.ndarray:
     """Exact d psi/ds = -1/(s(s - g1))."""
     if g1 is None:
         g1 = dln_g_dpsi()
@@ -657,9 +669,7 @@ def photon_residual_spin(
         return 1e6
     if z2_amp is None:
         z2_amp = helix_z2_activation()
-    h, dh_ds_total, _ = _h_derivs(
-        s, u, u_prime, a_star, theta_o_deg, z2_amp, g1
-    )
+    h, dh_ds_total, _ = _h_derivs(s, u, u_prime, a_star, theta_o_deg, z2_amp, g1)
     f_eff = 1.0 - 2.0 * u - h
     f_eff_prime = -2.0 * u_prime - dh_ds_total
     return s * f_eff_prime - 2.0 * f_eff
@@ -678,9 +688,7 @@ def _spin_photon_bracket(
         g1 = dln_g_dpsi()
     s_a = max(s_schw * 0.98, horizon_s_analytic(g1) * 1.001)
     s_b = min(max(s_schw * 1.35, 4.0), s_max)
-    prev_s, prev_r = s_a, photon_residual_spin(
-        s_a, a_star, theta_o_deg, z2_amp, g1
-    )
+    prev_s, prev_r = s_a, photon_residual_spin(s_a, a_star, theta_o_deg, z2_amp, g1)
     for i in range(1, 49):
         s = s_a + (s_b - s_a) * i / 48
         r = photon_residual_spin(s, a_star, theta_o_deg, z2_amp, g1)
@@ -718,9 +726,7 @@ def find_photon_sphere_spin(
     z2_amp = helix_z2_activation()
     if a_star <= 0.0:
         return photon
-    bracket = _spin_photon_bracket(
-        s_schw, a_star, theta_o_deg, z2_amp, g1, s_max
-    )
+    bracket = _spin_photon_bracket(s_schw, a_star, theta_o_deg, z2_amp, g1, s_max)
     if bracket is None:
         s_ph, u_ph, _ = photon
         b = photon_impact_spin(s_ph, u_ph, a_star, theta_o_deg, z2_amp)
@@ -728,9 +734,7 @@ def find_photon_sphere_spin(
     s_lo, s_hi = bracket
     s_ph = float(
         brentq(
-            lambda s: photon_residual_spin(
-                s, a_star, theta_o_deg, z2_amp, g1
-            ),
+            lambda s: photon_residual_spin(s, a_star, theta_o_deg, z2_amp, g1),
             s_lo,
             s_hi,
         )  # type: ignore[arg-type]

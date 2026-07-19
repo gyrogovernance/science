@@ -99,6 +99,7 @@ rng = random.Random(SEED)
 # I. Carrier CHSH (Boolean/IP extreme)
 # ================================================================
 
+
 def _max_chsh_on_index_set(idx: list[int]) -> dict[str, object]:
     """Boolean CHSH extreme (delegated to shared helper)."""
     return max_chsh_on_index_set(idx)
@@ -141,7 +142,9 @@ def experiment_carrier_chsh() -> dict[str, object]:
         "n_ensembles": len(ensembles),
         "n_masks_per_face": 63,
         "uniform_OMEGA_CHSH_Boolean": uniform["max_CHSH_Boolean"],
-        "uniform_correlators_vanish": bool(abs(cast(float, uniform["max_abs_corr"])) < 1e-9),
+        "uniform_correlators_vanish": bool(
+            abs(cast(float, uniform["max_abs_corr"])) < 1e-9
+        ),
         "ensemble_max_CHSH": summary,
         "ensemble_max_abs_corr": max_abs_corr,
         "classical_bound": 2.0,
@@ -152,6 +155,7 @@ def experiment_carrier_chsh() -> dict[str, object]:
 # ================================================================
 # II. Shell Betti profile and Poincaré duality
 # ================================================================
+
 
 def experiment_shell_betti() -> dict[str, object]:
     """Shell population profile and Poincaré duality check."""
@@ -176,6 +180,7 @@ def experiment_shell_betti() -> dict[str, object]:
 # ================================================================
 # III. Gate F fixed points and Euler characteristic
 # ================================================================
+
 
 def experiment_gate_f_fixedpoints() -> dict[str, object]:
     """Gate F on Omega: count fixed points and 2-cycles."""
@@ -205,6 +210,7 @@ def experiment_gate_f_fixedpoints() -> dict[str, object]:
 # ================================================================
 # IV. Lefschetz numbers of byte operators
 # ================================================================
+
 
 def experiment_lefschetz_bytes() -> dict[str, object]:
     """Lefschetz number L(T_b) = sum_k (-1)^k Fix_k(T_b) for each byte.
@@ -243,18 +249,21 @@ def experiment_lefschetz_bytes() -> dict[str, object]:
     special_bytes = []
     for b in range(256):
         if lefschetz[b]["fixed_total"] > 0:
-            special_bytes.append({
-                "byte": b,
-                "hex": f"0x{b:02X}",
-                "family": lefschetz[b]["family"],
-                "q6": lefschetz[b]["q6"],
-                "q_weight": lefschetz[b]["q6"].bit_count(),
-                "fixed_total": lefschetz[b]["fixed_total"],
-                "L": lefschetz[b]["L"],
-            })
+            special_bytes.append(
+                {
+                    "byte": b,
+                    "hex": f"0x{b:02X}",
+                    "family": lefschetz[b]["family"],
+                    "q6": lefschetz[b]["q6"],
+                    "q_weight": lefschetz[b]["q6"].bit_count(),
+                    "fixed_total": lefschetz[b]["fixed_total"],
+                    "L": lefschetz[b]["L"],
+                }
+            )
 
     # correlate |L| with fixed-point count and transport weight
     qw = np.array([lefschetz[b]["q6"].bit_count() for b in range(256)])
+
     # correlation coefficient (Pearson) between fixed_total and L, and qw and L
     def pearson(x, y):
         if np.std(x) == 0 or np.std(y) == 0:
@@ -291,6 +300,7 @@ def experiment_lefschetz_bytes() -> dict[str, object]:
 # ================================================================
 # V. Dynamical zeta of gate F and depth-4 words
 # ================================================================
+
 
 def experiment_dynamical_zeta(max_n: int = 12) -> dict[str, object]:
     """Dynamical zeta of gate F from fixed-point counts of F^n.
@@ -343,6 +353,7 @@ def experiment_dynamical_zeta(max_n: int = 12) -> dict[str, object]:
 # VI. K4 as Galois group of the family-fiber cover
 # ================================================================
 
+
 def experiment_k4_cover() -> dict[str, object]:
     """Verify the family-fiber cover structure: pi(b) = q6(b) is 4-to-1,
     K4 acts freely and transitively on each fiber."""
@@ -381,14 +392,17 @@ def experiment_k4_cover() -> dict[str, object]:
 # main: dispatch and print
 # ================================================================
 
+
 def _print_carrier_chsh(res: dict) -> None:
     print("\n" + "=" * 5)
     print("I. CARRIER CHSH (BOOLEAN/IP EXTREME, WALSH OBSERVABLES)")
     print("=" * 5)
     print(f"  ensembles:           {res['n_ensembles']}")
     print(f"  masks per face:      {res['n_masks_per_face']}")
-    print(f"  uniform Omega CHSH:  {res['uniform_OMEGA_CHSH_Boolean']:.6f}  "
-          f"(correlators vanish: {res['uniform_correlators_vanish']})")
+    print(
+        f"  uniform Omega CHSH:  {res['uniform_OMEGA_CHSH_Boolean']:.6f}  "
+        f"(correlators vanish: {res['uniform_correlators_vanish']})"
+    )
     print("  ensemble max CHSH Boolean / max|corr|:")
     for name, v in res["ensemble_max_CHSH"].items():
         c = res["ensemble_max_abs_corr"][name]
@@ -418,7 +432,9 @@ def _print_gate_f(res: dict) -> None:
     print(f"  |Omega|:          {res['n_omega']}")
     print(f"  F fixed points:   {res['F_fixed_points']}")
     print(f"  F 2-cycles:       {res['F_two_cycles']}")
-    print(f"  2*cycles+fixed:   {res['2*cycles+fixed']} (==|Omega|: {res['matches_n_omega']})")
+    print(
+        f"  2*cycles+fixed:   {res['2*cycles+fixed']} (==|Omega|: {res['matches_n_omega']})"
+    )
     print(f"  fixed-point-free: {res['fixed_point_free']}")
     print(f"  Lefschetz L(F)=fixed: {res['Lefschetz_L_F']}")
     print(f"  => Euler chi = 0: {res['euler_chi_equals_0']}")
@@ -429,17 +445,27 @@ def _print_lefschetz(res: dict) -> None:
     print("IV. LEFSCHETZ NUMBERS OF BYTE OPERATORS")
     print("=" * 5)
     print(f"  n_bytes:            {res['n_bytes']}")
-    print(f"  L range:            [{res['L_min']:.1f}, {res['L_max']:.1f}]  mean={res['L_mean']:.3f}")
+    print(
+        f"  L range:            [{res['L_min']:.1f}, {res['L_max']:.1f}]  mean={res['L_mean']:.3f}"
+    )
     print(f"  fixed pts range:    {res['fixed_min']}..{res['fixed_max']}")
     print(f"  bytes w/ fixed pts: {res['bytes_with_fixed_points']}")
     print(f"  corr(fixed, L):     {res['corr_fixed_vs_L']}")
     print(f"  corr(qweight, L):   {res['corr_qweight_vs_L']}")
-    print(f"  L constant across bytes: {res['lefschetz_constant']}"
-          + (f"  value={res['constant_L_value']}" if res['constant_L_value'] is not None else ""))
+    print(
+        f"  L constant across bytes: {res['lefschetz_constant']}"
+        + (
+            f"  value={res['constant_L_value']}"
+            if res["constant_L_value"] is not None
+            else ""
+        )
+    )
     print("  special bytes (have fixed points):")
     for sb in res["special_fixed_point_bytes"]:
-        print(f"    byte {sb['hex']} fam={sb['family']} q6=0x{sb['q6']:02X} "
-              f"qw={sb['q_weight']} fixed={sb['fixed_total']} L={sb['L']}")
+        print(
+            f"    byte {sb['hex']} fam={sb['family']} q6=0x{sb['q6']:02X} "
+            f"qw={sb['q_weight']} fixed={sb['fixed_total']} L={sb['L']}"
+        )
     _print_lefschetz_stab(res)
 
 
@@ -453,7 +479,9 @@ def _print_zeta(res: dict) -> None:
     print(f"  predicted 2048:    {res['predicted_exponent_2048']:.1f}")
     print(f"  exponent consistent: {res['exponent_consistent']}")
     print(f"  zeta form: {res['zeta_form']}")
-    print(f"  functional eq Z(1/t)=t^(-4096) Z(t): {res['functional_eq_Z(1/t)=t^(-4096) Z(t)']}")
+    print(
+        f"  functional eq Z(1/t)=t^(-4096) Z(t): {res['functional_eq_Z(1/t)=t^(-4096) Z(t)']}"
+    )
 
 
 # ================================================================
@@ -575,19 +603,24 @@ def experiment_depth4_lefschetz_and_poly() -> dict[str, object]:
         "shell_map_F_preserves_shell": shell_ok_F,
         "F_fixed_points": f_sig.get(1, 0),
         "F_two_cycles": f_exp2,
-        "F_poly_matches_(x^2-1)^2048": (f_exp2 == expected_f_exp and f_sig.get(1, 0) == 0),
+        "F_poly_matches_(x^2-1)^2048": (
+            f_exp2 == expected_f_exp and f_sig.get(1, 0) == 0
+        ),
         "all_words_roots_on_unit_circle": all(
             v["all_roots_unit_modulus"] for v in out.values()
         ),
-        "note": ("Graded Lefschetz + permutation char poly of the depth-4 "
-                 "words. F-cycle poly is (x^2-1)^2048; W2/W2' are shell-swap "
-                 "involutions. All roots on unit circle (RH analogue)."),
+        "note": (
+            "Graded Lefschetz + permutation char poly of the depth-4 "
+            "words. F-cycle poly is (x^2-1)^2048; W2/W2' are shell-swap "
+            "involutions. All roots on unit circle (RH analogue)."
+        ),
     }
 
 
 # ================================================================
 # VIII. Characteristic polynomials of all 256 byte operators
 # ================================================================
+
 
 def experiment_byte_characteristic_polys(
     perms: list[np.ndarray] | None = None,
@@ -631,6 +664,7 @@ def experiment_byte_characteristic_polys(
 # ================================================================
 # VIIb. Depth-4 word Lefschetz across micro-refs
 # ================================================================
+
 
 def experiment_depth4_microrefs(
     micro_refs: list[int] | None = None,
@@ -682,6 +716,7 @@ def experiment_depth4_microrefs(
 # VIIIb. Aggregated byte cycle-structure statistics
 # ================================================================
 
+
 def experiment_byte_cycle_statistics(
     perms: list[np.ndarray] | None = None,
 ) -> dict[str, object]:
@@ -697,12 +732,9 @@ def experiment_byte_cycle_statistics(
         key = tuple(sorted(sig.items()))
         sig_counts[key] += 1
 
-    n_pure_4 = sum(c for key, c in sig_counts.items()
-                     if set(L for L, _ in key) == {4})
-    n_has_fixed = sum(c for key, c in sig_counts.items()
-                       if any(L == 1 for L, _ in key))
-    n_has_2 = sum(c for key, c in sig_counts.items()
-                     if any(L == 2 for L, _ in key))
+    n_pure_4 = sum(c for key, c in sig_counts.items() if set(L for L, _ in key) == {4})
+    n_has_fixed = sum(c for key, c in sig_counts.items() if any(L == 1 for L, _ in key))
+    n_has_2 = sum(c for key, c in sig_counts.items() if any(L == 2 for L, _ in key))
     return {
         "distinct_cycle_structures": len(sig_counts),
         "pure_4cycle_bytes": n_pure_4,
@@ -717,6 +749,7 @@ def experiment_byte_cycle_statistics(
 # ================================================================
 # VIIIc. Dynamical zeta of a representative byte
 # ================================================================
+
 
 def experiment_byte_zeta(
     byte: int = 0xA8,
@@ -768,6 +801,7 @@ def experiment_byte_zeta(
 # main: dispatch and print
 # ================================================================
 
+
 def _print_k4(res: dict) -> None:
     print("\n" + "=" * 5)
     print("VI. K4 AS GALOIS GROUP OF FAMILY-FIBER COVER")
@@ -788,7 +822,9 @@ def _print_depth4(res: dict) -> None:
         print(f"  {name}:")
         print(f"    cycle signature: {d['cycle_signature']}")
         print(f"    fixed/shell:     {d['fixed_per_shell']}")
-        print(f"    Lefschetz L:     {d['Lefschetz_L']}  (mod 12 = {d['Lefschetz_mod12']})")
+        print(
+            f"    Lefschetz L:     {d['Lefschetz_L']}  (mod 12 = {d['Lefschetz_mod12']})"
+        )
         print(f"    poly deg:        {d['poly_deg']}")
         print(f"    poly factors:    {d['poly_factor_exponents']}")
         print(f"    roots unit mod:  {d['all_roots_unit_modulus']}")
@@ -801,7 +837,9 @@ def _print_depth4(res: dict) -> None:
     print(f"  F poly == (x^2-1)^2048: {res['F_poly_matches_(x^2-1)^2048']}")
     print(f"  all words roots on UC:  {res['all_words_roots_on_unit_circle']}")
     print(f"  note: {res['note']}")
-    print(f"  shell grading note: W2, W2', F share L=0, (x^2-1)^2048, zeta=(1-t^2)^-2048")
+    print(
+        f"  shell grading note: W2, W2', F share L=0, (x^2-1)^2048, zeta=(1-t^2)^-2048"
+    )
     print(f"    => shell grading cannot separate pole-swap (W2) from Z2 flip (F);")
     print(f"       a finer (shell, Z2-sheet) or chirality grading is needed.")
 
@@ -821,6 +859,7 @@ def _print_byte_poly(res: dict) -> None:
 # ================================================================
 # IX. Complementarity invariant (Poincaré duality, h + ab = 12)
 # ================================================================
+
 
 def experiment_complementarity() -> dict[str, object]:
     """Verify horizon_distance + ab_distance = 12 on all Omega states.
@@ -847,9 +886,7 @@ def experiment_complementarity() -> dict[str, object]:
         "constant_sum": max_sum == min_sum,
         "sum_equals_12": inv_ok,
         "invariant_check": all(
-            complementarity_invariant(
-                (s >> 12) & LAYER_MASK_12, s & LAYER_MASK_12
-            )
+            complementarity_invariant((s >> 12) & LAYER_MASK_12, s & LAYER_MASK_12)
             for s in OMEGA_STATES_4096
         ),
     }
@@ -858,6 +895,7 @@ def experiment_complementarity() -> dict[str, object]:
 # ================================================================
 # X. Byte T^2 fixed points vs Lefschetz prediction
 # ================================================================
+
 
 def experiment_byte_square_fixedpoints(
     byte: int = 0xA8,
@@ -895,6 +933,7 @@ def experiment_byte_square_fixedpoints(
 # XI. W2 / W2' dynamical zeta identity
 # ================================================================
 
+
 def experiment_word_zeta() -> dict[str, object]:
     """Verify zeta of W2 and W2' matches (1 - t^2)^{-2048}.
 
@@ -908,7 +947,7 @@ def experiment_word_zeta() -> dict[str, object]:
         perm = _word_permutation(word_fn(0), idx_of)
         sig = _cycle_signature(perm)
         f2 = sig.get(2, 0)
-        ok = (f2 == OMEGA_SIZE // 2 and sig.get(1, 0) == 0)
+        ok = f2 == OMEGA_SIZE // 2 and sig.get(1, 0) == 0
         out[name] = {
             "cycle_signature": dict(sig),
             "two_cycles": f2,
@@ -925,6 +964,7 @@ def experiment_word_zeta() -> dict[str, object]:
 # ================================================================
 # XII. Torsion vs Hilbert spectrum inclusion
 # ================================================================
+
 
 def experiment_torsion_vs_hilbert_spectrum(byte: int = 0xA8) -> dict[str, object]:
     """Compare torsion-layer and Hilbert-layer eigenvalue spectra.
@@ -959,14 +999,17 @@ def experiment_torsion_vs_hilbert_spectrum(byte: int = 0xA8) -> dict[str, object
         "torsion_orders": sorted(torsion_orders),
         "hilbert_orders": sorted(hilb_orders),
         "torsion_subset_hilbert": inclusion,
-        "note": ("Byte permutation roots are roots of unity; the Hilbert lift "
-                 "contains the torsion spectrum as a sub-spectrum."),
+        "note": (
+            "Byte permutation roots are roots of unity; the Hilbert lift "
+            "contains the torsion spectrum as a sub-spectrum."
+        ),
     }
 
 
 # ================================================================
 # XIII. K4 group cohomology H^1 (family gauge action)
 # ================================================================
+
 
 def experiment_k4_cohomology_h1() -> dict[str, object]:
     """Group cohomology H^1(K4, GF(2)^6) with trivial K4-module.
@@ -996,9 +1039,7 @@ def experiment_k4_cohomology_h1() -> dict[str, object]:
                     if g == e:
                         continue
                     # K4 = <sigma=(1,0), tau=(0,1)>; z(a,b) = a*z(s) + b*z(t)
-                    z[g] = (
-                        ((v_sigma if a else 0) ^ (v_tau if b else 0)) & 0x3F
-                    )
+                    z[g] = ((v_sigma if a else 0) ^ (v_tau if b else 0)) & 0x3F
             ok = True
             for g in k4:
                 for h in k4:
