@@ -2,11 +2,11 @@
 
 **Citation:** Korompilias, B. (2025). Common Governance Model: Mathematical Physics Framework. Zenodo. https://doi.org/10.5281/zenodo.17521384
 
-**Reproducibility:** `experiments/hqvm_cgm_trestleboard_results.txt`. Scripts: `hqvm_cgm_trestleboard_1.py` through `hqvm_cgm_trestleboard_4.py`, `hqvm_cgm_trestleboard_common.py`, `hqvm_cgm_trestleboard_run.py`. External data catalogs: `data/catalogs/ensdf/` and `data/catalogs/fusion/` (SOURCE files in each directory). Local PDF copies of primary isomer references: `docs/references/` (`SOURCE_Th229m.txt`, `SOURCE_U235m.txt`).
+**Reproducibility:** `experiments/hqvm_cgm_trestleboard_results.txt`. Scripts: `hqvm_cgm_trestleboard_1.py` through `hqvm_cgm_trestleboard_5.py`, `hqvm_cgm_trestleboard_common.py`, `hqvm_cgm_trestleboard_run.py`. External data catalogs: `data/catalogs/ensdf/` and `data/catalogs/fusion/` (SOURCE files in each directory). Local PDF copies of primary isomer references: `docs/references/` (`SOURCE_Th229m.txt`, `SOURCE_U235m.txt`).
 
 **Subject classes (arXiv-style):** nucl-th; nucl-ex; physics.plasm-ph; math-ph
 
-**Keywords:** Common Governance Model, hQVM trestleboard, nuclear isomer, Th-229m, Delta-ruler, fusion S-factor, percolation hierarchy, alpha decay, beta decay, Coulomb barrier
+**Keywords:** Common Governance Model, hQVM trestleboard, nuclear isomer, Th-229m, Delta-ruler, fusion S-factor, percolation hierarchy, alpha decay, beta decay, Coulomb barrier, nuclear magic numbers
 
 ## 1. Scope and Claims
 
@@ -18,6 +18,7 @@ This document demonstrates that a discrete geometric framework predicts specific
 *   The deuteron binding energy is predicted to be 2.2242 MeV. The measured value is 2.2240 MeV (relative error 8.89e-05).
 *   The ruler unit that governs these nuclear scales is derived from the W and Z boson mass ratio. Two independent derivations yield this unit with an absolute agreement of 8.34e-10.
 *   An algebraic mapping of nuclear quantum numbers preserves chirality shell and parity across 314/314 alpha parents and 801/801 beta parents in the IAEA LiveChart catalog.
+*   The seven canonical nuclear magic numbers 2, 8, 20, 28, 50, 82, and 126 emerge as large-gap closures in a Nilsson spectrum whose spin-orbit and deformation couplings are fixed by the same geometric constants chain that sets the electroweak ruler.
 *   The Coulomb barriers for seven fusion fuels map to a single structural rung on this ruler. Known resonances for five of these fuels align with structural percolation thresholds.
 
 These results follow from the Common Governance Model (CGM), a Hilbert-style axiomatization of fundamental physics and information science. CGM begins from a single foundational principle about ancestry preservation and develops subsequent structure through a four-stage sequence of recursive operations. Within that construction, the Holonomic Quantum Virtual Machine (hQVM) is the discrete realization of CGM on a finite 4096-state register. This executable kernel supplies exact combinatorial, spectral, and percolation data with no freely adjustable parameters.
@@ -657,9 +658,75 @@ C(6) = 1
 
 The Fermi proxy is `|M_F|^2 = C(0) = 7`. The Gamow-Teller proxy is `|M_GT|^2 = C(1) = 28/9`. The forbidden ladder is `C(3)/C(1) = 117/175` and `C(5)/C(1) = 1`. The alpha hindrance is `H_L = C(2)/C(0) = 1/3`, the discrete result for an `L = 2` transition. These are kernel rationals. The Fermi integral `f(Z, Q)` and the superallowed `ft` that convert them to a half-life are ordinary nuclear physics, as demonstrated in the tritium estimate above.
 
-### 6.6 Magic Numbers as Structural Coincidence
+### 6.6 Nuclear Magic Numbers from the Carrier Algebra
 
-The shell capacities `C(6, s) * 64` are `[64, 384, 960, 1280, 960, 384, 64]`, with cumulative sums `[64, 448, 1408, 2688, 3648, 4032, 4096]`. Comparing the nuclear magic numbers `[2, 8, 20, 28, 50, 82, 126]` to the structural set (capacities, cumulative sums, and code-gap arithmetic `{C1, C2, C3, WZ_gap = 9, horizon = 64, Ω = 4096, M_shell = 192, predecessor horizons 24, 192, 1536}`) yields one coincidence: 20 lands on a code-gap arithmetic value, while the other six magic numbers fall outside any CGM structural limit. The comparison is recorded as a structural parallel.
+Nuclear magic numbers are nucleon counts at which a closed shell forms in an independent-particle description of the nucleus. In this subsection a closed shell is identified by a large energy gap between the highest occupied single-particle level and the lowest unoccupied level in a spectrum built from the carrier algebra. The single-particle Hamiltonian uses coupling constants already fixed by kernel invariants. The seven canonical spherical magic numbers 2, 8, 20, 28, 50, 82, and 126 emerge as large-gap closures in the mixed Nilsson spectrum at the derived point `(κ, μ) = (1/32, 1/5)`.
+
+The Mayer-Jensen shell model accounts for the harmonic oscillator closures 2, 8, and 20 through independent-particle filling of a central potential. The additional closures 28, 50, 82, and 126, often called intruder magic numbers, require a spin-orbit term strong enough to place the aligned branch `j = l + 1/2` below `j = l − 1/2`. In the Nilsson deformed oscillator, quadrupole mixing enters through the deformation weight `μ`, and both `κ` and `μ` are ordinarily treated as continuous parameters fit to reproduce the observed closure set. The present construction keeps the standard Nilsson Hamiltonian form but derives the sign of the spin-orbit term, the values of `κ` and `μ`, and the Δn = 2 mixing rule from the SE(3) carrier algebra. The spin-orbit inversion is therefore read as a kinematic consequence of left chirality on the discrete spatial shadow, not as an independently postulated dynamical coupling tuned after the fact.
+
+The six payload bits of GENE_Mac are the six generators of the Euclidean group SE(3) in three dimensions. Three bits belong to Frame 0 and carry the rotational content of the algebra. Three bits belong to Frame 1 and carry the translational content. Frame 1 therefore supplies the three spatial modes of a three-dimensional harmonic oscillator. A shell of total quantum number `n` contains `(n+1)(n+2)/2` spatial orbitals. Frame 0 supplies spin one-half, so each spatial orbital `(n, l)` splits into the two branches `j = l + 1/2` and `j = l − 1/2` with degeneracy `2j+1`, subject to the oscillator selection rule that `l` and `n` share parity.
+
+The CGM framework assigns a preferred orientation to this ordering. The Common Source stage introduces a left-handed bias that fixes chirality and ancestry throughout the construction. Within each oscillator shell, the sign of that bias determines which `j` branch is filled first when levels are ordered by increasing energy. Under the left-chiral assignment required by the CS axiom, the aligned branch `j = l + 1/2` sits lower than `j = l − 1/2`. This ordering is consistent with the same left-biased ancestry preservation that governs the decay routing of Sections 6.2 through 6.5. When chirality is reversed, the intruder set 28, 50, 82, and 126 no longer appears among the large-gap closures, and only the harmonic oscillator remnant 2, 8, and 20 remains dominant in the gap ranking.
+
+Before the energy spectrum is evaluated, the left-chiral fill order provides a structural guide to where intruder closures must land. If the highest-`j` subshell within each major shell is filled first, the cumulative counts 28, 50, 82, and 126 appear together with the oscillator closures 2, 8, and 20. Under right chirality the highest-`j` subshell is filled last and those intruder counts move to the full-shell boundaries 40, 70, 112, and 168. This ordering exercise anticipates the intruder set but does not replace the gap definition. The authoritative identification of a magic closure is a large adjacent gap in the filled single-particle spectrum. The canonical set therefore splits into a chirality-invariant harmonic-oscillator subset {2, 8, 20} and a chirality-selective intruder subset {28, 50, 82, 126}.
+
+The kernel exposes the radial and angular content on which the spectrum acts. The six-bit chirality register has popcount equal to the radial shell index `s` running from 0 to 6. The population of shell `s` on the carrier is `64·C(6, s)`, where `C(6, s)` is the binomial census of the Hamming scheme H(6, 2). That census satisfies `|Shell_s| = |Shell_{6−s}|`. Within each shell the in-shell multiplicity is 64, the discrete counterpart of angular multiplicity at fixed radial shell. Gate F, introduced in Section 6.2, preserves the radial shell index while exchanging the two carrier sheets, and therefore acts within the angular coordinate without changing the radial census.
+
+The Nilsson Hamiltonian is written in oscillator units with `ℏω` set to unity,
+
+```
+E(n, l, j) = (n + 3/2) − κ ⟨L·S⟩_j − κ μ ⟨l²⟩
+```
+
+The oscillator quantum number `n` is the major shell index. The orbital angular momentum quantum number `l` satisfies the oscillator parity constraint that `l` and `n` share parity and runs over the allowed values in shell `n`. The total angular momentum quantum number `j` takes the values `l + 1/2` and, when `l ≥ 1/2`, `l − 1/2`. The spin-orbit expectation value is
+
+```
+⟨L·S⟩_j = ½[j(j+1) − l(l+1) − 3/4]
+```
+
+where `j` and `l` are the total and orbital angular momentum quantum numbers of the subshell. The quadrupole deformation invariant is
+
+```
+⟨l²⟩ = l(l+1)
+```
+
+where `l` is again the orbital angular momentum quantum number.
+
+The parameter `κ` sets the overall scale of the spin-orbit and deformation terms in oscillator units. The parameter `μ` sets the relative weight of the deformation term. The CS axiom fixes the sign of the spin-orbit term so that the aligned branch `j = l + 1/2` lies lower under left chirality. The deformation weight is identified with the reciprocal of the symmetric trace-free bulk dimension, which equals five, giving `μ = 1/5`. That dimension is the five independent spatial modes of the `l = 2` quadrupole on the SE(3) shadow. The spin-orbit scale is identified with the BU dual-pole monodromy expressed as a fraction of a full turn. Writing `τ = δ_BU/(2π)`, the coupling is taken as the 256-tick turn quantization of `τ`, where `Q_256` denotes rounding to the nearest 1/256-turn tick, which gives `κ = Q_256(τ) = 1/32`. Both assignments use only quantities already fixed by the CGM constants chain of Section 2. The same STF bulk dimension enters the electroweak mass expansion through the `1/√5` equipartition factor of Section 2.1, and the same monodromy ratio `δ_BU/m_a` that defines the aperture gap Δ also supplies τ. The couplings that govern shell closure at `(Z, N) = (82, 126)` therefore belong to the same geometric ratio system as the W/Z mass split, not to a separate nuclear parameter set.
+
+Two spectra are evaluated at this anchor. In the diagonal spectrum each orbital receives the energy above without cross-shell mixing. In the mixed spectrum the quadrupole operator introduces Δn = 2 couplings between orbitals of the same `l`, `j`, and `m` whose major quantum numbers differ by two, where `m` is the magnetic substate label, the projection of `j` onto a fixed axis. The mixed spectrum is solved on the `m`-substate basis so that level counting is explicit after diagonalization. A closure is recorded when an adjacent gap exceeds 1.8 times the local median spacing, and gap prominence ranks the largest closures relative to their neighbors.
+
+The diagonal spectrum yields strong gaps at the harmonic oscillator closures 2, 8, 20, 40, 70, and 112. It does not promote the intruder closures 28, 50, 82, and 126 to the dominant gaps. The mixed spectrum changes this ranking. At `(κ, μ) = (1/32, 1/5)` every canonical magic number appears in the closure set under the gap criterion, and the four intruder numbers move from subdominant structure in the diagonal ordering to dominant gaps in the mixed prominence ranking. Intruder prominence is therefore mixing-generated at this anchor: the diagonal central-plus-spin-orbit model alone does not place them among the top closures, while Δn = 2 quadrupole mixing does.
+
+The absolute spacing of the oscillator steps is carried by the strong bare scale
+
+```
+E_str = v·Δ³ ≈ 2.18 MeV
+```
+
+introduced in Section 4.3, where `v` is the electroweak vacuum expectation value and Δ is the aperture gap of Section 2. The BU aperture fraction Δ supplies a natural fractional splitting scale on that anchor, which corresponds to an energy scale of order `E_str·Δ ≈ 45 keV` when expressed as a single factor on the strong bare scale.
+
+Empirical checks are consistent with this reading. Every doubly magic nucleus in the standard list has ground-state spin-parity 0+ and a chirality-shell index `|N − Z| mod 7` that lies in the central or paired shells of the `C(6, ·)` census. For lead isotopes near `Z = 82`, the IAEA LiveChart catalog reports a binding energy per nucleon. Total binding is reconstructed as
+
+```
+B_tot(Z, N) = binding(Z, N) · (Z + N)
+```
+
+where `Z` is the proton number, `N` is the neutron number, and `binding(Z, N)` is the catalog entry in keV per nucleon. The two-neutron separation energy is
+
+```
+S_{2n}(Z, N) = B_tot(Z, N) − B_tot(Z, N − 2)
+```
+
+and the curvature indicator is
+
+```
+δ_{2n}(Z, N) = S_{2n}(Z, N) − S_{2n}(Z, N + 2)
+```
+
+with `S_{2n}` and `δ_{2n}` reported in MeV. The `S_{2n}` curve falls and `δ_{2n}` peaks at `N = 126`, with `δ_{2n} ≈ 5.0 MeV` at that closure, which is the expected shell signature for a neutron magic number. Extending the mixed Nilsson basis to twelve major shells places closure candidates in the superheavy region that include 114, 120, 126, and 184.
+
+Future analyses may attach residual nucleon-nucleon interactions, pairing correlations, and collective degrees of freedom to this single-particle skeleton. A full conversion of the atomic spectroscopic catalog into the same closure language remains a separate trestleboard task aligned with Section 6.7. At the CGM anchor the closure pattern separates three contributions. The harmonic-oscillator closures are kinematic. The intruder closures are chirality-selective in fill order and in the spectral sign of the spin-orbit term. Their dominance in the gap ranking is mixing-generated. The couplings `κ` and `μ` are fixed by kernel invariants rather than fit to the magic numbers. Together these readings place the seven canonical magic numbers as large-gap closures of the same carrier algebra that routes alpha and beta decay.
 
 ### 6.7 Atomic Spectroscopy Parallel
 

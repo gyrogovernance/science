@@ -8,8 +8,9 @@ Report (sections 0–11). Engine core is hqvm_cgm_trestleboard_1.py; nuclear
 dynamics are NuclearBoard in hqvm_cgm_trestleboard_2.py; the nuclear
 prediction + bulk census report is hqvm_cgm_trestleboard_3.py (this driver
 calls its census_main); frontier structural + engineering report is
-hqvm_cgm_trestleboard_4.py (this driver calls its frontier_main). Shared
-constants in hqvm_cgm_trestleboard_common.py.
+hqvm_cgm_trestleboard_4.py (this driver calls its frontier_main); magic-number
+derivation is hqvm_cgm_trestleboard_5.py (this driver calls its magic_main).
+Shared constants in hqvm_cgm_trestleboard_common.py.
 
 Companion notes: hqvm_cgm_trestleboard_notes.txt.
 """
@@ -79,6 +80,7 @@ from hqvm_cgm_trestleboard_4 import (
     fusion_resonance_map,
     fusion_resonance_null,
 )
+from hqvm_cgm_trestleboard_5 import magic_main
 
 
 def _shell_of(state24: int) -> int:
@@ -1094,6 +1096,7 @@ def _run() -> None:
         report_main(**run_kw)
         census_main()
         frontier_main()
+        magic_main()
     else:
         buf = io.StringIO()
         orig_stdout = sys.stdout
@@ -1102,6 +1105,7 @@ def _run() -> None:
             report_main(**run_kw)
             census_main()
             frontier_main()
+            magic_main()
         finally:
             sys.stdout = orig_stdout
         RESULTS_PATH.write_text(buf.getvalue(), encoding="utf-8")
