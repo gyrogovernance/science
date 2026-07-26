@@ -4,6 +4,28 @@ All notable changes to the CGM Experimental Framework will be documented in this
 
 ---
 
+## [1.3.9-CGM_hQVM_YM-Mass-Gap] - 2026-07-20 to 2026-07-26
+
+The trestleboard release showed that one aperture parameter organizes electroweak, nuclear, and fusion scales on a shared logarithmic ruler. This release asks what that same aperture forces in pure gauge theory. The Clay Yang–Mills existence and mass-gap problem is treated as the external continuum standard in which to express a deeper CGM invariant: the residual defect left when sequential transformations must preserve a common origin and still produce distinguishable outcomes. Existence appears as operational identity of the vacuum. Emergence appears as individuality of excitations above that vacuum. The aperture Δ ≈ 0.0207 is the residual that makes both requirements compatible under depth-four closure.
+
+The construction begins on the finite 4096-state hQVM carrier rather than on the continuous connection quotient. Gauge-invariant observables are oriented shadows of that carrier. The canonical state is fixed by the CGM axioms, lifted by GNS, embedded in finite Wilson charts, and packaged toward continuum spacetime by the polar–Hopf chart of the QuBEC occupation measure. Unoriented averaging collapses the curvature spectrum to a universal half-gap shadow. Oriented retention of the transcription reference yields the physical aperture floor. On the admissible Hopf-oriented quotient the proposed continuum mass readout for the saturated grade-2 curvature multiplet is m_gap = C₂ · v · Δ² ≈ 1.582 GeV, in the lattice light-scalar glueball window. Finite carrier identities are unconditional. Continuum claims are stated with an explicit dependency chain from the local net through OS reconstruction to identification of the physical excitation.
+
+### Added
+
+- `experiments/hQVM_CGM_YM_Gap/Yang_Mills_Mass_Gap_Solution.md`: aperture-first mass-gap construction, CGM foundations, finite carrier and QuBEC measure, GNS and OS reconstruction, Hopf continuum packaging, positivity and scale of the gap, axiomatic scorecard, computational certificate appendix.
+- `experiments/hQVM_CGM_YM_Gap/Yang_Mills_Mass_Gap_1.py` through `_5.py`, `Yang_Mills_Mass_Gap_common.py`, `Yang_Mills_Mass_Gap_run.py`, and `Yang_Mills_Mass_Gap_results.txt`: carrier and Wilson-chart certificates, OS Gram checks, plaquette and transversality gates, Route A / Route B mass readouts.
+- `experiments/hQVM_CGM_YM_Gap/README.md`: experiment map and run instructions.
+
+### Results
+
+- Oriented aperture Δ = 1 − δ_BU / m_a ≈ 0.02069955, with discrete anchors at 5/256 and depth-four alignment 48 · Δ ≈ 1.
+- Unoriented shadow lock Δ_W(n) = n / (2(n − 1)) → 1/2, forming the carrier-level dichotomy with the oriented aperture regime.
+- Carrier commutator defect: commuting fraction 1/64, defect spectrum binomial in the six transport modes, grade-2 multiplicity C₂ = 15.
+- Route A continuum mass readout m_gap = 15 · v · Δ² ≈ 1.582 GeV. Route B CS-normalized cross-check ≈ 1.662 GeV (relative deviation ≈ 4.76%).
+- Defining Q₈ Wilson chart and Aut(Q₈) symmetry certificates, OS Gram positivity on audited finite charts, and Hopf-oriented packaging of the QuBEC measure as the continuum reading of the finite carrier.
+
+---
+
 ## [1.3.8-CGM_hQVM_Trestleboard] - 2026-07-17 to 2026-07-20
 
 Compact geometry and percolation fixed the electroweak ruler and the coverage hierarchy on the hQVM kernel. This release carries that same discrete geometry into nuclear structure and fusion phenomenology. Electroweak masses, nuclear binding energies, isomeric excitations, Coulomb barriers, and nuclear shell closures are placed on one logarithmic energy coordinate whose spacing unit is the aperture gap Δ recovered from the W and Z mass ratio. Three readout procedures, the Level, the Square, and the Compass, locate energies, report percolation coverage, and trace explicit move sequences between scales. The shared workspace is the trestleboard.

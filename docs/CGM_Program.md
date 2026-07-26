@@ -23,6 +23,8 @@
   - [5.5 Gravitational Coupling and Nonlinear Continuum](#55-gravitational-coupling-and-nonlinear-continuum)
   - [5.6 Wavefunction Structure and the Fiber Bundle Byte](#56-wavefunction-structure-and-the-fiber-bundle-byte)
   - [5.7 Electroweak Mass Spectrum from Compact Geometry](#57-electroweak-mass-spectrum-from-compact-geometry)
+  - [5.8 Nuclear Structure on the Shared Δ-Ruler](#58-nuclear-structure-on-the-shared-δ-ruler)
+  - [5.9 Yang–Mills Mass Gap as Aperture Readout](#59-yangmills-mass-gap-as-aperture-readout)
 - [6. Cosmological Observations and Testable Predictions](#6-cosmological-observations-and-testable-predictions)
   - [6.1 The CMB as a Residual Observational Field](#61-the-cmb-as-a-residual-observational-field)
   - [6.2 Cosmic Multiplicity and the Illusion of Expansion](#62-cosmic-multiplicity-and-the-illusion-of-expansion)
@@ -43,6 +45,8 @@ This document serves as a high-level guide to the entire CGM research program, w
 -   **The emergence of three-dimensional space** with six degrees of freedom as a logical necessity.
 -   **The geometric origin of physical constants**, including the fine-structure constant, Newton's constant, and electroweak particle masses.
 -   **A complete gravitational derivation**, from the CGM hQVM implementation through nonlinear continuum predictions (horizon, photon sphere, perihelion, shadows).
+-   **Nuclear structure and fusion phenomenology** on the same Δ-ruler that places electroweak masses, including isomer, binding, decay routing, and magic-number closures.
+-   **The Yang–Mills mass gap as continuum readout of the aperture**, expressing identity of the vacuum and individuality of excitations under depth-four closure in the external Clay axiomatic standard.
 -   **A new perspective on cosmology**, where the universe is the interior of a Planck-scale black hole and cosmic expansion is an optical illusion.
 -   **A resolution to fundamental problems in physics**, such as the cosmological constant problem, the Hubble tension, and the nature of quantum gravity.
 -   **A formal theory of intelligence**, including quantitative metrics for AI alignment and a constructive model (GyroSI) of recursive intelligence.
@@ -142,7 +146,7 @@ The framework reveals a rich hierarchy of monodromy values, which represent the 
     -   **2.07% Dynamic Aperture:** The residual oscillation amplitude enabling interaction and observation.
 -   **Monodromy Hierarchy:** A consistent scale of memory effects is observed, from the elementary `ω(ONA↔BU) = 0.097671 rad` to the system-level `4-leg toroidal holonomy = 0.862833 rad`. The exact equality `δ_BU = 8-leg holonomy` provides a powerful internal consistency check.
 
-**The aperture gap Δ and the mass coordinate ruler.** The aperture gap Δ ≈ 0.0207 is the small parameter of the framework. It measures the fractional shortfall of actual closure relative to perfect closure. Because Δ is small, it serves as a natural expansion parameter: physical quantities (masses, couplings, corrections) can be expressed as power series in Δ, analogous to how perturbative expansions use a small coupling constant. The coefficients of these expansions are fixed rational numbers from the kernel's combinatorics, not fitted parameters. A "tick" is one unit on the Δ-ruler, corresponding to a multiplicative factor of 2^Δ ≈ 1.0145 in energy.
+**The aperture gap Δ and the mass coordinate ruler.** The aperture gap Δ ≈ 0.0207 is the small parameter of the framework. It measures the fractional shortfall of actual closure relative to perfect closure. Because Δ is small, it serves as a natural expansion parameter: physical quantities (masses, couplings, corrections) can be expressed as power series in Δ, analogous to how perturbative expansions use a small coupling constant. The coefficients of these expansions are fixed rational numbers from the kernel's combinatorics, not fitted parameters. A "tick" is one unit on the Δ-ruler, corresponding to a multiplicative factor of 2^Δ ≈ 1.0145 in energy. The same aperture that spaces the electroweak and nuclear rulers forces the oriented spectral floor of the Yang–Mills mass-gap construction (Section 5.9).
 
 ### 4.3 Geometric Coherence and Angular Harmonics
 
@@ -247,6 +251,18 @@ Masses are placed on a logarithmic ruler whose tick spacing is the aperture gap 
 -   **Quark generation pattern (scheme dependent):** Under the mass conventions used in the compact-geometry analysis, the six quark masses fall on an integer-spaced ladder in the framework's logarithmic mass coordinate, grouping naturally into three generation pairs.
 -   **Lepton closure:** Lepton coordinates close via a unique horizon-wrap path (5, 8, 14) among 680 candidates.
 
+### 5.8 Nuclear Structure on the Shared Δ-Ruler
+
+Compact geometry and percolation fix the electroweak ruler and the coverage hierarchy on the hQVM kernel. The trestleboard analysis carries that same discrete geometry into nuclear structure and fusion phenomenology. Full write-up: [Analysis_hQVM_CGM_Trestleboard](Findings/Analysis_hQVM_CGM_Trestleboard.md). Verification: `hqvm_cgm_trestleboard_run.py` (`_1.py` through `_5.py`).
+
+Electroweak masses, nuclear binding energies, isomeric excitations, Coulomb barriers, and nuclear shell closures share one logarithmic energy coordinate whose spacing unit is the aperture gap Δ. The forced nuclear class predicts the Th-229m optical isomer and the strong bare scale plus tensor correction reconstructs the deuteron binding energy, both with relative errors near 10⁻⁴ and with no free nuclear parameters. Alpha and beta transitions act as carrier words that preserve chirality shell and shell-parity across the IAEA LiveChart ground-state census. Fusion barriers for seven fuels land on the strong-family rung of the ruler. The same carrier algebra derives the seven canonical magic numbers 2, 8, 20, 28, 50, 82, and 126 as large-gap closures in a mixed Nilsson spectrum whose couplings are fixed by the BU monodromy and STF bulk dimension.
+
+### 5.9 Yang–Mills Mass Gap as Aperture Readout
+
+The Clay Yang–Mills existence and mass-gap problem supplies the external continuum standard in which to express the aperture as a spectral floor. Full write-up: [Yang_Mills_Mass_Gap_Solution.md](../experiments/hQVM_CGM_YM_Gap/Yang_Mills_Mass_Gap_Solution.md). Verification: `experiments/hQVM_CGM_YM_Gap/Yang_Mills_Mass_Gap_run.py` (`_1.py` through `_5.py`).
+
+Existence in the model is preservation of a common origin under transformation, recorded as operational identity of the vacuum. Emergence is the production of distinguishable outcomes above that origin, recorded as individuality of excitations. The aperture Δ ≈ 0.0207 is the residual defect that makes identity and individuality compatible under depth-four closure. The construction defines the canonical state on the finite 4096-state carrier, lifts it by GNS, embeds finite Wilson charts, and packages continuum spacetime by the polar–Hopf chart of the QuBEC occupation measure. Unoriented averaging collapses curvature to a universal half-gap shadow. Oriented retention of the transcription reference yields the physical aperture floor. On the admissible Hopf-oriented quotient the proposed continuum mass readout for the saturated grade-2 curvature multiplet is m_gap = C₂ · v · Δ² ≈ 1.582 GeV, in the lattice light-scalar glueball window. Finite carrier and Wilson-chart identities are unconditional. Continuum claims are stated with an explicit dependency chain from the local net through OS reconstruction to identification of the physical excitation.
+
 ## 6. Cosmological Observations and Testable Predictions
 
 ### 6.1 The CMB as a Residual Observational Field
@@ -297,19 +313,23 @@ The repository currently contains:
 
 | Measure | Count |
 |---------|------:|
-| Analysis write-ups (`docs/Findings/Analysis_*.md`) | 29 |
-| Runnable experiment scripts (`experiments/*.py`) | 66 |
-| hQVM physics scripts (`experiments/hqvm_*.py`) | 22 |
+| Analysis write-ups (`docs/Findings/Analysis_*.md`) | 33 |
+| Runnable experiment scripts (`experiments/`, excl. tests) | 105 |
+| hQVM physics scripts (`experiments/hqvm_*.py`) | 41 |
 | Shared library and kernel modules (`experiments/`) | 7 |
 | hQVM verified features (Tiers A-C) | 243 |
-| Python in `experiments/` (all files) | 48,700 lines |
+| Python in `experiments/` (all files) | 73,000 lines |
 
-Scripts cover gravity, electroweak mass geometry, fine structure, quantum gravity, CMB data checks, axiomatization, Hilbert space representation, monodromy, energy scales, black-hole cosmology, and related topics. Each row below is the single entry point for that topic.
+Scripts cover gravity, the Yang–Mills mass-gap readout, nuclear structure, electroweak mass geometry, fine structure, quantum gravity, CMB data checks, axiomatization, Hilbert space representation, monodromy, energy scales, black-hole cosmology, and related topics. Each row below is the single entry point for that topic.
 
 | Topic | Analysis | Code |
 |-------|----------|------|
 | Gravity: discrete state geometry and nonlinear continuum | [Analysis_Gravity](Findings/Analysis_Gravity.md) | `hqvm_gravity_common.py`, `hqvm_gravity_analysis_1.py` through `10.py`, `hqvm_wavefunction_1.py`, `hqvm_wavefunction_2.py`. Run: `python experiments/hqvm_gravity_runner.py` |
+| Yang–Mills mass gap from the CGM aperture; identity/individuality under depth-four closure | [Yang_Mills_Mass_Gap_Solution.md](../experiments/hQVM_CGM_YM_Gap/Yang_Mills_Mass_Gap_Solution.md) | `experiments/hQVM_CGM_YM_Gap/Yang_Mills_Mass_Gap_run.py` (`_1.py`–`_5.py`) |
+| Nuclear isomer, deuteron, decay census, fusion map, magic numbers on the shared Δ-ruler | [Analysis_hQVM_CGM_Trestleboard](Findings/Analysis_hQVM_CGM_Trestleboard.md) | `hqvm_cgm_trestleboard_run.py` (`_1.py`–`_5.py`) |
 | Wavefunction: fiber bundle structure of the byte | [Analysis_hQVM_Wavefunction](Findings/Analysis_hQVM_Wavefunction.md) | `hqvm_wavefunction_kernel.py`, `hqvm_wavefunction_1.py`, `hqvm_wavefunction_2.py` |
+| Generator-restricted percolation; Square-Root Cluster Theorem | [Analysis_hQVM_Percolation](Findings/Analysis_hQVM_Percolation.md) | `hqvm_percolation_analysis_run.py` (`_1.py`–`_5.py`) |
+| Cohomology layer: parity obstruction, shell grading, Grothendieck/CHSH comparison | [Analysis_hQVM_Cohomology](Findings/Analysis_hQVM_Cohomology.md) | `hqvm_Cohomology_analysis_run.py` (`_1.py`–`_4.py`) |
 | Electroweak mass spectrum | [Analysis_Compact_Geometry](Findings/Analysis_Compact_Geometry.md) | `hqvm_compact_geom_core.py`, `hqvm_compact_geom_kernel.py`, `hqvm_compact_geom_report.py`, `hqvm_compact_geom_derivations.py` |
 | Fine-structure constant | [Analysis_Fine_Structure](Findings/Analysis_Fine_Structure.md) | `cgm_alpha_analysis.py` |
 | Quantum gravity invariant | [Analysis_Quantum_Gravity](Findings/Analysis_Quantum_Gravity.md) | `cgm_quantum_gravity_analysis.py` |
@@ -335,6 +355,7 @@ While many aspects of the program are exploratory and require further validation
 
 **Future work will focus on:**
 
+-   Completing the continuum bridge theorems of the Yang–Mills construction (inductive-net uniformity, OS regularity, and grade-2 excitation identification).
 -   Independent cross-check of lepton mass derivation against radiative corrections.
 -   Connecting compact geometry to standard model radiative corrections.
 -   Dynamical scalar-tensor evolutions beyond static spherical gravity.

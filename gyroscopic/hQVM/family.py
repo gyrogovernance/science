@@ -133,6 +133,40 @@ def enumerate_omega_d(d: int) -> List[Tuple[int, int]]:
     return [(u, v) for u in range(m + 1) for v in range(m + 1)]
 
 
+def pack_uv_d(u: int, v: int, d: int) -> int:
+    """Pack (u, v) on Omega_d as (u << d) | v (matches hQVM(d) chart)."""
+    m = mask_d(d)
+    return ((int(u) & m) << d) | (int(v) & m)
+
+
+def unpack_uv_d(packed: int, d: int) -> Tuple[int, int]:
+    """Unpack (u << d) | v back to (u, v)."""
+    m = mask_d(d)
+    x = int(packed) & ((1 << (2 * d)) - 1)
+    return (x >> d) & m, x & m
+
+
+def apply_omega_gate_d(u: int, v: int, name: str, d: int) -> Tuple[int, int]:
+    """Holonomic K4 gate on Omega_d; matches gyroscopic.hQVM.api.apply_omega_gate at d=6."""
+    m = mask_d(d)
+    eps = epsilon_d(d)
+    u, v = int(u) & m, int(v) & m
+    if name == "id":
+        return u, v
+    if name == "S":
+        return v, u
+    if name == "F":
+        return u ^ eps, v ^ eps
+    if name == "C":
+        return v ^ eps, u ^ eps
+    raise ValueError(f"Unknown Omega gate: {name!r}")
+
+
+def packed_omega_states_d(d: int) -> List[int]:
+    """All Omega_d states as packed (u << d) | v ints."""
+    return [pack_uv_d(u, v, d) for u, v in enumerate_omega_d(d)]
+
+
 def alphabet_size(d: int) -> int:
     return 1 << (d + 2)
 
@@ -698,7 +732,21 @@ def verify_d6_against_api() -> Tuple[bool, str]:
 
     if q_mism or step_mism:
         return False, f"q={q_mism} step={step_mism}"
-    return True, "q_word and step_uv match api at d=6"
+
+    from gyroscopic.hQVM.api import apply_omega_gate
+    from gyroscopic.hQVM.constants import GATE_NAMES
+
+    if len(packed_omega_states_d(6)) != len(OMEGA_STATES_4096):
+        return False, "Omega_d size mismatch at d=6"
+
+    ru, rv = rest_uv(6)
+    for name in GATE_NAMES:
+        o = apply_omega_gate((ru, rv), name)
+        gu, gv = apply_omega_gate_d(ru, rv, name, 6)
+        if (o.u6, o.v6) != (gu, gv):
+            return False, f"gate {name} mismatch vs api"
+
+    return True, "q_word, step_uv, gates match api at d=6"
 
 
 def bfs_reach(
