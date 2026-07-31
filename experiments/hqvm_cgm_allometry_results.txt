@@ -1,0 +1,670 @@
+1. SQUARE-ROOT LIVE GATE (BFS vs (2^r)^2)
+=====
+    d     w   r    Reach     pred   root      a_B/M  ok
+  -----
+    4     0   0        2        2      1   0.000000  PASS
+    4     1   4      256      256     16   0.500000  PASS
+    4     2   4      256      256     16   0.500000  PASS
+    4     3   4      256      256     16   0.500000  PASS
+    4     4   4      256      256     16   0.500000  PASS
+    4  full   4      256      256     16   0.500000  PASS
+    5     0   0        2        2      1   0.000000  PASS
+    5     1   5     1024     1024     32   0.500000  PASS
+    5     2   5     1024     1024     32   0.500000  PASS
+    5     3   5     1024     1024     32   0.500000  PASS
+    5     4   5     1024     1024     32   0.500000  PASS
+    5     5   5     1024     1024     32   0.500000  PASS
+    5  full   5     1024     1024     32   0.500000  PASS
+    6     0   0        2        2      1   0.000000  PASS
+    6     1   6     4096     4096     64   0.500000  PASS
+    6     2   6     4096     4096     64   0.500000  PASS
+    6     3   6     4096     4096     64   0.500000  PASS
+    6     4   6     4096     4096     64   0.500000  PASS
+    6     5   6     4096     4096     64   0.500000  PASS
+    6     6   6     4096     4096     64   0.500000  PASS
+    6  full   6     4096     4096     64   0.500000  PASS
+  aggregate 21/21
+
+1b. ALPHABET COMPOSITION (fiber-complete union; real hQVM)
+=====
+  scope: kernel composition only; no biological unit map
+  SRCT proof: percolation_analysis_4 / §1 live gate (not repeated)
+  structured families: weight shells, even/odd q (same as percolation_4)
+  QuBEC multi-cell GF(2)^{6B}: QuBEC_Theory §22 (not simulated)
+
+  weight-shell pairwise unions
+                   label  rA  rB  rU    R_A    R_B    R_U      a_U  ok
+  -----
+                   w0+w1   0   6   6      2   4096   4096 0.500000  PASS
+                   w0+w2   0   5   5      2   1024   1024 0.500000  PASS
+                   w0+w3   0   6   6      2   4096   4096 0.500000  PASS
+                   w0+w4   0   5   5      2   1024   1024 0.500000  PASS
+                   w0+w5   0   6   6      2   4096   4096 0.500000  PASS
+                   w0+w6   0   1   1      2      4      4 0.500000  PASS
+                   w1+w2   6   5   6   4096   1024   4096 0.500000  PASS
+                   w1+w3   6   6   6   4096   4096   4096 0.500000  PASS
+                   w1+w4   6   5   6   4096   1024   4096 0.500000  PASS
+                   w1+w5   6   6   6   4096   4096   4096 0.500000  PASS
+                   w1+w6   6   1   6   4096      4   4096 0.500000  PASS
+                   w2+w3   5   6   6   1024   4096   4096 0.500000  PASS
+                   w2+w4   5   5   5   1024   1024   1024 0.500000  PASS
+                   w2+w5   5   6   6   1024   4096   4096 0.500000  PASS
+                   w2+w6   5   1   5   1024      4   1024 0.500000  PASS
+                   w3+w4   6   5   6   4096   1024   4096 0.500000  PASS
+                   w3+w5   6   6   6   4096   4096   4096 0.500000  PASS
+                   w3+w6   6   1   6   4096      4   4096 0.500000  PASS
+                   w4+w5   5   6   6   1024   4096   4096 0.500000  PASS
+                   w4+w6   5   1   5   1024      4   1024 0.500000  PASS
+                   w5+w6   6   1   6   4096      4   4096 0.500000  PASS
+  n=21
+
+  cumulative weight ladder
+                   label  rA  rB  rU    R_A    R_B    R_U      a_U  ok
+  -----
+                 cum<=w1   0   6   6      2   4096   4096 0.500000  PASS
+                 cum<=w2   6   5   6   4096   1024   4096 0.500000  PASS
+                 cum<=w3   6   6   6   4096   4096   4096 0.500000  PASS
+                 cum<=w4   6   5   6   4096   1024   4096 0.500000  PASS
+                 cum<=w5   6   6   6   4096   4096   4096 0.500000  PASS
+                 cum<=w6   6   1   6   4096      4   4096 0.500000  PASS
+  n=6
+
+  parity-shell unions
+                   label  rA  rB  rU    R_A    R_B    R_U      a_U  ok
+  -----
+                even+odd   5   6   6   1024   4096   4096 0.500000  PASS
+                 even+w1   5   6   6   1024   4096   4096 0.500000  PASS
+                 even+w3   5   6   6   1024   4096   4096 0.500000  PASS
+                 even+w5   5   6   6   1024   4096   4096 0.500000  PASS
+  n=4
+
+  scope boundary: single-q fiber (FC, not structured SRCT domain)
+       label    n   r  reach   pred  fc  srct
+  -----
+         q=1    4   1      8      4   Y  N
+         q=2    4   1      8      4   Y  N
+         q=4    4   1      8      4   Y  N
+        q=63    4   1      4      4   Y  Y
+
+  product-geometry identity |Ω1|·|Ω2|=(2^{r1+r2})^2
+   r1  r2       R1       R2      R1*R2   R(r1+r2)  ok
+  -----
+    1   1        4        4         16         16  PASS
+    2   2       16       16        256        256  PASS
+    3   3       64       64       4096       4096  PASS
+    1   5        4     1024       4096       4096  PASS
+    2   4       16      256       4096       4096  PASS
+    3   3       64       64       4096       4096  PASS
+    6   6     4096     4096   16777216   16777216  PASS
+
+  quotient census d=6  bytes=256 even_q=128 H=64 shells=7  PASS
+  interface a(D)=D/(D+1)
+  D=1 a=0.500000 target=0.500000  PASS
+  D=2 a=0.666667 target=0.666667  PASS
+  D=3 a=0.750000 target=0.750000  PASS
+  weight_shell_unions_ok                     PASS
+  cumulative_ladder_ok                       PASS
+  parity_shell_unions_ok                     PASS
+  all_unions_fiber_complete                  PASS
+  all_unions_srct                            PASS
+  product_geometry_identity                  PASS
+  quotient_census_chain                      PASS
+  interface_rule_a_D                         PASS
+  scope_single_q_outside_srct                PASS
+  scope_all_ones_fiber_srct                  PASS
+
+2. SHELL CENSUS → D_eff=⟨shell⟩ → a_net=D/(D+1)
+=====
+  d=6 shell populations
+    k      pop   C(d,k)*2^d  ok
+  -----
+    0       64           64  PASS
+    1      384          384  PASS
+    2      960          960  PASS
+    3     1280         1280  PASS
+    4      960          960  PASS
+    5      384          384  PASS
+    6       64           64  PASS
+
+    d    Omega    ⟨shell⟩    D_eff      a_net  ent  sum
+  -----
+    1        4   0.500000   0.5000   0.333333  Y    Y
+    2       16   1.000000   1.0000   0.500000  Y    Y
+    3       64   1.500000   1.5000   0.600000  Y    Y
+    4      256   2.000000   2.0000   0.666667  Y    Y
+    5     1024   2.500000   2.5000   0.714286  Y    Y
+    6     4096   3.000000   3.0000   0.750000  Y    Y
+    7    16384   3.500000   3.5000   0.777778  Y    Y
+    8    65536   4.000000   4.0000   0.800000  Y    Y
+
+  identity ⟨shell⟩=M_shell/|H|  mean=3.000000 M_shell=192 H=64 M/H=3.000000  PASS
+  QuBEC λ=1  η=0.000000 Z1=4096 M2=4096 ⟨shell⟩=3.000000  PASS
+
+3. SCALING LADDER (product / network / depth-4 / surface)
+=====
+    d     a_SR    a_net     a_d4   a_surf net=SR net=2/3 net=d4 3/4lock
+  -----
+    1  0.50000  0.33333  4.00000  4.00000  False   False  False   False
+    2  0.50000  0.50000  4.00000  2.00000   True   False  False   False
+    3  0.50000  0.60000  3.00000  1.33333  False   False  False   False
+    4  0.50000  0.66667  2.00000  1.00000  False   False  False   False
+    5  0.50000  0.71429  1.25000  0.80000  False   False  False   False
+    6  0.50000  0.75000  0.75000  0.66667  False   False   True    True
+    7  0.50000  0.77778  0.43750  0.57143  False   False  False   False
+    8  0.50000  0.80000  0.25000  0.50000  False   False  False   False
+  landmarks: d=2→1/2  d=4→2/3  d=6→3/4; net=d4 only at d=6
+
+3b. DIMENSION-SIX CONSISTENCY (cross-check; not a derivation of d)
+=====
+  N_SPATIAL = N_DOF//2 = 3
+  Rel I: a_net=a_d4 ⟺ 2^(d-3)=d+2
+    d    a_net     a_d4    2^(d-3)    d+2  eq
+  -----
+    1  0.33333  4.00000    0.25000    3.0  N
+    2  0.50000  4.00000    0.50000    4.0  N
+    3  0.60000  3.00000    1.00000    5.0  N
+    4  0.66667  2.00000    2.00000    6.0  N
+    5  0.71429  1.25000    4.00000    7.0  N
+    6  0.75000  0.75000    8.00000    8.0  Y
+    7  0.77778  0.43750   16.00000    9.0  N
+    8  0.80000  0.25000   32.00000   10.0  N
+  Rel II: a_bulk−a_surf = a_time/(d/2) ⟺ (d−6)(d+1)=0
+    d   a_bulk   a_surf   a_time   n=d/2      lhs      rhs      resid  eq
+  -----
+    1  0.33333  4.00000 -0.16667    0.50 -3.66667 -0.33333   3.33e+00  N
+    2  0.50000  2.00000  0.00000    1.00 -1.50000  0.00000   1.50e+00  N
+    3  0.60000  1.33333  0.10000    1.50 -0.73333  0.06667   8.00e-01  N
+    4  0.66667  1.00000  0.16667    2.00 -0.33333  0.08333   4.17e-01  N
+    5  0.71429  0.80000  0.21429    2.50 -0.08571  0.08571   1.71e-01  N
+    6  0.75000  0.66667  0.25000    3.00  0.08333  0.08333   4.16e-17  Y
+    7  0.77778  0.57143  0.27778    3.50  0.20635  0.07937   1.27e-01  N
+    8  0.80000  0.50000  0.30000    4.00  0.30000  0.07500   2.25e-01  N
+  Rel III: 1−a_bulk = a_bulk−a_SR ⟺ d=6
+    d   a_bulk  a_time_V  a_time_L      resid  eq
+  -----
+    1  0.33333   0.66667  -0.16667   8.33e-01  N
+    2  0.50000   0.50000   0.00000   5.00e-01  N
+    3  0.60000   0.40000   0.10000   3.00e-01  N
+    4  0.66667   0.33333   0.16667   1.67e-01  N
+    5  0.71429   0.28571   0.21429   7.14e-02  N
+    6  0.75000   0.25000   0.25000   0.00e+00  Y
+    7  0.77778   0.22222   0.27778   5.56e-02  N
+    8  0.80000   0.20000   0.30000   1.00e-01  N
+
+4. DEPTH-4 FAMILY a_d4(d)=depth4_bits/2^d
+=====
+    d     H  bits       a_d4        Delta  =3/4
+  -----
+    1     2     8   4.000000   0.12500000 False
+    2     4    16   4.000000   0.06250000 False
+    3     8    24   3.000000   0.04166667 False
+    4    16    32   2.000000   0.03125000 False
+    5    32    40   1.250000   0.02500000 False
+    6    64    48   0.750000   0.02083333  True
+    7   128    56   0.437500   0.01785714 False
+    8   256    64   0.250000   0.01562500 False
+
+5. CHANNEL MEASURES + PARITY PLATEAU
+=====
+  p_c_rank(d=6) = 0.090795490172
+  id                                        value  note
+  -----
+  a_SR_product                                0.5  B∝root, M∝|Reach| ⇒ 1/2
+  a_d4_mask                                  0.75  depth4_bits/H at d=6
+  a_net_D_over_Dplus1                        0.75  ⟨N⟩/(⟨N⟩+1) at thermal ⟨N⟩=d/2
+  a_surface_Delta_over_1_32        0.666666666667  Δ(d)/(1/32); kernel-lattice exact
+  a_surface_continuum_Delta        0.662385725223  trestle Δ/(1/32); monodromy correction
+  lift_a_net_minus_a_SR                      0.25  a_bulk−a_SR = a_time; 1/4 at d=6
+  gap_a_d4_minus_surface           0.0833333333333  bulk−surface = 1/12 at d=6 (kernel Δ)
+  Delta_kernel_d                   0.0208333333333  spinorial residual 1/(8d)
+  trestle_Delta                    0.0206995539132  continuum monodromy Δ
+  surface_kernel_minus_continuum   0.0042809414436  exact 2/3 minus continuum surface
+  p_c_rank                         0.090795490172  micro-ref P(rank=d)=1/2
+
+  parity_even_q  d=6 r=5 Reach=1024 pred=1024 a=0.500000  PASS  even-q plateau; capacity (2^5)^2
+
+6. MICRO-REF PROXY CURVE (exact PMF)
+=====
+       p     E_root    E_Reach       a_SR      theta     P_full       hol4
+  -----
+   0.050    20.7205      770.1   0.456049   0.195327   0.114995   0.000400
+   0.100    47.7172     2691.2   0.489418   0.657802   0.586477   0.006380
+   0.150    60.1246     3742.0   0.497901   0.913606   0.890119   0.031889
+   0.200    63.3233     4032.4   0.499661   0.984485   0.979749   0.097406
+   0.250    63.9061     4087.1   0.499955   0.997819   0.997118   0.221580
+   0.300    63.9893     4095.0   0.499995   0.999750   0.999667   0.405783
+   0.350    63.9990     4095.9   0.500000   0.999976   0.999968   0.620036
+   0.400    63.9999     4096.0   0.500000   0.999998   0.999998   0.809811
+   0.450    64.0000     4096.0   0.500000   1.000000   1.000000   0.931418
+   0.500    64.0000     4096.0   0.500000   1.000000   1.000000   0.983925
+   0.550    64.0000     4096.0   0.500000   1.000000   1.000000   0.997849
+   0.600    64.0000     4096.0   0.500000   1.000000   1.000000   0.999861
+   0.650    64.0000     4096.0   0.500000   1.000000   1.000000   0.999997
+   0.700    64.0000     4096.0   0.500000   1.000000   1.000000   1.000000
+   0.750    64.0000     4096.0   0.500000   1.000000   1.000000   1.000000
+   0.800    64.0000     4096.0   0.500000   1.000000   1.000000   1.000000
+   0.850    64.0000     4096.0   0.500000   1.000000   1.000000   1.000000
+   0.900    64.0000     4096.0   0.500000   1.000000   1.000000   1.000000
+   0.950    64.0000     4096.0   0.500000   1.000000   1.000000   1.000000
+   1.000    64.0000     4096.0   0.500000   1.000000   1.000000   1.000000
+
+7. A_DELIV DELIVERY (aperture×horizon; Horizon Lemma)
+=====
+    d  bits     H      Delta  a_deliv   1/(ΔH) P_pred      P/H  =3/4 ok
+  -----
+    1     8     2 0.12500000  4.00000  4.00000      0  0.00000 False PASS
+    2    16     4 0.06250000  4.00000  4.00000      3  0.75000 False PASS
+    3    24     8 0.04166667  3.00000  3.00000      6  0.75000 False PASS
+    4    32    16 0.03125000  2.00000  2.00000     12  0.75000 False PASS
+    5    40    32 0.02500000  1.25000  1.25000     24  0.75000 False PASS
+    6    48    64 0.02083333  0.75000  0.75000     48  0.75000  True PASS
+    7    56   128 0.01785714  0.43750  0.43750     96  0.75000 False PASS
+    8    64   256 0.01562500  0.25000  0.25000    192  0.75000 False PASS
+  coverage generations (discrete branching depth)
+  gen=0  span        rest horizon spanning
+  gen=1  full        |Reach|=|Ω| orbit
+  gen=2  spectrum    full defect weight spectrum
+  gen=3  rank        transport rank r=d; channel isotropy
+  gen=4  word        depth-4 holonomy / F-word closure
+
+8. QUBEC λ SWEEP (physical λ∈(0,1]; a(λ)=2/3+λ/(6(1+λ)))
+=====
+         λ        η     ⟨N⟩       M2    a_net   a_fold      μ     a(μ) regime       z1
+  -----
+     0.001   0.9980  0.0060     64.8  0.00596  0.00596  0.002  0.66683 condensed    Y
+       0.1   0.8182  0.5455    189.2  0.35294  0.35294  0.182  0.68182 condensed    Y
+      0.25   0.6000  1.2000    647.3  0.54545  0.54545  0.400  0.70000 intermediate Y
+       0.5   0.3333  2.0000   2176.8  0.66667  0.66667  0.667  0.72222 intermediate Y
+         1   0.0000  3.0000   4096.0  0.75000  0.75000  1.000  0.75000 thermal      Y
+
+9. KLEIBER ABSOLUTE INTERCEPT (M0)
+=====
+  M_shell           192
+  a_Higgs=M_shell/2 96
+  log2(M0/u)        96
+  xi=2^a_Higgs      7.922816e+28
+  M0_kg (u=1 amu)   1.315615e+02
+  M0_kg (u=m_e)     7.217197e-02
+  u_amu_kg          1.660539e-27
+  u_electron_kg     9.109384e-31
+  b_K=−P            -0.979166666667
+  a_bulk            0.750000
+  note              M0=u·2^(M_shell/2); SI value anchor-sensitive (amu vs m_e)
+
+10. WEST ORGANISM FAMILY (corollaries of a_SR, a_bulk, a_time)
+=====
+  id                                    a formula             note
+  -----
+  metabolic_B                    0.750000 ⟨N⟩/(⟨N⟩+1)         QuBEC thermal ⟨N⟩=3
+  specific_B_over_M             -0.250000 a_bulk-1            B/M
+  heart_respiratory_rate        -0.250000 -(a_bulk-a_SR)      rates
+  circulation_lifespan           0.250000 a_bulk-a_SR         times
+  egress_development             0.187500 (3/4)·a_time        a_eg construction time
+  longevity_composite_lo         0.187500 3/16                composite interval lower bound
+  longevity_composite_hi         0.250000 1/4                 composite interval upper bound
+  aorta_radius                   0.375000 a_bulk/2            Tier B: fixed ΔP,u0 ⇒ A∝B ⇒ r∝√A
+  aorta_length                   0.250000 a_bulk-a_SR         l_0
+  blood_volume                   1.000000 1                   V_b ∝ M
+  capillary_number               0.750000 a_bulk              N_c ∝ B
+  service_radius                 0.083333 a_time/n_spatial    =(a_bulk-a_surf)/n at d=6
+  intercapillary_spacing         0.083333 a_service           linear spacing
+  inverse_spacing               -0.083333 -a_service          linear density dual of spacing
+  capillary_density_volumetric  -0.250000 a_bulk-1            N_c/M with N_c∝B
+  total_resistance              -0.750000 -a_bulk             Tier B: Z∝1/B if ΔP fixed
+  pressure_velocity              0.000000 0                   ΔP, u_0 size-independent
+  lifetime_energy_per_mass       0.000000 a_B+a_time-1        B·life/M ∝ M^0
+  lifetime_heartbeats            0.000000 (-a_time)+(+a_time)  rate·life ∝ M^0
+
+11. CITY / COMPANY Tier C ((d−1)/d and 1+1/d; not kernel-forced)
+=====
+  id                                    a formula             note
+  -----
+  city_infrastructure            0.833333 (d-1)/d             Tier C: minimal-network on register dim d
+  city_socioeconomic             1.166667 1+1/d               Tier C: N^2/N^{(d-1)/d}
+  city_pace                      0.166667 1/d                 Tier C: pace relative to linear
+  city_infra_plus_socio          2.000000 a_infra+a_socio     Tier C: conjugacy sum = 2
+  company_sublinear              0.833333 (d-1)/d             Tier C: bounded network
+  company_vs_city_capacity       0.031250 128/4096            word-regime confinement vs full spanning
+
+12. CHEMICAL CLOCK (E_a=kT/(2Δ); MTE band)
+=====
+  T_body_K          310.0
+  Delta             0.02069955
+  kT_eV             0.026714
+  E_a_eV            0.645273
+  f_attempt_Hz      1.337057e+11
+  N_H               64
+  P_terminal_W      1.382305e-08
+  B0_micro_W        8.846753e-07
+  note              P=(kT)^2/(2h); B0=|H|·P; Delta cancels
+
+13. KERNEL PASS/FAIL
+=====
+  square_root_BFS                      PASS
+  a_SR_is_1_2                          PASS
+  a_d4_equals_3_4_only_at_d6           PASS
+  Delta_equals_1_over_8d               PASS
+  proxy_a_SR_to_1_2                    PASS
+  surface_from_Delta                   PASS
+  surface_continuum_below_2_3          PASS
+  holonomy_delayed_vs_span             PASS
+  shell_census_binomial                PASS
+  a_net_ladder_1_2_2_3_3_4             PASS
+  triple_lock_only_d6                  PASS
+  lift_net_minus_SR_is_1_4             PASS
+  parity_plateau_even_q                PASS
+  organism_B_is_3_4                    PASS
+  organism_a_time_is_bulk_minus_SR     PASS
+  organism_rate_is_m1_4                PASS
+  organism_life_is_p1_4                PASS
+  a_egress_is_3_16                     PASS
+  a_egress_eq_three_quarters_a_time    PASS
+  longevity_interval_is_3_16_to_1_4    PASS
+  organism_aorta_is_3_8                PASS
+  organism_service_is_1_12             PASS
+  organism_cap_density_is_m1_4         PASS
+  organism_spacing_is_1_12             PASS
+  sum_rule_energy_per_mass_M0          PASS
+  sum_rule_heartbeats_M0               PASS
+  city_infra_is_(d-1)/d                PASS
+  city_socio_is_1+1/d                  PASS
+  city_pair_sums_to_2                  PASS
+  company_capacity_is_1_32             PASS
+  shell_mean_eq_M_shell_over_H         PASS
+  qubec_lambda1_thermal                PASS
+  quarter_lift_named                   PASS
+  a_deliv_eq_1_over_Delta_H            PASS
+  a_deliv_3_4_only_d6                  PASS
+  depth4_bits_eq_P_pred_at_d6          PASS
+  horizon_lemma_fill_3_4_at_d6         PASS
+  delivery_family_ok                   PASS
+  qubec_sweep_z1                       PASS
+  qubec_sweep_var_response             PASS
+  qubec_sweep_lambda1_bulk             PASS
+  qubec_mu_a_closed_form               PASS
+  qubec_mu_eta_condensed_near_0        PASS
+  qubec_fold_duality_appendix          PASS
+  kleiber_M0_log2_is_a_Higgs           PASS
+  kleiber_a_Higgs_is_96                PASS
+  kleiber_b_K_is_minus_P               PASS
+  kleiber_a_bulk_is_3_4                PASS
+  chem_E_a_eq_kT_over_2Delta           PASS
+  chem_E_a_in_MTE_eV_band              PASS
+  chem_f_attempt_eq_kT_h_Delta         PASS
+  chem_P_eq_kT_sq_over_2h              PASS
+  chem_B0_micro_eq_H_Pterm             PASS
+  uniqueness_I_only_d6                 PASS
+  uniqueness_II_only_d6                PASS
+  uniqueness_III_only_d6               PASS
+  uniqueness_N_spatial_is_d_over_2     PASS
+  uniqueness_MU_GAP_is_a_time_over_n   PASS
+  uniqueness_depth4_bits_eq_8d_at_d6   PASS
+  uniqueness_D_eff_is_thermal_shell    PASS
+  mu_mixing_exact_log_derivative       PASS
+  mu_gap_eq_1_12                       PASS
+  weight_shell_unions_ok               PASS
+  cumulative_ladder_ok                 PASS
+  parity_shell_unions_ok               PASS
+  all_unions_fiber_complete            PASS
+  all_unions_srct                      PASS
+  product_geometry_identity            PASS
+  quotient_census_chain                PASS
+  interface_rule_a_D                   PASS
+  scope_single_q_outside_srct          PASS
+  scope_all_ones_fiber_srct            PASS
+
+  results_path  F:\Development\science\experiments\hqvm_cgm_allometry_results.txt
+
+D0. SYNTHETIC SELF-CHECK
+=====
+  name                      n     a_pri  est       mu null             status
+  -----
+  synth_surface_2_3        40  0.666667  OLS   -0.0000 rule:exchange_surface EXACT
+  synth_bulk_3_4           40  0.750000  OLS    1.0000 mu_band|mu=1.0000 EXACT
+  synth_mu_half            40  0.708333  OLS    0.5000 mu_family|mu=0.5000 EXACT
+  synth_time_m14           40 -0.250000  OLS -11.0000* rule:heart_rate  EXACT
+  synth_life_p14           40  0.250000  OLS  -5.0000* longevity_composite|[3/16,1/4] EXACT
+  synth_noisy_3_4          40  0.752415  OLS   1.0290* outside_mu_band  SCAN
+
+  synthetic_clean_recover  PASS
+  synthetic_noisy_accounted PASS
+
+D0b. SYNTHETIC MODEL COMPARE (AIC)
+=====
+  synth_surface_2_3      fixed_2_3    a= 0.666667 AIC=-2946.061 dAIC=0.000
+  synth_surface_2_3      fixed_3_4    a= 0.750000 AIC=-165.433 dAIC=2780.627
+  synth_surface_2_3      free_a       a= 0.666667 AIC=-2914.440 dAIC=31.621
+  synth_surface_2_3      mu_family    a= 0.666667 AIC=-2944.061 dAIC=2.000
+  synth_bulk_3_4         fixed_2_3    a= 0.666667 AIC=-165.433 dAIC=2797.870
+  synth_bulk_3_4         fixed_3_4    a= 0.750000 AIC=-2963.303 dAIC=0.000
+  synth_bulk_3_4         free_a       a= 0.750000 AIC=-2904.162 dAIC=59.141
+  synth_bulk_3_4         mu_family    a= 0.750000 AIC=-2904.162 dAIC=59.141
+  synth_mu_half          fixed_2_3    a= 0.666667 AIC=-220.885 dAIC=2734.701
+  synth_mu_half          fixed_3_4    a= 0.750000 AIC=-220.885 dAIC=2734.701
+  synth_mu_half          free_a       a= 0.708333 AIC=-2955.586 dAIC=0.000
+  synth_mu_half          mu_family    a= 0.708333 AIC=-2955.586 dAIC=0.000
+  synth_time_m14         fixed_2_3    a= 0.666667 AIC=26.398 dAIC=2942.542
+  synth_time_m14         fixed_3_4    a= 0.750000 AIC=33.359 dAIC=2949.503
+  synth_time_m14         free_a       a=-0.250000 AIC=-2916.144 dAIC=0.000
+  synth_time_m14         mu_family    a= 0.666667 AIC=28.398 dAIC=2944.542
+  synth_life_p14         fixed_2_3    a= 0.666667 AIC=-36.678 dAIC=2902.480
+  synth_life_p14         fixed_3_4    a= 0.750000 AIC=-22.093 dAIC=2917.066
+  synth_life_p14         free_a       a= 0.250000 AIC=-2939.158 dAIC=0.000
+  synth_life_p14         mu_family    a= 0.666667 AIC=-34.678 dAIC=2904.480
+  synth_noisy_3_4        fixed_2_3    a= 0.666667 AIC=-162.193 dAIC=148.572
+  synth_noisy_3_4        fixed_3_4    a= 0.750000 AIC=-310.765 dAIC=0.000
+  synth_noisy_3_4        free_a       a= 0.752415 AIC=-310.056 dAIC=0.708
+  synth_noisy_3_4        mu_family    a= 0.750000 AIC=-308.765 dAIC=2.000
+
+D0c. SYNTHETIC NULL SHUFFLE
+=====
+  synth_surface_2_3      real=EXACT frac_NEAR/EXACT=0.000 PASS
+  synth_bulk_3_4         real=EXACT frac_NEAR/EXACT=0.000 PASS
+  synth_mu_half          real=EXACT frac_NEAR/EXACT=0.000 PASS
+  synth_time_m14         real=EXACT frac_NEAR/EXACT=0.000 PASS
+  synth_life_p14         real=EXACT frac_NEAR/EXACT=0.000 PASS
+  synth_noisy_3_4        real=SCAN  frac_NEAR/EXACT=0.000 PASS
+  synthetic_null_audit  PASS
+
+D1. CATALOG FITS (OLS primary for organism; RMA for city)
+=====
+  name                                 n  est     a_pri       OLS       RMA        lo        hi status
+  -----
+  pantheria_bmr                      573  OLS  0.717344  0.717344  0.743452  0.695611  0.735308 EXACT
+    nearest=mu_band|mu=0.6081  CI_2/3=False  CI_3/4=False  tick23=+2.448  tick34=-1.578
+    source=F:\Development\science\data\catalogs\allometry\pantheria_bmr.csv
+  pantheria_specific_bmr             573  OLS -0.282656 -0.282656 -0.343560 -0.305132 -0.264110 SCAN
+    nearest=rule:specific_metabolic  CI_2/3=False  CI_3/4=False  tick23=-45.862  tick34=-49.888
+    source=F:\Development\science\data\catalogs\allometry\pantheria_bmr.csv
+  pantheria_longevity               1000  OLS  0.198350  0.198350  0.274345  0.186152  0.208615 EXACT
+    nearest=longevity_composite|[3/16,1/4]  CI_2/3=False  CI_3/4=False  tick23=-22.624  tick34=-26.650
+    source=F:\Development\science\data\catalogs\allometry\pantheria_longevity.csv
+  pantheria_gestation               1335  OLS  0.188962  0.188962  0.279755  0.179321  0.198219 SCAN
+    nearest=rule:gestation  CI_2/3=False  CI_3/4=False  tick23=-23.078  tick34=-27.104
+    source=F:\Development\science\data\catalogs\allometry\pantheria_gestation.csv
+  pantheria_weaning                 1141  OLS  0.188843  0.188843  0.304403  0.175209  0.200619 SCAN
+    nearest=rule:weaning  CI_2/3=False  CI_3/4=False  tick23=-23.084  tick34=-27.110
+    source=F:\Development\science\data\catalogs\allometry\pantheria_weaning.csv
+  pantheria_pop_density              947  OLS -0.740671 -0.740671 -0.979517 -0.780782 -0.700509 MISS
+    nearest=rule:population_density  CI_2/3=False  CI_3/4=False  tick23=-67.989  tick34=-72.015
+    source=F:\Development\science\data\catalogs\allometry\pantheria_pop_density.csv
+  pantheria_home_range               700  OLS  1.060935  1.060935  1.287644  1.001496  1.115029 MISS
+    nearest=rule:home_range  CI_2/3=False  CI_3/4=False  tick23=+19.047  tick34=+15.021
+    source=F:\Development\science\data\catalogs\allometry\pantheria_home_range.csv
+  animaltraits_metabolic_all        1184  OLS  1.032485  1.032485  1.069601  1.016802  1.048731 SCAN
+    nearest=mixed_regime_outside_band  CI_2/3=False  CI_3/4=False  tick23=+17.673  tick34=+13.647
+    source=F:\Development\science\data\catalogs\allometry\animaltraits_metabolic.csv
+  animaltraits_metabolic_Mammalia    177  OLS  0.670730  0.670730  0.702943  0.630286  0.713731 EXACT
+    nearest=mu_band|mu=0.0488  CI_2/3=True  CI_3/4=False  tick23=+0.196  tick34=-3.830
+    source=F:\Development\science\data\catalogs\allometry\animaltraits_metabolic.csv|filters={'class': 'Mammalia'}
+  animaltraits_specific_mr          1184  OLS  0.032485  0.032485  0.281205  0.017392  0.048355 MISS
+    nearest=rule:specific_metabolic  CI_2/3=False  CI_3/4=False  tick23=-30.637  tick34=-34.663
+    source=F:\Development\science\data\catalogs\allometry\animaltraits_specific_mr.csv
+  animaltraits_specific_mr_Mammalia   177  OLS -0.329270 -0.329270 -0.390728 -0.372367 -0.293322 MISS
+    nearest=rule:specific_metabolic  CI_2/3=False  CI_3/4=False  tick23=-48.114  tick34=-52.140
+    source=F:\Development\science\data\catalogs\allometry\animaltraits_specific_mr.csv|filters={'class': 'Mammalia'}
+  animaltraits_brain                1639  OLS  0.877378  0.877378  0.901476  0.864444  0.888105 MISS
+    nearest=rule:brain_size  CI_2/3=False  CI_3/4=False  tick23=+10.179  tick34=+6.154
+    source=F:\Development\science\data\catalogs\allometry\animaltraits_brain.csv
+  animaltraits_brain_Primates        216  OLS  0.886802  0.886802  0.933135  0.853646  0.916202 MISS
+    nearest=rule:brain_size  CI_2/3=False  CI_3/4=False  tick23=+10.635  tick34=+6.609
+    source=F:\Development\science\data\catalogs\allometry\animaltraits_brain.csv|filters={'order': 'Primates'}
+  animaltraits_brain_Rodentia         83  OLS  0.667643  0.667643  0.692587  0.632512  0.704924 MISS
+    nearest=mu_family|mu=0.0117  CI_2/3=True  CI_3/4=False  tick23=+0.047  tick34=-3.979
+    source=F:\Development\science\data\catalogs\allometry\animaltraits_brain.csv|filters={'order': 'Rodentia'}
+  animaltraits_brain_Carnivora        92  OLS  0.623262  0.623262  0.645107  0.597664  0.650905 MISS
+    nearest=2/3  CI_2/3=False  CI_3/4=False  tick23=-2.097  tick34=-6.123
+    source=F:\Development\science\data\catalogs\allometry\animaltraits_brain.csv|filters={'order': 'Carnivora'}
+  anage_metabolic                    627  OLS  0.713243  0.713243  0.788273  0.683602  0.739535 EXACT
+    nearest=mu_band|mu=0.5589  CI_2/3=False  CI_3/4=False  tick23=+2.250  tick34=-1.776
+    source=F:\Development\science\data\catalogs\allometry\anage_metabolic.csv
+  anage_longevity                   3210  OLS  0.138207  0.138207  0.241605  0.132476  0.143913 SCAN
+    nearest=longevity_egress_failure  CI_2/3=False  CI_3/4=False  tick23=-25.530  tick34=-29.556
+    source=F:\Development\science\data\catalogs\allometry\anage_longevity.csv
+  city_wages                         382  RMA  1.122460  1.100927  1.122460  1.102995  1.144268 SCAN
+    nearest=rule:city_socioeconomic  CI_2/3=False  CI_3/4=False  tick23=+22.019  tick34=+17.994
+    source=F:\Development\science\data\catalogs\allometry\city_wages.csv
+  city_road_length                   312  RMA  1.050992  0.959118  1.050992  0.989545  1.128526 MISS
+    nearest=rule:city_infrastructure  CI_2/3=False  CI_3/4=False  tick23=+18.567  tick34=+14.541
+    source=F:\Development\science\data\catalogs\allometry\city_road_length.csv
+
+D1b. CATALOG MODEL COMPARE (AIC)
+=====
+  pantheria_bmr                    fixed_2_3    a= 0.666667 dAIC=35.340
+  pantheria_bmr                    fixed_3_4    a= 0.750000 dAIC=13.802
+  pantheria_bmr                    free_a       a= 0.717344 dAIC=0.000
+  pantheria_bmr                    mu_family    a= 0.717344 dAIC=0.000
+  pantheria_specific_bmr           fixed_2_3    a= 0.666667 dAIC=1833.861
+  pantheria_specific_bmr           fixed_3_4    a= 0.750000 dAIC=1926.672
+  pantheria_specific_bmr           free_a       a=-0.282656 dAIC=0.000
+  pantheria_specific_bmr           mu_family    a= 0.666667 dAIC=1835.861
+  pantheria_longevity              fixed_2_3    a= 0.666667 dAIC=1958.850
+  pantheria_longevity              fixed_3_4    a= 0.750000 dAIC=2246.286
+  pantheria_longevity              free_a       a= 0.198350 dAIC=0.000
+  pantheria_longevity              mu_family    a= 0.666667 dAIC=1960.850
+  pantheria_gestation              fixed_2_3    a= 0.666667 dAIC=2468.283
+  pantheria_gestation              fixed_3_4    a= 0.750000 dAIC=2838.620
+  pantheria_gestation              free_a       a= 0.188962 dAIC=0.000
+  pantheria_gestation              mu_family    a= 0.666667 dAIC=2470.283
+  pantheria_weaning                fixed_2_3    a= 0.666667 dAIC=1835.642
+  pantheria_weaning                fixed_3_4    a= 0.750000 dAIC=2138.032
+  pantheria_weaning                free_a       a= 0.188843 dAIC=0.000
+  pantheria_weaning                mu_family    a= 0.666667 dAIC=1837.642
+  pantheria_pop_density            fixed_2_3    a= 0.666667 dAIC=1666.052
+  pantheria_pop_density            fixed_3_4    a= 0.750000 dAIC=1757.158
+  pantheria_pop_density            free_a       a=-0.740671 dAIC=0.000
+  pantheria_pop_density            mu_family    a= 0.666667 dAIC=1668.052
+  pantheria_home_range             fixed_2_3    a= 0.666667 dAIC=177.307
+  pantheria_home_range             fixed_3_4    a= 0.750000 dAIC=114.796
+  pantheria_home_range             free_a       a= 1.060935 dAIC=0.000
+  pantheria_home_range             mu_family    a= 0.750000 dAIC=116.796
+  animaltraits_metabolic_all       fixed_2_3    a= 0.666667 dAIC=1180.667
+  animaltraits_metabolic_all       fixed_3_4    a= 0.750000 dAIC=832.094
+  animaltraits_metabolic_all       free_a       a= 1.032485 dAIC=0.000
+  animaltraits_metabolic_all       mu_family    a= 0.750000 dAIC=834.094
+  animaltraits_metabolic_Mammalia  fixed_2_3    a= 0.666667 dAIC=0.000
+  animaltraits_metabolic_Mammalia  fixed_3_4    a= 0.750000 dAIC=23.437
+  animaltraits_metabolic_Mammalia  free_a       a= 0.670730 dAIC=1.934
+  animaltraits_metabolic_Mammalia  mu_family    a= 0.670730 dAIC=1.934
+  animaltraits_specific_mr         fixed_2_3    a= 0.666667 dAIC=2149.613
+  animaltraits_specific_mr         fixed_3_4    a= 0.750000 dAIC=2399.107
+  animaltraits_specific_mr         free_a       a= 0.032485 dAIC=0.000
+  animaltraits_specific_mr         mu_family    a= 0.666667 dAIC=2151.613
+  animaltraits_specific_mr_Mammalia fixed_2_3    a= 0.666667 dAIC=556.155
+  animaltraits_specific_mr_Mammalia fixed_3_4    a= 0.750000 dAIC=583.475
+  animaltraits_specific_mr_Mammalia free_a       a=-0.329270 dAIC=0.000
+  animaltraits_specific_mr_Mammalia mu_family    a= 0.666667 dAIC=558.155
+  animaltraits_brain               fixed_2_3    a= 0.666667 dAIC=1163.090
+  animaltraits_brain               fixed_3_4    a= 0.750000 dAIC=524.105
+  animaltraits_brain               free_a       a= 0.877378 dAIC=0.000
+  animaltraits_brain               mu_family    a= 0.750000 dAIC=526.105
+  animaltraits_brain_Primates      fixed_2_3    a= 0.666667 dAIC=96.076
+  animaltraits_brain_Primates      fixed_3_4    a= 0.750000 dAIC=41.295
+  animaltraits_brain_Primates      free_a       a= 0.886802 dAIC=0.000
+  animaltraits_brain_Primates      mu_family    a= 0.750000 dAIC=43.295
+  animaltraits_brain_Rodentia      fixed_2_3    a= 0.666667 dAIC=0.000
+  animaltraits_brain_Rodentia      fixed_3_4    a= 0.750000 dAIC=15.124
+  animaltraits_brain_Rodentia      free_a       a= 0.667643 dAIC=1.998
+  animaltraits_brain_Rodentia      mu_family    a= 0.667643 dAIC=1.998
+  animaltraits_brain_Carnivora     fixed_2_3    a= 0.666667 dAIC=4.052
+  animaltraits_brain_Carnivora     fixed_3_4    a= 0.750000 dAIC=40.066
+  animaltraits_brain_Carnivora     free_a       a= 0.623262 dAIC=0.000
+  animaltraits_brain_Carnivora     mu_family    a= 0.666667 dAIC=6.052
+  anage_metabolic                  fixed_2_3    a= 0.666667 dAIC=9.959
+  anage_metabolic                  fixed_3_4    a= 0.750000 dAIC=5.475
+  anage_metabolic                  free_a       a= 0.713243 dAIC=0.000
+  anage_metabolic                  mu_family    a= 0.713243 dAIC=0.000
+  anage_longevity                  fixed_2_3    a= 0.666667 dAIC=6717.332
+  anage_longevity                  fixed_3_4    a= 0.750000 dAIC=7555.322
+  anage_longevity                  free_a       a= 0.138207 dAIC=0.000
+  anage_longevity                  mu_family    a= 0.666667 dAIC=6719.332
+  city_wages                       fixed_2_3    a= 0.666667 dAIC=608.124
+  city_wages                       fixed_3_4    a= 0.750000 dAIC=484.371
+  city_wages                       free_a       a= 1.100927 dAIC=0.000
+  city_wages                       mu_family    a= 0.750000 dAIC=486.371
+  city_road_length                 fixed_2_3    a= 0.666667 dAIC=116.739
+  city_road_length                 fixed_3_4    a= 0.750000 dAIC=64.308
+  city_road_length                 free_a       a= 0.959118 dAIC=0.000
+  city_road_length                 mu_family    a= 0.750000 dAIC=66.308
+
+D1c. CATALOG NULL SHUFFLE
+=====
+  pantheria_bmr                    real=EXACT PASS
+  pantheria_specific_bmr           real=SCAN  PASS
+  pantheria_longevity              real=EXACT PASS
+  pantheria_gestation              real=SCAN  PASS
+  pantheria_weaning                real=SCAN  PASS
+  pantheria_pop_density            real=MISS  PASS
+  pantheria_home_range             real=MISS  PASS
+  animaltraits_metabolic_all       real=SCAN  PASS
+  animaltraits_metabolic_Mammalia  real=EXACT PASS
+  animaltraits_specific_mr         real=MISS  PASS
+  animaltraits_specific_mr_Mammalia real=MISS  PASS
+  animaltraits_brain               real=MISS  PASS
+  animaltraits_brain_Primates      real=MISS  PASS
+  animaltraits_brain_Rodentia      real=MISS  PASS
+  animaltraits_brain_Carnivora     real=MISS  PASS
+  anage_metabolic                  real=EXACT PASS
+  anage_longevity                  real=SCAN  PASS
+  city_wages                       real=MISS  PASS
+  city_road_length                 real=MISS  PASS
+  catalog_null_audit  PASS
+
+D3. KLEIBER M0 INTERCEPT AUDIT
+=====
+  pantheria_bmr                    n= 573 K=3.04375 B0_emp=233.085 M_gmean/M0=0.0015 resid_std=0.2150
+    c_M0=6.885546  log2_B0_emp=7.864712  log10_K=0.483409
+  anage_metabolic                  n= 627 K=2.8902 B0_emp=221.326 M_gmean/M0=0.0016 resid_std=0.3789
+    c_M0=6.810863  log2_B0_emp=7.790030  log10_K=0.460928
+  animaltraits_metabolic_Mammalia  n= 177 K=3.41969 B0_emp=261.874 M_gmean/M0=0.0014 resid_std=0.1946
+    c_M0=7.053562  log2_B0_emp=8.032729  log10_K=0.533987
+  log2_B0_spread_octaves  0.2427
+
+D4. METABOLIC SERIES vs μ
+=====
+  series                               a_pri       μ regime           a_hyp resid_hyp nearer
+  -----
+  pantheria_bmr                     0.717344  0.6081 thermal       0.750000  0.032656 Y
+  anage_metabolic                   0.713243  0.5589 thermal       0.750000  0.036757 Y
+  animaltraits_metabolic_Mammalia   0.670730  0.0488 intermediate  0.708333  0.037603 Y
+  animaltraits_metabolic_all        1.032485  4.3898 mixed              nan       nan N
+  development_time_3_16             0.187500       — fixed         0.187500  0.000000 Y
+  activity_bmr_nearer_bulk_than_surface      PASS
+  activity_bmr_closer_bulk_than_mixed        PASS
+  activity_mammalia_nearer_mid_than_surface  PASS
+
+D5. INFO CONJUGACY / SUM RULES
+=====
+  city_wages+roads             aL= 1.050992 aR= 1.122460 sum= 2.173451 tgt= 2.000000 resid= 0.173451 MISS
+  pop_density_OLS_vs_Damuth    aL=-0.740671 aR=        — sum=-0.740671 tgt=-0.750000 resid= 0.009329 SCAN
+  home_range_vs_1_cons         aL= 1.060935 aR=        — sum= 1.060935 tgt= 1.000000 resid= 0.060935 MISS
+  home_range_vs_3_4_met        aL= 1.060935 aR=        — sum= 1.060935 tgt= 0.750000 resid= 0.310935 MISS
+  animaltraits_brain_vs_bulk   aL= 0.877378 aR=        — sum= 0.877378 tgt= 0.750000 resid= 0.127378 MISS
+  animaltraits_brain_Primates_vs_bulk aL= 0.886802 aR=        — sum= 0.886802 tgt= 0.750000 resid= 0.136802 MISS
+  animaltraits_brain_Rodentia_vs_bulk aL= 0.667643 aR=        — sum= 0.667643 tgt= 0.750000 resid= 0.082357 MISS
+  animaltraits_brain_Carnivora_vs_bulk aL= 0.623262 aR=        — sum= 0.623262 tgt= 0.750000 resid= 0.126738 MISS
+
+D6. CATALOG
+=====
+  n_series=19  catalog_dir=F:\Development\science\data\catalogs\allometry
+

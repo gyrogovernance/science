@@ -4,6 +4,32 @@ All notable changes to the CGM Experimental Framework will be documented in this
 
 ---
 
+## [1.3.9.1-CGM_hQVM_Allometry] - 2026-07-28 to 2026-07-31
+
+Gravity and the Yang–Mills mass-gap construction treat ancestry preservation as continuum balance under displacement and as an aperture floor on gauge excitations. This release carries the same requirement into organismal transport. An organism is read as a bounded source-to-bulk delivery system that must keep distinguishable parts reconstructable from a common metabolic origin. Empirical allometric exponents are identified with evaluations of a source-accessibility exponent `a = d ln C / d ln M` on the hQVM carrier at chirality dimension `d = 6`.
+
+The Square-Root Cluster Theorem supplies the holographic floor `a_SR = 1/2`. Three-dimensional geometric similarity supplies the surface exponent `a_surf = 2/3`. The QuBEC thermal shell mean `⟨N⟩ = 3` at `d = 6` fixes the West–Brown–Enquist network exponent `a_bulk = ⟨N⟩/(⟨N⟩+1) = 3/4`, the Kleiber relation. Circulatory time and service radius close at `a_time = 1/4` and `a_service = 1/12`. A continuous flux fraction `μ` interpolates between surface and network endpoints at fixed dimensionality and is identified, as a modeling step, with the chirality-register excitation coordinate. Three independent consistency relations on the family of carriers `hQVM(d)` each select `d = 6`. The continuum aperture `Δ` places a chemical activation energy `E_a = kT/(2Δ) ≈ 0.645 eV` at mammalian core temperature inside the Metabolic Theory of Ecology band. External trait catalogs audit the closed channel basis under OLS and RMA protocols. Development as percolation coverage and city/company scaling are reported as Tier C structural readings.
+
+### Added
+
+- `docs/Findings/Analysis_hQVM_CGM_Allometry.md`: source-accessibility channel basis, QuBEC thermal network exponent, dimension-six consistency relations, continuous `μ` interpolation, West organism family, chemical clock on the Δ-ruler, absolute mass intercept, Damuth dual-null conservation traits, Tier C development and urban hypotheses, empirical protocol and falsification criteria.
+- `experiments/hqvm_cgm_allometry_1.py` through `_3.py`, `hqvm_cgm_allometry_run.py`, and `hqvm_cgm_allometry_results.txt`: kernel channel basis and `hQVM(d)` consistency gates, external catalog OLS/RMA audits with bootstrap and AIC controls, fiber-complete alphabet composition and QuBEC quotient census.
+- `experiments/hqvm_cgm_allometry_data_ingest.py` and catalogs under `data/catalogs/allometry/`: PanTHERIA, AnAge, AnimalTraits, and city wage/road-length series with provenance.
+
+### Results
+
+- Channel basis at `d = 6`: `a_SR = 1/2`, `a_surf = 2/3` (kernel; continuum fold `0.662386`), `a_bulk = 3/4`, `a_time = 1/4`, `a_service = 1/12`.
+- QuBEC thermal point: `⟨N⟩ = d/2 = 3`, shell moment `M_shell = 192`, identity `⟨N⟩ = M_shell/|H|` confirmed; `a_bulk = ⟨N⟩/(⟨N⟩+1) = 3/4`.
+- Dimension-six consistency: Rel I (`a_bulk = a_d4`), Rel II (`(d−6)(d+1) = 0`), and Rel III (volume-flow and channel-lift times coincide) each lock uniquely at `d = 6`.
+- Square-Root Cluster Theorem: BFS matches `(2^r)^2` on structured generator restrictions (aggregate 21/21 on live gate; fiber-complete unions PASS).
+- Chemical clock at `T = 310 K`: `E_a ≈ 0.645 eV` inside the 0.6–0.7 eV MTE band; elementary terminal power `B0_micro = |H|·(kT)^2/(2h) ≈ 8.85 × 10^{-7} W` (`Δ` cancels).
+- Absolute Kleiber intercept: `log2(M0/u) = 96`; catalog Kleiber prefactors `K ≈ 2.9–3.4 W·kg^{-3/4}` on PanTHERIA, AnAge, and AnimalTraits Mammalia.
+- Catalog audits (OLS primary for organism traits): PanTHERIA BMR `n = 573`, OLS `0.717` / RMA `0.743` inside the resting `μ`-band `[2/3, 3/4]` (`μ ≈ 0.61`); AnAge metabolic OLS `0.713` likewise in-band; AnimalTraits Mammalia OLS `0.671` in-band (CI contains `2/3`); AnimalTraits pooled metabolic OLS `1.03` flagged as mixed-regime diagnostic. PanTHERIA longevity OLS `0.198` inside composite `[3/16, 1/4]`; AnAge max longevity OLS `0.138` classified as egress-failure SCAN. Gestation/weaning OLS `≈ 0.189` near egress `3/16`. Population density OLS `−0.741` near Damuth `−3/4`, RMA `−0.980` near conservation `−1`. Lifetime sum rules scored in the West organism family (`B·t/M` and heartbeat invariants); mixed BMR×max-longevity catalog proxies are not Tier A tests.
+- Tier C urban conjugacy: city wages RMA `1.122` near socioeconomic `7/6`; road length RMA `1.051` near infrastructure `5/6`.
+- Dual time channels: egress/construction `a_eg = 3/16`, ingress/maintenance `a_in = 1/4`; longevity composite interval `[3/16, 1/4]`.
+
+---
+
 ## [1.3.9-CGM_hQVM_YM-Mass-Gap] - 2026-07-20 to 2026-07-26
 
 The trestleboard release showed that one aperture parameter organizes electroweak, nuclear, and fusion scales on a shared logarithmic ruler. This release asks what that same aperture forces in pure gauge theory. The Clay Yang–Mills existence and mass-gap problem is treated as the external continuum standard in which to express a deeper CGM invariant: the residual defect left when sequential transformations must preserve a common origin and still produce distinguishable outcomes. Existence appears as operational identity of the vacuum. Emergence appears as individuality of excitations above that vacuum. The aperture Δ ≈ 0.0207 is the residual that makes both requirements compatible under depth-four closure.
@@ -140,7 +166,7 @@ Compact geometry completes the electroweak mass program on the hQVM kernel: four
 
 The Gyroscopic kernel is now positioned as a **Holonomic Quantum Virtual Machine (hQVM)** within the Holonomic Quantum Computing paradigm (Zanardi and Rasetti 1999; Pachos et al. 2000). Computation proceeds via geometric phases (monodromies) of closed SE(3) spinorial loops on a reversible GF(2) finite-state machine. This grounding connects the kernel's native algebra to the established HQC literature on geometric gate realization and holonomy-based universality.
 
-- **aQPU to hQVM** across the entire repository (code, docs, filenames)
+- **hQVM to hQVM** across the entire repository (code, docs, filenames)
 - **HQC positioning** added to core specifications and key reports, establishing that the hQVM instantiates HQC geometric structure on standard silicon
 - **Three Computational Charts** (Carrier, Chirality, Wavefunction) and **Code-first hierarchy** (CODE to ALGEBRA to WAVEFUNCTION) formalized as normative specification text
 - **Wavefunction chart** added to Specs Formalism and QuBEC Theory as the chart where holonomic phases and eigenspace decomposition are manifest

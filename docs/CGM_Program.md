@@ -25,6 +25,7 @@
   - [5.7 Electroweak Mass Spectrum from Compact Geometry](#57-electroweak-mass-spectrum-from-compact-geometry)
   - [5.8 Nuclear Structure on the Shared Δ-Ruler](#58-nuclear-structure-on-the-shared-δ-ruler)
   - [5.9 Yang–Mills Mass Gap as Aperture Readout](#59-yangmills-mass-gap-as-aperture-readout)
+  - [5.10 Organismal Allometry from the Channel Basis](#510-organismal-allometry-from-the-channel-basis)
 - [6. Cosmological Observations and Testable Predictions](#6-cosmological-observations-and-testable-predictions)
   - [6.1 The CMB as a Residual Observational Field](#61-the-cmb-as-a-residual-observational-field)
   - [6.2 Cosmic Multiplicity and the Illusion of Expansion](#62-cosmic-multiplicity-and-the-illusion-of-expansion)
@@ -47,6 +48,7 @@ This document serves as a high-level guide to the entire CGM research program, w
 -   **A complete gravitational derivation**, from the CGM hQVM implementation through nonlinear continuum predictions (horizon, photon sphere, perihelion, shadows).
 -   **Nuclear structure and fusion phenomenology** on the same Δ-ruler that places electroweak masses, including isomer, binding, decay routing, and magic-number closures.
 -   **The Yang–Mills mass gap as continuum readout of the aperture**, expressing identity of the vacuum and individuality of excitations under depth-four closure in the external Clay axiomatic standard.
+-   **Organismal allometry as source-to-bulk transport** on the same `d = 6` channel basis that fixes Kleiber’s `3/4`, the resting `μ`-band, and dual egress/ingress times.
 -   **A new perspective on cosmology**, where the universe is the interior of a Planck-scale black hole and cosmic expansion is an optical illusion.
 -   **A resolution to fundamental problems in physics**, such as the cosmological constant problem, the Hubble tension, and the nature of quantum gravity.
 -   **A formal theory of intelligence**, including quantitative metrics for AI alignment and a constructive model (GyroSI) of recursive intelligence.
@@ -263,6 +265,12 @@ The Clay Yang–Mills existence and mass-gap problem supplies the external conti
 
 Existence in the model is preservation of a common origin under transformation, recorded as operational identity of the vacuum. Emergence is the production of distinguishable outcomes above that origin, recorded as individuality of excitations. The aperture Δ ≈ 0.0207 is the residual defect that makes identity and individuality compatible under depth-four closure. The construction defines the canonical state on the finite 4096-state carrier, lifts it by GNS, embeds finite Wilson charts, and packages continuum spacetime by the polar–Hopf chart of the QuBEC occupation measure. Unoriented averaging collapses curvature to a universal half-gap shadow. Oriented retention of the transcription reference yields the physical aperture floor. On the admissible Hopf-oriented quotient the proposed continuum mass readout for the saturated grade-2 curvature multiplet is m_gap = C₂ · v · Δ² ≈ 1.582 GeV, in the lattice light-scalar glueball window. Finite carrier and Wilson-chart identities are unconditional. Continuum claims are stated with an explicit dependency chain from the local net through OS reconstruction to identification of the physical excitation.
 
+### 5.10 Organismal Allometry from the Channel Basis
+
+Gravity and the Yang–Mills construction treat ancestry preservation as continuum balance and as an aperture floor on gauge excitations. The allometry analysis carries the same requirement into organismal transport: an organism is a bounded source-to-bulk delivery system whose distinguishable parts remain reconstructable from a common metabolic origin. Full write-up: [Analysis_hQVM_CGM_Allometry](Findings/Analysis_hQVM_CGM_Allometry.md). Verification: `hqvm_cgm_allometry_run.py` (`_1.py` through `_3.py`).
+
+Empirical allometric exponents are identified with the source-accessibility exponent `a = d ln C / d ln M` on the hQVM carrier at chirality dimension `d = 6`. The Square-Root Cluster Theorem supplies the holographic floor `a_SR = 1/2`. Three-dimensional geometric similarity supplies the surface exponent `a_surf = 2/3`. The QuBEC thermal shell mean `⟨N⟩ = 3` fixes the network exponent `a_bulk = ⟨N⟩/(⟨N⟩+1) = 3/4` (Kleiber). Circulatory time and service radius close at `a_time = 1/4` and `a_service = 1/12`. A continuous flux fraction `μ` interpolates between surface and network endpoints; resting metabolic catalogs are classified against the closed `μ`-band `[2/3, 3/4]`, not against the `μ = 1` endpoint alone. Dual time channels give developmental egress `a_eg = 3/16` and maintenance ingress `a_in = 1/4`, so longevity composites occupy `[3/16, 1/4]`; maximum-longevity catalogs that fall below `3/16` are read as egress-failure mixtures. Three consistency relations on the family `hQVM(d)` each select `d = 6`. The continuum aperture places a chemical activation energy `E_a = kT/(2Δ) ≈ 0.645 eV` at mammalian core temperature inside the Metabolic Theory of Ecology band. Damuth population-density traits exhibit the OLS/RMA dual-null pattern (`−3/4` and `−1`). Development-as-percolation and city/company conjugacy (`5/6`, `7/6`) are Tier C structural readings. External catalogs (PanTHERIA, AnAge, AnimalTraits, city series) audit the closed channel basis under OLS and RMA protocols defined in the analysis.
+
 ## 6. Cosmological Observations and Testable Predictions
 
 ### 6.1 The CMB as a Residual Observational Field
@@ -313,19 +321,20 @@ The repository currently contains:
 
 | Measure | Count |
 |---------|------:|
-| Analysis write-ups (`docs/Findings/Analysis_*.md`) | 33 |
-| Runnable experiment scripts (`experiments/`, excl. tests) | 105 |
-| hQVM physics scripts (`experiments/hqvm_*.py`) | 41 |
-| Shared library and kernel modules (`experiments/`) | 7 |
+| Analysis write-ups (`docs/Findings/Analysis_*.md`) | 35 |
+| Runnable experiment scripts (`experiments/`, excl. tests) | 108 |
+| hQVM physics scripts (`experiments/hqvm_*.py`) | 46 |
+| Shared library and kernel modules (`experiments/`) | 6 |
 | hQVM verified features (Tiers A-C) | 243 |
-| Python in `experiments/` (all files) | 73,000 lines |
+| Python in `experiments/` (all files) | 77,000 lines |
 
-Scripts cover gravity, the Yang–Mills mass-gap readout, nuclear structure, electroweak mass geometry, fine structure, quantum gravity, CMB data checks, axiomatization, Hilbert space representation, monodromy, energy scales, black-hole cosmology, and related topics. Each row below is the single entry point for that topic.
+Scripts cover gravity, the Yang–Mills mass-gap readout, organismal allometry, nuclear structure, electroweak mass geometry, fine structure, quantum gravity, CMB data checks, axiomatization, Hilbert space representation, monodromy, energy scales, black-hole cosmology, and related topics. Each row below is the single entry point for that topic.
 
 | Topic | Analysis | Code |
 |-------|----------|------|
 | Gravity: discrete state geometry and nonlinear continuum | [Analysis_Gravity](Findings/Analysis_Gravity.md) | `hqvm_gravity_common.py`, `hqvm_gravity_analysis_1.py` through `10.py`, `hqvm_wavefunction_1.py`, `hqvm_wavefunction_2.py`. Run: `python experiments/hqvm_gravity_runner.py` |
-| Yang–Mills mass gap from the CGM aperture; identity/individuality under depth-four closure | [Yang_Mills_Mass_Gap_Solution.md](../experiments/hQVM_CGM_YM_Gap/Yang_Mills_Mass_Gap_Solution.md) | `experiments/hQVM_CGM_YM_Gap/Yang_Mills_Mass_Gap_run.py` (`_1.py`–`_5.py`) |
+| Yang–Mills mass gap from the CGM aperture; identity/individuality under depth-four closure | [Yang_Mills_Mass_Gap_Solution.md](../experiments/hQVM_CGM_YM_Gap/Yang_Mills_Mass_Gap_Solution.md), [Findings](Findings/Analysis_hQVM_CGM_YM_Mass_Gap.md) | `experiments/hQVM_CGM_YM_Gap/Yang_Mills_Mass_Gap_run.py` (`_1.py`–`_5.py`) |
+| Organismal allometry: channel basis at `d = 6`, Kleiber `3/4`, `μ`-band, egress/ingress times | [Analysis_hQVM_CGM_Allometry](Findings/Analysis_hQVM_CGM_Allometry.md) | `hqvm_cgm_allometry_run.py` (`_1.py`–`_3.py`) |
 | Nuclear isomer, deuteron, decay census, fusion map, magic numbers on the shared Δ-ruler | [Analysis_hQVM_CGM_Trestleboard](Findings/Analysis_hQVM_CGM_Trestleboard.md) | `hqvm_cgm_trestleboard_run.py` (`_1.py`–`_5.py`) |
 | Wavefunction: fiber bundle structure of the byte | [Analysis_hQVM_Wavefunction](Findings/Analysis_hQVM_Wavefunction.md) | `hqvm_wavefunction_kernel.py`, `hqvm_wavefunction_1.py`, `hqvm_wavefunction_2.py` |
 | Generator-restricted percolation; Square-Root Cluster Theorem | [Analysis_hQVM_Percolation](Findings/Analysis_hQVM_Percolation.md) | `hqvm_percolation_analysis_run.py` (`_1.py`–`_5.py`) |
