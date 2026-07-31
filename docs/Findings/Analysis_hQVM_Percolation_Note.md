@@ -12,7 +12,7 @@ The findings manuscript [`Analysis_hQVM_Percolation.md`](Analysis_hQVM_Percolati
 
 ## 1. Scope and intended reader
 
-**Subject classes (arXiv-style):** math-ph; cs.LG; cs.IT; math.PR; math.CO; cs.AI
+**Subject classes:** math-ph; cs.LG; cs.IT; math.PR; math.CO; cs.AI
 
 **Keywords:** Common Governance Model, holonomic quantum virtual machine, generator-restricted percolation, GF(2) transport rank, finite transformation semigroups, matroid rank, self-dual coding theory, exact enumeration benchmark, mechanistic interpretability, causal abstraction, representation learning ground truth, statistical mechanics of learning, mathematical physics.
 

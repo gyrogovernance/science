@@ -194,8 +194,8 @@ def classify_exponent(a: float, trait_class: str = "") -> Tuple[str, float, floa
         if A_EGRESS <= a <= A_TIME:
             return "longevity_composite|[3/16,1/4]", r23, r34, "EXACT"
         if a < A_EGRESS:
-            # Max-longevity catalogs mix adult maintenance with early egress failure.
-            return "longevity_egress_failure", r23, r34, "SCAN"
+            # Max-longevity catalogs mix adult maintenance with early mortality.
+            return "longevity_development_failure", r23, r34, "SCAN"
         return "longevity_above_maintenance", r23, r34, "MISS"
     if 0.2 <= a <= 0.3 and r23 > 0.05 and trait_class == "":
         if abs(a - 0.25) < min(r23, r34):

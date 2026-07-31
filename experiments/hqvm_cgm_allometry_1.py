@@ -838,7 +838,7 @@ def city_company_family(d: int = N_DOF) -> List[DerivedExponent]:
             "company_vs_city_capacity",
             WORD_HORIZON_REACH / float(OMEGA_FULL),
             "128/4096",
-            "word-regime confinement vs full spanning",
+            "confinement vs full spanning",
         ),
     ]
 

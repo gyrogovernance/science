@@ -6,7 +6,7 @@
 
 **Reproducibility:** `experiments/hqvm_percolation_analysis_results.txt` and `experiments/hqvm_percolation_analysis_5_results.txt`. Scripts and protocol: Appendix B. Cross-references to `docs/Findings/Analysis_Gravity.md` denote the full findings manuscript (Sections 1 through 8 and Appendices A through H), not the shorter Gravity Note unless explicitly cited.
 
-**Subject classes (arXiv-style):** math-ph; cs.LG; cs.IT; math.PR; math.CO; cs.AI
+**Subject classes:** math-ph; cs.LG; cs.IT; math.PR; math.CO; cs.AI
 
 **Keywords:** Common Governance Model, generator-restricted percolation, GF(2) transport rank, finite transformation semigroups, exact enumeration benchmark, matroid rank, coding theory, mechanistic interpretability, representation learning ground truth, mathematical physics
 

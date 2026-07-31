@@ -324,7 +324,7 @@
   city_pace                      0.166667 1/d                 Tier C: pace relative to linear
   city_infra_plus_socio          2.000000 a_infra+a_socio     Tier C: conjugacy sum = 2
   company_sublinear              0.833333 (d-1)/d             Tier C: bounded network
-  company_vs_city_capacity       0.031250 128/4096            word-regime confinement vs full spanning
+  company_vs_city_capacity       0.031250 128/4096            confinement vs full spanning
 
 12. CHEMICAL CLOCK (E_a=kT/(2Δ); MTE band)
 =====
@@ -519,7 +519,7 @@ D1. CATALOG FITS (OLS primary for organism; RMA for city)
     nearest=mu_band|mu=0.5589  CI_2/3=False  CI_3/4=False  tick23=+2.250  tick34=-1.776
     source=F:\Development\science\data\catalogs\allometry\anage_metabolic.csv
   anage_longevity                   3210  OLS  0.138207  0.138207  0.241605  0.132476  0.143913 SCAN
-    nearest=longevity_egress_failure  CI_2/3=False  CI_3/4=False  tick23=-25.530  tick34=-29.556
+    nearest=longevity_development_failure  CI_2/3=False  CI_3/4=False  tick23=-25.530  tick34=-29.556
     source=F:\Development\science\data\catalogs\allometry\anage_longevity.csv
   city_wages                         382  RMA  1.122460  1.100927  1.122460  1.102995  1.144268 SCAN
     nearest=rule:city_socioeconomic  CI_2/3=False  CI_3/4=False  tick23=+22.019  tick34=+17.994

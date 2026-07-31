@@ -4,7 +4,7 @@
 
 **Reproducibility:** `experiments/hqvm_cgm_trestleboard_results.txt`. Scripts: `hqvm_cgm_trestleboard_1.py` through `hqvm_cgm_trestleboard_5.py`, `hqvm_cgm_trestleboard_common.py`, `hqvm_cgm_trestleboard_run.py`. External data catalogs: `data/catalogs/ensdf/` and `data/catalogs/fusion/` (SOURCE files in each directory). Local PDF copies of primary isomer references: `docs/references/` (`SOURCE_Th229m.txt`, `SOURCE_U235m.txt`).
 
-**Subject classes (arXiv-style):** nucl-th; nucl-ex; physics.plasm-ph; math-ph
+**Subject classes:** nucl-th; nucl-ex; physics.plasm-ph; math-ph
 
 **Keywords:** Common Governance Model, hQVM trestleboard, nuclear isomer, Th-229m, Delta-ruler, fusion S-factor, percolation hierarchy, alpha decay, beta decay, Coulomb barrier, nuclear magic numbers
 
