@@ -1,70 +1,48 @@
-# Virtual Environment
-.venv/
-venv/
-env/
-ENV/
-
+```
 # Python
 __pycache__/
-*.py[cod]
-*$py.class
-*.so
+*.pyc
+*.pyo
+*.pyd
 .Python
-build/
-develop-eggs/
+env/
+venv/
+.venv/
+.ENV
+.python-version
+.pytest_cache/
+.mypy_cache/
+.coverage
+coverage/
+
+# Build and distribution artifacts
 dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
+build/
 *.egg-info/
-.installed.cfg
-*.egg
-
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
-
-# OS
-.DS_Store
-Thumbs.db
-
-# Jupyter Notebook
-.ipynb_checkpoints
-
-# Environment variables
-.env
-.env.local
+.svn/
+ CVS/
 
 # Logs
 *.log
 
-# Results and data files
-*.npy
-*.npz
-*.pkl
-*.pickle
-results/
-data/
-!experiments/data/
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
 
-# Large data files (excluded from tracking)
-experiments/data/COM_CompMap_Compton-SZMap-masks_2048_R2.01.fits
-
-# Temporary files
+# IDE specific
+.vscode/
+.idea/
+*.swp
+*.swo
 *.tmp
-*.temp
 
-# Personal
-docs/Notes/
-
-# Dev
-docs/papers/
+# Environment variables
+.env
+.env.local
+*.env.*
+```
