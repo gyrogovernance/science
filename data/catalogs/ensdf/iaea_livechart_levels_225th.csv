@@ -1,0 +1,34 @@
+z,n,symbol,idx,energy_shift,energy,unc_e,ripl_shift,jp,jp_order,half_life,operator_hl,unc_hl,unit_hl,half_life_sec,unc_hl,decay_1,decay_1_%,unc_1,decay_2,decay_2_%,unc_2,decay_3,decay_3_%,unc_3,isospin,magnetic_dipole,unc_mn,electric_quadrupole,unc_eq,ENSDF_publication_cut-off,ENSDF_authors,Extraction_date
+90,135,Th,0,,0,,,(3/2+),1,8.75,,4,m,525,2.4,A,90,,EC,10,,,,,,,,,,1-Dec-2008,A. K. Jain (a) and  R. Raut (b) and  J. K. Tuli,2026-07-17
+90,135,Th,1,,68.4,,,(7/2+),1,,,,,,,,,,,,,,,,,,,,,1-Dec-2008,A. K. Jain (a) and  R. Raut (b) and  J. K. Tuli,2026-07-17
+90,135,Th,2,,187,,,(11/2+),1,,,,,,,,,,,,,,,,,,,,,1-Dec-2008,A. K. Jain (a) and  R. Raut (b) and  J. K. Tuli,2026-07-17
+90,135,Th,3,,325.6,,,(13/2-),1,,,,,,,,,,,,,,,,,,,,,1-Dec-2008,A. K. Jain (a) and  R. Raut (b) and  J. K. Tuli,2026-07-17
+90,135,Th,4,,370.2,,,(15/2+),1,,,,,,,,,,,,,,,,,,,,,1-Dec-2008,A. K. Jain (a) and  R. Raut (b) and  J. K. Tuli,2026-07-17
+90,135,Th,5,,519.7,,,(17/2-),1,,,,,,,,,,,,,,,,,,,,,1-Dec-2008,A. K. Jain (a) and  R. Raut (b) and  J. K. Tuli,2026-07-17
+90,135,Th,6,,614.3,,,(19/2+),1,,,,,,,,,,,,,,,,,,,,,1-Dec-2008,A. K. Jain (a) and  R. Raut (b) and  J. K. Tuli,2026-07-17
+90,135,Th,7,,768.7,,,(21/2-),1,,,,,,,,,,,,,,,,,,,,,1-Dec-2008,A. K. Jain (a) and  R. Raut (b) and  J. K. Tuli,2026-07-17
+90,135,Th,8,,910.7,,,(23/2+),1,,,,,,,,,,,,,,,,,,,,,1-Dec-2008,A. K. Jain (a) and  R. Raut (b) and  J. K. Tuli,2026-07-17
+90,135,Th,9,,1072.2,,,(25/2-),1,,,,,,,,,,,,,,,,,,,,,1-Dec-2008,A. K. Jain (a) and  R. Raut (b) and  J. K. Tuli,2026-07-17
+90,135,Th,10,,1251.3,,,(27/2+),1,,,,,,,,,,,,,,,,,,,,,1-Dec-2008,A. K. Jain (a) and  R. Raut (b) and  J. K. Tuli,2026-07-17
+90,135,Th,11,,1426.3,,,(29/2-),1,,,,,,,,,,,,,,,,,,,,,1-Dec-2008,A. K. Jain (a) and  R. Raut (b) and  J. K. Tuli,2026-07-17
+90,135,Th,12,,1631.8,,,(31/2+),1,,,,,,,,,,,,,,,,,,,,,1-Dec-2008,A. K. Jain (a) and  R. Raut (b) and  J. K. Tuli,2026-07-17
+90,135,Th,13,,1824.5,,,(33/2-),1,,,,,,,,,,,,,,,,,,,,,1-Dec-2008,A. K. Jain (a) and  R. Raut (b) and  J. K. Tuli,2026-07-17
+90,135,Th,14,,2047.2,,,(35/2+),1,,,,,,,,,,,,,,,,,,,,,1-Dec-2008,A. K. Jain (a) and  R. Raut (b) and  J. K. Tuli,2026-07-17
+90,135,Th,15,,2259.1,,,(37/2-),1,,,,,,,,,,,,,,,,,,,,,1-Dec-2008,A. K. Jain (a) and  R. Raut (b) and  J. K. Tuli,2026-07-17
+90,135,Th,16,,2494.4,,,(39/2+),1,,,,,,,,,,,,,,,,,,,,,1-Dec-2008,A. K. Jain (a) and  R. Raut (b) and  J. K. Tuli,2026-07-17
+90,135,Th,17,X,,,,(5/2+),1,,,,,,,,,,,,,,,,,,,,,1-Dec-2008,A. K. Jain (a) and  R. Raut (b) and  J. K. Tuli,2026-07-17
+90,135,Th,18,X,103.5,,,(9/2+),1,,,,,,,,,,,,,,,,,,,,,1-Dec-2008,A. K. Jain (a) and  R. Raut (b) and  J. K. Tuli,2026-07-17
+90,135,Th,19,X,222.8,,,(11/2-),1,,,,,,,,,,,,,,,,,,,,,1-Dec-2008,A. K. Jain (a) and  R. Raut (b) and  J. K. Tuli,2026-07-17
+90,135,Th,20,X,271.1,,,(13/2+),1,,,,,,,,,,,,,,,,,,,,,1-Dec-2008,A. K. Jain (a) and  R. Raut (b) and  J. K. Tuli,2026-07-17
+90,135,Th,21,X,401.6,,,(15/2-),1,,,,,,,,,,,,,,,,,,,,,1-Dec-2008,A. K. Jain (a) and  R. Raut (b) and  J. K. Tuli,2026-07-17
+90,135,Th,22,X,498.1,,,(17/2+),1,,,,,,,,,,,,,,,,,,,,,1-Dec-2008,A. K. Jain (a) and  R. Raut (b) and  J. K. Tuli,2026-07-17
+90,135,Th,23,X,636.5,,,(19/2-),1,,,,,,,,,,,,,,,,,,,,,1-Dec-2008,A. K. Jain (a) and  R. Raut (b) and  J. K. Tuli,2026-07-17
+90,135,Th,24,X,775.6,,,(21/2+),1,,,,,,,,,,,,,,,,,,,,,1-Dec-2008,A. K. Jain (a) and  R. Raut (b) and  J. K. Tuli,2026-07-17
+90,135,Th,25,X,925.2,,,(23/2-),1,,,,,,,,,,,,,,,,,,,,,1-Dec-2008,A. K. Jain (a) and  R. Raut (b) and  J. K. Tuli,2026-07-17
+90,135,Th,26,X,1096,,,(25/2+),1,,,,,,,,,,,,,,,,,,,,,1-Dec-2008,A. K. Jain (a) and  R. Raut (b) and  J. K. Tuli,2026-07-17
+90,135,Th,27,X,1259.3,,,(27/2-),1,,,,,,,,,,,,,,,,,,,,,1-Dec-2008,A. K. Jain (a) and  R. Raut (b) and  J. K. Tuli,2026-07-17
+90,135,Th,28,X,1454.2,,,(29/2+),1,,,,,,,,,,,,,,,,,,,,,1-Dec-2008,A. K. Jain (a) and  R. Raut (b) and  J. K. Tuli,2026-07-17
+90,135,Th,29,X,1626.3,,,(31/2-),1,,,,,,,,,,,,,,,,,,,,,1-Dec-2008,A. K. Jain (a) and  R. Raut (b) and  J. K. Tuli,2026-07-17
+90,135,Th,30,X,1839.1,,,(33/2+),1,,,,,,,,,,,,,,,,,,,,,1-Dec-2008,A. K. Jain (a) and  R. Raut (b) and  J. K. Tuli,2026-07-17
+90,135,Th,31,X,2020.1,,,(35/2-),1,,,,,,,,,,,,,,,,,,,,,1-Dec-2008,A. K. Jain (a) and  R. Raut (b) and  J. K. Tuli,2026-07-17
+

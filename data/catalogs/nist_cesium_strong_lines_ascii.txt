@@ -1,0 +1,204 @@
+<html>
+<head>
+<title>Strong Lines of Cesium&nbsp;(&nbsp;Cs&nbsp;)</title>
+<style type="text/css"><!-- a   {text-decoration: none} td  {font-family: courier new,courier} --></style>
+<!-- Google Analtyics 4 -->
+<script async type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=G-9SLN1VEEJ2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-9SLN1VEEJ2');
+</script>
+<!-- End of Google Analytics 4 -->
+<SCRIPT async type="text/javascript" id="_fed_an_ua_tag" src="https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js?agency=DOC&subagency=NIST&pua=UA-37115410-46&yt=false&exts=ppsx,pps,f90,sch,rtf,wrl,txz,m1v,xlsm,msi,xsd,f,tif,eps,mpg,xml,pl,xlt,c"></script>
+</head>
+<body  bgcolor="white">
+<table width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr valign="bottom">
+<td align="left"><img src="/Images/But/nist-pl-black.gif" width="136" 
+height="68" usemap="#NIST-PL" alt="NIST Physical Measurement Laboratory" border="0"></td>
+<td align="center"><a href="../index.html"><img src="../Images/HBannersm.jpg" border="0" width="438" height="54" alt="Handbook of Basic Atomic Spectroscopic Data" title="Handbook of Basic Atomic Spectroscopic Data"></a></td>
+<td align="right"><img src="../Images/spacer.gif" width="136" height="68" alt=""></td>
+</tr></table><br clear="all">
+<map name="NIST-PL">
+    <area shape="rect" coords="0,0,1,1" href="#start" alt="[skip navigation]">
+    <area shape="rect" coords="1,1,135,48" href="http://www.nist.gov" alt="National Institute of Standards and Technology">
+    <area shape="rect" coords="1,50,135,67" href="/" alt="NIST Physical Measurement Laboratory">
+</map>
+<img src="../Images/spacer.gif" width="300" height="14" alt=""><font size="+1"><b>Cesium&nbsp;(Cs)&nbsp;</b></font><br clear="all"><img src="../Images/spacer.gif" width="165" height="14" alt=""><img src="../Images/otherelements.gif" width="104" height="14"  alt=""><img src="../Images/spacer.gif" width="125" height="14" alt=""><img src="../Images/neutralatom.gif" width="104" height="14"  alt=""><img src="../Images/singlyionized.gif" width="104" height="14"  alt="" ><br>
+<a href="../index.html"><img src="../Images/mainPage.jpg" border=0 width="90" height="30" alt="Homepage - Introduction" title="Homepage - Introduction"></a><a href="findinglist_a.htm"><img src="../Images/findinglist.gif" border="0" width="50" height="30" alt="Finding list" title="Finding list"></a><a href="../element_name_a.htm"><img src="../Images/element_name_G.gif" border="0" width="50" height="30" alt="Select element by name." title="Select element by name."></a><a href="../atomic_number_a.htm"><img src="../Images/atomic_number_G.gif" border="0" width="50" height="30" alt="Select element by atomic number." title="Select element by atomic number."></a><a href="../periodictable_a.htm"><img src="../Images/periodic_table_G.gif"  border="0" width="50" height="30" alt="Select element from periodic table" title="Select element from periodic table"></a
+><img src="../Images/spacer.gif" width="10" height="14" alt=""><a href="cesiumtable1_a.htm"><img src="../Images/general_Y.gif" border="0" width="50" height="30"  alt="Cesium Atomic Data" title="Cesium Atomic Data"></a
+><a href="cesiumtable2_a.htm"><img src="../Images/strong_B.gif"  border="0" width="42" height="30" alt="Cesium Strong Lines" title="Cesium Strong Lines"></a
+><a href="cesiumtable3_a.htm"><img src="../Images/persistent_Y.gif"  border="0" width="55" height="30" alt="Cesium Neutral Atom Persistent Lines " title="Cesium Neutral Atom Persistent Lines "></a
+><a href="cesiumtable5_a.htm"><img src="../Images/energy_Y.gif"  border="0" width="42" height="30" alt="Cesium Neutral Atom Energy Levels" title="Cesium Neutral Atom Energy Levels"></a
+><a href="cesiumtable4_a.htm"><img src="../Images/persistent_O.gif"  border="0" width="55" height="30" alt="Cesium Singly Ionized Persistent Lines" title="Cesium Singly Ionized Persistent Lines"></a
+><a href="cesiumtable6_a.htm"><img src="../Images/energy_O.gif"  border="0" width="42" height="30" alt="Cesium Singly Ionized Energy Levels" title="Cesium Singly Ionized Energy Levels"></a
+><a href="cesiumtable7_a.htm"><img src="../Images/ref_Y.gif"  border="0" width="31" height="30"  alt="Cesium References" title="Cesium References"></a> 
+<br><a href="cesiumtable2.htm"><img src="../Images/switch_formatted.gif" border="0" width="90" height="30" alt="Switch to Formatted Version" title="Switch to Formatted Version"></a><a name="start"><!-- filler --></a>
+<h3 align="center">Strong Lines of  Cesium&nbsp;(&nbsp;Cs&nbsp;)</h3>
+<hr>
+<pre>
+<b>Intensity      Wavelength (&Aring;)     Spectrum   Ref. </b>
+ 
+                 Vacuum
+ 
+   20            639.36           Cs II      <a href="cesiumtable7_a.htm#RE75">RE75</a><a name="639.36"><!-- filler --></a>
+  150            718.14           Cs II      <a href="cesiumtable7_a.htm#RE75">RE75</a><a name="718.14"><!-- filler --></a>
+  150    <a href="cesiumtable4_a.htm#808.76">P</a>       808.76           Cs II      <a href="cesiumtable7_a.htm#RE75">RE75</a><a name="808.76"><!-- filler --></a>
+  150    <a href="cesiumtable4_a.htm#813.84">P</a>       813.84           Cs II      <a href="cesiumtable7_a.htm#RE75">RE75</a><a name="813.84"><!-- filler --></a>
+  400    <a href="cesiumtable4_a.htm#901.27">P</a>       901.27           Cs II      <a href="cesiumtable7_a.htm#RE75">RE75</a><a name="901.27"><!-- filler --></a>
+  400    <a href="cesiumtable4_a.htm#926.66">P</a>       926.66           Cs II      <a href="cesiumtable7_a.htm#RE75">RE75</a><a name="926.66"><!-- filler --></a>
+    1           1840.50           Cs II      <a href="cesiumtable7_a.htm#S81">S81</a><a name="1840.50"><!-- filler --></a>
+    1           1859.16           Cs II      <a href="cesiumtable7_a.htm#S81">S81</a><a name="1859.16"><!-- filler --></a>
+    1           1883.93           Cs II      <a href="cesiumtable7_a.htm#S81">S81</a><a name="1883.93"><!-- filler --></a>
+    1           1935.19           Cs II      <a href="cesiumtable7_a.htm#S81">S81</a><a name="1935.19"><!-- filler --></a>
+ 
+                  Air
+ 
+   15           2267.65           Cs II      <a href="cesiumtable7_a.htm#S81">S81</a><a name="2267.65"><!-- filler --></a>
+    8           2273.84           Cs II      <a href="cesiumtable7_a.htm#S81">S81</a><a name="2273.84"><!-- filler --></a>
+   14           2332.46           Cs II      <a href="cesiumtable7_a.htm#S81">S81</a><a name="2332.46"><!-- filler --></a>
+   10           2392.86           Cs II      <a href="cesiumtable7_a.htm#S81">S81</a><a name="2392.86"><!-- filler --></a>
+   15           2931.08           Cs II      <a href="cesiumtable7_a.htm#S81">S81</a><a name="2931.08"><!-- filler --></a>
+   11    w      3785.44           Cs II      <a href="cesiumtable7_a.htm#S81">S81</a><a name="3785.44"><!-- filler --></a>
+   25           3805.12           Cs II      <a href="cesiumtable7_a.htm#S81">S81</a><a name="3805.12"><!-- filler --></a>
+   30    c      3876.15           Cs I       <a href="cesiumtable7_a.htm#S81">S81</a><a name="3876.15"><!-- filler --></a>
+   10    c      3888.61           Cs I       <a href="cesiumtable7_a.htm#S81">S81</a><a name="3888.61"><!-- filler --></a>
+   30           3896.99           Cs II      <a href="cesiumtable7_a.htm#S81">S81</a><a name="3896.99"><!-- filler --></a>
+   40           3959.51           Cs II      <a href="cesiumtable7_a.htm#S81">S81</a><a name="3959.51"><!-- filler --></a>
+   25           3965.20           Cs II      <a href="cesiumtable7_a.htm#S81">S81</a><a name="3965.20"><!-- filler --></a>
+   20           3974.25           Cs II      <a href="cesiumtable7_a.htm#S81">S81</a><a name="3974.25"><!-- filler --></a>
+   80           4039.85           Cs II      <a href="cesiumtable7_a.htm#S81">S81</a><a name="4039.85"><!-- filler --></a>
+   20           4068.78           Cs II      <a href="cesiumtable7_a.htm#S81">S81</a><a name="4068.78"><!-- filler --></a>
+   20           4213.14           Cs II      <a href="cesiumtable7_a.htm#S81">S81</a><a name="4213.14"><!-- filler --></a>
+   20           4232.20           Cs II      <a href="cesiumtable7_a.htm#S81">S81</a><a name="4232.20"><!-- filler --></a>
+   10           4234.41           Cs II      <a href="cesiumtable7_a.htm#S81">S81</a><a name="4234.41"><!-- filler --></a>
+  140           4264.70           Cs II      <a href="cesiumtable7_a.htm#S81">S81</a><a name="4264.70"><!-- filler --></a>
+  200    w      4277.13           Cs II      <a href="cesiumtable7_a.htm#S81">S81</a><a name="4277.13"><!-- filler --></a>
+   50           4288.38           Cs II      <a href="cesiumtable7_a.htm#S81">S81</a><a name="4288.38"><!-- filler --></a>
+   80           4363.30           Cs II      <a href="cesiumtable7_a.htm#S81">S81</a><a name="4363.30"><!-- filler --></a>
+   40           4373.04           Cs II      <a href="cesiumtable7_a.htm#S81">S81</a><a name="4373.04"><!-- filler --></a>
+   40    w      4405.26           Cs II      <a href="cesiumtable7_a.htm#S81">S81</a><a name="4405.26"><!-- filler --></a>
+  120           4501.55           Cs II      <a href="cesiumtable7_a.htm#S81">S81</a><a name="4501.55"><!-- filler --></a>
+  200    <a href="cesiumtable4_a.htm#4526.74">P</a>      4526.74           Cs II      <a href="cesiumtable7_a.htm#S81">S81</a><a name="4526.74"><!-- filler --></a>
+   40           4538.97           Cs II      <a href="cesiumtable7_a.htm#S81">S81</a><a name="4538.97"><!-- filler --></a>
+   15    <a href="cesiumtable3_a.htm#4555.28">P</a>,c    4555.28           Cs I       <a href="cesiumtable7_a.htm#K62b">K62b</a><a name="4555.28"><!-- filler --></a>
+    8    <a href="cesiumtable3_a.htm#4593.17">P</a>,c    4593.17           Cs I       <a href="cesiumtable7_a.htm#K62b">K62b</a><a name="4593.17"><!-- filler --></a>
+ 1000    <a href="cesiumtable4_a.htm#4603.79">P</a>      4603.79           Cs II      <a href="cesiumtable7_a.htm#S81">S81</a><a name="4603.79"><!-- filler --></a>
+   40    c      4616.17           Cs II      <a href="cesiumtable7_a.htm#S81">S81</a><a name="4616.17"><!-- filler --></a>
+   70           4763.64           Cs II      <a href="cesiumtable7_a.htm#S81">S81</a><a name="4763.64"><!-- filler --></a>
+  250           4830.19           Cs II      <a href="cesiumtable7_a.htm#S81">S81</a><a name="4830.19"><!-- filler --></a>
+  200           4870.04           Cs II      <a href="cesiumtable7_a.htm#S81">S81</a><a name="4870.04"><!-- filler --></a>
+   50    c      4880.05           Cs II      <a href="cesiumtable7_a.htm#S81">S81</a><a name="4880.05"><!-- filler --></a>
+  400           4952.85           Cs II      <a href="cesiumtable7_a.htm#S81">S81</a><a name="4952.85"><!-- filler --></a>
+   80           4972.60           Cs II      <a href="cesiumtable7_a.htm#S81">S81</a><a name="4972.60"><!-- filler --></a>
+  250           5043.80           Cs II      <a href="cesiumtable7_a.htm#S81">S81</a><a name="5043.80"><!-- filler --></a>
+   70    c      5209.58           Cs II      <a href="cesiumtable7_a.htm#S81">S81</a><a name="5209.58"><!-- filler --></a>
+  800    <a href="cesiumtable4_a.htm#5227.04">P</a>      5227.04           Cs II      <a href="cesiumtable7_a.htm#S81">S81</a><a name="5227.04"><!-- filler --></a>
+  300           5249.38           Cs II      <a href="cesiumtable7_a.htm#S81">S81</a><a name="5249.38"><!-- filler --></a>
+  110           5274.05           Cs II      <a href="cesiumtable7_a.htm#S81">S81</a><a name="5274.05"><!-- filler --></a>
+  100    c      5349.13           Cs II      <a href="cesiumtable7_a.htm#S81">S81</a><a name="5349.13"><!-- filler --></a>
+  200           5370.99           Cs II      <a href="cesiumtable7_a.htm#S81">S81</a><a name="5370.99"><!-- filler --></a>
+    1    c      5465.94           Cs I       <a href="cesiumtable7_a.htm#K62b">K62b</a><a name="5465.94"><!-- filler --></a>
+    1           5502.88           Cs I       <a href="cesiumtable7_a.htm#K62b">K62b</a><a name="5502.88"><!-- filler --></a>
+  400           5563.02           Cs II      <a href="cesiumtable7_a.htm#S81">S81</a><a name="5563.02"><!-- filler --></a>
+    2           5635.21           Cs I       <a href="cesiumtable7_a.htm#K62b">K62b</a><a name="5635.21"><!-- filler --></a>
+    3    c      5664.02           Cs I       <a href="cesiumtable7_a.htm#K62b">K62b</a><a name="5664.02"><!-- filler --></a>
+   50           5814.16           Cs II      <a href="cesiumtable7_a.htm#S81">S81</a><a name="5814.16"><!-- filler --></a>
+  250           5831.14           Cs II      <a href="cesiumtable7_a.htm#S81">S81</a><a name="5831.14"><!-- filler --></a>
+    1    c      5838.83           Cs I       <a href="cesiumtable7_a.htm#K62b">K62b</a><a name="5838.83"><!-- filler --></a>
+    5           5845.14           Cs I       <a href="cesiumtable7_a.htm#K62b">K62b</a><a name="5845.14"><!-- filler --></a>
+  500           5925.63           Cs II      <a href="cesiumtable7_a.htm#S81">S81</a><a name="5925.63"><!-- filler --></a>
+   10    c      6010.49           Cs I       <a href="cesiumtable7_a.htm#K62b">K62b</a><a name="6010.49"><!-- filler --></a>
+    1           6034.09           Cs I       <a href="cesiumtable7_a.htm#K62b">K62b</a><a name="6034.09"><!-- filler --></a>
+  100           6128.61           Cs II      <a href="cesiumtable7_a.htm#S81">S81</a><a name="6128.61"><!-- filler --></a>
+   15           6213.10           Cs I       <a href="cesiumtable7_a.htm#K62b">K62b</a><a name="6213.10"><!-- filler --></a>
+    3           6217.60           Cs I       <a href="cesiumtable7_a.htm#K62b">K62b</a><a name="6217.60"><!-- filler --></a>
+    5    c      6354.55           Cs I       <a href="cesiumtable7_a.htm#K62b">K62b</a><a name="6354.55"><!-- filler --></a>
+   80           6495.53           Cs II      <a href="cesiumtable7_a.htm#S81">S81</a><a name="6495.53"><!-- filler --></a>
+  100    w      6536.44           Cs II      <a href="cesiumtable7_a.htm#S81">S81</a><a name="6536.44"><!-- filler --></a>
+    8           6586.51           Cs I       <a href="cesiumtable7_a.htm#K62b">K62b</a><a name="6586.51"><!-- filler --></a>
+    2           6628.66           Cs I       <a href="cesiumtable7_a.htm#EW70">EW70</a><a name="6628.66"><!-- filler --></a>
+   90           6646.57           Cs II      <a href="cesiumtable7_a.htm#S81">S81</a><a name="6646.57"><!-- filler --></a>
+   50    c      6723.28           Cs I       <a href="cesiumtable7_a.htm#S81">S81</a><a name="6723.28"><!-- filler --></a>
+  100           6724.47           Cs II      <a href="cesiumtable7_a.htm#S81">S81</a><a name="6724.47"><!-- filler --></a>
+    3           6824.65           Cs I       <a href="cesiumtable7_a.htm#EW70">EW70</a><a name="6824.65"><!-- filler --></a>
+    5           6870.45           Cs I       <a href="cesiumtable7_a.htm#EW70">EW70</a><a name="6870.45"><!-- filler --></a>
+  400           6955.50           Cs II      <a href="cesiumtable7_a.htm#S81">S81</a><a name="6955.50"><!-- filler --></a>
+   80           6973.30           Cs I       <a href="cesiumtable7_a.htm#K62b">K62b</a><a name="6973.30"><!-- filler --></a>
+  150           6979.67           Cs II      <a href="cesiumtable7_a.htm#S81">S81</a><a name="6979.67"><!-- filler --></a>
+   15           6983.49           Cs I       <a href="cesiumtable7_a.htm#K62b">K62b</a><a name="6983.49"><!-- filler --></a>
+  130    w      7149.54           Cs II      <a href="cesiumtable7_a.htm#S81">S81</a><a name="7149.54"><!-- filler --></a>
+   13           7228.53           Cs I       <a href="cesiumtable7_a.htm#EW70">EW70</a><a name="7228.53"><!-- filler --></a>
+    2           7279.90           Cs I       <a href="cesiumtable7_a.htm#EW70">EW70</a><a name="7279.90"><!-- filler --></a>
+   20           7279.96           Cs I       <a href="cesiumtable7_a.htm#EW70">EW70</a><a name="7279.96"><!-- filler --></a>
+   40    c      7608.90           Cs I       <a href="cesiumtable7_a.htm#K62b">K62b</a><a name="7608.90"><!-- filler --></a>
+   25           7852.52           Cs II      <a href="cesiumtable7_a.htm#S81">S81</a><a name="7852.52"><!-- filler --></a>
+   50           7943.88           Cs I       <a href="cesiumtable7_a.htm#K62b">K62b</a><a name="7943.88"><!-- filler --></a>
+  200           7997.44           Cs II      <a href="cesiumtable7_a.htm#S81">S81</a><a name="7997.44"><!-- filler --></a>
+   20           8012.98           Cs II      <a href="cesiumtable7_a.htm#S81">S81</a><a name="8012.98"><!-- filler --></a>
+   60           8015.73           Cs I       <a href="cesiumtable7_a.htm#EW70">EW70</a><a name="8015.73"><!-- filler --></a>
+   80    c      8047.13           Cs II      <a href="cesiumtable7_a.htm#S81">S81</a><a name="8047.13"><!-- filler --></a>
+    8           8078.94           Cs I       <a href="cesiumtable7_a.htm#EW70">EW70</a><a name="8078.94"><!-- filler --></a>
+   70           8079.04           Cs I       <a href="cesiumtable7_a.htm#EW70">EW70</a><a name="8079.04"><!-- filler --></a>
+ 1000    <a href="cesiumtable3_a.htm#8521.13">P</a>,c    8521.13           Cs I       <a href="cesiumtable7_a.htm#EJN64">EJN64</a><a name="8521.13"><!-- filler --></a>
+   15           8608.31           Cs II      <a href="cesiumtable7_a.htm#S81">S81</a><a name="8608.31"><!-- filler --></a>
+  250    <a href="cesiumtable3_a.htm#8761.41">P</a>,c    8761.41           Cs I       <a href="cesiumtable7_a.htm#EJN64">EJN64</a><a name="8761.41"><!-- filler --></a>
+ 1000    <a href="cesiumtable3_a.htm#8943.47">P</a>,c    8943.47           Cs I       <a href="cesiumtable7_a.htm#EJN64">EJN64</a><a name="8943.47"><!-- filler --></a>
+  300    <a href="cesiumtable3_a.htm#9172.32">P</a>      9172.32           Cs I       <a href="cesiumtable7_a.htm#EJN64">EJN64</a><a name="9172.32"><!-- filler --></a>
+   90           9208.53           Cs I       <a href="cesiumtable7_a.htm#EJN64">EJN64</a><a name="9208.53"><!-- filler --></a>
+   30    c      9220.75           Cs II      <a href="cesiumtable7_a.htm#S81">S81</a><a name="9220.75"><!-- filler --></a>
+   14           9994.79           Cs II      <a href="cesiumtable7_a.htm#S81">S81</a><a name="9994.79"><!-- filler --></a>
+  300          10024.36           Cs I       <a href="cesiumtable7_a.htm#EW70">EW70</a><a name="10024.36"><!-- filler --></a>
+   80          10123.41           Cs I       <a href="cesiumtable7_a.htm#EW70">EW70</a><a name="10123.41"><!-- filler --></a>
+  400          10123.60           Cs I       <a href="cesiumtable7_a.htm#EW70">EW70</a><a name="10123.60"><!-- filler --></a>
+   30    c     10176.02           Cs II      <a href="cesiumtable7_a.htm#S81">S81</a><a name="10176.02"><!-- filler --></a>
+   25          10379.66           Cs II      <a href="cesiumtable7_a.htm#S81">S81</a><a name="10379.66"><!-- filler --></a>
+   13          10480.93           Cs II      <a href="cesiumtable7_a.htm#S81">S81</a><a name="10480.93"><!-- filler --></a>
+   50          10504.51           Cs II      <a href="cesiumtable7_a.htm#S81">S81</a><a name="10504.51"><!-- filler --></a>
+   20    w     10807.88           Cs II      <a href="cesiumtable7_a.htm#S81">S81</a><a name="10807.88"><!-- filler --></a>
+   11          12604.29           Cs II      <a href="cesiumtable7_a.htm#S81">S81</a><a name="12604.29"><!-- filler --></a>
+   20    c     12735.52           Cs II      <a href="cesiumtable7_a.htm#S81">S81</a><a name="12735.52"><!-- filler --></a>
+   50          13424.31           Cs I       <a href="cesiumtable7_a.htm#S81">S81</a><a name="13424.31"><!-- filler --></a>
+  600    <a href="cesiumtable3_a.htm#13588.29">P</a>,c   13588.29           Cs I       <a href="cesiumtable7_a.htm#S81">S81</a><a name="13588.29"><!-- filler --></a>
+  140          13602.56           Cs I       <a href="cesiumtable7_a.htm#S81">S81</a><a name="13602.56"><!-- filler --></a>
+   40    c     13692.91           Cs II      <a href="cesiumtable7_a.htm#S81">S81</a><a name="13692.91"><!-- filler --></a>
+   90          13758.81           Cs I       <a href="cesiumtable7_a.htm#S81">S81</a><a name="13758.81"><!-- filler --></a>
+   14    c     13868.82           Cs II      <a href="cesiumtable7_a.htm#S81">S81</a><a name="13868.82"><!-- filler --></a>
+  900    <a href="cesiumtable3_a.htm#14694.91">P</a>,c   14694.91           Cs I       <a href="cesiumtable7_a.htm#S81">S81</a><a name="14694.91"><!-- filler --></a>
+   20    c     15293.80           Cs II      <a href="cesiumtable7_a.htm#S81">S81</a><a name="15293.80"><!-- filler --></a>
+   15    c     15356.61           Cs II      <a href="cesiumtable7_a.htm#S81">S81</a><a name="15356.61"><!-- filler --></a>
+   11    c     16426.14           Cs II      <a href="cesiumtable7_a.htm#S81">S81</a><a name="16426.14"><!-- filler --></a>
+   13          16535.63           Cs I       <a href="cesiumtable7_a.htm#S81">S81</a><a name="16535.63"><!-- filler --></a>
+   25          17012.32           Cs I       <a href="cesiumtable7_a.htm#S81">S81</a><a name="17012.32"><!-- filler --></a>
+   12          20138.47           Cs I       <a href="cesiumtable7_a.htm#S81">S81</a><a name="20138.47"><!-- filler --></a>
+   14          22811.86           Cs I       <a href="cesiumtable7_a.htm#S81">S81</a><a name="22811.86"><!-- filler --></a>
+   20          23037.98           Cs I       <a href="cesiumtable7_a.htm#S81">S81</a><a name="23037.98"><!-- filler --></a>
+   60          23344.47           Cs I       <a href="cesiumtable7_a.htm#S81">S81</a><a name="23344.47"><!-- filler --></a>
+   70          24251.21           Cs I       <a href="cesiumtable7_a.htm#S81">S81</a><a name="24251.21"><!-- filler --></a>
+   14          24374.96           Cs I       <a href="cesiumtable7_a.htm#S81">S81</a><a name="24374.96"><!-- filler --></a>
+    9          25220.37           Cs II      <a href="cesiumtable7_a.htm#S81">S81</a><a name="25220.37"><!-- filler --></a>
+   15    d     25763.51           Cs I       <a href="cesiumtable7_a.htm#SAV81">SAV81</a><a name="25763.51"><!-- filler --></a>
+    8          25764.73           Cs I       <a href="cesiumtable7_a.htm#SAV81">SAV81</a><a name="25764.73"><!-- filler --></a>
+   11    c     29310.06           Cs I       <a href="cesiumtable7_a.htm#S81">S81</a><a name="29310.06"><!-- filler --></a>
+   50    <a href="cesiumtable3_a.htm#30103.27">P</a>     30103.27           Cs I       <a href="cesiumtable7_a.htm#S81">S81</a><a name="30103.27"><!-- filler --></a>
+   10    c     30953.06           Cs I       <a href="cesiumtable7_a.htm#S81">S81</a><a name="30953.06"><!-- filler --></a>
+   20    <a href="cesiumtable3_a.htm#34900.13">P</a>     34900.13           Cs I       <a href="cesiumtable7_a.htm#S81">S81</a><a name="34900.13"><!-- filler --></a>
+    3          36131.00           Cs I       <a href="cesiumtable7_a.htm#S81">S81</a><a name="36131.00"><!-- filler --></a>
+</pre>
+<img src="../Images/spacer.gif" width="165" height="14" alt=""><img src="../Images/otherelements.gif" width="104" height="14"  alt=""><img src="../Images/spacer.gif" width="125" height="14" alt=""><img src="../Images/neutralatom.gif" width="104" height="14"  alt=""><img src="../Images/singlyionized.gif" width="104" height="14"  alt="" ><br>
+<a href="../index.html"><img src="../Images/mainPage.jpg" border=0 width="90" height="30" alt="Homepage - Introduction" title="Homepage - Introduction"></a><a href="findinglist_a.htm"><img src="../Images/findinglist.gif" border="0" width="50" height="30" alt="Finding list" title="Finding list"></a><a href="../element_name_a.htm"><img src="../Images/element_name_G.gif" border="0" width="50" height="30" alt="Select element by name." title="Select element by name."></a><a href="../atomic_number_a.htm"><img src="../Images/atomic_number_G.gif" border="0" width="50" height="30" alt="Select element by atomic number." title="Select element by atomic number."></a><a href="../periodictable_a.htm"><img src="../Images/periodic_table_G.gif"  border="0" width="50" height="30" alt="Select element from periodic table" title="Select element from periodic table"></a
+><img src="../Images/spacer.gif" width="10" height="14" alt=""><a href="cesiumtable1_a.htm"><img src="../Images/general_Y.gif" border="0" width="50" height="30"  alt="Cesium Atomic Data" title="Cesium Atomic Data"></a
+><a href="cesiumtable2_a.htm"><img src="../Images/strong_B.gif"  border="0" width="42" height="30" alt="Cesium Strong Lines" title="Cesium Strong Lines"></a
+><a href="cesiumtable3_a.htm"><img src="../Images/persistent_Y.gif"  border="0" width="55" height="30" alt="Cesium Neutral Atom Persistent Lines " title="Cesium Neutral Atom Persistent Lines "></a
+><a href="cesiumtable5_a.htm"><img src="../Images/energy_Y.gif"  border="0" width="42" height="30" alt="Cesium Neutral Atom Energy Levels" title="Cesium Neutral Atom Energy Levels"></a
+><a href="cesiumtable4_a.htm"><img src="../Images/persistent_O.gif"  border="0" width="55" height="30" alt="Cesium Singly Ionized Persistent Lines" title="Cesium Singly Ionized Persistent Lines"></a
+><a href="cesiumtable6_a.htm"><img src="../Images/energy_O.gif"  border="0" width="42" height="30" alt="Cesium Singly Ionized Energy Levels" title="Cesium Singly Ionized Energy Levels"></a
+><a href="cesiumtable7_a.htm"><img src="../Images/ref_Y.gif"  border="0" width="31" height="30"  alt="Cesium References" title="Cesium References"></a> 
+<br><a href="cesiumtable2.htm"><img src="../Images/switch_formatted.gif" border="0" width="90" height="30" alt="Switch to Formatted Version" title="Switch to Formatted Version"></a>
+<hr>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"9ef5b487afff42a68917b2d63593a474","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9efc032cb87442c4',t:'MTc3Njc3MDU2Mg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

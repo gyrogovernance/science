@@ -1,0 +1,88 @@
+section,title,pdf_url
+Gauge & Higgs Bosons,gamma,https://pdg.lbl.gov/2024/listings/rpp2024-list-photon.pdf
+Gauge & Higgs Bosons,g (gluon),https://pdg.lbl.gov/2024/listings/rpp2024-list-gluon.pdf
+Gauge & Higgs Bosons,graviton,https://pdg.lbl.gov/2024/listings/rpp2024-list-graviton.pdf
+Gauge & Higgs Bosons,W boson,https://pdg.lbl.gov/2024/listings/rpp2024-list-w-boson.pdf
+Gauge & Higgs Bosons,Z boson,https://pdg.lbl.gov/2024/listings/rpp2024-list-z-boson.pdf
+Gauge & Higgs Bosons,H,https://pdg.lbl.gov/2024/listings/rpp2024-list-higgs-boson.pdf
+"Leptons (e, mu, tau, ... neutrinos ...)",electron,https://pdg.lbl.gov/2024/listings/rpp2024-list-electron.pdf
+"Leptons (e, mu, tau, ... neutrinos ...)",muon,https://pdg.lbl.gov/2024/listings/rpp2024-list-muon.pdf
+"Leptons (e, mu, tau, ... neutrinos ...)",tau,https://pdg.lbl.gov/2024/listings/rpp2024-list-tau.pdf
+"Leptons (e, mu, tau, ... neutrinos ...)",Heavy Charged Lepton Searches,https://pdg.lbl.gov/2024/listings/rpp2024-list-charged-lepton.pdf
+"Leptons (e, mu, tau, ... neutrinos ...)",Neutrino Properties,https://pdg.lbl.gov/2024/listings/rpp2024-list-neutrino-prop.pdf
+"Leptons (e, mu, tau, ... neutrinos ...)",Number of Neutrino Types,https://pdg.lbl.gov/2024/listings/rpp2024-list-number-neutrino-types.pdf
+"Leptons (e, mu, tau, ... neutrinos ...)",Neutrino Mixing,https://pdg.lbl.gov/2024/listings/rpp2024-list-neutrino-mixing.pdf
+"Quarks (u,d,s,c,b,t...)","LIGHT QUARKS --- u, d, s",https://pdg.lbl.gov/2024/listings/rpp2024-list-light-quarks.pdf
+"Quarks (u,d,s,c,b,t...)",c quark,https://pdg.lbl.gov/2024/listings/rpp2024-list-c-quark.pdf
+"Quarks (u,d,s,c,b,t...)",b quark,https://pdg.lbl.gov/2024/listings/rpp2024-list-b-quark.pdf
+"Quarks (u,d,s,c,b,t...)",t quark,https://pdg.lbl.gov/2024/listings/rpp2024-list-t-quark.pdf
+"Quarks (u,d,s,c,b,t...)",b' quark (4**th Generation),https://pdg.lbl.gov/2024/listings/rpp2024-list-b-prime-quark.pdf
+"Quarks (u,d,s,c,b,t...)",t' quark (4**th Generation),https://pdg.lbl.gov/2024/listings/rpp2024-list-t-prime-quark.pdf
+"Quarks (u,d,s,c,b,t...)",Free Quark Searches,https://pdg.lbl.gov/2024/listings/rpp2024-list-free-quark-searches.pdf
+"Mesons (pi, K, D, B, psi, Upsilon, ...)",K+−,https://pdg.lbl.gov/2024/listings/rpp2024-list-K-plus-minus.pdf
+"Mesons (pi, K, D, B, psi, Upsilon, ...)",K0,https://pdg.lbl.gov/2024/listings/rpp2024-list-K-zero.pdf
+"Mesons (pi, K, D, B, psi, Upsilon, ...)",K(S)0,https://pdg.lbl.gov/2024/listings/rpp2024-list-K-zero-S.pdf
+"Mesons (pi, K, D, B, psi, Upsilon, ...)",K(L)0,https://pdg.lbl.gov/2024/listings/rpp2024-list-K-zero-L.pdf
+"Mesons (pi, K, D, B, psi, Upsilon, ...)",K*(0)(700),https://pdg.lbl.gov/2024/listings/rpp2024-list-K-star-zero-700.pdf
+"Mesons (pi, K, D, B, psi, Upsilon, ...)",K*(892),https://pdg.lbl.gov/2024/listings/rpp2024-list-K-star-892.pdf
+"Mesons (pi, K, D, B, psi, Upsilon, ...)",K(1)(1270),https://pdg.lbl.gov/2024/listings/rpp2024-list-K1-1270.pdf
+"Mesons (pi, K, D, B, psi, Upsilon, ...)",K(1)(1400),https://pdg.lbl.gov/2024/listings/rpp2024-list-K1-1400.pdf
+"Mesons (pi, K, D, B, psi, Upsilon, ...)",K*(1410),https://pdg.lbl.gov/2024/listings/rpp2024-list-K-star-1410.pdf
+"Mesons (pi, K, D, B, psi, Upsilon, ...)",K*(0)(1430),https://pdg.lbl.gov/2024/listings/rpp2024-list-K-zero-star-1430.pdf
+"Mesons (pi, K, D, B, psi, Upsilon, ...)",K*(2)(1430),https://pdg.lbl.gov/2024/listings/rpp2024-list-K2-star-1430.pdf
+"Mesons (pi, K, D, B, psi, Upsilon, ...)",K(1460),https://pdg.lbl.gov/2024/listings/rpp2024-list-K-1460.pdf
+"Mesons (pi, K, D, B, psi, Upsilon, ...)",K(2)(1580),https://pdg.lbl.gov/2024/listings/rpp2024-list-K2-1580.pdf
+"Mesons (pi, K, D, B, psi, Upsilon, ...)",K(1630),https://pdg.lbl.gov/2024/listings/rpp2024-list-K-1630.pdf
+"Mesons (pi, K, D, B, psi, Upsilon, ...)",K(1)(1650),https://pdg.lbl.gov/2024/listings/rpp2024-list-K1-1650.pdf
+"Mesons (pi, K, D, B, psi, Upsilon, ...)",K*(1680),https://pdg.lbl.gov/2024/listings/rpp2024-list-K-star-1680.pdf
+"Mesons (pi, K, D, B, psi, Upsilon, ...)",K(2)(1770),https://pdg.lbl.gov/2024/listings/rpp2024-list-K2-1770.pdf
+"Mesons (pi, K, D, B, psi, Upsilon, ...)",K*(3)(1780),https://pdg.lbl.gov/2024/listings/rpp2024-list-K3-star-1780.pdf
+"Mesons (pi, K, D, B, psi, Upsilon, ...)",K(2)(1820),https://pdg.lbl.gov/2024/listings/rpp2024-list-K2-1820.pdf
+"Mesons (pi, K, D, B, psi, Upsilon, ...)",K(1830),https://pdg.lbl.gov/2024/listings/rpp2024-list-K-1830.pdf
+"Mesons (pi, K, D, B, psi, Upsilon, ...)",K*(0)(1950),https://pdg.lbl.gov/2024/listings/rpp2024-list-K0-star-1950.pdf
+"Mesons (pi, K, D, B, psi, Upsilon, ...)",K*(2)(1980),https://pdg.lbl.gov/2024/listings/rpp2024-list-K2-star-1980.pdf
+"Mesons (pi, K, D, B, psi, Upsilon, ...)",K*(4)(2045),https://pdg.lbl.gov/2024/listings/rpp2024-list-K4-star-2045.pdf
+"Mesons (pi, K, D, B, psi, Upsilon, ...)",K(2)(2250),https://pdg.lbl.gov/2024/listings/rpp2024-list-K2-2250.pdf
+"Mesons (pi, K, D, B, psi, Upsilon, ...)",K(3)(2320),https://pdg.lbl.gov/2024/listings/rpp2024-list-K3-2320.pdf
+"Mesons (pi, K, D, B, psi, Upsilon, ...)",K*(5)(2380),https://pdg.lbl.gov/2024/listings/rpp2024-list-K5-star-2380.pdf
+"Mesons (pi, K, D, B, psi, Upsilon, ...)",K(4)(2500),https://pdg.lbl.gov/2024/listings/rpp2024-list-K4-2500.pdf
+"Mesons (pi, K, D, B, psi, Upsilon, ...)",K(3100),https://pdg.lbl.gov/2024/listings/rpp2024-list-K-3100.pdf
+"Mesons (pi, K, D, B, psi, Upsilon, ...)",Further States,https://pdg.lbl.gov/2024/listings/rpp2024-list-further-states.pdf
+"Baryons (p, n, Lambda_b, Xi, ...)",Omega(2470)-,https://pdg.lbl.gov/2024/listings/rpp2024-list-omega-2470-minus.pdf
+"Baryons (p, n, Lambda_b, Xi, ...)",Xi(cc)+,https://pdg.lbl.gov/2024/listings/rpp2024-list-Xi-cc-plus.pdf
+"Baryons (p, n, Lambda_b, Xi, ...)",Xi(cc)++,https://pdg.lbl.gov/2024/listings/rpp2024-list-xicc-plus-plus.pdf
+"Baryons (p, n, Lambda_b, Xi, ...)",Lambda(b)0,https://pdg.lbl.gov/2024/listings/rpp2024-list-lambdab-zero.pdf
+"Baryons (p, n, Lambda_b, Xi, ...)",Lambda(b)(5912)0,https://pdg.lbl.gov/2024/listings/rpp2024-list-lambdab-5912-zero.pdf
+"Baryons (p, n, Lambda_b, Xi, ...)",Lambda(b)(5920)0,https://pdg.lbl.gov/2024/listings/rpp2024-list-lambdab-5920-zero.pdf
+"Baryons (p, n, Lambda_b, Xi, ...)",Lambda(b)(6070)0,https://pdg.lbl.gov/2024/listings/rpp2024-list-Lambda-b-6070-zero.pdf
+"Baryons (p, n, Lambda_b, Xi, ...)",Lambda(b)(6146)0,https://pdg.lbl.gov/2024/listings/rpp2024-list-Lambda-b-6146-zero.pdf
+"Baryons (p, n, Lambda_b, Xi, ...)",Lambda(b)(6152)0,https://pdg.lbl.gov/2024/listings/rpp2024-list-Lambda-b-6152-zero.pdf
+"Baryons (p, n, Lambda_b, Xi, ...)",Sigma(b),https://pdg.lbl.gov/2024/listings/rpp2024-list-sigmab.pdf
+"Baryons (p, n, Lambda_b, Xi, ...)",Sigma*(b),https://pdg.lbl.gov/2024/listings/rpp2024-list-sigmab-star.pdf
+"Baryons (p, n, Lambda_b, Xi, ...)",Sigma(b)(6097)+,https://pdg.lbl.gov/2024/listings/rpp2024-list-sigma-b-6097-plus.pdf
+"Baryons (p, n, Lambda_b, Xi, ...)",Sigma(b)(6097)-,https://pdg.lbl.gov/2024/listings/rpp2024-list-sigma-b-6097-minus.pdf
+"Baryons (p, n, Lambda_b, Xi, ...)",Xi(b)-,https://pdg.lbl.gov/2024/listings/rpp2024-list-Xi-b-minus.pdf
+"Baryons (p, n, Lambda_b, Xi, ...)",Xi(b)0,https://pdg.lbl.gov/2024/listings/rpp2024-list-Xi-b-zero.pdf
+"Baryons (p, n, Lambda_b, Xi, ...)",Xi(b)'(5935)-,https://pdg.lbl.gov/2024/listings/rpp2024-list-xib-prime-5935-minus.pdf
+"Baryons (p, n, Lambda_b, Xi, ...)",Xi(b)(5945)0,https://pdg.lbl.gov/2024/listings/rpp2024-list-xib-5945-zero.pdf
+"Baryons (p, n, Lambda_b, Xi, ...)",Xi(b)(5955)-,https://pdg.lbl.gov/2024/listings/rpp2024-list-xib-star-5955-minus.pdf
+"Baryons (p, n, Lambda_b, Xi, ...)",Xi(b)(6087)0,https://pdg.lbl.gov/2024/listings/rpp2024-list-Xi-b-6087-zero.pdf
+"Baryons (p, n, Lambda_b, Xi, ...)",Xi(b)(6095)0,https://pdg.lbl.gov/2024/listings/rpp2024-list-Xi-b-6095-zero.pdf
+"Baryons (p, n, Lambda_b, Xi, ...)",Xi(b)(6100)-,https://pdg.lbl.gov/2024/listings/rpp2024-list-Xi-b-6100-minus.pdf
+"Baryons (p, n, Lambda_b, Xi, ...)",Xi(b)(6227)-,https://pdg.lbl.gov/2024/listings/rpp2024-list-Xi-b-6227-minus.pdf
+"Baryons (p, n, Lambda_b, Xi, ...)",Xi(b)(6227)0,https://pdg.lbl.gov/2024/listings/rpp2024-list-Xi-b-6227-zero.pdf
+"Baryons (p, n, Lambda_b, Xi, ...)",Xi(b)(6327)0,https://pdg.lbl.gov/2024/listings/rpp2024-list-Xi-b-6327-zero.pdf
+"Baryons (p, n, Lambda_b, Xi, ...)",Xi(b)(6333)0,https://pdg.lbl.gov/2024/listings/rpp2024-list-Xi-b-6333-zero.pdf
+"Baryons (p, n, Lambda_b, Xi, ...)",Xi(bc)0,https://pdg.lbl.gov/2024/listings/rpp2024-list-Xi-bc-zero.pdf
+"Baryons (p, n, Lambda_b, Xi, ...)",Omega(b)-,https://pdg.lbl.gov/2024/listings/rpp2024-list-omegab-minus.pdf
+"Baryons (p, n, Lambda_b, Xi, ...)",Omega(b)(6316)-,https://pdg.lbl.gov/2024/listings/rpp2024-list-omegab-6316-minus.pdf
+"Baryons (p, n, Lambda_b, Xi, ...)",Omega(b)(6330)-,https://pdg.lbl.gov/2024/listings/rpp2024-list-omegab-6330-minus.pdf
+"Baryons (p, n, Lambda_b, Xi, ...)",Omega(b)(6340)-,https://pdg.lbl.gov/2024/listings/rpp2024-list-omegab-6340-minus.pdf
+"Baryons (p, n, Lambda_b, Xi, ...)",Omega(b)(6350)-,https://pdg.lbl.gov/2024/listings/rpp2024-list-omegab-6350-minus.pdf
+"Baryons (p, n, Lambda_b, Xi, ...)","b-baryon Admixture (Lambda(b), Xi(b), Sigma(b), Omega(b))",https://pdg.lbl.gov/2024/listings/rpp2024-list-baryon-admixture.pdf
+"Baryons (p, n, Lambda_b, Xi, ...)",P(ccbar)(4312)+,https://pdg.lbl.gov/2024/listings/rpp2024-list-P-c-cbar-4312-plus.pdf
+"Baryons (p, n, Lambda_b, Xi, ...)",P(ccbars)(4338)0,https://pdg.lbl.gov/2024/listings/rpp2024-list-P-c-cbar-s-4338-zero.pdf
+"Baryons (p, n, Lambda_b, Xi, ...)",P(ccbar)(4380)+,https://pdg.lbl.gov/2024/listings/rpp2024-list-P-c-cbar-4380-plus.pdf
+"Baryons (p, n, Lambda_b, Xi, ...)",P(ccbar)(4440)+,https://pdg.lbl.gov/2024/listings/rpp2024-list-P-c-cbar-4440-plus.pdf
+"Baryons (p, n, Lambda_b, Xi, ...)",P(ccbar)(4457)+,https://pdg.lbl.gov/2024/listings/rpp2024-list-P-c-cbar-4457-plus.pdf
+"Baryons (p, n, Lambda_b, Xi, ...)",P(ccbars)(4459)0,https://pdg.lbl.gov/2024/listings/rpp2024-list-P-c-cbar-s-4459-zero.pdf

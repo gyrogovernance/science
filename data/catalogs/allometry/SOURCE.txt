@@ -1,0 +1,57 @@
+Allometry life-history / metabolic / city catalogs
+==========================================
+
+Source
+  PanTHERIA (Jones et al. 2009, Ecology 90:2648)
+    ESA Ecological Archives E090-184
+    https://esapubs.org/archive/ecol/E090/184/
+  AnimalTraits (Herberstein et al. 2022, Scientific Data 9:265)
+    https://animaltraits.org/
+    https://doi.org/10.1038/s41597-022-01364-9
+  AnAge (Tacutu et al.; Human Ageing Genomic Resources)
+    https://genomics.senescence.info/species/
+  BEA MSA wages/population via Bettencourt 2020 companion
+    https://github.com/mansueto-institute/Urban-Growth-Emergent-Statistics
+  US city roadway length (2020) via quantify-infrastructure
+    https://github.com/usutradhar/quantify-infrastructure
+
+Unit freeze (metabolic intercepts)
+  O2 energetic equivalent: 20.1 kJ / L O2
+  1 mL O2 / hr → 20.1/3600 W ≈ 0.00558333 W
+  PanTHERIA bmr_W and specific_bmr_W_kg use this conversion
+  AnAge and AnimalTraits metabolic rates are already in Watts
+
+Raw files
+  PanTHERIA_1-0_WR05_Aug2008.txt
+  PanTHERIA_1-0_WR93_Aug2008.txt
+  E090-184-metadata.htm
+  AnimalTraits_observations.csv
+  AnimalTraits_column-documentation.csv
+  anage_dataset.zip / anage_data.txt
+  bea_msa_wages.csv
+  bea_msa_population.csv
+  us_city_ssp2_infra.csv
+
+Derived analysis tables (UTF-8 CSV)
+  pantheria_bmr.csv
+  pantheria_longevity.csv
+  pantheria_gestation.csv
+  pantheria_weaning.csv
+  pantheria_pop_density.csv
+  pantheria_home_range.csv
+  animaltraits_metabolic.csv
+  animaltraits_specific_mr.csv
+  animaltraits_brain.csv
+  anage_metabolic.csv
+  anage_longevity.csv
+  city_wages.csv
+  city_road_length.csv
+
+Refresh
+  python experiments/hqvm_cgm_allometry_data_ingest.py
+  python experiments/hqvm_cgm_allometry_data_ingest.py --force
+  python experiments/hqvm_cgm_allometry_data_ingest.py --rebuild-only
+
+Used by
+  experiments/hqvm_cgm_allometry_2.py
+  experiments/hqvm_cgm_allometry_run.py

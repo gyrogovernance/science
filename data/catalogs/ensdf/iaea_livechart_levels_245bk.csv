@@ -1,0 +1,6 @@
+z,n,symbol,idx,energy_shift,energy,unc_e,ripl_shift,jp,jp_order,half_life,operator_hl,unc_hl,unit_hl,half_life_sec,unc_hl,decay_1,decay_1_%,unc_1,decay_2,decay_2_%,unc_2,decay_3,decay_3_%,unc_3,isospin,magnetic_dipole,unc_mn,electric_quadrupole,unc_eq,ENSDF_publication_cut-off,ENSDF_authors,Extraction_date
+97,148,Bk,0,,0,,,(3/2-),1,4.96,,3,d,428544,2592,EC,99.88,0.01,A,0.12,0.01,,,,,,,,,14-Feb-2023,C.D. Nesaraja,2026-07-17
+97,148,Bk,1,X,0,,50,7/2+,1,,,,,,,,,,,,,,,,,,,,,14-Feb-2023,C.D. Nesaraja,2026-07-17
+97,148,Bk,2,X,61,13,50,(9/2+),1,,,,,,,,,,,,,,,,,,,,,14-Feb-2023,C.D. Nesaraja,2026-07-17
+97,148,Bk,3,,1560,,,,,2,,1,ns,0.000000002,0.000000001,SF,100,,,,,,,,,,,,,14-Feb-2023,C.D. Nesaraja,2026-07-17
+

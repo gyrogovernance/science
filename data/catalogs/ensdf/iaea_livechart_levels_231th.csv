@@ -1,0 +1,161 @@
+z,n,symbol,idx,energy_shift,energy,unc_e,ripl_shift,jp,jp_order,half_life,operator_hl,unc_hl,unit_hl,half_life_sec,unc_hl,decay_1,decay_1_%,unc_1,decay_2,decay_2_%,unc_2,decay_3,decay_3_%,unc_3,isospin,magnetic_dipole,unc_mn,electric_quadrupole,unc_eq,ENSDF_publication_cut-off,ENSDF_authors,Extraction_date
+90,141,Th,0,,0,,,5/2+,1,25.57,,8,h,92052,288,B-,100,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,1,,41.9521,0.0016,,7/2+,1,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,2,,96.129,0.003,,9/2+,1,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,3,,162.11,0.03,,11/2+,1,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,4,,185.716,0.0013,,5/2-,1,1.07,,8,ns,0.00000000107,0.00000000008,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,5,,205.3101,0.0015,,(7/2-),1,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,6,,221.3966,0.002,,3/2+,1,74,LT,,ps,0.000000000074,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,7,,225,,,(13/2+),1,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,8,,236.899,0.007,,9/2-,1,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,9,,240.6,,,(13/2+),2,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,10,,240.8794,0.0024,,5/2+,2,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,11,,247.5867,0.002,,1/2+,1,74,LT,,ps,0.000000000074,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,12,,272.18,0.0015,,3/2+,2,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,13,,275.425,0.0025,,7/2+,2,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,14,,277.6,0.06,,(11/2-),1,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,15,,301.7429,0.0019,,5/2+,3,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,16,,317.0809,0.0022,,5/2+,4,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,17,,324.913,0.007,,(9/2)+,1,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,18,,330.6,,,(15/2+),1,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,19,,333,3,,(13/2-),1,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,20,,348.3,0.5,,(1/2+ 3/2+),1,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,21,,351.511,0.006,,7/2+,3,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,22,,377.573,0.009,,(7/2)+,1,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,23,,380,0.3,,1/2+ 3/2+,1,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,24,,385.68,0.04,,(5/2+:11/2+),1,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,25,,386.5,0.5,,(1/2+ 3/2+),2,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,26,,387.828,0.003,,7/2-,1,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,27,,402,0.3,,(15/2)-,1,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,28,,432.7,,,(17/2+),1,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,29,,447.4,0.7,,(9/2)+,2,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,30,,452.192,0.018,,9/2-,2,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,31,,466.5,0.3,,(1/2- 3/2-),1,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,32,,478,6,,,,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,33,,490,3,,(11/2+),1,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,34,,501.2,0.5,,,,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,35,,510.897,0.011,,(7/2)+,2,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,36,,530,3,,(11/2+),2,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,37,,530.23,0.05,,(11/2-),2,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,38,,536.7,0.7,,,,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,39,,544.9,,,(19/2+),1,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,40,,554.6503,0.0016,,(1/2)-,1,503,,12,ps,0.000000000503,0.000000000012,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,41,,568,3,,,,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,42,,579,1,,(9/2+),1,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,43,,590.8396,0.0024,,3/2-,1,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,44,,593.6173,0.002,,(3/2)-,1,0.10,,4,ns,0.0000000001,0.00000000004,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,45,,595.9738,0.0021,,5/2-,2,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,46,,619.638,0.004,,3/2-,2,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,47,,623.935,0.018,,(5/2-),1,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,48,,629.3428,0.0022,,(5/2)-,1,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,49,,634.046,0.013,,(7/2-),2,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,50,,646.6,0.4,,(5/2- 7/2-),1,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,51,,655.939,0.015,,(7/2-),3,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,52,,684.4908,0.0024,,(5/2)-,2,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,53,,687.631,0.003,,1/2+,2,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,54,,693.5,0.18,,,,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,55,,704,2,,(15/2-),1,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,56,,709.099,0.004,,3/2+,3,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,57,,713.755,0.003,,3/2-,3,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,58,,720.302,0.006,,(7/2)-,1,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,59,,735.263,0.007,,(5/2)+,1,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,60,,750,0.3,,(5/2- 7/2-),2,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,61,,769.9,0.6,,(11/2+ 13/2+),1,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,62,,793.027,0.004,,1/2+,3,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,63,,802,3,,,,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,64,,808.508,0.008,,3/2+,4,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,65,,812.3,0.2,,(5/2)-,3,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,66,,820.552,0.007,,1/2+,4,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,67,,833.169,0.004,,(1/2)-,2,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,68,,839.303,0.009,,3/2+,5,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,69,,841.42,0.05,,1/2- 3/2-,1,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,70,,846.4,0.4,,(1/2+ 3/2+),3,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,71,,854.5,0.4,,(7/2+ 9/2 11/2-),1,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,72,,867,0.04,,5/2- 7/2-,1,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,73,,869.7,1.1,,1/2+,5,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,74,,871,3,,(7/2)+,3,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,75,,875.549,0.004,,(3/2)-,2,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,76,,889.997,0.012,,5/2+,5,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,77,,893,2,,,,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,78,,899.2,0.6,,,,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,79,,914.9,0.04,,(5/2)-,4,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,80,,930.6,0.5,,(3/2+ 5/2+),1,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,81,,936.307,0.01,,(5/2)-,5,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,82,,942.2,0.9,,,,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,83,,960.809,0.012,,3/2+,6,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,84,,966,0.6,,3/2+ 5/2+,1,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,85,,974.4,0.7,,,,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,86,,981,3,,,,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,87,,990.5,0.7,,,,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,88,,1004.232,0.021,,3/2+,7,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,89,,1011.5,0.9,,,,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,90,,1020.73,0.006,,3/2-,4,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,91,,1033,0.3,,1/2+,6,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,92,,1056.27,0.03,,(3/2+),1,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,93,,1066.191,0.023,,(5/2 7/2)+,1,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,94,,1074.346,0.017,,(3/2)-,3,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,95,,1081.331,0.015,,1/2- 3/2-,2,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,96,,1081.6,0.6,,3/2+ 5/2+,2,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,97,,1086.811,0.01,,5/2+,6,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,98,,1094.25,0.24,,1/2- 3/2-,3,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,99,,1102.252,0.008,,3/2-,5,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,100,,1106,6,,(7/2+ 9/2+),1,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,101,,1115.4,0.6,,,,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,102,,1126,0.6,,3/2+ 5/2+,3,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,103,,1133.8,0.08,,(1/2+ 3/2+),4,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,104,,1155.5,0.4,,,,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,105,,1159.751,0.008,,(3/2)-,4,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,106,,1172.99,0.024,,3/2-,6,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,107,,1181.2,0.6,,1/2- 3/2-,4,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,108,,1187,0.7,,,,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,109,,1193.2,0.8,,,,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,110,,1200.47,0.17,,1/2- 3/2-,5,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,111,,1213.86,0.22,,,,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,112,,1219.05,0.25,,(1/2+ 3/2+),5,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,113,,1222,3,,(1/2+ 3/2+),6,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,114,,1235,2,,,,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,115,,1251.46,0.18,,,,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,116,,1262,3,,,,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,117,,1271.1,0.6,,1/2- 3/2-,6,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,118,,1273,1,,3/2+ 5/2+,4,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,119,,1274.5,0.4,,1/2- 3/2-,7,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,120,,1282,3,,,,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,121,,1292,2,,,,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,122,,1300,2,,,,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,123,,1323,2,,,,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,124,,1327,2,,,,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,125,,1339,2,,,,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,126,,1345.7,1.1,,,,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,127,,1352.8,1.1,,1/2- 3/2-,8,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,128,,1366,4,,,,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,129,,1372,2,,,,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,130,,1393,1,,1/2- 3/2-,9,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,131,,1405.6,1,,1/2- 3/2-,10,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,132,,1414,5,,,,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,133,,1430.6,1.1,,,,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,134,,1437.2,1,,3/2+ 5/2+,5,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,135,,1452,1,,,,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,136,,1458,2,,,,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,137,,1464,1,,(1/2- 3/2-),2,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,138,,1476,2,,,,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,139,,1487.4,1.1,,1/2- 3/2-,11,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,140,,1494.3,1.1,,,,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,141,,1523,2,,,,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,142,,1533,2,,,,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,143,,1542,2,,,,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,144,,1572,1,,(5/2- 7/2-),3,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,145,,1585,1,,1/2- 3/2-,12,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,146,,1601,1,,1/2- 3/2-,13,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,147,,1608,1,,,,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,148,,1619.5,1,,1/2- 3/2-,14,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,149,,1627,2,,,,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,150,,1648,1,,,,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,151,,1654,1,,,,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,152,,1666,2,,,,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,153,,1678,2,,,,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,154,,1696,1,,,,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,155,,1708,1,,1/2- 3/2-,15,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,156,,1714,1,,,,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,157,,5118.15,0.03,,1/2+,7,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+90,141,Th,158,,5119.84,0.11,,1/2+,8,,,,,,,,,,,,,,,,,,,,,31-Aug-2022,Balraj Singh and  Jagdish K. Tuli and  and Edgardo Browne,2026-07-17
+

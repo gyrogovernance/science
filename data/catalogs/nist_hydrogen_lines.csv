@@ -1,0 +1,30 @@
+name,medium,intensity,wavelength_angstrom,wavelength_m,frequency_hz,source
+H line 926.2256 A [vacuum],vacuum,15,926.2256,9.262256e-08,3236710991361068.0,NIST hydrogen strong lines
+H line 930.7482 A [vacuum],vacuum,20,930.7482,9.307482e-08,3220983484040044.5,NIST hydrogen strong lines
+H line 937.8034 A [vacuum],vacuum,30,937.8034,9.378034e-08,3196751664581297.0,NIST hydrogen strong lines
+H line 949.7430 A [vacuum],vacuum,50,949.743,9.49743e-08,3156564017844827.5,NIST hydrogen strong lines
+Ly-gamma [vacuum],vacuum,100,972.5367,9.725367e-08,3082582467067824.0,NIST hydrogen strong lines
+Ly-beta [vacuum],vacuum,300,1025.7222,1.0257221999999999e-07,2922745144835512.5,NIST hydrogen strong lines
+Ly-alpha [vacuum],vacuum,1000,1215.66824,1.21566824e-07,2466071318931553.5,NIST hydrogen strong lines
+Ly-alpha (component) [vacuum],vacuum,500,1215.67364,1.21567364e-07,2466060364688009.5,NIST hydrogen strong lines
+H line 3835.3840 A [air],air,5,3835.384,3.835384e-07,781649133437486.2,NIST hydrogen strong lines
+H line 3889.0490 A [air],air,6,3889.049,3.8890490000000003e-07,770863154462697.6,NIST hydrogen strong lines
+H line 3970.0720 A [air],air,8,3970.072,3.9700720000000004e-07,755131035406914.5,NIST hydrogen strong lines
+H line 4101.7400 A [air],air,15,4101.74,4.10174e-07,730890934091385.6,NIST hydrogen strong lines
+H-gamma [air],air,30,4340.462,4.340462000000001e-07,690692506926681.9,NIST hydrogen strong lines
+H line 4861.2786 A [air],air,30,4861.2786,4.861278599999999e-07,616694665473400.4,NIST hydrogen strong lines
+H line 4861.2870 A [air],air,10,4861.287,4.861287e-07,616693599863575.2,NIST hydrogen strong lines
+H-beta [air],air,60,4861.3615,4.8613615e-07,616684149080458.1,NIST hydrogen strong lines
+H line 6562.7110 A [air],air,90,6562.711,6.562711000000001e-07,456811915075949.5,NIST hydrogen strong lines
+H line 6562.7248 A [air],air,30,6562.7248,6.5627248e-07,456810954498655.8,NIST hydrogen strong lines
+H-alpha [air],air,180,6562.8518,6.562851800000001e-07,456802114592927.4,NIST hydrogen strong lines
+H line 9545.9700 A [air],air,5,9545.97,9.54597e-07,314051330561483.0,NIST hydrogen strong lines
+H line 10049.4000 A [air],air,7,10049.4,1.00494e-06,298318763309252.3,NIST hydrogen strong lines
+H line 10938.1000 A [air],air,12,10938.1,1.09381e-06,274080926303471.34,NIST hydrogen strong lines
+Paschen-beta [air],air,20,12818.07,1.281807e-06,233882681246084.66,NIST hydrogen strong lines
+H line 21655.3000 A [air],air,5,21655.3,2.16553e-06,138438376748417.25,NIST hydrogen strong lines
+H line 26251.5000 A [air],air,8,26251.5,2.62515e-06,114200124945241.22,NIST hydrogen strong lines
+H line 40511.6000 A [air],air,15,40511.6,4.05116e-06,74001633606177.0,NIST hydrogen strong lines
+H line 46525.1000 A [air],air,4,46525.1,4.65251e-06,64436714375681.086,NIST hydrogen strong lines
+H line 74578.0000 A [air],air,6,74578.0,7.4578e-06,40198511357236.72,NIST hydrogen strong lines
+H line 123685.0000 A [air],air,3,123685.0,1.23685e-05,24238384444354.61,NIST hydrogen strong lines

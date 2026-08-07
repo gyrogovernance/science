@@ -1,0 +1,313 @@
+geoid,name,city_type,population,road_length_m,road_length_m_per_cap,year,source
+0473000,Tempe city,urban,180587,1312626.1,7.2686635,2020,quantify-infrastructure_ssp2
+0602000,Anaheim city,urban,346824,1588989.9,4.5815454,2020,quantify-infrastructure_ssp2
+0616532,Costa Mesa city,urban,111918,441992.31,3.9492513,2020,quantify-infrastructure_ssp2
+0669000,Santa Ana city,urban,310227,1054263.7,3.3983621,2020,quantify-infrastructure_ssp2
+0660102,Redwood City city,urban,84292,493072.38,5.849575,2020,quantify-infrastructure_ssp2
+0636294,Imperial Beach city,urban,26137,134325.21,5.1392741,2020,quantify-infrastructure_ssp2
+0653000,Oakland city,urban,440646,2031973.8,4.6113521,2020,quantify-infrastructure_ssp2
+0666000,San Diego city,urban,1386932,7749519.3,5.5875265,2020,quantify-infrastructure_ssp2
+0600562,Alameda city,urban,78280,406123.52,5.1880878,2020,quantify-infrastructure_ssp2
+0600674,Albany city,urban,20271,80927.204,3.992265,2020,quantify-infrastructure_ssp2
+0606000,Berkeley city,urban,124321,521626.65,4.1958048,2020,quantify-infrastructure_ssp2
+0622594,Emeryville city,urban,12905,41149.944,3.1886822,2020,quantify-infrastructure_ssp2
+0604982,Bellflower city,urban,79190,257160.37,3.2473844,2020,quantify-infrastructure_ssp2
+0604996,Bell Gardens city,urban,39501,83437.018,2.1122761,2020,quantify-infrastructure_ssp2
+0617498,Cudahy city,urban,22811,24122.861,1.05751,2020,quantify-infrastructure_ssp2
+0669070,Santa Barbara city,urban,88665,639636.97,7.2140864,2020,quantify-infrastructure_ssp2
+0622412,El Segundo city,urban,17272,123775.21,7.1662349,2020,quantify-infrastructure_ssp2
+0632506,Hawaiian Gardens city,urban,14149,52988.226,3.7450156,2020,quantify-infrastructure_ssp2
+0633364,Hermosa Beach city,urban,19728,108318.54,5.4905992,2020,quantify-infrastructure_ssp2
+0656000,Pasadena city,urban,138699,779712.1,5.621613,2020,quantify-infrastructure_ssp2
+0651182,Newport Beach city,urban,85239,804605.1,9.4394009,2020,quantify-infrastructure_ssp2
+0670000,Santa Monica city,urban,93076,340044.84,3.6534106,2020,quantify-infrastructure_ssp2
+0642468,Lomita city,urban,20921,82943.104,3.964586,2020,quantify-infrastructure_ssp2
+0645400,Manhattan Beach city,urban,35506,257035.43,7.2392112,2020,quantify-infrastructure_ssp2
+0646492,Maywood city,urban,25138,76887.297,3.0586084,2020,quantify-infrastructure_ssp2
+0632548,Hawthorne city,urban,88083,262809.45,2.9836569,2020,quantify-infrastructure_ssp2
+0636546,Inglewood city,urban,107762,431094.77,4.000434,2020,quantify-infrastructure_ssp2
+0606308,Beverly Hills city,urban,32701,314482.84,9.6169182,2020,quantify-infrastructure_ssp2
+0644000,Los Angeles city,urban,3898747,15978836,4.0984542,2020,quantify-infrastructure_ssp2
+0655282,Palo Alto city,urban,68572,464754.64,6.7776154,2020,quantify-infrastructure_ssp2
+0620956,East Palo Alto city,urban,30034,104484.08,3.4788599,2020,quantify-infrastructure_ssp2
+0667000,San Francisco city,urban,873965,2217224.6,2.5369718,2020,quantify-infrastructure_ssp2
+0668252,San Mateo city,urban,105661,555866.27,5.2608462,2020,quantify-infrastructure_ssp2
+0640886,Lawndale city,urban,31807,95178.331,2.9923706,2020,quantify-infrastructure_ssp2
+0677000,Sunnyvale city,urban,155805,653495.6,4.1943173,2020,quantify-infrastructure_ssp2
+0649670,Mountain View city,urban,82376,373472.21,4.5337503,2020,quantify-infrastructure_ssp2
+0669084,Santa Clara city,urban,127647,551357.92,4.3193958,2020,quantify-infrastructure_ssp2
+0602462,Arcadia city,urban,56681,381441.42,6.729617,2020,quantify-infrastructure_ssp2
+0684410,West Hollywood city,urban,35757,142332.05,3.9805366,2020,quantify-infrastructure_ssp2
+0608954,Burbank city,urban,107337,563835.05,5.2529421,2020,quantify-infrastructure_ssp2
+0643000,Long Beach city,urban,466742,2097870.6,4.4947114,2020,quantify-infrastructure_ssp2
+0600884,Alhambra city,urban,82868,365171.15,4.4066606,2020,quantify-infrastructure_ssp2
+0628168,Gardena city,urban,61027,274153.02,4.4923234,2020,quantify-infrastructure_ssp2
+0604870,Bell city,urban,33559,75047.473,2.2362845,2020,quantify-infrastructure_ssp2
+0636056,Huntington Park city,urban,54883,130409.44,2.3761355,2020,quantify-infrastructure_ssp2
+0673080,South Gate city,urban,92726,354225.97,3.8201365,2020,quantify-infrastructure_ssp2
+0630000,Glendale city,urban,196543,844361.34,4.2960642,2020,quantify-infrastructure_ssp2
+0668000,San Jose city,urban,1013240,4694786.5,4.6334397,2020,quantify-infrastructure_ssp2
+0660018,Redondo Beach city,urban,71576,267835.87,3.7419788,2020,quantify-infrastructure_ssp2
+0680000,Torrance city,urban,147067,801324.89,5.4487063,2020,quantify-infrastructure_ssp2
+0617918,Daly City city,urban,104901,358472.75,3.4172481,2020,quantify-infrastructure_ssp2
+0673262,South San Francisco city,urban,66105,350019.77,5.2949061,2020,quantify-infrastructure_ssp2
+0670686,Seal Beach city,urban,25242,219208.17,8.684263,2020,quantify-infrastructure_ssp2
+0680854,Tustin city,urban,80276,360780.36,4.4942494,2020,quantify-infrastructure_ssp2
+0601150,Alondra Park CDP,urban,8569,1574.3217,0.18372292,2020,quantify-infrastructure_ssp2
+0602980,Ashland CDP,urban,23823,77964.905,3.2726737,2020,quantify-infrastructure_ssp2
+0608968,Burbank CDP,urban,4940,31669.609,6.410852,2020,quantify-infrastructure_ssp2
+0616090,Contra Costa Centre CDP,urban,6808,40767.846,5.9882265,2020,quantify-infrastructure_ssp2
+0620802,East Los Angeles CDP,urban,118786,59515.346,0.50102997,2020,quantify-infrastructure_ssp2
+0624477,Florence-Graham CDP,urban,61983,55494.919,0.89532483,2020,quantify-infrastructure_ssp2
+0641180,Lennox CDP,urban,20323,26747.113,1.3161006,2020,quantify-infrastructure_ssp2
+0645806,Marina del Rey CDP,urban,11373,341.48513,0.03002595,2020,quantify-infrastructure_ssp2
+0683402,Walnut Park CDP,urban,15214,34028.733,2.2366723,2020,quantify-infrastructure_ssp2
+0684592,Westmont CDP,urban,33913,29189.202,0.86070834,2020,quantify-infrastructure_ssp2
+0807850,Boulder city,urban,108250,794877.49,7.3429791,2020,quantify-infrastructure_ssp2
+0830340,Glendale city,urban,4613,13191.677,2.8596742,2020,quantify-infrastructure_ssp2
+0820000,Denver city,urban,715522,4849880.2,6.7781008,2020,quantify-infrastructure_ssp2
+0827950,Four Square Mile CDP,urban,22872,65216.896,2.8513858,2020,quantify-infrastructure_ssp2
+0952000,New Haven city,urban,134023,459470.27,3.4282942,2020,quantify-infrastructure_ssp2
+0908000,Bridgeport city,urban,148654,635413.13,4.2744435,2020,quantify-infrastructure_ssp2
+0973000,Stamford city,urban,135470,928502.13,6.8539317,2020,quantify-infrastructure_ssp2
+0937000,Hartford city,urban,121054,401436.2,3.3161746,2020,quantify-infrastructure_ssp2
+1077580,Wilmington city,urban,70898,341141.3,4.8117197,2020,quantify-infrastructure_ssp2
+1150000,Washington city,urban,689545,2063462.1,2.9924981,2020,quantify-infrastructure_ssp2
+1276600,West Palm Beach city,urban,117415,895966.47,7.6307667,2020,quantify-infrastructure_ssp2
+1269700,Sunrise city,urban,97335,1086798.5,11.165546,2020,quantify-infrastructure_ssp2
+1239475,Lauderdale-by-the-Sea town,urban,6198,70395.775,11.357821,2020,quantify-infrastructure_ssp2
+1239525,Lauderdale Lakes city,urban,35954,359799.65,10.007222,2020,quantify-infrastructure_ssp2
+1278000,Wilton Manors city,urban,11426,106382.67,9.3105789,2020,quantify-infrastructure_ssp2
+1239550,Lauderhill city,urban,74482,336343.23,4.5157653,2020,quantify-infrastructure_ssp2
+1232000,Hollywood city,urban,153067,1184160.8,7.7362256,2020,quantify-infrastructure_ssp2
+1233625,Indian Rocks Beach city,urban,3673,50999.648,13.885012,2020,quantify-infrastructure_ssp2
+1233675,Indian Shores town,urban,1190,4265.2714,3.5842617,2020,quantify-infrastructure_ssp2
+1242400,Madeira Beach city,urban,3895,50560.439,12.980857,2020,quantify-infrastructure_ssp2
+1249725,North Redington Beach town,urban,1495,13093.123,8.7579421,2020,quantify-infrastructure_ssp2
+1259750,Redington Shores town,urban,2176,20634.463,9.4827494,2020,quantify-infrastructure_ssp2
+1267675,South Pasadena city,urban,5353,37384.718,6.9838815,2020,quantify-infrastructure_ssp2
+1272325,Treasure Island city,urban,6584,77591.689,11.784886,2020,quantify-infrastructure_ssp2
+1230850,Hillsboro Beach town,urban,1987,1277.3759,0.64286657,2020,quantify-infrastructure_ssp2
+1264725,Sea Ranch Lakes village,urban,540,9675.3353,17.917288,2020,quantify-infrastructure_ssp2
+1249600,North Palm Beach village,urban,13162,118157.29,8.9771529,2020,quantify-infrastructure_ssp2
+1224000,Fort Lauderdale city,urban,182760,1626778,8.901171,2020,quantify-infrastructure_ssp2
+1228452,Hallandale Beach city,urban,41217,193084.44,4.6845825,2020,quantify-infrastructure_ssp2
+1230200,Highland Beach town,urban,4295,6992.4566,1.6280458,2020,quantify-infrastructure_ssp2
+1236550,Key West city,urban,26444,210661.72,7.9663333,2020,quantify-infrastructure_ssp2
+1210250,Cape Canaveral city,urban,9972,82186.576,8.2417345,2020,quantify-infrastructure_ssp2
+1249475,North Miami Beach city,urban,43676,278031.45,6.3657719,2020,quantify-infrastructure_ssp2
+1276525,West Miami city,urban,7233,56102.97,7.7565284,2020,quantify-infrastructure_ssp2
+1249225,North Bay Village city,urban,8159,32678.428,4.0052002,2020,quantify-infrastructure_ssp2
+1270075,Surfside town,urban,5689,32860.836,5.776206,2020,quantify-infrastructure_ssp2
+1270345,Sweetwater city,urban,19363,107848.87,5.5698428,2020,quantify-infrastructure_ssp2
+1269555,Sunny Isles Beach city,urban,22342,26117.105,1.168969,2020,quantify-infrastructure_ssp2
+1245000,Miami city,urban,442241,1834775.9,4.1488145,2020,quantify-infrastructure_ssp2
+1202681,Aventura city,urban,40242,127191.29,3.1606601,2020,quantify-infrastructure_ssp2
+1203275,Bal Harbour village,urban,3093,12726.98,4.1147687,2020,quantify-infrastructure_ssp2
+1214250,Coral Gables city,urban,49248,526187.72,10.684448,2020,quantify-infrastructure_ssp2
+1230000,Hialeah city,urban,223109,1011987.9,4.5358452,2020,quantify-infrastructure_ssp2
+1245025,Miami Beach city,urban,82890,285272.06,3.4415739,2020,quantify-infrastructure_ssp2
+1226250,Golden Beach town,urban,961,11721.97,12.197679,2020,quantify-infrastructure_ssp2
+1236300,Key Biscayne village,urban,14809,59731.671,4.0334709,2020,quantify-infrastructure_ssp2
+1216725,Deerfield Beach city,urban,86859,649257.95,7.4748495,2020,quantify-infrastructure_ssp2
+1255750,Pembroke Park town,urban,6260,72396.039,11.564862,2020,quantify-infrastructure_ssp2
+1258050,Pompano Beach city,urban,112046,897700.82,8.0118953,2020,quantify-infrastructure_ssp2
+1243083,Marco Island city,urban,15760,317869.58,20.169389,2020,quantify-infrastructure_ssp2
+1200075,Acacia Villas CDP,urban,398,3993.0694,10.032838,2020,quantify-infrastructure_ssp2
+1214895,Country Club CDP,urban,49967,168143.5,3.365091,2020,quantify-infrastructure_ssp2
+1222375,Fisher Island CDP,urban,561,5278.4759,9.4090479,2020,quantify-infrastructure_ssp2
+1224562,Fountainebleau CDP,urban,59870,138370.4,2.3111809,2020,quantify-infrastructure_ssp2
+1234400,Ives Estates CDP,urban,25005,166083.54,6.6420134,2020,quantify-infrastructure_ssp2
+1236062,Kendale Lakes CDP,urban,55646,340746.16,6.1234618,2020,quantify-infrastructure_ssp2
+1236100,Kendall CDP,urban,80241,737338.32,9.189047,2020,quantify-infrastructure_ssp2
+1236121,Kendall West CDP,urban,36536,164583.71,4.5046998,2020,quantify-infrastructure_ssp2
+1251125,Ojus CDP,urban,19673,101607.52,5.164821,2020,quantify-infrastructure_ssp2
+1273163,University CDP,urban,50893,259570.53,5.1003189,2020,quantify-infrastructure_ssp2
+1304000,Atlanta city,urban,498715,3931083.8,7.8824255,2020,quantify-infrastructure_ssp2
+1507470,Ewa Gentry CDP,urban,25707,100346.45,3.903468,2020,quantify-infrastructure_ssp2
+1571550,Urban Honolulu CDP,urban,350964,997387.65,2.8418517,2020,quantify-infrastructure_ssp2
+1577750,Waimalu CDP,urban,13817,30490.15,2.2067127,2020,quantify-infrastructure_ssp2
+1579860,Waipio CDP,urban,12082,40811.863,3.3779063,2020,quantify-infrastructure_ssp2
+1723724,Elmwood Park village,urban,24521,87124.364,3.553051,2020,quantify-infrastructure_ssp2
+1724582,Evanston city,urban,78110,299561.05,3.8351178,2020,quantify-infrastructure_ssp2
+1726935,Forest Park village,urban,14339,45676.706,3.1854875,2020,quantify-infrastructure_ssp2
+1712385,Champaign city,urban,88302,777148.89,8.8010339,2020,quantify-infrastructure_ssp2
+1772923,Stone Park village,urban,4576,22869.585,4.997724,2020,quantify-infrastructure_ssp2
+1764278,Riverdale village,urban,10663,96362.729,9.0371124,2020,quantify-infrastructure_ssp2
+1705573,Berwyn city,urban,57250,178607.66,3.1197844,2020,quantify-infrastructure_ssp2
+1714000,Chicago city,urban,2746388,7004588.8,2.5504731,2020,quantify-infrastructure_ssp2
+1714351,Cicero town,urban,85268,173653.99,2.036567,2020,quantify-infrastructure_ssp2
+1754885,Oak Park village,urban,54583,247101.74,4.5270825,2020,quantify-infrastructure_ssp2
+1938595,Iowa City city,urban,74828,638474.4,8.53256,2020,quantify-infrastructure_ssp2
+2255000,New Orleans city,urban,383997,3461880.8,9.0153849,2020,quantify-infrastructure_ssp2
+2250115,Metairie CDP,urban,143507,1293214.6,9.0115085,2020,quantify-infrastructure_ssp2
+2360545,Portland city,urban,68408,648675.01,9.4824437,2020,quantify-infrastructure_ssp2
+2407850,Bladensburg town,urban,9657,35371.035,3.6627354,2020,quantify-infrastructure_ssp2
+2409500,Brentwood town,urban,3828,22139.528,5.7835759,2020,quantify-infrastructure_ssp2
+2404000,Baltimore city,urban,585708,2485549.1,4.243666,2020,quantify-infrastructure_ssp2
+2431175,Gaithersburg city,urban,69657,318957.31,4.57897,2020,quantify-infrastructure_ssp2
+2454275,Mount Rainier city,urban,8333,35464.717,4.2559362,2020,quantify-infrastructure_ssp2
+2400400,Adelphi CDP,urban,16823,73899.018,4.3927372,2020,quantify-infrastructure_ssp2
+2407125,Bethesda CDP,urban,68056,544475.57,8.0004051,2020,quantify-infrastructure_ssp2
+2430800,Friendship Heights Village CDP,urban,5360,3006.3178,0.56088019,2020,quantify-infrastructure_ssp2
+2445525,Langley Park CDP,urban,20126,37144.518,1.8455986,2020,quantify-infrastructure_ssp2
+2446375,Leisure World CDP,urban,9215,35522.459,3.8548517,2020,quantify-infrastructure_ssp2
+2456337,North Bethesda CDP,urban,50094,271232.94,5.4144795,2020,quantify-infrastructure_ssp2
+2472450,Silver Spring CDP,urban,81015,329499.28,4.0671392,2020,quantify-infrastructure_ssp2
+2581005,Winthrop Town city,urban,19316,84027.732,4.3501622,2020,quantify-infrastructure_ssp2
+2537000,Lowell city,urban,115554,546942.83,4.7332228,2020,quantify-infrastructure_ssp2
+2539835,Medford city,urban,59659,281895.59,4.7251142,2020,quantify-infrastructure_ssp2
+2572600,Waltham city,urban,65218,359624.56,5.5141918,2020,quantify-infrastructure_ssp2
+2511000,Cambridge city,urban,118403,229164.28,1.93546,2020,quantify-infrastructure_ssp2
+2573440,Watertown Town city,urban,35329,184090.12,5.2107368,2020,quantify-infrastructure_ssp2
+2537490,Lynn city,urban,101253,395490.62,3.9059645,2020,quantify-infrastructure_ssp2
+2534550,Lawrence city,urban,89143,330094.34,3.7029754,2020,quantify-infrastructure_ssp2
+2582000,Worcester city,urban,206518,1278643.3,6.1914374,2020,quantify-infrastructure_ssp2
+2521990,Everett city,urban,49075,130730.74,2.6638968,2020,quantify-infrastructure_ssp2
+2562535,Somerville city,urban,81045,184436.07,2.2757243,2020,quantify-infrastructure_ssp2
+2507000,Boston city,urban,675647,1661803.9,2.4595742,2020,quantify-infrastructure_ssp2
+2513205,Chelsea city,urban,40787,92492.899,2.2677054,2020,quantify-infrastructure_ssp2
+2556585,Revere city,urban,62186,231988.03,3.7305507,2020,quantify-infrastructure_ssp2
+2545000,New Bedford city,urban,101079,635992.36,6.2920326,2020,quantify-infrastructure_ssp2
+2523000,Fall River city,urban,94000,656031.17,6.979055,2020,quantify-infrastructure_ssp2
+2537875,Malden city,urban,66263,226935.61,3.4247711,2020,quantify-infrastructure_ssp2
+2501640,Arlington CDP,urban,46308,302538.66,6.5331835,2020,quantify-infrastructure_ssp2
+2509210,Brookline CDP,urban,63191,196976.25,3.1171567,2020,quantify-infrastructure_ssp2
+2622000,Detroit city,urban,639111,6436787.6,10.071471,2020,quantify-infrastructure_ssp2
+2636280,Hamtramck city,urban,28433,90997.829,3.2004301,2020,quantify-infrastructure_ssp2
+2743000,Minneapolis city,urban,429954,2315195.3,5.3847511,2020,quantify-infrastructure_ssp2
+2758000,St. Paul city,urban,311527,1897705.8,6.0916253,2020,quantify-infrastructure_ssp2
+2965000,St. Louis city,urban,301578,2238293.6,7.4219393,2020,quantify-infrastructure_ssp2
+3254600,Paradise CDP,urban,191238,1266432.9,6.6222867,2020,quantify-infrastructure_ssp2
+3284600,Winchester CDP,urban,36403,352447.5,9.6818257,2020,quantify-infrastructure_ssp2
+3457000,Paterson city,urban,159732,424777.44,2.6593133,2020,quantify-infrastructure_ssp2
+3475620,Ventnor City city,urban,9210,88007.368,9.5556317,2020,quantify-infrastructure_ssp2
+3454360,Ocean City city,urban,11229,323649.74,28.822668,2020,quantify-infrastructure_ssp2
+3458200,Perth Amboy city,urban,55436,370121.91,6.6765623,2020,quantify-infrastructure_ssp2
+3455770,Palisades Park borough,urban,20292,59730.319,2.9435402,2020,quantify-infrastructure_ssp2
+3476490,Wallington borough,urban,11868,53494.797,4.5074821,2020,quantify-infrastructure_ssp2
+3403580,Bayonne city,urban,71686,132442.3,1.8475337,2020,quantify-infrastructure_ssp2
+3428650,Guttenberg town,urban,12017,7147.8083,0.59480805,2020,quantify-infrastructure_ssp2
+3430210,Harrison town,urban,19450,43361.468,2.2293814,2020,quantify-infrastructure_ssp2
+3432250,Hoboken city,urban,60419,32154.594,0.53219342,2020,quantify-infrastructure_ssp2
+3474630,Union City city,urban,68589,42035.036,0.6128539,2020,quantify-infrastructure_ssp2
+3479610,West New York town,urban,52912,42850.385,0.80984247,2020,quantify-infrastructure_ssp2
+3466450,Seaside Heights borough,urban,2440,14326.764,5.8716245,2020,quantify-infrastructure_ssp2
+3410750,Carteret borough,urban,25326,163964.68,6.4741639,2020,quantify-infrastructure_ssp2
+3428680,Hackensack city,urban,46030,172810.84,3.754309,2020,quantify-infrastructure_ssp2
+3451000,Newark city,urban,311549,627392.95,2.0137858,2020,quantify-infrastructure_ssp2
+3456550,Passaic city,urban,70537,133724.99,1.8958134,2020,quantify-infrastructure_ssp2
+3466480,Seaside Park borough,urban,1436,27215.352,18.952195,2020,quantify-infrastructure_ssp2
+3425770,Garfield city,urban,32655,109786.92,3.3620247,2020,quantify-infrastructure_ssp2
+3441100,Lodi borough,urban,26206,224211.56,8.5557337,2020,quantify-infrastructure_ssp2
+3464650,Roselle Park borough,urban,13967,74706.365,5.3487767,2020,quantify-infrastructure_ssp2
+3452320,North Arlington borough,urban,16457,85570.618,5.1996486,2020,quantify-infrastructure_ssp2
+3413570,Cliffside Park borough,urban,25693,49542.634,1.9282541,2020,quantify-infrastructure_ssp2
+3420020,Edgewater borough,urban,14336,34309.146,2.3932161,2020,quantify-infrastructure_ssp2
+3451210,New Brunswick city,urban,55266,183593.27,3.3219931,2020,quantify-infrastructure_ssp2
+3419360,East Newark borough,urban,2594,4012.2477,1.5467416,2020,quantify-infrastructure_ssp2
+3402080,Atlantic City city,urban,38497,184812.07,4.8006875,2020,quantify-infrastructure_ssp2
+3436000,Jersey City city,urban,292449,359990.62,1.2309518,2020,quantify-infrastructure_ssp2
+3436510,Kearny town,urban,41999,153050.06,3.6441359,2020,quantify-infrastructure_ssp2
+3421000,Elizabeth city,urban,137298,332961.62,2.4251017,2020,quantify-infrastructure_ssp2
+3482450,Woodlynne borough,urban,2902,12203.198,4.2050992,2020,quantify-infrastructure_ssp2
+3436480,Keansburg borough,urban,9755,74496.981,7.6367997,2020,quantify-infrastructure_ssp2
+3437560,Lake Como borough,urban,1697,14049.455,8.2789952,2020,quantify-infrastructure_ssp2
+3401960,Asbury Park city,urban,15188,81342.74,5.3557242,2020,quantify-infrastructure_ssp2
+3410000,Camden city,urban,71791,311741.18,4.3423435,2020,quantify-infrastructure_ssp2
+3406970,Bradley Beach borough,urban,4282,29717.357,6.9400647,2020,quantify-infrastructure_ssp2
+3431500,Highlands borough,urban,4621,47354.815,10.247742,2020,quantify-infrastructure_ssp2
+3451660,New Milford borough,urban,16923,141220.18,8.3448669,2020,quantify-infrastructure_ssp2
+3419390,East Orange city,urban,69612,143147.06,2.0563561,2020,quantify-infrastructure_ssp2
+3422560,Fairview borough,urban,15025,29920.978,1.9914129,2020,quantify-infrastructure_ssp2
+3424420,Fort Lee borough,urban,40191,112579.91,2.8011223,2020,quantify-infrastructure_ssp2
+3401184,Ampere North CDP,urban,5132,10783.743,2.101275,2020,quantify-infrastructure_ssp2
+3418148,Dover Beaches North CDP,urban,1277,78046.231,61.116861,2020,quantify-infrastructure_ssp2
+3454480,Ocean Grove CDP,urban,3057,32333.318,10.576813,2020,quantify-infrastructure_ssp2
+3467590,Silver Lake CDP,urban,4730,11838.268,2.5028051,2020,quantify-infrastructure_ssp2
+3475590,Vauxhall CDP,urban,5251,21364.829,4.0687163,2020,quantify-infrastructure_ssp2
+3477750,Watsessing CDP,urban,8078,23484.153,2.9071742,2020,quantify-infrastructure_ssp2
+3676540,Utica city,urban,65283,567744.64,8.696669,2020,quantify-infrastructure_ssp2
+3611000,Buffalo city,urban,278349,1408000.9,5.0584011,2020,quantify-infrastructure_ssp2
+3601000,Albany city,urban,99224,487797.91,4.9161283,2020,quantify-infrastructure_ssp2
+3675484,Troy city,urban,51401,304393.92,5.9219454,2020,quantify-infrastructure_ssp2
+3630213,Great Neck Plaza village,urban,7482,15858.284,2.1195247,2020,quantify-infrastructure_ssp2
+3633139,Hempstead village,urban,59169,207701.11,3.5103029,2020,quantify-infrastructure_ssp2
+3643335,Long Beach city,urban,35029,124881.66,3.5650934,2020,quantify-infrastructure_ssp2
+3626264,Floral Park village,urban,16172,105949.54,6.5514185,2020,quantify-infrastructure_ssp2
+3645106,Manorhaven village,urban,6956,28834.247,4.145234,2020,quantify-infrastructure_ssp2
+3667638,Sleepy Hollow village,urban,9986,55154.567,5.5231892,2020,quantify-infrastructure_ssp2
+3665508,Schenectady city,urban,67047,397536.5,5.9292213,2020,quantify-infrastructure_ssp2
+3639232,Kenmore village,urban,15205,90783.306,5.9706219,2020,quantify-infrastructure_ssp2
+3647636,Mineola village,urban,20800,116827.63,5.6167131,2020,quantify-infrastructure_ssp2
+3673000,Syracuse city,urban,148620,948565.07,6.382486,2020,quantify-infrastructure_ssp2
+3670420,Spring Valley village,urban,33066,110841,3.3521139,2020,quantify-infrastructure_ssp2
+3638934,Kaser village,urban,5491,9089.4526,1.6553365,2020,quantify-infrastructure_ssp2
+3605639,Bellerose village,urban,1173,9562.3044,8.1520071,2020,quantify-infrastructure_ssp2
+3649121,Mount Vernon city,urban,73893,181541.42,2.4568148,2020,quantify-infrastructure_ssp2
+3654100,Nyack village,urban,7265,38081.137,5.2417257,2020,quantify-infrastructure_ssp2
+3651000,New York city,urban,8804190,11171783,1.2689167,2020,quantify-infrastructure_ssp2
+3682117,Williston Park village,urban,7591,46435.084,6.1171234,2020,quantify-infrastructure_ssp2
+3638077,Ithaca city,urban,32108,159021.02,4.9526915,2020,quantify-infrastructure_ssp2
+3678674,Watervliet city,urban,10375,66424.087,6.4023217,2020,quantify-infrastructure_ssp2
+3663000,Rochester city,urban,211328,1137193.7,5.3811787,2020,quantify-infrastructure_ssp2
+3650617,New Rochelle city,urban,79726,370464.86,4.6467258,2020,quantify-infrastructure_ssp2
+3659223,Port Chester village,urban,31693,90661.86,2.8606273,2020,quantify-infrastructure_ssp2
+3684000,Yonkers city,urban,211569,733358.11,3.4662834,2020,quantify-infrastructure_ssp2
+3675583,Tuckahoe village,urban,7084,29903.685,4.2212994,2020,quantify-infrastructure_ssp2
+3681677,White Plains city,urban,59559,297386.27,4.9931374,2020,quantify-infrastructure_ssp2
+3605661,Bellerose Terrace CDP,urban,2329,8601.9244,3.6933982,2020,quantify-infrastructure_ssp2
+3621809,Eastchester CDP,urban,20901,138433.61,6.623301,2020,quantify-infrastructure_ssp2
+3624273,Elmont CDP,urban,35265,182426.26,5.1730118,2020,quantify-infrastructure_ssp2
+3915000,Cincinnati city,urban,309317,2098244.3,6.7834756,2020,quantify-infrastructure_ssp2
+3916000,Cleveland city,urban,372624,2742283,7.3593838,2020,quantify-infrastructure_ssp2
+3923380,East Cleveland city,urban,13792,123704.67,8.9693065,2020,quantify-infrastructure_ssp2
+3941664,Lakewood city,urban,50942,229703.42,4.5091167,2020,quantify-infrastructure_ssp2
+4159000,Portland city,urban,652503,5023640.7,7.6990307,2020,quantify-infrastructure_ssp2
+4214264,Clifton Heights borough,urban,6863,28484.452,4.1504374,2020,quantify-infrastructure_ssp2
+4203608,Avalon borough,urban,4762,36937.757,7.7567737,2020,quantify-infrastructure_ssp2
+4205312,Bellevue borough,urban,8311,53878.951,6.4828482,2020,quantify-infrastructure_ssp2
+4260000,Philadelphia city,urban,1603797,4674461.4,2.9146216,2020,quantify-infrastructure_ssp2
+4219576,Dormont borough,urban,8244,46851.644,5.6831204,2020,quantify-infrastructure_ssp2
+4251744,Mount Oliver borough,urban,3394,19965.776,5.8826684,2020,quantify-infrastructure_ssp2
+4246592,Mahanoy City borough,urban,3499,27800.374,7.9452341,2020,quantify-infrastructure_ssp2
+4218152,Darby borough,urban,10715,41471.652,3.8704295,2020,quantify-infrastructure_ssp2
+4262792,Prospect Park borough,urban,6427,41116.878,6.3975226,2020,quantify-infrastructure_ssp2
+4221384,East Lansdowne borough,urban,2714,12796.691,4.7150668,2020,quantify-infrastructure_ssp2
+4215848,Conshohocken borough,urban,9261,50028.666,5.4020803,2020,quantify-infrastructure_ssp2
+4254656,Norristown borough,urban,35748,152557.46,4.2675804,2020,quantify-infrastructure_ssp2
+4248480,Media borough,urban,5901,44996.791,7.6252823,2020,quantify-infrastructure_ssp2
+4275816,Swissvale borough,urban,8624,61377.05,7.1170049,2020,quantify-infrastructure_ssp2
+4241440,Lansdowne borough,urban,11107,72588.315,6.5353664,2020,quantify-infrastructure_ssp2
+4285188,Wilkinsburg borough,urban,14349,116709.76,8.1336513,2020,quantify-infrastructure_ssp2
+4202000,Allentown city,urban,125845,796190.47,6.3267549,2020,quantify-infrastructure_ssp2
+4263624,Reading city,urban,95112,332364.38,3.4944526,2020,quantify-infrastructure_ssp2
+4249504,Millbourne borough,urban,1212,2982.3556,2.4606894,2020,quantify-infrastructure_ssp2
+4282704,West Chester borough,urban,18671,76236.962,4.0831751,2020,quantify-infrastructure_ssp2
+4259152,Pennsbury Village borough,urban,677,5489.3899,8.1084045,2020,quantify-infrastructure_ssp2
+4261000,Pittsburgh city,urban,302971,2176729.7,7.184614,2020,quantify-infrastructure_ssp2
+4215232,Collingdale borough,urban,8908,44208.19,4.9627515,2020,quantify-infrastructure_ssp2
+4269000,Scranton city,urban,76328,576961.79,7.5589796,2020,quantify-infrastructure_ssp2
+4203088,Arnold city,urban,4772,44506.388,9.3265691,2020,quantify-infrastructure_ssp2
+4219920,Drexel Hill CDP,urban,29181,183866.79,6.3009077,2020,quantify-infrastructure_ssp2
+4459000,Providence city,urban,190934,890241.35,4.6625606,2020,quantify-infrastructure_ssp2
+4414140,Central Falls city,urban,22583,49265.855,2.1815461,2020,quantify-infrastructure_ssp2
+4454640,Pawtucket city,urban,75604,434513.21,5.7472252,2020,quantify-infrastructure_ssp2
+4819000,Dallas city,urban,1304379,8799510,6.7461298,2020,quantify-infrastructure_ssp2
+4801240,Addison town,urban,16661,83430.111,5.0075092,2020,quantify-infrastructure_ssp2
+4835000,Houston city,urban,2304580,15386731,6.6765881,2020,quantify-infrastructure_ssp2
+4967000,Salt Lake City city,urban,199723,1578409,7.9029908,2020,quantify-infrastructure_ssp2
+5010675,Burlington city,urban,44743,234180.66,5.2339061,2020,quantify-infrastructure_ssp2
+5101000,Alexandria city,urban,159467,530572.01,3.3271587,2020,quantify-infrastructure_ssp2
+5104088,Bailey's Crossroads CDP,urban,24749,71050.45,2.8708413,2020,quantify-infrastructure_ssp2
+5103000,Arlington CDP,urban,238643,967693.14,4.0549823,2020,quantify-infrastructure_ssp2
+5139064,Huntington CDP,urban,13749,40611.537,2.9537811,2020,quantify-infrastructure_ssp2
+5171216,Seven Corners CDP,urban,9131,21272.722,2.3297254,2020,quantify-infrastructure_ssp2
+5187410,Woodlawn CDP,urban,20859,94241.59,4.5180301,2020,quantify-infrastructure_ssp2
+5148450,McNair CDP,urban,21598,79300.859,3.6716761,2020,quantify-infrastructure_ssp2
+5166672,Reston CDP,urban,63226,365598.65,5.7824099,2020,quantify-infrastructure_ssp2
+5363000,Seattle city,urban,737015,3956322,5.3680346,2020,quantify-infrastructure_ssp2
+5305210,Bellevue city,urban,151854,1093180.5,7.1988916,2020,quantify-infrastructure_ssp2
+5573725,Shorewood village,urban,13859,81743.116,5.8981973,2020,quantify-infrastructure_ssp2
+5548000,Madison city,urban,269840,2078679.5,7.7033779,2020,quantify-infrastructure_ssp2
+5553000,Milwaukee city,urban,577222,3284753.1,5.6906236,2020,quantify-infrastructure_ssp2

@@ -1,0 +1,23 @@
+z,n,symbol,idx,energy_shift,energy,unc_e,ripl_shift,jp,jp_order,half_life,operator_hl,unc_hl,unit_hl,half_life_sec,unc_hl,decay_1,decay_1_%,unc_1,decay_2,decay_2_%,unc_2,decay_3,decay_3_%,unc_3,isospin,magnetic_dipole,unc_mn,electric_quadrupole,unc_eq,ENSDF_publication_cut-off,ENSDF_authors,Extraction_date
+90,134,Th,0,,0,,,0+,1,1.04,,2,s,1.04,0.02,A,100,,,,,,,,,,,,,08-Mar-2022,Balraj Singh and  Sukhjeet Singh,2026-07-17
+90,134,Th,1,,98.1,0.3,,2+,1,0.590,,40,ns,0.00000000059,0.00000000004,,,,,,,,,,,,,,,08-Mar-2022,Balraj Singh and  Sukhjeet Singh,2026-07-17
+90,134,Th,2,,251,0.3,,(1-),1,,,,,,,,,,,,,,,,,,,,,08-Mar-2022,Balraj Singh and  Sukhjeet Singh,2026-07-17
+90,134,Th,3,,284.1,0.5,,4+,1,,,,,,,,,,,,,,,,,,,,,08-Mar-2022,Balraj Singh and  Sukhjeet Singh,2026-07-17
+90,134,Th,4,,305.3,0.5,,(3-),1,,,,,,,,,,,,,,,,,,,,,08-Mar-2022,Balraj Singh and  Sukhjeet Singh,2026-07-17
+90,134,Th,5,,464.5,0.5,,(5-),1,,,,,,,,,,,,,,,,,,,,,08-Mar-2022,Balraj Singh and  Sukhjeet Singh,2026-07-17
+90,134,Th,6,,534.7,0.5,,6+,1,,,,,,,,,,,,,,,,,,,,,08-Mar-2022,Balraj Singh and  Sukhjeet Singh,2026-07-17
+90,134,Th,7,,699.5,0.5,,(7-),1,,,,,,,,,,,,,,,,,,,,,08-Mar-2022,Balraj Singh and  Sukhjeet Singh,2026-07-17
+90,134,Th,8,,833.9,0.6,,8+,1,,,,,,,,,,,,,,,,,,,,,08-Mar-2022,Balraj Singh and  Sukhjeet Singh,2026-07-17
+90,134,Th,9,,997.7,0.6,,(9-),1,,,,,,,,,,,,,,,,,,,,,08-Mar-2022,Balraj Singh and  Sukhjeet Singh,2026-07-17
+90,134,Th,10,,1173.8,0.6,,10+,1,,,,,,,,,,,,,,,,,,,,,08-Mar-2022,Balraj Singh and  Sukhjeet Singh,2026-07-17
+90,134,Th,11,,1347.3,0.6,,(11-),1,,,,,,,,,,,,,,,,,,,,,08-Mar-2022,Balraj Singh and  Sukhjeet Singh,2026-07-17
+90,134,Th,12,,1549.8,0.6,,12+,1,,,,,,,,,,,,,,,,,,,,,08-Mar-2022,Balraj Singh and  Sukhjeet Singh,2026-07-17
+90,134,Th,13,,1738.7,0.6,,(13-),1,,,,,,,,,,,,,,,,,,,,,08-Mar-2022,Balraj Singh and  Sukhjeet Singh,2026-07-17
+90,134,Th,14,,1958.9,0.7,,14+,1,,,,,,,,,,,,,,,,,,,,,08-Mar-2022,Balraj Singh and  Sukhjeet Singh,2026-07-17
+90,134,Th,15,,2164.7,0.7,,(15-),1,,,,,,,,,,,,,,,,,,,,,08-Mar-2022,Balraj Singh and  Sukhjeet Singh,2026-07-17
+90,134,Th,16,,2398,0.7,,16+,1,,,,,,,,,,,,,,,,,,,,,08-Mar-2022,Balraj Singh and  Sukhjeet Singh,2026-07-17
+90,134,Th,17,,2620.2,0.7,,(17-),1,,,,,,,,,,,,,,,,,,,,,08-Mar-2022,Balraj Singh and  Sukhjeet Singh,2026-07-17
+90,134,Th,18,,2864,,,18+,1,,,,,,,,,,,,,,,,,,,,,08-Mar-2022,Balraj Singh and  Sukhjeet Singh,2026-07-17
+90,134,Th,19,,10800,300,,,,4.4,,6,MeV,1.0369038978895128e-22,1.4139598607584264e-23,,,,,,,,,,,,,,,08-Mar-2022,Balraj Singh and  Sukhjeet Singh,2026-07-17
+90,134,Th,20,,14100,600,,,,5.9,,10,MeV,7.73284262832857e-23,1.3106512929370457e-23,,,,,,,,,,,,,,,08-Mar-2022,Balraj Singh and  Sukhjeet Singh,2026-07-17
+

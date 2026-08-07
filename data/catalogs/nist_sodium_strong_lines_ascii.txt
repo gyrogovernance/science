@@ -1,0 +1,206 @@
+<html>
+<head>
+<title>Strong Lines of Sodium&nbsp;(&nbsp;Na&nbsp;)</title>
+<style type="text/css"><!-- a   {text-decoration: none} td  {font-family: courier new,courier} --></style>
+<!-- Google Analtyics 4 -->
+<script async type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=G-9SLN1VEEJ2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-9SLN1VEEJ2');
+</script>
+<!-- End of Google Analytics 4 -->
+<SCRIPT async type="text/javascript" id="_fed_an_ua_tag" src="https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js?agency=DOC&subagency=NIST&pua=UA-37115410-46&yt=false&exts=ppsx,pps,f90,sch,rtf,wrl,txz,m1v,xlsm,msi,xsd,f,tif,eps,mpg,xml,pl,xlt,c"></script>
+</head>
+<body  bgcolor="white">
+<table width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr valign="bottom">
+<td align="left"><img src="/Images/But/nist-pl-black.gif" width="136" 
+height="68" usemap="#NIST-PL" alt="NIST Physical Measurement Laboratory" border="0"></td>
+<td align="center"><a href="../index.html"><img src="../Images/HBannersm.jpg" border="0" width="438" height="54" alt="Handbook of Basic Atomic Spectroscopic Data" title="Handbook of Basic Atomic Spectroscopic Data"></a></td>
+<td align="right"><img src="../Images/spacer.gif" width="136" height="68" alt=""></td>
+</tr></table><br clear="all">
+<map name="NIST-PL">
+    <area shape="rect" coords="0,0,1,1" href="#start" alt="[skip navigation]">
+    <area shape="rect" coords="1,1,135,48" href="http://www.nist.gov" alt="National Institute of Standards and Technology">
+    <area shape="rect" coords="1,50,135,67" href="/" alt="NIST Physical Measurement Laboratory">
+</map>
+<img src="../Images/spacer.gif" width="300" height="14" alt=""><font size="+1"><b>Sodium&nbsp;(Na)&nbsp;</b></font><br clear="all"><img src="../Images/spacer.gif" width="165" height="14" alt=""><img src="../Images/otherelements.gif" width="104" height="14"  alt=""><img src="../Images/spacer.gif" width="125" height="14" alt=""><img src="../Images/neutralatom.gif" width="104" height="14"  alt=""><img src="../Images/singlyionized.gif" width="104" height="14"  alt="" ><br>
+<a href="../index.html"><img src="../Images/mainPage.jpg" border=0 width="90" height="30" alt="Homepage - Introduction" title="Homepage - Introduction"></a><a href="findinglist_a.htm"><img src="../Images/findinglist.gif" border="0" width="50" height="30" alt="Finding list" title="Finding list"></a><a href="../element_name_a.htm"><img src="../Images/element_name_G.gif" border="0" width="50" height="30" alt="Select element by name." title="Select element by name."></a><a href="../atomic_number_a.htm"><img src="../Images/atomic_number_G.gif" border="0" width="50" height="30" alt="Select element by atomic number." title="Select element by atomic number."></a><a href="../periodictable_a.htm"><img src="../Images/periodic_table_G.gif"  border="0" width="50" height="30" alt="Select element from periodic table" title="Select element from periodic table"></a
+><img src="../Images/spacer.gif" width="10" height="14" alt=""><a href="sodiumtable1_a.htm"><img src="../Images/general_Y.gif" border="0" width="50" height="30"  alt="Sodium Atomic Data" title="Sodium Atomic Data"></a
+><a href="sodiumtable2_a.htm"><img src="../Images/strong_B.gif"  border="0" width="42" height="30" alt="Sodium Strong Lines" title="Sodium Strong Lines"></a
+><a href="sodiumtable3_a.htm"><img src="../Images/persistent_Y.gif"  border="0" width="55" height="30" alt="Sodium Neutral Atom Persistent Lines " title="Sodium Neutral Atom Persistent Lines "></a
+><a href="sodiumtable5_a.htm"><img src="../Images/energy_Y.gif"  border="0" width="42" height="30" alt="Sodium Neutral Atom Energy Levels" title="Sodium Neutral Atom Energy Levels"></a
+><a href="sodiumtable4_a.htm"><img src="../Images/persistent_O.gif"  border="0" width="55" height="30" alt="Sodium Singly Ionized Persistent Lines" title="Sodium Singly Ionized Persistent Lines"></a
+><a href="sodiumtable6_a.htm"><img src="../Images/energy_O.gif"  border="0" width="42" height="30" alt="Sodium Singly Ionized Energy Levels" title="Sodium Singly Ionized Energy Levels"></a
+><a href="sodiumtable7_a.htm"><img src="../Images/ref_Y.gif"  border="0" width="31" height="30"  alt="Sodium References" title="Sodium References"></a> 
+<br><a href="sodiumtable2.htm"><img src="../Images/switch_formatted.gif" border="0" width="90" height="30" alt="Switch to Formatted Version" title="Switch to Formatted Version"></a><a name="start"><!-- filler --></a>
+<h3 align="center">Strong Lines of  Sodium&nbsp;(&nbsp;Na&nbsp;)</h3>
+<hr>
+<pre>
+<b>Intensity     Wavelength (&Aring;)     Spectrum   Ref. </b>
+ 
+                 Vacuum
+ 
+   90    <a href="sodiumtable4_a.htm#300.15">P</a>      300.15           Na II      <a href="sodiumtable7_a.htm#W71">W71</a><a name="300.15"><!-- filler --></a>
+   90           300.20           Na II      <a href="sodiumtable7_a.htm#W71">W71</a><a name="300.20"><!-- filler --></a>
+   50           301.32           Na II      <a href="sodiumtable7_a.htm#W71">W71</a><a name="301.32"><!-- filler --></a>
+   60           301.44           Na II      <a href="sodiumtable7_a.htm#W71">W71</a><a name="301.44"><!-- filler --></a>
+   30           302.45           Na II      <a href="sodiumtable7_a.htm#W71">W71</a><a name="302.45"><!-- filler --></a>
+  150    <a href="sodiumtable4_a.htm#372.08">P</a>      372.08           Na II      <a href="sodiumtable7_a.htm#W71">W71</a><a name="372.08"><!-- filler --></a>
+  200           376.38           Na II      <a href="sodiumtable7_a.htm#W71">W71</a><a name="376.38"><!-- filler --></a>
+   50          1374.69           Na II      <a href="sodiumtable7_a.htm#W71">W71</a><a name="1374.69"><!-- filler --></a>
+   50          1404.68           Na II      <a href="sodiumtable7_a.htm#W71">W71</a><a name="1404.68"><!-- filler --></a>
+   40          1506.41           Na II      <a href="sodiumtable7_a.htm#W71">W71</a><a name="1506.41"><!-- filler --></a>
+   50          1776.57           Na II      <a href="sodiumtable7_a.htm#W71">W71</a><a name="1776.57"><!-- filler --></a>
+   40          1787.19           Na II      <a href="sodiumtable7_a.htm#W71">W71</a><a name="1787.19"><!-- filler --></a>
+   40          1798.41           Na II      <a href="sodiumtable7_a.htm#W71">W71</a><a name="1798.41"><!-- filler --></a>
+   50          1807.09           Na II      <a href="sodiumtable7_a.htm#W71">W71</a><a name="1807.09"><!-- filler --></a>
+   40          1835.22           Na II      <a href="sodiumtable7_a.htm#W71">W71</a><a name="1835.22"><!-- filler --></a>
+   40          1853.17           Na II      <a href="sodiumtable7_a.htm#W71">W71</a><a name="1853.17"><!-- filler --></a>
+   90          1881.91           Na II      <a href="sodiumtable7_a.htm#W71">W71</a><a name="1881.91"><!-- filler --></a>
+ 
+                  Air
+ 
+  150          2315.65           Na II      <a href="sodiumtable7_a.htm#W71">W71</a><a name="2315.65"><!-- filler --></a>
+  150          2420.99           Na II      <a href="sodiumtable7_a.htm#W71">W71</a><a name="2420.99"><!-- filler --></a>
+  150          2424.73           Na II      <a href="sodiumtable7_a.htm#W71">W71</a><a name="2424.73"><!-- filler --></a>
+  600          2493.15           Na II      <a href="sodiumtable7_a.htm#W71">W71</a><a name="2493.15"><!-- filler --></a>
+  300          2515.46           Na II      <a href="sodiumtable7_a.htm#W71">W71</a><a name="2515.46"><!-- filler --></a>
+  300          2531.54           Na II      <a href="sodiumtable7_a.htm#W71">W71</a><a name="2531.54"><!-- filler --></a>
+  300          2586.31           Na II      <a href="sodiumtable7_a.htm#W71">W71</a><a name="2586.31"><!-- filler --></a>
+  300          2594.96           Na II      <a href="sodiumtable7_a.htm#W71">W71</a><a name="2594.96"><!-- filler --></a>
+  500          2611.81           Na II      <a href="sodiumtable7_a.htm#W71">W71</a><a name="2611.81"><!-- filler --></a>
+  500          2661.00           Na II      <a href="sodiumtable7_a.htm#W71">W71</a><a name="2661.00"><!-- filler --></a>
+  600          2671.83           Na II      <a href="sodiumtable7_a.htm#W71">W71</a><a name="2671.83"><!-- filler --></a>
+  500          2678.09           Na II      <a href="sodiumtable7_a.htm#W71">W71</a><a name="2678.09"><!-- filler --></a>
+    2          2680.34           Na I       <a href="sodiumtable7_a.htm#R56">R56</a><a name="2680.34"><!-- filler --></a>
+    1          2680.43           Na I       <a href="sodiumtable7_a.htm#R56">R56</a><a name="2680.43"><!-- filler --></a>
+  500          2809.52           Na II      <a href="sodiumtable7_a.htm#W71">W71</a><a name="2809.52"><!-- filler --></a>
+  400          2839.56           Na II      <a href="sodiumtable7_a.htm#W71">W71</a><a name="2839.56"><!-- filler --></a>
+  600          2841.72           Na II      <a href="sodiumtable7_a.htm#W71">W71</a><a name="2841.72"><!-- filler --></a>
+    5    <a href="sodiumtable3_a.htm#2852.81">P</a>     2852.81           Na I       <a href="sodiumtable7_a.htm#R56">R56</a><a name="2852.81"><!-- filler --></a>
+    2    <a href="sodiumtable3_a.htm#2853.01">P</a>     2853.01           Na I       <a href="sodiumtable7_a.htm#R56">R56</a><a name="2853.01"><!-- filler --></a>
+  400          2859.49           Na II      <a href="sodiumtable7_a.htm#W71">W71</a><a name="2859.49"><!-- filler --></a>
+  400          2871.28           Na II      <a href="sodiumtable7_a.htm#W71">W71</a><a name="2871.28"><!-- filler --></a>
+  500          2881.15           Na II      <a href="sodiumtable7_a.htm#W71">W71</a><a name="2881.15"><!-- filler --></a>
+  500          2886.26           Na II      <a href="sodiumtable7_a.htm#W71">W71</a><a name="2886.26"><!-- filler --></a>
+  500          2901.14           Na II      <a href="sodiumtable7_a.htm#W71">W71</a><a name="2901.14"><!-- filler --></a>
+  400          2904.72           Na II      <a href="sodiumtable7_a.htm#W71">W71</a><a name="2904.72"><!-- filler --></a>
+  600          2904.92           Na II      <a href="sodiumtable7_a.htm#W71">W71</a><a name="2904.92"><!-- filler --></a>
+  600          2917.52           Na II      <a href="sodiumtable7_a.htm#W71">W71</a><a name="2917.52"><!-- filler --></a>
+  600          2919.05           Na II      <a href="sodiumtable7_a.htm#W71">W71</a><a name="2919.05"><!-- filler --></a>
+  700          2919.85           Na II      <a href="sodiumtable7_a.htm#W71">W71</a><a name="2919.85"><!-- filler --></a>
+  700          2920.95           Na II      <a href="sodiumtable7_a.htm#W71">W71</a><a name="2920.95"><!-- filler --></a>
+  600          2923.49           Na II      <a href="sodiumtable7_a.htm#W71">W71</a><a name="2923.49"><!-- filler --></a>
+  500          2937.74           Na II      <a href="sodiumtable7_a.htm#W71">W71</a><a name="2937.74"><!-- filler --></a>
+  500          2947.50           Na II      <a href="sodiumtable7_a.htm#W71">W71</a><a name="2947.50"><!-- filler --></a>
+  700          2951.24           Na II      <a href="sodiumtable7_a.htm#W71">W71</a><a name="2951.24"><!-- filler --></a>
+  600          2952.40           Na II      <a href="sodiumtable7_a.htm#W71">W71</a><a name="2952.40"><!-- filler --></a>
+  600          2977.13           Na II      <a href="sodiumtable7_a.htm#W71">W71</a><a name="2977.13"><!-- filler --></a>
+  600          2979.66           Na II      <a href="sodiumtable7_a.htm#W71">W71</a><a name="2979.66"><!-- filler --></a>
+  600          2980.63           Na II      <a href="sodiumtable7_a.htm#W71">W71</a><a name="2980.63"><!-- filler --></a>
+  700          2984.19           Na II      <a href="sodiumtable7_a.htm#W71">W71</a><a name="2984.19"><!-- filler --></a>
+  300          3004.15           Na II      <a href="sodiumtable7_a.htm#W71">W71</a><a name="3004.15"><!-- filler --></a>
+  400          3007.44           Na II      <a href="sodiumtable7_a.htm#W71">W71</a><a name="3007.44"><!-- filler --></a>
+  400          3009.14           Na II      <a href="sodiumtable7_a.htm#W71">W71</a><a name="3009.14"><!-- filler --></a>
+  300          3015.40           Na II      <a href="sodiumtable7_a.htm#W71">W71</a><a name="3015.40"><!-- filler --></a>
+  500          3053.67           Na II      <a href="sodiumtable7_a.htm#W71">W71</a><a name="3053.67"><!-- filler --></a>
+  600          3056.16           Na II      <a href="sodiumtable7_a.htm#W71">W71</a><a name="3056.16"><!-- filler --></a>
+  400          3060.25           Na II      <a href="sodiumtable7_a.htm#W71">W71</a><a name="3060.25"><!-- filler --></a>
+  400          3061.35           Na II      <a href="sodiumtable7_a.htm#W71">W71</a><a name="3061.35"><!-- filler --></a>
+  600    <a href="sodiumtable4_a.htm#3092.73">P</a>     3092.73           Na II      <a href="sodiumtable7_a.htm#W71">W71</a><a name="3092.73"><!-- filler --></a>
+  400          3094.45           Na II      <a href="sodiumtable7_a.htm#W71">W71</a><a name="3094.45"><!-- filler --></a>
+  400          3095.55           Na II      <a href="sodiumtable7_a.htm#W71">W71</a><a name="3095.55"><!-- filler --></a>
+  900          3124.42           Na II      <a href="sodiumtable7_a.htm#W71">W71</a><a name="3124.42"><!-- filler --></a>
+ 1000          3135.48           Na II      <a href="sodiumtable7_a.htm#W71">W71</a><a name="3135.48"><!-- filler --></a>
+  900          3137.86           Na II      <a href="sodiumtable7_a.htm#W71">W71</a><a name="3137.86"><!-- filler --></a>
+  500          3145.71           Na II      <a href="sodiumtable7_a.htm#W71">W71</a><a name="3145.71"><!-- filler --></a>
+ 1000          3149.28           Na II      <a href="sodiumtable7_a.htm#W71">W71</a><a name="3149.28"><!-- filler --></a>
+ 1000          3163.74           Na II      <a href="sodiumtable7_a.htm#W71">W71</a><a name="3163.74"><!-- filler --></a>
+  600          3179.06           Na II      <a href="sodiumtable7_a.htm#W71">W71</a><a name="3179.06"><!-- filler --></a>
+  900          3189.79           Na II      <a href="sodiumtable7_a.htm#W71">W71</a><a name="3189.79"><!-- filler --></a>
+  900          3212.19           Na II      <a href="sodiumtable7_a.htm#W71">W71</a><a name="3212.19"><!-- filler --></a>
+  800          3257.96           Na II      <a href="sodiumtable7_a.htm#W71">W71</a><a name="3257.96"><!-- filler --></a>
+  500          3274.22           Na II      <a href="sodiumtable7_a.htm#W71">W71</a><a name="3274.22"><!-- filler --></a>
+ 1000    <a href="sodiumtable4_a.htm#3285.60">P</a>     3285.60           Na II      <a href="sodiumtable7_a.htm#W71">W71</a><a name="3285.60"><!-- filler --></a>
+  900          3301.35           Na II      <a href="sodiumtable7_a.htm#W71">W71</a><a name="3301.35"><!-- filler --></a>
+   15    <a href="sodiumtable3_a.htm#3302.37">P</a>     3302.37           Na I       <a href="sodiumtable7_a.htm#R56">R56</a><a name="3302.37"><!-- filler --></a>
+    8    <a href="sodiumtable3_a.htm#3302.98">P</a>     3302.98           Na I       <a href="sodiumtable7_a.htm#R56">R56</a><a name="3302.98"><!-- filler --></a>
+  800          3304.96           Na II      <a href="sodiumtable7_a.htm#W71">W71</a><a name="3304.96"><!-- filler --></a>
+  600          3318.04           Na II      <a href="sodiumtable7_a.htm#W71">W71</a><a name="3318.04"><!-- filler --></a>
+  500          3327.69           Na II      <a href="sodiumtable7_a.htm#W71">W71</a><a name="3327.69"><!-- filler --></a>
+    1          3426.86           Na I       <a href="sodiumtable7_a.htm#R56">R56</a><a name="3426.86"><!-- filler --></a>
+  800          3533.05           Na II      <a href="sodiumtable7_a.htm#W71">W71</a><a name="3533.05"><!-- filler --></a>
+  700          3631.27           Na II      <a href="sodiumtable7_a.htm#W71">W71</a><a name="3631.27"><!-- filler --></a>
+  500          3711.07           Na II      <a href="sodiumtable7_a.htm#W71">W71</a><a name="3711.07"><!-- filler --></a>
+  150          4113.70           Na II      <a href="sodiumtable7_a.htm#W71">W71</a><a name="4113.70"><!-- filler --></a>
+    1          4324.62           Na I       <a href="sodiumtable7_a.htm#R56">R56</a><a name="4324.62"><!-- filler --></a>
+    1          4390.03           Na I       <a href="sodiumtable7_a.htm#R56">R56</a><a name="4390.03"><!-- filler --></a>
+  600          4392.81           Na II      <a href="sodiumtable7_a.htm#W71">W71</a><a name="4392.81"><!-- filler --></a>
+    1          4393.34           Na I       <a href="sodiumtable7_a.htm#R56">R56</a><a name="4393.34"><!-- filler --></a>
+  400          4405.12           Na II      <a href="sodiumtable7_a.htm#W71">W71</a><a name="4405.12"><!-- filler --></a>
+  500          4455.23           Na II      <a href="sodiumtable7_a.htm#W71">W71</a><a name="4455.23"><!-- filler --></a>
+  400          4490.87           Na II      <a href="sodiumtable7_a.htm#W71">W71</a><a name="4490.87"><!-- filler --></a>
+    1          4494.18           Na I       <a href="sodiumtable7_a.htm#R56">R56</a><a name="4494.18"><!-- filler --></a>
+    1          4497.66           Na I       <a href="sodiumtable7_a.htm#R56">R56</a><a name="4497.66"><!-- filler --></a>
+    2          4664.811          Na I       <a href="sodiumtable7_a.htm#R56">R56</a><a name="4664.811"><!-- filler --></a>
+    2          4668.560          Na I       <a href="sodiumtable7_a.htm#R56">R56</a><a name="4668.560"><!-- filler --></a>
+    2          4978.541          Na I       <a href="sodiumtable7_a.htm#R56">R56</a><a name="4978.541"><!-- filler --></a>
+    5          4982.813          Na I       <a href="sodiumtable7_a.htm#R56">R56</a><a name="4982.813"><!-- filler --></a>
+    1          5148.838          Na I       <a href="sodiumtable7_a.htm#R56">R56</a><a name="5148.838"><!-- filler --></a>
+    1          5153.402          Na I       <a href="sodiumtable7_a.htm#R56">R56</a><a name="5153.402"><!-- filler --></a>
+   50          5414.55           Na II      <a href="sodiumtable7_a.htm#W71">W71</a><a name="5414.55"><!-- filler --></a>
+    4          5682.633          Na I       <a href="sodiumtable7_a.htm#R56">R56</a><a name="5682.633"><!-- filler --></a>
+    1          5688.193          Na I       <a href="sodiumtable7_a.htm#R56">R56</a><a name="5688.193"><!-- filler --></a>
+    7          5688.205          Na I       <a href="sodiumtable7_a.htm#R56">R56</a><a name="5688.205"><!-- filler --></a>
+ 1000    <a href="sodiumtable3_a.htm#5889.950">P</a>     5889.950          Na I       <a href="sodiumtable7_a.htm#R56">R56</a><a name="5889.950"><!-- filler --></a>
+  500    <a href="sodiumtable3_a.htm#5895.924">P</a>     5895.924          Na I       <a href="sodiumtable7_a.htm#R56">R56</a><a name="5895.924"><!-- filler --></a>
+    2          6154.225          Na I       <a href="sodiumtable7_a.htm#R56">R56</a><a name="6154.225"><!-- filler --></a>
+    3          6160.747          Na I       <a href="sodiumtable7_a.htm#R56">R56</a><a name="6160.747"><!-- filler --></a>
+   50          6514.21           Na II      <a href="sodiumtable7_a.htm#W71">W71</a><a name="6514.21"><!-- filler --></a>
+   70          6530.70           Na II      <a href="sodiumtable7_a.htm#W71">W71</a><a name="6530.70"><!-- filler --></a>
+   70          6544.04           Na II      <a href="sodiumtable7_a.htm#W71">W71</a><a name="6544.04"><!-- filler --></a>
+   70          6545.75           Na II      <a href="sodiumtable7_a.htm#W71">W71</a><a name="6545.75"><!-- filler --></a>
+    1          7809.78           Na I       <a href="sodiumtable7_a.htm#R56">R56</a><a name="7809.78"><!-- filler --></a>
+   60    <a href="sodiumtable3_a.htm#8183.256">P</a>     8183.256          Na I       <a href="sodiumtable7_a.htm#R56">R56</a><a name="8183.256"><!-- filler --></a>
+   10    <a href="sodiumtable3_a.htm#8194.790">P</a>     8194.790          Na I       <a href="sodiumtable7_a.htm#R56">R56</a><a name="8194.790"><!-- filler --></a>
+  110    <a href="sodiumtable3_a.htm#8194.824">P</a>     8194.824          Na I       <a href="sodiumtable7_a.htm#R56">R56</a><a name="8194.824"><!-- filler --></a>
+    1          8649.92           Na I       <a href="sodiumtable7_a.htm#R56">R56</a><a name="8649.92"><!-- filler --></a>
+    1          8650.89           Na I       <a href="sodiumtable7_a.htm#R56">R56</a><a name="8650.89"><!-- filler --></a>
+    1          9153.88           Na I       <a href="sodiumtable7_a.htm#R56">R56</a><a name="9153.88"><!-- filler --></a>
+    1          9465.94           Na I       <a href="sodiumtable7_a.htm#R56">R56</a><a name="9465.94"><!-- filler --></a>
+    1          9961.28           Na I       <a href="sodiumtable7_a.htm#R56">R56</a><a name="9961.28"><!-- filler --></a>
+    1         10572.28           Na I       <a href="sodiumtable7_a.htm#R56">R56</a><a name="10572.28"><!-- filler --></a>
+    2         10746.44           Na I       <a href="sodiumtable7_a.htm#R56">R56</a><a name="10746.44"><!-- filler --></a>
+    1         10749.29           Na I       <a href="sodiumtable7_a.htm#R56">R56</a><a name="10749.29"><!-- filler --></a>
+    2         10834.87           Na I       <a href="sodiumtable7_a.htm#R56">R56</a><a name="10834.87"><!-- filler --></a>
+    1         11197.21           Na I       <a href="sodiumtable7_a.htm#R56">R56</a><a name="11197.21"><!-- filler --></a>
+    5    <a href="sodiumtable3_a.htm#11381.45">P</a>    11381.45           Na I       <a href="sodiumtable7_a.htm#R56">R56</a><a name="11381.45"><!-- filler --></a>
+   12    <a href="sodiumtable3_a.htm#11403.78">P</a>    11403.78           Na I       <a href="sodiumtable7_a.htm#R56">R56</a><a name="11403.78"><!-- filler --></a>
+    5         12679.17           Na I       <a href="sodiumtable7_a.htm#R56">R56</a><a name="12679.17"><!-- filler --></a>
+    1         14767.48           Na I       <a href="sodiumtable7_a.htm#R56">R56</a><a name="14767.48"><!-- filler --></a>
+    1         14779.73           Na I       <a href="sodiumtable7_a.htm#R56">R56</a><a name="14779.73"><!-- filler --></a>
+    1         16373.85           Na I       <a href="sodiumtable7_a.htm#R56">R56</a><a name="16373.85"><!-- filler --></a>
+    1         16388.85           Na I       <a href="sodiumtable7_a.htm#R56">R56</a><a name="16388.85"><!-- filler --></a>
+    5    <a href="sodiumtable3_a.htm#18465.25">P</a>    18465.25           Na I       <a href="sodiumtable7_a.htm#R56">R56</a><a name="18465.25"><!-- filler --></a>
+    1         22056.44           Na I       <a href="sodiumtable7_a.htm#R56">R56</a><a name="22056.44"><!-- filler --></a>
+    1         23348.41           Na I       <a href="sodiumtable7_a.htm#R56">R56</a><a name="23348.41"><!-- filler --></a>
+    1         23379.13           Na I       <a href="sodiumtable7_a.htm#R56">R56</a><a name="23379.13"><!-- filler --></a>
+</pre>
+<img src="../Images/spacer.gif" width="165" height="14" alt=""><img src="../Images/otherelements.gif" width="104" height="14"  alt=""><img src="../Images/spacer.gif" width="125" height="14" alt=""><img src="../Images/neutralatom.gif" width="104" height="14"  alt=""><img src="../Images/singlyionized.gif" width="104" height="14"  alt="" ><br>
+<a href="../index.html"><img src="../Images/mainPage.jpg" border=0 width="90" height="30" alt="Homepage - Introduction" title="Homepage - Introduction"></a><a href="findinglist_a.htm"><img src="../Images/findinglist.gif" border="0" width="50" height="30" alt="Finding list" title="Finding list"></a><a href="../element_name_a.htm"><img src="../Images/element_name_G.gif" border="0" width="50" height="30" alt="Select element by name." title="Select element by name."></a><a href="../atomic_number_a.htm"><img src="../Images/atomic_number_G.gif" border="0" width="50" height="30" alt="Select element by atomic number." title="Select element by atomic number."></a><a href="../periodictable_a.htm"><img src="../Images/periodic_table_G.gif"  border="0" width="50" height="30" alt="Select element from periodic table" title="Select element from periodic table"></a
+><img src="../Images/spacer.gif" width="10" height="14" alt=""><a href="sodiumtable1_a.htm"><img src="../Images/general_Y.gif" border="0" width="50" height="30"  alt="Sodium Atomic Data" title="Sodium Atomic Data"></a
+><a href="sodiumtable2_a.htm"><img src="../Images/strong_B.gif"  border="0" width="42" height="30" alt="Sodium Strong Lines" title="Sodium Strong Lines"></a
+><a href="sodiumtable3_a.htm"><img src="../Images/persistent_Y.gif"  border="0" width="55" height="30" alt="Sodium Neutral Atom Persistent Lines " title="Sodium Neutral Atom Persistent Lines "></a
+><a href="sodiumtable5_a.htm"><img src="../Images/energy_Y.gif"  border="0" width="42" height="30" alt="Sodium Neutral Atom Energy Levels" title="Sodium Neutral Atom Energy Levels"></a
+><a href="sodiumtable4_a.htm"><img src="../Images/persistent_O.gif"  border="0" width="55" height="30" alt="Sodium Singly Ionized Persistent Lines" title="Sodium Singly Ionized Persistent Lines"></a
+><a href="sodiumtable6_a.htm"><img src="../Images/energy_O.gif"  border="0" width="42" height="30" alt="Sodium Singly Ionized Energy Levels" title="Sodium Singly Ionized Energy Levels"></a
+><a href="sodiumtable7_a.htm"><img src="../Images/ref_Y.gif"  border="0" width="31" height="30"  alt="Sodium References" title="Sodium References"></a> 
+<br><a href="sodiumtable2.htm"><img src="../Images/switch_formatted.gif" border="0" width="90" height="30" alt="Switch to Formatted Version" title="Switch to Formatted Version"></a>
+<hr>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"9ef5b487afff42a68917b2d63593a474","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9efc0328cad243b7',t:'MTc3Njc3MDU2MQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

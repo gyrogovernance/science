@@ -1,0 +1,30 @@
+z,n,symbol,idx,energy_shift,energy,unc_e,ripl_shift,jp,jp_order,half_life,operator_hl,unc_hl,unit_hl,half_life_sec,unc_hl,decay_1,decay_1_%,unc_1,decay_2,decay_2_%,unc_2,decay_3,decay_3_%,unc_3,isospin,magnetic_dipole,unc_mn,electric_quadrupole,unc_eq,ENSDF_publication_cut-off,ENSDF_authors,Extraction_date
+88,133,Ra,0,,0,,,5/2+,1,28,,2,s,28,2,A,100,,,,,,,,,-0.179,0.0017,1.92,0.06,15-Jan-2007,Ashok Jain and  Sukhjeet Singh and  Suresh Kumar and  Jagdish Tuli,2026-07-17
+88,133,Ra,1,,53.14,0.08,,(7/2)+,1,,,,,,,,,,,,,,,,,,,,,15-Jan-2007,Ashok Jain and  Sukhjeet Singh and  Suresh Kumar and  Jagdish Tuli,2026-07-17
+88,133,Ra,2,,103.61,0.11,,(5/2)-,1,,,,,,,,,,,,,,,,,,,,,15-Jan-2007,Ashok Jain and  Sukhjeet Singh and  Suresh Kumar and  Jagdish Tuli,2026-07-17
+88,133,Ra,3,,121.95,0.1,,(9/2+),1,,,,,,,,,,,,,,,,,,,,,15-Jan-2007,Ashok Jain and  Sukhjeet Singh and  Suresh Kumar and  Jagdish Tuli,2026-07-17
+88,133,Ra,4,,146.81,0.2,,(7/2)-,1,,,,,,,,,,,,,,,,,,,,,15-Jan-2007,Ashok Jain and  Sukhjeet Singh and  Suresh Kumar and  Jagdish Tuli,2026-07-17
+88,133,Ra,5,,174,5,,,,,,,,,,,,,,,,,,,,,,,,15-Jan-2007,Ashok Jain and  Sukhjeet Singh and  Suresh Kumar and  Jagdish Tuli,2026-07-17
+88,133,Ra,6,,210.9,0.4,,(11/2+),1,,,,,,,,,,,,,,,,,,,,,15-Jan-2007,Ashok Jain and  Sukhjeet Singh and  Suresh Kumar and  Jagdish Tuli,2026-07-17
+88,133,Ra,7,,299.16,0.08,,(7/2)+,2,,,,,,,,,,,,,,,,,,,,,15-Jan-2007,Ashok Jain and  Sukhjeet Singh and  Suresh Kumar and  Jagdish Tuli,2026-07-17
+88,133,Ra,8,,318.9,0.5,,(13/2+),1,,,,,,,,,,,,,,,,,,,,,15-Jan-2007,Ashok Jain and  Sukhjeet Singh and  Suresh Kumar and  Jagdish Tuli,2026-07-17
+88,133,Ra,9,,321.39,0.09,,(3/2)+,1,,,,,,,,,,,,,,,,,,,,,15-Jan-2007,Ashok Jain and  Sukhjeet Singh and  Suresh Kumar and  Jagdish Tuli,2026-07-17
+88,133,Ra,10,,341.5,0.5,,(13/2-),1,,,,,,,,,,,,,,,,,,,,,15-Jan-2007,Ashok Jain and  Sukhjeet Singh and  Suresh Kumar and  Jagdish Tuli,2026-07-17
+88,133,Ra,11,,359.02,0.08,,(5/2)+,1,,,,,,,,,,,,,,,,,,,,,15-Jan-2007,Ashok Jain and  Sukhjeet Singh and  Suresh Kumar and  Jagdish Tuli,2026-07-17
+88,133,Ra,12,,438,0.5,,(15/2+),1,,,,,,,,,,,,,,,,,,,,,15-Jan-2007,Ashok Jain and  Sukhjeet Singh and  Suresh Kumar and  Jagdish Tuli,2026-07-17
+88,133,Ra,13,,440.4,0.5,,(15/2-),1,,,,,,,,,,,,,,,,,,,,,15-Jan-2007,Ashok Jain and  Sukhjeet Singh and  Suresh Kumar and  Jagdish Tuli,2026-07-17
+88,133,Ra,14,,450.33,0.16,,(5/2-),1,,,,,,,,,,,,,,,,,,,,,15-Jan-2007,Ashok Jain and  Sukhjeet Singh and  Suresh Kumar and  Jagdish Tuli,2026-07-17
+88,133,Ra,15,,485.41,0.11,,(3/2- 5/2-),1,,,,,,,,,,,,,,,,,,,,,15-Jan-2007,Ashok Jain and  Sukhjeet Singh and  Suresh Kumar and  Jagdish Tuli,2026-07-17
+88,133,Ra,16,,566,0.5,,(17/2-),1,,,,,,,,,,,,,,,,,,,,,15-Jan-2007,Ashok Jain and  Sukhjeet Singh and  Suresh Kumar and  Jagdish Tuli,2026-07-17
+88,133,Ra,17,,573.1,0.5,,(17/2+),1,,,,,,,,,,,,,,,,,,,,,15-Jan-2007,Ashok Jain and  Sukhjeet Singh and  Suresh Kumar and  Jagdish Tuli,2026-07-17
+88,133,Ra,18,,688.4,0.5,,(19/2-),1,,,,,,,,,,,,,,,,,,,,,15-Jan-2007,Ashok Jain and  Sukhjeet Singh and  Suresh Kumar and  Jagdish Tuli,2026-07-17
+88,133,Ra,19,,711.6,0.5,,(19/2+),1,,,,,,,,,,,,,,,,,,,,,15-Jan-2007,Ashok Jain and  Sukhjeet Singh and  Suresh Kumar and  Jagdish Tuli,2026-07-17
+88,133,Ra,20,,849.6,0.5,,(21/2-),1,,,,,,,,,,,,,,,,,,,,,15-Jan-2007,Ashok Jain and  Sukhjeet Singh and  Suresh Kumar and  Jagdish Tuli,2026-07-17
+88,133,Ra,21,,866.9,0.5,,(21/2+),1,,,,,,,,,,,,,,,,,,,,,15-Jan-2007,Ashok Jain and  Sukhjeet Singh and  Suresh Kumar and  Jagdish Tuli,2026-07-17
+88,133,Ra,22,,990.4,0.5,,(23/2-),1,,,,,,,,,,,,,,,,,,,,,15-Jan-2007,Ashok Jain and  Sukhjeet Singh and  Suresh Kumar and  Jagdish Tuli,2026-07-17
+88,133,Ra,23,,1025.9,0.5,,(23/2+),1,,,,,,,,,,,,,,,,,,,,,15-Jan-2007,Ashok Jain and  Sukhjeet Singh and  Suresh Kumar and  Jagdish Tuli,2026-07-17
+88,133,Ra,24,,1180.5,0.6,,(25/2-),1,,,,,,,,,,,,,,,,,,,,,15-Jan-2007,Ashok Jain and  Sukhjeet Singh and  Suresh Kumar and  Jagdish Tuli,2026-07-17
+88,133,Ra,25,,1197.4,0.6,,(25/2+),1,,,,,,,,,,,,,,,,,,,,,15-Jan-2007,Ashok Jain and  Sukhjeet Singh and  Suresh Kumar and  Jagdish Tuli,2026-07-17
+88,133,Ra,26,,1344.4,0.6,,(27/2-),1,,,,,,,,,,,,,,,,,,,,,15-Jan-2007,Ashok Jain and  Sukhjeet Singh and  Suresh Kumar and  Jagdish Tuli,2026-07-17
+88,133,Ra,27,,1375.8,0.6,,(27/2+),1,,,,,,,,,,,,,,,,,,,,,15-Jan-2007,Ashok Jain and  Sukhjeet Singh and  Suresh Kumar and  Jagdish Tuli,2026-07-17
+

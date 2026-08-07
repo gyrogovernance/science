@@ -1,0 +1,35 @@
+IAEA LiveChart / ENSDF nuclear structure snapshots
+==================================================
+
+Source
+  IAEA Nuclear Data Section LiveChart Data Download API
+  https://nds.iaea.org/relnsd/v1/data
+  API guide: https://nds.iaea.org/relnsd/vcharthtml/api_v0_guide.html
+  Underlying evaluations: ENSDF (Evaluated Nuclear Structure Data File).
+
+Files
+  iaea_livechart_ground_states.csv
+    GET fields=ground_states&nuclides=all
+  iaea_livechart_levels_<A><el>.csv
+    GET fields=levels&nuclides=<A><el>  (energies in keV)
+  ensdf_ev_band_levels.csv
+    Filter 0 < E <= 200 eV from all level files in this folder
+    (7 rows from 214 level files in this rebuild).
+  ensdf_first_excited_actinides.csv
+    First excited state per level file (140 nuclides).
+
+Refresh
+  python experiments/ensdf_ev_band_ingest.py
+  python experiments/ensdf_ev_band_ingest.py --force   # re-download all
+  python experiments/ensdf_ev_band_ingest.py --rebuild-only
+
+Notes for the optical-isomer audit
+  - ENSDF Adopted for Th-229 still lists the isomer near 7.6 eV;
+    Zhang et al., Nature 633, 63 (2024) measures 8.3557335(24) eV.
+  - U-235m is ~76 eV (T1/2 ~26 min), not 7.6 eV.
+  - Pu-239 first excited is ~7.861 keV, not an eV-band isomer.
+  - LiveChart ground_states=all does not emit separate metastable rows;
+    use levels= for excited states.
+  - Default pull window: Z=88-98, A=220-250.
+
+Rebuild stamp: see ensdf_ev_band_levels.csv Extraction_date / this run.

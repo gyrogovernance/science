@@ -1,0 +1,17 @@
+z,n,symbol,idx,energy_shift,energy,unc_e,ripl_shift,jp,jp_order,half_life,operator_hl,unc_hl,unit_hl,half_life_sec,unc_hl,decay_1,decay_1_%,unc_1,decay_2,decay_2_%,unc_2,decay_3,decay_3_%,unc_3,isospin,magnetic_dipole,unc_mn,electric_quadrupole,unc_eq,ENSDF_publication_cut-off,ENSDF_authors,Extraction_date
+93,140,Np,0,,0,,,(5/2+),1,36.2,,1,m,2172,6,EC,100,,A,0.0007,,,,,,,,,,8-Oct-2020,B. Singh and  J. K. Tuli and  E. Browne,2026-07-17
+93,140,Np,1,,34.4,0.3,,(7/2+),1,,,,,,,,,,,,,,,,,,,,,8-Oct-2020,B. Singh and  J. K. Tuli and  E. Browne,2026-07-17
+93,140,Np,2,,50,,,5/2(-),1,,,,,,,,,,,,,,,,,,,,,8-Oct-2020,B. Singh and  J. K. Tuli and  E. Browne,2026-07-17
+93,140,Np,3,,512.5,0.4,,,,,,,,,,,,,,,,,,,,,,,,8-Oct-2020,B. Singh and  J. K. Tuli and  E. Browne,2026-07-17
+93,140,Np,4,,534.7,0.4,,,,,,,,,,,,,,,,,,,,,,,,8-Oct-2020,B. Singh and  J. K. Tuli and  E. Browne,2026-07-17
+93,140,Np,5,,558.7,0.4,,,,,,,,,,,,,,,,,,,,,,,,8-Oct-2020,B. Singh and  J. K. Tuli and  E. Browne,2026-07-17
+93,140,Np,6,,583.4,0.5,,,,,,,,,,,,,,,,,,,,,,,,8-Oct-2020,B. Singh and  J. K. Tuli and  E. Browne,2026-07-17
+93,140,Np,7,,725.9,0.5,,,,,,,,,,,,,,,,,,,,,,,,8-Oct-2020,B. Singh and  J. K. Tuli and  E. Browne,2026-07-17
+93,140,Np,8,,770,0.6,,,,,,,,,,,,,,,,,,,,,,,,8-Oct-2020,B. Singh and  J. K. Tuli and  E. Browne,2026-07-17
+93,140,Np,9,,830.9,0.3,,,,,,,,,,,,,,,,,,,,,,,,8-Oct-2020,B. Singh and  J. K. Tuli and  E. Browne,2026-07-17
+93,140,Np,10,,991.8,0.4,,,,,,,,,,,,,,,,,,,,,,,,8-Oct-2020,B. Singh and  J. K. Tuli and  E. Browne,2026-07-17
+93,140,Np,11,,1012.4,0.4,,,,,,,,,,,,,,,,,,,,,,,,8-Oct-2020,B. Singh and  J. K. Tuli and  E. Browne,2026-07-17
+93,140,Np,12,,1035.3,0.5,,,,,,,,,,,,,,,,,,,,,,,,8-Oct-2020,B. Singh and  J. K. Tuli and  E. Browne,2026-07-17
+93,140,Np,13,,1062.6,0.5,,,,,,,,,,,,,,,,,,,,,,,,8-Oct-2020,B. Singh and  J. K. Tuli and  E. Browne,2026-07-17
+93,140,Np,14,,1243.3,0.6,,,,,,,,,,,,,,,,,,,,,,,,8-Oct-2020,B. Singh and  J. K. Tuli and  E. Browne,2026-07-17
+

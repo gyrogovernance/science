@@ -1,0 +1,32 @@
+z,n,symbol,idx,energy_shift,energy,unc_e,ripl_shift,jp,jp_order,half_life,operator_hl,unc_hl,unit_hl,half_life_sec,unc_hl,decay_1,decay_1_%,unc_1,decay_2,decay_2_%,unc_2,decay_3,decay_3_%,unc_3,isospin,magnetic_dipole,unc_mn,electric_quadrupole,unc_eq,ENSDF_publication_cut-off,ENSDF_authors,Extraction_date
+96,147,Cm,0,,0,,,5/2+,1,29.1,,1,Y,918306545.8606272,3155692.5974592,A,99.71,0.03,EC,0.29,0.03,SF,0.0000000053,0.0000000009,,0.4,0.08,,,30-Sep-2013,C.D. Nesaraja and  E.A. McCutchan,2026-07-17
+96,147,Cm,1,,42,2,,7/2+,1,,,,,,,,,,,,,,,,,,,,,30-Sep-2013,C.D. Nesaraja and  E.A. McCutchan,2026-07-17
+96,147,Cm,2,,87.4,0.1,,1/2+,1,1.08,,3,us,0.00000108,0.00000003,,,,,,,,,,,,,,,30-Sep-2013,C.D. Nesaraja and  E.A. McCutchan,2026-07-17
+96,147,Cm,3,,94,2,,9/2+,1,,,,,,,,,,,,,,,,,,,,,30-Sep-2013,C.D. Nesaraja and  E.A. McCutchan,2026-07-17
+96,147,Cm,4,,94,2,,3/2+,1,,,,,,,,,,,,,,,,,,,,,30-Sep-2013,C.D. Nesaraja and  E.A. McCutchan,2026-07-17
+96,147,Cm,5,,114,20,,(7/2+),1,,,,,,,,,,,,,,,,,,,,,30-Sep-2013,C.D. Nesaraja and  E.A. McCutchan,2026-07-17
+96,147,Cm,6,,153,2,,(11/2+),1,,,,,,,,,,,,,,,,,,,,,30-Sep-2013,C.D. Nesaraja and  E.A. McCutchan,2026-07-17
+96,147,Cm,7,,164,2,,(9/2+),1,,,,,,,,,,,,,,,,,,,,,30-Sep-2013,C.D. Nesaraja and  E.A. McCutchan,2026-07-17
+96,147,Cm,8,,219,3,,(13/2+),1,,,,,,,,,,,,,,,,,,,,,30-Sep-2013,C.D. Nesaraja and  E.A. McCutchan,2026-07-17
+96,147,Cm,9,,228,3,,(11/2+),2,,,,,,,,,,,,,,,,,,,,,30-Sep-2013,C.D. Nesaraja and  E.A. McCutchan,2026-07-17
+96,147,Cm,10,,260,2,,(9/2+),2,,,,,,,,,,,,,,,,,,,,,30-Sep-2013,C.D. Nesaraja and  E.A. McCutchan,2026-07-17
+96,147,Cm,11,,530,3,,,,,,,,,,,,,,,,,,,,,,,,30-Sep-2013,C.D. Nesaraja and  E.A. McCutchan,2026-07-17
+96,147,Cm,12,,729,2,,1/2-,1,,,,,,,,,,,,,,,,,,,,,30-Sep-2013,C.D. Nesaraja and  E.A. McCutchan,2026-07-17
+96,147,Cm,13,,769,2,,,,,,,,,,,,,,,,,,,,,,,,30-Sep-2013,C.D. Nesaraja and  E.A. McCutchan,2026-07-17
+96,147,Cm,14,,798,2,,,,,,,,,,,,,,,,,,,,,,,,30-Sep-2013,C.D. Nesaraja and  E.A. McCutchan,2026-07-17
+96,147,Cm,15,,842,2,,,,,,,,,,,,,,,,,,,,,,,,30-Sep-2013,C.D. Nesaraja and  E.A. McCutchan,2026-07-17
+96,147,Cm,16,,860,4,,,,,,,,,,,,,,,,,,,,,,,,30-Sep-2013,C.D. Nesaraja and  E.A. McCutchan,2026-07-17
+96,147,Cm,17,,892,2,,,,,,,,,,,,,,,,,,,,,,,,30-Sep-2013,C.D. Nesaraja and  E.A. McCutchan,2026-07-17
+96,147,Cm,18,,904,3,,,,,,,,,,,,,,,,,,,,,,,,30-Sep-2013,C.D. Nesaraja and  E.A. McCutchan,2026-07-17
+96,147,Cm,19,,930,4,,,,,,,,,,,,,,,,,,,,,,,,30-Sep-2013,C.D. Nesaraja and  E.A. McCutchan,2026-07-17
+96,147,Cm,20,,973,2,,,,,,,,,,,,,,,,,,,,,,,,30-Sep-2013,C.D. Nesaraja and  E.A. McCutchan,2026-07-17
+96,147,Cm,21,,1015,3,,,,,,,,,,,,,,,,,,,,,,,,30-Sep-2013,C.D. Nesaraja and  E.A. McCutchan,2026-07-17
+96,147,Cm,22,,1023,2,,,,,,,,,,,,,,,,,,,,,,,,30-Sep-2013,C.D. Nesaraja and  E.A. McCutchan,2026-07-17
+96,147,Cm,23,,1046,4,,,,,,,,,,,,,,,,,,,,,,,,30-Sep-2013,C.D. Nesaraja and  E.A. McCutchan,2026-07-17
+96,147,Cm,24,,1136,2,,,,,,,,,,,,,,,,,,,,,,,,30-Sep-2013,C.D. Nesaraja and  E.A. McCutchan,2026-07-17
+96,147,Cm,25,,1217,3,,,,,,,,,,,,,,,,,,,,,,,,30-Sep-2013,C.D. Nesaraja and  E.A. McCutchan,2026-07-17
+96,147,Cm,26,,1222,4,,,,,,,,,,,,,,,,,,,,,,,,30-Sep-2013,C.D. Nesaraja and  E.A. McCutchan,2026-07-17
+96,147,Cm,27,,1359,3,,,,,,,,,,,,,,,,,,,,,,,,30-Sep-2013,C.D. Nesaraja and  E.A. McCutchan,2026-07-17
+96,147,Cm,28,,1367,4,,,,,,,,,,,,,,,,,,,,,,,,30-Sep-2013,C.D. Nesaraja and  E.A. McCutchan,2026-07-17
+96,147,Cm,29,,1900,300,,,,42,,6,ns,0.000000042,0.000000006,SF,100,,,,,,,,,,,,,30-Sep-2013,C.D. Nesaraja and  E.A. McCutchan,2026-07-17
+

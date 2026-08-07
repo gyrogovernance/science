@@ -1,0 +1,202 @@
+<html>
+<head>
+<title>Strong Lines of Helium&nbsp;(&nbsp;He&nbsp;)</title>
+<style type="text/css"><!-- a   {text-decoration: none} td  {font-family: courier new,courier} --></style>
+<!-- Google Analtyics 4 -->
+<script async type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=G-9SLN1VEEJ2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-9SLN1VEEJ2');
+</script>
+<!-- End of Google Analytics 4 -->
+<SCRIPT async type="text/javascript" id="_fed_an_ua_tag" src="https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js?agency=DOC&subagency=NIST&pua=UA-37115410-46&yt=false&exts=ppsx,pps,f90,sch,rtf,wrl,txz,m1v,xlsm,msi,xsd,f,tif,eps,mpg,xml,pl,xlt,c"></script>
+</head>
+<body  bgcolor="white">
+<table width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr valign="bottom">
+<td align="left"><img src="/Images/But/nist-pl-black.gif" width="136" 
+height="68" usemap="#NIST-PL" alt="NIST Physical Measurement Laboratory" border="0"></td>
+<td align="center"><a href="../index.html"><img src="../Images/HBannersm.jpg" border="0" width="438" height="54" alt="Handbook of Basic Atomic Spectroscopic Data" title="Handbook of Basic Atomic Spectroscopic Data"></a></td>
+<td align="right"><img src="../Images/spacer.gif" width="136" height="68" alt=""></td>
+</tr></table><br clear="all">
+<map name="NIST-PL">
+    <area shape="rect" coords="0,0,1,1" href="#start" alt="[skip navigation]">
+    <area shape="rect" coords="1,1,135,48" href="http://www.nist.gov" alt="National Institute of Standards and Technology">
+    <area shape="rect" coords="1,50,135,67" href="/" alt="NIST Physical Measurement Laboratory">
+</map>
+<img src="../Images/spacer.gif" width="300" height="14" alt=""><font size="+1"><b>Helium&nbsp;(He)&nbsp;</b></font><br clear="all"><img src="../Images/spacer.gif" width="165" height="14" alt=""><img src="../Images/otherelements.gif" width="104" height="14"  alt=""><img src="../Images/spacer.gif" width="125" height="14" alt=""><img src="../Images/neutralatom.gif" width="104" height="14"  alt=""><img src="../Images/singlyionized.gif" width="104" height="14"  alt="" ><br>
+<a href="../index.html"><img src="../Images/mainPage.jpg" border=0 width="90" height="30" alt="Homepage - Introduction" title="Homepage - Introduction"></a><a href="findinglist_a.htm"><img src="../Images/findinglist.gif" border="0" width="50" height="30" alt="Finding list" title="Finding list"></a><a href="../element_name_a.htm"><img src="../Images/element_name_G.gif" border="0" width="50" height="30" alt="Select element by name." title="Select element by name."></a><a href="../atomic_number_a.htm"><img src="../Images/atomic_number_G.gif" border="0" width="50" height="30" alt="Select element by atomic number." title="Select element by atomic number."></a><a href="../periodictable_a.htm"><img src="../Images/periodic_table_G.gif"  border="0" width="50" height="30" alt="Select element from periodic table" title="Select element from periodic table"></a
+><img src="../Images/spacer.gif" width="10" height="14" alt=""><a href="heliumtable1_a.htm"><img src="../Images/general_Y.gif" border="0" width="50" height="30"  alt="Helium Atomic Data" title="Helium Atomic Data"></a
+><a href="heliumtable2_a.htm"><img src="../Images/strong_B.gif"  border="0" width="42" height="30" alt="Helium Strong Lines" title="Helium Strong Lines"></a
+><a href="heliumtable3_a.htm"><img src="../Images/persistent_Y.gif"  border="0" width="55" height="30" alt="Helium Neutral Atom Persistent Lines " title="Helium Neutral Atom Persistent Lines "></a
+><a href="heliumtable5_a.htm"><img src="../Images/energy_Y.gif"  border="0" width="42" height="30" alt="Helium Neutral Atom Energy Levels" title="Helium Neutral Atom Energy Levels"></a
+><a href="heliumtable4_a.htm"><img src="../Images/persistent_O.gif"  border="0" width="55" height="30" alt="Helium Singly Ionized Persistent Lines" title="Helium Singly Ionized Persistent Lines"></a
+><a href="heliumtable6_a.htm"><img src="../Images/energy_O.gif"  border="0" width="42" height="30" alt="Helium Singly Ionized Energy Levels" title="Helium Singly Ionized Energy Levels"></a
+><a href="heliumtable7_a.htm"><img src="../Images/ref_Y.gif"  border="0" width="31" height="30"  alt="Helium References" title="Helium References"></a> 
+<br><a href="heliumtable2.htm"><img src="../Images/switch_formatted.gif" border="0" width="90" height="30" alt="Switch to Formatted Version" title="Switch to Formatted Version"></a><a name="start"><!-- filler --></a>
+<h3 align="center">Strong Lines of  Helium&nbsp;(&nbsp;He&nbsp;)</h3>
+<hr>
+<pre>
+<b>Intensity      Wavelength (&Aring;)     Spectrum   Ref. </b>
+ 
+                 Vacuum
+ 
+   15    c       231.4541         He II      <a href="heliumtable7_a.htm#GM65">GM65</a><a name="231.4541"><!-- filler --></a>
+   20    c       232.5842         He II      <a href="heliumtable7_a.htm#GM65">GM65</a><a name="232.5842"><!-- filler --></a>
+   30    c       234.3472         He II      <a href="heliumtable7_a.htm#GM65">GM65</a><a name="234.3472"><!-- filler --></a>
+   50    c       237.3307         He II      <a href="heliumtable7_a.htm#GM65">GM65</a><a name="237.3307"><!-- filler --></a>
+  100    c       243.0266         He II      <a href="heliumtable7_a.htm#GM65">GM65</a><a name="243.0266"><!-- filler --></a>
+  300    <a href="heliumtable4_a.htm#256.3166">P</a>       256.3166         He II      <a href="heliumtable7_a.htm#MK00b">MK00b</a><a name="256.3166"><!-- filler --></a>
+  150    <a href="heliumtable4_a.htm#256.3177">P</a>       256.3177         He II      <a href="heliumtable7_a.htm#MK00b">MK00b</a><a name="256.3177"><!-- filler --></a>
+ 1000    <a href="heliumtable4_a.htm#303.7804">P</a>       303.7804         He II      <a href="heliumtable7_a.htm#MK00b">MK00b</a><a name="303.7804"><!-- filler --></a>
+  500    <a href="heliumtable4_a.htm#303.7858">P</a>       303.7858         He II      <a href="heliumtable7_a.htm#MK00b">MK00b</a><a name="303.7858"><!-- filler --></a>
+   10            320.293          He I       <a href="heliumtable7_a.htm#TW71">TW71</a><a name="320.293"><!-- filler --></a>
+    2            505.50035        He I       <a href="heliumtable7_a.htm#M02">M02</a><a name="505.50035"><!-- filler --></a>
+    3            505.68433        He I       <a href="heliumtable7_a.htm#M02">M02</a><a name="505.68433"><!-- filler --></a>
+    4            505.91252        He I       <a href="heliumtable7_a.htm#M02">M02</a><a name="505.91252"><!-- filler --></a>
+    5            506.20034        He I       <a href="heliumtable7_a.htm#M02">M02</a><a name="506.20034"><!-- filler --></a>
+    7            506.57057        He I       <a href="heliumtable7_a.htm#M02">M02</a><a name="506.57057"><!-- filler --></a>
+   10            507.05802        He I       <a href="heliumtable7_a.htm#M02">M02</a><a name="507.05802"><!-- filler --></a>
+   15            507.71809        He I       <a href="heliumtable7_a.htm#M02">M02</a><a name="507.71809"><!-- filler --></a>
+   20            508.64338        He I       <a href="heliumtable7_a.htm#M02">M02</a><a name="508.64338"><!-- filler --></a>
+   25            509.99829        He I       <a href="heliumtable7_a.htm#M02">M02</a><a name="509.99829"><!-- filler --></a>
+   35            512.09856        He I       <a href="heliumtable7_a.htm#M02">M02</a><a name="512.09856"><!-- filler --></a>
+   50            515.61684        He I       <a href="heliumtable7_a.htm#M02">M02</a><a name="515.61684"><!-- filler --></a>
+  100    <a href="heliumtable3_a.htm#522.21309">P</a>       522.21309        He I       <a href="heliumtable7_a.htm#M02">M02</a><a name="522.21309"><!-- filler --></a>
+  400    <a href="heliumtable3_a.htm#537.02992">P</a>       537.02992        He I       <a href="heliumtable7_a.htm#M02">M02</a><a name="537.02992"><!-- filler --></a>
+ 1000    <a href="heliumtable3_a.htm#584.33436">P</a>       584.33436        He I       <a href="heliumtable7_a.htm#M02">M02</a><a name="584.33436"><!-- filler --></a>
+   50            591.41207        He I       <a href="heliumtable7_a.htm#M02">M02</a><a name="591.41207"><!-- filler --></a>
+    5    c       958.70           He II      <a href="heliumtable7_a.htm#GM65">GM65</a><a name="958.70"><!-- filler --></a>
+    6    c       972.11           He II      <a href="heliumtable7_a.htm#GM65">GM65</a><a name="972.11"><!-- filler --></a>
+    8    c       992.36           He II      <a href="heliumtable7_a.htm#GM65">GM65</a><a name="992.36"><!-- filler --></a>
+   15    c      1025.27           He II      <a href="heliumtable7_a.htm#GM65">GM65</a><a name="1025.27"><!-- filler --></a>
+   30    c      1084.94           He II      <a href="heliumtable7_a.htm#GM65">GM65</a><a name="1084.94"><!-- filler --></a>
+   35           1215.09           He II      <a href="heliumtable7_a.htm#GM65">GM65</a><a name="1215.09"><!-- filler --></a>
+   50    c      1215.17           He II      <a href="heliumtable7_a.htm#GM65">GM65</a><a name="1215.17"><!-- filler --></a>
+  120    <a href="heliumtable4_a.htm#1640.3321">P</a>      1640.3321         He II      <a href="heliumtable7_a.htm#MK00b">MK00b</a><a name="1640.3321"><!-- filler --></a>
+   50    <a href="heliumtable4_a.htm#1640.3447">P</a>      1640.3447         He II      <a href="heliumtable7_a.htm#MK00b">MK00b</a><a name="1640.3447"><!-- filler --></a>
+    7    <a href="heliumtable4_a.htm#1640.3750">P</a>      1640.3750         He II      <a href="heliumtable7_a.htm#MK00b">MK00b</a><a name="1640.3750"><!-- filler --></a>
+   25    <a href="heliumtable4_a.htm#1640.3914">P</a>      1640.3914         He II      <a href="heliumtable7_a.htm#MK00b">MK00b</a><a name="1640.3914"><!-- filler --></a>
+  180    <a href="heliumtable4_a.htm#1640.4742">P</a>      1640.4742         He II      <a href="heliumtable7_a.htm#MK00b">MK00b</a><a name="1640.4742"><!-- filler --></a>
+   25    <a href="heliumtable4_a.htm#1640.4897">P</a>      1640.4897         He II      <a href="heliumtable7_a.htm#MK00b">MK00b</a><a name="1640.4897"><!-- filler --></a>
+   15    <a href="heliumtable4_a.htm#1640.5326">P</a>      1640.5326         He II      <a href="heliumtable7_a.htm#MK00b">MK00b</a><a name="1640.5326"><!-- filler --></a>
+ 
+                  Air
+ 
+    7    c      2385.40           He II      <a href="heliumtable7_a.htm#GM65">GM65</a><a name="2385.40"><!-- filler --></a>
+    9    c      2511.20           He II      <a href="heliumtable7_a.htm#GM65">GM65</a><a name="2511.20"><!-- filler --></a>
+    1           2723.19           He I       <a href="heliumtable7_a.htm#M60a">M60a</a><a name="2723.19"><!-- filler --></a>
+   12    c      2733.30           He II      <a href="heliumtable7_a.htm#GM65">GM65</a><a name="2733.30"><!-- filler --></a>
+    2           2763.80           He I       <a href="heliumtable7_a.htm#M60a">M60a</a><a name="2763.80"><!-- filler --></a>
+   10           2818.2            He I       <a href="heliumtable7_a.htm#BDD72">BDD72</a><a name="2818.2"><!-- filler --></a>
+    4           2829.08           He I       <a href="heliumtable7_a.htm#M60a">M60a</a><a name="2829.08"><!-- filler --></a>
+   10           2945.11           He I       <a href="heliumtable7_a.htm#M60a">M60a</a><a name="2945.11"><!-- filler --></a>
+   40           3013.7            He I       <a href="heliumtable7_a.htm#BDD72">BDD72</a><a name="3013.7"><!-- filler --></a>
+   20           3187.74           He I       <a href="heliumtable7_a.htm#M60a">M60a</a><a name="3187.74"><!-- filler --></a>
+   15    c      3203.10           He II      <a href="heliumtable7_a.htm#GM65">GM65</a><a name="3203.10"><!-- filler --></a>
+    1           3354.55           He I       <a href="heliumtable7_a.htm#M60a">M60a</a><a name="3354.55"><!-- filler --></a>
+    2           3447.59           He I       <a href="heliumtable7_a.htm#M60a">M60a</a><a name="3447.59"><!-- filler --></a>
+    1           3587.27           He I       <a href="heliumtable7_a.htm#M60a">M60a</a><a name="3587.27"><!-- filler --></a>
+    3           3613.64           He I       <a href="heliumtable7_a.htm#M60a">M60a</a><a name="3613.64"><!-- filler --></a>
+    2           3634.23           He I       <a href="heliumtable7_a.htm#M60a">M60a</a><a name="3634.23"><!-- filler --></a>
+    3           3705.00           He I       <a href="heliumtable7_a.htm#M60a">M60a</a><a name="3705.00"><!-- filler --></a>
+    1           3732.86           He I       <a href="heliumtable7_a.htm#M60a">M60a</a><a name="3732.86"><!-- filler --></a>
+   10           3819.607          He I       <a href="heliumtable7_a.htm#M60a">M60a</a><a name="3819.607"><!-- filler --></a>
+    1           3819.76           He I       <a href="heliumtable7_a.htm#M60a">M60a</a><a name="3819.76"><!-- filler --></a>
+    3           3867.48           He I       <a href="heliumtable7_a.htm#M60a">M60a</a><a name="3867.48"><!-- filler --></a>
+   60    <a href="heliumtable3_a.htm#3888.6046">P</a>      3888.6046         He I       <a href="heliumtable7_a.htm#M02">M02</a><a name="3888.6046"><!-- filler --></a>
+  200    <a href="heliumtable3_a.htm#3888.6456">P</a>      3888.6456         He I       <a href="heliumtable7_a.htm#M02">M02</a><a name="3888.6456"><!-- filler --></a>
+  300    <a href="heliumtable3_a.htm#3888.6489">P</a>      3888.6489         He I       <a href="heliumtable7_a.htm#M02">M02</a><a name="3888.6489"><!-- filler --></a>
+   20           3964.729          He I       <a href="heliumtable7_a.htm#M60a">M60a</a><a name="3964.729"><!-- filler --></a>
+    1           4009.27           He I       <a href="heliumtable7_a.htm#M60a">M60a</a><a name="4009.27"><!-- filler --></a>
+   50           4026.191          He I       <a href="heliumtable7_a.htm#M60a">M60a</a><a name="4026.191"><!-- filler --></a>
+    5           4026.36           He I       <a href="heliumtable7_a.htm#M60a">M60a</a><a name="4026.36"><!-- filler --></a>
+   12           4120.82           He I       <a href="heliumtable7_a.htm#M60a">M60a</a><a name="4120.82"><!-- filler --></a>
+    2           4120.99           He I       <a href="heliumtable7_a.htm#M60a">M60a</a><a name="4120.99"><!-- filler --></a>
+    3           4143.76           He I       <a href="heliumtable7_a.htm#M60a">M60a</a><a name="4143.76"><!-- filler --></a>
+   10           4387.929          He I       <a href="heliumtable7_a.htm#M60a">M60a</a><a name="4387.929"><!-- filler --></a>
+    3           4437.55           He I       <a href="heliumtable7_a.htm#M60a">M60a</a><a name="4437.55"><!-- filler --></a>
+  200           4471.479          He I       <a href="heliumtable7_a.htm#M60a">M60a</a><a name="4471.479"><!-- filler --></a>
+   25           4471.68           He I       <a href="heliumtable7_a.htm#M60a">M60a</a><a name="4471.68"><!-- filler --></a>
+    4    <a href="heliumtable4_a.htm#4685.3769">P</a>,c    4685.3769         He II      <a href="heliumtable7_a.htm#MK00b">MK00b</a><a name="4685.3769"><!-- filler --></a>
+    3    <a href="heliumtable4_a.htm#4685.4072">P</a>,c    4685.4072         He II      <a href="heliumtable7_a.htm#MK00b">MK00b</a><a name="4685.4072"><!-- filler --></a>
+   15*   <a href="heliumtable4_a.htm#4685.7038">P</a>,c    4685.7038         He II      <a href="heliumtable7_a.htm#MK00b">MK00b</a><a name="4685.7038"><!-- filler --></a>
+   15*   <a href="heliumtable4_a.htm#4685.7044">P</a>,c    4685.7044         He II      <a href="heliumtable7_a.htm#MK00b">MK00b</a><a name="4685.7044"><!-- filler --></a>
+   12    <a href="heliumtable4_a.htm#4685.8041">P</a>,c    4685.8041         He II      <a href="heliumtable7_a.htm#MK00b">MK00b</a><a name="4685.8041"><!-- filler --></a>
+   30           4713.146          He I       <a href="heliumtable7_a.htm#M60a">M60a</a><a name="4713.146"><!-- filler --></a>
+    4           4713.38           He I       <a href="heliumtable7_a.htm#M60a">M60a</a><a name="4713.38"><!-- filler --></a>
+   20           4921.931          He I       <a href="heliumtable7_a.htm#M60a">M60a</a><a name="4921.931"><!-- filler --></a>
+  100           5015.678          He I       <a href="heliumtable7_a.htm#M60a">M60a</a><a name="5015.678"><!-- filler --></a>
+   10           5047.74           He I       <a href="heliumtable7_a.htm#M60a">M60a</a><a name="5047.74"><!-- filler --></a>
+    5    c      5411.52           He II      <a href="heliumtable7_a.htm#GM65">GM65</a><a name="5411.52"><!-- filler --></a>
+  500    <a href="heliumtable3_a.htm#5875.6148">P</a>      5875.6148         He I       <a href="heliumtable7_a.htm#M02">M02</a><a name="5875.6148"><!-- filler --></a>
+  250    <a href="heliumtable3_a.htm#5875.6404">P</a>      5875.6404         He I       <a href="heliumtable7_a.htm#M02">M02</a><a name="5875.6404"><!-- filler --></a>
+  120    <a href="heliumtable3_a.htm#5875.9663">P</a>      5875.9663         He I       <a href="heliumtable7_a.htm#M02">M02</a><a name="5875.9663"><!-- filler --></a>
+    8    c      6560.10           He II      <a href="heliumtable7_a.htm#GM65">GM65</a><a name="6560.10"><!-- filler --></a>
+  200    <a href="heliumtable3_a.htm#6678.1517">P</a>      6678.1517         He I       <a href="heliumtable7_a.htm#M02">M02</a><a name="6678.1517"><!-- filler --></a>
+  100    <a href="heliumtable3_a.htm#7065.1771">P</a>      7065.1771         He I       <a href="heliumtable7_a.htm#M02">M02</a><a name="7065.1771"><!-- filler --></a>
+   60    <a href="heliumtable3_a.htm#7065.2153">P</a>      7065.2153         He I       <a href="heliumtable7_a.htm#M02">M02</a><a name="7065.2153"><!-- filler --></a>
+   20    <a href="heliumtable3_a.htm#7065.7086">P</a>      7065.7086         He I       <a href="heliumtable7_a.htm#M02">M02</a><a name="7065.7086"><!-- filler --></a>
+   50           7281.35           He I       <a href="heliumtable7_a.htm#M60a">M60a</a><a name="7281.35"><!-- filler --></a>
+    1           7816.15           He I       <a href="heliumtable7_a.htm#M60a">M60a</a><a name="7816.15"><!-- filler --></a>
+    2           8361.69           He I       <a href="heliumtable7_a.htm#M60a">M60a</a><a name="8361.69"><!-- filler --></a>
+    2           9063.27           He I       <a href="heliumtable7_a.htm#M60a">M60a</a><a name="9063.27"><!-- filler --></a>
+    2           9210.34           He I       <a href="heliumtable7_a.htm#M60a">M60a</a><a name="9210.34"><!-- filler --></a>
+   10           9463.61           He I       <a href="heliumtable7_a.htm#M60a">M60a</a><a name="9463.61"><!-- filler --></a>
+    4           9516.60           He I       <a href="heliumtable7_a.htm#M60a">M60a</a><a name="9516.60"><!-- filler --></a>
+    3           9526.17           He I       <a href="heliumtable7_a.htm#M60a">M60a</a><a name="9526.17"><!-- filler --></a>
+    1           9529.27           He I       <a href="heliumtable7_a.htm#M60a">M60a</a><a name="9529.27"><!-- filler --></a>
+    1           9603.42           He I       <a href="heliumtable7_a.htm#M60a">M60a</a><a name="9603.42"><!-- filler --></a>
+    3           9702.60           He I       <a href="heliumtable7_a.htm#M60a">M60a</a><a name="9702.60"><!-- filler --></a>
+    6          10027.73           He I       <a href="heliumtable7_a.htm#M60a">M60a</a><a name="10027.73"><!-- filler --></a>
+    2          10031.16           He I       <a href="heliumtable7_a.htm#M60a">M60a</a><a name="10031.16"><!-- filler --></a>
+   15    c     10123.6            He II      <a href="heliumtable7_a.htm#GM65">GM65</a><a name="10123.6"><!-- filler --></a>
+    1          10138.50           He I       <a href="heliumtable7_a.htm#M60a">M60a</a><a name="10138.50"><!-- filler --></a>
+   10          10311.23           He I       <a href="heliumtable7_a.htm#M60a">M60a</a><a name="10311.23"><!-- filler --></a>
+    2          10311.54           He I       <a href="heliumtable7_a.htm#M60a">M60a</a><a name="10311.54"><!-- filler --></a>
+    3          10667.65           He I       <a href="heliumtable7_a.htm#M60a">M60a</a><a name="10667.65"><!-- filler --></a>
+  150    <a href="heliumtable3_a.htm#10829.0911">P</a>     10829.0911         He I       <a href="heliumtable7_a.htm#M02">M02</a><a name="10829.0911"><!-- filler --></a>
+  500    <a href="heliumtable3_a.htm#10830.2501">P</a>     10830.2501         He I       <a href="heliumtable7_a.htm#M02">M02</a><a name="10830.2501"><!-- filler --></a>
+ 1000    <a href="heliumtable3_a.htm#10830.3398">P</a>     10830.3398         He I       <a href="heliumtable7_a.htm#M02">M02</a><a name="10830.3398"><!-- filler --></a>
+    9          10913.05           He I       <a href="heliumtable7_a.htm#L70a">L70a</a><a name="10913.05"><!-- filler --></a>
+    3          10917.10           He I       <a href="heliumtable7_a.htm#L70a">L70a</a><a name="10917.10"><!-- filler --></a>
+    4    c     11626.4            He II      <a href="heliumtable7_a.htm#GM65">GM65</a><a name="11626.4"><!-- filler --></a>
+   30          11969.12           He I       <a href="heliumtable7_a.htm#L70a">L70a</a><a name="11969.12"><!-- filler --></a>
+   20          12527.52           He I       <a href="heliumtable7_a.htm#L70a">L70a</a><a name="12527.52"><!-- filler --></a>
+   50          12784.99           He I       <a href="heliumtable7_a.htm#L70a">L70a</a><a name="12784.99"><!-- filler --></a>
+   20          12790.57           He I       <a href="heliumtable7_a.htm#L70a">L70a</a><a name="12790.57"><!-- filler --></a>
+    7          12845.96           He I       <a href="heliumtable7_a.htm#L70a">L70a</a><a name="12845.96"><!-- filler --></a>
+   10          12968.45           He I       <a href="heliumtable7_a.htm#L70a">L70a</a><a name="12968.45"><!-- filler --></a>
+    2          12984.89           He I       <a href="heliumtable7_a.htm#L70a">L70a</a><a name="12984.89"><!-- filler --></a>
+   12          15083.64           He I       <a href="heliumtable7_a.htm#L70a">L70a</a><a name="15083.64"><!-- filler --></a>
+  200          17002.47           He I       <a href="heliumtable7_a.htm#L70a">L70a</a><a name="17002.47"><!-- filler --></a>
+    1          18555.55           He I       <a href="heliumtable7_a.htm#M60a">M60a</a><a name="18555.55"><!-- filler --></a>
+    6    c     18636.8            He II      <a href="heliumtable7_a.htm#GM65">GM65</a><a name="18636.8"><!-- filler --></a>
+  500          18685.34           He I       <a href="heliumtable7_a.htm#L70a">L70a</a><a name="18685.34"><!-- filler --></a>
+  200          18697.23           He I       <a href="heliumtable7_a.htm#L70a">L70a</a><a name="18697.23"><!-- filler --></a>
+  100          19089.38           He I       <a href="heliumtable7_a.htm#L70a">L70a</a><a name="19089.38"><!-- filler --></a>
+   20          19543.08           He I       <a href="heliumtable7_a.htm#L70a">L70a</a><a name="19543.08"><!-- filler --></a>
+  500    <a href="heliumtable3_a.htm#20581.287">P</a>     20581.287          He I       <a href="heliumtable7_a.htm#M02">M02</a><a name="20581.287"><!-- filler --></a>
+   80          21120.07           He I       <a href="heliumtable7_a.htm#L70a">L70a</a><a name="21120.07"><!-- filler --></a>
+   10          21121.43           He I       <a href="heliumtable7_a.htm#L70a">L70a</a><a name="21121.43"><!-- filler --></a>
+   20          21132.03           He I       <a href="heliumtable7_a.htm#L70a">L70a</a><a name="21132.03"><!-- filler --></a>
+    3    c     30908.5            He II      <a href="heliumtable7_a.htm#GM65">GM65</a><a name="30908.5"><!-- filler --></a>
+    4          40478.90           He I       <a href="heliumtable7_a.htm#L70a">L70a</a><a name="40478.90"><!-- filler --></a>
+</pre>
+<img src="../Images/spacer.gif" width="165" height="14" alt=""><img src="../Images/otherelements.gif" width="104" height="14"  alt=""><img src="../Images/spacer.gif" width="125" height="14" alt=""><img src="../Images/neutralatom.gif" width="104" height="14"  alt=""><img src="../Images/singlyionized.gif" width="104" height="14"  alt="" ><br>
+<a href="../index.html"><img src="../Images/mainPage.jpg" border=0 width="90" height="30" alt="Homepage - Introduction" title="Homepage - Introduction"></a><a href="findinglist_a.htm"><img src="../Images/findinglist.gif" border="0" width="50" height="30" alt="Finding list" title="Finding list"></a><a href="../element_name_a.htm"><img src="../Images/element_name_G.gif" border="0" width="50" height="30" alt="Select element by name." title="Select element by name."></a><a href="../atomic_number_a.htm"><img src="../Images/atomic_number_G.gif" border="0" width="50" height="30" alt="Select element by atomic number." title="Select element by atomic number."></a><a href="../periodictable_a.htm"><img src="../Images/periodic_table_G.gif"  border="0" width="50" height="30" alt="Select element from periodic table" title="Select element from periodic table"></a
+><img src="../Images/spacer.gif" width="10" height="14" alt=""><a href="heliumtable1_a.htm"><img src="../Images/general_Y.gif" border="0" width="50" height="30"  alt="Helium Atomic Data" title="Helium Atomic Data"></a
+><a href="heliumtable2_a.htm"><img src="../Images/strong_B.gif"  border="0" width="42" height="30" alt="Helium Strong Lines" title="Helium Strong Lines"></a
+><a href="heliumtable3_a.htm"><img src="../Images/persistent_Y.gif"  border="0" width="55" height="30" alt="Helium Neutral Atom Persistent Lines " title="Helium Neutral Atom Persistent Lines "></a
+><a href="heliumtable5_a.htm"><img src="../Images/energy_Y.gif"  border="0" width="42" height="30" alt="Helium Neutral Atom Energy Levels" title="Helium Neutral Atom Energy Levels"></a
+><a href="heliumtable4_a.htm"><img src="../Images/persistent_O.gif"  border="0" width="55" height="30" alt="Helium Singly Ionized Persistent Lines" title="Helium Singly Ionized Persistent Lines"></a
+><a href="heliumtable6_a.htm"><img src="../Images/energy_O.gif"  border="0" width="42" height="30" alt="Helium Singly Ionized Energy Levels" title="Helium Singly Ionized Energy Levels"></a
+><a href="heliumtable7_a.htm"><img src="../Images/ref_Y.gif"  border="0" width="31" height="30"  alt="Helium References" title="Helium References"></a> 
+<br><a href="heliumtable2.htm"><img src="../Images/switch_formatted.gif" border="0" width="90" height="30" alt="Switch to Formatted Version" title="Switch to Formatted Version"></a>
+<hr>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"9ef5b487afff42a68917b2d63593a474","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9efc03245e3e8c45',t:'MTc3Njc3MDU2MA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

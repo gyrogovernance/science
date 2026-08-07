@@ -1,0 +1,13 @@
+z,n,symbol,idx,energy_shift,energy,unc_e,ripl_shift,jp,jp_order,half_life,operator_hl,unc_hl,unit_hl,half_life_sec,unc_hl,decay_1,decay_1_%,unc_1,decay_2,decay_2_%,unc_2,decay_3,decay_3_%,unc_3,isospin,magnetic_dipole,unc_mn,electric_quadrupole,unc_eq,ENSDF_publication_cut-off,ENSDF_authors,Extraction_date
+93,147,Np,0,,0,,,(5+),1,61.9,,2,m,3714,12,B-,100,,,,,,,,,,,,,31-Jul-2008,BALRAJ SINGH and  E. BROWNE,2026-07-17
+93,147,Np,1,X,0,,18,(1+),1,7.22,,2,m,433.2,1.2,B-,99.88,0.01,IT,0.12,0.01,,,,,,,,,31-Jul-2008,BALRAJ SINGH and  E. BROWNE,2026-07-17
+93,147,Np,2,X,44.17,0.06,18,(1+),2,,,,,,,,,,,,,,,,,,,,,31-Jul-2008,BALRAJ SINGH and  E. BROWNE,2026-07-17
+93,147,Np,3,X,61.4,0.1,18,,,,,,,,,,,,,,,,,,,,,,,31-Jul-2008,BALRAJ SINGH and  E. BROWNE,2026-07-17
+93,147,Np,4,X,82.6,0.1,18,,,,,,,,,,,,,,,,,,,,,,,31-Jul-2008,BALRAJ SINGH and  E. BROWNE,2026-07-17
+93,147,Np,5,X,110.7,0.1,18,,,,,,,,,,,,,,,,,,,,,,,31-Jul-2008,BALRAJ SINGH and  E. BROWNE,2026-07-17
+93,147,Np,6,X,111.6,0.2,18,,,,,,,,,,,,,,,,,,,,,,,31-Jul-2008,BALRAJ SINGH and  E. BROWNE,2026-07-17
+93,147,Np,7,X,189.7,0.1,18,(0- 1),1,,,,,,,,,,,,,,,,,,,,,31-Jul-2008,BALRAJ SINGH and  E. BROWNE,2026-07-17
+93,147,Np,8,X,280,0.1,18,(0- 1),2,,,,,,,,,,,,,,,,,,,,,31-Jul-2008,BALRAJ SINGH and  E. BROWNE,2026-07-17
+93,147,Np,9,X,294.8,0.3,18,(0- 1),3,,,,,,,,,,,,,,,,,,,,,31-Jul-2008,BALRAJ SINGH and  E. BROWNE,2026-07-17
+93,147,Np,10,X,299.8,0.2,18,(0- 1),4,,,,,,,,,,,,,,,,,,,,,31-Jul-2008,BALRAJ SINGH and  E. BROWNE,2026-07-17
+

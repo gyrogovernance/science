@@ -4,6 +4,24 @@ All notable changes to the CGM Experimental Framework will be documented in this
 
 ---
 
+## [1.3.9.2-hQVM_Moments_Fiat] - 2026-08-05 to 2026-08-08
+
+The physics analyses treat the hQVM as the machine that checks CGM predictions. This release asks the complementary question: can that same machine also host a coordination economy? Moments Fiat measures receipts as positions on a deterministic kernel trajectory. Time comes from the public NTP clock; offline transport uses ordinary QR codes; seals and parity are recomputed by replay rather than stored as opaque checksums. Accounting units occupy intervals of that shared calendar. The analysis also notes that AI inference hosts already running the kernel can issue such receipts from the trajectory they are already computing.
+
+### Added
+
+- `docs/Findings/Analysis_hQVM_Moments_Fiat.md`: receipt layout, NTP and QR transport, daily accounting geometry, storage and capacity checks, name-layer hash profile, inference-host co-execution.
+- `experiments/hqvm_moments_fiat_analysis_1.py` through `_3.py`, `hqvm_moments_fiat_analysis_run.py`, and `hqvm_moments_fiat_analysis_results.txt`: measurement suite for the above.
+
+### Results
+
+- Compact receipt layouts (16–20 bytes) fit QR Version 1–2; a single flipped payload bit fails seal, parity, and event together.
+- Receipt time width matches one full Z2 holonomy cycle (8 bytes); frame-aligned layouts keep the genealogy archive on stationary 4-byte frames.
+- Species-scale storage stays modest when the archive stores coordinates (depth deltas and anchors) rather than full receipt copies; capacity and time-address headroom remain large under universal occupation.
+- Public hash names work for archive append; manifold addressing stays time-derived on the kernel.
+
+---
+
 ## [1.3.9.1-CGM_hQVM_Allometry] - 2026-07-28 to 2026-07-31
 
 Gravity and the Yang–Mills mass-gap construction treat ancestry preservation as continuum balance under displacement and as an aperture floor on gauge excitations. This release carries the same requirement into organismal transport. An organism is read as a bounded source-to-bulk delivery system that must keep distinguishable parts reconstructable from a common metabolic origin. Empirical allometric exponents are identified with evaluations of a source-accessibility exponent `a = d ln C / d ln M` on the hQVM carrier at chirality dimension `d = 6`.

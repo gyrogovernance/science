@@ -1,0 +1,404 @@
+hQVM Moments unified analysis
+started: 2026-08-06T17:46:09+03:00
+python: C:\Python314\python.exe
+parts: 1, 2, 3
+
+######## hqvm_moments_fiat_analysis_1.py ########
+
+hQVM MOMENTS UNIFIED ANALYSIS (1/2)
+=====
+
+1. KERNEL ANCHORS
+=====
+  |Omega|=4096  |H|=64  H^2==Omega PASS
+  GENE_MIC_S=0xAA  GENE_MAC_REST=0xAAA555
+  f_Cs=9,192,631,770 Hz
+  rest signature state_hex=aaa555 a=aaa b=555 step=0  PASS
+
+2. ECONOMY (MU / UHI / CSM)
+=====
+  MU/minute=1  MU/hour=60
+  UHI/day=240  UHI/year=87,600
+  UHI amounts  PASS
+  Tier schedule (annual MU):
+    Tier 1: 1x = 87,600
+    Tier 2: 2x = 175,200
+    Tier 3: 3x = 262,800
+    Tier 4: 60x = 5,256,000
+  Tier schedule  PASS
+  Tier4 mnemonic 14400*365=5,256,000 == tier4=5,256,000  PASS
+  work-week illustr.=49,920 != UHI/year  PASS
+  N_phys=3.253930e+30
+  CSM=7.944165e+26 MU  (794,416,494.81 quintillion (794,416,494,806,987,125,588,754,432))
+  CSM in (7e26, 8e26)  PASS
+  CSM ref=7.944165e+26  rel_err=6.537e-09
+  population=8,100,000,000
+  annual UHI demand=709.56 trillion (709,560,000,000,000) MU
+  coverage=1.119590e+12 years  PASS
+  1% CSM / annual demand = 11,195,903,022x  PASS
+  Tier-weighted coverage (years):
+    Conservative: 1.002319e+12
+    Plausible: 7.968614e+11
+    Generous: 7.642255e+11
+  coverage order Cons>Plaus>Gen  PASS
+  surplus/12=6.620137e+25  PASS
+
+3. NTP / m12 / 18-BYTE RECEIPT
+=====
+  sec32=0xEE1F1CB1  frac32=0x7CB40800
+  m12=1995  range=[0.487060547, 0.487304688) s  bucket=0.000244141 s
+  cesium cycles / NTP tick=2.140326372  frac=0.140326372
+  MU/NTP tick=1.849645e+17  MU coord=386977798549403664480468992
+  FNV-1a(b'test_event_data')=0x424F94296A82D627  fiber_m12=1704
+  receipt hex=ee1f1cb17cb63000016f8a02bf7c1dff9daa  len=18
+  m12_time=1995  m12_fiber=1985  type=0x01
+  receipt verify valid=True  PASS
+  Planck 1900-12-14 NTP sec=29,980,800  m12=0
+
+4. KERNEL TRANSPORT
+=====
+  bytes=['0xee', '0x1e', '0x44', '0xc1', '0xd7', '0x28', '0xb8', '0x0']
+  chi history=['0x3F', '0x1D', '0x38', '0x30', '0x3A', '0x3B', '0x05', '0x0C', '0x26']
+  shell history=[6, 4, 3, 2, 4, 5, 2, 2, 3]
+  final state=6a6a9a  chi=0x26 shell=3
+  chi == chi0 xor Q(word)  PASS
+  inverse restore rest  PASS
+  q6(0x3C)=0x34  chi xor^4 hist=['0x3F', '0x0B', '0x3F', '0x0B', '0x3F']
+  chi xor^2 == id (order<=2)  PASS
+
+5. MEDIUM (ANCHORS / GRANTS / SHELLS / ARCHIVES)
+=====
+  alice anchor=aaa559  bob=6955a9
+  alice determinism  PASS
+  alice != bob  PASS
+  anchor hex width=6  PASS
+  grant receipt len=46 (expect 46)  PASS
+  grant receipt determinism  PASS
+  amount changes receipt  PASS
+  shell seal=5699a6  used=438,000
+  shell seal determinism  PASS
+  shell tamper changes seal  PASS
+  shell header sensitivity  PASS
+  grant order invariance  PASS
+  capacity used=300000 free=700000  PASS
+  shell replay published=6a596a verified=6a596a  PASS
+  archive totals={'alice': 525600, 'bob': 350400}
+  archive aggregation  PASS
+
+6. META-ROUTING
+=====
+  root=6a9695  determinism  PASS
+  tamper leaf index=[1]  root_ok=a96556 root_bad=569555
+  tamper localization  PASS
+
+7. GENEALOGY (DEPTH-4 FRAMES)
+=====
+  frame determinism (n=1000)  PASS
+  frame widths  PASS
+  single-byte sensitivity (n=500)  PASS
+  sequence len=8 (expect 8)  PASS
+  trailing ignore / extend  PASS
+  states with frame-distinguishable histories=4096  PASS
+  collide words [184, 18, 133, 201] / [159, 8, 221, 172] -> state=0x6a99a6
+    frames (13417212804867, 1, 0) / (66808283197455, 0, 1)
+  same-state distinct-frame pair found  PASS
+
+8. DIVERGENCE LOCALIZATION
+=====
+  localize to affected frame (n=200)  PASS
+  divergences=500  localized_by_frame=500/500
+  missed_by_final_state=0/500
+  frame catches all  PASS
+
+PART 1 DONE
+=====
+
+exit=0  duration=1.53s
+
+######## hqvm_moments_fiat_analysis_2.py ########
+
+hQVM MOMENTS UNIFIED ANALYSIS (2/2)
+=====
+
+9. PARITY COMMITMENTS
+=====
+  determinism  PASS
+  mask-change slot sensitivity (n=40)  PASS
+  structure O=0xCFF E=0x0FC p=0  PASS
+
+10. MEDIUM POLICY
+=====
+  duplicate identity detectable  PASS
+  over-capacity used=1000000 free=-500000  PASS
+  empty shell seal=6a5a95  PASS
+
+11. GOLDEN VECTORS
+=====
+  alice=aaa559 expect=aaa559  PASS
+  bob=6955a9 expect=6955a9  PASS
+  shell=9966aa expect=9966aa  PASS
+  meta_root=555aa9 expect=555aa9  PASS
+  frame=(56346481265868, 0, 1) expect=(0x333f30000ccc,0,1)  PASS
+  parity O=0xC0C E=0xCC0 p=0 expect=(0xC0C,0xCC0,0)  PASS
+
+12. GENEALOGY INTEGRATION
+=====
+  replay state=a566a5 frames=10  PASS
+  layers state=aa59a5 frames=6 parity=(3312, 15, 1)
+  three-layer determinism  PASS
+  fork state_diff=True frames_diff=True parity_diff=True
+  prefix frames match then diverge  PASS
+  inverse genealogy  PASS
+  continuation concat frames=16  PASS
+
+13. QR RECEIPTS
+=====
+  V1: modules=21x21  data bytes L/M/Q/H=17/14/11/7
+  V2: modules=25x25  data bytes L/M/Q/H=32/26/20/14
+  V2-L data bytes=32  register-atom bits=32
+  L17 (17B) fits: ['V1-L', 'V2-L', 'V2-M', 'V2-Q']
+  L18 (18B) fits: ['V2-L', 'V2-M', 'V2-Q']
+  sec32=0xEE1E4D00 frac32=0x00000000
+  m12=0 -> omega12 u6=0 v6=0 shell=0  roundtrip PASS
+  seal24=0x55559A on_omega PASS
+  L17 hex=ee1e4d0000000000a956a555559a03333f
+  L17 verify {'identity': True, 'seal': True, 'parity': True}  PASS
+  L18 hex=ee1e4d0000000000a956a555559a03333f0e
+  event_byte=0x0E intron=0xA4 family=2 micro=18 q6=0x2D
+  event q6 == Q(payload)  PASS
+  L18 verify {'identity': True, 'seal': True, 'parity': True, 'event': True}  PASS
+  tampered payload verify {'identity': True, 'seal': False, 'parity': False, 'event': False}  PASS
+
+14. FNV PROFILE
+=====
+  RFC 9923 FNV-1a vectors (n=4)  PASS
+    ''           expect=0xCBF29CE484222325 got=0xCBF29CE484222325  PASS
+    'a'          expect=0xAF63DC4C8601EC8C got=0xAF63DC4C8601EC8C  PASS
+    'foobar'     expect=0x85944171F73967E8 got=0x85944171F73967E8  PASS
+    'Hello!\x01ÿí' expect=0xBD51EA7094EE6FA1 got=0xBD51EA7094EE6FA1  PASS
+  FNV-0(chongo)=offset_basis  0xCBF29CE484222325  PASS
+  prime=0x100000001B3 = 2^40+2^8+0xB3  PASS
+  popcount(0xB3)=5 in {4,5}  PASS
+  offset_basis=0xCBF29CE484222325
+  fnv0(empty)=0  fnv0(0x00*8)=0  sticky-zero PASS
+  xor-correlation fnv1:  0x8B0B34274CBA7370 == 0x8B0B34274CBA7370  PASS
+  xor-correlation fnv1a: 0xE271429FB5349F44 == 0xE2714E9FB53493BC  FAIL
+  last-byte delta fnv1=0x3 (expect 0x3)  PASS
+  last-byte delta fnv1a=0x1000000025D (xor-linear? FAIL)
+  dispersion n=100000: m12 buckets min=0 max=200 mean=24.41 ideal=24.41 max/ideal=8.192
+  fiber m12=1985 -> omega12 u6=31 v6=1 shell=4  roundtrip PASS
+  kernel seals n=10000: distinct=516 collisions=9484 all_in_omega PASS
+  fnv64        n=10000: distinct=10000 collisions=0
+
+15. CONVERGENCE ACCOUNTING
+=====
+  elapsed since 1900: 126.59 yr
+  tick-coordinates elapsed: 1.715846e+19
+  UHI receipts/year (8.1e9 daily): 2.956500e+12
+  flat 17B transport form: 5.026050e+13 B = 50.26 TB/yr
+  coordinate ledger (1B depth delta/receipt): 2.956500e+12 B = 2.96 TB/yr
+  identity anchors (3B, once): 2.430000e+10 B = 24.30 GB
+  coordinate/flat ratio: 0.0588
+  ledger fits one consumer drive  PASS
+  grid/day m12: 3.538944e+08  +1B discriminator: 9.059697e+10
+  grid/year +1B: 3.306789e+13
+  events per m12 bucket per day: 22.89
+  grid/receipts headroom: 11.1848x
+  CSM/demand headroom: 1.119590e+12x
+    L16: frames=4 remainder=0 fits ['V1-L', 'V2-L', 'V2-M', 'V2-Q']
+    L17: frames=4 remainder=1 fits ['V1-L', 'V2-L', 'V2-M', 'V2-Q']
+    L18: frames=4 remainder=2 fits ['V2-L', 'V2-M', 'V2-Q']
+    L20: frames=5 remainder=0 fits ['V2-L', 'V2-M', 'V2-Q']
+  era byte: 256 eras x 136.1 yr = 3.484142e+04 yr
+  fiber24=0x595966 on_omega PASS
+  (seal24, fiber24) pairs n=10000: distinct=9954
+
+16. DAILY GEOMETRY AND TIER OCCUPATION
+=====
+  carrier bits=24  day hours=24  PASS
+  face bits=12  half-day hours=12  PASS
+  pairs per face=6  2h blocks per half-day=6  PASS
+  UHI/day=240 min  day=1440 min
+  240*6=1440 == 1440  PASS
+  4h*6=24 == 24h  PASS
+  2 pairs*6 == 12 pairs  PASS
+  tier occupation of the daily carrier:
+    Tier 1: 240 MU/day = 4h = 2 pairs = 0.333 of one face
+    Tier 2: 480 MU/day = 8h = 4 pairs = 0.667 of one face
+    Tier 3: 720 MU/day = 12h = 6 pairs = 1.000 of one face
+    Tier 4: 14,400 MU/day  extent 4h at second grain  grain x60
+  Tier4 mult 60 == MU_PER_HOUR  PASS
+  Tier4 seconds 14400*365=5,256,000  PASS
+  universal-tier CSM coverage (all 8.1e9 at tier):
+    Tier 1: demand=7.095600e+14 MU/yr  coverage=1.119590e+12 yr
+    Tier 2: demand=1.419120e+15 MU/yr  coverage=5.597952e+11 yr
+    Tier 3: demand=2.128680e+15 MU/yr  coverage=3.731968e+11 yr
+    Tier 4: demand=4.257360e+16 MU/yr  coverage=1.865984e+10 yr
+
+PART 2 DONE
+=====
+
+exit=0  duration=0.79s
+
+######## hqvm_moments_fiat_analysis_3.py ########
+
+hQVM MOMENTS UNIFIED ANALYSIS (3/3)
+=====
+
+17. DATATYPE COORDINATES
+=====
+  block grain: 64x64 = 4096 parameters
+  fiber coordinate (space): 64 spectral multipliers on GF(2)^6
+  balance coordinate (curve): 7 Krawtchouk eigenvalues, bulk sector shells 1-5
+  tick coordinate (time): depth integer, composition is multiplier exponentiation
+  native scalars per block: 64 + 7 = 71
+  scalar ratio block/native: 57.69x
+  WHT64 self-inverse (unnormalized x64)  PASS
+  radial subset of circulant class  PASS
+  gaussian fiber energy R=0.1244  expect sqrt(64/4096)=0.1250  PASS
+
+18. NATIVE PROJECTIONS (BLOCK ARCHETYPES)
+=====
+  archetype         R_fiber R_balance  defect%
+  gaussian           0.1726    0.0319    97.02
+  rank-8             0.1001    0.0205    99.00
+  attention-8        0.6063    0.5982    63.24
+  permutation        0.1862    0.1288    96.53
+  circulant-exact    1.0000    0.4518     0.00
+  radial-exact       1.0000    1.0000    -0.00
+  lowrank+noise      0.0996    0.0205    99.01
+  identity           1.0000    1.0000     0.00
+  circulant-exact fully native  PASS
+  radial-exact fully native  PASS
+
+19. APPLICATION FIDELITY (NATIVE PART ONLY)
+=====
+  archetype         cos_mean   cos_min  relF_err
+  gaussian            0.1663   -0.1414    0.9850
+  rank-8              0.0954   -0.1721    0.9950
+  attention-8         0.4688   -0.1889    0.7952
+  permutation         0.1942   -0.1038    0.9825
+  circulant-exact     1.0000    1.0000    0.0000
+  radial-exact        1.0000    1.0000    0.0000
+  lowrank+noise       0.0909   -0.1927    0.9950
+  identity            1.0000    1.0000    0.0000
+  circulant application exact via WHT  PASS
+
+20. TICK TRAJECTORY (DEPTH COMPOSITION)
+=====
+  spectral radius scaled to 0.9
+   depth n     max|err|    dense ops  native ops
+         2    8.327e-17       262144         896
+         4    4.163e-17       524288         960
+         8    2.602e-17       786432        1024
+        16    1.041e-17      1048576        1088
+        64    1.355e-19      1572864        1216
+       256    8.204e-28      2097152        1344
+  depth powers exact (n<=256)  PASS
+  256-deep trajectory storage: dense 1048576 params vs native 72 scalars
+  trajectory compression 14563.6x  PASS
+
+21. MULTIPLIER QUANTIZATION
+=====
+  phi max=19.11
+  int8: 64 multipliers -> 512 bits  relF_err=0.005427
+  int8 relative error < 0.01  PASS
+  int4: 64 multipliers -> 256 bits  relF_err=0.108268
+  balance int8: 7 eigenvalues -> 56 bits  max_rel_err=0.003829  PASS
+
+22. BALANCE SECTOR (BULK SHELLS 1-5)
+=====
+  shell populations: [64, 384, 960, 1280, 960, 384, 64]
+  bulk share of Omega: 0.9688
+  archetype        R_balance   R_bulk  horizon%
+  gaussian            0.0319   0.0317      1.40
+  rank-8              0.0205   0.0161     37.82
+  attention-8         0.5982   0.5907      2.47
+  permutation         0.1288   0.1250      5.89
+  circulant-exact     0.4518   0.4394      5.40
+  radial-exact        1.0000   0.9954      0.92
+  lowrank+noise       0.0205   0.0161     38.29
+  identity            1.0000   0.0000    100.00
+  identity radial horizon share=100.00%  PASS
+
+23. MODEL-SCALE ACCOUNTING (1e12 PARAMETERS)
+=====
+  blocks of 4096: 2.441406e+08
+  fp32 flat: 4.000000e+12 B = 4.00 TB
+  native int8 (64 fibers + 2B tick): 66 B/block -> 1.611328e+10 B = 16.11 GB  ratio 248x
+  native int4 (32 fibers + 2B tick): 34 B/block -> 8.300781e+09 B = 8.30 GB  ratio 482x
+  native int8 + balance (64+7+2): 73 B/block -> 1.782227e+10 B = 17.82 GB  ratio 224x
+  native int4 + balance: 37 B/block -> 9.033203e+09 B = 9.03 GB  ratio 443x
+  int8 native fits one consumer drive  PASS
+  compression > 100x vs fp32  PASS
+  mean R_fiber unstructured: 0.1241
+  mean R_fiber structured:   0.7585
+
+  corpus: 40000 bytes
+
+24. EVENT-CONDITIONED PREDICTION IMPRINT
+=====
+  transport law chi' = chi XOR q6(b) over 40000 steps  PASS
+  real law: train loss 2.512  held-out=2.935  analytic held-out=2.524
+  random law: train loss 2.385  held-out=2.714  analytic held-out=2.389
+  centered R_fiber learned real=0.7508  analytic=0.8447
+  centered R_fiber learned random=0.1281  analytic=0.1212
+  real law imprints fiber-native operators (analytic R>0.80)  PASS
+  learned real exceeds learned random (margin>0.30)  PASS
+  random law does not (R<0.30)  PASS
+  real learned within 0.5 bits of full-corpus analytic held-out  PASS
+  random learned within 0.5 bits of full-corpus analytic held-out  PASS
+
+25. ONE CLOCK (FRAME COMPOSITION) AND BALANCE PROFILE
+=====
+  frame sum S = XOR q6 over 4 ticks; chi(t+4) = chi(t) XOR S over 10000 frames  PASS
+  composed frame operator: R_fiber mean=0.9922
+  composed vs exact translation: learned relF=0.9875  analytic relF=0.9875
+  composition stays fiber-native (R>0.85)  PASS
+  trajectory storage: anchor 1B + 1B/frame = 10001 B vs raw chi stream 40000 B  ratio=0.2500
+  anchor+deltas reconstruct chi stream exactly  PASS
+   family          true radial (popcount q6)                     learned radial      L2
+        0 [0.    0.038 0.514 0.338 0.068 0.043 0.   ] [4.872e-06 3.145e-02 5.117e-01 3.540e-01 6.928e-02 3.352e-02 4.872e-06]  0.0200
+        1 [0.    0.06  0.106 0.665 0.093 0.068 0.008] [2.494e-04 5.994e-02 1.189e-01 6.580e-01 8.426e-02 7.056e-02 8.059e-03]  0.0168
+        2 [0.01  0.139 0.105 0.22  0.463 0.059 0.005] [0.01  0.136 0.107 0.219 0.464 0.059 0.005]  0.0029
+        3 [0.    0.022 0.308 0.37  0.241 0.055 0.003] [0.001 0.023 0.31  0.369 0.24  0.055 0.003]  0.0029
+  bulk shells 1-5 share of q6 popcounts: 0.9904
+  balance profile matches binomial bulk (share>0.9)  PASS
+
+26. GENERALIZATION BOUND (NON-XOR MARKOV CHAIN)
+=====
+  non-XOR Markov chain on 64 states, 40000-step trajectory
+  centered R_fiber learned=0.1297  analytic=0.1339
+  XOR law analytic R_fiber (sec 24) = 0.8447
+  non-XOR law analytic R_fiber = 0.1339
+  imprint generalizes beyond XOR (R>0.40)  FAIL
+  imprint is XOR-specific (R<0.20)  PASS
+  true transition matrix R_fiber=0.8701 (circulant content of the law itself)
+
+27. DEPTH LAW (4-PHASE VS LINEAR)
+=====
+  4 family operators -> 4 spectral vectors (the K4 phases)
+  pairwise spectral cosine matrix:
+    [1.    0.03  0.096 0.157]
+    [0.03  1.    0.092 0.091]
+    [0.096 0.092 1.    0.061]
+    [0.157 0.091 0.061 1.   ]
+  mean off-diagonal corr=0.0878  std=0.0386
+  sum of 4 spectra L2=6.2634  (zero = 4-phase cancellation)
+  4-phase cancellation (sum L2 < 0.5 x individual)  FAIL
+  delta correlation matrix (rows = delta_i = phi_(i+1) - phi_i):
+    [ 1.    -0.576 -0.029 -0.475]
+    [-0.576  1.    -0.509  0.056]
+    [-0.029 -0.509  1.    -0.456]
+    [-0.475  0.056 -0.456  1.   ]
+  mean cyclic delta corr (delta_i vs delta_(i+1))=-0.5040
+  depth deltas show 4-phase structure (cyclic corr > 0.3)  FAIL
+
+PART 3 DONE
+=====
+
+exit=0  duration=307.36s
+
+finished: 2026-08-06T17:51:18+03:00
+total_duration=309.68s
+worst_exit=0

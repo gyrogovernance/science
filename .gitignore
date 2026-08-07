@@ -1,48 +1,69 @@
-```
+# Virtual Environment
+.venv/
+venv/
+env/
+ENV/
+
 # Python
 __pycache__/
-*.pyc
-*.pyo
-*.pyd
+*.py[cod]
+*$py.class
+*.so
 .Python
-env/
-venv/
-.venv/
-.ENV
-.python-version
-.pytest_cache/
-.mypy_cache/
-.coverage
-coverage/
-
-# Build and distribution artifacts
-dist/
 build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
 *.egg-info/
-.svn/
- CVS/
+.installed.cfg
+*.egg
 
-# Logs
-*.log
-
-# OS generated files
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
-
-# IDE specific
+# IDE
 .vscode/
 .idea/
 *.swp
 *.swo
-*.tmp
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Jupyter Notebook
+.ipynb_checkpoints
 
 # Environment variables
 .env
 .env.local
-*.env.*
-```
+
+# Logs
+*.log
+
+# Generated numerical artifacts (not frozen catalogs)
+*.npy
+*.npz
+*.pkl
+*.pickle
+results/
+
+# Large optional local datasets (download separately; catalogs under data/ are tracked)
+experiments/data/*.fits
+experiments/data/COM_CompMap_Compton-SZMap-masks_2048_R2.01.fits
+
+# Temporary files
+*.tmp
+*.temp
+
+# Personal
+docs/Notes/
+
+# Dev
+docs/papers/

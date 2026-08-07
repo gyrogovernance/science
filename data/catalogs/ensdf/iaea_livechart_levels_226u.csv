@@ -1,0 +1,15 @@
+z,n,symbol,idx,energy_shift,energy,unc_e,ripl_shift,jp,jp_order,half_life,operator_hl,unc_hl,unit_hl,half_life_sec,unc_hl,decay_1,decay_1_%,unc_1,decay_2,decay_2_%,unc_2,decay_3,decay_3_%,unc_3,isospin,magnetic_dipole,unc_mn,electric_quadrupole,unc_eq,ENSDF_publication_cut-off,ENSDF_authors,Extraction_date
+92,134,U,0,,0,,,0+,1,268,,9,ms,0.268,0.009,A,100,,,,,,,,,,,,,31-MAR-2014,B. SINGH and S. SINGH,2026-07-17
+92,134,U,1,,81.3,0.6,,(2+),1,,,,,,,,,,,,,,,,,,,,,31-MAR-2014,B. SINGH and S. SINGH,2026-07-17
+92,134,U,2,,250,0.9,,(4+),1,,,,,,,,,,,,,,,,,,,,,31-MAR-2014,B. SINGH and S. SINGH,2026-07-17
+92,134,U,3,,447.1,0.9,,(5-),1,,,,,,,,,,,,,,,,,,,,,31-MAR-2014,B. SINGH and S. SINGH,2026-07-17
+92,134,U,4,,483.2,0.9,,(6+),1,,,,,,,,,,,,,,,,,,,,,31-MAR-2014,B. SINGH and S. SINGH,2026-07-17
+92,134,U,5,,669.1,1,,(7-),1,,,,,,,,,,,,,,,,,,,,,31-MAR-2014,B. SINGH and S. SINGH,2026-07-17
+92,134,U,6,,766.4,1,,(8+),1,,,,,,,,,,,,,,,,,,,,,31-MAR-2014,B. SINGH and S. SINGH,2026-07-17
+92,134,U,7,,950.6,1,,(9-),1,,,,,,,,,,,,,,,,,,,,,31-MAR-2014,B. SINGH and S. SINGH,2026-07-17
+92,134,U,8,,1091.6,1,,(10+),1,,,,,,,,,,,,,,,,,,,,,31-MAR-2014,B. SINGH and S. SINGH,2026-07-17
+92,134,U,9,,1282.8,1,,(11-),1,,,,,,,,,,,,,,,,,,,,,31-MAR-2014,B. SINGH and S. SINGH,2026-07-17
+92,134,U,10,,1453.8,1,,(12+),1,,,,,,,,,,,,,,,,,,,,,31-MAR-2014,B. SINGH and S. SINGH,2026-07-17
+92,134,U,11,,1656.3,1.1,,(13-),1,,,,,,,,,,,,,,,,,,,,,31-MAR-2014,B. SINGH and S. SINGH,2026-07-17
+92,134,U,12,,1847,1.3,,(14+),1,,,,,,,,,,,,,,,,,,,,,31-MAR-2014,B. SINGH and S. SINGH,2026-07-17
+

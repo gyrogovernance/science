@@ -1,0 +1,11 @@
+z,n,symbol,idx,energy_shift,energy,unc_e,ripl_shift,jp,jp_order,half_life,operator_hl,unc_hl,unit_hl,half_life_sec,unc_hl,decay_1,decay_1_%,unc_1,decay_2,decay_2_%,unc_2,decay_3,decay_3_%,unc_3,isospin,magnetic_dipole,unc_mn,electric_quadrupole,unc_eq,ENSDF_publication_cut-off,ENSDF_authors,Extraction_date
+95,151,Am,0,,0,,,(7-),1,39,,3,m,2340,180,B-,100,,,,,,,,,,,,,31-Jul-2022,C.D. Nesaraja,2026-07-17
+95,151,Am,1,X,0,,30,(2-),1,25.0,,2,m,1500,12,B-,100,,IT,,,,,,,,,,,31-Jul-2022,C.D. Nesaraja,2026-07-17
+95,151,Am,2,X,16.22,0.03,30,(0- 1- 2-),1,,,,,,,,,,,,,,,,,,,,,31-Jul-2022,C.D. Nesaraja,2026-07-17
+95,151,Am,3,X,43.797,0.012,30,(1+),1,4.3,,3,ns,0.0000000043,0.0000000003,,,,,,,,,,,,,,,31-Jul-2022,C.D. Nesaraja,2026-07-17
+95,151,Am,4,X,74.323,0.024,30,,,,,,,,,,,,,,,,,,,,,,,31-Jul-2022,C.D. Nesaraja,2026-07-17
+95,151,Am,5,X,223.733,0.014,30,(1+),2,,,,,,,,,,,,,,,,,,,,,31-Jul-2022,C.D. Nesaraja,2026-07-17
+95,151,Am,6,X,232.754,0.014,30,,,,,,,,,,,,,,,,,,,,,,,31-Jul-2022,C.D. Nesaraja,2026-07-17
+95,151,Am,7,X,299.358,0.016,30,0 1,1,,,,,,,,,,,,,,,,,,,,,31-Jul-2022,C.D. Nesaraja,2026-07-17
+95,151,Am,8,,2000,,,,,73,,10,us,0.000073,0.00001,SF,100,,,,,,,,,,,,,31-Jul-2022,C.D. Nesaraja,2026-07-17
+

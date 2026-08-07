@@ -1,0 +1,8 @@
+nuclide,z,n,A,symbol,E_keV,E_eV,unc_e_keV,jp,half_life,unit_hl,half_life_sec,idx,ENSDF_cut_off,Extraction_date,source_file,source,note,has_halflife
+Th-229,90,139,229,Th,0.0076,7.6,0.0005,(3/2+),,,,1,1-Jun-2008,2026-07-17,iaea_livechart_levels_229th.csv,IAEA LiveChart API levels (ENSDF snapshot),"no half-life in ENSDF (level, not tagged isomer); ENSDF Adopted still lists ~7.6 eV; Zhang et al. Nature 2024 measures 8.3557335(24) eV",False
+Th-233,90,143,233,Th,0.0002,0.2,,1/2+,,,,231,8-Oct-2020,2026-07-17,iaea_livechart_levels_233th.csv,IAEA LiveChart API levels (ENSDF snapshot),"no half-life in ENSDF (level, not tagged isomer)",False
+Th-233,90,143,233,Th,0.0218,21.8,,1/2+,,,,232,8-Oct-2020,2026-07-17,iaea_livechart_levels_233th.csv,IAEA LiveChart API levels (ENSDF snapshot),"no half-life in ENSDF (level, not tagged isomer)",False
+Th-233,90,143,233,Th,0.0234,23.400000000000002,,1/2+,,,,233,8-Oct-2020,2026-07-17,iaea_livechart_levels_233th.csv,IAEA LiveChart API levels (ENSDF snapshot),"no half-life in ENSDF (level, not tagged isomer)",False
+Th-233,90,143,233,Th,0.0595,59.5,,1/2+,,,,234,8-Oct-2020,2026-07-17,iaea_livechart_levels_233th.csv,IAEA LiveChart API levels (ENSDF snapshot),"no half-life in ENSDF (level, not tagged isomer)",False
+Th-233,90,143,233,Th,0.0691,69.1,,1/2+,,,,235,8-Oct-2020,2026-07-17,iaea_livechart_levels_233th.csv,IAEA LiveChart API levels (ENSDF snapshot),"no half-life in ENSDF (level, not tagged isomer)",False
+U-235,92,143,235,U,0.076,76.0,0.0004,1/2+,26,m,1560,1,1-Feb-2014,2026-07-17,iaea_livechart_levels_235u.csv,IAEA LiveChart API levels (ENSDF snapshot),U-235m isomer; ~76 eV (NOT 7.6 eV). Half-life ~26 min.,True
