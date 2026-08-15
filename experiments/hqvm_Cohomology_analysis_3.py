@@ -8,7 +8,7 @@ review of runs 1-2 that were not yet computed:
 
   A.  CHSH ensemble dictionary (Boolean extreme per ensemble -> max|corr|)
   B.  Stabilizer fixed-shell localization (where the 4 fixed points sit)
-  C.  Byte monodromy vs family (pure-4-cycle count per byte family)
+  C.  Byte holonomy vs family (pure-4-cycle count per byte family)
   D.  Finer Lefschetz grading (shell x Z2-sheet) for W2 vs F
   E.  Gap-spectrum dictionary (measured gaps, no forced identity)
   F.  Fiber-incomplete square-root counterexample (rank-6, non-product)
@@ -241,11 +241,11 @@ def experiment_stabilizer_fixed_shells() -> dict[str, object]:
 
 
 # ================================================================
-# C. Byte monodromy vs family
+# C. Byte holonomy vs family
 # ================================================================
 
 
-def experiment_byte_monodromy_by_family() -> dict[str, object]:
+def experiment_byte_holonomy_by_family() -> dict[str, object]:
     """Cycle-structure census of all 256 bytes, aggregated by family.
 
     Review finding: 252 bytes are pure 4-cycles (L=0), 4 are horizon
@@ -277,7 +277,7 @@ def experiment_byte_monodromy_by_family() -> dict[str, object]:
     return {
         "per_family": summary,
         "all_families_have_64_bytes": all_pure4,
-        "note": "Pure-4-cycle monodromy is uniform across the 4 families; "
+        "note": "Pure-4-cycle holonomy is uniform across the 4 families; "
         "the 4 stabilizers (mixed) are split across families (one each).",
     }
 
@@ -687,7 +687,7 @@ def _print_stab(res: dict) -> None:
     print(f"  note: {res['note']}")
 
 
-def _print_monodromy(res: dict) -> None:
+def _print_holonomy(res: dict) -> None:
     print("\n" + "=" * 5)
     print("C. BYTE MONODROMY BY FAMILY")
     print("=" * 5)
@@ -776,7 +776,7 @@ def main() -> None:
 
     _print_chsh_table(experiment_chsh_ensemble_table())
     _print_stab(experiment_stabilizer_fixed_shells())
-    _print_monodromy(experiment_byte_monodromy_by_family())
+    _print_holonomy(experiment_byte_holonomy_by_family())
     _print_fine_lefschetz(experiment_fine_lefschetz())
     _print_gap_spectrum(experiment_gap_spectrum())
     _print_fiber(experiment_fiber_incomplete_rank6())

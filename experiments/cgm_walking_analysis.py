@@ -32,9 +32,9 @@ class CGMConstants:
     closure_percent: float = 97.93
     aperture_percent: float = 2.07
 
-    # Monodromy values [radians]
-    delta_BU: float = 0.195342  # BU dual-pole monodromy
-    omega_ONA_BU: float = 0.097671  # Single transition monodromy
+    # Holonomy values [radians]
+    delta_BU: float = 0.195342  # BU dual-pole holonomy
+    omega_ONA_BU: float = 0.097671  # Single transition holonomy
 
     # Energy and coupling parameters
     sqrt3_ratio: float = np.sqrt(3)  # ≈ 1.732
@@ -423,8 +423,8 @@ class CGMWalkingTheory:
         # PCs come in pairs (left/right)
         pc_pairs = n_pc / 2
 
-        # Relate to monodromy structure
-        monodromy_modes = self.cgm.delta_BU / self.cgm.omega_ONA_BU  # Should be 2
+        # Relate to holonomy structure
+        holonomy_modes = self.cgm.delta_BU / self.cgm.omega_ONA_BU  # Should be 2
 
         return {
             "n_principal_components": n_pc,
@@ -433,7 +433,7 @@ class CGMWalkingTheory:
             "compression_ratio": compression,
             "su2_dimension": su2_dimension,
             "pc_pairs": pc_pairs,
-            "monodromy_modes": monodromy_modes,
+            "holonomy_modes": holonomy_modes,
             "dof_utilization": walking_eff_dof / cgm_dof,
             "information_efficiency": 1 / n_pc,
         }
@@ -842,7 +842,7 @@ def run_complete_analysis():
     print(f"\nCGM FUNDAMENTAL CONSTANTS:")
     print(f"   m_a (aperture): {cgm.m_a:.6f} ({cgm.aperture_percent:.2f}%)")
     print(f"  Q_G (solid angle): {cgm.Q_G:.4f} steradians")
-    print(f"  delta_BU (monodromy): {cgm.delta_BU:.6f} radians")
+    print(f"  delta_BU (holonomy): {cgm.delta_BU:.6f} radians")
     print(f"  sqrt3 ratio: {cgm.sqrt3_ratio:.4f}")
     print(f"  zeta (grav coupling): {cgm.zeta:.2f}")
 
@@ -1044,7 +1044,7 @@ def run_complete_analysis():
     print(f"CGM degrees of freedom: {pc_results['cgm_degrees_of_freedom']}")
     print(f"Compression ratio: {pc_results['compression_ratio']:.4f}")
     print(f"DoF utilization: {pc_results['dof_utilization']:.4f}")
-    print(f"Monodromy modes: {pc_results['monodromy_modes']:.4f}")
+    print(f"Holonomy modes: {pc_results['holonomy_modes']:.4f}")
 
     # 9. Action quantization
     print(f"\n{'='*60}")

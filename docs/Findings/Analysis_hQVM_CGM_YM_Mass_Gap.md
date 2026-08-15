@@ -21,7 +21,7 @@ Pure non-abelian Yang–Mills theory in four dimensions exhibits a mass gap when
 
 The Common Governance Model begins from a single axiom stating that the source is common. This axiom enforces ancestry preservation: every operational state remains traceable to a single origin. Identity is that preserved ancestry. Individuality is the capacity of successive transformations to produce distinguishable outcomes. The framework imposes four sequential conditions on state transitions. Common Source (CS) establishes a fundamental directional asymmetry, identifying one transition direction as origin-preserving and the other as origin-altering. Unity Non-Absolute (UNA) keeps the order of sequential operations relevant and prevents homogeneous collapse. Opposition Non-Absolute (ONA) keeps distinct operational paths comparable and prevents complete structural fragmentation. Balance Universal (BU) enforces closure at the fourth order of alternating operations, called depth-four balance. The formal modal statements of these conditions appear in Section 3.1.
 
-Depth-four balance cannot be achieved losslessly in both temporal directions while maintaining distinguishable outcomes. The residual phase defect of this closure is the aperture Δ. It quantifies the irreducible information loss during bidirectional sequence reconstruction. In the continuous realization the aperture is computed from the monodromy of Einstein gyration along the dual-pole path, yielding Δ ≈ 0.0207. The same value is recovered from discrete entropy compression of the byte-level fold disagreement defined in Section 1.1 and from discrete arithmetic quantization anchors (Section 7.1). The aperture is a geometric invariant fixed by the closure identity.
+Depth-four balance cannot be achieved losslessly in both temporal directions while maintaining distinguishable outcomes. The residual phase defect of this closure is the aperture Δ. It quantifies the irreducible information loss during bidirectional sequence reconstruction. In the continuous realization the aperture is computed from the holonomy of Einstein gyration along the dual-pole path, yielding Δ ≈ 0.0207. The same value is recovered from discrete entropy compression of the byte-level fold disagreement defined in Section 1.1 and from discrete arithmetic quantization anchors (Section 7.1). The aperture is a geometric invariant fixed by the closure identity.
 
 The central thesis of this paper is that the Yang–Mills mass gap is the continuum spectral signature of this aperture. Ancestry preservation requires that the vacuum state remain reconstructable. Distinguishability requires that excitations above this state carry resolvable energy differences. A vanishing aperture would imply perfect reversibility of all transformation sequences, freezing the system into static identity and eliminating the capacity for gapped excitations. The strictly positive aperture therefore forces a strictly positive spectral floor above the vacuum in any admissible oriented quotient. The Yang–Mills problem supplies the external axiomatic standard in which to express this aperture-forced floor as a dimensionful physical mass. The subject of the analysis is identity and individuality under closure. The mass gap is their continuum field-theoretic signature.
 
@@ -74,7 +74,7 @@ Surface measure on S² is written dμ_{S²}.
 |---|---|
 | Q_G = 4π | Horizon solid-angle normalization (steradians). |
 | m_a = 1/(2√(2π)) | Aperture scale. Identity: Q_G m_a² = 1/2. |
-| δ_BU | Balance Universal (BU) monodromy phase defect (radians); derived in Section 7.1. |
+| δ_BU | Balance Universal (BU) holonomy phase defect (radians); derived in Section 7.1. |
 | ρ = δ_BU / m_a | Structural closure ratio (ρ ≈ 0.9793). |
 | Δ = 1 − ρ | **Aperture** (dimensionless). This is the only meaning of bare Δ. |
 | Δ_W | Unoriented shadow gap; Δ_W(n) = n/(2(n−1)), lim_{n→∞} Δ_W = 1/2. |
@@ -568,7 +568,7 @@ Identity requires that the vacuum remain reconstructable from ancestry. Individu
 
 The constant c_Ω is determined by the saturated grade-2 curvature sector. In the Hopf-oriented Yang–Mills chart, c_Ω = C₂ v, so the continuum mass readout is m_gap = C₂ · v · Δ² (Section 7.4).
 
-*Proof of Theorem GAP-Positive:* By Proposition BU (Dual Balance), operational closure requires two complementary forces: outward structural expansion (BU-Egress) and inward ancestry memory reconstruction (BU-Ingress). When traversing a closed four-step operational loop (LRLR), the system accumulates a geometric memory of the path expressed as a monodromy phase defect of bounded vibration about the closed configuration.
+*Proof of Theorem GAP-Positive:* By Proposition BU (Dual Balance), operational closure requires two complementary forces: outward structural expansion (BU-Egress) and inward ancestry memory reconstruction (BU-Ingress). When traversing a closed four-step operational loop (LRLR), the system accumulates a geometric memory of the path expressed as a holonomy phase defect of bounded vibration about the closed configuration.
 
 **Aperture scale m_a.** The horizon solid angle of the observation base S² is Q_G = 4π steradians. Spinorial double-cover structure on SU(2) fixes the half-integer identity
 
@@ -582,9 +582,9 @@ Solving with Q_G = 4π gives m_a² = 1/(8π) and therefore
 m_a = 1 / (2 √(2π)) ≈ 0.19947114020.
 ```
 
-This is the BU vibrational amplitude about the depth-four closed configuration, and it is the unit against which monodromy is compared.
+This is the BU vibrational amplitude about the depth-four closed configuration, and it is the unit against which holonomy is compared.
 
-**Dual-pole monodromy δ_BU.** Stage thresholds from the gyrotriangle closure δ = π − (π/2 + π/4 + π/4) = 0 fix the ONA angle o_p = π/4. In the Einstein gyrovector space of curvature parameter c = 1, place the stage vectors
+**Dual-pole holonomy δ_BU.** Stage thresholds from the gyrotriangle closure δ = π − (π/2 + π/4 + π/4) = 0 fix the ONA angle o_p = π/4. In the Einstein gyrovector space of curvature parameter c = 1, place the stage vectors
 
 ```
 v_ONA = (0, o_p, 0) = (0, π/4, 0),
@@ -592,7 +592,7 @@ v_BU+ = (0, 0, m_a),
 v_BU− = (0, 0, −m_a).
 ```
 
-The Thomas gyration gyr[a, b] is the unique rotation that restores associativity for successive boosts a and b. Let G = gyr[v_ONA, v_BU+] and let ω(ONA ↔ BU) be the rotation angle of G, extracted as the SO(3) angle of that matrix. The dual-pole path ONA → BU+ → BU− → ONA traverses the two BU poles and returns, so the accumulated monodromy is twice the single-leg gyration angle:
+The Thomas gyration gyr[a, b] is the unique rotation that restores associativity for successive boosts a and b. Let G = gyr[v_ONA, v_BU+] and let ω(ONA ↔ BU) be the rotation angle of G, extracted as the SO(3) angle of that matrix. The dual-pole path ONA → BU+ → BU− → ONA traverses the two BU poles and returns, so the accumulated holonomy is twice the single-leg gyration angle:
 
 ```
 δ_BU := 2 · ω(ONA ↔ BU).
@@ -604,9 +604,9 @@ Evaluating the gyration on these vectors yields ω(ONA ↔ BU) ≈ 0.09767108829
 δ_BU ≈ 0.19534217658 rad.
 ```
 
-The gyration angle is the SO(3) rotation angle of the Einstein gyrovector composition. For vectors a and b in the unit ball, the matrix gyr[a,b] is obtained from the standard Thomas precession formula. Substituting a = v_ONA and b = v_BU+ produces the value above. The companion monodromy verification script listed in Appendix A reproduces the same constant. Appendix A records numerical diagnostics of δ_BU as a rotation phase, including return-distance and equidistribution tests on the sequence k · δ_BU modulo 2π.
+The gyration angle is the SO(3) rotation angle of the Einstein gyrovector composition. For vectors a and b in the unit ball, the matrix gyr[a,b] is obtained from the standard Thomas precession formula. Substituting a = v_ONA and b = v_BU+ produces the value above. The companion holonomy verification script listed in Appendix A reproduces the same constant. Appendix A records numerical diagnostics of δ_BU as a rotation phase, including return-distance and equidistribution tests on the sequence k · δ_BU modulo 2π.
 
-Two independent consistency checks identify the same monodromy constant. The eight-leg toroidal holonomy, the holonomy accumulated on a closed tour of the four CGM stages CS → UNA → ONA → BU+ → BU− → ONA → UNA → CS, equals δ_BU. The SU(2) commutator holonomy for orthogonal UNA/ONA rotations of angle π/4,
+Two independent consistency checks identify the same holonomy constant. The eight-leg toroidal holonomy, the holonomy accumulated on a closed tour of the four CGM stages CS → UNA → ONA → BU+ → BU− → ONA → UNA → CS, equals δ_BU. The SU(2) commutator holonomy for orthogonal UNA/ONA rotations of angle π/4,
 
 ```
 φ_SU2 = 2 arccos((1 + 2√2)/4) ≈ 0.58790076265,
@@ -806,7 +806,7 @@ Route B is an independent Δ-ruler cross-check using stage actions obtained by n
 m_B := S_CS · 2 · v · Δ².
 ```
 
-The factor 2 records the dual-pole structure of the BU stage (BU+ and BU−), which doubles the monodromy contribution relative to a single-pole reading. Numerically m_B ≈ 1.661556 GeV, with relative deviation |m_gap − m_B|/max(m_gap, m_B) ≈ 4.76% (Appendix A). Route A remains the authoritative continuum mass. Route B confirms that the same aperture and infrared anchor produce a compatible grade-2 scale under the CS-normalized action.
+The factor 2 records the dual-pole structure of the BU stage (BU+ and BU−), which doubles the holonomy contribution relative to a single-pole reading. Numerically m_B ≈ 1.661556 GeV, with relative deviation |m_gap − m_B|/max(m_gap, m_B) ≈ 4.76% (Appendix A). Route A remains the authoritative continuum mass. Route B confirms that the same aperture and infrared anchor produce a compatible grade-2 scale under the CS-normalized action.
 
 **Corollary Clustering (Exponential Decay of Connected Correlators):** Let O be a local gauge-invariant observable on the reconstructed theory with ⟨Ω_vac, O Ω_vac⟩ = 0. By Theorem GAP-Positive and the spectral theorem for the joint energy-momentum operators (H_phys, **P**), the connected two-point function satisfies
 
@@ -872,7 +872,7 @@ The certificates below verify exact algebraic identities used in the main text. 
 | δ_BU nearest return (order ≤ 10⁵) | k = 22805, dist 4.59×10⁻⁵ |
 | δ_BU equidistribution χ² (vs crit 142.4) | 0.212 |
 
-The table rows for δ_BU record return-distance and equidistribution diagnostics of the monodromy phase as a rotation on the circle. The sequence k · δ_BU modulo 2π has no closer return to the identity than 4.59×10⁻⁵ up to order 100000, and the equidistribution χ² statistic against the critical value 142.4 is 0.212.
+The table rows for δ_BU record return-distance and equidistribution diagnostics of the holonomy phase as a rotation on the circle. The sequence k · δ_BU modulo 2π has no closer return to the identity than 4.59×10⁻⁵ up to order 100000, and the equidistribution χ² statistic against the critical value 142.4 is 0.212.
 
 
 ## References

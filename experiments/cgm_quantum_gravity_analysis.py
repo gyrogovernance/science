@@ -92,7 +92,7 @@ def derive_eta_from_CGM(
     Derive rapidity η from CGM primitives for SL(2,C) implementation.
 
     This connects the geometric structure to the boost parameter
-    needed for the dual-pole monodromy calculation.
+    needed for the dual-pole holonomy calculation.
 
     Args:
         alpha: CS chirality angle
@@ -665,11 +665,11 @@ class QuantumGravityHorizon:
     # PHYSICAL INSIGHT: Quantified the abundance that drives cosmic dynamics,
     # showing that the BU rotor requires 3 steps to close, not 1 or 2
 
-    # ============= Dual-Pole Monodromy Analysis =============
+    # ============= Dual-Pole Holonomy Analysis =============
 
-    def compute_bu_dual_pole_monodromy(self, verbose: bool = True) -> Dict[str, float]:
+    def compute_bu_dual_pole_holonomy(self, verbose: bool = True) -> Dict[str, float]:
         """
-        Compute the BU dual-pole monodromy angle δ_BU = 2ω(ONA↔BU).
+        Compute the BU dual-pole holonomy angle δ_BU = 2ω(ONA↔BU).
 
         This is the key geometric quantity that appears in the fine-structure
         constant prediction: α_fs = δ_BU^4 / m_a.
@@ -687,7 +687,7 @@ class QuantumGravityHorizon:
             from functions.gyrovector_ops import GyroVectorSpace
 
         tester = TWClosureTester(GyroVectorSpace(c=1.0))
-        result = tester.compute_bu_dual_pole_monodromy(verbose=verbose)
+        result = tester.compute_bu_dual_pole_holonomy(verbose=verbose)
 
         # Extract the key quantities
         omega_ona_bu = result.get("omega_ona_bu", 0.097671)  # Default from your logs
@@ -700,7 +700,7 @@ class QuantumGravityHorizon:
             print(
                 "  This is the key geometric quantity for fine-structure constant prediction."
             )
-            print("  The dual-pole monodromy δ_BU = 2ω(ONA↔BU) represents the")
+            print("  The dual-pole holonomy δ_BU = 2ω(ONA↔BU) represents the")
             print("  holonomy angle across the BU stage when traversing both poles.")
             print("")
             print(f"  Measured values:")
@@ -727,7 +727,7 @@ class QuantumGravityHorizon:
 
     def predict_fine_structure_constant(self, verbose: bool = True) -> Dict[str, Any]:
         """
-        Predict the fine-structure constant using the dual-pole monodromy:
+        Predict the fine-structure constant using the dual-pole holonomy:
         α_fs = δ_BU^4 / m_a
 
         This is the geometry-first coupling ansatz based on:
@@ -736,9 +736,9 @@ class QuantumGravityHorizon:
         - Quartic scaling overall: δ_BU^4
         - Aperture normalization: divide by m_a
         """
-        # Get the dual-pole monodromy
-        monodromy = self.compute_bu_dual_pole_monodromy(verbose=False)
-        delta_BU = monodromy["delta_BU"]
+        # Get the dual-pole holonomy
+        holonomy = self.compute_bu_dual_pole_holonomy(verbose=False)
+        delta_BU = holonomy["delta_BU"]
         m_a = self.cgm.m_a
 
         # Predict fine-structure constant
@@ -750,7 +750,7 @@ class QuantumGravityHorizon:
         # Calculate deviation
         deviation = abs(alpha_pred - alpha_codata) / alpha_codata
 
-        # Invert to get implied monodromy if we assume CODATA α
+        # Invert to get implied holonomy if we assume CODATA α
         delta_BU_star = (alpha_codata * m_a) ** 0.25
         delta_BU_diff = abs(delta_BU - delta_BU_star)
 
@@ -781,7 +781,7 @@ class QuantumGravityHorizon:
             print(f"    |δ_BU - δ_BU*| = {delta_BU_diff:.2e} rad")
             print(f"")
             print("  Interpretation:")
-            print("  • α_fs is the bi-hemispheric, dual-pole fourth-order monodromy")
+            print("  • α_fs is the bi-hemispheric, dual-pole fourth-order holonomy")
             print("  • Normalized by the aperture conductance m_a")
             print("  • Fourth power from 'two commutators × two poles'")
 
@@ -938,7 +938,7 @@ class QuantumGravityHorizon:
         # Physics interpretation
         print("  Physics interpretation:")
         print("  • The quartic scaling δ_BU^4 makes α_pred highly sensitive to δ_BU")
-        print("  • This is intrinsic to the dual-pole monodromy structure")
+        print("  • This is intrinsic to the dual-pole holonomy structure")
         print("  • High sensitivity is a feature, not a bug - it enables precise tests")
         print(
             "  • The sensitivity relation provides a roadmap for experimental validation"
@@ -948,7 +948,7 @@ class QuantumGravityHorizon:
         # Experimental implications
         print("  Experimental implications:")
         print("  • To test α_pred at 1 ppm, need δ_BU precision ~2.5×10⁻⁷")
-        print("  • This requires high-precision measurement of dual-pole monodromy")
+        print("  • This requires high-precision measurement of dual-pole holonomy")
         print("  • The sensitivity makes this a powerful test of the framework")
         print("  • Any deviation from predicted α would strongly constrain the model")
 
@@ -992,7 +992,7 @@ class QuantumGravityHorizon:
         self, verbose: bool = True
     ) -> Dict[str, Any]:
         """
-        Enhanced SL(2,C) dual-pole monodromy with intrinsic CGM derivation.
+        Enhanced SL(2,C) dual-pole holonomy with intrinsic CGM derivation.
 
         This version uses δ_BU derived from CGM primitives rather than
         matching to external measurements, making it prediction-grade.
@@ -1035,9 +1035,9 @@ class QuantumGravityHorizon:
         n_plus = np.array([np.sin(g), 0.0, np.cos(g)], dtype=float)
         n_minus = np.array([-np.sin(g), 0.0, np.cos(g)], dtype=float)
 
-        # Get the measured BU dual-pole monodromy δ_BU
+        # Get the measured BU dual-pole holonomy δ_BU
         # This is the key geometric quantity for fine-structure constant prediction
-        delta_BU_result = self.compute_bu_dual_pole_monodromy(verbose=False)
+        delta_BU_result = self.compute_bu_dual_pole_holonomy(verbose=False)
         delta_BU = delta_BU_result["delta_BU"]
 
         # Derive η from the measured δ_BU using the inverse CGM relation
@@ -1763,9 +1763,9 @@ class QuantumGravityHorizon:
 
     # REMOVED: probe_delta_bu_identity()
     # This diagnostic helper probed the δ_BU =  m_a identity using multiple methods
-    # PHYSICAL INSIGHT: Explored the crucial relationship between dual-pole monodromy δ_BU
+    # PHYSICAL INSIGHT: Explored the crucial relationship between dual-pole holonomy δ_BU
     # and primitive aperture m_a, fundamental to the fine-structure constant prediction
-    # α_fs = δ_BU⁴/m_a, connecting geometric monodromy to the primitive aperture
+    # α_fs = δ_BU⁴/m_a, connecting geometric holonomy to the primitive aperture
 
     # REMOVED: quantify_pi6_curvature_hint()
     # This diagnostic helper quantified the -π/6 curvature hint with systematic grid refinement
@@ -1904,7 +1904,7 @@ class QuantumGravityHorizon:
         # REMOVED: solve_delta_for_target_phi() - moved to helpers file
         # REMOVED: report_abundance_indices() - moved to helpers file
 
-        # Enhanced dual-pole monodromy and fine-structure constant predictions
+        # Enhanced dual-pole holonomy and fine-structure constant predictions
         commutator_trace = self.compute_commutator_trace_invariant(verbose=verbose)
         quartic_scaling = self.verify_quartic_scaling(verbose=verbose)
         quartic_scaling = tag_result_status(
@@ -2001,7 +2001,7 @@ class QuantumGravityHorizon:
         print(
             f"  • Status: {'EXCELLENT' if alpha_result['deviation'] < 0.001 else 'VERY GOOD'}"
         )
-        print(f"  • Pipeline: δ_BU (BU monodromy) → α_fs (pure geometry)")
+        print(f"  • Pipeline: δ_BU (BU holonomy) → α_fs (pure geometry)")
 
         print("\n✓ INTERNAL CONSISTENCY CHECKS:")
         print(f"  • SU(2) commutator trace vs analytic Wigner formula")
@@ -2063,7 +2063,7 @@ class QuantumGravityHorizon:
         print(f"  • Singularities resolved by minimal observation quantum")
         print(f"  • Information escape through aperture transmission")
         print(f"  • Observer-centric foundation for physics")
-        print(f"  • Fine-structure constant emerges from dual-pole monodromy")
+        print(f"  • Fine-structure constant emerges from dual-pole holonomy")
         print(f"  • No electrodynamic inputs required for α_fs")
         print(f"  • 3-fold harmonic oscillator drives cosmic dynamics")
         print(f"  • Einstein's original field equation vindicated")

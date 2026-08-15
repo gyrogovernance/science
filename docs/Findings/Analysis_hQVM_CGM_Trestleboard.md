@@ -51,15 +51,15 @@ The first input is the aperture
 m_a = 1 / (2 √(2π)) ≈ 0.199471
 ```
 
-m_a is a dimensionless closed-form constant. Geometrically, it is the largest residual oscillation about the closed configuration that remains inside a total phase of π, half of a full 2π cycle (`Analysis_CGM_Constants.md`). In this document that constant is the reference scale against which the monodromy is compared.
+m_a is a dimensionless closed-form constant. Geometrically, it is the largest residual oscillation about the closed configuration that remains inside a total phase of π, half of a full 2π cycle (`Analysis_CGM_Constants.md`). In this document that constant is the reference scale against which the holonomy is compared.
 
-The second input is the dual-pole monodromy
+The second input is the dual-pole holonomy
 
 ```
 δ_BU ≈ 0.195342 rad
 ```
 
-δ_BU is a geometric phase angle, in radians, accumulated by traversing a closed loop on the kernel. It is recovered from the SU(2) half-loop trace (`Analysis_Monodromy.md`). Numerically δ_BU lies slightly below m_a.
+δ_BU is a geometric phase angle, in radians, accumulated by traversing a closed loop on the kernel. It is recovered from the SU(2) half-loop trace (`Analysis_Holonomy.md`). Numerically δ_BU lies slightly below m_a.
 
 The closure ratio and the complementary opening are
 
@@ -68,7 +68,7 @@ The closure ratio and the complementary opening are
 Δ = 1 − ρ = 1 − δ_BU / m_a ≈ 0.020699
 ```
 
-ρ is the closure ratio, the fraction of the aperture filled by the monodromy (about 97.93 percent). Δ is the aperture gap, the complementary open fraction (about 2.07 percent). Δ is dimensionless. It is the spacing unit of the energy ruler used for the rest of this document.
+ρ is the closure ratio, the fraction of the aperture filled by the holonomy (about 97.93 percent). Δ is the aperture gap, the complementary open fraction (about 2.07 percent). Δ is dimensionless. It is the spacing unit of the energy ruler used for the rest of this document.
 
 The ruler coordinate for an energy E is defined by the pair of maps
 
@@ -692,7 +692,7 @@ where `j` and `l` are the total and orbital angular momentum quantum numbers of 
 
 where `l` is again the orbital angular momentum quantum number.
 
-The parameter `κ` sets the overall scale of the spin-orbit and deformation terms in oscillator units. The parameter `μ` sets the relative weight of the deformation term. The CS axiom fixes the sign of the spin-orbit term so that the aligned branch `j = l + 1/2` lies lower under left chirality. The deformation weight is identified with the reciprocal of the symmetric trace-free bulk dimension, which equals five, giving `μ = 1/5`. That dimension is the five independent spatial modes of the `l = 2` quadrupole on the SE(3) shadow. The spin-orbit scale is identified with the BU dual-pole monodromy expressed as a fraction of a full turn. Writing `τ = δ_BU/(2π)`, the coupling is taken as the 256-tick turn quantization of `τ`, where `Q_256` denotes rounding to the nearest 1/256-turn tick, which gives `κ = Q_256(τ) = 1/32`. Both assignments use only quantities already fixed by the CGM constants chain of Section 2. The same STF bulk dimension enters the electroweak mass expansion through the `1/√5` equipartition factor of Section 2.1, and the same monodromy ratio `δ_BU/m_a` that defines the aperture gap Δ also supplies τ. The couplings that govern shell closure at `(Z, N) = (82, 126)` therefore belong to the same geometric ratio system as the W/Z mass split, not to a separate nuclear parameter set.
+The parameter `κ` sets the overall scale of the spin-orbit and deformation terms in oscillator units. The parameter `μ` sets the relative weight of the deformation term. The CS axiom fixes the sign of the spin-orbit term so that the aligned branch `j = l + 1/2` lies lower under left chirality. The deformation weight is identified with the reciprocal of the symmetric trace-free bulk dimension, which equals five, giving `μ = 1/5`. That dimension is the five independent spatial modes of the `l = 2` quadrupole on the SE(3) shadow. The spin-orbit scale is identified with the BU dual-pole holonomy expressed as a fraction of a full turn. Writing `τ = δ_BU/(2π)`, the coupling is taken as the 256-tick turn quantization of `τ`, where `Q_256` denotes rounding to the nearest 1/256-turn tick, which gives `κ = Q_256(τ) = 1/32`. Both assignments use only quantities already fixed by the CGM constants chain of Section 2. The same STF bulk dimension enters the electroweak mass expansion through the `1/√5` equipartition factor of Section 2.1, and the same holonomy ratio `δ_BU/m_a` that defines the aperture gap Δ also supplies τ. The couplings that govern shell closure at `(Z, N) = (82, 126)` therefore belong to the same geometric ratio system as the W/Z mass split, not to a separate nuclear parameter set.
 
 Two spectra are evaluated at this anchor. In the diagonal spectrum each orbital receives the energy above without cross-shell mixing. In the mixed spectrum the quadrupole operator introduces Δn = 2 couplings between orbitals of the same `l`, `j`, and `m` whose major quantum numbers differ by two, where `m` is the magnetic substate label, the projection of `j` onto a fixed axis. The mixed spectrum is solved on the `m`-substate basis so that level counting is explicit after diagonalization. A closure is recorded when an adjacent gap exceeds 1.8 times the local median spacing, and gap prominence ranks the largest closures relative to their neighbors.
 

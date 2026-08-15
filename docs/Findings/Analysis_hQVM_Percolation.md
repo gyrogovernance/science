@@ -953,7 +953,7 @@ Delta(d) = 1/(8d)
 
 so that 8d times Delta(d) equals 1 exactly at every d. At d = 6 this gives Delta(6) = 1/48 = 0.020833, close to but distinct from the continuum CGM aperture Delta = 0.020700 used in the comparison below; the two differ by about 6 * 10^-4, a resolution-scale distinction already discussed in the wavefunction analysis (Analysis_hQVM_Wavefunction.md, Sections 16.5 through 16.7) and not reopened here.
 
-CGM dimensionless constants were compared to empirically determined thresholds. The aperture gap Delta = 0.0207 is the residual informational aperture after depth-4 spinorial closure of byte-level fold disagreements (`docs/Findings/Analysis_hQVM_Wavefunction.md`, Sections 16.5 through 16.7). It equals 1 - rho to leading order, with rho the closure ratio, and matches the holonomic ratio delta_BU / m_a from `docs/Findings/Analysis_Monodromy.md`.
+CGM dimensionless constants were compared to empirically determined thresholds. The aperture gap Delta = 0.0207 is the residual informational aperture after depth-4 spinorial closure of byte-level fold disagreements (`docs/Findings/Analysis_hQVM_Wavefunction.md`, Sections 16.5 through 16.7). It equals 1 - rho to leading order, with rho the closure ratio, and matches the holonomic ratio delta_BU / m_a from `docs/Findings/Analysis_Holonomy.md`.
 
 | Constant | Value |
 |----------|-------|

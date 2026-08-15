@@ -51,7 +51,7 @@ The report proceeds from exact kernel algebra to electroweak closure, representa
 
 **Section 2** defines the finite kernel: the reachable manifold Omega (4096 states), the dual 64-state horizons |H|, the seven-shell binomial chart, the code-enumerator weights C1, C2, C3, the shell spectral moment M_shell, the operators D_shell (shell number) and D_flow (chirality flow), and the known mathematical structures (Hamming scheme, hexacode, spectral triple parallels).
 
-**Section 3** fixes the aperture parameter Delta from CGM BU monodromy and the observational aperture scale m_a.
+**Section 3** fixes the aperture parameter Delta from CGM BU holonomy and the observational aperture scale m_a.
 
 **Section 4** derives the electroweak mass-coordinate expansion. The four channels (Top, Higgs, Z, W) map to the K4 operators {id, W2, W2', F}. Coefficients a_i through r5_i are fixed rational combinations of the kernel quantities above.
 
@@ -274,23 +274,23 @@ The 32-bit spinorial lift extends the 24-bit phase register by eight family bits
 
 ### 3.1 Continuous and Discrete Aperture
 
-The CGM aperture is defined from the BU monodromy defect and the observational aperture scale:
+The CGM aperture is defined from the BU holonomy defect and the observational aperture scale:
 
 | Quantity               | Expression       |          Value |
 | ---------------------- | ---------------- | -------------: |
 | Observational aperture | m_a = 1/(2 sqrt(2π)) | 0.199471140201 |
-| BU monodromy           | d_BU             | 0.195342176580 |
+| BU holonomy           | d_BU             | 0.195342176580 |
 | Closure ratio          | rho = d_BU/m_a       | 0.979300446087 |
 | Aperture gap           | Delta = 1 - rho      | 0.020699553913 |
 
-Delta measures the fractional gap between BU dual-pole monodromy and the observational aperture scale m_a. Algebraically, depth-four commutative closure holds in the kernel. Delta is the residual vibrational amplitude (about 2.07%) of oscillation about that closed configuration.
+Delta measures the fractional gap between BU dual-pole holonomy and the observational aperture scale m_a. Algebraically, depth-four commutative closure holds in the kernel. Delta is the residual vibrational amplitude (about 2.07%) of oscillation about that closed configuration.
 
 At Delta = 0 the register would close with no observational aperture, leaving no coherent measurement channel. At Delta = 1 the depth-four cycle would fail to close and no stable spectral grammar would remain. The observed value Delta ≈ 0.0207 sits between these limits as the balance point where closure and observability coexist.
 
 | Aperture            |                  Value | Origin                        |
 | ------------------- | ---------------------: | ----------------------------- |
 | Bare byte aperture  | 5/256 = 0.019531250000 | 8-bit dyadic byte grid        |
-| Continuous aperture |     Delta = 0.020699553913 | BU monodromy gap              |
+| Continuous aperture |     Delta = 0.020699553913 | BU holonomy gap              |
 | Depth-4 aperture    |  1/48 = 0.020833333333 | 4-byte x 12-bit closure frame |
 
 The ordering is exact:
@@ -614,7 +614,7 @@ Each coefficient family is fixed algebraically from kernel geometry. The status 
 
 ### 4.5 Structural Independence
 
-The aperture Delta = 1 - d_BU/m_a is fixed from the BU monodromy and aperture constants in the finite-kernel layer, independent of the electroweak mass set. The K4 operator assignment and all coefficient families are fixed by kernel geometry before any comparison with electroweak masses. Among 4096 raw flag assignments, the trace conditions sum(p_i) = 0 and sum(q_i) = 0 reduce the family to 96 grammar-consistent candidates, of which the derived assignment is rank 1 under maximum absolute tick error (Section 5.0).
+The aperture Delta = 1 - d_BU/m_a is fixed from the BU holonomy and aperture constants in the finite-kernel layer, independent of the electroweak mass set. The K4 operator assignment and all coefficient families are fixed by kernel geometry before any comparison with electroweak masses. Among 4096 raw flag assignments, the trace conditions sum(p_i) = 0 and sum(q_i) = 0 reduce the family to 96 grammar-consistent candidates, of which the derived assignment is rank 1 under maximum absolute tick error (Section 5.0).
 
  
 

@@ -849,7 +849,7 @@ def emin_falsifier(
 def minimum_excitation_report(tb: Trestleboard) -> dict:
     """
     E_min = v·ρ²·Δ⁶/√5·2^(C3Δ²). Upstream: v (EW), Δ (W/Z),
-    ρ (monodromy), C3 (code), (6,2) forced nuclear class.
+    ρ (holonomy), C3 (code), (6,2) forced nuclear class.
     """
     cls_62 = ClosureClass(6, 2, "Nuclear spinorial", True, True, True)
     E_min = tb.predict_E_eV(cls_62)

@@ -12,7 +12,7 @@ Definitions and formulas:
 1) Aperture parameter:
     m_a = 1 / (2 * sqrt(2π))
 
-2) BU dual-pole monodromy:
+2) BU dual-pole holonomy:
    δ = δ_BU
 
 3) Aperture gap:

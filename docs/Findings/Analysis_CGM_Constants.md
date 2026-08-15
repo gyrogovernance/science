@@ -77,9 +77,9 @@ Since m_a² = 1/(8π), we have (π/2) × 8π = 4π². So the primordial chiralit
 
 ## 2. Closure Ratio ρ and Aperture Gap Δ
 
-### 2.1 BU Dual-Pole Monodromy δ_BU
+### 2.1 BU Dual-Pole Holonomy δ_BU
 
-The **BU dual-pole monodromy** δ_BU is the total phase (memory) accumulated along the path ONA → BU+ → BU− → ONA. It is measured within the CGM framework (e.g. from closure tests) as:
+The **BU dual-pole holonomy** δ_BU is the total phase (memory) accumulated along the path ONA → BU+ → BU− → ONA. It is measured within the CGM framework (e.g. from closure tests) as:
 
 **δ_BU = 2 × ω(ONA ↔ BU) ≈ 0.195342176580 rad.**
 
@@ -87,7 +87,7 @@ So δ_BU is the accumulated angle for the round-trip between ONA and the BU pole
 
 ### 2.2 Closure Ratio ρ
 
-The **closure ratio** is the fraction of the aperture “filled” by this monodromy:
+The **closure ratio** is the fraction of the aperture “filled” by this holonomy:
 
 **ρ = δ_BU / m_a.**
 
@@ -103,16 +103,16 @@ So:
 
 **Δ = 1 − δ_BU / m_a.**
 
-Numerically, Δ ≈ 0.020699553913. This is the dimensionless **gap** (about 2.07%) that remains open when comparing the monodromy to the aperture. It is the expansion parameter for systematic corrections (e.g. to the fine-structure constant): small powers of Δ (Δ², Δ⁴) encode aperture effects.
+Numerically, Δ ≈ 0.020699553913. This is the dimensionless **gap** (about 2.07%) that remains open when comparing the holonomy to the aperture. It is the expansion parameter for systematic corrections (e.g. to the fine-structure constant): small powers of Δ (Δ², Δ⁴) encode aperture effects.
 
 Interpretation:
 
-- **ρ**: fraction of the aperture scale “used” by the BU dual-pole monodromy (structural closure in phase).  
-- **Δ**: fractional **vibrational** amplitude remaining open (about 2.07%). Observation is possible precisely because Δ > 0; if the monodromy saturated the full aperture scale with no residual oscillation, there would be no room for observation. So Δ is both the perturbation expansion parameter and the geometric measure of vibrational motion at BU.
+- **ρ**: fraction of the aperture scale “used” by the BU dual-pole holonomy (structural closure in phase).  
+- **Δ**: fractional **vibrational** amplitude remaining open (about 2.07%). Observation is possible precisely because Δ > 0; if the holonomy saturated the full aperture scale with no residual oscillation, there would be no room for observation. So Δ is both the perturbation expansion parameter and the geometric measure of vibrational motion at BU.
 
 ### 2.4 Relation to Q_G and m_a
 
-Using ρ = δ_BU/m_a we have Δ = 1 − δ_BU/m_a. The identity Q_G × m_a² = 1/2 can be written as 2 Q_G m_a² = 1. So the aperture m_a sets the scale at which the solid angle Q_G yields this half-integer product; ρ and Δ then measure how the actual monodromy δ_BU sits relative to that scale. In other words: m_a defines the “unit” of closure, and Δ is the deficit from full closure.
+Using ρ = δ_BU/m_a we have Δ = 1 − δ_BU/m_a. The identity Q_G × m_a² = 1/2 can be written as 2 Q_G m_a² = 1. So the aperture m_a sets the scale at which the solid angle Q_G yields this half-integer product; ρ and Δ then measure how the actual holonomy δ_BU sits relative to that scale. In other words: m_a defines the “unit” of closure, and Δ is the deficit from full closure.
 
 ---
 
@@ -146,7 +146,7 @@ Empirically, δ_BU is close to one third of φ_SU2:
 
 **δ_BU ≈ (1/3) φ_SU2 + W_residual,**
 
-with a small residual W_residual. So the BU dual-pole monodromy is tied to the SU(2) holonomy of the UNA/ONA rotations. Since ρ = δ_BU/m_a and Δ = 1 − ρ, the aperture gap Δ is therefore connected to the same SU(2) geometry that gives φ_SU2: the non-commutativity of the path (ONA, UNA, etc.) produces both the holonomy φ_SU2 and the monodromy δ_BU, and the ratio of δ_BU to m_a defines Δ.
+with a small residual W_residual. So the BU dual-pole holonomy is tied to the SU(2) holonomy of the UNA/ONA rotations. Since ρ = δ_BU/m_a and Δ = 1 − ρ, the aperture gap Δ is therefore connected to the same SU(2) geometry that gives φ_SU2: the non-commutativity of the path (ONA, UNA, etc.) produces both the holonomy φ_SU2 and the holonomy δ_BU, and the ratio of δ_BU to m_a defines Δ.
 
 ---
 
@@ -235,8 +235,8 @@ From the Einstein–Hilbert action quantization in the CGM framework, the dimens
 ### 7.1 The Aperture as the Hub
 
 - **m_a** is fixed by the closure of the gyrotriangle and the phase-horizon condition A² × 4π² = π/2, and by Q_G × m_a² = 1/2.  
-- **ρ = δ_BU/m_a** and **Δ = 1 − ρ** define closure and aperture gap from the measured BU monodromy δ_BU.  
-- **φ_SU2** is the exact SU(2) holonomy for the stage angles; δ_BU is empirically close to φ_SU2/3, linking monodromy to holonomy.  
+- **ρ = δ_BU/m_a** and **Δ = 1 − ρ** define closure and aperture gap from the measured BU holonomy δ_BU.  
+- **φ_SU2** is the exact SU(2) holonomy for the stage angles; δ_BU is empirically close to φ_SU2/3, linking holonomy to holonomy.  
 - **α** has base form δ_BU⁴/m_a; corrections are series in Δ (and ρ), so the aperture gap is the expansion parameter.  
 - **S_geo = m_a π √3/2** and **ζ = Q_G/S_geo = 16√(2π/3)** tie gravity to the same aperture.  
 - **48Δ ≈ 1** and **λ₀/Δ = 1/√5** tie Δ to discrete (48) and pentagonal (√5) geometry.
@@ -252,4 +252,4 @@ So **m_a** and **Δ** (with ρ and δ_BU) are the central objects; the rest are 
 5. **S_geo = m_a π √3/2** → **ζ = Q_G/S_geo = 16√(2π/3)**.  
 6. **48² quantization** → **48 Δ ≈ 1**; pentagonal symmetry → **λ₀/Δ = 1/√5**.
 
-All of these are algebraic or geometric consequences of the aperture m_a, the closure ratio ρ, the aperture gap Δ, and the measured monodromy δ_BU, with no free parameters beyond the framework’s geometric definitions and the single measured value δ_BU.
+All of these are algebraic or geometric consequences of the aperture m_a, the closure ratio ρ, the aperture gap Δ, and the measured holonomy δ_BU, with no free parameters beyond the framework’s geometric definitions and the single measured value δ_BU.

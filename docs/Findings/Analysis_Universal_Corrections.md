@@ -19,7 +19,7 @@ The CGM framework is built on two foundational principles:
 
 The framework employs five geometric parameters derived from CGM structure:
 
-- **δ_BU** = 0.195342176580 (BU dual-pole monodromy)
+- **δ_BU** = 0.195342176580 (BU dual-pole holonomy)
 - **R** = 0.993434896272 (Thomas-Wigner curvature ratio)
 - **h** = 4.417034 (4-leg/8-leg holonomy ratio)
 - **ρ_inv** = 1.021137 (Inverse closure fraction)

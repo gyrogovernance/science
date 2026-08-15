@@ -1,6 +1,17 @@
-# Changelog
+# Gyro Governance Lab: Science Repo Changelog
 
 All notable changes to the CGM Experimental Framework will be documented in this file.
+
+---
+
+## [1.3.9.3-CGM] - 2026-08-15
+
+Revised one of the foundational priors of the framework: the analysis of closed-path geometric memory. The earlier treatment is superseded by a cleaned continuous–finite holonomy account, with a dedicated verification suite and shared constants aligned to that account.
+
+### Added
+
+- `docs/Findings/Analysis_Holonomy.md`
+- `experiments/cgm_holonomy_analysis.py` and `experiments/cgm_holonomy_analysis_results.txt`
 
 ---
 
@@ -74,7 +85,7 @@ The construction begins on the finite 4096-state hQVM carrier rather than on the
 
 Compact geometry and percolation fixed the electroweak ruler and the coverage hierarchy on the hQVM kernel. This release carries that same discrete geometry into nuclear structure and fusion phenomenology. Electroweak masses, nuclear binding energies, isomeric excitations, Coulomb barriers, and nuclear shell closures are placed on one logarithmic energy coordinate whose spacing unit is the aperture gap Δ recovered from the W and Z mass ratio. Three readout procedures, the Level, the Square, and the Compass, locate energies, report percolation coverage, and trace explicit move sequences between scales. The shared workspace is the trestleboard.
 
-The forced nuclear class predicts the Th-229m optical isomer and the strong bare scale plus tensor correction reconstructs the deuteron binding energy, both with relative errors near 10⁻⁴ and with no free nuclear parameters. Alpha and beta transitions act as carrier words that preserve chirality shell and shell-parity across the IAEA LiveChart ground-state census. Fusion barriers for seven fuels land on the strong-family rung of the ruler. Measured resonances for five of seven fuels align with percolation landmarks, and the kernel coverage θ(p) supplies a resonance-independent floor under the astrophysical S-factor baseline. The same carrier algebra derives the seven canonical magic numbers 2, 8, 20, 28, 50, 82, and 126 as large-gap closures in a mixed Nilsson spectrum at `(κ, μ) = (1/32, 1/5)`, with κ and μ fixed by the BU monodromy and STF bulk dimension rather than fit to the closure set. Left chirality places j = l + 1/2 below j = l − 1/2, the same ancestry-preservation bias that routes decay. Chirality reversal removes the intruder set 28, 50, 82, and 126 from the dominant gap ranking. Δn = 2 quadrupole mixing is required for those intruders to dominate over the harmonic oscillator remnant.
+The forced nuclear class predicts the Th-229m optical isomer and the strong bare scale plus tensor correction reconstructs the deuteron binding energy, both with relative errors near 10⁻⁴ and with no free nuclear parameters. Alpha and beta transitions act as carrier words that preserve chirality shell and shell-parity across the IAEA LiveChart ground-state census. Fusion barriers for seven fuels land on the strong-family rung of the ruler. Measured resonances for five of seven fuels align with percolation landmarks, and the kernel coverage θ(p) supplies a resonance-independent floor under the astrophysical S-factor baseline. The same carrier algebra derives the seven canonical magic numbers 2, 8, 20, 28, 50, 82, and 126 as large-gap closures in a mixed Nilsson spectrum at `(κ, μ) = (1/32, 1/5)`, with κ and μ fixed by the BU holonomy and STF bulk dimension rather than fit to the closure set. Left chirality places j = l + 1/2 below j = l − 1/2, the same ancestry-preservation bias that routes decay. Chirality reversal removes the intruder set 28, 50, 82, and 126 from the dominant gap ranking. Δn = 2 quadrupole mixing is required for those intruders to dominate over the harmonic oscillator remnant.
 
 ### Added
 
@@ -99,7 +110,7 @@ The forced nuclear class predicts the Th-229m optical isomer and the strong bare
 
 The hQVM carrier is a finite state machine, yet its transport graph carries richer local structure than reachability records. This release builds the cohomology layer of the CGM construction chain: a finite covering system on the hQVM transition category that classifies the algebraic obstructions preventing a generator restriction from preserving ancestry globally. Where percolation reports the size of the reachable set, cohomology reports the type of the obstruction that shrank it.
 
-The shell populations are derived from the exterior-algebra grading on the six chirality modes, giving a discrete Poincare duality that explains the binomial census instead of only enumerating it. The parity homomorphism is the 1-cocycle whose kernel excludes odd shells under even-weight restriction. The Grothendieck comparison of Boolean Walsh sections against the Hilbert lift on the bipartite carrier delivers a measured constant, K_G^R(2) = square root of 2, and the relaxation gap localizes to the CHSH 2x2 projection. Lefschetz fixed-point and dynamical zeta counts complete the finite obstruction census. The residual aperture Delta = 1 - rho links the BU monodromy to the closure fraction as the obstruction scalar of the same story.
+The shell populations are derived from the exterior-algebra grading on the six chirality modes, giving a discrete Poincare duality that explains the binomial census instead of only enumerating it. The parity homomorphism is the 1-cocycle whose kernel excludes odd shells under even-weight restriction. The Grothendieck comparison of Boolean Walsh sections against the Hilbert lift on the bipartite carrier delivers a measured constant, K_G^R(2) = square root of 2, and the relaxation gap localizes to the CHSH 2x2 projection. Lefschetz fixed-point and dynamical zeta counts complete the finite obstruction census. The residual aperture Delta = 1 - rho links the BU holonomy to the closure fraction as the obstruction scalar of the same story.
 
 ### Added
 
@@ -155,7 +166,7 @@ Compact geometry completes the electroweak mass program on the hQVM kernel: four
 ### Results
 
 - Electroweak masses map to carrier-trace polynomials L_i = a_iΔ + b_i + c_iΔ² + … + r5_iΔ⁵ with rational coefficients from shell multiplicities (C1=6, C2=15, C3=20), horizon cardinality |H|=64, and K4 stage flags. Maximum tick error across four channels at fifth order: 6.15 × 10⁻⁹.
-- W/Z ratio lock: promoted D₄ relation for log₂(m_Z/m_W) recovers monodromy Δ with absolute difference 8.34 × 10⁻¹⁰ from PDG masses; W predicted from Z and Δ at 5 × 10⁻⁹ relative error. On-shell sin²θ_W = 0.223013218 vs 0.223013225.
+- W/Z ratio lock: promoted D₄ relation for log₂(m_Z/m_W) recovers holonomy Δ with absolute difference 8.34 × 10⁻¹⁰ from PDG masses; W predicted from Z and Δ at 5 × 10⁻⁹ relative error. On-shell sin²θ_W = 0.223013218 vs 0.223013225.
 - Tree-level couplings (g, g_Z, g', e, y_t, λ_H) follow algebraically from the mass expansion at parts-per-million accuracy.
 - Quark sector: six quark masses sit on integer-spaced rungs of the logarithmic mass coordinate under the stated PDG mass conventions; D_flow² eigenladder groups them into three generation pairs.
 - Lepton carriers close via a unique horizon-wrap path (5, 8, 14) among 680 grammar-consistent candidates.
@@ -201,7 +212,7 @@ The Gyroscopic kernel is now positioned as a **Holonomic Quantum Virtual Machine
 
 ### Updated
 - `docs/Findings/Analysis_Gravity.md`: §7.5 ultraviolet completion and inflationary limit; Appendix F (optical conjugacy and Δ ruler); appendix renumbering F–I; BU vibrational motion and operational intelligence in §2; plaquette–Regge τ_G bridge consolidated in §5.6.
-- `docs/CGM_Paper.md`, `docs/CGM_Program.md`, `docs/Findings/Analysis_3D_6DOF_Proof.md`: BU clarified as bounded vibrational motion at 2.07% aperture over six closed kinematic DOF (not a seventh); memory encoded as monodromy phase defect.
+- `docs/CGM_Paper.md`, `docs/CGM_Program.md`, `docs/Findings/Analysis_3D_6DOF_Proof.md`: BU clarified as bounded vibrational motion at 2.07% aperture over six closed kinematic DOF (not a seventh); memory encoded as holonomy phase defect.
 - `experiments/hqvm_gravity_runner.py`, `README.md`: combined gravity run extended through `analysis_10.py`; README splits short Note and full Analysis_Gravity manuscripts.
 
 ---
@@ -300,13 +311,13 @@ The Gyroscopic kernel is now positioned as a **Holonomic Quantum Virtual Machine
 ### Added
 - Added `docs/Findings/Analysis_Gravity.md`: gravitational coupling from kernel invariants, gravitational field equations, gyrogroup structure, and electroweak-anchor prediction of G.
 - Added `experiments/hqvm_gravity_analysis_1.py`: kernel diagnostics, aperture-depth Refractive Depth, α·ζ invariant, and coupling reconstruction at v_EW.
-- Added `experiments/cgm_hqvm_monodromy.py`: hQVM monodromy diagnostic for depth-4/depth-8 closure, shell displacement invariants, and quadrupole shell modes.
+- Added `experiments/cgm_hqvm_holonomy.py`: hQVM holonomy diagnostic for depth-4/depth-8 closure, shell displacement invariants, and quadrupole shell modes.
 
 ### Results
 - Decomposed Einstein coupling κ = 8πG/c⁴ into factor 2 (two-pass carrier recovery), Q_G = 4π (closure solid angle), and c⁴ (four-stage depth structure).
 - Predicted G from kernel invariants and the electroweak anchor to 2.5 parts in 10⁵ (τ_G match within 25 ppm).
 - Established exact kernel invariant α × ζ = ρ⁴/(π√3) linking electromagnetic and gravitational coupling with no free continuous parameters.
-- Derived spin-2 from depth-8 orientation recovery and gyration-defect resolution (monodromy-verified).
+- Derived spin-2 from depth-8 orientation recovery and gyration-defect resolution (holonomy-verified).
 - Documented gravitoelectromagnetic structure, gravitational radiation/memory, and 17-item reference list with inline citations.
 
 ---
@@ -361,7 +372,7 @@ The following documents were fully parsed and extracted:
     *   Fine-structure constant ($\alpha$) derivation.
 *   **`docs/CGM_Program.md`** (IDs: 283–360)
     *   Research roadmap and tri-partite validation.
-    *   GyroSI architecture and AI alignment extensions.
+    *   Gyroscopic ASI architecture and AI alignment extensions.
 
 #### 2. Foundational Proofs
 *   **`Analysis_3D_6DOF_Proof.md`** (IDs: 361–427): Formal Lie-theoretic proof of dimensional necessity.
@@ -371,7 +382,7 @@ The following documents were fully parsed and extracted:
 *   **`Analysis_CGM_Units.md`** (IDs: 468–509): Unit emergence and optical conjugacy.
 *   **`Analysis_Axiomatization.md`** (IDs: 510–538): Modal logic consistency and Z3 verification.
 *   **`Analysis_Geometric_Coherence.md`** (IDs: 539–578): $\pi/4$ signature and triangle validation.
-*   **`Analysis_Monodromy.md`** (IDs: 579–626): Complete monodromy hierarchy and Thomas-Wigner test.
+*   **`Analysis_Holonomy.md`** (IDs: 579–626): Complete holonomy hierarchy and Thomas-Wigner test.
 *   **`Analysis_Fine_Structure.md`** (IDs: 627–660): Detailed $\alpha$ correction steps.
 *   **`Analysis_Energy_Scales.md`** (IDs: 661–726): UV-IR conjugacy, neutrino masses, and gauge groups.
 *   **`Analysis_Quantum_Gravity.md`** (IDs: 727–760): $Q_G = 4\pi$ as a geometric requirement.
@@ -608,10 +619,10 @@ Experiments Results and Analysis found here:
 
 ---
 
-## [1.0.7-Monodromy] - 2025-09-01
+## [1.0.7-Holonomy] - 2025-09-01
 
 Experiments Results and Analysis found here: 
-- [docs/Findings/Analysis_5_Monodromy.md](docs/Findings/Analysis_5_Monodromy.md)
+- [docs/Findings/Analysis_5_Holonomy.md](docs/Findings/Analysis_5_Holonomy.md)
 - [experiments/tw_closure_test.py](experiments/tw_closure_test.py)
 
 ---
@@ -775,7 +786,7 @@ Clean up organizing and merging tests and gathering discoveries.
   - Speed of light (c) prediction from UNA threshold
   - Planck's constant (ħ) prediction from ONA non-associativity
   - Gravitational constant (G) prediction from BU closure energy
-  - Higgs mass scale prediction from loop monodromy
+  - Higgs mass scale prediction from loop holonomy
   - Fine structure constant (α_em) prediction from UNA orthogonality
 
 - **Singularity and Infinity Validation Framework**
@@ -804,7 +815,7 @@ Clean up organizing and merging tests and gathering discoveries.
 - More comprehensive test result reporting
 
 ### Fixed
-- Matrix multiplication errors in monodromy calculations
+- Matrix multiplication errors in holonomy calculations
 - Relative import issues across modules
 - Division by zero warnings in Lorentz factor calculations
 - Zero vector handling in gyrovector operations

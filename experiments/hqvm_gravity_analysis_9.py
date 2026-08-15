@@ -298,7 +298,7 @@ def holographic_amplitude_factor() -> dict[str, float]:
 
 def weyl_lambda_from_kernel(g1: float) -> dict[str, float]:
     """
-    LEMMA: lambda(mu) from rotational monodromy, not a free definition.
+    LEMMA: lambda(mu) from rotational holonomy, not a free definition.
 
     lambda = 2/b_C2,  b_C2 = (1/xi) * (2/75).
     2/75 = ||Pi||^2/Tr^2 (analysis_3, theorem on bulk shells).

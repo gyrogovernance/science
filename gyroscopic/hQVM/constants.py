@@ -86,13 +86,39 @@ Q0: int = 0x033
 Q1: int = 0x0F0
 
 # ================================================================
-# Aperture quantization (CGM Byte Formalism §7)
+# Aperture / BU holonomy (declared payload embedding)
 # ================================================================
+# Under orthogonal boosts of magnitudes theta_ona = pi/4 and m_a:
+#   BU_HOLONOMY_ANGLE = 4 * atan(k(theta_ona) * k(m_a))
+#   k(beta) = beta / (1 + sqrt(1 - beta^2))
+# DELTA_BU / RHO / APERTURE_GAP are retained as aliases.
 
-DELTA_BU: float = 0.195342176580
+
+def _half_rapidity_tanh(beta: float) -> float:
+    b = float(beta)
+    if not (0.0 <= b < 1.0):
+        raise ValueError("beta must satisfy 0 <= beta < 1")
+    return b / (1.0 + math.sqrt(1.0 - b * b))
+
+
+def bu_holonomy_angle(
+    theta_ona: float | None = None,
+    m_a: float | None = None,
+) -> float:
+    """Analytic BU dual-pole holonomy angle under the declared embedding."""
+    th = math.pi / 4.0 if theta_ona is None else float(theta_ona)
+    ma = M_A if m_a is None else float(m_a)
+    return 4.0 * math.atan(_half_rapidity_tanh(th) * _half_rapidity_tanh(ma))
+
+
 M_A: float = 1.0 / (2.0 * math.sqrt(2.0 * math.pi))
-RHO: float = DELTA_BU / M_A
-APERTURE_GAP: float = 1.0 - RHO  # ~0.020699553913
+BU_HOLONOMY_ANGLE: float = bu_holonomy_angle()
+BU_CLOSURE_RATIO: float = BU_HOLONOMY_ANGLE / M_A
+BU_APERTURE_GAP: float = 1.0 - BU_CLOSURE_RATIO
+
+DELTA_BU: float = BU_HOLONOMY_ANGLE
+RHO: float = BU_CLOSURE_RATIO
+APERTURE_GAP: float = BU_APERTURE_GAP
 APERTURE_GAP_Q256: int = 5  # best 8-bit dyadic approximation: 5/256
 
 

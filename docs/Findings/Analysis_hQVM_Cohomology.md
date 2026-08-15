@@ -4,7 +4,7 @@
 
 ## Abstract
 
-The Holonomic Quantum Virtual Machine (hQVM) realizes the Common Governance Model (CGM) as a finite state carrier over a characteristic-2 transport base. The CGM construction is organized as a chain of formal layers, each isolating one facet of the requirement that ancestry stay preservable under recursive operations. This document is the cohomology layer of that chain: the level at which transport obstructions receive an algebraic classification beyond what graph connectivity records. Standard graph reachability reports only whether states connect. This document adds the algebraic classification of how generator restrictions obstruct connectivity and of why the Hilbert-space description outperforms the Boolean one. This document builds a finite covering system on the hQVM transition category to classify those obstructions and to compare the Boolean and Hilbert descriptions as two section classes on one site. The shell populations satisfy a discrete Poincaré duality, and comparing Boolean sections to Hilbert-lift sections on horizon ensembles yields the Grothendieck constant of order 2, K_G^R(2) = √2. The residual aperture Δ = 1 - ρ is the obstruction this covering detects, the residual non-closure parameter linking the BU monodromy to the aperture scale. The CHSH measurement on the bipartite carrier turns the constant-level Grothendieck correspondence into a directly falsifiable result.
+The Holonomic Quantum Virtual Machine (hQVM) realizes the Common Governance Model (CGM) as a finite state carrier over a characteristic-2 transport base. The CGM construction is organized as a chain of formal layers, each isolating one facet of the requirement that ancestry stay preservable under recursive operations. This document is the cohomology layer of that chain: the level at which transport obstructions receive an algebraic classification beyond what graph connectivity records. Standard graph reachability reports only whether states connect. This document adds the algebraic classification of how generator restrictions obstruct connectivity and of why the Hilbert-space description outperforms the Boolean one. This document builds a finite covering system on the hQVM transition category to classify those obstructions and to compare the Boolean and Hilbert descriptions as two section classes on one site. The shell populations satisfy a discrete Poincaré duality, and comparing Boolean sections to Hilbert-lift sections on horizon ensembles yields the Grothendieck constant of order 2, K_G^R(2) = √2. The residual aperture Δ = 1 - ρ is the obstruction this covering detects, the residual non-closure parameter linking the BU holonomy to the aperture scale. The CHSH measurement on the bipartite carrier turns the constant-level Grothendieck correspondence into a directly falsifiable result.
 
 ---
 
@@ -912,7 +912,7 @@ role: UNA rapidity scale
 role: CGM aperture gap
 
 δ_BU = 0.19534217658
-role: BU dual-pole monodromy defect
+role: BU dual-pole holonomy defect
 ```
 
 These quantities enter one architecture through different measurements and normalizations.
@@ -941,7 +941,7 @@ They satisfy
 Q_G × m_a² = 1/2
 ```
 
-The BU dual-pole monodromy defect is
+The BU dual-pole holonomy defect is
 
 ```text
 δ_BU = 0.19534217658
@@ -957,7 +957,7 @@ The closure ratio and aperture gap are
 
 ### 10.2 Trace-angle recovery
 
-The monodromy defect is recovered from the trace of the SU(2) half-loop.
+The holonomy defect is recovered from the trace of the SU(2) half-loop.
 
 ```text
 cos(δ_BU / 2) = (1/2) Re Tr(U_half)
@@ -990,7 +990,7 @@ The continuum aperture Δ supplies the residual phase opening of the BU holonomy
 Δ = 1 - ρ = 1 - δ_BU / m_a
 ```
 
-which expresses the aperture directly as the residual closure fraction of the BU monodromy against the aperture scale. The finite obstruction dim GF(2)^6 / Q(A) is the algebraic form of the same non-closure on the transport cover: it measures the rank defect that remains after the included generators act, just as Δ measures the phase defect that remains after the balanced loop. Both describe the gap between the partial restriction and full closure in their respective algebras. The finite and continuum quantities are therefore linked by the closure-ratio identity, not by a separately postulated map.
+which expresses the aperture directly as the residual closure fraction of the BU holonomy against the aperture scale. The finite obstruction dim GF(2)^6 / Q(A) is the algebraic form of the same non-closure on the transport cover: it measures the rank defect that remains after the included generators act, just as Δ measures the phase defect that remains after the balanced loop. Both describe the gap between the partial restriction and full closure in their respective algebras. The finite and continuum quantities are therefore linked by the closure-ratio identity, not by a separately postulated map.
 
 ---
 
@@ -1010,7 +1010,7 @@ The evaluated value is
 α₀ = 0.007299683322
 ```
 
-The formula uses the BU monodromy defect and the aperture scale.
+The formula uses the BU holonomy defect and the aperture scale.
 
 ### 11.2 Gravitational aperture parameter
 

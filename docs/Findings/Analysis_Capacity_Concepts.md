@@ -4,7 +4,7 @@
 
 ## Executive Summary
 
-This document synthesizes findings on the concept of "Capacity" across five key CGM analysis documents: `Analysis_CGM_Units.md`, `Analysis_Hilbert_Space_Representation.md`, `Analysis_Measurement.md`, `Analysis_Monodromy.md`, and `Analysis_Energy_Scales.md`. The analysis reveals that "capacity" in the CGM framework refers to fundamental geometric properties that enable systems to maintain structure while allowing dynamic interactions. Three primary capacity types emerge: (1) **Observational Capacity** - the ability to gather and process information through geometric structures, (2) **Evolutionary/Adaptive Capacity** - the system's capability to adapt and evolve while maintaining coherence, and (3) **Measurement Capacity** - the information-processing capability embedded in measurement topologies. All capacities are fundamentally connected to the CGM's 97.93% closure / 2.07% aperture balance.
+This document synthesizes findings on the concept of "Capacity" across five key CGM analysis documents: `Analysis_CGM_Units.md`, `Analysis_Hilbert_Space_Representation.md`, `Analysis_Measurement.md`, `Analysis_Holonomy.md`, and `Analysis_Energy_Scales.md`. The analysis reveals that "capacity" in the CGM framework refers to fundamental geometric properties that enable systems to maintain structure while allowing dynamic interactions. Three primary capacity types emerge: (1) **Observational Capacity** - the ability to gather and process information through geometric structures, (2) **Evolutionary/Adaptive Capacity** - the system's capability to adapt and evolve while maintaining coherence, and (3) **Measurement Capacity** - the information-processing capability embedded in measurement topologies. All capacities are fundamentally connected to the CGM's 97.93% closure / 2.07% aperture balance.
 
 ## 1. Observational Capacity
 
@@ -159,17 +159,17 @@ The GNS construction on L²(S², dΩ) establishes:
 
 **Capacity Connection**: The Hilbert space structure provides the mathematical foundation for observational capacity - the complete solid angle Q_G = 4π represents the maximum observational capacity in three dimensions.
 
-### 4.2 Monodromy and Memory Capacity
+### 4.2 Holonomy and Memory Capacity
 
-From `Analysis_Monodromy.md`:
+From `Analysis_Holonomy.md`:
 
-Monodromy represents **geometric memory** - the system's capacity to remember paths taken through the geometric structure:
+Holonomy represents **geometric memory** - the system's capacity to remember paths taken through the geometric structure:
 
-- **δ_BU = 0.195342 rad**: BU dual-pole monodromy representing geometric memory
+- **δ_BU = 0.195342 rad**: BU dual-pole holonomy representing geometric memory
 - **97.9% closure**: δ_BU / m_a ≈ 0.979 connects to the fundamental 97.93% closure principle
 - **2.1% aperture**: The deviation represents the fundamental "openness" needed for observation
 
-**Capacity Connection**: The monodromy structure represents the system's **memory capacity** - the ability to store information about geometric paths and recursive history.
+**Capacity Connection**: The holonomy structure represents the system's **memory capacity** - the ability to store information about geometric paths and recursive history.
 
 ### 4.3 Energy Scales and Observational Capacity
 
@@ -213,7 +213,7 @@ This balance appears across scales:
 
 1. **Observational Capacity**: 97.93% complete solid angle coverage, 2.07% aperture for observation
 2. **Evolutionary Capacity**: 97.93% coherence, 2.07% differentiation
-3. **Memory Capacity**: 97.9% closure, 2.1% monodromy deviation
+3. **Memory Capacity**: 97.9% closure, 2.1% holonomy deviation
 4. **Information Capacity**: 97.93% closure, 2.07% aperture for information flow
 
 ### 5.3 Geometric Necessity
@@ -276,7 +276,7 @@ Across all five documents, "capacity" refers to:
 The documents reveal a hierarchy of capacities:
 
 1. **Fundamental Observational Capacity** (CGM_Units): The most basic capacity - what can be observed
-2. **Memory Capacity** (Monodromy): The capacity to store geometric information
+2. **Memory Capacity** (Holonomy): The capacity to store geometric information
 3. **Measurement Capacity** (Measurement): The capacity for unbiased collective observation
 4. **Evolutionary Capacity** (Measurement): The capacity to adapt while maintaining structure
 
@@ -356,7 +356,7 @@ Further investigation could:
 - `Analysis_CGM_Units.md` - Geometric foundation of physical reality
 - `Analysis_Hilbert_Space_Representation.md` - GNS construction and operator representation
 - `Analysis_Measurement.md` - Info-set dynamics for alignment
-- `Analysis_Monodromy.md` - Complete picture of geometric memory
+- `Analysis_Holonomy.md` - Complete picture of geometric memory
 - `Analysis_Energy_Scales.md` - Geometric approach to unification
 
 **Related Documents (Not in Primary Set):**

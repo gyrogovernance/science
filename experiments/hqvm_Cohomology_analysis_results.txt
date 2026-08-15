@@ -482,7 +482,7 @@ C. BYTE MONODROMY BY FAMILY
   family_2: n=64 pure4=63 mixed=1 structs=2
   family_3: n=64 pure4=63 mixed=1 structs=2
   all families have 64 bytes: True
-  note: Pure-4-cycle monodromy is uniform across the 4 families; the 4 stabilizers (mixed) are split across families (one each).
+  note: Pure-4-cycle holonomy is uniform across the 4 families; the 4 stabilizers (mixed) are split across families (one each).
 
 =====
 D. FINER LEFSCHETZ GRADING (shell x Z2-sheet)

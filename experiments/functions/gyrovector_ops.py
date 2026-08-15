@@ -307,7 +307,7 @@ class RecursivePath:
 
     def get_recursive_memory(self) -> np.ndarray:
         """
-        Compute the accumulated recursive memory (monodromy)
+        Compute the accumulated recursive memory (holonomy)
 
         Returns:
             Product of gyrations along the path

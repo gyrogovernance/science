@@ -452,11 +452,11 @@ The 2π defect represents observation beyond the accessible π-radian horizon. O
 
 The geometric closure yields quantitative values for fundamental constants.
 
-**Assumption ledger.** Anchor-free predictions: K_QG ≈ 3.937 from closure and monodromy (`experiments/cgm_quantum_gravity_analysis.py`), redshift drift forecast ≈ 0 within the stated observational range, aperture ratio δ_BU/ m_a = 0.0207 from BU closure (`experiments/cgm_coherence_analysis.py`). Anchored to units: E_GUT via Planck and electroweak scales (`experiments/cgm_energy_analysis.py`), neutrino seesaw via E_GUT and 48² quantization (`experiments/cgm_energy_analysis.py`). Fine-structure constant: δ_BU derivation and quartic scaling (`experiments/cgm_alpha_analysis.py`).
+**Assumption ledger.** Anchor-free predictions: K_QG ≈ 3.937 from closure and holonomy (`experiments/cgm_quantum_gravity_analysis.py`), redshift drift forecast ≈ 0 within the stated observational range, aperture ratio δ_BU/ m_a = 0.0207 from BU closure (`experiments/cgm_coherence_analysis.py`). Anchored to units: E_GUT via Planck and electroweak scales (`experiments/cgm_energy_analysis.py`), neutrino seesaw via E_GUT and 48² quantization (`experiments/cgm_energy_analysis.py`). Fine-structure constant: δ_BU derivation and quartic scaling (`experiments/cgm_alpha_analysis.py`).
 
 **Quantum gravity invariant:** The horizon constant S anchors all subsequent structure (as explained in section 3.1) **[Theorem]**.
 
-**Fine-structure constant:** From BU dual-pole monodromy through quartic scaling, α = (δ_BU)⁴ /  m_a ≈ 1/137.035999206, where δ_BU = 0.195342 rad is the BU dual-pole monodromy, matching experimental precision [17,18] to 0.043 parts per billion **[Hypothesis]**. Uncertainty: ±0.03% from monodromy angle precision and gyrogroup interpretation assumptions. See [19] for complete derivation.
+**Fine-structure constant:** From BU dual-pole holonomy through quartic scaling, α = (δ_BU)⁴ /  m_a ≈ 1/137.035999206, where δ_BU = 0.195342 rad is the BU dual-pole holonomy, matching experimental precision [17,18] to 0.043 parts per billion **[Hypothesis]**. Uncertainty: ±0.03% from holonomy angle precision and gyrogroup interpretation assumptions. See [19] for complete derivation.
 
 **Neutrino mass scale:** Neutrino masses correspond to minimal excitations of the chiral seed (1 DOF) consistent with three-generational structure (3 DOF). Using 48² quantization, the right-handed neutrino mass scale is M_R = E_GUT/48², and the light neutrino masses follow from the seesaw mechanism [15,16]: m_ν = y²v²/M_R ≈ 0.06 eV (via 48² quantization scheme), consistent with oscillation experiments [14] **[Hypothesis]**. Uncertainty: ±0.02 eV from Yukawa coupling variations and quantization scheme sensitivity. See [22] for complete mechanism.
 
@@ -464,7 +464,7 @@ The geometric closure yields quantitative values for fundamental constants.
 
 **Cosmological structure:** Cosmological implications follow from UV-IR conjugacy, potentially manifesting as a Planck-scale black hole interior with r_s/R_H = 1.0000 ± 0.0126 (explored in [BH Universe Analysis], with falsifiable predictions like zero redshift drift) **[Hypothesis]**. The coherence radius R_coh = (c/H_0)/4 marks where observations decohere into phase-sliced projections, resolving horizon and flatness problems without inflation.
 
-These values arise from geometric closure conditions (e.g., δ_BU determined by BU monodromy in [19], dimensionality fixed by SU(2) consistency in [20]) with empirical anchors such as Planck and electroweak scales supplying physical units. Predictions that do not depend on external anchors, such as the quantum gravity commutator K_QG ≈ 3.937 or the zero redshift drift forecast, provide independent falsification paths if observed outside the stated bounds. Computational implementations documented in the reproducibility scripts verify these derivations numerically, with propagated uncertainties showing that a ±15% variation in E_GUT induces an approximately ±30% shift in m_ν through the quadratic seesaw dependence while maintaining a low correlation (roughly 0.2) with the fine-structure result.
+These values arise from geometric closure conditions (e.g., δ_BU determined by BU holonomy in [19], dimensionality fixed by SU(2) consistency in [20]) with empirical anchors such as Planck and electroweak scales supplying physical units. Predictions that do not depend on external anchors, such as the quantum gravity commutator K_QG ≈ 3.937 or the zero redshift drift forecast, provide independent falsification paths if observed outside the stated bounds. Computational implementations documented in the reproducibility scripts verify these derivations numerically, with propagated uncertainties showing that a ±15% variation in E_GUT induces an approximately ±30% shift in m_ν through the quadratic seesaw dependence while maintaining a low correlation (roughly 0.2) with the fine-structure result.
 
 All emerge from Assumption CS through formal derivation.
 
@@ -476,7 +476,7 @@ All emerge from Assumption CS through formal derivation.
 
 CGM’s modal axioms that define coherence and autonomy in physical reality also apply to information processing. In this setting, alignment means that operation sequences remain traceable, allow distinction without homogeneous collapse, avoid absolute contradiction, and recur in balanced form. These conditions appear in measurement as a split between gradient coherence and cycle differentiation; their proportion is the aperture. The reference value A* ≈ 0.0207 is fixed by the universal balance condition in Section 5 and serves as the benchmark for evaluating information systems **[Application]**.
 
-In AI, alignment is treated as a structural property of recursively autonomous reasoning rather than preference fitting. Non‑absolute unity and non‑absolute opposition rule out both total homogeneity and sealed self‑containment, so traceability and balance require calibration that is externally legible. This is operationalized in our implementations: GyroDiagnostics measures the gradient and cycle components and compares aperture to A*, while GyroSI enforces traceable, path‑dependent updates on a finite ontology. Ethical coherence then follows from the same necessities that ground physical principles, without adding ad hoc rules.
+In AI, alignment is treated as a structural property of recursively autonomous reasoning rather than preference fitting. Non‑absolute unity and non‑absolute opposition rule out both total homogeneity and sealed self‑containment, so traceability and balance require calibration that is externally legible. This is operationalized in our implementations: GyroDiagnostics measures the gradient and cycle components and compares aperture to A*, while Gyroscopic ASI enforces traceable, path‑dependent updates on a finite ontology. Ethical coherence then follows from the same necessities that ground physical principles, without adding ad hoc rules.
 
 ### 6.1.1 Operational Metrics Framework
 
@@ -532,7 +532,7 @@ The four metrics, each derived from a specific lemma or the foundational assumpt
 
 **Implementation:** These metrics are operationalized through orthogonal decomposition on a tetrahedral information topology. The 2.07% alignment aperture concerns observational measurement of informational balance and is distinct from the structural closure ratio δ_BU/ m_a = 0.0207 governing physical amplitude bounds in Section 5.2.
 
-**End-to-end systems:** For complete implementations, see the GyroSI architecture (https://github.com/gyrogovernance/superintelligence; technical specifications in [GyroSI Specs], holographic foundations in [GyroSI Holography]) and the GyroDiagnostics evaluation suite (https://github.com/gyrogovernance/gyrodiagnostics).
+**End-to-end systems:** For complete implementations, see the Gyroscopic ASI architecture (https://github.com/gyrogovernance/superintelligence; technical specifications in [Gyroscopic ASI Specs], holographic foundations in [Gyroscopic ASI Holography]) and the GyroDiagnostics evaluation suite (https://github.com/gyrogovernance/gyrodiagnostics).
 
 ### 6.1.7 Worked Example: Semantic Multi-Dimensional Analysis
 
@@ -735,8 +735,8 @@ Superintelligence Index (SI): composite diagnostic score combining alignment met
 
 [Measurement Analysis] B. Korompilias, CGM Measurement Analysis and Protocols. https://github.com/gyrogovernance/science/blob/main/docs/Findings/Analysis_Measurement.md (Part of [Software])
 
-[GyroSI Specs] B. Korompilias, GyroSI Technical Specifications. https://github.com/gyrogovernance/superintelligence/blob/main/guides/GyroSI_Specs.md
+[Gyroscopic ASI Specs] B. Korompilias, Gyroscopic ASI Technical Specifications. https://github.com/gyrogovernance/superintelligence/blob/main/guides/Gyroscopic ASI_Specs.md
 
-[GyroSI Holography] B. Korompilias, GyroSI Holographic Foundations. https://github.com/gyrogovernance/superintelligence/blob/main/guides/GyroSI_Holography.md
+[Gyroscopic ASI Holography] B. Korompilias, Gyroscopic ASI Holographic Foundations. https://github.com/gyrogovernance/superintelligence/blob/main/guides/Gyroscopic ASI_Holography.md
 
 **Reproducibility index.** Key scripts: `experiments/cgm_alpha_analysis.py` (fine-structure derivation and error propagation), `experiments/cgm_energy_analysis.py` (energy scale hierarchy calculations), `experiments/cgm_3D_6DoF_analysis.py` (dimensionality conditions), `experiments/cgm_Hilbert_Space_analysis.py` (GNS construction and Hilbert space representation), `experiments/cgm_coherence_analysis.py` (aperture and closure diagnostics), `experiments/cgm_quantum_gravity_analysis.py` (quantum gravity commutator derivations), `experiments/cgm_theorems_physics.py` (core theorem validations for physics predictions), `experiments/cgm_cmb_data_analysis_*.py` (CMB multipole predictions and Planck data comparisons), and the GyroDiagnostics suite (metric computation and decomposition).

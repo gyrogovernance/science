@@ -213,11 +213,11 @@
   a_d4_mask                                  0.75  depth4_bits/H at d=6
   a_net_D_over_Dplus1                        0.75  ⟨N⟩/(⟨N⟩+1) at thermal ⟨N⟩=d/2
   a_surface_Delta_over_1_32        0.666666666667  Δ(d)/(1/32); kernel-lattice exact
-  a_surface_continuum_Delta        0.662385725223  trestle Δ/(1/32); monodromy correction
+  a_surface_continuum_Delta        0.662385725223  trestle Δ/(1/32); holonomy correction
   lift_a_net_minus_a_SR                      0.25  a_bulk−a_SR = a_time; 1/4 at d=6
   gap_a_d4_minus_surface           0.0833333333333  bulk−surface = 1/12 at d=6 (kernel Δ)
   Delta_kernel_d                   0.0208333333333  spinorial residual 1/(8d)
-  trestle_Delta                    0.0206995539132  continuum monodromy Δ
+  trestle_Delta                    0.0206995539132  continuum holonomy Δ
   surface_kernel_minus_continuum   0.0042809414436  exact 2/3 minus continuum surface
   p_c_rank                         0.090795490172  micro-ref P(rank=d)=1/2
 

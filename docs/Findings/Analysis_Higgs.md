@@ -23,7 +23,7 @@ The Common Governance Model represents a geometric framework where physical prop
 
 - **Q_G = 4π**: The complete solid angle in three dimensions, interpreted as the geometric requirement for coherent observation
 - ** m_a = 1/(2√(2π)) ≈ 0.199471**: An aperture parameter governing the balance between structural closure and dynamic openness
-- **δ_BU = 0.195342 rad**: A monodromy value representing geometric "memory" in recursive structures
+- **δ_BU = 0.195342 rad**: A holonomy value representing geometric "memory" in recursive structures
 - **Δ = 1 - δ_BU/ m_a ≈ 0.0207**: The aperture fraction, representing approximately 2.07% structural openness
 
 The central hypothesis of this analysis is that these ontological parameters, when properly interpreted, constrain the Higgs mechanism and predict observable properties of electroweak physics.

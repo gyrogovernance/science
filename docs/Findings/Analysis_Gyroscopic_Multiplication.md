@@ -14,7 +14,7 @@ This document examines the mathematical structure of multiplication through the 
 
 The arithmetic realization of these identifications is developed through the K4 lattice matrix: the canonical 2 x 2 decomposition of integer dot products into carrier, gauge-action, and chiral-alignment sectors. The scalar case satisfies exact rank-1 factorization (the common-source condition), while the vector case produces a nonzero chart defect decomposable via Cauchy-Binet into chart commutators that measure scale inhomogeneity across positions. The depth hierarchy of this decomposition traces the CGM constraint progression from common source through non-commutativity to balanced closure.
 
-These identifications connect the CGM geometric invariants to the classical theory of roots of unity, continued fractions, Gram determinants, Hilbert space norms, quaternionic orientation spaces, and two-circle intersection geometry. Cross-domain resonances are examined in the transition from integrability to chaos in Hamiltonian dynamical systems, where a universal critical exponent of one half governs the onset of non-integrable behavior, and in the lemon billiard family, where the CGM monodromy constant appears as the shape parameter producing a uniquely balanced mixed-type phase space.
+These identifications connect the CGM geometric invariants to the classical theory of roots of unity, continued fractions, Gram determinants, Hilbert space norms, quaternionic orientation spaces, and two-circle intersection geometry. Cross-domain resonances are examined in the transition from integrability to chaos in Hamiltonian dynamical systems, where a universal critical exponent of one half governs the onset of non-integrable behavior, and in the lemon billiard family, where the CGM holonomy constant appears as the shape parameter producing a uniquely balanced mixed-type phase space.
 
 Results are stratified by epistemic status: exact mathematical results, structural correspondences between layers, and phenomenological observations generating falsifiable hypotheses.
 
@@ -365,7 +365,7 @@ This fourth-order closure corresponds to the CGM depth-four balance: the depth-f
 
 ---
 
-### 7. Monodromy and Non-Closure
+### 7. Holonomy and Non-Closure
 
 #### 7.1 Periodic continued fractions
 
@@ -377,11 +377,11 @@ Lagrange established (c. 1780) that the continued fraction expansion of the squa
 √5 = [2; 4, 4, 4, …]
 ```
 
-The repeating block never terminates (the square root is irrational) but cycles with a fixed period. This periodic non-closure is the arithmetic form of monodromy. The system wraps around its repeating block, returning to the same pattern without achieving exact closure.
+The repeating block never terminates (the square root is irrational) but cycles with a fixed period. This periodic non-closure is the arithmetic form of holonomy. The system wraps around its repeating block, returning to the same pattern without achieving exact closure.
 
-#### 7.2 The CGM monodromy defect
+#### 7.2 The CGM holonomy defect
 
-The CGM dual-pole monodromy defect is δ_BU ≈ 0.195342 radians, the phase accumulated by a depth-four cycle that almost closes but retains a small residual. The closure ratio is:
+The CGM dual-pole holonomy defect is δ_BU ≈ 0.195342 radians, the phase accumulated by a depth-four cycle that almost closes but retains a small residual. The closure ratio is:
 
 ρ = δ_BU / m_a ≈ 0.9793
 
@@ -403,7 +403,7 @@ The two roots are exchanged. One circuit produces non-closure with sign reversal
 
 −√z → √z
 
-The square-root Riemann surface provides a canonical minimal monodromy model: reproducible non-closure with finite return depth (depth 2). For cube roots, the Riemann surface has three sheets, and one circuit multiplies the root by exp(2πi/3), a primitive cube root of unity. Three circuits restore closure.
+The square-root Riemann surface provides a canonical minimal holonomy model: reproducible non-closure with finite return depth (depth 2). For cube roots, the Riemann surface has three sheets, and one circuit multiplies the root by exp(2πi/3), a primitive cube root of unity. Three circuits restore closure.
 
 #### 7.4 Heron's method: root recovery through balance
 
@@ -754,11 +754,11 @@ The MacWilliams identity for the self-dual [12,6,2] mask code provides a further
 
 ---
 
-## Part IV: Geometric Phase and Monodromy
+## Part IV: Geometric Phase and Holonomy
 
 ### 13. The Geometric Phase
 
-This section returns to monodromy in geometric-phase language.
+This section returns to holonomy in geometric-phase language.
 
 #### 13.1 The Berry phase
 
@@ -766,15 +766,15 @@ The geometric phase (Pancharatnam-Berry phase) is the phase difference acquired 
 
 For a spin-1/2 particle transported around a closed loop, the Berry phase is half the enclosed solid angle. A complete loop enclosing 4π steradians produces a Berry phase of 2π, returning the system to its original state. A loop enclosing 2π steradians produces a Berry phase of π, flipping the sign of the state (the SU(2) double-cover signature).
 
-#### 13.2 The CGM monodromy as geometric phase
+#### 13.2 The CGM holonomy as geometric phase
 
 The CGM toroidal holonomy δ_BU = 0.195342 radians is the geometric phase accumulated by the depth-four operational cycle, evaluated in the su(2) representation with canonical stage operators. It measures the angular deficit: the amount by which the system fails to return to its starting state after traversing the full operational loop.
 
 The Foucault pendulum provides a classical illustration. The pendulum swings along one direction (a root process). The Earth rotates beneath it (the angular context). The precession rate is 2π sin φ per sidereal day, where φ is the latitude. The precession is a geometric phase: the memory accumulated when the root process operates within a curved space.
 
-#### 13.3 Branch-point monodromy and Berry phase
+#### 13.3 Branch-point holonomy and Berry phase
 
-The Berry phase around a singular point (a degeneracy, a conical intersection) is structurally identical to the monodromy of a multivalued function around a branch point. In both cases:
+The Berry phase around a singular point (a degeneracy, a conical intersection) is structurally identical to the holonomy of a multivalued function around a branch point. In both cases:
 
 - A closed loop in parameter space
 - Non-trivial phase accumulation
@@ -842,7 +842,7 @@ In the study of quantum chaos, billiard systems serve as fundamental models for 
 
 #### P2.2 Numerical proximity
 
-The CGM dual-pole monodromy defect is δ_BU = 0.195342 radians. The lemon billiard shape parameter producing the uniquely balanced mixed-type phase space is B = 0.1953. Both quantities are dimensionless. Their numerical agreement extends to four significant figures.
+The CGM dual-pole holonomy defect is δ_BU = 0.195342 radians. The lemon billiard shape parameter producing the uniquely balanced mixed-type phase space is B = 0.1953. Both quantities are dimensionless. Their numerical agreement extends to four significant figures.
 
 #### P2.3 Structural parallels
 
@@ -946,7 +946,7 @@ Quantitative identification between biological aperture fractions and the CGM va
 | Area(u, v) = ‖u‖ · ‖v‖ under orthogonality | Gram determinant specialization | Bilinear algebra |
 | Δ_K4 = 0 for scalars | Rank-1 factorization of K4 matrix | Cauchy-Binet |
 | Δ_K4 = Σ ω_q · ω_k for vectors | Chart defect as inner product of commutator fields | Cauchy-Binet |
-| Monodromy of √z | One circuit: √z → −√z; two: closure | Riemann surface |
+| Holonomy of √z | One circuit: √z → −√z; two: closure | Riemann surface |
 | ‖v‖ = √⟨v,v⟩ | Norm as root of quadratic self-interaction | Hilbert space geometry |
 | dim(H ⊗ K) = dim(H) · dim(K) | Dimensions multiply under tensor product | Linear algebra |
 | u × v = *(u ∧ v) in 3D | Product of two directions yields third | Hodge duality |
@@ -977,7 +977,7 @@ Is the optimal stomatal aperture fraction in plants quantitatively related to Δ
 
 ### On the continued fraction structure
 
-What is the continued fraction expansion of δ_BU? Does its periodic structure relate to the monodromy cycle?
+What is the continued fraction expansion of δ_BU? Does its periodic structure relate to the holonomy cycle?
 
 ### On the Gram-chart connection
 

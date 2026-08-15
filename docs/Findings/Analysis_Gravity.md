@@ -145,7 +145,7 @@ Ingress Balance (BU-Ingress) requires the closed state to retain the information
 S → (□B → ([R]S ↔ S ∧ ¬([L]S ↔ S) ∧ ¬□E ∧ ¬□¬E))
 ```
 
-The depth-four state preserves the full operational history, including the original chirality, rotational variety, and translational expansion. Memory is encoded as the monodromy phase defect of the vibrational oscillation at BU. Ingress represents the centripetal binding that reconstructs the original context without erasing structural distinctions.
+The depth-four state preserves the full operational history, including the original chirality, rotational variety, and translational expansion. Memory is encoded as the holonomy phase defect of the vibrational oscillation at BU. Ingress represents the centripetal binding that reconstructs the original context without erasing structural distinctions.
 
 The following results are theorems of the modal system, proven in [15]. The BCH expansion of the depth-four commutator condition forces the generated Lie algebra to close on three generators as sl(2), through Hall word exclusion of bracket length ≥ 3. The simplicity requirement from BU-Ingress excludes direct-sum algebras such as so(4), and the GNS construction selects the compact real form su(2). The bi-gyrogroup consistency required by ONA forces the semidirect product SE(3) = SU(2) ⋉ R³ with exactly three translational parameters. The dimensional proof in [15] establishes n = 3 as the unique dimension satisfying all five conditions simultaneously, with constructive exclusions of n = 2 and n ≥ 4. The hQVM kernel of Section 5 is a concrete finite realization of these theorems, not an independent postulate. In the GNS representation of [14], the modal operators [L] and [R] are realized as one-parameter unitary groups U_L(t) = exp(itX) and U_R(t) = exp(itY) on L²(S²), providing the Lie algebra elements X and Y on which the BCH expansion operates.
 
@@ -165,7 +165,7 @@ Q_G × m_a² = 1/2
 
 (2π)_L and (2π)_R denote the angular coverage contributed by the left and right transition directions. Each contributes 2π because a full cycle in either direction covers one complete angular revolution.
 
-The continuous 4π sphere therefore resolves into a half-integer quantum pass, reflecting the underlying SU(2) double-cover structure established by the rotational degrees of freedom. The closure ratio ρ = δ_BU/m_a and the aperture gap Δ = 1 − ρ measure how the BU dual-pole monodromy δ_BU sits relative to the aperture m_a (Appendix G). Numerically, m_a ≈ 0.199471, ρ ≈ 0.9793, and Δ ≈ 0.0207.
+The continuous 4π sphere therefore resolves into a half-integer quantum pass, reflecting the underlying SU(2) double-cover structure established by the rotational degrees of freedom. The closure ratio ρ = δ_BU/m_a and the aperture gap Δ = 1 − ρ measure how the BU dual-pole holonomy δ_BU sits relative to the aperture m_a (Appendix G). Numerically, m_a ≈ 0.199471, ρ ≈ 0.9793, and Δ ≈ 0.0207.
 
 The 4π invariant appears in the field equation for a point source:
 
@@ -227,7 +227,7 @@ To convert defect magnitude to an angle scale, define the plaquette deficit angl
 alpha(d) = (popcount(d) / 6) x delta_BU
 ```
 
-delta_BU is the BU dual-pole monodromy fixed in Appendix G. This fixes the curvature unit.
+delta_BU is the BU dual-pole holonomy fixed in Appendix G. This fixes the curvature unit.
 
 A Regge action is a weighted sum of deficit angles. In this manuscript the weight is the symmetric trace-free (STF) sector of the shell-conditioned stress σ^{ij} = p δ^{ij} + π^{ij} introduced in Section 4 and formalized in Appendix D. The horizons have π = 0 and therefore carry zero STF weight. Only shells 1 through 5 contribute to the gravitational attenuation τ_G.
 
@@ -336,7 +336,7 @@ The deficit angle for a plaquette with defect d is:
 alpha(d) = (popcount(d) / 6) x delta_BU
 ```
 
-This is the discrete analogue of the deficit angle in Regge calculus, where curvature at a hinge is measured by the angular deficit. The factor delta_BU sets the curvature scale from the BU monodromy.
+This is the discrete analogue of the deficit angle in Regge calculus, where curvature at a hinge is measured by the angular deficit. The factor delta_BU sets the curvature scale from the BU holonomy.
 
 The Regge action sums deficit angles weighted by hinge area. In the kernel, the hinge weight is the anisotropy (symmetric trace-free content) of the shell at which the holonomy step occurs. Sections 4 and 5.4 establish that gravity couples exclusively to the five bulk shells carrying STF degrees. Shells 0 and 6 carry zero anisotropy: Tr(sigma) = 0 and ||pi||^2 = 0 on both horizons. The plaquette census confirms that horizons carry nonzero geometric defect (alpha sum approximately 200) but zero anisotropy weight. Geometric defect exists on the horizons, but the STF weight is zero there, so horizons do not contribute to the Regge transport that defines τ_G. This is the discrete trace versus trace-free split used throughout this manuscript. The curvature proxy alpha(d) can be nonzero on the horizons, but the gravitational attenuation depends on the trace-free sector π, which vanishes on shells 0 and 6 and is nonzero only in shells 1 through 5.
 
@@ -1088,9 +1088,9 @@ It is the maximum amplitude consistent with a π-radian observable horizon. Left
 
 The gyrotriangle defect δ = π − (π/2 + π/4 + π/4) = 0 fixes the angular structure uniquely.
 
-### G.2 BU Dual-Pole Monodromy and Closure
+### G.2 BU Dual-Pole Holonomy and Closure
 
-The BU dual-pole monodromy δ_BU is the phase accumulated on the path ONA → BU+ → BU− → ONA:
+The BU dual-pole holonomy δ_BU is the phase accumulated on the path ONA → BU+ → BU− → ONA:
 
 ```text
 δ_BU = 2 × ω(ONA ↔ BU)  ≈  0.195342176580 rad

@@ -296,7 +296,7 @@ def try_fine_structure(m_a: Any) -> Optional[Dict[str, Any]]:
 
         gyro = GyroVectorSpace(c=1.0)
         tester = TWClosureTester(gyro)
-        res = tester.compute_bu_dual_pole_monodromy(verbose=False)
+        res = tester.compute_bu_dual_pole_holonomy(verbose=False)
         delta_BU = res["delta_bu"]
         alpha_pred = (delta_BU**4) / m_a
         return {

@@ -82,8 +82,8 @@ class SingularityInfinityValidator:
         singularity_measures = []
 
         for loop_name, loop_points in all_loops.items():
-            # Enhanced monodromy computation
-            monodromy_norm = float(self.ona_stage.monodromy_measure(loop_points))
+            # Enhanced holonomy computation
+            holonomy_norm = float(self.ona_stage.holonomy_measure(loop_points))
 
             # Method 3: Sophisticated coherence field computation
             # Use recursive path to model coherence evolution
@@ -115,17 +115,17 @@ class SingularityInfinityValidator:
                 avg_coherence = np.mean([abs(c) for c in coherence_evolution])
                 coherence_field = (min_coherence + avg_coherence) / 2
             else:
-                coherence_field = np.exp(-monodromy_norm)
+                coherence_field = np.exp(-holonomy_norm)
 
             # Method 4: Singularity strength metrics
-            singularity_strength = monodromy_norm / (coherence_field + 1e-10)
-            coherence_ratio = coherence_field / np.exp(-monodromy_norm)
+            singularity_strength = holonomy_norm / (coherence_field + 1e-10)
+            coherence_ratio = coherence_field / np.exp(-holonomy_norm)
 
             # Multiple singularity detection criteria
             criteria = {
-                "strong_singularity": monodromy_norm > 100 and coherence_field < 1e-3,
-                "moderate_singularity": monodromy_norm > 10 and coherence_field < 1e-2,
-                "weak_singularity": monodromy_norm > 1 and coherence_field < 0.1,
+                "strong_singularity": holonomy_norm > 100 and coherence_field < 1e-3,
+                "moderate_singularity": holonomy_norm > 10 and coherence_field < 1e-2,
+                "weak_singularity": holonomy_norm > 1 and coherence_field < 0.1,
                 "singularity_strength": singularity_strength > 100,
                 "coherence_breakdown": coherence_ratio < 0.01,
             }
@@ -135,7 +135,7 @@ class SingularityInfinityValidator:
             singularity_measures.append(
                 {
                     "loop_name": loop_name,
-                    "monodromy_norm": monodromy_norm,
+                    "holonomy_norm": holonomy_norm,
                     "coherence_field": coherence_field,
                     "min_coherence": (
                         min(coherence_evolution)
@@ -151,7 +151,7 @@ class SingularityInfinityValidator:
             )
 
         # Analyze results with multiple metrics
-        best_by_monodromy = max(singularity_measures, key=lambda x: x["monodromy_norm"])
+        best_by_holonomy = max(singularity_measures, key=lambda x: x["holonomy_norm"])
         best_by_strength = max(
             singularity_measures, key=lambda x: x["singularity_strength"]
         )
@@ -160,15 +160,15 @@ class SingularityInfinityValidator:
         )
 
         # Data-driven threshold computation
-        monodromy_norms = [s["monodromy_norm"] for s in singularity_measures]
+        holonomy_norms = [s["holonomy_norm"] for s in singularity_measures]
         coherence_fields = [s["coherence_field"] for s in singularity_measures]
         singularity_strengths = [
             s["singularity_strength"] for s in singularity_measures
         ]
 
         # Use percentiles for data-driven thresholds
-        monodromy_p95 = np.percentile(monodromy_norms, 95) if monodromy_norms else 0
-        monodromy_p90 = np.percentile(monodromy_norms, 90) if monodromy_norms else 0
+        holonomy_p95 = np.percentile(holonomy_norms, 95) if holonomy_norms else 0
+        holonomy_p90 = np.percentile(holonomy_norms, 90) if holonomy_norms else 0
         coherence_p05 = np.percentile(coherence_fields, 5) if coherence_fields else 1
         strength_p95 = (
             np.percentile(singularity_strengths, 95) if singularity_strengths else 0
@@ -176,18 +176,18 @@ class SingularityInfinityValidator:
 
         # Update criteria with data-driven thresholds
         for measure in singularity_measures:
-            monodromy_norm = measure["monodromy_norm"]
+            holonomy_norm = measure["holonomy_norm"]
             coherence_field = measure["coherence_field"]
             singularity_strength = measure["singularity_strength"]
             coherence_ratio = measure["coherence_ratio"]
 
             # Data-driven criteria
             measure["detection_criteria"] = {
-                "strong_singularity": monodromy_norm > monodromy_p95
+                "strong_singularity": holonomy_norm > holonomy_p95
                 and coherence_field < coherence_p05,
-                "moderate_singularity": monodromy_norm > monodromy_p90
+                "moderate_singularity": holonomy_norm > holonomy_p90
                 and coherence_field < coherence_p05 * 10,
-                "weak_singularity": monodromy_norm > np.mean(monodromy_norms)
+                "weak_singularity": holonomy_norm > np.mean(holonomy_norms)
                 and coherence_field < np.mean(coherence_fields),
                 "singularity_strength": singularity_strength > strength_p95,
                 "coherence_breakdown": coherence_ratio < 0.01,
@@ -209,15 +209,15 @@ class SingularityInfinityValidator:
 
         results = {
             "singularity_measures": singularity_measures,
-            "best_by_monodromy": best_by_monodromy,
+            "best_by_holonomy": best_by_holonomy,
             "best_by_strength": best_by_strength,
             "best_by_coherence": best_by_coherence,
             "singularity_found": singularity_found,
             "strong_singularities": strong_singularities,
             "moderate_singularities": moderate_singularities,
             "total_loops_tested": len(singularity_measures),
-            "max_monodromy_norm": max(
-                s["monodromy_norm"] for s in singularity_measures
+            "max_holonomy_norm": max(
+                s["holonomy_norm"] for s in singularity_measures
             ),
             "min_coherence_field": min(
                 s["coherence_field"] for s in singularity_measures
@@ -230,11 +230,11 @@ class SingularityInfinityValidator:
         }
 
         print(f"Total loops tested: {results['total_loops_tested']}")
-        print(f"Max monodromy norm: {results['max_monodromy_norm']:.2e}")
+        print(f"Max holonomy norm: {results['max_holonomy_norm']:.2e}")
         print(f"Min coherence field: {results['min_coherence_field']:.2e}")
         print(f"Strong singularities: {results['strong_singularities']}")
         print(f"Moderate singularities: {results['moderate_singularities']}")
-        print(f"Best by monodromy: {best_by_monodromy['loop_name']}")
+        print(f"Best by holonomy: {best_by_holonomy['loop_name']}")
         print(f"Best by strength: {best_by_strength['loop_name']}")
 
         return results

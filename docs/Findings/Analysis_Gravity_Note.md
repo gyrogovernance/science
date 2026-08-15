@@ -83,7 +83,7 @@ Balance Ingress (BU-In) requires memory reconstruction from the closed state:
 S → (□B → ([R]S ↔ S ∧ ¬([L]S ↔ S) ∧ ¬□E ∧ ¬□¬E))
 ```
 
-The consequent states that once balance holds, the closed configuration retains the original chirality and both non-absolute lemmas. Ingress represents the centripetal binding that reconstructs the original context without erasing structural distinctions. Memory is encoded as the monodromy phase defect of bounded vibrational motion at the 2.07% aperture amplitude.
+The consequent states that once balance holds, the closed configuration retains the original chirality and both non-absolute lemmas. Ingress represents the centripetal binding that reconstructs the original context without erasing structural distinctions. Memory is encoded as the holonomy phase defect of bounded vibrational motion at the 2.07% aperture amplitude.
 
 The dual nature of balance is the resulting state of the two lemmas. Their operational displacement cost manifests as gravitational attraction. Mass represents the accumulated memory of this balance. In the relativistic limit, this structure maps directly to the gravitoelectric and gravitomagnetic fields [2].
 
@@ -263,7 +263,7 @@ Gravity requires quantization. The continuous sphere resolves into discrete oper
 Δ = 1 − ρ        ≈ 0.0207
 ```
 
-where δ_BU is the BU dual-pole monodromy, ρ is the closure ratio (structural closure fraction), and Δ is the aperture gap (dynamic opening fraction). The system maintains near-total closure with a fractional opening. Full closure would leave no aperture and render observation impossible. The aperture gap Δ is the expansion parameter for gravitational and electromagnetic attenuation. Observation is possible precisely because Δ > 0.
+where δ_BU is the BU dual-pole holonomy, ρ is the closure ratio (structural closure fraction), and Δ is the aperture gap (dynamic opening fraction). The system maintains near-total closure with a fractional opening. Full closure would leave no aperture and render observation impossible. The aperture gap Δ is the expansion parameter for gravitational and electromagnetic attenuation. Observation is possible precisely because Δ > 0.
 
 **3.4. Optical Conjugacy and the Energy Ladder**
 
@@ -283,7 +283,7 @@ Electromagnetic coupling emerges at the observable BU focus [13]. The base formu
 α₀ = δ_BU⁴ / m_a   ≈ 0.00729968
 ```
 
-where α₀ is the base electromagnetic coupling at the BU focus, δ_BU is the dual-pole monodromy, and m_a is the observational aperture. This value differs from the measured fine-structure constant [8] by 319 ppm, reflecting the base geometric kernel prior to UV-IR transport corrections. The quartic dependence emerges from the geometric requirement for dual commutators and poles in the BU traversal.
+where α₀ is the base electromagnetic coupling at the BU focus, δ_BU is the dual-pole holonomy, and m_a is the observational aperture. This value differs from the measured fine-structure constant [8] by 319 ppm, reflecting the base geometric kernel prior to UV-IR transport corrections. The quartic dependence emerges from the geometric requirement for dual commutators and poles in the BU traversal.
 
 **3.6. The Gravitational-Electromagnetic Coupling Identity**
 
@@ -505,7 +505,7 @@ To convert defect magnitude to an angle scale, define the plaquette deficit angl
 α(d) = (popcount(d) / 6) × δ_BU
 ```
 
-where popcount(d) is the defect magnitude in GF(2)^6 and δ_BU is the BU dual-pole monodromy. This fixes the curvature unit.
+where popcount(d) is the defect magnitude in GF(2)^6 and δ_BU is the BU dual-pole holonomy. This fixes the curvature unit.
 
 The Regge action sums deficit angles weighted by hinge area. In the kernel, the hinge weight is the anisotropy (symmetric trace-free content) of the shell at which the holonomy step occurs.
 

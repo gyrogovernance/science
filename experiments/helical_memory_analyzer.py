@@ -7,8 +7,6 @@ This module implements the CORRECT theoretical framework from the foundation doc
 - SU(2) spin frame emergence at UNA stage
 - SO(3) translation activation at ONA stage
 - Memory stabilization with ψ_BU coherence field at BU stage
-
-This replaces the incorrect "recursive memory analyzer" with the proper implementation.
 """
 
 import sys

@@ -54,7 +54,7 @@ class CGMAcousticDiagnostics:
         # Toroidal holonomy deficit (discovery)
         self.holonomy_deficit = 0.863  # rad - persistent invariant
 
-        # BU dual-pole monodromy (discovery)
+        # BU dual-pole holonomy (discovery)
         self.delta_BU = 0.195  # rad ≈  m_a (97.9% agreement)
 
         # Anatomical TW ratio (discovery)
@@ -189,7 +189,7 @@ class CGMAcousticDiagnostics:
         self, gyration_sequence: List[float], use_holonomy: bool = True
     ) -> Dict[str, Any]:
         """
-        Enhanced mapping incorporating toroidal holonomy deficit and BU monodromy.
+        Enhanced mapping incorporating toroidal holonomy deficit and BU holonomy.
         """
         acoustic_modes = []
 

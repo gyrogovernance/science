@@ -8,7 +8,7 @@ gravitational fields.
 
 Key components:
 1. Coherence fields ψ_rec that accumulate along recursive paths
-2. Monodromy residue μ(M) computation around closed loops
+2. Holonomy residue μ(M) computation around closed loops
 3. Phase gradients ∇arg(ψ_rec) for temporal measure
 4. Stage transition observables (SU(2) spin, SO(3) translation)
 """
@@ -108,7 +108,7 @@ class RecursiveMemory:
 
     This class builds on the proven mathematical foundation to implement:
     1. Coherence field accumulation along recursive paths
-    2. Monodromy residue computation around closed loops
+    2. Holonomy residue computation around closed loops
     3. Phase gradient computation for temporal measure
     4. Stage transition observables
     """
@@ -134,7 +134,7 @@ class RecursiveMemory:
         # Initialize memory storage
         self.memory_paths: List[MemoryPath] = []
         self.coherence_fields: List[complex] = []
-        self.monodromy_residues: List[complex] = []
+        self.holonomy_residues: List[complex] = []
 
         # CGM stage parameters (from proven foundations)
         self.stage_angles = {
@@ -311,15 +311,15 @@ class RecursiveMemory:
 
         return path
 
-    def compute_monodromy_residue(self, path: MemoryPath) -> complex:
+    def compute_holonomy_residue(self, path: MemoryPath) -> complex:
         """
-        Compute monodromy residue μ(M) around a closed loop.
+        Compute holonomy residue μ(M) around a closed loop.
 
         Args:
             path: MemoryPath representing the loop
 
         Returns:
-            Complex monodromy residue
+            Complex holonomy residue
         """
         if len(path.points) < 3:
             return 1.0 + 0j
@@ -330,14 +330,14 @@ class RecursiveMemory:
         closure_error = np.linalg.norm(end_point - start_point)
 
         if closure_error > 0.1:  # Path not closed
-            warnings.warn("Path is not closed, monodromy may not be meaningful")
+            warnings.warn("Path is not closed, holonomy may not be meaningful")
 
-        # Compute monodromy as product of all phase factors
-        monodromy = 1.0 + 0j
+        # Compute holonomy as product of all phase factors
+        holonomy = 1.0 + 0j
         for phase in path.phases:
-            monodromy *= phase
+            holonomy *= phase
 
-        return monodromy
+        return holonomy
 
     def compute_coherence_field(self, paths: List[MemoryPath]) -> complex:
         """
@@ -426,24 +426,24 @@ class RecursiveMemory:
         phase_gradient = self.compute_phase_gradient(paths)
         gradient_magnitude = np.linalg.norm(phase_gradient)
 
-        # Compute monodromy residues
-        monodromy_residues = []
+        # Compute holonomy residues
+        holonomy_residues = []
         for path in paths:
-            residue = self.compute_monodromy_residue(path)
-            monodromy_residues.append(residue)
+            residue = self.compute_holonomy_residue(path)
+            holonomy_residues.append(residue)
 
-        # Average monodromy residue
-        avg_monodromy = np.mean(monodromy_residues)
-        monodromy_magnitude = abs(avg_monodromy)
+        # Average holonomy residue
+        avg_holonomy = np.mean(holonomy_residues)
+        holonomy_magnitude = abs(avg_holonomy)
 
         # Estimate κ from geometric quantities
         # This is the key relationship to be developed:
-        # κ ∝ (coherence_magnitude × gradient_magnitude) / monodromy_magnitude
+        # κ ∝ (coherence_magnitude × gradient_magnitude) / holonomy_magnitude
 
-        if monodromy_magnitude > self.coherence_threshold:
+        if holonomy_magnitude > self.coherence_threshold:
             kappa_estimate = (
                 coherence_magnitude * gradient_magnitude
-            ) / monodromy_magnitude
+            ) / holonomy_magnitude
         else:
             kappa_estimate = np.inf
 
@@ -451,10 +451,10 @@ class RecursiveMemory:
             "kappa_estimate": kappa_estimate,
             "coherence_magnitude": coherence_magnitude,
             "gradient_magnitude": gradient_magnitude,
-            "monodromy_magnitude": monodromy_magnitude,
+            "holonomy_magnitude": holonomy_magnitude,
             "total_coherence": total_coherence,
             "phase_gradient": phase_gradient,
-            "monodromy_residues": monodromy_residues,
+            "holonomy_residues": holonomy_residues,
             "n_paths": n_paths,
             "path_length": path_length,
             "note": "κ estimate from CGM geometry via recursive memory",
@@ -492,26 +492,26 @@ class RecursiveMemory:
                 print(f"  Generated {i + 1}/{n_paths} paths")
 
         # Compute key quantities
-        print("\nComputing coherence fields and monodromy...")
+        print("\nComputing coherence fields and holonomy...")
         total_coherence = self.compute_coherence_field(paths)
         phase_gradient = self.compute_phase_gradient(paths)
 
-        monodromy_residues = []
+        holonomy_residues = []
         for path in paths:
-            residue = self.compute_monodromy_residue(path)
-            monodromy_residues.append(residue)
+            residue = self.compute_holonomy_residue(path)
+            holonomy_residues.append(residue)
 
         # Statistical analysis
         coherence_magnitude = abs(total_coherence)
         gradient_magnitude = np.linalg.norm(phase_gradient)
-        monodromy_magnitudes = [abs(r) for r in monodromy_residues]
+        holonomy_magnitudes = [abs(r) for r in holonomy_residues]
 
-        avg_monodromy = np.mean(monodromy_magnitudes)
-        std_monodromy = np.std(monodromy_magnitudes)
+        avg_holonomy = np.mean(holonomy_magnitudes)
+        std_holonomy = np.std(holonomy_magnitudes)
 
         # κ estimation
-        if avg_monodromy > self.coherence_threshold:
-            kappa_estimate = (coherence_magnitude * gradient_magnitude) / avg_monodromy
+        if avg_holonomy > self.coherence_threshold:
+            kappa_estimate = (coherence_magnitude * gradient_magnitude) / avg_holonomy
         else:
             kappa_estimate = np.inf
 
@@ -519,25 +519,25 @@ class RecursiveMemory:
         print(f"  Total coherence magnitude: {coherence_magnitude:.6f}")
         print(f"  Phase gradient magnitude: {gradient_magnitude:.6f}")
         print(
-            f"  Average monodromy magnitude: {avg_monodromy:.6f} ± {std_monodromy:.6f}"
+            f"  Average holonomy magnitude: {avg_holonomy:.6f} ± {std_holonomy:.6f}"
         )
         print(f"  κ estimate from geometry: {kappa_estimate:.6f}")
 
         # Store results
         self.memory_paths = paths
         self.coherence_fields = [path.get_coherence_field() for path in paths]
-        self.monodromy_residues = monodromy_residues
+        self.holonomy_residues = holonomy_residues
 
         return {
             "paths": paths,
             "total_coherence": total_coherence,
             "phase_gradient": phase_gradient,
-            "monodromy_residues": monodromy_residues,
+            "holonomy_residues": holonomy_residues,
             "kappa_estimate": kappa_estimate,
             "statistics": {
                 "coherence_magnitude": coherence_magnitude,
                 "gradient_magnitude": gradient_magnitude,
-                "avg_monodromy": avg_monodromy,
-                "std_monodromy": std_monodromy,
+                "avg_holonomy": avg_holonomy,
+                "std_holonomy": std_holonomy,
             },
         }

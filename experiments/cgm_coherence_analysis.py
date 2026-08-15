@@ -30,7 +30,7 @@ class CGMGeometricCoherence:
         self.una_threshold = math.cos(math.pi / 4)  # 1/√2 - orthogonal projection
         self.ona_threshold = math.pi / 4  # π/4 - diagonal angle
         self.bu_threshold = 1 / (2 * math.sqrt(2 * math.pi))  #  m_a aperture parameter
-        self.bu_monodromy = 0.19534217658  # δ_BU monodromy angle
+        self.bu_holonomy = 0.19534217658  # δ_BU holonomy angle
 
         # Derived CGM constants
         self.quantum_geometric_constant = (
@@ -470,7 +470,7 @@ class CGMGeometricCoherence:
         print(
             f"   BU (Balance Universal - Aperture):       {self.bu_threshold:.6f} = 1/(2√(2π))"
         )
-        print(f"   BU Monodromy δ_BU:                      {self.bu_monodromy:.6f} rad")
+        print(f"   BU Holonomy δ_BU:                      {self.bu_holonomy:.6f} rad")
         print(
             f"\n   UNA→ONA Lift:                           {self.una_ona_lift:.6f} = π/4 - 1/√2"
         )
@@ -642,10 +642,10 @@ class CGMGeometricCoherence:
         # ===== Stage 8: Continued Fractions =====
         print("\n8. CONTINUED FRACTION ANALYSIS")
         print("-" * 9)
-        rho_bu = self.bu_monodromy / (2 * math.pi)
+        rho_bu = self.bu_holonomy / (2 * math.pi)
         cf = self.continued_fraction(rho_bu)
         convs = self.convergents(cf)
-        print(f"   BU monodromy ratio ρ_BU = δ_BU/(2π) = {rho_bu:.10f}")
+        print(f"   BU holonomy ratio ρ_BU = δ_BU/(2π) = {rho_bu:.10f}")
         print(f"   Continued fraction: {cf[:8]}...")
         if len(convs) >= 3:
             print(f"   Key convergents: {convs[0]}, {convs[1]}, {convs[2]}...")

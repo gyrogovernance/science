@@ -478,7 +478,7 @@ This formula is the discrete analog of the continuous CGM result that the BU com
 
 ## Part 9: CGM Constants Bridge (test_physics_5, Class 1)
 
-These constants are treated as intrinsic invariants of the CGM geometry: the kernel dynamics is constructed so that these relations hold identically, and the tests here verify that the implementation respects the theoretical equalities within numerical precision. Brief glosses: delta_BU is the minimal monodromy defect angle predicted by CGM (the smallest angular displacement produced by a single BU-stage transition). m_a is the aperture scale (the normalization constant relating angular defects to probability measures). Q_G = 4*pi is the quantum gravity horizon (total solid angle of a sphere).
+These constants are treated as intrinsic invariants of the CGM geometry: the kernel dynamics is constructed so that these relations hold identically, and the tests here verify that the implementation respects the theoretical equalities within numerical precision. Brief glosses: delta_BU is the minimal holonomy defect angle predicted by CGM (the smallest angular displacement produced by a single BU-stage transition). m_a is the aperture scale (the normalization constant relating angular defects to probability measures). Q_G = 4*pi is the quantum gravity horizon (total solid angle of a sphere).
 
 ### 9.1 Fundamental Aperture Constraint
 
@@ -526,9 +526,9 @@ These ratios are verified to 12 decimal places, confirming that the stage thresh
 
 The continuous aperture gap maps to exact discrete approximants at the 8-bit and depth-4 scales (TestApertureQuantizationChain). The tests verify: 256 * APERTURE_GAP rounds to 5 (byte-scale horizon 5/256); 48 * APERTURE_GAP rounds to 1 (depth-4 aperture horizon 1/48); delta_BU/(2*pi) quantizes to 8/256 = 1/32 turn. This chain connects the continuous CGM constants to discrete byte-scale and depth-4-scale quantization.
 
-### 9.6 Monodromy Hierarchy
+### 9.6 Holonomy Hierarchy
 
-The test test_monodromy_hierarchy verifies an ordering of angular scales: omega(ONA-BU) < delta_BU < 0.587901 < 0.862833, establishing the relative sizes of the minimal defect, the BU aperture, and larger holonomy angles.
+The test test_holonomy_hierarchy verifies an ordering of angular scales: omega(ONA-BU) < delta_BU < 0.587901 < 0.862833, establishing the relative sizes of the minimal defect, the BU aperture, and larger holonomy angles.
 
 ---
 

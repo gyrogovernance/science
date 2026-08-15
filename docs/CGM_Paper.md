@@ -46,7 +46,7 @@ The Common Governance Model (CGM) demonstrates that coherent recursive measureme
 **Key Results:**
 
 - **Deductive:** Three-dimensional structure follows necessarily from the foundational axiom through formal specifications plus requirements for continuous physical implementation. Alternative dimensionalities are constructively excluded.
-- **Invariants:** The conditions fix three representation-independent constants: the quantum gravity horizon `Q_G = 4π` steradians, the monodromy defect `δ_BU ≈ 0.1953` radians, and aperture scale `m_a ≈ 0.1995`. Their ratio `δ_BU/m_a = 0.9793` determines both physical coupling and informational aperture.
+- **Invariants:** The conditions fix three representation-independent constants: the quantum gravity horizon `Q_G = 4π` steradians, the holonomy defect `δ_BU ≈ 0.1953` radians, and aperture scale `m_a ≈ 0.1995`. Their ratio `δ_BU/m_a = 0.9793` determines both physical coupling and informational aperture.
 - **Phenomenological:** The kernel formula α₀ = δ_BU⁴/m_a gives α₀ ≈ 0.007299683 (+319 ppm relative to CODATA). With UV-IR transport corrections (companion analyses), α ≈ 0.007297352563 matches experimental synthesis to nine significant figures. The same geometric ratio predicts a 2.07% optimal aperture for discrete alignment systems. Preliminary evaluations show transformer architectures operating at six to eight times this value.
 
 **Falsification Paths:**
@@ -282,7 +282,7 @@ S → (□B → ([R]S ↔ S ∧ ¬([L]S ↔ S) ∧ ¬□E ∧ ¬□¬E))
 > 
 > **Why it matters:** This ensures that achieving balanced closure doesn't erase the structural distinctions that made the system interesting in the first place. The future state preserves the information required to reconstitute past distinctions without collapsing them.  
 > 
-> **Physical interpretation:** In quantum mechanics, this corresponds to the fact that unitary evolution is reversible. Information is conserved even as systems evolve. In information theory, this is the requirement that compression doesn't lose essential structure. The record of that reversibility is the monodromy phase defect of the vibrational oscillation at BU.  
+> **Physical interpretation:** In quantum mechanics, this corresponds to the fact that unitary evolution is reversible. Information is conserved even as systems evolve. In information theory, this is the requirement that compression doesn't lose essential structure. The record of that reversibility is the holonomy phase defect of the vibrational oscillation at BU.  
 > 
 > **Structural role:** Memory reconstruction forces the Lie algebra to be simple (no nontrivial ideals). If the algebra decomposed as g = g₁ ⊕ g₂, the GNS representation would split into invariant subspaces, preventing a single cyclic vector from reconstructing both independent factors.
 
@@ -733,7 +733,7 @@ The explicit construction of degrees of freedom at each stage:
 - **Physical:** Quantum mechanical closure, Berry phase vanishing at BU
 - **Vibrational motion:** Bounded oscillation about the closed configuration (2.07% aperture). Not a seventh degree of freedom. Same category as molecular vibration: back-and-forth exchange about equilibrium while rotational and translational freedoms are already fixed at SE(3).
 
-The progression 1 → 3 → 6 → 6 (closed) follows from the five foundational conditions under the operational hypothesis. Each stage adds structure through operational necessity. At BU, rotational motion (UNA), translational motion (ONA), and vibrational motion (oscillation at the aperture) are all active. Commutative closure at depth four is algebraic; the vibrational mode is the residual dynamics that sustains observation and encodes memory as monodromy phase defect.
+The progression 1 → 3 → 6 → 6 (closed) follows from the five foundational conditions under the operational hypothesis. Each stage adds structure through operational necessity. At BU, rotational motion (UNA), translational motion (ONA), and vibrational motion (oscillation at the aperture) are all active. Commutative closure at depth four is algebraic; the vibrational mode is the residual dynamics that sustains observation and encodes memory as holonomy phase defect.
 
 ---
 
@@ -819,9 +819,9 @@ Q_G appears in the normalization condition:
 Q_G m_a² = 1/2
 ```
 
-Together with the BU monodromy defect δ_BU, this determines the fine-structure constant via α = δ_BU⁴/m_a. Both quantum gravity and electromagnetic coupling emerge from depth-four balance, differing only in how the geometric invariants are composed.
+Together with the BU holonomy defect δ_BU, this determines the fine-structure constant via α = δ_BU⁴/m_a. Both quantum gravity and electromagnetic coupling emerge from depth-four balance, differing only in how the geometric invariants are composed.
 
-##### The BU Monodromy Defect
+##### The BU Holonomy Defect
 
 **Definition:** The BU dual-pole loop is the commutator path that isolates the egress/ingress structure enforced by BU:
 
@@ -881,7 +881,7 @@ Therefore:
 
 **Physical interpretation (the origin of aperture):**
 
-The monodromy defect measures how far the BU cycle deviates from perfect closure. The ratio:
+The holonomy defect measures how far the BU cycle deviates from perfect closure. The ratio:
 
 ```
 δ_BU/m_a = 0.195342/0.199471 = 0.9793
@@ -1101,7 +1101,7 @@ The key prediction: The framework predicts an optimal aperture ratio:
 A* = 1 - (δ_BU/m_a) ≈ 0.0207
 ```
 
-from the universal balance condition, where δ_BU ≈ 0.1953 is the BU monodromy defect.
+from the universal balance condition, where δ_BU ≈ 0.1953 is the BU holonomy defect.
 
 This is the same 2.07% that appears in the physical electromagnetic coupling calculation, but now applied to discrete information systems.
 
@@ -1853,11 +1853,11 @@ Testing n=4 so(4):
 Conclusion: n=3 UNIQUE ✓
 ```
 
-**4. BU Monodromy Calculation**
+**4. BU Holonomy Calculation**
 
 Script: `experiments/tw_closure_test.py`
 
-Purpose: Computes BU monodromy defect δ_BU from first principles.
+Purpose: Computes BU holonomy defect δ_BU from first principles.
 
 What it does:
 
@@ -1878,7 +1878,7 @@ Dual-pole loop:
   cos(δ_BU/2) = 0.9952361763
   sin(δ_BU/2) = 0.0974894411
 
-BU monodromy defect:
+BU holonomy defect:
   δ_BU = 0.195342176580 rad
   δ_BU ≈ 11.19° ≈ π/16 (within 0.5%)
 

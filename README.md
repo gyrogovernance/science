@@ -38,7 +38,7 @@ The Common Governance Model (CGM) is an axiomatic framework for fundamental phys
 
 ### Holonomic Quantum Virtual Machine (hQVM)
 
-The hQVM is the executable form of the framework: a **Holonomic Quantum Virtual Machine** instantiated as a reversible GF(2) finite-state transducer. It is a replayable algebraic machine that runs the CGM axioms as integer arithmetic. Computation proceeds via geometric phases (monodromies) of closed SE(3) spinorial loops. These are the same holonomic structures that the quantum computing literature recognizes as a universal computational model (Zanardi and Rasetti 1999; Pachos et al. 2000). The same machine is used both as a research tool and as an alignment kernel for AI systems. In this repository it serves as the reference implementation against which the physical predictions are checked: gravity, electroweak masses, nuclear structure, the Yang–Mills mass-gap readout, organismal allometry, wavefunction structure, generator-restricted percolation, and related analyses are computed directly on it (46 `hqvm_*.py` scripts in `experiments/`).
+The hQVM is the executable form of the framework: a **Holonomic Quantum Virtual Machine** instantiated as a reversible GF(2) finite-state transducer. It is a replayable algebraic machine that runs the CGM axioms as integer arithmetic. Computation proceeds via geometric phases (holonomies) of closed SE(3) spinorial loops. These are the same holonomic structures that the quantum computing literature recognizes as a universal computational model (Zanardi and Rasetti 1999; Pachos et al. 2000). The same machine is used both as a research tool and as an alignment kernel for AI systems. In this repository it serves as the reference implementation against which the physical predictions are checked: gravity, electroweak masses, nuclear structure, the Yang–Mills mass-gap readout, organismal allometry, wavefunction structure, generator-restricted percolation, and related analyses are computed directly on it (46 `hqvm_*.py` scripts in `experiments/`).
 
 Canonical repository: [superintelligence](https://github.com/gyrogovernance/superintelligence). Vendored implementation: [`gyroscopic/hQVM/`](gyroscopic/hQVM/). Specifications and test reports are listed in the documentation section below.
 
@@ -48,7 +48,7 @@ Canonical repository: [superintelligence](https://github.com/gyrogovernance/supe
 * **Fine-structure constant α** computed from the same geometry, matching the experimental value to 0.043 parts per billion.
 * **Three-dimensional space with six degrees of freedom** derived as a theorem of the framework. Explicit proofs exclude two-dimensional and higher-dimensional alternatives.
 * **Electroweak particle masses** (Higgs, Z, W, top) and the **weak mixing angle** derived from the same geometric structure that fixes G.
-* **W/Z boson mass ratio test:** The framework gives a closed-form relation for m_W/m_Z in terms of the independently derived parameter Δ ≈ 0.0207. Using PDG (Particle Data Group) masses, the implied Δ differs from the monodromy-derived Δ by 8.34 × 10⁻¹⁰ (absolute).
+* **W/Z boson mass ratio test:** The framework gives a closed-form relation for m_W/m_Z in terms of the independently derived parameter Δ ≈ 0.0207. Using PDG (Particle Data Group) masses, the implied Δ differs from the holonomy-derived Δ by 8.34 × 10⁻¹⁰ (absolute).
 * **Nuclear structure and fusion resonances** derived from the electroweak coordinate system with zero free nuclear parameters. The framework yields the exact deuteron binding energy, predicts the optical Th-229m isomer at 8.356 eV as the framework's representation boundary, maps fusion Coulomb barriers to structural percolation thresholds, routes 801 of 801 cataloged beta decays through deterministic chirality-shell conservation rules, and derives the seven canonical magic numbers 2, 8, 20, 28, 50, 82, and 126 as large-gap closures in a Nilsson spectrum whose couplings are fixed by the same geometric constants chain as the W/Z mass split.
 * **Quark generation pattern (scheme dependent):** Under the mass conventions used in the compact-geometry analysis, the six quark masses fall on an integer-spaced ladder in the framework's logarithmic mass coordinate, grouping naturally into three generation pairs.
 * **Gravity as a nonlinear theory of geometry** with a position-dependent coupling. The static point-mass exterior closes analytically, recovering Newtonian and general-relativistic limits and yielding an exact, finite gravitational self-energy of −Mc²/4.
@@ -72,7 +72,7 @@ Neutrino mass scales, lepton ratios, and the optical conjugacy linking the Planc
 | hQVM verified features (Tiers A-C) | 243 |
 | Python in `experiments/` (all files) | 77,000 lines |
 
-Each major result in the table below maps to one analysis note and its verification code. The scripts cover gravity, the Yang–Mills mass-gap readout, organismal allometry, nuclear structure, electroweak mass geometry, fine structure, quantum gravity, CMB checks, axiomatization, Hilbert-space representation, monodromy, and energy scales.
+Each major result in the table below maps to one analysis note and its verification code. The scripts cover gravity, the Yang–Mills mass-gap readout, organismal allometry, nuclear structure, electroweak mass geometry, fine structure, quantum gravity, CMB checks, axiomatization, Hilbert-space representation, holonomy, and energy scales.
 
 ---
 <div align="center">
@@ -119,6 +119,7 @@ Each analysis note maps to the experiment scripts that verify it.
 
 | Topic | Analysis | Code |
 |-------|----------|------|
+| Holonomy: closed-path memory, aperture gap, continuous–finite realization | [Analysis_Holonomy](docs/Findings/Analysis_Holonomy.md) | [cgm_holonomy_analysis.py](experiments/cgm_holonomy_analysis.py) ([results](experiments/cgm_holonomy_analysis_results.txt)) |
 | Fine-structure constant | [Analysis_Fine_Structure](docs/Findings/Analysis_Fine_Structure.md) | [cgm_alpha_analysis.py](experiments/cgm_alpha_analysis.py) |
 | Quantum gravity invariant | [Analysis_Quantum_Gravity](docs/Findings/Analysis_Quantum_Gravity.md) | [cgm_quantum_gravity_analysis.py](experiments/cgm_quantum_gravity_analysis.py) |
 | Energy scale unification | [Analysis_Energy_Scales](docs/Findings/Analysis_Energy_Scales.md) | [cgm_energy_analysis.py](experiments/cgm_energy_analysis.py) |
@@ -127,7 +128,6 @@ Each analysis note maps to the experiment scripts that verify it.
 | Axiomatization | [Analysis_Axiomatization](docs/Findings/Analysis_Axiomatization.md) | [cgm_axiomatization_analysis.py](experiments/cgm_axiomatization_analysis.py) |
 | Hilbert space representation | [Analysis_Hilbert_Space_Representation](docs/Findings/Analysis_Hilbert_Space_Representation.md) | [cgm_Hilbert_Space_analysis.py](experiments/cgm_Hilbert_Space_analysis.py) |
 | CMB patterns (Planck: enhanced power at ℓ=37, p=0.0039) | [Analysis_CMB](docs/Findings/Analysis_CMB.md) | [cgm_cmb_data_analysis_300825.py](experiments/cgm_cmb_data_analysis_300825.py) |
-| Spin-2 from orientation recovery | [Analysis_Monodromy](docs/Findings/Analysis_Monodromy.md) | [tw_closure_test.py](experiments/tw_closure_test.py) |
 | Kompaneyets | [Analysis_Kompaneyets](docs/Findings/Analysis_Kompaneyets.md) | [cgm_kompaneyets_analysis.py](experiments/cgm_kompaneyets_analysis.py) |
 | Proto-units | [Analysis_CGM_Units](docs/Findings/Analysis_CGM_Units.md) | [cgm_proto_units_analysis.py](experiments/cgm_proto_units_analysis.py) |
 | Gyroscopic multiplication | [Analysis_Gyroscopic_Multiplication](docs/Findings/Analysis_Gyroscopic_Multiplication.md) | |

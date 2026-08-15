@@ -325,7 +325,7 @@ The aperture gap Δ ≈ 0.0207 appears in the shell structure as the imbalance b
 
 For completeness, areas where the test suite could be extended:
 
-- **Non-Clifford certification:** The δ_BU monodromy defect and Wigner negativity tests are covered in hQVM_Tests_Report_1.md, Part 10.
+- **Non-Clifford certification:** The δ_BU holonomy defect and Wigner negativity tests are covered in hQVM_Tests_Report_1.md, Part 10.
 - **Exact tamper detection rates:** The 1/255 substitution miss rate and ~3/255 swap miss rate are stated but not tested here
 - **Benchmark timing:** The classical-vs-hQVM step counts for the claimed advantages are proven structurally but not timed
 - **Spectral chart duality:** The Walsh-Hadamard transform on actual chirality state vectors (as opposed to random test vectors) is not tested for its dual-basis interpretation

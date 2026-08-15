@@ -20,7 +20,7 @@ The model separates biological time into two channels: maintenance time for circ
 
 ### 1.1 Scope
 
-This analysis explains allometric scaling as a consequence of the CGM requirement that ancestry be preserved under recursive operational transformation. Quantities used in the channel basis are drawn either from the hQVM carrier at the physical chirality dimension `d = 6` (finite carrier layer) or from the continuum monodromy invariants of the CGM aperture gap `Δ` (continuum layer). Biological bridge identifications that map carrier quantities to organismal observables are stated with each claim. The empirical exponents of metabolic and morphological scaling are read as evaluations of the root-to-bulk exponent defined in Section 4.
+This analysis explains allometric scaling as a consequence of the CGM requirement that ancestry be preserved under recursive operational transformation. Quantities used in the channel basis are drawn either from the hQVM carrier at the physical chirality dimension `d = 6` (finite carrier layer) or from the continuum holonomy invariants of the CGM aperture gap `Δ` (continuum layer). Biological bridge identifications that map carrier quantities to organismal observables are stated with each claim. The empirical exponents of metabolic and morphological scaling are read as evaluations of the root-to-bulk exponent defined in Section 4.
 
 ### 1.2 Tiers of Claim
 
@@ -72,7 +72,7 @@ A four-byte closure word carries a projected information content of `8d` bits at
 Delta_kernel(d) = 1 / (8d)
 ```
 
-At `d = 6` this discrete aperture equals `1/48 ≈ 0.020833`. The continuum monodromy version is obtained from the ratio of the dual-pole holonomy defect `delta_BU` to the aperture reference scale `m_a`,
+At `d = 6` this discrete aperture equals `1/48 ≈ 0.020833`. The continuum holonomy version is obtained from the ratio of the dual-pole holonomy defect `delta_BU` to the aperture reference scale `m_a`,
 
 ```text
 Delta = 1 - delta_BU / m_a = 0.020699553913
@@ -187,13 +187,13 @@ a_surf,spatial(d) := (n - 1) / n = 1 - 2/d
 
 These two expressions agree only at `d = 6`, where `4/d = 1 - 2/d`. Section 5.2 records that coincidence as a consistency condition. Organism-level nulls in this analysis use the common value `2/3` at physical `d = 6`.
 
-The continuum monodromy version of the fold construction is
+The continuum holonomy version of the fold construction is
 
 ```text
 a_surf,continuum := Delta / (1/32) = 0.662386
 ```
 
-`Delta = 0.020699553913` is the continuum aperture gap entering this fold ratio. This value carries a correction analogous to the monodromy dressing applied to the fine-structure constant and to Newton's constant in the CGM framework.
+`Delta = 0.020699553913` is the continuum aperture gap entering this fold ratio. This value carries a correction analogous to the holonomy dressing applied to the fine-structure constant and to Newton's constant in the CGM framework.
 
 ### 4.3 Network Scale: Bulk Network Throughput, `a_bulk = 3/4`
 
@@ -357,7 +357,7 @@ With this identification,
 a(lambda) = 2/3 + lambda / (6(1+lambda))
 ```
 
-The local scaling exponent `a` is now written as a function of the register occupation coordinate `lambda`. A resting or basal metabolic state corresponds to small `lambda`: the bulk network channel remains near its ground state, oxygen supply relies on surface diffusive exchange, and the exponent sits near `2/3`. An active or field metabolic state corresponds to `lambda` near one: the circulatory network thermalizes, oxygen supply shifts to perfusion-limited bulk delivery, and the exponent sits near `3/4`. The endpoints come from the hQVM carrier structure. Intermediate values track the excitation state of the chirality register. The aperture gap `Delta` is a fixed monodromy invariant of the carrier; it is not set by `lambda`. Gravity readouts use `Delta`. The metabolic mix uses `lambda` and `μ`.
+The local scaling exponent `a` is now written as a function of the register occupation coordinate `lambda`. A resting or basal metabolic state corresponds to small `lambda`: the bulk network channel remains near its ground state, oxygen supply relies on surface diffusive exchange, and the exponent sits near `2/3`. An active or field metabolic state corresponds to `lambda` near one: the circulatory network thermalizes, oxygen supply shifts to perfusion-limited bulk delivery, and the exponent sits near `3/4`. The endpoints come from the hQVM carrier structure. Intermediate values track the excitation state of the chirality register. The aperture gap `Delta` is a fixed holonomy invariant of the carrier; it is not set by `lambda`. Gravity readouts use `Delta`. The metabolic mix uses `lambda` and `μ`.
 
 ### 6.3 Dual Time Channels: Egress and Ingress
 

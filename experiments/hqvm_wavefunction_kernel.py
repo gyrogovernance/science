@@ -34,6 +34,7 @@ if str(_REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(_REPO_ROOT))
 
 from gyroscopic.hQVM.constants import (
+    APERTURE_GAP,
     GENE_MAC_REST,
     LAYER_MASK_12,
     byte_family,
@@ -422,11 +423,8 @@ def holographic_hierarchy() -> list[HolographicLevel]:
 # G. Aperture collapse — wavefunction collapse in CGM
 # ════════════════════════════════════════════════════════════════════════
 
-# A* = 1 - delta_BU / m_a  where delta_BU is the BU aperture unit
-# and m_a = 1/(2 sqrt(2 pi)) is the normalization constant.
-APERTURE_GAP: Final[float] = 1.0 - (
-    0.195342176580 / (1.0 / (2.0 * np.sqrt(2.0 * np.pi)))
-)
+# A* = 1 - BU_HOLONOMY_ANGLE / m_a from gyroscopic.hQVM.constants
+# (analytic under the declared payload embedding).
 
 
 @dataclass(frozen=True)

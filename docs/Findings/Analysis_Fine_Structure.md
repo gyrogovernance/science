@@ -30,7 +30,7 @@ The fundamental expression for α at the BU focus is:
 α₀ = δ_BU⁴/ m_a                                                           (1)
 
 where:
-- δ_BU = 0.195342176580 rad is the BU dual-pole monodromy (measured)
+- δ_BU = 0.195342176580 rad is the BU dual-pole holonomy (measured)
 -  m_a = 1/(2√(2π)) = 0.199471140201 is the observational aperture parameter (exact)
 
 The quartic scaling reflects electromagnetic interaction geometry, while normalization by  m_a ensures observational coherence. This yields α₀ = 0.007299683322, differing from experiment by 319.398 ppm.

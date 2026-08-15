@@ -19,7 +19,7 @@ Architecture (from Byte_Boundaries_Reference):
 - 6 payload bits (1-6): dipole flip PROVED (each bit controls one pair)
 
 CGM definitions:
-- delta_BU: BU monodromy defect (radians)
+- delta_BU: BU holonomy defect (radians)
 - m_a: BU aperture parameter = 1/(2*sqrt(2*pi))
 - rho: closure ratio = delta_BU / m_a
 - Delta: aperture gap = 1 - rho

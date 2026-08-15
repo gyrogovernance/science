@@ -12,7 +12,7 @@
   - [3.3 The 1-3-6-6 DOF Progression](#33-the-1-3-6-6-dof-progression)
 - [4. Geometric Invariants and Physical Constants](#4-geometric-invariants-and-physical-constants)
   - [4.1 The Quantum Gravity Invariant: Q_G = 4π](#41-the-quantum-gravity-invariant-q_g--4π)
-  - [4.2 The Monodromy Hierarchy and the 2.07% Aperture](#42-the-monodromy-hierarchy-and-the-207-aperture)
+  - [4.2 The Holonomy Hierarchy and the 2.07% Aperture](#42-the-holonomy-hierarchy-and-the-207-aperture)
   - [4.3 Geometric Coherence and Angular Harmonics](#43-geometric-coherence-and-angular-harmonics)
   - [4.4 The Significance of 48 as a Quantization Unit](#44-the-significance-of-48-as-a-quantization-unit)
 - [5. The Physical Universe: Energy, Cosmology, and Black Holes](#5-the-physical-universe-energy-cosmology-and-black-holes)
@@ -26,12 +26,15 @@
   - [5.8 Nuclear Structure on the Shared Δ-Ruler](#58-nuclear-structure-on-the-shared-δ-ruler)
   - [5.9 Yang–Mills Mass Gap as Aperture Readout](#59-yangmills-mass-gap-as-aperture-readout)
   - [5.10 Organismal Allometry from the Channel Basis](#510-organismal-allometry-from-the-channel-basis)
+  - [5.11 Generator-Restricted Percolation and the Square-Root Cluster Theorem](#511-generator-restricted-percolation-and-the-square-root-cluster-theorem)
+  - [5.12 Cohomology Layer and Obstruction Census](#512-cohomology-layer-and-obstruction-census)
 - [6. Cosmological Observations and Testable Predictions](#6-cosmological-observations-and-testable-predictions)
   - [6.1 The CMB as a Residual Observational Field](#61-the-cmb-as-a-residual-observational-field)
   - [6.2 Cosmic Multiplicity and the Illusion of Expansion](#62-cosmic-multiplicity-and-the-illusion-of-expansion)
 - [7. Information-Theoretic Applications](#7-information-theoretic-applications)
   - [7.1 GyroDiagnostics: Measuring Structural Alignment](#71-gyrodiagnostics-measuring-structural-alignment)
-  - [7.2 GyroSI: A Constructive Theory of Intelligence](#72-gyrosi-a-constructive-theory-of-intelligence)
+  - [7.2 Gyroscopic ASI: A Constructive Theory of Intelligence](#72-Gyroscopic ASI-a-constructive-theory-of-intelligence)
+  - [7.3 Moments Fiat: Coordination Economy on the Kernel Trajectory](#73-moments-fiat-coordination-economy-on-the-kernel-trajectory)
 - [8. Computational Verification and Reproducibility](#8-computational-verification-and-reproducibility)
 - [9. Conclusion and Future Directions](#9-conclusion-and-future-directions)
 
@@ -49,9 +52,12 @@ This document serves as a high-level guide to the entire CGM research program, w
 -   **Nuclear structure and fusion phenomenology** on the same Δ-ruler that places electroweak masses, including isomer, binding, decay routing, and magic-number closures.
 -   **The Yang–Mills mass gap as continuum readout of the aperture**, expressing identity of the vacuum and individuality of excitations under depth-four closure in the external Clay axiomatic standard.
 -   **Organismal allometry as source-to-bulk transport** on the same `d = 6` channel basis that fixes Kleiber’s `3/4`, the resting `μ`-band, and dual egress/ingress times.
+-   **Generator-restricted percolation and the Square-Root Cluster Theorem**, linking ancestry preservation to holographic cluster scaling and a five-threshold coverage hierarchy on the hQVM kernel.
+-   **A finite cohomology layer** that classifies algebraic obstructions to global ancestry preservation, connects shell grading to exterior algebra, and yields the Grothendieck/CHSH constant `K_G^R(2) = √2`.
+-   **Moments Fiat coordination receipts** as positions on a deterministic kernel trajectory, with NTP time, QR transport, replay-verified seals, and inference-host co-execution.
 -   **A new perspective on cosmology**, where the universe is the interior of a Planck-scale black hole and cosmic expansion is an optical illusion.
 -   **A resolution to fundamental problems in physics**, such as the cosmological constant problem, the Hubble tension, and the nature of quantum gravity.
--   **A formal theory of intelligence**, including quantitative metrics for AI alignment and a constructive model (GyroSI) of recursive intelligence.
+-   **A formal theory of intelligence**, including quantitative metrics for AI alignment and a constructive model (Gyroscopic ASI) of recursive intelligence.
 
 The CGM program is built on a foundation of **tri-partite validation**, where every major result is independently verified through three distinct channels:
 
@@ -80,7 +86,7 @@ The entire CGM framework rests on five conditions formalized in bimodal proposit
     Enforces commutative closure at depth-four. The closed configuration still undergoes vibrational motion: bounded back-and-forth between the depth-four poles, with amplitude set by the 2.07% aperture.
 
 -   **BU-Ingress (Memory Reconstruction):** `S → (□B → (CS ∧ UNA ∧ ONA))`
-    Ensures the balanced state at depth-four contains the memory of all prior conditions. Memory is encoded as the monodromy phase defect of that oscillation.
+    Ensures the balanced state at depth-four contains the memory of all prior conditions. Memory is encoded as the holonomy phase defect of that oscillation.
 
 Detailed axiomatization analysis shows these conditions form a consistent, complete, and toroidal logical structure, with BU-Egress as a primitive and BU-Ingress as derivable from the initial conditions.
 
@@ -123,7 +129,7 @@ The emergence of three dimensions with six degrees of freedom follows a unique, 
 -   **CS (1 DOF):** Establishes a single chiral distinction (left vs. right).
 -   **UNA (3 DOF):** Activates rotational freedom, forcing the minimal non-abelian compact group `SU(2)` with 3 generators.
 -   **ONA (6 DOF):** Activates translational freedom, forcing a semidirect product `SU(2) ⋉ ℝ³ ≅ SE(3)`. The 6 DOF comprise 3 rotational and 3 translational kinematic freedoms.
--   **BU (6 DOF, closed):** Coordinates the six kinematic degrees of freedom (3 rotational, 3 translational) at depth-four closure. Balance is not static: a residual vibrational mode with 2.07% amplitude sustains observation. Memory is the monodromy phase defect of that oscillation. Vibrational motion is not a seventh degree of freedom; it is oscillation about the closed SE(3) configuration.
+-   **BU (6 DOF, closed):** Coordinates the six kinematic degrees of freedom (3 rotational, 3 translational) at depth-four closure. Balance is not static: a residual vibrational mode with 2.07% amplitude sustains observation. Memory is the holonomy phase defect of that oscillation. Vibrational motion is not a seventh degree of freedom; it is oscillation about the closed SE(3) configuration.
 
 This progression is a logical entailment of satisfying the conditions sequentially. It maps the three kinematic motions in three dimensions: rotational (UNA), translational (ONA), and vibrational (BU).
 
@@ -138,15 +144,15 @@ CGM defines **Quantum Gravity** as the geometric invariant `Q_G = 4π` steradian
 -   **Derivation:** `Q_G` is derived as the ratio of the horizon length `λ = √(2π)` to the aperture time `τ = m_a`, both fixed by the UNA and BU conditions.
 -   **Physical Meaning:** It is the quantum of observability, the minimal cost for spacetime observation itself. Its ubiquitous appearance in physics (Gauss's law, Einstein's equations, quantum normalization) is a signature of this fundamental geometric requirement.
 
-### 4.2 The Monodromy Hierarchy and the 2.07% Aperture
+### 4.2 The Holonomy Hierarchy and the 2.07% Aperture
 
-The framework reveals a rich hierarchy of monodromy values, which represent the "geometric memory" accumulated when traversing closed loops in the state space.
+The framework reveals a rich hierarchy of holonomy values, which represent the "geometric memory" accumulated when traversing closed loops in the state space.
 
--   **BU Dual-Pole Monodromy (δ_BU):** The key value `δ_BU = 0.195342 rad`, which features in the fine-structure constant.
+-   **BU Dual-Pole Holonomy (δ_BU):** The key value `δ_BU = 0.195342 rad`, which features in the fine-structure constant.
 -   **The Aperture Ratio:** The ratio `δ_BU / m_a = 0.9793` is a fundamental constant of the model. It establishes a universal balance:
     -   **97.93% Structural Closure:** Providing stability.
     -   **2.07% Dynamic Aperture:** The residual oscillation amplitude enabling interaction and observation.
--   **Monodromy Hierarchy:** A consistent scale of memory effects is observed, from the elementary `ω(ONA↔BU) = 0.097671 rad` to the system-level `4-leg toroidal holonomy = 0.862833 rad`. The exact equality `δ_BU = 8-leg holonomy` provides a powerful internal consistency check.
+-   **Holonomy Hierarchy:** A consistent scale of memory effects is observed, from the elementary `ω(ONA↔BU) = 0.097671 rad` to the system-level `4-leg toroidal holonomy = 0.862833 rad`. The exact equality `δ_BU = 8-leg holonomy` provides a powerful internal consistency check.
 
 **The aperture gap Δ and the mass coordinate ruler.** The aperture gap Δ ≈ 0.0207 is the small parameter of the framework. It measures the fractional shortfall of actual closure relative to perfect closure. Because Δ is small, it serves as a natural expansion parameter: physical quantities (masses, couplings, corrections) can be expressed as power series in Δ, analogous to how perturbative expansions use a small coupling constant. The coefficients of these expansions are fixed rational numbers from the kernel's combinatorics, not fitted parameters. A "tick" is one unit on the Δ-ruler, corresponding to a multiplicative factor of 2^Δ ≈ 1.0145 in energy. The same aperture that spaces the electroweak and nuclear rulers forces the oriented spectral floor of the Yang–Mills mass-gap construction (Section 5.9).
 
@@ -248,28 +254,42 @@ The kernel's 4096-state manifold Omega is organized into seven concentric shells
 
 Masses are placed on a logarithmic ruler whose tick spacing is the aperture gap Δ. The ruler coordinate n of a particle of mass m relative to the electroweak scale v is n = log₂(v/m) / Δ. The expansion expresses these coordinates as polynomials in Δ with coefficients drawn from the kernel's shell multiplicities and horizon structure. Full write-up: [Analysis_Compact_Geometry](Findings/Analysis_Compact_Geometry.md). Verification: `hqvm_compact_geom_core.py`, `hqvm_compact_geom_kernel.py`, `hqvm_compact_geom_report.py`, `hqvm_compact_geom_derivations.py`.
 
--   **Electroweak particle masses:** The Higgs, Z, W, and top quark masses are derived from the same geometric structure that fixes G and α.
--   **W/Z boson mass ratio test:** The framework gives a closed-form relation for m_W/m_Z in terms of the independently derived parameter Δ ≈ 0.0207. Using PDG (Particle Data Group) masses, the implied Δ differs from the monodromy-derived Δ by 8.34 × 10⁻¹⁰ (absolute).
--   **Quark generation pattern (scheme dependent):** Under the mass conventions used in the compact-geometry analysis, the six quark masses fall on an integer-spaced ladder in the framework's logarithmic mass coordinate, grouping naturally into three generation pairs.
+-   **Electroweak particle masses:** The Higgs, Z, W, and top quark masses are derived from the same geometric structure that fixes G and α, as carrier-trace polynomials through Δ⁵ with rational coefficients from shell multiplicities (maximum tick error 6.15 × 10⁻⁹ across four channels at fifth order).
+-   **W/Z boson mass ratio test:** The framework gives a closed-form relation for m_W/m_Z in terms of the independently derived parameter Δ ≈ 0.0207. Using PDG (Particle Data Group) masses, the implied Δ differs from the holonomy-derived Δ by 8.34 × 10⁻¹⁰ (absolute). W predicted from Z and Δ at 5 × 10⁻⁹ relative error; on-shell sin²θ_W matches PDG at parts-per-billion.
+-   **Tree-level couplings:** g, g_Z, g', e, y_t, and λ_H follow algebraically from the mass expansion at parts-per-million accuracy.
+-   **Quark generation pattern (scheme dependent):** Under the mass conventions used in the compact-geometry analysis, the six quark masses fall on an integer-spaced ladder in the framework's logarithmic mass coordinate under D_flow² eigenladder grouping, naturally into three generation pairs.
 -   **Lepton closure:** Lepton coordinates close via a unique horizon-wrap path (5, 8, 14) among 680 candidates.
+-   **Representation boundary:** Δ⁶ residuals mark where the 24-bit spatial shadow obstructs full closure; the 32-bit spinorial lift is structurally required.
 
 ### 5.8 Nuclear Structure on the Shared Δ-Ruler
 
 Compact geometry and percolation fix the electroweak ruler and the coverage hierarchy on the hQVM kernel. The trestleboard analysis carries that same discrete geometry into nuclear structure and fusion phenomenology. Full write-up: [Analysis_hQVM_CGM_Trestleboard](Findings/Analysis_hQVM_CGM_Trestleboard.md). Verification: `hqvm_cgm_trestleboard_run.py` (`_1.py` through `_5.py`).
 
-Electroweak masses, nuclear binding energies, isomeric excitations, Coulomb barriers, and nuclear shell closures share one logarithmic energy coordinate whose spacing unit is the aperture gap Δ. The forced nuclear class predicts the Th-229m optical isomer and the strong bare scale plus tensor correction reconstructs the deuteron binding energy, both with relative errors near 10⁻⁴ and with no free nuclear parameters. Alpha and beta transitions act as carrier words that preserve chirality shell and shell-parity across the IAEA LiveChart ground-state census. Fusion barriers for seven fuels land on the strong-family rung of the ruler. The same carrier algebra derives the seven canonical magic numbers 2, 8, 20, 28, 50, 82, and 126 as large-gap closures in a mixed Nilsson spectrum whose couplings are fixed by the BU monodromy and STF bulk dimension.
+Electroweak masses, nuclear binding energies, isomeric excitations, Coulomb barriers, and nuclear shell closures share one logarithmic energy coordinate whose spacing unit is the aperture gap Δ. Three readout procedures, the Level, the Square, and the Compass, locate energies, report percolation coverage, and trace explicit move sequences between scales. The forced nuclear class predicts the Th-229m optical isomer and the strong bare scale plus tensor correction reconstructs the deuteron binding energy, both with relative errors near 10⁻⁴ and with no free nuclear parameters. Alpha and beta transitions act as carrier words that preserve chirality shell and shell-parity across the IAEA LiveChart ground-state census (314/314 alpha parents; 801/801 β⁻ parents). Fusion barriers for seven fuels land on the strong-family rung of the ruler; five of seven literature resonance peaks align with percolation landmarks. The same carrier algebra derives the seven canonical magic numbers 2, 8, 20, 28, 50, 82, and 126 as large-gap closures in a mixed Nilsson spectrum whose couplings (κ, μ) = (1/32, 1/5) are fixed by the BU holonomy and STF bulk dimension; left chirality places j = l + 1/2 below j = l − 1/2, and chirality reversal removes the intruder set 28, 50, 82, and 126 from the dominant gap ranking.
 
 ### 5.9 Yang–Mills Mass Gap as Aperture Readout
 
 The Clay Yang–Mills existence and mass-gap problem supplies the external continuum standard in which to express the aperture as a spectral floor. Full write-up: [Yang_Mills_Mass_Gap_Solution.md](../experiments/hQVM_CGM_YM_Gap/Yang_Mills_Mass_Gap_Solution.md). Verification: `experiments/hQVM_CGM_YM_Gap/Yang_Mills_Mass_Gap_run.py` (`_1.py` through `_5.py`).
 
-Existence in the model is preservation of a common origin under transformation, recorded as operational identity of the vacuum. Emergence is the production of distinguishable outcomes above that origin, recorded as individuality of excitations. The aperture Δ ≈ 0.0207 is the residual defect that makes identity and individuality compatible under depth-four closure. The construction defines the canonical state on the finite 4096-state carrier, lifts it by GNS, embeds finite Wilson charts, and packages continuum spacetime by the polar–Hopf chart of the QuBEC occupation measure. Unoriented averaging collapses curvature to a universal half-gap shadow. Oriented retention of the transcription reference yields the physical aperture floor. On the admissible Hopf-oriented quotient the proposed continuum mass readout for the saturated grade-2 curvature multiplet is m_gap = C₂ · v · Δ² ≈ 1.582 GeV, in the lattice light-scalar glueball window. Finite carrier and Wilson-chart identities are unconditional. Continuum claims are stated with an explicit dependency chain from the local net through OS reconstruction to identification of the physical excitation.
+Existence in the model is preservation of a common origin under transformation, recorded as operational identity of the vacuum. Emergence is the production of distinguishable outcomes above that origin, recorded as individuality of excitations. The aperture Δ ≈ 0.0207 is the residual defect that makes identity and individuality compatible under depth-four closure. The construction defines the canonical state on the finite 4096-state carrier, lifts it by GNS, embeds finite Wilson charts, and packages continuum spacetime by the polar–Hopf chart of the QuBEC occupation measure. Unoriented averaging collapses curvature to a universal half-gap shadow (Δ_W → 1/2). Oriented retention of the transcription reference yields the physical aperture floor. Carrier-level identities include commuting fraction 1/64, defect spectrum binomial in six transport modes, and grade-2 multiplicity C₂ = 15. On the admissible Hopf-oriented quotient the proposed continuum mass readout for the saturated grade-2 curvature multiplet is m_gap = C₂ · v · Δ² ≈ 1.582 GeV (Route A), with Route B CS-normalized cross-check ≈ 1.662 GeV, in the lattice light-scalar glueball window. Finite carrier and Wilson-chart identities are unconditional. Continuum claims are stated with an explicit dependency chain from the local net through OS reconstruction to identification of the physical excitation.
 
 ### 5.10 Organismal Allometry from the Channel Basis
 
 Gravity and the Yang–Mills construction treat ancestry preservation as continuum balance and as an aperture floor on gauge excitations. The allometry analysis carries the same requirement into organismal transport: an organism is a bounded source-to-bulk delivery system whose distinguishable parts remain reconstructable from a common metabolic origin. Full write-up: [Analysis_hQVM_CGM_Allometry](Findings/Analysis_hQVM_CGM_Allometry.md). Verification: `hqvm_cgm_allometry_run.py` (`_1.py` through `_3.py`).
 
 Empirical allometric exponents are identified with the source-accessibility exponent `a = d ln C / d ln M` on the hQVM carrier at chirality dimension `d = 6`. The Square-Root Cluster Theorem supplies the holographic floor `a_SR = 1/2`. Three-dimensional geometric similarity supplies the surface exponent `a_surf = 2/3`. The QuBEC thermal shell mean `⟨N⟩ = 3` fixes the network exponent `a_bulk = ⟨N⟩/(⟨N⟩+1) = 3/4` (Kleiber). Circulatory time and service radius close at `a_time = 1/4` and `a_service = 1/12`. A continuous flux fraction `μ` interpolates between surface and network endpoints; resting metabolic catalogs are classified against the closed `μ`-band `[2/3, 3/4]`, not against the `μ = 1` endpoint alone. Dual time channels give developmental egress `a_eg = 3/16` and maintenance ingress `a_in = 1/4`, so longevity composites occupy `[3/16, 1/4]`; maximum-longevity catalogs that fall below `3/16` are read as egress-failure mixtures. Three consistency relations on the family `hQVM(d)` each select `d = 6`. The continuum aperture places a chemical activation energy `E_a = kT/(2Δ) ≈ 0.645 eV` at mammalian core temperature inside the Metabolic Theory of Ecology band. Damuth population-density traits exhibit the OLS/RMA dual-null pattern (`−3/4` and `−1`). Development-as-percolation and city/company conjugacy (`5/6`, `7/6`) are Tier C structural readings. External catalogs (PanTHERIA, AnAge, AnimalTraits, city series) audit the closed channel basis under OLS and RMA protocols defined in the analysis.
+
+### 5.11 Generator-Restricted Percolation and the Square-Root Cluster Theorem
+
+Ancestry preservation is not an abstract axiom alone: on the hQVM kernel it fixes the shape of connectivity. The 4096-state reachable set Ω is a holographic product of two 64-element constitutional horizons, and restricting the 256 byte generators severs access to that root in a controlled way. Full write-up: [Analysis_hQVM_Percolation](Findings/Analysis_hQVM_Percolation.md) (companion map: [Analysis_hQVM_Percolation_Note](Findings/Analysis_hQVM_Percolation_Note.md)). Verification: `hqvm_percolation_analysis_run.py` (`_1.py` through `_5.py`); family kernel in `gyroscopic/hQVM/family.py`.
+
+The Square-Root Cluster Theorem states that under fiber-complete generator restriction the reachable cluster scales as the square of the surviving transport dimension: `|Reach_d(A)| = (2^r(A))²`, verified for `d = 1` through `8` (52/52 gates). Byte operators act as unclosed spinorial half-cycles on the full product and connect maximally; canonical word operators compose depth-four closure and confine reachability to the 128 horizon states from rest. Five separable percolation thresholds turn on at distinct generator fractions on a single restriction dial, each a stronger recovery of the same root. At `d = 6` the exact rank thresholds are micro-reference `p_c ≈ 0.0908` and Q6-class `p_c ≈ 0.1053`. Percolation-derived transport closes to the gravitational self-energy identities of the gravity manuscript, linking discrete generator restriction to the exterior integral already established there.
+
+### 5.12 Cohomology Layer and Obstruction Census
+
+Where percolation reports the size of the reachable set, cohomology reports the type of the obstruction that shrank it. Full write-up: [Analysis_hQVM_Cohomology](Findings/Analysis_hQVM_Cohomology.md). Verification: `hqvm_Cohomology_analysis_run.py` (`_1.py` through `_4.py`).
+
+The shell populations are derived from the exterior-algebra grading on the six chirality modes, giving population profile 64, 384, 960, 1280, 960, 384, 64 with discrete Poincaré duality. The parity homomorphism is the 1-cocycle whose kernel excludes odd shells under even-weight restriction, confining the reachable cluster to 32² = 1024 states. The Grothendieck comparison of Boolean Walsh sections against the Hilbert lift on the horizon ensemble delivers `K_G^R(2) = √2`, with the relaxation gap localizing to the CHSH 2×2 projection. Lefschetz fixed-point and dynamical zeta counts complete the finite obstruction census: 252 of 256 bytes have zero fixed points, four bytes fix 64 states each. The residual aperture Δ = 1 − ρ links the BU holonomy to the closure fraction as the obstruction scalar of the same story.
 
 ## 6. Cosmological Observations and Testable Predictions
 
@@ -305,30 +325,36 @@ The same geometric principles apply to discrete information systems, leading to 
 -   **The Aperture Observable (A):** The ratio of cycle energy to total energy. The target value `A* ≈ 0.0207` is derived directly from the CGM balance condition.
 -   **Superintelligence Index (SI):** `SI = 100 / max(A/A*, A*/A)` measures proximity to the theoretical optimum of structural coherence.
 
-### 7.2 GyroSI: A Constructive Theory of Intelligence
+### 7.2 Gyroscopic ASI: A Constructive Theory of Intelligence
 
-GyroSI is a computational implementation of CGM's principles, representing intelligence as a structural property.
+Gyroscopic ASI is a computational implementation of CGM's principles, representing intelligence as a structural property.
 
 -   **Holographic Architecture:** It operates on a finite, discovered state space of 788,986 states. Every 8-bit input (`intron`) acts holographically on the full 48-bit state tensor.
 -   **Physics-Based Operations:** The system uses a single, non-associative, path-dependent learning operator (the Monodromic Fold) derived from gyrogroup algebra. There are no learned weights, scores, or probabilities.
 -   **SU(2) Structure:** The 4-layer tensor architecture explicitly encodes the 720° spinorial closure of SU(2), and intron families can be interpreted as discrete Pauli-like rotations.
 
+### 7.3 Moments Fiat: Coordination Economy on the Kernel Trajectory
+
+The physics analyses treat the hQVM as the machine that checks CGM predictions. Moments Fiat asks the complementary question: can that same machine also host a coordination economy? Receipts are positions on a deterministic kernel trajectory rather than opaque checksum containers. Time comes from the public NTP clock; offline transport uses ordinary QR codes; seals and parity are recomputed by replay. Full write-up: [Analysis_hQVM_Moments_Fiat](Findings/Analysis_hQVM_Moments_Fiat.md). Verification: `hqvm_moments_fiat_analysis_run.py` (`_1.py` through `_3.py`).
+
+Compact receipt layouts (16–20 bytes) fit QR Version 1–2; a single flipped payload bit fails seal, parity, and event together. Receipt time width matches one full Z₂ holonomy cycle (8 bytes); frame-aligned layouts keep the genealogy archive on stationary 4-byte frames. Species-scale storage stays modest when the archive stores coordinates (depth deltas and anchors) rather than full receipt copies. Public hash names work for archive append; manifold addressing stays time-derived on the kernel. AI inference hosts already running the kernel can issue such receipts from the trajectory they are already computing.
+
 ## 8. Computational Verification and Reproducibility
 
-Every major claim in this program is backed by runnable Python in `experiments/` and a matching analysis note in `docs/Findings/`. The hQVM kernel test suite documents **243 verified features** across three verification tiers: 165 kernel pytests (Tier A), 72 science-repo executables (Tier B), and 6 formal manuscript proofs (Tier C). This includes CHSH-Tsirelson saturation, quantum teleportation, Peres-Mermin contextuality, and the complete K4/wavefunction/holography closure chain. See [hQVM Features Report](https://github.com/gyrogovernance/superintelligence/blob/main/docs/reports/hQVM_Features_Report.md).
+Every major claim in this program is backed by runnable Python in `experiments/` and a matching analysis note in `docs/Findings/`. The hQVM kernel test suite documents **283 verified features** across three verification tiers: 165 kernel pytests (Tier A), 112 science-repo executables (Tier B), and 6 formal manuscript proofs (Tier C). This includes CHSH-Tsirelson saturation, quantum teleportation, Peres-Mermin contextuality, the complete K4/wavefunction/holography closure chain, percolation and cohomology obstructions, nuclear trestleboard placements, Yang–Mills mass-gap readouts, organismal allometry audits, and Moments Fiat receipt geometry. See [hQVM Features Report](https://github.com/gyrogovernance/superintelligence/blob/main/docs/reports/hQVM_Features_Report.md).
 
 The repository currently contains:
 
 | Measure | Count |
 |---------|------:|
 | Analysis write-ups (`docs/Findings/Analysis_*.md`) | 35 |
-| Runnable experiment scripts (`experiments/`, excl. tests) | 108 |
-| hQVM physics scripts (`experiments/hqvm_*.py`) | 46 |
+| Runnable experiment scripts (`experiments/`, excl. tests) | 114 |
+| hQVM physics scripts (`experiments/hqvm_*.py`, `hQVM_CGM_YM_Gap/`) | 57 |
 | Shared library and kernel modules (`experiments/`) | 6 |
-| hQVM verified features (Tiers A-C) | 243 |
+| hQVM verified features (Tiers A-C) | 283 |
 | Python in `experiments/` (all files) | 77,000 lines |
 
-Scripts cover gravity, the Yang–Mills mass-gap readout, organismal allometry, nuclear structure, electroweak mass geometry, fine structure, quantum gravity, CMB data checks, axiomatization, Hilbert space representation, monodromy, energy scales, black-hole cosmology, and related topics. Each row below is the single entry point for that topic.
+Scripts cover gravity, the Yang–Mills mass-gap readout, organismal allometry, nuclear structure, electroweak mass geometry, fine structure, quantum gravity, CMB data checks, axiomatization, Hilbert space representation, holonomy, energy scales, black-hole cosmology, and related topics. Each row below is the single entry point for that topic.
 
 | Topic | Analysis | Code |
 |-------|----------|------|
@@ -339,6 +365,7 @@ Scripts cover gravity, the Yang–Mills mass-gap readout, organismal allometry, 
 | Wavefunction: fiber bundle structure of the byte | [Analysis_hQVM_Wavefunction](Findings/Analysis_hQVM_Wavefunction.md) | `hqvm_wavefunction_kernel.py`, `hqvm_wavefunction_1.py`, `hqvm_wavefunction_2.py` |
 | Generator-restricted percolation; Square-Root Cluster Theorem | [Analysis_hQVM_Percolation](Findings/Analysis_hQVM_Percolation.md) | `hqvm_percolation_analysis_run.py` (`_1.py`–`_5.py`) |
 | Cohomology layer: parity obstruction, shell grading, Grothendieck/CHSH comparison | [Analysis_hQVM_Cohomology](Findings/Analysis_hQVM_Cohomology.md) | `hqvm_Cohomology_analysis_run.py` (`_1.py`–`_4.py`) |
+| Moments Fiat: NTP/QR receipts, coordinate ledger, inference-host co-execution | [Analysis_hQVM_Moments_Fiat](Findings/Analysis_hQVM_Moments_Fiat.md) | `hqvm_moments_fiat_analysis_run.py` (`_1.py`–`_3.py`) |
 | Electroweak mass spectrum | [Analysis_Compact_Geometry](Findings/Analysis_Compact_Geometry.md) | `hqvm_compact_geom_core.py`, `hqvm_compact_geom_kernel.py`, `hqvm_compact_geom_report.py`, `hqvm_compact_geom_derivations.py` |
 | Fine-structure constant | [Analysis_Fine_Structure](Findings/Analysis_Fine_Structure.md) | `cgm_alpha_analysis.py` |
 | Quantum gravity invariant | [Analysis_Quantum_Gravity](Findings/Analysis_Quantum_Gravity.md) | `cgm_quantum_gravity_analysis.py` |
@@ -348,7 +375,7 @@ Scripts cover gravity, the Yang–Mills mass-gap readout, organismal allometry, 
 | Axiomatization | [Analysis_Axiomatization](Findings/Analysis_Axiomatization.md) | `cgm_axiomatization_analysis.py` |
 | Hilbert space representation | [Analysis_Hilbert_Space_Representation](Findings/Analysis_Hilbert_Space_Representation.md) | `cgm_Hilbert_Space_analysis.py` |
 | CMB patterns (Planck: ℓ=37 enhancement p=0.0039) | [Analysis_CMB](Findings/Analysis_CMB.md) | `cgm_cmb_data_analysis_300825.py` |
-| Monodromy / spin-2 orientation recovery | [Analysis_Monodromy](Findings/Analysis_Monodromy.md) | `tw_closure_test.py` |
+| Holonomy: closed-path memory, aperture, continuous–finite realization | [Analysis_Holonomy](Findings/Analysis_Holonomy.md) | `cgm_holonomy_analysis.py` |
 | Black hole universe and aperture thermodynamics | [Analysis_BH_Universe](Findings/Analysis_BH_Universe.md), [Analysis_BH_Aperture](Findings/Analysis_BH_Aperture.md) | `cgm_bh_universe_analysis.py`, `cgm_bh_aperture_analysis.py` |
 | Kompaneyets | [Analysis_Kompaneyets](Findings/Analysis_Kompaneyets.md) | `cgm_kompaneyets_analysis.py` |
 | Proto-units | [Analysis_CGM_Units](Findings/Analysis_CGM_Units.md) | `cgm_proto_units_analysis.py` |
@@ -370,4 +397,4 @@ While many aspects of the program are exploratory and require further validation
 -   Dynamical scalar-tensor evolutions beyond static spherical gravity.
 -   Shell-space path integral for independent verification of gravitational Refractive Depth.
 -   Cosmological tests with next-generation observatories (e.g., LISA, SKA).
--   Practical applications of GyroSI and GyroDiagnostics.
+-   Practical applications of Gyroscopic ASI, GyroDiagnostics, and Moments Fiat coordination receipts on kernel-hosted inference paths.

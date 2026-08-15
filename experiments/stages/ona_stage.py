@@ -223,21 +223,21 @@ class ONAStage:
         """
         return float(self.angle)
 
-    def monodromy_measure(self, loop_points: list) -> float:
+    def holonomy_measure(self, loop_points: list) -> float:
         """
-        Measure the monodromy around a loop at ONA
+        Measure the holonomy around a loop at ONA
 
         Args:
             loop_points: Points defining a closed loop
 
         Returns:
-            Monodromy magnitude
+            Holonomy magnitude
         """
         if len(loop_points) < 3:
             return 0.0
 
         # Compute ordered product of gyrations around the loop
-        monodromy = np.eye(3)
+        holonomy = np.eye(3)
 
         for i in range(len(loop_points) - 1):
             p1 = loop_points[i]
@@ -250,7 +250,7 @@ class ONAStage:
             if not (hasattr(gyr, "shape") and gyr.shape == (3, 3)):
                 raise TypeError("gyration must be a 3x3 matrix")
 
-            monodromy = monodromy @ gyr
+            holonomy = holonomy @ gyr
 
         # Close the loop
         p_last = loop_points[-1]
@@ -261,6 +261,6 @@ class ONAStage:
         if not (hasattr(final_gyr, "shape") and final_gyr.shape == (3, 3)):
             raise TypeError("gyration must be a 3x3 matrix")
 
-        monodromy = monodromy @ final_gyr
+        holonomy = holonomy @ final_gyr
 
-        return float(np.linalg.norm(monodromy - np.eye(3)))
+        return float(np.linalg.norm(holonomy - np.eye(3)))

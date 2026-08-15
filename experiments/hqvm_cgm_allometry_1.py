@@ -532,7 +532,7 @@ def channel_measures(d: int = N_DOF) -> List[ChannelMeasure]:
         ChannelMeasure(
             "a_surface_continuum_Delta",
             a_surface_cont,
-            "trestle Δ/(1/32); monodromy correction",
+            "trestle Δ/(1/32); holonomy correction",
         ),
         ChannelMeasure(
             "lift_a_net_minus_a_SR",
@@ -545,7 +545,7 @@ def channel_measures(d: int = N_DOF) -> List[ChannelMeasure]:
             "bulk−surface = 1/12 at d=6 (kernel Δ)",
         ),
         ChannelMeasure("Delta_kernel_d", Delta_d, "spinorial residual 1/(8d)"),
-        ChannelMeasure("trestle_Delta", float(DELTA), "continuum monodromy Δ"),
+        ChannelMeasure("trestle_Delta", float(DELTA), "continuum holonomy Δ"),
         ChannelMeasure(
             "surface_kernel_minus_continuum",
             a_surface_kernel - a_surface_cont,

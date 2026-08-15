@@ -591,9 +591,9 @@ The entangling power of the byte algebra operates between the A and B manifolds 
 
 ## Part 10: The Non-Clifford Resource δ_BU
 
-### 10.1 The CGM Monodromy Defect
+### 10.1 The CGM Holonomy Defect
 
-The Common Governance Model derives a representation-independent constant from the depth-4 closure condition: the BU monodromy defect δ_BU = 0.195342176580 radians. This is the residual geometric phase of the dual-pole loop in the BU stage of the CGM framework.
+The Common Governance Model derives a representation-independent constant from the depth-4 closure condition: the BU holonomy defect δ_BU = 0.195342176580 radians. This is the residual geometric phase of the dual-pole loop in the BU stage of the CGM framework.
 
 The ratio δ_BU / m_a = 0.9793, where m_a = 1/(2√(2π)) is the CGM aperture scale, yields the canonical aperture:
 
@@ -656,7 +656,7 @@ W(0,1) is negative. Negative Wigner function values certify a state as a non-sta
 Δ × m_a     = 0.004128963621   (exact equality)
 ```
 
-The aperture gap Δ measures the normalised distance between δ_BU and m_a. If Δ were zero, the monodromy defect and aperture scale would coincide. The non-zero aperture guarantees that δ_BU generates a dense U(1) subgroup distinct from any structure associated with the aperture scale alone.
+The aperture gap Δ measures the normalised distance between δ_BU and m_a. If Δ were zero, the holonomy defect and aperture scale would coincide. The non-zero aperture guarantees that δ_BU generates a dense U(1) subgroup distinct from any structure associated with the aperture scale alone.
 
 The byte-scale quantisation of the aperture is 5/256 ≈ 0.01953, and the depth-4 quantisation is 1/48 ≈ 0.02083 (confirmed in the Physics Tests Report, Part 9.5).
 

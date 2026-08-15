@@ -47,7 +47,7 @@ The factor 48 is a fundamental geometric quantization unit in the CGM framework,
 - **Fine-structure constant**: α = δ_BU⁴/ m_a (quartic scaling)
 
 ### 3. Geometric Memory
-- **δ_BU**: BU dual-pole monodromy (measured: 0.195342176580 rad)
+- **δ_BU**: BU dual-pole holonomy (measured: 0.195342176580 rad)
 - **ρ = δ_BU/m_a**: Closure fraction (97.9% closure, 2.1% aperture)
 - **Δ = 1 - ρ**: Aperture gap (2.07% of m_a)
 

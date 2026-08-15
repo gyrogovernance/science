@@ -12,7 +12,7 @@ Core prediction: Base alpha_0 = delta_BU^4 /  m_a (geometric IR focus coupling)
 
 Parameters are computed from integrated CGM components:
 - m_a: From gyrotriangle closure (3D/6DoF analysis)
-- delta_BU: From Thomas-Wigner dual-pole monodromy (gyrovector operations)
+- delta_BU: From Thomas-Wigner dual-pole holonomy (gyrovector operations)
 
 No experimental alpha data is used until final comparison.
 """
@@ -51,7 +51,7 @@ def compute_from_cgm_3d_6dof():
 
 def compute_delta_BU_from_gyrovector():
     """
-    Compute δ_BU from BU dual-pole monodromy using gyrovector space.
+    Compute δ_BU from BU dual-pole holonomy using gyrovector space.
 
     δ_BU = 2 × ω(ONA ↔ BU) where ω is the rotation angle from gyration.
 
@@ -62,7 +62,7 @@ def compute_delta_BU_from_gyrovector():
     - Extract rotation angle ω from G
     - δ_BU = 2ω represents the dual-pole memory
 
-    Implementation matches tw_closure_test.py compute_bu_dual_pole_monodromy() exactly.
+    Implementation matches tw_closure_test.py compute_bu_dual_pole_holonomy() exactly.
     """
     try:
         from functions.gyrovector_ops import GyroVectorSpace
@@ -92,7 +92,7 @@ def compute_delta_BU_from_gyrovector():
     # Extract rotation angle ω - same method as tw_closure_test.py
     omega_on_to_bu = float(gyrospace.rotation_angle_from_matrix(G_on_to_bu))
 
-    # δ_BU = 2 × ω(ONA ↔ BU) - the dual-pole monodromy
+    # δ_BU = 2 × ω(ONA ↔ BU) - the dual-pole holonomy
     delta_BU = 2.0 * omega_on_to_bu
 
     # Convert to mpmath for high precision
@@ -190,7 +190,7 @@ def compute_holo_ratio_from_energy():
     Compute holonomy ratio from 4-leg and 8-leg toroidal holonomies.
 
     holo_ratio = holo_4leg / holo_8leg
-    where holo_8leg = δ_BU (the dual-pole monodromy).
+    where holo_8leg = δ_BU (the dual-pole holonomy).
     """
     holo_4leg_val = compute_toroidal_4leg_holonomy()  # ≈ 0.862833
     delta_BU = compute_delta_BU_from_gyrovector()  # δ_BU (8-leg holonomy)
@@ -233,7 +233,7 @@ def main():
 
     print("CGM Fine-Structure Constant: Geometric IR Focus Prediction")
     print("=" * 65)
-    print("Base prediction from BU dual-pole monodromy and aperture structure.")
+    print("Base prediction from BU dual-pole holonomy and aperture structure.")
     print("=" * 65)
 
     # Compute parameters from CGM components
@@ -243,7 +243,7 @@ def main():
 
     delta_BU = compute_delta_BU_from_gyrovector()
     print(
-        f"delta_BU = {float(delta_BU):.12f} rad (computed from gyrovector dual-pole monodromy)"
+        f"delta_BU = {float(delta_BU):.12f} rad (computed from gyrovector dual-pole holonomy)"
     )
     print("  Derivation: δ_BU = 2 × ω(ONA ↔ BU) from gyration in gyrovector space")
     print("  Path: ONA → BU+ → BU- → ONA (dual-pole traversal)")

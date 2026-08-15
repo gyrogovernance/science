@@ -33,7 +33,7 @@ The electromagnetic coupling emerges as:
 compared to α_CODATA = 0.0072974, yielding 0.0316% deviation.
 
 #### 2.2 Geometric Origin
-The dual-pole monodromy δ_BU = 0.19534 rad arises from measuring the BU stage traversal. The quartic scaling emerges from:
+The dual-pole holonomy δ_BU = 0.19534 rad arises from measuring the BU stage traversal. The quartic scaling emerges from:
 - Two commutators (each contributing quadratic scaling)
 - Two poles (BU+ and BU-)
 - Combined: δ^4 ∝ θ^8 in the small-angle regime

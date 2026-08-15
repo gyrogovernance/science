@@ -216,6 +216,20 @@ def fold_disagreement_d(byte: int, d: int) -> int:
     return count
 
 
+def fold_map_d(byte: int, d: int) -> int:
+    """Palindromic fold P: reverse the (d+2)-bit intron, return the folded byte.
+
+    At d=6 this is the Wavefunction fold map on phase pairs (0,7)..(3,4).
+    """
+    intron = intron_from_byte(int(byte), d)
+    n = d + 2
+    folded = 0
+    for i in range(n):
+        if (intron >> i) & 1:
+            folded |= 1 << (n - 1 - i)
+    return byte_from_intron(folded, d)
+
+
 def delta_depth4_horizon_d(d: int) -> float:
     """Depth-4 projection horizon Q_{8d}(Delta) ~ 1 (Specs_Formalism 7.2)."""
     return 1.0 / (8.0 * d)

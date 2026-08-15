@@ -455,7 +455,7 @@ From rest (GENE_MAC_REST), the reachable 24-bit state set under the transition r
 
 The CGM aperture gap is defined continuously as:
 
-- `delta_BU`: BU monodromy defect (radians) = 0.195342176580
+- `delta_BU`: BU holonomy defect (radians) = 0.195342176580
 - `m_a = 1/(2*sqrt(2*pi))` = 0.199471140201
 - `rho = delta_BU / m_a` = 0.979300446087
 - `Delta = 1 - rho` = 0.020699553913 (dimensionless aperture gap, ~2.07%)

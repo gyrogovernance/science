@@ -58,7 +58,7 @@ Stage 3: ONA (Opposition Non-Absolute)
 Stage 4: BU (Balance Universal)
 - Threshold:  m_a = 1/(2√(2π)) ≈ 0.199471
 - Meaning: Vibrational motion at the IR observation focus; bounded oscillation amplitude m_a about the depth-four closed configuration
-- Depth-four commutative closure (both gyrations equivalent at □B); monodromy phase defect encodes memory of the vibrational mode
+- Depth-four commutative closure (both gyrations equivalent at □B); holonomy phase defect encodes memory of the vibrational mode
 
 ### 2.3 Geometric Necessity
 
@@ -150,11 +150,11 @@ This makes spacetime metric components into operators since [g_μν(X), P] ≠ 0
 The identity that fixes the observational aperture scale:
 Q_G × m_a² = 1/2
 
-This links the solid angle Q_G = 4π to m_a. It is distinct from the closure ratio ρ = δ_BU/m_a ≈ 0.9793 and the aperture gap Δ = 1 − ρ ≈ 0.0207 (about 2.07%). The latter pair measures how BU dual-pole monodromy fills the aperture scale: ρ is structural phase closure, Δ is the residual vibrational amplitude that keeps observation possible. The half-integer in Q_G m_a² = 1/2 connects to SU(2) double-cover structure (spin-1/2).
+This links the solid angle Q_G = 4π to m_a. It is distinct from the closure ratio ρ = δ_BU/m_a ≈ 0.9793 and the aperture gap Δ = 1 − ρ ≈ 0.0207 (about 2.07%). The latter pair measures how BU dual-pole holonomy fills the aperture scale: ρ is structural phase closure, Δ is the residual vibrational amplitude that keeps observation possible. The half-integer in Q_G m_a² = 1/2 connects to SU(2) double-cover structure (spin-1/2).
 
-### 5.3 Monodromy and Memory
+### 5.3 Holonomy and Memory
 
-Incomplete closure creates monodromy, geometric memory that encodes the complete recursive history. This memory manifests as:
+Incomplete closure creates holonomy, geometric memory that encodes the complete recursive history. This memory manifests as:
 - Elementary transitions: δ = 0.097671 rad per stage
 - Dual-pole traversal: δ_BU = 0.195342 rad
 - Complete cycles: Various values encoding different memory depths
@@ -163,7 +163,7 @@ Incomplete closure creates monodromy, geometric memory that encodes the complete
 
 ### 6.1 Fine-Structure Constant
 
-From BU dual-pole monodromy through quartic scaling:
+From BU dual-pole holonomy through quartic scaling:
 
 α = (δ_BU)^4 /  m_a = 0.007299734
 
@@ -198,7 +198,7 @@ The CGM framework treats reality as emerging through recursive self-observation,
 
 Rather than seeking mathematical unification of forces, CGM unifies physics through shared observational origin:
 - Quantum effects: From commutator preventing simultaneous eigenvalues
-- Gravitational effects: From monodromy creating spacetime memory  
+- Gravitational effects: From holonomy creating spacetime memory  
 - Electromagnetic structure: From aperture balance requirements
 - Nuclear forces: From geometric conditions at different scales
 
@@ -227,7 +227,7 @@ The framework makes precise quantitative predictions testable with current techn
 ### 8.2 Novel Predictions
 
 Beyond reproducing known physics, CGM predicts:
-- Specific monodromy relationships in quantum systems
+- Specific holonomy relationships in quantum systems
 - Cross-scale correlations following optical conjugacy
 - Geometric conditions on particle spectra
 - Observable signatures in analog gravity systems
@@ -237,7 +237,7 @@ Beyond reproducing known physics, CGM predicts:
 The framework is falsifiable through:
 - Violation of predicted threshold relationships
 - Breakdown of optical conjugacy at any scale  
-- Absence of monodromy signatures in quantum systems
+- Absence of holonomy signatures in quantum systems
 - Deviation from geometric constant predictions
 
 ## 9. Future Directions
@@ -256,14 +256,14 @@ The framework suggests new approaches to:
 - Inflation as geometric expansion of observational capacity
 - Dark matter as geometric shadow effects
 - Dark energy as observational coherence pressure
-- Structure formation through scale-dependent monodromy
+- Structure formation through scale-dependent holonomy
 
 ### 9.3 Quantum Information
 
 CGM's emphasis on observation suggests deep connections to:
 - Quantum error correction through geometric conditions
 - Entanglement as shared observational processes
-- Information paradoxes resolved through monodromy
+- Information paradoxes resolved through holonomy
 - Holographic principles from aperture requirements
 
 ## 10. Conclusions

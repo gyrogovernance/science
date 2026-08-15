@@ -1477,7 +1477,7 @@ Illustrative transformer bridge examples (KV polar encoding, native attention) a
 | Symbol | Meaning |
 |---|---|
 | m_a | Observational aperture, m_a = 1/(2√(2π)) |
-| δ_BU | BU dual-pole monodromy |
+| δ_BU | BU dual-pole holonomy |
 | ρ_cl | Closure ratio, ρ_cl = δ_BU/m_a |
 | Δ | Aperture gap, Δ = 1 − ρ_cl |
 | Q_G | Quantum gravity invariant, Q_G = 4π |
@@ -1488,7 +1488,7 @@ The CGM constants governing closure geometry are:
 
 ```
 m_a    = 1 / (2√(2π))    observational aperture
-δ_BU                      BU dual-pole monodromy
+δ_BU                      BU dual-pole holonomy
 ρ_cl   = δ_BU / m_a       closure ratio
 Δ      = 1 − ρ_cl         aperture gap  (≈ 0.0207)
 Q_G    = 4π               quantum gravity invariant
@@ -1547,13 +1547,13 @@ The ratio of the two natural quantization scales is:
 (1/48) / (1/32) = 2/3
 ```
 
-where 1/32 corresponds to the turn-normalized monodromy δ_BU/(2π) ≈ 1/32. The factor 2/3 is the ratio of chirality (2 faces, A and B, the spinorial double-cover) to space (3 spatial axes). The aperture exists because mapping a 2-phase chiral spinor onto a 3-axis discrete grid leaves a geometric gap.
+where 1/32 corresponds to the turn-normalized holonomy δ_BU/(2π) ≈ 1/32. The factor 2/3 is the ratio of chirality (2 faces, A and B, the spinorial double-cover) to space (3 spatial axes). The aperture exists because mapping a 2-phase chiral spinor onto a 3-axis discrete grid leaves a geometric gap.
 
 ### 20.5 Unified defect concept
 
 The transform algebra and the closure geometry share a common structural concept: an exact finite remainder from an ideal closure condition.
 
-**Closure defect.** The aperture gap Δ is the remainder when the BU monodromy falls short of the aperture scale. It is the structural reason the medium has both radial and directional coordinates.
+**Closure defect.** The aperture gap Δ is the remainder when the BU holonomy falls short of the aperture scale. It is the structural reason the medium has both radial and directional coordinates.
 
 **Anisotropy defect.** When the byte ensemble drives the six chirality axes unequally, the climate departs from the isotropic shell distribution. The anisotropy vector (η₁,…,η₆) measures this defect from the isotropic ideal.
 

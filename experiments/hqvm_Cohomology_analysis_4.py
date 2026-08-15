@@ -15,7 +15,7 @@ Sections:
   B.  Grothendieck constant K(G) of the horizon-transition graph (L6)
   C.  Per-byte Lefschetz numbers in the shell grading (L2)
   D.  Arcsin rounding law on the native 64 chirality +/-1 vectors (L3)
-  E.  Trace-angle standardization of the BU monodromy delta_BU (L8)
+  E.  Trace-angle standardization of the BU holonomy delta_BU (L8)
   F.  Characteristic polynomials of depth-4 word operators / RH analogue (L4)
 
 Companion scripts: hqvm_Cohomology_analysis_{1,2,3}.py,
@@ -355,7 +355,7 @@ def experiment_arcsin_chirality_vectors() -> dict[str, object]:
 
 
 # ================================================================
-# E. Trace-angle standardization of the BU monodromy delta_BU
+# E. Trace-angle standardization of the BU holonomy delta_BU
 # ================================================================
 
 

@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
 """
-Thomas-Wigner Closure Test
+Thomas-Wigner Closure Test (legacy)
+
+Superseded for documentation and verification by experiments/cgm_holonomy_analysis.py
+and docs/Findings/Analysis_Holonomy.md. Kept for imports used by older analysis scripts
+(e.g. TWClosureTester / GyroVectorSpace helpers). Prefer the holonomy analysis for new work.
 
 This experiment tests the critical identity that connects CGM's three fundamental thresholds:
 - UNA threshold (u_p = 1/√2 ≈ 0.70711)
@@ -282,9 +286,9 @@ class TWClosureTester:
             print(f"\nTotal holonomy (8-leg loop): {total_rotation:.6f} rad")
             print(f"Signed total holonomy:       {signed_total:+.6f} rad")
             print(
-                f"Nonzero holonomy detected (monodromy): φ₈ = {total_rotation:.6f} rad"
+                f"Nonzero holonomy detected (holonomy): φ₈ = {total_rotation:.6f} rad"
             )
-            print(f"This equals the BU dual-pole monodromy δ_BU; value is invariant.")
+            print(f"This equals the BU dual-pole holonomy δ_BU; value is invariant.")
             print(f"Memory accumulation:         {deviation:.6e}")
             print(f"Signed memory:               {signed_deviation:.6e}")
 
@@ -361,9 +365,9 @@ class TWClosureTester:
             "pole_asymmetry": asym,
         }
 
-    def compute_bu_dual_pole_monodromy(self, verbose: bool = True) -> Dict[str, float]:
+    def compute_bu_dual_pole_holonomy(self, verbose: bool = True) -> Dict[str, float]:
         """
-        Compute the BU dual-pole monodromy constant:
+        Compute the BU dual-pole holonomy constant:
         δ_BU := 2·ω(ONA ↔ BU) ≈ 0.98·m_a
 
         This is a named invariant that should be stable across seeds/perturbations.
@@ -371,7 +375,7 @@ class TWClosureTester:
         Physical Meaning:
         - δ_BU represents the "memory" that accumulates when traversing the path:
           ONA → BU+ → BU- → ONA
-        - This monodromy is the geometric memory of the dual-pole structure
+        - This holonomy is the geometric memory of the dual-pole structure
         - The ratio δ_BU/ m_a ≈ 0.979 indicates the system is 97.9% closed with 2.1% aperture
         """
         v = {
@@ -396,7 +400,7 @@ class TWClosureTester:
         deviation_from_ma = abs(ratio_to_ma - 1.0)
 
         if verbose:
-            print(f"\nBU Dual-Pole Monodromy Constant (High Precision):")
+            print(f"\nBU Dual-Pole Holonomy Constant (High Precision):")
             print(f"  δ_BU = 2·w(ONA ↔ BU) = {delta_bu:.10f} rad")
             print(f"  BU threshold  m_a = {float(self.m_a):.10f} rad")
             print(f"  Ratio δ_BU/ m_a = {ratio_to_ma:.10f}")
@@ -629,7 +633,7 @@ class TWClosureTester:
                     "   This represents the system's topological memory, not an error"
                 )
 
-            # DIAGNOSTIC: Analyze the monodromy pattern
+            # DIAGNOSTIC: Analyze the holonomy pattern
             print("\n🔍 TOROIDAL MONODROMY DIAGNOSTIC:")
             print(
                 f"   System-level memory: {total_rotation:.6f} rad (geometric invariant)"
@@ -637,10 +641,10 @@ class TWClosureTester:
             print(
                 f"   Memory accumulation: {total_rotation:.6f} rad (topological signature)"
             )
-            print(f"   Monodromy magnitude: {rotation_deviation:.6f} rad")
+            print(f"   Holonomy magnitude: {rotation_deviation:.6f} rad")
             print(f"   This represents the system's geometric memory")
             print(
-                f"   Hypothesis: The monodromy encodes the system's topological structure"
+                f"   Hypothesis: The holonomy encodes the system's topological structure"
             )
             print(f"   This is a feature, not a bug - it measures geometric memory")
 
@@ -670,7 +674,7 @@ class TWClosureTester:
         if verbose:
             print("\n🔍 INVARIANT SENSITIVITY TEST")
             print("=" * 50)
-            print(f"Testing monodromy sensitivity with ε = {epsilon:.3f}")
+            print(f"Testing holonomy sensitivity with ε = {epsilon:.3f}")
             print()
 
         # Test canonical configuration
@@ -754,24 +758,24 @@ class TWClosureTester:
         if verbose:
             print(f"\n📊 INVARIANT SENSITIVITY ANALYSIS:")
             print(
-                f"  Monodromy range: [{min_deviation:.6e}, {max_deviation:.6e}] (span: {deviation_range:.2e})"
+                f"  Holonomy range: [{min_deviation:.6e}, {max_deviation:.6e}] (span: {deviation_range:.2e})"
             )
             print(
-                f"  Signed monodromy range: [{min_signed_deviation:.6e}, {max_signed_deviation:.6e}] (span: {signed_deviation_range:.2e})"
+                f"  Signed holonomy range: [{min_signed_deviation:.6e}, {max_signed_deviation:.6e}] (span: {signed_deviation_range:.2e})"
             )
             print(f"  Invariant threshold: {stability_threshold:.2e}")
             print(f"  Is stable: {'✅ YES' if is_stable else '❌ NO'}")
 
             if is_stable:
                 print(
-                    f"  🎯 ROBUST INVARIANT: Monodromy is stable across perturbations"
+                    f"  🎯 ROBUST INVARIANT: Holonomy is stable across perturbations"
                 )
                 print(
                     f"     This indicates a genuine geometric invariant in (β,θ,m)-space"
                 )
             else:
                 print(
-                    f"  🎯 SHARP INVARIANT: Monodromy is sensitive to off-manifold perturbations"
+                    f"  🎯 SHARP INVARIANT: Holonomy is sensitive to off-manifold perturbations"
                 )
                 print(
                     f"     This suggests a resonant, topologically pinned value (as expected)"
@@ -823,8 +827,8 @@ class TWClosureTester:
         # Test BU pole asymmetry and cancelation
         results["bu_pole_asymmetry"] = self.bu_pole_asymmetry()
 
-        # Compute BU dual-pole monodromy constant
-        results["bu_dual_pole_monodromy"] = self.compute_bu_dual_pole_monodromy(
+        # Compute BU dual-pole holonomy constant
+        results["bu_dual_pole_holonomy"] = self.compute_bu_dual_pole_holonomy(
             verbose=verbose
         )
 
@@ -963,7 +967,7 @@ class TWClosureTester:
             print(
                 f"   Current variation suggests the system is still in emergence phase"
             )
-            print(f"   This connects to the toroidal monodromy we observed")
+            print(f"   This connects to the toroidal holonomy we observed")
 
         return {
             "chi_mean": chi_mean,
@@ -1161,7 +1165,7 @@ class TWClosureTester:
             print()
 
         # Canonical case
-        canonical_result = self.compute_bu_dual_pole_monodromy(verbose=False)
+        canonical_result = self.compute_bu_dual_pole_holonomy(verbose=False)
         canonical_ratio = canonical_result["ratio_to_ma"]
         canonical_ma = self.m_a
 
@@ -1181,7 +1185,7 @@ class TWClosureTester:
                 temp_tester.m_a = perturbed_ma
 
                 # Compute δ_BU with perturbed m_a
-                perturbed_result = temp_tester.compute_bu_dual_pole_monodromy(
+                perturbed_result = temp_tester.compute_bu_dual_pole_holonomy(
                     verbose=False
                 )
                 perturbed_ratio = perturbed_result["ratio_to_ma"]
@@ -1266,7 +1270,7 @@ class TWClosureTester:
             print("=" * 9)
 
         # Method 1: SU(2) composition (validated method)
-        method1 = self.compute_bu_dual_pole_monodromy(verbose=False)
+        method1 = self.compute_bu_dual_pole_holonomy(verbose=False)
         delta_bu_1 = method1["delta_bu"]
 
         # Compare to BU threshold

@@ -44,7 +44,7 @@ class CGMRotationCurves:
     def __init__(self):
         """Initialize with CGM parameters from corrections analysis."""
         # CGM geometric parameters (derived from CGM geometry, see docs/Findings/Analysis_Fine_Structure.md)
-        self.delta_BU = Decimal("0.195342176580")  # BU dual-pole monodromy δ_BU
+        self.delta_BU = Decimal("0.195342176580")  # BU dual-pole holonomy δ_BU
         self.R = Decimal(
             "0.993434896272"
         )  # Thomas-Wigner curvature ratio: R = (F̄/π)/ m_a with F̄ = 0.622543 (Eq. 54)

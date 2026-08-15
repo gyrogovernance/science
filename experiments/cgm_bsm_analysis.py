@@ -32,7 +32,7 @@ class CGMInvariants:
     # Core invariants [dimensionless]
     m_a: float = 1 / (2 * sqrt(2 * pi))  # Aperture parameter
     Q_G: float = 4 * pi  # Complete solid angle
-    delta_BU: float = 0.195342176580  # BU dual-pole monodromy
+    delta_BU: float = 0.195342176580  # BU dual-pole holonomy
     phi_SU2: float = 0.587901  # SU(2) commutator holonomy
 
     # Derived invariants
@@ -385,8 +385,8 @@ class NeutrinoPhysics:
         rho = self.cgm.rho
 
         y3 = Δ**2
-        y2 = (Δ**2) / sqrt(2) * sqrt(rho / kappa_geom)  # Monodromy correction
-        y1 = Δ**3 * sqrt(rho / kappa_geom)  # Monodromy correction
+        y2 = (Δ**2) / sqrt(2) * sqrt(rho / kappa_geom)  # Holonomy correction
+        y1 = Δ**3 * sqrt(rho / kappa_geom)  # Holonomy correction
 
         v = self.scales.v_weak
         # Seesaw: mν = y_D^2 v^2 / (2 M_R)
@@ -499,7 +499,7 @@ class DarkSectorPhysics:
         }
 
     def predict_axion(self) -> Dict[str, Any]:
-        """Calculate axion properties from monodromy breaking."""
+        """Calculate axion properties from holonomy breaking."""
         # Peccei-Quinn scale
         f_a = self.scales.M_Planck * (self.cgm.delta_BU / (2 * pi))
 

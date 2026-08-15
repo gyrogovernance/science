@@ -178,21 +178,21 @@ class BUStage:
 
         return bool(gradient_norm < 1e-6)  # Threshold for "flattening"
 
-    def singularity_as_memory_failure(self, loop_monodromy: np.ndarray) -> bool:
+    def singularity_as_memory_failure(self, loop_holonomy: np.ndarray) -> bool:
         """
         Check for recursive singularity (memory cannot store torsion)
 
         Args:
-            loop_monodromy: Monodromy around a loop
+            loop_holonomy: Holonomy around a loop
 
         Returns:
             True if singularity condition is met
         """
         # ||μ(M_ℓ)|| → ∞ but ψ_rec(ℓ) → 0
-        monodromy_norm = np.linalg.norm(loop_monodromy)
-        coherence_field = np.exp(-monodromy_norm)  # Simplified model
+        holonomy_norm = np.linalg.norm(loop_holonomy)
+        coherence_field = np.exp(-holonomy_norm)  # Simplified model
 
-        return bool(monodromy_norm > 1e6 and coherence_field < 1e-6)
+        return bool(holonomy_norm > 1e6 and coherence_field < 1e-6)
 
     def verify_universal_balance(self, test_configurations: list) -> float:
         """

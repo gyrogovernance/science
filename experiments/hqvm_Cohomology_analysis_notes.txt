@@ -162,7 +162,7 @@ Claim grade: **kernel-verified** (cover); **exact** (Hom dimension, trivial
 module).
 
 
-9. Byte alphabet monodromy (analysis_2 IV, VIIIb; analysis_3 B, C, H)
+9. Byte alphabet holonomy (analysis_2 IV, VIIIb; analysis_3 B, C, H)
 -------------------------------------------------------------------
 
 Cycle structure over all 256 bytes:
@@ -184,10 +184,10 @@ E[L] = (4 * 64) / 256 = 1.0. Per family: 63 pure-4-cycle bytes + 1 stabilizer.
 
 Generic single-byte dynamics has order 4 on Omega. Depth-4 closure words W2,
 W2', F have order 2 (involutions, 2048 two-cycles); composing two half-cycles
-squares the monodromy from period 4 to period 2.
+squares the holonomy from period 4 to period 2.
 
 Claim grade: **kernel-verified** (stabilizer = horizon gates, fixed locus =
-full single horizon; q6=0 iff stabilizer; order-4 generic monodromy).
+full single horizon; q6=0 iff stabilizer; order-4 generic holonomy).
 
 
 10. Depth-4 words: zeta, char poly, Lefschetz (analysis_2 VII)
@@ -291,7 +291,7 @@ uniform Omega).
     Hilbert CHSH = 2*sqrt(2) on lift
     Boolean CHSH = 0 uniform Omega; = 2 on horizons/fixed chi
     4-to-1 K4 cover, transitive on families
-    252/256 pure order-4 monodromy; 4 stabilizers = horizon gates
+    252/256 pure order-4 holonomy; 4 stabilizers = horizon gates
     Stabilizer fixed sets = full single horizon (shell 0 or 6)
     q6 = 0 iff stabilizer (fixed-point byte)
     Shannon triad exact; complementarity h+ab=12
@@ -328,7 +328,7 @@ horizons and fixed-chirality ensembles; in the bulk equator the Boolean CHSH
 drops to 1.2 and the Hilbert-to-Boolean ratio rises to 2.357. The byte
 alphabet is a 4-to-1 K4 cover of GF(2)^6; the fixed-point bytes are exactly
 the four q6 = 0 bytes, each fixing one full complement horizon. Generic
-monodromy has order 4; depth-4 closure operators are fixed-point-free
+holonomy has order 4; depth-4 closure operators are fixed-point-free
 involutions with zeta (1-t^2)^(-2048). The square-root theorem |Reach| =
 (2^r)^2 holds with per-factor rank r = r(q6) under both fiber-complete and
 fiber-incomplete selection. On a single conditioned ensemble the full 63x63
@@ -491,7 +491,7 @@ relevance; recorded as a direction.
 
 The kernel admits a second finite Grothendieck instance (the bipartite
 Hc<->He cut norm), distinct from the CHSH K_G^R(2) channel and not
-exceeding it. The per-byte Lefschetz census closes the monodromy table: the
+exceeding it. The per-byte Lefschetz census closes the holonomy table: the
 only nonzero Lefschetz numbers are the four q6 = 0 horizon stabilizers, each
 fixing one full horizon. The (2/pi) rounding law is exact on the native
 chirality +/-1 vectors, and delta_BU is recovered to machine precision as a

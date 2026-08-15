@@ -1589,9 +1589,9 @@ class TriadIndexAnalyzer:
         from experiments.cgm_quantum_gravity_analysis import QuantumGravityHorizon
 
         qg = QuantumGravityHorizon()
-        # Get BU dual-pole monodromy constant (pure SU(2))
-        bu_monodromy = qg.compute_bu_dual_pole_monodromy()
-        delta_bu = bu_monodromy["delta_bu"]
+        # Get BU dual-pole holonomy constant (pure SU(2))
+        bu_holonomy = qg.compute_bu_dual_pole_holonomy()
+        delta_bu = bu_holonomy["delta_bu"]
 
         # Get holonomy at canonical δ=π/2
         holonomy = qg.compute_su2_commutator_holonomy(delta=np.pi / 2)
@@ -1689,7 +1689,7 @@ class TriadIndexAnalyzer:
         alpha_pred = np.exp(-delta_dom_pred) / pi_loop
 
         print(f"SU(2) Invariants Used:")
-        print(f"  δ_BU = {delta_bu:.6f} rad (BU dual-pole monodromy)")
+        print(f"  δ_BU = {delta_bu:.6f} rad (BU dual-pole holonomy)")
         print(f"  φ_eff = {phi_eff:.6f} rad (holonomy at δ=π/2)")
         print(f"  Π_loop = {pi_loop:.6f} (helical pitch)")
         print()
