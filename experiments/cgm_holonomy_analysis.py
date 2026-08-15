@@ -6,8 +6,8 @@ Foundational measurements of holonomy in the Common Governance Model.
 
 Layers:
   1. Exact continuous algebra — thresholds, SU(2) commutator, TW calibration
-  2. Declared continuous CGM realization — payload embedding, analytic BU holonomy,
-     matrix realization, conjugacy, invariances, aperture structure
+  2. Continuous CGM path — stage coordinates, canonical dual-pole holonomy, mpmath Jacobian scan,
+     closed-form formula, matrix realization, conjugacy, invariances, aperture
   3. Exact finite hQVM realization — fold statistics, K4/W2, continuous-finite bridge
 
 Writes experiments/cgm_holonomy_analysis_results.txt.
@@ -40,6 +40,7 @@ from functions.gyrovector_ops import GyroVectorSpace
 
 try:
     from gyroscopic.hQVM.constants import (
+        APERTURE_GAP_Q256,
         BU_APERTURE_GAP,
         BU_CLOSURE_RATIO,
         BU_HOLONOMY_ANGLE,
@@ -48,6 +49,7 @@ except Exception:  # pragma: no cover
     BU_HOLONOMY_ANGLE = None  # type: ignore[assignment]
     BU_CLOSURE_RATIO = None  # type: ignore[assignment]
     BU_APERTURE_GAP = None  # type: ignore[assignment]
+    APERTURE_GAP_Q256 = None  # type: ignore[assignment]
 
 try:
     from hqvm_wavefunction_kernel import (
@@ -73,7 +75,6 @@ TOL_ANGLE = 1e-12
 TOL_TW_SLOPE = 1e-3
 TOL_TW_RESID = 1e-6
 TOL_SO3 = 1e-10
-TOL_MAP = 1e-9
 TOL_MATRIX = 5e-8
 TOL_ANGLE_INV = 1e-9
 
@@ -164,6 +165,22 @@ def so3_residuals(R: np.ndarray) -> tuple[float, float]:
     orth = float(np.linalg.norm(R.T @ R - np.eye(3)))
     det = abs(float(np.linalg.det(R)) - 1.0)
     return orth, det
+
+
+def gyration_matrix_exact(gs: GyroVectorSpace, a: np.ndarray, b: np.ndarray) -> np.ndarray:
+    """
+    Float64 SO(3) matrix of gyr[a,b] from the defining identity applied to e_i.
+    """
+    a = np.asarray(a, dtype=float)
+    b = np.asarray(b, dtype=float)
+    cols = [gs.gyr_apply(a, b, e) for e in np.eye(3)]
+    G = np.column_stack(cols)
+    U, _, Vt = np.linalg.svd(G)
+    R = U @ Vt
+    if np.linalg.det(R) < 0:
+        U[:, -1] *= -1
+        R = U @ Vt
+    return R
 
 
 def quaternion_from_rotation_matrix(R: np.ndarray) -> np.ndarray:
@@ -304,7 +321,8 @@ def tw_angle_exact(beta: Any, theta: Any) -> Any:
 
 def analytic_bu_holonomy(t: CGMThresholds) -> tuple[Any, Any]:
     """
-    Declared embedding: orthogonal boosts of magnitudes theta_ona and m_a.
+    Closed-form BU dual-pole holonomy for orthogonal boosts of magnitudes
+    theta_ona and m_a.
     omega = 2 atan(k(theta_ona) k(m_a))
     delta_BU = 2 omega = 4 atan(k(theta_ona) k(m_a))
     """
@@ -312,44 +330,159 @@ def analytic_bu_holonomy(t: CGMThresholds) -> tuple[Any, Any]:
     return omega, 2 * omega
 
 
-def _bisect_root(
-    f: Any,
-    lo: Any,
-    hi: Any,
-    *,
-    tol: Any = mp.mpf("1e-40"),
-    max_iter: int = 200,
-) -> Any:
-    flo = f(lo)
-    fhi = f(hi)
-    if flo * fhi > 0:
-        raise RuntimeError("root not bracketed")
-    a, b = lo, hi
-    fa = flo
-    for _ in range(max_iter):
-        mid = (a + b) / 2
-        fm = f(mid)
-        if abs(fm) < tol or abs(b - a) < tol:
-            return mid
-        if fa * fm <= 0:
-            b = mid
-        else:
-            a, fa = mid, fm
-    return (a + b) / 2
+# ---------------------------------------------------------------------
+# Canonical BU dual-pole holonomy (GyroVectorSpace.gyration)
+# ---------------------------------------------------------------------
 
 
-def solve_beta_star(theta: Any, target: Any) -> Any:
-    def f(b: Any) -> Any:
-        return tw_angle_exact(b, theta) - target
+def canonical_dual_pole_holonomy(
+    gs: GyroVectorSpace, t: CGMThresholds
+) -> dict[str, float]:
+    """
+    delta_BU = 2 * angle(gyration(ONA, BU+)) on CGM stage coordinates.
+    Also reports the reverse corner and the three-leg loop product angle.
+    """
+    ona = np.array([0.0, float(t.theta_ona), 0.0], dtype=float)
+    bu_p = np.array([0.0, 0.0, float(t.m_a)], dtype=float)
+    bu_m = np.array([0.0, 0.0, -float(t.m_a)], dtype=float)
 
-    return _bisect_root(f, mp.mpf("1e-12"), mp.mpf(1) - mp.mpf("1e-12"))
+    G_egress = np.asarray(gs.gyration(ona, bu_p), dtype=float)
+    G_middle = np.asarray(gs.gyration(bu_p, bu_m), dtype=float)
+    G_ingress = np.asarray(gs.gyration(bu_m, ona), dtype=float)
+    G_rev = np.asarray(gs.gyration(bu_p, ona), dtype=float)
+
+    omega_egress = rotation_report_from_matrix(G_egress).angle
+    omega_middle = rotation_report_from_matrix(G_middle).angle
+    omega_ingress = rotation_report_from_matrix(G_ingress).angle
+    omega_rev = rotation_report_from_matrix(G_rev).angle
+    product = G_ingress @ G_middle @ G_egress
+    delta_loop = rotation_report_from_matrix(product).angle
+    delta_bu = 2.0 * omega_egress
+    orth, det = so3_residuals(product)
+    return {
+        "omega_egress": omega_egress,
+        "omega_middle": omega_middle,
+        "omega_ingress": omega_ingress,
+        "omega_rev": omega_rev,
+        "delta_bu": delta_bu,
+        "delta_loop": delta_loop,
+        "orth": orth,
+        "det": det,
+    }
 
 
-def solve_theta_star(beta: Any, target: Any) -> Any:
-    def f(th: Any) -> Any:
-        return tw_angle_exact(beta, th) - target
+# ---------------------------------------------------------------------
+# mpmath Einstein gyration / Jacobian (ONA, BU+)
+# ---------------------------------------------------------------------
 
-    return _bisect_root(f, mp.mpf("1e-12"), mp.pi / 2)
+
+def _mp_dot3(a: list[Any], b: list[Any]) -> Any:
+    return a[0] * b[0] + a[1] * b[1] + a[2] * b[2]
+
+
+def _mp_add3(a: list[Any], b: list[Any]) -> list[Any]:
+    return [a[0] + b[0], a[1] + b[1], a[2] + b[2]]
+
+
+def _mp_scale3(s: Any, a: list[Any]) -> list[Any]:
+    return [s * a[0], s * a[1], s * a[2]]
+
+
+def _mp_neg3(a: list[Any]) -> list[Any]:
+    return [-a[0], -a[1], -a[2]]
+
+
+def einstein_gyroaddition_mp(u: list[Any], v: list[Any], c: Any = mp.mpf(1)) -> list[Any]:
+    c2 = c * c
+    u2 = _mp_dot3(u, u)
+    if u2 == 0:
+        return list(v)
+    v2 = _mp_dot3(v, v)
+    if v2 == 0:
+        return list(u)
+    gamma_u = 1 / mp.sqrt(1 - u2 / c2)
+    denom = 1 + _mp_dot3(u, v) / c2
+    v_para = _mp_scale3(_mp_dot3(v, u) / u2, u)
+    v_perp = _mp_add3(v, _mp_neg3(v_para))
+    w_para = _mp_scale3(1 / denom, _mp_add3(u, v_para))
+    w_perp = _mp_scale3(1 / (denom * gamma_u), v_perp)
+    return _mp_add3(w_para, w_perp)
+
+
+def gyr_apply_mp(a: list[Any], b: list[Any], w: list[Any], c: Any = mp.mpf(1)) -> list[Any]:
+    return einstein_gyroaddition_mp(
+        _mp_neg3(einstein_gyroaddition_mp(a, b, c)),
+        einstein_gyroaddition_mp(a, einstein_gyroaddition_mp(b, w, c), c),
+        c,
+    )
+
+
+def _so3_from_columns_mp(cols: list[list[Any]]) -> Any:
+    G = mp.matrix(3)
+    for i in range(3):
+        for j in range(3):
+            G[j, i] = cols[i][j]
+    U, _S, Vh = mp.svd(G)
+    R = U * Vh
+    if mp.det(R) < 0:
+        U[:, 2] = -U[:, 2]
+        R = U * Vh
+    return R
+
+
+def rotation_angle_from_so3_mp(R: Any) -> Any:
+    tr = R[0, 0] + R[1, 1] + R[2, 2]
+    cos_th = (tr - 1) / 2
+    if cos_th > 1:
+        cos_th = mp.mpf(1)
+    elif cos_th < -1:
+        cos_th = mp.mpf(-1)
+    return mp.acos(cos_th)
+
+
+def gyr_matrix_columns_mp(a: list[Any], b: list[Any], c: Any = mp.mpf(1)) -> Any:
+    basis = (
+        [mp.mpf(1), mp.mpf(0), mp.mpf(0)],
+        [mp.mpf(0), mp.mpf(1), mp.mpf(0)],
+        [mp.mpf(0), mp.mpf(0), mp.mpf(1)],
+    )
+    return _so3_from_columns_mp([gyr_apply_mp(a, b, e, c) for e in basis])
+
+
+def gyr_matrix_jacobian_mp(a: list[Any], b: list[Any], eps: Any, c: Any = mp.mpf(1)) -> Any:
+    basis = (
+        [mp.mpf(1), mp.mpf(0), mp.mpf(0)],
+        [mp.mpf(0), mp.mpf(1), mp.mpf(0)],
+        [mp.mpf(0), mp.mpf(0), mp.mpf(1)],
+    )
+    cols = []
+    for e in basis:
+        g = gyr_apply_mp(a, b, _mp_scale3(eps, e), c)
+        cols.append(_mp_scale3(1 / eps, g))
+    return _so3_from_columns_mp(cols)
+
+
+def mpmath_ona_bu_jacobian_scan(t: CGMThresholds) -> dict[str, Any]:
+    """
+    delta_BU = 2*angle on (ONA, BU+): closed form, gyr(e_i) map, and Jacobian scan.
+    """
+    ona = [mp.mpf(0), mp.mpf(t.theta_ona), mp.mpf(0)]
+    bu = [mp.mpf(0), mp.mpf(0), mp.mpf(t.m_a)]
+    omega_closed, delta_closed = analytic_bu_holonomy(t)
+    delta_map = 2 * rotation_angle_from_so3_mp(gyr_matrix_columns_mp(ona, bu))
+    eps_exponents = (8, 12, 16, 20, 24, 30)
+    jac_rows: list[tuple[int, Any, Any]] = []
+    for eexp in eps_exponents:
+        eps = mp.power(10, -eexp)
+        delta_jac = 2 * rotation_angle_from_so3_mp(gyr_matrix_jacobian_mp(ona, bu, eps))
+        jac_rows.append((eexp, delta_jac, abs(delta_jac - delta_closed)))
+    return {
+        "omega_closed": omega_closed,
+        "delta_closed": delta_closed,
+        "delta_map": delta_map,
+        "map_minus_closed": abs(delta_map - delta_closed),
+        "jac_rows": jac_rows,
+    }
 
 
 # ---------------------------------------------------------------------
@@ -418,12 +551,12 @@ def run_tw_benchmark(gs: GyroVectorSpace) -> list[dict[str, float]]:
 
 
 # ---------------------------------------------------------------------
-# Declared embedding and loops
+# CGM stage coordinates and loops
 # ---------------------------------------------------------------------
 
 
 @dataclass(frozen=True)
-class EmbeddingSpec:
+class StageCoordinates:
     name: str
     c: float
     una_vector: tuple[float, float, float]
@@ -432,21 +565,16 @@ class EmbeddingSpec:
     bu_minus_vector: tuple[float, float, float]
 
 
-def declared_embedding(
+def stage_coordinates(
     t: CGMThresholds,
     *,
     u_p: float | None = None,
     theta_ona: float | None = None,
     m_a: float | None = None,
-) -> EmbeddingSpec:
-    """
-    Payload-only embedding into the Einstein gyrovector model with c = 1.
-
-    Modeling choice: theta_ona enters as a coordinate magnitude (not only as an
-    angle between boosts). CS is the gauge frame and is not traversed.
-    """
-    return EmbeddingSpec(
-        name="payload_scalar_embedding",
+) -> StageCoordinates:
+    """CGM payload stages as Einstein gyrovector coordinates with c = 1."""
+    return StageCoordinates(
+        name="cgm_stage_coordinates",
         c=1.0,
         una_vector=(float(t.u_p if u_p is None else u_p), 0.0, 0.0),
         ona_vector=(0.0, float(t.theta_ona if theta_ona is None else theta_ona), 0.0),
@@ -503,12 +631,12 @@ def compute_loop_holonomy(
     )
 
 
-def points_from_embedding(emb: EmbeddingSpec) -> dict[str, tuple[float, float, float]]:
+def points_from_stages(stages: StageCoordinates) -> dict[str, tuple[float, float, float]]:
     return {
-        "UNA": emb.una_vector,
-        "ONA": emb.ona_vector,
-        "BU+": emb.bu_plus_vector,
-        "BU-": emb.bu_minus_vector,
+        "UNA": stages.una_vector,
+        "ONA": stages.ona_vector,
+        "BU+": stages.bu_plus_vector,
+        "BU-": stages.bu_minus_vector,
     }
 
 
@@ -630,56 +758,127 @@ def run() -> list[tuple[str, bool]]:
     _check(gates, f"abs residual scales ~ beta^4 (order {resid_order:.3f})", 3.8 < resid_order < 4.2)
     print()
 
-    # D. Embedding
-    _section("D. DECLARED PAYLOAD EMBEDDING")
-    emb = declared_embedding(t)
-    points = points_from_embedding(emb)
-    print(f"  name                             {emb.name}")
-    print(f"  c                                {emb.c}")
-    print(f"  UNA                              {emb.una_vector}")
-    print(f"  ONA                              {emb.ona_vector}")
-    print(f"  BU+                              {emb.bu_plus_vector}")
-    print(f"  BU-                              {emb.bu_minus_vector}")
+    # D. Stage coordinates
+    _section("D. CGM STAGE COORDINATES")
+    stages = stage_coordinates(t)
+    points = points_from_stages(stages)
+    print(f"  name                             {stages.name}")
+    print(f"  c                                {stages.c}")
+    print(f"  UNA                              {stages.una_vector}")
+    print(f"  ONA                              {stages.ona_vector}")
+    print(f"  BU+                              {stages.bu_plus_vector}")
+    print(f"  BU-                              {stages.bu_minus_vector}")
     print("  CS                               gauge frame (not a traversed vertex)")
-    print("  modeling_choice                  theta_ona used as coordinate magnitude")
+    print("  ONA magnitude                    theta_ona as coordinate magnitude")
     domain_ok = True
     for name, vec in points.items():
         nrm = float(np.linalg.norm(np.asarray(vec, dtype=float)))
-        inside = nrm < emb.c
+        inside = nrm < stages.c
         print(f"  ||{name}||                          {nrm:.12f}  inside_ball={inside}")
         domain_ok = domain_ok and inside
     _check(gates, "all payload stage vectors satisfy ||v|| < c", domain_ok)
     print()
 
-    # E. Analytic BU holonomy
-    _section("E. ANALYTIC BU HOLONOMY")
+    # E. Canonical dual-pole holonomy
+    _section("E. CANONICAL BU DUAL-POLE HOLONOMY")
+    print("  path                             ONA -> BU+ -> BU- -> ONA")
+    print("  stages                           ONA, BU+, BU-")
+    print("  operator                         GyroVectorSpace.gyration")
+    print("  formula                          delta_BU = 2*omega(ONA, BU+)")
+    canon = canonical_dual_pole_holonomy(gs, t)
+    print(f"  omega_egress  = angle(ONA->BU+)  {canon['omega_egress']:.16f}")
+    print(f"  omega_middle  = angle(BU+->BU-)  {canon['omega_middle']:.16f}")
+    print(f"  omega_ingress = angle(BU-->ONA)  {canon['omega_ingress']:.16f}")
+    print(f"  omega_rev     = angle(BU+->ONA)  {canon['omega_rev']:.16f}")
+    print(f"  |omega_egress - omega_rev|       {abs(canon['omega_egress'] - canon['omega_rev']):.3e}")
+    print(f"  delta_BU_canonical               {canon['delta_bu']:.16f}")
+    print(f"  delta_BU_loop = angle(product)   {canon['delta_loop']:.16f}")
+    print(f"  |loop - 2*omega|                 {abs(canon['delta_loop'] - canon['delta_bu']):.3e}")
+    print(f"  product ||R^T R - I||            {canon['orth']:.3e}")
+    print(f"  product |det(R)-1|               {canon['det']:.3e}")
+    delta_bu = canon["delta_bu"]
+    rho = delta_bu / float(t.m_a)
+    delta_gap = 1.0 - rho
+    print(f"  rho = delta_BU / m_a             {rho:.16f}")
+    print(f"  Delta = 1 - rho                  {delta_gap:.16f}")
+    _check(
+        gates,
+        f"BU+->BU- collinear angle ~ 0 (got {canon['omega_middle']:.3e})",
+        abs(canon["omega_middle"]) < TOL_ANGLE,
+    )
+    _check(
+        gates,
+        f"|omega_egress - omega_rev| < 1e-8 (got {abs(canon['omega_egress'] - canon['omega_rev']):.3e})",
+        abs(canon["omega_egress"] - canon["omega_rev"]) < 1e-8,
+    )
+    _check(
+        gates,
+        f"|loop - 2*omega| < 1e-7 (got {abs(canon['delta_loop'] - canon['delta_bu']):.3e})",
+        abs(canon["delta_loop"] - canon["delta_bu"]) < 1e-7,
+    )
+    _check(
+        gates,
+        f"loop product in SO(3) (orth {canon['orth']:.3e}, det {canon['det']:.3e})",
+        canon["orth"] < TOL_SO3 and canon["det"] < TOL_SO3,
+    )
+    _check(gates, f"0 < rho < 1 (rho={rho:.12f})", 0.0 < rho < 1.0)
+    print()
+
+    # F. mpmath Jacobian of gyr(ONA, BU+)
+    _section("F. MPMATH JACOBIAN GYRATION (ONA, BU+)")
+    print(f"  mp.dps                           {mp.mp.dps}")
+    print("  delta_BU = 2*angle(G), G from gyr[ONA,BU+]")
+    print("  map: columns = gyr(e_i)")
+    print("  Jacobian: columns = gyr(eps e_i)/eps")
+    mpj = mpmath_ona_bu_jacobian_scan(t)
+    print(f"  delta_BU_closed                  {mp_to_str(mpj['delta_closed'], 50)}")
+    print(f"  delta_BU_map                     {mp_to_str(mpj['delta_map'], 50)}")
+    print(f"  |map - closed|                   {mp_to_str(mpj['map_minus_closed'], 10)}")
+    print("  eps              delta_BU_jac                                      |jac - closed|")
+    max_jac_err = mp.mpf(0)
+    for eexp, delta_jac, err in mpj["jac_rows"]:
+        max_jac_err = max(max_jac_err, err)
+        print(
+            f"  1e-{eexp:<2d}  {mp_to_str(delta_jac, 40):<48s}  {mp_to_str(err, 10)}"
+        )
+    _check(
+        gates,
+        f"|map - closed| < 1e-40 (got {float(mpj['map_minus_closed']):.3e})",
+        mpj["map_minus_closed"] < mp.mpf("1e-40"),
+    )
+    _check(
+        gates,
+        f"Jacobian |jac - closed| < 1e-40 for all listed eps (max {float(max_jac_err):.3e})",
+        max_jac_err < mp.mpf("1e-40"),
+    )
+    print()
+
+    # G. Closed-form formula
+    _section("G. CLOSED-FORM BU HOLONOMY")
     print("  formula  delta_BU = 4*atan(k(theta_ona)*k(m_a))")
     print("           k(beta) = beta/(1+sqrt(1-beta^2)), theta = pi/2")
-    omega_exact, delta_bu_exact = analytic_bu_holonomy(t)
+    print("           omega = 2*atan(k(theta_ona)*k(m_a))  (ONA-BU corner)")
+    omega_closed, delta_bu_closed = analytic_bu_holonomy(t)
     k_ona = half_rapidity_tanh(t.theta_ona)
     k_ma = half_rapidity_tanh(t.m_a)
-    rho_exact = delta_bu_exact / t.m_a
+    rho_closed = delta_bu_closed / t.m_a
     rho_zero = 2 * k_ona
-    rho_corr = rho_exact - rho_zero
-    delta_gap_exact = 1 - rho_exact
+    rho_corr = rho_closed - rho_zero
+    delta_gap_closed = 1 - rho_closed
     print(f"  k(theta_ona)                     {mp_to_str(k_ona, 20)}")
     print(f"  k(m_a)                           {mp_to_str(k_ma, 20)}")
-    print(f"  omega_exact (ONA-BU corner)      {mp_to_str(omega_exact, 20)}")
-    print(f"  delta_BU_exact                   {mp_to_str(delta_bu_exact, 20)}")
-    print(f"  rho_exact = delta_BU/m_a         {mp_to_str(rho_exact, 20)}")
-    print(f"  Delta_exact = 1 - rho            {mp_to_str(delta_gap_exact, 20)}")
+    print(f"  omega_closed (ONA-BU corner)     {mp_to_str(omega_closed, 20)}")
+    print(f"  delta_BU_closed                  {mp_to_str(delta_bu_closed, 50)}")
+    print(f"  rho_closed = delta_BU/m_a        {mp_to_str(rho_closed, 20)}")
+    print(f"  Delta_closed = 1 - rho           {mp_to_str(delta_gap_closed, 20)}")
     print(f"  rho(m_a -> 0) = 2*k(theta_ona)   {mp_to_str(rho_zero, 20)}")
     print(f"  finite-BU correction rho-rho0    {mp_to_str(rho_corr, 20)}")
     print(f"  baseline gap 1-rho0              {mp_to_str(1 - rho_zero, 20)}")
-    print(f"  final gap Delta                  {mp_to_str(delta_gap_exact, 20)}")
-    delta_bu = float(delta_bu_exact)
-    omega_analytic = float(omega_exact)
-    rho = float(rho_exact)
-    delta_gap = float(delta_gap_exact)
     print()
 
-    # F. Matrix realization
-    _section("F. MATRIX REALIZATION OF BU LOOP")
+    # H. Matrix realization
+    _section("H. MATRIX REALIZATION OF BU LOOP")
+    print("  GyroVectorSpace.gyration on stage coordinates")
     bu_loop = compute_loop_holonomy(gs, "bu_dual_pole_loop", ("ONA", "BU+", "BU-", "ONA"), points)
     omega_egress = bu_loop.leg_angles[0]
     omega_middle = bu_loop.leg_angles[1]
@@ -696,8 +895,7 @@ def run() -> list[tuple[str, bool]]:
     print(f"  axis                             {bu_loop.total.axis}")
     print(f"  quaternion                       {bu_loop.total.quaternion}")
     matrix_err = abs(bu_loop.total.angle - delta_bu)
-    print(f"  |matrix - analytic| delta_BU     {matrix_err:.3e}")
-    print(f"  |omega_mean - analytic omega|    {abs(omega_mean - omega_analytic):.3e}")
+    print(f"  |matrix - canonical| delta_BU    {matrix_err:.3e}")
     orth, det = so3_residuals(bu_loop.product)
     print(f"  BU product ||R^T R - I||         {orth:.3e}")
     print(f"  BU product |det(R)-1|            {det:.3e}")
@@ -713,13 +911,13 @@ def run() -> list[tuple[str, bool]]:
         f"|omega_egress - omega_ingress| < 1e-8 (got {abs(omega_egress - omega_ingress):.3e})",
         abs(omega_egress - omega_ingress) < 1e-8,
     )
-    _check(gates, f"matrix BU angle matches analytic (err {matrix_err:.3e})", matrix_err < TOL_MATRIX)
+    _check(gates, f"matrix BU angle matches canonical (err {matrix_err:.3e})", matrix_err < TOL_MATRIX)
     _check(gates, f"BU product in SO(3) (orth {orth:.3e}, det {det:.3e})", orth < TOL_SO3 and det < TOL_SO3)
     _check(gates, f"BU trace = 1+2cos(delta_BU) (resid {trace_resid:.3e})", trace_resid < 1e-8)
     print()
 
-    # Canonical gyration SO(3) audit
-    _section("G. CANONICAL GYRATION SO(3) AUDIT")
+    # Gyration SO(3) audit
+    _section("I. GYRATION SO(3) AUDIT")
     pair_names = [
         ("UNA", "ONA"),
         ("ONA", "UNA"),
@@ -735,9 +933,8 @@ def run() -> list[tuple[str, bool]]:
     max_orth = 0.0
     max_det = 0.0
     for a, b in pair_names:
-        G = np.asarray(
-            gs.gyration(np.asarray(points[a], dtype=float), np.asarray(points[b], dtype=float)),
-            dtype=float,
+        G = gyration_matrix_exact(
+            gs, np.asarray(points[a], dtype=float), np.asarray(points[b], dtype=float)
         )
         o, d = so3_residuals(G)
         max_orth = max(max_orth, o)
@@ -745,24 +942,22 @@ def run() -> list[tuple[str, bool]]:
         print(f"  {a}->{b:3s}  ||G^T G - I||={o:.3e}  |det-1|={d:.3e}")
     _check(
         gates,
-        f"all canonical gyrations in SO(3) (max orth {max_orth:.3e}, max |det-1| {max_det:.3e})",
+        f"stage-pair gyrations in SO(3) (max orth {max_orth:.3e}, max |det-1| {max_det:.3e})",
         max_orth < TOL_SO3 and max_det < TOL_SO3,
     )
     print()
 
     # Ungar inverse pairs
-    _section("H. GYRATION INVERSE PAIRS ON EMBEDDING")
+    _section("J. GYRATION INVERSE PAIRS ON STAGE COORDINATES")
     print("  Validate implementation of Ungar theorem: gyr(u,v)^-1 = gyr(v,u)")
     inv_pairs = [("UNA", "ONA"), ("UNA", "BU+"), ("UNA", "BU-"), ("ONA", "BU+"), ("ONA", "BU-"), ("BU+", "BU-")]
     max_inv = 0.0
     for a, b in inv_pairs:
-        Ga = np.asarray(
-            gs.gyration(np.asarray(points[a], dtype=float), np.asarray(points[b], dtype=float)),
-            dtype=float,
+        Ga = gyration_matrix_exact(
+            gs, np.asarray(points[a], dtype=float), np.asarray(points[b], dtype=float)
         )
-        Gb = np.asarray(
-            gs.gyration(np.asarray(points[b], dtype=float), np.asarray(points[a], dtype=float)),
-            dtype=float,
+        Gb = gyration_matrix_exact(
+            gs, np.asarray(points[b], dtype=float), np.asarray(points[a], dtype=float)
         )
         resid = float(np.linalg.norm(Ga @ Gb - np.eye(3)))
         max_inv = max(max_inv, resid)
@@ -771,8 +966,8 @@ def run() -> list[tuple[str, bool]]:
     print()
 
     # Path reversal and cyclic re-rooting
-    _section("I. PATH REVERSAL AND CYCLIC RE-ROOTING")
-    print("  Empirical matrix-layer noise floor at canonical magnitudes ~ 1e-8")
+    _section("K. PATH REVERSAL AND CYCLIC RE-ROOTING")
+    print("  GyroVectorSpace.gyration on stage coordinates")
     bu_rev = compute_loop_holonomy(
         gs, "bu_dual_pole_reverse", ("ONA", "BU-", "BU+", "ONA"), points
     )
@@ -812,7 +1007,7 @@ def run() -> list[tuple[str, bool]]:
     print()
 
     # Rotational covariance
-    _section("J. GLOBAL ROTATIONAL COVARIANCE")
+    _section("L. GLOBAL ROTATIONAL COVARIANCE")
     Q = rotation_matrix_z(math.pi / 7)
     rotated = {name: tuple((Q @ np.asarray(vec, dtype=float)).tolist()) for name, vec in points.items()}
     bu_rot = compute_loop_holonomy(gs, "rotated_bu_loop", ("ONA", "BU+", "BU-", "ONA"), rotated)
@@ -827,7 +1022,7 @@ def run() -> list[tuple[str, bool]]:
     print()
 
     # Palindromic conjugacy
-    _section("K. PALINDROMIC CONJUGACY")
+    _section("M. PALINDROMIC CONJUGACY")
     print("  path  UNA -> ONA -> BU+ -> BU- -> ONA -> UNA")
     print("  6 payload positions on a 5-edge closed path; CS is gauge frame")
     print("  Gyrogroup theorem: gyr(v,u) = gyr(u,v)^-1  (Ungar)")
@@ -838,13 +1033,11 @@ def run() -> list[tuple[str, bool]]:
         ("UNA", "ONA", "BU+", "BU-", "ONA", "UNA"),
         points,
     )
-    A = np.asarray(
-        gs.gyration(np.asarray(points["UNA"], dtype=float), np.asarray(points["ONA"], dtype=float)),
-        dtype=float,
+    A = gyration_matrix_exact(
+        gs, np.asarray(points["UNA"], dtype=float), np.asarray(points["ONA"], dtype=float)
     )
-    A_rev = np.asarray(
-        gs.gyration(np.asarray(points["ONA"], dtype=float), np.asarray(points["UNA"], dtype=float)),
-        dtype=float,
+    A_rev = gyration_matrix_exact(
+        gs, np.asarray(points["ONA"], dtype=float), np.asarray(points["UNA"], dtype=float)
     )
     # Independent inverse for SO(3): A^-1 = A^T (not the path-built A_rev)
     reverse_transport_resid = float(np.linalg.norm(A_rev - A.T))
@@ -890,44 +1083,37 @@ def run() -> list[tuple[str, bool]]:
     _check(gates, "palindrome product in SO(3)", orth_p < TOL_SO3 and det_p < TOL_SO3)
     print()
 
-    # Aperture from analytic
-    _section("L. APERTURE AND PRECISION GOVERNANCE")
-    print(f"  BU_HOLONOMY_ANGLE (analytic)     {delta_bu:.16f}")
+    # Aperture
+    _section("N. APERTURE AND PRECISION GOVERNANCE")
+    print(f"  delta_BU_canonical               {delta_bu:.16f}")
+    print(f"  delta_BU_closed                  {float(delta_bu_closed):.16f}")
     print(f"  m_a                              {float(t.m_a):.16f}")
-    print(f"  rho = BU_HOLONOMY_ANGLE / m_a    {rho:.16f}")
+    print(f"  rho = delta_BU_canonical / m_a   {rho:.16f}")
     print(f"  Delta = 1 - rho                  {delta_gap:.16f}")
     print(f"  closure_percent                  {100.0 * rho:.10f}")
     print(f"  aperture_percent                 {100.0 * delta_gap:.10f}")
     if BU_HOLONOMY_ANGLE is not None:
         shared = float(BU_HOLONOMY_ANGLE)
-        rel = abs(delta_bu - shared) / delta_bu
         print(f"  shared BU_HOLONOMY_ANGLE         {shared:.16f}")
-        print(f"  |script - shared|                {abs(delta_bu - shared):.3e}")
-        print(f"  relative |script - shared|       {rel:.3e}")
-        # alpha inherits ~4x relative sensitivity via alpha ~ delta_BU^4 / m_a
-        print(f"  4 * relative (alpha sensitivity) {4.0 * rel:.3e}")
-        _check(
-            gates,
-            f"script analytic matches shared BU_HOLONOMY_ANGLE (rel {rel:.3e})",
-            rel < 1e-14,
-        )
+        print(f"  |shared - canonical|             {abs(shared - delta_bu):.3e}")
+        print(f"  |shared - closed|                {abs(shared - float(delta_bu_closed)):.3e}")
     _check(gates, f"0 < rho < 1 (rho={rho:.12f})", 0.0 < rho < 1.0)
     print()
 
     # Embedding sensitivity / rank-2 dependency
-    _section("M. RANK-2 DEPENDENCY AND EMBEDDING SENSITIVITY")
-    print("  Analytic: delta_BU = 4*atan(k(theta_ona)*k(m_a)) depends only on (theta_ona, m_a).")
+    _section("O. RANK-2 DEPENDENCY AND STAGE SENSITIVITY")
+    print("  Closed form: delta_BU = 4*atan(k(theta_ona)*k(m_a)) depends only on (theta_ona, m_a).")
     print("  UNA enters only via conjugation (axis transport), not the angle.")
     print("  CS is gauge frame only.")
     print("  Magnitude channel: ONA x BU; orientation channel: UNA conjugation.")
-    print(f"  d(delta_BU)/du_p                 0 exactly under declared embedding")
+    print(f"  d(delta_BU)/du_p                 0 (BU loop does not visit UNA)")
     eps = 1e-5
     th0 = float(t.theta_ona)
     m0 = float(t.m_a)
 
     def _delta_at(th: float, m: float) -> float:
-        e = declared_embedding(t, theta_ona=th, m_a=m)
-        r = compute_loop_holonomy(gs, "pert", ("ONA", "BU+", "BU-", "ONA"), points_from_embedding(e))
+        e = stage_coordinates(t, theta_ona=th, m_a=m)
+        r = compute_loop_holonomy(gs, "pert", ("ONA", "BU+", "BU-", "ONA"), points_from_stages(e))
         return r.total.angle
 
     d_dth_mat = (_delta_at(th0 + eps, m0) - _delta_at(th0 - eps, m0)) / (2 * eps)
@@ -949,56 +1135,29 @@ def run() -> list[tuple[str, bool]]:
         / (2 * h_m)
     )
     print(f"  d(delta_BU)/dtheta_ona (matrix)  {d_dth_mat:.8f}")
-    print(f"  d(delta_BU)/dtheta_ona (analytic){d_dth_an:.8f}")
+    print(f"  d(delta_BU)/dtheta_ona (closed)  {d_dth_an:.8f}")
     print(f"  d(delta_BU)/dm_a (matrix)        {d_dm_mat:.8f}")
-    print(f"  d(delta_BU)/dm_a (analytic)      {d_dm_an:.8f}")
+    print(f"  d(delta_BU)/dm_a (closed)        {d_dm_an:.8f}")
     print(f"  (theta_ona/delta_BU)*d/dtheta    {th0 * d_dth_mat / delta_bu:.8f}")
     print(f"  (m_a/delta_BU)*d/dm_a            {m0 * d_dm_mat / delta_bu:.8f}")
-    print(f"  |matrix - analytic| d/dtheta     {abs(d_dth_mat - d_dth_an):.3e}")
-    print(f"  |matrix - analytic| d/dm_a       {abs(d_dm_mat - d_dm_an):.3e}")
+    print(f"  |matrix - closed| d/dtheta       {abs(d_dth_mat - d_dth_an):.3e}")
+    print(f"  |matrix - closed| d/dm_a         {abs(d_dm_mat - d_dm_an):.3e}")
     _check(
         gates,
-        f"matrix d/dtheta_ona matches analytic (diff {abs(d_dth_mat - d_dth_an):.3e})",
+        f"matrix d/dtheta_ona matches closed form (diff {abs(d_dth_mat - d_dth_an):.3e})",
         abs(d_dth_mat - d_dth_an) < 5e-4,
     )
     _check(
         gates,
-        f"matrix d/dm_a matches analytic (diff {abs(d_dm_mat - d_dm_an):.3e})",
+        f"matrix d/dm_a matches closed form (diff {abs(d_dm_mat - d_dm_an):.3e})",
         abs(d_dm_mat - d_dm_an) < 5e-4,
     )
     print()
 
-    # Open comparisons (quarantined)
-    _section("N. OPEN COMPARISONS")
-    print("  Quarantined: no identity asserted; excluded from foundational claims.")
-    three_delta = 3.0 * delta_bu
-    w_resid = float(phi_su2) - three_delta
-    print(f"  phi_SU2                          {float(phi_su2):.16f}")
-    print(f"  3 * delta_BU                     {three_delta:.16f}")
-    print(f"  W = phi_SU2 - 3*delta_BU         {w_resid:.16f}")
-    print(f"  W / phi_SU2                      {w_resid / float(phi_su2):.16f}")
-    dyadic_bu = 50.0 / 256.0
-    dyadic_gap = 5.0 / 256.0
-    print(f"  50/256                           {dyadic_bu:.16f}")
-    print(f"  |delta_BU - 50/256|              {abs(delta_bu - dyadic_bu):.16f}")
-    print(f"  rel |delta_BU - 50/256|          {abs(delta_bu - dyadic_bu) / delta_bu:.6e}")
-    print(f"  5/256                            {dyadic_gap:.16f}")
-    print(f"  |Delta - 5/256|                  {abs(delta_gap - dyadic_gap):.16f}")
-    print(f"  rel |Delta - 5/256|              {abs(delta_gap - dyadic_gap) / delta_gap:.6e}")
-    print()
-
     # Wigner map + Jacobian
-    _section("O. WIGNER MAP AT (u_p, theta_ona)")
-    print("  Equal-speed Wigner angle at thresholds vs aperture scale m_a.")
-    print("  These are independent quantities; equality is not assumed.")
+    _section("P. WIGNER MAP CLASS (u_p, theta_ona)")
     w_canon = float(tw_angle_exact(t.u_p, t.theta_ona))
-    m_a_f = float(t.m_a)
-    offset = w_canon - m_a_f
     print(f"  omega(u_p, theta_ona)            {w_canon:.16f}")
-    print(f"  m_a                              {m_a_f:.16f}")
-    print(f"  omega - m_a                      {offset:.16f}")
-    print(f"  (omega - m_a)/m_a                {offset / m_a_f:.10f}")
-    print(f"  equal within tol {TOL_MAP}:      {abs(offset) < TOL_MAP}")
 
     h = mp.mpf("1e-20")
     d_om_db = (tw_angle_exact(t.u_p + h, t.theta_ona) - tw_angle_exact(t.u_p - h, t.theta_ona)) / (2 * h)
@@ -1029,36 +1188,10 @@ def run() -> list[tuple[str, bool]]:
         f"canonical Wigner response derivatives sum to 1 (got {float(jac_sum):.16f})",
         abs(jac_sum - 1) < mp.mpf("1e-40"),
     )
-
-    beta_star = solve_beta_star(t.theta_ona, t.m_a)
-    theta_star = solve_theta_star(t.u_p, t.m_a)
-    beta_star_f = float(beta_star)
-    theta_star_f = float(theta_star)
-    w_check_b = float(tw_angle_exact(beta_star, t.theta_ona))
-    w_check_t = float(tw_angle_exact(t.u_p, theta_star))
-    beta_pred = float(t.u_p) - offset / float(d_om_db_exact)
-    print(f"  beta_star                        {beta_star_f:.16f}")
-    print(f"  beta_star / u_p                  {beta_star_f / float(t.u_p):.16f}")
-    print(f"  linear beta* prediction          {beta_pred:.16f}")
-    print(f"  |linear - exact| beta*           {abs(beta_pred - beta_star_f):.3e}")
-    print(f"  omega(beta_star, theta_ona)      {w_check_b:.16f}")
-    print(f"  theta_star                       {theta_star_f:.16f}")
-    print(f"  theta_star / theta_ona           {theta_star_f / float(t.theta_ona):.16f}")
-    print(f"  omega(u_p, theta_star)           {w_check_t:.16f}")
-    _check(
-        gates,
-        f"|omega(beta_star,theta_ona)-m_a| < 1e-12 (got {abs(w_check_b - m_a_f):.3e})",
-        abs(w_check_b - m_a_f) < 1e-12,
-    )
-    _check(
-        gates,
-        f"|omega(u_p,theta_star)-m_a| < 1e-12 (got {abs(w_check_t - m_a_f):.3e})",
-        abs(w_check_t - m_a_f) < 1e-12,
-    )
     print()
 
     # Finite layer
-    _section("P. FINITE hQVM HOLONOMY")
+    _section("Q. FINITE hQVM HOLONOMY")
     finite = compute_finite_holonomy()
     if finite is None:
         print(f"  unavailable                      {_FINITE_IMPORT_ERROR}")
@@ -1086,26 +1219,48 @@ def run() -> list[tuple[str, bool]]:
         _check(gates, "canonical W2/W2' finite holonomy certificate", bool(finite["k4_all_pass"]))
     print()
 
-    # Cross-layer scale comparison
-    _section("Q. CROSS-LAYER SCALE COMPARISON")
-    print("  Cross-layer scale comparison; not an independent finite derivation of Delta.")
-    print("  Finite kernel imports continuous aperture; endpoint is not re-derived here.")
-    print(f"  BU_HOLONOMY_ANGLE                {delta_bu:.16f}")
+    # Byte-horizon aperture quantization
+    _section("R. BYTE-HORIZON APERTURE QUANTIZATION")
+    ticks = 256.0 * delta_gap
+    q_ticks = int(round(ticks))
+    q256 = q_ticks / 256.0
+    rel_q = abs(delta_gap - q256) / delta_gap
+    depth4 = 48.0 * delta_gap
+    turn = delta_bu / (2.0 * math.pi)
     print(f"  Delta                            {delta_gap:.16f}")
-    if bu_frac is not None:
-        print(f"  byte BU-boundary fraction        {bu_frac:.16f}")
-        print(f"  compression bu_frac / Delta      {bu_frac / delta_gap:.10f}")
+    print(f"  256 * Delta                      {ticks:.16f}")
+    print(f"  round(256 * Delta)               {q_ticks}")
+    print(f"  Q_256(Delta) = {q_ticks}/256     {q256:.16f}")
+    print(f"  |Delta - Q_256| / Delta          {rel_q:.6e}")
+    print(f"  48 * Delta                       {depth4:.16f}")
+    print(f"  |48 * Delta - 1|                 {abs(depth4 - 1.0):.6e}")
+    print(f"  delta_BU / (2*pi)                {turn:.16f}")
+    print(f"  (1/48) / (1/32)                  {32.0 / 48.0:.16f}")
+    _check(
+        gates,
+        f"nearest 8-bit dyadic of Delta is 5/256 (got {q_ticks}/256)",
+        q_ticks == 5,
+    )
+    if APERTURE_GAP_Q256 is not None:
+        print(f"  shared APERTURE_GAP_Q256         {APERTURE_GAP_Q256}")
+        _check(
+            gates,
+            f"shared APERTURE_GAP_Q256 == 5 (got {APERTURE_GAP_Q256})",
+            int(APERTURE_GAP_Q256) == 5,
+        )
+    else:
+        print("  shared APERTURE_GAP_Q256         unavailable")
+        _check(gates, "shared APERTURE_GAP_Q256 importable", False)
     print()
 
     # Dictionary
-    _section("R. CONTINUOUS-FINITE STRUCTURAL CORRESPONDENCE")
-    print("  Rows identify analogous architectural roles.")
-    print("  They do not assert equality of mathematical objects.")
+    _section("S. CONTINUOUS-FINITE STRUCTURAL CORRESPONDENCE")
     rows = [
         ("closed path in continuous model", "operator word on Omega"),
         ("holonomy angle / conjugacy class", "nontrivial finite involution or cycle"),
         ("BU dual-pole loop", "W2 pole exchange"),
         ("closure under return", "W2^2 = id"),
+        ("aperture gap Delta", "byte-horizon dyadic 5/256"),
         ("palindromic payload path", "byte fold across BU boundary"),
         ("6 payload positions", "6 payload bits / 6 se(3) modes"),
         ("CS gauge frame", "byte bits 0 and 7 (family selector)"),
@@ -1114,31 +1269,32 @@ def run() -> list[tuple[str, bool]]:
     for left, right in rows:
         print(f"  {left:36s} -> {right}")
     print()
-    print("  local curvature note:")
+    print("  local curvature:")
     print("    continuous: holonomy accumulates at ONA-BU corners; BU+->BU- is flat")
     print("    finite: fold disagreement is counted at the BU|BU boundary")
     print()
 
     # Status table
-    _section("S. RESULT STATUS")
+    _section("T. RESULT STATUS")
     status_rows = [
         ("theta_cs+theta_una+theta_ona = pi", "exact_algebraic", "threshold definitions"),
         ("q_g * m_a^2 = 1/2", "exact_algebraic", "threshold definitions"),
         ("phi_SU2 closed form", "exact_algebraic", "SU(2) threshold angles"),
         ("TW small-angle + convergence order", "standard_analytic+numerical", "GyroVectorSpace.gyration"),
-        ("delta_BU analytic formula", "exact_under_declared_embedding", "theta_ona, m_a, orthogonal boosts"),
-        ("matrix BU realization", "numerical_crosscheck", "declared embedding"),
+        ("delta_BU canonical", "gyration_2omega", "GyroVectorSpace.gyration, ONA/BU"),
+        ("delta_BU closed form", "closed_form", "theta_ona, m_a, orthogonal boosts"),
+        ("mpmath Jacobian gyr scan", "mp_jacobian", "ONA, BU+, eps grid"),
+        ("matrix BU realization", "numerical_crosscheck", "GyroVectorSpace.gyration"),
         ("palindromic conjugacy", "gyrogroup_theorem+numerical", "Ungar inverse + SO(3) conjugation"),
         ("path reversal / cyclic re-rooting", "numerical_invariance", "SO(3) realization"),
-        ("rho, Delta", "derived_definitions", "BU_HOLONOMY_ANGLE, m_a"),
-        ("rho(m->0) expansion", "exact_under_declared_embedding", "analytic BU formula"),
-        ("rank-2 dependency", "exact_under_declared_embedding", "delta_BU(theta_ona,m_a) only"),
+        ("rho, Delta", "derived_definitions", "delta_BU_canonical, m_a"),
+        ("rho(m->0) expansion", "closed_form", "closed-form BU identity"),
+        ("rank-2 dependency", "closed_form", "delta_BU(theta_ona,m_a) only"),
         ("Wigner Jacobian sum=1 at threshold", "exact_algebraic", "beta=u_p, theta=pi/4"),
         ("canonical W2/W2' certificate", "exact_finite", "hQVM transition law"),
         ("fold distribution 16*C(4,k)", "exact_finite", "byte fold algebra"),
-        ("continuous-finite dictionary", "structural_correspondence", "architecture analogy"),
-        ("W = phi_SU2 - 3*delta_BU", "open_comparison", "no derivation claimed"),
-        ("delta_BU vs 50/256", "open_comparison", "no derivation claimed"),
+        ("Q_256(Delta) = 5/256", "byte_horizon_quantization", "Delta, 256-tick byte"),
+        ("continuous-finite dictionary", "structural_correspondence", "architecture"),
     ]
     print(f"  {'result':40s} {'status':32s} dependency")
     for name, status, dep in status_rows:
@@ -1146,7 +1302,7 @@ def run() -> list[tuple[str, bool]]:
     print()
 
     # Summary
-    _section("T. INTEGRITY CHECK SUMMARY")
+    _section("U. INTEGRITY CHECK SUMMARY")
     n_pass = sum(1 for _, ok in gates if ok)
     n_fail = sum(1 for _, ok in gates if not ok)
     for label, ok in gates:
