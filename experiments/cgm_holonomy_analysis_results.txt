@@ -1,7 +1,7 @@
 CGM HOLONOMY ANALYSIS
 =====
 
-A. THRESHOLDS
+1. THRESHOLDS
 =====
   theta_cs                         1.5707963267948966192
   u_p                              0.7071067811865475244
@@ -14,7 +14,7 @@ A. THRESHOLDS
   check  |angle_sum - pi| < 1e-15 (got 0.000e+00)                 PASS
   check  |q_g*m_a^2 - 1/2| < 1e-15 (got 0.000e+00)                PASS
 
-B. EXACT SU(2) COMMUTATOR HOLONOMY
+2. EXACT SU(2) COMMUTATOR HOLONOMY
 =====
   phi_SU2 (rad)                    0.58790076265402027914
   phi_SU2 (deg)                    33.684232472598
@@ -22,7 +22,7 @@ B. EXACT SU(2) COMMUTATOR HOLONOMY
   |numeric - closed_form|           7.37953856026e-81
   check  SU(2) mpmath product matches closed form (err 7.380e-81) PASS
 
-C. THOMAS-WIGNER SMALL-ANGLE CALIBRATION
+3. THOMAS-WIGNER SMALL-ANGLE CALIBRATION
 =====
   gyration angle vs ||u x v||/(2c^2) on a fixed velocity grid
     beta_max      n        slope      mean|res|       max|res|
@@ -39,214 +39,354 @@ C. THOMAS-WIGNER SMALL-ANGLE CALIBRATION
   check  slope error scales ~ beta^2 (order 2.003)                PASS
   check  abs residual scales ~ beta^4 (order 4.006)               PASS
 
-D. CGM STAGE COORDINATES
+4. CGM STAGE COORDINATES AND EMBEDDING REGISTRY
 =====
+  Object: stage points in the open Einstein ball (c=1).
+  CGM threshold number taken as Einstein beta = ||v||.
   name                             cgm_stage_coordinates
   c                                1.0
   UNA                              (0.7071067811865476, 0.0, 0.0)
   ONA                              (0.0, 0.7853981633974483, 0.0)
   BU+                              (0.0, 0.0, 0.19947114020071635)
   BU-                              (0.0, 0.0, -0.19947114020071635)
-  CS                               gauge frame (not a traversed vertex)
-  ONA magnitude                    theta_ona as coordinate magnitude
+  CS                               s_p=pi/2 lies outside the open ball; gauge frame only
   ||UNA||                          0.707106781187  inside_ball=True
   ||ONA||                          0.785398163397  inside_ball=True
   ||BU+||                          0.199471140201  inside_ball=True
   ||BU-||                          0.199471140201  inside_ball=True
-  check  all payload stage vectors satisfy ||v|| < c              PASS
+  [STRUCTURAL] payload stage vectors inside open Einstein ball
+         measured   UNA,ONA,BU+,BU- all ||v||<c = True
+         threshold  ||v|| < c for each payload stage
+         status     PASS
 
-E. CANONICAL BU DUAL-POLE HOLONOMY
-=====
-  path                             ONA -> BU+ -> BU- -> ONA
-  stages                           ONA, BU+, BU-
-  operator                         GyroVectorSpace.gyration
-  formula                          delta_BU = 2*omega(ONA, BU+)
-  omega_egress  = angle(ONA->BU+)  0.0976710883068109
-  omega_middle  = angle(BU+->BU-)  0.0000000000000000
-  omega_ingress = angle(BU-->ONA)  0.0976710949763406
-  omega_rev     = angle(BU+->ONA)  0.0976710813512153
-  |omega_egress - omega_rev|       6.956e-09
-  delta_BU_canonical               0.1953421766136217
-  delta_BU_loop = angle(product)   0.1953421832831577
-  |loop - 2*omega|                 6.670e-09
-  product ||R^T R - I||            5.207e-16
-  product |det(R)-1|               4.441e-16
-  rho = delta_BU / m_a             0.9793004462553335
-  Delta = 1 - rho                  0.0206995537446665
-  check  BU+->BU- collinear angle ~ 0 (got 0.000e+00)             PASS
-  check  |omega_egress - omega_rev| < 1e-8 (got 6.956e-09)        PASS
-  check  |loop - 2*omega| < 1e-7 (got 6.670e-09)                  PASS
-  check  loop product in SO(3) (orth 5.207e-16, det 4.441e-16)    PASS
-  check  0 < rho < 1 (rho=0.979300446255)                         PASS
+  Radial charts for stage betas:
+  stage              beta            gamma              eta            rho/m       Poincare_r
+  UNA    0.70710678118655  1.4142135623731 0.88137358701954              1.0  0.4142135623731
+  ONA    0.78539816339745  1.6155326551693  1.0593061708232  1.2688363802786 0.48511586264116
+  BU     0.19947114020072  1.0205084422705 0.20218171906463 0.20356198256416  0.1007479000362
 
-F. MPMATH JACOBIAN GYRATION (ONA, BU+)
+5. ORIGIN-GYR CROSS-CHECKS (mpmath, ONA, BU+)
 =====
+  Object: origin-based gyr[ONA, BU+] with stage thresholds as Einstein betas.
+  Routes:
+    analytic:  delta_BU = 2*omega = 4*atan(r(theta_ona)*r(m_a)), r = Poincare radius
+    raw map:   columns = gyr(r e_i)/r with r=1/2, no SVD
+    Ungar:     G = I + alpha*Omega + beta*Omega^2 (eqs 48-49)
+    Lorentz factorization: spatial block of L(a⊕b)^-1 L(a) L(b)
+  Angle extractor: atan2(||vee(R-R^T)||/2, (tr-1)/2) on the RAW matrix.
+  Trace identity (Ungar 51) on raw/Ungar matrices.
+  Linearity scan: gyr(eps e_i)/eps vs eps.
   mp.dps                           80
-  delta_BU = 2*angle(G), G from gyr[ONA,BU+]
-  map: columns = gyr(e_i)
-  Jacobian: columns = gyr(eps e_i)/eps
-  delta_BU_closed                  0.19534217825766208478470691690029591127972281943454
-  delta_BU_map                     0.19534217825766208478470691690029591127972281943454
-  |map - closed|                   4.032390713e-80
-  eps              delta_BU_jac                                      |jac - closed|
-  1e-8   0.1953421782576620847847069169002959112797        6.848048222e-74
+  probe_r                          0.5
+  axis (u x v)/||u x v||           (1.0, 0.0, 0.0)
+  eps_signed (Ungar orientation)   -0.09767108912883104239235345845014795563986
+  |eps_signed|                     0.09767108912883104239235345845014795563986
+  delta_BU = 2*omega               0.19534217825766208478470691690029591127972281943454
+  delta_BU_raw_map                 0.19534217825766208478470691690029591127972281943454
+  delta_BU_ungar_matrix            0.19534217825766208478470691690029591127972281943454
+  delta_BU_origin_lorentz_factorization 0.19534217825766208478470691690029591127972281943454
+  |raw - analytic|                 3.162659383e-81
+  |ungar - analytic|               0.0
+  ||Ungar - raw||                  4.270078204e-81
+  ||Lorentz - raw||                4.932422237e-81
+  raw ||R^T R - I||                6.879397221e-81
+  raw |det(R)-1|                   3.162659383e-81
+  raw trace-identity residual      2.236337896e-81
+  Ungar ||R^T R - I||              0.0
+  Ungar |det(R)-1|                 0.0
+  Ungar trace-identity residual    0.0
+  Lorentz ||R^T R - I||            2.248779999e-81
+  Lorentz |det(R)-1|               2.108439589e-81
+  Lorentz trace-identity residual  2.108439589e-81
+  Ungar boost factorization (4x4; x'=L@x):
+    ||B(u)B(v) - B(u⊕v)Gyr[u,v]||  6.789371124e-81
+    ||B(v)B(u) - B(v⊕u)Gyr[v,u]||  7.205486835e-81
+    ||Gyr_Ungar - Gyr_Lorentz||    1.185997269e-81
+  Linearity scan (delta from gyr(eps e_i)/eps):
+  eps              delta_BU_lin                                      |lin - analytic|
+  1e-8   0.1953421782576620847847069169002959112797        6.848058158e-74
   1e-12  0.1953421782576620847847069169002959112797        3.420123452e-70
   1e-16  0.1953421782576620847847069169002959112797        5.61900754e-66
   1e-20  0.1953421782576620847847069169002959112797        1.382910583e-62
   1e-24  0.1953421782576620847847069169002959112797        6.314058302e-58
   1e-30  0.1953421782576620847847069169002959112797        1.215505101e-51
-  check  |map - closed| < 1e-40 (got 4.032e-80)                   PASS
-  check  Jacobian |jac - closed| < 1e-40 for all listed eps (max 1.216e-51) PASS
+  [EXACT_MP] raw gyr map SO(3) residuals
+         measured   orth=6.879e-81, |det-1|=3.163e-81
+         threshold  < 1e-60
+         status     PASS
+  [EXACT_MP] |delta_raw_map - delta_wigner_analytic|
+         measured   3.163e-81
+         threshold  < 1e-60
+         status     PASS
+  [EXACT_MP] |delta_ungar_matrix - delta_wigner_analytic|
+         measured   0.000e+00
+         threshold  < 1e-60
+         status     PASS
+  [EXACT_MP] ||G_lorentz - G_raw||
+         measured   4.932e-81
+         threshold  < 1e-60
+         status     PASS
+  [EXACT_MP] Ungar trace identity on raw gyr matrix
+         measured   2.236e-81
+         threshold  < 1e-60
+         status     PASS
+  [EXACT_MP] Ungar trace identity on Ungar matrix
+         measured   0.000e+00
+         threshold  < 1e-60
+         status     PASS
+  [EXACT_MP] Ungar factorization ||B(u)B(v)-B(u⊕v)Gyr[u,v]||
+         measured   6.789e-81
+         threshold  < 1e-60
+         status     PASS
+  [EXACT_MP] Ungar factorization ||B(v)B(u)-B(v⊕u)Gyr[v,u]||
+         measured   7.205e-81
+         threshold  < 1e-60
+         status     PASS
+  [EXACT_MP] max |delta(gyr(eps e_i)/eps) - analytic| over eps grid
+         measured   1.216e-51
+         threshold  < 1e-40
+         status     PASS
 
-G. CLOSED-FORM BU HOLONOMY
+  Ungar matrix vs Lorentz factorization on random pairs (beta<=0.3):
+  n_requested                      24
+  n_used                           24
+  beta_max                         0.3
+  max ||G_ungar - G_lorentz||      3.981300874e-81
+  max trace-identity (Ungar)       3.653150213e-81
+  max Thm7 residual                5.875053404e-81
+  [EXACT_MP] max ||G_ungar - G_lorentz|| over random pairs
+         measured   3.981e-81 (n_used=24)
+         threshold  < 1e-60 and n_used>=10
+         status     PASS
+  [EXACT_MP] max Ungar trace-identity residual over random pairs
+         measured   3.653e-81
+         threshold  < 1e-60
+         status     PASS
+  [EXACT_MP] max boost-factorization residual over random pairs
+         measured   5.875e-81
+         threshold  < 1e-60
+         status     PASS
+
+6. ORIGIN-WIGNER ANALYTIC
 =====
-  formula  delta_BU = 4*atan(k(theta_ona)*k(m_a))
-           k(beta) = beta/(1+sqrt(1-beta^2)), theta = pi/2
-           omega = 2*atan(k(theta_ona)*k(m_a))  (ONA-BU corner)
-  k(theta_ona)                     0.48511586264116270716
-  k(m_a)                           0.1007479000361957325
-  omega_closed (ONA-BU corner)     0.097671089128831042392
-  delta_BU_closed                  0.19534217825766208478470691690029591127972281943454
-  rho_closed = delta_BU/m_a        0.97930045449732970297
-  Delta_closed = 1 - rho           0.020699545502670297035
-  rho(m_a -> 0) = 2*k(theta_ona)   0.97023172528232541433
+  Object: BU dual-pole aperture for orthogonal boosts beta=theta_ona, beta=m_a.
+  Equation:
+    delta_BU = 2*omega = 4*arctan(r(theta_ona)*r(m_a))
+    r(beta) = beta/(1+sqrt(1-beta^2))  (Poincare half-rapidity radius)
+    omega = |eps| = 2*arctan(r(theta_ona)*r(m_a))
+    eps_signed = -2*arctan(r(theta_ona)*r(m_a)) for theta=pi/2 (Ungar sign)
+  Construction: origin-Wigner analytic.
+  r(theta_ona)                     0.48511586264116270716
+  r(m_a)                           0.1007479000361957325
+  r(theta_ona)*r(m_a)              0.0488744044353447203
+  eps_signed (ONA,BU+, theta=pi/2) -0.09767108912883104239235345845014795563986
+  omega = |eps_signed|             0.09767108912883104239235345845014795563986
+  omega_closed                     0.097671089128831042392
+  delta_BU = 2*omega               0.19534217825766208478470691690029591127972281943454
+  |2*|eps| - delta_BU|             0.0
+  rho = delta_BU / m_a             0.97930045449732970297
+  Delta = 1 - rho                  0.020699545502670297035
+  rho(m_a -> 0) = 2*r(theta_ona)   0.97023172528232541433
   finite-BU correction rho-rho0    0.0090687292150042886359
   baseline gap 1-rho0              0.02976827471767458567
+  [EXACT_MP] |2*|eps_signed| - delta_BU|
+         measured   0.000e+00
+         threshold  < 1e-60
+         status     PASS
+  [EXACT_MP] rho = delta_BU / m_a in (0,1)
+         measured   0.979300454497
+         threshold  0 < rho < 1
+         status     PASS
 
-H. MATRIX REALIZATION OF BU LOOP
+7. MPMATH DUAL-POLE ORIGIN-GYR WORD
 =====
-  GyroVectorSpace.gyration on stage coordinates
-  path                             ONA -> BU+ -> BU- -> ONA
-  omega_egress  = angle(ONA->BU+)  0.0976710883068109
-  omega_middle  = angle(BU+->BU-)  0.0000000000000000
-  omega_ingress = angle(BU-->ONA)  0.0976710949763406
-  omega_mean                       0.0976710916415757
-  |omega_egress - omega_ingress|   6.670e-09
-  delta_BU_matrix = total angle    0.1953421832831577
-  |delta_BU_matrix - (e+i)|        6.273e-15
-  axis                             (-1.0, 0.0, 0.0)
-  quaternion                       (0.9952339695887171, -0.09751587448556555, 0.0, 0.0)
-  |matrix - canonical| delta_BU    6.670e-09
-  BU product ||R^T R - I||         5.338e-16
-  BU product |det(R)-1|            4.441e-16
-  BU eigenvalues                   [0.98098131-0.19410222j 1.        +0.j         0.98098131+0.19410222j]
-  |tr(R) - (1+2cos(delta_BU))|     2.589e-09
-  check  BU+->BU- collinear angle ~ 0 (got 0.000e+00)             PASS
-  check  |omega_egress - omega_ingress| < 1e-8 (got 6.670e-09)    PASS
-  check  matrix BU angle matches canonical (err 6.670e-09)        PASS
-  check  BU product in SO(3) (orth 5.338e-16, det 4.441e-16)      PASS
-  check  BU trace = 1+2cos(delta_BU) (resid 2.589e-09)            PASS
+  Object: product of three origin-based gyrations on ONA, BU+, BU-.
+  Convention: left action R = G_ingress G_middle G_egress.
+  Construction: origin-gyr word. Primary angle = angle(R).
+  theta_egress = angle(gyr(ONA,BU+)) 0.09767108912883104239235345845014795563986
+  theta_middle = angle(gyr(BU+,BU-)) 0.0
+  theta_ingress = angle(gyr(BU-,ONA)) 0.09767108912883104239235345845014795563986
+  theta_word = angle(R)            0.19534217825766208478470691690029591127972281943454
+  theta_egress + theta_ingress     0.19534217825766208478470691690029591127972281943454
+  |theta_word - (egress+ingress)|  2.635549486e-82
+  |theta_egress - theta_ingress|   4.216879177e-81
+  |theta_word - wigner_analytic|   1.317774743e-81
+  ||R^T R - I||                    2.390988946e-80
+  |det(R)-1|                       8.433758355e-81
+  middle ||G^T G - I||             6.325318766e-81
+  middle |det-1|                   2.108439589e-81
+  middle ||G - I||                 3.162659383e-81
+  [EXACT_MP] ||gyr(BU+,BU-) - I|| (collinear origin-gyr)
+         measured   3.163e-81
+         threshold  < 1e-60
+         status     PASS
+  [EXACT_MP] |angle(gyr(ONA,BU+)) - angle(gyr(BU-,ONA))|
+         measured   4.217e-81
+         threshold  < 1e-60
+         status     PASS
+  [EXACT_MP] |angle(origin-gyr word) - (egress+ingress)|
+         measured   2.636e-82
+         threshold  < 1e-60
+         status     PASS
+  [EXACT_MP] |angle(origin-gyr word) - delta_BU|
+         measured   1.318e-81
+         threshold  < 1e-60
+         status     PASS
 
-I. GYRATION SO(3) AUDIT
+8. MPMATH PALINDROME ORIGIN-GYR WORD
 =====
-  UNA->ONA  ||G^T G - I||=2.284e-16  |det-1|=1.110e-16
-  ONA->UNA  ||G^T G - I||=2.379e-16  |det-1|=0.000e+00
-  ONA->BU+  ||G^T G - I||=2.226e-16  |det-1|=0.000e+00
-  BU+->BU-  ||G^T G - I||=0.000e+00  |det-1|=0.000e+00
-  BU-->ONA  ||G^T G - I||=2.226e-16  |det-1|=0.000e+00
-  UNA->BU+  ||G^T G - I||=2.224e-16  |det-1|=0.000e+00
-  UNA->BU-  ||G^T G - I||=2.224e-16  |det-1|=0.000e+00
-  ONA->BU-  ||G^T G - I||=2.226e-16  |det-1|=0.000e+00
-  BU+->ONA  ||G^T G - I||=2.226e-16  |det-1|=0.000e+00
-  BU-->BU+  ||G^T G - I||=0.000e+00  |det-1|=0.000e+00
-  check  stage-pair gyrations in SO(3) (max orth 2.379e-16, max |det-1| 1.110e-16) PASS
+  Object: origin-gyr product on UNA->ONA->BU+->BU-->ONA->UNA.
+  Conjugacy under left action: R_pal = A^-1 R_BU A with A = gyr(UNA,ONA).
+  Angle = conjugacy class; axis transport via residual.
+  theta_pal                        0.19534217825766208478470691690029591127972281943454
+  theta_BU                         0.19534217825766208478470691690029591127972281943454
+  |theta_pal - theta_BU|           7.906648457e-82
+  |tr_pal - tr_BU|                 8.433758355e-81
+  ||R_pal - A^-1 R_BU A||          1.924897549e-80
+  ||R_pal - A R_BU A^-1||          0.2129368307
+  ||R_pal^T R_pal - I||            3.378490169e-80
+  |det(R_pal)-1|                   1.89759563e-80
+  [EXACT_MP] |angle(palindrome word) - angle(BU word)|
+         measured   7.907e-82
+         threshold  < 1e-60
+         status     PASS
+  [EXACT_MP] ||R_pal - A^-1 R_BU A|| (left-action conjugacy)
+         measured   1.925e-80
+         threshold  < 1e-60
+         status     PASS
 
-J. GYRATION INVERSE PAIRS ON STAGE COORDINATES
+9. PATH HOLONOMIES: ORIGIN-GYR WORD AND RELATIVE-BOOST WORD
 =====
-  Validate implementation of Ungar theorem: gyr(u,v)^-1 = gyr(v,u)
-  ||gyr(UNA,ONA)*gyr(ONA,UNA) - I||  2.666e-16
-  ||gyr(UNA,BU+)*gyr(BU+,UNA) - I||  2.232e-16
-  ||gyr(UNA,BU-)*gyr(BU-,UNA) - I||  2.232e-16
-  ||gyr(ONA,BU+)*gyr(BU+,ONA) - I||  2.260e-16
-  ||gyr(ONA,BU-)*gyr(BU-,ONA) - I||  2.260e-16
-  ||gyr(BU+,BU-)*gyr(BU-,BU+) - I||  0.000e+00
-  check  gyr(u,v)*gyr(v,u)~I on payload pairs (max resid 2.666e-16) PASS
+  Origin-gyr word: product of gyr(p_i, p_{i+1}).
+  Relative-boost word: rotational part of product L(d_i), d_i = ⊖p_i ⊕ p_{i+1}.
+  Geodesic mass-shell holonomy: section PALGE-PFEIFER MASS-SHELL HOLONOMY.
+  path=BU dual-pole
+    theta_origin_gyr_word          0.1953421782576620847847069169002959112797
+    theta_relative_boost_word      0.2584786746345759139338920013396860485443
+    |origin_gyr - relative_boost|  0.06313649638
+    ||R_gyr - R_rel||              0.6363062335
+    relative_boost time-space resid 8.16387209e-81
+  path=palindrome
+    theta_origin_gyr_word          0.1953421782576620847847069169002959112797
+    theta_relative_boost_word      0.5336089082468003399627537493780224189465
+    |origin_gyr - relative_boost|  0.33826673
+    ||R_gyr - R_rel||              0.8877562096
+    relative_boost time-space resid 1.523531652e-80
 
-K. PATH REVERSAL AND CYCLIC RE-ROOTING
+10. GYROGROUP AXIOMS, COADDITION, GYROTRIANGLE DEFECT
 =====
-  GyroVectorSpace.gyration on stage coordinates
-  reverse path                     ONA -> BU- -> BU+ -> ONA
-  reverse angle                    0.1953421663806283
-  |reverse_angle - forward_angle|  1.690e-08
-  ||H(rev) - H(fwd)^T||            2.390e-08
-  check  path reversal gives inverse holonomy (resid 2.390e-08)   PASS
-  check  reverse angle equals forward angle (diff 1.690e-08)      PASS
-  cyclic re-root path              BU+ -> BU- -> ONA -> BU+
-  cyclic re-root angle             0.1953421832831577
-  |angle - ONA-started angle|      0.000e+00
-  |trace difference|               0.000e+00
-  check  holonomy angle invariant under cyclic re-rooting (diff 0.000e+00) PASS
-  check  trace invariant under cyclic re-rooting (diff 0.000e+00) PASS
+  Object: Ungar gyrogroup identities on CGM stage vectors (thresholds as Einstein betas).
+  Vectors: u=UNA, v=ONA, w=BU+.
+  ||u⊕v - gyr[u,v](v⊕u)||          0.0
+  ||u⊕(v⊕w) - (u⊕v)⊕gyr[u,v]w||   1.317774743e-82
+  ||gyr[⊖u,⊖v] - gyr[u,v]||        0.0
+  ||gyr[v,u] - gyr[u,v]^-1||       0.0
+  ||gyr[u⊕v,v] - gyr[u,v]||        2.108439589e-81
+  ||gyr[u,v⊕u] - gyr[u,v]||        4.014349379e-81
+  [EXACT_MP] gyrocommutative law residual
+         measured   0.000e+00
+         threshold  < 1e-60
+         status     PASS
+  [EXACT_MP] left gyroassociative residual
+         measured   1.318e-82
+         threshold  < 1e-60
+         status     PASS
+  [EXACT_MP] even property residual
+         measured   0.000e+00
+         threshold  < 1e-60
+         status     PASS
+  [EXACT_MP] gyration inverse residual
+         measured   0.000e+00
+         threshold  < 1e-60
+         status     PASS
+  [EXACT_MP] left loop property residual
+         measured   2.108e-81
+         threshold  < 1e-60
+         status     PASS
+  [EXACT_MP] right loop property residual
+         measured   4.014e-81
+         threshold  < 1e-60
+         status     PASS
 
-L. GLOBAL ROTATIONAL COVARIANCE
+  Einstein coaddition u ⊞ v = u ⊕ gyr[u,⊖v] v (commutative):
+  ONA ⊞ BU+                        (0.0, 0.77782966146, 0.124788783207)
+  BU+ ⊞ ONA                        (0.0, 0.77782966146, 0.124788783207)
+  ||(ONA⊞BU+) - (BU+⊞ONA)||        1.062423963e-81
+  [EXACT_MP] ||(ONA ⊞ BU+) - (BU+ ⊞ ONA)||
+         measured   1.062e-81
+         threshold  < 1e-60
+         status     PASS
+
+  Defect inventory:
+    (i) stage-angle closure: pi - (theta_cs+theta_una+theta_ona)
+    (ii) Ungar gyrotriangle defects from side gammas
+  delta_stage (i)                  0.0
+  [EXACT_MP] |delta_stage = pi-(theta_cs+theta_una+theta_ona)|
+         measured   0.000e+00
+         threshold  < 1e-70
+         status     PASS
+
+  Corner gyrotriangle (origin, ONA, BU+) — Ungar 21/74:
+  gamma(ONA)                       1.6155326551693477097
+  gamma(BU+)                       1.0205084422705440448
+  gamma(⊖ONA ⊕ BU+)                1.6486647133640670165
+  defect(origin,ONA,BU+) = omega   0.09767108912883104239235345845014795563986
+  angle(gyr[ONA, ⊖BU+])            0.09767108912883104239235345845014795563986
+  |defect - gyr angle|              3.162659383e-81
+  |defect - omega_wigner|           3.162659383e-81
+  |defect - delta_BU/2|             3.162659383e-81
+  [EXACT_MP] |gyrotriangle defect(origin,ONA,BU+) - angle(gyr[ONA,⊖BU+])|
+         measured   3.163e-81
+         threshold  < 1e-60
+         status     PASS
+
+  BU closed gyrotriangle (ONA, BU+, BU-) via gyrotranslation of ONA to origin:
+  defect(ONA,BU+,BU-)              0.1953421782576620847847069169002959112797
+  angle witness gyr[u,⊖v]          0.1953421782576620847847069169002959112797
+  |defect - gyr witness|            2.371994537e-81
+  delta_BU = 2*omega               0.1953421782576620847847069169002959112797
+  |defect(BU tri) - delta_BU|      2.108439589e-81
+  |defect(BU tri) - 2*corner|      8.433758355e-81
+  Defect relation at CGM thresholds (stage speeds as Einstein betas):
+    delta_stage (threshold closure)  0.0
+    delta_gyro corner (Ungar)        0.097671089128831042392
+    |eps_signed| (omega_corner)      0.097671089128831042392
+    delta_BU / 2                     0.097671089128831042392
+    delta_gyro BU triangle           0.19534217825766208478
+    delta_BU = 2*omega               0.19534217825766208478
+  [EXACT_MP] |defect(ONA,BU+,BU-) - angle(gyr[u,⊖v])|
+         measured   2.372e-81
+         threshold  < 1e-60
+         status     PASS
+  [EXACT_MP] |defect(ONA,BU+,BU-) - delta_BU|
+         measured   2.108e-81
+         threshold  < 1e-60
+         status     PASS
+  [EXACT_MP] |defect(ONA,BU+,BU-) - 2*defect(origin,ONA,BU+)|
+         measured   8.434e-81
+         threshold  < 1e-60
+         status     PASS
+
+11. APERTURE (delta_BU = 2*omega)
 =====
-  rotation                         Rz(pi/7)
-  rotated angle                    0.1953421824897154
-  |angle_rotated - angle|          7.934e-10
-  ||H(Q gamma) - Q H Q^T||         3.508e-09
-  check  holonomy angle basis-invariant (diff 7.934e-10)          PASS
-  check  global rotational covariance (resid 3.508e-09)           PASS
+  Object: rho/Delta from delta_BU = 2*omega = 4*arctan(r(theta_ona)*r(m_a)).
+  delta_BU = 2*omega               0.1953421782576620847847069169002959112797
+  m_a                              0.19947114020071633897
+  rho = delta_BU / m_a             0.97930045449732970297
+  Delta = 1 - rho                  0.020699545502670297035
+  closure_percent                  97.9300454497
+  aperture_percent                 2.0699545503
 
-M. PALINDROMIC CONJUGACY
+12. RANK-2 DEPENDENCY (ORIGIN-WIGNER)
 =====
-  path  UNA -> ONA -> BU+ -> BU- -> ONA -> UNA
-  6 payload positions on a 5-edge closed path; CS is gauge frame
-  Gyrogroup theorem: gyr(v,u) = gyr(u,v)^-1  (Ungar)
-  Consequence: H_pal = A H_BU A^-1 with A = gyr(UNA,ONA)
-  palindrome total angle           0.1953421832831577
-  BU loop total angle              0.1953421832831577
-  |palindrome - delta_BU_matrix|   0.000e+00
-  BU axis                          (-1.0, 0.0, 0.0)
-  palindrome axis                  (-0.9223791125711938, 0.3862858691336982, -2.131010558237211e-08)
-  transported BU axis A*n_BU       (-0.9223791098026822, 0.38628587574439166, 0.0)
-  |dot(transported, pal axis)|     0.9999999999999998
-  ||gyr(ONA,UNA) - A^T||           3.237e-16
-  ||A A^T - I||                    2.284e-16
-  ||H_pal - A H_BU A^T||           6.201e-09
-  quaternion w (BU)                0.9952339695887171
-  quaternion w (palindrome)        0.9952339695887171
-  palindrome ||R^T R - I||         6.748e-16
-  palindrome |det(R)-1|            0.000e+00
-  check  reverse transport equals A^-1=A^T (resid 3.237e-16)      PASS
-  check  A A^T = I (resid 2.284e-16)                              PASS
-  check  palindrome = A * H_BU * A^-1 (resid 6.201e-09)           PASS
-  check  palindrome axis = transported BU axis (1-|dot|=2.220e-16) PASS
-  check  conjugacy preserves quaternion scalar w (diff 0.000e+00) PASS
-  check  palindrome product in SO(3)                              PASS
+  Scope: delta_BU = 2*omega = 4*arctan(r(theta_ona)*r(m_a)).
+  Under that scope, delta depends on (theta_ona, m_a).
+  d(delta_BU)/dtheta_ona           0.40117251
+  d(delta_BU)/dm_a                 0.99779618
+  (theta_ona/delta)*d/dtheta       1.61296528
+  (m_a/delta)*d/dm_a               1.01888667
 
-N. APERTURE AND PRECISION GOVERNANCE
-=====
-  delta_BU_canonical               0.1953421766136217
-  delta_BU_closed                  0.1953421782576621
-  m_a                              0.1994711402007164
-  rho = delta_BU_canonical / m_a   0.9793004462553335
-  Delta = 1 - rho                  0.0206995537446665
-  closure_percent                  97.9300446255
-  aperture_percent                 2.0699553745
-  shared BU_HOLONOMY_ANGLE         0.1953421782576621
-  |shared - canonical|             1.644e-09
-  |shared - closed|                0.000e+00
-  check  0 < rho < 1 (rho=0.979300446255)                         PASS
-
-O. RANK-2 DEPENDENCY AND STAGE SENSITIVITY
-=====
-  Closed form: delta_BU = 4*atan(k(theta_ona)*k(m_a)) depends only on (theta_ona, m_a).
-  UNA enters only via conjugation (axis transport), not the angle.
-  CS is gauge frame only.
-  Magnitude channel: ONA x BU; orientation channel: UNA conjugation.
-  d(delta_BU)/du_p                 0 (BU loop does not visit UNA)
-  d(delta_BU)/dtheta_ona (matrix)  0.40157430
-  d(delta_BU)/dtheta_ona (closed)  0.40117251
-  d(delta_BU)/dm_a (matrix)        0.99795139
-  d(delta_BU)/dm_a (closed)        0.99779618
-  (theta_ona/delta_BU)*d/dtheta    1.61458076
-  (m_a/delta_BU)*d/dm_a            1.01904517
-  |matrix - closed| d/dtheta       4.018e-04
-  |matrix - closed| d/dm_a         1.552e-04
-  check  matrix d/dtheta_ona matches closed form (diff 4.018e-04) PASS
-  check  matrix d/dm_a matches closed form (diff 1.552e-04)       PASS
-
-P. WIGNER MAP CLASS (u_p, theta_ona)
+13. WIGNER MAP CLASS (u_p, theta_ona)
 =====
   omega(u_p, theta_ona)            0.2155499101533235
   d_omega/dbeta  (numeric)         0.7629742793221848
@@ -261,7 +401,7 @@ P. WIGNER MAP CLASS (u_p, theta_ona)
   check  d_omega/dtheta matches exact form (err 3.351e-42)        PASS
   check  canonical Wigner response derivatives sum to 1 (got 1.0000000000000000) PASS
 
-Q. FINITE hQVM HOLONOMY
+14. FINITE hQVM HOLONOMY
 =====
   flat_bytes                       16
   curved_bytes                     240
@@ -279,22 +419,22 @@ Q. FINITE hQVM HOLONOMY
   canonical certificate all_pass   True
   check  canonical W2/W2' finite holonomy certificate             PASS
 
-R. BYTE-HORIZON APERTURE QUANTIZATION
+15. BYTE-HORIZON APERTURE QUANTIZATION
 =====
-  Delta                            0.0206995537446665
-  256 * Delta                      5.2990857586346181
+  Delta = 1 - delta_BU/m_a         0.0206995455026703
+  256 * Delta                      5.2990836486835962
   round(256 * Delta)               5
   Q_256(Delta) = 5/256     0.0195312500000000
-  |Delta - Q_256| / Delta          5.644101e-02
-  48 * Delta                       0.9935785797439909
-  |48 * Delta - 1|                 6.421420e-03
-  delta_BU / (2*pi)                0.0310896730023879
+  |Delta - Q_256| / Delta          5.644064e-02
+  48 * Delta                       0.9935781841281743
+  |48 * Delta - 1|                 6.421816e-03
+  delta_BU / (2*pi)                0.0310896732640451
   (1/48) / (1/32)                  0.6666666666666666
   check  nearest 8-bit dyadic of Delta is 5/256 (got 5/256)       PASS
   shared APERTURE_GAP_Q256         5
   check  shared APERTURE_GAP_Q256 == 5 (got 5)                    PASS
 
-S. CONTINUOUS-FINITE STRUCTURAL CORRESPONDENCE
+16. CONTINUOUS-FINITE STRUCTURAL CORRESPONDENCE
 =====
   closed path in continuous model      -> operator word on Omega
   holonomy angle / conjugacy class     -> nontrivial finite involution or cycle
@@ -306,75 +446,198 @@ S. CONTINUOUS-FINITE STRUCTURAL CORRESPONDENCE
   CS gauge frame                       -> byte bits 0 and 7 (family selector)
   continuous conjugacy spectrum        -> finite involution spectrum (see wavefunction analysis)
 
-  local curvature:
-    continuous: holonomy accumulates at ONA-BU corners; BU+->BU- is flat
+  local curvature notes:
+    continuous origin-gyr: gyr(BU+,BU-) is I for collinear origin vectors
     finite: fold disagreement is counted at the BU|BU boundary
 
-T. RESULT STATUS
+17. PALGE-PFEIFER MASS-SHELL HOLONOMY
+=====
+  Object: Levi-Civita / spin-connection holonomy on V_m^+ (Palge-Pfeifer 2023).
+  Stage betas as Einstein velocities map to 4-velocities q=(gamma, gamma beta) with m=1.
+  Routes:
+    (1) circular calibration: curvature disk integral Omega_s)
+    (2) piecewise-geodesic polygon: pure boosts T_ij between successive q_i
+    (3) spherical-chart P exp(-int omega) along those geodesics
+
+  Circular Thomas calibration (rho=rho0, theta=pi/2, phi:0->2pi):
+    V                              0.3
+    gamma(V)                       1.0482848367219182958
+    alpha_analytic = 2*pi*(gamma-1) 0.3033825766507223845656140519245008567128
+    alpha_curvature (int Omega_s)  0.3033825766507223845656140519245008567128
+    int_C omega_13 (= 2*pi*gamma)  6.586567883830308861490900818483506625107
+    int_C omega_13 - 2*pi          0.3033825766507223845656140519245008567128
+    |curvature - analytic|         0.0
+    |line-2pi - analytic|          2.635549486e-81
+  [EXACT_MP] |alpha_curvature - 2*pi*(gamma-1)| (Palge-Pfeifer 47)
+         measured   0.000e+00
+         threshold  < 1e-60
+         status     PASS
+  [EXACT_MP] |int omega_13 - 2*pi - 2*pi*(gamma-1)|
+         measured   2.636e-81
+         threshold  < 1e-60
+         status     PASS
+  Multi-V curvature scan:
+    V=0.1  alpha=0.0316535268169664326  |curv-analytic|=0.0
+    V=0.2  alpha=0.129563843629734001  |curv-analytic|=0.0
+    V=0.4  alpha=0.572331901292988896  |curv-analytic|=0.0
+    V=0.6  alpha=1.57079632679489662  |curv-analytic|=0.0
+  [EXACT_MP] max |alpha_curvature - analytic| over V in {0.1,0.2,0.4,0.6}
+         measured   0.000e+00
+         threshold  < 1e-60
+         status     PASS
+  SU(2) Hol(omega_s,C) U00=cos(alpha/2) 0.98851692091987646861
+                         U01=-sin(alpha/2) -0.15111021492634669696
+
+  CGM piecewise-geodesic path holonomy (pure-boost composition):
+  path=BU dual-pole  ONA -> BU+ -> BU- -> ONA
+    theta_geodesic               0.1953421782576620847847069169002959112797
+    theta_omega_chart_pexp       0.2466038230334449463889778688706365536735
+    |geodesic - omega_chart|     0.05126164478
+    fix q0 resid                 6.056031652e-81
+    time-space resid             1.461976302e-81
+    ||R^T R - I||                1.546354768e-80
+    max edge T u->v resid        7.606654238e-81
+    max edge Lorentz ||L^TηL-η|| 2.178318687e-80
+    max edge |det-1|             2.108439589e-81
+    max edge orthochronous resid 0.0
+    P Lorentz resid              3.102955277e-80
+    P |det-1|                    6.325318766e-81
+    P orthochronous resid        0.0
+    |geodesic - origin_gyr|      2.108439589e-81
+    |geodesic - relative_boost|  0.06313649638
+    |geodesic - delta_BU|        1.054219794e-81
+  [EXACT_MP] BU dual-pole: geodesic Hol SO(3) + SO+(1,3) residuals
+         measured   orth=1.546e-80 ts=1.462e-81 fix=6.056e-81 P_Lor=3.103e-80 P_det=6.325e-81 edge_Lor=2.178e-80
+         threshold  < 1e-60 each
+         status     PASS
+  [EXACT_MP] |theta_geodesic - theta_origin_gyr_word| (BU dual-pole)
+         measured   2.108e-81
+         threshold  < 1e-60
+         status     PASS
+  [EXACT_MP] |theta_geodesic - delta_BU| (2*omega equation)
+         measured   1.054e-81
+         threshold  < 1e-60
+         status     PASS
+  path=palindrome  UNA -> ONA -> BU+ -> BU- -> ONA -> UNA
+    theta_geodesic               0.1953421782576620847847069169002959112797
+    theta_omega_chart_pexp       0.2467356623507020330002657087956898354389
+    |geodesic - omega_chart|     0.05139348409
+    fix q0 resid                 4.491988514e-80
+    time-space resid             1.673692995e-80
+    ||R^T R - I||                4.768616785e-80
+    max edge T u->v resid        1.095577348e-80
+    max edge Lorentz ||L^TηL-η|| 3.366127747e-80
+    max edge |det-1|             8.433758355e-81
+    max edge orthochronous resid 0.0
+    P Lorentz resid              6.391143806e-80
+    P |det-1|                    3.584347301e-80
+    P orthochronous resid        0.0
+  [EXACT_MP] palindrome: geodesic Hol SO(3) + SO+(1,3) residuals
+         measured   orth=4.769e-80 ts=1.674e-80 fix=4.492e-80 P_Lor=6.391e-80 P_det=3.584e-80 edge_Lor=3.366e-80
+         threshold  < 1e-60 each
+         status     PASS
+
+18. HOLONOMY INVENTORY
+=====
+  Measured holonomy quantities (stage thresholds as Einstein betas).
+  delta_BU = 2*omega = 4*arctan(r(theta_ona)*r(m_a)).
+  quantity                         value                                        method
+  delta_BU (= 2*omega)             0.19534217825766208478                       4*arctan(r(theta_ona)*r(m_a))
+  delta_BU_raw_map_mp              0.19534217825766208478                       mp raw gyr map r=1/2
+  delta_BU_ungar_matrix_mp         0.19534217825766208478                       Ungar I+aOm+bOm^2
+  delta_BU_origin_lorentz_fact_mp  0.19534217825766208478                       L(a⊕b)^-1 L(a) L(b)
+  delta_BU_word_mp                 0.19534217825766208478                       mp origin-gyr word
+  theta_origin_gyr_word            0.19534217825766208478                       origin-gyr path product
+  theta_relative_boost_word        0.25847867463457591393                       L(d_i) lab-frame product
+  theta_geodesic_mass_shell        0.19534217825766208478                       pure-boost polygon on V_m^+
+  theta_omega_chart_pexp_BU        0.24660382303344494639                       spherical-chart Pexp(-int omega)
+  alpha_circular_Thomas_V0.3       0.30338257665072238457                       2*pi*(gamma-1)
+  delta_stage_euclid               0.0                                          pi-(theta_cs+theta_una+theta_ona)
+  gyrotriangle_defect_corner       0.097671089128831042392                      Ungar defect origin-ONA-BU+
+  gyrotriangle_defect_BU_tri       0.19534217825766208478                       Ungar defect ONA-BU+-BU-
+  |geodesic - origin_gyr|          2.108440e-81
+  |geodesic - relative_boost|      6.313650e-02
+  |geodesic - omega_chart|         5.126164e-02
+
+19. RESULT STATUS
 =====
   result                                   status                           dependency
   theta_cs+theta_una+theta_ona = pi        exact_algebraic                  threshold definitions
   q_g * m_a^2 = 1/2                        exact_algebraic                  threshold definitions
   phi_SU2 closed form                      exact_algebraic                  SU(2) threshold angles
   TW small-angle + convergence order       standard_analytic+numerical      GyroVectorSpace.gyration
-  delta_BU canonical                       gyration_2omega                  GyroVectorSpace.gyration, ONA/BU
-  delta_BU closed form                     closed_form                      theta_ona, m_a, orthogonal boosts
-  mpmath Jacobian gyr scan                 mp_jacobian                      ONA, BU+, eps grid
-  matrix BU realization                    numerical_crosscheck             GyroVectorSpace.gyration
-  palindromic conjugacy                    gyrogroup_theorem+numerical      Ungar inverse + SO(3) conjugation
-  path reversal / cyclic re-rooting        numerical_invariance             SO(3) realization
-  rho, Delta                               derived_definitions              delta_BU_canonical, m_a
-  rho(m->0) expansion                      closed_form                      closed-form BU identity
-  rank-2 dependency                        closed_form                      delta_BU(theta_ona,m_a) only
+  delta_BU = 2*omega                       origin_wigner_closed             4*arctan(r(theta_ona)*r(m_a))
+  Ungar matrix / Lorentz / Thm7 / trace    exact_mp                         ONA, BU+
+  origin-gyr word                          exact_mp                         left-action product
+  palindrome conjugacy                     exact_mp                         A^-1 R_BU A
+  relative-boost word                      measured                         L(d_i) lab-frame product
+  Palge-Pfeifer circular alpha             exact_mp                         int Omega_s = 2*pi*(gamma-1)
+  geodesic mass-shell holonomy             exact_mp                         pure-boost polygon
+  omega chart Pexp                         measured                         spherical pullback of omega
+  delta_stage = 0                          exact_algebraic                  threshold angle sum
+  defect(ONA,BU+,BU-) = delta_BU           exact_mp                         Ungar 21/74
+  gyrogroup axioms / coaddition            exact_mp                         stage UNA,ONA,BU+
+  rho, Delta from delta_BU                 derived                          delta_BU equation, m_a
+  rank-2 (theta_ona, m_a)                  derived                          analytic delta_BU equation
   Wigner Jacobian sum=1 at threshold       exact_algebraic                  beta=u_p, theta=pi/4
   canonical W2/W2' certificate             exact_finite                     hQVM transition law
   fold distribution 16*C(4,k)              exact_finite                     byte fold algebra
-  Q_256(Delta) = 5/256                     byte_horizon_quantization        Delta, 256-tick byte
-  continuous-finite dictionary             structural_correspondence        architecture
+  Q_256(Delta) = 5/256                     byte_horizon                     Delta from delta_BU equation
+  continuous-finite dictionary             structural                       architecture
 
-U. INTEGRITY CHECK SUMMARY
+20. INTEGRITY CHECK SUMMARY
 =====
-  check  |angle_sum - pi| < 1e-15 (got 0.000e+00)                 PASS
-  check  |q_g*m_a^2 - 1/2| < 1e-15 (got 0.000e+00)                PASS
-  check  SU(2) mpmath product matches closed form (err 7.380e-81) PASS
-  check  TW slope~1 and residual (beta<=0.05): |slope-1|=8.295e-04, max|res|=7.963e-07 PASS
-  check  slope error scales ~ beta^2 (order 2.003)                PASS
-  check  abs residual scales ~ beta^4 (order 4.006)               PASS
-  check  all payload stage vectors satisfy ||v|| < c              PASS
-  check  BU+->BU- collinear angle ~ 0 (got 0.000e+00)             PASS
-  check  |omega_egress - omega_rev| < 1e-8 (got 6.956e-09)        PASS
-  check  |loop - 2*omega| < 1e-7 (got 6.670e-09)                  PASS
-  check  loop product in SO(3) (orth 5.207e-16, det 4.441e-16)    PASS
-  check  0 < rho < 1 (rho=0.979300446255)                         PASS
-  check  |map - closed| < 1e-40 (got 4.032e-80)                   PASS
-  check  Jacobian |jac - closed| < 1e-40 for all listed eps (max 1.216e-51) PASS
-  check  BU+->BU- collinear angle ~ 0 (got 0.000e+00)             PASS
-  check  |omega_egress - omega_ingress| < 1e-8 (got 6.670e-09)    PASS
-  check  matrix BU angle matches canonical (err 6.670e-09)        PASS
-  check  BU product in SO(3) (orth 5.338e-16, det 4.441e-16)      PASS
-  check  BU trace = 1+2cos(delta_BU) (resid 2.589e-09)            PASS
-  check  stage-pair gyrations in SO(3) (max orth 2.379e-16, max |det-1| 1.110e-16) PASS
-  check  gyr(u,v)*gyr(v,u)~I on payload pairs (max resid 2.666e-16) PASS
-  check  path reversal gives inverse holonomy (resid 2.390e-08)   PASS
-  check  reverse angle equals forward angle (diff 1.690e-08)      PASS
-  check  holonomy angle invariant under cyclic re-rooting (diff 0.000e+00) PASS
-  check  trace invariant under cyclic re-rooting (diff 0.000e+00) PASS
-  check  holonomy angle basis-invariant (diff 7.934e-10)          PASS
-  check  global rotational covariance (resid 3.508e-09)           PASS
-  check  reverse transport equals A^-1=A^T (resid 3.237e-16)      PASS
-  check  A A^T = I (resid 2.284e-16)                              PASS
-  check  palindrome = A * H_BU * A^-1 (resid 6.201e-09)           PASS
-  check  palindrome axis = transported BU axis (1-|dot|=2.220e-16) PASS
-  check  conjugacy preserves quaternion scalar w (diff 0.000e+00) PASS
-  check  palindrome product in SO(3)                              PASS
-  check  0 < rho < 1 (rho=0.979300446255)                         PASS
-  check  matrix d/dtheta_ona matches closed form (diff 4.018e-04) PASS
-  check  matrix d/dm_a matches closed form (diff 1.552e-04)       PASS
-  check  d_omega/dbeta matches exact form (err 1.740e-40)         PASS
-  check  d_omega/dtheta matches exact form (err 3.351e-42)        PASS
-  check  canonical Wigner response derivatives sum to 1 (got 1.0000000000000000) PASS
-  check  fold disagreement = 16*C(4,k) and totals 256             PASS
-  check  canonical W2/W2' finite holonomy certificate             PASS
-  check  nearest 8-bit dyadic of Delta is 5/256 (got 5/256)       PASS
-  check  shared APERTURE_GAP_Q256 == 5 (got 5)                    PASS
-  passed=43  failed=0  total=43
+  PASS  |angle_sum - pi| < 1e-15 (got 0.000e+00)
+  PASS  |q_g*m_a^2 - 1/2| < 1e-15 (got 0.000e+00)
+  PASS  SU(2) mpmath product matches closed form (err 7.380e-81)
+  PASS  TW slope~1 and residual (beta<=0.05): |slope-1|=8.295e-04, max|res|=7.963e-07
+  PASS  slope error scales ~ beta^2 (order 2.003)
+  PASS  abs residual scales ~ beta^4 (order 4.006)
+  PASS  [STRUCTURAL] payload stage vectors inside open Einstein ball
+  PASS  [EXACT_MP] raw gyr map SO(3) residuals
+  PASS  [EXACT_MP] |delta_raw_map - delta_wigner_analytic|
+  PASS  [EXACT_MP] |delta_ungar_matrix - delta_wigner_analytic|
+  PASS  [EXACT_MP] ||G_lorentz - G_raw||
+  PASS  [EXACT_MP] Ungar trace identity on raw gyr matrix
+  PASS  [EXACT_MP] Ungar trace identity on Ungar matrix
+  PASS  [EXACT_MP] Ungar factorization ||B(u)B(v)-B(u⊕v)Gyr[u,v]||
+  PASS  [EXACT_MP] Ungar factorization ||B(v)B(u)-B(v⊕u)Gyr[v,u]||
+  PASS  [EXACT_MP] max |delta(gyr(eps e_i)/eps) - analytic| over eps grid
+  PASS  [EXACT_MP] max ||G_ungar - G_lorentz|| over random pairs
+  PASS  [EXACT_MP] max Ungar trace-identity residual over random pairs
+  PASS  [EXACT_MP] max boost-factorization residual over random pairs
+  PASS  [EXACT_MP] |2*|eps_signed| - delta_BU|
+  PASS  [EXACT_MP] rho = delta_BU / m_a in (0,1)
+  PASS  [EXACT_MP] ||gyr(BU+,BU-) - I|| (collinear origin-gyr)
+  PASS  [EXACT_MP] |angle(gyr(ONA,BU+)) - angle(gyr(BU-,ONA))|
+  PASS  [EXACT_MP] |angle(origin-gyr word) - (egress+ingress)|
+  PASS  [EXACT_MP] |angle(origin-gyr word) - delta_BU|
+  PASS  [EXACT_MP] |angle(palindrome word) - angle(BU word)|
+  PASS  [EXACT_MP] ||R_pal - A^-1 R_BU A|| (left-action conjugacy)
+  PASS  [EXACT_MP] gyrocommutative law residual
+  PASS  [EXACT_MP] left gyroassociative residual
+  PASS  [EXACT_MP] even property residual
+  PASS  [EXACT_MP] gyration inverse residual
+  PASS  [EXACT_MP] left loop property residual
+  PASS  [EXACT_MP] right loop property residual
+  PASS  [EXACT_MP] ||(ONA ⊞ BU+) - (BU+ ⊞ ONA)||
+  PASS  [EXACT_MP] |delta_stage = pi-(theta_cs+theta_una+theta_ona)|
+  PASS  [EXACT_MP] |gyrotriangle defect(origin,ONA,BU+) - angle(gyr[ONA,⊖BU+])|
+  PASS  [EXACT_MP] |defect(ONA,BU+,BU-) - angle(gyr[u,⊖v])|
+  PASS  [EXACT_MP] |defect(ONA,BU+,BU-) - delta_BU|
+  PASS  [EXACT_MP] |defect(ONA,BU+,BU-) - 2*defect(origin,ONA,BU+)|
+  PASS  d_omega/dbeta matches exact form (err 1.740e-40)
+  PASS  d_omega/dtheta matches exact form (err 3.351e-42)
+  PASS  canonical Wigner response derivatives sum to 1 (got 1.0000000000000000)
+  PASS  fold disagreement = 16*C(4,k) and totals 256
+  PASS  canonical W2/W2' finite holonomy certificate
+  PASS  nearest 8-bit dyadic of Delta is 5/256 (got 5/256)
+  PASS  shared APERTURE_GAP_Q256 == 5 (got 5)
+  PASS  [EXACT_MP] |alpha_curvature - 2*pi*(gamma-1)| (Palge-Pfeifer 47)
+  PASS  [EXACT_MP] |int omega_13 - 2*pi - 2*pi*(gamma-1)|
+  PASS  [EXACT_MP] max |alpha_curvature - analytic| over V in {0.1,0.2,0.4,0.6}
+  PASS  [EXACT_MP] BU dual-pole: geodesic Hol SO(3) + SO+(1,3) residuals
+  PASS  [EXACT_MP] |theta_geodesic - theta_origin_gyr_word| (BU dual-pole)
+  PASS  [EXACT_MP] |theta_geodesic - delta_BU| (2*omega equation)
+  PASS  [EXACT_MP] palindrome: geodesic Hol SO(3) + SO+(1,3) residuals
+  passed=53  failed=0  total=53

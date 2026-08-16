@@ -4,7 +4,7 @@ All notable changes to the CGM Experimental Framework will be documented in this
 
 ---
 
-## [1.3.9.3-CGM] - 2026-08-15
+## [1.3.9.3-CGM] - 2026-08-15 2026-08-16
 
 Revised one of the foundational priors of the framework: the analysis of closed-path geometric memory. The earlier treatment is superseded by a cleaned continuous–finite holonomy account, with a dedicated verification suite and shared constants aligned to that account.
 

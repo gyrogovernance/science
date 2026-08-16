@@ -665,6 +665,10 @@ Superintelligence Index (SI): composite diagnostic score combining alignment met
 
 [6] A. A. Ungar, Analytic Hyperbolic Geometry and Albert Einstein's Special Theory of Relativity, 2nd ed., World Scientific, Singapore (2008).
 
+[6a] A. A. Ungar, Gyrations: The Missing Link Between Classical Mechanics with its Underlying Euclidean Geometry and Relativistic Mechanics with its Underlying Hyperbolic Geometry, arXiv:1302.5678 (2013).
+
+[6b] V. Palge, C. Pfeifer, Thomas–Wigner rotation as a holonomy for spin-1/2 particles, Physical Review A 109, 032206 (2024), arXiv:2310.08121.
+
 [7] S. A. Kripke, Semantical Considerations on Modal Logic, Acta Philosophica Fennica 16, 83–94 (1963).
 
 [8] B. F. Chellas, Modal Logic, Cambridge University Press, Cambridge (1980).
@@ -724,6 +728,8 @@ Superintelligence Index (SI): composite diagnostic score combining alignment met
 [23] B. Korompilias, Hilbert Space Representation via GNS Construction. https://github.com/gyrogovernance/science/blob/main/docs/Findings/Analysis_Hilbert_Space_Representation.md (Part of [Software])
 
 [30] B. Korompilias, CGM Geometry Coherence Analysis. https://github.com/gyrogovernance/science/blob/main/docs/Findings/Analysis_Geometric_Coherence.md (Part of [Software])
+
+[Holonomy Analysis] B. Korompilias, Path Memory in the Common Governance Model: Continuous Structure and Finite Realization. https://github.com/gyrogovernance/science/blob/main/docs/Findings/Analysis_Holonomy.md (Part of [Software])
 
 [31] A. Loeb, Direct Measurement of Cosmological Parameters from the Cosmic Deceleration of Extragalactic Objects, Astrophysical Journal 499, L111–L114 (1998).
 

@@ -23,7 +23,7 @@ Within CGM, observation is treated as a self-referential process: spacetime obse
 
 The **gyrotriangle defect** is δ = π − (α + β + γ) = π − (π/2 + π/4 + π/4) = 0. Algebraic closure is exact: the three angles sum to π, so the defect vanishes. This uniquely fixes the angular structure. At BU the six kinematic degrees of freedom (three rotational from UNA, three translational from ONA) are coordinated at depth-four commutative closure. A separate **vibrational** degree of motion remains: bounded back-and-forth oscillation about that closed configuration, not a seventh kinematic DOF.
 
-The amplitude A of that oscillation, which fits within one observable horizon, is constrained by the requirement that left and right SU(2) phase ranges (each 2π) combine with the chiral seed α = π/2. The condition is:
+The amplitude A of that oscillation that fits within one observable horizon is constrained by the left and right SU(2) phase ranges associated with the two chiral copies in the double cover of the Lorentz group. Writing (2π)_L and (2π)_R for those full phase ranges and α = π/2 for the chiral seed, the amplitude condition is
 
 **A² × (2π)_L × (2π)_R = α**
 
@@ -79,11 +79,11 @@ Since m_a² = 1/(8π), we have (π/2) × 8π = 4π². So the primordial chiralit
 
 ### 2.1 BU Dual-Pole Holonomy δ_BU
 
-The **BU dual-pole holonomy** δ_BU is the total phase (memory) accumulated along the path ONA → BU+ → BU− → ONA. It is measured within the CGM framework (e.g. from closure tests) as:
+The **BU dual-pole holonomy** δ_BU is the total phase (memory) accumulated along the path ONA → BU+ → BU− → ONA. Each CGM threshold number is read as an Einstein speed β = ||v|| in the open unit ball, and the Poincaré half-rapidity radius is k(β) = β / (1 + √(1 − β²)) = tanh(atanh(β)/2). With θ_ONA = π/4 the closed form is
 
-**δ_BU = 2 × ω(ONA ↔ BU) ≈ 0.195342176580 rad.**
+**δ_BU = 2 × ω(ONA ↔ BU) = 4 · arctan( k(θ_ONA) · k(m_a) ).**
 
-So δ_BU is the accumulated angle for the round-trip between ONA and the BU poles. It is a **measured** geometric quantity, not an independent free parameter.
+This equation is the definition of δ_BU. Like π, the decimal expansion is infinite; numerical work evaluates the equation rather than substituting a truncated literal. The derivation and high-precision evaluation are given in Analysis_Holonomy.md. So δ_BU is a derived geometric quantity, not an independent free parameter.
 
 ### 2.2 Closure Ratio ρ
 
@@ -91,7 +91,7 @@ The **closure ratio** is the fraction of the aperture “filled” by this holon
 
 **ρ = δ_BU / m_a.**
 
-With the values above, ρ ≈ 0.979300446087. So the system is approximately 97.93% “closed” with respect to the aperture: the accumulated memory almost reaches the full aperture scale. The ratio ρ is dimensionless and appears throughout: in the fine-structure corrections (as 1/ρ), in the interpretation of closure vs aperture, and in the surplus factor (1 − ρ⁴) that contributes to α.
+With the values above, ρ ≈ 0.979300454497. So the system is approximately 97.93% “closed” with respect to the aperture: the accumulated memory almost reaches the full aperture scale. The ratio ρ is dimensionless and appears throughout: in the fine-structure corrections (as 1/ρ), in the interpretation of closure vs aperture, and in the surplus factor (1 − ρ⁴) that contributes to α.
 
 ### 2.3 Aperture Gap Δ
 
@@ -103,7 +103,7 @@ So:
 
 **Δ = 1 − δ_BU / m_a.**
 
-Numerically, Δ ≈ 0.020699553913. This is the dimensionless **gap** (about 2.07%) that remains open when comparing the holonomy to the aperture. It is the expansion parameter for systematic corrections (e.g. to the fine-structure constant): small powers of Δ (Δ², Δ⁴) encode aperture effects.
+Numerically, Δ ≈ 0.020699545503. This is the dimensionless **gap** (about 2.07%) that remains open when comparing the holonomy to the aperture. It is the expansion parameter for systematic corrections (e.g. to the fine-structure constant): small powers of Δ (Δ², Δ⁴) encode aperture effects.
 
 Interpretation:
 
@@ -124,13 +124,17 @@ For two SU(2) rotations U₁, U₂ with rotation angles β/2 and γ/2 and axes s
 
 **tr(C) = 2 − 4 sin²δ sin²(β/2) sin²(γ/2).**
 
-The holonomy angle φ (in radians) satisfies cos(φ/2) = 1 − 2 sin²δ sin²(β/2) sin²(γ/2). In the CGM configuration, the UNA rotation is π/4 around one axis and the ONA rotation π/4 around an orthogonal axis, so δ = π/2, β = γ = π/4. Then:
+The holonomy angle φ (in radians) satisfies cos(φ/2) = 1 − 2 sin²δ sin²(β/2) sin²(γ/2). In the CGM configuration, the UNA rotation is π/4 around one axis and the ONA rotation π/4 around an orthogonal axis, so δ = π/2, β = γ = π/4. Then sin²(π/2) = 1 and sin²(π/8) = (1 − 1/√2)/2, and
 
-sin²(π/2) = 1, sin²(π/8) = (1 − cos(π/4))/2 = (1 − 1/√2)/2,
-
-and the expression simplifies. One obtains:
-
-**cos(φ/2) = (1 + 2√2) / 4.**
+```
+cos(φ/2) = 1 − 2 · 1 · ((1 − 1/√2)/2)²
+         = 1 − (1 − 1/√2)² / 2
+         = 1 − (1 − 2/√2 + 1/2) / 2
+         = 1 − (3/2 − √2) / 2
+         = 1 − 3/4 + √2/2
+         = 1/4 + √2/2
+         = (1 + 2√2) / 4.
+```
 
 ### 3.2 Exact Closed Form
 
@@ -142,11 +146,19 @@ Numerically, φ_SU2 ≈ 0.587900762654 rad (about 33.68°). This is an **exact**
 
 ### 3.3 Link to δ_BU and the Aperture
 
-Empirically, δ_BU is close to one third of φ_SU2:
+The quantities φ_SU2 and δ_BU are distinct constructions: φ_SU2 is the conjugacy angle of the UNA/ONA SU(2) commutator, while δ_BU is the SO(3) dual-pole holonomy under stage speeds as Einstein betas. Their numerical comparison at the canonical thresholds is
 
-**δ_BU ≈ (1/3) φ_SU2 + W_residual,**
+```
+φ_SU2 / 3 = 0.1959669208846734
+δ_BU      = 0.1953421782576621
+diff      = φ_SU2 − 3 δ_BU = 0.0018742278810340
+```
 
-with a small residual W_residual. So the BU dual-pole holonomy is tied to the SU(2) holonomy of the UNA/ONA rotations. Since ρ = δ_BU/m_a and Δ = 1 − ρ, the aperture gap Δ is therefore connected to the same SU(2) geometry that gives φ_SU2: the non-commutativity of the path (ONA, UNA, etc.) produces both the holonomy φ_SU2 and the holonomy δ_BU, and the ratio of δ_BU to m_a defines Δ.
+so δ_BU differs from φ_SU2/3 by about 0.319 percent of φ_SU2. Writing W_residual = δ_BU − φ_SU2/3 ≈ −0.00062474 gives the observed approximate proportion
+
+**δ_BU = φ_SU2 / 3 + W_residual.**
+
+The fine-structure corrections of Section 4 use the defined residual diff = φ_SU2 − 3 δ_BU as an expansion slot. Since ρ = δ_BU/m_a and Δ = 1 − ρ, the aperture gap is built from δ_BU and m_a, while φ_SU2 enters the correction chain through that residual.
 
 ---
 
@@ -158,7 +170,7 @@ At the BU (IR) focus, the fine-structure constant is given by the **quartic** re
 
 **α = δ_BU⁴ / m_a.**
 
-With δ_BU ≈ 0.195342176580 and m_a ≈ 0.199471140201, this yields α ≈ 0.007299683322. The quartic scaling arises from the geometry of dual commutators and dual poles (two quadratic factors). Normalization by m_a ensures the result is dimensionless and tied to the observational aperture.
+With δ_BU from the closed form of Section 2.1 and m_a ≈ 0.199471140201, this yields α₀ ≈ 0.007299683573. The quartic scaling arises from the geometry of dual commutators and dual poles (two quadratic factors). Normalization by m_a ensures the result is dimensionless and tied to the observational aperture.
 
 ### 4.2 Role of the Aperture
 
@@ -166,11 +178,11 @@ The base formula can be written as:
 
 **α = (δ_BU/m_a)⁴ × m_a³ = ρ⁴ × m_a³.**
 
-So α depends on the closure ratio ρ to the fourth power and on the aperture m_a. The surplus factor (1 − ρ⁴) appears in the analysis of the fine-structure correction: the ~2.07% aperture (Δ = 1 − ρ) leads to an ~8% surplus (1 − ρ⁴) that is precisely what is needed to bring α from the base value toward the experimental value when corrections are applied.
+So α depends on the closure ratio ρ to the fourth power and on the aperture m_a. The surplus factor (1 − ρ⁴) appears in the analysis of the fine-structure correction: the ~2.07% aperture (Δ = 1 − ρ) leads to an ~8.03% surplus (1 − ρ⁴ ≈ 0.08026) that enters the correction chain bringing α₀ toward the experimental value.
 
 ### 4.3 Systematic Corrections in Terms of Δ
 
-The full CGM formula applies three corrections to the base α₀ = δ_BU⁴/m_a, each expressed using the aperture gap Δ and related geometric quantities:
+The full CGM formula applies three sequential refinements α₀ → α₁ → α₂ → α₃ to the base α₀ = δ_BU⁴/m_a, each expressed using the aperture gap Δ and related geometric quantities:
 
 1. **UV–IR curvature:** α₁ = α₀ × [1 − (3/4)R Δ²], with R the Thomas–Wigner curvature ratio. The factor 3/4 is the SU(2) Casimir. Δ² encodes quadratic aperture effects.
 
@@ -180,9 +192,9 @@ The full CGM formula applies three corrections to the base α₀ = δ_BU⁴/m_a,
 
 The complete formula is:
 
-**α = (δ_BU⁴/m_a) × [1 − (3/4)R Δ²] × [1 − (5/6)((φ_SU2/(3δ_BU)) − 1)(1 − Δ² h_ratio) Δ²/(4π√3)] × [1 + (1/ρ) diff Δ⁴].**
+**α = (δ_BU⁴/m_a) × [1 − (3/4)R Δ²] × [1 − (5/6)((φ_SU2/(3δ_BU)) − 1)(1 − Δ² h_ratio) Δ²/(4π√3)] × [1 + (1/ρ) diff Δ⁴],**
 
-Thus the aperture, through m_a, ρ, and Δ, is the central parameter: the base term is normalized by m_a, and all corrections are expansions in Δ (and ρ). The final prediction matches the experimental value to sub-ppm accuracy, with no fitted parameters beyond the measured geometric invariants.
+with R = 0.993434896272 (Thomas–Wigner curvature ratio), h_ratio = 4.417034 (4-leg/8-leg holonomy ratio), and diff = φ_SU2 − 3δ_BU. Evaluating with δ_BU from Section 2.1 gives α ≈ 0.007297352816. Relative to CODATA 2018 (α = 1/137.035999084), the base α₀ differs by about 319.43 ppm and the fully corrected value by about 33.8 ppb. Thus the aperture, through m_a, ρ, and Δ, is the central parameter: the base term is normalized by m_a, and all corrections are expansions in Δ (and ρ).
 
 ---
 
@@ -194,7 +206,7 @@ The depth-4 closure structure projects to a 48-bit tensor (4 stages × 12 bits).
 
 **48 × Δ ≈ 1.**
 
-With Δ ≈ 0.020699553913, we have 48 Δ ≈ 0.9936, so there is a small deviation from exactly 1. The relation is **derived** from the N_e = 48² quantization of the CGM structure, not imposed as an arbitrary constraint. So Δ is linked to the discrete 48-fold structure: the aperture gap, when multiplied by the geometric unit 48, nearly equals unity.
+With Δ ≈ 0.020699545503, we have 48 Δ ≈ 0.993578, so there is a small deviation from exactly 1. The relation is **derived** from the N_e = 48² quantization of the CGM structure, not imposed as an arbitrary constraint. So Δ is linked to the discrete 48-fold structure: the aperture gap, when multiplied by the geometric unit 48, nearly equals unity.
 
 ### 5.2 Pentagonal Symmetry: λ₀/Δ = 1/√5
 
@@ -235,8 +247,8 @@ From the Einstein–Hilbert action quantization in the CGM framework, the dimens
 ### 7.1 The Aperture as the Hub
 
 - **m_a** is fixed by the closure of the gyrotriangle and the phase-horizon condition A² × 4π² = π/2, and by Q_G × m_a² = 1/2.  
-- **ρ = δ_BU/m_a** and **Δ = 1 − ρ** define closure and aperture gap from the measured BU holonomy δ_BU.  
-- **φ_SU2** is the exact SU(2) holonomy for the stage angles; δ_BU is empirically close to φ_SU2/3, linking holonomy to holonomy.  
+- **ρ = δ_BU/m_a** and **Δ = 1 − ρ** define closure and aperture gap from the closed-form BU holonomy δ_BU.  
+- **φ_SU2** is the exact SU(2) holonomy for the stage angles. The observed proportion δ_BU = φ_SU2/3 + W_residual holds with W_residual ≈ −0.00062474; the residual diff = φ_SU2 − 3δ_BU enters the α correction chain.  
 - **α** has base form δ_BU⁴/m_a; corrections are series in Δ (and ρ), so the aperture gap is the expansion parameter.  
 - **S_geo = m_a π √3/2** and **ζ = Q_G/S_geo = 16√(2π/3)** tie gravity to the same aperture.  
 - **48Δ ≈ 1** and **λ₀/Δ = 1/√5** tie Δ to discrete (48) and pentagonal (√5) geometry.
@@ -246,10 +258,10 @@ So **m_a** and **Δ** (with ρ and δ_BU) are the central objects; the rest are 
 ### 7.2 Derivation Chain (Summary)
 
 1. **Angles** (π/2, π/4, π/4) → gyrotriangle defect 0, amplitude condition A²×4π² = π/2 → **m_a = 1/(2√(2π))** and **Q_G × m_a² = 1/2**.  
-2. **BU path** → measured **δ_BU** → **ρ = δ_BU/m_a**, **Δ = 1 − ρ**.  
+2. **BU path** → closed-form **δ_BU = 2ω** → **ρ = δ_BU/m_a**, **Δ = 1 − ρ**.  
 3. **SU(2) commutator** for δ = π/2, β = γ = π/4 → **φ_SU2 = 2 arccos((1+2√2)/4)**.  
 4. **IR focus** → **α₀ = δ_BU⁴/m_a**; corrections in Δ, ρ, φ_SU2 → full **α**.  
 5. **S_geo = m_a π √3/2** → **ζ = Q_G/S_geo = 16√(2π/3)**.  
 6. **48² quantization** → **48 Δ ≈ 1**; pentagonal symmetry → **λ₀/Δ = 1/√5**.
 
-All of these are algebraic or geometric consequences of the aperture m_a, the closure ratio ρ, the aperture gap Δ, and the measured holonomy δ_BU, with no free parameters beyond the framework’s geometric definitions and the single measured value δ_BU.
+All of these are algebraic or geometric consequences of the aperture m_a, the closure ratio ρ, the aperture gap Δ, and the closed-form holonomy δ_BU, with no free parameters beyond the framework’s geometric definitions.
