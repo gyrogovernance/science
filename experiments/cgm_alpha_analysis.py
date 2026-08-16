@@ -51,7 +51,7 @@ def compute_from_cgm_3d_6dof():
 
 def compute_delta_BU_from_gyrovector():
     """
-    Compute δ_BU from BU dual-pole holonomy using gyrovector space.
+    Compute δ_BU from BU Dual-Pole Loop using gyrovector space.
 
     δ_BU = 2 × ω(ONA ↔ BU) where ω is the rotation angle from gyration.
 
@@ -233,7 +233,7 @@ def main():
 
     print("CGM Fine-Structure Constant: Geometric IR Focus Prediction")
     print("=" * 65)
-    print("Base prediction from BU dual-pole holonomy and aperture structure.")
+    print("Base prediction from BU Dual-Pole Loop and aperture structure.")
     print("=" * 65)
 
     # Compute parameters from CGM components

@@ -54,7 +54,7 @@ class CGMAcousticDiagnostics:
         # Toroidal holonomy deficit (discovery)
         self.holonomy_deficit = 0.863  # rad - persistent invariant
 
-        # BU dual-pole holonomy (discovery)
+        # BU Dual-Pole Loop (discovery)
         self.delta_BU = 0.195  # rad ≈  m_a (97.9% agreement)
 
         # Anatomical TW ratio (discovery)

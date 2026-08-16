@@ -669,7 +669,7 @@ class QuantumGravityHorizon:
 
     def compute_bu_dual_pole_holonomy(self, verbose: bool = True) -> Dict[str, float]:
         """
-        Compute the BU dual-pole holonomy angle δ_BU = 2ω(ONA↔BU).
+        Compute the BU Dual-Pole Loop angle δ_BU = 2ω(ONA↔BU).
 
         This is the key geometric quantity that appears in the fine-structure
         constant prediction: α_fs = δ_BU^4 / m_a.
@@ -1035,7 +1035,7 @@ class QuantumGravityHorizon:
         n_plus = np.array([np.sin(g), 0.0, np.cos(g)], dtype=float)
         n_minus = np.array([-np.sin(g), 0.0, np.cos(g)], dtype=float)
 
-        # Get the measured BU dual-pole holonomy δ_BU
+        # Get the measured BU Dual-Pole Loop δ_BU
         # This is the key geometric quantity for fine-structure constant prediction
         delta_BU_result = self.compute_bu_dual_pole_holonomy(verbose=False)
         delta_BU = delta_BU_result["delta_BU"]

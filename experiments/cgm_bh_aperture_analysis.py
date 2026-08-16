@@ -8,8 +8,16 @@
 # Prints plain text blocks (no tables).
 
 import math
+import os
+import sys
 from dataclasses import dataclass
 from typing import Dict
+
+_REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if _REPO not in sys.path:
+    sys.path.insert(0, _REPO)
+
+from gyroscopic.hQVM.constants import M_A
 
 # Additional physical constants
 h = 6.626_070_15e-34  # J·s (exact, for frequency/wavelength)
@@ -96,7 +104,7 @@ eV_J = 1.602_176_634e-19  # J per eV (exact)
 MeV_J = eV_J * 1.0e6  # J per MeV
 
 # CGM parameter
-m_a = 1.0 / (2.0 * math.sqrt(2.0 * pi))  # ≈ 0.19947114020071635
+m_a = M_A
 
 # Energy scales for Planck mass calculation
 E_CS_GeV = 1.22e19  # Chiral symmetry breaking scale from Energy Scales

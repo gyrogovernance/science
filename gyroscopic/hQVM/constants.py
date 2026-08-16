@@ -105,7 +105,7 @@ def bu_holonomy_angle(
     theta_ona: float | None = None,
     m_a: float | None = None,
 ) -> float:
-    """Analytic BU dual-pole holonomy angle under the declared embedding."""
+    """Analytic BU Dual-Pole Loop angle under the declared embedding."""
     th = math.pi / 4.0 if theta_ona is None else float(theta_ona)
     ma = M_A if m_a is None else float(m_a)
     return 4.0 * math.atan(_half_rapidity_tanh(th) * _half_rapidity_tanh(ma))

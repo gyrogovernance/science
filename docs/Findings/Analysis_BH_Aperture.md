@@ -10,7 +10,7 @@ We present a systematic investigation of black hole thermodynamics within the Co
 
 The thermodynamics of black holes represents a crucial intersection between general relativity, quantum mechanics, and statistical physics. Since the foundational work establishing black hole entropy proportional to horizon area and temperature inversely proportional to mass, numerous approaches have sought corrections arising from quantum gravitational effects. These corrections typically manifest as modifications to the Bekenstein-Hawking formulae, with various theoretical frameworks predicting adjustments ranging from logarithmic corrections to multiplicative factors.
 
-The Common Governance Model (CGM) provides a geometric framework for understanding physical phenomena through recursive self-reference and structural alignment. Within this framework, the concept of an aperture emerges naturally from the requirement that observational closure must be incomplete to permit observation itself. This aperture, characterized by the parameter  m_a = 1/(2√(2π)), represents a fundamental balance: sufficient closure for structural stability (97.93%) with sufficient openness for observation (2.07%).
+The Common Governance Model (CGM) provides a geometric framework for understanding physical phenomena through recursive self-reference and structural alignment. Within this framework, the concept of an aperture emerges naturally from the requirement that observational closure must be incomplete to permit observation itself. The amplitude scale m_a and the dual-pole loop angle δ_BU of Section 2.1 fix the closure ratio ρ ≈ 0.979300454497 and aperture gap Δ ≈ 0.020699545503, so the balance is about 97.93% closure with 2.07% openness.
 
 This study applies CGM principles to black hole thermodynamics, deriving modified relations for entropy, temperature, and evaporation time. We implement these modifications computationally across a comprehensive range of black hole masses and compare our results with both standard predictions and recent quantum gravity corrections reported in the literature.
 
@@ -21,6 +21,13 @@ This study applies CGM principles to black hole thermodynamics, deriving modifie
 The CGM framework identifies a fundamental geometric parameter:
 
  m_a = 1/(2√(2π)) ≈ 0.199471140201
+
+With δ_BU = 4 · arctan(k(π/4) · k(m_a)) and k(β) = β/(1 + √(1 − β²)),
+
+```
+ρ = δ_BU / m_a ≈ 0.979300454497
+Δ = 1 − ρ      ≈ 0.020699545503
+```
 
 This parameter emerges from the requirement that the complete solid angle 4π steradians necessary for three-dimensional observation must accommodate an aperture preventing total closure. The value derives from geometric principles rather than empirical fitting, specifically from the constraint that recursive operations must achieve closure while maintaining observability.
 
@@ -119,7 +126,7 @@ Our results align remarkably with independent quantum gravity studies. A 2025 ar
 
 ### 5.2 Physical Interpretation
 
-The CGM aperture parameter can be understood as encoding the fundamental incompleteness required for observation. The 2.07% aperture prevents complete closure while maintaining 97.93% structural stability. This balance manifests in black hole thermodynamics as enhanced entropy (more information storage) coupled with reduced temperature (slower information release).
+The CGM aperture parameter can be understood as encoding the fundamental incompleteness required for observation. The aperture gap Δ ≈ 0.020699545503 (about 2.07%) prevents complete closure while the closure ratio ρ ≈ 0.979300454497 (about 97.93%) maintains structural stability. This balance manifests in black hole thermodynamics as enhanced entropy (more information storage) coupled with reduced temperature (slower information release).
 
 ### 5.3 Observational Implications
 

@@ -288,7 +288,7 @@ class TWClosureTester:
             print(
                 f"Nonzero holonomy detected (holonomy): φ₈ = {total_rotation:.6f} rad"
             )
-            print(f"This equals the BU dual-pole holonomy δ_BU; value is invariant.")
+            print(f"This equals the BU Dual-Pole Loop δ_BU; value is invariant.")
             print(f"Memory accumulation:         {deviation:.6e}")
             print(f"Signed memory:               {signed_deviation:.6e}")
 
@@ -367,7 +367,7 @@ class TWClosureTester:
 
     def compute_bu_dual_pole_holonomy(self, verbose: bool = True) -> Dict[str, float]:
         """
-        Compute the BU dual-pole holonomy constant:
+        Compute the BU Dual-Pole Loop constant:
         δ_BU := 2·ω(ONA ↔ BU) ≈ 0.98·m_a
 
         This is a named invariant that should be stable across seeds/perturbations.
@@ -400,7 +400,7 @@ class TWClosureTester:
         deviation_from_ma = abs(ratio_to_ma - 1.0)
 
         if verbose:
-            print(f"\nBU Dual-Pole Holonomy Constant (High Precision):")
+            print(f"\nBU Dual-Pole Loop Constant (High Precision):")
             print(f"  δ_BU = 2·w(ONA ↔ BU) = {delta_bu:.10f} rad")
             print(f"  BU threshold  m_a = {float(self.m_a):.10f} rad")
             print(f"  Ratio δ_BU/ m_a = {ratio_to_ma:.10f}")
@@ -827,7 +827,7 @@ class TWClosureTester:
         # Test BU pole asymmetry and cancelation
         results["bu_pole_asymmetry"] = self.bu_pole_asymmetry()
 
-        # Compute BU dual-pole holonomy constant
+        # Compute BU Dual-Pole Loop constant
         results["bu_dual_pole_holonomy"] = self.compute_bu_dual_pole_holonomy(
             verbose=verbose
         )

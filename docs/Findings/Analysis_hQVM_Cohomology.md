@@ -912,7 +912,7 @@ role: UNA rapidity scale
 role: CGM aperture gap
 
 δ_BU = 0.19534217658
-role: BU dual-pole holonomy defect
+role: BU Dual-Pole Loop defect
 ```
 
 These quantities enter one architecture through different measurements and normalizations.
@@ -941,7 +941,7 @@ They satisfy
 Q_G × m_a² = 1/2
 ```
 
-The BU dual-pole holonomy defect is
+The BU Dual-Pole Loop defect is
 
 ```text
 δ_BU = 0.19534217658

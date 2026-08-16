@@ -256,14 +256,14 @@ where the product Q_G m_a² = 1/2 is the half-integer quantum pass of the double
 
 **3.3. The Observational Aperture and Holonomy**
 
-Gravity requires quantization. The continuous sphere resolves into discrete operational passes governed by the aperture. The BU dual-pole holonomy δ_BU measures the phase accumulated on the path between the constitutional poles. The closure ratio ρ and the aperture gap Δ measure how this holonomy sits relative to the aperture.
+Gravity requires quantization. The continuous sphere resolves into discrete operational passes governed by the aperture. The BU Dual-Pole Loop δ_BU measures the phase accumulated on the path between the constitutional poles. The closure ratio ρ and the aperture gap Δ measure how this holonomy sits relative to the aperture.
 
 ```text
 ρ = δ_BU / m_a   ≈ 0.9793
 Δ = 1 − ρ        ≈ 0.0207
 ```
 
-where δ_BU is the BU dual-pole holonomy, ρ is the closure ratio (structural closure fraction), and Δ is the aperture gap (dynamic opening fraction). The system maintains near-total closure with a fractional opening. Full closure would leave no aperture and render observation impossible. The aperture gap Δ is the expansion parameter for gravitational and electromagnetic attenuation. Observation is possible precisely because Δ > 0.
+where δ_BU is the BU Dual-Pole Loop, ρ is the closure ratio (structural closure fraction), and Δ is the aperture gap (dynamic opening fraction). The system maintains near-total closure with a fractional opening. Full closure would leave no aperture and render observation impossible. The aperture gap Δ is the expansion parameter for gravitational and electromagnetic attenuation. Observation is possible precisely because Δ > 0.
 
 **3.4. Optical Conjugacy and the Energy Ladder**
 
@@ -505,7 +505,7 @@ To convert defect magnitude to an angle scale, define the plaquette deficit angl
 α(d) = (popcount(d) / 6) × δ_BU
 ```
 
-where popcount(d) is the defect magnitude in GF(2)^6 and δ_BU is the BU dual-pole holonomy. This fixes the curvature unit.
+where popcount(d) is the defect magnitude in GF(2)^6 and δ_BU is the BU Dual-Pole Loop. This fixes the curvature unit.
 
 The Regge action sums deficit angles weighted by hinge area. In the kernel, the hinge weight is the anisotropy (symmetric trace-free content) of the shell at which the holonomy step occurs.
 

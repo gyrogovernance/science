@@ -165,7 +165,7 @@ Q_G × m_a² = 1/2
 
 (2π)_L and (2π)_R denote the angular coverage contributed by the left and right transition directions. Each contributes 2π because a full cycle in either direction covers one complete angular revolution.
 
-The continuous 4π sphere therefore resolves into a half-integer quantum pass, reflecting the underlying SU(2) double-cover structure established by the rotational degrees of freedom. The closure ratio ρ = δ_BU/m_a and the aperture gap Δ = 1 − ρ measure how the BU dual-pole holonomy δ_BU sits relative to the aperture m_a (Appendix G). Numerically, m_a ≈ 0.199471, ρ ≈ 0.9793, and Δ ≈ 0.0207.
+The continuous 4π sphere therefore resolves into a half-integer quantum pass, reflecting the underlying SU(2) double-cover structure established by the rotational degrees of freedom. The closure ratio ρ = δ_BU/m_a and the aperture gap Δ = 1 − ρ measure how the BU Dual-Pole Loop δ_BU sits relative to the aperture m_a (Appendix G). Numerically, m_a ≈ 0.199471, ρ ≈ 0.9793, and Δ ≈ 0.0207.
 
 The 4π invariant appears in the field equation for a point source:
 
@@ -227,7 +227,7 @@ To convert defect magnitude to an angle scale, define the plaquette deficit angl
 alpha(d) = (popcount(d) / 6) x delta_BU
 ```
 
-delta_BU is the BU dual-pole holonomy fixed in Appendix G. This fixes the curvature unit.
+delta_BU is the BU Dual-Pole Loop fixed in Appendix G. This fixes the curvature unit.
 
 A Regge action is a weighted sum of deficit angles. In this manuscript the weight is the symmetric trace-free (STF) sector of the shell-conditioned stress σ^{ij} = p δ^{ij} + π^{ij} introduced in Section 4 and formalized in Appendix D. The horizons have π = 0 and therefore carry zero STF weight. Only shells 1 through 5 contribute to the gravitational attenuation τ_G.
 
@@ -1088,9 +1088,9 @@ It is the maximum amplitude consistent with a π-radian observable horizon. Left
 
 The gyrotriangle defect δ = π − (π/2 + π/4 + π/4) = 0 fixes the angular structure uniquely.
 
-### G.2 BU Dual-Pole Holonomy and Closure
+### G.2 BU Dual-Pole Loop and Closure
 
-The BU dual-pole holonomy δ_BU is the phase accumulated on the path ONA → BU+ → BU− → ONA:
+The BU Dual-Pole Loop δ_BU is the phase accumulated on the path ONA → BU+ → BU− → ONA:
 
 ```text
 δ_BU = 2 × ω(ONA ↔ BU)  ≈  0.195342176580 rad

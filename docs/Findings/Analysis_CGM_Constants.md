@@ -77,21 +77,21 @@ Since m_a² = 1/(8π), we have (π/2) × 8π = 4π². So the primordial chiralit
 
 ## 2. Closure Ratio ρ and Aperture Gap Δ
 
-### 2.1 BU Dual-Pole Holonomy δ_BU
+### 2.1 BU Dual-Pole Loop Angle δ_BU
 
-The **BU dual-pole holonomy** δ_BU is the total phase (memory) accumulated along the path ONA → BU+ → BU− → ONA. Each CGM threshold number is read as an Einstein speed β = ||v|| in the open unit ball, and the Poincaré half-rapidity radius is k(β) = β / (1 + √(1 − β²)) = tanh(atanh(β)/2). With θ_ONA = π/4 the closed form is
+The **BU dual-pole loop angle** δ_BU is the total phase (memory) accumulated along the path ONA → BU+ → BU− → ONA. Each CGM threshold number is read as an Einstein speed β = ||v|| in the open unit ball, and the Poincaré half-rapidity radius is k(β) = β / (1 + √(1 − β²)) = tanh(atanh(β)/2). With θ_ONA = π/4 the closed form is
 
 **δ_BU = 2 × ω(ONA ↔ BU) = 4 · arctan( k(θ_ONA) · k(m_a) ).**
 
-This equation is the definition of δ_BU. Like π, the decimal expansion is infinite; numerical work evaluates the equation rather than substituting a truncated literal. The derivation and high-precision evaluation are given in Analysis_Holonomy.md. So δ_BU is a derived geometric quantity, not an independent free parameter.
+This equation is the definition of δ_BU. The derivation and high-precision evaluation are given in Analysis_Holonomy.md. So δ_BU is a derived geometric quantity, not an independent free parameter.
 
 ### 2.2 Closure Ratio ρ
 
-The **closure ratio** is the fraction of the aperture “filled” by this holonomy:
+The **closure ratio** is the fraction of the aperture filled by this loop angle:
 
 **ρ = δ_BU / m_a.**
 
-With the values above, ρ ≈ 0.979300454497. So the system is approximately 97.93% “closed” with respect to the aperture: the accumulated memory almost reaches the full aperture scale. The ratio ρ is dimensionless and appears throughout: in the fine-structure corrections (as 1/ρ), in the interpretation of closure vs aperture, and in the surplus factor (1 − ρ⁴) that contributes to α.
+With the values above, ρ ≈ 0.979300454497. So the system is approximately 97.93% closed with respect to the aperture: the accumulated memory almost reaches the full aperture scale. The ratio ρ is dimensionless and appears throughout: in the fine-structure corrections (as 1/ρ), in the interpretation of closure vs aperture, and in the surplus factor (1 − ρ⁴) that contributes to α.
 
 ### 2.3 Aperture Gap Δ
 
@@ -103,16 +103,16 @@ So:
 
 **Δ = 1 − δ_BU / m_a.**
 
-Numerically, Δ ≈ 0.020699545503. This is the dimensionless **gap** (about 2.07%) that remains open when comparing the holonomy to the aperture. It is the expansion parameter for systematic corrections (e.g. to the fine-structure constant): small powers of Δ (Δ², Δ⁴) encode aperture effects.
+Numerically, Δ ≈ 0.020699545503. This is the dimensionless **gap** (about 2.07%) that remains open when comparing the loop angle to the aperture. It is the expansion parameter for systematic corrections (e.g. to the fine-structure constant): small powers of Δ (Δ², Δ⁴) encode aperture effects.
 
 Interpretation:
 
-- **ρ**: fraction of the aperture scale “used” by the BU dual-pole holonomy (structural closure in phase).  
-- **Δ**: fractional **vibrational** amplitude remaining open (about 2.07%). Observation is possible precisely because Δ > 0; if the holonomy saturated the full aperture scale with no residual oscillation, there would be no room for observation. So Δ is both the perturbation expansion parameter and the geometric measure of vibrational motion at BU.
+- **ρ**: fraction of the aperture scale used by the BU dual-pole loop angle (structural closure in phase).
+- **Δ**: fractional **vibrational** amplitude remaining open (about 2.07%). Observation is possible precisely because Δ > 0; if the loop angle saturated the full aperture scale with no residual oscillation, there would be no room for observation. So Δ is both the perturbation expansion parameter and the geometric measure of vibrational motion at BU.
 
 ### 2.4 Relation to Q_G and m_a
 
-Using ρ = δ_BU/m_a we have Δ = 1 − δ_BU/m_a. The identity Q_G × m_a² = 1/2 can be written as 2 Q_G m_a² = 1. So the aperture m_a sets the scale at which the solid angle Q_G yields this half-integer product; ρ and Δ then measure how the actual holonomy δ_BU sits relative to that scale. In other words: m_a defines the “unit” of closure, and Δ is the deficit from full closure.
+Using ρ = δ_BU/m_a we have Δ = 1 − δ_BU/m_a. The identity Q_G × m_a² = 1/2 can be written as 2 Q_G m_a² = 1. So the aperture m_a sets the scale at which the solid angle Q_G yields this half-integer product; ρ and Δ then measure how δ_BU sits relative to that scale. In other words: m_a defines the unit of closure, and Δ is the deficit from full closure.
 
 ---
 
@@ -146,7 +146,7 @@ Numerically, φ_SU2 ≈ 0.587900762654 rad (about 33.68°). This is an **exact**
 
 ### 3.3 Link to δ_BU and the Aperture
 
-The quantities φ_SU2 and δ_BU are distinct constructions: φ_SU2 is the conjugacy angle of the UNA/ONA SU(2) commutator, while δ_BU is the SO(3) dual-pole holonomy under stage speeds as Einstein betas. Their numerical comparison at the canonical thresholds is
+The quantities φ_SU2 and δ_BU are distinct constructions: φ_SU2 is the conjugacy angle of the UNA/ONA SU(2) commutator, while δ_BU is the SO(3) dual-pole loop angle under stage speeds as Einstein betas. Their numerical comparison at the canonical thresholds is
 
 ```
 φ_SU2 / 3 = 0.1959669208846734
@@ -186,7 +186,7 @@ The full CGM formula applies three sequential refinements α₀ → α₁ → α
 
 1. **UV–IR curvature:** α₁ = α₀ × [1 − (3/4)R Δ²], with R the Thomas–Wigner curvature ratio. The factor 3/4 is the SU(2) Casimir. Δ² encodes quadratic aperture effects.
 
-2. **Holonomy transport:** α₂ = α₁ × [1 − (5/6)((φ_SU2/(3δ_BU)) − 1)(1 − Δ² h_ratio) Δ²/(4π√3)]. Here 5/6 is the Z₆ rotor factor with one leg open (aperture), 4π = Q_G, and √3 is the 120° projection. So the aperture gap Δ again enters the geometric transport from UV to IR.
+2. **Commutator transport:** α₂ = α₁ × [1 − (5/6)((φ_SU2/(3δ_BU)) − 1)(1 − Δ² h_ratio) Δ²/(4π√3)]. Here 5/6 is the Z₆ rotor factor with one leg open (aperture), 4π = Q_G, and √3 is the 120° projection. So the aperture gap Δ again enters the geometric transport from UV to IR.
 
 3. **IR alignment:** α₃ = α₂ × [1 + (1/ρ) diff Δ⁴], with ρ = δ_BU/m_a and diff = φ_SU2 − 3δ_BU. The factor 1/ρ ties the correction to closure, and Δ⁴ provides fourth-order suppression.
 
@@ -247,9 +247,8 @@ From the Einstein–Hilbert action quantization in the CGM framework, the dimens
 ### 7.1 The Aperture as the Hub
 
 - **m_a** is fixed by the closure of the gyrotriangle and the phase-horizon condition A² × 4π² = π/2, and by Q_G × m_a² = 1/2.  
-- **ρ = δ_BU/m_a** and **Δ = 1 − ρ** define closure and aperture gap from the closed-form BU holonomy δ_BU.  
-- **φ_SU2** is the exact SU(2) holonomy for the stage angles. The observed proportion δ_BU = φ_SU2/3 + W_residual holds with W_residual ≈ −0.00062474; the residual diff = φ_SU2 − 3δ_BU enters the α correction chain.  
-- **α** has base form δ_BU⁴/m_a; corrections are series in Δ (and ρ), so the aperture gap is the expansion parameter.  
+- **ρ = δ_BU/m_a** and **Δ = 1 − ρ** define closure and aperture gap from the closed-form BU loop angle δ_BU.
+- **φ_SU2** is the exact SU(2) commutator angle for the stage angles. The observed proportion δ_BU = φ_SU2/3 + W_residual holds with W_residual ≈ −0.00062474; the residual diff = φ_SU2 − 3δ_BU enters the α correction chain.- **α** has base form δ_BU⁴/m_a; corrections are series in Δ (and ρ), so the aperture gap is the expansion parameter.  
 - **S_geo = m_a π √3/2** and **ζ = Q_G/S_geo = 16√(2π/3)** tie gravity to the same aperture.  
 - **48Δ ≈ 1** and **λ₀/Δ = 1/√5** tie Δ to discrete (48) and pentagonal (√5) geometry.
 
@@ -264,4 +263,4 @@ So **m_a** and **Δ** (with ρ and δ_BU) are the central objects; the rest are 
 5. **S_geo = m_a π √3/2** → **ζ = Q_G/S_geo = 16√(2π/3)**.  
 6. **48² quantization** → **48 Δ ≈ 1**; pentagonal symmetry → **λ₀/Δ = 1/√5**.
 
-All of these are algebraic or geometric consequences of the aperture m_a, the closure ratio ρ, the aperture gap Δ, and the closed-form holonomy δ_BU, with no free parameters beyond the framework’s geometric definitions.
+All of these are algebraic or geometric consequences of the aperture m_a, the closure ratio ρ, the aperture gap Δ, and the closed-form loop angle δ_BU, with no free parameters beyond the framework’s geometric definitions.

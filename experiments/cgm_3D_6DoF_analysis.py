@@ -15,14 +15,23 @@ Author: Basil Korompilias
 Date: 2025
 """
 
-import numpy as np
+import os
+import sys
 from typing import Tuple
+
+import numpy as np
+
+_REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if _REPO not in sys.path:
+    sys.path.insert(0, _REPO)
+
+from gyroscopic.hQVM.constants import BU_HOLONOMY_ANGLE, M_A
 
 # CGM Constants
 S_P = np.pi / 2  # CS threshold
 U_P = 1 / np.sqrt(2)  # UNA threshold
 O_P = np.pi / 4  # ONA threshold
-m_a = 1 / (2 * np.sqrt(2 * np.pi))  # BU aperture
+m_a = M_A  # BU aperture
 
 
 print("THREE-DIMENSIONAL NECESSITY AND SIX DEGREES OF FREEDOM")
@@ -486,7 +495,8 @@ print("At BU (6 DOF closed):")
 print("  Group: SE(3) with both gyrations -> identity")
 print("  Generators: 6 (coordinated)")
 print("  Representation: Toroidal closure")
-print("  Closure: delta = 0, lgyr = rgyr = id (effectively)")
+print("  Closure: stage-angle defect delta = 0; lgyr = rgyr = id (effectively)")
+print(f"  Loop angle: delta_BU = 4*arctan(k(pi/4)*k(m_a)) = {BU_HOLONOMY_ANGLE:.12f} rad")
 print()
 
 # ============================================================================

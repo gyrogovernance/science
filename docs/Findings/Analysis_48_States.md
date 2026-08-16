@@ -8,9 +8,10 @@ The factor 48 is a fundamental geometric quantization unit in the CGM framework,
 ## Primary Derivation: Inflation E-folds Quantization
 
 ### Core Relationship
-- **N_e = 48² = 2304** (exact quantization of inflation e-folds)
-- **48Δ = 1** (exact geometric relationship)
-- **Δ = 1/48** (aperture gap from geometric quantization)
+- **N_e = 48² = 2304** (integer quantization of inflation e-folds)
+- **δ_BU = 4 · arctan(k(π/4) · k(m_a))** with k(β) = β/(1+√(1−β²)) and m_a = 1/(2√(2π))
+- **Δ = 1 − δ_BU/m_a ≈ 0.020699545503** (aperture gap from the dual-pole loop angle)
+- **48Δ ≈ 0.993578** (near-unit depth-four relation; reciprocal companion scale 1/48)
 
 ### Geometric Structure of 48
 - **48 = 16 × 3 = 2⁴ × 3**
@@ -20,36 +21,36 @@ The factor 48 is a fundamental geometric quantization unit in the CGM framework,
 ## Mathematical Significance
 
 ### 1. Aperture Gap Quantization
-- **Δ = 1/48** emerges from the geometric structure
-- **48Δ = 1** is an exact relationship, not an approximation
-- Enables precise predictions for neutrino masses and gravity hierarchy
+- Continuous Δ follows from δ_BU and m_a as above
+- 48Δ sits near unity, linking the continuous gap to the depth-four chirality count 48
+- Enables geometric predictions for neutrino masses and gravity hierarchy
 
 ### 2. Pentagonal Symmetry Connection
 - **λ₀/Δ = 1/√5** (derived from pentagonal symmetry)
-- **λ₀ = 1/(48√5)** (exact value from geometric quantization)
+- **λ₀ = Δ/√5 ≈ 0.009257118169**
 - √5 appears in pentagonal geometry and golden ratio relationships
 
 ### 3. Phase Space Quantization
 - **C_geom = 48** (geometric prefactor in phase space calculations)
 - Related to the quantization of phase space regions
-- Enables exact geometric predictions
+- Enables exact geometric predictions for the integer structures N_e and C_geom
 
 ## Physical Implications
 
 ### 1. Cosmological Predictions
-- **Inflation e-folds**: N_e = 48² = 2304 (exact quantization)
-- **Aperture gap**: Δ = 1/48 (geometric quantization)
-- **Wavelength ratio**: λ₀/Δ = 1/√5 (pentagonal symmetry)
+- **Inflation e-folds**: N_e = 48² = 2304
+- **Aperture gap**: Δ = 1 − δ_BU/m_a ≈ 0.020699545503
+- **Wavelength ratio**: λ₀/Δ = 1/√5
 
 ### 2. Particle Physics Predictions
-- **Neutrino masses**: Exact predictions enabled by 48Δ = 1
-- **Gravity hierarchy**: Precise calculations from geometric quantization
-- **Fine-structure constant**: α = δ_BU⁴/ m_a (quartic scaling)
+- **Neutrino masses**: Geometric predictions from the 48-fold structure and Δ
+- **Gravity hierarchy**: Calculations from geometric quantization
+- **Fine-structure constant**: α₀ = δ_BU⁴ / m_a ≈ 0.007299683573
 
 ### 3. Geometric Memory
-- **δ_BU**: BU dual-pole holonomy (measured: 0.195342176580 rad)
-- **ρ = δ_BU/m_a**: Closure fraction (97.9% closure, 2.1% aperture)
-- **Δ = 1 - ρ**: Aperture gap (2.07% of m_a)
+- **δ_BU**: BU dual-pole loop angle, δ_BU = 4 · arctan(k(π/4) · k(m_a)) ≈ 0.195342178258 rad
+- **ρ = δ_BU/m_a ≈ 0.979300454497**: Closure fraction (97.93% closure)
+- **Δ = 1 − ρ ≈ 0.020699545503**: Aperture gap (2.07% of m_a)
 
 ## Theoretical Foundation
 
@@ -59,22 +60,23 @@ The factor 48 is a fundamental geometric quantization unit in the CGM framework,
 - Related to the complete solid angle (4π) and spatial dimensions
 
 ### 2. Mathematical Consistency
-- All relationships involving 48 are exact (no approximations)
-- Enables precise theoretical predictions
+- N_e = 48² and C_geom = 48 are exact integer relations
+- Continuous Δ and 48Δ follow from the closed-form loop angle δ_BU
 - Provides geometric foundation for physical constants
 
 ### 3. Predictive Power
-- **Exact neutrino mass predictions**
-- **Exact gravity hierarchy calculations**
-- **Precise cosmological parameter derivations**
+- Neutrino mass predictions from Δ-power structure
+- Gravity hierarchy calculations from geometric quantization
+- Cosmological parameter derivations from N_e = 48²
 
 ## Key Files and References
 - `cgm_bsm_analysis.py`: N_e = 48² quantization derivation
 - `cgm_equations_analysis.py`: Comprehensive analysis of 48 significance
-- `test_exact_48delta.py`: Testing framework for 48Δ = 1 hypothesis
+- `test_exact_48delta.py`: Comparison of continuous Δ with the discrete companion 1/48
+- `Analysis_Holonomy.md`, `Analysis_CGM_Constants.md`: δ_BU, ρ, Δ, 48Δ
 
 ## Summary
-The factor 48 is a fundamental geometric quantization unit in CGM that emerges from the structure of the geometric space. It enables exact predictions across cosmology, particle physics, and gravity through the relationships 48Δ = 1 and N_e = 48², providing a geometric foundation for physical constants without requiring external conditions.
+The factor 48 is a fundamental geometric quantization unit in CGM that emerges from the structure of the geometric space. It supports predictions across cosmology, particle physics, and gravity through N_e = 48² and the near-unit depth-four product 48Δ ≈ 0.993578, with continuous Δ = 1 − δ_BU/m_a fixed by the dual-pole loop angle.
 
 # Geometric Closure and Aperture Analysis: Angular Harmonics in CGM Framework
 
@@ -105,8 +107,8 @@ The 48° angle introduces intentional geometric aperture:
 ### 2.3 CGM Structural Closure
 
 CGM establishes structural closure with observational aperture:
-- **CGM aperture**: 2.07% (derived from Δ = 1 - δ_BU/m_a)
-- **CGM closure**: 97.93% (complement of aperture)
+- **CGM aperture**: ≈ 2.07% from Δ = 1 − δ_BU/m_a ≈ 0.020699545503
+- **CGM closure**: ≈ 97.93% from ρ = δ_BU/m_a ≈ 0.979300454497
 - **Physical observation**: Aperture enables measurement while maintaining structure
 
 ## 3. Aperture Relationships and Ratios

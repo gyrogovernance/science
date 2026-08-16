@@ -33,7 +33,7 @@ class CGMConstants:
     aperture_percent: float = 2.07
 
     # Holonomy values [radians]
-    delta_BU: float = 0.195342  # BU dual-pole holonomy
+    delta_BU: float = 0.195342  # BU Dual-Pole Loop
     omega_ONA_BU: float = 0.097671  # Single transition holonomy
 
     # Energy and coupling parameters

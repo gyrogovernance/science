@@ -456,7 +456,7 @@ The geometric closure yields quantitative values for fundamental constants.
 
 **Quantum gravity invariant:** The horizon constant S anchors all subsequent structure (as explained in section 3.1) **[Theorem]**.
 
-**Fine-structure constant:** From BU dual-pole holonomy through quartic scaling, α = (δ_BU)⁴ /  m_a ≈ 1/137.035999206, where δ_BU = 0.195342 rad is the BU dual-pole holonomy, matching experimental precision [17,18] to 0.043 parts per billion **[Hypothesis]**. Uncertainty: ±0.03% from holonomy angle precision and gyrogroup interpretation assumptions. See [19] for complete derivation.
+**Fine-structure constant:** From BU Dual-Pole Loop through quartic scaling, α = (δ_BU)⁴ /  m_a ≈ 1/137.035999206, where δ_BU = 0.195342 rad is the BU Dual-Pole Loop, matching experimental precision [17,18] to 0.043 parts per billion **[Hypothesis]**. Uncertainty: ±0.03% from holonomy angle precision and gyrogroup interpretation assumptions. See [19] for complete derivation.
 
 **Neutrino mass scale:** Neutrino masses correspond to minimal excitations of the chiral seed (1 DOF) consistent with three-generational structure (3 DOF). Using 48² quantization, the right-handed neutrino mass scale is M_R = E_GUT/48², and the light neutrino masses follow from the seesaw mechanism [15,16]: m_ν = y²v²/M_R ≈ 0.06 eV (via 48² quantization scheme), consistent with oscillation experiments [14] **[Hypothesis]**. Uncertainty: ±0.02 eV from Yukawa coupling variations and quantization scheme sensitivity. See [22] for complete mechanism.
 

@@ -281,16 +281,16 @@ The CGM aperture is defined from the BU holonomy defect and the observational ap
 | Observational aperture | m_a = 1/(2 sqrt(2π)) | 0.199471140201 |
 | BU holonomy           | d_BU             | 0.195342176580 |
 | Closure ratio          | rho = d_BU/m_a       | 0.979300446087 |
-| Aperture gap           | Delta = 1 - rho      | 0.020699553913 |
+| Aperture gap           | Delta = 1 - rho      | 0.020699545503 |
 
-Delta measures the fractional gap between BU dual-pole holonomy and the observational aperture scale m_a. Algebraically, depth-four commutative closure holds in the kernel. Delta is the residual vibrational amplitude (about 2.07%) of oscillation about that closed configuration.
+Delta measures the fractional gap between BU Dual-Pole Loop and the observational aperture scale m_a. Algebraically, depth-four commutative closure holds in the kernel. Delta is the residual vibrational amplitude (about 2.07%) of oscillation about that closed configuration.
 
 At Delta = 0 the register would close with no observational aperture, leaving no coherent measurement channel. At Delta = 1 the depth-four cycle would fail to close and no stable spectral grammar would remain. The observed value Delta ≈ 0.0207 sits between these limits as the balance point where closure and observability coexist.
 
 | Aperture            |                  Value | Origin                        |
 | ------------------- | ---------------------: | ----------------------------- |
 | Bare byte aperture  | 5/256 = 0.019531250000 | 8-bit dyadic byte grid        |
-| Continuous aperture |     Delta = 0.020699553913 | BU holonomy gap              |
+| Continuous aperture |     Delta = 0.020699545503 | BU dual-pole loop gap         |
 | Depth-4 aperture    |  1/48 = 0.020833333333 | 4-byte x 12-bit closure frame |
 
 The ordering is exact:
@@ -299,16 +299,16 @@ The ordering is exact:
 5/256 < Delta < 1/48.
 ```
 
-The depth-4 product is 48*Delta = 0.993578587835. The residual from exact depth-4 closure defines epsilon:
+The depth-4 product is 48*Delta ≈ 0.993578184128. The residual from the unit depth-4 product defines epsilon:
 
 ```text
-epsilon = 1/Delta - 48 = 0.310219833351.
+epsilon = 1/Delta - 48 ≈ 0.310239462552.
 ```
 
 The second conversion depth is:
 
 ```text
-eta = m_a - d_BU = 0.004128963621.
+eta = m_a - delta_BU ≈ 0.004128961943.
 ```
 
 This conversion-depth quantity serves a bookkeeping role and lies outside the electroweak mass-coordinate hierarchy.
@@ -345,7 +345,7 @@ The factors are:
 | 2^(1/12)     | UNA rotational dressing per degree of freedom |
 | 1 + (sqrt(6)/π)Delta^2 | second-order 6-DoF chirality correction       |
 
-Numerical closure. Evaluation at D^2 order gives 0.020699551515. The CGM value is Delta = 0.020699553913. The D^2 residual is approximately 2.4 x 10^-9. Evaluation at D^3 order gives 0.020699553957, with a residual of approximately 4.4 x 10^-11. The D^3 formula has a genuine fixed point at this value (self-consistency residual below 10^-15). The D^3 self-consistency closes two orders of magnitude more tightly than the D^2 evaluation.
+Numerical closure. Evaluation at D^2 order gives 0.020699551515. The continuous aperture is Delta = 0.020699545503. The D^2 residual relative to that value is approximately 6.0 x 10^-9. Evaluation at D^3 order gives 0.020699553957, with residual approximately 8.5 x 10^-9. The D^3 formula has a genuine fixed point at its own value (self-consistency residual below 10^-15).
 
 Fixed-point behaviour. Iteration from the bare seed 5/256 converges rapidly:
 
@@ -355,7 +355,7 @@ Fixed-point behaviour. Iteration from the bare seed 5/256 converges rapidly:
 |         2 | 0.020699551006 |   2.9 x 10^-9 |
 |         3 | 0.020699551513 |   2.4 x 10^-9 |
 
-The D^2 fixed point is stable at the displayed precision. Extending the reconstruction to D^3 order yields a fixed point at 0.020699553957, with error from CGM Delta of approximately 4.4 x 10^-11.
+The D^2 fixed point is stable at the displayed precision. Extending the reconstruction to D^3 order yields a fixed point at 0.020699553957.
 
 ### 3.3 Delta Ruler Coordinates
 
@@ -714,7 +714,7 @@ Delta backsolve (four channels plus W/Z):
 | W | L_W = 126Delta - 47/48 - 65Delta^2/2 | 0.020699598986 | 4.507x10^-8 |
 | W/Z | log2(m_Z/m_W) = Delta(9 - 10Delta + 2Delta^2/sqrt(5) - Delta^3) | 0.020699554747 | 8.340x10^-10 |
 
-Four-point mean Delta_back = 0.020699554639 (error 7.255x10^-10 vs reference Delta = 0.020699553913).
+Four-point mean Delta_back = 0.020699554639 (error about 9.1x10^-9 vs continuous Delta = 0.020699545503).
 
 The Q=1/4 matter-density term brings the top Delta backsolve error into the H/Z/W cluster (ratio drops from 18.8x to 0.7x the H/Z/W maximum).
 

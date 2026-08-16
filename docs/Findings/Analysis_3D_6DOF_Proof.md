@@ -75,7 +75,7 @@ For closure (δ = 0), the CGM angles must satisfy:
 π/2 + π/4 + π/4 = π
 ```
 
-This constraint is exact and non-negotiable.
+This constraint is exact and non-negotiable. This stage-angle defect measures the closure of the threshold triangle and is zero. The BU dual-pole loop angle δ_BU = 4 · arctan(k(π/4) · k(m_a)), with k(β) = β / (1 + √(1 − β²)) and m_a = 1/(2√(2π)), is a separate nonzero quantity arising from non-commutative velocity addition along the path ONA → BU+ → BU− → ONA (Analysis_Holonomy.md).
 
 ### 2.4 Unitary Representation and BCH Analysis
 
@@ -324,7 +324,7 @@ From the axiom structure:
 
 **ONA (6 DOF):** Lemma ONA (¬□¬E) forces bi-gyrogroup structure. By Lemma 2.1, this requires exactly 3 translational parameters. Total: 3 + 3 = 6 degrees of freedom.
 
-**BU (6 DOF closed):** Lemma BU (□B) forces both gyrations to achieve commutative closure at modal depth four. The six kinematic degrees of freedom (three rotational, three translational) remain but become coordinated. Closure is algebraic. At BU the configuration also undergoes vibrational motion: bounded back-and-forth oscillation about the closed state at the 2.07% aperture amplitude. This is not a seventh degree of freedom. Memory is the holonomy phase defect of that oscillation.
+**BU (6 DOF closed):** Lemma BU (□B) forces both gyrations to achieve commutative closure at modal depth four. The six kinematic degrees of freedom (three rotational, three translational) remain but become coordinated. Closure is algebraic. At BU the configuration also undergoes vibrational motion: bounded back-and-forth oscillation about the closed state, with aperture amplitude m_a and residual aperture gap ≈ 2.07%. This is not a seventh degree of freedom. Memory is the loop angle δ_BU = 4 · arctan(k(π/4) · k(m_a)) accumulated on that oscillation.
 
 The progression is unique because:
 - Each stage follows necessarily from the previous via the foundational assumption and lemmas
@@ -358,7 +358,7 @@ To make the proof constructive, we exhibit the explicit structure at each stage:
 - Gyrogroup: Same SE(3) structure but with both gyrations achieving closure
 - Generators: 6 (coordinated, not independent)
 - Representation: Closed toroidal structure
-- Closure: δ = 0, both lgyr and rgyr functionally equivalent to identity
+- Closure: stage-angle defect δ = 0 (threshold triangle closes); loop angle δ_BU = 4 · arctan(k(π/4) · k(m_a)) is the nonzero phase memory of the dual-pole path; both lgyr and rgyr functionally equivalent to identity at depth four
 
 ## 8. Verification of Modal Depth Requirements
 

@@ -4,7 +4,7 @@
 
 ## Abstract
 
-We present a comprehensive analysis of the universe as the interior of a Planck-scale black hole within the Common Governance Model (CGM) geometric framework. Our investigation demonstrates that the observable universe sits precisely on the Schwarzschild threshold with r_s/R_H = 1.0000 ± 0.0126, while maintaining exact UV-IR optical conjugacy across five energy stages spanning 19 orders of magnitude. The framework introduces a fundamental aperture parameter  m_a = 0.199471 that enables observation from within the horizon through 2.07% transmission. We show that cosmological expansion can be understood as an optical illusion arising from UV-IR geometric inversion viewed from the interior perspective, eliminating the need for dark energy as a physical component. Our results align with current observational data within 1-sigma uncertainties and provide specific, falsifiable predictions for near-future experiments including zero redshift drift, 2.07% gravitational wave memory fraction, and resolution of the Hubble tension through combined void and aperture effects.
+We present a comprehensive analysis of the universe as the interior of a Planck-scale black hole within the Common Governance Model (CGM) geometric framework. Our investigation demonstrates that the observable universe sits precisely on the Schwarzschild threshold with r_s/R_H = 1.0000 ± 0.0126, while maintaining exact UV-IR optical conjugacy across five energy stages spanning 19 orders of magnitude. The framework introduces a fundamental aperture parameter m_a = 1/(2√(2π)) ≈ 0.199471140201 that enables observation from within the horizon through transmission Δ = 1 − δ_BU/m_a ≈ 0.020699545503 (about 2.07%), with δ_BU = 4 · arctan(k(π/4) · k(m_a)). We show that cosmological expansion can be understood as an optical illusion arising from UV-IR geometric inversion viewed from the interior perspective, eliminating the need for dark energy as a physical component. Our results align with current observational data within 1-sigma uncertainties and provide specific, falsifiable predictions for near-future experiments including zero redshift drift, gravitational wave memory fraction equal to Δ, and resolution of the Hubble tension through combined void and aperture effects.
 
 ## 1. Introduction
 
@@ -39,7 +39,9 @@ Each evolutionary stage is characterized by specific geometric thresholds:
 - CS: angle α = π/2 (establishing minimal chirality)
 - UNA: amplitude u_p = cos(π/4) = 1/√2 (creating orthogonal structure)
 - ONA: angle o_p = π/4 (enabling translation)
-- BU: aperture parameter  m_a = 1/(2√(2π)) = 0.199471 (ensuring observability)
+- BU: aperture parameter m_a = 1/(2√(2π)) ≈ 0.199471140201 (ensuring observability)
+
+The dual-pole loop angle is δ_BU = 4 · arctan(k(π/4) · k(m_a)) with k(β) = β/(1 + √(1 − β²)). The closure ratio and aperture gap are ρ = δ_BU/m_a ≈ 0.979300454497 and Δ = 1 − ρ ≈ 0.020699545503. Horizon transmission in this analysis is the aperture gap Δ (about 2.07%).
 
 **Quantum Gravity: Q_G = 4π steradians** defines quantum gravity as the complete observational solid angle required for coherent observation in three-dimensional space. This is not a quantized field or force, but the geometric requirement that enables quantum structure to emerge through the commutator algebra [X,P] = iK_QG where K_QG = Q_G × S_min ≈ 3.937.
 
@@ -158,7 +160,7 @@ Testing the hypothesis that expansion is an optical illusion:
 
 **Hubble Tension Resolution:**
 - Observed H₀ ratio (SH0ES/Planck): 1.0858
-- Predicted from 20% void × 2.07% aperture: 1.0887
+- Predicted from 20% void × Δ aperture: 1.0887
 - Inferred local underdensity: 19.1% (consistent with galaxy count observations)
 
 **Redshift Drift Prediction:**
@@ -166,10 +168,10 @@ Testing the hypothesis that expansion is an optical illusion:
 - CGM (no expansion): 0.000 cm/s/yr
 
 **Distance Duality:**
-- Predicted deviation η₀: 0.979 to 1.021
+- Predicted deviation η₀: ρ to 1 + Δ, i.e. about 0.9793 to 1.0207
 
 **Gravitational Wave Memory:**
-- Predicted h_mem/h_peak: 2.07%
+- Predicted h_mem/h_peak: Δ ≈ 0.020699545503 (about 2.07%)
 
 **Effective Equation of State:**
 - w₀ from observations: -1.022 (consistent with geometric interpretation)
@@ -279,7 +281,7 @@ If validated, this paradigm shift would fundamentally alter our understanding of
 
 4. **Observation Principle**: Q_G = 4π steradians represents the fundamental requirement for coherent observation in three dimensions.
 
-5. **Aperture Balance**: The parameter  m_a = 0.199471 represents the universal balance between closure (97.93%) and openness (2.07%) required for existence.
+5. **Aperture Balance**: With m_a = 1/(2√(2π)) and δ_BU = 4 · arctan(k(π/4) · k(m_a)), the balance is ρ ≈ 0.979300454497 (about 97.93% closure) and Δ ≈ 0.020699545503 (about 2.07% openness).
 
 6. **UV-IR Duality**: High-energy and low-energy physics are connected through geometric inversion rather than independent domains.
 
@@ -302,7 +304,10 @@ The Python implementation verifies all geometric identities, enforces exact opti
 - Boltzmann constant: k_B = 1.380649×10^-23 J/K
 
 **CGM Parameters:**
-- Aperture parameter:  m_a = 0.199471140201
+- Aperture parameter: m_a = 1/(2√(2π)) ≈ 0.199471140201
+- Dual-pole loop angle: δ_BU = 4 · arctan(k(π/4) · k(m_a)) ≈ 0.195342178258
+- Closure ratio: ρ = δ_BU/m_a ≈ 0.979300454497
+- Aperture gap: Δ = 1 − ρ ≈ 0.020699545503
 - Quantum Gravity: Q_G = 4π = 12.566370614 steradians (complete observational solid angle)
 - Optical invariant: K = 7.608927×10^19 GeV²
 

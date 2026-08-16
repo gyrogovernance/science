@@ -23,6 +23,14 @@ observations, and cosmologically coupled black hole (CCBH) dark energy analysis.
 """
 
 import math
+import os
+import sys
+
+_REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if _REPO not in sys.path:
+    sys.path.insert(0, _REPO)
+
+from gyroscopic.hQVM.constants import BU_APERTURE_GAP, BU_CLOSURE_RATIO, BU_HOLONOMY_ANGLE, M_A
 
 # Physical constants (SI units)
 C = 299_792_458.0  # m/s
@@ -43,7 +51,10 @@ EV_J = 1.602_176_634e-19  # J per eV
 GEV_J = EV_J * 1e9  # J per GeV
 
 # CGM fundamental parameters
-m_a = 1.0 / (2.0 * math.sqrt(2.0 * math.pi))  # Aperture parameter ≈ 0.19947
+m_a = M_A
+delta_BU = BU_HOLONOMY_ANGLE
+rho = BU_CLOSURE_RATIO
+Delta = BU_APERTURE_GAP
 Q_G = 4.0 * math.pi  # Complete solid angle (steradians)
 
 # Energy scales from CGM Energy Analysis (GeV)
@@ -568,14 +579,11 @@ def main():
         f"  CCBH provides directionally consistent mechanism but quantitatively insufficient"
     )
 
-    # CGM aperture transmission (derived from ρ = δ_BU/m_a)
-    # Using δ_BU/ m_a = 0.9793, so transmission = 1 - 0.9793 = 0.0207 = 2.07%
-    aperture_transmission = 0.0207  # 2.07% transmission
+    aperture_transmission = Delta
     print(f"\nCGM Aperture Properties:")
-    print(
-        f"  Aperture transmission: {aperture_transmission*100:.2f}% (derived from ρ = δ_BU/m_a)"
-    )
-    print(f"  Closure completeness: {(1-aperture_transmission)*100:.2f}%")
+    print(f"  delta_BU = 4*arctan(k(pi/4)*k(m_a)) = {delta_BU:.12f} rad")
+    print(f"  Aperture transmission: {aperture_transmission*100:.6f}% (Delta = 1 - delta_BU/m_a)")
+    print(f"  Closure completeness: {rho*100:.6f}% (rho = delta_BU/m_a)")
     print(f"  Balance enables existence: sufficient structure + sufficient observation")
 
     print(f"\nObservational Validation Summary:")
@@ -600,7 +608,7 @@ def main():
         f"  Inferred local underdensity from ratio: {hdiag['delta_void_inferred']:.3f}  (~−0.20 expected)"
     )
     print(
-        f"  Decomposition: H0_SHOES/H0_Planck ≈ (1 + 0.0667_void) × (1 + 0.0207_aperture) = {hdiag['ratio_pred_20pct_void']:.3f} vs {hdiag['ratio_obs']:.3f} observed"
+        f"  Decomposition: H0_SHOES/H0_Planck ≈ (1 + 0.0667_void) × (1 + Delta) = {hdiag['ratio_pred_20pct_void']:.3f} vs {hdiag['ratio_obs']:.3f} observed"
     )
 
     rd = redshift_drift_LCDM_vs_CGM(z=2.0, Omega_m=0.315)
@@ -635,8 +643,8 @@ def h0_tension_void_aperture():
     """H0 tension analysis: void + aperture decomposition."""
     # Observed ratio
     ratio_obs = H0_SHOES / H0_PLANCK  # ~1.0858
-    # Aperture transmission (from δ_BU/m_a)
-    aperture = 0.0207  # 2.07%
+    # Aperture transmission Delta = 1 - delta_BU/m_a
+    aperture = Delta
     # Predict ratio from a 20% local void (linear LTB: δH/H ≈ -(1/3) δrho/rho)
     delta_void = -0.20
     dh_over_h_void = -(1.0 / 3.0) * delta_void  # +0.0667
@@ -675,7 +683,7 @@ def distance_duality_prediction():
     """Distance duality deviation prediction from aperture effects."""
     # Etherington reciprocity: D_L = (1+z)^2 D_A
     # CGM predicts a tiny achromatic deviation at aperture level
-    aperture = 0.0207
+    aperture = Delta
     eta0_minus = 1.0 - aperture  # if interpreted as transparency-like loss
     eta0_plus = 1.0 + aperture  # if interpreted as geometric gain
     return {"eta0_range": (eta0_minus, eta0_plus)}
@@ -684,7 +692,7 @@ def distance_duality_prediction():
 def gw_memory_prediction():
     """GW memory fraction prediction from aperture parameter."""
     # Fractional permanent strain offset vs oscillatory strain
-    aperture = 0.0207
+    aperture = Delta
     return {"h_memory_over_h_peak": aperture}
 
 

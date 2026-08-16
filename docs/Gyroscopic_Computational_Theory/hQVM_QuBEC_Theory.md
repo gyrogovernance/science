@@ -1477,7 +1477,7 @@ Illustrative transformer bridge examples (KV polar encoding, native attention) a
 | Symbol | Meaning |
 |---|---|
 | m_a | Observational aperture, m_a = 1/(2√(2π)) |
-| δ_BU | BU dual-pole holonomy |
+| δ_BU | BU Dual-Pole Loop |
 | ρ_cl | Closure ratio, ρ_cl = δ_BU/m_a |
 | Δ | Aperture gap, Δ = 1 − ρ_cl |
 | Q_G | Quantum gravity invariant, Q_G = 4π |
@@ -1488,7 +1488,7 @@ The CGM constants governing closure geometry are:
 
 ```
 m_a    = 1 / (2√(2π))    observational aperture
-δ_BU                      BU dual-pole holonomy
+δ_BU                      BU Dual-Pole Loop
 ρ_cl   = δ_BU / m_a       closure ratio
 Δ      = 1 − ρ_cl         aperture gap  (≈ 0.0207)
 Q_G    = 4π               quantum gravity invariant

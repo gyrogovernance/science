@@ -14,6 +14,8 @@ Date: 2025
 """
 
 import math
+import os
+import sys
 from typing import Dict, List, Tuple
 from fractions import Fraction
 
@@ -27,9 +29,14 @@ class Angle45_48ApertureAnalyzer:
         self.angle_45_rad = math.radians(self.angle_45)
         self.angle_48_rad = math.radians(self.angle_48)
 
-        # CGM aperture parameters
-        self.m_a = 1 / (2 * math.sqrt(2 * math.pi))
-        self.delta_BU = 0.195342176580
+        # CGM aperture parameters (shared closed-form loop angle)
+        _repo = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        if _repo not in sys.path:
+            sys.path.insert(0, _repo)
+        from gyroscopic.hQVM.constants import BU_HOLONOMY_ANGLE, M_A
+
+        self.m_a = M_A
+        self.delta_BU = BU_HOLONOMY_ANGLE
         self.cgm_aperture = 1 - self.delta_BU / self.m_a
 
     def analyze_aperture_transition(self) -> Dict:

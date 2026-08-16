@@ -148,7 +148,7 @@ CGM defines **Quantum Gravity** as the geometric invariant `Q_G = 4π` steradian
 
 The framework reveals a rich hierarchy of holonomy values, which represent the "geometric memory" accumulated when traversing closed loops in the state space.
 
--   **BU Dual-Pole Holonomy (δ_BU):** The key value `δ_BU = 0.195342 rad`, which features in the fine-structure constant.
+-   **BU Dual-Pole Loop (δ_BU):** The key value `δ_BU = 0.195342 rad`, which features in the fine-structure constant.
 -   **The Aperture Ratio:** The ratio `δ_BU / m_a = 0.9793` is a fundamental constant of the model. It establishes a universal balance:
     -   **97.93% Structural Closure:** Providing stability.
     -   **2.07% Dynamic Aperture:** The residual oscillation amplitude enabling interaction and observation.
@@ -169,7 +169,7 @@ Analysis shows that CGM's threshold angles correspond to fundamental geometric i
 The factor 48 emerges as a fundamental geometric quantization unit, not a fitted parameter. It is derived from the structure `48 = 16 × 3`, where `16 = 2⁴` relates to the 4π solid angle and `3` to the spatial dimensions.
 
 -   **Inflation E-folds:** `N_e = 48² = 2304`
--   **Aperture Quantization:** `48Δ = 1`, where `Δ = 1 - ρ` is the aperture gap.
+-   **Aperture Quantization:** `48Δ ≈ 0.993578` (near unity), where `Δ = 1 − ρ` is the continuous aperture gap from the dual-pole loop angle; the discrete companion scale is `1/48`.
 -   **Particle Physics:** This quantization is essential for the neutrino mass predictions.
 
 The integer 48 also equals the order of the binary octahedral group, the SU(2) double cover of cubic rotation symmetry, and the root count of the F₄ exceptional Lie algebra. CGM derives 48 from `3 × |K4|²` on the 3D register; the group-theoretic coincidences are recorded as structural parallels.

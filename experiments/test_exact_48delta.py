@@ -1,116 +1,56 @@
 #!/usr/bin/env python3
 """
-Test the exact 48Δ = 1 hypothesis and see what improves.
+Compare continuous aperture gap Delta = 1 - delta_BU/m_a with the discrete companion 1/48.
+Companion: Analysis_48_States.md, Analysis_CGM_Constants.md.
 """
 
 import math
-import sys
 import os
-import importlib.util
+import sys
 
-# Add the experiments directory to the path
-current_dir = os.path.dirname(os.path.abspath(__file__))
-sys.path.insert(0, current_dir)
+_REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if _REPO not in sys.path:
+    sys.path.insert(0, _REPO)
 
-# Import using importlib to avoid linter issues
-cgm_bsm_path = os.path.join(current_dir, "cgm_bsm_analysis.py")
-spec = importlib.util.spec_from_file_location("cgm_bsm_analysis", cgm_bsm_path)
-
-if spec is None or spec.loader is None:
-    print(f"Could not load module from {cgm_bsm_path}")
-    sys.exit(1)
-
-cgm_bsm_module = importlib.util.module_from_spec(spec)
-spec.loader.exec_module(cgm_bsm_module)
-
-# Import the classes
-CGMInvariants = cgm_bsm_module.CGMInvariants
-PhysicalScales = cgm_bsm_module.PhysicalScales
-BSMSummary = cgm_bsm_module.BSMSummary
+from gyroscopic.hQVM.constants import BU_HOLONOMY_ANGLE, M_A
 
 
-def test_exact_48delta():
-    """Test with exact 48Δ = 1."""
+def main() -> None:
+    delta_BU = BU_HOLONOMY_ANGLE
+    m_a = M_A
+    rho = delta_BU / m_a
+    Delta = 1.0 - rho
+    companion = 1.0 / 48.0
+    lambda0 = Delta / math.sqrt(5.0)
 
-    # Current values
-    delta_current = 0.0207
-    lambda0_current = 0.009149
-
-    # Exact values for 48Δ = 1
-    delta_exact = 1 / 48
-    lambda0_exact = delta_exact / math.sqrt(5)  # If λ₀/Δ = 1/√5 exactly
-
-    print("TESTING EXACT 48Δ = 1 HYPOTHESIS")
-    print("=" * 50)
-    print(f"Current Δ: {delta_current:.8f}")
-    print(f"Exact Δ: {delta_exact:.8f}")
-    print(f"Change: {(delta_exact - delta_current)/delta_current * 100:.3f}%")
-    print()
-    print(f"Current λ₀: {lambda0_current:.8f}")
-    print(f"Exact λ₀: {lambda0_exact:.8f}")
-    print(f"Change: {(lambda0_exact - lambda0_current)/lambda0_current * 100:.3f}%")
+    print("1. CONTINUOUS APERTURE FROM LOOP ANGLE")
+    print("-" * 5)
+    print(f"delta_BU = 4*arctan(k(pi/4)*k(m_a)) = {delta_BU:.16f}")
+    print(f"m_a = {m_a:.16f}")
+    print(f"rho = delta_BU/m_a = {rho:.16f}")
+    print(f"Delta = 1 - rho = {Delta:.16f}")
+    print(f"48*Delta = {48.0 * Delta:.16f}")
+    print(f"lambda_0 = Delta/sqrt(5) = {lambda0:.16f}")
+    print(f"lambda_0/Delta = {lambda0 / Delta:.16f}")
+    print(f"1/sqrt(5) = {1.0 / math.sqrt(5.0):.16f}")
     print()
 
-    # Create summary and override exact values
-    summary_exact = BSMSummary()
-    # Override the exact values
-    object.__setattr__(summary_exact.cgm, "delta_BU", 1 / 48)
-    object.__setattr__(summary_exact.cgm, "lambda_0", (1 / 48) / math.sqrt(5))
+    print("2. DISCRETE COMPANION 1/48")
+    print("-" * 5)
+    print(f"1/48 = {companion:.16f}")
+    print(f"48*(1/48) = {48.0 * companion:.16f}")
+    print(f"Delta - 1/48 = {Delta - companion:.16f}")
+    print(f"|Delta - 1/48|/Delta = {abs(Delta - companion) / Delta:.16f}")
+    print()
 
-    # Test key predictions
-    print("KEY PREDICTIONS WITH EXACT 48Δ = 1:")
-    print("-" * 9)
-
-    # Check geometric identities
-    print(f"48Δ = {48 * summary_exact.cgm.delta_BU}")
-    print(f"λ₀/Δ = {summary_exact.cgm.lambda_0 / summary_exact.cgm.delta_BU:.6f}")
-    print(f"1/√5 = {1/math.sqrt(5):.6f}")
+    print("3. CHECKS")
+    print("-" * 5)
+    print(f"PASS |48*Delta - 1| < 0.01: {abs(48.0 * Delta - 1.0) < 0.01}")
     print(
-        f"Exact match: {abs(summary_exact.cgm.lambda_0 / summary_exact.cgm.delta_BU - 1/math.sqrt(5)) < 1e-10}"
+        f"PASS |lambda_0/Delta - 1/sqrt(5)| < 1e-12: "
+        f"{abs(lambda0 / Delta - 1.0 / math.sqrt(5.0)) < 1e-12}"
     )
-    print()
-
-    # Test neutrino predictions
-    neutrino_exact = summary_exact.neutrinos.predict_seesaw_mechanism()
-    print("NEUTRINO PREDICTIONS:")
-    print(f"m_nu1: {neutrino_exact['m_nu1_eV']:.6f} eV")
-    print(f"m_nu2: {neutrino_exact['m_nu2_eV']:.6f} eV")
-    print(f"m_nu3: {neutrino_exact['m_nu3_eV']:.6f} eV")
-    print(f"Δm²₁: {neutrino_exact['delta_m21_sq_eV2']:.2e} eV²")
-    print(f"Δm²₃₁: {neutrino_exact['delta_m31_sq_eV2']:.2e} eV²")
-    print()
-
-    # Test gravity hierarchy
-    gravity_exact = summary_exact.hierarchies.gravity_hierarchy()
-    print("GRAVITY HIERARCHY:")
-    print(f"Hierarchy factor: {gravity_exact['hierarchy_factor']:.2e}")
-    print(f"Accuracy: {gravity_exact['accuracy']:.2e}")
-    print(f"48Δ suppression: {gravity_exact['suppression_via_48Delta']:.6f}")
-    print()
-
-    # Test inflation
-    inflation_exact = summary_exact.cosmology.inflation_parameters()
-    print("INFLATION:")
-    print(f"N_e-folds: {inflation_exact['N_efolds']:.1f}")
-    print(f"N_e/48: {inflation_exact['N_efolds']/48:.1f}")
-    print(f"Close to 48: {abs(inflation_exact['N_efolds']/48 - 48) < 1}")
-    print()
-
-    # Test DM predictions
-    dm_exact = summary_exact.dark_sector.predict_dark_matter()
-    print("DARK MATTER:")
-    print(f"M_DM: {dm_exact['M_DM']:.3f} GeV")
-    print(f"Ωh²: {dm_exact['Omega_DM_h2']:.6f}")
-    print(f"WIMP fraction: {dm_exact['wimp_fraction']:.6f}")
-    print()
-
-    print("SUMMARY:")
-    print("Exact 48Δ = 1 gives us:")
-    print("✓ 48Δ = 1 exactly")
-    print("✓ λ₀/Δ = 1/√5 exactly")
-    print("✓ Only small changes to other parameters")
-    print("✓ Maintains all geometric relationships")
 
 
 if __name__ == "__main__":
-    test_exact_48delta()
+    main()

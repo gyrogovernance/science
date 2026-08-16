@@ -25,7 +25,7 @@ This brief but significant statement appears in the context of cosmological evol
 Observational capacity in CGM is grounded in:
 
 - **Q_G = 4π**: The complete solid angle required for coherent observation in three-dimensional space
-- **Aperture parameter m_a**: The 2.07% aperture that enables observation while maintaining 97.93% structural closure
+- **Aperture scale m_a = 1/(2√(2π))** with dual-pole loop angle δ_BU = 4 · arctan(k(π/4) · k(m_a)), k(β) = β/(1 + √(1 − β²)), giving ρ = δ_BU/m_a ≈ 0.979300454497 and Δ = 1 − ρ ≈ 0.020699545503 (about 97.93% closure / 2.07% aperture)
 - **Optical conjugacy**: The fundamental relation connecting UV and IR physics through E^UV × E^IR = const/(4π²)
 
 ### 1.4 Physical Interpretation
@@ -77,9 +77,9 @@ y = B^T x + r
 ```
 
 Where:
-- **Coherence component (B^T x)**: 97.93% closure providing stability
-- **Differentiation component (r)**: 2.07% aperture providing evolutionary capacity
-- **Aperture ratio**: A = ||r||²_W / ||y||²_W ≈ 0.0207
+- **Coherence component (B^T x)**: ρ ≈ 0.979300454497 (about 97.93% closure) providing stability
+- **Differentiation component (r)**: Δ ≈ 0.020699545503 (about 2.07% aperture) providing evolutionary capacity
+- **Aperture ratio**: A = ||r||²_W / ||y||²_W with target A ≈ Δ ≈ 0.020699545503
 
 ### 2.4 Operational Characteristics
 
@@ -159,17 +159,17 @@ The GNS construction on L²(S², dΩ) establishes:
 
 **Capacity Connection**: The Hilbert space structure provides the mathematical foundation for observational capacity - the complete solid angle Q_G = 4π represents the maximum observational capacity in three dimensions.
 
-### 4.2 Holonomy and Memory Capacity
+### 4.2 Loop Angle and Memory Capacity
 
 From `Analysis_Holonomy.md`:
 
-Holonomy represents **geometric memory** - the system's capacity to remember paths taken through the geometric structure:
+The dual-pole loop angle is geometric memory, the system's capacity to remember paths taken through the geometric structure:
 
-- **δ_BU = 0.195342 rad**: BU dual-pole holonomy representing geometric memory
-- **97.9% closure**: δ_BU / m_a ≈ 0.979 connects to the fundamental 97.93% closure principle
-- **2.1% aperture**: The deviation represents the fundamental "openness" needed for observation
+- **δ_BU = 4 · arctan(k(π/4) · k(m_a)) ≈ 0.195342178258 rad**: BU dual-pole loop angle
+- **ρ = δ_BU/m_a ≈ 0.979300454497**: about 97.93% closure
+- **Δ = 1 − ρ ≈ 0.020699545503**: about 2.07% aperture (openness needed for observation)
 
-**Capacity Connection**: The holonomy structure represents the system's **memory capacity** - the ability to store information about geometric paths and recursive history.
+**Capacity Connection**: The loop-angle structure represents the system's **memory capacity**, the ability to store information about geometric paths and recursive history. Holonomy in the philosophical sense is path memory carried by that loop angle.
 
 ### 4.3 Energy Scales and Observational Capacity
 
@@ -213,7 +213,7 @@ This balance appears across scales:
 
 1. **Observational Capacity**: 97.93% complete solid angle coverage, 2.07% aperture for observation
 2. **Evolutionary Capacity**: 97.93% coherence, 2.07% differentiation
-3. **Memory Capacity**: 97.9% closure, 2.1% holonomy deviation
+3. **Memory Capacity**: ρ ≈ 0.979300454497 closure, Δ ≈ 0.020699545503 aperture (loop-angle openness)
 4. **Information Capacity**: 97.93% closure, 2.07% aperture for information flow
 
 ### 5.3 Geometric Necessity
@@ -241,8 +241,8 @@ A = ||r||²_W / ||y||²_W
 ```
 
 Where:
-- **Target value**: A ≈ 0.0207 (2.07% aperture)
-- **Closure**: 1 - A ≈ 0.9793 (97.93% coherence)
+- **Target value**: A ≈ Δ ≈ 0.020699545503 (about 2.07% aperture)
+- **Closure**: 1 − A ≈ ρ ≈ 0.979300454497 (about 97.93% coherence)
 
 ### 6.2 Capacity Monitoring
 
@@ -250,7 +250,7 @@ The system self-calibrates through aperture monitoring:
 
 - If A consistently > 0.03: Increase weight on high-coherence edges
 - If A consistently < 0.01: Increase weight on high-differentiation edges
-- Goal: Maintain A ≈ 0.0207 without manual intervention
+- Goal: Maintain A ≈ Δ ≈ 0.020699545503 without manual intervention
 
 ### 6.3 Capacity Failure Detection
 

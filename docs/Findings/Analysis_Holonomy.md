@@ -10,7 +10,7 @@
 
 ## Abstract
 
-Holonomy is the residual transformation that remains when a system is transported around a closed path in a curved space. The traversal returns to its starting point, while the orientation carried along the path does not. This document establishes the holonomy structure of the Common Governance Model (CGM) in three layers. The first layer contains exact algebraic results that follow from the CGM threshold angles alone, including a closed form for the SU(2) commutator holonomy. The second layer places the CGM stages as Einstein speeds in the open gyrovector ball and derives the BU dual-pole holonomy in closed form as an elementary function of two thresholds, from which the closure ratio ρ ≈ 0.9793 and the aperture gap Δ ≈ 0.0207 follow as definitions. The same angle is recovered from the origin-gyr word, the Ungar gyrotriangle defect on the dual-pole vertices, and the mass-shell geodesic holonomy on the forward hyperboloid. The central structural result of this layer is a conjugation theorem. The palindromic traversal of all payload stages preserves the holonomy angle while transporting its axis, which separates the magnitude of path memory from its orientation. The third layer verifies the finite realization of the same architecture in the Holonomic Quantum Virtual Machine (hQVM), where holonomy appears as an order-two operator structure on a 4096-state manifold.
+Holonomy is the residual transformation that remains when a system is transported around a closed path in a curved space. The traversal returns to its starting point, while the orientation carried along the path does not. This document establishes the holonomy structure of the Common Governance Model (CGM) in three layers. The first layer contains exact algebraic results that follow from the CGM threshold angles alone, including a closed form for the SU(2) commutator holonomy. The second layer places the CGM stages as Einstein speeds in the open gyrovector ball and derives the BU Dual-Pole Loop in closed form as an elementary function of two thresholds, from which the closure ratio ρ ≈ 0.9793 and the aperture gap Δ ≈ 0.0207 follow as definitions. The same angle is recovered from the origin-gyr word, the Ungar gyrotriangle defect on the dual-pole vertices, and the mass-shell geodesic holonomy on the forward hyperboloid. The central structural result of this layer is a conjugation theorem. The palindromic traversal of all payload stages preserves the holonomy angle while transporting its axis, which separates the magnitude of path memory from its orientation. The third layer verifies the finite realization of the same architecture in the Holonomic Quantum Virtual Machine (hQVM), where holonomy appears as an order-two operator structure on a 4096-state manifold.
 
 ---
 
@@ -134,7 +134,7 @@ The four stages on the path are the **payload stages**, and CS is the **gauge fr
 
 ---
 
-## 6. The BU Dual-Pole Holonomy in Closed Form
+## 6. The BU Dual-Pole Loop in Closed Form
 
 The central loop visits the ONA stage, crosses to the positive BU pole, crosses to the negative BU pole, and returns.
 
@@ -154,7 +154,7 @@ with k as in Section 5. At θ = π/2 one has sin(θ) = 1 and cos(θ) = 0, so the
 ω = 2 · arctan( k(π/4) · k(m_a) )
 ```
 
-The two corners share the axis parallel to ONA × BU. With the signed Ungar convention the generating cross product points along +x and each corner contributes the signed angle −ω, so the loop operator is Rot(+x, −2ω). The identity Rot(+x, −ω) = Rot(−x, +ω) rewrites the same rotation as a positive angle about −x. The unsigned conjugacy angle of the loop, named the **BU dual-pole holonomy** and written δ_BU, therefore has the closed form
+The two corners share the axis parallel to ONA × BU. With the signed Ungar convention the generating cross product points along +x and each corner contributes the signed angle −ω, so the loop operator is Rot(+x, −2ω). The identity Rot(+x, −ω) = Rot(−x, +ω) rewrites the same rotation as a positive angle about −x. The unsigned conjugacy angle of the loop, named the **BU Dual-Pole Loop** and written δ_BU, therefore has the closed form
 
 ```
 δ_BU = 2 · ω = 4 · arctan( k(π/4) · k(m_a) )
@@ -478,7 +478,7 @@ The analysis fails if any of the following occurs.
 1. The 80-digit SU(2) matrix computation departs from the closed form 2 · arccos((1 + 2√2)/4).
 2. An independent realization of the stage speeds as Einstein betas yields a value that differs from δ_BU = 4 · arctan(k(π/4) · k(m_a)) beyond its stated numerical floor.
 3. The origin-gyr word, the Ungar defect on (ONA, BU+, BU−), or the mass-shell geodesic holonomy departs from δ_BU beyond the working floor.
-4. The palindrome holonomy departs from the conjugacy class of the BU dual-pole holonomy, in angle or in transported axis.
+4. The palindrome holonomy departs from the conjugacy class of the BU Dual-Pole Loop, in angle or in transported axis.
 5. The byte fold distribution departs from 16 · C(4, k), or the W2 and W2' certificate fails on any of the 4096 states.
 6. The nearest 8-bit dyadic to Δ departs from 5/256, or the shared constant APERTURE_GAP_Q256 departs from 5.
 

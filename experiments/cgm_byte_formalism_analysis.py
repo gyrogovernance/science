@@ -19,18 +19,27 @@ Architecture (from Byte_Boundaries_Reference):
 - 6 payload bits (1-6): dipole flip PROVED (each bit controls one pair)
 
 CGM definitions:
-- delta_BU: BU holonomy defect (radians)
+- delta_BU: BU dual-pole loop angle (radians)
 - m_a: BU aperture parameter = 1/(2*sqrt(2*pi))
 - rho: closure ratio = delta_BU / m_a
 - Delta: aperture gap = 1 - rho
+- 48*Delta ≈ 0.993578 (near-unit depth-four product; companion scale 1/48)
 
 Quantization: Q_N(x) = round(N*x) / N  for x in [0,1]
 
 """
 
 import math
+import os
+import sys
 from typing import Dict, Any, Tuple
 from dataclasses import dataclass
+
+_REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if _REPO not in sys.path:
+    sys.path.insert(0, _REPO)
+
+from gyroscopic.hQVM.constants import BU_HOLONOMY_ANGLE, M_A
 
 # Router architecture constants (Byte_Boundaries_Reference)
 GENE_MIC_S = 0xAA
@@ -390,8 +399,8 @@ def analyze_cache_line_mapping() -> Dict[str, Any]:
 class CGMByteConstants:
     """CGM constants for byte formalism calculations."""
 
-    delta_BU: float = 0.195342176580  # Measured from tw_closure_test.py
-    m_a: float = 1.0 / (2.0 * math.sqrt(2.0 * math.pi))
+    delta_BU: float = BU_HOLONOMY_ANGLE
+    m_a: float = M_A
 
     @property
     def rho(self) -> float:
@@ -445,7 +454,7 @@ def analyze_aperture_quantization(constants: CGMByteConstants) -> Dict[str, Any]
     results["Q_48_numerator"] = num_48
     results["Q_48_error"] = err_48
     results["1_over_48"] = 1 / 48
-    results["48_Delta_exact"] = 48 * Delta
+    results["48_Delta"] = 48 * Delta
 
     # rho quantization (closure)
     Q256_rho, num_rho = quantize(rho, 256)
@@ -541,6 +550,7 @@ def analyze_48_vs_256(constants: CGMByteConstants) -> Dict[str, Any]:
         "48_Delta": 48 * Delta,
         "48_Delta_target": 1.0,
         "48_deviation": abs(48 * Delta - 1.0),
+        "1_over_48": 1.0 / 48.0,
         "256_Delta": 256 * Delta,
         "round_256_Delta": round(256 * Delta),
         "depth_4_projection_bits": DEPTH_4_PROJECTION_BITS,
@@ -816,9 +826,10 @@ def run_analysis(verbose: bool = True) -> Dict[str, Any]:
             f"   Depth-4 projection: 4 x 12 = {q48['depth_4_projection_bits']} bits (manifold)"
         )
         print(f"   Depth-4 atoms: 4 x 32 = {q48['depth_4_atom_bits']} bits (execution)")
-        print(f"   CGM: 48*Delta = 1 (geometric quantization)")
-        print(f"   Measured: 48*Delta = {q48['48_Delta']:.10f}")
-        print(f"   Deviation from 1: {q48['48_deviation']:.2e}")
+        print(f"   CGM: 48*Delta ≈ 0.993578 (near-unit depth-four product)")
+        print(f"   Evaluation: 48*Delta = {q48['48_Delta']:.10f}")
+        print(f"   |48*Delta - 1| = {q48['48_deviation']:.2e}")
+        print(f"   Discrete companion: 1/48 = {q48['1_over_48']:.10f}")
         print(
             f"   Byte: 256 = 4 families x 64; 256*Delta -> numerator {q48['round_256_Delta']}"
         )

@@ -10,9 +10,17 @@ Single-run analysis producing concrete testable predictions in physical units.
 
 from dataclasses import dataclass, field
 from typing import Dict, List, Tuple, Optional, Any
-from math import pi, sqrt, exp, log, sin, cos, tan, asin, atan, log10
+from math import pi, sqrt, exp, log, sin, cos, tan, asin, atan, acos, log10
 import cmath
+import os
+import sys
 import numpy as np
+
+_REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if _REPO not in sys.path:
+    sys.path.insert(0, _REPO)
+
+from gyroscopic.hQVM.constants import BU_HOLONOMY_ANGLE, M_A
 
 
 # =====
@@ -30,10 +38,10 @@ class CGMInvariants:
     gamma_ONA: float = pi / 4  # Opposition Non-Absolute threshold
 
     # Core invariants [dimensionless]
-    m_a: float = 1 / (2 * sqrt(2 * pi))  # Aperture parameter
+    m_a: float = M_A  # Aperture parameter
     Q_G: float = 4 * pi  # Complete solid angle
-    delta_BU: float = 0.195342176580  # BU dual-pole holonomy
-    phi_SU2: float = 0.587901  # SU(2) commutator holonomy
+    delta_BU: float = BU_HOLONOMY_ANGLE  # BU dual-pole loop angle
+    phi_SU2: float = 2.0 * acos((1.0 + 2.0 * sqrt(2.0)) / 4.0)  # SU(2) commutator angle
 
     # Derived invariants
     Delta: float = field(init=False)  # Aperture fraction
@@ -55,47 +63,38 @@ class CGMInvariants:
     qg_mp2: float = field(init=False)  # Q_G * m_a² (exact 0.5)
     zeta_over_16sqrt: float = field(init=False)  # ζ / (16√(2π/3)) (exact 1)
     lambda0_over_2pi_delta4: float = field(init=False)  # λ₀ / (2π δ⁴) (check)
-    residual_lambda: float = field(init=False)  # Tension from enforcing λ₀/Δ = 1/√5
+    residual_lambda: float = field(init=False)  # Tension from λ₀/Δ = 1/√5 vs λ_CS
 
     def __post_init__(self):
-        """Calculate derived invariants with exact 48Δ = 1."""
-        # EXACT GEOMETRIC REQUIREMENTS:
-        # 48Δ = 1 exactly, λ₀/Δ = 1/√5 exactly
-        object.__setattr__(self, "Delta", 1 / 48)  # EXACT: 48Δ = 1
-        object.__setattr__(
-            self, "lambda_0_formal", (1 / 48) / sqrt(5)
-        )  # EXACT: λ₀/Δ = 1/√5
+        """Calculate derived invariants from the closed-form loop angle."""
+        object.__setattr__(self, "rho", self.delta_BU / self.m_a)
+        object.__setattr__(self, "Delta", 1.0 - self.rho)
+        object.__setattr__(self, "lambda_0_formal", self.Delta / sqrt(5))
         object.__setattr__(
             self, "lambda_CS_physical", self.delta_BU**4 / (4 * self.m_a**2)
-        )  # Physics
+        )
 
-        # Other derived invariants (keeping  m_a as foundational)
-        object.__setattr__(self, "rho", self.delta_BU / self.m_a)
         object.__setattr__(self, "S_min", (pi / 2) * self.m_a)
         object.__setattr__(self, "S_geo", self.m_a * pi * sqrt(3) / 2)
         object.__setattr__(self, "K_QG", self.Q_G * self.S_min)
         object.__setattr__(self, "zeta", self.Q_G / self.S_geo)
 
-        # Exact identities and near-equalities from 4π alignment hypotheses
         object.__setattr__(self, "delta_over_pi16", self.delta_BU / (pi / 16))
         object.__setattr__(self, "forty_eight_delta", 48 * self.Delta)
         object.__setattr__(
             self, "lambda0_over_delta", self.lambda_0_formal / self.Delta
         )
         object.__setattr__(self, "one_over_sqrt5", 1 / sqrt(5))
-        object.__setattr__(
-            self, "qg_mp2", self.Q_G * self.m_a**2
-        )  # Should be exactly 0.5
+        object.__setattr__(self, "qg_mp2", self.Q_G * self.m_a**2)
         object.__setattr__(
             self, "zeta_over_16sqrt", self.zeta / (16 * sqrt(2 * pi / 3))
-        )  # Should be exactly 1
+        )
         object.__setattr__(
             self,
             "lambda0_over_2pi_delta4",
             self.lambda_0_formal / (2 * pi * self.delta_BU**4),
-        )  # Check (not enforced)
+        )
 
-        # Quantify the tension from enforcing λ₀/Δ = 1/√5
         object.__setattr__(
             self,
             "residual_lambda",
@@ -719,7 +718,7 @@ class HiggsFirstFramework:
         rho_3 = self.cgm.delta_BU / self.cgm.m_a  # ONA→BU: ≈ 0.9793
 
         # Aperture incompleteness at each level
-        aperture_per_level = 1 - self.cgm.Delta  # = 47/48
+        aperture_per_level = 1 - self.cgm.Delta  # = rho
 
         # CGM per-level dressings (pure geometry)
         c_ICS = exp(-self.cgm.K_QG / (16 * pi**2))  # Indefinite causal structure
@@ -1109,7 +1108,8 @@ class BSMSummary:
         target_ratio = dm21_pdg / dm31_pdg
 
         checks = {
-            "E0_below_Planck": predictions["energy_scales"]["E0_to_Planck_ratio"] < 1,
+            "E0_below_Planck": predictions["energy_scales"]["E_reciprocal_to_Planck_ratio"]
+            < 1,
             "neutrino_sum_rule": predictions["particle_masses"]["heaviest_neutrino_eV"]
             < 0.5,  # Cosmological bound
             "neutrino_dm2_tension": abs(dm21_z)
@@ -1618,9 +1618,9 @@ def main():
 
     anchor_minimal_results = {
         # CGM boundary conditions
-        "λ(E0) from CGM": (f"{bc['lambda_E0']:.6f}", ""),
+        "λ(CS) from CGM": (f"{bc['lambda_CS']:.6f}", ""),
         "g_unified at E0": (f"{bc['g_unified']:.6f}", ""),
-        "y_t(E0) from crossing": (f"{bc['y_t_E0']:.6f}", ""),
+        "y_t(CS) from crossing": (f"{bc['y_t_CS']:.6f}", ""),
         "μ* (CGM crossing)": (f"{bc['mu_star']:.2e} GeV", ""),
         # Electroweak sector (solved internally)
         "λ_IR (from RGE)": (f"{ew['lambda_IR']:.6f}", ""),
@@ -1629,8 +1629,8 @@ def main():
         "M_Z/M_W (CGM relation)": (f"{ew['MZ_MW_ratio']:.6f}", ""),
         "sin²θ_W (from masses)": (f"{ew['sin2_theta_W']:.6f}", ""),
         # Dimensionless predictions
-        "v_weak/E0": (f"{dimless['v_weak_over_E0']:.2e}", ""),
-        "m_H/E0": (f"{dimless['m_H_over_E0']:.2e}", ""),
+        "v_weak/E_CS": (f"{dimless['v_weak_over_CS']:.2e}", ""),
+        "m_H/E_CS": (f"{dimless['m_H_over_CS']:.2e}", ""),
         "Insight": (dimless["insight"], ""),
     }
     print_results(anchor_minimal_results)
@@ -1809,7 +1809,7 @@ def main():
     consistency_results.update(
         {
             "E0 < M_Planck": (
-                str(predictions["energy_scales"]["E0_to_Planck_ratio"] < 1),
+                str(predictions["energy_scales"]["E_reciprocal_to_Planck_ratio"] < 1),
                 "",
             ),
             "Neutrino ordering": (
@@ -1822,7 +1822,7 @@ def main():
             ),
             "Inflation compatible": (str(abs(summary.inf["n_s"] - 0.9649) < 0.02), ""),
             "E0 < M_Planck (key claim)": (
-                str(predictions["energy_scales"]["E0_to_Planck_ratio"] < 1),
+                str(predictions["energy_scales"]["E_reciprocal_to_Planck_ratio"] < 1),
                 "",
             ),
             "Unified couplings (g1,g2,g3)": (
@@ -1846,7 +1846,7 @@ def main():
             f"{summary.dm['M_DM']:.2f} GeV ≈ √3 × {booklet.M_W:.2f} GeV",
             "",
         ),
-        "48Δ = 1 (exact)": (summary.cgm.forty_eight_delta, ""),
+        "48Δ": (summary.cgm.forty_eight_delta, ""),
         "N_efolds = 48²": (48**2, ""),
         "M_Z/M_W prediction": (
             f"{summary.scales.M_Z_predicted/booklet.M_W:.6f}",
@@ -1875,8 +1875,8 @@ def main():
         "Percent error vs 1": (100 * (summary.cgm.delta_over_pi16 - 1), "%"),
         "48 * Delta": (summary.cgm.forty_eight_delta, ""),
         "Percent error vs 1": (100 * (summary.cgm.forty_eight_delta - 1), "%"),
-        "48Δ (exact 1)": (patterns["48_Delta"]["value"], ""),
-        "48Δ error": (f"{patterns['48_Delta']['error_pct']:.6f}%", ""),
+        "48Δ": (patterns["48_Delta"]["value"], ""),
+        "48Δ error vs 1": (f"{patterns['48_Delta']['error_pct']:.6f}%", ""),
         "M_Z/M_W vs 1+6.5Δ": (patterns["MZ_MW_6p5Delta"]["value"], ""),
         "M_Z/M_W error": (f"{patterns['MZ_MW_6p5Delta']['error_pct']:.6f}%", ""),
         "N_e vs 48²": (patterns["Ne_48_squared"]["value"], ""),
