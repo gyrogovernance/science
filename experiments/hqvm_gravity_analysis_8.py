@@ -69,6 +69,7 @@ from hqvm_gravity_common import (
     kernel_exposure_constants,
     m_a,
     rho,
+    tau_g_stf_depth,
     tau_g_with_c4,
     trace_word_steps,
     v_EW,
@@ -263,8 +264,8 @@ def section_b_regge_sum(a_stats: dict) -> dict[str, float | bool]:
     print("=" * 9)
 
     regge_cycle, tau_cycle, _ = weighted_holonomy_regge()
-    n_cycles, _, tau_g_full, tau_over_delta = kernel_exposure_constants()
-    tau_g_closed = tau_g_with_c4(C4_REF)
+    n_cycles, _, tau_g_stf, tau_over_delta = kernel_exposure_constants()
+    tau_g_closed = tau_g_stf
 
     k_eff = regge_cycle / tau_cycle * (6.0 * Delta / d_BU)
     tau_from_regge = n_cycles * regge_cycle * 6.0 * Delta / (k_eff * d_BU)
@@ -672,8 +673,8 @@ def section_d_spectral_bridge(b_stats: dict) -> dict[str, float | int | bool]:
     eig = eigenspace_dimensions(cycles)
 
     aniso = bulk_anisotropy_ratio()
-    n_cycles, tau_cycle, tau_g_full, _ = kernel_exposure_constants()
-    g_pred = g_pred_from_tau(tau_g_full)
+    n_cycles, tau_cycle, tau_g_stf, _ = kernel_exposure_constants()
+    g_pred = g_pred_from_tau(tau_g_stf)
 
     spectral_gap = d_BU
     phase_deficit = abs(m_a - d_BU)
@@ -691,7 +692,7 @@ def section_d_spectral_bridge(b_stats: dict) -> dict[str, float | int | bool]:
     print(f"  Delta = 1 - rho           = {Delta:.12f}")
     print(f"  phase deficit           = {phase_deficit:.12f} rad")
     print()
-    print(f"  tau_G                   = {tau_g_full:.12f}")
+    print(f"  tau_G                   = {tau_g_stf:.12f}")
     print(f"  N_cycles * tau_cycle    = {n_cycles * tau_cycle:.12f}")
     print(f"  ||pi||^2/Tr^2 (bulk)    = {aniso}")
     print()
@@ -726,7 +727,7 @@ def section_e_chain_verification(
     print("E. Complete chain verification")
     print("=" * 9)
 
-    tau_g = tau_g_with_c4(C4_REF)
+    tau_g = tau_g_stf_depth()
     g_pred = g_pred_from_tau(tau_g)
     g1 = dln_g_dpsi(tau_g)
     psi_test = 0.1
@@ -816,7 +817,7 @@ def run_kernel_chain(verbose: bool = True) -> tuple[bool, dict]:
             a_stats, b_stats, c_stats, c2_stats, d_stats
         )
     else:
-        tau_g = tau_g_with_c4(C4_REF)
+        tau_g = tau_g_stf_depth()
         g_pred = g_pred_from_tau(tau_g)
         chain_ok = (
             bool(a_stats.get("d_ok"))

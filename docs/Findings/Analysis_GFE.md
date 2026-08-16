@@ -155,7 +155,7 @@ Q_G × m_a² = 1/2
 
 This yields m_a² = 1/(8π), establishing that only 1/(8π) ≈ 3.98% of the full solid angle can be coherently observed at any instant. The observable fraction further reduces to 2.07% when accounting for the bidirectional nature of observation (incoming and outgoing light paths).
 
-**IMPORTANT CLARIFICATION**: The 2.07% mentioned here is NOT the same as the structural aperture fraction Δ = 1 - δ_BU/ m_a ≈ 0.0207 used in CGM calculations. This 2.07% is a different concept related to coherent observation, while Δ is the structural aperture used in balance calculations. Do not confuse these two different aperture concepts.
+That observational fraction is distinct from the structural aperture gap. With δ_BU = 4 · arctan(k(π/4) · k(m_a)) and k(β) = β/(1 + √(1 − β²)), the structural ratios are ρ = δ_BU/m_a ≈ 0.979300454497 and Δ = 1 − ρ ≈ 0.020699545503. The observational 2.07% above is not identified with Δ.
 
 This geometric limitation manifests at all scales:
 - Quantum: Uncertainty relations from incomplete angular coverage
@@ -349,7 +349,7 @@ While the geometric framework is established, full dynamical equations for the o
 
 ### 19.2 Quantum-Classical Transition
 
-The precise mechanism by which quantum behavior emerges from geometric conditions requires further elaboration. The 97.93% closure with 2.07% aperture suggests a natural decoherence scale.
+The precise mechanism by which quantum behavior emerges from geometric conditions requires further elaboration. With δ_BU = 4 · arctan(k(π/4) · k(m_a)), the structural balance ρ ≈ 0.979300454497 and Δ ≈ 0.020699545503 (97.93% closure with 2.07% aperture) suggests a natural decoherence scale.
 
 ### 19.3 Biological and Consciousness Connections
 

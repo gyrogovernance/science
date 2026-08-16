@@ -274,8 +274,8 @@ class ModalGeometricDerivation:
             print(
                 f"Computed delta_BU using GyroVectorSpace: {delta_BU_computed:.12f} rad"
             )
-            print(f"Expected delta_BU (from TW closure test): 0.195342176580 rad")
-            print(f"Deviation: {abs(delta_BU_computed - 0.195342176580):.12e} rad")
+            print(f"Expected delta_BU (from TW closure test): 0.1953421782576621 rad")
+            print(f"Deviation: {abs(delta_BU_computed - 0.1953421782576621):.12e} rad")
             print()
             print("✅ Using the same gyro/Wigner representation ensures:")
             print("  - Consistency with validated TW closure test")
@@ -323,8 +323,8 @@ class ModalGeometricDerivation:
         return {
             "theorem": "BU-Egress determines delta_BU value",
             "delta_BU_computed": float(delta_BU_computed),
-            "delta_BU_expected": 0.195342176580,
-            "deviation": float(abs(delta_BU_computed - 0.195342176580)),
+            "delta_BU_expected": 0.1953421782576621,
+            "deviation": float(abs(delta_BU_computed - 0.1953421782576621)),
             "conclusion": "delta_BU is uniquely determined by modal conditions",
         }
 

@@ -4,7 +4,7 @@
 
 ## Abstract
 
-This document presents a comprehensive analysis of the Common Governance Model (CGM) universal correction operator framework. The CGM posits that physical constants and interactions emerge from geometric principles rather than empirical fitting. We demonstrate that a single correction operator, derived from first principles, simultaneously predicts the fine-structure constant to sub-ppb accuracy and explains galactic rotation curves without dark matter. The framework achieves this through geometric parameters that remain invariant across energy scales and physical domains.
+This document presents a comprehensive analysis of the Common Governance Model (CGM) universal correction operator framework. The CGM posits that physical constants and interactions emerge from geometric principles rather than empirical fitting. We demonstrate that a single correction operator, derived from first principles, simultaneously predicts the fine-structure constant to about 33.8 ppb versus CODATA 2018 and explains galactic rotation curves without dark matter. The framework achieves this through geometric parameters that remain invariant across energy scales and physical domains.
 
 ## 1. Theoretical Framework
 
@@ -19,7 +19,7 @@ The CGM framework is built on two foundational principles:
 
 The framework employs five geometric parameters derived from CGM structure:
 
-- **δ_BU** = 0.195342176580 (BU Dual-Pole Loop)
+- **δ_BU** = 4 · arctan(k(π/4) · k(m_a)) ≈ 0.195342178258 (BU dual-pole loop angle)
 - **R** = 0.993434896272 (Thomas-Wigner curvature ratio)
 - **h** = 4.417034 (4-leg/8-leg holonomy ratio)
 - **ρ_inv** = 1.021137 (Inverse closure fraction)
@@ -69,21 +69,21 @@ The full universal operator:
 
 The fine-structure constant is derived through:
 
-**α₀** = δ_BU⁴/ m_a ≈ 0.007299683322 (Base value, error: 319 ppm)
+**α₀** = δ_BU⁴/m_a ≈ 0.007299683573 (Base value, about 319.43 ppm vs CODATA 2018)
 
-**α₁** = α₀ · C_AB ≈ 0.007297352943 (After AB correction, error: 0.052 ppm)
+**α₁** = α₀ · C_AB ≈ 0.007297353195 (After AB correction, about 0.086 ppm)
 
-**α₂** = α₁ · C_HC ≈ 0.007297352561 (After HC correction, error: -0.000379 ppm)
+**α₂** = α₁ · C_HC ≈ 0.007297352813 (After HC correction, about 0.033 ppm)
 
-**α** = α₂ · C_IDE ≈ 0.007297352563 (Final prediction, error: 0.043 ppb)
+**α** = α₂ · C_IDE ≈ 0.007297352816 (Final prediction, about 33.8 ppb vs CODATA 2018)
 
 ### 3.2 Accuracy Assessment
 
 Comparison with experimental values:
-- CODATA 2018: α = 0.007297352569 → Error: -0.812 ppb
-- GK 2020: α = 0.007297352563 → Error: +0.079 ppb
+- CODATA 2018: α = 1/137.035999084 ≈ 0.007297352569 → about +33.8 ppb
+- GK 2020: α = 1/137.035999206 ≈ 0.007297352563 → about +34.7 ppb
 
-The prediction achieves sub-ppb accuracy using only geometric parameters.
+The curvature term dominates the reduction from the base residual; the higher-order factors leave a residual of tens of ppb.
 
 ## 4. Galactic Dynamics Application
 
@@ -165,7 +165,7 @@ This represents the geometric contribution to gravitational coupling. While this
 
 ### 6.1 Universality Confirmation
 
-The same correction operator that predicts α to sub-ppb accuracy also explains galactic rotation curves with consistent performance. The operator requires no parameter adjustments between these vastly different domains.
+The same correction operator that predicts α to tens of ppb also explains galactic rotation curves with consistent performance. The operator requires no parameter adjustments between these vastly different domains.
 
 ### 6.2 Predictive Power
 
@@ -190,7 +190,7 @@ Future work should address these limitations and extend the framework to other d
 
 The CGM universal correction operator framework demonstrates remarkable consistency across energy scales and physical domains. Using only geometric parameters derived from first principles, the framework simultaneously:
 
-1. Predicts the fine-structure constant with 0.043 ppb accuracy
+1. Predicts the fine-structure constant to about 33.8 ppb vs CODATA 2018
 2. Explains galactic rotation curves without dark matter
 3. Produces consistent, scale-dependent corrections
 4. Makes testable predictions across quantum and classical domains

@@ -596,10 +596,9 @@ def part_e_summary(
     print("=" * 10)
 
     tau_leading = tau_G_formula
-    tau_full = tau_g_with_c4(-7.0 / 4.0)
-    G_leading = g_pred_from_tau(tau_leading)
-    G_pred = g_pred_from_tau(tau_full)
-    alpha_G_pred = G_kernel * math.exp(-tau_full)
+    tau_tr = tau_g_with_c4(-7.0 / 4.0) - tau_leading
+    G_pred = g_pred_from_tau(tau_leading)
+    alpha_G_pred = G_kernel * math.exp(-tau_leading)
 
     print("CGM invariants:")
     print(f"  Q_G    = {Q_G:.10f}")
@@ -614,15 +613,14 @@ def part_e_summary(
     print(f"  D        = {Z2_HOLONOMY_PATH_TRAVERSE}")
     print(f"  G_kernel = pi/6 = {G_kernel:.12f}")
     print()
-    print("Refractive Depth:")
-    print(f"  leading order tau_G = {tau_leading:.12f}")
-    print(f"  full prediction     = {tau_full:.12f}")
+    print("Refractive Depth (STF coupling):")
+    print(f"  tau_G               = {tau_leading:.12f}")
+    print(f"  tau_trace (c4=-7/4) = {tau_tr:.12e}")
     print()
     print("Gravitational coupling:")
-    print(f"  G_pred (full)        = {G_pred:.6e} GeV^-2")
+    print(f"  G_pred               = {G_pred:.6e} GeV^-2")
     print(f"  G_meas               = {G_meas:.6e} GeV^-2")
-    print(f"  ppm (full)           = {(G_pred/G_meas - 1)*1e6:+.3f}")
-    print(f"  ppm (leading)        = {(G_leading/G_meas - 1)*1e6:+.3f}")
+    print(f"  ppm                  = {(G_pred/G_meas - 1)*1e6:+.3f}")
     print()
     print("Three routes to exponent 5:")
     print(f"  A (STF):    dim(STF(3)) = {n_STF}")
@@ -639,8 +637,8 @@ def part_e_summary(
     print(f"  rho = {rho:.12f}")
     print(f"  Delta = {Delta:.12f}")
     print(f"  STF dim = {n_STF}, bulk shells = {len(bulk_shells)}, |K4| = 4")
-    print(f"  tau_G (full) = {tau_full:.6f}")
-    print(f"  G_pred/G_meas - 1 (full) = {(G_pred/G_meas - 1) * 1e6:.3f} ppm")
+    print(f"  tau_G (STF) = {tau_leading:.6f}")
+    print(f"  G_pred/G_meas - 1 = {(G_pred/G_meas - 1) * 1e6:.3f} ppm")
 
 
 # ============================================================

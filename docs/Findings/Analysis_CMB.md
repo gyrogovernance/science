@@ -145,7 +145,7 @@ Inside-view: True
 ============================================================
 
 CGM INTERFERENCE PATTERN ANALYSIS v5.0
-Testing: We're inside a 97.9% closed toroidal structure       
+Testing: We're inside a 97.93% closed toroidal structure       
 Pre-registered configuration with high-resolution production mode
 
 Testing interference signature from inside-observation...

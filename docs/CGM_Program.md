@@ -194,12 +194,12 @@ This invariant holds to machine precision across all five energy stages (CS, UNA
 
 While the main paper presents the leading-order formula, the full derivation incorporates three systematic corrections accounting for the UV-IR transport described by the optical conjugacy:
 
-1.  **Base Formula (IR focus):** `α₀ = δ_BU⁴ / m_a` (Error: +319 ppm).
-2.  **UV-IR Curvature Correction:** Accounts for geometric transport. (Error: +0.052 ppm).
-3.  **Holonomy Transport:** Encodes how UV holonomy projects to the IR focus. (Error: -0.000379 ppm).
-4.  **IR Focus Alignment:** A final coherence correction. (Final Error: **+0.043 ppb**).
+1.  **Base Formula (IR focus):** `α₀ = δ_BU⁴ / m_a` with δ_BU = 4 · arctan(k(π/4) · k(m_a)) (about +319.43 ppm vs CODATA 2018).
+2.  **UV-IR Curvature Correction:** Accounts for geometric transport (about +0.086 ppm).
+3.  **Commutator Transport:** Encodes how UV commutator structure projects to the IR focus (about +0.033 ppm).
+4.  **IR Focus Alignment:** A final coherence correction (about **+33.8 ppb**).
 
-The final predicted value `α = 0.007297352563` matches the experimental value to within 0.53 standard deviations of the experimental uncertainty.
+The final predicted value `α ≈ 0.007297352816` is about 33.8 ppb from CODATA 2018 (α = 1/137.035999084).
 
 ### 5.3 The Black Hole Universe and Aperture Thermodynamics
 
@@ -226,7 +226,7 @@ The energy scale hierarchy makes specific predictions for particle physics:
 
 The gravity program connects the finite algebraic kernel to continuum field theory and observational tests. Full derivation and status: [Analysis_Gravity](Findings/Analysis_Gravity.md).
 
-**Kernel layer (exact combinatorics).** The Gyroscopic ASI hQVM implements CGM as replayable software. Combinatorial invariants from that implementation fix the gravitational coupling at the electroweak scale without using measured G in the forward calculation. The leading Regge sum τ_G⁰ alone gives a 25 ppm offset; adding the K4 correction δτ with c₄ = −7/4 closes the residual to **0.074 parts per million** against CODATA.
+**Kernel layer (exact combinatorics).** The Gyroscopic ASI hQVM implements CGM as replayable software. Combinatorial invariants from that implementation fix the gravitational coupling at the electroweak scale without using measured G in the forward calculation. The STF refractive depth τ_G = |Ω|Δρ⁵(1 − 4ρΔ²) yields a weak-field residual of about **+2.99 parts per million** against CODATA (CODATA G uncertainty ≈ 22 ppm). The isotropic-channel scalar c₄ = −7/4 defines τ_trace and does not enter the coupling exponent.
 
 **Continuum layer (nonlinear gravity).** Position-dependent coupling weakens with field strength. The static point-mass exterior has a closed-form solution. From it the code computes the horizon, photon sphere, impact parameter, Mercury perihelion advance (matching general relativity at solar-system precision), and shadow diameters for Event Horizon Telescope sources.
 

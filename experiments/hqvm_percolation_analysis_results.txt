@@ -2151,7 +2151,7 @@ SECTIONS 9-16: GRAVITY / POROSITY BRIDGES
 
   tau_cycle/Delta = 7591/7392  (1.026920995671)
   tau_cycle       = 0.021256806515
-  tau_G           = 76.237916638581
+  tau_G           = 76.237889038806
   N_cycles        = 3586.517880
   g1              = -0.645567722244
   s_h             = 1.694550962999

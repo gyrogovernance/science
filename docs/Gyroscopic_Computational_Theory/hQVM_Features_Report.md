@@ -93,7 +93,7 @@ hQVM analysis manuscripts are backed by executable scripts in the [science repos
 |--------------------|-----------------|------------------|
 | [Analysis_hQVM_Wavefunction.md](https://github.com/gyrogovernance/science/blob/main/docs/Findings/Analysis_hQVM_Wavefunction.md) | `hqvm_wavefunction_1.py`, `hqvm_wavefunction_2.py` | Holonomy diagnostics, BU-Egress/Ingress duality, spectral probes; **theorems T1-T10** exhaustive on all 4096 Omega states |
 | [Analysis_Gravity.md](https://github.com/gyrogovernance/science/blob/main/docs/Findings/Analysis_Gravity.md) | `hqvm_gravity_common.py` (library), `hqvm_gravity_analysis_1.py` through `_10.py`, `hqvm_gravity_runner.py` | Kernel invariants (D=24, Gauss law, plaquette census, Regge/tau_G), coupling chain (c4, tau_cycle, G prediction), nonlinear G(psi), antimatter parity, PPN, GW, TOV, optical cosmology |
-| [Analysis_Gravity.md](https://github.com/gyrogovernance/science/blob/main/docs/Findings/Analysis_Gravity.md) (corrections) | `hqvm_corrections_analysis_1.py` | Transport-corrected fine-structure constant (0.043 ppb vs CODATA) |
+| [Analysis_Gravity.md](https://github.com/gyrogovernance/science/blob/main/docs/Findings/Analysis_Gravity.md) (corrections) | `hqvm_corrections_analysis_1.py` | Transport-corrected fine-structure constant (≈ 33.8 ppb vs CODATA 2018) |
 | [Analysis_Compact_Geometry.md](https://github.com/gyrogovernance/science/blob/main/docs/Findings/Analysis_Compact_Geometry.md) | `hqvm_compact_geom_core.py`, `hqvm_compact_geom_kernel.py`, `hqvm_compact_geom_report.py` | Exhaustive Omega enumeration, shell transition algebra, electroweak mass law, null-model audit, lepton/quark diagnostics |
 
 #### Script ownership (from script headers)
@@ -337,7 +337,7 @@ Algebraic quantum structure on the 4096-state manifold Omega, established primar
 
 | # | Feature | Source | Method |
 |---|---------|--------|--------|
-| 106 | **BU holonomy defect delta(BU) = 0.195342176580 rad**: representation-independent constant from depth-4 closure | SDK Spec SS9.1; hQVM Report 1 SS10.1 | CGM derivation + verification |
+| 106 | **BU dual-pole loop angle δ_BU ≈ 0.195342178258 rad**: closed form 4·arctan(k(π/4)·k(m_a)) from depth-4 closure | SDK Spec SS9.1; hQVM Report 1 SS10.1 | CGM derivation + verification |
 | 107 | **delta(BU) far from all Clifford angles**: nearest distance 0.195 rad (multiples of pi/4) | hQVM Report 1 SS10.2 | All 8 Clifford angles tested |
 | 108 | **No periodicity up to order 100,000**: closest return at k=22,805, distance 4.59e-5 | hQVM Report 1 SS10.3 | Exhaustive search |
 | 109 | **Dense U(1) equidistribution**: {k x delta(BU) mod 2pi} fills [0,2pi) uniformly; chi^2=0.212 vs critical 142.4 | hQVM Report 1 SS10.3 | 50,000 points, 100 bins |
@@ -416,7 +416,7 @@ Discrete physics of the byte-driven transition rule, established by Physics test
 | # | Feature | Source | Method |
 |---|---------|--------|--------|
 | 151 | **Fundamental aperture constraint**: Q_G x m_a^2 = 1/2 | Physics Report Part 9.1 | Exact algebraic identity |
-| 152 | **Fine-structure constant prediction**: alpha_CGM = delta_BU^4/m_a = 0.007297352563, matching experiment to 0.04% (400 ppm) | Physics Report Part 9.2 | Comparison with CODATA |
+| 152 | **Fine-structure constant prediction**: α₀ = δ_BU⁴/m_a ≈ 0.007299683573 (≈ 319.43 ppm vs CODATA 2018); transport-corrected α ≈ 0.007297352816 (≈ 33.8 ppb) | Physics Report Part 9.2 | Comparison with CODATA |
 | 153 | **K_QG identity**: two derivations agree to <10^-12 | Physics Report Part 9.3 | Numerical verification |
 | 154 | **Stage action ratios**: E_ONA/E_CS = 1/2 exact; E_UNA/E_CS = 2/(pi*sqrt(2)) to 12 decimal places | Physics Report Part 9.4 | Geometric values |
 | 155 | **Aperture quantization chain**: 5/256 (byte) < Delta (continuous) < 1/48 (depth-4) | Physics Report Part 9.5 | Three scales verified |
@@ -525,10 +525,10 @@ Continuous field-theory predictions anchored on kernel invariants. Documented in
 |---|---------|------------|--------|
 | 206 | **Q_G = 4pi as quantum of gravity** (horizon normalization) | `hqvm_gravity_analysis_2.py` S12; `hqvm_gravity_common.py` | GNS + kernel ratio |
 | 207 | **Virial condition 2T+V=0** as structural consequence of ancestry preservation | `hqvm_gravity_analysis_6.py` Section C | Kernel invariant D=24 |
-| 208 | **Transport-corrected alpha matches CODATA to 0.043 ppb** | `hqvm_corrections_analysis_1.py` | Three geometric corrections in powers of Delta |
+| 208 | **Transport-corrected alpha ≈ 33.8 ppb from CODATA 2018** | `hqvm_corrections_analysis_1.py` | Three geometric corrections in powers of Delta |
 | 209 | **Delta self-consistency**: 3-factor reconstruction converges; D^3 fixed-point residual <10^-15 | `hqvm_compact_geom_core.py` | Iterative computation |
 | 210 | **Position-dependent coupling**: G(psi) = G0 exp(g1 psi) with g1 = -0.6456 | `hqvm_gravity_analysis_4.py`; `hqvm_gravity_analysis_1.py` Part E | Three independent routes |
-| 211 | **Weak-field G matches CODATA to 0.074 ppm** | `hqvm_gravity_analysis_1.py` Part E | G_pred = G_kernel exp(-tau_G)/v^2 |
+| 211 | **Weak-field G about +2.99 ppm vs CODATA** | `hqvm_gravity_analysis_1.py` Part E | G_pred = G_kernel exp(-tau_G)/v^2 |
 | 212 | **c4 = -7/4** fixed by two independent kernel routes | `hqvm_gravity_analysis_1.py` Part A; `hqvm_gravity_analysis_3.py` Part E | STF + closure charge |
 | 213 | **Per-family Refractive Depth uniformity**: zero variance across all 4 families | `hqvm_gravity_analysis_1.py` Part C | Verified |
 | 214 | **Exact point-mass solution**: psi(s) = -(1/g1)ln(1-g1/s) | `hqvm_gravity_analysis_4.py` | Analytical + numerical endpoints |

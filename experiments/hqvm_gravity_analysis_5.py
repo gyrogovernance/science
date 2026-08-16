@@ -32,6 +32,7 @@ from hqvm_gravity_common import (
     d_BU,
     dpsi_ds_analytic,
     find_photon_sphere_spin,
+    g_pred_from_tau,
     helix_z2_activation,
     kernel_exposure_constants,
     m_a,
@@ -39,6 +40,7 @@ from hqvm_gravity_common import (
     psi_analytic,
     tau_cycle_per_delta_exact,
     tau_g_with_c4,
+    G_meas,
 )
 from hqvm_gravity_analysis_4 import (
     Delta,
@@ -57,12 +59,12 @@ from hqvm_gravity_analysis_4 import (
     rho_val,
     shadow_diameter_muas,
     solve_point_mass_profile,
+    tau_G,
     tau_G_full,
     v,
 )
 
 v_EW = v
-tau_G = tau_G_full
 n_vc = log(E_CS / v_EW) / Delta
 tau_stf_coeff = 2.0 * Delta * n_vc
 
@@ -119,15 +121,12 @@ def reconcile_stf_tau(s_vals, u_vals):
     )
     print()
     delta_stf = tau_stf_coeff - tau_G
-    f_ordered = 1.0 - 4.0 * rho_val * Delta**2
-    tau_leading = OMEGA_SIZE * Delta * rho_val**5 * f_ordered
-    c4_in_tau = tau_G - tau_leading
+    tau_tr = tau_G_full - tau_G
     print(f"  tau_G              = {tau_G:.6f}")
     print(f"  2*Delta*n_vc       = {tau_stf_coeff:.6f}")
     print(f"  ratio              = {tau_G/tau_stf_coeff:.6f}")
     print(f"  2*Dn - tau_G       = {delta_stf:.6f}")
-    print(f"  tau_G (no c4)      = {tau_leading:.6f}")
-    print(f"  tau_G - leading    = {c4_in_tau:.6f}")
+    print(f"  tau_trace (c4)     = {tau_tr:.6e}")
     print()
 
 
@@ -1344,7 +1343,7 @@ def section_complete_gravity_system(s_vals: np.ndarray, u_vals: np.ndarray) -> N
     print("  c4=-7/4")
     print()
     print("CONTINUUM:")
-    print(f"  tau_G={tau_G:.6f}, G_global predicted ~0.074 ppm vs CODATA")
+    print(f"  tau_G={tau_G:.6f}, G_global vs G_meas ~{(g_pred_from_tau(tau_G)/G_meas - 1.0)*1e6:+.3f} ppm")
     print("  Q_G=4pi, 8pi=2*Q_G")
     print()
     print("NONLINEAR:")

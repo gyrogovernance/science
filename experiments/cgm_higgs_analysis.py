@@ -45,7 +45,7 @@ from dataclasses import dataclass, field
 class CGMConstants:
     """Fundamental CGM constants and parameters."""
 
-    delta_BU: float = 0.195342176580
+    delta_BU: float = 0.1953421782576621
     E_CS_BTM: float = 1.22e19
     E_BU_TOP: float = 246.22  # Higgs vacuum expectation value v = (√2 G_F)^(-1/2)
 

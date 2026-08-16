@@ -13,7 +13,20 @@ ONA converts it to axial/tileable structure at calculable cost, BU caps it with 
 """
 
 import math
+import os
+import sys
 from typing import Dict, Tuple, List, Any
+
+_REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if _REPO not in sys.path:
+    sys.path.insert(0, _REPO)
+
+from gyroscopic.hQVM.constants import (
+    BU_APERTURE_GAP,
+    BU_CLOSURE_RATIO,
+    BU_HOLONOMY_ANGLE,
+    M_A,
+)
 
 
 class CGMGeometricCoherence:
@@ -29,8 +42,8 @@ class CGMGeometricCoherence:
         self.cs_threshold = math.pi / 2  # π/2 - chirality seed
         self.una_threshold = math.cos(math.pi / 4)  # 1/√2 - orthogonal projection
         self.ona_threshold = math.pi / 4  # π/4 - diagonal angle
-        self.bu_threshold = 1 / (2 * math.sqrt(2 * math.pi))  #  m_a aperture parameter
-        self.bu_holonomy = 0.19534217658  # δ_BU holonomy angle
+        self.bu_threshold = M_A  # m_a = 1/(2√(2π))
+        self.bu_loop_angle = BU_HOLONOMY_ANGLE  # δ_BU = 4·arctan(k(π/4)·k(m_a))
 
         # Derived CGM constants
         self.quantum_geometric_constant = (
@@ -399,11 +412,9 @@ class CGMGeometricCoherence:
         q_g = 4 * math.pi  # Complete solid angle
         balance_check = q_g * (self.bu_threshold**2)  # Should equal 0.5
 
-        # Correct calculation: The aperture creates 2.07% opening
-        # From CGM theory: m_a² = 1/(8π), so 8π × m_a² = 1
-        # The closure/aperture split comes from the specific geometric construction
-        aperture_fraction = 0.0207  # Model constant from CGM (aperture split); not derived in this function
-        closure_fraction = 1 - aperture_fraction  # 97.93%
+        # ρ = δ_BU / m_a, Δ = 1 − ρ from shared closed-form δ_BU
+        aperture_fraction = BU_APERTURE_GAP
+        closure_fraction = BU_CLOSURE_RATIO
 
         # Relationships to other thresholds
         quantum_geometric = self.ona_threshold / self.bu_threshold  # K_QG
@@ -470,7 +481,7 @@ class CGMGeometricCoherence:
         print(
             f"   BU (Balance Universal - Aperture):       {self.bu_threshold:.6f} = 1/(2√(2π))"
         )
-        print(f"   BU Holonomy δ_BU:                      {self.bu_holonomy:.6f} rad")
+        print(f"   BU loop angle δ_BU:                     {self.bu_loop_angle:.6f} rad")
         print(
             f"\n   UNA→ONA Lift:                           {self.una_ona_lift:.6f} = π/4 - 1/√2"
         )
@@ -642,10 +653,10 @@ class CGMGeometricCoherence:
         # ===== Stage 8: Continued Fractions =====
         print("\n8. CONTINUED FRACTION ANALYSIS")
         print("-" * 9)
-        rho_bu = self.bu_holonomy / (2 * math.pi)
+        rho_bu = self.bu_loop_angle / (2 * math.pi)
         cf = self.continued_fraction(rho_bu)
         convs = self.convergents(cf)
-        print(f"   BU holonomy ratio ρ_BU = δ_BU/(2π) = {rho_bu:.10f}")
+        print(f"   Turn-normalized loop angle δ_BU/(2π) = {rho_bu:.10f}")
         print(f"   Continued fraction: {cf[:8]}...")
         if len(convs) >= 3:
             print(f"   Key convergents: {convs[0]}, {convs[1]}, {convs[2]}...")

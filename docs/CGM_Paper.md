@@ -47,7 +47,7 @@ The Common Governance Model (CGM) demonstrates that coherent recursive measureme
 
 - **Deductive:** Three-dimensional structure follows necessarily from the foundational axiom through formal specifications plus requirements for continuous physical implementation. Alternative dimensionalities are constructively excluded.
 - **Invariants:** The conditions fix three representation-independent constants: the quantum gravity horizon `Q_G = 4π` steradians, the holonomy defect `δ_BU ≈ 0.1953` radians, and aperture scale `m_a ≈ 0.1995`. Their ratio `δ_BU/m_a = 0.9793` determines both physical coupling and informational aperture.
-- **Phenomenological:** The kernel formula α₀ = δ_BU⁴/m_a gives α₀ ≈ 0.007299683 (+319 ppm relative to CODATA). With UV-IR transport corrections (companion analyses), α ≈ 0.007297352563 matches experimental synthesis to nine significant figures. The same geometric ratio predicts a 2.07% optimal aperture for discrete alignment systems. Preliminary evaluations show transformer architectures operating at six to eight times this value.
+- **Phenomenological:** The kernel formula α₀ = δ_BU⁴/m_a gives α₀ ≈ 0.007299683573 (about +319.43 ppm relative to CODATA 2018). With UV-IR transport corrections (companion analyses), α ≈ 0.007297352816, about 33.8 ppb from that CODATA reference. The same geometric ratio predicts a 2.07% optimal aperture for discrete alignment systems. Preliminary evaluations show transformer architectures operating at six to eight times this value.
 
 **Falsification Paths:**
 
@@ -870,9 +870,9 @@ sin(δ_BU/2) = 0.0974894411
 Therefore:
 
 ```
-δ_BU = 2 arctan(sin(δ_BU/2)/cos(δ_BU/2))
-     = 0.195342176580 rad
-     ≈ 11.2°
+δ_BU = 4 · arctan(k(π/4) · k(m_a))
+     ≈ 0.195342178258 rad
+     ≈ 11.19°
 ```
 
 **Verification:** The value is reproduced exactly by the TW closure test script (experiments/tw_closure_test.py). It is representation-independent because it depends only on the canonical UNA/ONA thresholds and the BU aperture scale.
@@ -971,27 +971,29 @@ The kernel electromagnetic coupling at the BU focus is:
 **Kernel evaluation:**
 
 ```
-α₀ = (0.195342)⁴ / 0.199471 = 0.007299683322
+α₀ = (δ_BU)⁴ / 0.199471 ≈ 0.007299683573
 ```
 
+with δ_BU = 4 · arctan(k(π/4) · k(m_a)) ≈ 0.195342178258.
+
 **Experimental comparison (kernel):**  
-From Morel et al. (2020):
+From Morel et al. (2020) / CODATA 2018:
 
 ```
 α^(-1) = 137.035999084(21)
-α_exp ≈ 0.0072973525693(11)
+α_exp ≈ 0.007297352569
 ```
 
-Relative deviation (α₀ vs α_exp): +319 ppm (+0.0316%).
+Relative deviation (α₀ vs α_exp): about +319.43 ppm.
 
 **Transport-corrected value:**  
-The full CGM formula (UV-IR curvature, holonomy transport, IR alignment; see companion fine-structure analysis) yields:
+The full CGM formula (UV-IR curvature, commutator transport, IR alignment; see companion fine-structure analysis) yields:
 
 ```
-α = 0.007297352563
+α ≈ 0.007297352816
 ```
 
-Agreement with α_exp: nine significant figures (0.043 ppb residual in the companion derivation).
+Residual versus CODATA 2018: about 33.8 ppb.
 
 ##### Why This Predicts Electromagnetic Coupling
 
@@ -1078,7 +1080,7 @@ The construction is falsifiable through:
 - Positive O(δ_BU⁶) correction at the Thomson limit (violates dual-pole symmetry)
 - Alternative geometric construction achieving comparable match
 
-**Current status:** Kernel α₀ is fixed at +319 ppm relative to experiment. The transport-corrected α matches experiment to nine significant figures; independent validation of the correction chain and higher-order terms remains necessary.
+**Current status:** Kernel α₀ is fixed at about +319.43 ppm relative to CODATA 2018. The transport-corrected α is about 33.8 ppb from that reference; independent validation of the correction chain and higher-order terms remains necessary.
 
 ### Application to Artificial Intelligence
 
@@ -1541,9 +1543,9 @@ The framework is multiply falsifiable. Here are the specific ways to demonstrate
 
 #### 4. Experimental Disagreement with α
 
-**Test:** Precision measurements of fine-structure constant α(0) at Thomson limit disagree with the transport-corrected CGM value α = 0.007297352563 beyond combined uncertainties.
+**Test:** Precision measurements of fine-structure constant α(0) at Thomson limit disagree with the transport-corrected CGM value α ≈ 0.007297352816 beyond combined uncertainties.
 
-**Current status:** Morel et al. (2020) gives α^(-1) = 137.035999084(21), matching the transport-corrected CGM prediction to nine significant figures. The kernel value α₀ = 0.007299683322 differs by 319 ppm.
+**Current status:** Morel et al. (2020) gives α^(-1) = 137.035999084(21). The transport-corrected CGM prediction differs by about 33.8 ppb. The kernel value α₀ ≈ 0.007299683573 differs by about 319.43 ppm.
 
 **Required precision:** Future experiments with δα/α < 10^(-10) that systematically deviate from CGM prediction.
 
@@ -1878,22 +1880,22 @@ Dual-pole loop:
   cos(δ_BU/2) = 0.9952361763
   sin(δ_BU/2) = 0.0974894411
 
-BU holonomy defect:
-  δ_BU = 0.195342176580 rad
-  δ_BU ≈ 11.19° ≈ π/16 (within 0.5%)
+BU dual-pole loop angle:
+  δ_BU = 4 · arctan(k(π/4) · k(m_a)) ≈ 0.195342178258 rad
+  δ_BU ≈ 11.19°
 
 Aperture ratio:
   δ_BU/m_a = 0.9793
   Aperture = 1 - 0.9793 = 0.0207 = 2.07%
 
 Fine-structure (kernel):
-  α₀ = δ_BU⁴/m_a = 0.007299683322
-  Experimental: 0.0072973525693(11)
-  Deviation: +319 ppm
+  α₀ = δ_BU⁴/m_a ≈ 0.007299683573
+  Experimental (CODATA 2018): 0.007297352569
+  Deviation: about +319.43 ppm
 
 Fine-structure (transport-corrected):
-  α = 0.007297352563
-  Agreement with experiment: 9 significant digits
+  α ≈ 0.007297352816
+  Residual vs CODATA 2018: about 33.8 ppb
 ```
 
 **5. GyroDiagnostics Evaluation**

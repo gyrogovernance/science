@@ -38,6 +38,7 @@ from hqvm_gravity_common import (
     Delta,
     G_meas,
     v_EW,
+    tau_g_stf_depth,
     tau_g_with_c4,
     C4_REF,
     binom_shell,
@@ -67,7 +68,7 @@ from gyroscopic.hQVM.constants import CHIRALITY_MASK_6, step_state_by_byte
 configure_stdout_utf8()
 
 g1 = dln_g_dpsi()
-tau_G_full = tau_g_with_c4(C4_REF)
+tau_G_full = tau_g_stf_depth()
 s_h = horizon_s_analytic(g1)
 psi_ph, s_ph, b_ph = photon_geometry_analytic(g1)
 G_SI = 6.674e-11

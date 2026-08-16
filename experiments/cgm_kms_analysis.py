@@ -95,7 +95,7 @@ class CGM:
     """CGM constants used here only to define A* and related derived values."""
 
     m_a: float = 1.0 / (2.0 * math.sqrt(2.0 * math.pi))
-    delta_BU: float = 0.195342176580
+    delta_BU: float = 0.1953421782576621
 
     @property
     def A_star(self) -> float:

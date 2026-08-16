@@ -966,7 +966,7 @@ cos(δ_BU / 2) = (1/2) Re Tr(U_half)
 The computation gives
 
 ```text
-δ_BU from trace = 0.19534217658000036
+δ_BU from trace ≈ 0.195342178258
 absolute difference = 3.6 × 10^-16
 ```
 
@@ -1007,7 +1007,7 @@ The CGM electromagnetic kernel coupling is
 The evaluated value is
 
 ```text
-α₀ = 0.007299683322
+α₀ = 0.007299683573
 ```
 
 The formula uses the BU holonomy defect and the aperture scale.

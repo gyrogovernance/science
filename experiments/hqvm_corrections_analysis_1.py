@@ -12,22 +12,24 @@ Definitions and formulas:
 1) Aperture parameter:
     m_a = 1 / (2 * sqrt(2π))
 
-2) BU Dual-Pole Loop:
-   δ = δ_BU
+2) BU Dual-Pole Loop angle:
+   δ_BU = 4 · arctan(k(π/4) · k(m_a)),  k(β) = β / (1 + √(1 − β²))
 
 3) Aperture gap:
-   Δ = 1 - δ / m_a
+   Δ = 1 - δ_BU / m_a
+   ρ = δ_BU / m_a
    Δ² = Δ^2
    Δ⁴ = Δ^4
 
 4) Universal correction operator components (weights set to unity here):
    C_AB = [1 - (3/4) * R * Δ²]
-   C_HC = [1 - (5/6) * ((φ / (3δ)) - 1) * (1 - Δ² * h) * Δ² / (4π√3)]
+   C_HC = [1 - (5/6) * ((φ_SU2 / (3δ_BU)) - 1) * (1 - Δ² * h) * Δ² / (4π√3)]
    C_IDE = [1 + (1/ρ) * diff * Δ⁴]
-   with φ = 3δ + diff, R the curvature ratio, h the holonomy ratio, and 1/ρ the inverse closure fraction.
+   with φ_SU2 = 2 arccos((1+2√2)/4), diff = φ_SU2 - 3δ_BU, R the curvature ratio,
+   h the holonomy ratio, and 1/ρ the inverse closure fraction.
 
 5) Fine-structure constant sequence:
-   α₀ = δ⁴ / m_a
+   α₀ = δ_BU⁴ / m_a
    α₁ = α₀ * C_AB
    α₂ = α₁ * C_HC
    α   = α₂ * C_IDE
@@ -119,6 +121,26 @@ def _a0(H0_km_s_Mpc: Decimal, c_m_s: Decimal, pi_: Decimal) -> Decimal:
     return (c_m_s * H0_s_inv) / (Decimal(2) * pi_)
 
 
+def _delta_bu(mp_: Decimal) -> Decimal:
+    """δ_BU = 4 · arctan(k(π/4) · k(m_a))."""
+    import mpmath as mp
+
+    mp.mp.dps = 50
+    ma = mp.mpf(str(mp_))
+    th = mp.pi / 4
+    k = lambda b: b / (1 + mp.sqrt(1 - b * b))
+    d = 4 * mp.atan(k(th) * k(ma))
+    return Decimal(str(d))
+
+
+def _phi_su2() -> Decimal:
+    """φ_SU2 = 2 · arccos((1 + 2√2) / 4)."""
+    import mpmath as mp
+
+    mp.mp.dps = 50
+    return Decimal(str(2 * mp.acos((1 + 2 * mp.sqrt(2)) / 4)))
+
+
 def main() -> None:
     """
     Executes a single run computing:
@@ -131,12 +153,14 @@ def main() -> None:
     pi_ = _pi()
     mp_ = _mp(pi_)
 
-    # Fixed geometric parameters (Decimal)
-    d = Decimal("0.195342176580")  # δ_BU
+    # Closed-form geometric parameters
+    d = _delta_bu(mp_)
     R = Decimal("0.993434896272")
     h = Decimal("4.417034")
-    rho_inv = Decimal("1.021137")  # 1/ρ
-    diff = Decimal("0.001874")  # φ - 3δ
+    phi = _phi_su2()
+    diff = phi - Decimal(3) * d
+    rho = d / mp_
+    rho_inv = Decimal(1) / rho
 
     # Alpha sequence and correction factors
     a0, a1, a2, a3, c_ab, c_hc, c_ide = _alpha_sequence(

@@ -108,7 +108,7 @@ from hqvm_wavefunction_kernel import (
 
 # Constants
 M_A = 1.0 / (2.0 * np.sqrt(2.0 * np.pi))
-DELTA_BU = 0.195342176580
+DELTA_BU = 0.1953421782576621
 RHO = DELTA_BU / M_A
 DELTA = 1.0 - RHO
 INV48 = 1.0 / 48.0

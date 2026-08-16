@@ -15,19 +15,32 @@ the gyration cycle verified by wavefunction diagnostics (T2-T6).
 Dependencies: numpy, astropy, scipy
 """
 import math
+import os
+import sys
 from typing import Any, Dict, List, Optional, Tuple, TypedDict
 import astropy.constants as astro_constants
 import astropy.units as u
 import numpy as np
 from scipy.optimize import brentq
 
+_REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if _REPO not in sys.path:
+    sys.path.insert(0, _REPO)
+
+from gyroscopic.hQVM.constants import (
+    BU_APERTURE_GAP,
+    BU_CLOSURE_RATIO,
+    BU_HOLONOMY_ANGLE,
+    M_A as _M_A,
+)
+
 # =====================================================================
 # 1. CGM Fundamental Constants
 # =====================================================================
-M_A: float = 1 / (2 * math.sqrt(2 * math.pi))
-DELTA_BU: float = 0.195342176580
-RHO: float = DELTA_BU / M_A
-DELTA: float = 1 - RHO
+M_A: float = _M_A
+DELTA_BU: float = BU_HOLONOMY_ANGLE
+RHO: float = BU_CLOSURE_RATIO
+DELTA: float = BU_APERTURE_GAP
 EPSILON: float = M_A - DELTA_BU
 Q_G: float = 4 * math.pi
 OMEGA_SIZE: int = 4096

@@ -49,7 +49,7 @@ The analysis employs multiple complementary measures:
 
 **Triangle Analysis**: Examination of 45-45-90, 30-60-90, and CGM gyrotriangle for geometric validation
 
-**Holonomy Calculations**: BU holonomy δ_BU analysis through continued fractions
+**Holonomy Calculations**: BU dual-pole loop angle δ_BU analysis through continued fractions
 
 ### 2.3 Computational Implementation
 
@@ -147,16 +147,16 @@ The quantum gravity invariant Q_G = 4π steradians emerges as the fundamental or
 **Quantum Geometric Constant**:
 K_QG = 3.937402 appears both as π²/√(2π) (theoretical) and (π/4)/ m_a (empirical), confirming internal consistency. The CS amplification factor of 7.874805 demonstrates recursive magnification through the geometric hierarchy.
 
-### 3.6 Aperture Balance and Holonomy
+### 3.6 Aperture Balance and Loop Angle
 
-The theoretical 97.93%/2.07% split is confirmed through:
+With δ_BU = 4 · arctan(k(π/4) · k(m_a)) and k(β) = β/(1 + √(1 − β²)), the ratios ρ = δ_BU/m_a ≈ 0.979300454497 and Δ = 1 − ρ ≈ 0.020699545503 fix the 97.93%/2.07% split. The geometric checks are:
 - Q_G × m_a² = 0.500000 (exact 1/2)
 - Structural closure: 97.93%
 - Dynamic aperture: 2.07%
-- BU holonomy: δ_BU = 0.195342 rad
+- BU dual-pole loop angle: δ_BU ≈ 0.195342178258 rad
 
-**Holonomy Analysis**:
-The BU holonomy yields continued fraction [0, 32, 6, 16, 1, 2, 1, 1...] with final convergent (157531, 5066988), indicating near-perfect closure after approximately 5 million recursive cycles. This suggests long-range order emerging from local geometric rules.
+**Continued fraction of the turn-normalized loop angle:**
+The ratio δ_BU/(2π) yields continued fraction [0, 32, 6, 16, 1, 2, 1, 1...] with final convergent (179383, 5769858) at twelve terms, indicating near-perfect closure after approximately 5.8 million recursive cycles. This suggests long-range order emerging from local geometric rules.
 
 ### 3.7 Robustness Across Normalizations
 
@@ -204,7 +204,7 @@ The zero defect of the CGM gyrotriangle provides crucial validation that the thr
 
 ### 4.5 Implications for Physical Systems
 
-The universal appearance of the 97.93%/2.07% balance across scales suggests this ratio represents an optimal solution to the stability-dynamics trade-off. The holonomy analysis revealing near-closure after 5 million cycles indicates that systems maintaining this balance can achieve both local stability and long-range order through recursive geometric principles.
+The universal appearance of the 97.93%/2.07% balance across scales suggests this ratio represents an optimal solution to the stability-dynamics trade-off. The loop-angle continued-fraction analysis revealing near-closure after about 5.8 million cycles indicates that systems maintaining this balance can achieve both local stability and long-range order through recursive geometric principles.
 
 ## 5. Conclusions
 
@@ -220,7 +220,7 @@ This geometric coherence analysis validates the Common Governance Model's theore
 
 5. **Quantum Gravity Foundation**: Q_G = 4π serves as the fundamental organizing principle, with all geometric relationships expressible as fractions of this invariant
 
-6. **Validated Balance**: The 97.93%/2.07% aperture split emerges from geometric necessity, with holonomy analysis revealing long-range order
+6. **Validated Balance**: The 97.93%/2.07% aperture split emerges from geometric necessity, with loop-angle continued-fraction analysis revealing long-range order
 
 7. **Robustness**: Results persist across different normalization schemes, confirming fundamental nature of relationships
 
@@ -240,7 +240,7 @@ Several avenues warrant further investigation:
 - Analysis of dynamic transitions between geometric states using differential geometry
 - Investigation of fractional dimensional scaling between integer dimensions
 - Application to specific physical systems exhibiting the 97.93%/2.07% balance
-- Exploration of the relationship between holonomy patterns and observed periodicity in natural systems
+- Exploration of the relationship between loop-angle continued-fraction patterns and observed periodicity in natural systems
 - Development of experimental tests for geometric predictions in quantum and gravitational contexts
 
 The geometric coherence demonstrated here suggests that CGM principles may provide insight into fundamental questions of quantum gravity, cosmological structure formation, and the emergence of complexity in natural systems through the universal language of geometry.

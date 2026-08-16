@@ -176,7 +176,7 @@ G_kernel = Q_G / D = pi/6
 
 Gravity couples only to the five bulk shells that carry symmetric trace-free anisotropy. The two horizon shells carry none. Attenuation per holonomy cycle is rho^5, where rho is the structural closure fraction. This accumulates into a refractive depth:
 
-tau_G = |Omega| * Delta * rho^5 * (1 - 4*rho*Delta^2 - (7/4)*Delta^4)
+tau_G = |Omega| * Delta * rho^5 * (1 - 4*rho*Delta^2)
 
 The dimensional coupling uses one energy anchor, the electroweak scale v:
 

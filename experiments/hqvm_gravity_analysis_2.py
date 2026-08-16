@@ -41,6 +41,10 @@ if str(_REPO) not in sys.path:
     sys.path.insert(0, str(_REPO))
 
 from gyroscopic.hQVM.constants import (
+    BU_APERTURE_GAP,
+    BU_CLOSURE_RATIO,
+    BU_HOLONOMY_ANGLE,
+    M_A,
     GENE_MAC_REST,
     GENE_MIC_S,
     GENE_MAC_A12,
@@ -72,10 +76,9 @@ configure_stdout_utf8()
 # Constants
 # ============================================================
 
-DELTA_BU = 0.195342176580
-M_A = 1.0 / (2.0 * sqrt(2.0 * pi))
-RHO = DELTA_BU / M_A
-DELTA = 1.0 - RHO
+DELTA_BU = BU_HOLONOMY_ANGLE
+RHO = BU_CLOSURE_RATIO
+DELTA = BU_APERTURE_GAP
 F_ORDERED = 1.0 - 4.0 * RHO * DELTA**2
 
 OMEGA_SIZE = 4096

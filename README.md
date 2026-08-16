@@ -44,8 +44,8 @@ Canonical repository: [superintelligence](https://github.com/gyrogovernance/supe
 
 ## Headline results
 
-* **Newton's constant G** computed from kernel geometry using the electroweak Higgs scale as the sole measured input. The result matches the CODATA reference value to 0.074 parts per million.
-* **Fine-structure constant α** computed from the same geometry, matching the experimental value to 0.043 parts per billion.
+* **Newton's constant G** computed from kernel geometry using the electroweak Higgs scale as the sole measured input. The weak-field prediction lies about +2.99 parts per million from the CODATA reference value (CODATA G uncertainty ≈ 22 ppm).
+* **Fine-structure constant α** from the same geometry: base α₀ about 319.43 ppm from CODATA 2018; aperture-corrected α about 33.8 ppb from that reference.
 * **Three-dimensional space with six degrees of freedom** derived as a theorem of the framework. Explicit proofs exclude two-dimensional and higher-dimensional alternatives.
 * **Electroweak particle masses** (Higgs, Z, W, top) and the **weak mixing angle** derived from the same geometric structure that fixes G.
 * **W/Z boson mass ratio test:** The framework gives a closed-form relation for m_W/m_Z in terms of the independently derived parameter Δ ≈ 0.0207. Using PDG (Particle Data Group) masses, the implied Δ differs from the holonomy-derived Δ by 8.34 × 10⁻¹⁰ (absolute).

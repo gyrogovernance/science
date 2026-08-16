@@ -65,6 +65,7 @@ from hqvm_gravity_common import (
     photon_sphere_closed,
     psi_point_mass,
     rho,
+    tau_g_stf_depth,
     tau_g_with_c4,
     v_EW,
 )
@@ -811,7 +812,7 @@ def section_I():
     print()
     print("DERIVATION CHAIN FOR c:")
     print("  Kernel: Q_G, G_kernel, tau_G, Delta, m_a")
-    print("  => G to 0.074 ppm => alpha_0 = delta_BU^4/m_a")
+    print("  => G from tau_G (weak-field) => alpha_0 = delta_BU^4/m_a")
     print("  => hbar from alpha = e^2/(4*pi*eps_0*hbar*c)")
     print("  => c from M_Planck = sqrt(hbar*c/G)")
     print()

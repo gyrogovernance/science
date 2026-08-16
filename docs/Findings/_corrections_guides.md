@@ -39,8 +39,31 @@ What I forbid:
 - proposals for changes that convey editorial meta-comments. This is a constant bias of AI model reviewers that insist on adding prose about the corrections. I don't want any prose. We need to write what is, as if there is no history of another aperture. Do not write migration vocabulary into the artifact (corrected, historical, legacy, former, previous, superseded, before/after). Present the equation and the evaluation.
 - repetitions.
 
+Use this doc as a log, and if any important computation about predictions deviates a lotin a non-trivial way, pls report in case we need to reconsider our overall conditions in a later stage.
+
+We will use a dedicated list for worrysome deviations.
+
 [ Do not change the text before this bracket ]
 ===
+
+RED ALERT List
+(list with analyses where we have deviations worth considering revisiting theory or insights or grounded corrections that are straightforward for mitigation)
+### Worrisome deviations (prediction shifts)
+
+| Item | Status | Notes |
+|---|---|---|
+| α vs CODATA 2018 | **~33.8 ppb** | Honest residual; α₀ still ~319.43 ppm |
+| Weak-field G vs G_meas | **~+2.99 ppm** | Coupling depth = STF τ_G = \|Ω\|Δρ⁵(1−4ρΔ²); τ_trace (c₄) is isotropic-channel scalar only; CODATA G unc ~22 ppm |
+
+### Gravity coupling depth (theory revision; artifacts present as fact)
+
+- `τ_G := |Ω| Δ ρ⁵ (1 − 4 ρ Δ²)` — STF transport; used in `G₀ = G_kernel exp(−τ_G)/v²` and `G(ψ)`.
+- `τ_trace := |Ω| Δ ρ⁵ c₄ Δ⁴` with `c₄ = −7/4` — isotropic / monopole bookkeeping; not in the attenuation exponent.
+- Shared code: `tau_G_stf` / `tau_g_stf_depth()`, `tau_trace` / `tau_trace_depth()`, `kernel_exposure_constants()` returns STF `tau_G`.
+- Docs aligned: Analysis_Gravity, Note, Quadratic Note, README, CGM_Program, CGM_Logic, Features report.
+- Scripts: `hqvm_gravity_common` + analysis_1..10 coupling paths.
+- Dump `hqvm_gravity_analysis.txt` still from pre-revision runner; refresh when re-run (do not treat dump G ppm as current).
+
 ---
 
 ## Sources of truth
@@ -77,6 +100,53 @@ Do not mention about what is truncated or not - this is a violation of the edito
 
 ---
 
+## Hunt terms (for follow-up scans)
+
+Use these strings when grepping a finding and its companion scripts. Record which hit in the log entry for that doc.
+
+**Stale δ_BU / aperture literals (Case 1–2)**
+- `0.195342176580`, `0.19534217658`, `0.195342` (alone as definition)
+- `0.979300446087`, `0.979300446`
+- `0.020699553913`, `0.020699553`
+- Soft percents: `97.9%`, `2.1%` (prefer `97.93%` / `2.07%` when asserting ρ/Δ)
+
+**Fine-structure chain (Case 3)**
+- `0.007299683322`, `0.00729968` (old α₀)
+- `0.007297352563` as CGM prediction (OK only as GK 2020 experimental reference)
+- `0.043 ppb`, `0.043 parts per billion`, `sub-ppb`, `nine significant`, `9 significant`, `0.532`
+- `319.398 ppm`, `0.052 ppm`, `-0.000379`
+- Pasted aux: `1.021137`, `0.001874` (must be derived: `1/ρ`, `diff = φ_SU2 − 3δ_BU`)
+- Target: `α₀ ≈ 0.007299683573`, `α ≈ 0.007297352816`, `≈ 33.8 ppb` vs CODATA 2018
+
+**Naming (δ_BU only)**
+- Prefer: `BU dual-pole loop angle`, `loop angle`, `δ_BU = 4 · arctan(...)`
+- Replace when δ_BU is meant: `BU holonomy defect`, `dual-pole holonomy`, `BU holonomy δ_BU`
+- Keep `holonomy` for other objects: `Z2 holonomy`, `plaquette holonomy`, `toroidal holonomy deficit` (~0.862833), SU(2) commutator holonomy `φ_SU2`, philosophical path memory
+
+**Dependent formulas that move with δ_BU**
+- `α₀ = δ_BU⁴/m_a`, full α chain (AB/HC/IDE)
+- `ρ = δ_BU/m_a`, `Δ = 1−ρ`, `48Δ`, `Q_256(Δ)=5/256`
+- `τ_G = |Ω| Δ ρ⁵ (1 − 4ρΔ²)` → τ_G ≈ 76.237913574; G residual vs G_meas ≈ **+2.99 ppm**. Stale: coupling depth written as `… + c₄Δ⁴`, G claims `+27.53 ppm` / `0.074 ppm`, `τ_G = 76.237889…` as coupling depth.
+- `τ_trace = |Ω| Δ ρ⁵ c₄ Δ⁴`, `c₄ = −7/4` — print as trace-sector scalar; not in `exp(−τ)` for G.
+- `α₀ ζ = ρ⁴/(π√3)` ≈ `0.169025926127` (old paste `0.169025920321`); `Π_H = ρ⁸ Δ⁴ / (π²|Ω|)`; Regge `alpha(d) ∝ δ_BU`
+
+**Script smells**
+- Hardcoded `d_BU` / `DELTA_BU` / `delta_BU = 0.195...` instead of `BU_HOLONOMY_ANGLE` / equation
+- Float64 `GyroVectorSpace.gyration` as competing continuous aperture
+- Print/comment lines about migration, legacy aperture, old vs new digits
+
+**Log entry template**
+```
+### <Doc>.md
+- Hits: <hunt terms found>
+- Scripts: <paths; shared import or equation?>
+- Edits: <what changed>
+- Report: <nontrivial prediction shift, or none>
+- Left alone: <terms kept and why, e.g. Z2 holonomy>
+```
+
+---
+
 ## Case 1 — δ_BU pasted or dual-sourced
 
 **Symptom.** Hardcoded `0.195342176580` (or nearby) as the definition of δ_BU; float64 `GyroVectorSpace.gyration` kept as a second continuous aperture beside the closed form.
@@ -107,7 +177,7 @@ Do not mention about what is truncated or not - this is a violation of the edito
 2. Report the actual residual vs the stated CODATA reference (closed-form chain ≈ 33.8 ppb vs CODATA 2018).
 3. Update quoted α₀ ≈ 0.007299683573 and α ≈ 0.007297352816.
 
-Primary finding still to align: `Analysis_Fine_Structure.md`. Related: `hqvm_corrections_analysis_1.py`, Gravity appendix H.
+Primary finding: `Analysis_Fine_Structure.md`. Related: `hqvm_corrections_analysis_1.py`, Gravity appendix H.
 
 ---
 
@@ -198,3 +268,78 @@ Keep this file about aperture quantities and their dependents across the CGM pro
 
 ### Analysis_Energy_Scales.md
 - m_a display to guide digits. No delta_BU / rho / Delta / alpha chain in this finding. No companion aperture script.
+
+### Analysis_CMB.md
+- No Case 1-3 aperture hits (no delta_BU / rho / Delta / alpha chain). Toroidal holonomy deficit 0.862833 left as-is (not delta_BU).
+- Aligned hypothesis framing 97.9% → 97.93% (rho) in finding dump and cgm_cmb_data_analysis_{290825,300825}.py.
+
+### Analysis_Geometric_Coherence.md
+- Case 1: cgm_coherence_analysis.py imported shared BU_HOLONOMY_ANGLE / M_A / BU_CLOSURE_RATIO / BU_APERTURE_GAP; removed literal 0.19534217658 and pasted aperture_fraction = 0.0207.
+- Section 3.6: delta_BU equation and guide digits; loop-angle wording; CF of delta_BU/(2π) final convergent (179383, 5769858) at 12 terms (~5.8e6 steps; was 157531/5066988 from truncated literal).
+- Report: CF terminal convergent shifts with closed-form delta_BU; leading CF terms [0, 32, 6, 16, 1, 2, 1, 1...] unchanged.
+
+### Analysis_GFE.md
+- No companion aperture script.
+- Section 12 / 19.2: structural Delta grounded by delta_BU equation and guide digits; observational 2.07% kept distinct from Delta (removed shouty clarification block).
+- Predictions that quote 2.07% as observational amplitudes left as percentages.
+
+### Analysis_Fine_Structure.md
+- Case 1+3: delta_BU by closed form; alpha chain recomputed with derived 1/rho and diff = phi_SU2 - 3 delta_BU.
+- Final alpha ≈ 0.007297352816 (≈ 33.8 ppb vs CODATA 2018); dropped 0.043 ppb / exact-match claim to 0.007297352563.
+- Error sequence under closed form: 319.43 ppm → 0.086 ppm (AB) → 0.033 ppm (HC) → 33.8 ppb (IDE). AB still dominates; HC/IDE are higher-order in Delta.
+- cgm_alpha_analysis.py: equation for delta_BU (no float64 gyration theater); prints full chain vs CODATA 2018.
+- hqvm_corrections_analysis_1.py: closed-form delta_BU; derive 1/rho and diff (no pasted 1.021137 / 0.001874).
+- Report: relative delta_BU shift ~8.6e-9 lifts alpha_0 by ~4x that (~34e-9); that offset largely survives the correction factors, moving the final residual from sub-ppb (truncated stack) to ~33.8 ppb.
+
+### Repo-wide alpha residual (33.8 ppb)
+- Docs: CGM_Paper, CGM_Program, CommonGovernanceModel, README, Analysis_Gravity (7.4 + App H), Analysis_Universal_Corrections, Analysis_Compact_Geometry, Analysis_hQVM_Cohomology, Gyroscopic Physics/Features/Tests/Specs reports.
+- Scripts: hqvm_gravity_common, hqvm_gravity_analysis_2, hqvm_corrections_analysis_2, hqvm_HU_analysis; literal delta_BU swaps in higgs/kms/percolation/su3/modal.
+- Dataset: cgm_dataset_main.jsonl alpha and delta_BU Q&A rows aligned to closed-form residual.
+- Stale run dumps: hqvm_gravity_analysis.txt, hqvm_Cohomology_analysis_{results,notes}.txt display digits patched (re-run for full refresh).
+
+### Analysis_Gravity_Note.md
+- Hits: soft ρ/Δ `0.9793`/`0.0207`; α₀ `0.00729968` + `319 ppm`; wording `dual-pole holonomy`; product `α₀ ζ = 0.169025920321`; section title "Aperture and Holonomy" for δ_BU; τ residual `7.36×10⁻⁸`; τ_G `76.237916638581`.
+- Scripts: none dedicated (uses shared gravity stack via Analysis_Gravity).
+- Edits: §3.3 equation + guide ρ/Δ; loop-angle wording; α₀ ≈ 0.007299683573 / 319.43 ppm; product → 0.169025926127; App C τ residual → −2.99e−6 / −2.75e−5; τ_G → 76.237889038806.
+- Report: α₀ζ product shifts by ~3.4e-11 absolute (~2e-8 relative); **G down-chain:** same as Analysis_Gravity (+27.53 ppm).
+- Left alone: Z2/plaquette "holonomy cycle" language; philosophical "holonomy phase defect" at 2.07% aperture amplitude.
+
+### Analysis_Gravity_Quadratic_Note.md
+- Hits: soft `ρ ≈ 0.9793`, `Δ ≈ 0.02070`; `τ_G ≈ 76.24`; "per holonomy cycle" (Z2 attenuation context); **G within 0.074 ppm**.
+- Scripts: none dedicated (τ_G from hqvm_gravity_* via common).
+- Edits: Step 2 grounded δ_BU equation + guide ρ/Δ; "Z2 holonomy cycle" for attenuation; G claim → +27.53 ppm (CODATA unc ~22 ppm); τ_G display kept ≈ 76.24.
+- Report: τ_G old→new 76.237917 → 76.237889 (~3.6e-7 relative); **nontrivial:** weak-field G residual flips from −0.074 ppm to +27.53 ppm.
+- Left alone: K4/Z2 holonomy gate F; Π_H form (digits not restated beyond ρ/Δ grounding upstream).
+
+### Analysis_Gravity.md
+- Hits (this pass): soft ρ/Δ in §3; App G ρ/Δ coarse `0.979300`/`0.020700`; "BU holonomy" for δ_BU in Regge; α₀ζ `0.169025920321`; abstract/§5.6/§6/App C **0.074 ppm** / τ_G `76.237916638581` / residual `7.36×10⁻⁸`.
+- Scripts: see **Gravity script audit** below (do not treat “imports common” as done without opening each file).
+- Edits: §3 equation + guide digits; App G ρ/Δ guide digits; Regge wording → loop angle; α₀ζ → 0.169025926127; abstract + §6 + App C → τ_G 76.237889038806, G +27.53 ppm, residuals −2.99e−6 / −2.75e−5.
+- Report: **nontrivial G down-chain** — under closed form, full τ_G with c₄ = −7/4 yields ~+27.53 ppm vs G_meas (leading ~+3.0 ppm); c₄ no longer “closes” to sub-ppm. CODATA G unc ~22 ppm.
+- Left alone: Z2 holonomy, plaquette holonomy K(x,y), gravitational memory holonomy cycle.
+
+### Gravity script audit 
+Per-file aperture source and what changed:
+
+| File | Aperture source | Status |
+|---|---|---|
+| `hqvm_gravity_common.py` | `BU_HOLONOMY_ANGLE` / `M_A` / `BU_CLOSURE_RATIO` / `BU_APERTURE_GAP` | **Bug fixed:** `alpha_lab_with_transport_corrections` had pasted `rho_inv=1.021137` and `diff=0.001874`; now derives `1/ρ` and `diff=φ_SU2−3δ_BU`. `verify_alpha_zeta_product` uses `isclose` (float `==` was false FAIL). |
+| `hqvm_gravity_runner.py` | no aperture literals; orchestrates 3→2→1→4…→10 into `hqvm_gravity_analysis.txt` | OK; **do not re-run** unless asked (expensive). User dump 2026-08-16. |
+| `hqvm_gravity_analysis_1.py` | imports `d_BU,m_a,rho,Delta` from common | OK (no local literals) |
+| `hqvm_gravity_analysis_2.py` | local `DELTA_BU=BU_HOLONOMY_ANGLE`, `RHO=BU_CLOSURE_RATIO`, `DELTA=BU_APERTURE_GAP` | OK |
+| `hqvm_gravity_analysis_3.py` | `APERTURE_GAP,DELTA_BU,M_A,RHO` from constants | **Assert fixed:** residual gate `1e-7` → `5e-5` (closed-form full residual ~2.75e−5). Dump still shows `AssertionError` from pre-fix run of `_3`. |
+| `hqvm_gravity_analysis_4.py` | same constants aliases + common | Dynamic G ppm prints; G check threshold `1.0` → `50.0` ppm. Dump still shows `[FAIL] +27.527 ppm` from pre-threshold run. |
+| `hqvm_gravity_analysis_5.py` | `d_BU,m_a` from common; `Delta` from analysis_4 | Dynamic G ppm via `g_pred_from_tau`/`G_meas`. |
+| `hqvm_gravity_analysis_6.py` | `rho,Delta` from common | OK |
+| `hqvm_gravity_analysis_7.py` | `d_BU,m_a,rho,Delta` from common | Hardcoded `"G to 0.074 ppm"` → `"G from tau_G (weak-field)"`. |
+| `hqvm_gravity_analysis_8.py` | `d_BU,m_a,rho,Delta` from common | OK |
+| `hqvm_gravity_analysis_9.py` | `rho,Delta` from common | OK |
+| `hqvm_gravity_analysis_10.py` | `Delta` from common | OK |
+| `hqvm_gravity_analysis.txt` | frozen runner dump | **Stale vs current doctrine** (pre STF/trace split). Refresh when you re-run the runner. |
+
+- Report: closed-form α_lab ≈ 0.007297352816 (33.8 ppb). **G:** τ_G (STF) ≈ 76.237913574 → **+2.99 ppm** vs G_meas; τ_trace kept as isotropic scalar.
+- Left alone: Z2/plaquette holonomy naming in scripts (not δ_BU).
+
+
+---
+

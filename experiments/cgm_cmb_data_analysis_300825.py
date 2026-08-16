@@ -822,7 +822,7 @@ def main():
     print_config(config)
 
     print("CGM INTERFERENCE PATTERN ANALYSIS v3.0")
-    print("Testing: We're inside a 97.9% closed toroidal structure")
+    print("Testing: We're inside a 97.93% closed toroidal structure")
     print("Focus: Atomic orbital analogy and micro-scale coherence in CMB harmonics")
     print()
 

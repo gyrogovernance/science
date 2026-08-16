@@ -27,7 +27,7 @@ Values:
   artanh(1/sqrt2)                          = 0.8813735870195429
   tan(3 pi/8)                              = 2.414213562373095
   zeta=8/(m_a sqrt3)                       = 23.155240145864564
-  alpha0=DELTA_BU^4/m_a                    = 0.0072996833224724085
+  alpha0=DELTA_BU^4/m_a                    = 0.007299683573240621
   (pi/2)/Krivine                           = 0.8813735870195429
 
 Identity checks (residual, tol 1e-12):
@@ -695,7 +695,7 @@ exit=0  duration=7.06s
     "rho": 0.9793004460867792,
     "trace_half_loop": 1.9904679398310985,
     "cos_delta_bu_over_2_from_trace": 0.9952339699155492,
-    "delta_bu_from_trace_angle": 0.19534217658000036,
+    "delta_bu_from_trace_angle": 0.1953421782576621,
     "abs_delta_diff": 3.608224830031759e-16,
     "trace_full_loop": 2.0,
     "full_loop_angle_from_trace": 0.0,

@@ -413,11 +413,11 @@ delta_BU read in SU(2) fundamental rep via the depth-4 dual-pole loop
 R_y(delta_BU) R_x(pi) R_y(delta_BU) R_x(pi); half-turn trace gives the
 class-function identity.
 
-  delta_BU:                    0.195342176580
-  rho = delta_BU/m_a:          0.979300446087
+  delta_BU:                    0.195342178258
+  rho = delta_BU/m_a:          0.979300454497
   Re Tr(U_half):               1.99046794
   cos(delta_BU/2) from trace:  0.99523397
-  delta_BU from trace angle:   0.19534217658000036
+  delta_BU from trace angle:   0.1953421782576621
   abs diff:                    3.6e-16
   Re Tr(U_full loop):          2.0  (full loop closes to identity)
 

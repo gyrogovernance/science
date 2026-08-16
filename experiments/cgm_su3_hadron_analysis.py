@@ -50,7 +50,7 @@ def su3_hadron_checks():
 
     # CGM invariants to compare
     m_a = 1 / (2 * sqrt(2 * pi))
-    rho = 0.195342176580 / m_a
+    rho = 0.1953421782576621 / m_a
     Delta = 1 - rho  # ~ 0.0206995539
 
     # 1) Baryon GMO: 2N + 2Ξ ?= 3Λ + Σ

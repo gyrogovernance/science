@@ -593,15 +593,15 @@ The entangling power of the byte algebra operates between the A and B manifolds 
 
 ### 10.1 The CGM Holonomy Defect
 
-The Common Governance Model derives a representation-independent constant from the depth-4 closure condition: the BU holonomy defect δ_BU = 0.195342176580 radians. This is the residual geometric phase of the dual-pole loop in the BU stage of the CGM framework.
+The Common Governance Model derives a representation-independent constant from the depth-4 closure condition: the BU dual-pole loop angle δ_BU = 4 · arctan(k(π/4) · k(m_a)) ≈ 0.195342178258 radians. This is the residual geometric phase of the dual-pole loop in the BU stage of the CGM framework.
 
 The ratio δ_BU / m_a = 0.9793, where m_a = 1/(2√(2π)) is the CGM aperture scale, yields the canonical aperture:
 
 ```
-Δ = 1 − δ_BU/m_a = 0.020699553913   (≈ 2.07%)
+Δ = 1 − δ_BU/m_a ≈ 0.020699545503   (≈ 2.07%)
 ```
 
-The same constant, raised to the fourth power and normalised by m_a, yields the fine-structure constant α = δ_BU⁴/m_a = 0.007297352563 (matching experiment to nine significant digits; confirmed in the Physics Tests Report, Part 9.2).
+with δ_BU = 4 · arctan(k(π/4) · k(m_a)). The same constant, raised to the fourth power and normalised by m_a, yields the kernel α₀ = δ_BU⁴/m_a ≈ 0.007299683573 (about 319.43 ppm from CODATA 2018). The aperture correction chain yields α ≈ 0.007297352816 (about 33.8 ppb from that reference; Analysis_Fine_Structure.md).
 
 ### 10.2 Distance from Clifford Angles
 

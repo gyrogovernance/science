@@ -279,8 +279,8 @@ The CGM aperture is defined from the BU holonomy defect and the observational ap
 | Quantity               | Expression       |          Value |
 | ---------------------- | ---------------- | -------------: |
 | Observational aperture | m_a = 1/(2 sqrt(2π)) | 0.199471140201 |
-| BU holonomy           | d_BU             | 0.195342176580 |
-| Closure ratio          | rho = d_BU/m_a       | 0.979300446087 |
+| BU loop angle          | δ_BU = 4·arctan(k(π/4)·k(m_a)) | 0.195342178258 |
+| Closure ratio          | rho = δ_BU/m_a       | 0.979300454497 |
 | Aperture gap           | Delta = 1 - rho      | 0.020699545503 |
 
 Delta measures the fractional gap between BU Dual-Pole Loop and the observational aperture scale m_a. Algebraically, depth-four commutative closure holds in the kernel. Delta is the residual vibrational amplitude (about 2.07%) of oscillation about that closed configuration.

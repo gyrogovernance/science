@@ -40,11 +40,11 @@ The derivation proceeds in three steps.
 
 The construction uses ψ as the coupling coordinate. The linearity in ψ follows from the first-order redshift factor (1 − ψ) common to CGM and GR in the weak-field limit, and ψ connects the electroweak and Planck anchors of CGM's energy scale structure through the UV-IR pairing relation E^UV × E^IR = (E_CS × v)/(4π²).
 
-**Step 2: Refractive depth and position dependence.** G acquires position dependence because gravitational propagation through the kernel's shell structure is attenuating. The five bulk shells carry STF anisotropy; the two boundary shells do not. Coherent propagation across the five bulk shells attenuates the signal by a factor of ρ⁵ per holonomy cycle, where ρ ≈ 0.9793 is the closure ratio of the four-stage cycle. Accumulating this attenuation across the full depth gives the refractive depth
+**Step 2: Refractive depth and position dependence.** G acquires position dependence because gravitational propagation through the kernel's shell structure is attenuating. The five bulk shells carry STF anisotropy; the two boundary shells do not. With δ_BU = 4 · arctan(k(π/4) · k(m_a)) and k(β) = β/(1 + √(1 − β²)), the closure ratio is ρ = δ_BU/m_a ≈ 0.979300454497 and the aperture gap is Δ = 1 − ρ ≈ 0.020699545503. Coherent propagation across the five bulk shells attenuates the signal by a factor of ρ⁵ per Z2 holonomy cycle. Accumulating this attenuation across the full depth gives the refractive depth
 
-    τ_G = |Ω| Δ ρ⁵ (1 − 4ρΔ² + c₄Δ⁴) ≈ 76.24,
+    τ_G = |Ω| Δ ρ⁵ (1 − 4ρΔ²) ≈ 76.24,
 
-where Δ = 1 − ρ ≈ 0.02070 is the aperture gap, the residual 1 − ρ after the four-stage cycle, and c₄ = −7/4 is fixed by two independent kernel computations (the isotropic stress trace and the closure charge on gyroscopic edge increments). The closed form is the Regge sum of plaquette deficit angles over the five bulk shells, evaluated analytically. The attenuation varies with gravitational depth as τ(ψ) = τ_G(1 − ψ). Compounding the per-cycle attenuation yields the exponential coupling
+where the closed form is the Regge sum of plaquette deficit angles over the five bulk shells, evaluated analytically. The isotropic stress channel supplies the separate scalar τ_trace = |Ω| Δ ρ⁵ c₄ Δ⁴ with c₄ = −7/4. The attenuation varies with gravitational depth as τ(ψ) = τ_G(1 − ψ). Compounding the per-cycle attenuation yields the exponential coupling
 
     G(ψ) = G_kernel exp(−τ_G) exp(τ_G ψ) / E_ref(ψ)² = G₀ exp(g₁ ψ),
 
@@ -52,7 +52,7 @@ where E_ref(ψ) is the reference-energy function of Section 5. The factor 2 ln(v
 
     g₁ = τ_G + 2 ln(v/E_CS) = −0.6456 < 0
 
-comes from the E_ref(ψ)² denominator: at ψ = 0 the reference energy is v (electroweak), at ψ = 1 it is E_CS (Planck). The sign g₁ < 0 follows because the attenuation from STF propagation exceeds the scale-shifting effect of E_ref(ψ). The weak-field coupling G₀ = G_kernel exp(−τ_G)/v², with v the single measured input; the predicted value lies within 0.074 ppm of the CODATA value [7].
+comes from the E_ref(ψ)² denominator: at ψ = 0 the reference energy is v (electroweak), at ψ = 1 it is E_CS (Planck). The sign g₁ < 0 follows because the attenuation from STF propagation exceeds the scale-shifting effect of E_ref(ψ). The weak-field coupling G₀ = G_kernel exp(−τ_G)/v², with v the single measured input; the predicted value lies about +2.99 ppm from the CODATA value [7] (CODATA G uncertainty ≈ 22 ppm).
 
 **Step 3: Asymptotic freedom.** With μ = E_ref(ψ) (Section 5),
 

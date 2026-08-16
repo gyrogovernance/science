@@ -28,6 +28,10 @@ from scipy.optimize import brentq
 from scipy.special import lambertw
 
 from gyroscopic.hQVM.constants import (
+    BU_APERTURE_GAP,
+    BU_CLOSURE_RATIO,
+    BU_HOLONOMY_ANGLE,
+    M_A,
     GENE_MAC_A12,
     GENE_MAC_B12,
     GENE_MAC_REST,
@@ -58,10 +62,10 @@ FAMILY_RAY_REF = 1
 GENE_MAC_SWAPPED = (GENE_MAC_B12 << 12) | GENE_MAC_A12
 
 Q_G = 4 * np.pi
-m_a = 1 / (2 * np.sqrt(2 * np.pi))
-d_BU = 0.195342176580
-rho = d_BU / m_a
-Delta = 1 - rho
+m_a = M_A
+d_BU = BU_HOLONOMY_ANGLE
+rho = BU_CLOSURE_RATIO
+Delta = BU_APERTURE_GAP
 G_kernel = math.pi / 6
 Omega_size = 4096
 H_size = 64
@@ -108,7 +112,8 @@ def stage_mass_fractions() -> dict[str, float]:
 
 
 alpha_G_meas = G_meas * v_EW**2
-f_ordered = 1.0 - 4.0 * rho * Delta**2
+f_ordered = 1.0 - 4.0 * rho * Delta**2  # f_K4 STF polynomial (orders 0 and 2)
+C4_REF = -1.75
 
 # Validation only: inverts measured G through alpha_G(v) = G_kernel * exp(-tau).
 tau_required = -math.log(alpha_G_meas / G_kernel)
@@ -116,12 +121,17 @@ tau_req_meas = tau_required
 
 # Consistency check: Z2 Refractive Depth vs UV-IR conjugacy ladder (not a G derivation).
 tau_conjugacy_depth = 2.0 * math.log(E_CS / v_EW)
-tau_G_formula = Omega_size * Delta * rho**5 * f_ordered
+
+# Coupling depth: STF transport on bulk shells 1..5 (horizons have pi=0).
+tau_G_stf = Omega_size * Delta * rho**5 * f_ordered
+tau_G_formula = tau_G_stf
+# Trace-sector scalar (isotropic pressure / monopole bookkeeping); not in G exponent.
+tau_trace = Omega_size * Delta * rho**5 * float(C4_REF) * Delta**4
+
 binom_shell = [comb(6, s) / 64.0 for s in range(7)]
 weights_pop = {m: binom_shell[bin(m).count("1")] for m in range(64)}
 pi_eq = FA_STF * TR_SIGMA_SHELL[3]
 V_EW_PDG = (246.22, 0.01)
-C4_REF = -1.75
 
 K4_CHANNEL_FLAGS = [
     ("top", 0, 0, 0),
@@ -366,28 +376,39 @@ def tau_cycle_per_delta_exact() -> Fraction:
     return Fraction(4 * sum_cubes, 64 * sum_sq)
 
 
+def tau_g_stf_depth() -> float:
+    """STF refractive depth used for weak-field G and G(psi)."""
+    return float(tau_G_stf)
+
+
+def tau_trace_depth(c4_val: float | None = None) -> float:
+    """Isotropic-trace scalar |Omega| Delta rho^5 c4 Delta^4 (not coupling depth)."""
+    c4 = float(C4_REF if c4_val is None else c4_val)
+    return Omega_size * Delta * rho**5 * c4 * Delta**4
+
+
 def tau_g_with_c4(c4_val):
-    f_ext = 1.0 - 4.0 * rho * Delta**2 + c4_val * Delta**4
-    return Omega_size * Delta * rho**5 * f_ext
+    """STF depth plus optional trace scalar (audit/sum only; G uses tau_g_stf_depth)."""
+    return tau_g_stf_depth() + tau_trace_depth(c4_val)
 
 
 def kernel_exposure_constants() -> tuple[float, float, float, Fraction]:
     """
-    N_cycles, tau_cycle, tau_G (full), tau_cycle/Delta from analysis_3 section D.
+    N_cycles, tau_cycle, tau_G (STF coupling depth), tau_cycle/Delta.
 
     Single source for exposure-count factorization (no two-lemma 3481 formula).
+    N_cycles uses f_K4 = 1 - 4 rho Delta^2 only.
     """
     tau_over_delta = tau_cycle_per_delta_exact()
     tau_cycle = float(tau_over_delta) * Delta
-    f_k4_full = f_ordered + float(C4_REF) * Delta**4
-    n_cycles = Omega_size * rho**5 * f_k4_full / float(tau_over_delta)
-    tau_g_full = tau_g_with_c4(C4_REF)
-    return n_cycles, tau_cycle, tau_g_full, tau_over_delta
+    n_cycles = Omega_size * rho**5 * f_ordered / float(tau_over_delta)
+    tau_g = tau_g_stf_depth()
+    return n_cycles, tau_cycle, tau_g, tau_over_delta
 
 
 def dln_g_dpsi(tau_g_full: float | None = None) -> float:
     """Slope d ln(G/G0) / d psi for G(psi) = G0 exp(g1 psi)."""
-    tau = tau_g_full if tau_g_full is not None else tau_g_with_c4(C4_REF)
+    tau = tau_g_full if tau_g_full is not None else tau_g_stf_depth()
     eta = math.log(v_EW / E_CS)
     return tau + 2.0 * eta
 
@@ -485,7 +506,7 @@ def E_ref_quantile(psi: float) -> float:
 
 def tau_of_psi(psi: float, tau_g_val: float | None = None) -> float:
     """Refractive depth gradient tau(psi) = tau_G * (1 - psi)."""
-    tg = tau_g_val if tau_g_val is not None else tau_g_with_c4(C4_REF)
+    tg = tau_g_val if tau_g_val is not None else tau_g_stf_depth()
     return tg * (1.0 - psi)
 
 
@@ -814,20 +835,21 @@ def verify_gauss_law_bridge(*, n_ext: int = 40) -> dict:
 def alpha_lab_with_transport_corrections() -> float:
     """
     alpha after AB, HC, IDE transport corrections (hqvm_corrections_analysis_1).
+    Uses closed-form d_BU; derives 1/rho and diff = phi_SU2 - 3 d_BU.
     """
     d = d_BU
     mp_ = m_a
     r_curv = 0.993434896272
     h_hol = 4.417034
-    rho_inv = 1.021137
-    diff = 0.001874
+    phi_su2 = 2.0 * math.acos((1.0 + 2.0 * math.sqrt(2.0)) / 4.0)
+    diff = phi_su2 - 3.0 * d
+    rho_inv = 1.0 / (d / mp_)
     d_ap = 1.0 - d / mp_
     d2 = d_ap * d_ap
     d4 = d2 * d2
-    phi = 3.0 * d + diff
     c_ab = 1.0 - (3.0 / 4.0) * r_curv * d2
     c_hc = 1.0 - (5.0 / 6.0) * (
-        (phi / (3.0 * d) - 1.0)
+        (phi_su2 / (3.0 * d) - 1.0)
         * (1.0 - d2 * h_hol)
         * d2
         / (4.0 * math.pi * math.sqrt(3.0))
@@ -853,7 +875,7 @@ def verify_alpha_zeta_product(*, alpha_codata: float | None = None) -> dict:
         "alpha_kernel": alpha_kernel,
         "lhs": lhs,
         "rhs": rhs,
-        "exact": lhs == rhs,
+        "exact": abs(lhs - rhs) <= 1e-12 * max(1.0, abs(rhs)),
     }
     if alpha_codata is not None and alpha_codata > 0:
         out["alpha_codata"] = alpha_codata

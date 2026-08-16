@@ -35,6 +35,7 @@ from hqvm_gravity_common import (
     E_ref_quantile,
     g_pred_from_tau,
     rho,
+    tau_g_stf_depth,
     tau_g_with_c4,
     v_EW,
 )
@@ -61,7 +62,7 @@ AS_MATCH_LOG10_TOL = 1.0
 
 def cgm_cosmo_scale() -> dict[str, float]:
     """Shared scales for cosmology lemmas (natural units, GeV)."""
-    tau_g = tau_g_with_c4(C4_REF)
+    tau_g = tau_g_stf_depth()
     g1 = dln_g_dpsi(tau_g)
     ln_span = math.log(E_CS / v_EW)
     m_pl = 1.0 / math.sqrt(8.0 * math.pi * G_meas)
@@ -478,7 +479,7 @@ def reheating_unified(g1: float, infl: dict[str, float]) -> dict[str, float]:
     dyn = reheating_dynamics_toy(g1, infl)
     psi_reh = dyn["psi_reheat_derived"]
     e_reh = float(E_ref_quantile(psi_reh))
-    tau_g = tau_g_with_c4(C4_REF)
+    tau_g = tau_g_stf_depth()
     tau_frac = 1.0 - psi_reh
     return {
         **dyn,
@@ -679,7 +680,7 @@ def rg_scheme_stability(g1: float) -> dict[str, float]:
     """CONJECTURE: candidate coarse-grain R; compare ruler tick vs shell block."""
     rg = rg_coarse_grain_step()
     ln_span = math.log(E_CS / v_EW)
-    tau_g = tau_g_with_c4(C4_REF)
+    tau_g = tau_g_stf_depth()
     beta_tick = -tau_g / ln_span
     beta_block = rg["beta_tau_block"]
     spread = abs(beta_tick - beta_block) / max(abs(beta_tick), 1e-30)
@@ -824,7 +825,7 @@ def tau_partial_shells(k_max: int) -> float:
     """
     full = sum(comb(6, k) for k in range(1, 6))
     part = sum(comb(6, k) for k in range(1, min(k_max, 5) + 1))
-    return tau_g_with_c4(C4_REF) * (part / full)
+    return tau_g_stf_depth() * (part / full)
 
 
 def rg_coarse_grain_step() -> dict[str, float]:
@@ -840,12 +841,12 @@ def rg_coarse_grain_step() -> dict[str, float]:
          Its log-derivative w.r.t. ln mu is the beta function.
     Returns the discrete beta estimate and the scale step.
     """
-    g1 = dln_g_dpsi(tau_g_with_c4(C4_REF))
+    g1 = dln_g_dpsi(tau_g_stf_depth())
     d_ln_mu_tick = Delta * math.log(2.0)
     # alpha_G(psi) = exp(-tau_G (1-psi)); d ln alpha_G / d psi = +tau_G
     # d ln mu / d psi = ln_span = ln(E_CS/v); so beta = tau_G / ln_span.
     ln_span = math.log(E_CS / v_EW)
-    tau_g = tau_g_with_c4(C4_REF)
+    tau_g = tau_g_stf_depth()
     beta_alpha_g = -tau_g / ln_span  # d ln alpha_G / d ln mu (UV: mu up, psi up)
     # Shell-block flow of tau between k_max=5 and k_max=4 cutoffs:
     tau5 = tau_partial_shells(5)
@@ -1011,8 +1012,8 @@ def reheating_handover(g1: float) -> dict[str, float]:
     # |g1 psi| = 1/e (one attenuation length). Use that as reheating onset.
     psi_reh = psi_gr_crossover(g1, target=1.0 / math.e)
     e_reh = float(E_ref_quantile(psi_reh))
-    tau_at_reh = tau_g_with_c4(C4_REF) * (1.0 - psi_reh)
-    tau_full = tau_g_with_c4(C4_REF)
+    tau_at_reh = tau_g_stf_depth() * (1.0 - psi_reh)
+    tau_full = tau_g_stf_depth()
     saturation = tau_at_reh / tau_full
     return {
         "psi_c_dominance": psi_c,
@@ -1059,7 +1060,7 @@ def section_f_qqg_bridge(d_stats: dict) -> dict[str, float | int | bool]:
     print("=" * 9)
     print()
 
-    tau_g = tau_g_with_c4(C4_REF)
+    tau_g = tau_g_stf_depth()
     g1 = dln_g_dpsi(tau_g)
 
     print("F1. CGM action -> f(R), self-consistent R^2 coefficient xi_eff")

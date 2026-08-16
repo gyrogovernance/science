@@ -43,21 +43,22 @@ class CGMRotationCurves:
 
     def __init__(self):
         """Initialize with CGM parameters from corrections analysis."""
-        # CGM geometric parameters (derived from CGM geometry, see docs/Findings/Analysis_Fine_Structure.md)
-        self.delta_BU = Decimal("0.195342176580")  # BU Dual-Pole Loop δ_BU
-        self.R = Decimal(
-            "0.993434896272"
-        )  # Thomas-Wigner curvature ratio: R = (F̄/π)/ m_a with F̄ = 0.622543 (Eq. 54)
-        self.h = Decimal("4.417034")  # 4-leg/8-leg holonomy ratio (Eq. 68)
-        self.rho_inv = Decimal(
-            "1.021137"
-        )  # Inverse closure fraction: 1/ρ where ρ = δ_BU/ m_a = 0.979300 (Eq. 81)
-        self.diff = Decimal("0.001874")  # Monodromic residue: φ_SU2 - 3δ_BU (Eq. 82)
+        import mpmath as mp
 
-        # Derived parameters
+        mp.mp.dps = 50
+        # Closed-form δ_BU; derive 1/ρ and diff (Analysis_Fine_Structure.md)
         self.pi = Decimal("3.14159265358979323846264338327950288419716939937510")
         self.m_a = Decimal(1) / (Decimal(2) * (Decimal(2) * self.pi).sqrt())
+        ma = mp.mpf(str(self.m_a))
+        k = lambda b: b / (1 + mp.sqrt(1 - b * b))
+        d = 4 * mp.atan(k(mp.pi / 4) * k(ma))
+        self.delta_BU = Decimal(str(d))
+        self.R = Decimal("0.993434896272")
+        self.h = Decimal("4.417034")
+        phi = Decimal(str(2 * mp.acos((1 + 2 * mp.sqrt(2)) / 4)))
+        self.diff = phi - Decimal(3) * self.delta_BU
         self.Delta = Decimal(1) - self.delta_BU / self.m_a
+        self.rho_inv = self.m_a / self.delta_BU
 
         # Physical constants
         self.c = Decimal("299792458")  # m/s (exact)

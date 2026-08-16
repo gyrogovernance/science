@@ -517,7 +517,7 @@ def generate_toroidal_template(
 
 
 class InterferenceTest:
-    """Test for interference patterns from inside a 97.9% closed toroidal structure."""
+    """Test for interference patterns from inside a 97.93% closed toroidal structure."""
 
     def __init__(self, thresholds: CGMThresholds):
         self.thresholds = thresholds
@@ -871,7 +871,7 @@ class CrossScaleValidator:
         production_mode: bool = False,
         config: Optional[Config] = None,
     ) -> Dict[str, Any]:
-        """Test interference pattern from inside a 97.9% closed toroidal structure."""
+        """Test interference pattern from inside a 97.93% closed toroidal structure."""
         print("\nTesting interference pattern in Planck Compton-y map...")
 
         # Use config parameters if provided, otherwise fall back to defaults
@@ -1714,7 +1714,7 @@ def print_config(config: Config):
 
 
 def main():
-    """Run interference pattern analysis - testing the 97.9% closed toroid hypothesis."""
+    """Run interference pattern analysis - testing the 97.93% closed toroid hypothesis."""
     # Initialize preregistered configuration
     config = Config()
 
@@ -1722,7 +1722,7 @@ def main():
     print_config(config)
 
     print("CGM INTERFERENCE PATTERN ANALYSIS v5.0")
-    print("Testing: We're inside a 97.9% closed toroidal structure")
+    print("Testing: We're inside a 97.93% closed toroidal structure")
     print("Pre-registered configuration with high-resolution production mode")
     print()
 
