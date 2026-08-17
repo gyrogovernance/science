@@ -2,7 +2,7 @@
 """
 Shared types and physical-map registry for CGM precession analysis.
 
-Companions: cgm_precession_analysis_{1,2,run}.py, cgm_precession_mixing_probes.py
+Companions: cgm_precession_analysis_{1,2,run}.py
 """
 
 from __future__ import annotations

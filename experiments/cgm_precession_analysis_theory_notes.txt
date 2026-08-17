@@ -1,7 +1,6 @@
 CGM Precession Analysis — theory notes
 
 Companion scripts: cgm_precession_analysis_{1,2,common,run}.py
-Mixing probes (not core): cgm_precession_mixing_probes.py
 
 -----
 

@@ -6,6 +6,19 @@ All notable changes to the CGM Experimental Framework will be documented in this
 
 ## [1.3.9.4-CGM] — 2026-08-17
 
+The holonomy analysis fixed the dual-pole loop angle and the palindromic conjugation theorem. This release classifies the rest of the angles that appear when those same stage coordinates are transported as Einstein speeds: which are forced, which depend on a laboratory protocol, and which are chart artifacts.
+
+### Added
+
+- `docs/Findings/Analysis_Precession.md` — three transport connections, orthogonal stage triad, L≤5 canonical spectrum of six bins, palindrome axis steering by ω_UO, secant versus tangent closure, lab openness, Cartesian Thomas Pexp recovery of δ_BU, metric ontology
+- `experiments/cgm_precession_analysis_{common,1,2,run}.py` — gated metrological suite
+- `experiments/cgm_precession_analysis_results.txt` — deterministic run output
+- `experiments/cgm_precession_analysis_theory_notes.txt` — claim boundary for the suite
+
+### Closed from Holonomy
+
+Analysis_Holonomy.md left the spherical-chart Pexp outside the verified aperture class (offset ≈ 0.051). The Cartesian Palge–Pfeifer 1-form, path-ordered with Richardson extrapolation, recovers δ_BU on the dual-pole loop and the palindrome. Holonomy Section 11 now records that recovery and points here.
+
 ---
 
 ## [1.3.9.3-CGM] — 2026-08-15 / 2026-08-16

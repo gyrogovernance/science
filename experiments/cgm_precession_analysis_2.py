@@ -7,7 +7,6 @@ tangent closure, circular Thomas calibration, lab-word net-boost closure, and
 compact vs hyperbolic holonomy. Prints the corrected metric ontology.
 
 Companions: cgm_precession_analysis_{common,1,run}.py
-Mixing comparisons: cgm_precession_mixing_probes.py
 """
 
 from __future__ import annotations
@@ -643,7 +642,6 @@ def run_ontology(state: dict[str, Any]) -> None:
     print("21. NOTES")
     print("-" * 5)
     print("  theory: cgm_precession_analysis_theory_notes.txt")
-    print("  mixing:  python experiments/cgm_precession_mixing_probes.py")
     print()
 
 

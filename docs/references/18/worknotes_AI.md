@@ -52,7 +52,7 @@ Gravity uses delta_BU, rho, Delta, m_a, Q_G, kernel invariants. Canonical connec
 
 ## Files
 
-Core: experiments/cgm_precession_analysis_{1,2,common,run}.py. Mixing neighbors live in experiments/cgm_precession_mixing_probes.py and are not in the core report. Theory: experiments/cgm_precession_analysis_theory_notes.txt. Circular Thomas multi-V calibration: experiments/cgm_holonomy_analysis_2.py. Gravity's tau_G, T_Z2, N_cycles, g1, and Mercury live in hqvm_gravity_analysis_*; this run does not recompute them.
+Core: experiments/cgm_precession_analysis_{1,2,common,run}.py. Theory: experiments/cgm_precession_analysis_theory_notes.txt. Circular Thomas multi-V calibration: experiments/cgm_holonomy_analysis_2.py. Gravity's tau_G, T_Z2, N_cycles, g1, and Mercury live in hqvm_gravity_analysis_*; this run does not recompute them.
 
 ## Scope
 

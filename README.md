@@ -120,6 +120,7 @@ Each analysis note maps to the experiment scripts that verify it.
 | Topic | Analysis | Code |
 |-------|----------|------|
 | Holonomy: closed-path memory, dual-pole loop angle δ_BU, continuous–finite realization | [Analysis_Holonomy](docs/Findings/Analysis_Holonomy.md) | [cgm_holonomy_analysis_run.py](experiments/cgm_holonomy_analysis_run.py) (`_1.py`, `_2.py`, [common](experiments/cgm_holonomy_analysis_common.py); [results](experiments/cgm_holonomy_analysis_results.txt)) |
+| Precession: three connections, stage triad, L≤5 spectrum, metric ontology | [Analysis_Precession](docs/Findings/Analysis_Precession.md) | [cgm_precession_analysis_run.py](experiments/cgm_precession_analysis_run.py) (`_1.py`, `_2.py`, [common](experiments/cgm_precession_analysis_common.py); [results](experiments/cgm_precession_analysis_results.txt)) |
 | Fine-structure constant | [Analysis_Fine_Structure](docs/Findings/Analysis_Fine_Structure.md) | [cgm_alpha_analysis.py](experiments/cgm_alpha_analysis.py) |
 | Quantum gravity invariant | [Analysis_Quantum_Gravity](docs/Findings/Analysis_Quantum_Gravity.md) | [cgm_quantum_gravity_analysis.py](experiments/cgm_quantum_gravity_analysis.py) |
 | Energy scale unification | [Analysis_Energy_Scales](docs/Findings/Analysis_Energy_Scales.md) | [cgm_energy_analysis.py](experiments/cgm_energy_analysis.py) |

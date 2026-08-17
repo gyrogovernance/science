@@ -553,5 +553,4 @@ CGM PRECESSION ANALYSIS
 21. NOTES
 -----
   theory: cgm_precession_analysis_theory_notes.txt
-  mixing:  python experiments/cgm_precession_mixing_probes.py
 

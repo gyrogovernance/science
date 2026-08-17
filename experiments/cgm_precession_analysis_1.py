@@ -3,7 +3,7 @@
 CGM precession analysis, part 1: measure holonomy of stage loops
 under canonical, lab, and chart transport.
 
-Companions: cgm_precession_analysis_{common,2,run}.py, cgm_precession_mixing_probes.py
+Companions: cgm_precession_analysis_{common,2,run}.py
 """
 
 from __future__ import annotations

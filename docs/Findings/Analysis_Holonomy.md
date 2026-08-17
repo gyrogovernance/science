@@ -4,7 +4,7 @@
 
 **Citation:** Korompilias, B. (2025). Common Governance Model: Mathematical Physics Framework. Zenodo. https://doi.org/10.5281/zenodo.17521384
 
-**Verification:** `experiments/cgm_holonomy_analysis_run.py` (companions `_common.py`, `_1.py`, `_2.py`). Results are written to `experiments/cgm_holonomy_analysis_results.txt`.
+**Verification:** `experiments/cgm_holonomy_analysis_run.py` (companions `_common.py`, `_1.py`, `_2.py`). Results are written to `experiments/cgm_holonomy_analysis_results.txt`. Connection classification, the stage triad, and the Cartesian Thomas Pexp that recovers δ_BU are in Analysis_Precession.md.
 
 ---
 
@@ -324,11 +324,11 @@ P = T_{n−1} ··· T_0
 
 is certified in SO⁺(1,3): writing η = diag(+1, −1, −1, −1), one has ||Pᵀ η P − η||, |det(P) − 1|, and the orthochronous residual at the working floor. The SO(3) little-group holonomy at the basepoint is obtained by conjugating P into the rest frame of q_0. Write θ_geodesic for that conjugacy angle. For the BU dual-pole path, θ_geodesic equals δ_BU and equals the origin-gyr word angle at the working floor. The palindrome path yields the same conjugacy angle.
 
-**(3) Spherical-chart path-ordered exponential.** Let ω_s denote the spherical-coordinate pullback of the Palge–Pfeifer spatial connection. Forming the path-ordered exponential P exp(−∫ ω_s) along the same geodesics produces an angle θ_ω-chart ≈ 0.2466 on the dual-pole loop that differs from δ_BU by about 0.051. A complete connection holonomy along the same closed mass-shell path recovers δ_BU up to conjugation and frame transitions. The present chart evaluation remains outside the verified aperture class until a convergent, gauge-covariant implementation recovers δ_BU.
+**(3) Chart evaluations of the Palge–Pfeifer connection.** Let ω_s denote the spherical-coordinate pullback of the Palge–Pfeifer spatial connection. Forming the path-ordered exponential P exp(−∫ ω_s) along the same geodesics produces an angle θ_ω-chart ≈ 0.2466 on the dual-pole loop that differs from δ_BU by about 0.051. That offset is a coordinate singularity at the BU poles and at rest. The same connection in Cartesian velocity coordinates, ω = (γ²/(γ+1)) β × dβ, path-ordered with Richardson extrapolation, is regular at rest and at the poles and recovers δ_BU on both the dual-pole loop and the palindrome (Analysis_Precession.md).
 
 A further lab-frame construction is the **relative-boost word**. For successive stage velocities p_i write d_i = ⊖p_i ⊕ p_{i+1} for the Einstein difference and L(d_i) for the corresponding lab-frame boost. The word is the rotational part of the product of the L(d_i). On the dual-pole path its conjugacy angle is about 0.2585 and differs from δ_BU by about 0.063. The operators L(d_i) are lab-frame composites of Einstein differences, whereas the geodesic construction uses the pure transvections T_i, so the two words are different edge operators.
 
-The continuous aperture identity with this speed convention is therefore the agreement of four objects: the closed form δ_BU = 2ω, the origin-gyr word angle of R, the Ungar dual-pole defect, and θ_geodesic. The relative-boost word and θ_ω-chart are different constructions.
+The continuous aperture identity with this speed convention is therefore the agreement of five objects: the closed form δ_BU = 2ω, the origin-gyr word angle of R, the Ungar dual-pole defect, θ_geodesic, and the regular Cartesian Thomas Pexp. The relative-boost word and θ_ω-chart are different constructions.
 
 ---
 
@@ -497,7 +497,7 @@ The first command runs all integrity checks, prints the full report, and writes 
 
 ## 20. Conclusion
 
-Three results form the foundation established here. The CGM threshold angles generate a nontrivial SU(2) commutator holonomy with the exact closed form 2 · arccos((1 + 2√2)/4). On the BU dual-pole path with stage thresholds as Einstein speeds the holonomy angle is δ_BU = 2 · ω = 4 · arctan(k(π/4) · k(m_a)), an elementary function of two thresholds, from which the closure ratio of 97.93 percent and the aperture gap of 2.07 percent follow as definitions, with the gap decomposing into a 2.98 percent baseline fixed by the ONA geometry and a 0.91 percentage point closure supplied by the finite BU amplitude. The same angle is the origin-gyr word, the Ungar dual-pole gyrotriangle defect, and the mass-shell geodesic holonomy; the relative-boost word and spherical-chart Pexp are different constructions. The palindromic traversal of the payload stages conjugates this holonomy, preserving the angle while transporting the axis, so the magnitude of path memory is set at the balance stage and its orientation is steered by the surrounding stages.
+Three results form the foundation established here. The CGM threshold angles generate a nontrivial SU(2) commutator holonomy with the exact closed form 2 · arccos((1 + 2√2)/4). On the BU dual-pole path with stage thresholds as Einstein speeds the holonomy angle is δ_BU = 2 · ω = 4 · arctan(k(π/4) · k(m_a)), an elementary function of two thresholds, from which the closure ratio of 97.93 percent and the aperture gap of 2.07 percent follow as definitions, with the gap decomposing into a 2.98 percent baseline fixed by the ONA geometry and a 0.91 percentage point closure supplied by the finite BU amplitude. The same angle is the origin-gyr word, the Ungar dual-pole gyrotriangle defect, the mass-shell geodesic holonomy, and the regular Cartesian Thomas Pexp; the relative-boost word and spherical-chart Pexp are different constructions. The palindromic traversal of the payload stages conjugates this holonomy, preserving the angle while transporting the axis, so the magnitude of path memory is set at the balance stage and its orientation is steered by the surrounding stages.
 
 The finite machine realizes the same architecture in exact arithmetic, with byte-level fold curvature distributed binomially and the balance-stage exchange operators verified as involutions on the full state manifold. At the byte horizon the continuous aperture quantizes as Q_256(Δ) = 5/256. The quantities established here, in particular δ_BU, ρ, Δ, and the dyadic aperture 5/256, are the fixed inputs that downstream analyses of physical couplings and the hQVM kernel consume.
 

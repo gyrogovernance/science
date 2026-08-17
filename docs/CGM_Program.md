@@ -376,6 +376,7 @@ Scripts cover gravity, the Yang–Mills mass-gap readout, organismal allometry, 
 | Hilbert space representation | [Analysis_Hilbert_Space_Representation](Findings/Analysis_Hilbert_Space_Representation.md) | `cgm_Hilbert_Space_analysis.py` |
 | CMB patterns (Planck: ℓ=37 enhancement p=0.0039) | [Analysis_CMB](Findings/Analysis_CMB.md) | `cgm_cmb_data_analysis_300825.py` |
 | Holonomy: closed-path memory, dual-pole loop angle, continuous–finite realization | [Analysis_Holonomy](Findings/Analysis_Holonomy.md) | `cgm_holonomy_analysis_common.py`, `cgm_holonomy_analysis_1.py`, `cgm_holonomy_analysis_2.py`. Run: `cgm_holonomy_analysis_run.py` |
+| Precession: three connections, stage triad, L≤5 spectrum, metric ontology | [Analysis_Precession](Findings/Analysis_Precession.md) | `cgm_precession_analysis_common.py`, `cgm_precession_analysis_1.py`, `cgm_precession_analysis_2.py`. Run: `cgm_precession_analysis_run.py` |
 | Black hole universe and aperture thermodynamics | [Analysis_BH_Universe](Findings/Analysis_BH_Universe.md), [Analysis_BH_Aperture](Findings/Analysis_BH_Aperture.md) | `cgm_bh_universe_analysis.py`, `cgm_bh_aperture_analysis.py` |
 | Kompaneyets | [Analysis_Kompaneyets](Findings/Analysis_Kompaneyets.md) | `cgm_kompaneyets_analysis.py` |
 | Proto-units | [Analysis_CGM_Units](Findings/Analysis_CGM_Units.md) | `cgm_proto_units_analysis.py` |
