@@ -4,6 +4,10 @@ All notable changes to the CGM Experimental Framework will be documented in this
 
 ---
 
+## [1.3.9.4-CGM] — 2026-08-17
+
+---
+
 ## [1.3.9.3-CGM] — 2026-08-15 / 2026-08-16
 
 The aperture, one of the foundational invariants the entire framework rests on, has been re-derived from first principles using gyrogroup theory. The BU dual-pole loop angle δ_BU is now defined by a closed-form equation, and every part of the program that depends on it has been brought into alignment.

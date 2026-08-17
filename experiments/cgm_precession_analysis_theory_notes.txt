@@ -1,0 +1,98 @@
+CGM Precession Analysis — theory notes
+
+Companion scripts: cgm_precession_analysis_{1,2,common,run}.py
+Mixing probes (not core): cgm_precession_mixing_probes.py
+
+-----
+
+Model
+
+Four stage priors as numbers: u_p = 1/sqrt(2), o_p = pi/4, m_a = 1/(2*sqrt(2*pi)), theta_cs = pi/2 (orientation, not a ball speed). Placing those numbers as Einstein-ball speeds is an extra realization identification.
+
+The elementary object is a three-axis precession triad of origin-pair gyrotriangle defects on mutually orthogonal stage vectors (UNA along x, ONA along y, BU along z):
+
+  omega_UO = defect(origin, UNA, ONA)
+  omega_OB = defect(origin, ONA, BU+) = omega_corner
+  omega_UB = defect(origin, BU+, UNA)
+
+Pairwise origin-gyrations lie on the complementary axes (UNA-ONA about z, ONA-BU about x, BU-UNA about y).
+
+omega0 = TW(u_p, u_p; theta=o_p) is an equal-speed Wigner calibration. It is not omega_UO.
+
+-----
+
+Composites
+
+delta_BU = 2 omega_OB = defect(ONA, BU+, BU-). Gravity uses this as the Regge deficit unit.
+
+delta_UNA_BU = 2 omega_UB = defect(UNA, BU+, BU-).
+
+delta_UOB = defect(UNA, ONA, BU+) is the noncommutative composite of the three elementary rotations, not their scalar sum.
+
+Every directed stage edge is a triad generator or identity: UNA-ONA is UO, ONA-BU is OB, UNA-BU is UB, BU+-BU- is I. Canonical L<=5 angles are words in those generators. Representatives: cyc4 = UNA-ONA-BU+-BU- (UO OB I UB), L4_crossed = UNA-BU+-ONA-BU- (both poles). Out-backs are identity under nabla^can.
+
+-----
+
+Palindrome
+
+R_pal = A^{-1} R_BU A with A = gyr(UNA, ONA). The palindrome preserves delta_BU and transports the BU axis by omega_UO. UNA-ONA steers the axis; ONA-BU sets the balance magnitude.
+
+-----
+
+Closure
+
+rho_secant = delta_BU / m_a = rho. Delta_secant = 1 - rho.
+
+rho0 = d(delta_BU)/d(m_a) at m_a=0 = 2 k(o_p). baseline_gap = 1 - rho0. finite_BU_closure = rho - rho0.
+
+rho_tangent = d(delta_BU)/d(m_a) at physical m_a. Delta_tangent = 1 - rho_tangent. nonlinear_closure_gain = rho_tangent - rho_secant.
+
+d(delta_BU)/d(theta_ona) is the ONA steering susceptibility. Elasticities are (theta_ona/delta_BU)*d_theta and (m_a/delta_BU)*d_m.
+
+-----
+
+Connections
+
+nabla^can — origin-gyr, geodesic transvection, Ungar defect, dual-pole word. Fermi-Walker / geodesic transport on the mass shell. Gravity consumes delta_BU, rho, Delta, m_a from this connection; this run does not recompute tau_G, g1, or Mercury.
+
+nabla^lab — relative-boost word in one inertial frame. Factorization B(d0)...B(dn)=B(u_final) R. Status is CLOSED_LAB_PRECESSION if ||u_final||~0, else OPEN_BOOST_WORD_ROTATION. On L<=5 the only closed lab words are collinear BU+-BU- out-backs (theta=0). Every bent word is open. F = theta_lab - theta_can is a protocol-minus-geodesic residual, not a new prior.
+
+nabla^chart complete — Palge-Pfeifer spin connection in Cartesian velocity coordinates, omega = (gamma^2/(gamma+1)) beta x d beta, path-ordered with Richardson extrapolation. Regular at rest and at the spherical poles. Equals delta_BU on the BU loop and palindrome.
+
+Spherical (theta,phi) Pexp is a coordinate readout of the same connection. It is singular at BU poles and at rest (the BU+-BU- geodesic). G_sph is that readout minus delta_BU, not a third holonomy.
+
+phi_SU2 — compact SU(2) commutator, not a mass-shell connection. compact_hyperbolic_residual = phi_SU2 - 3 delta_BU.
+
+-----
+
+Circular Thomas calibration
+
+For uniform circular motion, Thomas precession per revolution is 2 pi (gamma-1). That identity is gated in cgm_holonomy_analysis_2.py on V in {0.1, 0.2, 0.3, 0.4, 0.6}. An equivalent circular speed for a CGM angle theta is gamma_eq = 1 + theta/(2 pi), beta_eq = sqrt(1 - 1/gamma_eq^2). This is a magnitude calibration, not a claim that the CGM loop is circular. A pair defect is a finite Wigner rotation and has no duration. A rate Omega = theta / T needs a lab-time parameterization of acceleration, or a cycle duration assigned by the gravity analysis. Neither is computed here.
+
+Lab excess
+
+The group element is R_F = R_can^{-1} R_lab. Scalar F = theta_lab - theta_can is a report, not the relative rotation. On out-backs (theta_can = 0) they agree. On the BU loop, theta(R_F) equals theta_can + theta_lab rather than the scalar difference, so the two constructions do not share a common SO(3) orientation. F_BU still equals the ONA-BU+ lab out-back. F_pal / sqrt(3) and F_BU / pi are word-specific ratios, not laws.
+
+What is not claimed
+
+Canonical bins are not SM couplings, mixing angles, or dark-sector scales. Universality is same transport geometry with different readouts, not all angles equal to delta_BU. Spin detects frame rotation; it does not generate it.
+
+-----
+
+Ontology columns
+
+origin_layer, transport_law, invariant_type, physical_status, used_downstream.
+
+used_downstream is a name whitelist (m_a, delta_BU, rho, Delta). This run does not evaluate gravity's clocks or perihelion.
+
+-----
+
+Wigner pair / Thomas 1-form
+
+Wigner: finite SO(3) from composing two origin boosts. No duration. The triad is those three pair rotations (UNA-ONA, ONA-BU+, BU+-UNA).
+
+Thomas: omega = (gamma^2/(gamma+1)) beta x d beta along a curve in velocity space. Closed BU-loop Pexp equals 2 * Wigner(ONA, BU+).
+
+nabla^lab is Thomas's original product of successive Lorentz boosts in one inertial frame. nabla^can is Fermi-Walker along the geodesic.
+
+Named couplings of omega_UO, omega_UB, phi_SU2, leftover generator words: unknown.

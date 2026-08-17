@@ -1,0 +1,557 @@
+CGM PRECESSION ANALYSIS
+=====
+
+1. PRIORS
+-----
+  u_p (UNA)     = 0.7071067811865476
+  o_p (ONA)     = 0.7853981633974483
+  m_a (BU)      = 0.1994711402007164
+  theta_cs (CS) = 1.5707963267948966
+
+2. CANONICAL BASIS
+-----
+  omega_corner   0.0976710891288310  (5.5961 deg)
+  delta_BU       0.1953421782576621  (11.1923 deg)
+  rho            0.9793004544973297
+  Delta          0.0206995455026703
+  phi_SU2        0.5879007626540202  (33.6842 deg)
+  omega0         0.2155499101533235  (12.3501 deg)  equal-speed TW(u_p, o_p)
+  rho0           0.9702317252823254
+  two_1_rho0     0.0595365494353493
+  PASS  delta_BU = 2*omega_corner
+
+3. THREE CONNECTIONS
+-----
+  transport                                BU      palindrome
+  geodesic                       0.1953421783    0.1953421783
+  origin_gyr                     0.1953421783    0.1953421783
+  dual-pole word                 0.1953421783             n/a
+  defect BU tri                  0.1953421783             n/a
+  relative_boost lab             0.2584786746    0.5336089082
+  chart complete (Thomas)        0.1953421768    0.1953421768
+  chart spherical z              0.2466038230    0.2467356624
+  G_sph = sph-can                0.0512616448    0.0513934841
+
+4. CANONICAL UNIQUENESS
+-----
+  PASS  dual-pole word == delta_BU
+  PASS  origin-gyr BU == delta_BU
+  PASS  origin-gyr pal == delta_BU
+  PASS  geodesic BU == delta_BU
+  PASS  geodesic pal == delta_BU
+  PASS  Ungar defect ONA-BU+-BU- == delta_BU
+  PASS  corner defect == omega_corner
+  PASS  delta_BU == BU_HOLONOMY_ANGLE
+  PASS  Delta == APERTURE_GAP
+  PASS  rho == RHO
+  PASS  omega_corner == TW(ona,ma,pi/2)
+  PASS  omega0 closed form
+  PASS  phi_SU2 closed form
+
+5. CHART CONNECTION
+-----
+  complete Palge-Pfeifer (Cartesian Thomas, Richardson n and 2n)
+  BU   n=0.1953217487  2n=0.1953370698  Rich=0.1953421768  geo=0.1953421783
+  pal  Rich=0.1953421768  geo=0.1953421783
+  PASS  chart complete BU = delta_BU
+  PASS  chart complete pal = delta_BU
+
+  spherical-chart Pexp (singular at poles and at rest)
+  vertex (theta, sin_theta); POLE if |sin_theta|<1e-8
+  z     UNA(1.5708,1.0e+00)  ONA(1.5708,1.0e+00)  BU+(0.0000,0.0e+00 POLE)  BU-(3.1416,-1.0e-51 POLE)
+  x     UNA(0.0000,0.0e+00 POLE)  ONA(1.5708,1.0e+00)  BU+(1.5708,1.0e+00)  BU-(1.5708,1.0e+00)
+  y     UNA(1.5708,1.0e+00)  ONA(0.0000,0.0e+00 POLE)  BU+(1.5708,1.0e+00)  BU-(1.5708,1.0e+00)
+  diag  UNA(0.9553,8.2e-01)  ONA(0.9553,8.2e-01)  BU+(0.9553,8.2e-01)  BU-(2.1863,8.2e-01)
+
+  chart         th_BU       th_pal         G_BU        G_pal
+  z        0.24660382   0.24673566   0.05126164   0.05139348
+  x        1.80164501   1.79935086   1.60630283   1.60400868
+  y        1.65033595   1.68769083   1.45499377   1.49234865
+  diag     1.24655632   1.26349311   1.05121414   1.06815093
+
+  G_sph_diag - G_sph_z = 0.9999524936
+  PASS  z-chart poles at BU
+  PASS  diag-chart has no stage poles
+  BU dim=2 planar=True   pal dim=3 planar=False
+  PASS  BU loop planar (yz)
+  PASS  palindrome spans 3 axes
+
+6. LAB CONNECTION
+-----
+  loop                L       th_can       th_lab         F_sc        th_RF
+  outback_ONA_BUp     2   0.00000000   0.06313650   0.06313650   0.06313650
+  outback_UNA_ONA     2   0.00000000   0.46417802   0.46417802   0.46417802
+  outback_UNA_BUp     2   0.00000000   0.03689497   0.03689497   0.03689497
+  BU                  3   0.19534218   0.25847867   0.06313650   0.45382085
+  tri_UNA_BUp_BUm     3   0.16682779   0.20372276   0.03689497   0.37055055
+  pal                 5   0.19534218   0.53360891   0.33826673   0.63853091
+
+  F_BU / delta_BU  = 0.323210   1/pi = 0.318310  (ratio, not a law)
+  F_pal / delta_BU = 1.731663   sqrt(3) = 1.732051  (palindrome-only)
+  BU  |F_sc - th_RF| = 3.907e-01  |th_RF - (th_can+th_lab)| = 0.000e+00
+  pal |F_sc - th_RF| = 3.003e-01
+  PASS  F_BU = lab(ONA-BU+ out-back)
+  PASS  F(UNA dual-pole) = lab(UNA-BU+ out-back)
+  PASS  out-back: theta(R_can^{-1} R_lab) = theta_lab
+
+  loop   dim planar    theta_lab  sum_corners      resid
+  BU       2 True     0.25847867   0.25847867  0.000e+00
+    corner1  theta=0.1974244319  |u|=0.795044  |v|=0.383676  sep=1.726728
+    corner2  theta=0.0610542427  |u|=0.808872  |v|=0.795044  sep=3.050737
+  PASS  BU planar: corner-sum = theta_lab
+  PASS  BU factorization = theta_lab
+  pal      3 False    0.53360891   1.89062327  1.357e+00
+    corner1  theta=0.5871056430  |u|=0.899125  |v|=0.795044  sep=2.227076
+    corner2  theta=0.2393898941  |u|=0.882206  |v|=0.383676  sep=1.752632
+    corner3  theta=0.5897809763  |u|=0.886265  |v|=0.795044  sep=2.112960
+    corner4  theta=0.4743467531  |u|=0.897291  |v|=0.899125  sep=2.730851
+  PASS  pal non-planar: corner-sum != theta_lab
+  PASS  pal factorization = theta_lab
+
+7. REACHABILITY
+-----
+  closed walks L=2..5: n=360
+  origin_gyr == geodesic on 360/360
+           theta   mult  min_L  conn
+    0.4204750817    132      3  can
+    0.0000000000     72      2  can
+    0.1668277883     66      3  can
+    0.1953421783     66      3  can  delta_BU
+    0.4127190541     16      4  can
+    0.2567128344      8      4  can
+    0.0368949710     10      2  lab
+    0.0631364964     10      2  lab
+    0.2037227593     10      3  lab
+    0.2584786746     10      3  lab
+    0.6706038606      6      3  lab
+    0.2120175862      6      3  lab
+    0.6099645382      6      3  lab
+    0.2689557692      6      3  lab
+
+  PASS  delta_BU at L=3 on nabla^can
+  conjugacy |theta_pal-theta_BU|=0.000e+00  |axis dot|=0.922379
+  ||R_pal - A^-1 R_BU A|| = 3.925e-50
+  PASS  palindrome preserves nabla^can angle
+  PASS  palindrome transports axis
+  path                                  can          geo          lab
+  ONA-BU+-BU--ONA                0.19534218   0.19534218   0.25847867
+  BU+-BU--ONA-BU+                0.19534218   0.19534218   0.25847867
+  BU--ONA-BU+-BU-                0.19534218   0.19534218   0.26895577
+  ONA-BU--BU+-ONA                0.19534218   0.19534218   0.25847867
+  span can=0.000e+00  geo=0.000e+00  lab=1.048e-02
+  PASS  nabla^can invariant on BU refactorizations
+  PASS  nabla^can refactorizations equal delta_BU
+  PASS  nabla^lab not invariant on BU refactorizations
+  L=2 out-back n=12  max theta_can=8.325e-51  max theta_lab=0.464178
+  PASS  nabla^can out-back ~ 0
+  PASS  origin_gyr == geodesic on all walks
+  PASS  lab spectrum finer than canonical
+  n_unique angles: can=6  lab=147
+
+  lab net-boost closed: 4/360
+    CLOSED_LAB  L=2  BU+-BU--BU+
+    CLOSED_LAB  L=2  BU--BU+-BU-
+    CLOSED_LAB  L=4  BU+-BU--BU+-BU--BU+
+    CLOSED_LAB  L=4  BU--BU+-BU--BU+-BU-
+  PASS  lab-closed walks are collinear BU+-BU- out-backs
+  PASS  lab-closed walks have theta_lab = 0
+
+  triangle                   defect  nearest can-bin
+  origin-UNA-ONA       0.3966015022    0.4127190541
+  origin-ONA-BU+       0.0976710891    0.1668277883
+  PASS  defect(origin,ONA,BU+) = omega_corner
+  origin-BU+-UNA       0.0834138942    0.1668277883
+  UNA-ONA-BU+          0.4204750817    0.4204750817
+  PASS  defect(UNA,ONA,BU+) in can spectrum
+  UNA-BU+-BU-          0.1668277883    0.1668277883
+  ONA-BU+-BU-          0.1953421783    0.1953421783
+  PASS  defect(ONA,BU+,BU-) = delta_BU
+8. WIGNER PAIR / THOMAS 1-FORM
+-----
+  Wigner rotation of two origin boosts (finite SO(3); no duration)
+    UNA then ONA              0.396601502221
+    ONA then BU+              0.097671089129
+    BU+ then UNA              0.083413894169
+  Thomas 1-form  omega = (gamma^2/(gamma+1)) beta x d beta
+    Pexp of omega on BU loop  0.195342176775
+    2*(ONA then BU+)          0.195342178258
+  nabla^can = Fermi-Walker / geodesic transvection
+  nabla^lab = product of successive Lorentz boosts in one inertial frame
+  PASS  Wigner ONA-BU+ = omega_corner
+  PASS  2 * Wigner ONA-BU+ = delta_BU
+  PASS  Thomas Pexp BU = 2 * Wigner ONA-BU+
+
+
+9. STAGE KINEMATICS
+-----
+  stage        beta      gamma        eta   gamma*beta    Doppler   Poincare
+  UNA      0.707107   1.414214   0.881374     1.000000   2.414214   0.414214
+  ONA      0.785398   1.615533   1.059306     1.268836   2.884369   0.485116
+  BU       0.199471   1.020508   0.202182     0.203562   1.224070   0.100748
+
+10. THREE-AXIS PRECESSION TRIAD
+-----
+  pair               defect     gyr_origin      gyr_stage  axis_origin
+  UNA_ONA    0.396601502221 0.396601502221 0.396601502221  (+0.000000,+0.000000,+1.000000)
+  PASS  UNA_ONA: origin-gyr angle = gyrotriangle defect
+  ONA_BU     0.097671089129 0.097671089129 0.097671089129  (+1.000000,+0.000000,+0.000000)
+  PASS  ONA_BU: origin-gyr angle = gyrotriangle defect
+  BU_UNA     0.083413894169 0.083413894169 0.083413894169  (+0.000000,+1.000000,+0.000000)
+  PASS  BU_UNA: origin-gyr angle = gyrotriangle defect
+  PASS  three origin-pair precession axes mutually orthogonal
+  PASS  omega_OB_stage = omega_corner
+  PASS  omega0 != omega_UO_stage
+
+  directed edges (triad generators or I)
+  edge         gen             theta  axis
+  UNA->ONA   UO-    0.396601502221  (+0.000000,+0.000000,-1.000000)
+  UNA->BU+   UB+    0.083413894169  (+0.000000,+1.000000,+0.000000)
+  UNA->BU-   UB-    0.083413894169  (+0.000000,-1.000000,+0.000000)
+  ONA->UNA   UO+    0.396601502221  (+0.000000,+0.000000,+1.000000)
+  ONA->BU+   OB-    0.097671089129  (-1.000000,+0.000000,+0.000000)
+  ONA->BU-   OB+    0.097671089129  (+1.000000,+0.000000,+0.000000)
+  BU+->UNA   UB-    0.083413894169  (+0.000000,-1.000000,+0.000000)
+  BU+->ONA   OB+    0.097671089129  (+1.000000,+0.000000,+0.000000)
+  BU+->BU-   I      0.000000000000  (+0.000000,+0.000000,+0.000000)
+  BU-->UNA   UB+    0.083413894169  (+0.000000,+1.000000,+0.000000)
+  BU-->ONA   OB-    0.097671089129  (-1.000000,+0.000000,+0.000000)
+  BU-->BU+   I      0.000000000000  (+0.000000,+0.000000,+0.000000)
+  PASS  every directed edge is UO, OB, UB, or I
+  bin          word                            theta
+  cyc4         UO- OB- I UB+          0.412719054050
+  L4_crossed   UB+ OB+ OB+ UB+        0.256712834405
+  UOB          UO- OB- UB-            0.420475081676
+  BU           OB- I OB-              0.195342178258
+  UNA_dual     UB+ I UB+              0.166827788338
+  PASS  cyc4 = generator word UNA-ONA-BU+-BU--UNA
+  PASS  L4_crossed = generator word UNA-BU+-ONA-BU--UNA
+
+11. DUAL-POLE CLOSURE
+-----
+  omega_UO_stage         0.396601502221
+  omega_OB_stage         0.097671089129
+  omega_UB_stage         0.083413894169
+  2*omega_OB             0.195342178258
+  delta_BU               0.195342178258
+  2*omega_UB             0.166827788338
+  delta_UOB              0.420475081676
+  omega_UO+OB+UB         0.577686485519
+  delta_UOB - sum        -0.157211403843
+  PASS  delta_BU = 2*omega_OB_stage
+  defect(UNA,BU+,BU-)    0.166827788338
+  PASS  defect(UNA,BU+,BU-) = 2*omega_UB_stage
+
+12. PALINDROME AXIS STEERING
+-----
+  PASS  palindrome axis turn = angle(gyr(UNA,ONA))
+  PASS  angle(gyr(UNA,ONA)) = defect(origin,UNA,ONA)
+  PASS  BU axis perpendicular to UNA-ONA steering axis
+  axis_transport               0.396601502221
+  theta_A                      0.396601502221
+  defect_UNA_ONA               0.396601502221
+  axis_BU_dot_axis_A           0.000000000000
+  axis_BU_dot_axis_pal         0.922379109803
+  axis_transport_deg            22.723592225808
+
+13. CLOSURE RESPONSE
+-----
+  rho0                         0.970231725282
+  rho0_from_d0                 0.970231725282
+  baseline_gap                 0.029768274718
+  finite_BU_closure            0.009068729215
+  rho_secant                   0.979300454497
+  Delta_secant                 0.020699545503
+  rho_tangent                  0.997796177590
+  Delta_tangent                0.002203822410
+  nonlinear_closure_gain       0.018495723092
+  d_delta_d_theta              0.401172508240
+  d_delta_d_m                  0.997796177590
+  d2_delta_d_m2                0.285536795041
+  elasticity_theta             1.612965279633
+  elasticity_m                 1.018886668547
+  PASS  rho0 = d(delta_BU)/d(m_a) at m_a=0
+  PASS  aperture decomposition 1-rho0 = (rho-rho0) + (1-rho)
+
+14. EQUAL-SPEED WIGNER RESPONSE
+-----
+  omega0                       0.215549910153
+  omega_UO_stage               0.396601502221
+  d_omega_d_beta               0.762974279322
+  d_omega_d_theta              0.237025720678
+  share_beta                   0.762974279322
+  share_theta                  0.237025720678
+
+15. EQUIVALENT CIRCULAR THOMAS
+-----
+  name                            theta    turn frac     gamma_eq      beta_eq
+  omega_UO_stage             0.39660150   0.06312109   1.06312109   0.33944301
+  omega_OB_stage             0.09767109   0.01554484   1.01554484   0.17429712
+  omega_UB_stage             0.08341389   0.01327573   1.01327573   0.16134416
+  delta_BU                   0.19534218   0.03108967   1.03108967   0.24371159
+  omega_equal_speed          0.21554991   0.03430583   1.03430583   0.25541308
+  phi_SU2                    0.58790076   0.09356731   1.09356731   0.40472499
+  theta_lab_BU               0.25847867   0.04113816   1.04113816   0.27832375
+  theta_lab_pal              0.53360891   0.08492650   1.08492650   0.38785256
+  theta_chart_complete       0.19534218   0.03108967   1.03108967   0.24371159
+  theta_chart_sph_z          0.24660382   0.03924822   1.03924822   0.27222357
+
+16. LAB WORD CLOSURE
+-----
+  loop                        theta      net_boost  status
+  outback_ONA_BUp    0.063136496377   1.271928e-01  OPEN_BOOST_WORD_ROTATION
+  outback_UNA_ONA    0.464178022385   6.577156e-01  OPEN_BOOST_WORD_ROTATION
+  outback_UNA_BUp    0.036894970985   8.653224e-02  OPEN_BOOST_WORD_ROTATION
+  BU                 0.258478674635   1.271928e-01  OPEN_BOOST_WORD_ROTATION
+  tri_UNA_BUp_BUm    0.203722759324   8.653224e-02  OPEN_BOOST_WORD_ROTATION
+  pal                0.533608908247   6.701791e-01  OPEN_BOOST_WORD_ROTATION
+  census L=2..5: closed=4/360
+    BU+-BU--BU+
+    BU--BU+-BU-
+    BU+-BU--BU+-BU--BU+
+    BU--BU+-BU--BU+-BU-
+  PASS  named BU and pal lab words are open
+
+17. COMPACT-HYPERBOLIC BRIDGE
+-----
+  phi_SU2                      0.587900762654
+  three_delta_BU               0.586026534773
+  residual                     0.001874227881
+  residual_over_ma             0.009395985199
+  relative_to_phi              0.003188000425
+
+18. CONNECTION CLASSIFICATION
+-----
+  canonical        CLOSED_MASS_SHELL_HOLONOMY
+  lab BU           OPEN_BOOST_WORD_ROTATION
+  lab pal          OPEN_BOOST_WORD_ROTATION
+  chart complete   CLOSED_MASS_SHELL_HOLONOMY
+  chart spherical  SPHERICAL_COORDINATE_READOUT
+  SU2              COMPACT_FIBER_COMMUTATOR
+
+19. METRIC ONTOLOGY
+-----
+  name                         origin_layer               transport  invariant            status                           down
+  u_p                          LOGICAL_PRIOR              NONE       PRIOR_NUMBER         FORCED                           no
+  o_p                          LOGICAL_PRIOR              NONE       PRIOR_NUMBER         FORCED                           no
+  m_a                          LOGICAL_PRIOR              NONE       PRIOR_NUMBER         FORCED                           yes
+  theta_cs                     LOGICAL_PRIOR              NONE       PRIOR_NUMBER         FORCED                           no
+  beta_UNA                     EINSTEIN_REALIZATION       NONE       SPEED_IDENTIFICATION FORCED                           no
+  beta_ONA                     EINSTEIN_REALIZATION       NONE       SPEED_IDENTIFICATION FORCED                           no
+  beta_BU                      EINSTEIN_REALIZATION       NONE       SPEED_IDENTIFICATION FORCED                           no
+  omega_UO_stage               ELEMENTARY_CANONICAL       CANONICAL  CONJUGACY_ANGLE      ELEMENTARY                       no
+  omega_OB_stage               ELEMENTARY_CANONICAL       CANONICAL  CONJUGACY_ANGLE      ELEMENTARY                       no
+  omega_UB_stage               ELEMENTARY_CANONICAL       CANONICAL  CONJUGACY_ANGLE      ELEMENTARY                       no
+  delta_UNA_BU                 COMPOSITE_CANONICAL        CANONICAL  COMPOSITE_CLASS      COMPOSITE                        no
+  delta_UOB                    COMPOSITE_CANONICAL        CANONICAL  COMPOSITE_CLASS      COMPOSITE                        no
+  axis_transport               ELEMENTARY_CANONICAL       CANONICAL  AXIS_TRANSPORT       ELEMENTARY                       no
+  omega_corner                 ELEMENTARY_CANONICAL       CANONICAL  CONJUGACY_ANGLE      ELEMENTARY                       no
+  delta_BU                     COMPOSITE_CANONICAL        CANONICAL  CONJUGACY_ANGLE      FORCED                           yes
+  rho                          CLOSURE_RESPONSE           CANONICAL  SECANT_GAIN          FORCED                           yes
+  Delta                        CLOSURE_RESPONSE           CANONICAL  SECANT_GAIN          FORCED                           yes
+  phi_SU2                      COMPACT_FIBER              SU2        COMMUTATOR           UNKNOWN                          no
+  omega0                       EQUAL_SPEED_CALIBRATION    CANONICAL  CONJUGACY_ANGLE      CALIBRATION                      no
+  rho0                         CLOSURE_RESPONSE           CANONICAL  LINEAR_GAIN          FORCED                           no
+  two_1_rho0                   CLOSURE_RESPONSE           CANONICAL  LINEAR_GAIN          COMPOSITE                        no
+  omega_equal_speed_UNA        EQUAL_SPEED_CALIBRATION    CANONICAL  CONJUGACY_ANGLE      CALIBRATION                      no
+  baseline_gap                 CLOSURE_RESPONSE           CANONICAL  LINEAR_GAIN          FORCED                           no
+  finite_BU_closure            CLOSURE_RESPONSE           CANONICAL  SECANT_GAIN          FORCED                           no
+  rho_secant                   CLOSURE_RESPONSE           CANONICAL  SECANT_GAIN          FORCED                           yes
+  Delta_secant                 CLOSURE_RESPONSE           CANONICAL  SECANT_GAIN          FORCED                           yes
+  rho_tangent                  CLOSURE_RESPONSE           CANONICAL  TANGENT_GAIN         FORCED                           no
+  Delta_tangent                CLOSURE_RESPONSE           CANONICAL  TANGENT_GAIN         FORCED                           no
+  nonlinear_closure_gain       CLOSURE_RESPONSE           CANONICAL  TANGENT_GAIN         FORCED                           no
+  d_delta_d_theta              CLOSURE_RESPONSE           CANONICAL  TANGENT_GAIN         FORCED                           no
+  elasticity_theta             CLOSURE_RESPONSE           CANONICAL  TANGENT_GAIN         FORCED                           no
+  elasticity_m                 CLOSURE_RESPONSE           CANONICAL  TANGENT_GAIN         FORCED                           no
+  compact_hyperbolic_residual  COMPACT_FIBER              SU2        COMMUTATOR           UNKNOWN                          no
+  sigma_compact                COMPACT_FIBER              SU2        COMMUTATOR           UNKNOWN                          no
+  can_bin_una_ona_bu           COMPOSITE_CANONICAL        CANONICAL  COMPOSITE_CLASS      COMPOSITE                        no
+  can_bin_zero                 COMPOSITE_CANONICAL        CANONICAL  COMPOSITE_CLASS      COMPOSITE                        no
+  can_bin_una_bu_dualpole      COMPOSITE_CANONICAL        CANONICAL  COMPOSITE_CLASS      COMPOSITE                        no
+  can_bin_cyc4                 COMPOSITE_CANONICAL        CANONICAL  COMPOSITE_CLASS      UNKNOWN                          no
+  can_bin_L4_secondary         COMPOSITE_CANONICAL        CANONICAL  COMPOSITE_CLASS      UNKNOWN                          no
+  theta_lab_BU                 BOOST_PROTOCOL             LAB        PROTOCOL_RESIDUAL    PROTOCOL                         no
+  theta_lab_pal                BOOST_PROTOCOL             LAB        PROTOCOL_RESIDUAL    PROTOCOL                         no
+  F_BU                         BOOST_PROTOCOL             LAB        PROTOCOL_RESIDUAL    PROTOCOL                         no
+  F_pal                        BOOST_PROTOCOL             LAB        PROTOCOL_RESIDUAL    PROTOCOL                         no
+  F_outback_ONA_BUp            BOOST_PROTOCOL             LAB        PROTOCOL_RESIDUAL    PROTOCOL                         no
+  F_outback_UNA_ONA            BOOST_PROTOCOL             LAB        PROTOCOL_RESIDUAL    PROTOCOL                         no
+  F_outback_UNA_BUp            BOOST_PROTOCOL             LAB        PROTOCOL_RESIDUAL    PROTOCOL                         no
+  lab_spectrum_count_L5        BOOST_PROTOCOL             LAB        PROTOCOL_RESIDUAL    PROTOCOL                         no
+  omega_chart_complete         COMPOSITE_CANONICAL        CHART      CONJUGACY_ANGLE      FORCED                           no
+  G_z_BU                       CHART_IMPLEMENTATION       CHART      CHART_RESIDUAL       COORDINATE_READOUT               no
+  G_z_pal                      CHART_IMPLEMENTATION       CHART      CHART_RESIDUAL       COORDINATE_READOUT               no
+  G_diag_BU                    CHART_IMPLEMENTATION       CHART      CHART_RESIDUAL       COORDINATE_READOUT               no
+  G_diag_minus_G_z             CHART_IMPLEMENTATION       CHART      CHART_RESIDUAL       COORDINATE_READOUT               no
+
+  used_downstream: m_a, delta_BU, rho, Delta, rho_secant, Delta_secant
+  unknown: phi_SU2, compact_hyperbolic_residual, sigma_compact, can_bin_cyc4, can_bin_L4_secondary
+
+20. PHYSICAL MAPPING
+-----
+  u_p                            0.70710678  FORCED
+    measure   logical UNA threshold number
+    physics   stage prior; Einstein-ball beta is an extra identification
+  o_p                            0.78539816  FORCED
+    measure   logical ONA threshold number
+    physics   stage prior; Einstein-ball beta is an extra identification
+  m_a                            0.19947114  FORCED
+    measure   logical BU threshold number / aperture amplitude
+    physics   stage prior; gravity uses the number as BU amplitude
+  theta_cs                        1.5707963  FORCED
+    measure   CS orientation (pi/2); not a ball speed
+    physics   stage prior; gauge/orientation frame
+  beta_UNA                       0.70710678  FORCED
+    measure   Einstein-ball speed assigned to UNA
+    physics   realization bridge: threshold number placed as beta
+  beta_ONA                       0.78539816  FORCED
+    measure   Einstein-ball speed assigned to ONA
+    physics   realization bridge: threshold number placed as beta
+  beta_BU                        0.19947114  FORCED
+    measure   Einstein-ball speed assigned to BU
+    physics   realization bridge: threshold number placed as beta
+  omega_UO_stage                  0.3966015  ELEMENTARY
+    measure   defect(origin, UNA, ONA); gyration about the complementary axis
+    physics   Wigner rotation of composing orthogonal boosts UNA then ONA. A carried spatial frame (gyroscope) rotates by this angle. Named coupling unknown.
+    alt       Thomas rotation of those two boosts; palindrome axis-steering angle
+  omega_OB_stage                0.097671089  ELEMENTARY
+    measure   defect(origin, ONA, BU+); same as omega_corner
+    physics   Wigner rotation of composing boosts ONA then BU+. A carried spatial frame rotates by this angle. Twice this angle is the closed dual-pole holonomy.
+    alt       half of delta_BU
+  omega_UB_stage                0.083413894  ELEMENTARY
+    measure   defect(origin, BU+, UNA)
+    physics   Wigner rotation of composing boosts BU+ then UNA. A carried spatial frame rotates by this angle. Named coupling unknown.
+    alt       half of the UNA dual-pole loop
+  delta_UNA_BU                   0.16682779  COMPOSITE
+    measure   canonical holonomy of UNA-BU+-BU-; 2*omega_UB_stage
+    physics   closed Fermi-Walker holonomy of the UNA-rooted dual-pole triangle. Named coupling unknown.
+  delta_UOB                      0.42047508  COMPOSITE
+    measure   canonical defect of UNA-ONA-BU+
+    physics   Wigner rotation of composing the three stage boosts in that order; not the scalar sum of the three pair angles. Named coupling unknown.
+  axis_transport                  0.3966015  ELEMENTARY
+    measure   acos(|axis_BU · axis_pal|)
+    physics   palindrome transports the BU axis by the UNA-ONA elementary angle
+  omega_corner                  0.097671089  ELEMENTARY
+    measure   Thomas-Wigner / Ungar defect of origin-ONA-BU+
+    physics   alias of omega_OB_stage
+  delta_BU                       0.19534218  FORCED
+    measure   canonical holonomy of ONA-BU+-BU-; 2*omega_OB_stage
+    physics   closed Fermi-Walker holonomy of the dual-pole loop; path-ordered integral of the Thomas 1-form. Gravity consumes this number as its Regge deficit unit (not recomputed here).
+    alt       hyperbolic area of that triangle in the velocity ball
+  rho                            0.97930045  FORCED
+    measure   delta_BU / m_a
+    physics   secant closure gain of the balance channel
+  Delta                         0.020699546  FORCED
+    measure   1 - rho
+    physics   secant aperture; gravity uses this in tau_G
+  phi_SU2                        0.58790076  UNKNOWN
+    measure   SU(2) commutator angle U V U^-1 V^-1 of orthogonal stage rotations
+    physics   finite rotation from a compact SU(2) commutator (Berry / solid-angle on the compact fiber). Not mass-shell Thomas holonomy. Named coupling unknown.
+  omega0                         0.21554991  CALIBRATION
+    measure   TW(u_p, u_p; theta=o_p) equal-speed Wigner angle
+    physics   equal-speed UNA response calibration; not the UNA-ONA stage-pair gyration
+  rho0                           0.97023173  FORCED
+    measure   d(delta_BU)/d(m_a) at m_a=0; also 2 k(o_p)
+    physics   zero-BU linear closure gain
+  two_1_rho0                    0.059536549  COMPOSITE
+    measure   2*(1-rho0)
+    physics   twice the linear-response opening
+  omega_equal_speed_UNA          0.21554991  CALIBRATION
+    measure   alias of omega0
+    physics   equal-speed Wigner-map response
+  baseline_gap                  0.029768275  FORCED
+    measure   1 - rho0
+    physics   linear-response opening of the ONA geometry with BU off
+  finite_BU_closure            0.0090687292  FORCED
+    measure   rho - rho0
+    physics   closure acquired by finite BU amplitude
+  rho_secant                     0.97930045  FORCED
+    measure   delta_BU / m_a
+    physics   alias of rho; total closure from 0 to m_a
+  Delta_secant                  0.020699546  FORCED
+    measure   1 - rho_secant
+    physics   alias of Delta
+  rho_tangent                    0.99779618  FORCED
+    measure   d(delta_BU)/d(m_a) at physical m_a
+    physics   tangent closure gain at the operating point
+  Delta_tangent                0.0022038224  FORCED
+    measure   1 - rho_tangent
+    physics   differential aperture at physical m_a
+  nonlinear_closure_gain        0.018495723  FORCED
+    measure   rho_tangent - rho_secant
+    physics   nonlinear gain between origin and physical m_a
+  d_delta_d_theta                0.40117251  FORCED
+    measure   d(delta_BU)/d(theta_ona) at physical thresholds
+    physics   ONA steering susceptibility of the balance holonomy
+  elasticity_theta                1.6129653  FORCED
+    measure   (theta_ona / delta_BU) * d(delta_BU)/d(theta_ona)
+    physics   fractional ONA elasticity of delta_BU
+  elasticity_m                    1.0188867  FORCED
+    measure   (m_a / delta_BU) * d(delta_BU)/d(m_a)
+    physics   fractional BU-amplitude elasticity of delta_BU
+  compact_hyperbolic_residual  0.0018742279  UNKNOWN
+    measure   phi_SU2 - 3*delta_BU
+    physics   mismatch of the compact commutator against three copies of the hyperbolic dual-pole holonomy. Named coupling unknown.
+  sigma_compact                0.0093959852  UNKNOWN
+    measure   (phi_SU2 - 3*delta_BU) / m_a
+    physics   aperture-normalized compact-hyperbolic residual. Named coupling unknown.
+  can_bin_una_ona_bu             0.42047508  COMPOSITE
+    measure   canonical defect of UNA-ONA-BU+ (same as delta_UOB)
+    physics   see delta_UOB
+  can_bin_zero                            0  COMPOSITE
+    measure   canonical holonomy of L=2 out-back walks
+    physics   identity: reverse path cancels under Fermi-Walker / gyr inversion
+  can_bin_una_bu_dualpole        0.16682779  COMPOSITE
+    measure   canonical defect of UNA-BU+-BU- (same as delta_UNA_BU)
+    physics   see delta_UNA_BU
+  can_bin_cyc4                   0.41271905  UNKNOWN
+    measure   canonical holonomy of UNA-ONA-BU+-BU-; generators UO, OB, I, UB
+    physics   Fermi-Walker holonomy of that 4-cycle. Named coupling unknown.
+  can_bin_L4_secondary           0.25671283  UNKNOWN
+    measure   canonical holonomy of UNA-BU+-ONA-BU-; crossed dual-pole 4-cycle
+    physics   Fermi-Walker holonomy of the crossed 4-cycle. Named coupling unknown.
+  theta_lab_BU                   0.25847867  PROTOCOL
+    measure   rotational part of the lab relative-boost word on the BU triangle
+    physics   rotation from a product of successive Lorentz boosts in one inertial frame (Thomas's original boost-composition construction). Closed only if net boost vanishes.
+  theta_lab_pal                  0.53360891  PROTOCOL
+    measure   rotational part of the lab palindrome word
+    physics   same lab boost-composition construction on the palindrome word. Closed only if net boost vanishes.
+  F_BU                          0.063136496  PROTOCOL
+    measure   theta_lab - theta_can on the BU triangle; equals lab ONA-BU+ out-back
+    physics   difference of lab boost-composition rotation vs Fermi-Walker holonomy on the same vertices. Protocol residual, not a new prior.
+  F_pal                          0.33826673  PROTOCOL
+    measure   theta_lab - theta_can on the palindrome
+    physics   same lab-minus-Fermi-Walker residual on the palindrome. Palindrome-specific.
+  F_outback_ONA_BUp             0.063136496  PROTOCOL
+    measure   lab rotation of ONA-BU+-ONA (canonical 0)
+    physics   out-and-back residue of lab boost composition; Fermi-Walker inverts and cancels it.
+  F_outback_UNA_ONA              0.46417802  PROTOCOL
+    measure   lab rotation of UNA-ONA-UNA (canonical 0)
+    physics   out-and-back residue of lab boost composition on the UNA-ONA pair.
+  F_outback_UNA_BUp             0.036894971  PROTOCOL
+    measure   lab rotation of UNA-BU+-UNA (canonical 0)
+    physics   out-and-back residue of lab boost composition; equals F of the UNA dual-pole word.
+  lab_spectrum_count_L5                 147  PROTOCOL
+    measure   number of distinct lab angles on closed walks L<=5
+    physics   path-word spectrum size; not a curvature quantum
+  omega_chart_complete           0.19534218  FORCED
+    measure   Cartesian Thomas Pexp (Richardson) of Palge-Pfeifer LC; regular at rest and poles
+    physics   path-ordered integral of the Thomas 1-form omega = (gamma^2/(gamma+1)) beta x d beta. Equals delta_BU on the dual-pole loop.
+  G_z_BU                        0.051261645  COORDINATE_READOUT
+    measure   spherical z-chart Pexp minus delta_BU on BU
+    physics   singular-coordinate readout of the same LC connection; poles at BU
+  G_z_pal                       0.051393484  COORDINATE_READOUT
+    measure   spherical z-chart Pexp minus delta_BU on palindrome
+    physics   singular-coordinate readout
+  G_diag_BU                       1.0512141  COORDINATE_READOUT
+    measure   spherical diag-chart Pexp minus delta_BU on BU
+    physics   singular-coordinate readout in a pole-free spherical chart
+  G_diag_minus_G_z               0.99995249  COORDINATE_READOUT
+    measure   G_diag - G_z on BU
+    physics   difference of two spherical readouts; not the connection holonomy
+
+21. NOTES
+-----
+  theory: cgm_precession_analysis_theory_notes.txt
+  mixing:  python experiments/cgm_precession_mixing_probes.py
+
