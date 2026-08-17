@@ -2,8 +2,7 @@
 """Yang-Mills mass gap — Formalism Clay checklist + H7 Formalism aggregate.
 
 Sections 21–22. Delivery path. Companion:
-  docs/Notes/drops/mass gap/Clay_via_hQVM_Hopf.md
-  Yang_Mills_Mass_Gap_Solution.md
+  docs/Findings/Analysis_hQVM_CGM_YM_Mass_Gap.md
   hQVM_Specs_Formalism.md
 Orchestrator: Yang_Mills_Mass_Gap_run.py.
 """

@@ -6,8 +6,8 @@ CGM TRESTLEBOARD — Square · Compass · Level · Percolation · σ · ⟨σv�
 =====
   s_p=π/2  S_CS=7.8748 | u_p=1/√2 S_UNA=3.5449 | o_p=π/4 S_ONA=3.9374 | S_BU=m_a=0.199471
   Q_G·m_a²=0.500000 (½) | ρ=0.979300 Δ=0.020700 δ_BU=0.195342
-  D=24 G_kernel=0.523599 α0=0.007299683
-  α0·ζ=0.169025920321  target=0.169025920321  PASS=True
+  D=24 G_kernel=0.523599 α0=0.007299684
+  α0·ζ=0.169025926127  target=0.169025926127  PASS=True
   optical 1/(4π²)=0.02533030 | 2^(C3Δ²)=1.00595755
   ticks/K=270.26 ticks/ρ=1.458 ticks/oct=48.31 C3Δ=0.4140
   protocol=micro_ref  d=6  fusion_model=2  dial=delta  p_c_rank=0.0908 (exact micro-ref rank threshold)
@@ -32,7 +32,7 @@ CGM TRESTLEBOARD — Square · Compass · Level · Percolation · σ · ⟨σv�
   hierarchy p_c (kernel MC, n=150):
     rank=d  0.0908  (exact bisect_p_c_rank_micro_ref)
     span    0.0219  full    0.0273  spectrum 0.0402  word 0.3086
-  d=6 api↔family  PASS=True  (q_word and step_uv match api at d=6)
+  d=6 api↔family  PASS=True  (q_word, step_uv, gates match api at d=6)
 
 2) CLOSURE GRAMMAR
 =====
@@ -40,24 +40,24 @@ CGM TRESTLEBOARD — Square · Compass · Level · Percolation · σ · ⟨σv�
   FORCED   (k=6,d=2) n=  1680.15 E=  8.3563e+00 eV  Nuclear spinorial (v·ρ²·Δ⁶/√5·2^(C3Δ²))
   optional (k=6,d=0) n=  1621.56 E=  1.9368e+01 eV  Boundary bare (v·Δ⁶)
   optional (k=6,d=4) n=  1683.48 E=  7.9665e+00 eV  Boundary EM (v·ρ⁴·Δ⁶/√5)
-  optional (k=6,d=5) n=  1684.93 E=  7.8016e+00 eV  Boundary gravity (v·ρ⁵·Δ⁶/√5)
+  optional (k=6,d=5) n=  1684.94 E=  7.8016e+00 eV  Boundary gravity (v·ρ⁵·Δ⁶/√5)
   optional (k=4,d=0) n=  1081.04 E=  4.5203e+04 eV  keV bare (v·Δ⁴)
   optional (k=4,d=2) n=  1140.04 E=  1.9387e+04 eV  keV spinorial (v·ρ²·Δ⁴/√5)
   optional (k=3,d=2) n=   869.78 E=  9.3660e+05 eV  Strong spinorial (v·ρ²·Δ³/√5)
-  optional (k=3,d=5) n=   874.15 E=  8.7963e+05 eV  Strong gravity (v·ρ⁵·Δ³/√5)
+  optional (k=3,d=5) n=   874.16 E=  8.7963e+05 eV  Strong gravity (v·ρ⁵·Δ³/√5)
 
 3) LEVEL
 =====
   Th-229m: n=1680.15
-    all    : Nuclear spinorial (v·ρ²·Δ⁶/√5·2^(C3Δ²))  tick=+0.00501 rel=-7.189e-05  [Z2 two-pass spinorial (F = W2∘W2′)]
-    forced : Nuclear spinorial (v·ρ²·Δ⁶/√5·2^(C3Δ²))  tick=+0.00501
+    all    : Nuclear spinorial (v·ρ²·Δ⁶/√5·2^(C3Δ²))  tick=+0.00484 rel=-6.947e-05  [Z2 two-pass spinorial (F = W2∘W2′)]
+    forced : Nuclear spinorial (v·ρ²·Δ⁶/√5·2^(C3Δ²))  tick=+0.00484
   Deuteron BE: n=809.51
-    all    : Strong bare (v·Δ³)  tick=-1.27239 rel=+1.842e-02  [bare (no holonomy)]
-    forced : Strong bare (v·Δ³)  tick=-1.27239
+    all    : Strong bare (v·Δ³)  tick=-1.27248 rel=+1.842e-02  [bare (no holonomy)]
+    forced : Strong bare (v·Δ³)  tick=-1.27248
   Deuteron bare:  E = v·Δ³ = 2.1838 MeV  rel=-1.809e-02
   Deuteron full:  E = v·Δ³ + v·Δ⁴·(2/√5) = 2.2242 MeV
   Deuteron meas:  2.2240 MeV
-  full |rel| = 8.891e-05
+  full |rel| = 8.768e-05
 
 4) SQUARE
 =====
@@ -67,7 +67,7 @@ CGM TRESTLEBOARD — Square · Compass · Level · Percolation · σ · ⟨σv�
   Deuteron         n=    809.51  sector=Strong/IR
   10 keV plasma    n=   1186.18  sector=keV/Plasma
   Th-229m          n=   1680.15  sector=Nuclear/Boundary
-  Cs hyperfine     n=   2537.48  sector=Atomic/Deep IR
+  Cs hyperfine     n=   2537.49  sector=Atomic/Deep IR
 
   Optical conjugacy samples (E_IR = K/E_UV):
     EW v     → conjugate 3.090296e+26 eV  n=-2423.08
@@ -133,10 +133,10 @@ CGM TRESTLEBOARD — Square · Compass · Level · Percolation · σ · ⟨σv�
   log2(m_Z/m_W) = 0.182019026  (n_W - n_Z)
   W/Z code gap C2-C1 = 9  (promoted D4: -(C3/2)Δ+2Δ²/√5-Δ³)
   Δ from W/Z = 0.020699554747
-  Δ reference = 0.020699553913
-  absolute error = 8.340e-10
-  relative error = 4.029e-08
-  doc target: |Δ_back − Δ| = 8.34e-10 (absolute, 4th-order D4)
+  Δ_* reference = 0.020699553957
+  absolute error = 7.899e-10
+  relative error = 3.816e-08
+  doc target: |Δ_WZ − Δ_*| = 7.899e-10 (absolute, 4th-order D4)
   W/Z lock PASS (<1e-9 abs) ............. True
 
 5c) PERCOLATION HIERARCHY (exact kernel θ(p), §4.3.5/5.1)
@@ -173,7 +173,7 @@ CGM TRESTLEBOARD — Square · Compass · Level · Percolation · σ · ⟨σv�
     30.0  1109.6 0.0676  5.259 3.582e-01 1.915e-03 3.255e+01 3.266e+02
     50.0  1074.0 0.1126  5.791 7.481e-01 7.847e-03 8.004e+01 1.677e+03
     64.0  1056.8 0.1441  5.921 8.963e-01 1.378e-02 1.098e+02 2.757e+03
-    75.0  1045.7 0.1689  5.966 9.533e-01 1.910e-02 1.299e+02 3.469e+03
+    75.0  1045.8 0.1689  5.966 9.533e-01 1.910e-02 1.299e+02 3.469e+03
    100.0  1025.7 0.2252  5.996 9.941e-01 3.246e-02 1.655e+02 4.610e+03
    120.0  1013.0 0.2702  5.999 9.991e-01 4.376e-02 1.860e+02 5.205e+03
    150.0   997.4 0.3378  6.000 1.000e+00 6.089e-02 2.070e+02 5.799e+03
@@ -284,12 +284,12 @@ CGM TRESTLEBOARD — Square · Compass · Level · Percolation · σ · ⟨σv�
 =====
   E_min = v·ρ²·Δ⁶/√5·2^(C3Δ²) = 8.3563 eV
   Th-229m Zhang = 8.3557335 eV
-  rel_err = 7.190e-05  |tick| = 0.0050
-  Δ W/Z abs_err = 8.340e-10  locked = True
+  rel_err = 6.947e-05  |tick| = 0.0048
+  Δ W/Z abs_err = 7.899e-10  locked = True
   free_params = 0  exponent_scan = False  grammar_rank = 1
   ENSDF eV-band isomers only (require_halflife=True)
   ENSDF eV-band: ensdf_ev_band_levels.csv  level_files=214
-  window |tick|≤tol [8.3444, 8.3683] eV
+  window |tick|≤tol [8.3443, 8.3683] eV
   E_min census (no isomer below) . PASS=True
   status         label                      E_eV near(k,d)     tick |tick62|
   PASS           Th-229m (Zhang CaF2)     8.3557     (6,2)   +0.005    0.005
@@ -329,7 +329,7 @@ CGM TRESTLEBOARD — Square · Compass · Level · Percolation · σ · ⟨σv�
   D-3He     Z1Z2= 2 Vb= 0.888 n(Vb)= 873.48 n_peak= 873.55 d= +0.07 class=(3,5) Strong gravity (v·ρ⁵·Δ³/√5) barrier=True peak@Vb=True
   T-T       Z1Z2= 1 Vb= 0.416 n(Vb)= 926.34 n_peak= 926.41 d= +0.07 class=(3,5) Strong gravity (v·ρ⁵·Δ³/√5) barrier=True peak@Vb=True
   3He-3He   Z1Z2= 4 Vb= 1.664 n(Vb)= 829.72 n_peak= 829.79 d= +0.07 class=(3,0) Strong bare (v·Δ³) barrier=True peak@Vb=True
-  p-6Li     Z1Z2= 3 Vb= 1.278 n(Vb)= 848.13 n_peak= 848.19 d= +0.07 class=(3,2) Strong spinorial (v·ρ²·Δ³/√5) barrier=True peak@Vb=True
+  p-6Li     Z1Z2= 3 Vb= 1.278 n(Vb)= 848.13 n_peak= 848.20 d= +0.07 class=(3,2) Strong spinorial (v·ρ²·Δ³/√5) barrier=True peak@Vb=True
   p-B11     Z1Z2= 5 Vb= 1.861 n(Vb)= 821.92 n_peak= 821.99 d= +0.07 class=(3,0) Strong bare (v·Δ³) barrier=True peak@Vb=True
       resonance 600 keV -> n=900.82 offset from barrier = +78.89 ticks (measured)
   barrier placement (all on strong ladder k=3) ... PASS=True
@@ -414,7 +414,7 @@ CGM TRESTLEBOARD — Square · Compass · Level · Percolation · σ · ⟨σv�
 8) 32-BIT LIFT (wavefunction fiber bundle, [4] §16)
 =====
   F=W2∘W2′ depth-4 involution: 64/64 micro-refs F(F(rest))=rest
-  K4 word algebra d=6 api↔family .. q_word and step_uv match api at d=6
+  K4 word algebra d=6 api↔family .. q_word, step_uv, gates match api at d=6
   exact rank-lock P(rank=d) match ... PASS (PMF=0.999667 exact=0.999667)
   32-bit spinorial lift closed (K4 + Householder F + rank-lock) .. True
 
@@ -436,19 +436,19 @@ CGM TRESTLEBOARD — Square · Compass · Level · Percolation · σ · ⟨σv�
     Higgs: (True, False, False)
     Z    : (True, True, False)
     W    : (True, True, True)
-  spectral mass recovery m_i = v/2^L_i(Δ), L_i from carrier traces:
+  spectral mass recovery m_i = v/2^L_i(Δ_*), L_i from carrier traces at Delta_*:
     Top  : 172.7600 GeV
     Higgs: 125.1000 GeV
     Z    : 91.1876 GeV
     W    : 80.3790 GeV
   W/Z ratio from spectral law: 0.88146853
   W/Z ratio measured (PDG):    0.88146853
-  Δ recovered from W/Z spectral ratio abs err: 2.203e-11
+  W/Z spectral ratio abs err: 2.074e-10
 
 9) UNIVERSAL EQUATION (root → cluster → aperture → fusion)
 =====
   |Reach(A)| = (2^r(A))²            [percolation root, fiber-complete]
-  Δ = 1 − δ_BU / m_a               [gravity aperture gap, [1] §5.1]
+  Δ = 1 − δ_BU / m_a               [loop-angle aperture gap, [1] §5.1]
   τ(E) = √(E_G/E)−√(E_G/V_b)        [Beer-Lambert depth, [1] §6.3 / [3] §6.7]
   Model 2: p_Δ=E/V_b, σ∝(S/E)·P_Gamow·θ(p_Δ)  [default; no double-count]
   θ(p) = Σ_k P(rank=k) (2^k)²/2^(2d) [exact micro-ref PMF, [3] §4.3.5]
@@ -693,11 +693,11 @@ C. MAGIC NUMBERS FROM ENUMERATOR {C1,C2,C3}
 
 D. TENSOR FORCE AND THE PION OPERATOR FROM DELTA_4
 =====
-  E_bare (v*Delta^3)      = 2.183767 MeV
+  E_bare (v*Delta^3)      = 2.183764 MeV
   E_tensor (v*Delta^4*2/√5) = 0.040431 MeV
-  E_total                 = 2.224198 MeV
+  E_total                 = 2.224195 MeV
   tensor fraction          = 0.018178
-  Delta_4 / Delta_3 ratio = 0.02069955391322076
+  Delta_4 / Delta_3 ratio = 0.02069954550267028
   pion proxy (tensor energy) = 0.040431 MeV
   discrete pion operator  = Delta_shell=2 (two-dipole-flip byte step)
   pion carrier move       = q_weight=2 return trace C(2)=7/3
@@ -776,3 +776,314 @@ H. SPARSE-DATA PREDICTION TARGET (CGM window vs CSV silence)
   3He-3He           10.0         487.3940         477.4untested band [10,487] keV = 477 keV wide
   p-6Li             10.0         374.2884         364.3untested band [10,374] keV = 364 keV wide
   p-B11             10.0         545.0900         535.1untested band [10,545] keV = 535 keV wide
+
+I. BARRIER RADIUS SENSITIVITY (r0 falsification)
+=====
+  r0 grid (fm) = [1.1, 1.2, 1.3, 1.4]  ref = 1.2
+  fuel        r0    Vb_MeV     n(Vb)   dn_vs_ref   k   k=3
+  D-T       1.10    0.4845    915.73       -6.06   3  True
+  D-T       1.20    0.4441    921.79        0.00   3  True
+  D-T       1.30    0.4099    927.37        5.58   3  True
+  D-T       1.40    0.3806    932.54       10.74   3  True
+  D-D       1.10    0.5195    910.86       -6.06   3  True
+  D-D       1.20    0.4762    916.92        0.00   3  True
+  D-D       1.30    0.4396    922.50        5.58   3  True
+  D-D       1.40    0.4082    927.67       10.74   3  True
+  D-3He     1.10    0.9689    867.42       -6.06   3  True
+  D-3He     1.20    0.8882    873.48        0.00   3  True
+  D-3He     1.30    0.8199    879.06        5.58   3  True
+  D-3He     1.40    0.7613    884.23       10.74   3  True
+  T-T       1.10    0.4538    920.28       -6.06   3  True
+  T-T       1.20    0.4160    926.34        0.00   3  True
+  T-T       1.30    0.3840    931.92        5.58   3  True
+  T-T       1.40    0.3566    937.09       10.74   3  True
+  3He-3He   1.10    1.8153    823.66       -6.06   3  True
+  3He-3He   1.20    1.6641    829.72        0.00   3  True
+  3He-3He   1.30    1.5361    835.30        5.58   3  True
+  3He-3He   1.40    1.4263    840.47       10.74   3  True
+  p-6Li     1.10    1.3941    842.06       -6.06   3  True
+  p-6Li     1.20    1.2779    848.13        0.00   3  True
+  p-6Li     1.30    1.1796    853.70        5.58   3  True
+  p-6Li     1.40    1.0953    858.87       10.74   3  True
+  p-B11     1.10    2.0302    815.86       -6.06   3  True
+  p-B11     1.20    1.8611    821.92        0.00   3  True
+  p-B11     1.30    1.7179    827.50        5.58   3  True
+  p-B11     1.40    1.5952    832.67       10.74   3  True
+  all barriers on k=3 .............. PASS=True
+  max |dn| vs r0=1.2 (off-ref) = 10.74 ticks
+    3He-3He  max |dn| = 10.74
+    D-3He    max |dn| = 10.74
+    D-D      max |dn| = 10.74
+    D-T      max |dn| = 10.74
+    T-T      max |dn| = 10.74
+    p-6Li    max |dn| = 10.74
+    p-B11    max |dn| = 10.74
+=====
+CGM magic-number derivation probe
+=====
+-----
+1. Carrier DoF = SE(3) generators
+total carrier DoF      : 6 (6 payload bits of GENE_Mac)
+Frame 0 rot (SU(2))    : 3  (C1 = comb(6,1) = 6 )
+Frame 1 trans (R^3)    : 3  (C2 = comb(6,2) = 15 )
+SE(3) = SU(2) |x R^3   : 3 rot + 3 trans = 6 DoF
+-----
+2. 3D oscillator from 3 spatial modes (Frame 1, R^3)
+n  binom(n+2,2)  osc_deg=(n+1)(n+2)/2  match
+0    1            1                   True
+1    3            3                   True
+2    6            6                   True
+3    10           10                  True
+4    15           15                  True
+5    21           21                  True
+6    28           28                  True
+weak 3-comp = oscillator deg : True
+QuBEC shell caps C(6,s)*64 : [64, 384, 960, 1280, 960, 384, 64]  sum = 4096
+C(6,N) = discrete chirality census; binom(n+2,2) = continuous 3-mode limit
+-----
+3. Kernel radial/angular split and shell duality
+Krawtchouk radial modes (7x7)        : present
+  K_0(k) = (1, 6, 15, 20, 15, 6, 1)  (shell census vector)
+shell census |Shell_N|=|Shell_6-N|  : True
+in-shell angular multiplicity (64)   : [64, 64, 64, 64, 64, 64, 64]
+-----
+4. (n,l,j) subshells: left- vs right-chiral within-shell order
+   (set of degeneracies is identical; order of fill flips)
+n=0  left : [(0, 0.5, 2)]
+n=0  right: [(0, 0.5, 2)]
+n=1  left : [(1, 1.5, 4), (1, 0.5, 2)]
+n=1  right: [(1, 0.5, 2), (1, 1.5, 4)]
+n=2  left : [(2, 2.5, 6), (2, 1.5, 4), (0, 0.5, 2)]
+n=2  right: [(0, 0.5, 2), (2, 1.5, 4), (2, 2.5, 6)]
+n=3  left : [(3, 3.5, 8), (3, 2.5, 6), (1, 1.5, 4), (1, 0.5, 2)]
+n=3  right: [(1, 0.5, 2), (1, 1.5, 4), (3, 2.5, 6), (3, 3.5, 8)]
+n=4  left : [(4, 4.5, 10), (4, 3.5, 8), (2, 2.5, 6), (2, 1.5, 4), (0, 0.5, 2)]
+n=4  right: [(0, 0.5, 2), (2, 1.5, 4), (2, 2.5, 6), (4, 3.5, 8), (4, 4.5, 10)]
+n=5  left : [(5, 5.5, 12), (5, 4.5, 10), (3, 3.5, 8), (3, 2.5, 6), (1, 1.5, 4), (1, 0.5, 2)]
+n=5  right: [(1, 0.5, 2), (1, 1.5, 4), (3, 2.5, 6), (3, 3.5, 8), (5, 4.5, 10), (5, 5.5, 12)]
+n=6  left : [(6, 6.5, 14), (6, 5.5, 12), (4, 4.5, 10), (4, 3.5, 8), (2, 2.5, 6), (2, 1.5, 4), (0, 0.5, 2)]
+n=6  right: [(0, 0.5, 2), (2, 1.5, 4), (2, 2.5, 6), (4, 3.5, 8), (4, 4.5, 10), (6, 5.5, 12), (6, 6.5, 14)]
+-----
+5. Chirality-flip gate (maximal-j closures)
+   closure = cumulative after maximal-j subshell (intruder drop)
+   magic beyond 20 exists only under left-chirality (CS axiom)
+left-chiral  magic recovered : [2, 8, 20, 28, 50, 82, 126]  missing : []
+right-chiral magic recovered : [2, 8, 20]  missing : [28, 50, 82, 126]
+flip removes intruders 28,50,82,126 : True
+-----
+6. Left-chiral ordered level scheme (maximal-j closures marked B)
+n  l   j    2j+1  cumulative  B  magic?
+0  0   0.5   2     2          B  MAGIC
+1  1   1.5   4     6          B  
+1  1   0.5   2     8          B  MAGIC
+2  2   2.5   6     14         B  
+2  2   1.5   4     18            
+2  0   0.5   2     20         B  MAGIC
+3  3   3.5   8     28         B  MAGIC
+3  3   2.5   6     34            
+3  1   1.5   4     38            
+3  1   0.5   2     40         B  
+4  4   4.5   10    50         B  MAGIC
+4  4   3.5   8     58            
+4  2   2.5   6     64            
+4  2   1.5   4     68            
+4  0   0.5   2     70         B  
+5  5   5.5   12    82         B  MAGIC
+5  5   4.5   10    92            
+5  3   3.5   8     100           
+5  3   2.5   6     106           
+5  1   1.5   4     110           
+5  1   0.5   2     112        B  
+6  6   6.5   14    126        B  MAGIC
+6  6   5.5   12    138           
+6  4   4.5   10    148           
+6  4   3.5   8     156           
+6  2   2.5   6     162           
+6  2   1.5   4     166           
+6  0   0.5   2     168        B  
+measured magic : [2, 8, 20, 28, 50, 82, 126]
+maximal-j closures recovered : [2, 8, 20, 28, 50, 82, 126]
+maximal-j closures missing  : []
+PASS  all 7 magic closures recovered
+-----
+7. Gap sizes and BU vibrational splitting scale
+gap sizes between consecutive magic : [6, 12, 8, 22, 32, 44]
+per-shell maximal-j drop 2(l_max+1) : 8,10,12,14 (l_max=3,4,5,6)
+BU aperture Delta          : 2.069955e-02
+strong scale E_str (MeV)   : 2.183764e+00
+SO splitting scale (MeV)   : 4.520293e-02
+RHO (closure ratio)        : 9.793005e-01
+-----
+8. CGM-anchored spectrum E(n,l,j) and gap closures
+radial step (ticks/shell)  : 8.0517
+spin-orbit scale b_so(=1)  : 0.1667  (BU aperture DELTA * radial step)
+ordered orbitals (left-chiral, b_so_scale=1), E in ticks:
+  n=0 l=0 j= 0.5 2j+1= 2 E=  0.000
+  n=1 l=1 j= 1.5 2j+1= 4 E=  7.968
+  n=1 l=1 j= 0.5 2j+1= 2 E=  8.218
+  n=2 l=2 j= 2.5 2j+1= 6 E= 15.937
+  n=2 l=0 j= 0.5 2j+1= 2 E= 16.103
+  n=2 l=2 j= 1.5 2j+1= 4 E= 16.353
+  n=3 l=3 j= 3.5 2j+1= 8 E= 23.905
+  n=3 l=1 j= 1.5 2j+1= 4 E= 24.072
+  n=3 l=1 j= 0.5 2j+1= 2 E= 24.322
+  n=3 l=3 j= 2.5 2j+1= 6 E= 24.488
+  n=4 l=4 j= 4.5 2j+1=10 E= 31.873
+  n=4 l=2 j= 2.5 2j+1= 6 E= 32.040
+  n=4 l=0 j= 0.5 2j+1= 2 E= 32.207
+  n=4 l=2 j= 1.5 2j+1= 4 E= 32.457
+  n=4 l=4 j= 3.5 2j+1= 8 E= 32.623
+  n=5 l=5 j= 5.5 2j+1=12 E= 39.842
+  n=5 l=3 j= 3.5 2j+1= 8 E= 40.009
+  n=5 l=1 j= 1.5 2j+1= 4 E= 40.175
+  n=5 l=1 j= 0.5 2j+1= 2 E= 40.425
+  n=5 l=3 j= 2.5 2j+1= 6 E= 40.592
+  n=5 l=5 j= 4.5 2j+1=10 E= 40.759
+  n=6 l=6 j= 6.5 2j+1=14 E= 47.810
+  n=6 l=4 j= 4.5 2j+1=10 E= 47.977
+  n=6 l=2 j= 2.5 2j+1= 6 E= 48.144
+  n=6 l=0 j= 0.5 2j+1= 2 E= 48.310
+  n=6 l=2 j= 1.5 2j+1= 4 E= 48.560
+  n=6 l=4 j= 3.5 2j+1= 8 E= 48.727
+  n=6 l=6 j= 5.5 2j+1=12 E= 48.894
+left  gap closures (b=1)   : [2, 8, 20, 40, 70, 112]
+right gap closures (b=1)   : [2, 8, 20, 40, 70, 112]
+left  recovered vs magic   : [2, 8, 20]  missing : [28, 50, 82, 126]
+right recovered vs magic   : [2, 8, 20]  missing : [28, 50, 82, 126]
+linear SO model: oscillator closures only (no intruders)
+spin-orbit scale sweep (left-chiral): b_so_scale -> gap closures
+  b=  1.0  closures=[2, 8, 20, 40, 70, 112]  magic_recovered=3/7
+  b=  5.0  closures=[2, 8, 20, 40, 70, 112]  magic_recovered=3/7
+  b= 10.0  closures=[2, 8]  magic_recovered=2/7
+  b= 20.0  closures=[2, 6]  magic_recovered=1/7
+  b= 30.0  closures=[2, 6, 24, 134, 148, 156]  magic_recovered=1/7
+  b= 40.0  closures=[2, 6, 12, 106, 116, 128, 134, 148, 156]  magic_recovered=1/7
+  b= 50.0  closures=[156]  magic_recovered=0/7
+max magic recovered at b=1.0: [2, 8, 20, 40, 70, 112]
+PASS  linear SO at b=1 gives oscillator closures only
+-----
+9. Nilsson Hamiltonian E = (N+3/2)hw - kappa<L.S> - kappa*mu*<l^2>
+   <l^2> = l(l+1); STF bulk sector (l=2 quadrupole)
+   pushes high-l orbitals down -> intruder magic gaps
+left-chiral (kappa, mu) window scan -> gap closures:
+  kappa=0.03 mu=0.2  closures=[2, 8, 20, 28, 40, 50, 70, 82, 112, 126]  ALL 7
+  kappa=0.05 mu=0.2  closures=[2, 8, 20, 28, 40, 50, 70, 82, 112, 126, 148]  ALL 7
+  kappa=0.07 mu=0.2  closures=[2, 8, 20, 28, 40, 50, 70, 82, 126]  ALL 7
+  kappa=0.10 mu=0.2  closures=[2, 8, 20, 28, 40, 50, 82, 126, 148]  ALL 7
+first (kappa,mu) recovering all 7: (0.03, 0.2) -> [2, 8, 20, 28, 40, 50, 70, 82, 112, 126]
+at (kappa=0.1, mu=0.4):
+  left  closures : [2, 8, 20, 28, 50, 114, 148]  magic recovered 5/7 missing [82, 126]
+  right closures : [2, 8, 20, 26, 48, 110, 146]  magic recovered 3/7 missing [28, 50, 82, 126]
+E_str (MeV)      : 2.184
+-----
+10. Nilsson closure and chirality gates
+all 7 in coupling window : True  first at (kappa=0.03, mu=0.2)
+right-chiral missing     : [28, 50, 82, 126]
+PASS  7 gap closures in window + chirality flip removes intruders
+-----
+10a. CGM anchor (kappa=0.03125, mu=0.2) diagonal prominence
+     tau=delta_BU/(2*pi)=0.031090  Q_256(tau)=0.03125
+ranked gaps (prominence, N):
+  prom=20.73  N=  2  MAGIC
+  prom=16.85  N= 20  MAGIC
+  prom=15.78  N=  8  MAGIC
+  prom=10.58  N= 40  HO
+  prom= 9.47  N= 70  HO
+  prom= 6.25  N=112  HO
+  prom= 3.00  N=148  
+  prom= 3.00  N= 64  
+  prom= 3.00  N=162  
+  prom= 3.00  N=100  
+  prom= 0.51  N=126  MAGIC
+top-7 closures         : [2, 8, 20, 40, 70, 112, 148]
+intruders in top-7     : []
+HO remnants in top-7   : [40, 70, 112]
+PASS  diagonal model omits intruders (mixing required)
+-----
+11. DELTA N=2 MIXING (kappa=0.03125, mu=0.2)
+basis orbitals (n_max=6) : 28
+diagonal top-7 closures : [2, 8, 20, 40, 70, 112, 148]
+mixed    top-7 closures : [20, 28, 50, 70, 82, 126, 148]
+mixed closure count     : 52
+magic in mixed set      : [2, 8, 20, 28, 50, 82, 126]
+intruders in top-7 (diag): []
+intruders in top-7 (mix) : [28, 50, 82, 126]
+PASS  all 7 magic in mixed spectrum; 0 intruders in diagonal
+-----
+12. DOUBLY-MAGIC CHIRALITY-SHELL CLOSURE
+LiveChart rows loaded   : 3386
+z   n    jp     |N-Z| mod 7
+  2   2  0+       0
+  8   8  0+       0
+ 20  20  0+       0
+ 20  28  0+       1
+ 28  20  0+       1
+ 28  28  0+       0
+ 28  50  0+       1
+ 50  50  0+       0
+ 50  82  0+       4
+ 82 126  0+       2
+all jp = 0+             : True
+all |N-Z| mod 7 central : True [0, 0, 0, 1, 1, 0, 1, 0, 4, 2]
+PASS  doubly-magic 0+ and central chirality shell
+-----
+13. SUPERHEAVY CLOSURES (n_max=12)
+extended basis orbitals : 91
+coupling scan (kappa=mu=c, exploratory):
+  c=0.00  hit []  top7 [8, 20, 40, 70, 112, 168, 240]
+  c=0.05  hit [114, 120, 126, 184]  top7 [20, 40, 70, 112, 168, 330, 728]
+  c=0.10  hit [114, 126, 184]  top7 [20, 40, 50, 70, 82, 90, 272]
+  c=0.15  hit [114, 126]  top7 [20, 28, 50, 56, 82, 152, 380]
+  c=0.20  hit [114, 120]  top7 [28, 260, 366, 536, 574, 774, 856]
+  c=0.30  hit [184]  top7 [26, 50, 136, 162, 208, 442, 688]
+  c=0.50  hit [114, 120, 126]  top7 [26, 74, 416, 694, 724, 810, 892]
+CGM point top-7 gaps    : [20, 70, 82, 168, 350, 462, 800]
+CGM point SH candidates : [114, 120, 126, 184]
+scan candidates reached : [114, 120, 126, 184]
+PASS  superheavy candidates in closure scan
+-----
+14. TWO-NEUTRON GAP (Z=82, MeV)
+N    S2n       delta2n
+120      15.83       0.52
+121      15.66       0.53
+122      15.31       0.49
+123      15.13       0.30
+124      14.82       0.71
+125      14.82       3.52
+126      14.11       4.98
+127      11.31       2.28
+128       9.12       0.16
+129       9.02       0.17
+130       8.96       0.19
+131       8.85       0.26
+132       8.78       0.23
+133       8.60       0.41
+134       8.55       0.70
+135       8.18       0.41
+136       7.85       0.14
+137       7.77        nan
+138       7.71        nan
+delta2n spike at N=126 (4.98 MeV)
+PASS  delta2n spike at N=126
+=====
+summary
+=====
+KAPPA_CGM (Q_256)                 : 0.03125
+MU_CGM (1/STF)                    : 0.2
+oscillator deg = weak 3-comp      : True
+shell census Poincare duality     : True
+left-chiral magic recovered       : [2, 8, 20, 28, 50, 82, 126]
+right-chiral magic missing        : [28, 50, 82, 126]
+linear SO closures (b=1)          : [2, 8, 20, 40, 70, 112]
+Nilsson all-7 in window           : True at (0.03,0.2)
+SO splitting scale (MeV)          : 4.520293e-02
+gate (maximal-j)                  : PASS
+gate (chirality flip)             : PASS
+gate (linear SO oscillator-only)  : PASS
+gate (Nilsson window)             : PASS
+gate (Nilsson + chirality)        : PASS
+gate (diagonal CGM point)         : PASS
+gate (Delta N=2 mixing)           : PASS
+gate (doubly-magic)               : PASS
+gate (superheavy scan)            : PASS
+gate (delta2n at N=126)           : PASS

@@ -85,7 +85,9 @@ except ImportError:
     CGM_DELTA = APERTURE_GAP
     CGM_RHO = RHO
     CGM_OMEGA = 4096
-    tau_G_formula = CGM_OMEGA * CGM_DELTA * CGM_RHO**5
+    tau_G_formula = (
+        CGM_OMEGA * CGM_DELTA * CGM_RHO**5 * (1.0 - 4.0 * CGM_RHO * CGM_DELTA**2)
+    )
     binom_shell = [comb(6, s) / 64.0 for s in range(7)]
     tau_cycle_per_delta_exact = None
     kernel_exposure_constants = None
@@ -102,7 +104,7 @@ except ImportError:
     tau_cycle_per_delta_kernel_exact = None
 
 try:
-    from hqvm_compact_geom_core import carrier_trace, shell_return_trace
+    from hqvm_compact_geom_common import carrier_trace, shell_return_trace
 except ImportError:
     carrier_trace = None
     shell_return_trace = None
@@ -1099,14 +1101,14 @@ def run_fold_triple_porosity_controlled(
             print()
     print("  Interpretation per Wavefunction analysis:")
     print(
-        "    Delta (~0.0207) is the residual aperture AFTER depth-4 holonomic closure,"
+        f"    Delta ({CGM_DELTA:.12f}) is the residual aperture after depth-4 closure,"
     )
     print("    not the classical critical porosity for horizon spanning (E_span).")
     print(
         "    Byte-level fold disagreement is structurally 50%; closure compresses it to ~2.07%."
     )
     print(
-        "    The relevant 'aperture event' is holonomy-word availability or H2 onset, not E_span."
+        "    The relevant aperture event is holonomy-word availability or H2 onset, not E_span."
     )
 
 

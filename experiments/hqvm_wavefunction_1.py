@@ -3,7 +3,7 @@
 hqvm_wavefunction_1.py
 hQVM wavefunction holonomy diagnostics.
 
-Structural principles (corrected):
+Structural principles:
 - CS (GENE_Mic/0xAA) = reference frame, not a state in Ω
 - Carrier rest (0xAAA555) = point on complement horizon, NOT CS
 - Each byte = one full [L][R] operation with 4 internal CGM sub-phases

@@ -96,7 +96,7 @@ Several aspects of the gyrational framework require further development:
 
 **Field-level formulation**: A complete field theory would define angular momentum density fields ℓ(x) with constitutive relations analogous to Einstein's field equations. The precise form of such equations remains an open derivation.
 
-**Holonomy quantization**: The measured holonomy values (ω(ONA↔BU) = 0.097671 rad, δ_BU = 0.195342 rad, etc.) suggest a discrete ladder structure, but the underlying quantization principle requires clarification.
+**Holonomy quantization**: The measured loop-angle values (ω(ONA↔BU) = δ_BU/2 ≈ 0.097671089129 rad, δ_BU = 4·arctan(k(π/4)·k(m_a)) ≈ 0.195342178258 rad, etc.) suggest a discrete ladder structure, but the underlying quantization principle requires clarification.
 
 **Scale coupling**: The mechanism by which gyrational modes at different scales influence each other needs precise mathematical formulation beyond the heuristic mappings presented here.
 

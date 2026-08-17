@@ -7,10 +7,19 @@ and human walking biomechanics using known empirical values and relationships.
 No external data required - uses theoretical CGM values and published walking metrics.
 """
 
+import sys
+from pathlib import Path
+
 import numpy as np
 from dataclasses import dataclass
 from typing import Dict
 import warnings
+
+_REPO_ROOT = Path(__file__).resolve().parents[1]
+if str(_REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(_REPO_ROOT))
+
+from gyroscopic.hQVM.constants import BU_HOLONOMY_ANGLE, M_A
 
 warnings.filterwarnings("ignore")
 
@@ -25,16 +34,16 @@ class CGMConstants:
     gamma: float = np.pi / 4  # ONA threshold
 
     # Aperture and closure parameters [dimensionless]
-    m_a: float = 1 / (2 * np.sqrt(2 * np.pi))  # ≈ 0.199471
+    m_a: float = M_A  # ≈ 0.199471
     Q_G: float = 4 * np.pi  # Survey closure [steradians]
 
     # Derived quantities
     closure_percent: float = 97.93
     aperture_percent: float = 2.07
 
-    # Holonomy values [radians]
-    delta_BU: float = 0.195342  # BU Dual-Pole Loop
-    omega_ONA_BU: float = 0.097671  # Single transition holonomy
+    # Loop-angle values [radians]
+    delta_BU: float = BU_HOLONOMY_ANGLE  # BU dual-pole loop angle
+    omega_ONA_BU: float = BU_HOLONOMY_ANGLE / 2.0  # Single-transition half-angle
 
     # Energy and coupling parameters
     sqrt3_ratio: float = np.sqrt(3)  # ≈ 1.732
@@ -842,7 +851,7 @@ def run_complete_analysis():
     print(f"\nCGM FUNDAMENTAL CONSTANTS:")
     print(f"   m_a (aperture): {cgm.m_a:.6f} ({cgm.aperture_percent:.2f}%)")
     print(f"  Q_G (solid angle): {cgm.Q_G:.4f} steradians")
-    print(f"  delta_BU (holonomy): {cgm.delta_BU:.6f} radians")
+    print(f"  delta_BU (loop angle): {cgm.delta_BU:.12f} radians")
     print(f"  sqrt3 ratio: {cgm.sqrt3_ratio:.4f}")
     print(f"  zeta (grav coupling): {cgm.zeta:.2f}")
 

@@ -56,9 +56,9 @@ The correlation between different observables demonstrates participation in the 
 
 The spectral distortion tests confirm alignment operates within physical conditions. All domain deviations remain within FIRAS limits by more than 10 orders of magnitude. The tSZ identity (Δρ/ρ ≈ 4y) holds with 0.00% deviation. Cross-module coherence (ρ = 0.324) confirms unified alignment geometry across different physical implementations.
 
-## The Alignment Aperture: Why "97.9% Closure"
+## The Alignment Aperture: Why "97.93% Closure"
 
-The 2.1% surplus ( m_a ≈ 0.2) represents the aperture through which alignment occurs. Complete closure (100%) would result in both gyrations returning to identity, eliminating memory and preventing observation. Zero closure would produce no structure, no coherence, and no observation. The 97.9% closure represents optimal alignment between memory and observation.
+The 2.07% aperture (Δ = 1 − ρ with ρ = δ_BU/m_a, δ_BU = 4·arctan(k(π/4)·k(m_a))) is the opening through which alignment occurs. Complete closure (100%) would result in both gyrations returning to identity, eliminating memory and preventing observation. Zero closure would produce no structure, no coherence, and no observation. The 97.93% closure represents optimal alignment between memory and observation.
 
 This principle manifests across scales. In quantum mechanics, the uncertainty principle ensures measurement always involves finite aperture. In black hole physics, the event horizon represents a similar threshold where observation becomes impossible due to complete closure. In atomic physics, electron orbitals maintain specific angular momentum quanta that prevent collapse while enabling stable observation.
 

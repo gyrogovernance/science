@@ -438,12 +438,12 @@ def probe_delta_bu_identity(verbose: bool = True) -> Dict[str, Any]:
     """
     DIAGNOSTIC HELPER: Probe the δ_BU =  m_a identity using multiple methods.
 
-    This explores the relationship between the dual-pole holonomy δ_BU
+    This explores the relationship between the dual-pole loop angle δ_BU
     and the primitive aperture m_a, which is fundamental to the
     fine-structure constant prediction.
 
     Physical Insight: The δ_BU ≈  m_a relationship is crucial for the
-    α_fs = δ_BU⁴/ m_a prediction to work, connecting geometric holonomy
+    α_fs = δ_BU⁴/ m_a prediction to work, connecting geometric loop angle
     to the primitive aperture.
 
     Args:
@@ -540,7 +540,7 @@ KEY PHYSICAL INSIGHTS ESTABLISHED BY THESE HELPERS:
 These helpers established the mathematical foundation and geometric
 conditions that make the main analysis robust and physically meaningful.
 They demonstrated that the fine-structure constant emerges from pure
-geometry through the dual-pole holonomy structure, with no need for
+geometry through the dual-pole loop angle structure, with no need for
 electrodynamic inputs.
 """
 

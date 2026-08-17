@@ -36,7 +36,7 @@ from gyroscopic.hQVM.constants import (
     intron_micro_ref,
 )
 from gyroscopic.hQVM.family import alphabet_size, byte_from_family_micro
-from hqvm_compact_geom_core import (
+from hqvm_compact_geom_common import (
     DELTA,
     RHO,
     DELTA_BU,
@@ -191,7 +191,7 @@ def optical_conjugacy_ir_ladder() -> dict[str, float]:
 def cgm_ym_gap_prediction() -> dict:
     """Dimensionful YM mass-gap candidates on the CGM Delta-ruler.
 
-    All quantities are derived from existing corpus constants (hqvm_compact_geom_core,
+    All quantities are derived from existing corpus constants (hqvm_compact_geom_common,
     CGM_Units, Compact_Geometry §2.6). Two routes are reported:
 
     Route A (2-form curvature grade, Compact_Geometry C2=15):

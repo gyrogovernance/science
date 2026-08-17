@@ -9,7 +9,7 @@
 
 ## Abstract
 
-The Common Governance Model derives an irreducible operational aperture from the requirement that sequential state transformations preserve both their traceability to a single origin and their capacity to produce distinguishable outcomes. This aperture parameter Δ ≈ 0.0207 emerges as the residual phase defect when alternating transformations close at the fourth order. Existence in the model is the preservation of that common origin under transformation, recorded as operational identity of the vacuum. Emergence is the production of distinguishable outcomes above that origin, recorded as individuality of excitations. The aperture is the residual defect that makes identity and individuality compatible under depth-four closure.
+The Common Governance Model derives an irreducible operational aperture from the requirement that sequential state transformations preserve both their traceability to a single origin and their capacity to produce distinguishable outcomes. This aperture parameter Δ ≈ 0.020699545503 emerges as the residual phase defect when alternating transformations close at the fourth order. Existence in the model is the preservation of that common origin under transformation, recorded as operational identity of the vacuum. Emergence is the production of distinguishable outcomes above that origin, recorded as individuality of excitations. The aperture is the residual defect that makes identity and individuality compatible under depth-four closure.
 
 The present construction establishes that the gauge-invariant oriented sector of a finite 4096-state carrier manifold possesses a strictly positive spectral gap above the vacuum. The Yang–Mills mass gap is the canonical continuum readout of this aperture-forced floor. Proceeding from the finite carrier through GNS representation and Osterwalder–Schrader reconstruction to a continuum Hopf-oriented chart, the construction yields a mass scale of approximately 1.582 GeV for the lightest gauge-invariant excitation in the pure SU(2) sector. Coexistence of traceability and distinguishability under transformation closure produces a gapped spectrum in the corresponding field theory.
 
@@ -21,7 +21,7 @@ Pure non-abelian Yang–Mills theory in four dimensions exhibits a mass gap when
 
 The Common Governance Model begins from a single axiom stating that the source is common. This axiom enforces ancestry preservation: every operational state remains traceable to a single origin. Identity is that preserved ancestry. Individuality is the capacity of successive transformations to produce distinguishable outcomes. The framework imposes four sequential conditions on state transitions. Common Source (CS) establishes a fundamental directional asymmetry, identifying one transition direction as origin-preserving and the other as origin-altering. Unity Non-Absolute (UNA) keeps the order of sequential operations relevant and prevents homogeneous collapse. Opposition Non-Absolute (ONA) keeps distinct operational paths comparable and prevents complete structural fragmentation. Balance Universal (BU) enforces closure at the fourth order of alternating operations, called depth-four balance. The formal modal statements of these conditions appear in Section 3.1.
 
-Depth-four balance cannot be achieved losslessly in both temporal directions while maintaining distinguishable outcomes. The residual phase defect of this closure is the aperture Δ. It quantifies the irreducible information loss during bidirectional sequence reconstruction. In the continuous realization the aperture is computed from the holonomy of Einstein gyration along the dual-pole path, yielding Δ ≈ 0.0207. The same value is recovered from discrete entropy compression of the byte-level fold disagreement defined in Section 1.1 and from discrete arithmetic quantization anchors (Section 7.1). The aperture is a geometric invariant fixed by the closure identity.
+Depth-four balance cannot be achieved losslessly in both temporal directions while maintaining distinguishable outcomes. The residual phase defect of this closure is the aperture Δ. It quantifies the irreducible information loss during bidirectional sequence reconstruction. In the continuous realization the aperture is computed from the BU dual-pole loop angle along the dual-pole path, yielding Δ ≈ 0.020699545503. The same value is recovered from discrete entropy compression of the byte-level fold disagreement defined in Section 1.1 and from discrete arithmetic quantization anchors (Section 7.1). The aperture is a geometric invariant fixed by the closure identity.
 
 The central thesis of this paper is that the Yang–Mills mass gap is the continuum spectral signature of this aperture. Ancestry preservation requires that the vacuum state remain reconstructable. Distinguishability requires that excitations above this state carry resolvable energy differences. A vanishing aperture would imply perfect reversibility of all transformation sequences, freezing the system into static identity and eliminating the capacity for gapped excitations. The strictly positive aperture therefore forces a strictly positive spectral floor above the vacuum in any admissible oriented quotient. The Yang–Mills problem supplies the external axiomatic standard in which to express this aperture-forced floor as a dimensionful physical mass. The subject of the analysis is identity and individuality under closure. The mass gap is their continuum field-theoretic signature.
 
@@ -74,8 +74,8 @@ Surface measure on S² is written dμ_{S²}.
 |---|---|
 | Q_G = 4π | Horizon solid-angle normalization (steradians). |
 | m_a = 1/(2√(2π)) | Aperture scale. Identity: Q_G m_a² = 1/2. |
-| δ_BU | Balance Universal (BU) holonomy phase defect (radians); derived in Section 7.1. |
-| ρ = δ_BU / m_a | Structural closure ratio (ρ ≈ 0.9793). |
+| δ_BU | Balance Universal (BU) dual-pole loop angle (radians); derived in Section 7.1. |
+| ρ = δ_BU / m_a | Structural closure ratio (ρ ≈ 0.979300454497). |
 | Δ = 1 − ρ | **Aperture** (dimensionless). This is the only meaning of bare Δ. |
 | Δ_W | Unoriented shadow gap; Δ_W(n) = n/(2(n−1)), lim_{n→∞} Δ_W = 1/2. |
 | Δ_JW | Defining-chart dimensionless spectral gap E₁ − E₀ on the Q₈ 1×1 Wilson block. |
@@ -133,7 +133,7 @@ Optical conjugacy: E_i^UV · E_i^IR = (E_CS · v)/(4π²) with E_CS = 1.22×10¹
 |---|---|
 | Q_G = 4π | Horizon solid-angle definition (Section 7.1). |
 | m_a = 1/(2√(2π)) | Derived from Q_G m_a² = 1/2 (Section 7.1). |
-| δ_BU ≈ 0.195342 rad | Derived from Einstein gyration on the dual-pole path ONA → BU+ → BU− → ONA (Section 7.1). |
+| δ_BU ≈ 0.195342178258 rad | Closed form δ_BU = 4 · arctan(k(π/4) · k(m_a)) on the dual-pole path ONA → BU+ → BU− → ONA (Section 7.1). |
 | Uniqueness of ω⋆ | Sketch in Section 3.1; finite modal quotient under BU identification. |
 | OS net, OS-RP, Wightman reconstruction | Derived here (Section 4). |
 | Gap positivity Δ_phys > 0 from Δ > 0 | Derived here (Section 7). |
@@ -527,7 +527,7 @@ where k represents the polynomial differential order of the curvature moment and
 g_R(k)² = Δ^(k − 1).
 ```
 
-*Proof:* At depth one (k = 1, representing the observational macroscopic boundary), g_R(1)² = Δ⁰ = 1. As operational depth increases along the ultraviolet conjugate (k → ∞), because the aperture gap is less than unity (Δ ≈ 0.020699 < 1), the coupling constant g_R(k)² converges to zero:
+*Proof:* At depth one (k = 1, representing the observational macroscopic boundary), g_R(1)² = Δ⁰ = 1. As operational depth increases along the ultraviolet conjugate (k → ∞), because the aperture gap is less than unity (Δ ≈ 0.020699545503 < 1), the coupling constant g_R(k)² converges to zero:
 
 ```
 lim_{k → ∞} g_R(k)² = lim_{k → ∞} Δ^(k − 1) = 0.
@@ -545,7 +545,7 @@ Because Δ = 1 − ρ, we replace (Δ − 1) directly with the negative structur
 β_k = −ρ · Δ^(k − 1) < 0.
 ```
 
-Since both ρ ≈ 0.9793 and Δ^(k − 1) are positive real numbers for all k ≥ 1, the internal beta function β_k is negative across all operational scales. ∎
+Since both ρ ≈ 0.979300454497 and Δ^(k − 1) are positive real numbers for all k ≥ 1, the internal beta function β_k is negative across all operational scales. ∎
 
 The depth beta β_k is the CGM internal scaling relation on the Δ-ruler. To identify it with the perturbative Yang–Mills beta function, one must specify the map between operational depth k and the conventional renormalization scale μ and then compare the resulting μ-derivative with the standard coefficient b₀. The present derivation establishes the CGM asymptotic-freedom direction, namely decreasing effective coupling along the ultraviolet conjugate depth, consistent with the ultraviolet scaling requirement of the continuum axiomatic standard.
 
@@ -568,7 +568,7 @@ Identity requires that the vacuum remain reconstructable from ancestry. Individu
 
 The constant c_Ω is determined by the saturated grade-2 curvature sector. In the Hopf-oriented Yang–Mills chart, c_Ω = C₂ v, so the continuum mass readout is m_gap = C₂ · v · Δ² (Section 7.4).
 
-*Proof of Theorem GAP-Positive:* By Proposition BU (Dual Balance), operational closure requires two complementary forces: outward structural expansion (BU-Egress) and inward ancestry memory reconstruction (BU-Ingress). When traversing a closed four-step operational loop (LRLR), the system accumulates a geometric memory of the path expressed as a holonomy phase defect of bounded vibration about the closed configuration.
+*Proof of Theorem GAP-Positive:* By Proposition BU (Dual Balance), operational closure requires two complementary forces: outward structural expansion (BU-Egress) and inward ancestry memory reconstruction (BU-Ingress). When traversing a closed four-step operational loop (LRLR), the system accumulates a geometric memory of the path expressed as a loop angle of bounded vibration about the closed configuration.
 
 **Aperture scale m_a.** The horizon solid angle of the observation base S² is Q_G = 4π steradians. Spinorial double-cover structure on SU(2) fixes the half-integer identity
 
@@ -579,34 +579,20 @@ Q_G · m_a² = 1/2.
 Solving with Q_G = 4π gives m_a² = 1/(8π) and therefore
 
 ```
-m_a = 1 / (2 √(2π)) ≈ 0.19947114020.
+m_a = 1 / (2 √(2π)) ≈ 0.199471140201.
 ```
 
-This is the BU vibrational amplitude about the depth-four closed configuration, and it is the unit against which holonomy is compared.
+This is the BU vibrational amplitude about the depth-four closed configuration, and it is the unit against which the dual-pole loop angle is compared.
 
-**Dual-pole holonomy δ_BU.** Stage thresholds from the gyrotriangle closure δ = π − (π/2 + π/4 + π/4) = 0 fix the ONA angle o_p = π/4. In the Einstein gyrovector space of curvature parameter c = 1, place the stage vectors
-
-```
-v_ONA = (0, o_p, 0) = (0, π/4, 0),
-v_BU+ = (0, 0, m_a),
-v_BU− = (0, 0, −m_a).
-```
-
-The Thomas gyration gyr[a, b] is the unique rotation that restores associativity for successive boosts a and b. Let G = gyr[v_ONA, v_BU+] and let ω(ONA ↔ BU) be the rotation angle of G, extracted as the SO(3) angle of that matrix. The dual-pole path ONA → BU+ → BU− → ONA traverses the two BU poles and returns, so the accumulated holonomy is twice the single-leg gyration angle:
+**Dual-pole loop angle δ_BU.** Stage thresholds from the gyrotriangle closure δ = π − (π/2 + π/4 + π/4) = 0 fix the ONA angle o_p = π/4. With stage thresholds read as Einstein speeds β in the open unit ball, the Poincaré half-rapidity radius is k(β) = β / (1 + √(1 − β²)). The BU dual-pole loop ONA → BU+ → BU− → ONA has the closed form
 
 ```
-δ_BU := 2 · ω(ONA ↔ BU).
+δ_BU = 4 · arctan(k(π/4) · k(m_a)) ≈ 0.195342178258.
 ```
 
-Evaluating the gyration on these vectors yields ω(ONA ↔ BU) ≈ 0.09767108829 and therefore
+Equivalently δ_BU = 2 · ω(ONA ↔ BU) with ω ≈ 0.097671089129. The shared evaluator is `bu_holonomy_angle` / `BU_HOLONOMY_ANGLE` in `gyroscopic.hQVM.constants` (`Analysis_Holonomy.md`). Appendix A records numerical diagnostics of δ_BU as a rotation phase, including return-distance and equidistribution tests on the sequence k · δ_BU modulo 2π.
 
-```
-δ_BU ≈ 0.19534217658 rad.
-```
-
-The gyration angle is the SO(3) rotation angle of the Einstein gyrovector composition. For vectors a and b in the unit ball, the matrix gyr[a,b] is obtained from the standard Thomas precession formula. Substituting a = v_ONA and b = v_BU+ produces the value above. The companion holonomy verification script listed in Appendix A reproduces the same constant. Appendix A records numerical diagnostics of δ_BU as a rotation phase, including return-distance and equidistribution tests on the sequence k · δ_BU modulo 2π.
-
-Two independent consistency checks identify the same holonomy constant. The eight-leg toroidal holonomy, the holonomy accumulated on a closed tour of the four CGM stages CS → UNA → ONA → BU+ → BU− → ONA → UNA → CS, equals δ_BU. The SU(2) commutator holonomy for orthogonal UNA/ONA rotations of angle π/4,
+Two independent consistency checks identify the same loop-angle constant. The eight-leg toroidal stage tour CS → UNA → ONA → BU+ → BU− → ONA → UNA → CS accumulates the same angle δ_BU. The SU(2) commutator conjugacy for orthogonal UNA/ONA rotations of angle π/4,
 
 ```
 φ_SU2 = 2 arccos((1 + 2√2)/4) ≈ 0.58790076265,
@@ -617,13 +603,13 @@ satisfies δ_BU ≈ φ_SU2 / 3 up to a small residual, tying the dual-pole memor
 **Aperture Δ.** The structural closure ratio and residual aperture are
 
 ```
-ρ = δ_BU / m_a ≈ 0.97930044609,
-Δ = 1 − ρ = 1 − (δ_BU / m_a) ≈ 0.02069955391 > 0.
+ρ = δ_BU / m_a ≈ 0.979300454497,
+Δ = 1 − ρ = 1 − (δ_BU / m_a) ≈ 0.020699545503 > 0.
 ```
 
-The continuous aperture has discrete anchors on the byte and carrier arithmetic. The best 8-bit dyadic approximation is 5/256 ≈ 0.01953. The ratio of canonical approximants (1/48)/(1/32) = 2/3 identifies the two-frame chirality of the spinor with the three spatial axes. Depth-four projection aligns the aperture with the 48-bit horizon through 48 · Δ ≈ 1.
+The continuous aperture has discrete anchors on the byte and carrier arithmetic. The best 8-bit dyadic approximation is 5/256 ≈ 0.01953. The ratio of canonical approximants (1/48)/(1/32) = 2/3 identifies the two-frame chirality of the spinor with the three spatial axes. Depth-four projection aligns the aperture with the 48-bit horizon through 48 · Δ ≈ 0.993578.
 
-At the byte scale the palindromic fold produces an average fold disagreement of 2 bits out of 4, corresponding to 50 percent holographic redundancy. Depth-four spinorial closure averages these phase disagreements across successive bytes. The residual Δ ≈ 0.0207 is the irreducible aperture after that uniformization, the compression of the byte-level 50 percent fold disagreement to the constitutional aperture of approximately 2.07 percent.
+At the byte scale the palindromic fold produces an average fold disagreement of 2 bits out of 4, corresponding to 50 percent holographic redundancy. Depth-four spinorial closure averages these phase disagreements across successive bytes. The residual Δ ≈ 0.020699545503 is the irreducible aperture after that uniformization, the compression of the byte-level 50 percent fold disagreement to the constitutional aperture of approximately 2.07 percent.
 
 In information and geometric terms, a complete dual balance on a bipartite spinorial carrier cannot achieve zero defect losslessly in both directions simultaneously without destroying individuality. If the mass gap were zero (Δ_phys = 0), this would physically mandate perfect structural closure: ρ = 1, forcing Δ = 0 and δ_BU = m_a. Under such total closure, the dynamic aperture window Δ through which operational transitions produce distinguishable interactions would vanish. With Δ = 0, operational ancestry reconstruction freezes into homogenous static identity, rendering observable quantum field phenomena impossible.
 
@@ -671,7 +657,7 @@ This value of 1/2 corresponds identically to the half-integer product of the fun
 
 This is the negative witness. When canonical state orientation is erased by unguided gauge averaging, the curvature operator loses its sensitivity to physical scale. It collapses into an unphysical two-level shadow object whose gap is frozen at 1/2. That quotient violates reference preservation and is inadmissible for the physical mass gap. Every continuum limit constructed over it produces a collapsed half-gap theory, not true QCD. Without the derived reference ω⋆, the physical vacuum sector is structurally lost. ∎
 
-**Corollary (Two gap regimes on the carrier).** The unoriented family average yields a two-level shadow Hamiltonian with gap Δ_W(n) = n/(2(n−1)) and limit 1/2 as n tends to infinity. The oriented construction yields the aperture gap Δ = 1 − δ_BU/m_a with value approximately 0.0207. These are the two stable curvature-gap regimes distinguished by whether the transcription reference GENE_Mic is retained on the family fiber.
+**Corollary (Two gap regimes on the carrier).** The unoriented family average yields a two-level shadow Hamiltonian with gap Δ_W(n) = n/(2(n−1)) and limit 1/2 as n tends to infinity. The oriented construction yields the aperture gap Δ = 1 − δ_BU/m_a with value approximately 0.020699545503. These are the two stable curvature-gap regimes distinguished by whether the transcription reference GENE_Mic is retained on the family fiber.
 
 ### 7.2a Wilson Magnetic Weight and Lemma L′
 
@@ -787,13 +773,13 @@ This identification treats the 15 channels as the additive support of the lowest
 
 We translate the continuum mass gap into dimensionful physical units via the CGM unit map:
 
-1. **Grade-1 Energy Unit:** E_unit := v · Δ = (246.22 GeV) · (0.020699553913) ≈ 5.096644 GeV. This definition is independent of the spectral gap (unit-map mode `grade1_only`).
-2. **Grade-2 Curvature Scale:** E_{grade-2} := v · Δ² = (246.22 GeV) · (4.284715 × 10⁻⁴) ≈ 0.105498 GeV.
+1. **Grade-1 Energy Unit:** E_unit := v · Δ = (246.22 GeV) · (0.020699545503) ≈ 5.096642 GeV. This definition is independent of the spectral gap (unit-map mode `grade1_only`).
+2. **Grade-2 Curvature Scale:** E_{grade-2} := v · Δ² = (246.22 GeV) · (4.284711 × 10⁻⁴) ≈ 0.105498 GeV.
 
 By Theorem D0-D(2), the proposed CGM readout for the lightest pure Yang–Mills continuum excitation is the complete grade-2 magnetic curvature multiplet with channel multiplicity C₂ = 15. Multiplying the grade-2 curvature scale by that channel count yields the Route A mass gap m_gap:
 
 ```
-m_gap = C₂ · v · Δ² = 15 × 0.105498 GeV ≈ 1.582474 GeV.
+m_gap = C₂ · v · Δ² = 15 × 0.105498 GeV ≈ 1.582473 GeV.
 ```
 
 This is the aperture-forced curvature excitation on the 6-DoF payload at multiplicity C₂. In QCD language this is the glueball sector of pure Yang–Mills: a gauge-invariant composite of the non-abelian field strength above a gapped vacuum, realized as a spectral excitation of the gauge-invariant algebra. Laboratory observables are correlators of that gauge-invariant curvature shadow. The integer C₂ = 15 is the internal channel structure of the multiplet. This count matches the lattice QCD predictions for the pure gauge glueball spectrum, where the lightest scalar (0⁺⁺) and tensor (2⁺⁺) multiplets emerge from the SU(3) Yang–Mills theory with masses in the 1.5 to 1.7 GeV range (Morningstar and Peardon 1999; Lucini and Teper 2001; Chen et al. 2006). The 15-channel structure corresponds to the number of independent curvature components in the SE(3) frame bundle. The derived scale ≈ 1.582 GeV lies in the lattice QCD light scalar (0⁺⁺) window (1.50 – 1.70 GeV). Lattice estimates of that window are numerical extrapolations in volume and spacing (Jaffe and Witten 2006; Wilson 1974). In full QCD with dynamical quarks, mixing with qq̄ mesons obstructs experimental isolation of the pure-glue eigenstates.
@@ -806,7 +792,7 @@ Route B is an independent Δ-ruler cross-check using stage actions obtained by n
 m_B := S_CS · 2 · v · Δ².
 ```
 
-The factor 2 records the dual-pole structure of the BU stage (BU+ and BU−), which doubles the holonomy contribution relative to a single-pole reading. Numerically m_B ≈ 1.661556 GeV, with relative deviation |m_gap − m_B|/max(m_gap, m_B) ≈ 4.76% (Appendix A). Route A remains the authoritative continuum mass. Route B confirms that the same aperture and infrared anchor produce a compatible grade-2 scale under the CS-normalized action.
+The factor 2 records the dual-pole structure of the BU stage (BU+ and BU−), which doubles the loop-angle contribution relative to a single-pole reading. Numerically m_B ≈ 1.661555 GeV, with relative deviation |m_gap − m_B|/max(m_gap, m_B) ≈ 4.76% (Appendix A). Route A remains the authoritative continuum mass. Route B confirms that the same aperture and infrared anchor produce a compatible grade-2 scale under the CS-normalized action.
 
 **Corollary Clustering (Exponential Decay of Connected Correlators):** Let O be a local gauge-invariant observable on the reconstructed theory with ⟨Ω_vac, O Ω_vac⟩ = 0. By Theorem GAP-Positive and the spectral theorem for the joint energy-momentum operators (H_phys, **P**), the connected two-point function satisfies
 
@@ -847,7 +833,7 @@ The certificates below verify exact algebraic identities used in the main text. 
 | |Ω| | 4096 |
 | Horizon cardinality identity |H_horizon|² = |Ω| | 64² = 4096 |
 | Q_G · m_a² | 1/2 |
-| Δ = 1 − ρ | 0.020699553913 |
+| Δ = 1 − ρ | 0.020699545503 |
 | A_kernel = 5/256 | 0.01953125 |
 | |A_kernel − Δ|/Δ | 5.64% |
 | C₂ = C(6,2) | 15 |
@@ -866,13 +852,13 @@ The certificates below verify exact algebraic identities used in the main text. 
 | D2 torus gap Lx1→Lx2 | 0.330221 → 0.062898 (×5.25) |
 | D1 transfer min eig K / gap_H | 0.000223 / 1.352166 |
 | K₄ 2×2 / 3×2 gap at g²=4 | 7.8770 / 7.8763 |
-| Route A / Route B / |A−B|/max | 1.582474 / 1.661556 GeV / 4.76% |
-| E_unit = vΔ / m_phys = Δ_JW·E_unit | 5.096644 / 1.68302 GeV |
+| Route A / Route B / |A−B|/max | 1.582473 / 1.661555 GeV / 4.76% |
+| E_unit = vΔ / m_phys = Δ_JW·E_unit | 5.096642 / 1.683019 GeV |
 | E_CS^IR (optical conjugacy) | 6.24 GeV |
-| δ_BU nearest return (order ≤ 10⁵) | k = 22805, dist 4.59×10⁻⁵ |
-| δ_BU equidistribution χ² (vs crit 142.4) | 0.212 |
+| δ_BU nearest return (order ≤ 10⁵) | k = 22805, dist 7.62×10⁻⁶ |
+| δ_BU equidistribution χ² (vs crit 142.4) | 0.088 |
 
-The table rows for δ_BU record return-distance and equidistribution diagnostics of the holonomy phase as a rotation on the circle. The sequence k · δ_BU modulo 2π has no closer return to the identity than 4.59×10⁻⁵ up to order 100000, and the equidistribution χ² statistic against the critical value 142.4 is 0.212.
+The table rows for δ_BU record return-distance and equidistribution diagnostics of the loop angle as a rotation on the circle. The sequence k · δ_BU modulo 2π has no closer return to the identity than 7.62×10⁻⁶ up to order 100000, and the equidistribution χ² statistic against the critical value 142.4 is 0.088.
 
 
 ## References

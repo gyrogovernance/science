@@ -899,12 +899,12 @@ def c4_from_anchors(g_gev2, v_ew_gev):
 def k4_pq_charges():
     """EW trace-free charges (p, q) per K4 channel from gyrotriangle closure.
 
-    Channel flags on the K4 edge walk (see hqvm_compact_geom_core.CHANNELS):
+    Channel flags on the K4 edge walk (see hqvm_compact_geom_common.CHANNELS):
       b (base): breaks CS reference frame (Higgs path)
       r (rot):  ONA reversal increment on the edge
       bal:    BU balance increment on the edge
 
-    Formulas match _pq() in hqvm_compact_geom_core: p = 1 + (-C1/2)*b + (C1/4)*r + 2*bal,
+    Formulas match _pq() in hqvm_compact_geom_common: p = 1 + (-C1/2)*b + (C1/4)*r + 2*bal,
     q = 5/4 - 2*r - bal with C1=6 (CODE_C1). Returns (p, q) per channel name.
     """
     p0, q0 = 1.0, 5.0 / 4.0

@@ -20,6 +20,14 @@ import numpy as np
 from typing import Dict, Any, Tuple, Optional, Literal
 from dataclasses import dataclass
 import warnings
+import sys
+from pathlib import Path
+
+_REPO_ROOT = Path(__file__).resolve().parents[1]
+if str(_REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(_REPO_ROOT))
+
+from gyroscopic.hQVM.constants import BU_HOLONOMY_ANGLE, M_A
 
 # Warning suppression handled locally at callsites to avoid hiding real issues
 
@@ -92,7 +100,7 @@ def derive_eta_from_CGM(
     Derive rapidity η from CGM primitives for SL(2,C) implementation.
 
     This connects the geometric structure to the boost parameter
-    needed for the dual-pole holonomy calculation.
+    needed for the dual-pole loop angle calculation.
 
     Args:
         alpha: CS chirality angle
@@ -224,7 +232,7 @@ class CGMConstants:
     gamma_ang: float = np.pi / 4  # ONA diagonal tilt angle [Derived]
 
     # Closure amplitude (unique solution for defect-free closure)
-    m_a: float = 1.0 / (2.0 * np.sqrt(2.0 * np.pi))  # BU aperture [Derived]
+    m_a: float = M_A  # BU aperture [Derived]
 
     # Recursive index (empirical discovery from cosmological data)
     N_star: int = 37  # Recursive ladder index [Empirical]
@@ -689,34 +697,34 @@ class QuantumGravityHorizon:
         tester = TWClosureTester(GyroVectorSpace(c=1.0))
         result = tester.compute_bu_dual_pole_holonomy(verbose=verbose)
 
-        # Extract the key quantities
-        omega_ona_bu = result.get("omega_ona_bu", 0.097671)  # Default from your logs
-        delta_BU = 2.0 * omega_ona_bu
+        # Extract TW omega; continuous aperture δ_BU from shared closed form
+        omega_ona_bu = float(result.get("omega_ona_bu", BU_HOLONOMY_ANGLE / 2.0))
+        delta_BU = float(BU_HOLONOMY_ANGLE)
 
         if verbose:
             print("\n=====")
-            print("BU DUAL-POLE MONODROMY")
+            print("BU DUAL-POLE LOOP ANGLE")
             print("=====")
             print(
                 "  This is the key geometric quantity for fine-structure constant prediction."
             )
-            print("  The dual-pole holonomy δ_BU = 2ω(ONA↔BU) represents the")
-            print("  holonomy angle across the BU stage when traversing both poles.")
+            print("  The dual-pole loop angle δ_BU = 4·arctan(k(π/4)·k(m_a))")
+            print("  equals 2ω under the dual-pole BU traversal.")
             print("")
             print(f"  Measured values:")
             print(
-                f"    ω(ONA↔BU) = {omega_ona_bu:.6f} rad ({np.degrees(omega_ona_bu):.4f}°)"
+                f"    ω(ONA↔BU) = {omega_ona_bu:.12f} rad ({np.degrees(omega_ona_bu):.4f}°)"
             )
-            print(f"    δ_BU = 2ω = {delta_BU:.6f} rad ({np.degrees(delta_BU):.4f}°)")
+            print(f"    δ_BU = {delta_BU:.12f} rad ({np.degrees(delta_BU):.4f}°)")
             print(f"")
             print(f"  Key ratios:")
-            print(f"    δ_BU/ m_a = {delta_BU/self.cgm.m_a:.6f} (very stable)")
-            print(f"    δ_BU/π = {delta_BU/np.pi:.6f} ≈ 0.062 (small fraction)")
+            print(f"    δ_BU/ m_a = {delta_BU/self.cgm.m_a:.12f}")
+            print(f"    δ_BU/π = {delta_BU/np.pi:.12f}")
             print(f"")
             print("  Physics interpretation:")
-            print("  • δ_BU is the dual-pole slice angle across BU")
-            print("  • Represents the holonomy from traversing BU⁺ and BU⁻")
-            print("  • Fourth power δ_BU^4 gives the fine-structure constant")
+            print("  • δ_BU is the dual-pole loop angle across BU")
+            print("  • Represents the path memory from traversing BU⁺ and BU⁻")
+            print("  • Fourth power δ_BU^4 / m_a gives the electromagnetic kernel α₀")
             print("  • Normalized by aperture conductance m_a")
 
         return {
@@ -727,21 +735,21 @@ class QuantumGravityHorizon:
 
     def predict_fine_structure_constant(self, verbose: bool = True) -> Dict[str, Any]:
         """
-        Predict the fine-structure constant using the dual-pole holonomy:
-        α_fs = δ_BU^4 / m_a
+        Electromagnetic kernel coupling from the dual-pole loop angle:
+        α₀ = δ_BU^4 / m_a
 
-        This is the geometry-first coupling ansatz based on:
+        Geometry-first coupling ansatz based on:
         - Single SU(2) commutator gives quadratic scaling: φ ~ θ²
         - Dual-pole traversal (BU⁺ & BU⁻) gives two independent quadratic factors
         - Quartic scaling overall: δ_BU^4
         - Aperture normalization: divide by m_a
         """
-        # Get the dual-pole holonomy
+        # Get the dual-pole loop angle (shared closed form)
         holonomy = self.compute_bu_dual_pole_holonomy(verbose=False)
         delta_BU = holonomy["delta_BU"]
         m_a = self.cgm.m_a
 
-        # Predict fine-structure constant
+        # Kernel coupling α₀ (not the transport-corrected laboratory α)
         alpha_pred = (delta_BU**4) / m_a
 
         # CODATA 2018 value for comparison
@@ -750,16 +758,16 @@ class QuantumGravityHorizon:
         # Calculate deviation
         deviation = abs(alpha_pred - alpha_codata) / alpha_codata
 
-        # Invert to get implied holonomy if we assume CODATA α
+        # Invert to get implied loop angle if we assume CODATA α
         delta_BU_star = (alpha_codata * m_a) ** 0.25
         delta_BU_diff = abs(delta_BU - delta_BU_star)
 
         if verbose:
             print("\n=====")
-            print("FINE-STRUCTURE CONSTANT PREDICTION")
+            print("FINE-STRUCTURE KERNEL α₀")
             print("=====")
             print("  Geometry-first coupling ansatz:")
-            print("  α_fs = δ_BU^4 / m_a")
+            print("  α₀ = δ_BU^4 / m_a")
             print("")
             print("  Physics motivation:")
             print("  • Single SU(2) commutator: φ ~ θ² (quadratic)")
@@ -768,12 +776,13 @@ class QuantumGravityHorizon:
             print("  • Aperture normalization: divide by m_a")
             print("")
             print(f"  Measured values:")
-            print(f"    δ_BU = {delta_BU:.6f} rad")
+            print(f"    δ_BU = {delta_BU:.12f} rad")
             print(f"     m_a = {m_a:.12f}")
             print(f"")
             print(f"  Prediction:")
-            print(f"    α_pred = δ_BU^4 /  m_a = {alpha_pred:.10f}")
-            print(f"    α_CODATA = {alpha_codata:.10f}")
+            print(f"    α₀ = δ_BU^4 /  m_a = {alpha_pred:.12f}")
+            print(f"    α_CODATA = {alpha_codata:.12f}")
+            print(f"    residual = {deviation * 1e6:.3f} ppm")
             print(f"    Relative deviation = {deviation:.2e} ({deviation*100:.4f}%)")
             print(f"")
             print(f"  Inverted constraint:")
@@ -781,7 +790,7 @@ class QuantumGravityHorizon:
             print(f"    |δ_BU - δ_BU*| = {delta_BU_diff:.2e} rad")
             print(f"")
             print("  Interpretation:")
-            print("  • α_fs is the bi-hemispheric, dual-pole fourth-order holonomy")
+            print("  • α₀ is the bi-hemispheric, dual-pole fourth-order loop-angle kernel")
             print("  • Normalized by the aperture conductance m_a")
             print("  • Fourth power from 'two commutators × two poles'")
 
@@ -938,7 +947,7 @@ class QuantumGravityHorizon:
         # Physics interpretation
         print("  Physics interpretation:")
         print("  • The quartic scaling δ_BU^4 makes α_pred highly sensitive to δ_BU")
-        print("  • This is intrinsic to the dual-pole holonomy structure")
+        print("  • This is intrinsic to the dual-pole loop angle structure")
         print("  • High sensitivity is a feature, not a bug - it enables precise tests")
         print(
             "  • The sensitivity relation provides a roadmap for experimental validation"
@@ -948,7 +957,7 @@ class QuantumGravityHorizon:
         # Experimental implications
         print("  Experimental implications:")
         print("  • To test α_pred at 1 ppm, need δ_BU precision ~2.5×10⁻⁷")
-        print("  • This requires high-precision measurement of dual-pole holonomy")
+        print("  • This requires high-precision measurement of dual-pole loop angle")
         print("  • The sensitivity makes this a powerful test of the framework")
         print("  • Any deviation from predicted α would strongly constrain the model")
 
@@ -992,7 +1001,7 @@ class QuantumGravityHorizon:
         self, verbose: bool = True
     ) -> Dict[str, Any]:
         """
-        Enhanced SL(2,C) dual-pole holonomy with intrinsic CGM derivation.
+        Enhanced SL(2,C) dual-pole loop angle with intrinsic CGM derivation.
 
         This version uses δ_BU derived from CGM primitives rather than
         matching to external measurements, making it prediction-grade.
@@ -1763,7 +1772,7 @@ class QuantumGravityHorizon:
 
     # REMOVED: probe_delta_bu_identity()
     # This diagnostic helper probed the δ_BU =  m_a identity using multiple methods
-    # PHYSICAL INSIGHT: Explored the crucial relationship between dual-pole holonomy δ_BU
+    # PHYSICAL INSIGHT: Explored the crucial relationship between dual-pole loop angle δ_BU
     # and primitive aperture m_a, fundamental to the fine-structure constant prediction
     # α_fs = δ_BU⁴/m_a, connecting geometric holonomy to the primitive aperture
 
@@ -1778,9 +1787,8 @@ class QuantumGravityHorizon:
 
     # THE HIDDEN HYPERBOLIC STRUCTURE:
     # δ_BU = √2 × sinh(η) where η = 0.1377 is the boost rapidity
-    # This is exact to numerical precision: δ_BU = 0.195342 is fundamentally
-    # a hyperbolic sine of the rapidity, scaled by √2
-    # Since δ_BU/ m_a = 0.979 ≈ 1, we essentially have:  m_a ≈ √2 × sinh(η)
+    # Closed-form: δ_BU = 4·arctan(k(π/4)·k(m_a)) ≈ 0.195342178258
+    # Since ρ = δ_BU/m_a ≈ 0.979300454497, we essentially have: m_a ≈ √2 × sinh(η)
 
     # THE TINY WIGNER ANGLE:
     # SU(2) trace canonical φ = 0.019080 rad (≈ 1.09°) is remarkably small
@@ -1904,7 +1912,7 @@ class QuantumGravityHorizon:
         # REMOVED: solve_delta_for_target_phi() - moved to helpers file
         # REMOVED: report_abundance_indices() - moved to helpers file
 
-        # Enhanced dual-pole holonomy and fine-structure constant predictions
+        # Enhanced dual-pole loop angle and fine-structure constant predictions
         commutator_trace = self.compute_commutator_trace_invariant(verbose=verbose)
         quartic_scaling = self.verify_quartic_scaling(verbose=verbose)
         quartic_scaling = tag_result_status(
@@ -2063,7 +2071,7 @@ class QuantumGravityHorizon:
         print(f"  • Singularities resolved by minimal observation quantum")
         print(f"  • Information escape through aperture transmission")
         print(f"  • Observer-centric foundation for physics")
-        print(f"  • Fine-structure constant emerges from dual-pole holonomy")
+        print(f"  • Fine-structure constant emerges from dual-pole loop angle")
         print(f"  • No electrodynamic inputs required for α_fs")
         print(f"  • 3-fold harmonic oscillator drives cosmic dynamics")
         print(f"  • Einstein's original field equation vindicated")

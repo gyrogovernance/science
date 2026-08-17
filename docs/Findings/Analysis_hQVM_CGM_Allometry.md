@@ -20,7 +20,7 @@ The model separates biological time into two channels: maintenance time for circ
 
 ### 1.1 Scope
 
-This analysis explains allometric scaling as a consequence of the CGM requirement that ancestry be preserved under recursive operational transformation. Quantities used in the channel basis are drawn either from the hQVM carrier at the physical chirality dimension `d = 6` (finite carrier layer) or from the continuum holonomy invariants of the CGM aperture gap `Δ` (continuum layer). Biological bridge identifications that map carrier quantities to organismal observables are stated with each claim. The empirical exponents of metabolic and morphological scaling are read as evaluations of the root-to-bulk exponent defined in Section 4.
+This analysis explains allometric scaling as a consequence of the CGM requirement that ancestry be preserved under recursive operational transformation. Quantities used in the channel basis are drawn either from the hQVM carrier at the physical chirality dimension `d = 6` (finite carrier layer) or from the continuum aperture invariants of the CGM aperture gap `Δ` (continuum layer). Biological bridge identifications that map carrier quantities to organismal observables are stated with each claim. The empirical exponents of metabolic and morphological scaling are read as evaluations of the root-to-bulk exponent defined in Section 4.
 
 ### 1.2 Tiers of Claim
 
@@ -72,13 +72,14 @@ A four-byte closure word carries a projected information content of `8d` bits at
 Delta_kernel(d) = 1 / (8d)
 ```
 
-At `d = 6` this discrete aperture equals `1/48 ≈ 0.020833`. The continuum holonomy version is obtained from the ratio of the dual-pole holonomy defect `delta_BU` to the aperture reference scale `m_a`,
+At `d = 6` this discrete aperture equals `1/48 ≈ 0.020833`. The continuum aperture is obtained from the BU dual-pole loop angle `delta_BU` and the aperture reference scale `m_a`,
 
 ```text
-Delta = 1 - delta_BU / m_a = 0.020699553913
+delta_BU = 4 * arctan(k(pi/4) * k(m_a)),  k(beta) = beta / (1 + sqrt(1 - beta^2))
+Delta = 1 - delta_BU / m_a ≈ 0.020699545503
 ```
 
-Here `delta_BU ≈ 0.195342` rad is the geometric phase accumulated by a closed loop traversing both constitutional poles of the carrier, and `m_a ≈ 0.199471` is the aperture reference scale of the CGM continuous formalism. The two values differ by approximately six parts in ten thousand, a resolution-scale distinction between the discrete byte lattice and the continuum limit. Both are used below. The kernel value enters rational channel statements. The continuum value enters the chemical clock of Section 9. The same aperture enters the gravitational refractive depth and the coupling `G(ψ)` in the CGM gravitational theory (see [15]).
+Here `delta_BU ≈ 0.195342178258` rad is the geometric phase accumulated by a closed loop traversing both constitutional poles of the carrier, and `m_a ≈ 0.199471140200` is the aperture reference scale of the CGM continuous formalism. The two values differ by approximately six parts in ten thousand, a resolution-scale distinction between the discrete byte lattice and the continuum limit. Both are used below. The kernel value enters rational channel statements. The continuum value enters the chemical clock of Section 9. The same aperture enters the gravitational refractive depth and the coupling `G(ψ)` in the CGM gravitational theory (see [15]).
 
 ### 3.2 QuBEC Partition Function and Shell Occupation
 
@@ -173,7 +174,7 @@ a_surf := (n - 1) / n = 2/3
 
 With spatial dimension `n = 3`, `a_surf` is the surface exchange exponent. The square-cube relation of classical scaling is this spatial evaluation of the root-to-bulk exponent: a coherent volume exchanges with its exterior through a surface whose area grows more slowly than the volume it serves. The spatial dimension used here is `n = 3`, the same dimension derived in CGM's spacetime characterization. The surface exponent is the geometric-similarity readout of root-to-bulk scaling at that dimension.
 
-The hQVM carrier supplies a discrete readout that coincides with the surface exponent `2/3` at `d = 6`. The byte intron carries a palindromic phase structure with a fold at the depth-four balance boundary. Phase is quantized on a 256-tick turn scale. The fold unit is the canonical turn quantum `1/32` of a full turn (8 ticks on that scale, matching `Q_256(tau) = 1/32` for the dual-pole holonomy defect). The carrier surface exponent is the ratio of the aperture gap to this fold unit:
+The hQVM carrier supplies a discrete readout that coincides with the surface exponent `2/3` at `d = 6`. The byte intron carries a palindromic phase structure with a fold at the depth-four balance boundary. Phase is quantized on a 256-tick turn scale. The fold unit is the canonical turn quantum `1/32` of a full turn (8 ticks on that scale, matching `Q_256(tau) = 1/32` for the dual-pole loop angle). The carrier surface exponent is the ratio of the aperture gap to this fold unit:
 
 ```text
 a_surf,kernel(d) := Delta_kernel(d) / (1/32) = 4/d
@@ -187,13 +188,13 @@ a_surf,spatial(d) := (n - 1) / n = 1 - 2/d
 
 These two expressions agree only at `d = 6`, where `4/d = 1 - 2/d`. Section 5.2 records that coincidence as a consistency condition. Organism-level nulls in this analysis use the common value `2/3` at physical `d = 6`.
 
-The continuum holonomy version of the fold construction is
+The continuum fold construction is
 
 ```text
-a_surf,continuum := Delta / (1/32) = 0.662386
+a_surf,continuum := Delta / (1/32) ≈ 0.662385
 ```
 
-`Delta = 0.020699553913` is the continuum aperture gap entering this fold ratio. This value carries a correction analogous to the holonomy dressing applied to the fine-structure constant and to Newton's constant in the CGM framework.
+`Delta ≈ 0.020699545503` is the continuum aperture gap entering this fold ratio.
 
 ### 4.3 Network Scale: Bulk Network Throughput, `a_bulk = 3/4`
 
@@ -357,7 +358,7 @@ With this identification,
 a(lambda) = 2/3 + lambda / (6(1+lambda))
 ```
 
-The local scaling exponent `a` is now written as a function of the register occupation coordinate `lambda`. A resting or basal metabolic state corresponds to small `lambda`: the bulk network channel remains near its ground state, oxygen supply relies on surface diffusive exchange, and the exponent sits near `2/3`. An active or field metabolic state corresponds to `lambda` near one: the circulatory network thermalizes, oxygen supply shifts to perfusion-limited bulk delivery, and the exponent sits near `3/4`. The endpoints come from the hQVM carrier structure. Intermediate values track the excitation state of the chirality register. The aperture gap `Delta` is a fixed holonomy invariant of the carrier; it is not set by `lambda`. Gravity readouts use `Delta`. The metabolic mix uses `lambda` and `μ`.
+The local scaling exponent `a` is now written as a function of the register occupation coordinate `lambda`. A resting or basal metabolic state corresponds to small `lambda`: the bulk network channel remains near its ground state, oxygen supply relies on surface diffusive exchange, and the exponent sits near `2/3`. An active or field metabolic state corresponds to `lambda` near one: the circulatory network thermalizes, oxygen supply shifts to perfusion-limited bulk delivery, and the exponent sits near `3/4`. The endpoints come from the hQVM carrier structure. Intermediate values track the excitation state of the chirality register. The aperture gap `Delta` is a fixed loop-angle invariant of the carrier; it is not set by `lambda`. Gravity readouts use `Delta`. The metabolic mix uses `lambda` and `μ`.
 
 ### 6.3 Dual Time Channels: Egress and Ingress
 
@@ -465,13 +466,13 @@ The continuum aperture gap `Delta` sets a dimensionless ratio between an activat
 E_a := kT / (2 Delta)
 ```
 
-`E_a` is the activation barrier scale. `k` is Boltzmann's constant, `T` absolute temperature, and `Δ = 0.020699553913` the continuum aperture gap. At mammalian core temperature `T = 310` kelvin, `kT = 0.026714` electron volts, giving
+`E_a` is the activation barrier scale. `k` is Boltzmann's constant, `T` absolute temperature, and `Delta ≈ 0.020699545503` the continuum aperture gap. At mammalian core temperature `T = 310` kelvin, `kT = 0.026714` electron volts, giving
 
 ```text
-E_a = 0.026714 / (2 × 0.020700) = 0.645 electron volts
+E_a = 0.026714 / (2 × 0.020699545503) ≈ 0.645 electron volts
 ```
 
-This lies inside the aerobic activation-energy band of 0.6 to 0.7 electron volts established independently by the Metabolic Theory of Ecology from cross-taxon respiration-rate data [10, 11]. The dual-pole holonomy defect `delta_BU` measures the geometric phase accumulated by a closed loop traversing both constitutional poles of the carrier. A chemical reaction crossing a transition-state barrier is a single-direction process, one pole of the dual loop, so the factor of two in `E_a/(kT) = 1/(2 Delta)` matches the factor that separates dual-pole from single-pass holonomy in the CGM gravitational construction.
+This lies inside the aerobic activation-energy band of 0.6 to 0.7 electron volts established independently by the Metabolic Theory of Ecology from cross-taxon respiration-rate data [10, 11]. The BU dual-pole loop angle `delta_BU` measures the geometric phase accumulated by a closed loop traversing both constitutional poles of the carrier. A chemical reaction crossing a transition-state barrier is a single-direction process, one pole of the dual loop, so the factor of two in `E_a/(kT) = 1/(2 Delta)` matches the factor that separates dual-pole from single-pass loop angle in the CGM gravitational construction.
 
 ### 9.2 Placement on the Shared Energy Ruler
 
@@ -635,7 +636,7 @@ Development is a Tier C structural reading of progressive coverage of the ancest
 | `hQVM` | Holonomic Quantum Virtual Machine | Finite reversible transducer with 4096 states, implementing CGM ancestry preservation |
 | `χ` | Chirality register | Six-bit transport register encoding the kernel's binary transport modes |
 | `d` | Chirality dimension | Number of independent binary transport channels, fixed at d = 6 |
-| `Δ` | Continuum aperture gap | Dimensionless ratio measuring the fraction of accessible states, Δ ≈ 0.0207 |
+| `Δ` | Continuum aperture gap | Dimensionless ratio measuring the fraction of accessible states, Δ ≈ 0.020699545503 |
 | `Δ_kernel(d)` | Kernel aperture gap | Discrete byte-lattice aperture, Δ_kernel(d) = 1/(8d) |
 | `a` | Root-to-bulk exponent | Logarithmic slope of root(A) versus |Reach(A)| under the stated biological bridge |
 | `a_SR` | Root-to-bulk exponent (computational scale) | Throughput exponent forced by kernel product geometry, a_SR = 1/2 |
@@ -654,7 +655,7 @@ Development is a Tier C structural reading of progressive coverage of the ancest
 | `root(A)` | Boundary-root size | root(A) = 2^r(A), with r(A) the transport rank of A |
 | `H` | Horizon | Boundary root set of cardinality |H| = 64 |
 | `|H|` | Horizon cardinality | Number of states per face of the carrier, |H| = 2^d |
-| `δ_BU` | Dual-pole holonomy defect | Geometric phase from a closed loop through both constitutional poles |
+| `δ_BU` | BU dual-pole loop angle | Geometric phase from a closed loop through both constitutional poles |
 | `m_a` | Aperture reference scale | Continuum scale in the CGM continuous formalism |
 | `M0` | Absolute mass origin | Reference mass scale derived from shell moment, M0 ≈ 132 kg (u = amu) |
 | `B0_micro` | Elementary power quantum | Microscopic Kleiber prefactor, B0_micro = |H|(kT)²/(2h) |

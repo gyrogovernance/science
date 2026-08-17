@@ -48,6 +48,7 @@ import hqvm_percolation_analysis_2 as pa2
 import hqvm_percolation_analysis_3 as pa3
 
 from gyroscopic.hQVM.api import q_word6
+from gyroscopic.hQVM.constants import M_A
 
 N_OMEGA = 4096
 N_HORIZON = 64
@@ -55,7 +56,6 @@ CHI_BITS = 6
 K4_ORDER = 4
 HOLONOMY_WORD_LENGTH = 4
 N_MICROREFS = 64
-M_A = 1.0 / (2.0 * math.sqrt(2.0 * math.pi))
 FLUX_QUANTUM = 4.0 * math.pi
 
 

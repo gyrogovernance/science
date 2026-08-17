@@ -21,7 +21,7 @@ The Common Governance Model posits that reality emerges through four recursive s
 - **Balance Universal (BU)**: Closure with 2.07% aperture
 
 Key CGM predictions include:
-- Aperture parameter  m_a = 0.199471 (2.07% openness)
+- Aperture parameter m_a = 1/(2√(2π)) ≈ 0.199471140200; Δ = 1 − δ_BU/m_a ≈ 0.020699545503 (2.07% openness)
 - Complete solid angle Q_G = 4π steradians
 - Energy duality ratio √3 = 1.732
 - Minimal action quantum S_min = 0.3133

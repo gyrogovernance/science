@@ -38,25 +38,25 @@ The Common Governance Model (CGM) is an axiomatic framework for fundamental phys
 
 ### Holonomic Quantum Virtual Machine (hQVM)
 
-The hQVM is the executable form of the framework: a **Holonomic Quantum Virtual Machine** instantiated as a reversible GF(2) finite-state transducer. It is a replayable algebraic machine that runs the CGM axioms as integer arithmetic. Computation proceeds via geometric phases (holonomies) of closed SE(3) spinorial loops. These are the same holonomic structures that the quantum computing literature recognizes as a universal computational model (Zanardi and Rasetti 1999; Pachos et al. 2000). The same machine is used both as a research tool and as an alignment kernel for AI systems. In this repository it serves as the reference implementation against which the physical predictions are checked: gravity, electroweak masses, nuclear structure, the Yang–Mills mass-gap readout, organismal allometry, wavefunction structure, generator-restricted percolation, and related analyses are computed directly on it (46 `hqvm_*.py` scripts in `experiments/`).
+The hQVM is the executable form of the framework: a **Holonomic Quantum Virtual Machine** instantiated as a reversible GF(2) finite-state transducer. It is a replayable algebraic machine that runs the CGM axioms as integer arithmetic. Computation proceeds via geometric phases (holonomies) of closed SE(3) spinorial loops. These are the same holonomic structures that the quantum computing literature recognizes as a universal computational model (Zanardi and Rasetti 1999; Pachos et al. 2000). The same machine is used both as a research tool and as an alignment kernel for AI systems. In this repository it serves as the reference implementation against which the physical predictions are checked: gravity, electroweak masses, nuclear structure, the Yang–Mills mass-gap readout, organismal allometry, wavefunction structure, generator-restricted percolation, and related analyses are computed directly on it (65 `hqvm_*.py` scripts in `experiments/`, plus `experiments/hQVM_CGM_YM_Gap/`).
 
 Canonical repository: [superintelligence](https://github.com/gyrogovernance/superintelligence). Vendored implementation: [`gyroscopic/hQVM/`](gyroscopic/hQVM/). Specifications and test reports are listed in the documentation section below.
 
 ## Headline results
 
 * **Newton's constant G** computed from kernel geometry using the electroweak Higgs scale as the sole measured input. The weak-field prediction lies about +2.99 parts per million from the CODATA reference value (CODATA G uncertainty ≈ 22 ppm).
-* **Fine-structure constant α** from the same geometry: base α₀ about 319.43 ppm from CODATA 2018; aperture-corrected α about 33.8 ppb from that reference.
+* **Fine-structure constant α** from the same geometry: `α₀ = δ_BU⁴ / m_a` with `δ_BU = 4 · arctan(k(π/4) · k(m_a))` about 319.43 ppm from CODATA 2018; transport-corrected `α ≈ 0.007297352816`, about 33.8 ppb from that reference.
 * **Three-dimensional space with six degrees of freedom** derived as a theorem of the framework. Explicit proofs exclude two-dimensional and higher-dimensional alternatives.
 * **Electroweak particle masses** (Higgs, Z, W, top) and the **weak mixing angle** derived from the same geometric structure that fixes G.
-* **W/Z boson mass ratio test:** The framework gives a closed-form relation for m_W/m_Z in terms of the independently derived parameter Δ ≈ 0.0207. Using PDG (Particle Data Group) masses, the implied Δ differs from the holonomy-derived Δ by 8.34 × 10⁻¹⁰ (absolute).
-* **Nuclear structure and fusion resonances** derived from the electroweak coordinate system with zero free nuclear parameters. The framework yields the exact deuteron binding energy, predicts the optical Th-229m isomer at 8.356 eV as the framework's representation boundary, maps fusion Coulomb barriers to structural percolation thresholds, routes 801 of 801 cataloged beta decays through deterministic chirality-shell conservation rules, and derives the seven canonical magic numbers 2, 8, 20, 28, 50, 82, and 126 as large-gap closures in a Nilsson spectrum whose couplings are fixed by the same geometric constants chain as the W/Z mass split.
+* **W/Z boson mass ratio test:** Spectral mass laws use the D³ fixed point `Δ_* ≈ 0.020699553957`; observational tick coordinates use the loop-angle gap `Δ ≈ 0.020699545503`. Using PDG masses, Newton inversion recovers `Δ_*` to absolute error `7.899 × 10⁻¹⁰`.
+* **Nuclear structure and fusion resonances** on the shared loop-angle Δ-ruler with zero free nuclear parameters. The framework reconstructs the deuteron binding energy to `|rel| = 8.77 × 10⁻⁵`, predicts the optical Th-229m isomer at 8.3563 eV against 8.3557 eV measured (`|rel| = 6.95 × 10⁻⁵`), maps fusion Coulomb barriers to structural percolation thresholds, routes 801 of 801 cataloged beta decays through deterministic chirality-shell conservation rules, and derives the seven canonical magic numbers 2, 8, 20, 28, 50, 82, and 126 as large-gap closures in a Nilsson spectrum whose couplings are fixed by the same geometric constants chain as the W/Z mass split.
 * **Quark generation pattern (scheme dependent):** Under the mass conventions used in the compact-geometry analysis, the six quark masses fall on an integer-spaced ladder in the framework's logarithmic mass coordinate, grouping naturally into three generation pairs.
 * **Gravity as a nonlinear theory of geometry** with a position-dependent coupling. The static point-mass exterior closes analytically, recovering Newtonian and general-relativistic limits and yielding an exact, finite gravitational self-energy of −Mc²/4.
 * **A complete solid angle of 4π** steradians as the geometric invariant of gravity, fixing the structure of Newton's and Einstein's field equations and the spin-2 character of gravitational waves.
 * **The relation E = mc²** derived as a consequence of the Virial condition (2T + V = 0), which follows from the requirement that coherent operational closure forces net displacement to zero every cycle, making the rest frame a dynamical necessity rather than a coordinate choice.
 * **Quantum-information certificates from the kernel:** The canonical Hilbert-space lift yields CHSH values saturating Tsirelson's bound and verifies stabilizer-quantum-information properties (teleportation, contextuality), derived from the intrinsic self-dual code structure.
 * **Replayable settlement from the same kernel geometry:** The hQVM supports compact offline receipts whose validity is reconstructed by deterministic replay rather than dependence on a continuously synchronized global ledger.
-* **Yang–Mills mass gap as aperture readout:** On the admissible oriented quotient of the 4096-state hQVM carrier, the residual aperture Δ ≈ 0.0207 forces a strictly positive spectral floor above the vacuum. The proposed continuum mass readout is m_gap = C₂ · v · Δ² ≈ 1.582 GeV for the saturated grade-2 curvature multiplet, lying in the lattice 0⁺⁺ glueball window. Finite carrier and Wilson-chart identities are exact; continuum reconstruction is conditional on the inductive-net and Hopf-chart dependencies stated in the analysis.
+* **Yang–Mills mass gap as aperture readout:** On the admissible oriented quotient of the 4096-state hQVM carrier, the residual aperture `Δ ≈ 0.020699545503` forces a strictly positive spectral floor above the vacuum. The proposed continuum mass readout is `m_gap = C₂ · v · Δ² ≈ 1.582473` GeV (Route A; Route B ≈ `1.661555` GeV) for the saturated grade-2 curvature multiplet, lying in the lattice 0⁺⁺ glueball window. Finite carrier and Wilson-chart identities are exact; continuum reconstruction is conditional on the inductive-net and Hopf-chart dependencies stated in the analysis.
 * **Why metabolism scales with body size:** The same six-degree-of-freedom kernel geometry that fixes the physics constants also fixes a small set of organism-level scaling exponents: a metabolic band between 2/3 and 3/4, a quarter-power time law, and a 3/16 development law, with catalog audits. Mammalian trait catalogs (PanTHERIA, AnAge, AnimalTraits) fall where those predictions require.
 
 Neutrino mass scales, lepton ratios, and the optical conjugacy linking the Planck and electroweak scales are also derived in the linked analyses.
@@ -65,12 +65,12 @@ Neutrino mass scales, lepton ratios, and the optical conjugacy linking the Planc
 
 | Measure | Count |
 |---------|------:|
-| Analysis write-ups (`docs/Findings/Analysis_*.md`) | 35 |
-| Runnable experiment scripts (`experiments/`, excl. tests) | 108 |
-| hQVM physics scripts (`experiments/hqvm_*.py`) | 46 |
+| Analysis write-ups (`docs/Findings/Analysis_*.md`) | 37 |
+| Runnable experiment scripts (`experiments/`, excl. tests) | 112 |
+| hQVM physics scripts (`experiments/hqvm_*.py`, `hQVM_CGM_YM_Gap/`) | 72 |
 | Shared library and kernel modules (`experiments/`) | 6 |
-| hQVM verified features (Tiers A-C) | 243 |
-| Python in `experiments/` (all files) | 77,000 lines |
+| hQVM verified features (Tiers A-C) | 283 |
+| Python in `experiments/` (all files) | ~91,000 lines |
 
 Each major result in the table below maps to one analysis note and its verification code. The scripts cover gravity, the Yang–Mills mass-gap readout, organismal allometry, nuclear structure, electroweak mass geometry, fine structure, quantum gravity, CMB checks, axiomatization, Hilbert-space representation, holonomy, and energy scales.
 
@@ -107,19 +107,19 @@ Each analysis note maps to the experiment scripts that verify it.
 |-------|----------|------|
 | Gravity, Virial condition, and nonlinear continuum | [Note](docs/Findings/Analysis_Gravity_Note.md), [Full](docs/Findings/Analysis_Gravity.md) | [hqvm_gravity_common.py](experiments/hqvm_gravity_common.py), `hqvm_gravity_analysis_1.py` through `10.py`. Run: `python experiments/hqvm_gravity_runner.py` |
 | Yang–Mills mass gap from the CGM aperture; identity/individuality under depth-four closure; finite carrier, Wilson charts, OS reconstruction, Hopf packaging | [Yang_Mills_Mass_Gap_Solution.md](experiments/hQVM_CGM_YM_Gap/Yang_Mills_Mass_Gap_Solution.md), [Findings](docs/Findings/Analysis_hQVM_CGM_YM_Mass_Gap.md) | [Yang_Mills_Mass_Gap_run.py](experiments/hQVM_CGM_YM_Gap/Yang_Mills_Mass_Gap_run.py) (`_1.py`–`_5.py`, [results](experiments/hQVM_CGM_YM_Gap/Yang_Mills_Mass_Gap_results.txt)) |
-| Nuclear isomer, deuteron binding, alpha/beta carrier census, fusion barriers and resonance map, magic-number Nilsson spectrum on the shared Δ-ruler | [Analysis_hQVM_CGM_Trestleboard](docs/Findings/Analysis_hQVM_CGM_Trestleboard.md) | [hqvm_cgm_trestleboard_run.py](experiments/hqvm_cgm_trestleboard_run.py) (`_1.py`–`_5.py`, [results](experiments/hqvm_cgm_trestleboard_results.txt)) |
+| Nuclear isomer, deuteron binding, alpha/beta carrier census, fusion barriers and resonance map, magic-number Nilsson spectrum on the shared loop-angle Δ-ruler (spectral lock at Δ_*) | [Analysis_hQVM_CGM_Trestleboard](docs/Findings/Analysis_hQVM_CGM_Trestleboard.md) | [hqvm_cgm_trestleboard_run.py](experiments/hqvm_cgm_trestleboard_run.py) (`_1.py`–`_5.py`, [results](experiments/hqvm_cgm_trestleboard_results.txt)) |
 | Allometric scaling from the hQVM formalism (metabolism, lifespan, development): 2/3–3/4 band, 1/4 time law, 3/16 development | [Analysis_hQVM_CGM_Allometry](docs/Findings/Analysis_hQVM_CGM_Allometry.md) | [hqvm_cgm_allometry_run.py](experiments/hqvm_cgm_allometry_run.py) (`_1.py`–`_3.py`, [results](experiments/hqvm_cgm_allometry_results.txt)) |
 | Wavefunction: fiber bundle structure of the byte | [Analysis_hQVM_Wavefunction](docs/Findings/Analysis_hQVM_Wavefunction.md) | [hqvm_wavefunction_kernel.py](experiments/hqvm_wavefunction_kernel.py), [_1.py](experiments/hqvm_wavefunction_1.py), [_2.py](experiments/hqvm_wavefunction_2.py) |
 | Generator-restricted percolation; Square-Root Cluster Theorem; hQVM(d) scaling; benchmark specification | [Analysis](docs/Findings/Analysis_hQVM_Percolation.md), [Note](docs/Findings/Analysis_hQVM_Percolation_Note.md) | [hqvm_percolation_analysis_run.py](experiments/hqvm_percolation_analysis_run.py) (`_1.py`–`_4.py`, [results](experiments/hqvm_percolation_analysis_results.txt)), [hqvm_percolation_analysis_5.py](experiments/hqvm_percolation_analysis_5.py) ([results](experiments/hqvm_percolation_analysis_5_results.txt)) |
 | Replayable settlement and offline receipts | [Analysis](docs/Findings/Analysis_hQVM_Moments_Fiat.md) | [run](experiments/hqvm_moments_fiat_analysis_run.py), [results](experiments/hqvm_moments_fiat_analysis_results.txt) |
 | Cohomology layer: finite hQVM transition site, parity 1-cocycle obstruction, shell exterior-algebra grading with discrete Poincare duality, Grothendieck constant K_G^R(2) = sqrt(2) from the CHSH comparison, Lefschetz and dynamical zeta census | [Analysis](docs/Findings/Analysis_hQVM_Cohomology.md) | [hqvm_Cohomology_analysis_run.py](experiments/hqvm_Cohomology_analysis_run.py) (`_1.py`–`_4.py`, [results](experiments/hqvm_Cohomology_analysis_results.txt)) |
-| Electroweak mass spectrum | [Analysis_Compact_Geometry](docs/Findings/Analysis_Compact_Geometry.md) | [core](experiments/hqvm_compact_geom_core.py), [kernel](experiments/hqvm_compact_geom_kernel.py), [report](experiments/hqvm_compact_geom_report.py), [derivations](experiments/hqvm_compact_geom_derivations.py) |
+| Electroweak mass spectrum (Δ ruler; Δ_* spectral laws; W/Z lock 7.899×10⁻¹⁰) | [Analysis_Compact_Geometry](docs/Findings/Analysis_Compact_Geometry.md) | [common](experiments/hqvm_compact_geom_common.py), [1](experiments/hqvm_compact_geom_1.py), [2](experiments/hqvm_compact_geom_2.py), [run](experiments/hqvm_compact_geom_run.py) |
 
 **Framework and constants analyses**
 
 | Topic | Analysis | Code |
 |-------|----------|------|
-| Holonomy: closed-path memory, aperture gap, continuous–finite realization | [Analysis_Holonomy](docs/Findings/Analysis_Holonomy.md) | [cgm_holonomy_analysis.py](experiments/cgm_holonomy_analysis.py) ([results](experiments/cgm_holonomy_analysis_results.txt)) |
+| Holonomy: closed-path memory, dual-pole loop angle δ_BU, continuous–finite realization | [Analysis_Holonomy](docs/Findings/Analysis_Holonomy.md) | [cgm_holonomy_analysis_run.py](experiments/cgm_holonomy_analysis_run.py) (`_1.py`, `_2.py`, [common](experiments/cgm_holonomy_analysis_common.py); [results](experiments/cgm_holonomy_analysis_results.txt)) |
 | Fine-structure constant | [Analysis_Fine_Structure](docs/Findings/Analysis_Fine_Structure.md) | [cgm_alpha_analysis.py](experiments/cgm_alpha_analysis.py) |
 | Quantum gravity invariant | [Analysis_Quantum_Gravity](docs/Findings/Analysis_Quantum_Gravity.md) | [cgm_quantum_gravity_analysis.py](experiments/cgm_quantum_gravity_analysis.py) |
 | Energy scale unification | [Analysis_Energy_Scales](docs/Findings/Analysis_Energy_Scales.md) | [cgm_energy_analysis.py](experiments/cgm_energy_analysis.py) |
@@ -139,11 +139,13 @@ Each analysis note maps to the experiment scripts that verify it.
 | [hQVM_Specs_Formalism](docs/Gyroscopic_Computational_Theory/hQVM_Specs_Formalism.md) | Formalism |
 | [hQVM_SDK_Quantum_Computing](docs/Gyroscopic_Computational_Theory/hQVM_SDK_Quantum_Computing.md) | SDK |
 | [hQVM_QuBEC_Theory](docs/Gyroscopic_Computational_Theory/hQVM_QuBEC_Theory.md) | QuBEC theory |
+| [hQVM_Features_Report](docs/Gyroscopic_Computational_Theory/hQVM_Features_Report.md) | 283 verified features (Tiers A–C) |
 | [hQVM_Tests_Report_1](docs/Gyroscopic_Computational_Theory/hQVM_Tests_Report_1.md) | Test report 1 |
 | [hQVM_Tests_Report_2](docs/Gyroscopic_Computational_Theory/hQVM_Tests_Report_2.md) | Test report 2 |
 | [Physics_Tests_Report](docs/Gyroscopic_Computational_Theory/Physics_Tests_Report.md) | Physics tests |
 | [Measurement_Tests_Report](docs/Gyroscopic_Computational_Theory/Measurement_Tests_Report.md) | Alignment measurement |
-| [hQVM_Features_Report](docs/Gyroscopic_Computational_Theory/hQVM_Features_Report.md) | 243 verified features (Tiers A-C) |
+| [Moments_Tests_Report](docs/Gyroscopic_Computational_Theory/Moments_Tests_Report.md) | Moments Fiat tests |
+| [AIR_Moments_Economy_Whitepaper](docs/Gyroscopic_Computational_Theory/AIR_Moments_Economy_Whitepaper.md) | Moments Fiat coordination economy |
 
 ---
 ## 👨‍🔬 Author

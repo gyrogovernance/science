@@ -1,5 +1,5 @@
 """
-hqvm_compact_geom_derivations.py
+hqvm_compact_geom_1.py
 
 Native derivations of the compact-geometry electroweak coefficients from
 the spectral, plaquette, and fold geometry of the kernel.
@@ -18,7 +18,7 @@ Three derivations are implemented and verified:
       in each channel word fixes the flags without reference to masses.
 
 All results are produced by exact integer / rational arithmetic and
-compared against the algebraic coefficients in hqvm_compact_geom_core.
+compared against the algebraic coefficients in hqvm_compact_geom_common.
 No mass data is used in any derivation.
 """
 
@@ -37,7 +37,7 @@ for _p in (_REPO, _EXP):
     if str(_p) not in sys.path:
         sys.path.insert(0, str(_p))
 
-from hqvm_compact_geom_core import (
+from hqvm_compact_geom_common import (
     CHANNELS,
     CODE_C1,
     CODE_C2,

@@ -6,7 +6,7 @@
 
 The Common Governance Model (CGM) derives the structure of physical space and its fundamental constants from five logical conditions on coherent recursive measurement. Within this framework, the finite kernel is a discrete algebraic system with 4,096 reachable states, organised into seven shells by a binomial distribution and carrying a self-dual [12,6,2] binary code. The hQVM kernel is the discrete realization of CGM on this register. This report, compact geometry, is the spectral analysis of electroweak mass coordinates on the Delta aperture ruler built from that kernel. The kernel supplies exact combinatorial and spectral data with no freely adjustable parameters.
 
-This report uses the finite kernel as the sole algebraic input for a mass-coordinate expansion covering the four principal electroweak observables: the top quark, Higgs boson, Z boson, and W boson. Each mass is given by a spectral expansion in powers of the aperture parameter Delta, which measures the fractional non-closure of the CGM depth-four cycle relative to the observational aperture scale. Delta is fixed independently of the electroweak masses by the CGM geometric invariants. The expansion extends from Delta^1 through Delta^5, and every coefficient is a fixed rational number drawn from the kernel's discrete grammar of shell multiplicities, horizon cardinalities, code weights, and gyroscopic stage flags. At fifth order, the maximum tick error across the four channels is 6.15 × 10⁻⁹, and the W/Z ratio recovers the independently defined aperture Delta to 8.34 × 10⁻¹⁰.
+This report uses the finite kernel as the sole algebraic input for a mass-coordinate expansion covering the four principal electroweak observables: the top quark, Higgs boson, Z boson, and W boson. Each mass is given by a spectral expansion in powers of the kernel self-consistency aperture Delta_*, while observational coordinates are counted on the loop-angle ruler Delta. Both apertures are fixed independently of the electroweak masses by CGM geometric invariants: Delta from the BU dual-pole loop angle, and Delta_* from the D^3 fixed point of the byte-aperture self-consistency equation. The expansion extends from first through fifth order, and every coefficient is a fixed rational number drawn from the kernel's discrete grammar of shell multiplicities, horizon cardinalities, code weights, and gyroscopic stage flags. At fifth order, the maximum tick error across the four channels is 2.593 × 10⁻⁷, and the W/Z ratio recovers Delta_* to 7.899 × 10⁻¹⁰. The representation-boundary remainder R_i = L_i(Delta_*) - L_i(Delta) is the lift offset delta_lift = Delta_* - Delta expressed in mass-coordinate units.
 
 The analysis is organised in three claim layers:
 
@@ -51,7 +51,7 @@ The report proceeds from exact kernel algebra to electroweak closure, representa
 
 **Section 2** defines the finite kernel: the reachable manifold Omega (4096 states), the dual 64-state horizons |H|, the seven-shell binomial chart, the code-enumerator weights C1, C2, C3, the shell spectral moment M_shell, the operators D_shell (shell number) and D_flow (chirality flow), and the known mathematical structures (Hamming scheme, hexacode, spectral triple parallels).
 
-**Section 3** fixes the aperture parameter Delta from CGM BU holonomy and the observational aperture scale m_a.
+**Section 3** fixes the aperture parameter Delta from the CGM BU dual-pole loop angle and the observational aperture scale m_a.
 
 **Section 4** derives the electroweak mass-coordinate expansion. The four channels (Top, Higgs, Z, W) map to the K4 operators {id, W2, W2', F}. Coefficients a_i through r5_i are fixed rational combinations of the kernel quantities above.
 
@@ -274,7 +274,7 @@ The 32-bit spinorial lift extends the 24-bit phase register by eight family bits
 
 ### 3.1 Continuous and Discrete Aperture
 
-The CGM aperture is defined from the BU holonomy defect and the observational aperture scale:
+The CGM aperture is defined from the BU dual-pole loop angle and the observational aperture scale:
 
 | Quantity               | Expression       |          Value |
 | ---------------------- | ---------------- | -------------: |
@@ -345,17 +345,23 @@ The factors are:
 | 2^(1/12)     | UNA rotational dressing per degree of freedom |
 | 1 + (sqrt(6)/π)Delta^2 | second-order 6-DoF chirality correction       |
 
-Numerical closure. Evaluation at D^2 order gives 0.020699551515. The continuous aperture is Delta = 0.020699545503. The D^2 residual relative to that value is approximately 6.0 x 10^-9. Evaluation at D^3 order gives 0.020699553957, with residual approximately 8.5 x 10^-9. The D^3 formula has a genuine fixed point at its own value (self-consistency residual below 10^-15).
+Numerical closure. Evaluation at D^2 order gives 0.020699551509. The continuous aperture is Delta = 0.020699545503. The D^2 residual relative to that value is approximately 6.0 x 10^-9. Evaluation at D^3 order gives 0.020699553952, with residual approximately 8.5 x 10^-9. The D^3 formula has a genuine fixed point Delta_* = 0.020699553957 (self-consistency residual below 10^-15).
+
+The lift offset between the loop-angle ruler and the kernel mass-law aperture is
+
+```text
+delta_lift := Delta_* - Delta ≈ 8.455 x 10^-9.
+```
 
 Fixed-point behaviour. Iteration from the bare seed 5/256 converges rapidly:
 
 | Iteration |     Delta estimate | Error from Delta |
 | --------: | -------------: | -----------: |
-|         1 | 0.020698793188 |   7.6 x 10^-7 |
-|         2 | 0.020699551006 |   2.9 x 10^-9 |
-|         3 | 0.020699551513 |   2.4 x 10^-9 |
+|         1 | 0.020698793188 |   7.5 x 10^-7 |
+|         2 | 0.020699551006 |   5.5 x 10^-9 |
+|         3 | 0.020699551513 |   6.0 x 10^-9 |
 
-The D^2 fixed point is stable at the displayed precision. Extending the reconstruction to D^3 order yields a fixed point at 0.020699553957.
+The D^2 fixed point is stable at the displayed precision. Extending the reconstruction to D^3 order yields Delta_* = 0.020699553957. Mass-coordinate polynomials L_i use Delta_*; ruler coordinates are n = log2(E0/E)/Delta.
 
 ### 3.3 Delta Ruler Coordinates
 
@@ -418,7 +424,7 @@ Declared electroweak grammar:
 C1 = 6, C2 = 15, C3 = 20, |H| = 64, M_shell = 192, P = 47/48, Q = 1/4.
 ```
 
-Allowed electroweak orders are Delta through Delta^5; Delta^6 is the complement-horizon residual layer.
+Allowed electroweak orders are Delta through Delta^5 on the kernel aperture Delta_*; the representation-boundary remainder is the lift R_i = L_i(Delta_*) - L_i(Delta).
 
 K4 channel assignment. The four electroweak channels map to the four K4 operators in CGM stage order. The wavefunction analysis (Theorem T1) establishes the K4 algebra {id, W2, W2', F} as the depth-four operator group on Omega. Each operator is reached by a channel word of specific byte length on Omega, and the byte is a fiber bundle folded at the BU boundary, so each byte traversal crosses the fold once. The cumulative fold-traversal depth therefore fixes the operator and its flags.
 
@@ -547,7 +553,7 @@ The shell number operator D_shell on GF(2)^6 carries the Krawtchouk spectrum wit
 Tr(P_STF) = 5.
 ```
 
-The third-order amplitude is the aperture divided by the square root of the STF mode count, which is the per-mode equipartition over the orthonormal STF basis. In three dimensions, the STF sector is the l = 2 spherical harmonic multiplet (dimension 2l + 1 = 5), with the same 1/sqrt(5) normalization used in quadrupole radiation and in the Wigner-Eckart theorem for rank-2 tensors. The W/Z ratio relation carries the coefficient 2/sqrt(5) at third order as the p-charge difference (p_W - p_Z)/sqrt(5), and its closure against the observed W/Z mass ratio pins Delta to 8.34 x 10^-10.
+The third-order amplitude is the aperture divided by the square root of the STF mode count, which is the per-mode equipartition over the orthonormal STF basis. In three dimensions, the STF sector is the l = 2 spherical harmonic multiplet (dimension 2l + 1 = 5), with the same 1/sqrt(5) normalization used in quadrupole radiation and in the Wigner-Eckart theorem for rank-2 tensors. The W/Z ratio relation carries the coefficient 2/sqrt(5) at third order as the p-charge difference (p_W - p_Z)/sqrt(5), and its closure against the observed W/Z mass ratio pins Delta_* to 7.899 x 10^-10.
 
 The channel constant offsets are:
 
@@ -585,18 +591,18 @@ With |H| = 64, C1 = 6, C2 = 15:
 
 The values are code-valued rationals.
 
-### 4.3 Residuals and Delta^6 Boundary
+### 4.3 Residuals and Representation Boundary
 
-The five-order expansion residuals are:
+The five-order expansion is evaluated at Delta_*. Order-by-order tick residuals (n_err = (L_obs - L_pred)/Delta) are:
 
-| Channel | p    | q    | r5     | n_err Delta^2       | n_err Delta^3       | n_err Delta^4       | n_err Delta^5       | L_err/Delta^6 |
+| Channel | p    | q    | r5     | n_err Delta^2       | n_err Delta^3       | n_err Delta^4       | n_err Delta^5       | R_i/Delta^6 |
 | ------- | ---- | ---- | ------ | -------------- | -------------- | -------------- | -------------- | -------- |
-| Top     | 1.0  | 1.25 | -4.500 | 2.019x10^-4 | 1.026x10^-5 | -8.234x10^-7 | 2.758x10^-9 | 0.726    |
-| Higgs   | -2.0 | 1.25 | 2.375  | -3.717x10^-4 | 1.152x10^-5 | 4.349x10^-7  | -1.148x10^-9 | -0.302   |
-| Z       | -0.5 | -0.75| -4.500 | -1.033x10^-4 | -7.474x10^-6 | -8.217x10^-7 | 4.408x10^-9  | 1.160    |
-| W       | 1.5  | -1.75| -2.625 | 2.714x10^-4  | -1.600x10^-5 | -4.758x10^-7 | 6.150x10^-9  | 1.618    |
+| Top     | 1.0  | 1.25 | -4.500 | 2.017x10^-4 | 1.011x10^-5 | -9.789x10^-7 | -1.527x10^-7 | 7847.255 |
+| Higgs   | -2.0 | 1.25 | 2.375  | -3.719x10^-4 | 1.132x10^-5 | 2.323x10^-7  | -2.037x10^-7 | 10211.287 |
+| Z       | -0.5 | -0.75| -4.500 | -1.035x10^-4 | -7.721x10^-6 | -1.069x10^-6 | -2.429x10^-7  | 12475.111 |
+| W       | 1.5  | -1.75| -2.625 | 2.712x10^-4  | -1.626x10^-5 | -7.412x10^-7 | -2.593x10^-7  | 13398.021 |
 
-The residuals are O(1) in Delta^6 units. The W channel carries the largest positive sixth-grade residual and is the unique full-flag endpoint. The sixth grade is a representation boundary term. The Representation Boundary section gives the lifted closure details.
+The column R_i/Delta^6 normalizes the lift remainder R_i = L_i(Delta_*) - L_i(Delta) by Delta^6. With delta_lift ≈ 8.455 x 10^-9 one has R_i ≈ (dL_i/dDelta) delta_lift, so R_i/Delta^6 is O(delta_lift/Delta^6). The W channel carries the largest positive remainder and is the unique full-flag endpoint. The Representation Boundary section gives the lifted closure details.
 
 ### 4.4 Coefficient Admissibility
 
@@ -614,7 +620,7 @@ Each coefficient family is fixed algebraically from kernel geometry. The status 
 
 ### 4.5 Structural Independence
 
-The aperture Delta = 1 - d_BU/m_a is fixed from the BU holonomy and aperture constants in the finite-kernel layer, independent of the electroweak mass set. The K4 operator assignment and all coefficient families are fixed by kernel geometry before any comparison with electroweak masses. Among 4096 raw flag assignments, the trace conditions sum(p_i) = 0 and sum(q_i) = 0 reduce the family to 96 grammar-consistent candidates, of which the derived assignment is rank 1 under maximum absolute tick error (Section 5.0).
+The aperture Delta = 1 - d_BU/m_a is fixed from the BU dual-pole loop angle and aperture constants in the finite-kernel layer, independent of the electroweak mass set. The K4 operator assignment and all coefficient families are fixed by kernel geometry before any comparison with electroweak masses. Among 4096 raw flag assignments, the trace conditions sum(p_i) = 0 and sum(q_i) = 0 reduce the family to 96 grammar-consistent candidates, of which the derived assignment is rank 1 under maximum absolute tick error (Section 5.0).
 
  
 
@@ -642,18 +648,18 @@ with:
 This gives 2^12 = 4096 raw flag assignments. Enforcing trace conditions
 sum(p_i)=0 and sum(q_i)=0 yields 96 grammar-consistent candidates.
 
-For each trace-free candidate, the expansion is evaluated at `Delta = DELTA` and ranked by maximum absolute tick error to the observed electroweak coordinates.
+For each trace-free candidate, the expansion is evaluated at `Delta_*` and ranked by maximum absolute tick error to the observed electroweak coordinates.
 
 The derived assignment enters at rank:
 
 ```text
 derived assignment rank = 1
-rank 1 max_abs_tick_error = 6.150e-09
-rank 2 max_abs_tick_error = 6.955e-05
-unique rank factor gain ~ 1.1e4
+rank 1 max_abs_tick_error = 2.593e-07
+rank 2 max_abs_tick_error = 6.970e-05
+unique rank factor gain ~ 2.7e2
 ```
 
-Under uniform weighting over the 96 trace-free candidates, one assignment achieves rank 1. The rank-1 max absolute tick error is 6.150e-09; rank 2 is 6.955e-05, a separation factor of approximately 1.1 x 10^4. The uniqueness audit verifies the rank-1 isolation of the derived assignment among grammar-consistent alternatives.
+Under uniform weighting over the 96 trace-free candidates, one assignment achieves rank 1. The rank-1 max absolute tick error is 2.593e-07; rank 2 is 6.970e-05, a separation factor of approximately 2.7 x 10^2. The uniqueness audit verifies the rank-1 isolation of the derived assignment among grammar-consistent alternatives.
 
 The uniqueness audit uses the following filter table:
 
@@ -671,8 +677,8 @@ The top ranked trace-free candidates are:
 
 | rank | max_abs_tick_error | Top flags | Higgs flags | Z flags | W flags | p_sum | q_sum | sum_abs_err |
 | ---: | -----------------: | :-------- | :---------- | :------ | :------ | ----: | ----: | ----------: |
-| 1 | 6.150e-09 | (0,0,0) | (1,0,0) | (1,1,0) | (1,1,1) | 0.000 | 0.000 | 1.446e-08 |
-| 2 | 6.955e-05 | (1,1,1) | (1,0,0) | (1,1,0) | (0,0,0) | 0.000 | 0.000 | 1.391e-04 |
+| 1 | 2.593e-07 | (0,0,0) | (1,0,0) | (1,1,0) | (1,1,1) | 0.000 | 0.000 | 8.586e-07 |
+| 2 | 6.970e-05 | (1,1,1) | (1,0,0) | (1,1,0) | (0,0,0) | 0.000 | 0.000 | 1.394e-04 |
 
 This is the finite-expansion-only baseline that keeps the expansion core separate from external leads. Ranks 3 through 12 of the declared-filter candidate list are in Appendix A.6.
 
@@ -682,41 +688,41 @@ Electroweak mass coordinates on the Delta ruler (`E0 = v = 246.22 GeV`):
 
 | Target        | n (ruler coordinate) | log2(EW/m) | Nearest integer | Signed tick residual |
 | ------------- | ------------: | ---------: | --------------: | -------------------: |
-| Top quark     |     24.695157 |   0.511179 |              25 |  -0.304843 |
-| Higgs         |     47.192619 |   0.976866 |              47 |  +0.192619 |
-| Z boson       |    69.230400 |   1.433038 |              69 |  +0.230400 |
-| W boson       |    78.023779 |   1.615057 |              78 |  +0.023779 |
-| Bottom quark  |    284.078644 |    5.880301 |             284 |  +0.078644 |
-| Charm quark   |    367.108184 |    7.598976 |             367 |  +0.108184 |
-| Tau           |    343.701809 |    7.114474 |             344 |  -0.298191 |
-| Muon          |    540.413826 |   11.186325 |             540 |  +0.413826 |
-| Strange quark |    547.824985 |   11.339733 |             548 |  -0.175015 |
-| Electron      |    912.009808 |   18.878196 |             912 |  +0.009808 |
+| Top quark     |     24.695167 |   0.511179 |              25 |  -0.304833 |
+| Higgs         |     47.192638 |   0.976866 |              47 |  +0.192638 |
+| Z boson       |    69.230428 |   1.433038 |              69 |  +0.230428 |
+| W boson       |    78.023811 |   1.615057 |              78 |  +0.023811 |
+| Bottom quark  |    284.078759 |    5.880301 |             284 |  +0.078759 |
+| Charm quark   |    367.108333 |    7.598976 |             367 |  +0.108333 |
+| Tau           |    343.701949 |    7.114474 |             344 |  -0.298051 |
+| Muon          |    540.414045 |   11.186325 |             540 |  +0.414045 |
+| Strange quark |    547.825208 |   11.339733 |             548 |  -0.174792 |
+| Electron      |    912.010179 |   18.878196 |             912 |  +0.010179 |
 
 At Delta^2 level (code enumerator + stage projections only):
 
 | State   | Predicted n | Observed n | Tick error | Mass error   |
 | ------- | ----------: | ---------: | ---------: | -----------: |
-| Top     |   24.694955 |  24.695157 |  +0.000202 |  2.897x10^-6 |
-| Higgs   |   47.192991 |  47.192619 |  -0.000372 | -5.333x10^-6 |
-| Z       |   69.230503 |  69.230400 |  -0.000103 | -1.482x10^-6 |
-| W       |   78.023508 |  78.023779 |  +0.000271 |  3.894x10^-6 |
+| Top     |   24.694935 |  24.695167 |  +0.000232 |  3.322x10^-6 |
+| Higgs   |   47.192971 |  47.192638 |  -0.000333 | -4.779x10^-6 |
+| Z       |   69.230484 |  69.230428 |  -0.000056 | -8.052x10^-7 |
+| W       |   78.023489 |  78.023811 |  +0.000322 |  4.621x10^-6 |
 
-At Delta^5 level, the maximum tick error is 6.15x10^-9.
+At Delta^5 level, the maximum tick error is 2.593x10^-7.
 
-Delta backsolve (four channels plus W/Z):
+Delta backsolve (four channels plus W/Z), errors relative to Delta_*:
 
 | Source | Equation | Delta_back | Delta error |
 | ------ | -------- | ---------: | ----------: |
-| Top | L_t = 73Delta - 1 + Delta^2/4 | 0.020699611150 | 5.724x10^-8 |
-| Higgs | L_H = 96Delta - 1 - 24Delta^2 | 0.020699472926 | -8.099x10^-8 |
-| Z | L_Z = 117Delta - 47/48 - 45Delta^2/2 | 0.020699535494 | -1.842x10^-8 |
-| W | L_W = 126Delta - 47/48 - 65Delta^2/2 | 0.020699598986 | 4.507x10^-8 |
-| W/Z | log2(m_Z/m_W) = Delta(9 - 10Delta + 2Delta^2/sqrt(5) - Delta^3) | 0.020699554747 | 8.340x10^-10 |
+| Top | L_t = 73Delta - 1 + Delta^2/4 | 0.020699611150 | 5.719x10^-8 |
+| Higgs | L_H = 96Delta - 1 - 24Delta^2 | 0.020699472926 | -8.103x10^-8 |
+| Z | L_Z = 117Delta - 47/48 - 45Delta^2/2 | 0.020699535494 | -1.846x10^-8 |
+| W | L_W = 126Delta - 47/48 - 65Delta^2/2 | 0.020699598986 | 4.503x10^-8 |
+| W/Z | log2(m_Z/m_W) = Delta(9 - 10Delta + 2Delta^2/sqrt(5) - Delta^3) | 0.020699554747 | 7.899x10^-10 |
 
-Four-point mean Delta_back = 0.020699554639 (error about 9.1x10^-9 vs continuous Delta = 0.020699545503).
+Four-point mean Delta_back = 0.020699554639 (error about 6.8x10^-10 vs Delta_* = 0.020699553957).
 
-The Q=1/4 matter-density term brings the top Delta backsolve error into the H/Z/W cluster (ratio drops from 18.8x to 0.7x the H/Z/W maximum).
+The Q=1/4 matter-density term brings the top Delta backsolve error into the H/Z/W cluster (ratio drops from 21.1x to 0.71x the H/Z/W maximum).
 
 ### 5.2 Leave-One-Out Test
 
@@ -738,11 +744,11 @@ log2(m_Z/m_W) = Delta[(C2 - C1) - (C3/2)Delta + 2Delta^2/sqrt(5) - Delta^3].
 
 | Quantity | Predicted | Observed | Error |
 | -------- | ---------: | -------: | ----: |
-| n_W - n_Z | 8.793378828287 | 8.793379174256 | 3.460x10^-7 |
-| sin^2 theta_W | 0.223013217613 | 0.223013225327 | -7.714x10^-9 |
-| W from Z and Delta | 80.379000399 GeV | 80.379000000 GeV | 4.964x10^-9 rel |
+| n_W - n_Z | 8.793378827848 | 8.793382747144 | 3.919x10^-6 |
+| sin^2 theta_W | 0.223013218021 | 0.223013225327 | -7.306x10^-9 |
+| W from Z and Delta_* | 80.379000378 GeV | 80.379000000 GeV | 4.701x10^-9 rel |
 
-The W/Z-to-Delta lock gives Delta_back = 0.020699554747 with absolute error 8.34x10^-10 against CGM Delta.
+The W/Z-to-Delta lock gives Delta_back = 0.020699554747 with absolute error 7.899x10^-10 against Delta_*.
 
 The on-shell weak mixing angle sin^2 theta_W = 1 - (m_W/m_Z)^2 used in the table above is fixed by the W/Z mass split rather than by a continuous symmetry-breaking potential. At leading order the backbone term (C2 - C1) = 9 is the first nontrivial gap in the hexacode weight enumerator, projecting the discrete code separation between rotational (C1) and translational (C2) enumerator weights onto the bulk equator. Higher orders in Delta supply the second-order stage-projection and STF corrections that close the ratio to experimental precision.
 
@@ -752,13 +758,13 @@ Couplings are algebraic consequences of the mass expansion at tree level (`y_t =
 
 | Quantity | Expression | Compact value | Reference value | Relative error |
 | -------- | --- | ------------: | --------------: | -------------: |
-| lambda_H | m_H^2/(2v^2) | 0.129072386 | 0.129073762 | -1.067x10^-5 |
-| g | 2m_W/v | 0.652906450 | 0.652903907 | 3.894x10^-6 |
-| g_Z | 2m_Z/v | 0.740699089 | 0.740700187 | -1.482x10^-6 |
-| g' | sqrt(g_Z^2-g^2) | 0.349783231 | 0.349790301 | -2.021x10^-5 |
-| e | gg'/g_Z | 0.308324569 | 0.308329144 | -1.484x10^-5 |
-| alpha_EWDelta | 4pi/e^2 | 132.188476676 | 132.184554083 | 2.968x10^-5 |
-| y_t | sqrt(2)m_t/v | 0.992284310 | 0.992281435 | 2.897x10^-6 |
+| lambda_H | m_H^2/(2v^2) | 0.129072385 | 0.129073762 | -1.067x10^-5 |
+| g | 2m_W/v | 0.652906447 | 0.652903907 | 3.891x10^-6 |
+| g_Z | 2m_Z/v | 0.740699087 | 0.740700187 | -1.485x10^-6 |
+| g' | sqrt(g_Z^2-g^2) | 0.349783230 | 0.349790301 | -2.022x10^-5 |
+| e | gg'/g_Z | 0.308324568 | 0.308329144 | -1.484x10^-5 |
+| alpha_EWDelta | 4pi/e^2 | 132.188477441 | 132.184554083 | 2.968x10^-5 |
+| y_t | sqrt(2)m_t/v | 0.992284307 | 0.992281435 | 2.894x10^-6 |
 
 ### 5.5 Renormalization Conventions
 
@@ -770,9 +776,11 @@ The world-average W mass and the CDF II measurement differ at a level that shift
 
 ### 6.1 The 32-bit Necessity
 
-The 24-bit carrier space Omega fails the first-order spectral triple condition, the SU(3) sextet bracket, and the sixth-grade W-boundary closure. The 24-bit space identifies S-gate pairs {0xAA, 0x54} and {0xD5, 0x2B}, collapsing four family phases into two spatial actions. Depth-4 family fiber probing gives 256 assignments collapsing to 4 distinct 24-bit outputs. In the 32-bit lifted space the spectral triple closes on the K4 gauge subalgebra, the SU(3) sextet bracket closes under family-phase symmetrization, and the W sixth-grade residual closes as a path-multiplicity resonance. The 32-bit lift is the minimal representation required for structural consistency.
+The 24-bit carrier space Omega fails the first-order spectral triple condition, the SU(3) sextet bracket, and the sixth-grade W-boundary closure. The 24-bit space identifies S-gate pairs {0xAA, 0x54} and {0xD5, 0x2B}, collapsing four family phases into two spatial actions. Depth-4 family fiber probing gives 256 assignments collapsing to 4 distinct 24-bit outputs. In the 32-bit lifted space the spectral triple closes on the K4 gauge subalgebra, the SU(3) sextet bracket closes under family-phase symmetrization, and the W boundary remainder closes as a path-multiplicity resonance. The 32-bit lift is the minimal representation required for structural consistency.
 
-The 24-bit register is the spatial shadow with SO(3)-like action on the paired gyrophases. The 32-bit lift is the SU(2) spinorial double cover: the eight additional bits carry the four family phases needed for 720-degree spinorial return. Maximal weak parity violation accompanies the W channel, which also carries the largest Delta^6 residual. This pattern is consistent with projecting a 32-bit chiral operational history onto the 24-bit spatial shadow, where left-right distinction is lost unless the spinorial lift is restored.
+The loop-angle aperture Delta and the kernel self-consistency aperture Delta_* differ by the lift offset delta_lift = Delta_* - Delta. Mass-coordinate polynomials L_i use Delta_*; the remainder R_i = L_i(Delta_*) - L_i(Delta) is that offset transported by dL_i/dDelta. Closure residuals of L_i(Delta_*) against PDG masses sit at max |ppm| ≈ 0.004 and max |n_err| ≈ 2.593x10^-7.
+
+The 24-bit register is the spatial shadow with SO(3)-like action on the paired gyrophases. The 32-bit lift is the SU(2) spinorial double cover: the eight additional bits carry the four family phases needed for 720-degree spinorial return. Maximal weak parity violation accompanies the W channel, which also carries the largest lift remainder. This pattern is consistent with projecting a 32-bit chiral operational history onto the 24-bit spatial shadow, where left-right distinction is lost unless the spinorial lift is restored.
 
 ### 6.2 Finite Colour Operator Algebra
 
@@ -802,9 +810,9 @@ n_lepton = k * |H| + r(M_shell) + corrections
 
 | Lepton  | k  | r(M_shell) | Base | n_model D3 | n_observed | tau         |
 | ------- | -- | ---------: | ---: | ---------: | ---------: | ----------: |
-| Tau     | 5  |         24 |  344 | 343.701809 | 343.701809 | 4.931377684 |
-| Muon    | 8  |         28 |  540 | 540.413826 | 540.413826 | 7.753769717 |
-| Electron| 14 |         16 |  912 | 912.009808 | 912.009808 |13.085368466 |
+| Tau     | 5  |         24 |  344 | 343.701809 | 343.701949 | 4.931375680 |
+| Muon    | 8  |         28 |  540 | 540.413825 | 540.414045 | 7.753766564 |
+| Electron| 14 |         16 |  912 | 912.009808 | 912.010179 |13.085363149 |
 
 The base offsets are:
 
@@ -1023,15 +1031,15 @@ The electron residual beyond n_e = 912 decomposes as:
 
 | Term                       |          Value |      Share |
 | -------------------------- | -------------: | ---------: |
-| SU(2) residual sigma           | 0.009396010431 | 95.80% |
-| Higgs-memory term (5/256)/n_H | 0.000413862387 |  4.22% |
-| Sum                        | 0.009809872818 |      100.02% |
-| Observed residual          | 0.009808220695 |       N/A  |
-| Match error                | 1.652e-06 |       N/A  |
+| SU(2) residual sigma           | 0.009395985199 | 92.31% |
+| Higgs-memory term (5/256)/n_H | 0.000413862219 |  4.07% |
+| Sum                        | 0.009809847418 |   96.38% |
+| Observed residual          | 0.010178784605 |       N/A  |
+| Pre-carrier match error    | -3.689e-04 |       N/A  |
 
 Both terms are derived from compact definitions in the framework.
 
-The top Q=1/4 test: linear-only L_t gives Delta error 1.525x10^-6 (18.8x H/Z/W max); with Delta^2/4 the error is 5.724x10^-8 (0.71x). The Q=1/4 matter-density term is structurally required.
+The top Q=1/4 test: linear-only L_t gives Delta error 1.533x10^-6 (21.1x H/Z/W max); with Delta^2/4 the error is 5.719x10^-8 (0.71x). The Q=1/4 matter-density term is structurally required.
 
 ## 8. Colour/Strong-Sector Diagnostics
 
@@ -1041,24 +1049,24 @@ Symbols epsilon, eta, and d_H are defined in Section 3. This section retains ome
 
 | Symbol | Definition | Value |
 | ------ | ---------- | ----: |
-| omega | d_BU/2 | 0.097671088290 |
+| omega | d_BU/2 | 0.097671089129 |
 | kappa | pi/4 - 1/sqrt(2) | 0.078291382211 |
-| sigma | (phi_SU2 - 3d_BU)/m_a | 0.009396010431 |
+| sigma | (phi_SU2 - 3d_BU)/m_a | 0.009395985199 |
 
 ### 8.2 Residual Closures
 
 | Target   | Compact selector      | Predicted n | Observed n | Tick error | Mass error   |
 | -------- | --------------------- | ----------: | ---------: | ---------: | -----------: |
-| Top      | 25 - epsilon + Delta/4      |   24.694955 |  24.695157 |  +0.000202 |  2.897x10^-6 |
-| Higgs    | 48 - d_H              |   47.192991 |  47.192619 |  -0.000372 | -5.333x10^-6 |
-| Z        | 70 + Delta - P*d_H        |   69.230503 |  69.230400 |  -0.000103 | -1.482x10^-6 |
-| W        | 79 - 9Delta - P*d_H       |   78.023508 |  78.023779 |  +0.000271 |  3.894x10^-6 |
-| Bottom   | 284 + kappa               |  284.078291 | 284.078644 |  +0.000352 |  5.055x10^-6 |
-| Charm    | 367 + omega + Delta/2     |  367.108021 | 367.108184 |  +0.000163 |  2.341x10^-6 |
-| Strange  | 548 - (omega + kappa)         |  547.824038 | 547.824985 |  +0.000948 |  1.360x10^-5 |
-| Tau      | 344 - (d_BU + 5Delta)     |  343.701160 | 343.701809 |  +0.000649 |  9.313x10^-6 |
-| Muon     | 540 + 20Delta             |  540.413991 | 540.413826 |  -0.000165 | -2.374x10^-6 |
-| Electron | 912 + sigma + (5/256)/n_H |  912.009810 | 912.009808 |  -0.000002 | -2.361x10^-8 |
+| Top      | 25 - epsilon + Delta/4      |   24.694935 |  24.695167 |  +0.000232 |  3.322x10^-6 |
+| Higgs    | 48 - d_H              |   47.192971 |  47.192638 |  -0.000333 | -4.779x10^-6 |
+| Z        | 70 + Delta - P*d_H        |   69.230484 |  69.230428 |  -0.000056 | -8.052x10^-7 |
+| W        | 79 - 9Delta - P*d_H       |   78.023489 |  78.023811 |  +0.000322 |  4.621x10^-6 |
+| Bottom   | 284 + kappa               |  284.078291 | 284.078759 |  +0.000468 |  6.712x10^-6 |
+| Charm    | 367 + omega + Delta/2     |  367.108021 | 367.108333 |  +0.000312 |  4.481x10^-6 |
+| Strange  | 548 - (omega + kappa)         |  547.824038 | 547.825208 |  +0.001170 |  1.679x10^-5 |
+| Tau      | 344 - (d_BU + 5Delta)     |  343.701160 | 343.701949 |  +0.000789 |  1.132x10^-5 |
+| Muon     | 540 + 20Delta             |  540.413991 | 540.414045 |  +0.000054 |  7.788x10^-7 |
+| Electron | 912 + sigma + (5/256)/n_H |  912.009810 | 912.010179 |  +0.000369 |  5.293x10^-6 |
 
 Quark masses are scale-dependent and scheme-dependent. The table entries should therefore be read as compact-coordinate selectors appropriate to the stated convention, and their numerical values depend on the chosen scheme.
 
@@ -1083,11 +1091,11 @@ The closed-form values kappa = π/4 - 1/sqrt(2) and omega = d_BU/2 are tested ag
 
 | Estimator              | Value          | Closed form    | Residual      |
 | ---------------------- | -------------: | -------------: | ------------: |
-| kappa from Bottom          | +0.078643732   | +0.078291382   | +3.524x10^-4 |
-| omega from Charm           | +0.097834230   | +0.097671088   | +1.631x10^-4 |
-| kappa+omega from Strange       | +0.175014606   | +0.175962470   | -9.479x10^-4 |
+| kappa from Bottom          | +0.078759158   | +0.078291382   | +4.678x10^-4 |
+| omega from Charm           | +0.097983396   | +0.097671089   | +3.123x10^-4 |
+| kappa+omega from Strange       | +0.174792016   | +0.175962471   | -1.170x10^-3 |
 
-Internal consistency (no closed form): (kappa+omega)_s - (kappa_b + omega_c) = -1.463x10^-3.
+Internal consistency (no closed form): (kappa+omega)_s - (kappa_b + omega_c) = -1.951x10^-3.
 
 PDG uncertainty floor is approximately 1% on bottom/charm and 5% on strange, mapping to Delta-units of order 0.7. The 10^-3 residuals are at or below experimental noise, whereas the H/Z/W cluster sits at approximately 10^-7 because their masses are known far more precisely.
 
@@ -1121,7 +1129,7 @@ equivalent n_f from b0        = 13.441506
 
 These values are a finite proxy for compact strong-sector diagnostics.
 
-Strong-scale ruler placement. With Lambda_QCD = 0.2000 GeV (conventional input), `n_QCD = log2(v/Lambda_QCD)/Delta = 495.939781`. The electroweak and top-anchor constructions agree at displayed precision. The strong scale lies deep in the relational bulk (3968 states between the 128 horizon states).
+Strong-scale ruler placement. With Lambda_QCD = 0.2000 GeV (conventional input), `n_QCD = log2(v/Lambda_QCD)/Delta = 495.939983`. The electroweak and top-anchor constructions agree at displayed precision. The strong scale lies deep in the relational bulk (3968 states between the 128 horizon states).
 
 ### 8.7 UV-IR Conjugacy
 
@@ -1171,12 +1179,12 @@ The CKM ansatz uses compact angular modes:
 
 | Quantity  | Expression        |     Predicted |      Reference |         Error |
 | --------- | ----------------- | ------------: | -------------: | ------------: |
-| |V_us|  | sin(d_BU + 3Delta/2)  | 0.224462579   |    0.224300000 |  1.626x10^-4 |
-| |V_cb|  | sin(2Delta)           | 0.041387283   |    0.040800000 |  5.873x10^-4 |
-| |V_ub|  | sin(9Delta^2)          | 0.003856234   |    0.003820000 |  3.623x10^-5 |
-| |V_ub incl.| sin(9Delta^2 + phase_shift) | 0.004128961446 | 0.004130       | -1.039e-06 |
+| |V_us|  | sin(d_BU + 3Delta/2)  | 0.224462568   |    0.224300000 |  1.626x10^-4 |
+| |V_cb|  | sin(2Delta)           | 0.041387266   |    0.040800000 |  5.873x10^-4 |
+| |V_ub|  | sin(9Delta^2)          | 0.003856231   |    0.003820000 |  3.623x10^-5 |
+| |V_ub incl.| sin(9Delta^2 + phase_shift) | 0.004128960 | 0.004130       | -1.040e-06 |
 
-Here phase_shift = 0.000272729388 from the inclusive/exclusive offset correction used in the run output. The inclusive residual is approximately a phase-shifted version of the same 9Delta^2 mode.
+Here phase_shift = 0.000272730844 from the inclusive/exclusive offset correction used in the run output. The inclusive residual is approximately a phase-shifted version of the same 9Delta^2 mode.
 
 The element |V_ub| is governed by the Delta^2 mode 9*Delta^2, matching the same second-order stage-projection structure that appears in the electroweak sector. The CP phase ansatz is delta_CKM = p/2 - 18Delta = 68.652 deg. A full Wolfenstein-coordinate summary (rho, eta_CKM, J) is deferred.
 
@@ -1256,7 +1264,7 @@ The framework presents a common geometric origin for electroweak mass and gravit
 
 Gravitational coupling derives from bulk symmetric trace-free (STF) attenuation. The Regge plaquette sum over the five orientational bulk shells (shells 1 through 5, with horizons 0 and 6 carrying zero STF weight) fixes the gravitational attenuation scale tau_G and carries the factor 1/sqrt(5). Electroweak mass emerges from the shell-path projection on the same STF bulk. The factor 1/sqrt(5) in the third-order electroweak expansion is the shared quadrupole mode count (l = 2, five components) between gravitational and electroweak coupling.
 
-The 24-bit spatial shadow is insufficient for full structural closure. It fails the SU(3) sextet bracket and the sixth-grade W holonomy residual (Section 6). The 32-bit spinorial lift closes these obstructions on the K4 gauge subalgebra. This matches the standard model requirement for the full SU(2) double cover to resolve chirality and weak isospin.
+The 24-bit spatial shadow is insufficient for full structural closure. It fails the SU(3) sextet bracket and the sixth-grade W residual (Section 6). The 32-bit spinorial lift closes these obstructions on the K4 gauge subalgebra. This matches the standard model requirement for the full SU(2) double cover to resolve chirality and weak isospin.
 
 The Delta expansion admits a formal parallel with heat-kernel and spectral-action coefficient hierarchies. The correspondence is by structural role, not by identity of content.
 
@@ -1267,7 +1275,7 @@ The Delta expansion admits a formal parallel with heat-kernel and spectral-actio
 | Delta^3 | STF bulk, l = 2 multiplet | Quadrupole / tensor-sector activation |
 | Delta^4 | K4 closure q-charges | Next even commutator closure term |
 | Delta^5 | Regge plaquette census | Discrete higher-curvature invariant |
-| Delta^6 | W boundary residual | Representation-boundary obstruction |
+| Delta^6 | Lift remainder R_i = L_i(Delta_*) - L_i(Delta) | Representation-boundary offset |
 
 ## 11. Conclusions
 
@@ -1275,9 +1283,9 @@ The Delta expansion admits a formal parallel with heat-kernel and spectral-actio
 
 2. The exact kernel supplies the coefficient grammar natively. The linear coefficients form a shell-path ladder from the ultraviolet horizon to the bulk equator. The third-order amplitude reflects the five-dimensional STF bulk projector. The fifth-order curvature is the STF-weighted Regge plaquette census.
 
-3. The electroweak coordinate expansion closes the four channels with fixed discrete coefficients. The strongest ratio-channel result is the corrected W/Z split, recovering Delta to 8.34x10^-10 and predicting W from Z and Delta at 5x10^-9 relative error.
+3. The electroweak coordinate expansion closes the four channels with fixed discrete coefficients. The strongest ratio-channel result is the promoted W/Z split, recovering Delta_* to 7.899x10^-10 and predicting W from Z and Delta_* at 4.7x10^-9 relative error.
 
-4. The Delta^6 residuals are order-unity boundary markers. The W channel carries the largest positive residual. The sixth-grade sector is a representation boundary requiring the 32-bit lift.
+4. The representation-boundary remainder is R_i = L_i(Delta_*) - L_i(Delta) with delta_lift = Delta_* - Delta from D^3 self-consistency. The W channel carries the largest positive remainder. The 32-bit lift closes the structural obstructions of the 24-bit shadow.
 
 5. External channels (Section 9) are retained as hypothesis channels pending predeclared null-model audits.
 
@@ -1287,9 +1295,10 @@ Scope boundaries and deferred channels are listed in Section 9.
 
 All numeric tables and probe summaries are generated from the executable workflow in this repository:
 
-* `experiments/hqvm_compact_geom_core.py`
-* `experiments/hqvm_compact_geom_kernel.py`
-* `experiments/hqvm_compact_geom_report.py`
+* `experiments/hqvm_compact_geom_common.py`
+* `experiments/hqvm_compact_geom_1.py`
+* `experiments/hqvm_compact_geom_2.py`
+* `experiments/hqvm_compact_geom_run.py` (writes `experiments/hqvm_compact_geom_results.txt`)
 
 The script-level inputs are fixed in this report and echoed in the executable output. Appendix A reproduces the raw probe outputs and extended audit tables used for the closures, null-model ranking, and lepton carrier derivations. No table entries are tuned by hand after generation; formatting only is adjusted for readability.
 
@@ -1316,7 +1325,7 @@ closes exactly = yes
 
 ```text
 candidate = K6 = P_6; P6 dimension = 64
-W unique full K4 endpoint = yes; W sixth-grade residual = 1.618304
+W unique full K4 endpoint = yes; W lift remainder R_W/Delta^6 = 13398.021
 natural K4 character lifts close target = no
 rich-K6 lifted completion closes target = yes
 ```
@@ -1346,16 +1355,16 @@ Trace-free candidates ranked by maximum absolute tick error (declared channel fl
 
 | rank | max_abs_tick_error | Top flags | Higgs flags | Z flags | W flags | p_sum | q_sum | sum_abs_err |
 | ---: | -----------------: | :-------- | :---------- | :------ | :------ | ----: | ----: | ----------: |
-| 3 | 1.989e-04 | (1,0,1) | (1,0,0) | (1,1,0) | (0,1,0) | 0.000 | 0.000 | 3.978e-04 |
-| 4 | 2.684e-04 | (1,0,1) | (1,1,0) | (1,1,0) | (0,0,0) | 0.000 | 0.000 | 5.369e-04 |
-| 5 | 2.684e-04 | (0,0,0) | (1,1,0) | (1,0,0) | (1,1,1) | 0.000 | 0.000 | 5.369e-04 |
-| 6 | 2.684e-04 | (0,1,0) | (1,0,0) | (1,0,0) | (1,1,1) | 0.000 | 0.000 | 5.369e-04 |
-| 7 | 2.684e-04 | (1,0,1) | (1,1,0) | (1,0,0) | (0,1,0) | 0.000 | 0.000 | 9.346e-04 |
-| 8 | 2.684e-04 | (1,1,1) | (1,0,0) | (1,0,0) | (0,1,0) | 0.000 | 0.000 | 5.369e-04 |
-| 9 | 2.684e-04 | (1,1,1) | (1,1,0) | (1,0,0) | (0,0,0) | 0.000 | 0.000 | 6.760e-04 |
-| 10 | 2.684e-04 | (0,0,0) | (1,1,0) | (1,1,0) | (1,0,1) | 0.000 | 0.000 | 5.369e-04 |
-| 11 | 2.684e-04 | (0,1,0) | (1,0,0) | (1,1,0) | (1,0,1) | 0.000 | 0.000 | 5.369e-04 |
-| 12 | 2.684e-04 | (0,1,0) | (1,1,0) | (1,0,0) | (1,0,1) | 0.000 | 0.000 | 1.074e-03 |
+| 3 | 1.991e-04 | (1,0,1) | (1,0,0) | (1,1,0) | (0,1,0) | 0.000 | 0.000 | 3.983e-04 |
+| 4 | 2.682e-04 | (1,1,1) | (1,0,0) | (1,0,0) | (0,1,0) | 0.000 | 0.000 | 5.372e-04 |
+| 5 | 2.686e-04 | (0,1,0) | (1,0,0) | (1,0,0) | (1,1,1) | 0.000 | 0.000 | 5.372e-04 |
+| 6 | 2.686e-04 | (0,1,0) | (1,0,0) | (1,1,0) | (1,0,1) | 0.000 | 0.000 | 5.372e-04 |
+| 7 | 2.686e-04 | (0,0,0) | (1,1,0) | (1,0,0) | (1,1,1) | 0.000 | 0.000 | 5.372e-04 |
+| 8 | 2.686e-04 | (0,0,0) | (1,1,0) | (1,1,0) | (1,0,1) | 0.000 | 0.000 | 5.372e-04 |
+| 9 | 2.686e-04 | (0,1,0) | (1,1,0) | (1,0,0) | (1,0,1) | 0.000 | 0.000 | 1.074e-03 |
+| 10 | 2.686e-04 | (1,0,1) | (1,1,0) | (1,0,0) | (0,1,0) | 0.000 | 0.000 | 9.347e-04 |
+| 11 | 2.686e-04 | (1,0,1) | (1,1,0) | (1,1,0) | (0,0,0) | 0.000 | 0.000 | 5.369e-04 |
+| 12 | 2.686e-04 | (1,1,1) | (1,1,0) | (1,0,0) | (0,0,0) | 0.000 | 0.000 | 6.758e-04 |
 
 ### A.7 Lepton carrier algebra: Hilbert-Schmidt probe and q-history fit
 
@@ -1425,4 +1434,4 @@ See the main text for the derivation context of each formula and the governing a
 7. P. Delsarte, "An Algebraic Approach to the Association Schemes of Coding Theory," Philips Research Reports Supplements **10** (1973).
 8. F. J. MacWilliams and N. J. A. Sloane, *The Theory of Error-Correcting Codes*, North-Holland, 1977.
 9. D. Sornette, "Discrete Scale Invariance and Complex Dimensions," *Phys. Rep.* **297**, 239 (1998).
-10. Analysis code: experiments/hqvm_compact_geom_core.py, experiments/hqvm_compact_geom_kernel.py, and experiments/hqvm_compact_geom_report.py.
+10. Analysis code: experiments/hqvm_compact_geom_common.py, experiments/hqvm_compact_geom_1.py, experiments/hqvm_compact_geom_2.py, and experiments/hqvm_compact_geom_run.py.

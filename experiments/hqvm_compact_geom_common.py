@@ -1,5 +1,5 @@
 """
-hqvm_compact_geom_core.py
+hqvm_compact_geom_common.py
 
 Pure algebra layer for the compact geometry electroweak analysis.
 No printing, no I/O, no side effects.
@@ -32,10 +32,18 @@ try:
     SCIPY_AVAILABLE = True
 except ImportError:
     SCIPY_AVAILABLE = False
-M_A: float = 1.0 / (2.0 * math.sqrt(2.0 * math.pi))
-DELTA_BU: float = 0.19534217658
-RHO: float = DELTA_BU / M_A
-DELTA: float = 1.0 - RHO
+
+from gyroscopic.hQVM.constants import (
+    BU_APERTURE_GAP,
+    BU_CLOSURE_RATIO,
+    BU_HOLONOMY_ANGLE,
+    M_A as _M_A_SHARED,
+)
+
+M_A: float = _M_A_SHARED
+DELTA_BU: float = BU_HOLONOMY_ANGLE
+RHO: float = BU_CLOSURE_RATIO
+DELTA: float = BU_APERTURE_GAP
 E_EW_GEV: float = 246.22
 ELECTRON_MASS_GEV: float = 0.000510998950714
 F_CS_133_HZ: float = 9192631770.0
@@ -134,6 +142,14 @@ def solve_delta_self_consistency(
         delta, include_third_order=include_third_order
     )
     return (delta, residual)
+
+
+# Kernel self-consistency aperture (D^3 fixed point) and lift offset.
+# Delta: loop-angle ruler. Delta_*: mass-polynomial aperture (D^3 fixed point).
+DELTA_STAR: float = solve_delta_self_consistency(
+    DELTA, include_third_order=True
+)[0]
+DELTA_LIFT: float = DELTA_STAR - DELTA
 
 
 @dataclass(frozen=True)
@@ -367,8 +383,8 @@ def eval_law(ch: ChannelCoeffs, delta: float, *, order: int = 5) -> float:
     return L
 
 
-def all_laws(delta: float = DELTA, *, order: int = 5) -> dict[str, float]:
-    """Return {label: L_i} for all four channels at given order."""
+def all_laws(delta: float = DELTA_STAR, *, order: int = 5) -> dict[str, float]:
+    """Return {label: L_i} for all four channels at given order (default: Delta_*)."""
     return {ch.label: eval_law(ch, delta, order=order) for ch in CHANNELS}
 
 
@@ -562,7 +578,7 @@ def carrier_trace_polynomial_breakdown(
 
 
 def eval_law_from_omega_path(
-    label: str, delta: float = DELTA, *, order: int = 5
+    label: str, delta: float = DELTA_STAR, *, order: int = 5
 ) -> float:
     """
     L_i(D) from Omega path + carrier-trace polynomial assembly.
@@ -682,9 +698,9 @@ class EwMassAnchor:
 
 
 def predicted_mass_from_path(
-    label: str, delta: float = DELTA, v: float = E_EW_GEV, *, order: int = 5
+    label: str, delta: float = DELTA_STAR, v: float = E_EW_GEV, *, order: int = 5
 ) -> float:
-    """m_pred = v * 2^(-L_i(D)) with L from Omega path-certified expansion."""
+    """m_pred = v * 2^(-L_i(D)) with L from Omega path-certified expansion at Delta_*."""
     l_pred = eval_law_from_omega_path(label, delta)
     if order < 5:
         ch = channel_by_label(label)
@@ -694,12 +710,12 @@ def predicted_mass_from_path(
 
 def ew_mass_anchor_rows(
     observed: dict[str, float],
-    delta: float = DELTA,
+    delta: float = DELTA_STAR,
     v: float | None = None,
     *,
     order: int = 5,
 ) -> tuple[EwMassAnchor, ...]:
-    """Validate L_i(D) = log2(v/m_i) using carrier-path decomposition rows."""
+    """Validate L_i(D_*) = log2(v/m_i) using carrier-path decomposition rows."""
     if v is None:
         v = observed.get("Electroweak scale", E_EW_GEV)
     rows: list[EwMassAnchor] = []
@@ -769,7 +785,7 @@ def verify_ew_mass_identification(
 
 
 def model_masses_from_path(
-    delta: float = DELTA, v: float = E_EW_GEV
+    delta: float = DELTA_STAR, v: float = E_EW_GEV
 ) -> dict[str, float]:
     """Masses from Omega path-certified five-order law."""
     return {
@@ -1029,7 +1045,7 @@ class DeltaBacksolve:
 
     @property
     def delta_err(self) -> float:
-        return self.delta_back - DELTA
+        return self.delta_back - DELTA_STAR
 
 
 def _solve_top(l_t: float) -> float:
@@ -2147,11 +2163,15 @@ class ElectroweakCoords:
     n_strange: float
 
 
-def electroweak_coords(delta: float = DELTA, *, order: int = 5) -> ElectroweakCoords:
-    """Compute all EW mass-coordinate gaps at the requested law order."""
-    laws = all_laws(delta, order=order)
-    ch_top = channel_by_label("Top")
-    ch_h = channel_by_label("Higgs")
+def electroweak_coords(
+    delta: float = DELTA, *, order: int = 5, law_delta: float = DELTA_STAR
+) -> ElectroweakCoords:
+    """
+    EW mass-coordinate gaps on the loop-angle ruler.
+
+    Predicted L_i evaluate at law_delta (default Delta_*); n_i = L_i / delta.
+    """
+    laws = all_laws(law_delta, order=order)
     n_top = laws["Top"] / delta
     n_higgs = laws["Higgs"] / delta
     n_z = laws["Z"] / delta
@@ -2207,12 +2227,105 @@ def ew_couplings_from_masses(
     )
 
 
-def model_masses(delta: float = DELTA, v: float = E_EW_GEV) -> dict[str, float]:
-    """Masses predicted by the Omega path-certified five-order law."""
+@dataclass(frozen=True)
+class ApertureLiftChannelRow:
+    """Representation-boundary remainder and closure residual for one EW channel."""
+
+    label: str
+    a: float
+    l_at_delta: float
+    l_at_star: float
+    remainder: float
+    l_obs: float
+    l_err_star: float
+    n_err_star: float
+    ppm_star: float
+
+
+@dataclass(frozen=True)
+class ApertureLiftClosure:
+    """
+    Lift offset between loop-angle aperture Delta and kernel self-consistency
+    aperture Delta_*.
+
+        delta_lift := Delta_* - Delta
+        R_i := L_i(Delta_*) - L_i(Delta)
+    """
+
+    delta: float
+    delta_star: float
+    delta_lift: float
+    rows: tuple[ApertureLiftChannelRow, ...]
+    max_abs_remainder: float
+    max_abs_l_err_star: float
+    max_abs_n_err_star: float
+    max_abs_ppm_star: float
+
+
+def law_dL_dDelta(ch: ChannelCoeffs, delta: float) -> float:
+    """Partial derivative dL_i/dDelta with the eval_law LAMBDA_0 convention."""
+    return (
+        ch.a
+        + 2.0 * ch.c * delta
+        + 2.0 * ch.p * LAMBDA_0 * delta
+        + 4.0 * ch.q * delta**3
+        + 5.0 * ch.r5 * delta**4
+    )
+
+
+def aperture_lift_closure(
+    observed: dict[str, float],
+    *,
+    delta: float = DELTA,
+    delta_star: float = DELTA_STAR,
+    v: float = E_EW_GEV,
+) -> ApertureLiftClosure:
+    """
+    Representation-boundary remainder from the kernel self-consistency aperture.
+
+    Inputs: PDG masses, loop-angle Delta, kernel Delta_*, electroweak scale v.
+    Outputs: delta_lift, per-channel R_i, and closure residuals of L_i(Delta_*).
+    """
+    rows: list[ApertureLiftChannelRow] = []
+    for ch in CHANNELS:
+        m_obs = observed[ch.observable]
+        l_obs = math.log2(v / m_obs)
+        l_delta = eval_law(ch, delta, order=5)
+        l_star = eval_law(ch, delta_star, order=5)
+        rem = l_star - l_delta
+        l_err = l_obs - l_star
+        m_pred = v * 2.0 ** (-l_star)
+        rows.append(
+            ApertureLiftChannelRow(
+                label=ch.label,
+                a=ch.a,
+                l_at_delta=l_delta,
+                l_at_star=l_star,
+                remainder=rem,
+                l_obs=l_obs,
+                l_err_star=l_err,
+                n_err_star=l_err / delta,
+                ppm_star=(m_pred / m_obs - 1.0) * 1.0e6,
+            )
+        )
+    return ApertureLiftClosure(
+        delta=delta,
+        delta_star=delta_star,
+        delta_lift=delta_star - delta,
+        rows=tuple(rows),
+        max_abs_remainder=max(abs(r.remainder) for r in rows),
+        max_abs_l_err_star=max(abs(r.l_err_star) for r in rows),
+        max_abs_n_err_star=max(abs(r.n_err_star) for r in rows),
+        max_abs_ppm_star=max(abs(r.ppm_star) for r in rows),
+    )
+
+
+def model_masses(delta: float = DELTA_STAR, v: float = E_EW_GEV) -> dict[str, float]:
+    """Masses predicted by the Omega path-certified five-order law at Delta_*."""
     return model_masses_from_path(delta, v)
 
 
-def model_couplings_d2(delta: float = DELTA, v: float = E_EW_GEV) -> EWCouplings:
+def model_couplings_d2(delta: float = DELTA_STAR, v: float = E_EW_GEV) -> EWCouplings:
     """Couplings from D2-order model masses (law without gyroscopic corrections)."""
     laws = all_laws(delta, order=2)
     m_t = v * 2.0 ** (-laws["Top"])

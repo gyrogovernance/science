@@ -21,6 +21,14 @@ import os
 from .functions.gyrovector_ops import GyroVectorSpace
 from .functions.torus import tau_from_template, unit
 
+try:
+    from gyroscopic.hQVM.constants import BU_HOLONOMY_ANGLE, M_A
+except ImportError:
+    _ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+    if _ROOT not in sys.path:
+        sys.path.insert(0, _ROOT)
+    from gyroscopic.hQVM.constants import BU_HOLONOMY_ANGLE, M_A
+
 
 class CGMAcousticDiagnostics:
     """
@@ -54,8 +62,9 @@ class CGMAcousticDiagnostics:
         # Toroidal holonomy deficit (discovery)
         self.holonomy_deficit = 0.863  # rad - persistent invariant
 
-        # BU Dual-Pole Loop (discovery)
-        self.delta_BU = 0.195  # rad ≈  m_a (97.9% agreement)
+        # BU dual-pole loop angle
+        self.delta_BU = float(BU_HOLONOMY_ANGLE)
+        self.m_a = float(M_A)
 
         # Anatomical TW ratio (discovery)
         self.chi_anatomical = 1.169539  # ± 0.246470 (21.1% variation)

@@ -1,5 +1,5 @@
 hQVM Cohomology analysis
-started: 2026-07-14T22:33:02+03:00
+started: 2026-08-17T01:09:37+03:00
 python: C:\Python314\python.exe
 
 ######## hqvm_Cohomology_analysis_1.py ########
@@ -18,9 +18,9 @@ Values:
   o_p=pi/4                                 = 0.7853981633974483
   m_a=1/(2 sqrt(2 pi))                     = 0.19947114020071635
   Q_G=4 pi                                 = 12.566370614359172
-  DELTA_BU                                 = 0.19534217658
-  RHO=DELTA_BU/m_a                         = 0.9793004460867792
-  APERTURE_GAP=1-RHO                       = 0.02069955391322076
+  DELTA_BU                                 = 0.1953421782576621
+  RHO=DELTA_BU/m_a                         = 0.9793004544973297
+  APERTURE_GAP=1-RHO                       = 0.02069954550267028
   phi_SU2=2 arccos((1+2 sqrt2)/4)          = 0.5879007626540199
   Krivine=pi/(2 ln(1+sqrt2))               = 1.7822139781913693
   arsinh(1)                                = 0.881373587019543
@@ -37,7 +37,7 @@ Identity checks (residual, tol 1e-12):
   ln(1+sqrt2)==artanh(1/sqrt2)             = +0.000e+00  PASS
   1+sqrt2==tan(3 pi/8)                     = +0.000e+00  PASS
   Krivine==pi/(2*arsinh1)                  = +2.220e-16  PASS
-  alpha0*zeta==RHO^4/(pi sqrt3)            = +0.000e+00  PASS
+  alpha0*zeta==RHO^4/(pi sqrt3)            = -5.551e-17  PASS
   (pi/2)/Krivine==arsinh(1)                = -1.110e-16  PASS
   (pi/2)/Krivine==artanh(u_p)              = +0.000e+00  PASS
   arsinh(1)==artanh(u_p)                   = +1.110e-16  PASS
@@ -191,7 +191,7 @@ SUMMARY
   G Shannon triad:         see SHANNON_TRIAD
   H square-root:           see reach_ok and rect_is_product
 
-exit=0  duration=30.21s
+exit=0  duration=38.40s
 
 ######## hqvm_Cohomology_analysis_2.py ########
 
@@ -422,7 +422,7 @@ SUMMARY
   XII torsion vs Hilbert:        see torsion subset Hilbert
   XIII K4 H^1 dim:              see dim H^1(GF(2)^6)
 
-exit=0  duration=3.60s
+exit=0  duration=3.42s
 
 ######## hqvm_Cohomology_analysis_3.py ########
 
@@ -509,7 +509,7 @@ E. GAP-SPECTRUM DICTIONARY
   K_G^R(4) = pi/2 (depth-4 / CS threshold): 1.5707963268
   Krivine upper bound = (pi/2)/arsinh(1): 1.7822139782
   arsinh(1) = artanh(1/sqrt2) (UNA rapidity): 0.8813735870
-  aperture_gap Delta = 1 - rho: 0.0206995539
+  aperture_gap Delta = 1 - rho: 0.0206995455
   g1 holonomy residual: 0.0031980000
   numeric_distinct: True
   note: Multiple distinct gaps (sqrt2, pi/2, Krivine, Delta, g1) share one architecture; they are numerically distinct and must not be forced into a single identity.
@@ -557,7 +557,7 @@ H. OPEN ITEMS (DEPTH / K4-GATE / q6=0 / 5/3)
   shell_1: CHSH=1.6667  equals 5/3: True
   shell_5: CHSH=1.6667  equals 5/3: True
 
-exit=0  duration=7.06s
+exit=0  duration=7.25s
 
 ######## hqvm_Cohomology_analysis_4.py ########
 
@@ -690,13 +690,13 @@ exit=0  duration=7.06s
     "walsh_hadamard_is_orthogonal": true
   },
   "E_trace_angle_delta_bu": {
-    "delta_BU": 0.19534217658,
+    "delta_BU": 0.1953421782576621,
     "m_a": 0.19947114020071635,
-    "rho": 0.9793004460867792,
-    "trace_half_loop": 1.9904679398310985,
-    "cos_delta_bu_over_2_from_trace": 0.9952339699155492,
-    "delta_bu_from_trace_angle": 0.1953421782576621,
-    "abs_delta_diff": 3.608224830031759e-16,
+    "rho": 0.9793004544973297,
+    "trace_half_loop": 1.9904679396674998,
+    "cos_delta_bu_over_2_from_trace": 0.9952339698337499,
+    "delta_bu_from_trace_angle": 0.19534217825766254,
+    "abs_delta_diff": 4.440892098500626e-16,
     "trace_full_loop": 2.0,
     "full_loop_angle_from_trace": 0.0,
     "trace_angle_identity_holds": true
@@ -744,8 +744,8 @@ exit=0  duration=7.06s
   }
 }
 
-exit=0  duration=3.62s
+exit=0  duration=3.60s
 
-finished: 2026-07-14T22:33:46+03:00
-total_duration=44.50s
+finished: 2026-08-17T01:10:30+03:00
+total_duration=52.66s
 worst_exit=0

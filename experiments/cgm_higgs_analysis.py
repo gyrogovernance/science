@@ -37,15 +37,23 @@ Key dimensionless ratios (CGM-relevant):
 
 import math
 import argparse
+import sys
+from pathlib import Path
 from typing import Dict, List, Optional
 from dataclasses import dataclass, field
+
+_ROOT = Path(__file__).resolve().parent.parent
+if str(_ROOT) not in sys.path:
+    sys.path.insert(0, str(_ROOT))
+
+from gyroscopic.hQVM.constants import BU_HOLONOMY_ANGLE, M_A
 
 
 @dataclass
 class CGMConstants:
     """Fundamental CGM constants and parameters."""
 
-    delta_BU: float = 0.1953421782576621
+    delta_BU: float = BU_HOLONOMY_ANGLE
     E_CS_BTM: float = 1.22e19
     E_BU_TOP: float = 246.22  # Higgs vacuum expectation value v = (√2 G_F)^(-1/2)
 
@@ -54,7 +62,7 @@ class CGMConstants:
     actions: Dict[str, float] = field(init=False)
 
     def __post_init__(self):
-        self.m_a = 1 / (2 * math.sqrt(2 * math.pi))
+        self.m_a = M_A
         self.thresholds = {
             "CS": math.pi / 2,
             "UNA": math.cos(math.pi / 4),

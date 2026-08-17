@@ -4,14 +4,29 @@ All notable changes to the CGM Experimental Framework will be documented in this
 
 ---
 
-## [1.3.9.3-CGM] - 2026-08-15 2026-08-16
+## [1.3.9.3-CGM] — 2026-08-15 / 2026-08-16
 
-Revised one of the foundational priors of the framework: the Aperture. The earlier treatment is superseded by a cleaned continuous–finite holonomy account, with a dedicated verification suite and shared constants aligned to that account.
+The aperture, one of the foundational invariants the entire framework rests on, has been re-derived from first principles using gyrogroup theory. The BU dual-pole loop angle δ_BU is now defined by a closed-form equation, and every part of the program that depends on it has been brought into alignment.
+
+### What changed and why
+
+The new derivation constructs the same quantity as the Wigner angle of two orthogonal Einstein boosts at the ONA and BU stage thresholds, expressed in closed form as δ_BU = 4·arctan(k(π/4)·k(m_a)). This is not a numerical refinement. It is a grounding: the equation now carries the derivation, and the decimal is a readout of it.
+
+The shift between the old literal and the closed-form evaluation is about 8.6 parts per billion in δ_BU. Because the fine-structure kernel scales as the fourth power of δ_BU, the effect on α₀ is roughly four times that, moving the final transport-corrected residual against CODATA 2018 from sub-ppb to 33.8 ppb. The gravitational coupling residual against measured G is +2.99 ppm under the corrected STF depth formula, within CODATA G uncertainty of 22 ppm.
+
+The holonomy analysis also established a cleaner naming discipline. The term "holonomy" is kept for the operator H_BU and for its philosophical meaning as path memory. The quantity δ_BU is now the BU dual-pole loop angle throughout the program.
 
 ### Added
 
-- `docs/Findings/Analysis_Holonomy.md`
-- `experiments/cgm_holonomy_analysis.py` and `experiments/cgm_holonomy_analysis_results.txt`
+- `docs/Findings/Analysis_Holonomy.md` — full derivation: SU(2) commutator holonomy, BU dual-pole loop in closed form, closure ratio, aperture gap, palindromic conjugation theorem, mass-shell geodesic holonomy, and finite hQVM realization
+- `experiments/cgm_holonomy_analysis_{common,1,2,run}.py` — 80-digit verification suite
+- `experiments/cgm_holonomy_analysis_results.txt` — deterministic run output
+
+### Propagated across
+
+35 finding documents, 114 experiment scripts, the shared constants module, the main paper, the program guide, theTeX source, the dataset, and the superintelligence cross-repo. The gravity script stack was audited file by file. Run dumps that pre-date the revision are flagged as stale pending re-run.
+
+The ride was long and stressful, but totally worth it! 😅
 
 ---
 

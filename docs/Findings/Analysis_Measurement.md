@@ -129,7 +129,7 @@ where W = diag(w₁, w₂, ..., w₆) with:
 - W is positive definite, ensuring well-defined projection
 - Orthogonality follows from the normal equations: ⟨Bᵀx̂, r⟩_W = 0
 
-**Calibration**: We tune W so well-functioning processes stabilize the aperture near 0.0207. This is a calibration choice grounded in CGM geometry.
+**Calibration**: We tune W so well-functioning processes stabilize the aperture near Δ ≈ 0.020699545503. This is a calibration choice grounded in CGM geometry.
 
 **Unweighted Case**: When W = I (identity), the residual r lies in the kernel of B and equals Cᵀz directly.
 
@@ -199,8 +199,8 @@ Closure = 1 − A = ‖Bᵀx̂‖²_W / ‖y‖²_W
 ```
 
 **Target Balance**: 
-- A ≈ 0.0207 (2.07% aperture)
-- Closure ≈ 0.9793 (97.93% coherence)
+- A ≈ 0.020699545503 (2.07% aperture)
+- Closure ≈ 0.979300454497 (97.93% coherence)
 
 **Critical Understanding**: BU is not a separate structure or a seventh entity. BU is the **state** that emerges when the orthogonal decomposition achieves the target aperture ratio. It represents the balance point where the information topology maintains both stability (through coherence) and evolutionary capacity (through differentiation).
 
@@ -280,7 +280,7 @@ All metrics are transformed to a common dimensionless scale before combination.
 Set w_e = 1/σ_e² for each edge:
 - Higher precision measurements receive more weight
 - Ensures statistical optimality (Gauss-Markov theorem)
-- Calibrate overall scale so target systems achieve A ≈ 0.0207
+- Calibrate overall scale so target systems achieve A ≈ 0.020699545503
 
 **Step 3: Orthogonal Decomposition**
 
@@ -299,7 +299,7 @@ Report:
 - Coherence pattern: direction of x̂ in vertex space
 - Differentiation magnitude: ‖r‖_W
 - Differentiation pattern: which cycles carry residual flow
-- Balance state: A relative to target 0.0207
+- Balance state: A relative to target Δ ≈ 0.020699545503
 - Stability indicator: time evolution of A
 
 ### 6.2 Participant Experience
@@ -327,7 +327,7 @@ The system self-calibrates through aperture monitoring:
 
 - If A consistently > 0.03: Increase weight on high-coherence edges
 - If A consistently < 0.01: Increase weight on high-differentiation edges  
-- Goal: Maintain A ≈ 0.0207 without manual intervention
+- Goal: Maintain A ≈ 0.020699545503 without manual intervention
 
 **Bias Detection**: Persistent cycle-space patterns indicate systematic bias. For example, if cycle 1-2-3 always carries high residual, vertices {1,2,3} may form an echo chamber. Correction involves adjusting topology or adding cross-linking edges.
 
@@ -415,7 +415,7 @@ The number of participants is independent of graph structure:
 - Dimensional consistency: 3 + 3 = 6
 - UNA coherence interpreted against 1/√2 reference
 - ONA coupling interpreted against π/4 reference
-- BU aperture stable near 0.0207
+- BU aperture stable near Δ ≈ 0.020699545503
 
 ### 9.2 Statistical Validation
 

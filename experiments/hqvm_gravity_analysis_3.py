@@ -36,7 +36,7 @@ from gyroscopic.hQVM.api import (
 )
 from gyroscopic.hQVM.constants import APERTURE_GAP, DELTA_BU, M_A, RHO
 
-from hqvm_compact_geom_core import electroweak_coords
+from hqvm_compact_geom_common import electroweak_coords
 from hqvm_gravity_common import (
     C4_REF,
     G_meas,

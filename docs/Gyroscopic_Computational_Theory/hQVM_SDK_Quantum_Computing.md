@@ -772,7 +772,7 @@ The hQVM and gate-model quantum computers share quantum-algebraic foundations bu
 | Measurement | stochastic wavefunction collapse | chart extraction |
 | Entanglement | bipartite Hilbert-space tensor product | holonomic fiber coupling via K4 |
 | Error model | decoherence, gate infidelity | ledger corruption with miss characterization |
-| Non-Clifford resource | T gate, magic state distillation | δ(BU) holonomy defect |
+| Non-Clifford resource | T gate, magic state distillation | δ_BU dual-pole loop angle |
 | Execution medium | superconducting qubits, trapped ions, etc. | standard silicon, integer arithmetic with replayable byte ledgers |
 | Temporal structure | external clock, gate scheduling | intrinsic gyroscopic Moments |
 | Coordination primitive | none (single-device model) | Shared Moments |

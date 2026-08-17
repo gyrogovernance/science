@@ -46,7 +46,7 @@ The Common Governance Model (CGM) demonstrates that coherent recursive measureme
 **Key Results:**
 
 - **Deductive:** Three-dimensional structure follows necessarily from the foundational axiom through formal specifications plus requirements for continuous physical implementation. Alternative dimensionalities are constructively excluded.
-- **Invariants:** The conditions fix three representation-independent constants: the quantum gravity horizon `Q_G = 4π` steradians, the holonomy defect `δ_BU ≈ 0.1953` radians, and aperture scale `m_a ≈ 0.1995`. Their ratio `δ_BU/m_a = 0.9793` determines both physical coupling and informational aperture.
+- **Invariants:** The conditions fix three representation-independent constants: the quantum gravity horizon `Q_G = 4π` steradians, the BU dual-pole loop angle `δ_BU = 4 · arctan(k(π/4) · k(m_a)) ≈ 0.195342178258` radians, and aperture scale `m_a ≈ 0.1995`. Their ratio `ρ = δ_BU/m_a ≈ 0.979300454497` (aperture gap `Δ = 1 − ρ ≈ 0.020699545503`) determines both physical coupling and informational aperture.
 - **Phenomenological:** The kernel formula α₀ = δ_BU⁴/m_a gives α₀ ≈ 0.007299683573 (about +319.43 ppm relative to CODATA 2018). With UV-IR transport corrections (companion analyses), α ≈ 0.007297352816, about 33.8 ppb from that CODATA reference. The same geometric ratio predicts a 2.07% optimal aperture for discrete alignment systems. Preliminary evaluations show transformer architectures operating at six to eight times this value.
 
 **Falsification Paths:**
@@ -282,7 +282,7 @@ S → (□B → ([R]S ↔ S ∧ ¬([L]S ↔ S) ∧ ¬□E ∧ ¬□¬E))
 > 
 > **Why it matters:** This ensures that achieving balanced closure doesn't erase the structural distinctions that made the system interesting in the first place. The future state preserves the information required to reconstitute past distinctions without collapsing them.  
 > 
-> **Physical interpretation:** In quantum mechanics, this corresponds to the fact that unitary evolution is reversible. Information is conserved even as systems evolve. In information theory, this is the requirement that compression doesn't lose essential structure. The record of that reversibility is the holonomy phase defect of the vibrational oscillation at BU.  
+> **Physical interpretation:** In quantum mechanics, this corresponds to the fact that unitary evolution is reversible. Information is conserved even as systems evolve. In information theory, this is the requirement that compression doesn't lose essential structure. The record of that reversibility is the path-memory (holonomy) phase of the vibrational oscillation at BU, with amplitude fixed by the dual-pole loop angle δ_BU.  
 > 
 > **Structural role:** Memory reconstruction forces the Lie algebra to be simple (no nontrivial ideals). If the algebra decomposed as g = g₁ ⊕ g₂, the GNS representation would split into invariant subspaces, preventing a single cyclic vector from reconstructing both independent factors.
 
@@ -733,7 +733,7 @@ The explicit construction of degrees of freedom at each stage:
 - **Physical:** Quantum mechanical closure, Berry phase vanishing at BU
 - **Vibrational motion:** Bounded oscillation about the closed configuration (2.07% aperture). Not a seventh degree of freedom. Same category as molecular vibration: back-and-forth exchange about equilibrium while rotational and translational freedoms are already fixed at SE(3).
 
-The progression 1 → 3 → 6 → 6 (closed) follows from the five foundational conditions under the operational hypothesis. Each stage adds structure through operational necessity. At BU, rotational motion (UNA), translational motion (ONA), and vibrational motion (oscillation at the aperture) are all active. Commutative closure at depth four is algebraic; the vibrational mode is the residual dynamics that sustains observation and encodes memory as holonomy phase defect.
+The progression 1 → 3 → 6 → 6 (closed) follows from the five foundational conditions under the operational hypothesis. Each stage adds structure through operational necessity. At BU, rotational motion (UNA), translational motion (ONA), and vibrational motion (oscillation at the aperture) are all active. Commutative closure at depth four is algebraic; the vibrational mode is the residual dynamics that sustains observation and encodes memory as path memory (holonomy), with amplitude fixed by the dual-pole loop angle δ_BU.
 
 ---
 
@@ -819,9 +819,9 @@ Q_G appears in the normalization condition:
 Q_G m_a² = 1/2
 ```
 
-Together with the BU holonomy defect δ_BU, this determines the fine-structure constant via α = δ_BU⁴/m_a. Both quantum gravity and electromagnetic coupling emerge from depth-four balance, differing only in how the geometric invariants are composed.
+Together with the BU dual-pole loop angle δ_BU, this determines the fine-structure constant via α = δ_BU⁴/m_a. Both quantum gravity and electromagnetic coupling emerge from depth-four balance, differing only in how the geometric invariants are composed.
 
-##### The BU Holonomy Defect
+##### The BU Dual-Pole Loop Angle
 
 **Definition:** The BU dual-pole loop is the commutator path that isolates the egress/ingress structure enforced by BU:
 
@@ -881,10 +881,11 @@ Therefore:
 
 **Physical interpretation (the origin of aperture):**
 
-The holonomy defect measures how far the BU cycle deviates from perfect closure. The ratio:
+The dual-pole loop angle measures how far the BU cycle deviates from perfect closure. The ratio:
 
 ```
-δ_BU/m_a = 0.195342/0.199471 = 0.9793
+ρ = δ_BU/m_a ≈ 0.195342178258/0.199471140201 ≈ 0.979300454497
+Δ = 1 − ρ ≈ 0.020699545503
 ```
 
 indicates that the BU cycle closes to 97.93%, leaving a 2.07% aperture.
@@ -931,7 +932,7 @@ No free coefficients remain after fixing Q_G = 4π.
 
 #### The 2.07% Aperture Ratio
 
-**Definition:** A* = 1 - (δ_BU/m_a) = 1 - 0.9793 = 0.0207
+**Definition:** `A* = Δ = 1 − (δ_BU/m_a) ≈ 0.020699545503`
 
 **Physical interpretation:** This represents the fraction of "openness" in the system. 97.93% of structure is coherently closed, while 2.07% remains open to external influence.
 
@@ -1100,10 +1101,10 @@ In measurement, these conditions split into gradient coherence (alignment with c
 The key prediction: The framework predicts an optimal aperture ratio:
 
 ```
-A* = 1 - (δ_BU/m_a) ≈ 0.0207
+A* = Δ = 1 - (δ_BU/m_a) ≈ 0.020699545503
 ```
 
-from the universal balance condition, where δ_BU ≈ 0.1953 is the BU holonomy defect.
+from the universal balance condition, where `δ_BU = 4 · arctan(k(π/4) · k(m_a)) ≈ 0.195342178258` is the BU dual-pole loop angle.
 
 This is the same 2.07% that appears in the physical electromagnetic coupling calculation, but now applied to discrete information systems.
 
@@ -1177,21 +1178,21 @@ A = ⟨y, P_cycle y⟩_W / ⟨y, y⟩_W = ||y_cycle||²_W / ||y||²_W
 **Properties:**
 
 - **Rayleigh quotient:** A is the Rayleigh quotient of P_cycle, bounded between 0 and 1
-- **Geometric origin:** The target value A* = 1 - (δ_BU/m_a) = 0.02070 comes directly from the BU invariant
+- **Geometric origin:** The target value `A* = Δ = 1 − (δ_BU/m_a) ≈ 0.020699545503` comes directly from the BU invariant
 - **Interpretation:** Measures the balance between coherence and differentiation
 
 **Operational ranges:**
 
 - **A < 0.01:** Excessive rigidity (collapse toward absolute unity, violates UNA)
-- **A ≈ 0.0207:** Optimal balance (CGM prediction from BU geometry)
+- **A ≈ 0.020699545503:** Optimal balance (CGM prediction from BU geometry)
 - **A > 0.05:** Structural instability (loss of coherent closure, violates BU)
 
-**The canonical point A* = 0.0207 corresponds to:**
+**The canonical point A* ≈ 0.020699545503 corresponds to:**
 
 - 97.93% gradient coherence (alignment with common source)
 - 2.07% cycle aperture (differentiation capacity)
 
-This mirrors the 97.9%/2.1% balance of δ_BU/m_a established in the physical domain.
+This mirrors the 97.93%/2.07% balance of `ρ = δ_BU/m_a` established in the physical domain.
 
 **How aperture connects physical and informational domains:**
 
@@ -1255,7 +1256,7 @@ SI = f(T, V, Acc, B, A)
 
 where f is a weighted combination calibrated to:
 
-- Penalize deviations of A from A* = 0.0207
+- Penalize deviations of A from `A* ≈ 0.020699545503`
 - Reward high traceability, variety, accountability, integrity
 - Detect pathology combinations (see below)
 
@@ -1338,7 +1339,7 @@ Evaluations on representative transformer architectures using the GyroDiagnostic
 
 **Observations:**
 
-1. **Consistent elevation:** Across Claude 4.5 Sonnet, Grok-4, and ChatGPT-5, aperture ratios remain 6-8 times higher than the CGM prediction A* = 0.0207.
+1. **Consistent elevation:** Across Claude 4.5 Sonnet, Grok-4, and ChatGPT-5, aperture ratios remain 6-8 times higher than the CGM prediction `A* ≈ 0.020699545503`.
 
 2. **Wide ranges:** The range [0.052, 0.283] across challenges indicates substantial variation, but all medians cluster in the 0.12-0.17 band.
 
@@ -1563,7 +1564,7 @@ The framework is multiply falsifiable. Here are the specific ways to demonstrate
 
 #### 6. AI Aperture Absence
 
-**Test:** Large-scale evaluation (100+ models, 1000+ runs) shows no clustering near A* = 0.0207.
+**Test:** Large-scale evaluation (100+ models, 1000+ runs) shows no clustering near `A* ≈ 0.020699545503`.
 
 **Current status:** Pilot data (n=3 models, k=15 each) shows clustering at A ≈ 0.15, consistent with early differentiation regime.
 
@@ -1692,7 +1693,7 @@ Recent analysis by Noroozizadeh et al. (2025) demonstrates that deep sequence mo
 - **Gradient component** of tetrahedral Hodge decomposition → global geometric memory
 - **Cycle component** → local associative memory
 
-The operational conditions predict this dual structure together with a quantitative balance: 1 - (δ_BU/m_a) = 0.0207 gives the aperture fraction required for coherent alignment.
+The operational conditions predict this dual structure together with a quantitative balance: `Δ = 1 − (δ_BU/m_a) ≈ 0.020699545503` gives the aperture fraction required for coherent alignment.
 
 Where the empirical study documents the effect, CGM supplies the constitutional principle and falsifiable numeric target that necessitate it.
 
@@ -1705,7 +1706,7 @@ The approaches are complementary, not competing:
 
 One describes what works, the other explains why it works that way. Combining them:
 
-- Use CGM to set target metrics (A* = 0.0207)
+- Use CGM to set target metrics (`A* ≈ 0.020699545503`)
 - Use RLHF/Constitutional AI to drive systems toward targets
 - Use GyroDiagnostics to verify achievement
 
@@ -1855,18 +1856,18 @@ Testing n=4 so(4):
 Conclusion: n=3 UNIQUE ✓
 ```
 
-**4. BU Holonomy Calculation**
+**4. BU Dual-Pole Loop Angle**
 
 Script: `experiments/tw_closure_test.py`
 
-Purpose: Computes BU holonomy defect δ_BU from first principles.
+Purpose: Computes BU dual-pole loop angle δ_BU from first principles.
 
 What it does:
 
 - Constructs canonical stage operators in Pauli basis
 - Computes dual-pole loop U_⊚ = U_ONA U_BU^(+) U_ONA^(-1) U_BU^(-)
 - Extracts rotation angle δ_BU from matrix entries
-- Verifies δ_BU/m_a ratio
+- Verifies ρ = δ_BU/m_a and Δ = 1 − ρ
 
 Output:
 
@@ -1885,8 +1886,8 @@ BU dual-pole loop angle:
   δ_BU ≈ 11.19°
 
 Aperture ratio:
-  δ_BU/m_a = 0.9793
-  Aperture = 1 - 0.9793 = 0.0207 = 2.07%
+  ρ = δ_BU/m_a ≈ 0.979300454497
+  Δ = 1 − ρ ≈ 0.020699545503 = 2.07%
 
 Fine-structure (kernel):
   α₀ = δ_BU⁴/m_a ≈ 0.007299683573

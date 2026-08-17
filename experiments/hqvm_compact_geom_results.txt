@@ -1,0 +1,601 @@
+Compact Geometry: Spectral Algebra of the Electroweak Mass Spectrum and Beyond
+=====================================================================
+Delta = 0.020699545503   Delta_* = 0.020699553957   delta_lift = 8.455e-09   v = 246.22 GeV
+
+1. Finite Kernel Algebra
+==========
+
+  Reachable manifold Omega
+  states                                 4096
+  form                                   2^12 = 16^3 = 64^2
+  component density                      popcount(A) = popcount(B) = 6
+  density product                        d(A) x d(B) = 1/4
+
+  Shell distribution  |Shell_k| = C(6,k) * 64
+   Shell  ab_dist   population   fraction   expected   ok
+  ----------
+       0        0           64   0.015625         64   ok
+       1        2          384   0.093750        384   ok
+       2        4          960   0.234375        960   ok
+       3        6         1280   0.312500       1280   ok
+       4        8          960   0.234375        960   ok
+       5       10          384   0.093750        384   ok
+       6       12           64   0.015625         64   ok
+  All binomial: yes
+
+  Dual horizons
+  equality horizon  |Shell_0|            64
+  complement horizon |Shell_6|           64
+  total boundary                         128
+  |H|^2 = |Omega|                        64^2 = 4096 ok
+  complementarity invariant              holds
+
+  Boundary-to-bulk projection
+  complement states (|H|)                64
+  total fanout |H|*256                   16384
+  unique targets reached                 4096
+  min/max multiplicity                   4/4 ok
+
+  Shell transition algebra  (exact fractions, q = 0..6)
+    q    Tr(M)    Tr(M^2)    carrier
+  ----------
+    0        7          7          7
+    1        0       28/9       28/9
+    2      7/3    511/225        7/3
+    3        0      52/25      52/25
+    4      7/5    511/225        7/5
+    5        0       28/9       28/9
+    6        1          7          1
+
+  UV-IR shell DPF (carrier-trace ratios)
+  UV         IR          q_uv  q_ir     C_uv     C_ir      ratio
+  ----------
+  Top        electron       2     4      7/3      7/5   0.600000
+  Higgs      mu             3     4    52/25      7/5   0.673077
+
+  Kernel operator group
+  G                                      (GF(2)^6 x GF(2)^6) semidirect C2
+  C2 action                              swaps the two GF(2)^6 coordinates
+  |translation subgroup|                 4096
+  |parity sector|                        2
+  |operator group|                       8192
+  |derived subgroup G'|                  64
+  |centre Z(G)|                          64
+  G' = Z(G)                              diagonal GF(2)^6
+  |abelian shadow G/G'|                  128
+  odd x odd closure                      256^2 / 4096 = 16
+  two-step uniformisation                exact translation surjection
+
+  ALL KERNEL AUDITS PASS                 YES
+
+2. Aperture Delta and Projectors
+==========
+
+  --- Aperture Scalars and Projectors ---
+
+  Primary aperture
+  Delta  = 1 - rho                       0.020699545503
+  rho    = delta_BU / m_a                0.979300454497
+  m_a    = 1/(2 sqrt(2pi))               0.199471140201
+  delta_BU                               0.195342178258
+
+  Aperture Scalars
+  epsilon = 1/Delta - 48                 0.310239462552
+  eta     = m_a - delta_BU               0.004128961943
+  d_H     = epsilon + 24*Delta           0.807028554616
+  omega   = delta_BU / 2                 0.097671089129
+  kappa   = pi/4 - 1/sqrt(2)             0.078291382211
+  sigma   = SU2_RESIDUAL                 0.009395985199
+
+  Projectors
+  P_boundary = 47/48                     0.979166666667
+  Q_density  = 1/4                       0.250000000000
+  APERTURE_FRAME = 3*|K4|^2              48
+  |H| horizon cardinality                64
+  |Omega| reachable states               4096
+
+  Discrete aperture ordering
+  5/256  (bare byte aperture)            0.019531250000
+  Delta  (continuous)                    0.020699545503
+  1/48   (depth-4 frame)                 0.020833333333
+  5/256 < Delta < 1/48                   yes
+  48 * Delta                             0.993578184128
+  epsilon = 1/Delta - 48                 0.310239462552
+
+  Delta self-consistency
+  rhs at D^2 order                       0.020699551509
+  rhs at D^3 order                       0.020699553952
+  Delta_* (D^3 fixed point)              0.020699553957
+  fixed-point residual                   -5.100e-16
+  delta_lift = Delta_* - Delta           8.455e-09
+
+  Geometric constants
+  Lambda_0 = Delta/sqrt(5)               0.009257118169
+  alpha_geometric = dBU^4/m_a            7.300e-03
+  UV-IR gyration (2pi)^2                 39.478417604357
+
+  --- Mass-Coordinate Gaps ---
+
+  n = log2(v/m) / Delta  (mass-coordinate gap in aperture units).
+
+  Observable                                n  nearest   residual
+  ----------
+  Top quark mass energy             24.695167       25   0.304833
+  Higgs mass energy                 47.192638       47   0.192638
+  Z boson mass energy               69.230428       69   0.230428
+  W boson mass energy               78.023811       78   0.023811
+  Tau mass energy                  343.701949      344   0.298051
+  Muon mass energy                 540.414045      540   0.414045
+  Electron mass energy             912.010179      912   0.010179
+  Bottom quark mass energy         284.078759      284   0.078759
+  Charm quark mass energy          367.108333      367   0.108333
+  Strange quark mass energy        547.825208      548   0.174792
+
+  Strong-scale coordinate check
+  n_QCD from EW/0.2                      495.939982711109
+  n_QCD from top anchor                  495.939982711109
+  offset (aperture units)                +0.000
+  Lambda_QCD (GeV)                       0.2000
+  residual base-n_QCD                    0.060017288891
+
+3. Electroweak Mass Law
+==========
+
+  --- Coefficient Derivation ---
+
+  Grammar (kernel alphabet)
+  (1+z^2)^6 = 1 + 6z^2 + 15z^4 + 20z^6 + 15z^8 + 6z^10 + z^12
+  C1                                     6
+  C2                                     15
+  C3                                     20
+  M_shell                                192
+  |H|                                    64
+  P_boundary                             47/48
+  Q_density                              1/4
+  APERTURE_FRAME                         48
+
+  D^1 linear a_i
+  Top:   |H| + C2 - C1                   73  = 73
+  Higgs: M_shell/2                       96  = 96
+  Z:     M_shell/2 + C1 + C2             117  = 117
+  W:     M_shell/2 + 2*C2                126  = 126
+  Source: T_shells -- shell populations determine linear coefficients
+
+  D^0 offsets b_i
+    Top     b =       -1
+    Higgs   b =       -1
+    Z       b =   -47/48
+    W       b =   -47/48
+  Source: T_F_composition -- K4 structure sets boundary projector
+
+  D^2 carrier-trace c_i
+    Top     c =   0.25
+    Higgs   c = -24.00
+    Z       c = -22.50
+    W       c = -32.50
+  Source: T_carrier_traces -- stage projections of code weights
+
+  D^3-D^4 p_i, q_i and D^5 r5_i  (K4 flags, trace-free)
+  Ch      q      flags      p      q       r5
+  ----------
+  Top     2    (0,0,0)   1.00   1.25  -4.500
+  Higgs   3    (1,0,0)  -2.00   1.25   2.375
+  Z       3    (1,1,0)  -0.50  -0.75  -4.500
+  W       4    (1,1,1)   1.50  -1.75  -2.625
+  sum p_i = 0.0000  sum q_i = 0.0000
+  Source: T_gyrotriangle_p, T_k4_closure_q -- trace-free K4 edge increments
+  r5 = -(C2-C1)/2 + (|H|-(C2-C1))/8*(base-rot) + C2/8*bal
+  Source: T_code_curvature_r5 -- plaquette census + STF Regge projection
+
+  Native derivation audit (kernel geometry only, no mass input)
+  D1  Lambda_0 = Delta/sqrt(Tr(P_STF))
+      STF bulk projector trace      = 5
+      Lambda_0 derived              = 0.009257118169
+      Lambda_0 existing             = 0.009257118169
+      W/Z D^3 coefficient = 2/sqrt(5)   ok
+  D2  r5 from plaquette census + STF Regge projection
+      mean plaquette defect         = 3.0
+      W/Z code gap C2-C1            = 9.0
+      r5 constant -(C2-C1)/2        = -4.5
+      (base-rot) weight = 55/8      ok
+      bal weight = 15/8             ok
+      Ch     K4       regge   r5_alg   r5_der match
+      Top    id    0.025075   -4.500   -4.500    ok
+      Higgs  W2    0.050150    2.375    2.375    ok
+      Z      W2'   0.050150   -4.500   -4.500    ok
+      W      F     0.100300   -2.625   -2.625    ok
+  D3  K4 channel flags from fold geometry (byte-path lengths)
+      Ch     K4   len    flags match
+      Top    id     2      000    ok
+      Higgs  W2     3      100    ok
+      Z      W2'    4      110    ok
+      W      F      8      111    ok
+  All native derivations close           ok
+  All coefficients match eval_law        ok
+  bulk W matches gravity cycle           ok
+  Full derivation closes                 ok
+
+  Mass identification
+  Ch            m_obs       m_pred        ppm   n_resid
+  ----------
+  Top      172.760000   172.760000     -0.002   -0.0000
+  Higgs    125.100000   125.100000     -0.003   -0.0000
+  Z         91.187600    91.187600     -0.003   -0.0000
+  W         80.379000    80.379000     -0.004   -0.0000
+  sub-ppm Top/Z/W                        ok
+
+  W/Z split constants
+  WZ_OFFSET = C2 - C1                    9
+  WZ_APERTURE_COEFF = C3/2               10
+  MUON_EQUATOR_COEFF = C3                20
+
+  --- Five-Order Expansion (law at Delta_*) ---
+
+  L_i(Delta_*) = a*Delta_* + b + c*Delta_*^2 + p*Delta_*^3/sqrt(5) + q*Delta_*^4 + r5*Delta_*^5
+  Identification: L_i(Delta_*) = log2(v/m_i)  [mass-coordinate gap]
+
+  Order-by-order n-residuals  (n_err = (L_obs - L_pred) / Delta)
+  Ch            p      q       r5     D2_err     D3_err     D4_err     D5_err    R_i/D^6
+  ----------
+  Top        1.00   1.25   -4.500  2.017e-04  1.011e-05 -9.789e-07 -1.527e-07 7847.254817
+  Higgs     -2.00   1.25    2.375 -3.719e-04  1.132e-05  2.323e-07 -2.037e-07 10211.286867
+  Z         -0.50  -0.75   -4.500 -1.035e-04 -7.721e-06 -1.069e-06 -2.429e-07 12475.111127
+  W          1.50  -1.75   -2.625  2.712e-04 -1.626e-05 -7.412e-07 -2.593e-07 13398.020819
+  ----------
+  max |n_err|  D2=3.719e-04  D3=1.626e-05  D4=1.069e-06  D5=2.593e-07
+  reduction D2->D3 = 22.9x   D3->D4 = 15.2x   D4->D5 = 4.1x   total D2->D5 = 1434x
+  D^6 column: see Representation Boundary section.
+
+4. Numerical Validation
+==========
+
+  --- Null-Model Audit ---
+
+  Raw flag assignments                   4096
+  Trace-free filtered candidates         96
+  5e-3 pass                              96
+  1e-3 pass                              93
+  5e-4 pass                              31
+  1e-4 pass                              2
+  Delta^5 pass                           0
+  Declared assignment rank               1
+
+  Declared channels: Top=(0,0,0) Higgs=(1,0,0) Z=(1,1,0) W=(1,1,1)
+  Best trace-free candidates (Top, Higgs, Z, W flags):
+  rank     max_err        Top     H     Z     W   p_sum   q_sum  sum_abs_err
+  ----------
+     1   2.593e-07  (0, 0, 0) (1, 0, 0) (1, 1, 0) (1, 1, 1)   0.000   0.000    8.586e-07
+     2   6.970e-05  (1, 1, 1) (1, 0, 0) (1, 1, 0) (0, 0, 0)   0.000   0.000    1.394e-04
+     3   1.991e-04  (1, 0, 1) (1, 0, 0) (1, 1, 0) (0, 1, 0)   0.000   0.000    3.983e-04
+     4   2.682e-04  (1, 1, 1) (1, 0, 0) (1, 0, 0) (0, 1, 0)   0.000   0.000    5.372e-04
+     5   2.686e-04  (0, 1, 0) (1, 0, 0) (1, 0, 0) (1, 1, 1)   0.000   0.000    5.372e-04
+     6   2.686e-04  (0, 1, 0) (1, 0, 0) (1, 1, 0) (1, 0, 1)   0.000   0.000    5.372e-04
+     7   2.686e-04  (0, 0, 0) (1, 1, 0) (1, 0, 0) (1, 1, 1)   0.000   0.000    5.372e-04
+     8   2.686e-04  (0, 0, 0) (1, 1, 0) (1, 1, 0) (1, 0, 1)   0.000   0.000    5.372e-04
+     9   2.686e-04  (0, 1, 0) (1, 1, 0) (1, 0, 0) (1, 0, 1)   0.000   0.000    1.074e-03
+    10   2.686e-04  (1, 0, 1) (1, 1, 0) (1, 0, 0) (0, 1, 0)   0.000   0.000    9.347e-04
+    11   2.686e-04  (1, 0, 1) (1, 1, 0) (1, 1, 0) (0, 0, 0)   0.000   0.000    5.369e-04
+    12   2.686e-04  (1, 1, 1) (1, 1, 0) (1, 0, 0) (0, 0, 0)   0.000   0.000    6.758e-04
+
+  --- Delta Backsolves ---
+
+  Reference Delta_* = 0.020699553957
+  Loop-angle Delta  = 0.020699545503
+
+  Source   Equation                                     Delta_back         err vs *
+  ----------
+  Top      73D-1+(1/4)D^2                           0.020699611150        5.719e-08
+  Higgs    96D-1-24D^2                              0.020699472926       -8.103e-08
+  Z        117D-47/48-(45/2)D^2                     0.020699535494       -1.846e-08
+  W        126D-47/48-(65/2)D^2                     0.020699598986        4.503e-08
+  W/Z      D[9-10D+2D^2/sqrt(5)-D^3]                0.020699554747        7.899e-10
+
+  Four-point mean (Top+H+Z+W)            0.020699554639
+  Four-point error                       6.814e-10
+  Four-point spread                      1.382e-07
+
+  W/Z promoted backsolve                 0.020699554747
+  W/Z error vs Delta_*                   7.899e-10
+  W/Z vs four-point mean                 1.085e-10
+
+  Matter-gauge dichotomy (Q = 1/4 support)
+  Top error (with Q=1/4 term)            5.719e-08
+  Top error (linear only, no Q)          1.525e-06
+  H/Z/W max error                        8.103e-08
+  ratio Top/HZW (with Q)                 0.71
+  ratio Top/HZW (no Q)                   18.81
+  Status                                 Q=1/4 lowers Top residual by ~27x
+
+  --- W/Z Ratio Lock ---
+
+  Charged-neutral split law
+    D2 backbone:   log2(mZ/mW) = D[(C2-C1) - (C3/2)D]
+    Promoted D4:   log2(mZ/mW) = D[(C2-C1) - (C3/2)D + 2D^2/sqrt(5) - D^3]
+
+  Backbone (D2 only)
+  split predicted                        8.793004460427
+  split observed                         8.793382747144
+  split error                            3.783e-04
+  Delta_wz_base                          0.020700457291
+  base vs consensus gap                  9.027e-07
+
+  Promoted split (D4 law)
+  split predicted                        8.793378827848
+  split observed                         8.793382747144
+  split error                            3.919e-06
+  Delta_wz_corrected                     0.020699554747
+  corrected vs consensus gap             1.085e-10
+  consensus improvement factor           8323x
+
+  sin^2 theta_W
+  predicted                              0.223013218021
+  observed                               0.223013225327
+  error                                  -7.306e-09
+
+  W mass from Z and Delta_*
+  predicted W                            80.379000378 GeV
+  observed  W                            80.379000000 GeV
+  relative error                         4.701e-09
+
+  theta_W
+  cos theta_W predicted                  0.881468537146
+  cos theta_W observed                   0.881468533002
+  theta_W predicted                      28.179977258 deg
+
+  --- Leave-One-Out ---
+
+  Target   Delta source         Delta used     m_pred (GeV)    m_ref (GeV)        rel_err
+  ----------
+  Higgs    Z+W              0.020699567240    125.099223017  125.100000000     -6.211e-06
+  Z        Higgs+W          0.020699535956     91.187596612   91.187600000     -3.715e-08
+  W        Higgs+Z          0.020699504210     80.379658228   80.379000000      8.189e-06
+
+  --- Couplings ---
+
+  Coupling exponents (log2 form):
+    y_t  = 2^(3/2 - 73.0*D - D^2/4)
+    lambda_H = 2^(1 - 192*Delta + 48*Delta^2)
+    g_Z  = 2^(95/48 - 117*Delta + 45/2*Delta^2)
+    g    = 2^(95/48 - 126*Delta + 65/2*Delta^2)
+
+  Quantity          Model value    PDG reference      rel error
+  ----------
+  lambda_H          0.129072385      0.129073762     -1.067e-05
+  g                 0.652906447      0.652903907      3.891e-06
+  g_Z               0.740699087      0.740700187     -1.485e-06
+  g'                0.349783230      0.349790301     -2.022e-05
+  e                 0.308324568      0.308329144     -1.484e-05
+  alpha^-1        132.188477441    132.184554083      2.968e-05
+  y_t               0.992284307      0.992281435      2.894e-06
+
+5. Lepton Sector
+==========
+
+  Lepton coordinate: n = k*|H| + r(lepton) + residual
+  |H| = 64,  M_shell = 192
+
+  Lep          k   r(lep)     resid_D1     resid_D2     resid_D3  law
+  ----------
+  tau          5   24.000    7.887e-04    1.460e-04    1.396e-04  -(dBU+5D)
+  muon         8   28.000    5.428e-05    2.150e-04    2.197e-04  +C3*D
+  electron    14   16.000    3.689e-04    3.689e-04    3.706e-04  +SU2+(5/256)/n_H
+
+  max |resid|  D1=7.887e-04  D2=3.689e-04  D3=3.706e-04
+  reduction D1->D2 = 2.1x   D2->D3 = 1.0x   total D1->D3 = 2x
+
+  Law by order:
+    tau       D1: -(dBU+5D)  D2: +(C1/4)D^2  D3: +(-27/64)*(C4-C5)*D^3
+    muon      D1: +C3*D  D2: -(C1/16)D^2  D3: +(-37/64)*(C2-C4)*D^3
+    electron  D1: +SU2+(5/256)/n_H  D2: none  D3: +(-51/256)*(C2-C4)*D^3
+
+  Horizon/shell anchor:
+    r(tau)      = M_shell/8          = 24
+    r(muon)     = M_shell/8 + M/48   = 28
+    r(electron) = M_shell/8 - M/24   = 16
+
+  Ladder separations:
+    tau->muon     : k  5->8    delta_k = 3 = C1/2
+    muon->electron: k  8->14   delta_k = 6 = C1
+    tau->electron : k  5->14   delta_k = 9 = 3*C1/2
+
+
+  Electron residual decomposition:
+  SU2 residual sigma                     0.009395985  (92.31%)
+  Higgs memory (5/256)/n_H               0.000413863  (4.07%)
+  sum                                    0.009809848
+  observed residual                      0.010178785
+  pre-carrier match error                -3.689e-04
+
+  max |D3 carrier residual|              3.706e-04
+
+  Carrier identities (D3 transition costs)
+  Lep            q_path    carrier     dyadic    64*cost
+  ----------
+  tau        5->4     -77/45     -27/64        -27
+  muon       4->2      14/15     -37/64        -37
+  electron   4->2      14/15    -51/256      -51/4
+
+  q=2 and q=4 supports are isospectral at return-trace and Hilbert-Schmidt level; dyadic ratio 148/51 differs from spectral ratio. The muon/electron split requires q-history path information.
+
+  q-history derivation
+  history path                           q=5 -> q=4 -> q=2
+  xor moment                             25/9
+  history split                          -25/64 (ok)
+  byte phase reset                       -3/256 (ok)
+  electron from history                  -51/256 (ok)
+
+  148/51 closure                         148/51 ok
+
+  Archetype closure
+  archetype shadow                       1/256
+  matches residual                       yes
+  carrier conservation offset            archetype byte shadow 1/256 (verified)
+  source traceability                    0xAA closes electron dyadic (verified)
+  horizon-wrap path                      (5, 8, 14) unique under horizon-wrap rule
+
+  Horizon gate selection
+    byte  gate  q_wt  selected
+  ----------
+  0xAA     S     0       yes
+  0x54     S     0        no
+  0xD5     C     0        no
+  0x2B     C     0        no
+  S-gate bytes with zero intron/payload/family select the electron reset.
+
+6. Quark and Strong-Sector Diagnostics
+==========
+
+  Selector coordinates n = integer + compact residual
+  kappa = pi/4 - 1/sqrt(2) = 0.078291382211
+  omega = delta_BU/2       = 0.097671089129
+
+  Boolean lattice on {kappa, omega}:
+  Quark       kappa  omega  n_int     selector      n_model        n_obs      n_resid
+  ----------
+  Bottom        yes     no    284       +kappa   284.078291   284.078759    4.678e-04
+  Charm          no    yes    367   +omega+D/2   367.108021   367.108333    3.123e-04
+  Strange       yes    yes    548 -(omega+kappa)   547.824038   547.825208    1.170e-03
+
+  Top is excluded from lattice vertices.
+
+  Residuals against closed forms:
+  kappa from Bottom                      4.678e-04
+  omega from Charm                       3.123e-04
+  kappa+omega from Strange               -1.170e-03
+  internal (no closed form used)         -1.951e-03
+
+  PDG mass uncertainty maps to ~0.7 Delta-ticks, so observed selector
+  residuals at ~1e-3 Delta-ticks are below current mass-input noise.
+
+  D_flow^2 ladder mapping probe
+  Quark masses are ordered and mapped to non-zero D_flow eigenvalue squares.
+  Quark      mass (GeV)   log2(mass) d_flow^2 |d_flow|
+  ----------
+  Up           0.002160    -8.854753        1        1
+  Down         0.004670    -7.742362        4        2
+  Strange      0.095000    -3.395929        9        3
+  Charm        1.270000     0.344828       16        4
+  Bottom       4.180000     2.063503       25        5
+  Top        172.760000     7.432625       36        6
+
+  SU(3) colour structure
+  1+8+6 decomposition                    ok
+  adjoint bracket closes                 ok
+  raw sextet bracket closes              FAIL
+  Lifted phase-symmetrized sextet: Representation Boundary section.
+
+  Strong-sector adjoint spectral ratios
+  adjoint spectral radius                8
+  finite spectral ratios                 3/4, 1/2, 1/4
+  residual scales (aperture units)       20.050561, 48.310239, 96.620479
+
+  Colour confinement (paired vs single-sided action)
+  paired action preserves bulk           ok
+  left-action leaks                      ok
+
+7. Representation Boundary and 32-bit Lift
+==========
+
+  Boundary remainder R_i/Delta^6; mass law closes at Delta_*.
+  P_6 shell = 6, |support| = 64
+
+  Ch          R_i/D^6     K4 flags       C(q)  full?
+  ----------
+  Top     7847.254817          000   2.333333     no
+  Higgs  10211.286867          100   2.080000     no
+  Z      12475.111127          110   2.080000     no
+  W      13398.020819          111   1.400000    yes
+
+  W unique full K4 (1,1,1)               ok
+  W largest positive R_i/D^6             ok
+  max |R_i|/Delta^6                      13398.020819
+  W is unique full-flag endpoint         ok
+
+  Aperture lift (representation boundary)
+  delta_lift := Delta_* - Delta
+  R_i := L_i(Delta_*) - L_i(Delta)
+  Delta_*                                0.020699553957
+  delta_lift                             8.455e-09
+  Ch            a          R_i      L_err_*      n_err_*      ppm_*
+  ----------
+  Top        73.0    6.173e-07   -3.161e-09   -1.527e-07     -0.002
+  Higgs      96.0    8.032e-07   -4.217e-09   -2.037e-07     -0.003
+  Z         117.0    9.813e-07   -5.028e-09   -2.429e-07     -0.003
+  W         126.0    1.054e-06   -5.368e-09   -2.593e-07     -0.004
+
+  max |R_i|                              1.054e-06
+  max |L_err| at Delta_*                 5.368e-09
+  max |n_err| at Delta_*                 2.593e-07
+  max |ppm| at Delta_*                   0.004
+
+  24-bit obstructions
+  Spectral triple: gamma commutes with D_shell; first-order condition fails.
+  No J in 24-bit satisfies first-order spectral triple.
+  shadow collapses spinorial phase       ok
+  requires 32-bit lift                   ok
+
+  32-bit lift verification
+  K4 spectral triple closed              ok
+  symmetrized sextet closed              ok
+  rich K6 W-boundary closed              ok
+
+8. External Channels
+==========
+
+  CKM compact ansatz
+  Quantity              Predicted      Reference        Error
+  ----------
+  |V_us|              0.224462568       0.224300    1.626e-04  sin(dBU + 3D/2)
+  |V_cb|              0.041387266       0.040800    5.873e-04  sin(2D)
+  |V_ub| excl         0.003856231       0.003820    3.623e-05  sin(9D^2)
+  |V_ub| incl         0.004128960       0.004130   -1.040e-06  sin(9D^2+phi_conv)
+
+  CP phase delta_CKM                     68.652 deg  (pi/2 - 18D)
+  phi_conv (incl/excl offset)            2.727e-04
+
+  Antihydrogen aperture
+    12*Delta = 0.248395
+    1/4 - 12*Delta = 0.001605  (residual from quarter closure)
+    predicted a_Hbar/g = 1 - 12*Delta = 0.751605
+  Current experimental precision is above the predicted offset scale.
+
+  External-lead null audit
+  method                                 permutation and uniform-phase null with BH-FDR
+  seed                                   1729
+  CKM metric                             assignment MAE
+  CKM observed                           1.967765253359e-04
+  CKM null mean                          8.777363189965e-02
+  CKM p-value                            0.035491
+  CKM q-value                            0.070982
+  CKM status                             screen-passed
+  CKM note                               reference-label permutation baseline
+  QCD metric                             phase nearest-scale gap
+  QCD observed                           4.110578264991e+00
+  QCD null mean                          8.360287782038e+00
+  QCD p-value                            0.248938
+  QCD q-value                            0.248938
+  QCD status                             screen-not-passed
+  QCD note                               uniform phase baseline on [0,48)
+
+9. Consistency Audit
+==========
+
+  Check                                value         exp        resid   ok
+  ----------
+  C1 = C(6,1)                              6           6    0.000e+00   ok
+  C2 = C(6,2)                             15          15    0.000e+00   ok
+  C3 = C(6,3)                             20          20    0.000e+00   ok
+  M_shell                                192         192    0.000e+00   ok
+  all channel coeffs match                 1           1    0.000e+00   ok
+  sum p_i trace-free                       0           0    0.000e+00   ok
+  sum q_i trace-free                       0           0    0.000e+00   ok
+  q_W = c4 gravity                     -1.75       -1.75    0.000e+00   ok
+  Top r5-coeff                          -4.5        -4.5    0.000e+00   ok
+  Higgs r5-coeff                       2.375       2.375    0.000e+00   ok
+  Z r5-coeff                            -4.5        -4.5    0.000e+00   ok
+  W r5-coeff                          -2.625      -2.625    0.000e+00   ok
+  epsilon*eta = 48*dBU - 47*m_a   0.00128097  0.00128097   -4.239e-16   ok
+  WZ_OFFSET = C2 - C1                      9           9    0.000e+00   ok
+  WZ_APERTURE_COEFF = C3/2                10          10    0.000e+00   ok
+
+  All checks pass: YES

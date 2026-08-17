@@ -1,6 +1,6 @@
 CGM gravity script runner
-started: 2026-08-16T21:29:29+03:00
-python: /Users/basil/Documents/GitHub/science/.venv/bin/python
+started: 2026-08-17T01:56:35+03:00
+python: C:\Python314\python.exe
 scripts: 10
 
 ######## hqvm_gravity_analysis_3.py ########
@@ -241,7 +241,7 @@ EW mass coords (order 5, same Delta, compact geometry):
 ANALYSIS COMPLETE
 =========
 
-exit=0  duration=1.51s
+exit=0  duration=0.91s
 
 ######## hqvm_gravity_analysis_2.py ########
 
@@ -398,7 +398,7 @@ c4_anchor - kernel = 1.963366613907e+00
 G_geo              = 6.708830068568e-39  ppm=+2.991375
 G_corr             = 6.708994670127e-39  ppm=+27.526510
 
-exit=0  duration=3.03s
+exit=0  duration=1.62s
 
 ######## hqvm_gravity_analysis_1.py ########
 
@@ -668,7 +668,7 @@ SUMMARY
   tau_G (STF) = 76.237914
   G_pred/G_meas - 1 = 2.991 ppm
 
-exit=0  duration=1.03s
+exit=0  duration=0.84s
 
 ######## hqvm_gravity_analysis_4.py ########
 
@@ -1153,7 +1153,7 @@ Nonlinear extension (reference scale only; alpha*zeta unchanged):
         NS     0.896061  -1.0394e-01
    BH hor.     0.724129  -2.7587e-01
 
-  zeta_from_CODATA / zeta_geom - 1: 3.194321e-04
+  zeta_from_CODATA / zeta_geom - 1: 3.194315e-04
 
 =========
 H. Complete nonlinear CGM gravity system
@@ -1204,7 +1204,7 @@ Sample G reductions:
 ANALYSIS COMPLETE
 =========
 
-exit=0  duration=1.25s
+exit=0  duration=1.09s
 
 ######## hqvm_gravity_analysis_5.py ########
 
@@ -1750,7 +1750,7 @@ Y. Anisotropic equilibrium verification
   Equilibrium: G_rr = G_tt/f^2 (not barotropic TOV)
 
 Step 1: Verify G_rr = G_tt/f^2
-  Mean |G_rr/(G_tt/f^2) - 1| = 9.18e-17
+  Mean |G_rr/(G_tt/f^2) - 1| = 8.98e-17
   Max  |G_rr/(G_tt/f^2) - 1| = 4.44e-16
   VERIFIED to machine precision
 
@@ -1762,7 +1762,7 @@ Step 2: Effective stress components
           10   9.6920e-02     4.8127e-05    -7.4053e-05     1.0750e+01 -145161.1179
           50   1.9873e-02     9.8219e-08    -1.0652e-07     2.3664e+01 -222160708.0059
          100   9.9685e-03     6.4001e-09    -6.6631e-09     2.2560e+01 -3385848475.4704
-        1000   9.9985e-04     9.8961e-13    -9.9358e-13     1.0522e+01 -10589567998676.2480
+        1000   9.9985e-04     9.8961e-13    -9.9358e-13     1.0522e+01 -10589567998671.7227
 
 Step 3: Modified Bianchi identity
   div T^mu_nu = -(d_mu G / G) T^mu_nu
@@ -1830,7 +1830,7 @@ N. Spin-sector shadow (wavefunction)
 DERIVATIONS COMPLETE
 =========
 
-exit=0  duration=5.82s
+exit=0  duration=2.58s
 
 ######## hqvm_gravity_analysis_6.py ########
 
@@ -1990,7 +1990,7 @@ B.4  Ringdown (Poschl-Teller estimate, ell=2, n=0)
   Pöschl-Teller n=0 (omega*M, c=1; r_g=2M => omega*r_g = 2*omega*M):
                            omega_R          omega_I
   ------------------------------------------------
-  CGM (PT)                0.420387         0.094195
+  CGM (PT)                0.420387         0.094197
   GR (PT)                 0.378271         0.090541
   GR (exact)              0.373670         0.088960
 
@@ -2166,7 +2166,7 @@ E.4  Summary
   GW HT / vacuum: analysis_5 J, P.
 ========= DONE =========
 
-exit=0  duration=4.73s
+exit=0  duration=1.64s
 
 ######## hqvm_gravity_analysis_7.py ########
 
@@ -2739,7 +2739,7 @@ Cross-script ownership:
               four-phase causal structure
 ========== DONE ==========
 
-exit=0  duration=36.78s
+exit=0  duration=22.74s
 
 ######## hqvm_gravity_analysis_8.py ########
 
@@ -2932,20 +2932,20 @@ Spectral gap chain:
 
 --- stderr ---
 Traceback (most recent call last):
-  File "/Users/basil/Documents/GitHub/science/experiments/hqvm_gravity_analysis_8.py", line 850, in <module>
+  File "F:\Development\science\experiments\hqvm_gravity_analysis_8.py", line 850, in <module>
     main()
-  File "/Users/basil/Documents/GitHub/science/experiments/hqvm_gravity_analysis_8.py", line 838, in main
+    ~~~~^^
+  File "F:\Development\science\experiments\hqvm_gravity_analysis_8.py", line 838, in main
     chain_ok, _d_stats = run_kernel_chain(verbose=True)
-                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/basil/Documents/GitHub/science/experiments/hqvm_gravity_analysis_8.py", line 814, in run_kernel_chain
+                         ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "F:\Development\science\experiments\hqvm_gravity_analysis_8.py", line 814, in run_kernel_chain
     d_stats = section_d_spectral_bridge(b_stats)
-              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/basil/Documents/GitHub/science/experiments/hqvm_gravity_analysis_8.py", line 714, in section_d_spectral_bridge
+  File "F:\Development\science\experiments\hqvm_gravity_analysis_8.py", line 714, in section_d_spectral_bridge
     "tau_g": tau_g_full,
              ^^^^^^^^^^
 NameError: name 'tau_g_full' is not defined
 
-exit=1  duration=115.28s
+exit=1  duration=64.32s
 
 ######## hqvm_gravity_analysis_9.py ########
 
@@ -3136,20 +3136,20 @@ Spectral gap chain:
 
 --- stderr ---
 Traceback (most recent call last):
-  File "/Users/basil/Documents/GitHub/science/experiments/hqvm_gravity_analysis_9.py", line 1366, in <module>
+  File "F:\Development\science\experiments\hqvm_gravity_analysis_9.py", line 1366, in <module>
     main()
-  File "/Users/basil/Documents/GitHub/science/experiments/hqvm_gravity_analysis_9.py", line 1340, in main
+    ~~~~^^
+  File "F:\Development\science\experiments\hqvm_gravity_analysis_9.py", line 1340, in main
     chain_ok, d_stats = run_kernel_chain(verbose=False)
-                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/basil/Documents/GitHub/science/experiments/hqvm_gravity_analysis_8.py", line 814, in run_kernel_chain
+                        ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "F:\Development\science\experiments\hqvm_gravity_analysis_8.py", line 814, in run_kernel_chain
     d_stats = section_d_spectral_bridge(b_stats)
-              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/basil/Documents/GitHub/science/experiments/hqvm_gravity_analysis_8.py", line 714, in section_d_spectral_bridge
+  File "F:\Development\science\experiments\hqvm_gravity_analysis_8.py", line 714, in section_d_spectral_bridge
     "tau_g": tau_g_full,
              ^^^^^^^^^^
 NameError: name 'tau_g_full' is not defined
 
-exit=1  duration=127.46s
+exit=1  duration=63.55s
 
 ######## hqvm_gravity_analysis_10.py ########
 
@@ -3297,8 +3297,8 @@ DONE
 =========
 Planck boundary analysis: OK
 
-exit=0  duration=2.84s
+exit=0  duration=1.67s
 
-finished: 2026-08-16T21:34:29+03:00
-total_duration=299.72s
+finished: 2026-08-17T01:59:15+03:00
+total_duration=160.95s
 worst_exit=1

@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """
-hqvm_compact_geom_report.py
+hqvm_compact_geom_run.py
 
-Report layer for the compact geometry electroweak analysis.
-No computation: formats and prints results from core and kernel.
+Runner for the compact geometry electroweak analysis.
+Formats and prints results from common and kernel verification.
+Writes experiments/hqvm_compact_geom_results.txt by default.
 
 Sections:
   1.  Finite kernel algebra
@@ -19,10 +20,15 @@ Sections:
 from __future__ import annotations
 
 import math
+import sys
 from fractions import Fraction
+from pathlib import Path
 from typing import Sequence
 
-from hqvm_compact_geom_core import (
+_EXP = Path(__file__).resolve().parent
+RESULTS_PATH = _EXP / "hqvm_compact_geom_results.txt"
+
+from hqvm_compact_geom_common import (
     ALPHA_GEOMETRIC,
     CHANNELS,
     CODE_C1,
@@ -30,6 +36,8 @@ from hqvm_compact_geom_core import (
     CODE_C3,
     DELTA,
     DELTA_BU,
+    DELTA_LIFT,
+    DELTA_STAR,
     E_EW_GEV,
     ELECTRON_MASS_GEV,
     HORIZON_CARDINALITY,
@@ -73,6 +81,7 @@ from hqvm_compact_geom_core import (
     byte_archetype_shadow_probe,
     horizon_gate_selection_probe,
     lepton_d3_path_breaking_probe,
+    aperture_lift_closure,
     w_mass_from_z,
     wz_split,
     ew_couplings_from_masses,
@@ -84,9 +93,9 @@ from hqvm_compact_geom_core import (
     lepton_ladder_residuals,
     all_laws,
 )
-from hqvm_compact_geom_derivations import run_derivations
+from hqvm_compact_geom_1 import run_derivations
 
-from hqvm_compact_geom_kernel import (
+from hqvm_compact_geom_2 import (
     KernelReport,
     run_kernel_verification,
     ShellTransitionRow,
@@ -346,9 +355,9 @@ def _print_aperture_scalars_and_projectors(delta: float = DELTA) -> None:
     solved, resid = solve_delta_self_consistency(DELTA, include_third_order=True)
     _row("rhs at D^2 order", _fix(rhs_d2))
     _row("rhs at D^3 order", _fix(rhs_d3))
-    _row("fixed-point delta", _fix(solved))
-    _row("residual", _sci(resid))
-    _row("gap from CGM Delta", _sci(solved - DELTA))
+    _row("Delta_* (D^3 fixed point)", _fix(DELTA_STAR))
+    _row("fixed-point residual", _sci(resid))
+    _row("delta_lift = Delta_* - Delta", _sci(DELTA_LIFT))
 
     print()
     print("  Geometric constants")
@@ -474,7 +483,7 @@ def _print_coefficient_derivation_body(
 ) -> None:
     checks = verify_ew_ladder_derivations()
     om = verify_omega_path_ladder(delta)
-    mass_rows = ew_mass_anchor_rows(observed, delta, v)
+    mass_rows = ew_mass_anchor_rows(observed, DELTA_STAR, v)
 
     print()
     print("  Grammar (kernel alphabet)")
@@ -567,13 +576,13 @@ def _print_five_order_ladder_body(
 ) -> None:
     print()
     print(
-        "  L_i(Delta) = a*Delta + b + c*Delta^2 + p*Delta^3/sqrt(5) + q*Delta^4 + r5*Delta^5"
+        "  L_i(Delta_*) = a*Delta_* + b + c*Delta_*^2 + p*Delta_*^3/sqrt(5) + q*Delta_*^4 + r5*Delta_*^5"
     )
-    print("  Identification: L_i(Delta) = log2(v/m_i)  [mass-coordinate gap]")
+    print("  Identification: L_i(Delta_*) = log2(v/m_i)  [mass-coordinate gap]")
     print()
     print("  Order-by-order n-residuals  (n_err = (L_obs - L_pred) / Delta)")
     print(
-        f"  {'Ch':8} {'p':>6} {'q':>6} {'r5':>8} {'D2_err':>10} {'D3_err':>10} {'D4_err':>10} {'D5_err':>10} {'L_err/D6':>10}"
+        f"  {'Ch':8} {'p':>6} {'q':>6} {'r5':>8} {'D2_err':>10} {'D3_err':>10} {'D4_err':>10} {'D5_err':>10} {'R_i/D^6':>10}"
     )
     print("  " + "-" * 10)
 
@@ -615,7 +624,7 @@ def print_electroweak_mass_law(
     _subhdr("Coefficient Derivation")
     _print_coefficient_derivation_body(observed, delta, v)
     if ladder_rows:
-        _subhdr("Five-Order Expansion")
+        _subhdr("Five-Order Expansion (law at Delta_*)")
         _print_five_order_ladder_body(ladder_rows, delta)
 
 
@@ -630,7 +639,7 @@ def _evaluate_null_candidate(
 ) -> float:
     l0 = a * delta + b
     l0 += c * delta**2
-    l0 += p * delta**3 / math.sqrt(5.0)
+    l0 += p * LAMBDA_0 * delta**2
     l0 += q * delta**4
     l0 += r5 * delta**5
     return l0
@@ -726,7 +735,7 @@ def _print_electroweak_null_model_audit_body(
                     ]:
                         _ = label
                         l_pred = _evaluate_null_candidate(
-                            delta, a_ch, b_ch, c_ch, p_val, q_val, r5
+                            DELTA_STAR, a_ch, b_ch, c_ch, p_val, q_val, r5
                         )
                         n_pred = l_pred / delta
                         err = n_pred - obs_n
@@ -791,9 +800,10 @@ def _print_backsolves_body(
     delta: float = DELTA,
 ) -> None:
     print()
-    print(f"  Reference Delta = {_fix(DELTA)}")
+    print(f"  Reference Delta_* = {_fix(DELTA_STAR)}")
+    print(f"  Loop-angle Delta  = {_fix(DELTA)}")
     print()
-    print(f"  {'Source':8} {'Equation':38} {'Delta_back':>16} {'Delta_err':>16}")
+    print(f"  {'Source':8} {'Equation':38} {'Delta_back':>16} {'err vs *':>16}")
     print("  " + "-" * 10)
     for bs in backsolves:
         print(
@@ -820,7 +830,7 @@ def _print_backsolves_body(
     if wz is not None:
         print()
         _row("W/Z promoted backsolve", _fix(wz.delta_back))
-        _row("W/Z error vs CGM Delta", _sci(wz.delta_err))
+        _row("W/Z error vs Delta_*", _sci(wz.delta_err))
         gap_base_to_consensus = abs(wz.delta_back - consensus.delta_back)
         _row("W/Z vs four-point mean", _sci(gap_base_to_consensus))
 
@@ -830,7 +840,7 @@ def _print_backsolves_body(
     m_v = observed["Electroweak scale"]
     l_t = math.log2(m_v / m_top)
     delta_linear = (l_t + 1.0) / 73.0
-    err_linear = delta_linear - delta
+    err_linear = delta_linear - DELTA_STAR
 
     hzw_max = max(abs(h.delta_err), abs(z.delta_err), abs(w.delta_err))
     ratio_quadratic = abs(top.delta_err) / hzw_max if hzw_max else float("nan")
@@ -857,6 +867,8 @@ def _print_wz_ratio_lock_body(
     m_z = observed["Z boson mass energy"]
     m_w = observed["W boson mass energy"]
     v = observed["Electroweak scale"]
+    _ = delta
+    law_delta = DELTA_STAR
 
     wz_bs = next(bs for bs in backsolves if bs.source == "W/Z")
     consensus = four_point_consensus(backsolves)
@@ -865,11 +877,11 @@ def _print_wz_ratio_lock_body(
     sin2_obs = 1.0 - cos_obs**2
     l_wz_obs = math.log2(m_z / m_w)
 
-    split_pred = wz_split(delta, promoted=True)
-    split_base = wz_split(delta, promoted=False)
-    sin2_pred = sin2_theta_w(delta, promoted=True)
-    w_pred = w_mass_from_z(m_z, delta)
-    cos_pred = 2.0 ** (-delta * split_pred)
+    split_pred = wz_split(law_delta, promoted=True)
+    split_base = wz_split(law_delta, promoted=False)
+    sin2_pred = sin2_theta_w(law_delta, promoted=True)
+    w_pred = w_mass_from_z(m_z, law_delta)
+    cos_pred = 2.0 ** (-law_delta * split_pred)
 
     def _solve_wz_base(l: float) -> float:
         return (9.0 - math.sqrt(81.0 - 40.0 * l)) / 20.0
@@ -909,7 +921,7 @@ def _print_wz_ratio_lock_body(
     _row("error", _sci(sin2_pred - sin2_obs))
 
     print()
-    print("  W mass from Z and Delta")
+    print("  W mass from Z and Delta_*")
     _row("predicted W", _fix(w_pred, 9) + " GeV")
     _row("observed  W", _fix(m_w, 9) + " GeV")
     _row("relative error", _sci((w_pred - m_w) / m_w))
@@ -948,7 +960,7 @@ def _print_couplings_body(
     delta: float = DELTA,
     v: float = E_EW_GEV,
 ) -> None:
-    mc = model_couplings_d2(delta, v)
+    mc = model_couplings_d2(DELTA_STAR, v)
 
     m_t = observed["Top quark mass energy"]
     m_h = observed["Higgs mass energy"]
@@ -1085,7 +1097,7 @@ def print_lepton_sector(
     if obs_e is not None:
         n_obs_e = ew_delta_n(obs_e, ew_scale_gev=v, delta=delta)
         obs_resid = n_obs_e - lepton_base_n(14, "electron")
-        _row("SU2 holonomy sigma", f"{sigma:.9f}  ({sigma/obs_resid*100:.2f}%)")
+        _row("SU2 residual sigma", f"{sigma:.9f}  ({sigma/obs_resid*100:.2f}%)")
         _row(
             "Higgs memory (5/256)/n_H",
             f"{higgs_mem:.9f}  ({higgs_mem/obs_resid*100:.2f}%)",
@@ -1334,11 +1346,11 @@ def print_representation_boundary_and_lift(
 
     print()
     print(
-        "  D^5 residuals are O(1) in Delta^6 units; these are representation boundary markers."
+        "  Boundary remainder R_i/Delta^6; mass law closes at Delta_*."
     )
     print(f"  P_6 shell = {P6_SHELL_INDEX}, |support| = {P6_SUPPORT_STATES}")
     print()
-    print(f"  {'Ch':6} {'L_err/D6':>12} {'K4 flags':>12} {'C(q)':>10} {'full?':>6}")
+    print(f"  {'Ch':6} {'R_i/D^6':>12} {'K4 flags':>12} {'C(q)':>10} {'full?':>6}")
     print("  " + "-" * 10)
     d6_by_label = {r.channel_label: r.l_err_over_d6 for r in d6_rows}
     w_d6 = d6_by_label.get("W", float("nan"))
@@ -1363,9 +1375,33 @@ def print_representation_boundary_and_lift(
     )
     max_abs = max((abs(v) for v in d6_by_label.values()), default=float("nan"))
     _row("W unique full K4 (1,1,1)", _ok(w_unique))
-    _row("W largest positive D6 residual", _ok(w_largest))
-    _row("max |L_err/D6|", f"{max_abs:.6f}")
+    _row("W largest positive R_i/D^6", _ok(w_largest))
+    _row("max |R_i|/Delta^6", f"{max_abs:.6f}")
     _row("W is unique full-flag endpoint", _ok(w_unique))
+
+
+    print()
+    print("  Aperture lift (representation boundary)")
+    print("  delta_lift := Delta_* - Delta")
+    print("  R_i := L_i(Delta_*) - L_i(Delta)")
+    lift = aperture_lift_closure(observed, delta=delta, v=v)
+    _row("Delta_*", _fix(lift.delta_star))
+    _row("delta_lift", _sci(lift.delta_lift))
+    print(
+        f"  {'Ch':6} {'a':>8} {'R_i':>12} {'L_err_*':>12} {'n_err_*':>12} {'ppm_*':>10}"
+    )
+    print("  " + "-" * 10)
+    for row in lift.rows:
+        print(
+            f"  {row.label:6} {row.a:8.1f} {_sci(row.remainder):>12} "
+            f"{_sci(row.l_err_star):>12} {_sci(row.n_err_star):>12} "
+            f"{row.ppm_star:10.3f}"
+        )
+    print()
+    _row("max |R_i|", _sci(lift.max_abs_remainder))
+    _row("max |L_err| at Delta_*", _sci(lift.max_abs_l_err_star))
+    _row("max |n_err| at Delta_*", _sci(lift.max_abs_n_err_star))
+    _row("max |ppm| at Delta_*", f"{lift.max_abs_ppm_star:.3f}")
 
     print()
     print("  24-bit obstructions")
@@ -1543,7 +1579,7 @@ class _TeeStdout:
     """Write to stdout and an optional log file (full report, not a summary)."""
 
     def __init__(self, log_path: str | None) -> None:
-        self._stdout = __import__("sys").stdout
+        self._stdout = sys.stdout
         self._log = open(log_path, "w", encoding="utf-8") if log_path else None
 
     def write(self, data: str) -> int:
@@ -1586,9 +1622,8 @@ def run_report(
         Skip kernel verification entirely (fast, algebra only).
     output_path:
         If set, write the full report to this file as well as stdout.
+        When None and called from __main__, defaults to RESULTS_PATH.
     """
-    import sys
-
     tee: _TeeStdout | None = None
     if output_path:
         tee = _TeeStdout(output_path)
@@ -1603,10 +1638,10 @@ def run_report(
         "Compact Geometry: Spectral Algebra of the Electroweak Mass Spectrum and Beyond"
     )
     print("=" * 69)
-    print(f"Delta = {_fix(DELTA)}   v = {v} GeV")
+    print(f"Delta = {_fix(DELTA)}   Delta_* = {_fix(DELTA_STAR)}   delta_lift = {_sci(DELTA_LIFT)}   v = {v} GeV")
 
     if skip_kernel:
-        from hqvm_compact_geom_kernel import (
+        from hqvm_compact_geom_2 import (
             KernelReport,
             shell_transition_algebra,
             uv_ir_shell_dpf,
@@ -1661,7 +1696,7 @@ def run_report(
     if tee is not None:
         sys.stdout = tee._stdout
         tee.close()
-        print(f"Full report written to {output_path}")
+        print(f"Wrote {output_path}")
 
 
 if __name__ == "__main__":
@@ -1689,13 +1724,26 @@ if __name__ == "__main__":
         "--output",
         metavar="PATH",
         default=None,
-        help="Write full report to file as well as stdout",
+        help=f"Report path (default: {RESULTS_PATH.name})",
+    )
+    parser.add_argument(
+        "--no-tee",
+        action="store_true",
+        help="Do not write hqvm_compact_geom_results.txt",
     )
     args = parser.parse_args()
+
+    out: str | None
+    if args.no_tee:
+        out = None
+    elif args.output is not None:
+        out = args.output
+    else:
+        out = str(RESULTS_PATH)
 
     run_report(
         include_byte_transitions=not args.fast,
         include_structural_law=args.structural_law,
         skip_kernel=args.algebra_only,
-        output_path=args.output,
+        output_path=out,
     )

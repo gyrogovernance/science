@@ -65,7 +65,7 @@ from gyroscopic.hQVM.family import (
 )
 
 try:
-    from hqvm_compact_geom_core import (
+    from hqvm_compact_geom_common import (
         CODE_C1,
         CODE_C2,
         CODE_C3,
@@ -74,6 +74,8 @@ try:
         CARRIER_TRACES,
         CHANNELS,
         K4_CHANNEL_FLAGS,
+        DELTA_STAR,
+        DELTA_LIFT,
         eval_law,
     )
 except Exception:
@@ -85,6 +87,8 @@ except Exception:
     CHANNELS = ()
     K4_CHANNEL_FLAGS = {}
     CARRIER_TRACES = ()
+    DELTA_STAR = APERTURE_GAP
+    DELTA_LIFT = 0.0
 
     def eval_law(*a, **k):  # type: ignore
         return 0.0

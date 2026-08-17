@@ -10,7 +10,7 @@ applies CS-chirality spin-orbit ordering, solves the Nilsson Hamiltonian
 closures against IAEA LiveChart data. Reports measurements, tables, and
 PASS/FAIL checks only.
 
-Inputs: CGM constants from hqvm_compact_geom_core.py; IAEA LiveChart ground
+Inputs: CGM constants from hqvm_compact_geom_common.py; IAEA LiveChart ground
 states (data/catalogs/ensdf/iaea_livechart_ground_states.csv).
 Outputs: shell closures, Nilsson gap rankings, mixing spectrum, doubly-magic
 table, superheavy scan, two-neutron gap signature.
@@ -40,7 +40,7 @@ from gyroscopic.hQVM.api import (
     shell_population,
     KRAWTCHOUK_7,
 )
-from hqvm_compact_geom_core import DELTA, DELTA_BU, RHO, E_EW_GEV, STF_DIMENSION
+from hqvm_compact_geom_common import DELTA, DELTA_BU, RHO, E_EW_GEV, STF_DIMENSION
 from hqvm_cgm_trestleboard_common import C1, C2
 
 MAGIC = [2, 8, 20, 28, 50, 82, 126]

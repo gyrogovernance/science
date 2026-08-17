@@ -1,6 +1,6 @@
 =====
 YANG-MILLS MASS GAP — COMPUTATIONAL CERTIFICATES
-started: 2026-07-26T08:11:57.542511+00:00
+started: 2026-08-16T21:31:04.025753+00:00
 fast: False
 DERIVATION OUTLINE (publication order):
   0. PREFLIGHT — hQVM kernel cross-check
@@ -27,7 +27,7 @@ DERIVATION OUTLINE (publication order):
   21. FORMALISM CHECKLIST — G / R4 / measure / Hilbert / gap / Hopf fiber
   22. H7 FORMALISM AGGREGATE (H7_closed := formalism_checklist_closed)
 -----
-[11:11:57] JW + Wilson
+[00:31:04] JW + Wilson
 =====
 JW carrier l^2(Omega)
 -----
@@ -45,22 +45,22 @@ hQVM d=6 cross-check           : PASS q_word, step_uv, gates match api at d=6
   GENE_Mac on complement        : True
   Q_G * m_a^2                   : 0.5
   |Q_G m_a^2 - 1/2|             : 0.0
-  Delta (A*) continuous         : 0.020699553913
+  Delta (A*) continuous         : 0.020699545503
   A_kernel = 5/256 discrete     : 0.019531250000
   |A_kernel - Delta|/Delta      : 5.6441e-02
   C2 = C(6,2)                   : 15
 -----
 2. DELTA-RULER — dimensionful mass-gap prediction (Routes A/B)
   v (E_EW) GeV                  : 246.22
-  Delta                         : 0.020699553913
-  Delta^2                       : 4.284715322063e-04
+  Delta                         : 0.020699545503
+  Delta^2                       : 4.284711840171e-04
   v * Delta^2 GeV               : 0.105498
   C1, C2, C3                    : 6 15 20
   S_CS = (pi/2)/m_a             : 7.874805
-  Route A: C2 * v * Delta^2 GeV : 1.582474
-  Route B: S_CS * 2 v * Delta^2 : 1.661556
+  Route A: C2 * v * Delta^2 GeV : 1.582473
+  Route B: S_CS * 2 v * Delta^2 : 1.661555
   |A-B|/max(A,B)                : 4.7595e-02
-  lambda_strong = 2 v Delta^2   : 0.210997
+  lambda_strong = 2 v Delta^2   : 0.210996
   IR ladder (optical conjugacy) :
     E_CS_IR GeV                 : 6.2368
     E_UNA_IR GeV                : 13.8547
@@ -82,8 +82,8 @@ Q_G * m_a^2                  : 0.5
   QG_MA2                       : 0.500000000000
   |Delta_W(inf)-QG_MA2|        : 0.000e+00
   |Delta_W(n)-QG_MA2|          : 1.961e-03
-  Delta_oriented (1-rho)       : 0.020699553913
-  |Delta_oriented-1/2|         : 0.479300446087
+  Delta_oriented (1-rho)       : 0.020699545503
+  |Delta_oriented-1/2|         : 0.479300454497
 gate (D3-struct: lim Delta_W = QG_MA2): PASS
 gate (D3-struct: Delta_W(n) near QG_MA2): PASS
 gate (D3-struct: |Delta_oriented-1/2|>0.1): PASS
@@ -97,7 +97,7 @@ gate (CGM invariant bridge): PASS
 Wilson lattice + JW certificates
 -----
 5. GAUGE GROUP — K4 holonomy + Q8 central extension
-[11:11:58] section 5 / Q8 extension
+[00:31:05] section 5 / Q8 extension
 K4 holonomy on Omega           : PASS
   wilson_k4_order              : 4
   max_k4_orbit_size            : 4
@@ -116,7 +116,7 @@ Q8 central extension 1->Z2->Q8->K4:
   H_mag                          : sum_p V_R(hol(p))
 -----
 7. Q8 PLAQUETTE — non-abelian JW gap
-[11:11:58] section 7 / Q8 single plaquette
+[00:31:05] section 7 / Q8 single plaquette
   links                        : 2
   E0 (vacuum energy)           : 0.169779
   JW gap E1-E0                 : 0.330221
@@ -125,7 +125,7 @@ Q8 central extension 1->Z2->Q8->K4:
   vacuum multiplicity          : 1
 -----
 8. CORRELATOR / LOCALITY / TRANSFER / GENE_Mic
-[11:11:58] section 8 / correlator locality transfer
+[00:31:05] section 8 / correlator locality transfer
 E1 correlator (time = e^{-tH}):
   vacuum energy                : 0.381966
   gap                          : 1.618034
@@ -148,20 +148,20 @@ JW-A lattice-side checks:
   |Q8_from_extension| == 8      : True
 -----
 9. UNIT MAP — grade-1 E_unit = v Delta
-[11:11:58] section 9 / unit map grade-1
+[00:31:05] section 9 / unit map grade-1
   Q8 gap (dimless)             : 0.330221
-  κ₂ = gap/Δ                   : 15.953055
+  κ₂ = gap/Δ                   : 15.953062
   κ₂ target C2                 : 15
   κ₂ rel err                   : 6.3537e-02
-  E_unit_GeV                   : 5.096644
-  m_phys_GeV                   : 1.68302
+  E_unit_GeV                   : 5.096642
+  m_phys_GeV                   : 1.683019
   rel_to_route_A               : 0.063537
-  rel_to_route_B               : 0.012917
+  rel_to_route_B               : 0.012918
   unit_map_mode                : grade1_only
   shadow lock Delta_W -> 1/2   : 0.501961
-  A_kernel, Delta              : 0.019531250000 0.020699553913
-  E_unit_GeV (spacing)         : 5.096644
-  m_phys_GeV (spacing)         : 1.68302
+  A_kernel, Delta              : 0.019531250000 0.020699545503
+  E_unit_GeV (spacing)         : 5.096642
+  m_phys_GeV (spacing)         : 1.683019
 -----
 10. SPACETIME — D=4 packaging
   D = n + 1                    : 4
@@ -182,12 +182,12 @@ gate (unit map Track D->GeV): PASS
 gate (lattice spacing E_unit): PASS
 gate (D=4 dimensionless g): PASS
 
-[11:11:59] OS positivity
+[00:31:05] OS positivity
 =====
 OS positivity (Euclidean)
 -----
 11. OS EUCLIDEAN GRAM (Θ measure)
-[11:11:59] OS Euclidean Gram
+[00:31:05] OS Euclidean Gram
   group / T×L / beta           : Q8 2x2 1.0
   temporal_gauge / n_configs   : False 262144
   n_ops                        : 3
@@ -195,12 +195,12 @@ OS positivity (Euclidean)
   min_eig_M >= 0 (PSD)         : True
 gate (OS Euclidean Gram PSD): PASS
 
-[11:12:07] SC + H6 + D + infinite-vol OS
+[00:31:14] SC + H6 + D + infinite-vol OS
 =====
 SC finite scaffolding
 -----
 12. TWO-PLAQUETTE CONJUGACY POSITIVITY
-[11:12:07] 2-plaquette positivity
+[00:31:14] 2-plaquette positivity
   n_orbits                     : 7
   n_tested                     : 2113
   n_survivors_PSD              : 903
@@ -212,7 +212,7 @@ SC finite scaffolding
   unique_local_wilson_ray      : True
 -----
 13. SC1 LOCAL EXCITATION (abelian K4)
-[11:12:07] local excitation
+[00:31:14] local excitation
   SC1_constant_2d (2/sqrt(3))  : 1.154701
   alpha_Q8_obs_max             : 0.75
   K4 rows (alpha* vs 2/sqrt(3)):
@@ -236,7 +236,7 @@ SC finite scaffolding
   Q8 all alpha*<=bound         : True
 -----
 14. SC0-Q FREE PLAQUETTE
-[11:12:07] SC0-Q free plaquette
+[00:31:14] SC0-Q free plaquette
   C_K4 (1/sqrt(3))           : 0.57735
   C_Q8_SC0 (1/sqrt(3))       : 0.57735
   alpha_Q8_free_sharp        : 0.344223
@@ -249,7 +249,7 @@ SC finite scaffolding
   Q8 free form_ok @ C=1/sqrt(3): True
 -----
 15. LEMMA L' + LOCAL GAUGE U_g + SC1-Q
-[11:13:14] Lemma L' + SC1-Q
+[00:32:20] Lemma L' + SC1-Q
   C_SC0 (1/sqrt(3))            : 0.57735
   V_is_class_function          : True
   basepoint_conjugacy_ok       : True (checked 32768, fail 0)
@@ -276,7 +276,7 @@ SC finite scaffolding
     C1 K4: |G|=4 L'=True SC0=True C_G=0.5773502691896258 ok=True
     C1 Q8: |G|=8 L'=True SC0=True C_G=0.5773502691896258 ok=True
   C1_pass / SU(N)              : True partial_SC0_G_cont
-    SC0g Q8: dim=4096 lmin=9.02086413185189e-16 form=True status=PROVED_SC0_G_matfree
+    SC0g Q8: dim=4096 lmin=-4.410684169187524e-16 form=True status=PROVED_SC0_G_matfree
   SC0g_pass                    : True
     SC1-Q8 Q8_2x2x1 g2=2.0 gap=3.789461 D*=0.855662 ge=True
     SC1-Q8 Q8_2x2x1 g2=4.0 gap=7.892482 D*=1.927831 ge=True
@@ -309,7 +309,7 @@ gate (C1 Formalism Q8 root chart (no PW space)): PASS
 H6 / D-couplings / infinite-volume OS
 -----
 16. H6 CLUSTERING FROM SC1 FLOOR
-[11:13:22] H6 clustering
+[00:32:28] H6 clustering
   alpha_sc1 (2/sqrt(3))        : 1.154701
   g_star2                      : 1.07457
   g2    Delta_star
@@ -326,25 +326,25 @@ H6 / D-couplings / infinite-volume OS
   K4 gap>=D* and T_ok (all)    : True
 -----
 17. CGM NATIVE GAP CHECKS
-[11:13:22] CGM native gap
-  Delta                        : 0.02069955391322076
+[00:32:28] CGM native gap
+  Delta                        : 0.02069954550267028
   Delta > 0                    : True
   reach_r0 / reach_r1          : 2 4
   JW_gap_Q8                    : 0.330221
   |JW_gap - QG_MA2|            : 0.169779
-  E_unit_grade1_GeV            : 5.096644
-  m_phys_GeV                   : 1.68302
-  m_A_GeV / m_B_GeV            : 1.582474 1.661556
-  κ₂ = gap/Δ                   : 15.953055
+  E_unit_grade1_GeV            : 5.096642
+  m_phys_GeV                   : 1.683019
+  m_A_GeV / m_B_GeV            : 1.582473 1.661555
+  κ₂ = gap/Δ                   : 15.953062
   κ₂ target C2                 : 15
   κ₂ rel err                   : 6.3537e-02
   rel_to_route_A / B           : 0.0635 0.0129
-  m_phys in (1,2) GeV          : True (1.68302)
+  m_phys in (1,2) GeV          : True (1.683019)
 -----
 18. D1/D2/D3 — Euclidean transfer / omega_inf / GENE_Mic
-[11:13:22] D2 ω_∞ gap pin + D1 Euclidean transfer + D3 GENE_Mic
-[11:13:22] Q8 volume Lx=1 periodic dim=64
-[11:13:22] Q8 volume Lx=2 periodic dim=4096
+[00:32:28] D2 ω_∞ gap pin + D1 Euclidean transfer + D3 GENE_Mic
+[00:32:28] Q8 volume Lx=1 periodic dim=64
+[00:32:28] Q8 volume Lx=2 periodic dim=4096
   D2 g2 / Delta_star           : 4.0 1.855662
     K4 2x2 gap=7.876953 ge_D*=True
     K4 3x2 gap=7.876303 ge_D*=True
@@ -359,7 +359,7 @@ H6 / D-couplings / infinite-volume OS
   D3_pass / Q8_not_shadow      : True True
 -----
 19. INFINITE-VOLUME / OS CHECKLIST
-[11:13:25] infinite-volume OS checklist
+[00:32:31] infinite-volume OS checklist
   K4 volume tower (g2=4):
   label              dim  n_plaq  gap      mag_dens  >=D*  T_ok
   K4_open_2x2           4      1   7.8770  0.968765  True  True
@@ -389,12 +389,12 @@ gate (D1 Euclidean transfer): PASS
 gate (D3 GENE_Mic orientation): PASS
 gate (infinite-volume OS checklist): PASS
 
-[11:13:25] Λ² lock + intertwiner
+[00:32:31] Λ² lock + intertwiner
 =====
 Λ² lock + intertwiner
 -----
 20. MAGNETIC EXCITATION DEGREE-2 + Lambda2 LOCK
-[11:13:25] degree-2 support + Λ² lock
+[00:32:31] degree-2 support + Λ² lock
   spectral gap                 : 0.330221
   coupled m_eff                : 0.492236
   overlap |<n|V|0>|            : 0.135925
@@ -402,29 +402,29 @@ gate (infinite-volume OS checklist): PASS
   dV (mag raises)              : 0.020172
   dim_K / C2 / saturates       : 15 15 True
   N2_active / target           : 10 15
-  κ₂ / target / rel_err        : 15.953055 15 6.3537e-02
+  κ₂ / target / rel_err        : 15.953062 15 6.3537e-02
   degree2_pass                 : True
   N2 active_bits               : [0, 2, 3, 4, 6, 7, 8, 9, 10, 12]
   N2_pass                      : True
-[11:13:26] intertwiner (slim)
+[00:32:31] intertwiner (slim)
   dim_full / dim_GI            : 64 28
   pullback_err / gram_off      : 0.000e+00 2.220e-16
   He/Hm/h0/comm resid (rel)    : 1.127e-16 0.000e+00 1.292e-16 1.570e-16
   class_mass vac→exc (-1 idx)  : 0.06310634397897016 -> 0.0731925573570833
   layer_A_ok / layer_C_ok      : True True
   intertwiner_pass             : True
-[11:13:27] D0-D local correlator mass κ₂
+[00:32:33] D0-D local correlator mass κ₂
   defining tag / m_lat         : Q8_1x1_defining 0.492236
   defining m_coupled / gap     : 0.492236 0.330221
-  defining κ₂ / target / stable: 23.780045 15 True
+  defining κ₂ / target / stable: 23.780055 15 True
   defining m_eff tail          : [0.492236, 0.492236, 0.492236]
-  K4_open_2x2      m_lat/κ₂/stable : 2.236068 108.024936 True
-  K4_open_3x2      m_lat/κ₂/stable : 2.116949 102.270275 True
+  K4_open_2x2      m_lat/κ₂/stable : 2.236068 108.024979 True
+  K4_open_3x2      m_lat/κ₂/stable : 2.116949 102.270317 True
   all_stable                   : True
-[11:13:27] D0-D O_Λ² complete + N2 isotropy skeleton
+[00:32:33] D0-D O_Λ² complete + N2 isotropy skeleton
   packing                      : dual_frame
   JW_gap / m_lat(O_Λ²)         : 0.330221 0.330221
-  κ₂(O_Λ²) / target / rel_err  : 15.953055 15 6.3537e-02
+  κ₂(O_Λ²) / target / rel_err  : 15.953062 15 6.3537e-02
   channels seeing mode / C2    : 15 15
   active_bits                  : [(0, 1), (0, 2), (0, 3), (0, 4), (0, 5), (1, 2), (1, 3), (1, 4), (1, 5), (2, 3), (2, 4), (2, 5), (3, 4), (3, 5), (4, 5)]
   full_I2_support / n_nonzero  : True 15
@@ -435,7 +435,7 @@ gate (infinite-volume OS checklist): PASS
   Gamma_transitive / |I2|      : True 15
   IsoSupport / projector_conj  : True True
   N2_active(ones vector)       : 15
-[11:13:27] D0-D(2) Gamma-isotropy bottom + Delta scaling
+[00:32:33] D0-D(2) Gamma-isotropy bottom + Delta scaling
   mode / m_eff / N2_active     : 1 0.330221 9
   dist_to_ones / weight_spread : 0.726185 0.432679
   isotropic_finite             : False
@@ -459,16 +459,16 @@ gate (kappa2→C2 2D+D0-3D support): PASS
   m_lat / Delta                : 0.330221 0.0207
   cost_naive(m/15) / rel_Delta : 0.022015 6.3537e-02
   cost_N2(m/N2) / N2 / rel     : 0.036691 9 7.7256e-01
-  κ₂ / target / m_ab mean±std  : 15.953055 15 0.37544 0.059554
-[11:13:27] D0-D(2) O_Λ² coupling tower
+  κ₂ / target / m_ab mean±std  : 15.953062 15 0.37544 0.059554
+[00:32:33] D0-D(2) O_Λ² coupling tower
   Delta / target C2            : 0.0207 15
-  g=0.50 m_lat/κ₂/relΔ/|m-gap|<5% : 0.063958 3.089845 7.9401e-01 True
-  g=0.75 m_lat/κ₂/relΔ/|m-gap|<5% : 0.156792 7.574638 4.9502e-01 True
-  g=1.00 m_lat/κ₂/relΔ/|m-gap|<5% : 0.330221 15.953055 6.3537e-02 True
-  g=1.25 m_lat/κ₂/relΔ/|m-gap|<5% : 0.636796 30.763774 1.0509e+00 True
-  g=1.50 m_lat/κ₂/relΔ/|m-gap|<5% : 1.035449 50.02276 2.3349e+00 False
-  g=2.00 m_lat/κ₂/relΔ/|m-gap|<5% : 1.954541 94.424305 5.2950e+00 True
-  defining κ₂ / |cost15-Δ|/Δ / best_g : 15.953055 6.3537e-02 1.0
+  g=0.50 m_lat/κ₂/relΔ/|m-gap|<5% : 0.063958 3.089846 7.9401e-01 True
+  g=0.75 m_lat/κ₂/relΔ/|m-gap|<5% : 0.156792 7.574641 4.9502e-01 True
+  g=1.00 m_lat/κ₂/relΔ/|m-gap|<5% : 0.330221 15.953062 6.3537e-02 True
+  g=1.25 m_lat/κ₂/relΔ/|m-gap|<5% : 0.636796 30.763786 1.0509e+00 True
+  g=1.50 m_lat/κ₂/relΔ/|m-gap|<5% : 1.035449 50.022781 2.3349e+00 False
+  g=2.00 m_lat/κ₂/relΔ/|m-gap|<5% : 1.954541 94.424343 5.2950e+00 True
+  defining κ₂ / |cost15-Δ|/Δ / best_g : 15.953062 6.3537e-02 1.0
 gate (magnetic excitation degree-2): PASS
 gate (Λ² lock finite inputs): PASS
 gate (N2 Λ² channels): PASS
@@ -479,10 +479,10 @@ gate (D0-D(2) Gamma bottom chart (finite)): PASS
 gate (D0-D(2) Delta scaling chart (finite)): PASS
 gate (D0-D(2) O_Λ² g-tower (finite)): PASS
 
-[11:13:27] Formalism Clay checklist + H7
+[00:32:33] Formalism Clay checklist + H7
 -----
 21. FORMALISM CHECKLIST — G / R4 / measure / Hilbert / gap / Hopf fiber
-[11:13:27] Hopf fiber census (H0)
+[00:32:33] Hopf fiber census (H0)
   alphabet                   : 256
   flat (fwd=rev)             : 16
   curved (Z2 fold)           : 240
@@ -508,9 +508,9 @@ gate (hopf depth4=48 bits): PASS
 gate (hopf SO3 shadow=128): PASS
 gate (hopf shadow partner 128 pairs): PASS
 -----
-[11:13:27] Oriented shadow (ω⋆ / D3 contrast)
+[00:32:33] Oriented shadow (ω⋆ / D3 contrast)
   GENE_Mic zero intron        : True
-  Delta > 0                   : True (0.020699553913)
+  Delta > 0                   : True (0.020699545503)
   fold flat/curved            : 16/240
   SO3 shadow / partner pairs  : 128/128
   Delta_W(n=256) / QG_MA2 lock : 0.501960784 True
@@ -520,7 +520,7 @@ gate (oriented shadow: fold holonomy): PASS
 gate (oriented shadow: SO3 2-to-1): PASS
 gate (oriented shadow: D3 QG_MA2 lock): PASS
 -----
-[11:13:27] Hopf dictionary
+[00:32:33] Hopf dictionary
   phase_pairs (fwd/rev/BU)   : ((0, 7), (1, 6), (2, 5), (3, 4))
   flat / curved / mean_fd    : 16 240 0.500000
   SO3 / partner pairs        : 128 128
@@ -533,7 +533,7 @@ gate (hopf dict: SO3=128 pairs=128): PASS
 gate (hopf dict: depth4=48): PASS
 gate (hopf dict: Q_G=4pi D=n+1=4): PASS
 -----
-[11:13:27] Admissible quotient
+[00:32:33] Admissible quotient
   |Byte|/|q6|                 : 4 (expect 4)
   |q6| enumerated             : 64 (expect 64)
   |Omega|/|chi|               : 64 (expect 64)
@@ -542,10 +542,10 @@ gate (admissible: oriented shadow): PASS
 gate (admissible: |Byte|/|q6|=4): PASS
 gate (admissible: |Omega|/|chi|=64): PASS
 -----
-[11:13:27] Gap on quotient
-  Delta (APERTURE_GAP)        : 0.020699553913
+[00:32:33] Gap on quotient
+  Delta (APERTURE_GAP)        : 0.020699545503
   C2                          : 15
-  m_A = C2*v*Delta^2 (GeV)    : 1.582474
+  m_A = C2*v*Delta^2 (GeV)    : 1.582473
   D0-3D dark ∩ empty          : True
   IsoSupport transitive       : True
   N2_target=15                : True
@@ -555,7 +555,7 @@ gate (gap quotient: D0-3D): PASS
 gate (gap quotient: IsoSupport): PASS
 gate (gap quotient: N2=15): PASS
 -----
-[11:13:27] Lemma G — gauge / SE(3)
+[00:32:33] Lemma G — gauge / SE(3)
   GENE_Mic zero intron       : True
   payload bits (se(3) DoF)   : 6 (SE3_DOF=6)
   families (K4 L0 labels)    : 4 counts=[64, 64, 64, 64]
@@ -564,7 +564,7 @@ gate (gap quotient: N2=15): PASS
   K4 gate names              : ('id', 'S', 'C', 'F')
 gate (G GENE_Mic+family×payload): PASS
 -----
-[11:13:27] Lemma R4 — 3+1 / S2 horizon scale
+[00:32:33] Lemma R4 — 3+1 / S2 horizon scale
   N_spatial                  : 3
   N_temporal (BU depth)      : 1
   BU_CLOSURE_DEPTH           : 4
@@ -572,7 +572,7 @@ gate (G GENE_Mic+family×payload): PASS
   Q_G                        : 12.5663706144
 gate (R4 3+1 + Q_G=4pi): PASS
 -----
-[11:13:27] Lemma M — QuBEC measure
+[00:32:33] Lemma M — QuBEC measure
   shell populations          : [64, 384, 960, 1280, 960, 384, 64]
   sum shells                 : 4096 (Omega=4096)
   Z1(1)                      : 4096.000000 (expect 4096.000000)
@@ -582,7 +582,7 @@ gate (R4 3+1 + Q_G=4pi): PASS
 gate (M shell census): PASS
 gate (M Z1 closed form): PASS
 -----
-[11:13:27] Lemma H — Hilbert / horizons
+[00:32:33] Lemma H — Hilbert / horizons
   |Omega|                    : 4096
   equality horizon           : 64 (expect 64)
   complement horizon         : 64 (expect 64)
@@ -597,26 +597,26 @@ gate (H |H|^2=|Omega|): PASS
 gate (H gate F involution): PASS
 gate (H GENE_Mac rest on complement): PASS
 -----
-[11:13:27] Lemma gap — aperture
-  rho                        : 0.979300446087
-  Delta (common)             : 0.020699553913
-  APERTURE_GAP               : 0.020699553913
+[00:32:33] Lemma gap — aperture
+  rho                        : 0.979300454497
+  Delta (common)             : 0.020699545503
+  APERTURE_GAP               : 0.020699545503
   Q_256(Delta)=5/256         : 0.019531250000
   CODE_C2                    : 15
-  m_A = C2*v*Delta^2 (GeV)   : 1.582474
+  m_A = C2*v*Delta^2 (GeV)   : 1.582473
 gate (gap Delta>0): PASS
 gate (gap Delta=1-rho): PASS
 gate (gap C2=15): PASS
 gate (gap Q256=5/256): PASS
 -----
-[11:13:27] Hopf horizon chart
+[00:32:33] Hopf horizon chart
 [99] Hopf horizon chart
   S2 horizon (SO3 shadow)       : 128
   Lambda2 channels C2           : 15
-  Delta                         : 0.020699553913
+  Delta                         : 0.020699545503
   m_a = 1/(2 sqrt(2 pi))        : 0.199471140201
   Q_G * m_a^2 (=QG_MA2)         : 0.500000000000
-  Route A m_A = C2*v*Delta^2    : 1.582474 GeV
+  Route A m_A = C2*v*Delta^2    : 1.582473 GeV
   chart_pass                    : True
 gate (Hopf chart: SO3 shadow=128): PASS
 gate (Hopf chart: C2=15): PASS
@@ -624,20 +624,20 @@ gate (Hopf chart: Delta>0): PASS
 gate (Hopf chart: Q_G m_a^2=QG_MA2=1/2): PASS
 gate (Hopf chart: Route A in 1-2 GeV): PASS
 -----
-[11:13:27] κ₂ spectral bound (Q8 1×1)
+[00:32:33] κ₂ spectral bound (Q8 1×1)
 [K2-OP] spectral masses + below-threshold scan (Q8 1x1)
   m_coupled(O_Lambda2)         : 0.330221
   min_ab m_coupled             : 0.330221
   m_sum >= min_ab              : True
   JW_gap                       : 0.330221
   15*Delta (reference)         : 0.310493
-  m_sum - 15*Delta (chart)     : 1.972782e-02
+  m_sum - 15*Delta (chart)     : 1.972794e-02
   n states with dE < 15*Delta  : 0
   max |<n|O|0>| below thresh   : 0.000000e+00
   selection_scan_vacuous       : True
 gate (kappa2: m_sum >= min_channel): PASS
 -----
-[11:13:27] Γ lift commutator (defining chart)
+[00:32:33] Γ lift commutator (defining chart)
 [Gamma-LIFT] intron+GENE_Mic on Ω; Aut(Q8) lift on H_GI
   dim_GI / dim(U) / n_om       : 28 28 4096
   dim_match                    : True
@@ -670,13 +670,13 @@ gate (Gamma lift: Aut(Q8) |Aut|=24 H-sym): PASS
   formalism_checklist_closed : True
 gate (formalism_checklist_closed): PASS
 
-[11:13:29] H7 Formalism aggregate
+[00:32:35] H7 Formalism aggregate
 -----
 22. H7 FORMALISM AGGREGATE (H7_closed := formalism_checklist_closed)
   formalism_checklist_closed : True
   H0 / shadow / hopf / adm / gq : True True True True True
   G / R4 / M / H / gap       : True True True True True
-  m_A_GeV                    : 1.582473909897649
+  m_A_GeV                    : 1.5824726239304199
   H7_closed                  : True
 gate (H7 deliverable closed): PASS
 

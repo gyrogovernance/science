@@ -22,9 +22,9 @@ The Higgs mechanism, confirmed through the 2012 discovery of a 125 GeV scalar bo
 The Common Governance Model represents a geometric framework where physical properties emerge from structural requirements of coherent observation in three-dimensional space. The model identifies several fundamental ontological invariants:
 
 - **Q_G = 4π**: The complete solid angle in three dimensions, interpreted as the geometric requirement for coherent observation
-- ** m_a = 1/(2√(2π)) ≈ 0.199471**: An aperture parameter governing the balance between structural closure and dynamic openness
-- **δ_BU = 0.195342 rad**: A holonomy value representing geometric "memory" in recursive structures
-- **Δ = 1 - δ_BU/ m_a ≈ 0.0207**: The aperture fraction, representing approximately 2.07% structural openness
+- **m_a = 1/(2√(2π)) ≈ 0.199471140200**: An aperture parameter governing the balance between structural closure and dynamic openness
+- **δ_BU**: The BU dual-pole loop angle δ_BU = 4·arctan(k(π/4)·k(m_a)) with k(β) = β/(1 + √(1 − β²)). Numerically δ_BU ≈ 0.195342178258 rad. It measures geometric path memory on the dual-pole loop.
+- **Δ = 1 − ρ ≈ 0.020699545503**, where ρ = δ_BU/m_a ≈ 0.979300454497. The aperture fraction is approximately 2.07% structural openness.
 
 The central hypothesis of this analysis is that these ontological parameters, when properly interpreted, constrain the Higgs mechanism and predict observable properties of electroweak physics.
 
@@ -36,7 +36,7 @@ Our approach begins by establishing a boundary condition for the Higgs quartic c
 
 **λ(E₀) = δ_BU⁴/(4m_a²) ≈ 0.009149**    (Equation 1)
 
-Numerically, δ_BU = 0.195342 and  m_a = 0.199471 give λ(E₀) = 0.009149.
+Numerically, with δ_BU = 4·arctan(k(π/4)·k(m_a)) ≈ 0.195342178258 and m_a = 1/(2√(2π)) ≈ 0.199471140200, the boundary value λ(E₀) evaluates to approximately 0.009149.
 
 where E₀ represents the CGM energy scale (1.36×10¹⁸ GeV for reciprocal mode). This formula emerges from the geometric structure:
 - The quartic power of δ_BU reflects the compound nature of the Higgs self-interaction
@@ -206,7 +206,7 @@ The exact relationship ζ = 16√(2π/3) is particularly significant as it embed
 **Near-Exact Relationships:**
 - **λ₀/Δ ≈ 1/√5** (1.17% deviation)
 - **δ_BU ≈ π/16** (0.51% deviation)
-- **48·Δ ≈ 1** (0.64% deviation)
+- **48·Δ ≈ 0.993578** (near unity at the frame scale)
 
 These relationships are too precise to omit and provide independent validation of the geometric framework. The appearance of √3 and √5 in our analysis has a deep topological origin through the Gauss-Bonnet theorem, where regular polyhedra on a sphere exhibit angular deficits that sum to 4π = Q_G.
 

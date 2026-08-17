@@ -1,11 +1,11 @@
 """
-hqvm_compact_geom_kernel.py
+hqvm_compact_geom_2.py
 
 Finite kernel verification layer.
 Exhaustive enumeration of the 4096-state reachable manifold Omega,
 shell transition algebra verification, and r5 grammar probe.
 
-This module PROVES the algebraic claims that hqvm_compact_geom_core.py uses
+This module PROVES the algebraic claims that hqvm_compact_geom_common.py uses
 as established inputs. It is self-contained and produces a KernelReport
 dataclass that summarises all verified kernel theorems.
 
@@ -58,13 +58,15 @@ pack_state = _hqvm.pack_state
 single_step_trace = _hqvm.single_step_trace
 unpack_state = _hqvm.unpack_state
 depth4_frame = _hqvm_sdk.depth4_frame
-from hqvm_compact_geom_core import (
+from hqvm_compact_geom_common import (
     CHANNELS,
     CODE_C1,
     CODE_C2,
     CODE_C3,
     DELTA,
     DELTA_BU,
+    DELTA_LIFT,
+    DELTA_STAR,
     HORIZON_CARDINALITY,
     LAMBDA_0,
     M_A,
@@ -436,6 +438,7 @@ def uv_ir_shell_dpf() -> tuple[UVIRShellDPF, ...]:
 class D6ResidualRow:
     channel_label: str
     l_err_over_d6: float
+    l_err_star: float = 0.0
 
 
 @dataclass(frozen=True)
@@ -643,10 +646,15 @@ def _bh_qvalues(p_values: Sequence[float]) -> tuple[float, ...]:
 
 
 def d6_residuals(
-    observed: dict[str, float], delta: float = DELTA, v: float = 246.22
+    observed: dict[str, float],
+    delta: float = DELTA,
+    v: float = 246.22,
+    *,
+    law_delta: float = DELTA_STAR,
 ) -> tuple[D6ResidualRow, ...]:
     """
-    Compute L_err / Delta^6 for each channel: the unresolved sixth-order residuals.
+    Representation-boundary remainder R_i = L_i(Delta_*) - L_i(Delta),
+    reported as R_i / Delta^6 together with the closure residual at Delta_*.
     """
     rows: list[D6ResidualRow] = []
     for ch in CHANNELS:
@@ -654,10 +662,14 @@ def d6_residuals(
         if obs_mass is None:
             continue
         l_obs = math.log2(v / obs_mass)
-        l_d5 = eval_law(ch, delta, order=5)
+        l_star = eval_law(ch, law_delta, order=5)
+        l_delta = eval_law(ch, delta, order=5)
+        remainder = l_star - l_delta
         rows.append(
             D6ResidualRow(
-                channel_label=ch.label, l_err_over_d6=(l_obs - l_d5) / delta**6
+                channel_label=ch.label,
+                l_err_over_d6=remainder / delta**6,
+                l_err_star=l_obs - l_star,
             )
         )
     return tuple(rows)
@@ -1702,10 +1714,17 @@ class OrderLadderRow:
 
 
 def orderwise_ladder(
-    observed: dict[str, float], delta: float = DELTA, v: float = 246.22
+    observed: dict[str, float],
+    delta: float = DELTA,
+    v: float = 246.22,
+    *,
+    law_delta: float = DELTA_STAR,
 ) -> tuple[OrderLadderRow, ...]:
     """
     Full order-by-order residual ladder for all four EW channels.
+
+    L_i evaluates at law_delta (default Delta_*); tick residuals use the
+    loop-angle ruler delta.
     """
     rows: list[OrderLadderRow] = []
     for ch in CHANNELS:
@@ -1713,10 +1732,12 @@ def orderwise_ladder(
         if obs_mass is None:
             continue
         l_obs = math.log2(v / obs_mass)
-        l2 = eval_law(ch, delta, order=2)
-        l3 = eval_law(ch, delta, order=3)
-        l4 = eval_law(ch, delta, order=4)
-        l5 = eval_law(ch, delta, order=5)
+        l2 = eval_law(ch, law_delta, order=2)
+        l3 = eval_law(ch, law_delta, order=3)
+        l4 = eval_law(ch, law_delta, order=4)
+        l5 = eval_law(ch, law_delta, order=5)
+        l_delta = eval_law(ch, delta, order=5)
+        remainder = l5 - l_delta
         rows.append(
             OrderLadderRow(
                 channel_label=ch.label,
@@ -1727,7 +1748,7 @@ def orderwise_ladder(
                 n_err_d3=(l_obs - l3) / delta,
                 n_err_d4=(l_obs - l4) / delta,
                 n_err_d5=(l_obs - l5) / delta,
-                l_err_over_d6=(l_obs - l5) / delta**6,
+                l_err_over_d6=remainder / delta**6,
             )
         )
     return tuple(rows)

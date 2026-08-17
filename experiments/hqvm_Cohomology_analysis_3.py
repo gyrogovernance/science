@@ -380,8 +380,10 @@ def experiment_gap_spectrum() -> dict[str, object]:
     pi2 = math.pi / 2.0
     krivine = math.pi / (2.0 * math.log(1.0 + math.sqrt(2.0)))
     arsinh1 = math.asinh(1.0)
-    delta = 0.02069955391322076  # from analysis_1 constant audit
-    g1 = 0.003198  # holonomy residual (analysis_1 section F)
+    from gyroscopic.hQVM.constants import APERTURE_GAP
+
+    delta = APERTURE_GAP
+    g1 = 0.003198  # phi_SU2/(3 delta_BU) - 1 residual (analysis_1 section F)
     return {
         "gaps": {
             "K_G^R(2) = sqrt2 (CHSH integrality gap, exact)": sqrt2,

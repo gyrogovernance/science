@@ -452,11 +452,11 @@ The 2π defect represents observation beyond the accessible π-radian horizon. O
 
 The geometric closure yields quantitative values for fundamental constants.
 
-**Assumption ledger.** Anchor-free predictions: K_QG ≈ 3.937 from closure and holonomy (`experiments/cgm_quantum_gravity_analysis.py`), redshift drift forecast ≈ 0 within the stated observational range, aperture ratio δ_BU/ m_a = 0.0207 from BU closure (`experiments/cgm_coherence_analysis.py`). Anchored to units: E_GUT via Planck and electroweak scales (`experiments/cgm_energy_analysis.py`), neutrino seesaw via E_GUT and 48² quantization (`experiments/cgm_energy_analysis.py`). Fine-structure constant: δ_BU derivation and quartic scaling (`experiments/cgm_alpha_analysis.py`).
+**Assumption ledger.** Anchor-free predictions: K_QG ≈ 3.937 from closure and path memory (`experiments/cgm_quantum_gravity_analysis.py`), redshift drift forecast ≈ 0 within the stated observational range, aperture gap `Δ = 1 − δ_BU/m_a ≈ 0.020699545503` from the dual-pole loop angle (`experiments/cgm_coherence_analysis.py`, `experiments/cgm_holonomy_analysis_run.py`). Anchored to units: E_GUT via Planck and electroweak scales (`experiments/cgm_energy_analysis.py`), neutrino seesaw via E_GUT and 48² quantization (`experiments/cgm_energy_analysis.py`). Fine-structure constant: δ_BU derivation and quartic scaling (`experiments/cgm_alpha_analysis.py`).
 
 **Quantum gravity invariant:** The horizon constant S anchors all subsequent structure (as explained in section 3.1) **[Theorem]**.
 
-**Fine-structure constant:** With δ_BU = 4 · arctan(k(π/4) · k(m_a)), the base α₀ = δ_BU⁴/m_a ≈ 0.007299683573 and the aperture correction chain yield α ≈ 0.007297352816, about 33.8 parts per billion from CODATA 2018 (α = 1/137.035999084) **[Hypothesis]**. See [19] for complete derivation.
+**Fine-structure constant:** With `δ_BU = 4 · arctan(k(π/4) · k(m_a)) ≈ 0.195342178258`, the base `α₀ = δ_BU⁴/m_a ≈ 0.007299683573` and the aperture correction chain yield `α ≈ 0.007297352816`, about 33.8 parts per billion from CODATA 2018 (α = 1/137.035999084) **[Hypothesis]**. See [19] for complete derivation.
 
 **Neutrino mass scale:** Neutrino masses correspond to minimal excitations of the chiral seed (1 DOF) consistent with three-generational structure (3 DOF). Using 48² quantization, the right-handed neutrino mass scale is M_R = E_GUT/48², and the light neutrino masses follow from the seesaw mechanism [15,16]: m_ν = y²v²/M_R ≈ 0.06 eV (via 48² quantization scheme), consistent with oscillation experiments [14] **[Hypothesis]**. Uncertainty: ±0.02 eV from Yukawa coupling variations and quantization scheme sensitivity. See [22] for complete mechanism.
 
@@ -464,7 +464,7 @@ The geometric closure yields quantitative values for fundamental constants.
 
 **Cosmological structure:** Cosmological implications follow from UV-IR conjugacy, potentially manifesting as a Planck-scale black hole interior with r_s/R_H = 1.0000 ± 0.0126 (explored in [BH Universe Analysis], with falsifiable predictions like zero redshift drift) **[Hypothesis]**. The coherence radius R_coh = (c/H_0)/4 marks where observations decohere into phase-sliced projections, resolving horizon and flatness problems without inflation.
 
-These values arise from geometric closure conditions (e.g., δ_BU determined by BU holonomy in [19], dimensionality fixed by SU(2) consistency in [20]) with empirical anchors such as Planck and electroweak scales supplying physical units. Predictions that do not depend on external anchors, such as the quantum gravity commutator K_QG ≈ 3.937 or the zero redshift drift forecast, provide independent falsification paths if observed outside the stated bounds. Computational implementations documented in the reproducibility scripts verify these derivations numerically, with propagated uncertainties showing that a ±15% variation in E_GUT induces an approximately ±30% shift in m_ν through the quadratic seesaw dependence while maintaining a low correlation (roughly 0.2) with the fine-structure result.
+These values arise from geometric closure conditions (e.g., δ_BU determined by the BU dual-pole loop angle in [19], dimensionality fixed by SU(2) consistency in [20]) with empirical anchors such as Planck and electroweak scales supplying physical units. Predictions that do not depend on external anchors, such as the quantum gravity commutator K_QG ≈ 3.937 or the zero redshift drift forecast, provide independent falsification paths if observed outside the stated bounds. Computational implementations documented in the reproducibility scripts verify these derivations numerically, with propagated uncertainties showing that a ±15% variation in E_GUT induces an approximately ±30% shift in m_ν through the quadratic seesaw dependence while maintaining a low correlation (roughly 0.2) with the fine-structure result.
 
 All emerge from Assumption CS through formal derivation.
 
@@ -474,7 +474,7 @@ All emerge from Assumption CS through formal derivation.
 
 ## 6.1 Information-Theoretic Alignment
 
-CGM’s modal axioms that define coherence and autonomy in physical reality also apply to information processing. In this setting, alignment means that operation sequences remain traceable, allow distinction without homogeneous collapse, avoid absolute contradiction, and recur in balanced form. These conditions appear in measurement as a split between gradient coherence and cycle differentiation; their proportion is the aperture. The reference value A* ≈ 0.0207 is fixed by the universal balance condition in Section 5 and serves as the benchmark for evaluating information systems **[Application]**.
+CGM’s modal axioms that define coherence and autonomy in physical reality also apply to information processing. In this setting, alignment means that operation sequences remain traceable, allow distinction without homogeneous collapse, avoid absolute contradiction, and recur in balanced form. These conditions appear in measurement as a split between gradient coherence and cycle differentiation; their proportion is the aperture. The reference value `A* ≈ Δ ≈ 0.020699545503` is fixed by the universal balance condition in Section 5 and serves as the benchmark for evaluating information systems **[Application]**.
 
 In AI, alignment is treated as a structural property of recursively autonomous reasoning rather than preference fitting. Non‑absolute unity and non‑absolute opposition rule out both total homogeneity and sealed self‑containment, so traceability and balance require calibration that is externally legible. This is operationalized in our implementations: GyroDiagnostics measures the gradient and cycle components and compares aperture to A*, while Gyroscopic ASI enforces traceable, path‑dependent updates on a finite ontology. Ethical coherence then follows from the same necessities that ground physical principles, without adding ad hoc rules.
 
@@ -530,7 +530,7 @@ The four metrics, each derived from a specific lemma or the foundational assumpt
 
 **Superintelligence Index (SI):** A composite diagnostic score combining all four metrics (Governance Traceability, Information Variety, Inference Accountability, Intelligence Integrity), used in experimental validation only. This provides a single measure of structural maturity, quantifying proximity to the theoretical optimum where recursive transitions achieve stable coherence.
 
-**Implementation:** These metrics are operationalized through orthogonal decomposition on a tetrahedral information topology. The 2.07% alignment aperture concerns observational measurement of informational balance and is distinct from the structural closure ratio δ_BU/ m_a = 0.0207 governing physical amplitude bounds in Section 5.2.
+**Implementation:** These metrics are operationalized through orthogonal decomposition on a tetrahedral information topology. The 2.07% alignment aperture concerns observational measurement of informational balance and is distinct from the structural closure ratio `ρ = δ_BU/m_a ≈ 0.979300454497` (aperture gap `Δ = 1 − ρ ≈ 0.020699545503`) governing physical amplitude bounds in Section 5.2.
 
 **End-to-end systems:** For complete implementations, see the Gyroscopic ASI architecture (https://github.com/gyrogovernance/superintelligence; technical specifications in [Gyroscopic ASI Specs], holographic foundations in [Gyroscopic ASI Holography]) and the GyroDiagnostics evaluation suite (https://github.com/gyrogovernance/gyrodiagnostics).
 
@@ -546,7 +546,7 @@ The GyroDiagnostics is a multi-dimensional evaluation suite for AI Safety, lever
 
 **Information Variety calculation:** The residual component magnitude quantifies preservation of informational diversity. High residual indicates the system maintains semantic distinction without collapsing to homogeneity, consistent with UNA's non-absolute unity requirement.
 
-**Example interpretation:** An aperture ratio A ≈ 0.0207 indicates optimal balance: 97.93% structural coherence with 2.07% adaptive differentiation. Values significantly below 0.01 indicate over-regularization (homogeneous collapse), while values above 0.05 indicate structural instability.
+**Example interpretation:** An aperture ratio `A ≈ 0.020699545503` indicates optimal balance: 97.93% structural coherence with 2.07% adaptive differentiation. Values significantly below 0.01 indicate over-regularization (homogeneous collapse), while values above 0.05 indicate structural instability.
 
 **Key distinction:** This is semantic multi-dimensional analysis of reasoning quality through evaluator scoring on behavioral dimensions, not structural analysis of token patterns or sentence constructions. Both are valid approaches according to CGM. The tetrahedral topology enables orthogonal decomposition of semantic qualities into coherent and differentiating components.
 
@@ -560,7 +560,7 @@ Production evaluations (October 2025) on frontier models demonstrated these metr
 
 ### 6.1.9 Limitations and Deployment Considerations
 
-**Aperture interpretation:** The aperture target A ≈ 0.0207 serves as a balance guide rather than a hard threshold. Elevated A may reflect evaluator noise rather than genuine instability, while depressed A may indicate over-regularization. Only the magnitude of the residual is intended for interpretation; avoid reading semantic meaning into cycle directions.
+**Aperture interpretation:** The aperture target `A ≈ Δ ≈ 0.020699545503` serves as a balance guide rather than a hard threshold. Elevated A may reflect evaluator noise rather than genuine instability, while depressed A may indicate over-regularization. Only the magnitude of the residual is intended for interpretation; avoid reading semantic meaning into cycle directions.
 
 **Deployment risks:** Practical risks include over-optimization for metrics rather than underlying balance, and misinterpretation of cycle components as semantic signals. These considerations follow from the same non-associative properties that prevent absolute unity in physical systems.
 
@@ -599,7 +599,7 @@ Limitations: Interpretive mappings (e.g., to cosmology in [BH Universe Analysis]
 CGM predictions span multiple timescales and experimental domains:
 
 **Completed verification (computational):**
-- Fine-structure constant calculation verified [19] with δ_BU = 0.195342 rad derivation and quartic scaling (`experiments/cgm_alpha_analysis.py`, `experiments/cgm_quantum_gravity_analysis.py`).
+- Fine-structure constant calculation verified [19] with `δ_BU = 4 · arctan(k(π/4) · k(m_a)) ≈ 0.195342178258` and quartic scaling (`experiments/cgm_alpha_analysis.py`, `experiments/cgm_quantum_gravity_analysis.py`, `experiments/cgm_holonomy_analysis_run.py`).
 - CMB multipole predictions computed for ℓ = 37, 74, 111 from harmonic decomposition of CGM angular thresholds (`experiments/cgm_cmb_data_analysis_*.py`), ready for comparison to Planck satellite data.
 - Gyrotriangle closure (δ = 0) numerically verified in hyperbolic geometry (`experiments/tw_closure_test.py`).
 - AI metrics applied to production models (Information Variety, Inference Accountability): Production evaluations (October 2025) on ChatGPT-5, Claude 4.5 Sonnet, and Grok-4 completed; results documented in [GyroDiagnostics README].

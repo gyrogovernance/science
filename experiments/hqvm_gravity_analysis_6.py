@@ -30,7 +30,7 @@ if str(_EXPERIMENTS) not in sys.path:
     sys.path.insert(0, str(_EXPERIMENTS))
 
 from hqvm_gravity_analysis_2 import enumerate_omega
-from hqvm_compact_geom_core import electroweak_coords
+from hqvm_compact_geom_common import electroweak_coords
 from hqvm_gravity_common import (
     configure_stdout_utf8,
     Q_G,

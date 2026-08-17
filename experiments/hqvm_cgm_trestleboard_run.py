@@ -40,6 +40,7 @@ from hqvm_cgm_trestleboard_common import (
     CHANNELS,
     CHIRALITY_D,
     DELTA,
+    DELTA_STAR,
     ENSDF_EV_BAND_PATH,
     FUEL_SUITE,
     FUSION_Z1Z2_CUTOFF,
@@ -243,17 +244,17 @@ def _report_wz_fusion_checks(tb: NuclearBoard, th, sh, pc) -> None:
     print("\n5b) W/Z LOCK: recover Δ from m_W/m_Z")
     print("=" * 5)
     delta_wz, log2_ratio_wz, gap_wz = recover_Delta_from_WZ(tb)
-    delta_wz_abs_err = abs(delta_wz - DELTA)
-    delta_wz_rel_err = delta_wz_abs_err / DELTA
+    delta_wz_abs_err = abs(delta_wz - DELTA_STAR)
+    delta_wz_rel_err = delta_wz_abs_err / DELTA_STAR
     print(f"  m_Z/m_W = {91.1876e9/80.379e9:.6f}")
     print(f"  log2(m_Z/m_W) = {log2_ratio_wz:.9f}  (n_W - n_Z)")
     print(f"  W/Z code gap C2-C1 = {gap_wz}  (promoted D4: -(C3/2)Δ+2Δ²/√5-Δ³)")
     print(f"  Δ from W/Z = {delta_wz:.12f}")
-    print(f"  Δ reference = {DELTA:.12f}")
+    print(f"  Δ_* reference = {DELTA_STAR:.12f}")
     print(f"  absolute error = {delta_wz_abs_err:.3e}")
     print(f"  relative error = {delta_wz_rel_err:.3e}")
-    print(f"  doc target: |Δ_back − Δ| = 8.34e-10 (absolute, 4th-order D4)")
-    wz_pass = delta_wz_abs_err < 1e-9  # recover Δ to <1e-9 absolute from m_W/m_Z
+    print(f"  doc target: |Δ_WZ − Δ_*| = 7.899e-10 (absolute, 4th-order D4)")
+    wz_pass = delta_wz_abs_err < 1e-9  # recover Δ_* to <1e-9 absolute from m_W/m_Z
     print(f"  W/Z lock PASS (<1e-9 abs) ............. {wz_pass}")
 
     print("\n5c) PERCOLATION HIERARCHY (exact kernel θ(p), §4.3.5/5.1)")
@@ -842,7 +843,10 @@ def _report_lift(tb: NuclearBoard) -> None:
     for lab, fl in wa["k4_flags"].items():
         print(f"    {lab:5s}: {fl}")
     if CHANNELS:
-        print("  spectral mass recovery m_i = v/2^L_i(Δ), L_i from carrier traces:")
+        print(
+            "  spectral mass recovery m_i = v/2^L_i(Δ_*), "
+            "L_i from carrier traces at Delta_*:"
+        )
         for ch in CHANNELS:
             m = spectral_energy_GeV(tb, ch.label)
             print(f"    {ch.label:5s}: {m:.4f} GeV")
@@ -851,18 +855,18 @@ def _report_lift(tb: NuclearBoard) -> None:
         print(f"  W/Z ratio from spectral law: {w_pred / z_pred:.8f}")
         print(f"  W/Z ratio measured (PDG):    {80.379 / 91.1876:.8f}")
         print(
-            f"  Δ recovered from W/Z spectral ratio abs err: "
+            f"  W/Z spectral ratio abs err: "
             f"{abs(w_pred / z_pred - 80.379 / 91.1876):.3e}"
         )
     else:
-        print("  spectral core unavailable (hqvm_compact_geom_core not importable)")
+        print("  spectral core unavailable (hqvm_compact_geom_common not importable)")
 
 
 def _report_universal(tb: NuclearBoard) -> None:
     print("\n9) UNIVERSAL EQUATION (root → cluster → aperture → fusion)")
     print("=" * 5)
     print("  |Reach(A)| = (2^r(A))²            [percolation root, fiber-complete]")
-    print("  Δ = 1 − δ_BU / m_a               [gravity aperture gap, [1] §5.1]")
+    print("  Δ = 1 − δ_BU / m_a               [loop-angle aperture gap, [1] §5.1]")
     print(
         "  τ(E) = √(E_G/E)−√(E_G/V_b)        [Beer-Lambert depth, [1] §6.3 / [3] §6.7]"
     )

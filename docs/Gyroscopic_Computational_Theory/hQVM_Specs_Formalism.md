@@ -455,7 +455,7 @@ From rest (GENE_MAC_REST), the reachable 24-bit state set under the transition r
 
 The CGM aperture gap is defined continuously as:
 
-- `delta_BU`: BU dual-pole loop angle (radians) = 4 · arctan(k(π/4) · k(m_a)) ≈ 0.195342178258
+- `delta_BU`: BU dual-pole loop angle (radians) = `4 · arctan(k(π/4) · k(m_a))` ≈ 0.195342178258, with `k(β) = β / (1 + √(1 − β²))`
 - `m_a = 1/(2*sqrt(2*pi))` = 0.199471140201
 - `rho = delta_BU / m_a` ≈ 0.979300454497
 - `Delta = 1 - rho` ≈ 0.020699545503 (dimensionless aperture gap, ~2.07%)
@@ -480,7 +480,7 @@ We distinguish two 256-tick spaces:
 **On `T_256^(frac)` (fractions):**
 - `Q_256(Delta) = 5/256` = 0.0195312500
 - 5/256 is the **best 8-bit dyadic approximation** of Delta.
-- Quantization error: 0.001168303913
+- Quantization error: ≈ 0.001168295503
 - This is the byte-horizon expression of aperture: 5 "ticks" open, 251 closed.
 
 **On `T_256^(turn)` (turns):**
@@ -490,7 +490,7 @@ We distinguish two 256-tick spaces:
 
 **At depth-4 projection scale (48-bit):**
 - `Q_48(Delta) ~ 1/48`
-- 48 * Delta = 0.9936 ~ 1
+- 48 * Delta ≈ 0.993578 (near unity)
 - This aligns Delta with the 48-bit horizon (4x12) of the depth-4 projection.
 
 ### 7.3 The 2/3 Ratio: Chirality to Space

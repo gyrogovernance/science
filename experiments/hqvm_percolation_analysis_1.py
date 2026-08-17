@@ -79,9 +79,13 @@ if str(_EXPERIMENTS_DIR) not in sys.path:
     sys.path.insert(0, str(_EXPERIMENTS_DIR))
 
 from gyroscopic.hQVM.constants import (
+    APERTURE_GAP,
+    BU_HOLONOMY_ANGLE,
     GENE_MAC_REST,
     HORIZON_GATE_BYTES,
     LAYER_MASK_12,
+    M_A,
+    RHO,
     byte_to_intron,
     byte_micro_ref,
     intron_family,
@@ -107,16 +111,14 @@ from hqvm_wavefunction_kernel import (
 )
 
 # Constants
-M_A = 1.0 / (2.0 * np.sqrt(2.0 * np.pi))
-DELTA_BU = 0.1953421782576621
-RHO = DELTA_BU / M_A
-DELTA = 1.0 - RHO
+DELTA_BU = BU_HOLONOMY_ANGLE
+DELTA = APERTURE_GAP
 INV48 = 1.0 / 48.0
 DYADIC_5_256 = 5.0 / 256.0
 
 N_OMEGA = 4096
 GIANT_THRESHOLD = N_OMEGA // 2  # 2048
-MAX_BFS_DEPTH = 12  # enough for depth-8 holonomy cycle + margin
+MAX_BFS_DEPTH = 12  # enough for depth-8 Z2 holonomy cycle + margin
 
 
 @dataclass(frozen=True)

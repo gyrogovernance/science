@@ -423,8 +423,7 @@ def holographic_hierarchy() -> list[HolographicLevel]:
 # G. Aperture collapse — wavefunction collapse in CGM
 # ════════════════════════════════════════════════════════════════════════
 
-# A* = 1 - BU_HOLONOMY_ANGLE / m_a from gyroscopic.hQVM.constants
-# (analytic under the declared payload embedding).
+# A* = BU_APERTURE_GAP = 1 - BU_HOLONOMY_ANGLE / M_A (shared constants).
 
 
 @dataclass(frozen=True)
@@ -447,11 +446,10 @@ class AperturePoint:
 def aperture_collapse_curve() -> list[AperturePoint]:
     """The aperture curve from raw byte level to constitutional convergence.
 
-    This curve realises wavefunction collapse in CGM: the byte-level
-    fold disagreement (50% aperture) compresses to the constitutional
+    Byte-level fold disagreement (50% aperture) compresses to the constitutional
     A* (~2.07%) through spinorial averaging across depth-4 closure.
 
-    The compression ratio is 50% / 2.07% ~ 24.2x.
+    Compression ratio ~ 50% / A*.
     """
     return [
         AperturePoint(
@@ -470,13 +468,13 @@ def aperture_collapse_curve() -> list[AperturePoint]:
             depth=4,
             label="Canonical word",
             aperture=0.5,
-            description="Spinorial closure emerges; aperture from holonomy",
+            description="Spinorial closure emerges; aperture from loop angle",
         ),
         AperturePoint(
             depth=0,
             label="Omega",
             aperture=APERTURE_GAP,
-            description="Constitutional uniformization: A* ~ 0.0207",
+            description=f"Constitutional uniformization: A* = {APERTURE_GAP:.12f}",
         ),
     ]
 

@@ -951,16 +951,16 @@ The aperture Delta generalizes across the hQVM(d) family. The mean byte-level fo
 Delta(d) = 1/(8d)
 ```
 
-so that 8d times Delta(d) equals 1 exactly at every d. At d = 6 this gives Delta(6) = 1/48 = 0.020833, close to but distinct from the continuum CGM aperture Delta = 0.020700 used in the comparison below; the two differ by about 6 * 10^-4, a resolution-scale distinction already discussed in the wavefunction analysis (Analysis_hQVM_Wavefunction.md, Sections 16.5 through 16.7) and not reopened here.
+so that 8d times Delta(d) equals 1 exactly at every d. At d = 6 this gives Delta(6) = 1/48 = 0.020833, close to but distinct from the continuum CGM aperture Delta ≈ 0.020699545503 used in the comparison below; the two differ by about 6 * 10^-4, a resolution-scale distinction already discussed in the wavefunction analysis (Analysis_hQVM_Wavefunction.md, Sections 16.5 through 16.7) and not reopened here.
 
-CGM dimensionless constants were compared to empirically determined thresholds. The aperture gap Delta = 0.0207 is the residual informational aperture after depth-4 spinorial closure of byte-level fold disagreements (`docs/Findings/Analysis_hQVM_Wavefunction.md`, Sections 16.5 through 16.7). It equals 1 - rho to leading order, with rho the closure ratio, and matches the holonomic ratio delta_BU / m_a from `docs/Findings/Analysis_Holonomy.md`.
+CGM dimensionless constants were compared to empirically determined thresholds. The aperture gap Delta = 1 - rho ≈ 0.020699545503 is the residual informational aperture after depth-4 spinorial closure of byte-level fold disagreements (`docs/Findings/Analysis_hQVM_Wavefunction.md`, Sections 16.5 through 16.7). Here rho = delta_BU / m_a with delta_BU = 4*arctan(k(pi/4)*k(m_a)) from `docs/Findings/Analysis_Holonomy.md`.
 
 | Constant | Value |
 |----------|-------|
-| Delta (aperture gap) | 0.02070 |
-| 1/48 (geometric quantization) | 0.02083 |
-| 5/256 (dyadic approximant) | 0.01953 |
-| m_a (observational aperture) | 0.19947 |
+| Delta (aperture gap) | 0.020699545503 |
+| 1/48 (geometric quantization) | 0.020833 |
+| 5/256 (dyadic approximant) | 0.019531 |
+| m_a (observational aperture) | 0.199471140200 |
 
 Table 19. CGM constants for threshold comparison.
 
@@ -1055,7 +1055,7 @@ Exhaustive search over all 2^7 boundary masks confirms that full Omega requires 
 
 At full generator set, every boundary has porosity pi_j = 0.75 and blockage fraction 1 - pi_j = 0.25 under the connection 1-form definition above.
 
-Delta = 0.0207 indexes aggregate restriction of the BU-fold triple {ONA|BU, BU|BU, BU|ONA} under simultaneous closure. The weak spanning event E_span at byte fraction p_c approximately 0.022 is the percolation onset of the same BU-fold geometry.
+Delta ≈ 0.020699545503 indexes aggregate restriction of the BU-fold triple {ONA|BU, BU|BU, BU|ONA} under simultaneous closure. The weak spanning event E_span at byte fraction p_c approximately 0.022 is the percolation onset of the same BU-fold geometry.
 
 ### 6.6 Plaquette Loop Defect
 

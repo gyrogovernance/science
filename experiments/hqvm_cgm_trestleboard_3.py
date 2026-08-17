@@ -43,8 +43,7 @@ if str(_EXPERIMENTS) not in sys.path:
 from gyroscopic.hQVM.api import chirality_word6
 from gyroscopic.hQVM.constants import step_state_by_byte
 
-from hqvm_compact_geom_core import (
-    DELTA,
+from hqvm_compact_geom_common import (
     RHO,
     LAMBDA_0,
     E_EW_GEV,
@@ -52,7 +51,7 @@ from hqvm_compact_geom_core import (
     CODE_C2,
     WZ_CODE_GAP,
 )
-from hqvm_compact_geom_kernel import d6_residuals
+from hqvm_compact_geom_2 import d6_residuals
 from hqvm_cgm_trestleboard_1 import Trestleboard, default_grammar
 from hqvm_cgm_trestleboard_2 import (
     NuclearBoard,
@@ -65,6 +64,8 @@ from hqvm_cgm_trestleboard_common import (
     C3,
     CARRIER_TRACES,
     CHANNELS,
+    DELTA,
+    DELTA_STAR,
     EV_PER_GEV,
     H_CARD,
     K4_CHANNEL_FLAGS,
@@ -678,10 +679,12 @@ def recover_Delta_from_WZ(tb: Trestleboard) -> Tuple[float, float, float]:
     """
     The compact-geometry charged-neutral split gives:
       log2(m_Z/m_W) = Δ · S_WZ(Δ)
-    with the promoted D4 kernel law (hqvm_compact_geom_core.wz_split):
+    with the promoted D4 kernel law (hqvm_compact_geom_common.wz_split):
       S_WZ(Δ) = (C2-C1) - (C3/2)·Δ + 2·Δ^2/√5 - Δ^3
     Invert for Δ via Newton; the leading term is the W/Z code gap
     C2-C1 = 9. No free coefficients — every term is a kernel constant.
+    Compare the recovered value to DELTA_STAR (kernel aperture), not to
+    the loop-angle ruler DELTA.
     """
     mW_eV = 80.379e9
     mZ_eV = 91.1876e9
@@ -848,14 +851,15 @@ def emin_falsifier(
 
 def minimum_excitation_report(tb: Trestleboard) -> dict:
     """
-    E_min = v·ρ²·Δ⁶/√5·2^(C3Δ²). Upstream: v (EW), Δ (W/Z),
-    ρ (holonomy), C3 (code), (6,2) forced nuclear class.
+    E_min = v·ρ²·Δ⁶/√5·2^(C3Δ²). Upstream: v (EW), Δ (loop-angle ruler),
+    ρ (closure ratio), C3 (code), (6,2) forced nuclear class.
+    W/Z lock compares recovered Δ_WZ to kernel aperture Delta_*.
     """
     cls_62 = ClosureClass(6, 2, "Nuclear spinorial", True, True, True)
     E_min = tb.predict_E_eV(cls_62)
     E_th = 8.3557335
     delta_from_WZ, _, _ = recover_Delta_from_WZ(tb)
-    delta_err = abs(delta_from_WZ - DELTA)
+    delta_err = abs(delta_from_WZ - DELTA_STAR)
     return {
         "E_min_eV": E_min,
         "Th229m_eV": E_th,
@@ -872,16 +876,16 @@ def minimum_excitation_report(tb: Trestleboard) -> dict:
 def spectral_energy_GeV(tb: Trestleboard, label: str, *, order: int = 5) -> float:
     """Channel mass from the carrier-trace spectral expansion.
 
-    L_i(Δ) = Σ aᵢ Δⁱ, with aᵢ from kernel shell algebra (not a
+    L_i(Delta_*) = Σ aᵢ Δⁱ, with aᵢ from kernel shell algebra (not a
     hand formula). Identification L_i = log2(v/m_i) gives
-    m_i = v / 2^Lᵢ. Uses hqvm_compact_geom_core.eval_law.
+    m_i = v / 2^Lᵢ. Uses hqvm_compact_geom_common.eval_law at Delta_*.
     """
     if not CHANNELS:
         return float("nan")
     ch = next((c for c in CHANNELS if c.label == label), None)
     if ch is None:
         return float("nan")
-    L = eval_law(ch, DELTA, order=order)
+    L = eval_law(ch, DELTA_STAR, order=order)
     return V_GEV / (2.0**L)
 
 

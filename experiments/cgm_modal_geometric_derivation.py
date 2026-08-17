@@ -11,7 +11,8 @@ Given BU-Egress (S -> □B) and BU-Ingress (S -> (□B -> (CS ∧ UNA ∧ ONA)))
 in the unique simple SU(2)/gyro representation satisfying these conditions
 with CGM thresholds, prove that:
 1. BU must be realized as dual poles at ±m_a
-2. The BU cycle holonomy equals delta_BU = 0.195342 rad
+2. The BU dual-pole loop angle equals
+   delta_BU = 4·arctan(k(π/4)·k(m_a)) ≈ 0.195342178258 rad
 """
 import sys
 import io
@@ -33,7 +34,11 @@ mp.mp.dps = 50
 # Add path for imports
 if os.path.dirname(os.path.abspath(__file__)) not in sys.path:
     sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+if _ROOT not in sys.path:
+    sys.path.insert(0, _ROOT)
 from functions.gyrovector_ops import GyroVectorSpace
+from gyroscopic.hQVM.constants import BU_HOLONOMY_ANGLE
 
 
 class ModalGeometricDerivation:
@@ -165,12 +170,12 @@ class ModalGeometricDerivation:
             "reasoning": "Memory reconstruction requires dual encoding of forward/backward",
         }
 
-    def theorem_2_holonomy_from_closure(self, verbose: bool = True) -> Dict[str, Any]:
+    def theorem_2_loop_angle_from_closure(self, verbose: bool = True) -> Dict[str, Any]:
         """
-        Theorem 2: BU-Egress determines delta_BU value
+        Theorem 2: BU-Egress determines delta_BU (dual-pole loop angle)
 
         Statement: BU-Egress (S → □B) constrains the depth-4 closure,
-        which in the SU(2) representation determines the holonomy delta_BU.
+        which in the SU(2) representation determines the dual-pole loop angle delta_BU.
 
         Proof Strategy:
         1. BU-Egress requires [L][R][L][R]S ↔ [R][L][R][L]S
@@ -180,7 +185,7 @@ class ModalGeometricDerivation:
         """
         if verbose:
             print("=" * 80)
-            print("THEOREM 2: BU-Egress Determines delta_BU Value")
+            print("THEOREM 2: BU-Egress Determines delta_BU (Loop Angle)")
             print("=" * 80)
             print()
             print("Modal Constraint (BU-Egress):")
@@ -226,9 +231,9 @@ class ModalGeometricDerivation:
             print()
             print("The loop computes gyrations:")
             print("  G(ONA, BU+) computes Thomas-Wigner rotation from ONA to BU+")
-            print("  The dual-pole traversal accumulates holonomy delta_BU")
+            print("  The dual-pole traversal accumulates loop angle delta_BU")
             print()
-            print("This computes the holonomy delta_BU from the dual-pole traversal")
+            print("This computes the loop angle delta_BU from the dual-pole traversal")
             print("using the same GyroVectorSpace machinery as the validated TW test.")
             print()
 
@@ -238,13 +243,13 @@ class ModalGeometricDerivation:
             print("-" * 80)
             print()
             print("The closure constraint from BU-Egress determines the relationship")
-            print("between the thresholds. The dual-pole loop holonomy delta_BU is")
+            print("between the thresholds. The dual-pole loop angle delta_BU is")
             print("computed from this constraint.")
             print()
             print(
                 "Using the same GyroVectorSpace machinery as the validated TW closure test:"
             )
-            print("  - This ensures consistency with the published holonomy pipeline")
+            print("  - This ensures consistency with the published loop-angle pipeline")
             print(
                 "  - Uses the gyro/Wigner (Lorentz) realization, not pure SU(2) rotations"
             )
@@ -274,13 +279,13 @@ class ModalGeometricDerivation:
             print(
                 f"Computed delta_BU using GyroVectorSpace: {delta_BU_computed:.12f} rad"
             )
-            print(f"Expected delta_BU (from TW closure test): 0.1953421782576621 rad")
-            print(f"Deviation: {abs(delta_BU_computed - 0.1953421782576621):.12e} rad")
+            print(f"Expected delta_BU (closed-form): {BU_HOLONOMY_ANGLE:.16f} rad")
+            print(f"Deviation: {abs(delta_BU_computed - float(BU_HOLONOMY_ANGLE)):.12e} rad")
             print()
             print("✅ Using the same gyro/Wigner representation ensures:")
             print("  - Consistency with validated TW closure test")
             print("  - Correct treatment of ONA as boost+rotation composition")
-            print("  - Exact match with published holonomy value")
+            print("  - Match closed-form loop angle within float64")
             print()
 
         # Step 4: Connection to closure constraint
@@ -310,21 +315,21 @@ class ModalGeometricDerivation:
             print("  - The thresholds are fixed by CGM principles")
             print("  - The gyro/Wigner structure is forced by the modal conditions")
             print("  - The dual-pole structure is forced by BU-Ingress")
-            print("  - The holonomy value is computed from the same machinery as")
+            print("  - The loop angle is computed from the same machinery as")
             print("    the validated TW closure test")
             print()
-            print("Conclusion: delta_BU = 0.195342 rad is DETERMINED by")
+            print("Conclusion: delta_BU = 4*arctan(k(pi/4)*k(m_a)) is DETERMINED by")
             print("the modal conditions BU-Egress and BU-Ingress, computed using")
             print(
-                "the same gyro/Wigner representation as the validated holonomy pipeline."
+                "the same gyro/Wigner representation as the validated loop-angle pipeline."
             )
             print()
 
         return {
             "theorem": "BU-Egress determines delta_BU value",
             "delta_BU_computed": float(delta_BU_computed),
-            "delta_BU_expected": 0.1953421782576621,
-            "deviation": float(abs(delta_BU_computed - 0.1953421782576621)),
+            "delta_BU_expected": float(BU_HOLONOMY_ANGLE),
+            "deviation": float(abs(delta_BU_computed - float(BU_HOLONOMY_ANGLE))),
             "conclusion": "delta_BU is uniquely determined by modal conditions",
         }
 
@@ -332,7 +337,7 @@ class ModalGeometricDerivation:
         """
         Theorem 3: Uniqueness of the Realization
 
-        Statement: The dual-pole structure at +/-m_a and the holonomy delta_BU
+        Statement: The dual-pole structure at +/-m_a and the loop angle delta_BU
         are the unique geometric realization satisfying BU-Egress and BU-Ingress
         with the CGM thresholds.
         """
@@ -370,15 +375,15 @@ class ModalGeometricDerivation:
                 "   - Dual encoding in gyro/Wigner representation forces ±m_a structure"
             )
             print()
-            print("4. Holonomy value is determined:")
+            print("4. Loop angle is determined:")
             print("   - delta_BU computed from dual-pole loop using GyroVectorSpace")
             print("   - Value fixed by thresholds and gyro/Wigner structure")
-            print("   - Uses same machinery as validated TW closure test")
+            print("   - Closed-form reference: 4*arctan(k(pi/4)*k(m_a))")
             print("   - No free parameters remain")
             print()
             print("Conclusion: The geometric realization is UNIQUE.")
             print("  - BU must be at ±m_a on z-axis")
-            print("  - delta_BU must equal 0.195342 rad")
+            print("  - delta_BU must equal 4*arctan(k(pi/4)*k(m_a))")
             print("  - This is the only realization satisfying the modal conditions")
             print()
 
@@ -409,7 +414,7 @@ class ModalGeometricDerivation:
             print("\n" + "=" * 80 + "\n")
 
         # Theorem 2: Holonomy from closure
-        results["theorem_2"] = self.theorem_2_holonomy_from_closure(verbose=verbose)
+        results["theorem_2"] = self.theorem_2_loop_angle_from_closure(verbose=verbose)
 
         if verbose:
             print("\n" + "=" * 80 + "\n")
@@ -424,7 +429,7 @@ class ModalGeometricDerivation:
             print()
             print("Summary:")
             print("  ✓ BU-Ingress forces dual-pole structure at ±m_a")
-            print("  ✓ BU-Egress determines delta_BU = 0.195342 rad")
+            print(f"  ✓ BU-Egress determines delta_BU = {BU_HOLONOMY_ANGLE:.12f} rad")
             print("  ✓ The geometric realization is unique")
             print()
             print("The gap between modal logic and geometric realization is now")

@@ -22,8 +22,8 @@ The framework employs five geometric parameters derived from CGM structure:
 - **δ_BU** = 4 · arctan(k(π/4) · k(m_a)) ≈ 0.195342178258 (BU dual-pole loop angle)
 - **R** = 0.993434896272 (Thomas-Wigner curvature ratio)
 - **h** = 4.417034 (4-leg/8-leg holonomy ratio)
-- **ρ_inv** = 1.021137 (Inverse closure fraction)
-- **diff** = 0.001874 (Monodromic residue)
+- **ρ** = δ_BU / m_a ≈ 0.979300454497; **ρ_inv** = 1/ρ ≈ 1.021137073314
+- **φ_SU2** = 2 · arccos((1 + 2√2)/4); **diff** = φ_SU2 − 3 δ_BU ≈ 0.001874227881
 
 These parameters are not fitted but measured from CGM geometric structure.
 
@@ -31,8 +31,8 @@ These parameters are not fitted but measured from CGM geometric structure.
 
 From these parameters, we derive:
 
-- **m_a** = 1/(2√(2π)) ≈ 0.199471 (Aperture parameter)
-- **Δ** = 1 - δ_BU/ m_a ≈ 0.020700 (Aperture fraction, 2.07%)
+- **m_a** = 1/(2√(2π)) ≈ 0.199471140200 (Aperture parameter)
+- **Δ** = 1 − ρ ≈ 0.020699545503 (Aperture fraction, 2.07%)
 - **Q_G** = 4π (Quantum gravity as complete observational solid angle)
 - **K_QG** = π²/√(2π) ≈ 3.937402 (Quantum geometric constant)
 

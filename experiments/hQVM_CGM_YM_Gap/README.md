@@ -2,7 +2,7 @@
 
 This directory is the runnable certificate suite for the Clay Yang–Mills existence and mass gap problem in the Common Governance Model (CGM). It translates Formalism carrier identities into finite Jaffe–Witten / Osterwalder–Schrader / Wilson lattice vocabulary and records PASS/FAIL gates.
 
-**Role split.** `Yang_Mills_Mass_Gap_Solution.md` is the mathematical solution paper (definitions, theorems, continuum reading). This README is the operational inventory of what the scripts contain and print, so you can know the suite without reading the code. `Yang_Mills_Mass_Gap_results.txt` is the last full-run log. Scripts print measurements and gates only; interpretation lives in the solution paper.
+**Role split.** The finding `docs/Findings/Analysis_hQVM_CGM_YM_Mass_Gap.md` is the mathematical analysis (definitions, theorems, continuum reading). This README is the operational inventory of what the scripts contain and print, so you can know the suite without reading the code. `Yang_Mills_Mass_Gap_results.txt` is the last full-run log. Scripts print measurements and gates only; interpretation lives in the finding.
 
 ## How to run
 
@@ -45,8 +45,8 @@ Pipeline order in the orchestrator: `_1` → `_2` → `_3` → `_4` → `_5`.
 | `Yang_Mills_Mass_Gap_4.py` | Section **20**: magnetic degree-2 / Λ² lock, intertwiner, D0 transversality / dark intersection / κ₂ charts. |
 | `Yang_Mills_Mass_Gap_5.py` | Sections **21–22**: Formalism Clay checklist (H0, G, R4, M, H, gap, Hopf) and H7 aggregate. |
 | `Yang_Mills_Mass_Gap_results.txt` | Last full-run certificate log (overwrite on each orchestrated run). |
-| `Yang_Mills_Mass_Gap_Solution.md` | Solution paper (not a script inventory). |
 | `QUANTUM YANG–MILLS THEORY.md` | Jaffe–Witten problem statement (reference copy). |
+| `../../docs/Findings/Analysis_hQVM_CGM_YM_Mass_Gap.md` | Finding: theorems, continuum reading, Appendix A certificate summary. |
 
 ## Shared layer (`Yang_Mills_Mass_Gap_common.py`)
 
@@ -150,21 +150,23 @@ Aggregate boolean: `formalism_checklist_closed`.
 
 ## Key numbers (last full run)
 
-From `Yang_Mills_Mass_Gap_results.txt` (full run, `fast: False`, 2026-07-26 UTC). Re-run to refresh.
+From `Yang_Mills_Mass_Gap_results.txt` (full run, `fast: False`, 2026-08-16 UTC). Agrees with `docs/Findings/Analysis_hQVM_CGM_YM_Mass_Gap.md` Appendix A / §7.4–7.6. Shared imports: `DELTA` / `RHO` / `DELTA_BU` via `hqvm_compact_geom_common` (`BU_HOLONOMY_ANGLE` chain).
 
 | Quantity | Value |
 |----------|--------|
 | `|Ω|` | 4096 |
-| `Δ` | ≈ 0.020699553913 |
+| `Δ` | 0.020699545503 |
+| `ρ` | 0.979300454497 |
 | `A_kernel = 5/256` | 0.01953125 |
+| `|A_kernel − Δ|/Δ` | 5.6441e-02 |
 | `QG_MA2` | 0.5 exactly |
-| `Δ_W(n=256)` | ≈ 0.5019607843 |
-| Route A `m_A = C₂·v·Δ²` | ≈ 1.582474 GeV |
-| Route B `m_B` | ≈ 1.661556 GeV |
-| Q₈ defining gap `Δ_JW` | ≈ 0.330221 |
-| `E_unit = vΔ` | ≈ 5.096644 GeV |
-| `m_phys` (grade-1) | ≈ 1.68302 GeV |
-| `κ₂ = Δ_JW/Δ` | ≈ 15.953 (target C₂ = 15) |
+| `Δ_W(n=256)` | 0.5019607843 |
+| Route A `m_A = C₂·v·Δ²` | 1.582473 GeV |
+| Route B `m_B` | 1.661555 GeV |
+| Q₈ defining gap `Δ_JW` | 0.330221 |
+| `E_unit = vΔ` | 5.096642 GeV |
+| `m_phys` (grade-1) | 1.683019 GeV |
+| `κ₂ = Δ_JW/Δ` | 15.953062 (target C₂ = 15) |
 | OS Gram `min eig M` (Q₈ 2×2) | ≈ 0.12118 (PSD) |
 | SC1 floor α | `2/√3` ≈ 1.154701 |
 | SC0 sharp C | `1/√3` ≈ 0.57735 |
@@ -184,4 +186,4 @@ DELIVERY SUMMARY
   H7_closed                  : …
 ```
 
-Success: both true and process exit 0. Continuum reading of the finite certificates is the Hopf chart of the oriented quotient; see the solution paper.
+Success: both true and process exit 0. Continuum reading of the finite certificates is the Hopf chart of the oriented quotient; see `docs/Findings/Analysis_hQVM_CGM_YM_Mass_Gap.md`.

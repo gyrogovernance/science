@@ -14,7 +14,7 @@ This document examines the mathematical structure of multiplication through the 
 
 The arithmetic realization of these identifications is developed through the K4 lattice matrix: the canonical 2 x 2 decomposition of integer dot products into carrier, gauge-action, and chiral-alignment sectors. The scalar case satisfies exact rank-1 factorization (the common-source condition), while the vector case produces a nonzero chart defect decomposable via Cauchy-Binet into chart commutators that measure scale inhomogeneity across positions. The depth hierarchy of this decomposition traces the CGM constraint progression from common source through non-commutativity to balanced closure.
 
-These identifications connect the CGM geometric invariants to the classical theory of roots of unity, continued fractions, Gram determinants, Hilbert space norms, quaternionic orientation spaces, and two-circle intersection geometry. Cross-domain resonances are examined in the transition from integrability to chaos in Hamiltonian dynamical systems, where a universal critical exponent of one half governs the onset of non-integrable behavior, and in the lemon billiard family, where the CGM holonomy constant appears as the shape parameter producing a uniquely balanced mixed-type phase space.
+These identifications connect the CGM geometric invariants to the classical theory of roots of unity, continued fractions, Gram determinants, Hilbert space norms, quaternionic orientation spaces, and two-circle intersection geometry. Cross-domain resonances are examined in the transition from integrability to chaos in Hamiltonian dynamical systems, where a universal critical exponent of one half governs the onset of non-integrable behavior, and in the lemon billiard family, where the CGM loop-angle constant appears as the shape parameter producing a uniquely balanced mixed-type phase space.
 
 Results are stratified by epistemic status: exact mathematical results, structural correspondences between layers, and phenomenological observations generating falsifiable hypotheses.
 
@@ -379,15 +379,15 @@ Lagrange established (c. 1780) that the continued fraction expansion of the squa
 
 The repeating block never terminates (the square root is irrational) but cycles with a fixed period. This periodic non-closure is the arithmetic form of holonomy. The system wraps around its repeating block, returning to the same pattern without achieving exact closure.
 
-#### 7.2 The CGM holonomy defect
+#### 7.2 The CGM loop angle
 
-The CGM dual-pole holonomy defect is δ_BU ≈ 0.195342 radians, the phase accumulated by a depth-four cycle that almost closes but retains a small residual. The closure ratio is:
+The BU dual-pole loop angle is δ_BU = 4·arctan(k(π/4)·k(m_a)) with k(β) = β/(1 + √(1 − β²)), numerically δ_BU ≈ 0.195342178258 rad. It is the phase accumulated by a depth-four cycle that almost closes but retains a small residual. The closure ratio is:
 
-ρ = δ_BU / m_a ≈ 0.9793
+ρ = δ_BU / m_a ≈ 0.979300454497
 
 The cycle closes to 97.93%, with a 2.07% aperture gap:
 
-Δ = 1 − ρ ≈ 0.0207
+Δ = 1 − ρ ≈ 0.020699545503
 
 This gap, like the irrationality of √2, prevents exact closure while maintaining a precise, repeating geometric structure.
 
@@ -726,7 +726,7 @@ The predecessor horizon at k = 5 gives:
 P₅ = 3 · 2⁴ = 48 = 3 · 16
 ```
 
-The depth-4 projection of the finite manifold is exactly 4 × 12 = 48 bits. The number 48 combines 16 (the dyadic 4π subdivision factor) with 3 (spatial dimensions). The CGM aperture gap satisfies 48 · Δ ≈ 1 at the frame scale.
+The depth-4 projection of the finite manifold is exactly 4 × 12 = 48 bits. The number 48 combines 16 (the dyadic 4π subdivision factor) with 3 (spatial dimensions). The CGM aperture gap satisfies 48 · Δ ≈ 0.993578 at the frame scale.
 
 At width 64, the chart-commutator space has C(64, 2) = 2016 independent terms. This equals the number of nontrivial swap 2-cycles on Ω:
 
@@ -766,9 +766,9 @@ The geometric phase (Pancharatnam-Berry phase) is the phase difference acquired 
 
 For a spin-1/2 particle transported around a closed loop, the Berry phase is half the enclosed solid angle. A complete loop enclosing 4π steradians produces a Berry phase of 2π, returning the system to its original state. A loop enclosing 2π steradians produces a Berry phase of π, flipping the sign of the state (the SU(2) double-cover signature).
 
-#### 13.2 The CGM holonomy as geometric phase
+#### 13.2 The CGM loop angle as geometric phase
 
-The CGM toroidal holonomy δ_BU = 0.195342 radians is the geometric phase accumulated by the depth-four operational cycle, evaluated in the su(2) representation with canonical stage operators. It measures the angular deficit: the amount by which the system fails to return to its starting state after traversing the full operational loop.
+The BU dual-pole loop angle δ_BU = 4·arctan(k(π/4)·k(m_a)) ≈ 0.195342178258 rad is the geometric phase accumulated by the depth-four operational cycle, evaluated in the su(2) representation with canonical stage operators. It measures the angular deficit: the amount by which the system fails to return to its starting state after traversing the full operational loop.
 
 The Foucault pendulum provides a classical illustration. The pendulum swings along one direction (a root process). The Earth rotates beneath it (the angular context). The precession rate is 2π sin φ per sidereal day, where φ is the latitude. The precession is a geometric phase: the memory accumulated when the root process operates within a curved space.
 
@@ -819,7 +819,7 @@ The vesica piscis generates the golden ratio φ = (1 + √5)/2 through a concent
 
 λ₀ / Δ = 1/√5
 
-where Δ ≈ 0.0207 is the aperture gap. The quantity √5 is the irrational core of the golden ratio.
+where Δ ≈ 0.020699545503 is the aperture gap. The quantity √5 is the irrational core of the golden ratio.
 
 #### P1.3 The lemon billiard family
 
@@ -842,12 +842,12 @@ In the study of quantum chaos, billiard systems serve as fundamental models for 
 
 #### P2.2 Numerical proximity
 
-The CGM dual-pole holonomy defect is δ_BU = 0.195342 radians. The lemon billiard shape parameter producing the uniquely balanced mixed-type phase space is B = 0.1953. Both quantities are dimensionless. Their numerical agreement extends to four significant figures.
+The BU dual-pole loop angle is δ_BU = 4·arctan(k(π/4)·k(m_a)) ≈ 0.195342178258 rad. The lemon billiard shape parameter producing the uniquely balanced mixed-type phase space is B = 0.1953. Both quantities are dimensionless. Their numerical agreement extends to four significant figures.
 
 #### P2.3 Structural parallels
 
-| Feature | Lemon billiard at B = 0.1953 | CGM at δ_BU = 0.195342 |
-|---------|------------------------------|------------------------|
+| Feature | Lemon billiard at B = 0.1953 | CGM at δ_BU ≈ 0.195342178258 |
+|---------|------------------------------|------------------------------|
 | Geometry | Two-circle intersection | Two modal operators |
 | Regular structures | Exactly 3 island chains | 3 rotational DOF (su(2)) |
 | Mixed phase space | Regular tori coexist with chaotic sea | 97.93% closure, 2.07% aperture |
@@ -913,7 +913,7 @@ Leonel et al. propose four questions for investigating dynamical phase transitio
 
 #### P3.5 The lemon billiard as open problem
 
-Leonel et al. explicitly identify the lemon billiard as an open problem. The CGM framework suggests a specific prediction: the critical value of the shape parameter is B = δ_BU = 0.195342, determined by the toroidal holonomy of the depth-four order cycle. Computing the critical exponent and order parameter of the lemon billiard as a function of B would constitute a direct test.
+Leonel et al. explicitly identify the lemon billiard as an open problem. The CGM framework suggests a specific prediction: the critical value of the shape parameter is B = δ_BU ≈ 0.195342178258, determined by the dual-pole loop angle of the depth-four order cycle. Computing the critical exponent and order parameter of the lemon billiard as a function of B would constitute a direct test.
 
 ---
 
@@ -925,7 +925,7 @@ At the molecular level, DNA replication proceeds by separating a double strand i
 
 The stomatal aperture in plant leaves provides a structural parallel to the CGM closure-aperture balance. The stoma is a pore formed by two curved guard cells, belonging to the same two-circle intersection family as the vesica piscis and the lemon billiard. The stomatal aperture solves the same optimization: complete closure prevents gas exchange (no observation, no information gain), complete opening causes excessive water loss (no coherent structure), and the optimal aperture balances intake against loss.
 
-Quantitative identification between biological aperture fractions and the CGM value Δ = 0.0207 has not been established. These parallels are structural observations.
+Quantitative identification between biological aperture fractions and the CGM value Δ ≈ 0.020699545503 has not been established. These parallels are structural observations.
 
 ---
 
@@ -961,7 +961,7 @@ Quantitative identification between biological aperture fractions and the CGM va
 
 ### On the lemon billiard
 
-Does the lemon billiard at B = δ_BU = 0.195342 exhibit a specific billiard invariant (holonomy, transport flux, geometric phase) numerically equal to δ_BU, ρ, or Δ?
+Does the lemon billiard at B = δ_BU ≈ 0.195342178258 exhibit a specific billiard invariant (holonomy, transport flux, geometric phase) numerically equal to δ_BU, ρ, or Δ?
 
 ### On the critical exponent
 
@@ -969,11 +969,11 @@ Can the universal critical exponent α = 1/2 for the integrability-to-chaos tran
 
 ### On the Berry-Robnik parameter
 
-What is the precise Berry-Robnik regular fraction at B = 0.195342 in the lemon billiard? Is it functionally related to ρ = 0.9793?
+What is the precise Berry-Robnik regular fraction at B ≈ 0.195342178258 in the lemon billiard? Is it functionally related to ρ ≈ 0.979300454497?
 
 ### On biological aperture
 
-Is the optimal stomatal aperture fraction in plants quantitatively related to Δ = 0.0207?
+Is the optimal stomatal aperture fraction in plants quantitatively related to Δ ≈ 0.020699545503?
 
 ### On the continued fraction structure
 
