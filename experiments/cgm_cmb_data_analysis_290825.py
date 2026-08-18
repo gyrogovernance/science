@@ -19,6 +19,10 @@ import shutil
 from dataclasses import dataclass, field
 from multiprocessing import Pool, get_context
 
+from gyroscopic.hQVM.constants import BU_HOLONOMY_ANGLE
+
+DELTA_BU = float(BU_HOLONOMY_ANGLE)
+
 # Tune threading for your CPU; avoid oversubscription in workers
 os.environ.setdefault("OMP_NUM_THREADS", "1")
 os.environ.setdefault("OPENBLAS_NUM_THREADS", "1")
@@ -56,8 +60,8 @@ class Config:
     a_polar: float = 0.2  # Polar cap strength
     b_cubic: float = 0.1  # Ring lobe strength
 
-    # Holonomy deficit: fixed from theory
-    holonomy_deficit: float = 0.862833  # Toroidal holonomy (rad)
+    # Holonomy angle: BU dual-pole loop
+    holonomy_deficit: float = field(default_factory=lambda: DELTA_BU)
 
     # Production parameters: NATIVE resolution for ladder, GENTLE smoothing for P₂/C₄
     nside: int = 256  # UP from 128 - we need ℓ up to 200 for full pattern
@@ -93,7 +97,7 @@ class CGMThresholds:
 
     # Cross-scale invariants from discoveries
     loop_pitch: float = 1.702935  # Helical pitch
-    holonomy_deficit: float = 0.862833  # Toroidal holonomy (rad) - PREREGISTERED
+    holonomy_deficit: float = field(default_factory=lambda: DELTA_BU)
     index_37: int = 37  # Recursive ladder index
 
 
@@ -620,7 +624,7 @@ def compute_ladder_comb_statistic(
 
 
 def ladder_complex_phase(
-    cl: np.ndarray, peaks=[37, 74, 111, 148, 185], alpha=0.863
+    cl: np.ndarray, peaks=[37, 74, 111, 148, 185], alpha=DELTA_BU
 ) -> complex:
     """Compute complex phase from ladder peaks with phase increment alpha per step."""
     z = 0 + 0j
@@ -686,7 +690,7 @@ def test_holonomy_phase_consistency(cmb_data, sn_data, bao_data):
     """
     Test if phase relationships between P₂/C₄, ℓ=37 enhancement, and cross-observable coherence match the holonomy deficit.
     """
-    holonomy_deficit = 0.863  # rad
+    holonomy_deficit = DELTA_BU
 
     # Extract phases
     p2_phase = np.angle(
@@ -1046,9 +1050,9 @@ class CrossScaleValidator:
 
         # Within-CMB holonomy check
         phi_p2c4 = np.angle(complex(a2, a4))
-        phi_ladder = np.angle(ladder_complex_phase(cl_full, alpha=0.863))
+        phi_ladder = np.angle(ladder_complex_phase(cl_full, alpha=DELTA_BU))
         delta_cmb = abs((phi_ladder - phi_p2c4 + np.pi) % (2 * np.pi) - np.pi)
-        holonomy_deviation = abs(delta_cmb - 0.863) / 0.863
+        holonomy_deviation = abs(delta_cmb - DELTA_BU) / DELTA_BU
         print(
             f"  CMB holonomy check: Δφ={np.degrees(delta_cmb):.1f}° (expected 49.5°), deviation={holonomy_deviation:.3f}"
         )
@@ -1221,7 +1225,7 @@ class CrossScaleValidator:
             "ladder_signal": ladder_signal,
             "ladder_z": comb_z,  # Z-score for comb statistic
             "l37_complex": ladder_complex_phase(
-                cl_full, alpha=0.863
+                cl_full, alpha=DELTA_BU
             ),  # Complex phase for unified testing
             "beat_consistency": beat_consistency,
             "ladder_p": ladder_p,
@@ -1603,7 +1607,7 @@ def test_interference_signature(
     )  # should be consistent with toroidal geometry
 
     # Holonomy deficit prediction
-    holonomy_consistency = 1.0 - abs(holonomy_deficit - 0.863) / 0.863
+    holonomy_consistency = 1.0 - abs(holonomy_deficit - DELTA_BU) / DELTA_BU
 
     # Compute interference signature score
     interference_score = (
@@ -1649,7 +1653,7 @@ def compute_TCS_from_results(
     else:
         Z_geo = (max(Z_cmb, 1e-6) * max(Z_sn, 1e-6)) ** 0.5
 
-    holonomy_consistency = 1.0 - abs(holonomy_deficit - 0.863) / 0.863
+    holonomy_consistency = 1.0 - abs(holonomy_deficit - DELTA_BU) / DELTA_BU
     phase_lock_score = compute_unified_interference_score(
         cmb_result,
         sn_result,

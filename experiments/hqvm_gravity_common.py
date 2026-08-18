@@ -840,7 +840,6 @@ def alpha_lab_with_transport_corrections() -> float:
     d = d_BU
     mp_ = m_a
     r_curv = 0.993434896272
-    h_hol = 4.417034
     phi_su2 = 2.0 * math.acos((1.0 + 2.0 * math.sqrt(2.0)) / 4.0)
     diff = phi_su2 - 3.0 * d
     rho_inv = 1.0 / (d / mp_)
@@ -850,7 +849,6 @@ def alpha_lab_with_transport_corrections() -> float:
     c_ab = 1.0 - (3.0 / 4.0) * r_curv * d2
     c_hc = 1.0 - (5.0 / 6.0) * (
         (phi_su2 / (3.0 * d) - 1.0)
-        * (1.0 - d2 * h_hol)
         * d2
         / (4.0 * math.pi * math.sqrt(3.0))
     )

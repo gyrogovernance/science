@@ -15,6 +15,10 @@ from dataclasses import dataclass
 from enum import Enum
 from multiprocessing import Pool, get_context
 
+from gyroscopic.hQVM.constants import BU_HOLONOMY_ANGLE
+
+DELTA_BU = float(BU_HOLONOMY_ANGLE)
+
 # Tune threading for your CPU; avoid oversubscription in workers
 os.environ.setdefault("OMP_NUM_THREADS", "1")
 os.environ.setdefault("OPENBLAS_NUM_THREADS", "1")
@@ -50,7 +54,7 @@ class CGMThresholds:
 
     # Cross-scale invariants from discoveries
     loop_pitch: float = 1.702935  # Helical pitch
-    holonomy_deficit: float = 0.863  # Toroidal holonomy (rad)
+    holonomy_deficit: float = DELTA_BU
     index_37: int = 37  # Recursive ladder index
 
 

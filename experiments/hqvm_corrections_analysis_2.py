@@ -54,7 +54,6 @@ class CGMRotationCurves:
         d = 4 * mp.atan(k(mp.pi / 4) * k(ma))
         self.delta_BU = Decimal(str(d))
         self.R = Decimal("0.993434896272")
-        self.h = Decimal("4.417034")
         phi = Decimal(str(2 * mp.acos((1 + 2 * mp.sqrt(2)) / 4)))
         self.diff = phi - Decimal(3) * self.delta_BU
         self.Delta = Decimal(1) - self.delta_BU / self.m_a
@@ -184,15 +183,13 @@ class CGMRotationCurves:
         # C_AB_spin2 = 1 - (5/4) * R * Δ² (spin-2 weight, not 3/4)
         c_ab_spin2 = float(1 - (5.0 / 4.0) * float(self.R) * (float(self.Delta) ** 2))
 
-        # C_HC = 1 - (5/6) * ((φ/(3δ) - 1)) * (1 - Δ²*h) * Δ² / (4π√3)
+        # C_HC = 1 - (5/6) * ((φ/(3δ) - 1)) * Δ² / (4π√3)
         phi = 3 * float(self.delta_BU) + float(self.diff)  # φ = 3δ + diff
         phi_term = (phi / (3 * float(self.delta_BU))) - 1
-        h_term = 1 - (float(self.Delta) ** 2) * float(self.h)
         c_hc = float(
             1
             - (5.0 / 6.0)
             * phi_term
-            * h_term
             * (float(self.Delta) ** 2)
             / (4 * float(self.pi) * np.sqrt(3))
         )
@@ -475,12 +472,10 @@ class CGMRotationCurves:
         c_ab_spin2 = float(1 - (5.0 / 4.0) * float(self.R) * (float(self.Delta) ** 2))
         phi = 3 * float(self.delta_BU) + float(self.diff)
         phi_term = (phi / (3 * float(self.delta_BU))) - 1
-        h_term = 1 - (float(self.Delta) ** 2) * float(self.h)
         c_hc = float(
             1
             - (5.0 / 6.0)
             * phi_term
-            * h_term
             * (float(self.Delta) ** 2)
             / (4 * float(self.pi) * np.sqrt(3))
         )
@@ -904,12 +899,10 @@ class CGMRotationCurves:
             )
             phi = 3 * float(self.delta_BU) + float(self.diff)
             phi_term = (phi / (3 * float(self.delta_BU))) - 1
-            h_term = 1 - (float(self.Delta) ** 2) * float(self.h)
             c_hc = float(
                 1
                 - (5.0 / 6.0)
                 * phi_term
-                * h_term
                 * (float(self.Delta) ** 2)
                 / (4 * float(self.pi) * np.sqrt(3))
             )
@@ -982,7 +975,6 @@ class CGMRotationCurves:
         print(f"CGM geometric parameters (no experimental uncertainty):")
         print(f"  Δ = {self.Delta:.6f} (derived from δ_BU, exact)")
         print(f"  R = {self.R:.12f} (Thomas-Wigner curvature, measured)")
-        print(f"  h = {self.h:.6f} (holonomy ratio, measured)")
         print(f"  AB factor uncertainty: δC_AB/C_AB ≈ 2δR/R + 4δΔ/Δ")
 
         return results

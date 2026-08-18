@@ -6,7 +6,7 @@
 
 ## Abstract
 
-We derive the fine-structure constant α from the geometric structure of the Common Governance Model (CGM). The derivation uses the optical conjugacy relation between UV and IR foci, with CS as the unobservable UV focus and BU as the observable IR focus where electromagnetic interactions manifest. Starting from the base formula α₀ = δ_BU⁴/m_a at the IR focus, with δ_BU = 4 · arctan(k(π/4) · k(m_a)), we apply three systematic corrections that account for UV-IR transport, commutator mapping between foci, and residual alignment. The curvature correction reduces the base residual from about 319.43 ppm to about 0.086 ppm relative to CODATA 2018; the two higher-order terms leave a final residual of about 33.8 ppb. All parameters are geometric invariants from the CGM framework with no fitted values.
+We derive the fine-structure constant α from the geometric structure of the Common Governance Model (CGM). The derivation uses the optical conjugacy relation between UV and IR foci, with CS as the unobservable UV focus and BU as the observable IR focus where electromagnetic interactions manifest. Starting from the base formula α₀ = δ_BU⁴/m_a at the IR focus, with δ_BU = 4 · arctan(k(π/4) · k(m_a)), we apply three systematic corrections that account for UV-IR transport, commutator mapping between foci, and residual alignment. The curvature correction reduces the base residual from about 319.43 ppm to about 0.086 ppm relative to CODATA 2018; the two higher-order terms leave a final residual of about 33.7 ppb. All parameters are geometric invariants from the CGM framework with no fitted values.
 
 ## 1. Introduction
 
@@ -64,12 +64,11 @@ The curvature R = (F̄/π)/m_a with F̄ = 0.622543 measured at canonical thresho
 
 The second correction encodes commutator mapping between foci:
 
-α₂ = α₁ × [1 − (5/6)((φ_SU2/(3δ_BU)) − 1)(1 − Δ² h_ratio) Δ²/(4π√3)]    (4)
+α₂ = α₁ × [1 − (5/6)((φ_SU2/(3δ_BU)) − 1) Δ²/(4π√3)]    (4)
 
 where:
 - 5/6: Z₆ rotor with one leg open (aperture)
 - φ_SU2 = 2 arccos((1 + 2√2)/4): exact SU(2) commutator holonomy
-- h_ratio = 4.417034: measured 4-leg/8-leg holonomy ratio
 - 4π: complete solid angle (Q_G)
 - √3: 120° rotor geometry projection factor
 
@@ -86,25 +85,25 @@ where:
 - diff = φ_SU2 − 3 δ_BU ≈ 0.001874227881: monodromic residue
 - Δ⁴: fourth-order suppression
 
-This ensures coherence at the observable focus after UV-IR transport. The final value is α ≈ 0.007297352816, about 33.8 ppb from CODATA 2018.
+This ensures coherence at the observable focus after UV-IR transport. The final value is α ≈ 0.007297352815, about 33.7 ppb from CODATA 2018.
 
 ## 4. Complete Formula and Results
 
 The complete formula incorporating all foci corrections:
 
-α = (δ_BU⁴/m_a) × [1 − (3/4)R Δ²] × [1 − (5/6)((φ_SU2/(3δ_BU)) − 1)(1 − Δ² h_ratio) Δ²/(4π√3)] × [1 + (1/ρ) diff Δ⁴]    (6)
+α = (δ_BU⁴/m_a) × [1 − (3/4)R Δ²] × [1 − (5/6)((φ_SU2/(3δ_BU)) − 1) Δ²/(4π√3)] × [1 + (1/ρ) diff Δ⁴]    (6)
 
-with R = 0.993434896272, h_ratio = 4.417034, and diff = φ_SU2 − 3 δ_BU, all evaluated from the closed-form δ_BU of Section 2.2.
+with R = 0.993434896272 and diff = φ_SU2 − 3 δ_BU, all evaluated from the closed-form δ_BU of Section 2.2.
 
 Results versus CODATA 2018 (α = 1/137.035999084 ≈ 0.007297352569):
-- CGM prediction: α ≈ 0.007297352816
-- Residual: about 33.8 ppb
+- CGM prediction: α ≈ 0.007297352815
+- Residual: about 33.7 ppb
 
 Error reduction sequence:
 - Base (IR focus): about 319.43 ppm
 - After UV-IR curvature: about 0.086 ppm
 - After commutator transport: about 0.033 ppm
-- After IR alignment: about 33.8 ppb
+- After IR alignment: about 33.7 ppb
 
 The dominant reduction is the curvature term. The commutator and IR-alignment factors are higher-order adjustments in Δ; under the closed-form loop angle they leave a residual of tens of ppb rather than a sub-ppb identity with a single experimental synthesis.
 
@@ -126,7 +125,7 @@ Within CGM, the value near 1/137.036 thus emerges from the geometric requirement
 
 The derivation's validity rests on:
 
-1. **Geometric parameters**: δ_BU, m_a, ρ, Δ, and φ_SU2 are fixed by CGM geometry; R and h_ratio are measured geometric ratios, not fitted to α
+1. **Geometric parameters**: δ_BU, m_a, ρ, Δ, φ_SU2, and R are fixed by CGM geometry, not fitted to α
 2. **Systematic structure**: Corrections follow UV→IR transport logic as an expansion in the aperture gap Δ
 3. **Foci consistency**: The base sits at the IR focus; corrections encode transport from the UV focus
 4. **No free parameters tuned to α**: The formula is completely determined once the geometric inputs are fixed

@@ -19,7 +19,7 @@ for _p in (_EXP, _REPO):
 
 from cgm_holonomy_analysis_common import Tee
 from cgm_precession_analysis_1 import RESULTS_PATH, run
-from cgm_precession_analysis_2 import run_mechanics, run_ontology
+from cgm_precession_analysis_2 import run_mechanics
 
 
 def main() -> None:
@@ -29,7 +29,6 @@ def main() -> None:
     try:
         gates, state = run()
         gates.extend(run_mechanics(state))
-        run_ontology(state)
     finally:
         sys.stdout = old
 

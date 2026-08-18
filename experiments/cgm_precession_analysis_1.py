@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """
 CGM precession analysis, part 1: measure holonomy of stage loops
-under canonical, lab, and chart transport.
+under Fermi-Walker, inertial-frame, and chart transport.
 
-Companions: cgm_precession_analysis_{common,2,run}.py
+Companions: cgm_precession_analysis_{2,run}.py
 """
 
 from __future__ import annotations
@@ -43,6 +43,7 @@ from cgm_holonomy_analysis_common import (
     poincare_radius_from_beta,
     pure_boost_u_to_v_mp,
     rotation_angle_atan2_mp,
+    stage_angle_defect_euclid_mp,
     tw_angle_exact,
     tw_angle_unequal,
 )
@@ -596,9 +597,8 @@ def print_chart(basis: dict[str, float], conn: dict[str, Any], cache: EdgeCache)
 
 def print_lab(basis: dict[str, float], conn: dict[str, Any], cache: EdgeCache) -> list[tuple[str, bool]]:
     gates: list[tuple[str, bool]] = []
-    d = basis["delta_BU"]
     rows: list[dict[str, Any]] = []
-    print(f"  {'loop':<18} {'L':>2} {'th_can':>12} {'th_lab':>12} {'F_sc':>12} {'th_RF':>12}")
+    print(f"  {'loop':<18} {'L':>2} {'th_can':>12} {'th_inert':>12} {'F_sc':>12} {'th_RF':>12}")
     for name, path in NAMED_LOOPS:
         th_c, R_c = cache.origin_gyr(path)
         th_l, R_l = cache.lab(path)
@@ -626,12 +626,20 @@ def print_lab(basis: dict[str, float], conn: dict[str, Any], cache: EdgeCache) -
     f_ob = by_name["outback_ONA_BUp"]["F"]
     f_una = by_name["tri_UNA_BUp_BUm"]["F"]
     f_ob_una = by_name["outback_UNA_BUp"]["F"]
-    print(f"  F_BU / delta_BU  = {f_bu / d:.6f}   1/pi = {1.0 / math.pi:.6f}  (ratio, not a law)")
-    print(f"  F_pal / delta_BU = {f_pal / d:.6f}   sqrt(3) = {math.sqrt(3):.6f}  (palindrome-only)")
-    print(f"  BU  |F_sc - th_RF| = {abs(f_bu - by_name['BU']['theta_RF']):.3e}  |th_RF - (th_can+th_lab)| = {abs(by_name['BU']['theta_RF'] - (by_name['BU']['th_can'] + by_name['BU']['th_lab'])):.3e}")
-    print(f"  pal |F_sc - th_RF| = {abs(f_pal - by_name['pal']['theta_RF']):.3e}")
+    print(f"  F = th_inert - th_can.  theta_RF = angle of R_can^-1 R_inert.")
+    print(f"  F_BU                         {f_bu:.12f}")
+    print(f"  theta_RF BU                  {by_name['BU']['theta_RF']:.12f}")
+    print(f"  th_can + th_inert BU         {by_name['BU']['th_can'] + by_name['BU']['th_lab']:.12f}")
+    print(f"  F_pal                        {f_pal:.12f}")
+    print(f"  theta_RF pal                 {by_name['pal']['theta_RF']:.12f}")
     gates.append(_gate("F_BU = lab(ONA-BU+ out-back)", abs(f_bu - f_ob) < 1e-12))
     gates.append(_gate("F(UNA dual-pole) = lab(UNA-BU+ out-back)", abs(f_una - f_ob_una) < 1e-12))
+    gates.append(
+        _gate(
+            "BU: theta_RF = th_can + th_inert",
+            abs(by_name["BU"]["theta_RF"] - (by_name["BU"]["th_can"] + by_name["BU"]["th_lab"])) < 1e-10,
+        )
+    )
     gates.append(
         _gate(
             "out-back: theta(R_can^{-1} R_lab) = theta_lab",
@@ -640,7 +648,7 @@ def print_lab(basis: dict[str, float], conn: dict[str, Any], cache: EdgeCache) -
     )
     print()
 
-    print(f"  {'loop':<6} {'dim':>3} {'planar':<6} {'theta_lab':>12} {'sum_corners':>12} {'resid':>10}")
+    print(f"  {'loop':<6} {'dim':>3} {'planar':<6} {'theta_inert':>12} {'sum_corners':>12} {'resid':>10}")
     for name, path in (("BU", BU_PATH), ("pal", PAL_PATH)):
         ds = [cache.disp[(path[i], path[i + 1])] for i in range(len(path) - 1)]
         fac = factor_boost_word_lab_mp(ds)
@@ -702,14 +710,14 @@ def print_reachability(basis: dict[str, float], conn: dict[str, Any], cache: Edg
     spec_can = spectrum("th_can")
     spec_lab = spectrum("th_lab")
     n_agree = sum(1 for r in recs if r["can_eq_geo"])
-    print(f"  closed walks L=2..{REACH_L_MAX}: n={len(walks)}")
-    print(f"  origin_gyr == geodesic on {n_agree}/{len(recs)}")
-    print(f"  {'theta':>14}  {'mult':>5}  {'min_L':>5}  conn")
+    print(f"  closed walks of length 2 through {REACH_L_MAX}: n={len(walks)}")
+    print(f"  origin_gyr equals geodesic on {n_agree}/{len(recs)}")
+    print(f"  {'theta':>14}  {'mult':>5}  {'min_L':>5}  connection")
     for ang, mult, min_L in spec_can:
         tag = "  delta_BU" if abs(ang - d) < 1e-8 else ""
-        print(f"  {ang:14.10f}  {mult:5d}  {min_L:5d}  can{tag}")
+        print(f"  {ang:14.10f}  {mult:5d}  {min_L:5d}  Fermi-Walker{tag}")
     for ang, mult, min_L in spec_lab[:8]:
-        print(f"  {ang:14.10f}  {mult:5d}  {min_L:5d}  lab")
+        print(f"  {ang:14.10f}  {mult:5d}  {min_L:5d}  inertial-frame")
     print()
 
     hits = [r for r in recs if abs(r["th_can"] - d) < 1e-8]
@@ -729,7 +737,7 @@ def print_reachability(basis: dict[str, float], conn: dict[str, Any], cache: Edg
         ("BU-", "ONA", "BU+", "BU-"),
         ("ONA", "BU-", "BU+", "ONA"),
     ]
-    print(f"  {'path':<28} {'can':>12} {'geo':>12} {'lab':>12}")
+    print(f"  {'path':<28} {'Fermi-Walker':>12} {'geodesic':>12} {'inertial':>12}")
     can_vals, geo_vals, lab_vals = [], [], []
     for path in bu_family:
         tc, _ = cache.origin_gyr(path)
@@ -742,22 +750,22 @@ def print_reachability(basis: dict[str, float], conn: dict[str, Any], cache: Edg
     can_span = max(can_vals) - min(can_vals)
     geo_span = max(geo_vals) - min(geo_vals)
     lab_span = max(lab_vals) - min(lab_vals)
-    print(f"  span can={can_span:.3e}  geo={geo_span:.3e}  lab={lab_span:.3e}")
+    print(f"  span Fermi-Walker={can_span:.3e}  geodesic={geo_span:.3e}  inertial={lab_span:.3e}")
     gates.append(_gate("nabla^can invariant on BU refactorizations", can_span < 1e-10 and geo_span < 1e-10))
     gates.append(_gate("nabla^can refactorizations equal delta_BU", all(abs(v - d) < 1e-10 for v in can_vals + geo_vals)))
     gates.append(_gate("nabla^lab not invariant on BU refactorizations", lab_span > 1e-10))
 
     outback = [r for r in recs if r["L"] == 2]
     max_out_can = max(r["th_can"] for r in outback)
-    print(f"  L=2 out-back n={len(outback)}  max theta_can={max_out_can:.3e}  max theta_lab={max(r['th_lab'] for r in outback):.6f}")
+    print(f"  length-2 out-and-back n={len(outback)}  max theta_can={max_out_can:.3e}  max theta_inert={max(r['th_lab'] for r in outback):.6f}")
     gates.append(_gate("nabla^can out-back ~ 0", max_out_can < 1e-10))
     gates.append(_gate("origin_gyr == geodesic on all walks", n_agree == len(recs)))
     gates.append(_gate("lab spectrum finer than canonical", len(spec_lab) > len(spec_can)))
-    print(f"  n_unique angles: can={len(spec_can)}  lab={len(spec_lab)}")
+    print(f"  distinct angles: Fermi-Walker={len(spec_can)}  inertial-frame={len(spec_lab)}")
     print()
-    print(f"  lab net-boost closed: {len(lab_closed)}/{len(walks)}")
+    print(f"  inertial-frame products with vanishing net boost: {len(lab_closed)}/{len(walks)}")
     for path in lab_closed:
-        print(f"    CLOSED_LAB  L={len(path)-1}  {'-'.join(path)}")
+        print(f"    CLOSED_INERTIAL  L={len(path)-1}  {'-'.join(path)}")
     only_collinear = all(set(path) <= {"BU+", "BU-"} for path in lab_closed)
     gates.append(_gate("lab-closed walks are collinear BU+-BU- out-backs", only_collinear and len(lab_closed) == 4))
     gates.append(_gate("lab-closed walks have theta_lab = 0", all(abs(r["th_lab"]) < 1e-10 for r in recs if r["net_boost"] < LAB_CLOSE_TOL)))
@@ -773,7 +781,7 @@ def print_reachability(basis: dict[str, float], conn: dict[str, Any], cache: Edg
         ("ONA-BU+-BU-", gyrotriangle_defect_triangle_vertices_mp(pts["ONA"], pts["BU+"], pts["BU-"])["defect"]),
     ]
     can_angles = [ang for ang, _, _ in spec_can]
-    print(f"  {'triangle':<18} {'defect':>14}  nearest can-bin")
+    print(f"  {'triangle':<18} {'defect':>14}  nearest Fermi-Walker")
     for name, defct in defects:
         df = _mpf(defct)
         nearest = min(can_angles, key=lambda a: abs(a - df))
@@ -811,7 +819,7 @@ def print_wigner_thomas(
     print(f"    Pexp of omega on BU loop  {pexp:.12f}")
     print(f"    2*(ONA then BU+)          {2.0 * ob:.12f}")
     print("  nabla^can = Fermi-Walker / geodesic transvection")
-    print("  nabla^lab = product of successive Lorentz boosts in one inertial frame")
+    print("  nabla^inert = product of successive Lorentz boosts in one inertial frame")
     return [
         _gate("Wigner ONA-BU+ = omega_corner", abs(ob - basis["omega_corner"]) < 1e-12),
         _gate("2 * Wigner ONA-BU+ = delta_BU", abs(2.0 * ob - basis["delta_BU"]) < 1e-12),
@@ -830,18 +838,35 @@ def run() -> tuple[list[tuple[str, bool]], dict[str, Any]]:
 
     print("CGM PRECESSION ANALYSIS")
     print("=" * 5)
+    print("Machine-generated numerical verification report.")
+    print("The public interpretation and definitions appear in")
+    print("docs/Findings/Analysis_Precession.md.")
     print()
 
     print("1. PRIORS")
     print("-" * 5)
+    print("  Constitutional stage thresholds. u_p, o_p, m_a are Einstein speeds")
+    print("  of UNA, ONA, and BU. theta_cs is the Common Source angle pi/2.")
+    print("  theta_una = arccos(u_p). The Euclidean defect of CS-UNA-ONA is")
+    print("  theta_cs + theta_una + theta_ona - pi.")
     print(f"  u_p (UNA)     = {p['u_p']:.16f}")
     print(f"  o_p (ONA)     = {p['o_p']:.16f}")
     print(f"  m_a (BU)      = {p['m_a']:.16f}")
     print(f"  theta_cs (CS) = {p['theta_cs']:.16f}")
+    print(f"  theta_una     = {_mpf(t.theta_una):.16f}")
+    print(f"  theta_cs+una+ona = {_mpf(t.angle_sum):.16f}")
+    euclid = _mpf(stage_angle_defect_euclid_mp(t))
+    print(f"  euclid_defect = {euclid:.16e}")
+    gates.append(_gate("stage-angle Euclidean defect = 0", abs(euclid) < 1e-20))
     print()
 
     print("2. CANONICAL BASIS")
     print("-" * 5)
+    print("  omega_corner is the ONA-BU pair precession. delta_BU is twice that")
+    print("  corner, the dual-pole holonomy. rho = delta_BU / m_a is the closure")
+    print("  ratio. Delta = 1 - rho is the aperture gap. phi_SU2 is the compact")
+    print("  commutator angle. omega0 is the equal-speed Wigner calibration.")
+    print("  rho0 is the closure slope at vanishing amplitude.")
     for k in ("omega_corner", "delta_BU", "rho", "Delta", "phi_SU2", "omega0", "rho0", "two_1_rho0"):
         v = b[k]
         tag = f"  ({_deg(v):.4f} deg)" if k in ("omega_corner", "delta_BU", "phi_SU2", "omega0") else ""
@@ -852,13 +877,19 @@ def run() -> tuple[list[tuple[str, bool]], dict[str, Any]]:
 
     print("3. THREE CONNECTIONS")
     print("-" * 5)
+    print("  Each row is a transport rule evaluated on the BU dual-pole loop and")
+    print("  on the palindrome. geodesic and origin_gyr are Fermi-Walker.")
+    print("  relative_boost is the product of successive boosts in one inertial")
+    print("  frame. chart complete is the Cartesian Thomas path-ordered")
+    print("  integral. chart spherical z is the same integral in a singular")
+    print("  spherical chart. G_sph is the spherical offset from delta_BU.")
     c, l, ch = conn["can"], conn["lab"], conn["chart"]
     print(f"  {'transport':<28} {'BU':>14}  {'palindrome':>14}")
     print(f"  {'geodesic':<28} {c['geodesic_BU']:14.10f}  {c['geodesic_pal']:14.10f}")
     print(f"  {'origin_gyr':<28} {c['origin_gyr_BU']:14.10f}  {c['origin_gyr_pal']:14.10f}")
     print(f"  {'dual-pole word':<28} {c['word']:14.10f}  {'n/a':>14}")
     print(f"  {'defect BU tri':<28} {c['defect_BU_tri']:14.10f}  {'n/a':>14}")
-    print(f"  {'relative_boost lab':<28} {l['relative_boost_BU']:14.10f}  {l['relative_boost_pal']:14.10f}")
+    print(f"  {'inertial-frame boost product':<28} {l['relative_boost_BU']:14.10f}  {l['relative_boost_pal']:14.10f}")
     print(f"  {'chart complete (Thomas)':<28} {ch['omega_chart_complete_BU']:14.10f}  {ch['omega_chart_complete_pal']:14.10f}")
     print(f"  {'chart spherical z':<28} {ch['omega_chart_sph_BU']:14.10f}  {ch['omega_chart_sph_pal']:14.10f}")
     print(f"  {'G_sph = sph-can':<28} {ch['offset_BU']:14.10f}  {ch['offset_pal']:14.10f}")
@@ -866,6 +897,10 @@ def run() -> tuple[list[tuple[str, bool]], dict[str, Any]]:
 
     print("4. CANONICAL UNIQUENESS")
     print("-" * 5)
+    print("  The dual-pole word, origin gyration, geodesic transvection, and")
+    print("  Ungar defect on ONA-BU+-BU- are compared with delta_BU. Closed")
+    print("  forms of omega_corner, omega0, and phi_SU2 are checked against")
+    print("  their algebraic expressions.")
     d = b["delta_BU"]
     tol = float(TOL_MP)
     for label, val in (
@@ -893,18 +928,34 @@ def run() -> tuple[list[tuple[str, bool]], dict[str, Any]]:
 
     print("5. CHART CONNECTION")
     print("-" * 5)
+    print("  Cartesian Palge-Pfeifer path-ordered Thomas integral, Richardson")
+    print("  extrapolated from step n and 2n, compared with the geodesic angle.")
+    print("  Spherical charts are singular at poles and at rest. G = th - delta_BU")
+    print("  is the chart offset. dim is the number of axes spanned by the path.")
     gates.extend(print_chart(b, conn, cache))
 
-    print("6. LAB CONNECTION")
+    print("6. INERTIAL-FRAME BOOST COMPOSITION")
     print("-" * 5)
+    print("  th_can is the Fermi-Walker angle. th_inert is the net rotation of")
+    print("  the boost product in one inertial frame. F_sc = th_inert - th_can.")
+    print("  th_RF is the angle of R_can^{-1} R_inert. A word closes to a pure")
+    print("  rotation only when the leftover boost vanishes.")
     gates.extend(print_lab(b, conn, cache))
 
     print("7. REACHABILITY")
     print("-" * 5)
+    print("  Every closed walk of length two through five on the four payload")
+    print("  points is enumerated. theta is the rotation angle, mult is how many")
+    print("  walks share that angle, min_L is the shortest such walk. Fermi-Walker")
+    print("  and inertial-frame products are listed separately.")
     gates.extend(print_reachability(b, conn, cache))
 
     print("8. WIGNER PAIR / THOMAS 1-FORM")
     print("-" * 5)
+    print("  Each pair angle is the Wigner rotation of two origin boosts. The")
+    print("  Thomas 1-form is the infinitesimal version of the same rotation.")
+    print("  Its path-ordered exponential on the BU loop equals twice the")
+    print("  ONA-BU pair angle.")
     gates.extend(print_wigner_thomas(b, cache, conn))
     print()
 

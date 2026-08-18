@@ -739,7 +739,7 @@ Electromagnetic and gravitational couplings share the aperture geometry, produci
 α₀ ζ = ρ⁴ / (π √3) = 0.169025926127
 ```
 
-cancels m_a entirely. Independent measurements of α and G can therefore falsify CGM if their product violates ρ⁴/(π√3). The laboratory fine-structure constant α_CODATA differs from α₀ by about +319.43 ppm. The transport-corrected value (Appendix H) is about 33.8 ppb from CODATA 2018. Gravity and the kernel invariant use α₀ and do not incorporate that correction chain, so the product test applies to α₀ specifically. Given α_CODATA, the product α ζ = ρ⁴/(π√3) predicts ζ ≈ 23.163. Any independent constraint on G or ζ that disagrees with this propagation, after explicit identification of which α definition is used, falsifies the stated layer of the framework.
+cancels m_a entirely. Independent measurements of α and G can therefore falsify CGM if their product violates ρ⁴/(π√3). The laboratory fine-structure constant α_CODATA differs from α₀ by about +319.43 ppm. The transport-corrected value (Appendix H) is about 33.7 ppb from CODATA 2018. Gravity and the kernel invariant use α₀ and do not incorporate that correction chain, so the product test applies to α₀ specifically. Given α_CODATA, the product α ζ = ρ⁴/(π√3) predicts ζ ≈ 23.163. Any independent constraint on G or ζ that disagrees with this propagation, after explicit identification of which α definition is used, falsifies the stated layer of the framework.
 
 The shell opacity structure modulates the fine-structure constant across cosmological depth. Binomial shell weights, carrier-trace weighting, and coupling sensitivity dα/α per dΔ/Δ = 4/ρ project onto the Δ ruler, giving a modulation anchored on α₀ = δ_BU⁴/m_a with period Δ ≈ 0.0207 in ln(1+z) and fractional amplitude approximately 4.8 × 10⁻⁴ (`hqvm_gravity_analysis_5.py`, section O). Seven sub-cycles per main period arise from the shell structure, with sub-cycle period Δ/7 ≈ 0.0030. A survey spanning at least one full period in ln(1+z) and detecting no modulation at 3σ confidence with the stated period and amplitude would falsify the shell-opacity link to electromagnetic coupling.
 
@@ -1125,11 +1125,11 @@ Three geometric corrections in powers of Δ yield the full prediction:
 ```text
 α = (δ_BU⁴ / m_a)
     × [1 − (3/4) R Δ²]
-    × [1 − (5/6)((φ_SU2/(3 δ_BU)) − 1)(1 − Δ² h_ratio) Δ² / (4π √3)]
+    × [1 − (5/6)((φ_SU2/(3 δ_BU)) − 1) Δ² / (4π √3)]
     × [1 + (1/ρ) diff Δ⁴]
 ```
 
-R = 0.993434896272 is the Thomas-Wigner curvature ratio, φ_SU2 = 2 arccos((1 + 2√2)/4) is the exact SU(2) commutator holonomy, h_ratio = 4.417034 is the measured 4-leg/8-leg holonomy ratio, and diff = φ_SU2 − 3 δ_BU. Evaluating with the closed-form δ_BU gives α ≈ 0.007297352816, about 33.8 ppb from CODATA 2018.
+R = 0.993434896272 is the Thomas-Wigner curvature ratio, φ_SU2 = 2 arccos((1 + 2√2)/4) is the exact SU(2) commutator holonomy, and diff = φ_SU2 − 3 δ_BU. Evaluating with the closed-form δ_BU gives α ≈ 0.007297352815, about 33.7 ppb from CODATA 2018.
 
 Section 7.4 uses α₀ in the product α₀ ζ = ρ⁴/(π √3) for gravitational coupling falsification. The transport correction chain applies to electromagnetic precision tests, not to the kernel G prediction.
 

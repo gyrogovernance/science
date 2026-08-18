@@ -23,10 +23,10 @@ Definitions and formulas:
 
 4) Universal correction operator components (weights set to unity here):
    C_AB = [1 - (3/4) * R * Δ²]
-   C_HC = [1 - (5/6) * ((φ_SU2 / (3δ_BU)) - 1) * (1 - Δ² * h) * Δ² / (4π√3)]
+   C_HC = [1 - (5/6) * ((φ_SU2 / (3δ_BU)) - 1) * Δ² / (4π√3)]
    C_IDE = [1 + (1/ρ) * diff * Δ⁴]
    with φ_SU2 = 2 arccos((1+2√2)/4), diff = φ_SU2 - 3δ_BU, R the curvature ratio,
-   h the holonomy ratio, and 1/ρ the inverse closure fraction.
+   and 1/ρ the inverse closure fraction.
 
 5) Fine-structure constant sequence:
    α₀ = δ_BU⁴ / m_a
@@ -78,7 +78,6 @@ def _alpha_sequence(
     d: Decimal,
     mp_: Decimal,
     R: Decimal,
-    h: Decimal,
     rho_inv: Decimal,
     diff: Decimal,
     pi_: Decimal,
@@ -93,7 +92,6 @@ def _alpha_sequence(
     C_AB = Decimal(1) - (Decimal(3) / Decimal(4)) * R * D2
     C_HC = Decimal(1) - (Decimal(5) / Decimal(6)) * (
         (phi / (Decimal(3) * d) - Decimal(1))
-        * (Decimal(1) - D2 * h)
         * D2
         / (Decimal(4) * pi_ * _sqrt(Decimal(3)))
     )
@@ -156,7 +154,6 @@ def main() -> None:
     # Closed-form geometric parameters
     d = _delta_bu(mp_)
     R = Decimal("0.993434896272")
-    h = Decimal("4.417034")
     phi = _phi_su2()
     diff = phi - Decimal(3) * d
     rho = d / mp_
@@ -164,7 +161,7 @@ def main() -> None:
 
     # Alpha sequence and correction factors
     a0, a1, a2, a3, c_ab, c_hc, c_ide = _alpha_sequence(
-        d, mp_, R, h, rho_inv, diff, pi_
+        d, mp_, R, rho_inv, diff, pi_
     )
 
     # Reference alpha values

@@ -4,7 +4,7 @@
 
 **Citation:** Korompilias, B. (2025). Common Governance Model: Mathematical Physics Framework. Zenodo. https://doi.org/10.5281/zenodo.17521384
 
-**Verification:** `experiments/cgm_holonomy_analysis_run.py` (companions `_common.py`, `_1.py`, `_2.py`). Results are written to `experiments/cgm_holonomy_analysis_results.txt`. Connection classification, the stage triad, and the Cartesian Thomas Pexp that recovers δ_BU are in Analysis_Precession.md.
+**Verification:** `experiments/cgm_holonomy_analysis_run.py` (companions `_common.py`, `_1.py`, `_2.py`). Results are written to `experiments/cgm_holonomy_analysis_results.txt`. Connection classification, the stage-pair precessions, and the Cartesian Thomas Pexp that recovers δ_BU are in Analysis_Precession.md.
 
 ---
 

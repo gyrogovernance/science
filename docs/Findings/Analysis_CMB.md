@@ -136,7 +136,7 @@ PREREGISTERED CONFIGURATION
 ============================================================
 Memory axis: [-0.070, -0.662, 0.745]
 Toroidal template: a_polar=0.2, b_cubic=0.1
-Holonomy deficit: 0.862833 rad
+Holonomy deficit: 0.195342 rad
 Production parameters: nside=256, lmax=200, fwhm=0.0°
 Mask apodization: 3.0°
 MC budgets: P2/C4=256, Ladder=256, SN perm=1000
@@ -150,7 +150,7 @@ Pre-registered configuration with high-resolution production mode
 
 Testing interference signature from inside-observation...
 Memory axis: [-0.070, -0.662, 0.745]
-Holonomy deficit: 0.862833 rad
+Holonomy deficit: 0.195342 rad
 Inside-view: True
 PRODUCTION MODE: High resolution analysis (nside=256, lmax=200)
 

@@ -23,9 +23,8 @@ if sys.platform == "win32":
 
 mp.mp.dps = 80
 
-# Measured geometric ratios (not fitted to α); same values as Analysis_CGM_Constants.md
+# Measured geometric ratio (not fitted to α); same value as Analysis_CGM_Constants.md
 R_CURVATURE = mp.mpf("0.993434896272")
-H_RATIO = mp.mpf("4.417034")
 CODATA_2018_INV = mp.mpf("137.035999084")
 
 
@@ -57,7 +56,6 @@ def alpha_correction_chain(delta_BU, m_a, phi_SU2):
     C_AB = 1 - (mp.mpf(3) / 4) * R_CURVATURE * Delta**2
     C_HC = 1 - (mp.mpf(5) / 6) * (
         (phi_SU2 / (3 * delta_BU) - 1)
-        * (1 - Delta**2 * H_RATIO)
         * Delta**2
         / (4 * mp.pi * mp.sqrt(3))
     )

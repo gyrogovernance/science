@@ -186,15 +186,15 @@ The full CGM formula applies three sequential refinements α₀ → α₁ → α
 
 1. **UV–IR curvature:** α₁ = α₀ × [1 − (3/4)R Δ²], with R the Thomas–Wigner curvature ratio. The factor 3/4 is the SU(2) Casimir. Δ² encodes quadratic aperture effects.
 
-2. **Commutator transport:** α₂ = α₁ × [1 − (5/6)((φ_SU2/(3δ_BU)) − 1)(1 − Δ² h_ratio) Δ²/(4π√3)]. Here 5/6 is the Z₆ rotor factor with one leg open (aperture), 4π = Q_G, and √3 is the 120° projection. So the aperture gap Δ again enters the geometric transport from UV to IR.
+2. **Commutator transport:** α₂ = α₁ × [1 − (5/6)((φ_SU2/(3δ_BU)) − 1) Δ²/(4π√3)]. Here 5/6 is the Z₆ rotor factor with one leg open (aperture), 4π = Q_G, and √3 is the 120° projection. So the aperture gap Δ again enters the geometric transport from UV to IR.
 
 3. **IR alignment:** α₃ = α₂ × [1 + (1/ρ) diff Δ⁴], with ρ = δ_BU/m_a and diff = φ_SU2 − 3δ_BU. The factor 1/ρ ties the correction to closure, and Δ⁴ provides fourth-order suppression.
 
 The complete formula is:
 
-**α = (δ_BU⁴/m_a) × [1 − (3/4)R Δ²] × [1 − (5/6)((φ_SU2/(3δ_BU)) − 1)(1 − Δ² h_ratio) Δ²/(4π√3)] × [1 + (1/ρ) diff Δ⁴],**
+**α = (δ_BU⁴/m_a) × [1 − (3/4)R Δ²] × [1 − (5/6)((φ_SU2/(3δ_BU)) − 1) Δ²/(4π√3)] × [1 + (1/ρ) diff Δ⁴],**
 
-with R = 0.993434896272 (Thomas–Wigner curvature ratio), h_ratio = 4.417034 (4-leg/8-leg holonomy ratio), and diff = φ_SU2 − 3δ_BU. Evaluating with δ_BU from Section 2.1 gives α ≈ 0.007297352816. Relative to CODATA 2018 (α = 1/137.035999084), the base α₀ differs by about 319.43 ppm and the fully corrected value by about 33.8 ppb. Thus the aperture, through m_a, ρ, and Δ, is the central parameter: the base term is normalized by m_a, and all corrections are expansions in Δ (and ρ).
+with R = 0.993434896272 (Thomas–Wigner curvature ratio) and diff = φ_SU2 − 3δ_BU. Evaluating with δ_BU from Section 2.1 gives α ≈ 0.007297352815. Relative to CODATA 2018 (α = 1/137.035999084), the base α₀ differs by about 319.43 ppm and the fully corrected value by about 33.7 ppb. Thus the aperture, through m_a, ρ, and Δ, is the central parameter: the base term is normalized by m_a, and all corrections are expansions in Δ (and ρ).
 
 ---
 

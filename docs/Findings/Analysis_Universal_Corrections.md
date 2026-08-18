@@ -4,7 +4,7 @@
 
 ## Abstract
 
-This document presents a comprehensive analysis of the Common Governance Model (CGM) universal correction operator framework. The CGM posits that physical constants and interactions emerge from geometric principles rather than empirical fitting. We demonstrate that a single correction operator, derived from first principles, simultaneously predicts the fine-structure constant to about 33.8 ppb versus CODATA 2018 and explains galactic rotation curves without dark matter. The framework achieves this through geometric parameters that remain invariant across energy scales and physical domains.
+This document presents a comprehensive analysis of the Common Governance Model (CGM) universal correction operator framework. The CGM posits that physical constants and interactions emerge from geometric principles rather than empirical fitting. We demonstrate that a single correction operator, derived from first principles, simultaneously predicts the fine-structure constant to about 33.7 ppb versus CODATA 2018 and explains galactic rotation curves without dark matter. The framework achieves this through geometric parameters that remain invariant across energy scales and physical domains.
 
 ## 1. Theoretical Framework
 
@@ -17,11 +17,10 @@ The CGM framework is built on two foundational principles:
 
 ### 1.2 Fundamental Parameters
 
-The framework employs five geometric parameters derived from CGM structure:
+The framework employs four geometric parameters derived from CGM structure:
 
 - **δ_BU** = 4 · arctan(k(π/4) · k(m_a)) ≈ 0.195342178258 (BU dual-pole loop angle)
 - **R** = 0.993434896272 (Thomas-Wigner curvature ratio)
-- **h** = 4.417034 (4-leg/8-leg holonomy ratio)
 - **ρ** = δ_BU / m_a ≈ 0.979300454497; **ρ_inv** = 1/ρ ≈ 1.021137073314
 - **φ_SU2** = 2 · arccos((1 + 2√2)/4); **diff** = φ_SU2 − 3 δ_BU ≈ 0.001874227881
 
@@ -48,7 +47,7 @@ Where weight depends on representation:
 - Quark (fundamental): 4/3 → C_AB_quark ≈ 0.999432
 - Gluon (adjoint): 3 → C_AB_gluon ≈ 0.998723
 
-**C_HC** = 1 - (5/6)·((φ/(3δ))-1)·(1-Δ²h)·Δ²/(4π√3) ≈ 1.000000
+**C_HC** = 1 - (5/6)·((φ/(3δ))-1)·Δ²/(4π√3) ≈ 1.000000
 
 **C_IDE** = 1 + (1/ρ)·diff·Δ⁴ ≈ 1.000000
 
@@ -75,13 +74,13 @@ The fine-structure constant is derived through:
 
 **α₂** = α₁ · C_HC ≈ 0.007297352813 (After HC correction, about 0.033 ppm)
 
-**α** = α₂ · C_IDE ≈ 0.007297352816 (Final prediction, about 33.8 ppb vs CODATA 2018)
+**α** = α₂ · C_IDE ≈ 0.007297352815 (Final prediction, about 33.7 ppb vs CODATA 2018)
 
 ### 3.2 Accuracy Assessment
 
 Comparison with experimental values:
-- CODATA 2018: α = 1/137.035999084 ≈ 0.007297352569 → about +33.8 ppb
-- GK 2020: α = 1/137.035999206 ≈ 0.007297352563 → about +34.7 ppb
+- CODATA 2018: α = 1/137.035999084 ≈ 0.007297352569 → about +33.7 ppb
+- GK 2020: α = 1/137.035999206 ≈ 0.007297352563 → about +34.6 ppb
 
 The curvature term dominates the reduction from the base residual; the higher-order factors leave a residual of tens of ppb.
 
@@ -190,7 +189,7 @@ Future work should address these limitations and extend the framework to other d
 
 The CGM universal correction operator framework demonstrates remarkable consistency across energy scales and physical domains. Using only geometric parameters derived from first principles, the framework simultaneously:
 
-1. Predicts the fine-structure constant to about 33.8 ppb vs CODATA 2018
+1. Predicts the fine-structure constant to about 33.7 ppb vs CODATA 2018
 2. Explains galactic rotation curves without dark matter
 3. Produces consistent, scale-dependent corrections
 4. Makes testable predictions across quantum and classical domains

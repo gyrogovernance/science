@@ -59,12 +59,9 @@ class CGMAcousticDiagnostics:
         self.loop_pitch = 1.702935
         self.N_star = 37  # Fundamental recursive index
 
-        # Toroidal holonomy deficit (discovery)
-        self.holonomy_deficit = 0.863  # rad - persistent invariant
-
-        # BU dual-pole loop angle
         self.delta_BU = float(BU_HOLONOMY_ANGLE)
         self.m_a = float(M_A)
+        self.holonomy_deficit = self.delta_BU
 
         # Anatomical TW ratio (discovery)
         self.chi_anatomical = 1.169539  # ± 0.246470 (21.1% variation)

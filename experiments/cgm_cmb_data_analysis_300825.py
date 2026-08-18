@@ -13,6 +13,10 @@ import shutil
 from dataclasses import dataclass, field
 from multiprocessing import Pool, get_context
 
+from gyroscopic.hQVM.constants import BU_HOLONOMY_ANGLE
+
+DELTA_BU = float(BU_HOLONOMY_ANGLE)
+
 # Using numpy for signal processing instead of scipy
 
 
@@ -82,7 +86,7 @@ class Config:
     b_cubic: float = 0.1  # Ring lobe strength
 
     # Holonomy deficit: fixed
-    holonomy_deficit: float = 0.862833  # rad
+    holonomy_deficit: float = field(default_factory=lambda: DELTA_BU)
 
     # Inside-view: fixed
     inside_view: bool = True
@@ -119,7 +123,7 @@ class CGMThresholds:
 
     # Cross-scale invariants from discoveries
     loop_pitch: float = 1.702935  # Helical pitch
-    holonomy_deficit: float = 0.863  # Toroidal holonomy (rad)
+    holonomy_deficit: float = DELTA_BU
     index_37: int = 37  # Recursive ladder index
 
 
@@ -511,9 +515,7 @@ def test_atomic_scale_orbital_analogy(atomic_scales):
 def test_fine_structure_quantum(alpha, holonomy_deficit):
     """
     Test if fine structure constant relates to holonomy deficit as quantum number.
-    α = 1/137.036, δ_holonomy = 0.863 rad
-
-    Hypothesis: α emerges from toroidal geometry as 1/(2π × δ_holonomy / (2π))
+    Uses the BU dual-pole holonomy angle δ_BU as the geometric phase input.
     """
     # Convert holonomy to dimensionless ratio
     holonomy_ratio = holonomy_deficit / (2 * np.pi)  # Fraction of full circle

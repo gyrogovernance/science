@@ -499,7 +499,7 @@ alpha_exp (CODATA 2018) = 0.0072973525693
 |alpha_0 - alpha_exp| / alpha_exp ≈ 319.43 ppm
 ```
 
-Transport corrections in powers of Δ yield α ≈ 0.007297352816 (≈ 33.8 ppb vs CODATA 2018). The kernel bridge test uses a tolerance of 4e-4 on the α₀ comparison, which is satisfied. Source of truth for the closed-form δ_BU: `src/constants.py` (`bu_holonomy_angle`).
+Transport corrections in powers of Δ yield α ≈ 0.007297352815 (≈ 33.7 ppb vs CODATA 2018). The kernel bridge test uses a tolerance of 4e-4 on the α₀ comparison, which is satisfied. Source of truth for the closed-form δ_BU: `src/constants.py` (`bu_holonomy_angle`).
 
 ### 9.3 K_QG Identity
 
@@ -526,9 +526,9 @@ These ratios are verified to 12 decimal places, confirming that the stage thresh
 
 The continuous aperture gap maps to exact discrete approximants at the 8-bit and depth-4 scales (TestApertureQuantizationChain). The tests verify: 256 * APERTURE_GAP rounds to 5 (byte-scale horizon 5/256); 48 * APERTURE_GAP is near unity (depth-4 companion 1/48; 48·Δ ≈ 0.993578); delta_BU/(2*pi) quantizes to 8/256 = 1/32 turn. This chain connects the continuous CGM constants to discrete byte-scale and depth-4-scale quantization.
 
-### 9.6 Monodromy Hierarchy
+### 9.6 Holonomy Hierarchy
 
-The test test_monodromy_hierarchy verifies an ordering of angular scales: omega(ONA-BU) < delta_BU < 0.587901 < 0.862833, establishing the relative sizes of the minimal defect, the BU aperture, and larger holonomy angles.
+The test test_monodromy_hierarchy verifies an ordering of angular scales: omega(ONA-BU) < delta_BU < phi_SU2, establishing the relative sizes of the elementary pair angle, the dual-pole holonomy, and the compact commutator.
 
 ---
 

@@ -152,7 +152,7 @@ The framework reveals a rich hierarchy of geometric memory values accumulated wh
 -   **The Aperture Ratio:** `ρ = δ_BU / m_a ≈ 0.979300454497`. It establishes a universal balance:
     -   **97.93% Structural Closure:** Providing stability.
     -   **2.07% Dynamic Aperture:** The residual oscillation amplitude enabling interaction and observation (`Δ = 1 − ρ ≈ 0.020699545503`).
--   **Holonomy Hierarchy:** A consistent scale of path-memory effects is observed, from the elementary `ω(ONA↔BU) = 0.097671089129` rad to the system-level `4-leg toroidal holonomy = 0.862833 rad`. The equality `δ_BU = 8-leg holonomy` is an internal consistency check (loop angle vs composed path memory).
+-   **Holonomy Hierarchy:** A consistent scale of path-memory effects runs from the elementary pair angle `ω(ONA↔BU) = 0.097671089129` rad through the dual-pole holonomy `δ_BU ≈ 0.195342178258` rad to the compact commutator `φ_SU2 ≈ 0.587900762654` rad. The palindrome UNA → ONA → BU+ → BU− → ONA → UNA preserves the angle δ_BU while steering its axis by ω_UO.
 
 **The aperture gap Δ and the mass coordinate ruler.** The loop-angle aperture gap `Δ ≈ 0.020699545503` is the small parameter of the framework. It measures the fractional shortfall of actual closure relative to perfect closure. Because Δ is small, it serves as a natural expansion parameter: physical quantities (masses, couplings, corrections) can be expressed as power series in Δ, analogous to how perturbative expansions use a small coupling constant. The coefficients of these expansions are fixed rational numbers from the kernel's combinatorics, not fitted parameters. A "tick" is one unit on the Δ-ruler, corresponding to a multiplicative factor of `2^Δ ≈ 1.0145` in energy. Nuclear grammar and observational mass coordinates use this loop-angle Δ. Electroweak mass polynomials and the W/Z lock use a second aperture `Δ_* ≈ 0.020699553957`, the D³ fixed point of the byte-aperture self-consistency equation (`Analysis_Compact_Geometry`). The same loop-angle aperture that spaces the electroweak and nuclear rulers forces the oriented spectral floor of the Yang–Mills mass-gap construction (Section 5.9).
 
@@ -197,9 +197,9 @@ While the main paper presents the leading-order formula, the full derivation inc
 1.  **Base Formula (IR focus):** `α₀ = δ_BU⁴ / m_a` with δ_BU = 4 · arctan(k(π/4) · k(m_a)) (about +319.43 ppm vs CODATA 2018).
 2.  **UV-IR Curvature Correction:** Accounts for geometric transport (about +0.086 ppm).
 3.  **Commutator Transport:** Encodes how UV commutator structure projects to the IR focus (about +0.033 ppm).
-4.  **IR Focus Alignment:** A final coherence correction (about **+33.8 ppb**).
+4.  **IR Focus Alignment:** A final coherence correction (about **+33.7 ppb**).
 
-The final predicted value `α ≈ 0.007297352816` is about 33.8 ppb from CODATA 2018 (α = 1/137.035999084).
+The final predicted value `α ≈ 0.007297352815` is about 33.7 ppb from CODATA 2018 (α = 1/137.035999084).
 
 ### 5.3 The Black Hole Universe and Aperture Thermodynamics
 
@@ -376,7 +376,7 @@ Scripts cover gravity, the Yang–Mills mass-gap readout, organismal allometry, 
 | Hilbert space representation | [Analysis_Hilbert_Space_Representation](Findings/Analysis_Hilbert_Space_Representation.md) | `cgm_Hilbert_Space_analysis.py` |
 | CMB patterns (Planck: ℓ=37 enhancement p=0.0039) | [Analysis_CMB](Findings/Analysis_CMB.md) | `cgm_cmb_data_analysis_300825.py` |
 | Holonomy: closed-path memory, dual-pole loop angle, continuous–finite realization | [Analysis_Holonomy](Findings/Analysis_Holonomy.md) | `cgm_holonomy_analysis_common.py`, `cgm_holonomy_analysis_1.py`, `cgm_holonomy_analysis_2.py`. Run: `cgm_holonomy_analysis_run.py` |
-| Precession: three connections, stage triad, L≤5 spectrum, metric ontology | [Analysis_Precession](Findings/Analysis_Precession.md) | `cgm_precession_analysis_common.py`, `cgm_precession_analysis_1.py`, `cgm_precession_analysis_2.py`. Run: `cgm_precession_analysis_run.py` |
+| Precession: three connections, pairwise stage precessions, closed-walk spectrum | [Analysis_Precession](Findings/Analysis_Precession.md) | `cgm_precession_analysis_1.py`, `cgm_precession_analysis_2.py`. Run: `cgm_precession_analysis_run.py` |
 | Black hole universe and aperture thermodynamics | [Analysis_BH_Universe](Findings/Analysis_BH_Universe.md), [Analysis_BH_Aperture](Findings/Analysis_BH_Aperture.md) | `cgm_bh_universe_analysis.py`, `cgm_bh_aperture_analysis.py` |
 | Kompaneyets | [Analysis_Kompaneyets](Findings/Analysis_Kompaneyets.md) | `cgm_kompaneyets_analysis.py` |
 | Proto-units | [Analysis_CGM_Units](Findings/Analysis_CGM_Units.md) | `cgm_proto_units_analysis.py` |
