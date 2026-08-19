@@ -266,3 +266,123 @@ PERF / ROBUSTNESS NOTES
   - Earlier 220 s version was dominated by a naive orbit BFS (33M
     object constructions); replaced with the exact translation-based
     orbit (the group provably contains all 4096 translations).
+
+=================================================================
+PART 3 - THE BRIDGE (NEW, 21 checks, all PASS) - 2026-08-19
+=================================================================
+  Built from SO(3) theory (Part 1) + the engine group G (Part 2),
+  expanding NEW territory and closing Part 2's open items.
+
+  A. Spectral theory of SO(3):
+     - Laplace-Beltrami eigenvalues lambda_j = j(j+1), multiplicity
+       (2j+1)^2; SPECTRAL GAP = lambda_1 = 2 (multiplicity 9).
+     - Weyl law N(lambda) ~ (4/3) lambda^{3/2} (3-dimensionality).
+     - Heat kernel K_t(g) = sum_j (2j+1)e^{-j(j+1)t} chi_j(g) is a
+       normalized probability density (int = 1); trace
+       Z(t)-1 ~ 9 e^{-2t}.
+     - Quantitative duality: continuous SO(3) returns to uniformity
+       only asymptotically (rate e^{-2t}); the kernel P has all
+       non-trivial eigenvalues 0 -> P^2 = J/4096 exact 2-step.
+       "gap 2 vs exact 2-step" is now quantitative.
+  B. Character theory of the engine G (COMPLETES Part 2 open item):
+     - Conjugacy classes: Z(G) = [G,G] = (Z/2)^6 (64 central,
+       size-1); 2016 size-2 swap-pairs; 64 size-64 swap classes.
+       #classes = 2144 = #irreps; |G| = sum of class sizes.
+     - Character table via Clifford theory: 128 linear chars =
+       chars of G/[G,G] = (Z/2)^7; 2016 two-dim irreps = inductions
+       from swap-orbits of (Z/2)^12 chars, vanish on the odd coset.
+     - THE BREAKTHROUGH: L^2(Omega) is MULTIPLICITY-FREE as a
+       G-module: C[Omega] = 64 x (linear, chi(z)=+1) (+) 2016 x
+       (2-dim), each irrep once (dim 4096, Burnside <chi,chi>=2080 =
+       number of irreps appearing). Exact discrete analogue of
+       L^2(S^2) = (+) V_l on SO(3). The 64 parity-odd characters
+       with chi(z)=-1 are absent - the 2:1 SO(3) vs Spin(3) split.
+  C. CGM BU loop holonomy as an element of SO(3):
+     - delta_BU = 4 arctan(k(pi/4)k(M_A)) = 2 omega (omega = corner
+       Thomas-Wigner angle; collinear BCH composition, Part 1 s.3).
+     - exp(delta_BU hat(n)) in SO(3), recovered angle = delta_BU.
+     - rho = delta_BU/M_A = 0.9793, Delta = 1-rho = 0.0207, and the
+       spinorial identity Q_G M_A^2 = 1/2 carry the same 2:1
+       double-cover structure as SU(2) -> SO(3): the kernel's
+       12-bit (2 x 6 DoF) basis is native to SO(3) in this sense.
+     - gyrotriangle pi/2 + pi/4 + pi/4 = pi (3 spatial dims).
+
+  All heavy linear algebra delegated to scipy/numpy; the conjugacy
+  classes computed via the exact semidirect-product conjugation
+  formula (vectorized, no O(|G|^2) iteration, ~4s).
+
+RUN:
+  python3 experiments/hqvm_SO_analysis_run.py            (all 3 parts)
+  python3 experiments/hqvm_SO_analysis_run.py --part 3   (part 3 only)
+  SUMMARY: 93 passed, 0 failed out of 93 checks (~43s).
+
+KEY NEW FINDINGS (Part 3):
+  1. Spectral gap of SO(3) = 2 (mult 9); Weyl constant 4/3; heat
+     kernel normalized with trace Z(t)-1 ~ 9 e^{-2t}.
+  2. Duality "gap 2 vs exact 2-step": the quantitative meaning of
+     the kernel's maximal-mixer property.
+  3. Z(G) = [G,G] = (Z/2)^6; conjugacy classes {1:64, 2:2016, 64:64};
+     #classes = #irreps = 2144.
+  4. L^2(Omega) multiplicity-free: 64 linear + 2016 two-dim, each
+     once (the discrete Peter-Weyl) - completes Part 2's open item.
+  5. The CGM BU holonomy is an element of SO(3) with angle delta_BU;
+     the spinorial Q_G M_A^2 = 1/2 = the SU(2)->SO(3) double cover.
+
+=================================================================
+PART 4 - NON-ABELIAN HARMONIC ANALYSIS OF THE ENGINE G (NEW)
+          the finite Peter-Weyl and the mixing trichotomy - 2026-08-19
+=================================================================
+  Parts 1-3 built SO(3), turned the kernel loose on it, and did the
+  character table + spectral-gap bridge. Part 2's Fourier analysis was
+  ABELIAN (Walsh chars of (Z/2)^12). Part 4 performs the FULL non-abelian
+  harmonic analysis on G = (Z/2)^12 x| Z/2, using the Part-3 character
+  table. 11 new checks, all PASS. Full study now 104/104 (~61s).
+
+  A. Explicit irreps + finite Peter-Weyl (Clifford theory):
+     - Construct the 2016 two-dimensional irrep matrices rho_k(g) as
+       induced representations (rho(a)=diag(chi_k,chi_swapk), rho(s)=swap),
+       verify homomorphism / unitarity / trace=character.
+     - Normalized matrix coefficients orthonormal in L^2(G):
+       (1/|G|) sum rho_ij conj(rho_i'j') = (1/d) delta. Census sum d^2=8192.
+     - The exact discrete analog of the Wigner-D orthonormality on SO(3)
+       (Part 1 s.5, Part 3 s.2).
+  B. Plancherel + Fourier inversion on G:
+     - |G| sum |f|^2 = sum d_rho Tr(fhat^+ fhat) to 1e-15; inversion to
+       1e-15, over all 2144 irreps (vectorized via fast Walsh transform).
+     - The non-abelian completion of Part 2 s.D's abelian Walsh analysis.
+  C. Group algebra + isotypic decomposition of L^2(Omega):
+     - Isotypic projectors realize Part 3's multiplicity-free module:
+       2080 irreps each once (isotypic dim d_rho, sum 4096); the 64
+       parity-odd linear characters (s=1) are absent - finite echo of
+       SO(3) vs Spin(3).
+  D. Harmonic random walks on G and the MIXING TRICHOTOMY
+     (Diaconis-Shahshahani spectral formula chi^2(k)=sum d_rho^2|lambda|^{2k}
+      over all 2144 irreps):
+     - Single-coset (odd) class walk: chi^2(k) = 127 CONSTANT - PERIODIC,
+       all 127 non-trivial linear parity characters are exact invariants.
+     - Minimal 13-generator walk {e_0..e_11, s}: blocked by a HIDDEN
+       character chi_{1,63}(g)=(-1)^{parity+popcount(u^v)} = -1 on every
+       generator -> gap 0, chi^2 plateaus at 1 (never fully uniform).
+     - Lazy (identity-added) walk: genuinely mixes, gap = 1/7, chi^2->0.
+     TRICHOTOMY: continuous SO(3) mixes asymptotically (gap 2, Part 3);
+     byte walk on coset Omega mixes in EXACTLY 2 steps (Part 2, maximal);
+     on the full group G no single-coset walk is ever ergodic (periodic or
+     hidden-character-blocked) - the kernel's maximal mixing lives on the
+     quotient Omega = G/Stab, not on G.
+
+  RUN:
+    python3 experiments/hqvm_SO_analysis_run.py            (all 4 parts)
+    python3 experiments/hqvm_SO_analysis_run.py --part 4   (part 4 only)
+    SUMMARY: 104 passed, 0 failed out of 104 checks (~61s).
+
+KEY NEW FINDINGS (Part 4):
+  1. Explicit finite Peter-Weyl: constructive irrep matrices, orthonormal
+     matrix coefficients, sum d^2 = |G| (the discrete Wigner-D basis).
+  2. Plancherel + inversion on the full non-abelian character table (the
+     harmonic backbone of the engine).
+  3. Isotypic / group-algebra realization of the multiplicity-free module.
+  4. MIXING TRICHOTOMY + hidden-character obstruction: on G, single-coset
+     walks are periodic (chi^2=127) and even the natural generator walk is
+     blocked by chi_{1,63}; only the lazy walk mixes. The maximal 2-step
+     mixing lives on the quotient Omega, not on G - a precise, quantitative
+     statement of why the engine's mixing must be read on the coset space.

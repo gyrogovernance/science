@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """hqvm_SO_analysis_run.py — Orchestrator for the SO(3) study.
 
-Runs parts 1 and 2, captures output to results file.
+Runs parts 1, 2, 3 and 4, captures output to results file.
 
 Usage:
   python experiments/hqvm_SO_analysis_run.py
-  python experiments/hqvm_SO_analysis_run.py --part 1
+  python experiments/hqvm_SO_analysis_run.py --part 1 | 2 | 3 | 4
   python experiments/hqvm_SO_analysis_run.py --quick   (reduced sampling)
 """
 from __future__ import annotations
@@ -41,8 +41,8 @@ def _preflight() -> bool:
 
 def main():
     parser = argparse.ArgumentParser(description='SO(3) study runner')
-    parser.add_argument('--part', type=int, choices=(1, 2), default=None,
-                        help='Run only part 1 or 2')
+    parser.add_argument('--part', type=int, choices=(1, 2, 3, 4), default=None,
+                        help='Run only part 1, 2, 3 or 4')
     args = parser.parse_args()
 
     if not _preflight():
@@ -51,6 +51,8 @@ def main():
     from hqvm_SO_analysis_common import RESULTS_PATH, ReportState, Tee
     from hqvm_SO_analysis_1 import run_part1
     from hqvm_SO_analysis_2 import run_part2
+    from hqvm_SO_analysis_3 import run_part3
+    from hqvm_SO_analysis_4 import run_part4
 
     buf = io.StringIO()
     old = sys.stdout
@@ -72,6 +74,14 @@ def main():
             t0 = time.perf_counter()
             run_part2(state)
             print(f'\n[part 2 finished in {time.perf_counter()-t0:.1f}s]', flush=True)
+        if args.part in (3, None):
+            t0 = time.perf_counter()
+            run_part3(state)
+            print(f'\n[part 3 finished in {time.perf_counter()-t0:.1f}s]', flush=True)
+        if args.part in (4, None):
+            t0 = time.perf_counter()
+            run_part4(state)
+            print(f'\n[part 4 finished in {time.perf_counter()-t0:.1f}s]', flush=True)
     finally:
         sys.stdout = old
 
