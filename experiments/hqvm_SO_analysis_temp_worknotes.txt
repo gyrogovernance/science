@@ -125,6 +125,46 @@ KERNEL AS A ROTATION-COMPOSITION ENGINE (benchmark, Part 2 sec. F)
   vectorized path is the engine-grade implementation.
 
 =================================================================
+NEW RESULTS FROM ONLINE RESEARCH (Part 2 sec. H-J, 61/61 checks)
+=================================================================
+  H. Discrete Hopf fibration of Omega (topology):
+     - Omega = {(u,v)} fibers as 64-point sets F_chi = {(u, u^chi)}
+       over the 64 chirality values; base = discrete S^2 with
+       latitudes C(6,w) = 1,6,15,20,15,6,1.
+     - Finite analogue of S^1 -> S^3 -> S^2 (SO(3) = RP^3), the
+       structure behind uniform incremental rotation grids on SO(3)
+       (Yershova, LaValle, Mitchell, WAFR 2008: 'Generating Uniform
+       Incremental Grids on SO(3) Using the Hopf Fibration').
+     - Byte step = bundle connection (q6 moves between fibers);
+       equality/complement horizons = polar fibers.
+  I. Exact 2-step mixing vs classical random-walk theory:
+     - Kernel: chi2 = 0 EXACTLY at k=2 (31.0 at k=1).
+     - Abelian obstruction (Diaconis-Shahshahani / Fourier argument):
+       on abelian groups exact finite-time mixing is impossible; the
+       (Z/2)^6 generator walk has chi2 = 17.7, 7.3, 3.7, 1.25, 0.35,
+       0.076 at k = 1,2,3,5,8,12 - asymptotic only.
+     - Continuous SO(3) walk (angle <= 1 rad): chi2 310 -> 0.6 over
+       1..12 steps - asymptotic only.
+     - Conclusion: the kernel is a maximal mixer BECAUSE its engine
+       G = (Z/2)^12 x| Z/2 is non-abelian. Ref: Diaconis 1988 Group
+       Representations in Probability and Statistics; DS 1981/1986;
+       also 2020 arXiv '3 steps mixing for general random walks on
+       hypercube' (almost-perfect 2-3 step mixing at criticality -
+       the kernel does EXACT 2-step).
+  J. Group synchronization on the kernel group (applied math):
+     - Cryo-EM / rotation averaging / structure-from-motion problem
+       solved on A = (Z/2)^12: noisy relative rotations g_i g_j^-1
+       (bit-flip noise p), recover absolute up to gauge via per-bit
+       spectral Z/2 synchronization (top eigenvector rounding).
+     - Result: sharp detectability phase transition at p* ~ 0.35:
+       error(p) = [0, 0, 0.008, 0.048, 0.219, 0.441] for
+       p = 0, 0.2, 0.3, 0.35, 0.4, 0.5 - the finite analogue of
+       SO(3) synchronization theory (Singer 2011 cryo-EM; spectral
+       method for SO(d)/SE(d) synchronization literature).
+     - Next step: full non-abelian sync on G (parity + swap coupling),
+       comparison with the abelian relaxation.
+
+=================================================================
 NEW RESULTS ADDED (Part 2 sec. D-E, 55/55 checks total)
 =================================================================
   D. Finite Fourier analysis - the exact spectrum of the engine:

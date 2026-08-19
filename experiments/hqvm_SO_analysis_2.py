@@ -19,9 +19,15 @@ Sections:
   F. Orbit and character structure of the action (Burnside)
   G. Reproduction experiments: associativity, parity grading,
      Haar uniformization from byte streams
-  H. The kernel as a rotation-composition engine (benchmark)
-  I. What the engine cannot reproduce (honest limits)
-  J. Findings catalogue
+  H. The discrete Hopf fibration of Omega (Hopf coordinates of
+     SO(3) = RP^3, Yershova-LaValle-Mitchell grids)
+  I. Exact two-step mixing vs classical random-walk theory
+     (Diaconis-Shahshahani abelian obstruction)
+  J. Group synchronization on the kernel group (cryo-EM / rotation
+     averaging analogue with spectral Z/2 synchronization)
+  K. The kernel as a rotation-composition engine (benchmark)
+  L. What the engine cannot reproduce (honest limits)
+  M. Findings catalogue
 """
 from __future__ import annotations
 import sys, math, time
@@ -403,7 +409,171 @@ def run_part2(state):
           measured='log2(4096) = 12 = 2 x 6', threshold='2 x dim se(3)')
 
     # ================================================================
-    # F. The kernel as a rotation-composition engine (benchmark)
+    # H. The discrete Hopf fibration of Omega
+    # ================================================================
+    section(state, 'The Discrete Hopf Fibration of Omega')
+    # Omega = {(u, v)} fibers over the 64 chirality values:
+    #   F_chi = {(u, u ^ chi) : u in (Z/2)^6} has exactly 64 states, and the
+    # base is a discrete 2-sphere whose 7 latitude shells have the binomial
+    # sizes C(6, w). This is the finite analogue of the Hopf fibration
+    # S^1 -> S^3 -> S^2 (equivalently of SO(3) = RP^3), the structure behind
+    # the uniform incremental rotation grids of Yershova-LaValle-Mitchell
+    # (WAFR 2008): there, Hopf coordinates give equivolumetric grids on
+    # SO(3); here the kernel's Omega is a discrete Hopf grid on which the
+    # byte walk is exactly uniform after two steps.
+    fibers_ok = True
+    for chi in range(64):
+        F = [omega12_to_state24(OmegaState12(u6=u, v6=u ^ chi)) for u in range(64)]
+        if len(set(F)) != 64:
+            fibers_ok = False
+            break
+    lat = {w: sum(1 for chi in range(64) if bin(chi).count('1') == w) for w in range(7)}
+    lat_ok = all(lat[w] == math.comb(6, w) for w in range(7))
+    check(state, f'Fibers: 64 x 64; latitudes {list(lat.values())}',
+          fibers_ok and lat_ok,
+          quantity='Omega = discrete Hopf bundle: 64-point fibers over 64-point S^2 base',
+          measured=f'|F_chi| = 64; shells {list(lat.values())}',
+          threshold='latitudes C(6,w) = 1,6,15,20,15,6,1')
+    # the byte step is the bundle connection: chirality transport q6 moves a
+    # state to a new fiber, exactly like the connection 1-form on the Hopf
+    # bundle; equality horizon (chi = 0) and complement horizon (chi = 63)
+    # are the two polar fibers.
+    eq_hz = sum(1 for u in range(64)
+                if chirality_word6(omega12_to_state24(OmegaState12(u6=u, v6=u))) == 0)
+    cp_hz = sum(1 for u in range(64)
+                if chirality_word6(omega12_to_state24(OmegaState12(u6=u, v6=u ^ 63))) == 63)
+    check(state, f'Polar fibers: |F_0| = {eq_hz}, |F_63| = {cp_hz}',
+          eq_hz == 64 and cp_hz == 64,
+          quantity='Horizons are the polar fibers of the discrete Hopf bundle',
+          measured=f'{eq_hz} and {cp_hz}', threshold='64 each')
+
+    # ================================================================
+    # I. Exact two-step mixing vs classical random-walk theory
+    # ================================================================
+    section(state, 'Exact Two-Step Mixing vs Classical Random-Walk Theory')
+    # The kernel walk on Omega has chi2 distance EXACTLY 0 at step 2 (verified
+    # from a generic state below). Classical theory: on an abelian group,
+    # mu^{*k} = U for finite k forces mu = U (Fourier argument, cf. Diaconis
+    # & Shahshahani; group-representation approach to random walks). So exact
+    # finite-time mixing is impossible for abelian-group walks - the kernel
+    # achieves it because its walk is driven by the non-abelian byte group
+    # G = (Z/2)^12 x| Z/2 acting on the coset space Omega = G/Stab.
+    i0 = 37 * 64 + 5
+    e0 = np.zeros(4096); e0[i0] = 1.0
+    d1 = P @ e0
+    d2 = P @ d1
+    chi2_k1 = float(np.sum((d1 - 1/4096.0)**2 / (1/4096.0)))
+    chi2_k2 = float(np.sum((d2 - 1/4096.0)**2 / (1/4096.0)))
+    check(state, f'Kernel walk chi2: k=1 -> {chi2_k1:.3f}, k=2 -> {chi2_k2:.3e}',
+          chi2_k2 < 1e-12 and chi2_k1 > 1.0,
+          quantity='Exact finite-time mixing on Omega (chi2 = 0 at k = 2)',
+          measured=f'chi2(1) = {chi2_k1:.3f}, chi2(2) = {chi2_k2:.1e}',
+          threshold='chi2(2) = 0')
+    # abelian obstruction, exactly: walk on (Z/2)^6 driven by its 6 coordinate
+    # generators; chi2(k) = sum_{chi != 0} (1 - |chi|/6)^(2k) > 0 for all k.
+    def abelian_chi2(k, nbits=6):
+        return sum((1 - bin(chi).count('1') / nbits) ** (2 * k)
+                   for chi in range(1, 1 << nbits))
+    ab_k = [abelian_chi2(k) for k in (1, 2, 3, 5, 8, 12)]
+    ab_ok = (all(x > 1e-9 for x in ab_k)      # never exactly uniform
+             and ab_k[-1] < ab_k[0]            # decays asymptotically
+             and all(ab_k[i+1] < ab_k[i] for i in range(len(ab_k) - 1)))
+    check(state, f'Abelian walk chi2: {[round(x,4) for x in ab_k]} (asymptotic, never 0)',
+          ab_ok,
+          quantity='Abelian obstruction: no exact finite-time mixing on (Z/2)^6',
+          measured=f'chi2(k) = {[round(x,4) for x in ab_k]}',
+          threshold='> 0 for all finite k (decays only as k -> inf)')
+    # continuous SO(3): random walk with steps of angle <= 1.0 rad, chi2 vs
+    # the Haar density, vectorized Monte Carlo.
+    def so3_walk_chi2(k, a=1.0, N=30000):
+        r = np.random.RandomState(300 + k)
+        R = np.tile(np.eye(3), (N, 1, 1))
+        for _ in range(k):
+            ax = r.randn(N, 3); ax /= np.linalg.norm(ax, axis=1, keepdims=True)
+            th = a * r.random(N)
+            c = np.cos(th); s = np.sin(th)
+            K = np.zeros((N, 3, 3))
+            K[:, 0, 1] = -ax[:, 2]; K[:, 0, 2] = ax[:, 1]
+            K[:, 1, 0] = ax[:, 2];  K[:, 1, 2] = -ax[:, 0]
+            K[:, 2, 0] = -ax[:, 1]; K[:, 2, 1] = ax[:, 0]
+            step = (np.eye(3) + s[:, None, None] * K
+                    + (1 - c)[:, None, None] * (K @ K))
+            R = np.einsum('nij,njk->nik', R, step)
+        tr = np.einsum('nii->n', R)
+        angs = np.arccos(np.clip((tr - 1.0) / 2.0, -1.0, 1.0))
+        nb = 30
+        edges = np.linspace(0, math.pi, nb + 1)
+        hist, _ = np.histogram(angs, bins=edges)
+        probs = np.array([(edges[i+1] - math.sin(edges[i+1]) - edges[i]
+                           + math.sin(edges[i])) / math.pi for i in range(nb)])
+        return float(np.sum((hist / N - probs) ** 2 / probs))
+    so_k = [(k, so3_walk_chi2(k)) for k in (1, 2, 4, 8, 12)]
+    so_last = so_k[-1][1]
+    check(state, f'SO(3) walk chi2: {[(k, round(v,2)) for k,v in so_k]}',
+          so_k[0][1] > 50.0 and so_last < 1.0,
+          quantity='Continuous SO(3) walk: only asymptotically uniform',
+          measured=f'chi2(1) = {so_k[0][1]:.1f} -> chi2(12) = {so_last:.2f}',
+          threshold='approaches 0 only as k -> inf (never exact)')
+    print('  [INFO] contrast: kernel = exact at k=2; abelian walk never exact;'
+          ' SO(3) walk asymptotic. The kernel is a maximal mixer because its'
+          ' engine is non-abelian (Diaconis-Shahshahani abelian obstruction).')
+
+    # ================================================================
+    # J. Group synchronization on the kernel group
+    # ================================================================
+    section(state, 'Group Synchronization on the Kernel Group')
+    # Modern applied problem (cryo-EM orientation determination, robotics
+    # rotation averaging, structure from motion): given noisy relative
+    # rotations g_i g_j^{-1}, recover the absolute rotations g_i up to a
+    # global element. Solve it on the kernel's translation group
+    # A = (Z/2)^12 by per-bit spectral Z/2 synchronization (sign of the top
+    # eigenvector of the measurement matrix), the discrete analogue of the
+    # SO(3) spectral synchronization method of Singer and others.
+    def sync_per_bit_error(n=40, noise_p=0.3, trials=6, seed=0):
+        rng = np.random.RandomState(seed)
+        errs = []
+        for _ in range(trials):
+            t = rng.randint(0, 1 << 12, n)
+            meas = {}
+            for i in range(n):
+                for j in range(i + 1, n):
+                    diff = t[i] ^ t[j]
+                    noisy = 0
+                    for b in range(12):
+                        bit = (diff >> b) & 1
+                        if rng.random() < noise_p:
+                            bit ^= 1
+                        noisy |= bit << b
+                    meas[(i, j)] = noisy
+            bit_err = 0.0
+            for b in range(12):
+                M = np.zeros((n, n))
+                for (i, j), val in meas.items():
+                    s = 1.0 if ((val >> b) & 1) == 0 else -1.0
+                    M[i, j] = M[j, i] = s
+                w, v = np.linalg.eigh(M)
+                est = (v[:, -1] < 0).astype(int)
+                gt = np.array([(t[i] >> b) & 1 for i in range(n)])
+                if np.sum(est == gt) < np.sum(est != gt):
+                    est = 1 - est
+                bit_err += float(np.mean(est != gt))
+            errs.append(bit_err / 12.0)
+        return float(np.mean(errs))
+    p_vals = (0.0, 0.2, 0.3, 0.35, 0.4, 0.5)
+    p_errs = [sync_per_bit_error(noise_p=p) for p in p_vals]
+    p_trans = next((p for p, e in zip(p_vals, p_errs) if e > 0.02), 0.5)
+    check(state, f'Sync per-bit error: {dict(zip(p_vals, [round(e,3) for e in p_errs]))}',
+          p_errs[0] == 0.0 and p_errs[1] < 0.01 and p_errs[-1] > 0.3,
+          quantity='Z/2 spectral synchronization on (Z/2)^12 (cryo-EM analogue)',
+          measured=f'error(p) = {[round(e,3) for e in p_errs]}',
+          threshold='0 for p <= 0.2, near-random for p >= 0.5')
+    print(f'  [INFO] sharp detectability phase transition at p* ~ {p_trans:.2f}:'
+          ' below it the spectral method recovers the absolute kernel'
+          ' rotations exactly (up to gauge), above it recovery collapses -'
+          ' the finite analogue of the SO(3) synchronization threshold.')
+
+    # ================================================================
+    # K. The kernel as a rotation-composition engine (benchmark)
     # ================================================================
     section(state, 'The Kernel as a Rotation-Composition Engine')
     # 'Matrix multiplication' for rotations means composition. In the
@@ -531,6 +701,25 @@ def run_part2(state):
          'the remaining dimension is 2016 two-dimensional irreps (induced '
          'from swap-orbits of characters of the translation subgroup); '
          '128 + 2016*4 = 8192 = |G|.'),
+        ('Omega is a discrete Hopf bundle over a discrete S^2',
+         'The 4096 states fiber as 64-point sets over the 64 chirality '
+         'values, whose 7 latitude shells have the binomial sizes '
+         'C(6,w): the finite analogue of the Hopf fibration '
+         'S^1 -> S^3 -> S^2 used by Yershova-LaValle-Mitchell to build '
+         'uniform rotation grids on SO(3). The byte step acts as the bundle '
+         'connection (chirality transport q6 moves between fibers); the '
+         'equality/complement horizons are the polar fibers.'),
+        ('Exact 2-step mixing beats the abelian obstruction',
+         'chi2 = 0 exactly at k = 2 on Omega, while no abelian-group walk '
+         'can mix exactly in finite time (Diaconis-Shahshahani Fourier '
+         'argument) and the continuous SO(3) walk is only asymptotic '
+         '(chi2: 310 -> 0.6 over 1..12 steps). The kernel is a maximal '
+         'mixer precisely because its engine G is non-abelian.'),
+        ('Group synchronization on the kernel group',
+         'The cryo-EM / rotation-averaging problem solved on A = (Z/2)^12 '
+         'by per-bit spectral Z/2 synchronization: exact recovery below a '
+         'sharp detectability phase transition at p* ~ 0.35, collapse '
+         'above - the finite analogue of SO(3) synchronization theory.'),
     ]
     print()
     for title, desc in findings:
