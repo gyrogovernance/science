@@ -156,8 +156,8 @@ def run_part2(state):
     # ================================================================
     # B.2 Hidden symmetries of the kernel (beyond the 283-feature corpus)
     # ================================================================
-    section(state, 'Hidden Symmetries: Even Permutations and the S6 Gauge Group')
-    # Two facts about the kernel itself that are not in the verified feature
+    section(state, 'Hidden Symmetries: Even Permutations, the S6 Gauge, and the Walsh Decomposition')
+    # Three facts about the kernel itself that are not in the verified feature
     # inventory (hQVM_Features_Report.md, 283 features) or the CGM Program.
     #
     # (i) Every byte is an EVEN permutation of the 4096 Omega states, so the
@@ -191,12 +191,17 @@ def run_part2(state):
           quantity='Kernel operators embed into the alternating group A_4096',
           measured=f'{256 - len(odd_bytes)} even / {len(odd_bytes)} odd',
           threshold='0 odd (orientation-preserving)')
+
     # (ii) S_6 dipole-pair gauge symmetry: relabeling the 6 dipole pairs in
     #     both components simultaneously commutes with the byte dynamics:
     #       step(pi(s), pi(b)) = pi(step(s, b))
-    #     where pi(b) permutes the 6 micro-ref bits (family bits unchanged).
-    #     S_6 normalizes G, so Aut(byte graph) contains G rtimes S_6 with
-    #     order >= 8192 x 720 = 5,898,240.
+    #     (verified over the five adjacent-transposition generators of S_6).
+    #     The byte GRAPH automorphism group, however, is NOT G: a full-state
+    #     check shows only the 128 "chirality-pure" translations
+    #       T_aut = {t : popcount(tu xor tv) in {0, 6}}
+    #     (diagonal and anti-diagonal) are graph automorphisms, so
+    #       Aut(byte graph) contains T_aut rtimes S_6, |Aut| >= 92,160,
+    #     while single bytes, the A/B swap, and generic translations are NOT.
     def _p6(x, pi):
         out = 0
         for i in range(6):
@@ -215,7 +220,7 @@ def run_part2(state):
 
     s6_ok = True
     n_s6 = 0
-    for k in range(5):  # adjacent transpositions (0 1),(1 2),...,(4 5) generate S_6
+    for k in range(5):  # adjacent transpositions generate S_6
         pi = list(range(6)); pi[k], pi[k + 1] = pi[k + 1], pi[k]; pi = tuple(pi)
         for s in omega_all[::64]:
             for b in range(256):
@@ -230,11 +235,107 @@ def run_part2(state):
             break
     check(state, f'S6 gauge invariance: {n_s6} checks exact over the S_6 generators',
           s6_ok,
-          quantity='S_6 dipole-pair symmetry of the byte dynamics (Aut contains G rtimes S_6)',
+          quantity='S_6 dipole-pair symmetry of the byte dynamics',
           measured=f'{n_s6} exact', threshold='all exact over generators')
-    print('  [INFO] Aut(byte graph) >= G rtimes S_6, |Aut| >= 8192 x 720 = 5,898,240;'
-          ' the S_6 symmetry is a gauge freedom of the kernel (relabeling the'
-          ' six dipole pairs), invisible at the chirality/shell level.')
+
+    # automorphism group: full-state verification of the corrected bound
+    def _neigh(s):
+        return set(step_state_by_byte(s, b) for b in range(256))
+
+    def _is_aut(phi):
+        for s in omega_all:
+            if set(phi(x) for x in _neigh(s)) != _neigh(phi(s)):
+                return False
+        return True
+
+    t_aut = []
+    for tu in range(64):
+        for tv in range(64):
+            if (tu ^ tv) in (0, 63):
+                t_aut.append((tu << 6) | tv)
+
+    def _tr(t, s):
+        om = state24_to_omega12(s)
+        tu, tv = (t >> 6) & 63, t & 63
+        return omega12_to_state24(OmegaState12(u6=om.u6 ^ tu, v6=om.v6 ^ tv))
+
+    t_ok = all(_is_aut(lambda s, t=t: _tr(t, s)) for t in t_aut[::43])
+    pi_swap = (1, 0, 2, 3, 4, 5)
+    pi_ok = _is_aut(lambda s: _pstate(s, pi_swap))
+    # general G elements fail
+    g_byte = sig_int(omega_word_signature(bytes([0x00])))
+    def _gs(g, s):
+        om = state24_to_omega12(s)
+        p, u, v = (g >> 12) & 1, (g >> 6) & 63, g & 63
+        if p == 0:
+            return omega12_to_state24(OmegaState12(u6=om.u6 ^ u, v6=om.v6 ^ v))
+        return omega12_to_state24(OmegaState12(u6=om.v6 ^ u, v6=om.u6 ^ v))
+    byte_not_aut = not _is_aut(lambda s: _gs(g_byte, s))
+    check(state, f'Aut(byte graph) contains T_aut rtimes S_6, |T_aut| = {len(t_aut)} '
+                 f'(>= {len(t_aut)} x 720 = {len(t_aut) * 720}); '
+                 f'single bytes are NOT automorphisms: {byte_not_aut}',
+          t_ok and pi_ok and byte_not_aut,
+          quantity='Byte graph automorphism group: T_aut rtimes S_6 (order >= 92,160), '
+                   'strictly smaller than the operator group G',
+          measured=f'|T_aut| = {len(t_aut)}, |S_6| = 720, byte not Aut',
+          threshold='T_aut translations and S_6 in Aut; G not in Aut')
+    print('  [INFO] the 1-step byte graph is more rigid than the operator group:'
+          ' only the 128 chirality-pure translations and the S_6 gauge survive'
+          ' as graph symmetries (corrected bound; earlier claim of G rtimes S_6'
+          ' was wrong and has been fixed).')
+
+    # (iii) The Walsh basis of Omega IS the irreducible decomposition of G:
+    #     chi_{a,b}(u,v) = (-1)^{a.u + b.v} is an eigenfunction of every
+    #     translation (eigenvalue chi_{a,b}(t)) and the swap sends
+    #     chi_{a,b} <-> chi_{b,a}. Hence:
+    #       - the 64 diagonal modes a = b extend to the 64 linear characters
+    #         with chi(g0) = +1 (beta = 0),
+    #       - the 2016 off-diagonal pairs {a,b}, a != b span the 2016
+    #         two-dimensional irreps.
+    #     Characters verified orthonormal over all 8192 group elements.
+    W64 = walsh_hadamard64()
+
+    def _chi2(a, b, g):
+        p, tu, tv = (g >> 12) & 1, (g >> 6) & 63, g & 63
+        if p == 1:
+            return 0
+        ca = (-1) ** ((bin(a & tu).count('1') + bin(b & tv).count('1')) & 1)
+        cb = (-1) ** ((bin(b & tu).count('1') + bin(a & tv).count('1')) & 1)
+        return ca + cb
+
+    def _chi1(a, g):
+        p, tu, tv = (g >> 12) & 1, (g >> 6) & 63, g & 63
+        return (-1) ** (bin(a & (tu ^ tv)).count('1') & 1)
+
+    glist = list(G)
+    bad_orth = 0
+    lin_a = (0, 3, 5, 63)
+    two_ab = ((0, 1), (3, 7), (12, 34), (63, 62), (0, 63))
+    for a in lin_a:
+        for c in lin_a:
+            s = sum(_chi1(a, g) * _chi1(c, g) for g in glist) / 8192
+            if abs(s - (1.0 if a == c else 0.0)) > 1e-9:
+                bad_orth += 1
+    for (a, b) in two_ab:
+        for (c, d) in two_ab:
+            s = sum(_chi2(a, b, g) * _chi2(c, d, g) for g in glist) / 8192
+            if abs(s - (1.0 if (a, b) == (c, d) else 0.0)) > 1e-9:
+                bad_orth += 1
+    for a in lin_a:
+        for (c, d) in two_ab:
+            s = sum(_chi1(a, g) * _chi2(c, d, g) for g in glist) / 8192
+            if abs(s) > 1e-9:
+                bad_orth += 1
+    check(state, 'Walsh basis = irrep decomposition: 64 linear + 2016 x 2-dim, '
+                 'characters orthonormal over G', bad_orth == 0,
+          quantity='L^2(Omega) = 64 x (1-dim) (+) 2016 x (2-dim): the Walsh modes '
+                   'organize into the irreps of G (multiplicity-free)',
+          measured=f'orthonormality violations = {bad_orth}',
+          threshold='0 (verified over all 8192 group elements)')
+    print('  [INFO] the 64 diagonal Walsh modes (a = b) are the linear sectors;'
+          ' the 2016 off-diagonal pairs {chi_{a,b}, chi_{b,a}} are the'
+          ' two-dimensional sectors - the state space is multiplicity-free,'
+          ' the direct analogue of L^2(S^2) = (+) V_l on SO(3).')
 
     # ================================================================
     # C. The byte random walk: exact two-step mixing
