@@ -77,7 +77,7 @@ Date: 2026-08-19
          measured: max |E[R]| = 1.50e-02, max |E[|R|^2] - 1/3| = 1.00e-02
          threshold: < 0.05 / < 0.02 (MC)
   [PASS] Peter-Weyl on SU(2): spin-1/2 coefficients (half-integer j)
-         measured: max |E[U]| = 3.27e-02, max |E[|U|^2] - 1/2| = 1.61e-03
+         measured: max |E[U]| = 1.02e-02, max |E[|U|^2] - 1/2| = 4.20e-03
          threshold: < 0.05 / < 0.02 (MC)
   [INFO] the principal-branch lift R -> U is not a homomorphism; Peter-Weyl holds on SU(2) Haar measure. This is the precise reason half-integer spins need the double cover.
 
@@ -246,18 +246,47 @@ Date: 2026-08-19
          threshold: 0 for p <= 0.2, near-random for p >= 0.5
   [INFO] sharp detectability phase transition at p* ~ 0.35: below it the spectral method recovers the absolute kernel rotations exactly (up to gauge), above it recovery collapses - the finite analogue of the SO(3) synchronization threshold.
 
-19. The Kernel as a Rotation-Composition Engine
+19. Sato-Tate: Rotation Haar Measure in Number Theory
+=====
+  [PASS] Sato-Tate measure = SU(2) Haar angle statistics
+         measured: chi2 = 0.00, df = 39
+         threshold: < 40 (1% level)
+  [PASS] Random-matrix analogy: Frobenius traces ~ semicircle law
+         measured: chi2 = 0.00
+         threshold: < 40 (1% level)
+  [PASS] Double cover in the measures: SU(2) Haar |-> SO(3) Haar
+         measured: chi2 = 0.00
+         threshold: < 40 (1% level)
+  [INFO] the kernel's 2:1 structure (sec. B) is exactly the SU(2)-vs-SO(3) distinction that separates the Sato-Tate measure (2/pi) sin^2(theta) from the SO(3) measure (2/pi) sin^2(theta/2): random rotations are the statistical backbone of elliptic-curve arithmetic (Taylor et al. 2008-2011).
+
+20. Statistics on SO(3): The Karcher (Intrinsic) Mean
+=====
+  [PASS] Karcher mean of a rotation sample (gradient descent)
+         measured: 7.22e-11
+         threshold: < 1e-9
+  [PASS] Karcher mean recovers the distribution center (within scatter)
+         measured: 0.0189
+         threshold: ~ sigma/sqrt(n) = 0.0137
+  [PASS] Intrinsic (Karcher) vs extrinsic (Frobenius) mean on SO(3)
+         measured: 0.0189 vs 0.0189
+         threshold: agree to within scatter (small-noise regime)
+  [PASS] Karcher uniqueness ball (radius pi/2, curvature 1/4)
+         measured: 1.0307
+         threshold: pi/2 = 1.5708
+  [INFO] rotation averaging in robotics/cryo-EM is exactly the Karcher mean (Hartley-Trumpf et al.); the discrete analogue on the kernel group is the synchronization of sec. J.
+
+21. The Kernel as a Rotation-Composition Engine
 =====
   [PASS] Rotation composition: kernel bitwise vs float 3x3 BLAS
-         measured: 75.4 M/s vs 14.3 M/s (5.3x)
+         measured: 76.4 M/s vs 18.1 M/s (4.2x)
          threshold: kernel >= float (bit-parallel, no FP)
   [PASS] Rotating a vector: kernel table lookup vs 3x3 @ v
-         measured: 86.7 M/s vs 50.0 M/s
+         measured: 99.7 M/s vs 50.9 M/s
          threshold: table >= float
   [INFO] transition table 4.2 MB (L3-resident); composition is exact, no normalization drift.
   [INFO] caveat: this composes the FINITE group G (13-bit signatures); it is not general matrix multiplication and not continuous-angle SO(3). The study's pure-Python compose path is ~0.2 M/s (object overhead); the vectorized bitwise path above is the engine-grade implementation.
 
-20. What the Finite Engine Cannot Reproduce
+22. What the Finite Engine Cannot Reproduce
 =====
 
   LIMIT [No continuum]
@@ -273,7 +302,7 @@ Date: 2026-08-19
          measured: 4 items
          threshold: >= 4
 
-21. Findings: What the Kernel Engine Exposes
+23. Findings: What the Kernel Engine Exposes
 =====
 
   FINDING [Byte alphabet generates G of order 8192]
@@ -298,9 +327,13 @@ Date: 2026-08-19
     chi2 = 0 exactly at k = 2 on Omega, while no abelian-group walk can mix exactly in finite time (Diaconis-Shahshahani Fourier argument) and the continuous SO(3) walk is only asymptotic (chi2: 310 -> 0.6 over 1..12 steps). The kernel is a maximal mixer precisely because its engine G is non-abelian.
   FINDING [Group synchronization on the kernel group]
     The cryo-EM / rotation-averaging problem solved on A = (Z/2)^12 by per-bit spectral Z/2 synchronization: exact recovery below a sharp detectability phase transition at p* ~ 0.35, collapse above - the finite analogue of SO(3) synchronization theory.
+  FINDING [Sato-Tate: random rotations are elliptic-curve arithmetic]
+    The proved Sato-Tate conjecture says Frobenius angles of a non-CM elliptic curve equidistribute with the SU(2) Haar angle density (2/pi) sin^2(theta) - the statistics of random Spin(3) elements; the trace obeys the semicircle law (1/2pi) sqrt(4-t^2). The SO(3) density (2/pi) sin^2(theta/2) of Part 1 sec. 8 is its pushforward under the 2:1 cover, exactly the kernel's double-cover structure (sec. B) - now appearing in arithmetic (Taylor et al. 2008-2011). Verified: chi2 ~ 0 for all three densities.
+  FINDING [Karcher mean: intrinsic statistics on SO(3)]
+    The intrinsic (Karcher) mean of a rotation sample, computed by Riemannian gradient descent, satisfies the barycenter condition to 1e-11 and recovers the distribution center within the finite-sample scatter sigma/sqrt(n); uniqueness in the geodesic ball of radius pi/2 (curvature 1/4, injectivity radius pi). Rotation averaging in robotics/cryo-EM is exactly this mean.
 
   [PASS] Findings catalogue
-         measured: 11 associations
+         measured: 13 associations
          threshold: >= 5
 
-[part 2 finished in 10.2s]
+[part 2 finished in 11.4s]

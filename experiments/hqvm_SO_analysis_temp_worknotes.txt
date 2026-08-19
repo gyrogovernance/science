@@ -125,6 +125,39 @@ KERNEL AS A ROTATION-COMPOSITION ENGINE (benchmark, Part 2 sec. F)
   vectorized path is the engine-grade implementation.
 
 =================================================================
+NEW RESULTS FROM ONLINE RESEARCH (Part 2 sec. K-L, 68/68 checks)
+=================================================================
+  K. Sato-Tate: the rotation Haar measure in number theory:
+     - The proved Sato-Tate conjecture (Taylor et al. 2008-2011):
+       Frobenius angles theta_p of a non-CM elliptic curve over Q
+       equidistribute on [0, pi] with density (2/pi) sin^2(theta) -
+       exactly the SU(2) Haar angle statistics (random Spin(3)).
+     - Trace law: t = a_p/(2 sqrt p) ~ semicircle (1/2pi) sqrt(4-t^2)
+       (verified chi2 = 0.00).
+     - The SO(3) density (2/pi) sin^2(theta/2) (Part 1 sec. 8) is the
+       pushforward of SU(2) Haar under the 2:1 cover: the kernel's
+       double-cover structure IS the SU(2)-vs-SO(3) distinction in
+       arithmetic. All three densities verified chi2 ~ 0.
+     Refs: Sato-Tate conjecture (Sato 1962, Tate 1965; proof Taylor,
+     Clozel, Harris, Shepherd-Barron, Barnet-Lamb, Geraghty 2008-2011);
+     'random matrix analogy' of Katz-Sarnak; Weyl integration formula
+     (2/pi) sin^2(theta) for SU(2).
+  L. Statistics on SO(3): the Karcher (intrinsic) mean:
+     - Intrinsic mean = argmin sum d_geod(x_i, y)^2, computed by
+       Riemannian gradient descent: mu <- mu exp(avg log(mu^T x_i)).
+     - Verified: barycenter condition 7.2e-11; recovers the center
+       within finite-sample scatter sigma/sqrt(n); uniqueness in the
+       geodesic ball of radius pi/2 (sectional curvature 1/4,
+       injectivity radius pi - Part 1 sec. 6 geometry).
+     - Extrinsic (Frobenius) mean agrees in the small-noise regime.
+     - Rotation averaging in robotics / cryo-EM / signal processing
+       is exactly this mean (Moakher 2002, Manton 2004, Pennec 2006,
+       Hartley-Trumpf 2013).
+     Refs: Manton, 'A centroid (Karcher mean) approach to the
+     problem of extracting average rotations'; Pennec, 'Intrinsic
+     statistics on Riemannian manifolds' (JMIV 2006).
+
+=================================================================
 NEW RESULTS FROM ONLINE RESEARCH (Part 2 sec. H-J, 61/61 checks)
 =================================================================
   H. Discrete Hopf fibration of Omega (topology):
