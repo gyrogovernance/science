@@ -125,6 +125,26 @@ KERNEL AS A ROTATION-COMPOSITION ENGINE (benchmark, Part 2 sec. F)
   vectorized path is the engine-grade implementation.
 
 =================================================================
+NEW RESULTS ADDED (Part 2 sec. D-E, 55/55 checks total)
+=================================================================
+  D. Finite Fourier analysis - the exact spectrum of the engine:
+     - L^2(Omega) has the Walsh-character basis on (Z/2)^12
+       (tensor of the kernel's 64-dim Walsh basis); Parseval holds.
+     - Byte-step selection rule (proved + verified numerically):
+         S(k1,k2) = 128 (1 + (-1)^popcount(k1)) delta_{k2,0}
+       => constant mode survives; 31 even-popcount (k,0) modes hop
+          once to (0,k); all other 4064 modes killed in one step.
+     - Only eigenmode: constant (eigenvalue 1). Maximal mixer:
+       every nontrivial Fourier sector dies in <= 2 steps, vs
+       e^{-j(j+1)t} sector decay under diffusion on SO(3).
+  E. Structure of G completed:
+     - [G,G] = {(d,d) : d in (Z/2)^6}, order 64 (verified)
+     - G/[G,G] has order 128 -> 128 linear characters
+     - 2016 two-dimensional irreps; 128 + 2016*4 = 8192 = |G|
+     - open: explicit character table, full decomposition of the
+       4096-dim permutation module.
+
+=================================================================
 EXPANSION ROADMAP (prioritized: useful and important)
 =================================================================
   TIER 1 - complete the new structure (highest value):
