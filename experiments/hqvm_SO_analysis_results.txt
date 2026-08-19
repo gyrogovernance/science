@@ -77,7 +77,7 @@ Date: 2026-08-19
          measured: max |E[R]| = 1.50e-02, max |E[|R|^2] - 1/3| = 1.00e-02
          threshold: < 0.05 / < 0.02 (MC)
   [PASS] Peter-Weyl on SU(2): spin-1/2 coefficients (half-integer j)
-         measured: max |E[U]| = 1.02e-02, max |E[|U|^2] - 1/2| = 4.20e-03
+         measured: max |E[U]| = 1.25e-02, max |E[|U|^2] - 1/2| = 7.69e-03
          threshold: < 0.05 / < 0.02 (MC)
   [INFO] the principal-branch lift R -> U is not a homomorphism; Peter-Weyl holds on SU(2) Haar measure. This is the precise reason half-integer spins need the double cover.
 
@@ -151,7 +151,17 @@ Date: 2026-08-19
          measured: 200/200
          threshold: all
 
-11. Byte Random Walk: Exact Two-Step Mixing to Uniform
+11. Hidden Symmetries: Even Permutations and the S6 Gauge Group
+=====
+  [PASS] Kernel operators embed into the alternating group A_4096
+         measured: 256 even / 0 odd
+         threshold: 0 odd (orientation-preserving)
+  [PASS] S_6 dipole-pair symmetry of the byte dynamics (Aut contains G rtimes S_6)
+         measured: 81920 exact
+         threshold: all exact over generators
+  [INFO] Aut(byte graph) >= G rtimes S_6, |Aut| >= 8192 x 720 = 5,898,240; the S_6 symmetry is a gauge freedom of the kernel (relabeling the six dipole pairs), invisible at the chirality/shell level.
+
+12. Byte Random Walk: Exact Two-Step Mixing to Uniform
 =====
   [PASS] Exact mixing time = 2 (P^2 = J/4096)
          measured: depth 1: 128 states, depth 2: 4096 states, exact uniform
@@ -166,7 +176,7 @@ Date: 2026-08-19
     L=3: 4096 states, H = 12.000000 bits
   [INFO] 7 bits -> 12 bits in two steps: log2(128) -> log2(4096).
 
-12. Finite Fourier Analysis: The Spectrum of the Kernel Engine
+13. Finite Fourier Analysis: The Spectrum of the Kernel Engine
 =====
   [PASS] Finite Fourier basis of L^2(Omega): Walsh characters on (Z/2)^12
          measured: 1.000000
@@ -177,7 +187,7 @@ Date: 2026-08-19
   [INFO] spectrum of the engine: the only eigenmode is the constant (eigenvalue 1); all 4095 others have eigenvalue 0 - matching P^2 = J/4096. Even-popcount (k,0) modes hop once to (0,k) before dying: the tau_u in {0, 63} byte symmetry selects them.
   [INFO] vs Part 1 Peter-Weyl: on SO(3), diffusion decays sector j as e^{-j(j+1)t}; the kernel kills every nontrivial sector in exactly <= 2 steps (maximal mixer).
 
-13. Structure of G: Abelianization and Irrep Census
+14. Structure of G: Abelianization and Irrep Census
 =====
   [PASS] Commutator subgroup [G,G] = {(d,d)} of order 64
          measured: 2000/2000 commutators diagonal
@@ -190,7 +200,7 @@ Date: 2026-08-19
          threshold: 8192
   [INFO] state space as a G-module: L^2(Omega) is the 4096-dim permutation module; its irreducible content follows from the 2:1 action (Burnside <chi,chi> = 2080, next section).
 
-14. Orbit and Character Structure of the Action
+15. Orbit and Character Structure of the Action
 =====
   [PASS] Burnside: <chi, chi> = 2080 (stabilizer orbits on Omega)
          measured: Fix(g) = 64, orbits = 2080
@@ -202,7 +212,7 @@ Date: 2026-08-19
          measured: S:64 C:64 F:0
          threshold: 64/64/0
 
-15. Reproduction: SO(3) Results Recovered from the Kernel
+16. Reproduction: SO(3) Results Recovered from the Kernel
 =====
   [PASS] Reproduce group-law associativity in the finite engine
          measured: 1000/1000
@@ -217,7 +227,7 @@ Date: 2026-08-19
          measured: log2(4096) = 12 = 2 x 6
          threshold: 2 x dim se(3)
 
-16. The Discrete Hopf Fibration of Omega
+17. The Discrete Hopf Fibration of Omega
 =====
   [PASS] Omega = discrete Hopf bundle: 64-point fibers over 64-point S^2 base
          measured: |F_chi| = 64; shells [1, 6, 15, 20, 15, 6, 1]
@@ -226,7 +236,7 @@ Date: 2026-08-19
          measured: 64 and 64
          threshold: 64 each
 
-17. Exact Two-Step Mixing vs Classical Random-Walk Theory
+18. Exact Two-Step Mixing vs Classical Random-Walk Theory
 =====
   [PASS] Exact finite-time mixing on Omega (chi2 = 0 at k = 2)
          measured: chi2(1) = 31.000, chi2(2) = 0.0e+00
@@ -239,14 +249,14 @@ Date: 2026-08-19
          threshold: approaches 0 only as k -> inf (never exact)
   [INFO] contrast: kernel = exact at k=2; abelian walk never exact; SO(3) walk asymptotic. The kernel is a maximal mixer because its engine is non-abelian (Diaconis-Shahshahani abelian obstruction).
 
-18. Group Synchronization on the Kernel Group
+19. Group Synchronization on the Kernel Group
 =====
   [PASS] Z/2 spectral synchronization on (Z/2)^12 (cryo-EM analogue)
          measured: error(p) = [0.0, 0.0, 0.008, 0.048, 0.219, 0.441]
          threshold: 0 for p <= 0.2, near-random for p >= 0.5
   [INFO] sharp detectability phase transition at p* ~ 0.35: below it the spectral method recovers the absolute kernel rotations exactly (up to gauge), above it recovery collapses - the finite analogue of the SO(3) synchronization threshold.
 
-19. Sato-Tate: Rotation Haar Measure in Number Theory
+20. Sato-Tate: Rotation Haar Measure in Number Theory
 =====
   [PASS] Sato-Tate measure = SU(2) Haar angle statistics
          measured: chi2 = 0.00, df = 39
@@ -259,7 +269,7 @@ Date: 2026-08-19
          threshold: < 40 (1% level)
   [INFO] the kernel's 2:1 structure (sec. B) is exactly the SU(2)-vs-SO(3) distinction that separates the Sato-Tate measure (2/pi) sin^2(theta) from the SO(3) measure (2/pi) sin^2(theta/2): random rotations are the statistical backbone of elliptic-curve arithmetic (Taylor et al. 2008-2011).
 
-20. Statistics on SO(3): The Karcher (Intrinsic) Mean
+21. Statistics on SO(3): The Karcher (Intrinsic) Mean
 =====
   [PASS] Karcher mean of a rotation sample (gradient descent)
          measured: 7.22e-11
@@ -275,18 +285,18 @@ Date: 2026-08-19
          threshold: pi/2 = 1.5708
   [INFO] rotation averaging in robotics/cryo-EM is exactly the Karcher mean (Hartley-Trumpf et al.); the discrete analogue on the kernel group is the synchronization of sec. J.
 
-21. The Kernel as a Rotation-Composition Engine
+22. The Kernel as a Rotation-Composition Engine
 =====
   [PASS] Rotation composition: kernel bitwise vs float 3x3 BLAS
-         measured: 76.4 M/s vs 18.1 M/s (4.2x)
+         measured: 75.5 M/s vs 17.5 M/s (4.3x)
          threshold: kernel >= float (bit-parallel, no FP)
   [PASS] Rotating a vector: kernel table lookup vs 3x3 @ v
-         measured: 99.7 M/s vs 50.9 M/s
+         measured: 91.1 M/s vs 49.5 M/s
          threshold: table >= float
   [INFO] transition table 4.2 MB (L3-resident); composition is exact, no normalization drift.
   [INFO] caveat: this composes the FINITE group G (13-bit signatures); it is not general matrix multiplication and not continuous-angle SO(3). The study's pure-Python compose path is ~0.2 M/s (object overhead); the vectorized bitwise path above is the engine-grade implementation.
 
-22. What the Finite Engine Cannot Reproduce
+23. What the Finite Engine Cannot Reproduce
 =====
 
   LIMIT [No continuum]
@@ -302,7 +312,7 @@ Date: 2026-08-19
          measured: 4 items
          threshold: >= 4
 
-23. Findings: What the Kernel Engine Exposes
+24. Findings: What the Kernel Engine Exposes
 =====
 
   FINDING [Byte alphabet generates G of order 8192]
@@ -336,4 +346,4 @@ Date: 2026-08-19
          measured: 13 associations
          threshold: >= 5
 
-[part 2 finished in 11.4s]
+[part 2 finished in 13.4s]

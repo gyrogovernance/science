@@ -41,7 +41,7 @@ from hqvm_SO_analysis_common import (
     MASK_STATE24, GENE_MAC_REST, M_A, BU_HOLONOMY_ANGLE, APERTURE_GAP,
     TOL_MATRIX, TOL_BCH,
     OmegaState12, state_charts, future_cone_measure,
-    step_state_by_byte, omega12_to_state24, chirality_word6,
+    step_state_by_byte, state24_to_omega12, omega12_to_state24, chirality_word6,
     q_word6, shadow_partner_byte, shell_population,
     shell_transition_matrix_for_q_weight,
     k4_orbit, k4_stabilizer, fixed_locus,
@@ -152,6 +152,89 @@ def run_part2(state):
     check(state, 'Inverses exist (200 random elements)', inv_ok,
           quantity='Group axioms: inverses in G',
           measured='200/200', threshold='all')
+
+    # ================================================================
+    # B.2 Hidden symmetries of the kernel (beyond the 283-feature corpus)
+    # ================================================================
+    section(state, 'Hidden Symmetries: Even Permutations and the S6 Gauge Group')
+    # Two facts about the kernel itself that are not in the verified feature
+    # inventory (hQVM_Features_Report.md, 283 features) or the CGM Program.
+    #
+    # (i) Every byte is an EVEN permutation of the 4096 Omega states, so the
+    #     8192-element operator group G embeds into the alternating group
+    #     A_4096: the kernel is orientation-preserving on its state space
+    #     (its "proper rotations", never reflections).
+    omega_all = [omega12_to_state24(OmegaState12(u6=u, v6=v))
+                 for u in range(64) for v in range(64)]
+    idx_all = {s: i for i, s in enumerate(omega_all)}
+
+    def _sign(perm):
+        n = len(perm)
+        seen = [False] * n
+        ncyc = 0
+        for i in range(n):
+            if not seen[i]:
+                ncyc += 1
+                j = i
+                while not seen[j]:
+                    seen[j] = True
+                    j = perm[j]
+        return 1 if (n - ncyc) % 2 == 0 else -1
+
+    odd_bytes = []
+    for b in range(256):
+        perm = [idx_all[step_state_by_byte(s, b)] for s in omega_all]
+        if _sign(perm) == -1:
+            odd_bytes.append(b)
+    check(state, f'All {256 - len(odd_bytes)}/256 bytes are EVEN permutations of Omega',
+          len(odd_bytes) == 0,
+          quantity='Kernel operators embed into the alternating group A_4096',
+          measured=f'{256 - len(odd_bytes)} even / {len(odd_bytes)} odd',
+          threshold='0 odd (orientation-preserving)')
+    # (ii) S_6 dipole-pair gauge symmetry: relabeling the 6 dipole pairs in
+    #     both components simultaneously commutes with the byte dynamics:
+    #       step(pi(s), pi(b)) = pi(step(s, b))
+    #     where pi(b) permutes the 6 micro-ref bits (family bits unchanged).
+    #     S_6 normalizes G, so Aut(byte graph) contains G rtimes S_6 with
+    #     order >= 8192 x 720 = 5,898,240.
+    def _p6(x, pi):
+        out = 0
+        for i in range(6):
+            if (x >> pi[i]) & 1:
+                out |= 1 << i
+        return out
+
+    def _pstate(s, pi):
+        om = state24_to_omega12(s)
+        return omega12_to_state24(OmegaState12(u6=_p6(om.u6, pi), v6=_p6(om.v6, pi)))
+
+    def _pbyte(b, pi):
+        intron = b ^ 0xAA
+        mr = (intron >> 1) & 0x3F
+        return ((intron & 0x81) | (_p6(mr, pi) << 1)) ^ 0xAA
+
+    s6_ok = True
+    n_s6 = 0
+    for k in range(5):  # adjacent transpositions (0 1),(1 2),...,(4 5) generate S_6
+        pi = list(range(6)); pi[k], pi[k + 1] = pi[k + 1], pi[k]; pi = tuple(pi)
+        for s in omega_all[::64]:
+            for b in range(256):
+                if _pstate(step_state_by_byte(s, b), pi) != \
+                   step_state_by_byte(_pstate(s, pi), _pbyte(b, pi)):
+                    s6_ok = False
+                    break
+                n_s6 += 1
+            if not s6_ok:
+                break
+        if not s6_ok:
+            break
+    check(state, f'S6 gauge invariance: {n_s6} checks exact over the S_6 generators',
+          s6_ok,
+          quantity='S_6 dipole-pair symmetry of the byte dynamics (Aut contains G rtimes S_6)',
+          measured=f'{n_s6} exact', threshold='all exact over generators')
+    print('  [INFO] Aut(byte graph) >= G rtimes S_6, |Aut| >= 8192 x 720 = 5,898,240;'
+          ' the S_6 symmetry is a gauge freedom of the kernel (relabeling the'
+          ' six dipole pairs), invisible at the chirality/shell level.')
 
     # ================================================================
     # C. The byte random walk: exact two-step mixing
