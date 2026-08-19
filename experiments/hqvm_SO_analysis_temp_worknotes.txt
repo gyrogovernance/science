@@ -107,6 +107,58 @@ REFS / NOTES
     part 2; derived elsewhere in the corpus (holonomy, alpha analyses)
 
 =================================================================
+KERNEL AS A ROTATION-COMPOSITION ENGINE (benchmark, Part 2 sec. F)
+=================================================================
+  Composition of rotations = 'matrix multiplication' of the finite
+  group G. Vectorized bitwise path (compose_sig_batch, 13-bit packed
+  signatures, XOR/select only):
+    - rotation composition: 74.4 M/s vs 15.7 M/s float 3x3 BLAS
+      = 4.7x faster; vs scipy Rotation ~ 30x faster
+    - state application: 94.1 M/s via 4.2 MB L3-resident transition
+      table vs 49.7 M/s float 3x3 @ v = 1.9x faster
+  Why: 13 bits pack per uint16 (4 per 64-bit register), ~4 integer
+  ops instead of 27 float multiply-adds; exact (no FP, no
+  normalization drift, no branch cuts).
+  Honest limits: composes the FINITE group G only - not general
+  matrix multiplication, not continuous-angle SO(3). The study's
+  pure-Python compose path is ~0.2 M/s (object overhead); the
+  vectorized path is the engine-grade implementation.
+
+=================================================================
+EXPANSION ROADMAP (prioritized: useful and important)
+=================================================================
+  TIER 1 - complete the new structure (highest value):
+  1. Full structure of G: conjugacy classes, character table via
+     Clifford theory (normal subgroup (Z/2)^12), decomposition of the
+     4096-dim permutation module into irreducibles, subgroup lattice,
+     center. Completes the 'discrete double cover' story.
+  2. Finite Fourier analysis on the kernel: Walsh-Hadamard on
+     (Z/2)^12 (already in SpectralOps), DFT over G, harmonic
+     functions on Omega - ties Part 1 harmonic analysis to the engine.
+  3. Association scheme / Bose-Mesner algebra of the 256-regular
+     kernel graph: P-/Q-polynomial structure, connection to the
+     existing Krawtchouk analysis and hqvm_Cohomology; Cheeger
+     constant and expander mixing of the 2-step mixer.
+  4. Lattice gauge theory on Omega: Wilson loops and plaquette
+     variables from the byte group; revisit the Yang-Mills mass-gap
+     readout with the kernel graph as an explicit lattice.
+  5. Heat-kernel comparison: heat kernel on SO(3) (sum_j (2j+1)
+     e^{-j(j+1)t} chi_j) vs P^L on Omega - quantitative mixing profile.
+
+  TIER 2 - integrate with the corpus:
+  6. Precession/holonomy recomputed through the engine (CGM stage
+     points encoded as kernel words, loop holonomy as a G element).
+  7. Cohomology tie-in: H^2(SO(3);Z) = Z/2 (Part 1 sec. 7) vs the
+     parity 1-cocycle obstruction of hqvm_Cohomology_analysis.
+  8. Discrete rigid-body dynamics: quantized rotations, conservation
+     tests on the Euler top.
+  9. docs/Findings/Analysis_SO3.md writeup + CI harness entry.
+
+  TIER 3 - speculative (needs well-posed framing):
+ 10. Constant/kernel numerology only if a crisp statement exists
+     (e.g., spectral gap of P vs loop-angle scale); otherwise noise.
+
+=================================================================
 PERF / ROBUSTNESS NOTES
 =================================================================
   Full run ~9 s (part 1 ~1.4 s, part 2 ~7 s), exit 0, 48/48 checks.

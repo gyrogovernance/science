@@ -264,6 +264,41 @@ def compose_sig_int(a, b):
     return sig_int(compose_omega_signatures(sig_from_int(a), sig_from_int(b)))
 
 
+def compose_sig_batch(a, b):
+    """Vectorized composition of packed signatures (uint16 arrays).
+
+    The affine map composition needs only bit-parallel integer ops
+    (XOR/select) - no floating point, no normalization. This is the
+    'matrix multiplication' of the finite rotation group G: it composes
+    rotations in a few integer instructions instead of 27 float
+    multiply-adds, and packs 4 signatures per 64-bit register.
+    """
+    a = np.asarray(a, dtype=np.uint16)
+    b = np.asarray(b, dtype=np.uint16)
+    pa = (a >> 12) & 1; ua = (a >> 6) & 63; va = a & 63
+    pb = (b >> 12) & 1; ub = (b >> 6) & 63; vb = b & 63
+    p = pa ^ pb
+    u = np.where(pa == 0, ua ^ ub, ua ^ vb)
+    v = np.where(pa == 0, va ^ vb, va ^ ub)
+    return (p.astype(np.uint16) << 12) | (u.astype(np.uint16) << 6) | v.astype(np.uint16)
+
+
+def omega_transition_table():
+    """Omega-restricted byte transition table (4096 x 256, uint32).
+
+    Stepping a state by a byte is one table lookup (fits in L3 cache,
+    ~4.2 MB), instead of a per-call bitwise computation.
+    """
+    omega = [omega12_to_state24(OmegaState12(u6=u, v6=v))
+             for u in range(64) for v in range(64)]
+    idx = {s: i for i, s in enumerate(omega)}
+    tbl = np.zeros((4096, 256), dtype=np.uint32)
+    for i, s in enumerate(omega):
+        for b in range(256):
+            tbl[i, b] = idx[step_state_by_byte(s, b)]
+    return tbl
+
+
 def byte_signature_ints():
     """All 256 single-byte packed signatures (128 distinct)."""
     out = set()

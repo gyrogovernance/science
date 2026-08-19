@@ -19,10 +19,11 @@ Sections:
   G. Findings catalogue
 """
 from __future__ import annotations
-import sys, math
+import sys, math, time
 import numpy as np
 from hqvm_SO_analysis_common import (
     _SCIPY_OK, _KERNEL_OK, _GYRO_OK,
+    compose_sig_batch, omega_transition_table,
     MASK_STATE24, GENE_MAC_REST, M_A, BU_HOLONOMY_ANGLE, APERTURE_GAP,
     TOL_MATRIX, TOL_BCH,
     OmegaState12, state_charts, future_cone_measure,
@@ -285,7 +286,68 @@ def run_part2(state):
           measured='log2(4096) = 12 = 2 x 6', threshold='2 x dim se(3)')
 
     # ================================================================
-    # F. Honest limits of the engine
+    # F. The kernel as a rotation-composition engine (benchmark)
+    # ================================================================
+    section(state, 'The Kernel as a Rotation-Composition Engine')
+    # 'Matrix multiplication' for rotations means composition. In the
+    # finite group G this is a few bit-parallel integer ops (XOR/select)
+    # on 13-bit packed signatures - no floating point, no normalization
+    # drift, exact. Compare the vectorized kernel composition against
+    # the standard float paths.
+    N_bench = 200_000
+    rep = 5
+    rng_b = np.random.RandomState(0)
+    a16 = rng_b.randint(0, 2**13, N_bench).astype(np.uint16)
+    b16 = rng_b.randint(0, 2**13, N_bench).astype(np.uint16)
+    t0 = time.perf_counter()
+    for _ in range(rep):
+        c16 = compose_sig_batch(a16, b16)
+    dt_k = (time.perf_counter() - t0) / rep
+    A3 = rng_b.randn(N_bench, 3, 3)
+    B3 = rng_b.randn(N_bench, 3, 3)
+    t0 = time.perf_counter()
+    for _ in range(rep):
+        C3 = A3 @ B3
+    dt_f = (time.perf_counter() - t0) / rep
+    rate_k = N_bench / dt_k / 1e6
+    rate_f = N_bench / dt_f / 1e6
+    speedup = dt_f / dt_k
+    check(state, f'Kernel bitwise {rate_k:.1f} M comp/s vs BLAS {rate_f:.1f} '
+                 f'({speedup:.1f}x faster)',
+          speedup > 1.0,
+          quantity='Rotation composition: kernel bitwise vs float 3x3 BLAS',
+          measured=f'{rate_k:.1f} M/s vs {rate_f:.1f} M/s ({speedup:.1f}x)',
+          threshold='kernel >= float (bit-parallel, no FP)')
+    # state application: kernel table lookup vs 3x3 @ vector
+    tbl = omega_transition_table()
+    st = rng_b.randint(0, 4096, N_bench)
+    by = rng_b.randint(0, 256, N_bench)
+    t0 = time.perf_counter()
+    for _ in range(rep):
+        out_s = tbl[st, by]
+    dt_t = (time.perf_counter() - t0) / rep
+    V = rng_b.randn(N_bench, 3)
+    t0 = time.perf_counter()
+    for _ in range(rep):
+        out_v = np.einsum('nij,nj->ni', A3, V)
+    dt_v = (time.perf_counter() - t0) / rep
+    rate_t = N_bench / dt_t / 1e6
+    rate_v = N_bench / dt_v / 1e6
+    check(state, f'State apply: table {rate_t:.1f} M/s vs float {rate_v:.1f} M/s '
+                 f'({dt_v/dt_t:.1f}x)',
+          dt_v / dt_t > 1.0,
+          quantity='Rotating a vector: kernel table lookup vs 3x3 @ v',
+          measured=f'{rate_t:.1f} M/s vs {rate_v:.1f} M/s',
+          threshold='table >= float')
+    print(f'  [INFO] transition table {tbl.nbytes/1e6:.1f} MB (L3-resident); '
+          f'composition is exact, no normalization drift.')
+    print('  [INFO] caveat: this composes the FINITE group G (13-bit signatures);'
+          ' it is not general matrix multiplication and not continuous-angle SO(3).'
+          ' The study\'s pure-Python compose path is ~0.2 M/s (object overhead);'
+          ' the vectorized bitwise path above is the engine-grade implementation.')
+
+    # ================================================================
+    # G. Honest limits of the engine
     # ================================================================
     section(state, 'What the Finite Engine Cannot Reproduce')
     limits = [
