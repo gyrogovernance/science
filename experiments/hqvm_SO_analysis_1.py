@@ -357,8 +357,8 @@ def run_part1(state):
                     rtol=1e-9, atol=1e-11, max_step=0.05)
     W = sol.y.T
     E = 0.5 * np.einsum('ti,ij,tj->t', W, I, W)
-    L2 = np.einsum('ti,tj->t', W, I @ W.T) if False else np.array([
-        float(np.dot(I @ W[i], I @ W[i])) for i in range(W.shape[0])])
+    IW = W @ I.T                 # row t = I w[t] (body-frame angular momentum)
+    L2 = np.einsum('ti,ti->t', IW, IW)  # |L|^2 = (I w) . (I w)
     E_rel = float(np.abs(E - E[0]).max() / E[0])
     L2_rel = float(np.abs(L2 - L2[0]).max() / L2[0])
     check(state, f'Euler top: energy drift {E_rel:.2e}, |L|^2 drift {L2_rel:.2e}',

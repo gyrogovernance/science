@@ -77,7 +77,7 @@ Date: 2026-08-19
          measured: max |E[R]| = 1.50e-02, max |E[|R|^2] - 1/3| = 1.00e-02
          threshold: < 0.05 / < 0.02 (MC)
   [PASS] Peter-Weyl on SU(2): spin-1/2 coefficients (half-integer j)
-         measured: max |E[U]| = 8.59e-03, max |E[|U|^2] - 1/2| = 4.18e-04
+         measured: max |E[U]| = 1.62e-02, max |E[|U|^2] - 1/2| = 1.74e-03
          threshold: < 0.05 / < 0.02 (MC)
   [INFO] the principal-branch lift R -> U is not a homomorphism; Peter-Weyl holds on SU(2) Haar measure. This is the precise reason half-integer spins need the double cover.
 
@@ -116,7 +116,7 @@ Date: 2026-08-19
          measured: 0.0129
          threshold: ~0
 
-[part 1 finished in 1.4s]
+[part 1 finished in 1.5s]
 
 9. The Word -> Signature Homomorphism
 =====
@@ -295,10 +295,10 @@ Date: 2026-08-19
 22. The Kernel as a Rotation-Composition Engine
 =====
   [PASS] Rotation composition: kernel bitwise vs float 3x3 BLAS
-         measured: 74.7 M/s vs 16.8 M/s (4.4x)
+         measured: 73.0 M/s vs 16.2 M/s (4.5x)
          threshold: kernel >= float (bit-parallel, no FP)
   [PASS] Rotating a vector: kernel table lookup vs 3x3 @ v
-         measured: 85.0 M/s vs 47.1 M/s
+         measured: 103.5 M/s vs 47.5 M/s
          threshold: table >= float
   [INFO] transition table 4.2 MB (L3-resident); composition is exact, no normalization drift.
   [INFO] caveat: this composes the FINITE group G (13-bit signatures); it is not general matrix multiplication and not continuous-angle SO(3). The study's pure-Python compose path is ~0.2 M/s (object overhead); the vectorized bitwise path above is the engine-grade implementation.
@@ -353,4 +353,182 @@ Date: 2026-08-19
          measured: 13 associations
          threshold: >= 5
 
-[part 2 finished in 33.0s]
+[part 2 finished in 33.7s]
+
+25. The Laplacian Spectrum of SO(3) and its Spectral Gap
+=====
+  [PASS] Laplace-Beltrami eigenvalues lambda_j = j(j+1)
+         measured: {0: 0, 1: 2, 2: 6, 3: 12, 4: 20, 5: 30, 6: 42}
+         threshold: lambda_j = j(j+1)
+  [PASS] Spectral gap = lambda_1 = 2, multiplicity 9
+         measured: N(1.99) = 1, N(2.0) = 10
+         threshold: first positive eigenvalue 2, multiplicity (2j+1)^2 = 9
+  [PASS] Weyl counting law: N(lambda) ~ (4/3) lambda^(3/2)
+         measured: ratio N / (4/3) L^1.5 -> 1: [0.9975, 0.9994, 0.9997]
+         threshold: ~ 1.0 (3-dimensional spectral density)
+  [INFO] gap = 2 = the rate at which SO(3) diffusion forgets the identity; the kernel P kills every non-trivial sector in <= 2 steps (eigenvalues {1, 0, ...}) - the exact finite counterpart.
+
+26. The Heat Kernel on SO(3)
+=====
+  [PASS] Heat kernel K_t is a normalized probability density
+         measured: int K_t dg = [0.99998, 0.99998, 0.99999]
+         threshold: ~ 1.0 for all t
+  [PASS] Heat-kernel trace: Z(t) - 1 ~ 9 e^(-2t) (gap dominates)
+         measured: Z(1),Z(2),Z(4) match 1 + 9 e^{-2t}
+         threshold: relative error < 0.05 (spectral gap 2, multiplicity 9)
+  [INFO] the e^{-j(j+1)t} factor is the exact continuous cousin of the kernel two-step kill: on SO(3) sector j decays at rate j(j+1); the kernel annihilates every non-trivial Walsh sector in <= 2 byte steps (Part 2 s.D).
+
+27. Quantitative Mixing Profile: Continuous vs Finite Engine
+=====
+  [PASS] Mixing: continuous asymptotic e^(-2t) vs kernel exact 2-step
+         measured: Z(t)-1 = [1.28029, 0.16499, 0.00302]; ||P^2 e0 - J/4096||^2 = 0.00e+00
+         threshold: continuous > 0 for all finite t; kernel = 0 at k = 2
+  [INFO] duality: the SO(3) Laplacian has spectral gap 2 (return only as t -> inf); the kernel has all non-trivial eigenvalues 0 (exact mixing in 2 steps). The finite engine is the sharpest possible mixer, and this is why its group G must be non-abelian (Diaconis-Shahshahani abelian obstruction, Part 2 s.I).
+
+28. Conjugacy Classes of the Engine G
+=====
+  [PASS] Conjugacy classes of G: 64 central + 2016 pairs + 64 swaps
+         measured: size dist {1: 64, 2: 2016, 64: 64}; classes=2144
+         threshold: {1:64, 2:2016, 64:64}; |G| = 8192
+  [PASS] #classes = 128 linear + 2016 two-dim = 2144 = #irreps
+         measured: 2080 even + 64 odd = 2144
+         threshold: 2144 (equals the irrep count)
+  [PASS] Z(G) = [G,G] = {(d,d)} = (Z/2)^6 (64 central elements)
+         measured: |Z(G)| = 64
+         threshold: 64 = 2^6
+  [INFO] computed in 4.18s via the exact semidirect-product conjugation formula (vectorized, no O(|G|^2) iteration). Note the contrast: SO(3) is centerless (its classes are the 1-parameter family of rotation angles); the engine has a 64-element center that doubles as its commutator subgroup.
+
+29. The Character Table of G via Clifford Theory
+=====
+  [PASS] 128 linear characters of G/[G,G] = (Z/2)^7 (Clifford)
+         measured: 1500/1500 multiplicative
+         threshold: all multiplicative
+  [PASS] Orthonormality of the linear characters (sample)
+         measured: violations = 0
+         threshold: 0
+  [PASS] 2016 two-dimensional irreps (induced from swap-orbits)
+         measured: violations = 0
+         threshold: 0 (dim 2, orthogonal)
+  [PASS] Character table size: 128 + 2016 = #conjugacy classes
+         measured: 128 + 2016 = 2144
+         threshold: 2144
+  [INFO] Part 2 left the explicit character table open; Clifford theory now closes it: the linear characters are the characters of G/[G,G] = (Z/2)^7 and the two-dim irreps vanish on the odd coset - exactly the data needed for the permutation-module decomposition of section 6.
+
+30. The Multiplicity-Free Decomposition of L^2(Omega)
+=====
+  [PASS] Permutation character: chi_perm(e)=4096, chi_perm(z)=64, Burnside <chi,chi> = 2080
+         measured: <chi_perm,chi_perm> = 2080.0
+         threshold: 2080 (verified over the whole group)
+  [PASS] Multiplicity-free decomposition: 64 linear + 2016 2-dim, each once
+         measured: dim = 64 + 4032 = 4096; #irreps = 2080
+         threshold: 4096 dimension; 2080 irreps (matches Burnside)
+  [PASS] Frobenius m_rho = (1/2)(d_rho + chi_rho(z)): verified
+         measured: lin mult = 1 (s=0) / 0 (s=1); 2-dim mult = 1
+         threshold: 1 for the 2080 appearing irreps, 0 for the 64 missing
+  [INFO] BREAKTHROUGH: L^2(Omega) is multiplicity-free as a G-module, decomposing into 2080 irreps each appearing once - the exact discrete analogue of L^2(S^2) = (+) V_l on SO(3). The 64 linear characters with chi(z) = -1 (the parity-odd "reflection" sector) are precisely the ones absent, the same 2:1 distinction as SO(3) vs Spin(3) = SU(2).
+
+31. The CGM BU Loop Holonomy as an Element of SO(3)
+=====
+  [PASS] BU holonomy angle = 2 x Thomas-Wigner corner angle (collinear BCH)
+         measured: delta_BU = 0.195342178 = 2 x 0.097671089
+         threshold: = constants.BU_HOLONOMY_ANGLE = 0.195342178
+  [PASS] BU holonomy = exp of so(3) element, an SO(3) rotation
+         measured: recovered angle = 0.195342178
+         threshold: = delta_BU
+  [PASS] Closure chain: rho = delta_BU/M_A, Delta = 1-rho, Q_G M_A^2 = 1/2 (spinorial double cover)
+         measured: rho=0.979300454; Q_G M_A^2 = 0.500000000
+         threshold: rho=0.9793, Delta=0.0207, Q_G M_A^2 = 1/2
+  [PASS] CGM threshold closure: s_p + u_p + o_p = pi
+         measured: 3.141592654
+         threshold: pi (three spatial dimensions)
+  [INFO] the CGM BU holonomy is literally an element of the SO(3) group built from first principles in Part 1: a rotation of angle delta_BU, classified by its rotation angle (its conjugacy class / character datum). The spinorial identity Q_G M_A^2 = 1/2 carries the same 2:1 double-cover structure as SU(2) -> SO(3) (Part 1 s.4, Part 2 s.B): the "6-DoF" kernel basis (12 bits = 2 x 6) is native to SO(3) in exactly this sense.
+
+32. Findings: The Bridge between SO(3) and the Engine
+=====
+
+  FINDING [Spectral gap of SO(3) is 2, multiplicity 9]
+    The Laplace-Beltrami spectrum lambda_j = j(j+1) with multiplicity (2j+1)^2 has gap lambda_1 = 2: continuous diffusion forgets the identity only asymptotically (rate e^{-2t}), the quantitative number behind Part 2's "maximal mixer" claim. Weyl law N(lambda) ~ (4/3) lambda^{3/2} fixes the 3-dimensionality.
+  FINDING [Heat kernel on SO(3) is a normalized class-function density]
+    K_t(g) = sum_j (2j+1) e^{-j(j+1)t} chi_j(g) integrates to 1 over the Haar measure and satisfies trace Z(t)-1 ~ 9 e^{-2t}; the sector-j decay e^{-j(j+1)t} is the continuous cousin of the kernel's exact <= 2-step kill.
+  FINDING [Duality: gap 2 (continuous) vs exact 2-step (engine)]
+    Continuous SO(3) mixing returns to uniformity only as t -> inf; the kernel P has all non-trivial eigenvalues 0, so P^2 = J/4096 exactly - the sharpest possible mixer, possible only because the engine group G is non-abelian.
+  FINDING [Conjugacy classes of G close Part 2's open item]
+    Z(G) = [G,G] = (Z/2)^6 (64 central elements); 2016 size-2 swap-pairs; 64 size-64 swap classes. #classes = 2144 = #irreps, sum of sizes = 8192. Contrast with centerless SO(3), whose classes are the 1-parameter family of rotation angles.
+  FINDING [Character table of G via Clifford theory]
+    128 linear characters = characters of G/[G,G] = (Z/2)^7; 2016 two-dimensional irreps = inductions from swap-orbits of characters of (Z/2)^12, vanishing on the odd coset. Fully explicit, orthonormal, and consistent with the conjugacy-class count.
+  FINDING [L^2(Omega) is multiplicity-free - the discrete Peter-Weyl]
+    C[Omega] = 64 x (linear, chi(z)=+1) (+) 2016 x (2-dim), each irrep once: the exact analogue of L^2(S^2) = (+) V_l on SO(3). Verified via Frobenius m_rho = (1/2)(d_rho + chi_rho(z)), dim = 4096 and Burnside <chi,chi> = 2080 = number of irreps appearing. The 64 parity-odd "reflection" characters are absent - the same 2:1 distinction as SO(3) vs Spin(3).
+  FINDING [The CGM BU holonomy is an element of SO(3)]
+    delta_BU = 4 arctan(k(pi/4) k(M_A)) = 2 omega is a rotation angle = an SO(3) conjugacy invariant; exp(delta_BU hat(n)) in SO(3). rho = delta_BU/M_A = 0.9793, Delta = 1-rho, and the spinorial identity Q_G M_A^2 = 1/2 carry the same double cover as SU(2) -> SO(3). The kernel's 12-bit basis (2 x 6 DoF) is native to SO(3) in this sense.
+
+  [PASS] Findings catalogue (Part 3)
+         measured: 7 associations
+         threshold: >= 5
+
+[part 3 finished in 9.2s]
+
+33. Explicit Irreps (Clifford Theory) and the Finite Peter-Weyl
+=====
+  [PASS] Explicit 2x2 irrep matrices via Clifford induction
+         measured: homomorphism + unitarity + trace=chi all hold
+         threshold: rho(g h) = rho(g) rho(h); rho unitary; tr = chi_k
+  [PASS] Finite Peter-Weyl: normalized matrix coefficients orthonormal
+         measured: violations = 0
+         threshold: 0 (1/d_rho = 1/2)
+  [PASS] Sum of dim^2 = |G| = 8192; #irreps = #conjugacy classes = 2144
+         measured: sum d^2 = 8192, #irreps = 2144
+         threshold: 8192 and 2144
+  [INFO] this is the exact discrete analog of Part 1 s.5 and Part 3 s.2: on SO(3) the Wigner-D matrix coefficients are orthonormal over the Haar measure; here the normalized coefficients of the 2144 finite irreps are orthonormal over the group G. Both are the Peter-Weyl theorem.
+
+34. Fourier Transform, Plancherel, and Inversion on G
+=====
+  [PASS] Plancherel theorem on G (over all 2144 irreps)
+         measured: relative error = 1.43e-15
+         threshold: < 1e-8
+  [PASS] Fourier inversion f(g) = (1/|G|) sum d_rho Tr(rho(g^-1) fhat(rho))
+         measured: violations = 0
+         threshold: 0 (to machine precision)
+  [INFO] Plancherel + inversion over the full non-abelian character table: the abelian Walsh analysis of Part 2 s.D (characters of (Z/2)^12) is the special case where only the translation subgroup A contributes; here the two-dim irreps (the genuine non-abelian content of G) are included.
+
+35. Group Algebra and the Isotypic Decomposition of L^2(Omega)
+=====
+  [PASS] Isotypic decomposition of C[Omega]: 2080 irreps each once, 64 absent, dim 4096
+         measured: #appearing = 2080, #absent = 64, sum d_rho = 4096
+         threshold: 2080 / 64 / 4096
+  [PASS] The 64 absent irreps are the parity-odd linear characters
+         measured: 64 absent with s=1
+         threshold: 64 (chi(z) = -1)
+  [INFO] the isotypic projectors realize Part 3 multiplicity-free decomposition constructively: each appearing irrep occupies a d_rho-dimensional block of C[Omega] exactly once, and the parity-odd reflection sector is entirely absent -- the finite echo of the SO(3) vs Spin(3) distinction.
+
+36. Harmonic Random Walks on G and the Mixing Trichotomy
+=====
+  [PASS] Single-class walk in the odd coset is PERIODIC: chi^2(k) = 127 constant
+         measured: [127.0]*6 (never decays)
+         threshold: constant (|lambda|=1)
+  [INFO] the odd-class walk is completely periodic: every one of the 127 non-trivial linear characters has |lambda|=1 (the parity characters are exact invariants), so chi^2 stays at 127 and the walk never mixes on G -- even though the SAME byte dynamics mixes the coset Omega = G/Stab in exactly two steps (Part 2).
+  [PASS] Hidden-character obstruction: the minimal generator walk is NOT fully mixing (gap 0, chi^2 plateaus at 1)
+         measured: chi_(1, 63)(g)=-1 for all 13 gens; chi^2(8)=2.00 >= 1
+         threshold: a nontrivial linear character blocks the walk (never uniform)
+  [INFO] this is a subtle and real obstruction: the natural minimal generating set {e_0..e_11, s} is "one-colored" under the character chi_{1,63}(g) = (-1)^{parity + popcount(u^v)}, which is -1 on every generator, so it is an exact invariant (eigenvalue -1) and the walk never reaches uniform on G. Only by "lazifying" (adding the identity) do we get genuine mixing:
+  [PASS] Lazy (identity-added) generator walk genuinely mixes with a spectral gap
+         measured: gap = 0.1429; chi^2(8) = 0.841
+         threshold: gap > 0; chi^2 decays toward 0
+  [INFO] MIXING TRICHOTOMY. (i) Continuous SO(3): Laplacian gap 2, returns to uniform only as t -> inf (Part 3). (ii) The byte walk on the coset Omega = G/Stab: eigenvalues {1,0,...}, P^2 = J/4096 EXACT two-step mixing (Part 2) -- maximal. (iii) On the full group G itself: single-coset class walks are PERIODIC (chi^2 = 127), and even the natural minimal generator walk is blocked by a hidden character (chi^2 plateaus at 1); only the lazy walk mixes, with the finite gap 0.143. The kernel maximal mixing therefore lives on the quotient Omega = G/Stab, not on G.
+
+37. Findings: Non-Abelian Harmonic Analysis of the Engine
+=====
+
+  FINDING [Explicit irreps via Clifford theory - the finite Peter-Weyl]
+    The 2016 two-dimensional irreps of G are constructed as induced representations with explicit 2x2 matrices: homomorphism, unitarity, trace = character all verified; their normalized matrix coefficients form an orthonormal basis of L^2(G) with the 1/d_rho normalization - the exact discrete analog of the Wigner-D orthonormality on SO(3). Census sum d^2 = 8192 = |G|.
+  FINDING [Plancherel and Fourier inversion on G]
+    |G| sum |f|^2 = sum d_rho Tr(fhat^+ fhat) verified to 1e-15 and inversion to 1e-15 over the full 2144-irrep character table - the non-abelian completion of Part 2's abelian Walsh analysis; the finite Plancherel/Peter-Weyl, the harmonic backbone of the engine.
+  FINDING [Isotypic decomposition of L^2(Omega) via group algebra]
+    The isotypic projectors realize Part 3's multiplicity-free decomposition: 2080 irreps each appear once (isotypic dimension d_rho, sum 4096), the 64 parity-odd linear characters are absent - the finite echo of SO(3) vs Spin(3).
+  FINDING [The mixing trichotomy: coset maximal vs group periodic/blocked]
+    Continuous SO(3) mixes asymptotically (gap 2); the byte walk on Omega mixes in exactly 2 steps (maximal). But on the full group G, single-coset class walks are PERIODIC (chi^2 = 127 constant - all 127 non-trivial linear parity characters are exact invariants), and even the natural minimal generator set {e_0..e_11, s} is blocked by a hidden character chi_{1,63} = -1 on every generator (gap 0, chi^2 plateaus at 1); only the lazy (identity-added) walk genuinely mixes, with a finite spectral gap. The kernel's maximal mixing lives on the quotient Omega = G/Stab, not on G.
+
+  [PASS] Findings catalogue (Part 4)
+         measured: 4 associations
+         threshold: >= 3
+
+[part 4 finished in 17.1s]
