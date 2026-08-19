@@ -1,0 +1,123 @@
+# hqvm_SO_analysis_temp_worknotes.txt
+# Temp work notes for SO(3) study
+# Date: 2026-08-19
+# REBUILT v2: SO(3) built from its own theory, then kernel as engine.
+
+=================================================================
+STUDY STRUCTURE (6 files, complete flow)
+=================================================================
+  hqvm_SO_analysis_common.py   - Shared theory + engine helpers
+  hqvm_SO_analysis_1.py        - SO(3) developed from its own theory
+                                 (28 checks)
+  hqvm_SO_analysis_2.py        - Kernel as computational engine:
+                                 computes NEW structure + reproduces
+                                 SO(3) results (20 checks)
+  hqvm_SO_analysis_run.py      - Orchestrator (writes results file)
+  hqvm_SO_analysis_results.txt - Full report (48 checks, all PASS)
+  hqvm_SO_analysis_temp_worknotes.txt - this file
+
+RUN:
+  python3 -m venv /tmp/so_venv
+  /tmp/so_venv/bin/pip install numpy scipy mpmath
+  cd science && /tmp/so_venv/bin/python3 experiments/hqvm_SO_analysis_run.py
+  (or: ..._run.py --part 1 | --part 2)
+
+=================================================================
+PART 1 - SO(3) FROM ITS OWN THEORY (28 checks)
+=================================================================
+  1. Group axioms: closure, associativity, inverse; structure
+     constants; Jacobi identity (integrability of the group law)
+  2. Root system A1: Cartan subalgebra, roots {+i,-i}, Weyl group
+     W(A1) = Z/2 (the discrete skeleton of the double cover)
+  3. exp/log dictionary: surjectivity; exact BCH closed form
+     (Engo 2001), 1e-15 on 400 random pairs; series-truncation
+     comparison (series needs ||X||+||Y|| < log 2)
+  4. Representation theory: dim D^j = 2j+1; character orthogonality
+     (integer j on SO(3)); Clebsch-Gordan via characters
+     chi_j1 * chi_j2 = sum_J chi_J (exact)
+  5. Harmonic analysis: L^2(S^2) fixed-l irreducibility (rotated
+     Y_lm stays in V_l); addition theorem; Peter-Weyl on SO(3)
+     (j=1, adjoint) and on SU(2) (j=1/2) - with the correct subtlety
+     that the principal-branch lift R->U is NOT a homomorphism,
+     hence spinors need the double cover
+  6. Geometry: geodesics = one-parameter subgroups; sectional
+     curvature via geodesic-square holonomy; Euler top on T*SO(3)
+     with E and |L| conserved to 1e-12 (6-DoF rigid body)
+  7. Topology: cellular homology of RP^3 = SO(3):
+     H*(Z) = {Z, Z/2, 0, Z}, H*(Z/2) = Z/2[c]/(c^4)
+  8. Random rotations: Haar density f(theta) = (2/pi) sin^2(theta/2),
+     chi2 fit; eigenvalue statistics E[tr R] = 0
+
+=================================================================
+PART 2 - THE KERNEL AS ENGINE (20 checks) - NEW RESULTS
+=================================================================
+  A. Word -> signature (anti-)homomorphism: sig(w1 w2) = sig(w2) o sig(w1)
+     exact on 1000 pairs; parity(sig(w)) = |w| mod 2 (Z/2 grading)
+  B. THE GROUP: the 128 distinct byte signatures generate
+     G = (Z/2)^12 x| Z/2, |G| = 8192 = 2^13
+       - even words = all 4096 translations
+       - odd words  = all 4096 swap-maps
+       - transitive faithful action on Omega (single orbit)
+       - stabilizer of every state has order 2 ({id, (1,63,63)} at rest)
+       - DISCRETE DOUBLE COVER: |G| = 2 |Omega|
+     (This is NEW: the byte alphabet implements the covering structure,
+      not just the quotient - the finite analogue of SU(2) -> SO(3).)
+  C. Byte random walk: P^2 = J/4096 EXACT (uniform after two bytes from
+     any Omega state); sparse eigenvalues {1, 0, ...} (lambda_2 = 1e-32);
+     entropy ladder 7 -> 12 bits = log2(128) -> log2(4096)
+  D. Orbit/character structure: Burnside <chi,chi> = 2080 (64 fixed
+     points of the stabilizer involution + 2016 pairs); shells are a
+     byte-process observable, NOT a G-invariant (precise separation);
+     K4 fixed loci 64/64/0
+  E. Reproduction: associativity of the finite engine (1000 triples);
+     covering involution b <-> b XOR 0xFE (no fixed bytes);
+     Haar uniformization reproduced by byte streams (chi2 = 4172,
+     df = 4095, PASS); structural echo 12 bits = 2 x dim se(3)
+  F. Honest limits: no continuum, no arbitrary-angle rotations,
+     CGM constants are boundary data not outputs, full character
+     table of G deferred
+
+=================================================================
+KEY NEW FINDINGS (not in the earlier corpus)
+=================================================================
+  1. The byte alphabet generates the full affine group
+     G = (Z/2)^12 x| Z/2 of order 8192 = 2^13.
+  2. |G| = 2 |Omega| with order-2 stabilizers: the kernel realizes
+     the SU(2) -> SO(3) double cover discretely and exactly.
+  3. P^2 = J/4096: the byte random walk mixes in exactly 2 steps
+     (eigenvalues {1, 0, ...}); entropy 7 -> 12 bits.
+  4. The word monoid maps onto G as an anti-homomorphism with
+     parity grading = word length mod 2.
+  5. Shell grading (Krawtchouk, 7 shells) is byte-process structure,
+     not a G-invariant - separating process from group structure.
+  6. Peter-Weyl subtlety (part 1): the principal-branch lift R -> U
+     is not a homomorphism; half-integer coefficients must be
+     evaluated on SU(2) Haar measure - the precise reason spinors
+     need the double cover.
+
+=================================================================
+REFS / NOTES
+=================================================================
+  - Hall, Lie Groups, Lie Algebras, and Representations (2nd ed.)
+  - Engo, On the BCH-formula in so(3), BIT 41(3):629-632 (2001)
+  - Varshalovich et al., Quantum Theory of Angular Momentum
+  - Shoemake, Uniform Random Rotations (Graphics Gems III, 1992)
+  - scipy.linalg/sparse/special for all heavy linear algebra
+  - CGM constants (M_A, delta_BU, A*) treated as boundary data in
+    part 2; derived elsewhere in the corpus (holonomy, alpha analyses)
+
+=================================================================
+PERF / ROBUSTNESS NOTES
+=================================================================
+  Full run ~9 s (part 1 ~1.4 s, part 2 ~7 s), exit 0, 48/48 checks.
+  Hardening against hangs / timeouts:
+  - ARPACK eigs removed: the spectral claim (P eigenvalues {1, 0, ...})
+    is verified deterministically (doubly-stochastic + P^2 v = 0 on the
+    1-perp complement); no iterative solver in the study.
+  - All Haar sampling uses one deterministic seeded RNG (no per-call
+    entropy seeding; reproducible across runs).
+  - run.py preflights numpy/scipy/mpmath and prints a clear install
+    message instead of failing obscurely; prints live per-part timing.
+  - Earlier 220 s version was dominated by a naive orbit BFS (33M
+    object constructions); replaced with the exact translation-based
+    orbit (the group provably contains all 4096 translations).

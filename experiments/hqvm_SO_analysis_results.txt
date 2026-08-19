@@ -1,0 +1,119 @@
+============================================================
+hQVM SO(3) COMPLETE STUDY
+Date: 2026-08-19
+============================================================
+
+1. Group Axioms and the Lie Algebra so(3)
+=====
+  [PASS] Group axiom: closure
+         measured: 40 random products all in SO(3)
+         threshold: all in SO(3)
+  [PASS] Group axiom: associativity
+         measured: 10 random triples
+         threshold: < 1e-12
+  [PASS] Group axiom: inverse
+         measured: 40 random elements
+         threshold: R R^T = I
+  [PASS] Lie algebra so(3): structure constants
+         measured: max error = 0.00e+00
+         threshold: < 1e-10
+  [PASS] Jacobi identity (integrability)
+         measured: max |sum f f| = 0.00e+00
+         threshold: < 1e-12
+
+2. Root System of so(3) = A1: Cartan, Roots, Weyl Group
+=====
+  [PASS] Root system A1: roots {+i, -i} of ad(L_z) on g_C
+         measured: [np.float64(-1.0), np.float64(0.0), np.float64(1.0)]
+         threshold: {0, +i, -i}
+  [PASS] Weyl group of so(3): order 2 = Z/2
+         measured: s^2 = 1
+         threshold: W = Z/2
+  [INFO] W(A1) = Z/2 is the discrete skeleton of the SU(2) -> SO(3) double cover: the same two-element group appears as the kernel {+-1}.
+
+3. Exponential Map, Logarithm, and the BCH Composition Law
+=====
+  [PASS] Exponential map from the algebra
+         measured: ||Rodrigues - expm|| = 1.37e-16
+         threshold: < 1e-10
+  [PASS] Surjectivity of exp: so(3) -> SO(3)
+         measured: max recovery error = 6.67e-15
+         threshold: < 1e-10
+  [PASS] BCH: Z = alpha X + beta Y + gamma [X,Y] (Engo closed form)
+         measured: ||Z_bch - Z_exact|| = 1.10e-15
+         threshold: < 1e-10
+  [PASS] BCH closed form on the principal branch
+         measured: worst ||Z_bch - Z_exact|| = 3.06e-15
+         threshold: < 1e-10
+  [INFO] truncated order-3 BCH residual: 4.34e-05 (series needs ||X||+||Y|| < log 2; closed form has no such restriction)
+
+4. Representation Theory: Spin-j, Characters, Clebsch-Gordan
+=====
+  [PASS] Dimension formula: dim D^j = 2j + 1
+         measured: {0: 1, 0.5: 2, 1: 3, 1.5: 4, 2: 5, 2.5: 6, 3: 7}
+         threshold: 2j+1
+  [PASS] Characters {chi_j} (integer j) form an orthonormal system on SO(3)
+         measured: 2.49e-04
+         threshold: < 0.05 (quadrature)
+  [PASS] Clebsch-Gordan: j1 (x) j2 = (+)_{|j1-j2|}^{j1+j2} J
+         measured: max |chi1*chi2 - sum chi_J| = 3.55e-15
+         threshold: < 1e-8
+  [PASS] Double cover construction
+         measured: orth=2.40e-16 det_err=2.22e-16
+         threshold: < 1e-10
+  [PASS] Kernel of the covering map = {+-1}
+         measured: ||R(q) - R(-q)|| = 0.00e+00
+         threshold: < 1e-10
+
+5. Harmonic Analysis: SO(3) on L^2(S^2) and Peter-Weyl
+=====
+  [PASS] L^2(S^2) = (+)_{l} V_l: each fixed-l subspace is SO(3)-invariant
+         measured: relative residual = 7.36e-16
+         threshold: < 1e-6
+  [PASS] Addition theorem: sum_m |Y_lm|^2 = (2l+1)/4pi
+         measured: 2.22e-16
+         threshold: < 1e-8
+  [PASS] Peter-Weyl on SO(3): D^1 matrix coefficients (integer j)
+         measured: max |E[R]| = 1.50e-02, max |E[|R|^2] - 1/3| = 1.00e-02
+         threshold: < 0.05 / < 0.02 (MC)
+  [PASS] Peter-Weyl on SU(2): spin-1/2 coefficients (half-integer j)
+         measured: max |E[U]| = 1.48e-02, max |E[|U|^2] - 1/2| = 8.81e-03
+         threshold: < 0.05 / < 0.02 (MC)
+  [INFO] the principal-branch lift R -> U is not a homomorphism; Peter-Weyl holds on SU(2) Haar measure. This is the precise reason half-integer spins need the double cover.
+
+6. Geometry: Geodesics, Sectional Curvature, Euler Top
+=====
+  [PASS] Geodesics: exp((s+t)X) = exp(sX) exp(tX)
+         measured: err = 2.54e-16
+         threshold: < 1e-10
+  [PASS] Sectional curvature of SO(3) (bi-invariant metric)
+         measured: holonomy angle / eps^2 = 0.9998
+         threshold: ~1.0 (unit convention)
+  [PASS] Euler top on T*SO(3): conserved E and |L| (6-DoF rigid body)
+         measured: E drift = 1.52e-12, |L|^2 drift = 1.77e-12
+         threshold: < 1e-6
+  [INFO] dim T*SO(3) = 6 = the CGM 6-DoF basis; the top lives on the cotangent bundle of the rotation group
+
+7. Topology: Cell Structure of RP^3 and Homology
+=====
+  [PASS] Cellular homology H*(SO(3); Z) = {Z, Z/2, 0, Z}
+         measured: ['Z', 'Z/2', '0', 'Z']
+         threshold: [Z, Z/2, 0, Z]
+  [PASS] H*(SO(3); Z/2) = Z/2[c]/(c^4) (RP^3 ring)
+         measured: ['Z/2', 'Z/2', 'Z/2', 'Z/2']
+         threshold: [Z/2, Z/2, Z/2, Z/2]
+  [INFO] the Z/2 in H^2(SO(3);Z) is the 2-torsion carried by the double cover; H*(SO(3);Z/2) is the mod-2 cohomology ring of RP^3.
+
+8. Random Rotations: Haar Distribution and Eigenvalues
+=====
+  [PASS] Haar density f(theta) = (2/pi) sin^2(theta/2): E[theta]
+         measured: 2.2096
+         threshold: pi/2 + 2/pi = 2.2074
+  [PASS] Random rotation angles follow the Haar density
+         measured: chi2 = 14.75
+         threshold: < 40.0
+  [PASS] Eigenvalue statistics: E[tr R] = 1 + 2 E[cos theta] = 0
+         measured: 0.0129
+         threshold: ~0
+
+[part 1 finished in 1.5s]
