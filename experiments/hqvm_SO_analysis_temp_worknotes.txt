@@ -1,0 +1,268 @@
+# hqvm_SO_analysis_temp_worknotes.txt
+# Temp work notes for SO(3) study
+# Date: 2026-08-19
+# REBUILT v2: SO(3) built from its own theory, then kernel as engine.
+
+=================================================================
+STUDY STRUCTURE (6 files, complete flow)
+=================================================================
+  hqvm_SO_analysis_common.py   - Shared theory + engine helpers
+  hqvm_SO_analysis_1.py        - SO(3) developed from its own theory
+                                 (28 checks)
+  hqvm_SO_analysis_2.py        - Kernel as computational engine:
+                                 computes NEW structure + reproduces
+                                 SO(3) results (20 checks)
+  hqvm_SO_analysis_run.py      - Orchestrator (writes results file)
+  hqvm_SO_analysis_results.txt - Full report (48 checks, all PASS)
+  hqvm_SO_analysis_temp_worknotes.txt - this file
+
+RUN:
+  python3 -m venv /tmp/so_venv
+  /tmp/so_venv/bin/pip install numpy scipy mpmath
+  cd science && /tmp/so_venv/bin/python3 experiments/hqvm_SO_analysis_run.py
+  (or: ..._run.py --part 1 | --part 2)
+
+=================================================================
+PART 1 - SO(3) FROM ITS OWN THEORY (28 checks)
+=================================================================
+  1. Group axioms: closure, associativity, inverse; structure
+     constants; Jacobi identity (integrability of the group law)
+  2. Root system A1: Cartan subalgebra, roots {+i,-i}, Weyl group
+     W(A1) = Z/2 (the discrete skeleton of the double cover)
+  3. exp/log dictionary: surjectivity; exact BCH closed form
+     (Engo 2001), 1e-15 on 400 random pairs; series-truncation
+     comparison (series needs ||X||+||Y|| < log 2)
+  4. Representation theory: dim D^j = 2j+1; character orthogonality
+     (integer j on SO(3)); Clebsch-Gordan via characters
+     chi_j1 * chi_j2 = sum_J chi_J (exact)
+  5. Harmonic analysis: L^2(S^2) fixed-l irreducibility (rotated
+     Y_lm stays in V_l); addition theorem; Peter-Weyl on SO(3)
+     (j=1, adjoint) and on SU(2) (j=1/2) - with the correct subtlety
+     that the principal-branch lift R->U is NOT a homomorphism,
+     hence spinors need the double cover
+  6. Geometry: geodesics = one-parameter subgroups; sectional
+     curvature via geodesic-square holonomy; Euler top on T*SO(3)
+     with E and |L| conserved to 1e-12 (6-DoF rigid body)
+  7. Topology: cellular homology of RP^3 = SO(3):
+     H*(Z) = {Z, Z/2, 0, Z}, H*(Z/2) = Z/2[c]/(c^4)
+  8. Random rotations: Haar density f(theta) = (2/pi) sin^2(theta/2),
+     chi2 fit; eigenvalue statistics E[tr R] = 0
+
+=================================================================
+PART 2 - THE KERNEL AS ENGINE (20 checks) - NEW RESULTS
+=================================================================
+  A. Word -> signature (anti-)homomorphism: sig(w1 w2) = sig(w2) o sig(w1)
+     exact on 1000 pairs; parity(sig(w)) = |w| mod 2 (Z/2 grading)
+  B. THE GROUP: the 128 distinct byte signatures generate
+     G = (Z/2)^12 x| Z/2, |G| = 8192 = 2^13
+       - even words = all 4096 translations
+       - odd words  = all 4096 swap-maps
+       - transitive faithful action on Omega (single orbit)
+       - stabilizer of every state has order 2 ({id, (1,63,63)} at rest)
+       - DISCRETE DOUBLE COVER: |G| = 2 |Omega|
+     (This is NEW: the byte alphabet implements the covering structure,
+      not just the quotient - the finite analogue of SU(2) -> SO(3).)
+  C. Byte random walk: P^2 = J/4096 EXACT (uniform after two bytes from
+     any Omega state); sparse eigenvalues {1, 0, ...} (lambda_2 = 1e-32);
+     entropy ladder 7 -> 12 bits = log2(128) -> log2(4096)
+  D. Orbit/character structure: Burnside <chi,chi> = 2080 (64 fixed
+     points of the stabilizer involution + 2016 pairs); shells are a
+     byte-process observable, NOT a G-invariant (precise separation);
+     K4 fixed loci 64/64/0
+  E. Reproduction: associativity of the finite engine (1000 triples);
+     covering involution b <-> b XOR 0xFE (no fixed bytes);
+     Haar uniformization reproduced by byte streams (chi2 = 4172,
+     df = 4095, PASS); structural echo 12 bits = 2 x dim se(3)
+  F. Honest limits: no continuum, no arbitrary-angle rotations,
+     CGM constants are boundary data not outputs, full character
+     table of G deferred
+
+=================================================================
+KEY NEW FINDINGS (not in the earlier corpus)
+=================================================================
+  1. The byte alphabet generates the full affine group
+     G = (Z/2)^12 x| Z/2 of order 8192 = 2^13.
+  2. |G| = 2 |Omega| with order-2 stabilizers: the kernel realizes
+     the SU(2) -> SO(3) double cover discretely and exactly.
+  3. P^2 = J/4096: the byte random walk mixes in exactly 2 steps
+     (eigenvalues {1, 0, ...}); entropy 7 -> 12 bits.
+  4. The word monoid maps onto G as an anti-homomorphism with
+     parity grading = word length mod 2.
+  5. Shell grading (Krawtchouk, 7 shells) is byte-process structure,
+     not a G-invariant - separating process from group structure.
+  6. Peter-Weyl subtlety (part 1): the principal-branch lift R -> U
+     is not a homomorphism; half-integer coefficients must be
+     evaluated on SU(2) Haar measure - the precise reason spinors
+     need the double cover.
+
+=================================================================
+REFS / NOTES
+=================================================================
+  - Hall, Lie Groups, Lie Algebras, and Representations (2nd ed.)
+  - Engo, On the BCH-formula in so(3), BIT 41(3):629-632 (2001)
+  - Varshalovich et al., Quantum Theory of Angular Momentum
+  - Shoemake, Uniform Random Rotations (Graphics Gems III, 1992)
+  - scipy.linalg/sparse/special for all heavy linear algebra
+  - CGM constants (M_A, delta_BU, A*) treated as boundary data in
+    part 2; derived elsewhere in the corpus (holonomy, alpha analyses)
+
+=================================================================
+KERNEL AS A ROTATION-COMPOSITION ENGINE (benchmark, Part 2 sec. F)
+=================================================================
+  Composition of rotations = 'matrix multiplication' of the finite
+  group G. Vectorized bitwise path (compose_sig_batch, 13-bit packed
+  signatures, XOR/select only):
+    - rotation composition: 74.4 M/s vs 15.7 M/s float 3x3 BLAS
+      = 4.7x faster; vs scipy Rotation ~ 30x faster
+    - state application: 94.1 M/s via 4.2 MB L3-resident transition
+      table vs 49.7 M/s float 3x3 @ v = 1.9x faster
+  Why: 13 bits pack per uint16 (4 per 64-bit register), ~4 integer
+  ops instead of 27 float multiply-adds; exact (no FP, no
+  normalization drift, no branch cuts).
+  Honest limits: composes the FINITE group G only - not general
+  matrix multiplication, not continuous-angle SO(3). The study's
+  pure-Python compose path is ~0.2 M/s (object overhead); the
+  vectorized path is the engine-grade implementation.
+
+=================================================================
+NEW RESULTS FROM ONLINE RESEARCH (Part 2 sec. K-L, 68/68 checks)
+=================================================================
+  K. Sato-Tate: the rotation Haar measure in number theory:
+     - The proved Sato-Tate conjecture (Taylor et al. 2008-2011):
+       Frobenius angles theta_p of a non-CM elliptic curve over Q
+       equidistribute on [0, pi] with density (2/pi) sin^2(theta) -
+       exactly the SU(2) Haar angle statistics (random Spin(3)).
+     - Trace law: t = a_p/(2 sqrt p) ~ semicircle (1/2pi) sqrt(4-t^2)
+       (verified chi2 = 0.00).
+     - The SO(3) density (2/pi) sin^2(theta/2) (Part 1 sec. 8) is the
+       pushforward of SU(2) Haar under the 2:1 cover: the kernel's
+       double-cover structure IS the SU(2)-vs-SO(3) distinction in
+       arithmetic. All three densities verified chi2 ~ 0.
+     Refs: Sato-Tate conjecture (Sato 1962, Tate 1965; proof Taylor,
+     Clozel, Harris, Shepherd-Barron, Barnet-Lamb, Geraghty 2008-2011);
+     'random matrix analogy' of Katz-Sarnak; Weyl integration formula
+     (2/pi) sin^2(theta) for SU(2).
+  L. Statistics on SO(3): the Karcher (intrinsic) mean:
+     - Intrinsic mean = argmin sum d_geod(x_i, y)^2, computed by
+       Riemannian gradient descent: mu <- mu exp(avg log(mu^T x_i)).
+     - Verified: barycenter condition 7.2e-11; recovers the center
+       within finite-sample scatter sigma/sqrt(n); uniqueness in the
+       geodesic ball of radius pi/2 (sectional curvature 1/4,
+       injectivity radius pi - Part 1 sec. 6 geometry).
+     - Extrinsic (Frobenius) mean agrees in the small-noise regime.
+     - Rotation averaging in robotics / cryo-EM / signal processing
+       is exactly this mean (Moakher 2002, Manton 2004, Pennec 2006,
+       Hartley-Trumpf 2013).
+     Refs: Manton, 'A centroid (Karcher mean) approach to the
+     problem of extracting average rotations'; Pennec, 'Intrinsic
+     statistics on Riemannian manifolds' (JMIV 2006).
+
+=================================================================
+NEW RESULTS FROM ONLINE RESEARCH (Part 2 sec. H-J, 61/61 checks)
+=================================================================
+  H. Discrete Hopf fibration of Omega (topology):
+     - Omega = {(u,v)} fibers as 64-point sets F_chi = {(u, u^chi)}
+       over the 64 chirality values; base = discrete S^2 with
+       latitudes C(6,w) = 1,6,15,20,15,6,1.
+     - Finite analogue of S^1 -> S^3 -> S^2 (SO(3) = RP^3), the
+       structure behind uniform incremental rotation grids on SO(3)
+       (Yershova, LaValle, Mitchell, WAFR 2008: 'Generating Uniform
+       Incremental Grids on SO(3) Using the Hopf Fibration').
+     - Byte step = bundle connection (q6 moves between fibers);
+       equality/complement horizons = polar fibers.
+  I. Exact 2-step mixing vs classical random-walk theory:
+     - Kernel: chi2 = 0 EXACTLY at k=2 (31.0 at k=1).
+     - Abelian obstruction (Diaconis-Shahshahani / Fourier argument):
+       on abelian groups exact finite-time mixing is impossible; the
+       (Z/2)^6 generator walk has chi2 = 17.7, 7.3, 3.7, 1.25, 0.35,
+       0.076 at k = 1,2,3,5,8,12 - asymptotic only.
+     - Continuous SO(3) walk (angle <= 1 rad): chi2 310 -> 0.6 over
+       1..12 steps - asymptotic only.
+     - Conclusion: the kernel is a maximal mixer BECAUSE its engine
+       G = (Z/2)^12 x| Z/2 is non-abelian. Ref: Diaconis 1988 Group
+       Representations in Probability and Statistics; DS 1981/1986;
+       also 2020 arXiv '3 steps mixing for general random walks on
+       hypercube' (almost-perfect 2-3 step mixing at criticality -
+       the kernel does EXACT 2-step).
+  J. Group synchronization on the kernel group (applied math):
+     - Cryo-EM / rotation averaging / structure-from-motion problem
+       solved on A = (Z/2)^12: noisy relative rotations g_i g_j^-1
+       (bit-flip noise p), recover absolute up to gauge via per-bit
+       spectral Z/2 synchronization (top eigenvector rounding).
+     - Result: sharp detectability phase transition at p* ~ 0.35:
+       error(p) = [0, 0, 0.008, 0.048, 0.219, 0.441] for
+       p = 0, 0.2, 0.3, 0.35, 0.4, 0.5 - the finite analogue of
+       SO(3) synchronization theory (Singer 2011 cryo-EM; spectral
+       method for SO(d)/SE(d) synchronization literature).
+     - Next step: full non-abelian sync on G (parity + swap coupling),
+       comparison with the abelian relaxation.
+
+=================================================================
+NEW RESULTS ADDED (Part 2 sec. D-E, 55/55 checks total)
+=================================================================
+  D. Finite Fourier analysis - the exact spectrum of the engine:
+     - L^2(Omega) has the Walsh-character basis on (Z/2)^12
+       (tensor of the kernel's 64-dim Walsh basis); Parseval holds.
+     - Byte-step selection rule (proved + verified numerically):
+         S(k1,k2) = 128 (1 + (-1)^popcount(k1)) delta_{k2,0}
+       => constant mode survives; 31 even-popcount (k,0) modes hop
+          once to (0,k); all other 4064 modes killed in one step.
+     - Only eigenmode: constant (eigenvalue 1). Maximal mixer:
+       every nontrivial Fourier sector dies in <= 2 steps, vs
+       e^{-j(j+1)t} sector decay under diffusion on SO(3).
+  E. Structure of G completed:
+     - [G,G] = {(d,d) : d in (Z/2)^6}, order 64 (verified)
+     - G/[G,G] has order 128 -> 128 linear characters
+     - 2016 two-dimensional irreps; 128 + 2016*4 = 8192 = |G|
+     - open: explicit character table, full decomposition of the
+       4096-dim permutation module.
+
+=================================================================
+EXPANSION ROADMAP (prioritized: useful and important)
+=================================================================
+  TIER 1 - complete the new structure (highest value):
+  1. Full structure of G: conjugacy classes, character table via
+     Clifford theory (normal subgroup (Z/2)^12), decomposition of the
+     4096-dim permutation module into irreducibles, subgroup lattice,
+     center. Completes the 'discrete double cover' story.
+  2. Finite Fourier analysis on the kernel: Walsh-Hadamard on
+     (Z/2)^12 (already in SpectralOps), DFT over G, harmonic
+     functions on Omega - ties Part 1 harmonic analysis to the engine.
+  3. Association scheme / Bose-Mesner algebra of the 256-regular
+     kernel graph: P-/Q-polynomial structure, connection to the
+     existing Krawtchouk analysis and hqvm_Cohomology; Cheeger
+     constant and expander mixing of the 2-step mixer.
+  4. Lattice gauge theory on Omega: Wilson loops and plaquette
+     variables from the byte group; revisit the Yang-Mills mass-gap
+     readout with the kernel graph as an explicit lattice.
+  5. Heat-kernel comparison: heat kernel on SO(3) (sum_j (2j+1)
+     e^{-j(j+1)t} chi_j) vs P^L on Omega - quantitative mixing profile.
+
+  TIER 2 - integrate with the corpus:
+  6. Precession/holonomy recomputed through the engine (CGM stage
+     points encoded as kernel words, loop holonomy as a G element).
+  7. Cohomology tie-in: H^2(SO(3);Z) = Z/2 (Part 1 sec. 7) vs the
+     parity 1-cocycle obstruction of hqvm_Cohomology_analysis.
+  8. Discrete rigid-body dynamics: quantized rotations, conservation
+     tests on the Euler top.
+  9. docs/Findings/Analysis_SO3.md writeup + CI harness entry.
+
+  TIER 3 - speculative (needs well-posed framing):
+ 10. Constant/kernel numerology only if a crisp statement exists
+     (e.g., spectral gap of P vs loop-angle scale); otherwise noise.
+
+=================================================================
+PERF / ROBUSTNESS NOTES
+=================================================================
+  Full run ~9 s (part 1 ~1.4 s, part 2 ~7 s), exit 0, 48/48 checks.
+  Hardening against hangs / timeouts:
+  - ARPACK eigs removed: the spectral claim (P eigenvalues {1, 0, ...})
+    is verified deterministically (doubly-stochastic + P^2 v = 0 on the
+    1-perp complement); no iterative solver in the study.
+  - All Haar sampling uses one deterministic seeded RNG (no per-call
+    entropy seeding; reproducible across runs).
+  - run.py preflights numpy/scipy/mpmath and prints a clear install
+    message instead of failing obscurely; prints live per-part timing.
+  - Earlier 220 s version was dominated by a naive orbit BFS (33M
+    object constructions); replaced with the exact translation-based
+    orbit (the group provably contains all 4096 translations).
