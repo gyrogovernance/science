@@ -299,6 +299,8 @@ The shell census verifies the factorization. With shell index `s` defined as the
 pops = [64, 384, 960, 1280, 960, 384, 64]
 ```
 
+The coefficients `C(6,s)` are row 6 of Pascal's triangle; the kernel uses them only as the binomial census of `GF(2)^6`, not as the lower-triangular Pascal matrix on shell transitions.
+
 These sum to 4096 with mean shell `⟨S⟩ = 3.000`. Holographic balance `|H|^2 = |Ω|` holds exactly. Rank-by-rank reachability under fiber-complete restriction is
 
 ```

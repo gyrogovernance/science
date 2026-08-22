@@ -260,6 +260,74 @@ def beta_matrix_elements() -> BetaMatrixResult:
     )
 
 
+PASCAL_ROW6: Tuple[int, ...] = tuple(comb(6, k) for k in range(7))
+# Classical [6,3,4]_4 hexacode symbol-weight histogram (reference).
+_HEXACODE_SYMBOL_HIST: Tuple[int, ...] = (1, 0, 9, 6, 9, 18, 21)
+
+
+def _chirality_shell(state24: int) -> int:
+    from gyroscopic.hQVM.api import chirality_word6
+
+    return chirality_word6(state24).bit_count()
+
+
+def shell_byte_transition_audit() -> Tuple[bool, bool, bool, bool]:
+    """Check byte shell Markov T vs Pascal matrix L and q-weight mixture.
+
+    Returns (L_ne_T, columns_are_C6_over_64, T_equals_weighted_Mq, hexacode_ok).
+    """
+    from gyroscopic.hQVM.api import OMEGA_STATES_4096, q_word6
+    from gyroscopic.hQVM.api import shell_transition_matrix_for_q_weight
+    from gyroscopic.hQVM.constants import step_state_by_byte
+
+    reps: Dict[int, int] = {}
+    for s in OMEGA_STATES_4096:
+        w = _chirality_shell(s)
+        if w not in reps:
+            reps[w] = s
+
+    t_mat: List[List[Fraction]] = [[Fraction(0) for _ in range(7)] for _ in range(7)]
+    for w in range(7):
+        for b in range(256):
+            wp = _chirality_shell(step_state_by_byte(reps[w], b))
+            t_mat[wp][w] += Fraction(1, 256)
+
+    lower_pascal = [
+        [Fraction(comb(i, j)) if j <= i else Fraction(0) for j in range(7)]
+        for i in range(7)
+    ]
+    max_lt = max(
+        abs(float(t_mat[i][j] - lower_pascal[i][j]))
+        for i in range(7)
+        for j in range(7)
+    )
+    l_ne_t = max_lt > 1e-9
+
+    pascal_col = tuple(Fraction(c, 64) for c in PASCAL_ROW6)
+    cols_ok = all(
+        tuple(t_mat[w][src] for w in range(7)) == pascal_col for src in range(7)
+    )
+
+    w_mat: List[List[Fraction]] = [[Fraction(0) for _ in range(7)] for _ in range(7)]
+    for q in range(7):
+        n_b = sum(1 for b in range(256) if q_word6(b).bit_count() == q)
+        mq = shell_transition_matrix_for_q_weight(q)
+        for w in range(7):
+            for wp in range(7):
+                w_mat[wp][w] += Fraction(n_b, 256) * mq[w][wp]
+    max_tw = max(
+        abs(float(t_mat[i][j] - w_mat[i][j])) for i in range(7) for j in range(7)
+    )
+    weighted_ok = max_tw < 1e-12
+
+    q_hist = [0] * 7
+    for q in {q_word6(b) for b in range(256)}:
+        q_hist[q.bit_count()] += 1
+    hex_ok = tuple(q_hist) == PASCAL_ROW6 and PASCAL_ROW6 != _HEXACODE_SYMBOL_HIST
+
+    return l_ne_t, cols_ok, weighted_ok, hex_ok
+
+
 # -----------------------------------------------------------------
 # C. Nuclear magic numbers from the enumerator {C1,C2,C3}
 # -----------------------------------------------------------------
@@ -1124,6 +1192,14 @@ def frontier_main() -> None:
         f"C(5)/C(1) = {b.forbidden_ratio[5]}"
     )
     print(f"  Alpha H_L = C(2)/C(0) = {b.H_L_alpha}  (known discrete result)")
+
+    print("\nB2. BYTE SHELL TRANSITION (C(6,k) census checks)")
+    print("=" * 5)
+    l_ne_t, cols_ok, w_ok, hex_ok = shell_byte_transition_audit()
+    print(f"  lower Pascal L != byte-averaged T : {'PASS' if l_ne_t else 'FAIL'}")
+    print(f"  every T column = C(6,k)/64       : {'PASS' if cols_ok else 'FAIL'}")
+    print(f"  T = sum_q (n_q/256) M_q          : {'PASS' if w_ok else 'FAIL'}")
+    print(f"  q6 hist = row 6; hexacode != row 6: {'PASS' if hex_ok else 'FAIL'}")
 
     print("\nC. MAGIC NUMBERS FROM ENUMERATOR {C1,C2,C3}")
     print("=" * 5)

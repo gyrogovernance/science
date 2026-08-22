@@ -1,0 +1,714 @@
+0. KERNEL GATES
+=====
+  d6_api                                           PASS
+  |Omega|=4096                                     PASS
+  |H|=64                                           PASS
+  bulk_count_is_3968                               PASS
+  shell_census_C6                                  PASS
+  shell_pop=C6*|H|                                 PASS
+  log2|Omega|=12                                   PASS
+  log2|H|=6                                        PASS
+  Delta>0                                          PASS
+  PC_exact_log2                                    PASS
+  chirality_space_2/3                              PASS
+  wave_normalization_QG_ma2_half                   PASS
+  sig_compose_homomorphism                         PASS
+  omega12_sig_action_exact                         PASS
+  one_step_shadow_128                              PASS
+  Delta_dyadic_8_best_k5                           PASS
+  atlas_kinds_split                                PASS
+  aperture_scale_ordering                          PASS
+  Q_G_one_octave_above_2pi                         PASS
+  carrier_horizon_squared                          PASS
+  word_W2_sq_id                                    PASS
+  word_F2_id                                       PASS
+  wf_k4_w2_import                                  PASS
+  predecessor_48_in_ladder                         PASS
+  APERTURE_GAP=Delta_cont=0.02069954550267028
+  Delta_depth4=0.020833333333333332 Delta_dyadic_8=0.01953125
+  ticks_per_octave=48.310239
+  chirality_space=0.6666666666666666
+  C6=(1, 6, 15, 20, 15, 6, 1)
+
+0b. FROZEN CONSTANTS
+=====
+  m_a                  0.199471140201  [imported]  gyroscopic.hQVM.constants
+  delta_BU             0.195342178258  [imported]  gyroscopic.hQVM.constants
+  rho                  0.979300454497  [imported]  gyroscopic.hQVM.constants
+  Delta_cont           0.0206995455027  [imported]  APERTURE_GAP = 1-rho
+  Delta_depth4         0.0208333333333  [imported_identity]  1/48
+  Delta_dyadic_8       0.01953125  [imported]  APERTURE_GAP_Q256/256=5/256
+  Q_G                  12.5663706144  [imported_identity]  4*pi
+  v_EW_GeV             246.22  [imported]  hqvm_compact_geom_common.E_EW_GEV
+  horizon_size         64  [imported]  HORIZON_SIZE
+  omega_size           4096  [imported]  OMEGA_SIZE
+  chirality_dim        6  [imported]  CHIRALITY_QUBITS_6
+  ticks_per_octave     48.3102394626  [derived]  1/Delta_cont
+  chirality_space      0.666666666667  [imported_identity]  (1/48)/(1/32)
+
+0c. OCTAVE RESOLUTIONS / APERTURE RESIDUE
+=====
+  Delta_dyadic_8=0.01953125
+  Delta_cont=0.02069954550267028
+  Delta_depth4=0.020833333333333332
+  ordering_5/256 < Delta_cont < 1/48: True
+  ticks_per_octave_cont=48.31023946255236
+  epsilon_oct = 1/Delta - 48 = 0.3102394625523601
+  48*Delta=0.9935781841281734  1-48*Delta=0.006421815871826553
+  log2(Q_G/(2pi))=1.0  (exact one octave)
+  chirality_space=(1/48)/(1/32)=0.6666666666666666
+
+0d. WAVEFUNCTION KERNEL -> OCTAVE PRIMITIVES
+=====
+  source=hqvm_wavefunction_kernel
+  |Omega|=|H|^2: True  log2(|Omega|/|H|)=6.0
+  half_frame_phases=4 full_frame_bits=8
+  flat_bytes=16 curved=240 fold_hist={0: 16, 1: 64, 2: 96, 3: 64, 4: 16}
+  local_dual_aperture=0.5 global_Delta=0.02069954550267028
+  compression_50_to_Delta=24.1551
+  holographic levels (|Space|=|Subspace|^2):
+    Family     dof=1 sub=2 space=4 dim=2 log2(space/sub)=1.0
+    4-Phase    dof=2 sub=4 space=16 dim=4 log2(space/sub)=2.0
+    Byte       dof=4 sub=16 space=256 dim=8 log2(space/sub)=4.0
+    Carrier    dof=6 sub=64 space=4096 dim=12 log2(space/sub)=6.0
+  word_periods: W2_len=2 Wfull_len=4 F2_len=8 W2^2=id=True F2=id=True
+  k4_w2_import_pass=True
+  predecessor ladder P_k=3*2^(k-1):
+    k=1 P=3 dyadic=False is_48=False
+    k=2 P=6 dyadic=False is_48=False
+    k=3 P=12 dyadic=False is_48=False
+    k=4 P=24 dyadic=False is_48=False
+    k=5 P=48 dyadic=False is_48=True
+    k=6 P=96 dyadic=False is_48=False
+
+1. DYADIC ATLAS
+=====
+  name                   kind         size       log2 role
+  faces_2                card            2   1.000000 carrier_faces
+  cgm_stages_4           card            4   2.000000 stage
+  family_4               card            4   2.000000 gauge
+  horizon_64             card           64   6.000000 horizon
+  q6_transport_64        card           64   6.000000 payload
+  shadow_128             card          128   7.000000 single_step_shadow
+  byte_alphabet_256      card          256   8.000000 alphabet
+  omega_4096             card         4096  12.000000 carrier
+  shells_7               card            7   2.807355 radial
+  chirality_bits_6       bits            6        nan register_width
+  byte_bits_8            bits            8        nan instruction_width
+  face_bits_12           bits           12        nan component_width
+  carrier_bits_24        bits           24        nan state_width
+  depth4_bits_48         bits           48        nan closure_width
+  word_len_1             word_len        1   0.000000 word_length
+  word_len_2             word_len        2   1.000000 word_length
+  word_len_4             word_len        4   2.000000 word_length
+  word_len_8             word_len        8   3.000000 word_length
+  word_len_16            word_len       16   4.000000 word_length
+
+  doubling edges (same kind, size -> 2*size)
+  [bits] chirality_bits_6       -> face_bits_12            6->12  cross_role
+  [bits] face_bits_12           -> carrier_bits_24         12->24  cross_role
+  [bits] carrier_bits_24        -> depth4_bits_48          24->48  cross_role
+  [card] faces_2                -> cgm_stages_4            2->4  cross_role
+  [card] faces_2                -> family_4                2->4  cross_role
+  [card] horizon_64             -> shadow_128              64->128  cross_role
+  [card] q6_transport_64        -> shadow_128              64->128  cross_role
+  [card] shadow_128             -> byte_alphabet_256       128->256  cross_role
+  [word_len] word_len_1             -> word_len_2              1->2  same_role
+  [word_len] word_len_2             -> word_len_4              2->4  same_role
+  [word_len] word_len_4             -> word_len_8              4->8  same_role
+  [word_len] word_len_8             -> word_len_16             8->16  same_role
+  n_edges=12
+
+2. WORD PROBES
+=====
+  name            L par  tu  tv shell  id bytes
+  byte_AA         1   1   0   0     0   0 AA
+  byte_AB         1   1  63   0     6   0 AB
+  W2_m0           2   0  63   0     6   0 AA,AB
+  W2p_m0          2   0   0  63     6   0 2A,2B
+  Wfull_m0        4   0  63  63     0   0 AA,AB,2A,2B
+  F2_m0           8   0   0   0     0   1 AA,AB,2A,2B,AA,AB,2A,2B
+  Wfull_m1        4   0  63  63     0   0 A8,A9,28,29
+  Wfull_m63       4   0  63  63     0   0 D4,D5,54,55
+  W2x2_m0         4   0   0   0     0   1 AA,AB,AA,AB
+  W2p_x2_m0       4   0   0   0     0   1 2A,2B,2A,2B
+
+3. SIGNATURE MONOID HOMOMORPHISM
+=====
+  random summary: {'n_random': 64.0, 'compose_exact_frac': 1.0, 'hamming_to_lift_min': 0.0, 'hamming_to_lift_mean': 0.0, 'hamming_to_lift_max': 0.0, 'check': 'signature_monoid_homomorphism'}
+  name             fam        L ham_lift ham_id compose
+  byte_AA          canonical  1        0      0 True
+  byte_AB          canonical  1        0     12 True
+  W2_m0            canonical  2        0      0 True
+  W2p_m0           canonical  2        0      0 True
+  Wfull_m0         canonical  4        0      0 True
+  F2_m0            canonical  8        0      0 True
+  Wfull_m1         canonical  4        0      0 True
+  Wfull_m63        canonical  4        0      0 True
+  W2x2_m0          canonical  4        0      0 True
+  W2p_x2_m0        canonical  4        0      0 True
+  random compose_exact: 64/64
+
+3b. OMEGA12 WORD vs SIGNATURE DISAGREE
+=====
+  name              L disagree agree_frac exact
+  byte_AA           1        0   1.000000 True
+  byte_AB           1        0   1.000000 True
+  W2_m0             2        0   1.000000 True
+  W2p_m0            2        0   1.000000 True
+  Wfull_m0          4        0   1.000000 True
+  F2_m0             8        0   1.000000 True
+  Wfull_m1          4        0   1.000000 True
+  Wfull_m63         4        0   1.000000 True
+  W2x2_m0           4        0   1.000000 True
+  W2p_x2_m0         4        0   1.000000 True
+
+4. PROJECTION EQUIVOCATION H(X|Y)
+=====
+  byte->shadow_partner                 H=1.0000  fib=[2,2]  KERNEL_EXACT
+  byte->q6                             H=2.0000  fib=[4,4]  KERNEL_EXACT
+  byte->shell                          H=5.6666  fib=[4,80]  KERNEL_EXACT sizes=[4, 24, 60, 80, 60, 24, 4]
+  history1->shell_from_rest            H=5.6666  fib=[4,80]  FINITE_EMPIRICAL_ALIGNMENT
+  history2_probe->shell_from_rest      H=8.1226  fib=[4,514]  FINITE_EMPIRICAL_ALIGNMENT n_hist=1024
+  byte->state24_next(rest)             n_unique=128 fib=[2,2] H(byte|next)=1.0000 fib2=True KERNEL_EXACT
+
+5. COMMA vs APERTURE (HYPOTHESIS-GENERATING)
+=====
+  comma    aperture                d_oct    d_cents    d_ticks
+  PC       Delta_cont           0.001150     1.3794     0.0555
+  PC       Delta                0.001150     1.3794     0.0555
+  PC       Delta_depth4         0.001283     1.5400     0.0620
+  PC       Delta_kernel         0.001283     1.5400     0.0620
+  PC       Delta_dyadic_8       0.000019     0.0225     0.0009
+  PC       Delta_byte           0.000019     0.0225     0.0009
+  PC       delta_BU_over_pi     0.042629    51.1552     2.0594
+  SC       Delta_cont           0.002778     3.3332     0.1342
+  SC       Delta                0.002778     3.3332     0.1342
+  SC       Delta_depth4         0.002911     3.4937     0.1407
+  SC       Delta_kernel         0.002911     3.4937     0.1407
+  SC       Delta_dyadic_8       0.001609     1.9312     0.0777
+  SC       Delta_byte           0.001609     1.9312     0.0777
+  SC       delta_BU_over_pi     0.044257    53.1089     2.1381
+  schisma  Delta_cont           0.019071    22.8857     0.9213
+  schisma  Delta                0.019071    22.8857     0.9213
+  schisma  Delta_depth4         0.019205    23.0463     0.9278
+  schisma  Delta_kernel         0.019205    23.0463     0.9278
+  schisma  Delta_dyadic_8       0.017903    21.4838     0.8649
+  schisma  Delta_byte           0.017903    21.4838     0.8649
+  schisma  delta_BU_over_pi     0.060551    72.6615     2.9252
+  best per comma / dyadic certificate:
+  PC       -> Delta_dyadic_8     d_oct=0.000019 reject_hol=False HYPOTHESIS_GENERATING
+  SC       -> Delta_dyadic_8     d_oct=0.001609 reject_hol=False HYPOTHESIS_GENERATING
+  schisma  -> Delta_dyadic_8     d_oct=0.017903 reject_hol=False HYPOTHESIS_GENERATING
+  Delta_cont best k/256: k=5 approx=0.01953125 err=0.00116830 is_5=True KERNEL_EXACT
+
+6. SHELL PAIR-RATIOS vs JUST INTERVALS
+=====
+  tag          ratio         cents nearest                 res_cents
+  C1/C0        6/1       3101.9550 octave                  1901.9550
+  C2/C1        5/2       1586.3137 octave                   386.3137
+  C3/C1        10/3      2084.3587 octave                   884.3587
+  C3/C2        4/3        498.0450 fourth                     0.0000
+  C4/C1        5/2       1586.3137 octave                   386.3137
+  C5/C0        6/1       3101.9550 octave                  1901.9550
+  C(6,2)/2^3   15/8      1088.2687 major_seventh_just         0.0000
+
+7. BYTE PALINDROME / NEWLANDS
+=====
+  frame=['CS', 'UNA', 'ONA', 'BU', 'BU', 'ONA', 'UNA', 'CS']
+  fold_zero_bytes=16
+  consonant_even_fold0=16
+  dissonant_odd_fold_gt0=128
+  ratio=0.1250
+  newlands_CS_hits=0/6
+  Z=  2 pos=2 stage=ONA on_CS=False
+  Z= 10 pos=2 stage=ONA on_CS=False
+  Z= 18 pos=2 stage=ONA on_CS=False
+  Z= 36 pos=4 stage=BU on_CS=False
+  Z= 54 pos=6 stage=UNA on_CS=False
+  Z= 86 pos=6 stage=UNA on_CS=False
+
+8. FIFTHS / 12-vs-19 / 2/3
+=====
+  log2(3/2)=0.58496250
+  12*fifth-7=0.01955001
+  PC=0.01955001 abs_err=0.000000000000
+  fifth_ticks=28.2597
+  chirality_space=0.6666666666666666 status=KERNEL_EXACT
+  12*log2(3)-19=0.01955001
+  12*log2(3)-18=1.01955001
+  |PC-Delta_cont|=0.00114954
+  |PC-Delta_dyadic_8|=0.00001876
+  |PC-Delta_depth4|=0.00128332
+  status=HYPOTHESIS_GENERATING
+
+10. WALSH DYADIC BANDS
+=====
+  default_perm sizes(bands0..3)=[32, 16, 12, 3]
+  unique size tuples under perms=[(32, 16, 12, 3)]
+  energy flow (isotropic_bits, selected ensembles t0/t1/t2):
+  uniform          t0   E=(0.0000,0.0000,0.0000,0.0000)
+  uniform          t1   E=(0.0000,0.0000,0.0000,0.0000)
+  uniform          t2   E=(0.0000,0.0000,0.0000,0.0000)
+  equator          t0   E=(0.5000,0.1000,0.0750,0.0125)
+  equator          t1   E=(0.5000,0.0167,0.0125,0.0021)
+  equator          t2   E=(0.5000,0.0020,0.0015,0.0002)
+  independent_bit  t0   E=(0.1379,0.1189,0.1909,0.1418)
+  independent_bit  t1   E=(0.0587,0.0563,0.1064,0.0986)
+  independent_bit  t2   E=(0.0279,0.0276,0.0542,0.0532)
+
+10b. WALSH–KRAWTCHOUK phi(u)=1-2 wt(u)/6
+=====
+  phi_closed_form_vs_WHT match=True KERNEL_EXACT
+  equator          t=1 max_err=4.163e-17 exact=True KERNEL_EXACT
+  equator          t=2 max_err=1.110e-16 exact=True KERNEL_EXACT
+  equator          t=3 max_err=1.475e-17 exact=True KERNEL_EXACT
+  independent_bit  t=1 max_err=1.110e-16 exact=True KERNEL_EXACT
+  independent_bit  t=2 max_err=5.898e-17 exact=True KERNEL_EXACT
+  independent_bit  t=3 max_err=5.551e-17 exact=True KERNEL_EXACT
+  shell_weight     t=1 max_err=8.327e-17 exact=True KERNEL_EXACT
+  shell_weight     t=2 max_err=1.110e-16 exact=True KERNEL_EXACT
+  shell_weight     t=3 max_err=4.597e-17 exact=True KERNEL_EXACT
+
+10c. WAVE DISPERSION (phi_r=1-r/3)
+=====
+   r      phi      lam   w_cont   w_disc
+   0   1.0000   0.0000   0.0000   0.0000
+   1   0.6667   0.3333   0.5774   0.8411
+   2   0.3333   0.6667   0.8165   1.2310
+   3   0.0000   1.0000   1.0000   1.5708
+   4  -0.3333   1.3333   1.1547   1.9106
+   5  -0.6667   1.6667   1.2910   2.3005
+   6  -1.0000   2.0000   1.4142   3.1416
+  damping-channel vp=vg: True eta=0.5
+
+10d. PROJECTED chi COMMUTATOR (identity on GF(2)^6)
+=====
+  projected_identity=True
+  chi_algebraic_bad=0 chi_rest_fail=0
+  omega_rest_moved_frac=0.9767
+  byte_orders={4: 252, 1: 2, 2: 2}
+  note=d_q=q6(x)^q6(y) is transport difference / plaquette label, not projected commutator
+  mask_code=pair-diagonal self-dual binary [12,6,2] with weight enumerator (1+z^2)^6; not identified with the classical GF(4) hexacode
+
+10e. K4 INTERFERENCE MAP (abelian holonomy)
+=====
+  id   constructive_both_faces
+  S    constructive_A_swap_preserving
+  C    constructive_B_complement_preserving
+  F    destructive_fold_Householder
+  note=K4 is abelian holonomy; non-Abelian curvature requires Q8/SU(2) lift
+
+11. KRAWTCHOUK / COMPATIBILITY
+=====
+  r=0 l1=7 row=[1, 1, 1, 1, 1, 1, 1]
+  r=1 l1=24 row=[6, 4, 2, 0, -2, -4, -6]
+  r=2 l1=45 row=[15, 5, -1, -3, -1, 5, 15]
+  r=3 l1=48 row=[20, 0, -4, 0, 4, 0, -20]
+  r=4 l1=45 row=[15, -5, -1, 3, -1, -5, 15]
+  r=5 l1=24 row=[6, -4, 2, 0, -2, 4, -6]
+  r=6 l1=7 row=[1, -1, 1, -1, 1, -1, 1]
+  corr_l1_vs_harmonic=-0.4362
+  Walsh-band x shell mass (>0.05):
+  band=0 shell=2 mass=0.0794
+  band=0 shell=3 mass=0.1587
+  band=0 shell=4 mass=0.1587
+  band=0 shell=5 mass=0.0794
+  band=1 shell=2 mass=0.0635
+  band=1 shell=3 mass=0.0952
+  band=1 shell=4 mass=0.0635
+  band=2 shell=2 mass=0.0794
+  band=2 shell=3 mass=0.0635
+
+11c. STANDING-WAVE SHELL AMPLITUDES
+=====
+   k   C6    pop     pi_k     cos2 node/anti
+   0    1     64   0.0156   1.0000 node
+   1    6    384   0.0938   0.9330 
+   2   15    960   0.2344   0.7500 
+   3   20   1280   0.3125   0.5000 anti
+   4   15    960   0.2344   0.2500 
+   5    6    384   0.0938   0.0670 
+   6    1     64   0.0156   0.0000 node
+  corr_pop_vs_cos2=0.0000
+  bulk_sum=3968 bulk_is_3968=True
+
+12. QUBEC OCTAVE RG DEFECT (pi K vs K pi)
+=====
+  ensemble         lvl         TV         KL exact
+  uniform            0   0.000000   0.000000 True
+  uniform            1   0.000000   0.000000 True
+  uniform            2   0.000000   0.000000 True
+  shell_weight       0   0.018519   0.000990 False
+  shell_weight       1   0.053704   0.008915 False
+  shell_weight       2   0.106614   0.053711 False
+  equator            0   0.011111   0.000356 False
+  equator            1   0.027778   0.003585 False
+  equator            2   0.500000   1.023433 False
+  independent_bit    0   0.088889   0.029109 False
+  independent_bit    1   0.113689   0.058959 False
+  independent_bit    2   0.127869   0.073299 False
+  gauge_biased       0   0.000000   0.000000 True
+  gauge_biased       1   0.000000   0.000000 True
+  gauge_biased       2   0.250000   0.188722 False
+  random_dirichlet   0   0.003538   0.000038 False
+  random_dirichlet   1   0.029195   0.003902 False
+  random_dirichlet   2   0.065848   0.019304 False
+
+13. PERCOLATION DYADIC
+=====
+  p_c_rank=0.09079549017198912
+  p_c_span=0.02185821533203125
+  p_c_full=0.02729034423828125
+  p_c_spectrum=0.04019927978515625
+  p_c_word=0.30858612060546875
+  thresholds:
+  p_c_rank       p=0.090795 z=3.4612 oct_from_Delta=2.1330 near=1/32 d_oct=1.5388
+  p_c_span       p=0.021858 z=5.5157 oct_from_Delta=0.0786 near=Delta_depth4 d_oct=0.0693
+  p_c_full       p=0.027290 z=5.1955 oct_from_Delta=0.3988 near=1/32 d_oct=0.1955
+  p_c_spectrum   p=0.040199 z=4.6367 oct_from_Delta=0.9576 near=1/32 d_oct=0.3633
+  p_c_word       p=0.308586 z=1.6963 oct_from_Delta=3.8980 near=1/32 d_oct=3.3037
+  pairwise log2(pi/pj) vs {0,±1,±1/2}:
+  p_c_rank    /p_c_span      log2=2.0544 tgt=1.0 err=1.0544 hit=False
+  p_c_rank    /p_c_full      log2=1.7342 tgt=1.0 err=0.7342 hit=False
+  p_c_rank    /p_c_spectrum  log2=1.1755 tgt=1.0 err=0.1755 hit=False
+  p_c_rank    /p_c_word      log2=-1.7650 tgt=-1.0 err=0.7650 hit=False
+  p_c_span    /p_c_full      log2=-0.3202 tgt=-0.5 err=0.1798 hit=False
+  p_c_span    /p_c_spectrum  log2=-0.8790 tgt=-1.0 err=0.1210 hit=False
+  p_c_span    /p_c_word      log2=-3.8194 tgt=-1.0 err=2.8194 hit=False
+  p_c_full    /p_c_spectrum  log2=-0.5588 tgt=-0.5 err=0.0588 hit=False
+  p_c_full    /p_c_word      log2=-3.4992 tgt=-1.0 err=2.4992 hit=False
+  p_c_spectrum/p_c_word      log2=-2.9404 tgt=-1.0 err=1.9404 hit=False
+
+13b. SQUARE-ROOT STRUCTURED SHELL AUDIT
+=====
+  case                     r  n_b  reach   pred fc match
+  q_weight=0               0    4      2      2 True True
+  q_weight=1               6   24   4096   4096 True True
+  q_weight=2               5   60   1024   1024 True True
+  q_weight=3               6   80   4096   4096 True True
+  q_weight=4               5   60   1024   1024 True True
+  q_weight=5               6   24   4096   4096 True True
+  q_weight=6               1    4      4      4 True True
+  even_q_weight            5  128   1024   1024 True True
+  odd_q_weight             6  128   4096   4096 True True
+  q_weight_le_1            6   28   4096   4096 True True
+  ranks_seen=[0, 1, 5, 6] covers_0_1_5_6=True plateau_r5_1024=True all_match=True
+
+14. DYADIC SCALE RESPONSE R_2(p)=theta(min(2p,1))-theta(p)
+=====
+  p=0.0500 th=0.1953 th2=0.6578 R_double=0.4625 R_half=0.1515
+  p=0.1000 th=0.6578 th2=0.9845 R_double=0.3267 R_half=0.4625
+  p=0.0908 th=0.5806 th2=0.9699 R_double=0.3893 R_half=0.4221
+  p=0.2000 th=0.9845 th2=1.0000 R_double=0.0155 R_half=0.3267
+  p=0.3000 th=0.9997 th2=1.0000 R_double=0.0003 R_half=0.0861
+  p=0.5000 th=1.0000 th2=1.0000 R_double=0.0000 R_half=0.0022
+
+15. WORD COMPLETION LAW
+=====
+   L        p     P_word       P_L4    ratio
+   1   0.1000   0.998821   0.006380 156.5579
+   1   0.3000   1.000000   0.405783   2.4644
+   1   0.5000   1.000000   0.983925   1.0163
+   1   0.0908   0.997739   0.004340 229.8842
+   2   0.1000   0.474404   0.006380  74.3593
+   2   0.3000   0.997609   0.405783   2.4585
+   2   0.5000   1.000000   0.983925   1.0163
+   2   0.0908   0.411272   0.004340  94.7593
+   4   0.1000   0.006380   0.006380   1.0000
+   4   0.3000   0.405783   0.405783   1.0000
+   4   0.5000   0.983925   0.983925   1.0000
+   4   0.0908   0.004340   0.004340   1.0000
+   8   0.1000   0.000001   0.006380   0.0001
+   8   0.3000   0.004190   0.405783   0.0103
+   8   0.5000   0.221580   0.983925   0.2252
+   8   0.0908   0.000000   0.004340   0.0001
+
+16. EVEN-INDEX ATLAS E32 + DYADIC SPINE O5
+=====
+  note=E32 even-index atlas (32) contains dyadic spine O5={2..64} (five octave intervals) and predecessor 48
+  |E32|=32 O5=[2, 4, 8, 16, 32, 64] nondyadic=26 48_in_E32=True
+  span_octaves_2_to_64=5.0
+  bulk_sum=3968 bulk_is_3968=True
+  node: even_midpoint=True odd_antinode=True
+  fold: flat=16 curved=240
+  weight: even_q=32 A_even=128 A_odd=128
+  reach_even_formula=1024 bfs={'n_reach': 1024, 'E_full': False, 'matches_1024': True}
+  cover: shadow=128 hologram=4096
+  shells: bulk_sum=3968 horizon_sum=128 rho5=0.900699
+  F_two_cycles=32 cycle_index_n=32 all_f_xor_eps=True
+  cycle_index head (harmonic_n, even_q6, f_cycle_lo/hi):
+    n= 2 q= 0 wt=0 pair=(0,63) dyadic=True pred48=False
+    n= 4 q= 3 wt=2 pair=(1,62) dyadic=True pred48=False
+    n= 6 q= 5 wt=2 pair=(2,61) dyadic=False pred48=False
+    n= 8 q= 6 wt=2 pair=(3,60) dyadic=True pred48=False
+    n=10 q= 9 wt=2 pair=(4,59) dyadic=False pred48=False
+    n=12 q=10 wt=2 pair=(5,58) dyadic=False pred48=False
+    n=14 q=12 wt=2 pair=(6,57) dyadic=False pred48=False
+    n=16 q=15 wt=4 pair=(7,56) dyadic=True pred48=False
+  predecessor_48 row: q=46 pair=(23,40)
+  scale_map:
+    2: faces / minimal dyadic
+    4: CGM stages / family K4
+    8: byte bit-width
+    16: flat fold classes (2^4)
+    32: half-horizon / even-q / F two-cycles
+    64: horizon |H| / q6 alphabet
+    48: predecessor horizon (depth-4 · 3 axes)
+  status=HYPOTHESIS_GENERATING
+
+17. SCRIPT2 GATES
+=====
+  walsh_bands_partition_63                         PASS  [internal_kernel_identity]
+  walsh_phi_exact_damping                          PASS  [internal_kernel_identity]
+  dispersion_phi_r_eq_1_minus_r_over_3             PASS  [internal_kernel_identity]
+  radial_vp_eq_vg_damping_channel                  PASS  [internal_kernel_identity]
+  standing_wave_bulk_3968                          PASS  [internal_kernel_identity]
+  projected_chi_commutator_identity                PASS  [internal_kernel_identity]
+  uniform_rg_tv_near0                              PASS  [internal_kernel_identity]
+  p_c_rank_in_(0,1)                                PASS  [internal_kernel_identity]
+  word_law_L4_monotonic                            PASS  [internal_kernel_identity]
+  even_H_has_32                                    PASS  [internal_kernel_identity]
+  even_harm_five_octaves                           PASS  [internal_kernel_identity]
+  even_harm_midpoint_node                          PASS  [internal_kernel_identity]
+  even_q_eq_32                                     PASS  [internal_kernel_identity]
+  F_two_cycles_32                                  PASS  [internal_kernel_identity]
+  fold_flat_16                                     PASS  [internal_kernel_identity]
+  48_in_H                                          PASS  [internal_kernel_identity]
+  nondyadic_retained                               PASS  [internal_kernel_identity]
+  cycle_index_32                                   PASS  [internal_kernel_identity]
+  reach_even_1024                                  PASS  [internal_kernel_identity]
+  square_root_rank_0to6                            PASS  [internal_kernel_identity]
+  octave_ladder_ends_at_H                          PASS  [internal_kernel_identity]
+  octave_ladder_rungs_eq_d                         PASS  [internal_kernel_identity]
+
+20. APERTURE AS COMMA
+=====
+  Delta_cont_cents=24.839454603204338
+  PC_cents=23.460010384649014
+  SC_cents=21.50628959671478
+  Delta_depth4_cents=25.0
+  Delta_dyadic_8_cents=23.4375
+  cgm_over_PC=1.0587998127851623
+  semitone_ratio_2_1_12=1.0594630943592953
+  48_Delta=0.9935781841281734
+  48_Delta_residue_octaves=0.006421815871826553
+  48_Delta_residue_cents=7.706179046191863
+  ticks_per_octave=48.31023946255236
+  best_dyadic_k_for_Delta_cont=5
+  best_dyadic_err=0.0011682955026702802
+  Delta_dyadic_8_is_best=True
+  status=HYPOTHESIS_GENERATING
+
+20b. FOUNDATION LOCKS (wave_normalization axiom)
+=====
+  phi_SU2=0.5879007626540199
+  Q_G_m_a2=0.5000000000000001
+  s_p_over_m_a2=39.47841760435743
+  four_pi2=39.47841760435743
+  gyro_sum=3.141592653589793
+  48_Delta=0.9935781841281734
+  48_Delta_residue=0.006421815871826553
+  chirality_space=0.6666666666666666
+  alpha0=0.007299683573240621
+  zeta=23.155240145864564
+  alpha0_zeta=0.16902592612720932
+  rho4_over_pi_sqrt3=0.16902592612720937
+  rho5=0.900699206876717
+  m_gap_RouteA_GeV=1.5824726239304199
+  E_grade2_GeV=0.10549817492869466
+  M_shell=192.0
+  tau_G_leading=76.23791357356666
+  wave_normalization_QG_ma2_half                   PASS  [KERNEL_EXACT]
+  QG_ma2_is_1_2                                    PASS  [KERNEL_EXACT]
+  sp_over_ma2_is_4pi2                              PASS  [KERNEL_EXACT]
+  gyro_sum_is_pi                                   PASS  [KERNEL_EXACT]
+  chirality_space_2_3                              PASS  [KERNEL_EXACT]
+  48_in_EVEN_H                                     PASS  [KERNEL_EXACT]
+  M_shell_is_6x32                                  PASS  [KERNEL_EXACT]
+  alpha0_zeta_matches_rho4                         PASS  [KERNEL_EXACT]
+  status=KERNEL_EXACT
+
+20c. YM SHADOW / MASS-GAP LOCKS
+=====
+  E_grade2_GeV=0.10549817492869466
+  m_gap_RouteA_GeV=1.5824726239304199
+  C2=15.0
+  Delta_W_256=0.5019607843137255
+  Delta_W_128_over_255=0.5019607843137255
+  Delta_W_limit=0.5
+  glueball_0pp_window_GeV=(1.5, 1.8)
+  m_gap_in_glueball_window_anno=True
+  E_grade2_eq_v_Delta2                             PASS  [DERIVED_GIVEN_IMPORTED_CONSTANTS]
+  m_gap_eq_C2_E_grade2                             PASS  [CONTINUUM_BRIDGE_DEPENDENT]
+  Delta_W_256_eq_128_255                           PASS  [KERNEL_EXACT]
+  lim_Delta_W_eq_1_2                               PASS  [KERNEL_EXACT]
+  QG_ma2_eq_1_2                                    PASS  [KERNEL_EXACT]
+  status=CONTINUUM_BRIDGE_DEPENDENT
+
+20d. CURVATURE MANIFESTATIONS
+=====
+  Delta_cont                       0.02069954550267028  [KERNEL_EXACT]
+  delta_BU                         0.1953421782576621  [KERNEL_EXACT]
+  phi_SU2                          0.5879007626540199  [KERNEL_EXACT]
+  phi_SU2_over_3                   0.1959669208846733  [KERNEL_EXACT]
+  W_residual_phi_minus_3delta      0.001874227881033641  [FINITE_EMPIRICAL_ALIGNMENT]
+  tau_G                            76.23791357356666  [DERIVED_GIVEN_IMPORTED_CONSTANTS]
+  K_G_R_2                          1.4142135623730951  [KERNEL_EXACT]
+  rho                              0.9793004544973297  [KERNEL_EXACT]
+  |delta_BU - phi_SU2/3|=0.0006247426270112044 within_5e-4=False within_2e-3=True
+  fold_counts={0: 16, 1: 64, 2: 96, 3: 64, 4: 16}
+
+20e. STF QUADRUPOLE LAYER
+=====
+  STF_bulk_shells          5.0  (shells 1..5) [KERNEL_EXACT]
+  dim_STF2_3D              5.0  (l=2 multiplet) [KERNEL_EXACT]
+  Delta_dyadic_8           0.01953125  (5/256) [KERNEL_EXACT]
+  inv_sqrt5                0.4472135954999579  (STF norm) [KERNEL_EXACT]
+  rho5                     0.900699206876717  (attenuation) [KERNEL_EXACT]
+  cmb_ell_37_times_5       185  (exploratory marker) [HYPOTHESIS_GENERATING]
+  bulk_3968=True dyadic_num5=True
+
+21. LANDMARKS (octave phase)
+=====
+  name                   sector            oct      ticks    phase   d_oct  d_half   d_dy8
+  v_EW                   electroweak    0.0000     0.0000   0.0000   0.000  24.155   0.000
+  W                      electroweak    1.6151    78.0238  29.7136  18.597   5.558   0.480
+  Z                      electroweak    1.4330    69.2304  20.9202  20.920   3.235   2.804
+  Higgs                  electroweak    0.9769    47.1926  47.1926   1.118  23.038   1.118
+  Top                    electroweak    0.5112    24.6952  24.6952  23.615   0.540   0.540
+  Th-229m                nuclear       34.7784  1680.1524  37.6042  10.706  13.449   1.372
+  Deuteron_BE            nuclear       16.7564   809.5072  36.5434  11.767  12.388   0.311
+  strong_bare_vDelta3    nuclear       16.7828   810.7797  37.8159  10.494  13.661   1.583
+  Vb_DT                  fusion        19.0810   921.8056   3.9110   3.911  20.244   2.128
+  Vb_pB11                fusion        17.0135   821.9268   0.6527   0.653  23.502   0.653
+  E_CS                   gravity      -55.4597 -2679.2719  26.1015  22.209   1.946   1.946
+  E_CS_IR                electroweak    5.3023   256.1534  14.6022  14.602   9.553   2.525
+  kT_310K                chemical      43.0682  2080.6338   3.2935   3.293  20.862   2.745
+  Ea_MTE_0.645           chemical      38.4738  1858.6778  22.8887  22.889   1.266   1.266
+
+22. CLUSTERING vs UNIFORM NULL (AUDIT-ONLY)
+=====
+  n=14
+  mean_dist_octave_boundary=11.769541166561769
+  mean_dist_half=12.38557856471441
+  mean_dist_dyadic_8=1.3907429341399031
+  uniform_expected_boundary=12.07755986563809
+  null_mean_boundary_mean=11.941472603269261
+  p_hat_more_concentrated_than_uniform=0.4311377245508982
+  status=NULL_FAILED_AUDIT_ONLY
+
+23. EW MASSES
+=====
+  Top        GeV=172.76 oct=0.5112 ticks=24.6952 res48=-23.3048
+  Higgs      GeV=125.1 oct=0.9769 ticks=47.1926 res48=-0.8074
+  Z          GeV=91.1876 oct=1.4330 ticks=69.2304 res48=21.2304
+  W          GeV=80.379 oct=1.6151 ticks=78.0238 res48=-17.9762
+  v          GeV=246.22 oct=0.0000 ticks=0.0000 res48=0.0000
+  Z_over_W   GeV=1.1344704462608393 oct=0.1820 ticks=8.7934 res48=nan
+
+24. NUCLEAR
+=====
+  name=Th-229m E_eV=8.3557335 octaves_from_v=34.77839051838388 ticks=1680.1523740652858  [FINITE_EMPIRICAL_ALIGNMENT]
+  name=Deuteron E_eV=2224000.0 octaves_from_v=16.75643164043542 ticks=809.5072250873242  [FINITE_EMPIRICAL_ALIGNMENT]
+  name=deuteron_bare_MeV E_eV=2183764.2723851837 MeV=2.183764272385184 octaves_from_v=16.782771296330402 ticks=810.779700170972  [KERNEL_EXACT]
+  name=deuteron_full_MeV E_eV=2224195.000232631 MeV=2.2241950002326307 octaves_from_v=16.756305150536143 ticks=809.5011143300005 abs_err_MeV_vs_2.224=0.00019500023263052668  [FINITE_EMPIRICAL_ALIGNMENT]
+  name=Th_vs_class_6_2 E_pred_eV=8.35631397213309 E_th_eV=8.3557335 n_pred=1680.147532392451 n_th=1680.1523740652858 tick_residual=0.0048416728348001925 octaves_residual=0.0001002204271529892  [FINITE_EMPIRICAL_ALIGNMENT]
+
+25. GRAVITY / APERTURE
+=====
+  Q_G=12.566370614359172
+  log2_Q_G=3.651496129472319
+  log2_Q_G_over_2pi=1.0
+  D_shell=24.0
+  log2_D=4.584962500721156
+  G_kernel=0.5235987755982988
+  log2_G_kernel=-0.9334663712488376
+  log2_Q_minus_log2_D=-0.9334663712488371
+  octaves_EW_to_Planck=55.45971080681329
+  N_e_48sq=2304
+  N_e_over_ln2_octaves=3323.9693742081718
+  m_a=0.19947114020071635
+  log2_m_a=-2.3257480647361595
+  m_a_over_inv_sqrt_2pi=0.5
+  abs_log2_m_a_vs_half_inv_sqrt_2pi=0.0
+  rho5=0.900699206876717
+  m_gap_RouteA_GeV=1.5824726239304199
+  E_grade2_GeV=0.10549817492869466
+  C2=15.0
+  status=HYPOTHESIS_GENERATING
+
+26. ALLOMETRY OCTAVE CONVERSION
+=====
+  Kleiber_3/4              a=0.7500 ticks/mass_oct=36.2327
+  surface_2/3              a=0.6667 ticks/mass_oct=32.2068
+  computational_1/2        a=0.5000 ticks/mass_oct=24.1551
+  a_time_1/4               a=0.2500 ticks/mass_oct=12.0776
+  a_eg_3/16                a=0.1875 ticks/mass_oct=9.0582
+  heart_rate_-1/4          a=-0.2500 ticks/mass_oct=-12.0776
+  mu_band_width            a=0.0833 ticks/mass_oct=4.0259
+
+27. CMB ell=37*n (HYPOTHESIS-GENERATING)
+=====
+  n=1 ell=37 oct=0.0000 int_oct=True stf_n5=False
+  n=2 ell=74 oct=1.0000 int_oct=True stf_n5=False
+  n=3 ell=111 oct=1.5850 int_oct=False stf_n5=False
+  n=4 ell=148 oct=2.0000 int_oct=True stf_n5=False
+  n=5 ell=185 oct=2.3219 int_oct=False stf_n5=True
+  n=6 ell=222 oct=2.5850 int_oct=False stf_n5=False
+  n=7 ell=259 oct=2.8074 int_oct=False stf_n5=False
+  n=8 ell=296 oct=3.0000 int_oct=True stf_n5=False
+
+28. FORTY-EIGHT INVENTORY
+=====
+  48*Delta             0.9935781841281734  (aperture cycle)
+  ticks_per_octave     48.31023946255236  (1/Delta)
+  depth4_bits          48.0  (4*12)
+  N_e                  2304.0  (inflation e-folds)
+  |Omega|/2^6          64.0  (holographic ratio 64)
+  chirality_space      0.6666666666666666  (2/3)
+  C3                   20.0  (equator weight)
+
+29. CROSS-CHART S_oct (AUDIT-ONLY)
+=====
+  n_objects=16
+  charts=['aperture', 'chemical', 'electroweak', 'fusion', 'gravity', 'nuclear']
+  tol_ticks=2.0
+  cross_pairs=99
+  hits=8
+  S_oct=0.08080808080808081
+  null_mean_S=0.08080808080808081
+  p_hat_S_ge_obs=1.0
+  status=NULL_FAILED_AUDIT_ONLY
+
+29b. AUDIT-ONLY (not kernel identities)
+=====
+  landmark_clustering              NULL_FAILED_AUDIT_ONLY  metric=0.4311377245508982
+  cross_chart_S_oct                NULL_FAILED_AUDIT_ONLY  metric=1.0
+  delta_BU_vs_phi_SU2_over_3       FINITE_EMPIRICAL_ALIGNMENT  metric=0.0006247426270112044
+
+30. SCRIPT3 GATES
+=====
+  ticks_per_octave_positive                        PASS  [internal_kernel_identity]
+  48_Delta_near_1                                  PASS  [derived_imported]
+  Delta_depth4_cents_25                            PASS  [internal_kernel_identity]
+  Delta_dyadic_8_best_approx                       PASS  [internal_kernel_identity]
+  wave_normalization_axiom                         PASS  [internal_kernel_identity]
+  Q_G_one_octave_above_2pi                         PASS  [internal_kernel_identity]
+  m_a_is_half_inv_sqrt_2pi                         PASS  [internal_kernel_identity]
+  foundation_locks                                 PASS  [internal_kernel_identity]
+  QG_ma2_half                                      PASS  [internal_kernel_identity]
+  sp_ma2_4pi2                                      PASS  [internal_kernel_identity]
+  gyro_sum_pi                                      PASS  [internal_kernel_identity]
+  alpha0_zeta_identity                             PASS  [internal_kernel_identity]
+  ym_shadow_locks                                  PASS  [continuum_bridge]
+  stf_bulk_3968                                    PASS  [internal_kernel_identity]
+  stf_dyadic_num_5                                 PASS  [internal_kernel_identity]
+  mu_band_ticks_near_4                             PASS  [external_alignment]
+  cmb_n2_is_octave                                 PASS  [external_alignment]
+  m_gap_RouteA_positive                            PASS  [continuum_bridge]
+
+GATES SUMMARY
+=====
+  exact_gates_fail=0/64
+  results=F:\Development\science\experiments\hqvm_cgm_octaves_results.txt

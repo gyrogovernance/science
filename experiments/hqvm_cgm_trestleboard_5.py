@@ -593,6 +593,8 @@ def main() -> int:
     print("3. Kernel radial/angular split and shell duality")
     print("Krawtchouk radial modes (7x7)        : present")
     print("  K_0(k) =", KRAWTCHOUK_7[0], " (shell census vector)")
+    row6 = tuple(comb(6, k) for k in range(7))
+    print("  C(6,k) = Pascal row 6 (binomial label only) :", row6 == KRAWTCHOUK_7[0])
     print("shell census |Shell_N|=|Shell_6-N|  :", shell_census_duality_ok())
     print("in-shell angular multiplicity (64)   :", [angular_multiplicity(s) for s in range(7)])
 
