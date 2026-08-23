@@ -82,12 +82,13 @@ All results below derive from the hQVM kernel geometry and its shared logarithmi
 
 | Measure | Count |
 |---------|------:|
-| Analysis write-ups (`docs/Findings/Analysis_*.md`) | 38 |
-| Runnable experiment scripts (`experiments/`, excl. tests) | 112 |
-| hQVM physics scripts (`experiments/hqvm_*.py`, `hQVM_CGM_YM_Gap/`) | 72 |
-| Shared library and kernel modules (`experiments/`) | 6 |
-| hQVM verified features (kernel pytest, repo executables, formal proofs) | 283 |
-| Python in `experiments/` (all files) | ~91,000 lines |
+| Formal Documentation (Analyses, Specs, Reports | 50+ |
+| Scripts (Experiments, Tests, Derivations) | 112 |
+| hQVM specific | 72 |
+| hQVM verified features (mathematical physics formal proofs) | 283 |
+| Lines of Python | ~91,000 lines |
+| Team size	 | 1 |
+| Institutional support - Funding | 0 |
 
 ---
 <div align="center">
