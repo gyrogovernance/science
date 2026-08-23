@@ -82,13 +82,13 @@ All results below derive from the hQVM kernel geometry and its shared logarithmi
 
 | Measure | Count |
 |---------|------:|
-| Formal Documentation (Analyses, Specs, Reports | 50+ |
+| Formal Documentation (Analyses, Specs, Reports) | 50+ |
 | Scripts (Experiments, Tests, Derivations) | 112 |
 | hQVM specific | 72 |
-| hQVM verified features (mathematical physics formal proofs) | 283 |
+| hQVM verified Features (mathematical physics formal proofs) | 283 |
 | Lines of Python | ~91,000 lines |
-| Team size	 | 1 |
-| Institutional support - Funding | 0 |
+| Team Size	 | 1 |
+| Institutional Support - Funding | 0 |
 
 ---
 <div align="center">
