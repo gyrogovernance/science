@@ -14,7 +14,7 @@
 
 ---
 
-<div>
+<div align="center">
 
 <h1>🌐 Common Governance Model</h1>
 <h3>Fundamental Physics Axiomatization</h3>
@@ -40,39 +40,54 @@ The Common Governance Model (CGM) is an axiomatic framework for fundamental phys
 
 The hQVM is the executable form of the framework: a **Holonomic Quantum Virtual Machine** instantiated as a reversible GF(2) finite-state transducer. It is a replayable algebraic machine that runs the CGM axioms as integer arithmetic. Computation proceeds via geometric phases (holonomies) of closed SE(3) spinorial loops. These are the same holonomic structures that the quantum computing literature recognizes as a universal computational model (Zanardi and Rasetti 1999; Pachos et al. 2000). The same machine is used both as a research tool and as an alignment kernel for AI systems. In this repository it serves as the reference implementation against which the physical predictions are checked: gravity, electroweak masses, nuclear structure, the Yang–Mills mass-gap readout, organismal allometry, wavefunction structure, generator-restricted percolation, and related analyses are computed directly on it (65 `hqvm_*.py` scripts in `experiments/`, plus `experiments/hQVM_CGM_YM_Gap/`).
 
-Canonical repository: [superintelligence](https://github.com/gyrogovernance/superintelligence). Vendored implementation: [`gyroscopic/hQVM/`](gyroscopic/hQVM/). Specifications and test reports are listed in the documentation section below.
+Canonical repository: [superintelligence](https://github.com/gyrogovernance/superintelligence). Vendored implementation: [`gyroscopic/hQVM/`](gyroscopic/hQVM/).
 
 ## Headline results
 
-* **Newton's constant G** computed from kernel geometry using the electroweak Higgs scale as the sole measured input. The weak-field prediction lies about +2.99 parts per million from the CODATA reference value (CODATA G uncertainty ≈ 22 ppm).
-* **Fine-structure constant α** from the same geometry: `α₀ = δ_BU⁴ / m_a` with `δ_BU = 4 · arctan(k(π/4) · k(m_a))` about 319.43 ppm from CODATA 2018; transport-corrected `α ≈ 0.007297352816`, about 33.8 ppb from that reference.
-* **Three-dimensional space with six degrees of freedom** derived as a theorem of the framework. Explicit proofs exclude two-dimensional and higher-dimensional alternatives.
-* **Electroweak particle masses** (Higgs, Z, W, top) and the **weak mixing angle** derived from the same geometric structure that fixes G.
-* **W/Z boson mass ratio test:** Spectral mass laws use the D³ fixed point `Δ_* ≈ 0.020699553957`; observational tick coordinates use the loop-angle gap `Δ ≈ 0.020699545503`. Using PDG masses, Newton inversion recovers `Δ_*` to absolute error `7.899 × 10⁻¹⁰`.
-* **Nuclear structure and fusion resonances** on the shared loop-angle Δ-ruler with zero free nuclear parameters. The framework reconstructs the deuteron binding energy to `|rel| = 8.77 × 10⁻⁵`, predicts the optical Th-229m isomer at 8.3563 eV against 8.3557 eV measured (`|rel| = 6.95 × 10⁻⁵`), maps fusion Coulomb barriers to structural percolation thresholds, routes 801 of 801 cataloged beta decays through deterministic chirality-shell conservation rules, and derives the seven canonical magic numbers 2, 8, 20, 28, 50, 82, and 126 as large-gap closures in a Nilsson spectrum whose couplings are fixed by the same geometric constants chain as the W/Z mass split.
-* **Quark generation pattern (scheme dependent):** Under the mass conventions used in the compact-geometry analysis, the six quark masses fall on an integer-spaced ladder in the framework's logarithmic mass coordinate, grouping naturally into three generation pairs.
-* **Gravity as a nonlinear theory of geometry** with a position-dependent coupling. The static point-mass exterior closes analytically, recovering Newtonian and general-relativistic limits and yielding an exact, finite gravitational self-energy of −Mc²/4.
-* **A complete solid angle of 4π** steradians as the geometric invariant of gravity, fixing the structure of Newton's and Einstein's field equations and the spin-2 character of gravitational waves.
-* **The relation E = mc²** derived as a consequence of the Virial condition (2T + V = 0), which follows from the requirement that coherent operational closure forces net displacement to zero every cycle, making the rest frame a dynamical necessity rather than a coordinate choice.
-* **Quantum-information certificates from the kernel:** The canonical Hilbert-space lift yields CHSH values saturating Tsirelson's bound and verifies stabilizer-quantum-information properties (teleportation, contextuality), derived from the intrinsic self-dual code structure.
-* **Replayable settlement from the same kernel geometry:** The hQVM supports compact offline receipts whose validity is reconstructed by deterministic replay rather than dependence on a continuously synchronized global ledger.
-* **Yang–Mills mass gap as aperture readout:** On the admissible oriented quotient of the 4096-state hQVM carrier, the residual aperture `Δ ≈ 0.020699545503` forces a strictly positive spectral floor above the vacuum. The proposed continuum mass readout is `m_gap = C₂ · v · Δ² ≈ 1.582473` GeV (Route A; Route B ≈ `1.661555` GeV) for the saturated grade-2 curvature multiplet, lying in the lattice 0⁺⁺ glueball window. Finite carrier and Wilson-chart identities are exact; continuum reconstruction is conditional on the inductive-net and Hopf-chart dependencies stated in the analysis.
-* **Why metabolism scales with body size:** The same six-degree-of-freedom kernel geometry that fixes the physics constants also fixes a small set of organism-level scaling exponents: a metabolic band between 2/3 and 3/4, a quarter-power time law, and a 3/16 development law, with catalog audits. Mammalian trait catalogs (PanTHERIA, AnAge, AnimalTraits) fall where those predictions require.
+All results below derive from the hQVM kernel geometry and its shared logarithmic mass ruler. Because the framework uses no free parameters, a single geometric structure fixes the dimensionality of space, physical constants, and scaling laws across disciplines.
 
-Neutrino mass scales, lepton ratios, and the optical conjugacy linking the Planck and electroweak scales are also derived in the linked analyses.
+### Foundations
+
+* **Three-dimensional space with six degrees of freedom** emerges as a proven theorem.
+* **The full 4π solid angle of a sphere** serves as the geometric invariant of gravity, fixing the structure of classical field equations and the spin-2 character of gravitational waves.
+* **Mass-energy equivalence (E = mc²)** follows dynamically because operational closure forces net displacement to zero each cycle, making the rest frame a physical necessity rather than a coordinate choice.
+
+### Physical constants
+
+* **Newton's gravitational constant G** is computed using only the electroweak Higgs scale as an external input, matching the CODATA reference value to within 3 parts per million.
+* **The fine-structure constant α** matches the CODATA 2018 value to within 34 parts per billion after geometric transport corrections.
+* **The electroweak particle masses** (Higgs, Z, W, top) and the weak mixing angle are fixed entirely by the kernel.
+* **The W and Z boson masses** successfully reconstruct the internal mass-ruler spacing to an absolute error of 7.899 × 10⁻¹⁰.
+
+### Nuclear and particle structure
+
+* **Nuclear physics** shares the electroweak mass ruler to predict the deuteron binding energy, the thorium-229 isomer transition, beta-decay routing, and the standard magic-number sequence (2, 8, 20, 28, 50, 82, 126) with zero free parameters.
+* **The six quark masses** fall on a regular ladder in the logarithmic coordinate and group naturally into three generation pairs.
+
+### Gravity and gauge theory
+
+* **Gravity** operates as a nonlinear geometric theory where the static point-mass exterior closes analytically, yielding a finite self-energy of −Mc²/4.
+* **The Yang–Mills mass gap** is calculated at approximately 1.58 GeV, placing it within the expected range for light scalar glueballs.
+
+### Biology and scaling
+
+* **Organismal metabolism** follows the spatial geometry to yield standard 3/4 and 2/3 scaling bands, a quarter-power lifespan law, and a 3/16 development law, which are successfully audited against mammalian trait catalogs.
+
+### Information-theoretic applications
+
+* **The mathematical carrier** lifts to a quantum representation that saturates the Bell inequality and verifies standard teleportation protocols.
+* **The machine supports offline digital receipts** whose validity is verified by local deterministic replay rather than a global ledger.
 
 ## Scale of verification
 
 | Measure | Count |
 |---------|------:|
-| Analysis write-ups (`docs/Findings/Analysis_*.md`) | 37 |
+| Analysis write-ups (`docs/Findings/Analysis_*.md`) | 38 |
 | Runnable experiment scripts (`experiments/`, excl. tests) | 112 |
 | hQVM physics scripts (`experiments/hqvm_*.py`, `hQVM_CGM_YM_Gap/`) | 72 |
 | Shared library and kernel modules (`experiments/`) | 6 |
-| hQVM verified features (Tiers A-C) | 283 |
+| hQVM verified features (kernel pytest, repo executables, formal proofs) | 283 |
 | Python in `experiments/` (all files) | ~91,000 lines |
-
-Each major result in the table below maps to one analysis note and its verification code. The scripts cover gravity, the Yang–Mills mass-gap readout, organismal allometry, nuclear structure, electroweak mass geometry, fine structure, quantum gravity, CMB checks, axiomatization, Hilbert-space representation, holonomy, and energy scales.
 
 ---
 <div align="center">
@@ -99,39 +114,44 @@ Each major result in the table below maps to one analysis note and its verificat
 
 ### Analyses and verification code
 
-Each analysis note maps to the experiment scripts that verify it.
+**Framework and constants analyses**
+
+| Topic | Analysis | Verification |
+|-------|----------|--------------|
+| Axiomatization | [Analysis_Axiomatization](docs/Findings/Analysis_Axiomatization.md) | Runner: [cgm_axiomatization_analysis.py](experiments/cgm_axiomatization_analysis.py) |
+| 3D space and six degrees of freedom | [Analysis_3D_6DOF_Proof](docs/Findings/Analysis_3D_6DOF_Proof.md) | Runner: [cgm_3D_6DoF_analysis.py](experiments/cgm_3D_6DoF_analysis.py) |
+| Holonomy: closed-path memory, dual-pole loop angle δ_BU | [Analysis_Holonomy](docs/Findings/Analysis_Holonomy.md) | Runner: [cgm_holonomy_analysis_run.py](experiments/cgm_holonomy_analysis_run.py) · Results: [cgm_holonomy_analysis_results.txt](experiments/cgm_holonomy_analysis_results.txt) |
+| Precession: three connections, closed-walk spectrum | [Analysis_Precession](docs/Findings/Analysis_Precession.md) | Runner: [cgm_precession_analysis_run.py](experiments/cgm_precession_analysis_run.py) · Results: [cgm_precession_analysis_results.txt](experiments/cgm_precession_analysis_results.txt) |
+| Quantum gravity invariant Q_G = 4π | [Analysis_Quantum_Gravity](docs/Findings/Analysis_Quantum_Gravity.md) | Runner: [cgm_quantum_gravity_analysis.py](experiments/cgm_quantum_gravity_analysis.py) |
+| 4π alignment across gravitational and gauge sectors | [Analysis_4pi_Alignment](docs/Findings/Analysis_4pi_Alignment.md) | — |
+| Fine-structure constant | [Analysis_Fine_Structure](docs/Findings/Analysis_Fine_Structure.md) | Runner: [cgm_alpha_analysis.py](experiments/cgm_alpha_analysis.py) |
+| Energy scale unification | [Analysis_Energy_Scales](docs/Findings/Analysis_Energy_Scales.md) | Runner: [cgm_energy_analysis.py](experiments/cgm_energy_analysis.py) |
+| Hilbert space representation | [Analysis_Hilbert_Space_Representation](docs/Findings/Analysis_Hilbert_Space_Representation.md) | Runner: [cgm_Hilbert_Space_analysis.py](experiments/cgm_Hilbert_Space_analysis.py) |
+| Proto-units | [Analysis_CGM_Units](docs/Findings/Analysis_CGM_Units.md) | Runner: [cgm_proto_units_analysis.py](experiments/cgm_proto_units_analysis.py) |
+| Gyroscopic multiplication | [Analysis_Gyroscopic_Multiplication](docs/Findings/Analysis_Gyroscopic_Multiplication.md) | — |
+| CMB patterns (cosmological readout) | [Analysis_CMB](docs/Findings/Analysis_CMB.md) | Runner: [cgm_cmb_data_analysis_300825.py](experiments/cgm_cmb_data_analysis_300825.py) |
+| Kompaneyets | [Analysis_Kompaneyets](docs/Findings/Analysis_Kompaneyets.md) | Runner: [cgm_kompaneyets_analysis.py](experiments/cgm_kompaneyets_analysis.py) |
 
 **hQVM kernel analyses**
 
-| Topic | Analysis | Code |
-|-------|----------|------|
-| Gravity, Virial condition, and nonlinear continuum | [Note](docs/Findings/Analysis_Gravity_Note.md), [Full](docs/Findings/Analysis_Gravity.md) | [hqvm_gravity_common.py](experiments/hqvm_gravity_common.py), `hqvm_gravity_analysis_1.py` through `10.py`. Run: `python experiments/hqvm_gravity_runner.py` |
-| Yang–Mills mass gap from the CGM aperture; identity/individuality under depth-four closure; finite carrier, Wilson charts, OS reconstruction, Hopf packaging | [Yang_Mills_Mass_Gap_Solution.md](experiments/hQVM_CGM_YM_Gap/Yang_Mills_Mass_Gap_Solution.md), [Findings](docs/Findings/Analysis_hQVM_CGM_YM_Mass_Gap.md) | [Yang_Mills_Mass_Gap_run.py](experiments/hQVM_CGM_YM_Gap/Yang_Mills_Mass_Gap_run.py) (`_1.py`–`_5.py`, [results](experiments/hQVM_CGM_YM_Gap/Yang_Mills_Mass_Gap_results.txt)) |
-| Nuclear isomer, deuteron binding, alpha/beta carrier census, fusion barriers and resonance map, magic-number Nilsson spectrum on the shared loop-angle Δ-ruler (spectral lock at Δ_*) | [Analysis_hQVM_CGM_Trestleboard](docs/Findings/Analysis_hQVM_CGM_Trestleboard.md) | [hqvm_cgm_trestleboard_run.py](experiments/hqvm_cgm_trestleboard_run.py) (`_1.py`–`_5.py`, [results](experiments/hqvm_cgm_trestleboard_results.txt)) |
-| Allometric scaling from the hQVM formalism (metabolism, lifespan, development): 2/3–3/4 band, 1/4 time law, 3/16 development | [Analysis_hQVM_CGM_Allometry](docs/Findings/Analysis_hQVM_CGM_Allometry.md) | [hqvm_cgm_allometry_run.py](experiments/hqvm_cgm_allometry_run.py) (`_1.py`–`_3.py`, [results](experiments/hqvm_cgm_allometry_results.txt)) |
-| Wavefunction: fiber bundle structure of the byte | [Analysis_hQVM_Wavefunction](docs/Findings/Analysis_hQVM_Wavefunction.md) | [hqvm_wavefunction_kernel.py](experiments/hqvm_wavefunction_kernel.py), [_1.py](experiments/hqvm_wavefunction_1.py), [_2.py](experiments/hqvm_wavefunction_2.py) |
-| Generator-restricted percolation; Square-Root Cluster Theorem; hQVM(d) scaling; benchmark specification | [Analysis](docs/Findings/Analysis_hQVM_Percolation.md), [Note](docs/Findings/Analysis_hQVM_Percolation_Note.md) | [hqvm_percolation_analysis_run.py](experiments/hqvm_percolation_analysis_run.py) (`_1.py`–`_4.py`, [results](experiments/hqvm_percolation_analysis_results.txt)), [hqvm_percolation_analysis_5.py](experiments/hqvm_percolation_analysis_5.py) ([results](experiments/hqvm_percolation_analysis_5_results.txt)) |
-| Replayable settlement and offline receipts | [Analysis](docs/Findings/Analysis_hQVM_Moments_Fiat.md) | [run](experiments/hqvm_moments_fiat_analysis_run.py), [results](experiments/hqvm_moments_fiat_analysis_results.txt) |
-| Cohomology layer: finite hQVM transition site, parity 1-cocycle obstruction, shell exterior-algebra grading with discrete Poincare duality, Grothendieck constant K_G^R(2) = sqrt(2) from the CHSH comparison, Lefschetz and dynamical zeta census | [Analysis](docs/Findings/Analysis_hQVM_Cohomology.md) | [hqvm_Cohomology_analysis_run.py](experiments/hqvm_Cohomology_analysis_run.py) (`_1.py`–`_4.py`, [results](experiments/hqvm_Cohomology_analysis_results.txt)) |
-| Electroweak mass spectrum (Δ ruler; Δ_* spectral laws; W/Z lock 7.899×10⁻¹⁰) | [Analysis_Compact_Geometry](docs/Findings/Analysis_Compact_Geometry.md) | [common](experiments/hqvm_compact_geom_common.py), [1](experiments/hqvm_compact_geom_1.py), [2](experiments/hqvm_compact_geom_2.py), [run](experiments/hqvm_compact_geom_run.py) |
+| Topic | Analysis | Verification |
+|-------|----------|--------------|
+| Gravity, Virial condition and nonlinear continuum | [Analysis_Gravity](docs/Findings/Analysis_Gravity.md) | Runner: [hqvm_gravity_runner.py](experiments/hqvm_gravity_runner.py) |
+| Wavefunction: fiber bundle structure of the byte | [Analysis_hQVM_Wavefunction](docs/Findings/Analysis_hQVM_Wavefunction.md) | Runner: [hqvm_wavefunction_kernel.py](experiments/hqvm_wavefunction_kernel.py) |
+| Electroweak mass spectrum, Δ ruler | [Analysis_Compact_Geometry](docs/Findings/Analysis_Compact_Geometry.md) | Runner: [hqvm_compact_geom_run.py](experiments/hqvm_compact_geom_run.py) · Results: [hqvm_compact_geom_results.txt](experiments/hqvm_compact_geom_results.txt) |
+| Nuclear isomer, deuteron, fusion resonances, magic numbers | [Analysis_hQVM_CGM_Trestleboard](docs/Findings/Analysis_hQVM_CGM_Trestleboard.md) | Runner: [hqvm_cgm_trestleboard_run.py](experiments/hqvm_cgm_trestleboard_run.py) · Results: [hqvm_cgm_trestleboard_results.txt](experiments/hqvm_cgm_trestleboard_results.txt) |
+| Yang–Mills mass gap from the CGM aperture | [Analysis_hQVM_CGM_YM_Mass_Gap](docs/Findings/Analysis_hQVM_CGM_YM_Mass_Gap.md) | Runner: [Yang_Mills_Mass_Gap_run.py](experiments/hQVM_CGM_YM_Gap/Yang_Mills_Mass_Gap_run.py) · Results: [Yang_Mills_Mass_Gap_results.txt](experiments/hQVM_CGM_YM_Gap/Yang_Mills_Mass_Gap_results.txt) |
+| Allometric scaling from the hQVM formalism | [Analysis_hQVM_CGM_Allometry](docs/Findings/Analysis_hQVM_CGM_Allometry.md) | Runner: [hqvm_cgm_allometry_run.py](experiments/hqvm_cgm_allometry_run.py) · Results: [hqvm_cgm_allometry_results.txt](experiments/hqvm_cgm_allometry_results.txt) |
+| Generator-restricted percolation; Square-Root Cluster Theorem | [Analysis_hQVM_Percolation](docs/Findings/Analysis_hQVM_Percolation.md) | Runner: [hqvm_percolation_analysis_run.py](experiments/hqvm_percolation_analysis_run.py) · Results: [hqvm_percolation_analysis_results.txt](experiments/hqvm_percolation_analysis_results.txt) · [hqvm_percolation_analysis_5_results.txt](experiments/hqvm_percolation_analysis_5_results.txt) |
+| Cohomology layer | [Analysis_hQVM_Cohomology](docs/Findings/Analysis_hQVM_Cohomology.md) | Runner: [hqvm_Cohomology_analysis_run.py](experiments/hqvm_Cohomology_analysis_run.py) · Results: [hqvm_Cohomology_analysis_results.txt](experiments/hqvm_Cohomology_analysis_results.txt) |
+| Operator group `G = (GF(2)⁶ × GF(2)⁶) ⋊ C₂` | [Analysis_hQVM_CGM_Group_Theory](docs/Findings/Analysis_hQVM_CGM_Group_Theory.md) | Runner: [hqvm_group_analysis_run.py](experiments/hqvm_group_analysis_run.py) · Results: [hqvm_group_analysis_results.txt](experiments/hqvm_group_analysis_results.txt) |
 
-**Framework and constants analyses**
+**Information-theoretic applications**
 
-| Topic | Analysis | Code |
-|-------|----------|------|
-| Holonomy: closed-path memory, dual-pole loop angle δ_BU, continuous–finite realization | [Analysis_Holonomy](docs/Findings/Analysis_Holonomy.md) | [cgm_holonomy_analysis_run.py](experiments/cgm_holonomy_analysis_run.py) (`_1.py`, `_2.py`, [common](experiments/cgm_holonomy_analysis_common.py); [results](experiments/cgm_holonomy_analysis_results.txt)) |
-| Precession: three connections, pairwise stage precessions, closed-walk spectrum | [Analysis_Precession](docs/Findings/Analysis_Precession.md) | [cgm_precession_analysis_run.py](experiments/cgm_precession_analysis_run.py) (`_1.py`, `_2.py`; [results](experiments/cgm_precession_analysis_results.txt)) |
-| Fine-structure constant | [Analysis_Fine_Structure](docs/Findings/Analysis_Fine_Structure.md) | [cgm_alpha_analysis.py](experiments/cgm_alpha_analysis.py) |
-| Quantum gravity invariant | [Analysis_Quantum_Gravity](docs/Findings/Analysis_Quantum_Gravity.md) | [cgm_quantum_gravity_analysis.py](experiments/cgm_quantum_gravity_analysis.py) |
-| Energy scale unification | [Analysis_Energy_Scales](docs/Findings/Analysis_Energy_Scales.md) | [cgm_energy_analysis.py](experiments/cgm_energy_analysis.py) |
-| 4π unification | [Analysis_4pi_Alignment](docs/Findings/Analysis_4pi_Alignment.md) | |
-| 3D space and six degrees of freedom | [Analysis_3D_6DOF_Proof](docs/Findings/Analysis_3D_6DOF_Proof.md) | [cgm_3D_6DoF_analysis.py](experiments/cgm_3D_6DoF_analysis.py) |
-| Axiomatization | [Analysis_Axiomatization](docs/Findings/Analysis_Axiomatization.md) | [cgm_axiomatization_analysis.py](experiments/cgm_axiomatization_analysis.py) |
-| Hilbert space representation | [Analysis_Hilbert_Space_Representation](docs/Findings/Analysis_Hilbert_Space_Representation.md) | [cgm_Hilbert_Space_analysis.py](experiments/cgm_Hilbert_Space_analysis.py) |
-| CMB patterns (Planck: enhanced power at ℓ=37, p=0.0039) | [Analysis_CMB](docs/Findings/Analysis_CMB.md) | [cgm_cmb_data_analysis_300825.py](experiments/cgm_cmb_data_analysis_300825.py) |
-| Kompaneyets | [Analysis_Kompaneyets](docs/Findings/Analysis_Kompaneyets.md) | [cgm_kompaneyets_analysis.py](experiments/cgm_kompaneyets_analysis.py) |
-| Proto-units | [Analysis_CGM_Units](docs/Findings/Analysis_CGM_Units.md) | [cgm_proto_units_analysis.py](experiments/cgm_proto_units_analysis.py) |
-| Gyroscopic multiplication | [Analysis_Gyroscopic_Multiplication](docs/Findings/Analysis_Gyroscopic_Multiplication.md) | |
+| Topic | Analysis | Verification |
+|-------|----------|--------------|
+| Quantum-information certificates (CHSH, stabilizer lift) | [Analysis_hQVM_Wavefunction](docs/Findings/Analysis_hQVM_Wavefunction.md) | Runner: [hqvm_wavefunction_kernel.py](experiments/hqvm_wavefunction_kernel.py) |
+| Replayable settlement and offline receipts | [Analysis_hQVM_Moments_Fiat](docs/Findings/Analysis_hQVM_Moments_Fiat.md) | Runner: [hqvm_moments_fiat_analysis_run.py](experiments/hqvm_moments_fiat_analysis_run.py) · Results: [hqvm_moments_fiat_analysis_results.txt](experiments/hqvm_moments_fiat_analysis_results.txt) |
 
 ### hQVM specifications and test reports
 
@@ -140,7 +160,7 @@ Each analysis note maps to the experiment scripts that verify it.
 | [hQVM_Specs_Formalism](docs/Gyroscopic_Computational_Theory/hQVM_Specs_Formalism.md) | Formalism |
 | [hQVM_SDK_Quantum_Computing](docs/Gyroscopic_Computational_Theory/hQVM_SDK_Quantum_Computing.md) | SDK |
 | [hQVM_QuBEC_Theory](docs/Gyroscopic_Computational_Theory/hQVM_QuBEC_Theory.md) | QuBEC theory |
-| [hQVM_Features_Report](docs/Gyroscopic_Computational_Theory/hQVM_Features_Report.md) | 283 verified features (Tiers A–C) |
+| [hQVM_Features_Report](docs/Gyroscopic_Computational_Theory/hQVM_Features_Report.md) | 283 verified kernel features |
 | [hQVM_Tests_Report_1](docs/Gyroscopic_Computational_Theory/hQVM_Tests_Report_1.md) | Test report 1 |
 | [hQVM_Tests_Report_2](docs/Gyroscopic_Computational_Theory/hQVM_Tests_Report_2.md) | Test report 2 |
 | [Physics_Tests_Report](docs/Gyroscopic_Computational_Theory/Physics_Tests_Report.md) | Physics tests |
@@ -180,5 +200,5 @@ orcid={0009-0006-4967-1245}
 <p>All foundational ideas, design decisions, and conceptual frameworks originate from the Author.</p>
 <p>Responsibility for the validity, coherence, and ethical direction of this project remains fully human.</p>
 <p><strong>Acknowledgements:</strong><br>
-This project benefited from AI language model services accessed through Z.AI, Arena, Cursor IDE, OpenAI (ChatGPT), Anthropic (Claude), XAI (Grok), Deepseek, and Google (Gemini).</p>
+This project benefited from AI language model services accessed through Cursor IDE, OpenAI (ChatGPT), Anthropic (Claude), Z.AI, XAI (Grok), Deepseek, Google (Gemini), Arena and Comparity.ai .</p>
 </div>

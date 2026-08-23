@@ -4,6 +4,24 @@ All notable changes to the CGM Experimental Framework will be documented in this
 
 ---
 
+## [1.3.9.5-CGM_hQVM_Group_Theory] — 2026-08-22 / 2026-08-23
+
+The byte alphabet of the hQVM generates a finite operator group whose structure is now fixed end to end. Six dipole modes, four family phases, and 256 instructions close on an affine 2-group of order 8192 acting transitively on a 4096-state carrier. The analysis identifies the center as six-bit plaquette holonomy, the depth-four Klein four-group closure at every micro-reference, the multiplicity-free decomposition into 2080 irreducible sectors, exact two-step uniform mixing with sixteen witnesses per target, and the continuous correspondence through chirality, double cover, and BU holonomy. Capacity routes follow directly: thirteen-bit word compilation, algebraic routing, Walsh and group harmonic transforms, transport-rank reachability, and the Hilbert lift with Bell-pair factorization and Tsirelson saturation.
+
+### Added
+
+- `docs/Findings/Analysis_hQVM_CGM_Group_Theory.md` — public analysis from CGM axioms through finite G, representation theory, thermodynamics, quantum-information structure, and computational capacity
+- `experiments/hqvm_group_analysis_{1,2,3,4,5,common,run}.py` — algebraic verification suite (201 gates)
+- `experiments/hqvm_group_analysis_results.txt` — deterministic run output
+
+### Results
+
+- `G = (GF(2)⁶ × GF(2)⁶) ⋊ C₂`, `|G| = 8192`, `|Ω| = 4096`, stabilizer order 2; 2144 conjugacy classes, 128 linear and 2016 two-dimensional irreps
+- Central holonomy in GF(2)⁶; K4 depth-four closure per payload; self-dual `[12,6,2]` code; 2080-sector multiplicity-free carrier representation
+- Two-byte ensemble uniformizes Ω with witness multiplicity 16; square-root cluster law for restricted alphabets by transport rank
+
+---
+
 ## [1.3.9.4-CGM_Precession] — 2026-08-17 / 2026-08-18
 
 Precession at the CGM stage thresholds: three transport prescriptions on the same loops, the orthogonal pairwise Thomas–Wigner precessions, the Fermi–Walker spectrum of closed walks of length two through five, palindrome axis steering, secant and tangent closure response, CGM units, and the compact hyperbolic fiber bridge.

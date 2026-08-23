@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
-"""hqvm_SO_analysis_common.py — Shared infrastructure.
-All linear algebra delegated to scipy/numpy/mpmath.
-Integrates with hQVM kernel and CGM theory.
+"""hqvm_group_analysis_common.py — Shared infrastructure for hQVM group analysis.
+
+Role: kernel group helpers, SO(3) bridge maps (exp/hat for BU holonomy), reporting.
+Inputs: gyroscopic.hQVM, scipy/numpy.
+Outputs: constants and functions imported by hqvm_group_analysis_1/2/3.
+Companion: hqvm_group_analysis_run.py.
 """
 from __future__ import annotations
 import math, sys
@@ -12,62 +15,121 @@ import numpy as np
 
 _EXP = Path(__file__).resolve().parent
 _REPO = _EXP.parent
-RESULTS_PATH = _EXP / "hqvm_SO_analysis_results.txt"
-WORKNOTES_PATH = _EXP / "hqvm_SO_analysis_temp_worknotes.txt"
+RESULTS_PATH = _EXP / "hqvm_group_analysis_results.txt"
+WORKNOTES_PATH = _EXP / "hqvm_group_analysis_temp_worknotes.txt"
 if str(_EXP) not in sys.path: sys.path.insert(0, str(_EXP))
 if str(_REPO) not in sys.path: sys.path.insert(0, str(_REPO))
 
 _SCIPY_OK, _KERNEL_OK, _GYRO_OK = True, True, True
+
+
+def _kernel_missing(name: str):
+    """Stub for kernel symbols when gyroscopic.hQVM is unavailable."""
+    def _stub(*args: Any, **kwargs: Any) -> Any:
+        raise RuntimeError(f"hQVM kernel not available ({name})")
+    return _stub
+
+
+class _KernelMissingType:
+    """Stub type for kernel dataclasses when gyroscopic.hQVM is unavailable."""
+
+    def __init__(self, *args: Any, **kwargs: Any) -> None:
+        raise RuntimeError("hQVM kernel not available")
+
+
+spla: Any
+spspec: Any
 try:
-    import scipy.linalg as spla
-    import scipy.special as spspec
+    import scipy.linalg as _spla
+    import scipy.special as _spspec
     import scipy.sparse as sp
     import scipy.sparse.linalg as spspl
     import scipy.spatial.transform as sstr
+    spla = _spla
+    spspec = _spspec
 except ImportError: _SCIPY_OK = False
 if not _SCIPY_OK:
-    spla = None  # type: ignore
+    spla = _kernel_missing("scipy.linalg")
+    spspec = _kernel_missing("scipy.special")
 
+OmegaState12: Any
+OmegaSignature12: Any
+compose_omega_signatures: Any
+state24_to_omega12: Any
+omega12_to_state24: Any
+step_state_by_byte: Any
+chirality_word6: Any
+q_word6: Any
+shadow_partner_byte: Any
+shell_population: Any
+shell_transition_matrix_for_q_weight: Any
+state_charts: Any
+future_cone_measure: Any
+optical_coordinates: Any
 try:
     from gyroscopic.hQVM.api import (
-        OmegaState12, OmegaSignature12, compose_omega_signatures,
-        state24_to_omega12, omega12_to_state24,
-        chirality_word6, q_word6, q_word6_for_items,
+        OmegaState12 as _OmegaState12,
+        OmegaSignature12 as _OmegaSignature12,
+        compose_omega_signatures as _compose_omega_signatures,
+        state24_to_omega12 as _state24_to_omega12,
+        omega12_to_state24 as _omega12_to_state24,
+        chirality_word6 as _chirality_word6,
+        q_word6 as _q_word6,
+        q_word6_for_items,
         step_omega12_by_byte, omega_word_signature,
-        shadow_partner_byte,
-        shell_transition_probability, shell_transition_matrix_for_q_weight,
+        shadow_partner_byte as _shadow_partner_byte,
+        shell_transition_probability, shell_transition_matrix_for_q_weight as _shell_transition_matrix_for_q_weight,
         shell_markov_step, shell_krawtchouk_transform_exact,
-        shell_population, k4_orbit, k4_stabilizer, fixed_locus,
+        shell_population as _shell_population,
+        k4_orbit, k4_stabilizer, fixed_locus,
         walsh_hadamard64,
     )
     from gyroscopic.hQVM.constants import (
         GENE_MAC_REST, MASK_STATE24, LAYER_MASK_12,
-        step_state_by_byte, unpack_state, pack_state,
+        step_state_by_byte as _step_state_by_byte,
+        unpack_state, pack_state,
         GENE_MAC_A12, M_A, BU_HOLONOMY_ANGLE, APERTURE_GAP,
     )
     from gyroscopic.hQVM.sdk import (
-        state_charts, moment_from_ledger,
-        future_cone_measure, future_entropy_bits,
+        state_charts as _state_charts,
+        moment_from_ledger,
+        future_cone_measure as _future_cone_measure,
+        future_entropy_bits,
         directional_derivative, byte_derivative_table,
         witness_from_rest, SpectralOps, StateOps, MomentOps,
     )
+    OmegaState12 = _OmegaState12
+    OmegaSignature12 = _OmegaSignature12
+    compose_omega_signatures = _compose_omega_signatures
+    state24_to_omega12 = _state24_to_omega12
+    omega12_to_state24 = _omega12_to_state24
+    step_state_by_byte = _step_state_by_byte
+    chirality_word6 = _chirality_word6
+    q_word6 = _q_word6
+    shadow_partner_byte = _shadow_partner_byte
+    shell_population = _shell_population
+    shell_transition_matrix_for_q_weight = _shell_transition_matrix_for_q_weight
+    state_charts = _state_charts
+    future_cone_measure = _future_cone_measure
 except ImportError: _KERNEL_OK = False
 
 # Fallback stubs so importing modules always succeed even without the kernel
 if not _KERNEL_OK:
-    OmegaState12 = None  # type: ignore
-    OmegaSignature12 = None  # type: ignore
-    compose_omega_signatures = None  # type: ignore
-    step_state_by_byte = None  # type: ignore
-    omega12_to_state24 = None  # type: ignore
-    chirality_word6 = None  # type: ignore
-    q_word6 = None  # type: ignore
-    shadow_partner_byte = None  # type: ignore
-    shell_population = None  # type: ignore
-    shell_transition_matrix_for_q_weight = None  # type: ignore
-    state_charts = None  # type: ignore
-    future_cone_measure = None  # type: ignore
-    optical_coordinates = None  # type: ignore
+    OmegaState12 = _KernelMissingType  # type: ignore[misc,assignment]
+    OmegaSignature12 = _KernelMissingType  # type: ignore[misc,assignment]
+    compose_omega_signatures = _kernel_missing("compose_omega_signatures")
+    state24_to_omega12 = _kernel_missing("state24_to_omega12")
+    step_state_by_byte = _kernel_missing("step_state_by_byte")
+    omega12_to_state24 = _kernel_missing("omega12_to_state24")
+    chirality_word6 = _kernel_missing("chirality_word6")
+    q_word6 = _kernel_missing("q_word6")
+    shadow_partner_byte = _kernel_missing("shadow_partner_byte")
+    shell_population = _kernel_missing("shell_population")
+    shell_transition_matrix_for_q_weight = _kernel_missing(
+        "shell_transition_matrix_for_q_weight")
+    state_charts = _kernel_missing("state_charts")
+    future_cone_measure = _kernel_missing("future_cone_measure")
+    optical_coordinates = _kernel_missing("optical_coordinates")
 
 try:
     from functions.gyrovector_ops import GyroVectorSpace
@@ -176,14 +238,16 @@ def rodrigues_exp(theta, axis):
     return np.eye(3)+s*K+(1-c)*(K@K)
 
 def exponential_map(A):
-    try: return spla.expm(A)
-    except:
-        theta=math.sqrt(max(0,-0.5*np.trace(A@A)))
-        ax=vee_map(A)/(theta+1e-30)
-        return rodrigues_exp(theta,ax)
+    if _SCIPY_OK:
+        return spla.expm(A)
+    theta=math.sqrt(max(0,-0.5*np.trace(A@A)))
+    ax=vee_map(A)/(theta+1e-30)
+    return rodrigues_exp(theta,ax)
 
 def logarithmic_map(R):
-    return spla.logm(R)
+    if _SCIPY_OK:
+        return spla.logm(R)
+    raise RuntimeError("scipy.linalg required for logarithmic_map")
 
 def so3_residuals(R):
     orth=float(np.linalg.norm(R.T@R-np.eye(3)))
@@ -452,8 +516,12 @@ def spherical_grid(n_theta=24, n_phi=48):
 # scipy.special spherical harmonic compatibility:
 #   scipy < 1.17: sph_harm(m, l, phi, theta)
 #   scipy >= 1.17: sph_harm_y(n=l, m, theta, phi)
-_SPH_OLD = getattr(spspec, 'sph_harm', None)   # (m, l, phi, theta)
-_SPH_NEW = getattr(spspec, 'sph_harm_y', None)  # (l, m, theta, phi)
+if _SCIPY_OK:
+    _SPH_OLD = getattr(spspec, 'sph_harm', None)   # (m, l, phi, theta)
+    _SPH_NEW = getattr(spspec, 'sph_harm_y', None)  # (l, m, theta, phi)
+else:
+    _SPH_OLD = None
+    _SPH_NEW = None
 
 
 def sph_harm_lm(l, m, theta, phi):
@@ -463,8 +531,10 @@ def sph_harm_lm(l, m, theta, phi):
     shape = th.shape
     if _SPH_NEW is not None:
         val = _SPH_NEW(int(l), int(m), th.ravel(), ph.ravel())
-    else:
+    elif _SPH_OLD is not None:
         val = _SPH_OLD(int(m), int(l), ph.ravel(), th.ravel())
+    else:
+        raise RuntimeError("scipy.special required for sph_harm_lm")
     return val.reshape(shape) if val.shape != shape else val
 
 
@@ -478,6 +548,27 @@ def so3_harmonic_basis_matrix(l, theta, phi):
     return Y
 
 # ---- Report helpers ----
+# Default quiet: PASS/FAIL + measured/threshold; sample dumps via vprint only.
+# Runner --verbose sets VERBOSE True for full tables.
+VERBOSE = False
+
+
+def set_verbose(flag: bool) -> None:
+    global VERBOSE
+    VERBOSE = bool(flag)
+
+
+def vprint(*args, **kwargs) -> None:
+    """Print only when VERBOSE (sample tables, flat histograms, helper dumps)."""
+    if VERBOSE:
+        print(*args, **kwargs)
+
+
+def info(msg: str) -> None:
+    """Always-on short note (LIMIT / trichotomy / kill-switch). Prefer one line."""
+    print(f'  [INFO] {msg}')
+
+
 class Tee:
     def __init__(self, *streams): self._streams=streams
     def write(self,d): [s.write(d) for s in self._streams]; return len(d)
@@ -495,9 +586,303 @@ def check(state, label, ok, quantity=None, measured=None, threshold=None):
     st="PASS" if ok else "FAIL"
     if quantity:
         print(f"  [{st}] {quantity}")
-        if measured: print(f"         measured: {measured}")
-        if threshold: print(f"         threshold: {threshold}")
+        if measured: print(f'         measured: {measured}')
+        if threshold: print(f'         threshold: {threshold}')
         state.gates.append((quantity, ok))
     else:
         print(f"  check  {label:56s} {st}")
         state.gates.append((label, ok))
+
+
+# ----------------------------------------------------------------------
+# Character / Clifford helpers (shared by _2 and _4+)
+# ----------------------------------------------------------------------
+def swap_halves(x, d=6):
+    """Swap the two d-bit halves of a 2d-bit word."""
+    m = (1 << d) - 1
+    return ((x & m) << d) | ((x >> d) & m)
+
+
+def _swap12(x):
+    return swap_halves(x, 6)
+
+
+def inv_sig_int(g, d=6):
+    """Inverse of a packed signature in G_d."""
+    p = (g >> (2 * d)) & 1
+    u = (g >> d) & ((1 << d) - 1)
+    v = g & ((1 << d) - 1)
+    return (p << (2 * d)) | ((v if p else u) << d) | (u if p else v)
+
+
+def linear_char(s, a, g, d=6):
+    """Linear character chi_{s,a} of G_d on even coset stabilizer a in GF(2)^d."""
+    p = (g >> (2 * d)) & 1
+    u = (g >> d) & ((1 << d) - 1)
+    v = g & ((1 << d) - 1)
+    return (-1) ** ((((s & 1) * (p & 1)) ^ (bin(a & (u ^ v)).count('1') & 1)) & 1)
+
+
+def twod_char(k, g, d=6):
+    """Character of Ind_A^G(chi_k) for swap-orbit of k in GF(2)^{2d}."""
+    p = (g >> (2 * d)) & 1
+    if p:
+        return 0
+    a = g & ((1 << (2 * d)) - 1)
+    return ((-1) ** (bin(k & a).count('1') & 1)
+            + (-1) ** (bin(k & swap_halves(a, d)).count('1') & 1))
+
+
+def rho2(k, g, d=6):
+    """Explicit 2x2 matrix for Ind_A^G(chi_k)."""
+    p = (g >> (2 * d)) & 1
+    a = g & ((1 << (2 * d)) - 1)
+    ap = swap_halves(a, d) if p else a
+    c1 = (-1) ** (bin(k & ap).count('1') & 1)
+    c2 = (-1) ** (bin(k & swap_halves(ap, d)).count('1') & 1)
+    D = np.array([[c1, 0], [0, c2]], dtype=complex)
+    if p == 0:
+        return D
+    return np.array([[0, 1], [1, 0]], dtype=complex) @ D
+
+
+def lin_reps(d=6):
+    """(s, a) labels for the 2^{d+1} linear characters."""
+    return [(s, a) for s in range(2) for a in range(1 << d)]
+
+
+def k_reps(d=6):
+    """Canonical swap-orbit representatives k < swap(k) in GF(2)^{2d}."""
+    n = 1 << (2 * d)
+    return [k for k in range(n) if k < swap_halves(k, d)]
+
+
+def irrep_label(k, d=6):
+    """Canonical label for a 2-dim irrep: (k, n_u, n_v, pop).
+
+    n_u / n_v are popcounts of the upper / lower d-bit halves of k.
+    """
+    m = (1 << d) - 1
+    ku, kv = (k >> d) & m, k & m
+    return {
+        'k': int(k),
+        'n_u': bin(ku).count('1'),
+        'n_v': bin(kv).count('1'),
+        'pop': bin(k).count('1'),
+        'ku': ku,
+        'kv': kv,
+    }
+
+
+def conjugacy_class_index(g, gl_arr, d=6):
+    """Conjugacy class of g under G_d (vectorized over gl_arr)."""
+    p = (g >> (2 * d)) & 1
+    a = g & ((1 << (2 * d)) - 1)
+    hq = (gl_arr >> (2 * d)) & 1
+    hv = gl_arr & ((1 << (2 * d)) - 1)
+    swv = np.array([swap_halves(int(x), d) for x in hv], dtype=np.uint32)
+    swa = swap_halves(a, d)
+    sqa = np.where(hq == 0, a, swa)
+    spv = np.where(p == 0, hv, swv)
+    t = hv ^ sqa ^ spv
+    res = (np.uint32(p) << (2 * d)) | t.astype(np.uint32)
+    return set(int(x) for x in res)
+
+
+def casimir_eigenvalue(j):
+    return j * (j + 1)
+
+
+# ----------------------------------------------------------------------
+# G_d family and step-set helpers
+# ----------------------------------------------------------------------
+def compose_sig_int_d(a, b, d=6):
+    """Compose packed signatures in G_d: result = a o b (apply b first)."""
+    m = (1 << d) - 1
+    pa = (a >> (2 * d)) & 1
+    ua = (a >> d) & m
+    va = a & m
+    pb = (b >> (2 * d)) & 1
+    ub = (b >> d) & m
+    vb = b & m
+    p = pa ^ pb
+    u = (ua ^ ub) if pa == 0 else (ua ^ vb)
+    v = (va ^ vb) if pa == 0 else (va ^ ub)
+    return (p << (2 * d)) | (u << d) | v
+
+
+def byte_signature_d(byte, d=6):
+    """Packed signature of a single byte in G_d (always parity-1).
+
+    Affine law: (u,v) -> (v xor eps_a, u xor micro xor eps_b).
+    """
+    from gyroscopic.hQVM.family import (
+        intron_from_byte, eps_a_d, eps_b_d, intron_micro_ref_d, mask_d,
+    )
+    intron = intron_from_byte(byte, d)
+    m = mask_d(d)
+    tau_u = eps_a_d(intron, d) & m
+    tau_v = (intron_micro_ref_d(intron, d) ^ eps_b_d(intron, d)) & m
+    return (1 << (2 * d)) | (tau_u << d) | tau_v
+
+
+def byte_step_set(d=6):
+    """Distinct packed signatures of the alphabet A_d (subset of odd coset)."""
+    from gyroscopic.hQVM.family import alphabet_size
+    out = set()
+    for b in range(alphabet_size(d)):
+        out.add(byte_signature_d(b, d))
+    return tuple(sorted(out))
+
+
+def kernel_group_d(d=6):
+    """G_d = (Z/2)^{2d} x| Z/2 generated by byte signatures.
+
+    At d=6 this equals kernel_group() (order 8192).
+    """
+    gens = byte_step_set(d)
+    T = set()
+    for a in gens:
+        for b in gens:
+            T.add(compose_sig_int_d(a, b, d))
+    O = set()
+    for g in gens:
+        for t in T:
+            O.add(compose_sig_int_d(g, t, d))
+    return tuple(sorted(T | O))
+
+
+def apply_sig_int_d(g, u, v, d=6):
+    """Apply packed signature g to (u,v) on Omega_d."""
+    m = (1 << d) - 1
+    p = (g >> (2 * d)) & 1
+    tu = (g >> d) & m
+    tv = g & m
+    if p == 0:
+        return (u ^ tu) & m, (v ^ tv) & m
+    return (v ^ tu) & m, (u ^ tv) & m
+
+
+def permutation_character_d(g, d=6):
+    """Permutation character of G_d on Omega_d."""
+    n = 1 << (2 * d)
+    half = 1 << d
+    p = (g >> (2 * d)) & 1
+    u = (g >> d) & (half - 1)
+    v = g & (half - 1)
+    if p == 0:
+        return n if (u == 0 and v == 0) else 0
+    return half if u == v else 0
+
+
+def clifford_irrep_counts(d=6):
+    """(n_linear, n_2d, n_classes) from Clifford theory for G_d."""
+    n_lin = 1 << (d + 1)          # 2 * 2^d swap-fixed extensions
+    n_2d = ((1 << (2 * d)) - (1 << d)) // 2  # swap-orbits of size 2
+    return n_lin, n_2d, n_lin + n_2d
+
+
+# ----------------------------------------------------------------------
+# Fourier / codebook helpers
+# ----------------------------------------------------------------------
+def fwht(a):
+    """In-place-style fast Walsh–Hadamard transform (returns new array)."""
+    a = np.array(a, dtype=np.float64)
+    n = a.shape[0]
+    h = 1
+    while h < n:
+        for i in range(0, n, h * 2):
+            x = a[i:i + h].copy()
+            a[i:i + h] = a[i:i + h] + a[i + h:i + 2 * h]
+            a[i + h:i + 2 * h] = x - a[i + h:i + 2 * h]
+        h *= 2
+    return a
+
+
+def fourier_matrix_linear(d=6):
+    """Unitary character table of the translation subgroup A=(Z/2)^{2d}.
+
+    Rows indexed by frequency k, columns by group element a; entries
+    (-1)^{<k,a>} / 2^d.
+    """
+    n = 1 << (2 * d)
+    F = np.empty((n, n), dtype=np.float64)
+    scale = 1.0 / (1 << d)
+    for k in range(n):
+        for a in range(n):
+            F[k, a] = scale * ((-1) ** (bin(k & a).count('1') & 1))
+    return F
+
+
+def omega_index(u, v, d=6):
+    return (u << d) | v
+
+
+def so3_encode_bits(R, budget):
+    """Encode SO(3) matrix into an integer codebook index at given bit budget.
+
+    Uses axis-angle quantized to 2^{budget} bins on a product chart
+    (angle x hemisphere). Returns (code_int, R_hat) round-trip matrix.
+    """
+    ang = rotation_angle_from_matrix(R)
+    ax = rotation_axis_from_matrix(R)
+    if budget <= 0:
+        return 0, np.eye(3)
+    # Split bits: ~1/3 for angle in [0,pi], rest for axis on S^2 via spherical
+    n_ang = max(1, budget // 3)
+    n_ax = budget - n_ang
+    n_th = max(1, n_ax // 2)
+    n_ph = max(1, n_ax - n_th)
+    i_ang = int(np.clip(round(ang / math.pi * ((1 << n_ang) - 1)), 0, (1 << n_ang) - 1))
+    th = math.acos(float(np.clip(ax[2], -1.0, 1.0)))
+    ph = math.atan2(ax[1], ax[0]) % (2 * math.pi)
+    i_th = int(np.clip(round(th / math.pi * ((1 << n_th) - 1)), 0, (1 << n_th) - 1))
+    i_ph = int(np.clip(round(ph / (2 * math.pi) * ((1 << n_ph) - 1)), 0, (1 << n_ph) - 1))
+    code = (i_ang << (n_th + n_ph)) | (i_th << n_ph) | i_ph
+    ang_h = i_ang / max(1, (1 << n_ang) - 1) * math.pi
+    th_h = i_th / max(1, (1 << n_th) - 1) * math.pi
+    ph_h = i_ph / max(1, (1 << n_ph) - 1) * 2 * math.pi
+    ax_h = np.array([math.sin(th_h) * math.cos(ph_h),
+                     math.sin(th_h) * math.sin(ph_h),
+                     math.cos(th_h)])
+    nrm = float(np.linalg.norm(ax_h))
+    if nrm < 1e-15:
+        ax_h = np.array([1.0, 0.0, 0.0])
+    else:
+        ax_h = ax_h / nrm
+    R_hat = rodrigues_exp(ang_h, ax_h)
+    return code, R_hat
+
+
+def so3_roundtrip(R, budget):
+    """Encode/decode R at bit budget; return geodesic angle error (radians)."""
+    _, R_hat = so3_encode_bits(R, budget)
+    return rotation_angle_from_matrix(R.T @ R_hat)
+
+
+# ----------------------------------------------------------------------
+# 32-bit register atom helpers
+# ----------------------------------------------------------------------
+def pack_register32(intron8, state24):
+    """32-bit atom: high 8 bits = intron, low 24 bits = Mac state."""
+    return ((int(intron8) & 0xFF) << 24) | (int(state24) & 0xFFFFFF)
+
+
+def unpack_register32(reg):
+    return (int(reg) >> 24) & 0xFF, int(reg) & 0xFFFFFF
+
+
+def shadow_register32(reg):
+    """Projection pi: reg32 -> state24."""
+    return int(reg) & 0xFFFFFF
+
+
+def step_register32(byte, reg):
+    """Step a 32-bit register by one byte (Mac via kernel, intron = byte).
+
+    The intron slot stores the latest action byte (family phase carrier).
+    Mac updates by the 24-bit kernel step.
+    """
+    _, mac = unpack_register32(reg)
+    new_mac = step_state_by_byte(mac, byte) & 0xFFFFFF
+    return pack_register32(byte & 0xFF, new_mac)

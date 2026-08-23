@@ -28,6 +28,7 @@
   - [5.10 Organismal Allometry from the Channel Basis](#510-organismal-allometry-from-the-channel-basis)
   - [5.11 Generator-Restricted Percolation and the Square-Root Cluster Theorem](#511-generator-restricted-percolation-and-the-square-root-cluster-theorem)
   - [5.12 Cohomology Layer and Obstruction Census](#512-cohomology-layer-and-obstruction-census)
+  - [5.13 Operator Group Theory and Computational Capacity](#513-operator-group-theory-and-computational-capacity)
 - [6. Cosmological Observations and Testable Predictions](#6-cosmological-observations-and-testable-predictions)
   - [6.1 The CMB as a Residual Observational Field](#61-the-cmb-as-a-residual-observational-field)
   - [6.2 Cosmic Multiplicity and the Illusion of Expansion](#62-cosmic-multiplicity-and-the-illusion-of-expansion)
@@ -54,6 +55,7 @@ This document serves as a high-level guide to the entire CGM research program, w
 -   **Organismal allometry as source-to-bulk transport** on the same `d = 6` channel basis that fixes Kleiber’s `3/4`, the resting `μ`-band, and dual egress/ingress times.
 -   **Generator-restricted percolation and the Square-Root Cluster Theorem**, linking ancestry preservation to holographic cluster scaling and a five-threshold coverage hierarchy on the hQVM kernel.
 -   **A finite cohomology layer** that classifies algebraic obstructions to global ancestry preservation, connects shell grading to exterior algebra, and yields the Grothendieck/CHSH constant `K_G^R(2) = √2`.
+-   **Operator group theory of the byte alphabet**, closing the 256 instructions on `G = (GF(2)⁶ × GF(2)⁶) ⋊ C₂` with central holonomy, a multiplicity-free 2080-sector representation, exact two-step mixing, and computational capacity routes.
 -   **Moments Fiat coordination receipts** as positions on a deterministic kernel trajectory, with NTP time, QR transport, replay-verified seals, and inference-host co-execution.
 -   **A new perspective on cosmology**, where the universe is the interior of a Planck-scale black hole and cosmic expansion is an optical illusion.
 -   **A resolution to fundamental problems in physics**, such as the cosmological constant problem, the Hubble tension, and the nature of quantum gravity.
@@ -291,6 +293,12 @@ Where percolation reports the size of the reachable set, cohomology reports the 
 
 The shell populations are derived from the exterior-algebra grading on the six chirality modes, giving population profile 64, 384, 960, 1280, 960, 384, 64 with discrete Poincaré duality. The parity homomorphism is the 1-cocycle whose kernel excludes odd shells under even-weight restriction, confining the reachable cluster to 32² = 1024 states. The Grothendieck comparison of Boolean Walsh sections against the Hilbert lift on the horizon ensemble delivers `K_G^R(2) = √2`, with the relaxation gap localizing to the CHSH 2×2 projection. Lefschetz fixed-point and dynamical zeta counts complete the finite obstruction census: 252 of 256 bytes have zero fixed points, four bytes fix 64 states each. The residual aperture `Δ = 1 − ρ` links the BU dual-pole loop angle to the closure fraction as the obstruction scalar of the same story.
 
+### 5.13 Operator Group Theory and Computational Capacity
+
+Wavefunction, percolation, and cohomology fix the carrier geometry and its obstructions. The group-theory analysis closes the byte alphabet into the full operator algebra it generates. Full write-up: [Analysis_hQVM_CGM_Group_Theory](Findings/Analysis_hQVM_CGM_Group_Theory.md). Verification: `hqvm_group_analysis_run.py` (`_1.py` through `_5.py`, `hqvm_group_analysis_common.py`).
+
+The 256-byte instruction set generates an affine 2-group `G = (GF(2)⁶ × GF(2)⁶) ⋊ C₂` of order 8192 acting transitively on the 4096-state carrier Ω. The center is the diagonal six-bit plaquette holonomy subgroup. Depth-four words close as a Klein four-group at every micro-reference. The carrier representation is multiplicity-free with 2080 irreducible sectors; the 32-bit register lift restores the shadow sheet. The two-byte ensemble uniformizes Ω with sixteen ordered witnesses per target. Transport rank governs restricted-alphabet reachability through the square-root cluster law. Thirteen-bit word compilation, exact two-step routing, Walsh and group harmonic transforms, and the Hilbert lift with Bell-pair factorization and Tsirelson saturation follow as capacity routes on the same algebra.
+
 ## 6. Cosmological Observations and Testable Predictions
 
 ### 6.1 The CMB as a Residual Observational Field
@@ -341,20 +349,20 @@ Compact receipt layouts (16–20 bytes) fit QR Version 1–2; a single flipped p
 
 ## 8. Computational Verification and Reproducibility
 
-Every major claim in this program is backed by runnable Python in `experiments/` and a matching analysis note in `docs/Findings/`. The hQVM kernel test suite documents **283 verified features** across three verification tiers: 165 kernel pytests (Tier A), 112 science-repo executables (Tier B), and 6 formal manuscript proofs (Tier C). This includes CHSH-Tsirelson saturation, quantum teleportation, Peres-Mermin contextuality, the complete K4/wavefunction/holography closure chain, percolation and cohomology obstructions, nuclear trestleboard placements, Yang–Mills mass-gap readouts, organismal allometry audits, and Moments Fiat receipt geometry. See [hQVM Features Report](Gyroscopic_Computational_Theory/hQVM_Features_Report.md) (local copy; canonical SI twin under `docs/reports/` in [superintelligence](https://github.com/gyrogovernance/superintelligence)).
+Every major claim in this program is backed by runnable Python in `experiments/` and a matching analysis note in `docs/Findings/`. The hQVM kernel test suite documents **283 verified features** across three verification tiers: 165 kernel pytests (Tier A), 112 science-repo executables (Tier B), and 6 formal manuscript proofs (Tier C). This includes CHSH-Tsirelson saturation, quantum teleportation, Peres-Mermin contextuality, the complete K4/wavefunction/holography closure chain, percolation and cohomology obstructions, the byte-generated operator group and its representation theory, nuclear trestleboard placements, Yang–Mills mass-gap readouts, organismal allometry audits, and Moments Fiat receipt geometry. See [hQVM Features Report](Gyroscopic_Computational_Theory/hQVM_Features_Report.md) (local copy; canonical SI twin under `docs/reports/` in [superintelligence](https://github.com/gyrogovernance/superintelligence)).
 
 The repository currently contains:
 
 | Measure | Count |
 |---------|------:|
-| Analysis write-ups (`docs/Findings/Analysis_*.md`) | 37 |
+| Analysis write-ups (`docs/Findings/Analysis_*.md`) | 38 |
 | Runnable experiment scripts (`experiments/`, excl. tests) | 112 |
 | hQVM physics scripts (`experiments/hqvm_*.py`, `hQVM_CGM_YM_Gap/`) | 72 |
 | Shared library and kernel modules (`experiments/`) | 6 |
 | hQVM verified features (Tiers A-C) | 283 |
 | Python in `experiments/` (all files) | ~91,000 lines |
 
-Scripts cover gravity, the Yang–Mills mass-gap readout, organismal allometry, nuclear structure, electroweak mass geometry, fine structure, quantum gravity, CMB data checks, axiomatization, Hilbert space representation, holonomy, energy scales, black-hole cosmology, and related topics. Each row below is the single entry point for that topic.
+Scripts cover gravity, the Yang–Mills mass-gap readout, organismal allometry, nuclear structure, electroweak mass geometry, hQVM operator group theory, fine structure, quantum gravity, CMB data checks, axiomatization, Hilbert space representation, holonomy, energy scales, black-hole cosmology, and related topics. Each row below is the single entry point for that topic.
 
 | Topic | Analysis | Code |
 |-------|----------|------|
@@ -365,6 +373,7 @@ Scripts cover gravity, the Yang–Mills mass-gap readout, organismal allometry, 
 | Wavefunction: fiber bundle structure of the byte | [Analysis_hQVM_Wavefunction](Findings/Analysis_hQVM_Wavefunction.md) | `hqvm_wavefunction_kernel.py`, `hqvm_wavefunction_1.py`, `hqvm_wavefunction_2.py` |
 | Generator-restricted percolation; Square-Root Cluster Theorem | [Analysis_hQVM_Percolation](Findings/Analysis_hQVM_Percolation.md) | `hqvm_percolation_analysis_run.py` (`_1.py`–`_5.py`) |
 | Cohomology layer: parity obstruction, shell grading, Grothendieck/CHSH comparison | [Analysis_hQVM_Cohomology](Findings/Analysis_hQVM_Cohomology.md) | `hqvm_Cohomology_analysis_run.py` (`_1.py`–`_4.py`) |
+| Operator group `G = (GF(2)⁶ × GF(2)⁶) ⋊ C₂`; representation theory, central holonomy, two-step mixing, computational capacity | [Analysis_hQVM_CGM_Group_Theory](Findings/Analysis_hQVM_CGM_Group_Theory.md) | `hqvm_group_analysis_run.py` (`_1.py`–`_5.py`, `hqvm_group_analysis_common.py`) |
 | Moments Fiat: NTP/QR receipts, coordinate ledger, inference-host co-execution | [Analysis_hQVM_Moments_Fiat](Findings/Analysis_hQVM_Moments_Fiat.md) | `hqvm_moments_fiat_analysis_run.py` (`_1.py`–`_3.py`) |
 | Electroweak mass spectrum (loop-angle Δ ruler; Δ_* spectral laws) | [Analysis_Compact_Geometry](Findings/Analysis_Compact_Geometry.md) | `hqvm_compact_geom_common.py`, `hqvm_compact_geom_2.py`, `hqvm_compact_geom_run.py`, `hqvm_compact_geom_1.py` |
 | Fine-structure constant | [Analysis_Fine_Structure](Findings/Analysis_Fine_Structure.md) | `cgm_alpha_analysis.py` |
