@@ -118,7 +118,7 @@ DYADIC_5_256 = 5.0 / 256.0
 
 N_OMEGA = 4096
 GIANT_THRESHOLD = N_OMEGA // 2  # 2048
-MAX_BFS_DEPTH = 12  # enough for depth-8 Z2 holonomy cycle + margin
+MAX_BFS_DEPTH = 12  # enough for F² Z2 holonomy cycle + margin
 
 
 @dataclass(frozen=True)

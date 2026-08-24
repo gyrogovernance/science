@@ -455,7 +455,7 @@ Verified by [Analysis_hQVM_Wavefunction.md](https://github.com/gyrogovernance/sc
 | 168 | **T3: W2' maps shell s -> 6-s** identically | `hqvm_wavefunction_2.py` `run_T2_T4` | Algebraic proof + verified |
 | 169 | **T4: Gate F preserves shell** (Z2 within pole) | `hqvm_wavefunction_2.py` `run_T2_T4` | chi xor 63 xor 63 = chi; verified |
 | 170 | **T5: Depth-4 confines to opposite constitutional pole** | `hqvm_wavefunction_2.py` `run_T5` | 64x64 states |
-| 171 | **T6: Depth-8 = K4 composition**, not new modal depth | `hqvm_wavefunction_2.py` `run_T6` | Signature algebra |
+| 171 | **T6: F = W2 ∘ W2′ is the K4 operator product of two depth-four half-words** | `hqvm_wavefunction_2.py` `run_T6` | Signature algebra |
 | 172 | **T7: CS forces canonical family ordering** | `hqvm_wavefunction_2.py` `run_T7` | 64 micro_refs |
 | 173 | **T8: BU-Egress = W2 involution** (depth-4 squares to identity on Omega) | `hqvm_wavefunction_2.py` `run_T8_T9` | 4096 states + complement horizon |
 | 174 | **T9: BU-Ingress = W2 pole-pairing** (shadow = memory) | `hqvm_wavefunction_2.py` `run_T8_T9` | 4096 states |
@@ -656,7 +656,7 @@ From [Analysis_hQVM_Moments_Fiat.md](https://github.com/gyrogovernance/science/b
 | # | Feature | Experiment | Method |
 |---|---------|------------|--------|
 | 278 | **Compact receipts 16–20 bytes fit QR Version 1–2**; single payload bit flip fails seal, parity, and event | `hqvm_moments_fiat_analysis_1.py` | Tamper detection layers |
-| 279 | **Receipt time field width = 8 bytes**, one complete Z₂ holonomy cycle (F² rest round trip) | `hqvm_moments_fiat_analysis_1.py` | Depth-8 width identity |
+| 279 | **Receipt time field width = 8 bytes**, one complete Z₂ holonomy cycle (F² rest round trip) | `hqvm_moments_fiat_analysis_1.py` | Z₂ cycle width identity |
 | 280 | **Frame-aligned layouts L16/L20** keep genealogy archive on stationary 4-byte depth-4 frames | `hqvm_moments_fiat_analysis_1.py` | Ledger frame hygiene |
 | 281 | **Coordinate ledger storage ≈ 1 byte/receipt** (depth delta + anchor); species-scale headroom large | `hqvm_moments_fiat_analysis_2.py` | Capacity and time-address audit |
 | 282 | **FNV-1a name layer**: 10,000 sequential payloads, zero 64-bit collisions | `hqvm_moments_fiat_analysis_2.py` | Append-gate dispersion |

@@ -1320,7 +1320,7 @@ Gyroscopic_ASI_Specs_Formalism.md Sec 2.2/4 (6-bit payload dial).
   -----
   canonical F                 2   False         0
   canonical 4-fam W2        128   False        64
-  canonical F^2 (depth-8)      1   False         0
+  canonical F^2 (Z2 return)    1   False         0
   same-fam 00                 1   False         0
   same-fam 11                 1   False         0
   reverse fam order           2   False         0
@@ -1335,13 +1335,13 @@ Gyroscopic_ASI_Specs_Formalism.md Sec 2.2/4 (6-bit payload dial).
     shells  = [6, 5, 0, 5, 6]
     sectors = ['comp-horizon', 'bulk', 'eq-horizon', 'bulk', 'comp-horizon']
     bytes   = A8 A9 28 29
-  depth-8 (2 turns):
+  F² Z2 cycle (2 turns):
     shells  = [6, 5, 0, 5, 6, 5, 0, 5, 6]
     sectors = ['comp-horizon', 'bulk', 'eq-horizon', 'bulk', 'comp-horizon', 'bulk', 'eq-horizon', 'bulk', 'comp-horizon']
     bytes   = A8 A9 28 29 A8 A9 28 29
 
 =====
-10. HELIX Z2 CYCLE (F involution, depth-8 from rest)
+10. HELIX Z2 CYCLE (F involution, F² return from rest)
 =====
   rest --F(m)--> swapped --F(m)--> rest  (T6, all m).
 

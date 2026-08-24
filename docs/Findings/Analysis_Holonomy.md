@@ -4,7 +4,7 @@
 
 **Citation:** Korompilias, B. (2025). Common Governance Model: Mathematical Physics Framework. Zenodo. https://doi.org/10.5281/zenodo.17521384
 
-**Verification:** `experiments/cgm_holonomy_analysis_run.py` (companions `_common.py`, `_1.py`, `_2.py`). Results are written to `experiments/cgm_holonomy_analysis_results.txt`. Connection classification, the stage-pair precessions, and the Cartesian Thomas Pexp that recovers δ_BU are in Analysis_Precession.md.
+**Verification:** `experiments/cgm_holonomy_analysis_run.py` (companions `_common.py`, `_1.py`, `_2.py`). Results are written to `experiments/cgm_holonomy_analysis_results.txt`. Connection classification, the stage-pair precessions, and the Cartesian Thomas Pexp that recovers δ_BU are in [10].
 
 ---
 
@@ -16,7 +16,7 @@ Holonomy is the residual transformation that remains when a system is transporte
 
 ## 1. Scope and Terminology
 
-This document treats one subject, which is the memory that closed paths leave behind in the CGM state geometry. It establishes the definitions, the closed forms, the invariance properties, and the finite realization of that memory. Physical applications of the quantities derived here, including the fine-structure constant and the gravitational coupling, are treated in separate documents (Analysis_Fine_Structure.md and Analysis_Gravity.md) and are outside the present scope.
+This document treats one subject, which is the memory that closed paths leave behind in the CGM state geometry. It establishes the definitions, the closed forms, the invariance properties, and the finite realization of that memory. Physical applications of the quantities derived here, including the fine-structure constant and the gravitational coupling, are treated in separate documents [11], [12] and are outside the present scope.
 
 The following vocabulary is used throughout.
 
@@ -30,13 +30,13 @@ Two mathematical settings appear. The continuous setting is a **gyrovector space
 B(u) B(v) = B(u ⊕ v) Gyr[u, v]
 ```
 
-so the gyration is the spatial rotational residue of non-collinear boost composition [3]. Palge and Pfeifer identify Thomas–Wigner rotation with holonomy of the Levi-Civita / spin connection on the forward mass shell [4]. The finite setting is the hQVM, a computational machine defined in Analysis_hQVM_Wavefunction.md, whose relevant features are introduced in Section 15 before they are used.
+so the gyration is the spatial rotational residue of non-collinear boost composition [3]. Palge and Pfeifer identify Thomas–Wigner rotation with holonomy of the Levi-Civita / spin connection on the forward mass shell [4]. The finite setting is the hQVM [5], whose relevant features are introduced in Section 15 before they are used.
 
 ---
 
 ## 2. The CGM Thresholds
 
-CGM is built from four foundational conditions, named Common Source (CS), Unity Non-Absolute (UNA), Opposition Non-Absolute (ONA), and Balance Universal (BU). Their construction is given in CGM_Logic.md. For the present analysis, each condition contributes one dimensionless threshold, and the analysis depends only on these numbers.
+CGM is built from four foundational conditions, named Common Source (CS), Unity Non-Absolute (UNA), Opposition Non-Absolute (ONA), and Balance Universal (BU). Their construction is given in [8]. For the present analysis, each condition contributes one dimensionless threshold, and the analysis depends only on these numbers.
 
 | Condition | Threshold | Value | Character |
 |---|---|---|---|
@@ -45,15 +45,37 @@ CGM is built from four foundational conditions, named Common Source (CS), Unity 
 | ONA | o_p = π/4 | 0.7853981... | angle |
 | BU | m_a = 1/(2√(2π)) | 0.1994711... | amplitude scale |
 
-The UNA threshold is an amplitude whose associated angle is π/4, and the distinction between the amplitude and the angle is maintained throughout. Two exact identities hold at these values and are verified to full working precision.
+The UNA threshold is an amplitude whose associated angle is π/4, and the distinction between the amplitude and the angle is maintained throughout.
+
+Write θ_CS = s_p, θ_UNA = arccos(u_p), and θ_ONA = o_p for the three stage angles. At the canonical thresholds these are θ_CS = π/2 and θ_UNA = θ_ONA = π/4. The conditions are nested by logical necessity, and that nesting is realized exactly by the stage angles.
+
+CS fixes the chiral frame at the horizon. UNA is the next necessary condition: without depth-two order contingency, the chiral distinction would have no observable consequence, and the associated angle θ_UNA engages the three rotational degrees of freedom. ONA is the next necessary condition: without non-absolute opposition, the distinctions introduced by UNA would lose recoverable relation to the common source, and θ_ONA engages the three translational degrees of freedom that complete SE(3). BU is not a third lemma. It is the dual of two propositions at depth four: Balance Egress requires commutative closure compatible with depth-two contingency, and Balance Ingress requires that the closed configuration retain enough structure to reconstruct the prior chirality and both non-absolute conditions. Egress and Ingress therefore give access to the preceding stages because those stages are already present as the content that depth-four balance closes and reconstructs.
+
+The nesting appears geometrically as the exact partition of the horizon angle into the two lemma angles,
+
+```
+θ_CS = θ_UNA + θ_ONA
+```
+
+together with the Euclidean closure of the three stage angles,
+
+```
+θ_CS + θ_UNA + θ_ONA = π
+```
+
+which is the same identity written in threshold symbols as
 
 ```
 π/2 + arccos(1/√2) + π/4 = π
+```
 
+The right-isosceles partition θ_UNA = θ_ONA = π/4 is forced by the identification of the UNA amplitude with cos(π/4). The second identity links the complete solid angle Q_G = 4π to the BU amplitude scale and yields the half-integer associated with the double cover of the rotation group:
+
+```
 Q_G · m_a² = 1/2,   where Q_G = 4π
 ```
 
-The first identity states that the three stage angles close a triangle with zero angular defect. The second links the complete solid angle Q_G = 4π to the BU amplitude scale and yields the half-integer associated with the double cover of the rotation group. Both are consequences of the threshold definitions.
+Both identities are consequences of the threshold definitions and of the nested construction of the conditions.
 
 ---
 
@@ -111,7 +133,7 @@ The slope error scales with the square of the speed bound (measured order 2.003)
 
 ## 5. CGM Stage Coordinates in the Gyrovector Space
 
-The BU dual-pole path of Analysis_CGM_Constants.md is the loop ONA → BU+ → BU− → ONA. In the Einstein gyrovector model with c = 1 the CGM stages occupy the coordinates
+The dual-pole path departs from the depth-two boundary of the nested lemmas, crosses the Balance Egress and Balance Ingress poles, and returns. In the Einstein gyrovector model with c = 1 the CGM stages occupy the coordinates
 
 ```
 UNA  = (1/√2, 0, 0)
@@ -128,21 +150,23 @@ k(β) = β / (1 + √(1 − β²)) = tanh(η/2)
 
 sends each speed to the corresponding Poincaré half-rapidity radius. The orthogonal Wigner closed form of Section 6 is written most directly in these Poincaré radii.
 
-BU appears as a pair of opposite poles on the third axis, which is the dual character of the balance condition. The ONA threshold enters as the coordinate magnitude on the second axis. CS supplies the reference frame within which the other stages are defined and is not a location that transport visits; the CS threshold π/2 also exceeds the open unit ball and so cannot serve as a velocity coordinate. All four payload magnitudes lie strictly below 1, so the stage vectors lie in the open ball.
+BU appears as a pair of opposite poles on the third axis. That dual is the geometric realization of Balance Universal. The positive pole (BU+) carries Balance Egress, commutative closure derived from UNA. The negative pole (BU−) carries Balance Ingress, memory reconstruction derived from ONA. Because Ingress reconstructs the prior chirality and both non-absolute conditions, the dual-pole structure gives access to the whole nested chain. The second-axis coordinate has magnitude π/4, which is the common lemma angle θ_UNA = θ_ONA. That axis is the depth-two boundary from which the depth-four dual is accessed. The amplitude m_a is the scale of the dual itself. CS supplies the reference frame within which the other stages are defined and is not a location that transport visits. The CS threshold π/2 also exceeds the open unit ball and so cannot serve as a velocity coordinate. All four payload magnitudes lie strictly below 1, so the stage vectors lie in the open ball.
 
-The four stages on the path are the **payload stages**, and CS is the **gauge frame**. Section 15 shows that this split matches the structure of the finite machine, where an 8-bit instruction consists of 6 payload bits framed by 2 gauge bits.
+The four stages on the path are the **payload stages**, and CS is the **gauge frame**. The finite machine realizes the same split as an 8-bit instruction with 6 payload bits framed by 2 gauge bits.
 
 ---
 
 ## 6. The BU Dual-Pole Loop in Closed Form
 
-The central loop visits the ONA stage, crosses to the positive BU pole, crosses to the negative BU pole, and returns.
+The central loop departs from the depth-two boundary of the nested lemmas, crosses Balance Egress, crosses Balance Ingress, and returns. In stage coordinates that boundary sits on the second axis at the common lemma angle π/4, so the loop may be written
 
 ```
 ONA → BU+ → BU- → ONA
 ```
 
-This loop consists of two gyration corners joined by a pole crossing. The origin-based gyration gyr(BU+, BU−) is the identity because the poles are collinear, so the holonomy is generated entirely at the two ONA–BU corners. Each corner is a gyration of two boosts, one of magnitude π/4 and one of magnitude m_a, separated by a right angle. The Wigner angle for boosts of unequal magnitudes β₁ and β₂ separated by an angle θ is Ungar's formula [3]
+with the stage label ONA naming that shared depth-two boundary.
+
+This loop is the operational cycle of depth-four balance, the residual phase of the Egress and Ingress cycle. It consists of two gyration corners joined by a pole crossing. The poles of the dual are collinear, so the origin-based gyration gyr(BU+, BU−) equals the identity and the middle edge contributes no rotational residue. The holonomy is therefore generated at the two corners between the depth-two boundary and the dual-pole amplitude. Each corner is a gyration of two boosts, one of magnitude π/4 and one of magnitude m_a, separated by a right angle. The value π/4 is the common lemma angle θ_UNA = θ_ONA of Section 2, so each corner couples the nested lemma content at the depth-two boundary to the dual-pole amplitude m_a. The Wigner angle for boosts of unequal magnitudes β₁ and β₂ separated by an angle θ is Ungar's formula [3]
 
 ```
 ω(β₁, β₂, θ) = 2 · arctan( sin(θ) k(β₁) k(β₂) / (1 + cos(θ) k(β₁) k(β₂)) )
@@ -154,13 +178,13 @@ with k as in Section 5. At θ = π/2 one has sin(θ) = 1 and cos(θ) = 0, so the
 ω = 2 · arctan( k(π/4) · k(m_a) )
 ```
 
-The two corners share the axis parallel to ONA × BU. With the signed Ungar convention the generating cross product points along +x and each corner contributes the signed angle −ω, so the loop operator is Rot(+x, −2ω). The identity Rot(+x, −ω) = Rot(−x, +ω) rewrites the same rotation as a positive angle about −x. The unsigned conjugacy angle of the loop, named the **BU Dual-Pole Loop** and written δ_BU, therefore has the closed form
+The two corners share the axis parallel to the second-axis boundary times the BU axis. With the signed Ungar convention the generating cross product points along +x and each corner contributes the signed angle −ω, so the loop operator is Rot(+x, −2ω). The identity Rot(+x, −ω) = Rot(−x, +ω) rewrites the same rotation as a positive angle about −x. The unsigned conjugacy angle of the loop, named the **BU Dual-Pole Loop** and written δ_BU, therefore has the closed form
 
 ```
 δ_BU = 2 · ω = 4 · arctan( k(π/4) · k(m_a) )
 ```
 
-which is the same quantity written in Analysis_CGM_Constants.md as δ_BU = 2 × ω(ONA ↔ BU). This closed form is the definition of δ_BU. Like π, the decimal expansion is infinite; numerical work evaluates the equation rather than substituting a truncated literal. Evaluated at 80-digit precision,
+which is the same quantity written in [9]. This closed form is the definition of δ_BU. Like π, the decimal expansion is infinite; numerical work evaluates the equation rather than substituting a truncated literal. Evaluated at 80-digit precision,
 
 ```
 k(π/4)  = 0.4851158626411627
@@ -183,7 +207,7 @@ Two derived quantities compare the loop defect to the BU amplitude scale.
 Δ = 1 - ρ      = 0.0206995455026703
 ```
 
-The **closure ratio** ρ states that the accumulated dual-pole defect fills about 97.93 percent of the aperture scale m_a. The **aperture gap** Δ is the remaining fraction, about 2.07 percent. Within CGM these two numbers carry the balance interpretation developed in CGM_Logic.md, where near-closure provides structural stability and the residual gap keeps reconstruction of the system's history possible. In the present document they are definitions. Once δ_BU and m_a are fixed, ρ and Δ contain no further freedom.
+The **closure ratio** ρ states that the accumulated dual-pole defect fills about 97.93 percent of the aperture scale m_a. The **aperture gap** Δ is the remaining fraction, about 2.07 percent. Within CGM these two numbers carry the balance interpretation developed in [8], where near-closure provides structural stability and the residual gap keeps reconstruction of the system's history possible. In the present document they are definitions. Once δ_BU and m_a are fixed, ρ and Δ contain no further freedom.
 
 The closed form expands in the BU amplitude. With k_ONA = k(π/4) and the series k(m_a) = m_a/2 + m_a³/8 + O(m_a⁵) together with arctan x = x − x³/3 + O(x⁵),
 
@@ -199,7 +223,7 @@ so the closure ratio is even in m_a. In the limit of vanishing m_a,
 ρ(m_a → 0) = 2 · k(π/4) = 0.9702317252823254
 ```
 
-The baseline gap 1 − 2k(β) is positive precisely when β < 4/5. Because θ_ONA = π/4 < 4/5, with margin 4/5 − π/4 = (16 − 5π)/20 ≈ 0.01460, the ONA geometry alone already forces a positive baseline gap. The full value exceeds the baseline by a finite-amplitude correction.
+The baseline gap 1 − 2k(β) is positive precisely when β < 4/5. Because the common lemma angle π/4 is strictly less than 4/5, with margin 4/5 − π/4 = (16 − 5π)/20 ≈ 0.01460, the depth-two boundary already forces a positive baseline gap. The full value exceeds the baseline by a finite-amplitude correction.
 
 ```
 baseline gap      1 - ρ(0)  = 0.0297682747176746
@@ -207,7 +231,7 @@ finite correction ρ - ρ(0)  = 0.0090687292150043
 final gap         Δ          = 0.0206995455026703
 ```
 
-The ONA geometry alone fixes a closure of 97.02 percent, leaving a baseline gap near 2.98 percent. The finite BU amplitude closes a further 0.91 percentage points, producing the final gap of 2.07 percent. The correction is of second order in m_a with coefficients determined by k(π/4), so the aperture gap is an analytic function of the thresholds with no adjustable content.
+The depth-two boundary at the common lemma angle fixes a closure of 97.02 percent, leaving a baseline gap near 2.98 percent. The finite BU amplitude closes a further 0.91 percentage points, producing the final gap of 2.07 percent. The correction is of second order in m_a with coefficients determined by k(π/4), so the aperture gap is an analytic function of the thresholds with no adjustable content.
 
 ---
 
@@ -221,7 +245,7 @@ Fix the orthogonal corner with boost speeds β₁ = θ_ONA = π/4 and β₂ = m_
 G = I + α_U Ω + β_U Ω²
 ```
 
-with scalar coefficients (α_U, β_U) fixed by the boost pair and with Ω the infinitesimal generator of the rotation plane. The third is the spatial 3 × 3 block of the Lorentz factorization L(a ⊕ b)⁻¹ L(a) L(b), where L(·) denotes the Einstein boost in Minkowski space. The fourth is the analytic Wigner angle of Section 6. Each matrix satisfies SO(3) residuals and Ungar's trace identity at the same floor. Denoting by ε the signed Wigner orientation at θ = π/2, one has ε = −ω and therefore δ_BU = 2|ε| = 2ω. The loop factors as Rot(+x, −ω) Rot(+x, −ω) = Rot(+x, −2ω) because the middle edge is the identity and the two corners share one axis.
+with scalar coefficients (α_U, β_U) fixed by the boost pair and with Ω the infinitesimal generator of the rotation plane. The third is the spatial 3 × 3 block of the Lorentz factorization L(a ⊕ b)⁻¹ L(a) L(b), where L(·) denotes the Einstein boost in Minkowski space. The fourth is the analytic Wigner angle derived above. Each matrix satisfies SO(3) residuals and Ungar's trace identity at the same floor. Denoting by ε the signed Wigner orientation at θ = π/2, one has ε = −ω and therefore δ_BU = 2|ε| = 2ω. The loop factors as Rot(+x, −ω) Rot(+x, −ω) = Rot(+x, −2ω) because the middle edge is the identity and the two corners share one axis.
 
 Write G_egress, G_middle, and G_ingress for the origin-based gyrations on the successive edges ONA → BU+, BU+ → BU−, and BU− → ONA. The dual-pole **origin-gyr word** is the left-action product
 
@@ -241,7 +265,7 @@ The BU dual-pole loop uses two of the four payload stages. The full payload trav
 UNA → ONA → BU+ → BU- → ONA → UNA
 ```
 
-This path places six payload positions on a five-edge closed walk, moving outward from UNA through ONA to the BU pole pair and returning through the same stages in reverse. In the eight-position phase layout of the finite instruction unit the same structure appears as CS | UNA ONA BU | BU ONA UNA | CS, with CS occupying the two outer gauge positions and the six internal positions matching the continuous payload walk. The computed holonomy angle of this path equals the BU dual-pole angle to working precision, while the rotation axis differs. The BU loop axis is (−1, 0, 0), and the palindrome axis is (−0.9224, 0.3863, 0).
+This path places six payload positions on a five-edge closed walk, moving outward from UNA through ONA to the BU pole pair and returning through the same stages in reverse. In the eight-position phase layout of the finite instruction unit the same structure appears as CS | UNA ONA BU | BU ONA UNA | CS, with CS occupying the two outer gauge positions and the six internal positions matching the continuous payload walk. At the central fold the forward and reverse readings of balance join [8]. The computed holonomy angle of this path equals the BU dual-pole angle to working precision, while the rotation axis differs. The BU loop axis is (−1, 0, 0), and the palindrome axis is (−0.9224, 0.3863, 0).
 
 The equality of angles together with the change of axis follows from a theorem of gyrogroup theory [3]. Ungar's inversion identity states that for any two gyrovectors u and v,
 
@@ -264,7 +288,7 @@ n_pal = A⁻¹ n_BU
 
 The script verifies each component of this statement at 80-digit precision. The reverse gyration gyr(ONA, UNA) matches A⁻¹, the conjugated operator matches the directly composed palindrome, and A⁻¹ n_BU matches n_pal.
 
-The structural content of this result is the separation of path memory into two channels. The magnitude of the memory, the angle δ_BU, is created at the BU pole structure and is invariant under the surrounding traversal. The orientation of the memory, the axis, is transported by the UNA-ONA gyration. The outer stages relocate where the memory points without altering how much memory there is.
+The structural content of this result is the separation of path memory into two channels. The magnitude of the memory, the angle δ_BU, is created at the BU pole structure and is invariant under the surrounding traversal. The orientation of the memory, the axis, is transported by the UNA and ONA payload gyration. The outer stages relocate where the memory points without altering how much memory there is.
 
 ---
 
@@ -272,7 +296,7 @@ The structural content of this result is the separation of path memory into two 
 
 Two defect constructions appear in the continuous layer and must be kept distinct.
 
-Let θ_CS = s_p, θ_UNA = arccos(u_p), and θ_ONA = o_p denote the three stage angles of Section 2. The **stage-angle defect** is the Euclidean threshold identity
+Let θ_CS = s_p, θ_UNA = arccos(u_p), and θ_ONA = o_p denote the three stage angles. The **stage-angle defect** is the Euclidean threshold identity
 
 ```
 δ_stage = π − (θ_CS + θ_UNA + θ_ONA) = 0
@@ -286,7 +310,7 @@ Let γ(v) = 1/√(1 − ||v||²) be the Einstein factor of a ball vector v. The 
 defect(0, ONA, BU+) = ω = δ_BU / 2
 ```
 
-where ω is the corner Wigner angle of Section 6, and the same value equals the gyration angle of gyr[ONA, ⊖BU+]. For the closed dual-pole triangle with vertices ONA, BU+, and BU−, gyrotranslation of ONA to the origin yields
+where ω is the corner Wigner angle, and the same value equals the gyration angle of gyr[ONA, ⊖BU+]. For the closed dual-pole triangle with vertices ONA, BU+, and BU−, gyrotranslation of ONA to the origin yields
 
 ```
 defect(ONA, BU+, BU−) = δ_BU = 2 · defect(0, ONA, BU+)
@@ -324,7 +348,7 @@ P = T_{n−1} ··· T_0
 
 is certified in SO⁺(1,3): writing η = diag(+1, −1, −1, −1), one has ||Pᵀ η P − η||, |det(P) − 1|, and the orthochronous residual at the working floor. The SO(3) little-group holonomy at the basepoint is obtained by conjugating P into the rest frame of q_0. Write θ_geodesic for that conjugacy angle. For the BU dual-pole path, θ_geodesic equals δ_BU and equals the origin-gyr word angle at the working floor. The palindrome path yields the same conjugacy angle.
 
-**(3) Chart evaluations of the Palge–Pfeifer connection.** Let ω_s denote the spherical-coordinate pullback of the Palge–Pfeifer spatial connection. Forming the path-ordered exponential P exp(−∫ ω_s) along the same geodesics produces an angle θ_ω-chart ≈ 0.2466 on the dual-pole loop that differs from δ_BU by about 0.051. That offset is a coordinate singularity at the BU poles and at rest. The same connection in Cartesian velocity coordinates, ω = (γ²/(γ+1)) β × dβ, path-ordered with Richardson extrapolation, is regular at rest and at the poles and recovers δ_BU on both the dual-pole loop and the palindrome (Analysis_Precession.md).
+**(3) Chart evaluations of the Palge–Pfeifer connection.** Let ω_s denote the spherical-coordinate pullback of the Palge–Pfeifer spatial connection. Forming the path-ordered exponential P exp(−∫ ω_s) along the same geodesics produces an angle θ_ω-chart ≈ 0.2466 on the dual-pole loop that differs from δ_BU by about 0.051. That offset is a coordinate singularity at the BU poles and at rest. The same connection in Cartesian velocity coordinates, ω = (γ²/(γ+1)) β × dβ, path-ordered with Richardson extrapolation, is regular at rest and at the poles and recovers δ_BU on both the dual-pole loop and the palindrome [10].
 
 A further lab-frame construction is the **relative-boost word**. For successive stage velocities p_i write d_i = ⊖p_i ⊕ p_{i+1} for the Einstein difference and L(d_i) for the corresponding lab-frame boost. The word is the rotational part of the product of the L(d_i). On the dual-pole path its conjugacy angle is about 0.2585 and differs from δ_BU by about 0.063. The operators L(d_i) are lab-frame composites of Einstein differences, whereas the geodesic construction uses the pure transvections T_i, so the two words are different edge operators.
 
@@ -334,16 +358,24 @@ The continuous aperture identity with this speed convention is therefore the agr
 
 ## 12. Dependency Structure
 
-The closed form makes the dependency of the holonomy on the thresholds explicit. The angle δ_BU is a function of θ_ONA and m_a alone. The UNA threshold does not appear in the formula, and its derivative is zero identically because the BU loop never visits the UNA stage. UNA influences the holonomy only through the conjugation of Section 9, acting on the axis. CS enters only as the gauge frame.
+The closed form evaluates the holonomy angle as
 
-The continuous layer therefore has a rank-two parameter dependence. Two thresholds set the magnitude of the path memory, one threshold steers its orientation, and one threshold fixes the frame. The sensitivity of the magnitude to its two parameters is quantified by logarithmic derivatives at the canonical point.
+```
+δ_BU = 4 · arctan(k(π/4) · k(m_a))
+```
+
+The factor π/4 is the common lemma angle θ_UNA = θ_ONA. The amplitude m_a is the scale of the dual-pole balance whose poles are UNA-derived Egress and ONA-derived Ingress. The magnitude is therefore the geometric measure of the nested chain at depth four. The shared lemma angle at the depth-two boundary is evaluated against the dual that closes and reconstructs the preceding conditions. CS enters as the gauge frame.
+
+The loop written ONA → BU+ → BU− → ONA is that operational cycle in stage coordinates. ONA labels the depth-two boundary at the common lemma angle. BU+ and BU− are Egress and Ingress.
+
+The sensitivity of the magnitude to the evaluation parameters of the closed form is quantified by logarithmic derivatives at the canonical point.
 
 ```
 (θ_ONA / δ_BU) · d(δ_BU)/dθ_ONA = 1.61296528
 (m_a  / δ_BU) · d(δ_BU)/dm_a    = 1.01888667
 ```
 
-The response to m_a is close to linear, with the excess above 1 accounted for by the finite-amplitude correction of Section 7. The response to the ONA threshold is superlinear. Finite-difference derivatives of the closed form match the reported logarithmic derivatives at the working difference step.
+The response to m_a is close to linear, with the excess above 1 accounted for by the finite-amplitude correction of Section 7. The response to the common lemma angle is superlinear. Finite-difference derivatives of the closed form match the reported logarithmic derivatives at the working difference step.
 
 ---
 
@@ -368,15 +400,15 @@ and their sum equals 1 as an algebraic identity. The response of the Wigner angl
 
 ## 14. Precision Governance
 
-The angle δ_BU feeds downstream analyses, including the fine-structure derivation in Analysis_Fine_Structure.md, where the leading expression scales as the fourth power of δ_BU. A relative change ε in δ_BU therefore produces a relative change of about 4ε in that expression.
+The angle δ_BU feeds downstream analyses, including the fine-structure derivation in [11], where the leading expression scales as the fourth power of δ_BU. A relative change ε in δ_BU therefore produces a relative change of about 4ε in that expression.
 
-The closed form of Section 6 is the definition of δ_BU. The shared evaluator `bu_holonomy_angle` / `BU_HOLONOMY_ANGLE` in `gyroscopic.hQVM.constants` implements that equation. Downstream modules import the shared constant; high-precision work evaluates the same equation at working `mpmath` precision.
+The closed form above is the definition of δ_BU. The shared evaluator `bu_holonomy_angle` / `BU_HOLONOMY_ANGLE` in `gyroscopic.hQVM.constants` implements that equation. Downstream modules import the shared constant. High-precision work evaluates the same equation at working `mpmath` precision.
 
 ---
 
 ## 15. The Finite Realization in the hQVM
 
-The Holonomic Quantum Virtual Machine is a finite computational machine, specified in Analysis_hQVM_Wavefunction.md, that realizes the CGM architecture in exact integer arithmetic. Three of its features are relevant here and are summarized before use.
+The Holonomic Quantum Virtual Machine is a finite computational machine [5] that realizes the CGM architecture in exact integer arithmetic. Three of its features are relevant here and are summarized before use.
 
 The instruction unit of the machine is an 8-bit byte whose bit positions carry the four CGM stage labels in palindromic order,
 
@@ -406,13 +438,23 @@ with total 256. The match establishes that the four stage-position comparisons b
 
 The machine state lives on a manifold of 4096 states with two six-bit coordinates. The six-bit chirality word χ = u XOR v grades the state between two constitutional horizon sectors. Certain distinguished instruction words of length two, named W2 and W2', act on this manifold as involutions, meaning operators that square to the identity. In the six-bit chart, W2 flips all six chirality bits by the mask 63 = 2⁶ − 1, exchanging a chirality word with its complement, and maps the shell grade s to 6 − s, thereby exchanging the two extremal regions of the state space. Together with the identity and their product they form a Klein four-group, a commutative group of four elements each of order at most two, referred to as K4.
 
-The canonical W2 and W2' certificate passes in full. The operators are involutions, they exchange the extremal state regions as required, and the associated shell and chirality transformations hold on all 4096 states. These finite results carry no numerical tolerance because the arithmetic is exact. The full K4 composition table and its permutation spectrum are developed in Analysis_hQVM_Wavefunction.md.
+The continuous dual poles BU+ and BU− are realized finitely by this W2 pole exchange [5], [6]. Balance Egress is the involution property that W2 squared equals the identity on the full manifold. Balance Ingress is the invertible pairing of each state with a unique shadow under W2, so that a second application reconstructs the original [5], [7]. Egress and Ingress are simultaneous readings of one depth-four operator.
+
+The conjugate half-word W2' is the second depth-four factor in the Klein four-group. Their operator product
+
+```
+F = W2 ∘ W2'
+```
+
+yields the Z2 carrier sheet flip while preserving shell. The product F squared returns the carrier to rest and completes one Z2 holonomy cycle [5], [6].
+
+The canonical W2 and W2' certificate passes in full. The operators are involutions, they exchange the extremal state regions as required, and the associated shell and chirality transformations hold on all 4096 states. These finite results carry no numerical tolerance because the arithmetic is exact. The full K4 operator-product table and its permutation spectrum are developed in [5].
 
 ---
 
 ## 16. Byte-Horizon Aperture Quantization
 
-Section 7 fixes the continuous aperture gap Δ from the holonomy ratio. Section 15 fixes the instruction unit as an 8-bit byte, so the natural discrete scale at that horizon is 256 ticks. The byte-horizon quantization of the aperture is the nearest integer number of ticks to 256 · Δ.
+The continuous aperture gap Δ is fixed above from the holonomy ratio. The instruction unit is an 8-bit byte, so the natural discrete scale at that horizon is 256 ticks. The byte-horizon quantization of the aperture is the nearest integer number of ticks to 256 · Δ.
 
 ```
 256 · Δ = 5.299083648683975
@@ -436,13 +478,13 @@ The same gap participates in the depth-four closure count of the machine. Four s
 48 · Δ = 0.9935781841281744
 ```
 
-which sits 0.64 percent below unity. The reciprocal scale 1/48 is therefore the depth-four companion of Δ, while 5/256 is its expression at the single-byte horizon. The turn-normalized holonomy δ_BU / (2π) ≈ 1/32 supplies the third natural scale; the ratio (1/48) / (1/32) = 2/3 is the chirality-to-space factor developed in hQVM_QuBEC_Theory.md. In the present document the operative finite statement is the byte-horizon identity
+which sits 0.64 percent below unity. The reciprocal scale 1/48 is therefore the depth-four companion of Δ, while 5/256 is its expression at the single-byte horizon. The turn-normalized holonomy δ_BU / (2π) ≈ 1/32 supplies the third natural scale; the ratio (1/48) / (1/32) = 2/3 is the chirality-to-space factor developed in the QuBEC theory analysis. In the present document the operative finite statement is the byte-horizon identity
 
 ```
 Q_256(Δ) = 5/256
 ```
 
-with Δ taken from Section 7.
+with Δ as above.
 
 ---
 
@@ -455,7 +497,11 @@ The continuous and finite layers realize the same architecture at different form
 | closed path in the gyrovector space | operator word on the 4096-state manifold |
 | holonomy angle as conjugacy invariant | nontrivial finite involution |
 | BU dual-pole loop | W2 pole exchange |
+| Balance Egress and Balance Ingress | simultaneous readings of W2 |
 | closure under return | W2 squared equals the identity |
+| invertible memory of the prior state | W2 pole pairing |
+| operator product of the two depth-four half-words | F = W2 ∘ W2′, Z2 sheet flip |
+| full return to rest | F squared, Z2 holonomy cycle |
 | aperture gap Δ | byte-horizon dyadic 5/256 |
 | palindromic payload path | byte fold across the central BU boundary |
 | 6 payload positions | 6 payload bits |
@@ -465,7 +511,7 @@ The continuous and finite layers realize the same architecture at different form
 
 The continuous BU holonomy carries a general rotational phase with eigenvalues 1 and exp(±i δ_BU). The finite carrier operators, under their permutation-matrix lift, carry an order-two phase distinction with eigenvalues in {+1, −1}.
 
-The layers localize curvature at related but distinct sites. In the continuous realization the holonomy is generated at the two ONA-BU corners while the pole crossing is flat. In the finite realization the fold disagreement is counted at the central BU boundary of the byte. Both descriptions organize a dual return through the balance stage.
+The layers localize curvature at related but distinct sites. In the continuous realization the holonomy is generated at the two corners between the depth-two boundary and the dual-pole amplitude, while the pole crossing is flat. In the finite realization the fold disagreement is counted at the central BU boundary of the byte. Both descriptions organize a dual return through the balance stage.
 
 The six payload positions of the continuous palindrome and the six payload bits of the byte both count degrees of freedom within the three-dimensional, six-degree-of-freedom framework that CGM derives. They are combinatorial structures inside that framework rather than additional spatial dimensions.
 
@@ -497,9 +543,9 @@ The first command runs all integrity checks, prints the full report, and writes 
 
 ## 20. Conclusion
 
-Three results form the foundation established here. The CGM threshold angles generate a nontrivial SU(2) commutator holonomy with the exact closed form 2 · arccos((1 + 2√2)/4). On the BU dual-pole path with stage thresholds as Einstein speeds the holonomy angle is δ_BU = 2 · ω = 4 · arctan(k(π/4) · k(m_a)), an elementary function of two thresholds, from which the closure ratio of 97.93 percent and the aperture gap of 2.07 percent follow as definitions, with the gap decomposing into a 2.98 percent baseline fixed by the ONA geometry and a 0.91 percentage point closure supplied by the finite BU amplitude. The same angle is the origin-gyr word, the Ungar dual-pole gyrotriangle defect, the mass-shell geodesic holonomy, and the regular Cartesian Thomas Pexp; the relative-boost word and spherical-chart Pexp are different constructions. The palindromic traversal of the payload stages conjugates this holonomy, preserving the angle while transporting the axis, so the magnitude of path memory is set at the balance stage and its orientation is steered by the surrounding stages.
+Three results form the foundation established here. The CGM threshold angles generate a nontrivial SU(2) commutator holonomy with the exact closed form 2 · arccos((1 + 2√2)/4). On the dual-pole path with stage thresholds as Einstein speeds the holonomy angle is δ_BU = 2 · ω = 4 · arctan(k(π/4) · k(m_a)), an elementary function of the common lemma angle and the dual-pole amplitude, from which the closure ratio of 97.93 percent and the aperture gap of 2.07 percent follow as definitions, with the gap decomposing into a 2.98 percent baseline fixed by the depth-two boundary and a 0.91 percentage point closure supplied by the finite BU amplitude. The same angle is the origin-gyr word, the Ungar dual-pole gyrotriangle defect, the mass-shell geodesic holonomy, and the regular Cartesian Thomas Pexp; the relative-boost word and spherical-chart Pexp are different constructions. The palindromic traversal of the payload stages conjugates this holonomy, preserving the angle while transporting the axis, so the magnitude of path memory is set at the balance stage and its orientation is steered by the surrounding stages.
 
-The finite machine realizes the same architecture in exact arithmetic, with byte-level fold curvature distributed binomially and the balance-stage exchange operators verified as involutions on the full state manifold. At the byte horizon the continuous aperture quantizes as Q_256(Δ) = 5/256. The quantities established here, in particular δ_BU, ρ, Δ, and the dyadic aperture 5/256, are the fixed inputs that downstream analyses of physical couplings and the hQVM kernel consume.
+The finite machine realizes the same architecture in exact arithmetic. Byte-level fold curvature is distributed binomially, and the balance-stage exchange operators are involutions on the full state manifold [5]. At the byte horizon the continuous aperture quantizes as Q_256(Δ) = 5/256. The quantities established here, in particular δ_BU, ρ, Δ, and the dyadic aperture 5/256, are the fixed inputs that downstream analyses of physical couplings and the hQVM kernel consume.
 
 ---
 
@@ -512,3 +558,19 @@ The finite machine realizes the same architecture in exact arithmetic, with byte
 [3] A. A. Ungar, Gyrations: The Missing Link Between Classical Mechanics with its Underlying Euclidean Geometry and Relativistic Mechanics with its Underlying Hyperbolic Geometry, arXiv:1302.5678 (2013).
 
 [4] V. Palge, C. Pfeifer, Thomas–Wigner rotation as a holonomy for spin-1/2 particles, Physical Review A 109, 032206 (2024), arXiv:2310.08121.
+
+[5] Analysis_hQVM_Wavefunction.md, docs/Findings. Finite K4 structure, W2 pole exchange, and Balance Egress and Ingress as simultaneous readings of W2 (Theorems T1 through T10).
+
+[6] Analysis_Gravity_Note.md, docs/Findings. Depth-four half-word W2 as involutive Egress, operator product F = W2 ∘ W2′ as the two-pass holonomy cycle, and spin-2 factor from that return.
+
+[7] Analysis_hQVM_CGM_Group_Theory.md, docs/Findings. Finite group presentation of balance. The same W2 supplies involutive closure and invertible pole pairing.
+
+[8] CGM_Logic.md, docs. Construction of the conditions as a chain of necessities. Dual balance, palindromy, and the fold where forward and reverse readings of balance join.
+
+[9] Analysis_CGM_Constants.md, docs/Findings. Stage thresholds and the dual-pole loop definition of δ_BU.
+
+[10] Analysis_Precession.md, docs/Findings. Connection classification, stage-pair precessions, and the Cartesian Thomas Pexp that recovers δ_BU.
+
+[11] Analysis_Fine_Structure.md, docs/Findings. Downstream use of δ_BU in the electromagnetic coupling.
+
+[12] Analysis_Gravity.md, docs/Findings. Downstream use of the aperture structure in the gravitational coupling.

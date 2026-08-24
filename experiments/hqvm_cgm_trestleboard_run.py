@@ -939,7 +939,7 @@ def _report_decay(tb: NuclearBoard) -> None:
     t_alpha_meas = 2.498e11  # Th-229 ~7917 y in seconds (3.154e7 s/yr)
     ref_word = tb.alpha_reformation_word()
     s_ref = GENE_MAC_REST
-    for _ in range(2):  # F² closes rest (depth-8 Z2 holonomy, T6)
+    for _ in range(2):  # F² closes rest (Z2 holonomy cycle, T6)
         for b in ref_word:
             s_ref = step_state_by_byte(s_ref, b)
     print(f"  Alpha (Th-229 → Ra-225):")

@@ -58,14 +58,14 @@ Stage 3: ONA (Opposition Non-Absolute)
 Stage 4: BU (Balance Universal)
 - Threshold:  m_a = 1/(2√(2π)) ≈ 0.199471
 - Meaning: Vibrational motion at the IR observation focus; bounded oscillation amplitude m_a about the depth-four closed configuration
-- Depth-four commutative closure (both gyrations equivalent at □B); the dual-pole loop angle encodes memory of the vibrational mode
+- Dual propositions Balance Egress and Balance Ingress. Depth-four commutative closure. The dual-pole loop angle encodes memory of the vibrational mode.
 
 ### 2.3 Geometric Necessity
 
 These thresholds satisfy the gyrotriangle defect condition ensuring closure:
 δ = π - (π/2 + π/4 + π/4) = 0
 
-This exact closure was verified through exhaustive numerical analysis, finding this solution unique within machine precision. The geometric necessity means these values are not adjustable parameters but requirements for coherent three-dimensional observation.
+Equivalently the horizon angle partitions as θ_CS = θ_UNA + θ_ONA with θ_UNA = θ_ONA = π/4. This exact closure was verified through exhaustive numerical analysis, finding this solution unique within machine precision. The geometric necessity means these values are not adjustable parameters but requirements for coherent three-dimensional observation.
 
 ## 3. Stage Actions and Energy Hierarchy
 

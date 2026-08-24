@@ -4,6 +4,23 @@ All notable changes to the CGM Experimental Framework will be documented in this
 
 ---
 
+## [1.3.9.6-CGM] — 2026-08-24
+
+Sharpened the continuous–finite account of dual balance and path memory across Holonomy and the documents that depend on it.
+
+### Defined more clearly
+
+- Nesting of the conditions: UNA and ONA as successive lemmas with common angle π/4; BU as the dual of Balance Egress and Balance Ingress at depth four, with Ingress reconstructing the prior chain
+- Dual-pole path: stage label ONA on the loop names the depth-two boundary at that shared lemma angle; BU+ / BU− carry Egress / Ingress; δ_BU = 4 arctan(k(π/4) k(m_a)) evaluates the nested boundary against the dual-pole amplitude
+- Finite bridge: W2 realizes the dual-pole exchange as simultaneous Egress and Ingress readings; fold joins forward and reverse balance; F = W2 ∘ W2′ is K4 operator product; F² is the Z₂ holonomy return
+- Citation discipline: internal CGM sources cited by bibliography number in running prose; filenames reserved for the References list
+
+### Touched
+
+Holonomy as home document; short aligned statements in Constants, CGM Logic, Precession, Units, Gravity Note, Wavefunction, 3D/6DOF, Fine Structure, and Mass Gap docs.
+
+---
+
 ## [1.3.9.5-CGM_hQVM_Group_Theory] — 2026-08-22 / 2026-08-23
 
 The byte alphabet of the hQVM generates a finite operator group whose structure is now fixed end to end. Six dipole modes, four family phases, and 256 instructions close on an affine 2-group of order 8192 acting transitively on a 4096-state carrier. The analysis identifies the center as six-bit plaquette holonomy, the depth-four Klein four-group closure at every micro-reference, the multiplicity-free decomposition into 2080 irreducible sectors, exact two-step uniform mixing with sixteen witnesses per target, and the continuous correspondence through chirality, double cover, and BU holonomy. Capacity routes follow directly: thirteen-bit word compilation, algebraic routing, Walsh and group harmonic transforms, transport-rank reachability, and the Hilbert lift with Bell-pair factorization and Tsirelson saturation.
@@ -356,13 +373,13 @@ The Gyroscopic kernel is now positioned as a **Holonomic Quantum Virtual Machine
 ### Added
 - Added `docs/Findings/Analysis_Gravity.md`: gravitational coupling from kernel invariants, gravitational field equations, gyrogroup structure, and electroweak-anchor prediction of G.
 - Added `experiments/hqvm_gravity_analysis_1.py`: kernel diagnostics, aperture-depth Refractive Depth, α·ζ invariant, and coupling reconstruction at v_EW.
-- Added `experiments/cgm_hqvm_holonomy.py`: hQVM holonomy diagnostic for depth-4/depth-8 closure, shell displacement invariants, and quadrupole shell modes.
+- Added `experiments/cgm_hqvm_holonomy.py`: hQVM holonomy diagnostic for depth-4/ closure, shell displacement invariants, and quadrupole shell modes.
 
 ### Results
 - Decomposed Einstein coupling κ = 8πG/c⁴ into factor 2 (two-pass carrier recovery), Q_G = 4π (closure solid angle), and c⁴ (four-stage depth structure).
 - Predicted G from kernel invariants and the electroweak anchor to 2.5 parts in 10⁵ (τ_G match within 25 ppm).
 - Established exact kernel invariant α × ζ = ρ⁴/(π√3) linking electromagnetic and gravitational coupling with no free continuous parameters.
-- Derived spin-2 from depth-8 orientation recovery and gyration-defect resolution (holonomy-verified).
+- Derived spin-2 from  orientation recovery and gyration-defect resolution (holonomy-verified).
 - Documented gravitoelectromagnetic structure, gravitational radiation/memory, and 17-item reference list with inline citations.
 
 ---

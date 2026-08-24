@@ -342,7 +342,7 @@ class NuclearBoard(Trestleboard):
         )
 
     def alpha_reformation_word(self) -> Tuple[int, int, int, int]:
-        """Gate F word (same as alpha_emission_word); F² closes rest (depth-8 Z2).
+        """Gate F word (same as alpha_emission_word). F² closes rest (Z2 cycle).
 
         Used as the diagnostic reference for the Z2 spinorial return: applying
         F twice returns the carrier to rest (F² = id). For α emission the

@@ -154,11 +154,7 @@ Exact finite consequences:
 - The byte alphabet forms a four-to-one cover of the six-bit transport space with a Klein deck action, reflecting the spinorial double cover.
 - Shell geometry has binomial populations across seven shells, with horizon shells at the extremes and bulk shells between them.
 
-Paste the following subsection into CGM_Logic.md right after Section 6 and before Section 7.
-
----
-
-## 12 Gyrogroup bridge
+## 12. Gyrogroup bridge
 
 When the transitions vary smoothly, the most economical continuous model of “composing displacements while preserving ancestry” is the same structure that appears in special relativity as velocity composition.
 
@@ -173,13 +169,13 @@ CGM’s depth-two contingency (UNA and ONA) is exactly the regime where this ord
 - the state update is a non-associative composition u ⊕ v
 - the residual operator gyr[u, v] records which path was taken
 
-Balance (BU) then imposes a depth-four closure in the observable sector while retaining a bounded residual operator that carries memory. In the gyrogroup realization, the simplest loop that isolates this residual is the dual-pole loop that turns at ONA and crosses the BU poles:
+Balance (BU) then imposes a depth-four closure in the observable sector while retaining a bounded residual operator that carries memory. In the gyrogroup realization, the simplest loop that isolates this residual departs from the depth-two boundary of the nested lemmas, crosses the Balance Egress and Balance Ingress poles, and returns. In stage coordinates that boundary sits at the common lemma angle pi/4, so the loop may be written
 
 ONA -> BU+ -> BU- -> ONA
 
-The middle edge BU+ -> BU- is collinear, so it contributes no gyration. The loop operator H_BU is therefore generated entirely at the two ONA to BU corners, and it is a single spatial rotation. Its conjugacy-invariant angle is the BU dual-pole loop angle δ_BU.
+The middle edge BU+ -> BU- is collinear, so the origin-based gyration on that edge is the identity. The loop operator H_BU is therefore generated at the two corners between the depth-two boundary and the dual-pole amplitude, and it is a single spatial rotation. Its conjugacy-invariant angle is the BU dual-pole loop angle δ_BU.
 
-At these stages the magnitudes are fixed by the thresholds. ONA contributes the displacement magnitude pi/4. BU contributes the balance amplitude scale m_a. Orthogonality here is not decorative. It is the geometric form of independence between the ONA and BU degrees of freedom. Non-collinear composition is what produces a gyration at all.
+At these stages the magnitudes are fixed by the thresholds. The corner boost of magnitude pi/4 is the common lemma angle shared by UNA and ONA. BU contributes the balance amplitude scale m_a. Orthogonality here is the geometric form of independence between the depth-two boundary and the dual-pole amplitude. Non-collinear composition is what produces a gyration at all.
 
 Using the half-rapidity radius
 
@@ -194,12 +190,12 @@ and the dual-pole loop angle is twice the corner angle:
 delta_BU = 2 omega
 delta_BU = 4 * arctan(k(pi/4) * k(m_a))
 
-This equation defines delta_BU. The derived closure quantities are then:
+This equation defines delta_BU. The continuous derivation and the finite W2 realization of the dual are given in the Holonomy analysis. The derived closure quantities are then:
 
 rho = delta_BU / m_a
 Delta = 1 - rho
 
-BU-Egress is the statement that the loop closes in the observable configuration. BU-Ingress is the statement that the residual operator H_BU, together with the small opening Delta, carries enough information for reconstruction to remain possible. In this way the gyrogroup bridge makes the roles of ONA and BU concrete: ONA supplies a non-collinear turn, BU supplies a symmetric pole pair, and the residual rotation of the loop is the minimal continuous form of path memory compatible with depth-four balance.
+BU-Egress is the statement that the loop closes in the observable configuration. BU-Ingress is the statement that the residual operator H_BU, together with the small opening Delta, carries enough information for reconstruction to remain possible. The gyrogroup bridge therefore presents the nested chain at depth four. The depth-two boundary supplies the shared lemma turn. The dual poles supply Egress and Ingress. The residual rotation of the loop is the minimal continuous form of path memory compatible with depth-four balance.
 
 ## 13. Percolation
 

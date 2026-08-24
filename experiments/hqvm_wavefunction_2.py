@@ -9,7 +9,7 @@ T2. W₂(m) maps shell s → 6-s (chi → chi ⊕ 63).
 T3. W₂'(m) also maps shell s → 6-s.
 T4. F preserves shell (Z₂ within pole).
 T5. Depth-4 confines carrier to opposite constitutional pole.
-T6. "Depth-8" = K4 composition, not new modal depth.
+T6. F = W₂ ∘ W₂′ is the K4 operator product of two depth-four half-words.
 T7. CS axiom forces canonical family ordering (fam 00 first).
 T8. BU-Egress = W₂ involution (□B spectral).
 T9. BU-Ingress = W₂ shadow pairing across poles (memory).
@@ -334,11 +334,11 @@ def run_T5(omega: list[int]) -> None:
     print("  From complement horizon → equality horizon (forced by chi⊕63).")
 
 
-# ════════════════════════════════════# T6  depth-8 = K4 composition
+# ════════════════════════════════════# T6  F = K4 operator product
 # ════════════════════════════════════
 def run_T6(omega: list[int]) -> None:
     print("\n" + "=" * 9)
-    print("T6: DEPTH-8 = K4 COMPOSITION")
+    print("T6: F = K4 OPERATOR PRODUCT")
     print("=" * 9)
 
     m = 1
@@ -360,7 +360,7 @@ def run_T6(omega: list[int]) -> None:
     s0 = GENE_MAC_REST
     s1 = _apply(w2, s0)
     s2 = _apply(w2p, s1)
-    for label, s in [("rest", s0), ("after W₂ (d4)", s1), ("after W₂'(d4)", s2)]:
+    for label, s in [("rest", s0), ("after W₂ (d4)", s1), ("after F = W₂∘W₂'", s2)]:
         om = state24_to_omega12(s)
         print(
             f"    {label:18s}: ({om.u6:2d},{om.v6:2d}) sh={om.shell} "
@@ -368,7 +368,7 @@ def run_T6(omega: list[int]) -> None:
         )
 
     print("\n  THEOREM T6: F = W₂ ∘ W₂'. Both factors are depth-4.")
-    print("  No new modal depth - only K4 composition.")
+    print("  F is the K4 operator product of those half-words.")
 
 
 # ════════════════════════════════════# T7  CS forces ordering
@@ -632,7 +632,7 @@ def main() -> None:
         "T3.  W₂' maps shell s→6-s (chi⊕63).             [VERIFIED]",
         "T4.  F preserves shell (Z₂ within pole).         [VERIFIED]",
         "T5.  Depth-4 confines to opposite pole.           [VERIFIED]",
-        "T6.  Depth-8 = K4 composition, not new depth.    [VERIFIED]",
+        "T6.  F = W₂∘W₂′ is K4 operator product of two depth-4 half-words. [VERIFIED]",
         "T7.  CS forces canonical family ordering.          [VERIFIED]",
         "T8.  Egress = W₂ involution (□B spectral).        [VERIFIED]",
         "T9.  Ingress = W₂ pole-pairing (shadow=memory).   [VERIFIED]",
@@ -643,7 +643,7 @@ def main() -> None:
 
 
 def optical_depth_from_canonical_trajectory() -> None:
-    """Per-cycle tau/Delta from depth-8 bulk transport (matches gravity_common)."""
+    """Per-cycle tau/Delta from F / Z₂-cycle bulk transport (matches gravity_common)."""
     from fractions import Fraction
     from math import comb, gcd
 

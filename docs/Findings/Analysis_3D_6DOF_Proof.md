@@ -75,7 +75,7 @@ For closure (δ = 0), the CGM angles must satisfy:
 π/2 + π/4 + π/4 = π
 ```
 
-This constraint is exact and non-negotiable. This stage-angle defect measures the closure of the threshold triangle and is zero. The BU dual-pole loop angle δ_BU = 4 · arctan(k(π/4) · k(m_a)), with k(β) = β / (1 + √(1 − β²)) and m_a = 1/(2√(2π)), is a separate nonzero quantity arising from non-commutative velocity addition along the path ONA → BU+ → BU− → ONA (Analysis_Holonomy.md).
+This constraint is exact and non-negotiable. This stage-angle defect measures the closure of the threshold triangle and is zero. The BU dual-pole loop angle δ_BU = 4 · arctan(k(π/4) · k(m_a)), with k(β) = β / (1 + √(1 − β²)) and m_a = 1/(2√(2π)), is a separate nonzero quantity arising from non-commutative velocity addition along the dual-pole path whose poles carry Balance Egress and Balance Ingress, with corner magnitude equal to the common lemma angle π/4.
 
 ### 2.4 Unitary Representation and BCH Analysis
 

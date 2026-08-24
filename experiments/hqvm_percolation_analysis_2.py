@@ -67,7 +67,7 @@ SECTIONS (analysis_2)
   9     Probe-word reachability (same-fam, F^2, reverse, constitutional)
   10    Helix Z2 cycle (F^2 = id from rest)
   11    Flat vs curved payload pools (fiber bundle dial)
-  12    Constitutional byte shell trace (depth-4 and depth-8)
+  12    Constitutional byte shell trace (depth-4 half-word and F / F² turns)
 
 Run the full study: python experiments/hqvm_percolation_analysis_run.py
 
@@ -743,13 +743,13 @@ def probe_word_reachability(eng: WordEngine) -> None:
     # Canonical 4-family W2(m) = [fam00,fam01,fam10,fam11] per micro_ref
     probes.append(("canonical 4-fam W2", eng.w2))
 
-    # F^2 = id (depth-8 canonical x2)
+    # F^2 = id (Z₂ return, two F words)
     f2 = []
     for m in range(64):
         fm = eng.fp[m]
         f2m = [fm[fm[i]] for i in range(n)]
         f2.append(f2m)
-    probes.append(("canonical F^2 (depth-8)", f2))
+    probes.append(("canonical F^2 (Z2 return)", f2))
 
     # Same-family 4-byte words (fam 00 and 11)
     for fam, label in ((0, "same-fam 00"), (3, "same-fam 11")):
@@ -788,7 +788,7 @@ def constitutional_shell_trace(eng: WordEngine, omega: List[int]) -> None:
             return "comp-horizon"
         return "bulk"
 
-    for n_turns, label in ((1, "depth-4 (1 turn)"), (2, "depth-8 (2 turns)")):
+    for n_turns, label in ((1, "F (1 turn)"), (2, "F² Z2 cycle (2 turns)")):
         state = omega[eng.start_idx]
         shells = [eng.shell[eng.start_idx]]
         sectors = [sector_label(state)]
@@ -811,7 +811,7 @@ def constitutional_shell_trace(eng: WordEngine, omega: List[int]) -> None:
 
 def helix_z2_cycle(eng: WordEngine) -> None:
     print("\n" + "=" * 5)
-    print("10. HELIX Z2 CYCLE (F involution, depth-8 from rest)")
+    print("10. HELIX Z2 CYCLE (F involution, F² return from rest)")
     print("=" * 5)
     print("  rest --F(m)--> swapped --F(m)--> rest  (T6, all m).\n")
 

@@ -143,13 +143,13 @@ The ratio k_UNA / k_ONA isolates the asymmetry between the rotational and transl
 
 ### 4.1 The gravitational channel
 
-ONA introduces displacement within a shared geometry. BU preserves ancestry through balanced closure. Their composition measures the rotation required to preserve a common origin under displacement. The dual-pole loop follows the path ONA → BU+ → BU− → ONA. The central pole crossing is collinear and contributes zero gyration. The two corners contribute equal rotations about the same axis, so
+The dual-pole loop follows the nested balance cycle. It departs from the depth-two boundary at the common lemma angle θ_UNA = θ_ONA = o_p = π/4, crosses Balance Egress and Balance Ingress, and returns. In stage coordinates that path is written ONA → BU+ → BU− → ONA. The central pole crossing is collinear and the origin-based gyration on that edge is the identity. The two corners contribute equal rotations about the same axis, so
 
 ```
 δ_BU = 2 ω_OB = 4 arctan(k(o_p) k(m_a)) = 0.195342178258.
 ```
 
-The holonomy δ_BU is twice the ONA–BU corner. The closed form follows because each corner has half-angle tangent k(o_p) k(m_a) and the two corners add on a common axis. This is the angle of the channel that combines displacement with balance. Gravity is the continuum preservation of ancestry under displacement, so the gravitational Regge deficit is this ONA–BU dual-pole holonomy. In the Regge discretization, each plaquette carries the deficit angle δ_BU.
+The holonomy δ_BU is twice that dual-pole corner. The closed form follows because each corner has half-angle tangent k(o_p) k(m_a) and the two corners add on a common axis. This is the angle of the channel that combines the nested depth-two boundary with depth-four balance. Gravity is the continuum preservation of ancestry under displacement, so the gravitational Regge deficit is this dual-pole holonomy. In the Regge discretization, each plaquette carries the deficit angle δ_BU.
 
 The closure ratio and the aperture gap are the secant fill of that angle into the observational aperture,
 
@@ -175,7 +175,7 @@ The same angle is the base of the electromagnetic coupling [9]
 
 The quartic power arises from two dual-pole corners and two commutators. Division by m_a measures the resulting coupling in aperture units.
 
-The ONA–BU corner is the elementary angle of that channel, and the dual-pole loop doubles it.
+The dual-pole corner is the elementary angle of that channel, and the dual-pole loop doubles it.
 
 ### 4.2 The rotational aperture channel
 
@@ -231,7 +231,7 @@ Iterating the conjugation gives A⁻ⁿ R_BU Aⁿ, which preserves the angle δ_
 
 The period is the number of UNA–ONA steerings needed to complete a full turn of the balance axis.
 
-The ONA–BU dual-pole loop fixes the magnitude δ_BU of the balance holonomy. The UNA–ONA gyration fixes the axis rotation ω_UO that steers this holonomy under palindromic conjugation. The two quantities therefore separate the magnitude of the retained rotation from its orientation in space. The UNA–ONA threshold difference is o_p − u_p = 0.078291. The same pair also enters the angular-storage ratios 4/3 and 5/3 [12].
+The dual-pole loop fixes the magnitude δ_BU of the balance holonomy. The UNA–ONA gyration fixes the axis rotation ω_UO that steers this holonomy under palindromic conjugation. The two quantities therefore separate the magnitude of the retained rotation from its orientation in space. The UNA–ONA threshold difference is o_p − u_p = 0.078291. The same pair also enters the angular-storage ratios 4/3 and 5/3 [12].
 
 This structure is the gyroscopic separation between spin precession and axis transport, derived here from the stage geometry. It is also the geometric phase content of the palindrome. A carried frame receives a definite balance rotation and a definite axis steering, both fixed by the thresholds.
 
@@ -521,7 +521,7 @@ The command runs parts 1 and 2, prints the full report, and writes `experiments/
 
 The CGM precession analysis is the physical realization of three-dimensional rotational structure and six kinematic degrees of freedom. Three orthogonal stage displacements generate three orthogonal Thomas–Wigner rotations. Their angles reconstruct the radial stage geometry. Every Fermi–Walker holonomy among closed walks of length two through five is one of the six enumerated values.
 
-The ONA–BU channel produces the dual-pole holonomy δ_BU. This channel combines displacement with ancestry-preserving closure and is the curvature unit of gravity [8] and the base of α₀ [9]. The UNA–BU channel is the holonomy of the rotation channel. The UNA–ONA channel steers the balance axis and produces a secondary precession of that axis under palindromic transport, with algebraic lift o_p − u_p. The same pair enters the angular-storage ratios 4/3 and 5/3 [12].
+The dual-pole channel produces the holonomy δ_BU. This channel combines displacement with ancestry-preserving closure and is the curvature unit of gravity [8] and the base of α₀ [9]. The UNA–BU channel is the holonomy of the rotation channel. The UNA–ONA channel steers the balance axis and produces a secondary precession of that axis under palindromic transport, with algebraic lift o_p − u_p. The same pair enters the angular-storage ratios 4/3 and 5/3 [12].
 
 The closure function δ_BU(o_p, m_a) defines a nonlinear physical response. Its secant aperture controls integrated transport across the full BU excursion. Its tangent aperture controls incremental response at the operating point. The compact SU(2) commutator is the internal rotational memory, and its residual relative to three BU loops is the commutator-transport factor of the electromagnetic coupling chain, equivalently the aperture-normalized σ.
 

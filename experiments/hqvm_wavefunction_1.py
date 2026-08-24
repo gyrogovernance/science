@@ -21,7 +21,7 @@ Structural principles:
 - Z2 holonomy = spectral property: U_W^2 = I, eigenvalues +/-1
   Z2 phase on -1 eigenspace IS the holonomy
 - No return to CS: the helix overlays the origin, never revisits it
-  Carrier rest at depth 8 = Z2 holonomy cycle complete
+  Carrier rest after F² = Z2 holonomy cycle complete
 - Chirality is preserved by the canonical word; holonomy acts on carrier only
 """
 from __future__ import annotations
@@ -783,7 +783,7 @@ def run_bu_duality(omega: list[int]) -> None:
     cls_2 = classify_state(state_2)
     chi_2 = chirality_word6(state_2)
 
-    # After byte 4 (depth 8): BU manifest in carrier
+    # After byte 4 (four-byte word F): BU manifest in carrier
     state_4 = apply_word_to_state(canonical[:4], GENE_MAC_REST)
     cls_4 = classify_state(state_4)
 
@@ -800,9 +800,9 @@ def run_bu_duality(omega: list[int]) -> None:
         f"  After byte 2 (d=4): {cls_2.sector}, shell={cls_2.shell}  "
         f"[ONA+BU: equality transit, S-sector closure]"
     )
-    print(f"  After byte 3 (d=6): bulk, shell=1             " f"[BU carrier approach]")
+    print(f"  After byte 3:       bulk, shell=1             " f"[BU carrier approach]")
     print(
-        f"  After byte 4 (d=8): {cls_4.sector}, {cls_4.z2}      "
+        f"  After byte 4 (F):   {cls_4.sector}, {cls_4.z2}      "
         f"[BU holographic: complement horizon, Z2 encoding]"
     )
     print()
@@ -822,8 +822,8 @@ def run_bu_duality(omega: list[int]) -> None:
     print("  Closure is a PROJECTION property, not a carrier position")
     print()
 
-    # Ingress reading at depth 8
-    print("INGRESS READING (after byte 4, depth 8):")
+    # Ingress reading after the four-byte word F
+    print("INGRESS READING (after byte 4, word F):")
     print(f"  Carrier state: 0x{state_4:06X}")
     print(f"  Constitutional: {cls_4.sector}, Z2={cls_4.z2}")
     print("  Carrier on complement horizon with Z2 encoding (swapped != rest)")
@@ -1078,7 +1078,7 @@ def main() -> None:
     print("  BU-Egress/Ingress = dual readings of depth-4, NOT sequential")
     print("  Z2 holonomy = spectral property, NOT carrier trajectory")
     print("  Chirality preserved by canonical word; holonomy on carrier only")
-    print("  Carrier rest at depth 8 = Z2 cycle complete, NOT 'back to CS'")
+    print("  Carrier rest after F² = Z2 cycle complete, NOT 'back to CS'")
     print()
 
     run_decomposition_verify()

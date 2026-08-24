@@ -186,7 +186,7 @@ def derive_k4_flags_from_element(element: str) -> tuple[bool, bool, bool]:
 
     base: egress half-word (W2) beyond CS identity
     rot:  ingress half-word (W2') at depth-four closure
-    bal:  full holonomy cycle (F) at depth-eight Z2 return
+    bal:  full holonomy cycle at the eight-byte Z2 return
     """
     idx = K4_ELEMENTS.index(element)
     return (idx >= 1, idx >= 2, idx >= 3)

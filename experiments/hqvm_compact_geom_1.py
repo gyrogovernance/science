@@ -369,7 +369,7 @@ def plaquette_edge_projection_weight(edge: str) -> float:
 # The flags (base, rot, bal) record the cumulative fold-traversal depth:
 #   base = path crosses the egress half-word boundary
 #   rot  = path closes the ingress half-word at depth-4
-#   bal  = path completes the Z2 holonomy at depth-8
+#   bal  = path completes the Z2 holonomy at the eight-byte return
 #
 # This derivation uses only byte-path lengths on Omega; no mass data enters.
 

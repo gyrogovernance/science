@@ -590,7 +590,7 @@ This is the BU vibrational amplitude about the depth-four closed configuration, 
 δ_BU = 4 · arctan(k(π/4) · k(m_a)) ≈ 0.195342178258.
 ```
 
-Equivalently δ_BU = 2 · ω(ONA ↔ BU) with ω ≈ 0.097671089129. The shared evaluator is `bu_holonomy_angle` / `BU_HOLONOMY_ANGLE` in `gyroscopic.hQVM.constants` (`Analysis_Holonomy.md`). Appendix A records numerical diagnostics of δ_BU as a rotation phase, including return-distance and equidistribution tests on the sequence k · δ_BU modulo 2π.
+Equivalently δ_BU = 2 · ω with ω ≈ 0.097671089129, where ω is the corner Wigner angle between the depth-two boundary and the dual-pole amplitude. The shared evaluator is `bu_holonomy_angle` / `BU_HOLONOMY_ANGLE` in `gyroscopic.hQVM.constants`. Appendix A records numerical diagnostics of δ_BU as a rotation phase, including return-distance and equidistribution tests on the sequence k · δ_BU modulo 2π.
 
 Two independent consistency checks identify the same loop-angle constant. The eight-leg toroidal stage tour CS → UNA → ONA → BU+ → BU− → ONA → UNA → CS accumulates the same angle δ_BU. The SU(2) commutator conjugacy for orthogonal UNA/ONA rotations of angle π/4,
 

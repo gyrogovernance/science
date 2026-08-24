@@ -32,7 +32,7 @@ The fundamental expression for α at the BU focus is:
 α₀ = δ_BU⁴ / m_a                                                           (1)
 
 where:
-- δ_BU = 4 · arctan(k(π/4) · k(m_a)) with k(β) = β/(1 + √(1 − β²)), the BU dual-pole loop angle (Analysis_Holonomy.md)
+- δ_BU = 4 · arctan(k(π/4) · k(m_a)) with k(β) = β/(1 + √(1 − β²)), the BU dual-pole loop angle
 - m_a = 1/(2√(2π)) ≈ 0.199471140201, the observational aperture parameter (exact)
 
 Evaluated at working precision, δ_BU ≈ 0.195342178258 and α₀ ≈ 0.007299683573. Relative to CODATA 2018 (α = 1/137.035999084 ≈ 0.007297352569), the base residual is about +319.43 ppm.

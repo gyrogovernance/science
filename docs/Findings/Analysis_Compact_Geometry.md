@@ -435,7 +435,7 @@ K4 channel assignment. The four electroweak channels map to the four K4 operator
 | Z       | W2'         | 4 bytes (F = W2 o W2') | 4 | (1, 1, 0) |
 | W       | F           | 8 bytes (Z2 holonomy cycle) | 8 | (1, 1, 1) |
 
-The three binary flags record the K4 edge walk depth: base activates the egress half-word (W2) at the 3-byte threshold, rot activates the ingress half-word (W2') at the 4-byte depth-four closure, and bal activates the full holonomy cycle (F) at the 8-byte depth-eight Z2 return. The flag tuple for each channel is fixed by the byte-path length, which is itself fixed by the operator closure depth.
+The three binary flags record the K4 edge walk length. The base flag activates the egress half-word (W2) at the 3-byte threshold. The rot flag activates the ingress half-word (W2') at the 4-byte depth-four closure. The bal flag activates the full holonomy cycle (F) at the eight-byte Z₂ return. The flag tuple for each channel is fixed by the byte-path length, which is itself fixed by the operator closure depth.
 
 Shell-path ladder for a_i. The leading coefficients are horizon and code-enumerator combinations:
 

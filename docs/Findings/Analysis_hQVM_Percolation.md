@@ -283,7 +283,7 @@ A **micro-reference** is the six-bit payload index in the byte (intron bits 1 th
 
 Canonical word operators compose bytes into closed invariants. From `docs/Findings/Analysis_hQVM_Wavefunction.md`, Theorems T1 through T10:
 
-**Modal depth convention.** One byte implements one [L][R] pair (modal depth 2). W2 and W2' are two-byte half-words (modal depth 4). F = W2 then W2' is a four-byte full word (modal depth 8).
+**Word length convention.** One byte implements one [L][R] pair (modal depth 2). W2 and W2' are two-byte half-words (modal depth 4). F = W2 then W2' is the four-byte operator product of those half-words.
 
 **W2(m).** Two-byte half-word [byte(fam 00, m), byte(fam 01, m)] at modal depth 4. Involution mapping shell s to 6 - s (Theorem T2).
 
@@ -471,7 +471,7 @@ From horizon anchors, word dynamics visits only the two constitutional horizons.
 
 ### 4.2 Exact Deterministic Reachability (Byte Regime)
 
-Exact deterministic reachability from the rest state for structured generator restrictions follows from breadth-first search to depth 12. Depth 12 exceeds the longest canonical word path (modal depth 8 for F) and accommodates restricted semigroups that need more than two steps without saturating early. Supplementary deterministic checks are indexed in Appendix B.
+Exact deterministic reachability from the rest state for structured generator restrictions follows from breadth-first search to depth 12. Depth 12 exceeds the longest canonical word path (the four-byte word F) and accommodates restricted semigroups that need more than two steps without saturating early. Supplementary deterministic checks are indexed in Appendix B.
 
 #### 4.2.1 Family Restrictions
 
@@ -817,7 +817,7 @@ Structured probe words from `docs/Findings/Analysis_hQVM_Wavefunction.md` Sectio
 |-------|------:|------------|------------|
 | canonical F | 2 | No | 0 |
 | canonical 4-fam W2 | 128 | No | 64 |
-| canonical F^2 (depth-8) | 1 | No | 0 |
+| canonical F^2 (Z₂ return) | 1 | No | 0 |
 | same-fam 00 | 1 | No | 0 |
 | same-fam 11 | 1 | No | 0 |
 | reverse fam order | 2 | No | 0 |

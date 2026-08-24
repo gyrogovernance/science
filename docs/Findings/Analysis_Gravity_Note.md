@@ -256,7 +256,7 @@ where the product Q_G m_a² = 1/2 is the half-integer quantum pass of the double
 
 **3.3. The Observational Aperture and Loop Angle**
 
-Gravity requires quantization. The continuous sphere resolves into discrete operational passes governed by the aperture. With δ_BU = 4 · arctan(k(π/4) · k(m_a)) and k(β) = β/(1 + √(1 − β²)), the BU dual-pole loop angle measures the phase accumulated on the path between the constitutional poles. The closure ratio ρ and the aperture gap Δ measure how this loop angle sits relative to the aperture.
+Gravity requires quantization. The continuous sphere resolves into discrete operational passes governed by the aperture. With δ_BU = 4 · arctan(k(π/4) · k(m_a)) and k(β) = β/(1 + √(1 − β²)), the BU dual-pole loop angle measures the phase accumulated on the path between the constitutional poles BU+ and BU−, which carry Balance Egress and Balance Ingress. The factor π/4 is the common lemma angle of the nested depth-two boundary. The closure ratio ρ and the aperture gap Δ measure how this loop angle sits relative to the aperture.
 
 ```text
 ρ = δ_BU / m_a   ≈ 0.979300454497

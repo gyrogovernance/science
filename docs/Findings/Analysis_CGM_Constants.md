@@ -79,11 +79,11 @@ Since m_a² = 1/(8π), we have (π/2) × 8π = 4π². So the primordial chiralit
 
 ### 2.1 BU Dual-Pole Loop Angle δ_BU
 
-The **BU dual-pole loop angle** δ_BU is the total phase (memory) accumulated along the path ONA → BU+ → BU− → ONA. Each CGM threshold number is read as an Einstein speed β = ||v|| in the open unit ball, and the Poincaré half-rapidity radius is k(β) = β / (1 + √(1 − β²)) = tanh(atanh(β)/2). With θ_ONA = π/4 the closed form is
+The **BU dual-pole loop angle** δ_BU is the total phase (memory) accumulated along the dual-pole path. The path departs from the depth-two boundary of the nested lemmas, crosses Balance Egress (BU+) and Balance Ingress (BU−), and returns. In stage coordinates that boundary sits at the common lemma angle π/4 = θ_UNA = θ_ONA, so the path may be written ONA → BU+ → BU− → ONA. Each CGM threshold number is read as an Einstein speed β = ||v|| in the open unit ball, and the Poincaré half-rapidity radius is k(β) = β / (1 + √(1 − β²)) = tanh(atanh(β)/2). The closed form is
 
-**δ_BU = 2 × ω(ONA ↔ BU) = 4 · arctan( k(θ_ONA) · k(m_a) ).**
+**δ_BU = 4 · arctan( k(π/4) · k(m_a) ).**
 
-This equation is the definition of δ_BU. The derivation and high-precision evaluation are given in Analysis_Holonomy.md. So δ_BU is a derived geometric quantity, not an independent free parameter.
+This equation is the definition of δ_BU. The derivation, the nesting of the stage angles, and the finite realization of the dual poles are given in the Holonomy analysis. So δ_BU is a derived geometric quantity, not an independent free parameter.
 
 ### 2.2 Closure Ratio ρ
 

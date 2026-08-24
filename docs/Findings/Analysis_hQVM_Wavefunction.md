@@ -173,9 +173,9 @@ This is a forced consequence of chi XOR 63: the chirality inversion at depth 4 m
 
 ## 5. Depth Decomposition and CS Ordering
 
-### 5.1 Depth-8 as K4 Composition (Theorem T6)
+### 5.1 F as K4 Operator Product (Theorem T6)
 
-**Theorem T6.** The canonical 4-byte word is F = W2 compose W2'. Depth-8 is K4 composition, not a new modal depth.
+**Theorem T6.** The canonical four-byte word is the operator product F = W2 ∘ W2′. Both factors are depth-four half-words. Their product lies in the Klein four-group of Theorem T1 and produces the Z₂ carrier flip.
 
 The carrier trajectory through the decomposition:
 
@@ -183,9 +183,9 @@ The carrier trajectory through the decomposition:
 |-------|----------|-----------------|----------------|
 | Start | - | (0, 63) | Complement horizon, rest |
 | After W2 | depth 4 | (63, 63) | Equality horizon |
-| After W2' | depth 8 | (63, 0) | Complement horizon, swapped |
+| After F | W2 ∘ W2′ | (63, 0) | Complement horizon, swapped |
 
-No new modal depth is introduced at depth 8. The second depth-4 operation (W2') composes with the first via the K4 algebra, producing the Z2 carrier flip.
+The second depth-four half-word W2′ multiplies with W2 in the K4 algebra and yields the Z₂ carrier flip.
 
 ### 5.2 CS Forces Canonical Ordering (Theorem T7)
 
@@ -238,16 +238,14 @@ The representative shadow pairs illustrate the structure:
 
 Each complement-horizon state (shell 0, maximal chirality) is paired with an equality-horizon state (shell 6, zero chirality). The shadow is the "memory" of the original: it is the unique state that, when W2 is applied again, reconstructs the original.
 
-### 6.3 The Duality
-
-Egress and Ingress are simultaneous aspects of the same W2 operator:
+Egress and Ingress are simultaneous aspects of the same W2 operator. The continuous dual-pole path presents the same dual as the ordered poles BU+ and BU−.
 
 | Reading | Question | Answer |
 |---------|----------|--------|
 | Egress | Does closure hold? | W2^2 = id: yes, the depth-4 operation is an involution |
 | Ingress | Does closure carry memory? | W2 pairs poles invertibly: yes, the shadow reconstructs the origin |
 
-These are not sequential stages. They are simultaneous aspects of the same spectral property. The Z2 holonomy (gate F = W2 compose W2') is the holographic encoding that makes both readings true at depth 4.
+These are simultaneous aspects of the same spectral property. The Z2 holonomy (gate F = W2 compose W2') is the holographic encoding that makes both readings true at depth 4.
 
 ---
 
@@ -508,7 +506,7 @@ The wavefunction structure is falsifiable through:
 | T3 | W2' maps shell s -> 6-s (chi XOR 63) | Verified, algebraic proof |
 | T4 | F preserves shell (Z2 within pole) | Verified, algebraic proof |
 | T5 | Depth-4 confines to opposite pole | Verified, 64 x 64 states |
-| T6 | Depth-8 = K4 composition, not new depth | Verified, signature algebra |
+| T6 | F = W2 ∘ W2′ is the K4 operator product of two depth-four half-words | Verified, signature algebra |
 | T7 | CS forces canonical family ordering | Verified, 64 micro_refs |
 | T8 | Egress = W2 involution (Box B spectral) | Verified, 4096 states |
 | T9 | Ingress = W2 pole-pairing (shadow = memory) | Verified, 4096 states |
@@ -708,9 +706,9 @@ CGM asserts that space converts to time at gravitational horizons, because prese
 
 In the byte, this conversion occurs at the fold between bit 3 and bit 4. Bits 0-3 are the forward temporal pass through the rotational generators (spatial DoF). Bits 4-7 are the reverse temporal pass through the translational generators. The BU phase (bits 3 and 4) is the hinge: the forward pass ends at BU, and the reverse pass begins at BU.
 
-The fold map P connects the two halves via the palindrome symmetry. The forward and reverse readings of each CGM phase can disagree in value, and the fold disagreement at each position creates Z2 holonomy. The holographic Z2 encoding at depth-8 (the rest versus swapped distinction) is the result: after four bytes, the spatial extension of the carrier has been fully resolved into temporal curvature.
+The fold map P connects the two halves via the palindrome symmetry. The forward and reverse readings of each CGM phase can disagree in value, and the fold disagreement at each position creates Z2 holonomy. The holographic Z2 encoding after the four-byte word F (the rest versus swapped distinction) is the result. After four bytes, the spatial extension of the carrier has been fully resolved into temporal curvature.
 
-In the carrier, the holographic Z2 encoding at depth-8 is this conversion. After 4 bytes, the carrier is on the complement horizon with Z2 information (rest versus swapped). The complement horizon is where spatial extension has been fully converted into temporal curvature (holographic encoding). The aperture Δ ≈ 0.020699545503 is intrinsic to the byte (quantized as 5/256) and also computable from the loop angle as Δ = 1 − δ_BU/m_a. Both readings are different resolutions of the same CGM balance condition.
+In the carrier, that holographic Z2 encoding is this conversion. After the four-byte word F, the carrier is on the complement horizon with Z2 information (rest versus swapped). The complement horizon is where spatial extension has been fully converted into temporal curvature (holographic encoding). The aperture Δ ≈ 0.020699545503 is intrinsic to the byte (quantized as 5/256) and also computable from the loop angle as Δ = 1 − δ_BU/m_a. Both readings are different resolutions of the same CGM balance condition.
 
 ### 16.13 Holonomic Expansion from the Seed Curvature
 
