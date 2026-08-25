@@ -730,7 +730,7 @@ B. Astrophysical psi values and G corrections
 psi = GM/(r*c^2) = gravitational potential / c^2
 
                    Object    M/M_sun       R (km)          psi   G/G_global     delta%
--------------------------------------------------------------------------------------
+----------
             Earth surface       0.00       6371.0   6.9587e-10     1.000000    -0.0000
               Sun surface       1.00     695700.0   2.1231e-06     0.999999    -0.0001
      White dwarf (1 Msun)       1.00       5000.0   2.9541e-04     0.999809    -0.0191
@@ -2127,7 +2127,7 @@ E.1  Falsification tests
 ------------------------
 
   Test                           | CGM Prediction                      | Current Status 
-  -------------------------------------------------------------------------------------
+  ----------
   Antimatter free-fall           | Same as matter (WEP)                | ALPHA-g pending
   Antimatter spin precession     | Opposite sign at O(psi^2)           | Untestable     
   GW scalar polarization         | None (psi slaved)                   | LIGO consistent
