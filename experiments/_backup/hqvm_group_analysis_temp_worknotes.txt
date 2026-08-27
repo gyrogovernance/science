@@ -1,0 +1,634 @@
+# hqvm_group_analysis_temp_worknotes.txt
+# Group-theoretic reference for the hQVM / CGM corpus
+# STATUS: CONCLUDED 2026-08-23 (201 gates, scripts 1-5)
+# Successor study: hqvm_runtime_analysis_* (compute harness on proved structure)
+
+Run: python experiments/hqvm_group_analysis_run.py [--only 1|2|3|4|5|all] [--verbose]
+
+Default output is quiet: section titles, PASS/FAIL with measured/threshold, LIMIT/trichotomy notes, and compact novel curves/tables. Pass --verbose for sample dumps and flat histograms.
+
+  hqvm_group_analysis_1.py — discovers G from bytes; six-mode factorization; closed-form law; discrete curvature
+  hqvm_group_analysis_2.py — character table; Peter-Weyl on G; SO(3) comparison; mixing trichotomy
+  hqvm_group_analysis_3.py — no-go theorems; Haar analogy; 2-design; RP^3 homology; GF(2)^6 holonomy
+  hqvm_group_analysis_4.py — irrep labeling; 32-bit spinor lift; hQVM(d) family (~1.1k LoC)
+  hqvm_group_analysis_5.py — mixer/Aut; equivariant layer; codebook; Grover/Bell/sync/toric (~1.2k LoC)
+
+This file is a corpus inventory: every group or group-like structure known in relation to CGM and hQVM across docs, experiments, and Notes. It is not a four-item pitch. Use it to see what is already proved elsewhere before reading PASS gates in the scripts.
+
+=================================================================
+WHAT THE SCRIPTS COVER
+=================================================================
+
+Run hqvm_group_analysis_1.py .. _5.py via the runner above. Each section prints measured quantities and PASS/FAIL checks. What those gates connect to elsewhere in the corpus is in the inventory and corpus map sections below — not summarized again here.
+
+=================================================================
+UNIFIED MAP: DIPoles → BYTES → GROUPS → CONTINUUM
+=================================================================
+
+Physical / combinatorial layer
+  Six oriented dipole pairs per 12-bit chirality frame (A12, B12)
+  24-bit carrier = active face + record face
+  Reachable set Omega: 4096 states = 2^12 = |H|^2 (horizons |H| = 64)
+
+Instruction layer
+  8-bit byte = 2 CS gauge bits (family) + 6 payload bits (micro_ref)
+  Alphabet factorizes K4 x GF(2)^6: 256 = 4 x 64
+  q6(b): Byte256 -> GF(2)^6 with uniform 4-to-1 fibers (deck group K4)
+
+Operator layer
+  128 distinct permutations on Omega (256 bytes mod shadow XOR 0xFE)
+  Depth-4 words {id, W2, W2', F} per micro_ref (Klein four-group)
+  Full operator group G = (GF(2)^6 x GF(2)^6) semidirect C2, |G| = 8192
+  Equivalent form G = (Z/2)^12 semidirect Z/2 (packed signature coordinates)
+
+Code / quantum layer
+  Self-dual [12,6,2] mask code C64; weight enumerator (1+z^2)^6 = [2,1,2]^6 direct sum; pair-collapse to GF(2)^6. NOT the classical GF(4) hexacode.
+  12-qubit graph state; six Bell pairs; CHSH at Tsirelson bound 2*sqrt(2)
+  Stabilizer algebra: 12 commuting GF(2) generators, rank 12
+
+Continuous layer (from CGM axioms, imported as constants)
+  UNA -> SU(2) (3 rotational DOF); ONA -> SE(3) = SU(2) semidirect R^3 (6 DOF)
+  BU holonomy delta_BU, aperture rho, gap Delta; gyrogroup on velocity space
+  GNS representation on L^2(S^2); Q_G = 4 pi steradians
+
+Critical distinction: the continuous groups are Lie-group benchmarks and modal consequences. The finite groups are what the byte engine implements exactly. Bridges are structural analogies unless a script proves an isomorphism or embedding (several no-go theorems say what is NOT a bridge).
+
+=================================================================
+MASTER GROUP INVENTORY
+=================================================================
+
+Status tags: PROVED = executable or formal proof in repo; CONJECTURED = stated hypothesis or parallel; BACKGROUND = standard mathematics cited, not a CGM-specific claim.
+
+--- A. Continuous Lie groups and algebras (CGM axioms -> 3D/6DOF) ---
+
+SO(3)          Compact rotation group; 3x3 orthogonal det=1. Holonomy angles, Thomas/Wigner precession, STF stress (l=2), heat kernel. PROVED as benchmark (holonomy, precession, group_analysis SO(3) block). BACKGROUND: standard Lie theory.
+
+SU(2) / Spin(3) Double cover of SO(3); 720-degree spinorial closure; commutator holonomy phi_SU2; 256->128 byte shadow analogy. PROVED (holonomy, 3D/6DOF, Features #57). CONJECTURED: literal finite SU(2) as G (see no-go).
+
+so(3) / su(2)  Lie algebra; BCH depth-4 forces 3 generators; Hall word exclusion. PROVED (Hilbert, 3D/6DOF, Tier C #239).
+
+SE(3) = SU(2) semidirect R^3  Six kinematic DOF (3 rot + 3 trans). PROVED continuous (3D/6DOF, Tier C #238). PROVED no-go on finite byte engine (group_analysis_3).
+
+sl(2)          Forced by BCH + BU-Ingress simplicity (so(4) excluded). PROVED (Gravity S2.4, 3D proof).
+
+SO(2), SO(4)   Excluded for n=2 (abelian / non-compact) and n>=4 (not simple). PROVED (3D/6DOF).
+
+SO+(1,3)       Lorentz group; mass-shell holonomy; forward hyperboloid transport. PROVED continuous only (Holonomy S11, Precession S7).
+
+S^2            GNS Hilbert space L^2(S^2,dOmega); Q_G = 4 pi. PROVED (Hilbert analysis).
+
+RP^3           SO(3) mod +/-I; H_1(RP^3)=Z/2. PROVED cellular model (group_analysis_3); BACKGROUND topology.
+
+Gyrogroup / gyrovector space  Einstein addition, gyr[u,v] in SO(3); Ungar axioms. PROVED continuous (Holonomy, Precession); finite shadow: depth-4 closure, XYXY=id.
+
+--- B. Finite operator group G and substructures ---
+
+G              (GF(2)^6 x GF(2)^6) semidirect C2 = GF(2)^6 wr C2, order 8192 = 2^13. Equivalently parity-locked D8 fiber product: six copies of D8 sharing one global swap parity (not (D8)^6). Generated by 128 byte signatures. Word law sig(w1 w2) = sig(w2) o sig(w1). PROVED (group_analysis_1). Class-2 special 2-group: Z(G)=G'=Phi(G)=C2^6, G/Z(G)=C2^7, odd-square map q(t,x)=t*x on quotient. PROVED partial (Z(G)=[G,G] gated); Phi(G) and explicit q,B not yet gated.
+
+(Z/2)^12       Translation subgroup (even words); abelian normal subgroup, order 4096. PROVED.
+
+C2 / Z/2       Outer swap (u,v)->(v,u) on 12 payload bits; semidirect factor. PROVED.
+
+H = Stab(rest) {id, z}, z=(1,63,63); order 2. Omega = G/H, |G| = 2|Omega|. PROVED.
+
+Z(G) = [G,G]   Diagonal {(d,d): d in GF(2)^6}; order 64 = (Z/2)^6. Center = commutator; plaquette holonomies land here. PROVED.
+
+G/G'           Abelian shadow, order 128 (matches 128 byte permutations). PROVED.
+
+Conjugacy classes  2144 = 64 central + 2016 paired + 64 swap-type. PROVED (group_analysis_2).
+
+Irreps of G     128 one-dimensional + 2016 two-dimensional (Clifford construction). PROVED (group_analysis_2).
+
+L^2(Omega)      Multiplicity-free: 2080 irreps appear once; 64 parity-odd linear characters absent. PROVED (group_analysis_2). 2016 two-dim labels by (n_u,n_v) bidegree on swap-orbits. PROVED (group_analysis_4). Algebraic count 63 central chars x 32 radical labels = 2016. INVENTORY (not re-gated): rank-2 polarization of B_l per central char.
+
+--- C. K4 (Klein four-group) and depth-4 structure ---
+
+K4 gates        {id, S, C, F} on bytes; deck group of 4-to-1 q6 cover. PROVED (Features #19-31, wavefunction, cohomology).
+
+K4 per micro_ref {id, W2(m), W2'(m), F(m)} for m=0..63; independent K4 for each payload. PROVED exhaustive 64x4096 (wavefunction T1-T10).
+
+Depth-4 fiber   4^4 family combinations collapse to 4 states indexed by (phi_A, phi_B) in (Z/2)^2. PROVED (Physics Report, Features #31).
+
+K4 orbits on Omega  32 orbits size 2 (complement), 32 size 2 (equality), 992 size 4 (bulk) = 1056 total. PROVED.
+
+Electroweak map id,W2,W2',F -> Top,Higgs,Z,W channels. PROVED (Compact Geometry S4).
+
+Q8              Central extension 1->Z2->Q8->K4->1; Wilson plaquette gauge group. PROVED derived (Yang_Mills_Mass_Gap_1.py); not in group_analysis scripts.
+
+APERTURE_FRAME  3*|K4|^2 = 48. PROVED (Compact Geometry, Program S4.3). Palindrome pair partition (1,6)(2,5)(3,4) has stabilizer S2 wr S3 = B3 (signed permutations on three axes), order 48; orientation-preserving subgroup S4 order 24. INVENTORY: not the binary octahedral group 2O (Spin cover); cardinality parallel only.
+
+--- D. GF(2) and shell structures ---
+
+GF(2)^6         Chirality register chi; shell k = popcount(chi); |shell_k| = C(6,k)*64. PROVED.
+
+GF(2)^12        Packed translation coordinates in G. PROVED.
+
+GF(2)^24        Full carrier; affine byte dynamics. PROVED.
+
+GF(2) field on 64  x^6+x+1; GF(64) for mask arithmetic. PROVED (Features #43).
+
+Parity cocycle   popcount mod 2: GF(2)^6 -> GF(2); odd-shell obstruction. PROVED (Cohomology S4, Percolation S3.4).
+
+Lambda•(GF(2)^6) Exterior algebra; shell duality |Shell_k| = |Shell_{6-k}|. PROVED (Cohomology S5).
+
+Hamming scheme H(6,2)  Krawtchouk-Walsh diagonalizes D_shell; Terwilliger -> sl(2). PROVED (Compact Geometry, hQVM Report 2).
+
+Matroid on q6   Q(A)=span{q6(b)}; rank r(A); Square-Root Cluster |Reach|=(2^r)^2. PROVED (Percolation).
+
+--- E. Permutation and semigroup structures ---
+
+Omega           4096 states; not a group (coset space). PROVED.
+
+Permutation semigroup  256 generators T_b on Omega; generator-restricted percolation. PROVED.
+
+128 permutations  2-to-1 from bytes; 2 of order 2 (S-gate), 126 of order 4. PROVED.
+
+A_4096 (claim)  Every byte action is even permutation on Omega. PROVED (group_analysis_1 embedding check).
+
+S_6             Permutations of six dipole pair labels; graph symmetry, not full dynamics. PARTIAL (group_analysis_1 Aut census).
+
+Aut(byte graph) Contains T_aut semidirect S_6 (128 diagonal/anti-diagonal translations x pair relabelings); |T_aut|*720 lower bound. PARTIAL (group_analysis_1).
+
+Hidden subgroup  q-map 4-to-1; WHT resolves in 1 step vs O(64) classical. PROVED (Features #96).
+
+--- F. Cohomology and obstruction groups ---
+
+H^1(K4, GF(2)^6)  Hom(K4, GF(2)^6); dimension 12. PROVED (Cohomology S4.1, Features #253).
+
+H^1(GF(2)^6, GF(2))  Parity homomorphism; ker rank 5. PROVED.
+
+Grothendieck K_G^R(2) = sqrt(2)  Boolean CHSH max 2 vs Hilbert 2*sqrt(2). PROVED (Cohomology S7).
+
+H^2(SO(3); Z) = Z/2  Continuous template for Z/2 Berry phase. BACKGROUND + finite analogy (group_analysis_3).
+
+H_1(T^2, Z/2) = (Z/2)^2  K4 as toric-code analogy. CONJECTURED (SDK spec).
+
+Site / covers    Family fiber K4; chirality fibers 64 states each. PROVED (Cohomology S2-3).
+
+--- G. Quantum / stabilizer / Clifford ---
+
+C64 [12,6,2]    Self-dual mask code; weight enumerator (1+z^2)^6. PROVED.
+
+12 stabilizers    Commuting GF(2) generators, rank 12. PROVED (Features #92).
+
+Graph state       (1/sqrt(64)) sum_{q in GF(2)^6} |q>|q xor t>. PROVED.
+
+Six Bell pairs      One per payload bit; CHSH saturation. PROVED (Formal Quantum Certification).
+
+Clifford unitaries  Bytes as exact Clifford ops on code; 8192 Weyl algebra elements (Moments). PROVED.
+
+Non-Clifford delta_BU  Imported constant, not generated by Clifford alone. PROVED (Features #106-114).
+
+--- H. Representations and harmonic analysis ---
+
+GNS L^2(S^2)      Modal operators -> unitaries; cyclic vector. PROVED (Hilbert doc).
+
+Peter-Weyl on G   2144 irreps; orthogonality; Plancherel. PROVED (group_analysis_2).
+
+Gelfand pair (G,H)  Multiplicity-free L^2(Omega); 2080 double cosets. PROVED partial (group_analysis_2). Byte operator P not H-bi-invariant (not Hecke element).
+
+Wigner characters chi_j on SO(3)  Template for finite character comparison. BACKGROUND + numerics (group_analysis_2).
+
+Spherical harmonics Y_lm on S^2  Continuous analog of isotypic components. BACKGROUND.
+
+Regular representation  sum d_rho^2 = 8192 = |G|. PROVED (group_analysis_2).
+
+H-odd / twisted sign sector  64 s=1 linear chars absent from L^2(Omega)=Ind_H^G(1) but present in L^2(G); 32-bit register realizes Ind_H^G(sign), Gram 8192*I. PROVED (group_analysis_2, _4). Call H-odd or twisted-sheet sectors; not SU(2) spinors without separate Hilbert lift.
+
+--- I. Holonomy generators (continuous) ---
+
+{UO, OB, UB, I}   Three elementary SO(3) Wigner rotations (z,x,y axes); six holonomy values for walks length 2-5. PROVED (Precession S3, S6).
+
+Palindrome loop   Same angle delta_BU, axis rotated by omega_UO; R_pal = A^{-1} R_BU A. PROVED (Holonomy S8-9).
+
+SU(2) commutator  phi_SU2 = 2 arccos((1+2sqrt(2))/4). PROVED 80-digit (Holonomy S3).
+
+Thomas-Wigner   delta_BU = 2 * Wigner(ONA,BU+). PROVED (Precession S4).
+
+--- J. Arithmetic / K4 lattice (gyroscopic multiplication) ---
+
+(Z/2)^2 index     2x2 K4 lattice matrix M(q,k) on chart cells. PROVED (Analysis_Gyroscopic_Multiplication S9-12).
+
+Delta_K4          Chart defect determinant; rank-1 at depth 0. PROVED.
+
+16 = |K4|^2       Byte/carrier scale link. PROVED.
+
+2016 = C(64,2)    Chart commutators = swap 2-cycles on Omega. PROVED (identity).
+
+--- K. Physics-adjacent finite groups (not kernel G) ---
+
+Aut(Q8) ~ S4      Octahedral symmetries on Wilson chart. PROVED (YM Mass Gap #271).
+
+B3 = S2 wr S3  Order 48; palindrome-pair stabilizer in S6 on dipole labels. INVENTORY (group-theoretic origin of 48). Binary octahedral 2O is a different order-48 group (Spin cover); do not identify by cardinality.
+
+SU(3)             Hadron analysis; separate from kernel G. Different study (cgm_su3_hadron_analysis).
+
+--- L. Integers with group meaning ---
+
+4096 = |Omega|   2^12; 64^2; 16^3. PROVED.
+
+8192 = |G|       Operator group order. PROVED.
+
+128              Distinct permutations; depth-4 atoms; G/G'. PROVED.
+
+2144             Conjugacy classes = irreps of G. PROVED (group_analysis).
+
+2080             Appearing irreps in L^2(Omega). PROVED.
+
+64               Horizons; Z(G); q6 alphabet; missing linear chars on Omega. PROVED.
+
+48               APERTURE_FRAME = 3*|K4|^2. PROVED.
+
+24               Plaquette shell displacement D per Z2 cycle. PROVED (Gravity S5.6).
+
+5/256            A_kernel aperture at byte horizon. PROVED (Measurement Report).
+
+=================================================================
+CORPUS MAP: WHERE EACH FACT IS PROVED
+=================================================================
+
+Program overview
+  docs/CGM_Program.md — research map, Section 8 experiment table, holonomy hierarchy, K4/ wavefunction summary
+  docs/CGM_Logic.md — modal axioms, byte layout, deck group, square-root law, Z2 holonomy
+  docs/CGM_Paper.md — formal development, GNS, dimensional proof narrative
+  docs/Gyroscopic_Computational_Theory/hQVM_Features_Report.md — 283 numbered features (Parts I-VIII); ~80+ group-tagged
+
+Findings manuscripts (group-heavy)
+  Analysis_3D_6DOF_Proof.md — n=3, SU(2), SE(3), exclusions
+  Analysis_Hilbert_Space_Representation.md — GNS, L^2(S^2), BCH, so(3)
+  Analysis_Holonomy.md — SU(2) commutator, delta_BU, SO(3) routes, finite K4 certificate
+  Analysis_Precession.md — dual-pole, Thomas-Wigner, {UO,OB,UB}, Regge input
+  Analysis_hQVM_Wavefunction.md — K4 T1-T10, Z2 carrier, fiber bundle
+  Analysis_hQVM_Percolation.md — GF(2) rank, semigroup, hQVM(d) family, K4 alphabet
+  Analysis_hQVM_Cohomology.md — H^1(K4), parity, Lambda*, Grothendieck gap
+  Analysis_Compact_Geometry.md — G=8192, K4 electroweak, spectral triple, 32-bit lift
+  Analysis_Gravity.md — SE(3), plaquettes, Z2 cycle, STF shells, GNS Q_G
+  Analysis_Gyroscopic_Multiplication.md — K4 lattice arithmetic on (Z/2)^2 cells
+  Analysis_hQVM_CGM_YM_Mass_Gap.md — Q8, Aut(Q8), Wilson certificates
+  Analysis_48_States.md — 48 = APERTURE_FRAME and octahedral parallel
+
+Experiment scripts (primary verification)
+  cgm_3D_6DoF_analysis.py — dimensional / Lie algebra proof checks
+  cgm_Hilbert_Space_analysis.py — GNS numerical realization
+  cgm_holonomy_analysis_run.py — SU(2), SO(3), gyrogroup, K4 cross-check
+  cgm_precession_analysis_run.py — stage loops, Thomas-Wigner, non-commutative walks
+  hqvm_wavefunction_1.py, hqvm_wavefunction_2.py — T1-T10 exhaustive K4
+  hqvm_wavefunction_kernel.py — K4 gate verification helpers
+  hqvm_percolation_analysis_run.py (_1.._5) — rank, square-root, K4 cross-check, hQVM(d)
+  hqvm_Cohomology_analysis_run.py (_1.._4) — CHSH, H^1, Lefschetz, zeta
+  hqvm_compact_geom_run.py — K4 channels, |G|=8192 audit, spectral triple
+  hQVM_CGM_YM_Gap/Yang_Mills_Mass_Gap_*.py — K4, Q8 extension, Wilson
+  hqvm_gravity_analysis_*.py — plaquette census, tau_G, optical conjugacy (not group conjugacy)
+  hqvm_cgm_genomics_*.py — K4 on genetic encodings, aut groups on codon space
+  hqvm_cgm_trestleboard_run.py — nuclear K4 staging
+  hqvm_moments_fiat_analysis_*.py — Z2 cycle width, K4 spectral vectors
+  cgm_byte_formalism_analysis.py — SU(2) spinorial byte step
+  cgm_axiomatization_analysis.py — SU(2)+R^3 consistency
+  hqvm_group_analysis_run.py (_1,_2,_3) — THIS STUDY: full character theory, no-go, SO(3) layer
+
+Kernel pytest (superintelligence repo)
+  Physics_Tests_Report.md, hQVM_Tests_Report_1.md, hQVM_Tests_Report_2.md — Tier A gates for K4, 4096, shadow, depth-4
+
+Gaps (proved in experiments, not yet Findings manuscripts)
+  Full character table 128+2016, 2144 classes — group_analysis_2 only
+  Multiplicity-free L^2(Omega) with 64 absent chars — group_analysis_2
+  Mixing trichotomy G vs Omega vs SO(3) — group_analysis_2
+  Gelfand pair (G,H) multiplicity-free; byte operator P not Hecke — group_analysis_2
+  Sharply uniform 2-design (multiplicity 16) — group_analysis_3
+  Binomial curvature spectrum over byte pairs — group_analysis_1 (gated in run)
+  A_4096 even permutation embedding — group_analysis_1
+  No faithful G->SO(3); not se(3) — group_analysis_3
+  S_6 / Aut(byte graph) census — group_analysis_1
+  Q8 central extension of K4 — Yang_Mills_Mass_Gap_* only (not group_analysis)
+  32-bit register / Ind_H^G(sign) — now gated in group_analysis_4
+  No Analysis_hQVM_Group_Theory.md Findings manuscript yet
+
+=================================================================
+SCRIPT GATE INDEX (corpus vs novel)
+=================================================================
+
+hqvm_group_analysis_1.py — 47 gates (last full run)
+  Corpus re-check: |G|=8192, P^2=J/4096, K4 cover, shells, q6, Walsh
+  Novel: word anti-homomorphism, S_6/Aut census, A_4096, closed form, binomial curvature
+  A/B: B3 palindrome stabilizer 48; mixing K+swap(K); Jordan census
+
+hqvm_group_analysis_2.py — 46 gates
+  Corpus input: delta_BU for BU SO(3) bridge only
+  Novel: character table, L^2(Omega), Peter-Weyl, Gelfand pair, mixing trichotomy
+
+hqvm_group_analysis_4.py — 42 gates (structure extension)
+  Novel: bidegree labeling, 32-bit H-odd lift, hQVM(d) family, d=6 lock
+  A/B: special 2-group q,B; D8 fiber product; transient quotient 32 modes
+
+hqvm_group_analysis_5.py — 60 gates (mixer + applications)
+  Novel: mixer PDS, Aut lower bound, A-equivariant layer, 2-byte design, codebook, sync, toric
+  A/B: step Aut 46080; full G-equivariant 2080 gains; shell labels fixed
+
+hqvm_group_analysis_3.py — 8 gates
+  Novel: no G->SO(3), not se(3), 2-design, RP^3, central holonomy
+
+Other script families (see corpus map): wavefunction T1-T10, percolation rank law,
+  cohomology H^1(K4), holonomy/precession SU(2)/SO(3), compact_geom K4 channels,
+  YM Q8, genomics K4 encodings.
+
+Last run: 201 passed, 0 failed (hqvm_group_analysis_results.txt, scripts 1-5, quiet default).
+
+=================================================================
+CONTINUOUS vs FINITE — MASTER TABLE
+=================================================================
+
+| Topic              | Continuous (CGM)              | Finite (hQVM kernel)              |
+|--------------------|-------------------------------|-----------------------------------|
+| Rotations          | SO(3), SU(2) Lie groups       | G order 8192; 128 shadow perms    |
+| Holonomy angle     | Irrational delta_BU, phi_SU2  | Central GF(2)^6 vector; Z/2 only after central char |
+| Translations       | R^3 in SE(3)                  | GF(2)^6 XOR transport             |
+| Aperture           | Analytic Delta ~ 2.07%        | Dyadic 5/256 + Z2 encoding        |
+| Harmonic analysis  | Spherical harmonics Y_lm      | 2144 irreps of G; Krawtchouk      |
+| Double cover       | SU(2)->SO(3) Lie covering     | 2:1 byte shadow; NOT proved as group covering map |
+| Mixing             | Heat kernel, gap lambda_1=2  | P^2=J/4096 exact in 2 byte steps  |
+| Berry phase        | Continuous U(1) on bundles    | 6-bit central holonomy; scalar +/-1 per char |
+
+No-go (proved in group_analysis_3): G cannot embed faithfully in SO(3) (2-rank 12). Six payload bits realize (Z/2)^12 semidirect Z/2 swap, not se(3) brackets. H^2(SO(3);Z)=Z/2 is topology analogy only, not a derivation of finite holonomy. Finite K4 involutions cannot generate irrational delta_BU without importing BU_HOLONOMY_ANGLE constant.
+
+=================================================================
+GATE CLASSIFICATION (reading PASS output)
+=================================================================
+
+A. Prerequisites — computed in-script because a later gate in the same chain uses the result (e.g. build G before characters; P^2 before mixing comparison).
+
+B. Regression — same quantity as elsewhere in the corpus; recomputed here for a self-contained run. Cite the earlier source when writing outside these scripts.
+
+C. Findings — measured here; see gaps list and results.txt for what the last run covered.
+
+D. Continuous benchmark — textbook SO(3)/Lie checks beside finite G; not kernel-specific claims.
+
+Last run: hqvm_group_analysis_results.txt (scripts 1-5; see SUMMARY).
+
+=================================================================
+THEORY NOTES FOR THE SCRIPTS
+=================================================================
+
+hqvm_group_analysis_1.py — Finite engine
+  Builds G from 128 generators by closure; even translations (Z/2)^12, odd swap coset
+  Stabilizer {id,(1,63,63)}; 2:1 action on Omega
+  Byte walk P: doubly stochastic; P^2=J/4096; Walsh selection rules on modes
+  K4 fixed loci; six dipole modes; per-mode gates = four 4-state permutations
+  Commutator spectrum: all [b,c] land in center; curvature histogram C(6,k)*1024
+  Hidden symmetries: S_6 pair gauge; Aut lower bound; even permutations on Omega
+
+hqvm_group_analysis_2.py — Harmonic analysis
+  SO(3): chi_j(0)=2j+1; chi_1^2=chi_0+chi_1+chi_2; Casimir lambda_j=j(j+1); gap 2
+  2144 conjugacy classes; center 64; character orthogonality
+  L^2(Omega): chi_perm inner products; 2080 appearing irreps; 64 s=1 absent
+  Mixing on G: hidden char chi_{1,63} gives |lambda|=1 floor; lazy walk mixes
+  Gelfand pair double cosets = 2080; spherical functions vs non-Hecke byte operator
+  BU bridge: exp(delta_BU * n_hat) in SO(3) uses corpus constant as input
+
+hqvm_group_analysis_3.py — Limits and topology
+  Coxeter: finite 2-subgroups of SO(3) have 2-rank <=2; (Z/2)^12 forbids embedding
+  se(3) certificate: translations abelian; odd coset swap-XOR on states, not SO(3) vector action
+  Haar E[theta] vs 2-step exact uniform on Omega (4096-state codebook)
+  Combinatorial 2-design: 256^2/4096 = 16 multiplicities
+  RP^3: d_2=2 => H_1=Z/2; plaquette phases central involutions only
+
+hqvm_group_analysis_4.py — Structure extension (items 1-3)
+  Irrep labeling: 2016 swap-orbit reps; bidegree (n_u,n_v) = C*C / diagonal formulas; PW sample
+  32-bit lift: intron+Mac; fiber-2 shadow; 64 s=1 spinors; Gram 8192 I
+  hQVM(d): |G_d|=2^{2d+1}; rank(P_d)=2^{d-1} for d<=6; one d=6 lock
+  Closed in worknotes only (not re-gated): (n_u,n_v) vs SO(3) l Pearson |rho|=0
+
+hqvm_group_analysis_5.py — Mixer + applications (items 4-14)
+  Mixer: S=oH, |H|=128 dim 7, PDS (4096,128,128,0); Aut lower T_aut rtimes S_6 = 92160
+  Equivariant FWHT on A; two-byte uniform on Omega (mult 16)
+  SO(3) codebook err vs budget; short rigid-body @ budget 24
+  Grover sin-law on constructed Householder walk; Gate F involution only (not rank-1 diffusion); Bell; sync; Krawtchouk; plaquettes in Z(G)
+
+=================================================================
+STRUCTURAL LAYER (inventory — what the finite engine IS)
+=================================================================
+
+Abstract operator group G (proved in scripts unless noted)
+  Wreath product GF(2)^6 wr C2; parity-locked D8 x_{C2} ... x_{C2} D8 (six modes, one global swap clock)
+  Class-2 special 2-group: Z(G)=G'=C2^6 diagonal; abelianization C2^7; odd elements order 4
+  Quadratic data on quotient (t,x): q(t,x)=t*x, B((t,x),(s,y))=t*y+s*x -> Z(G). INVENTORY; Phi(G)=Z(G) not gated
+  128 linear + 2016 two-dim irreps; 63 nontrivial central chars each support 32 two-dim sectors (2016=63*32)
+
+Carrier vs register (proved _2, _4)
+  L^2(Omega) = Ind_H^G(1): 64 H-even linear + 2016 two-dim; multiplicity-free
+  Missing 64 = H-odd linear chars (Frobenius s=1)
+  32-bit register = Ind_H^G(sign): restores H-odd sheet; fiber C2 over G/H
+
+Mixing architecture (proved _1, _2, _3, _4, _5)
+  Byte average P: rank 32 = 2^{d-1} at d=6; Walsh rule keeps k2=0 and |k1| even
+  Canonical quotient cascade: C[Omega] -> C[GF(2)^6/<111111>] (32 modes) -> uniform (rank P^2=1)
+  Two-byte map multiplicity 16; P^2=J/4096 exact
+  Jordan form INVENTORY (not gated): J1(1) + 31*J2(0) + 4033*J1(0); nilpotent transient, not spectral gap
+  Subgroup origin PROVED (_1): K+swap(K)=GF(2)^12, |K cap swap(K)|=4, witness count 16
+
+Symmetry reduction chain (inventory — byte-selected frame, not dynamics)
+  Intrinsic mode covariance contains GL(6,2) on abstract (u,v) coordinates
+  Metric/shell breaks to S6 on dipole pair labels
+  Palindrome triple-pair partition stabilizer B3=S2 wr S3, order 48; B3 cap A6 = S4, order 24 (orientation-preserving; NOT A6 itself)
+  Byte graph Aut: UV adjacency lower bound T_aut rtimes S6 = 92160 (_5)
+  Step-level Aut lower bound T_diag semidirect S6 = 46080 (_5); anti-diagonal chirality translations are NOT step automorphisms
+  Capacity (Aut(G) ~ GL(d,2) x central autos) >> capability (byte-graph Aut). CONJECTURED formula for Aut(G_d); not computed
+
+Mixer / design (proved _5)
+  Step set S=oH, |H|=128, GF(2)-rank 7; directed; diameter 2; PDS (4096,128,128,0)
+  84 orbital types in coherent configuration; catalog match elementary_coset_H_order_128
+  Byte walk NOT H-bi-invariant (not Hecke element) — capability boundary, not failure
+
+=================================================================
+TERMINOLOGY CORRECTIONS (propagate to corpus prose; not re-gated)
+=================================================================
+
+  - 48 = |B3| from palindrome-pair symmetry, not binary octahedral 2O
+  - [12,6,2] mask code is (1+z^2)^6 repetition direct sum, not GF(4) hexacode
+  - Gate F: balanced involutive sheet flip F^2=I; Grover sin-law uses constructed Householder chain, not native F
+  - H_stab = Stab(rest) order 2; K_step = step difference subgroup order 128; Omega = G/H_stab; S = o K_step
+  - Step Aut: T_diag semidirect S6 order 46080 is a LOWER BOUND unless full enumeration proves equality
+  - B3 cap A6 = S4 order 24; do not label as "A6 subgroup of B3"
+  - 32-bit register recovers 64 H-odd linear sectors; full Ind_H^G(sign) claim needs anti-invariance on full 4096 basis
+  - Two-byte sampler: exact uniform on Omega (16 witnesses); not Haar on SO(3) under codebook E
+  - Shell C(12,k) in _5 gate 72 is translation-register GF(2)^12 census; Omega chirality shells are C(6,k)*64
+  - Krawtchouk j(j+1) correlation ~0.866 is template only; Racah correspondence closed
+  - "Fermion"/"spinor"/"SU(2) register" -> H-odd twisted-sheet sectors / Ind_H^G(sign)
+  - "Z/2 Berry phase" -> native holonomy in Z(G)=GF(2)^6; scalar +/-1 per chosen central character
+
+=================================================================
+COMPLETED GATES (items 1-14 — do not reopen)
+=================================================================
+
+Baseline already gated in _1/_2/_3: G, character table, Gelfand, multiplicity-free L^2(Omega), mixing trichotomy, rank-32, 2-design, closed form, central holonomy, no-go embeddings.
+
+  1. DONE (_4) — 2016 irreps labeled by (n_u,n_v) bidegree; PW sample orthonormality.
+  2. DONE (_4) — 32-bit lift recovers 64 H-odd linear sectors; Gram 8192 I.
+  3. DONE (_4) — hQVM(d): |G_d|, rank(P_d)=2^{d-1} for d<=6, one d=6 lock.
+  4. DONE (_5) — mixer PDS (4096,128,128,0); S=oH dim 7; directed.
+  5. DONE (_5) — Aut lower bound 92160; G not subset Aut.
+  6. DONE (_5) — A-equivariant FWHT layer (even-translation subgroup only).
+  7. DONE (_5) — two-byte uniform on Omega (multiplicity 16).
+  8. DONE (_5) — SO(3) codebook geodesic error vs budgets {8,12,16,24}.
+  9. DONE (_5) — constructed Grover sin-law; Gate F involution only.
+  10. DONE (_5) — Bell correlators under G on GS subspace.
+  11. DONE (_5) — non-abelian sync threshold vs abelian (Z/2)^12.
+  12. DONE (_5) — short rigid-body chains at budget 24.
+  13. DONE (_5) — Krawtchouk orthogonality on GF(2)^12.
+  14. DONE (_5) — plaquettes in Z(G); |Z|=64.
+
+Closed negatives (worknotes only — not PASS theater):
+  - (n_u,n_v) vs SO(3) l-sector: Pearson |rho|=0; correspondence absent.
+  - Byte walk not Hecke; not re-gated.
+  - Omega uniform != Haar on SO(3) angle marginals.
+  - C(12,k) shell vs j(j+1) is not Racah; correlation decorative only.
+
+=================================================================
+REMAINING COMPUTE (filtered — optional after A/B delivery)
+=================================================================
+
+A/B delivered 2026-08-23: 20 new gates, 201 total, scripts still ~1.0-1.3k LoC each.
+
+Done in scripts:
+  A1 special 2-group (_4): G^2=Z(G), q(t,x), polarization B
+  A2 D8 fiber product (_4): |G|=2*4^6, 8 affine maps/mode
+  A3 K+swap(K) (_1): rank 12 span, |inter|=4, witnesses 16
+  A4 Jordan census (_1): rank(N)=31, N^2=0
+  A5 quotient 32 modes (_4): even-|k1| Walsh sector
+  B1 B3 stabilizer (_1): |B3|=48, even-S6 subgroup 24
+  B2 full G-equivariant layer (_5): 2080 gains, sampled G equivariance
+  B3 step Aut (_5): T_diag x S6 = 46080 (UV adjacency lower bound 92160 unchanged)
+
+  B3 step Aut (_5): T_diag semidirect S6 lower bound 46080 (UV adjacency lower bound 92160 unchanged)
+
+Defer / out of scope: Aut(G_d) proof, Hecke mixer family, p_ij^k fusion table, Findings writeups, more symmetry census gates.
+
+=================================================================
+STUDY CONCLUSION (group analysis — frozen)
+=================================================================
+
+Delivered: scripts _1.._5, 201 PASS gates, ~1.0-1.3k LoC each, quiet default + --verbose.
+Core results: G = GF(2)^6 wr C2 order 8192; L^2(Omega) multiplicity-free 2080 sectors;
+exact P^2=J/4096 with rank-32 transient; K+swap(K) origin of 16 witnesses;
+full-G equivariant layer 2080 gains; step Aut lower bound 46080.
+
+Open items moved to runtime study (not more group gates):
+  word compiler benchmarks, route2 synthesis, layer throughput, 50-gain S6 isotropy check.
+
+Do not extend this study unless a group-theoretic bug is found. Corpus prose may cite
+results here; implementation claims require runtime benchmarks.
+
+=================================================================
+PRACTICAL COMPUTE PIVOT (reference for runtime study)
+=================================================================
+
+Status: 201 algebraic gates prove structure. They do NOT yet prove wall-clock advantage. The pivot is from "what symmetry exists?" to "which workloads compile leaner?"
+
+Proved ingredients (usable now in design, not yet benchmarked):
+  |G| = 8192 = 2^13 compiled word actions; anti-homomorphism sig(w1 w2) = sig(w2) o sig(w1)
+  Native Omega chart: state12 = (u,v) in GF(2)^6 x GF(2)^6; closed form = 6 parallel 2-bit SWAP+XOR
+  Even-length words: pure translations; commute (free parallelism for even-depth pipelines)
+  Odd-length: noncommutative; mixing only on quotient Omega = G/H_stab
+  Byte-average P: 4096 -> 32 -> uniform in two steps; nilpotent not spectral
+  L^2(Omega) multiplicity-free: End_G has 2080 scalars vs 4096^2 dense
+  Two-byte routing: 16 witnesses per (source,target); K+swap(K) explains algebraically
+  Transport class q6(b) in GF(2)^6: bytes commute iff q6(a)=q6(b); 4-to-1 cover
+  128 distinct geometric actions on Omega; 7-bit shadow index + 1 sheet bit if needed
+
+What audits agree is worth building (engineering, not more group_analysis gates):
+
+1. WORD COMPILER (highest leverage)
+   compile_word(bytes) -> sig13 (parity, tu, tv); compose_sig; invert_sig; apply_sig(state12)
+   ACTION mode (terminal map only) vs LEDGER mode (full byte provenance)
+   8192-entry action cache (~64 KiB); semantic compression 8n bits -> 13 bits when history discarded
+   Batch speedup: O(nB) interpreted -> O(n+B) compiled; amortizes at large B
+
+2. EXACT TWO-STEP ROUTER
+   route2(source, target) -> 16 byte pairs without BFS
+   Use for: load balancing, test fuzzing, deterministic init, routing with witness tags
+   NOT for: preserving fine state information (mixer destroys source dependence)
+
+3. SYMMETRY-COMPRESSED LAYERS (parameter memory, not automatic speed)
+   Dense: 16,777,216 params
+   A-translation FWHT: 4096 gains (_5 already gated sample)
+   Full G-equivariant: 2080 gains (_5 gated)
+   G+S6 isotropic (CONJECTURED): 50 gains — Burnside (84+16)/2 on (n00,n01,n10,n11) types; ONE gate worth adding
+   Shell-radial: 7 modes (QuBEC / Krawtchouk when radiality holds)
+   Use only when task is genuinely equivariant; breaks if shell/horizon/byte-family matter
+
+4. ENSEMBLE / AVERAGE-CHANNEL COMPRESSION (not single-state)
+   After one byte-average step: belief lives in 32-dim quotient GF(2)^6/<111111>
+   128:1 exact compression of averaged distribution, not of individual states
+   Implementation: marginalize to chirality side + 64-point FWHT + keep 32 even modes
+
+5. NATIVE EXECUTION CHART
+   Do not use 4096x4096 transition table or dense matmul for kernel-native ops
+   Per-byte: decode signature + branchless swap/XOR on state12
+   SIMD: bit-sliced layout over six modes; compiled sig applies globally across batch
+
+6. FREE SYMMETRY FOR BYTECODE (secondary)
+   B3 order 48 relabelings of payload pairs; 48 micro_ref equivalence classes (audit claim; not gated)
+   Step Aut 46080: canonical byte representatives under relabeling (obfuscation/compression of alphabet)
+
+What audits say to STOP doing:
+  More Aut(G)/GL(d,2) proofs, Racah/SO(3) templates, symmetry inventory gates, Findings manuscripts
+  Claiming general speedup without native benchmarks
+  Using two-byte mixer where task needs preserved structure
+  Calling 2080-gain layer universal ML replacement (translation->G is only 1.97x vs 4096 gains)
+
+Honest capability boundaries (keep visible):
+  Fast: binary affine ops, word compile, Walsh/XOR transport, exact finite routing, equivariant layers on symmetric tasks
+  Not automatic: dense FP matmul, arbitrary nonlinear ML, continuous SO(3), generic crypto/RNG, tasks needing full byte history
+
+=================================================================
+NEXT PHASE (see hqvm_runtime_analysis_temp_worknotes.txt)
+=================================================================
+
+Phase 1 — Native harness (new script family, NOT hqvm_group_analysis_*)
+  Target: experiments/hqvm_runtime_bench.py or similar; C/Rust extension if Python too slow
+  Benchmark A: compile_word + apply_sig_batch vs byte replay (n=4,16,64,256,1024; B=1..65536)
+  Benchmark B: route2 algebraic vs BFS (latency, correctness on sample grid)
+  Benchmark C: dense 4096 GEMV vs A-FWHT 4096 vs G-FWHT 2080 vs (if verified) 50-gain layer
+  Benchmark D: ensemble propagation — dense P vs 32-mode Walsh vs shell-7 Krawtchouk
+  Deliverable: wall-clock table + bytes moved; no PASS theater
+
+Phase 2 — Minimal runtime API (if benchmarks show win)
+  sig13 compile / compose / invert / apply / apply_batch
+  route2 / route2_filtered
+  g_layer_forward(x, gains2080) using existing _5 Walsh machinery
+  Optional: 50-gain layer after one structural gate confirms Burnside count
+
+Phase 3 — One optional structural gate (only if Phase 1 needs it)
+  G+S6 isotropic operator count = 50 (single check; ties to 84 orbital types already measured)
+  Do NOT reopen A/B or add 20+ gates
+
+Script budget unchanged: group_analysis scripts frozen at 201 gates unless user requests label fixes.
+Label fixes pending in _1/_5/_3: B3 cap A6, T_diag semidirect S6, Gate F not diffusion, holonomy section titles.
+
+=================================================================
+REFERENCES (corpus files)
+=================================================================
+
+docs/CGM_Program.md
+docs/CGM_Logic.md
+docs/CGM_Paper.md
+docs/Gyroscopic_Computational_Theory/hQVM_Features_Report.md
+docs/Gyroscopic_Computational_Theory/hQVM_Specs_Formalism.md
+docs/Gyroscopic_Computational_Theory/hQVM_Tests_Report_1.md
+docs/Gyroscopic_Computational_Theory/hQVM_Tests_Report_2.md
+docs/Gyroscopic_Computational_Theory/Physics_Tests_Report.md
+docs/Findings/Analysis_3D_6DOF_Proof.md
+docs/Findings/Analysis_Hilbert_Space_Representation.md
+docs/Findings/Analysis_Holonomy.md
+docs/Findings/Analysis_Precession.md
+docs/Findings/Analysis_hQVM_Wavefunction.md
+docs/Findings/Analysis_hQVM_Percolation.md
+docs/Findings/Analysis_hQVM_Percolation_Note.md
+docs/Findings/Analysis_hQVM_Cohomology.md
+docs/Findings/Analysis_Compact_Geometry.md
+docs/Findings/Analysis_Gravity.md
+docs/Findings/Analysis_Gyroscopic_Multiplication.md
+docs/Findings/Analysis_hQVM_CGM_YM_Mass_Gap.md
+docs/Findings/Analysis_48_States.md
+Hall, Lie Groups, Lie Algebras, and Representations
+Engo, BCH on so(3), BIT 41(3):629-632 (2001)
+Diaconis, Group Representations in Probability and Statistics (1988)

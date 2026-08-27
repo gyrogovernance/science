@@ -1,0 +1,14 @@
+ingest_utc=2026-08-27T19:39:58Z
+assembly_notes=E.coli GCF_000005845.2 (CDS + full replicon); yeast GCF_000146045.2 CDS; SARS-CoV-2 GCF_009858895.2; human hg38 chr22 + GENCODE v47; REBASE withrefm; UniProt reviewed taxid 83333; RegulonDB PromoterSet
+scope=only catalogs loaded by hqvm_cgm_genomics_*.py
+ncbi_genetic_codes.json wrote sha256=10b28ad8407bfc93bf7eac3fc7b059a0b373272d4e24cceca424ebf4f286d1b9 consumer=common.translation_table
+ecoli_k12_cds.fna.gz present sha256=064487f8ca3a40b30cbe8244d2ca5ba26c341ef754eb538c26107a250d9ec229 consumer=scripts 2-8 load_named_fasta(ecoli_k12)
+ecoli_k12_full.fna.gz present sha256=a96d3cfa58c88d477013c768f90a11d2386d42a70d566abfb6d9013dcbd24255 consumer=script 2 genealogy; script 6 replichore; script 8 compile
+yeast_s288c_cds.fna.gz present sha256=462f7658206ed614caeb045c54f3a3fa8ee7f176a88269155de851bbb8834f6a consumer=scripts 2-8 load_named_fasta(yeast_s288c)
+sars_cov2.fna.gz present sha256=d359795c5b11e9fc9309d5b3edee2dde1040781cd6a13b09aa7f4aaad8f07816 consumer=scripts 2,7 load_named_fasta fallback
+sars_cov2_cds.fna.gz present sha256=48d68574c3f75633ad5d307afde78c0f49dc1bbcbcfbcd2330e35e7b9c64d6fb consumer=scripts 2,7 load_named_fasta(sars_cov2_cds)
+chr22.fa.gz present sha256=05f9d97d6fbfd08a44ca45b50837ca2ae9c471f35ba79dffec04d2cb5eaaf695 consumer=common.load_chr22_sequence; scripts 2,5,6 splice/CDS
+gencode.v47.annotation.gtf.gz present sha256=df11938c66d2b39f8ebbdb5f1720919321f9cf9d58f02b019753f6a24ca3db24 consumer=common.extract_chr22_cds; scripts 2,5,6
+rebase_withrefm.txt present sha256=1b7dac759ea24835ab03e3d5881adda44745358b7d08a1629414504fcf58b6a0 consumer=script 6 rebase_parity_census
+ecoli_k12_uniprot.txt present sha256=5a5fe25a38ec96126dca20491245949e61cd1d5067b25e771917a3b22e22be56 consumer=script 6 uniprot_location_census
+regulondb_promoter_set.txt present sha256=1510826b75a90044e1968f932ad75f1e779af6e1a21db6c0c55dac364c0cf54a consumer=script 2 genealogy; script 8 compile

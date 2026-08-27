@@ -1,0 +1,406 @@
+----------
+
+## Scope
+
+This analysis reads DNA as data on hQVM carrier objects (bytes, fold P, Omega = U x V, chirality shells, K4 gauge, dual charts) and derives biological symmetries (reverse-complement, the genetic code partition, strand structure, translation dynamics) as theorems or classified structures on those objects. The central question is whether the standard genetic code and the observed properties of real genomes are constrained by the same CGM geometry that constrains spacetime, particle masses, and the gravitational coupling. The lift and the derived grammar define a deterministic compile from sequence to carrier features; classification of genes, intervals, codes, and variant channels is the application of that compile to labeled genomic catalogs.
+
+### Research scope (script 8 onward)
+
+Direction of argument is one-way: CGM axioms to hQVM objects to genomic theorems and signals. Reverse fishing (metric first, story after) is out of scope. CGM is scale-agnostic: CS, UNA, ONA, BU govern all phenomena; finding the four stages in a byte or codon does not exhaust them — the same palindromic ladder must be readable at promoter, ORF, replichore, and organism scales. A complete genomic reading addresses three necessities forced by Gravity_Note: topology (fold, wall, percolation, homology), temporality (depth-4 closure, Ingress memory, path-ordered holonomy), and freedoms (the 1-3-6 degrees-of-freedom ladder: UNA rotation, ONA rotation plus translation, SE(3)-sized six-bit transport). Claim strength uses four levels: level 1 necessary genomic architecture (bipartite carrier, complementarity, ancestry-preserving mutation, closure, memory), level 2 constrained code architecture (triplets, fibers, stop boundary, RC covariance, fold-plane wall), level 3 historically selected realization (the exact table up to Aff_S6 moduli), level 4 organism occupation (usage, regulation, splice; needs biological boundary conditions). The standard code is argued as a CGM-constrained attractor whose four known NCBI wall breaches are surgical moves at classifiable BU positions — not as "uniquely forced" until Open #2 enumeration completes. When a work session lacks a clear image of what to do, pivot by re-reading Analysis_Gravity_Note.md sections 1-2 with Appendix A, Analysis_Holonomy.md sections 6, 9, 15-17, hQVM_Specs_Formalism.md, Wavefunction T7-T9, and Theorems 8-11 with Notes 14-16 here — before writing any new probe.
+
+
+----------
+
+## Rules
+
+### Derivation method
+
+Derive from written CGM and hQVM structure. Do not invent abstract table searches. Trace every claim to a written theorem or a measured check.
+
+### Status vocabulary
+
+ESTABLISHED: exact finite-model result with passing checks. SIGNAL: measured on real data against a null. HYPOTHESIS: structural reading consistent with results, not yet separately tested. REFUTED: tested and false; record the negative result and numbers in these worknotes only — do not keep a certificate section or passing gate that encodes the failure. OPEN: unfinished work with a named deliverable (theorem, note, census, or enumeration). Interpretive targets that only guide another Open live inside that Open's wording — there is no separate Leads list.
+
+### Naming
+
+Theorems and Notes are numbered by appearance order. Check IDs are number_descriptive_name with no letter prefix.
+
+### Script management
+
+Scripts are numbered _1 through _8 and split near 1k to 1.5k LoC per file. Full suite: run.py with options [--from N] [--no-sequence] [--no-spectral]. Scripts 1 through 6 together take tens of minutes wall clock. Dominant cost is script 1 null ladders and script 3 spectral bundle. Script 8 section 33 (Aff_S6 orbit BFS) takes about 2.5 minutes. Script 8 codon-pair radial channel takes about 30 seconds.
+
+Script map. common: lift, 24 encodings, 3 orbits, RC kinematic, fold adapters, NCBI tables, GenomicCompile (Open #1). _1: chart census, fold/RC commutation, beta1, Walsh/H(3,4), aut lattice, cycle to j=2 ker/coker. _2: kernel layer, family mu, genealogy ingress, constitutional poles. _3: spectral bundle, polarity census. _4: stage palindrome, fold-plane obstruction, QuBEC walk, order parameters. _5: word geometry, splice, surgery, skew, NCBI moduli, Theta_kin, Omega walk, RC-mirror. _6: ORF byte-stream, compiled signatures, plaquette defects, flat bytes, depth-4 closure, synonymous recoding, three-sector skew, path-ordered replichore holonomy, REBASE parity, location-hydropathy. _7: fold-plane direct sum, BU keys, kernel percolation, fold Weyl, genomes through fold-plane, code-classification constraints and local moduli. _8: S6 edge-character covariance and stop-boundary Aff_S6 moduli (Notes 18 and 19), NCBI wall breaches as BU positions (Note 22), GenomicCompile print (Note 23), Aff_S6 orbit census of standard code (Note 24, Open #2 pivot), singular-sector NCBI avoidance (Note 25), serine matched synthetase (Note 26), codon-pair radial channel (Note 27).
+
+### Print format
+
+Use report_objects, report_checks, print_table from hqvm_cgm_genomics_common.py. One row per check with columns ok, title, measured, expect. Do not print the same number twice in one section.
+
+### Failed and Refuted Experiments
+
+Failed and refuted results live in the Failed and Refuted section at the end of these notes, not in certificate code and not as Theory Notes. Open holds only still-open work. Theory Notes and Theorems hold ESTABLISHED and SIGNAL structure only. 
+
+----------
+
+## References
+
+**CGM_Logic.md.** Construction of CS, UNA, ONA, BU as a chain of necessities. Dual balance, palindromy, the fold where forward and reverse readings join. Threshold angles and the gyrotriangle defect.
+
+**Analysis_CGM_Constants.md.** Aperture m_a = 1/(2*sqrt(2*pi)), Q_G = 4*pi, delta_BU closed form, closure ratio rho, aperture gap Delta, SU(2) commutator phi_SU2, fine-structure alpha, zeta factor, 48*Delta near 1.
+
+**hQVM_Specs_Formalism.md.** Byte formalism with palindromic layout. 2 family plus 6 payload split. 12-bit mask. 24-bit GENE_Mac. Transition rule. Depth-4 closure. Aperture quantization 5/256. Chart convergence. Constitutional structure of Omega (dual poles, shells, bulk).
+
+**hQVM_Features_Report.md.** 283 verified features across Tiers A through C. Primary certificate is CHSH to Tsirelson saturation.
+
+**hQVM_QuBEC_Theory.md.** Partition function Z1(lambda) = 64*(1+lambda)^6. Order parameters rho, eta, M2. WHT diagonalization, Krawtchouk harmonics, K4 characters.
+
+**Analysis_Gravity_Note.md.** Kernel architecture, holonomy and gravitational closure (W2, W2', F, spin-2 factor). Q_G = 4*pi. Refractive depth tau_G. Position-dependent coupling G(psi). Cross-coupling alpha_0 * zeta.
+
+**Analysis_hQVM_CGM_Group_Theory.md.** Operator group G order 8192, special 2-group. Carrier Omega = G/H. Multiplicity-free L2(Omega) with 2080 sectors. Two-step mixing. Byte-graph Aut order 92160, step-preserving Aff_S6 order 46080.
+
+**Analysis_hQVM_Wavefunction.md.** Theorems T1 through T10 on Omega. K4 operator algebra. Pole swap. BU Egress and Ingress duality. Fiber bundle structure of the byte. Fold map P. 50% holographic redundancy. Aperture collapse. Curvature at the BU fold.
+
+**Analysis_hQVM_Percolation.md.** Square-Root Cluster Theorem. Parity obstruction. Five coverage thresholds. Exact rank distribution for micro-reference protocol. hQVM(d) family scaling.
+
+**Analysis_hQVM_CGM_Trestleboard.md.** Delta-ruler. Alpha decay as Gate F. Beta decay as single-byte shell advance. Magic numbers from Nilsson at (kappa, mu) = (1/32, 1/5).
+
+**Analysis_Holonomy.md.** BU dual-pole loop. Closed form delta_BU. Palindromic conjugation H_pal = A^{-1} H_BU A with angle preserved and axis transported. Finite realization: W2 pole exchange, F = W2 composed with W2' as Z2 cycle. Byte-horizon aperture 5/256. Continuous to finite correspondence table in section 17.
+
+**GenomicCompile reference (Open #1, Note 23).** The Scope compile object is `GenomicCompile` in hqvm_cgm_genomics_common.py: a frozen per-interval record of certified layers — byte_fold_w (n_bytes, W-residual fraction, mean fold disagreement), fold_poles (payload bits 2-3 occupancy, Note 17), family_sheet (mu_0 through mu_3 and L1 to uniform), omega_signature (parity, tau_u/tau_v popcounts), depth4_parity (sliding parity-zero fraction), chi_shells (count and mean N_i over frame-0 codon pairs), qubec_order (eta and M2 from mean-shell moment fit, script 4), ab_horizon (mean ab, mean horizon, and ab+horizon on successive codon pairs, Note 7 xi), boundary_keys (TAA/TAG/TGA/ATG presence). Built only from certified helpers; smoke-printed on E. coli CDS and promoter windows in script 8 section 32 (gate 275). Application to labeled catalogs is out of Open #1 scope.
+
+----------
+
+## Theory Notes
+
+### Context
+
+#### Nucleotide encoding and byte stream
+
+Nucleotides are labeled by 2 bits. There are 24 affine encodings (GL(2,2) x Z2^2) falling into three metric orbits of 8 each. The elementary_axes orbit has WC polarity weight-3 (010101 or 101010). The pair_inversion orbit has WC polarity 111111, which is the antipode, and is fold-compatible. The other orbit has the same weight-3 polarities as elementary.
+
+A codon is three bases and produces a 6-bit payload in GF(2)^6. An hQVM byte is family (K4, 2 bits) plus micro-payload (6 bits). The canonical genomic stream converts a DNA string to overlapping 4-mers and packs each 4-mer as one hQVM byte.
+
+Two RC maps operate on bytes. The kinematic 4-mer RC is the DNA reverse-complement of the packed 4-mer. The payload-RC is the codon-RC on the 6-bit micro with family bits held fixed. These are distinct maps. They agree on 0 of 256 bytes. Kinematic RC flips the family bits on 192 of 256 4-mers because the last base of the 4-mer moves into the family slot. This disagreement is the locus where family and context exchange roles with codon payload.
+
+#### Codon, dicodon, and byte identification
+
+The codon is a point of the constitutional horizon H with |H| = 64. The adjacent pair of codons is a point of Omega = U x V, which is the reading frame. The chirality register chi = q(c_i) XOR q(c_{i+1}) is the information velocity of the message. Translation is the step_uv walk on Omega: the P-site is the record face U (past codon), the A-site is the active face V (incoming codon), and peptidyl transfer realizes the complement-and-swap gyration.
+
+The three codon positions map to the three interior stage-pairs of the byte palindrome. Wobble (position 2) occupies payload bits 0 and 1 at stages UNA and ONA, which is the forward half and active frame. Middle (position 1) occupies payload bits 2 and 3 at stages BU and BU, which is the central fold. First (position 0) occupies payload bits 4 and 5 at stages ONA and UNA, which is the reverse half and record frame. The codon is a transverse cut of the stage palindrome.
+
+#### Reverse complement layers
+
+Four layers of reverse-complement action operate from carrier to chirality. Layer A is kinematic and carrier-level: the RC of the sequence byte stream is the reverse of the letterwise kinematic-RC of forward bytes. Layer B is on Omega signatures under payload-RC with residual Z_n (Theorem 6). Layer C is polarity and fold: on payload GF(2)^6, fold and payload-RC commute on pair_inversion (Theorem 4). Layer D is chirality: the residual q(RC_kin(w)) XOR q(w) is the XOR of letterwise lambda values, which lie in W (Theorem 5).
+
+#### hQVM objects bound to genomic observables
+
+The kernel provides the following objects as genomic observables. The byte has family(2) and payload(6) with q6 transport class, chi register, and 7-shell ladder. Walsh and Krawtchouk transforms diagonalize all radial and additive processes. Omega = U x V carries the codon and dicodon identification. The fold map P and BU stage anatomy fix the codon position to stage assignment. The K4 family sheet carries gauge phase. Aperture constants (Delta, rho, m_a, delta_BU, 5/256) fix the closure geometry. The chi-shell walk and QuBEC order parameters (rho, eta, M2) measure occupation dynamics.
+
+Word structure includes signatures (eps, tau_u, tau_v), shadow partners (b and b XOR 0xFE), K4 gate actions {id, S, C, F}, the Z_n word law (Theorem 6), depth-4 closure (T_b^4 = id), and whole-ORF compile to a 13-bit signature.
+
+The central holonomy is Z(G) = [G,G] = G^2, isomorphic to GF(2)^6. Every byte commutator is a diagonal central translation with defect d = q6(x) XOR q6(y). Among all 65536 ordered byte pairs, N_k = 1024 * C(6,k) have curvature weight k.
+
+Two-step mixing gives P^2 = J/4096 with rank collapse 4096 to 32 to 1. After two averaged steps, carrier-state marginals are uniform. Long-range genomic memory lives in the signature and word layer, not in carrier marginals.
+
+The multiplicity-free L2(Omega) has 2080 sectors (64 one-dimensional and 2016 two-dimensional) forming a Gelfand pair (G, H). The bidegree of a 2-dimensional irrep is (popcount(k_u), popcount(k_v)).
+
+The automorphism group has byte-graph Aut order 92160 and step-preserving Aff_S6 order 46080. On codon space H = GF(2)^6 the quotient is Aff_S6. The fold-preserving linear group GL(2)_fold x GL(4)_outer has order 120960 and is not a subgroup of Aff_S6.
+
+Percolation gives the square-root cluster law |Reach(A)| = (2^r(A))^2 under fiber-complete restriction, with parity obstruction confining even-weight transport to 1024 states.
+
+### Derived
+
+#### Theorem 1: Affine geometry of synonymous codon fibers
+
+On the pair_inversion chart, the affine hull ranks of synonymous fibers are as follows. Size-4 complete boxes have affine rank 2. Size-2 pairs have affine rank 1. Size-1 fibers have affine rank 0. Ile and stop (size 3) are punctured affine planes where the size is not a power of 2. Leu and Arg (size 6) have affine rank 3 as connected composites inside a rank-3 hull. Serine (size 6) has affine rank 3 with two components of affine rank 1 and 2.
+
+Over GF(2), an affine flat has cardinality 2^r, so sizes 3 and 6 are hull statements, not flatness statements. Serine is the unique disconnected fiber. Affine hull rank is the chart-invariant size measure of a codon set. Null N3, which preserves fiber geometry, recovers beta1 = 27. Nulls N1, N2, and N4 do not.
+
+The affine structure of the fibers describes their internal geometry. The next result describes how these fibers are labeled by the family gauge.
+
+#### Theorem 2: Family gauge sheet and serine complementarity
+
+The two family bits of a byte are exactly (eps_a, eps_b), the two boundary polarities that switch the all-1 translations on U and V. Amino acid is a function of payload only. The genetic code is the quotient of the 8-bit word by this K4 sheet. Kinematic RC mixes the sheet because 4-mer reversal sends interior bits into the family slots (Theorem 5).
+
+Length-1 Omega signatures of (family, codon) are injective for 19 of 20 amino acids. Serine is the exception with 16 signatures among 24 sheet-copies. Its two disconnected fibers TCN and AGY are Watson-Crick complements of each other: AGC pairs with TCG and AGT pairs with TCA. Their signatures coincide after the eps_b sheet flip (family XOR 2). This is the unique disconnected fiber (Theorem 1) and the unique signature collision.
+
+The family gauge determines how meaning is encoded. The boundary of the semantic space is the stop codon set, whose topology we now examine.
+
+#### Theorem 3: Stop codon topology
+
+The three stops {TAA, TAG, TGA} form a path of length 2 under one-base moves with V=3, E=2, C=1, and beta1_stop = 0. The synonymous graph with stops excluded has the same first Betti number as the full graph: beta1(full) = beta1(sense) = 27. Trp = TGG is one-base adjacent to TGA. Stop leakage to sense is 23/27, approximately 0.85.
+
+The stop set is contractible but adjacent to sense. The next note develops its affine structure.
+
+#### Note 1: Stop as punctured affine square
+
+The set {TAA, TAG, TGA, TGG} is an affine rank-2 square. Stop occupies three vertices and Trp is the completing corner, one base adjacent to TGA. Termination is the boundary object obtained by excising the completing vertex of a closed local semantic cell. The sector stays contractible while keeping direct adjacency to sense.
+
+Two distinct K4 structures exist with isomorphic groups but different roles. The family K4 consists of (eps_a, eps_b) boundary sheet and is the frame and context phase. The wobble K4 is the free alphabet action on the third-base plane and represents semantic tolerance. The eight complete boxes are where the wobble K4 acts with invariant label and supply 8 x 3 = 24 of the 27 cycles (Theorem 9). Fourfold degeneracy concentrates at the third position because that is where the code admits an internal copy of the four-letter alphabet acting trivially on meaning.
+
+The stop boundary and the family gauge are now established. The next group of results develops the reverse-complement algebra, which describes how the two strands of the duplex relate through the carrier.
+
+#### Theorem 4: Codon reverse-complement factorization
+
+Codon reverse-complement on GF(2)^6 factors as RC(q) = R_block(q) XOR delta, where R_block reverses the three 2-bit codon positions (universal across all 24 charts) and delta is the Watson-Crick polarity of the chart. Fold action on the 6-bit payload is bit-reversal R_bit (reverse indices 0 through 5). Fold and the polarity translation T_delta commute if and only if R_bit(delta) equals delta.
+
+On pair_inversion (8 of 8 charts), delta = 111111, the antipode, and fold composed with payload-RC commutes on 2048 of 2048 cases. On elementary and other (16 charts), delta has weight-3 and the commutation count is 0 of 2048. On pair_inversion, Watson-Crick polarity is the antipode of the 6-cube, which is the same polarity the kernel fold uses.
+
+The factorization separates RC into a universal linear part and a chart-dependent polarity. The next theorem examines what happens when the kinematic 4-mer RC, rather than the payload-RC, is applied.
+
+#### Theorem 5: Kinematic RC residual and subspace W
+
+The chirality residual of kinematic RC is lambda(b) = q(b) XOR q(RC_kin(b)). This lies in a 4-dimensional linear subspace W of GF(2)^6, the same for all 24 encodings. On words, q(RC(w)) XOR q(w) equals the XOR of letterwise lambda(b_i), which is exactly additive.
+
+W has the explicit characterization W = {x in GF(2)^6 : x_1 = x_3 and x_2 = x_4}. This has rank 4, 16 vectors, and contains 0 and the antipode 111111. The two equations are the annihilator masks 001010 (bit1 + bit3) and 010100 (bit2 + bit4). W is the fix-space of swapping the two interior 2-bit bases of a 4-mer payload, which are the two middle nucleotides of the packed 4-mer. Fold bit-reversal preserves W. Codon-position block-reverse sends W outside itself.
+
+The four free coordinates are the two endpoint payload bits (bit0, bit5) and the two diagonal bits of the interior 2x2 (bit1=bit3, bit2=bit4). These are the 4 of 6 degrees of freedom that the kinematic residual occupies.
+
+The kinematic residual is confined to W. The next theorem shows that the payload-RC, by contrast, acts cleanly on Omega signatures.
+
+#### Theorem 6: Payload-RC anti-action on Omega signatures
+
+Payload-RC (family held fixed, codon-RC on the 6-bit micro), reversed as a word, is a function of the Omega signature. On pair_inversion, define Theta(p, u, v) = (p, R_block(v) XOR 111111, R_block(u) XOR 111111), an involution built from codon-position block-reverse, U/V swap, and the antipode. The following holds on all 8 pair_inversion charts: Sigma(RC*(w)) = Theta(Sigma(w)^{-1}) * Z_|w|.
+
+Z_n depends only on n mod 4, not on the word. For n = 1 mod 4, Z = (0, 0, A). For n = 2 mod 4, Z = identity. For n = 3 mod 4, Z = (0, A, 0). For n = 0 mod 4, Z = (0, A, A), which is central. Here A = 111111. Length class 4k+2 has vanishing residual. On elementary_axes the same Theta with this Z table yields a different residual table with an orbit split relative to Theorem 4.
+
+The anti-action is clean on pair_inversion. The next theorem factors Theta into kernel operators.
+
+#### Theorem 7: Theta factorization and chirality pole exchange
+
+On pair_inversion, Theta factors as S composed with F composed with R_block on all 256 letters. S is the U/V individuality swap on Omega. R_block is the codon-position block-reverse. F is the antipode and chirality pole exchange, which sends shells s to 6-s.
+
+Family-keeping codon reverse-complement equals the chirality pole map s to 6-s on every byte (256 of 256). On elementary the same count is 0 of 256. At the word level, odd-length payload-RC* inverts the XOR-chirality shell of q(w) and even length restores it. Each letter contributes R_block(q) XOR A. R_block preserves weight, so an odd number of A values flips weight. The Omega residual Z_n of Theorem 6 is the leftover of that conjugacy on signatures. It is identity when n = 2 mod 4.
+
+The continuous dual-pole loop angle delta_BU = 4 * arctan(k(pi/4) * k(m_a)) evaluates the same dual at the constitutional poles. The byte-horizon aperture 5/256 is the dyadic opening of the 8-bit genomic letter.
+
+The payload-RC acts cleanly on signatures. The kinematic RC, by contrast, introduces a W-valued ambiguity, which the next note characterizes.
+
+#### Note 2: Kinematic signature cover law
+
+For each byte b = (family, payload), the kinematic 4-mer RC defines a map q_kin on bytes. The signature class of a byte has exactly two members (the family sheet has two copies of every payload context), so every signature carries exactly two kinematic images. This was measured on 128 of 128 signatures.
+
+The two images of one signature differ by XOR with a constant: q_kin(b) = q_kin(b') XOR lambda, where lambda = 0x1F = antipode XOR e_top, uniform across all 256 bytes. Because 0x1F lies in W (Theorem 5), the ambiguity of kinematic reading is confined to the same subspace that carries the letterwise residual. Counting: 128 signatures times 2 images = 256 bytes bijectively. No information is lost or duplicated. The map is a two-to-one cover with deck transformation XOR lambda. Family bits exist to disambiguate which of the two covers the byte sits on.
+
+The reverse-complement algebra is now complete. The next group of results develops the fold-plane obstruction, which is the central structural feature of the genetic code.
+
+#### Theorem 8: Sense-neutral span and fold-plane obstruction
+
+Define L_sense as the span of one-base sense-synonymous differences. Define P_fold as the middle-base plane <bit2, bit3>, which is BU|BU on the byte. Define O as the outer plane <bit0, bit1, bit4, bit5>.
+
+On all 24 charts, rank L_sense = 4 and L_sense intersect P_fold = {0}. Every sense edge is outer-only, so L_sense = O. Therefore H = L_sense + P_fold is a direct sum, and projection pi_BU onto P_fold gives the short exact sequence 0 to L_sense to H to P_fold to 0.
+
+Stop and serine supply the two independent missing BU directions. Define L_stop = L_sense + {TAA XOR TGA}, which has rank 5 with intersection size 1 beyond {0}. Define L_ser = L_sense + serine TCN-to-AGY chords, which has rank 5 with intersection size 1. Define L_full = L_sense + stop + serine, which has rank 6 with intersection equal to P_fold (three nonzero fold vectors). The stop key has pi_BU = 0100 (weight 1). The serine key has pi_BU = 1100 (weight 2, fold-fixed under bit-swap of bits 2 and 3). Together they span P_fold.
+
+On pair_inversion, AGY = {TCA, TCG} XOR antipode with exactly 2 antipodal pairs per chart. The pyrimidine-ending TCN pair maps under XOR A to AGR.
+
+Drift connectivity gives 61 codons in 21 components with sizes {6, 6, 4^6, 3, 2^10, 1, 1}. Neutral drift is governed by component connectivity, not by span rank alone.
+
+The fold-plane is the sense-transport obstruction. The next note shows how stop and serine open it.
+
+#### Note 3: Percolation under fold-plane completion
+
+Using family-0 Q6-subspace generators from equality origin (0,0) with the square-root cluster law, the percolation ladder is: sense alone reaches 256 = (2^4)^2 states, sense plus stop reaches 1024 = (2^5)^2, sense plus serine reaches 1024 = (2^5)^2, and full reaches 4096 = (2^6)^2. Stop and serine are independent rank-opening events, each a fourfold carrier-cluster expansion. Jointly they percolate the full carrier.
+
+The fold-plane obstruction is now established. The next two results derive its consequences for the synonymous graph topology.
+
+#### Theorem 9: Synonymous graph cycle rank
+
+beta1 = 27 = 8 x 3 + 1 + 1 + 1. Eight complete wobble boxes (TCN Ser, CTN Leu, CCN Pro, CGN Arg, ACN Thr, GTN Val, GCN Ala, GGN Gly) each contribute cycle rank 3. Ile is a triangle contributing rank 1. The Leu TTR pair attaches to CTN by two first-base edges and adds one extra cycle. The Arg AGR pair attaches to CGN the same way and adds one extra cycle. The Ser AGY pair is disconnected from TCN and adds none. Stops are a tree and add none. This is recovered by null N3.
+
+#### Theorem 10: Codon-position anisotropy
+
+Synonymous one-base edges by position: pos0 = 4, pos1 = 1, pos2 = 64. The four pos0 edges are the Leu and Arg sextet bridges (Theorem 9). The unique pos1 edge is TAA to TGA, the middle of the stop path (Theorem 3). Sense synonymous edges at the middle base: none. Wobble carries 64 of 69 of all synonymous edges and 63 of 67 of sense ones.
+
+The middle codon base is a sense-synonymy obstruction with stop as the only gap. The next note identifies the biological correlate.
+
+#### Note 4: Second base as hydropathy axis
+
+Amino-acid hydropathy variance explained by codon position (Kyte-Doolittle, codon-weighted): middle base eta^2 = 0.7564, first base eta^2 = 0.0960, wobble eta^2 = 0.0060. Middle dominates on every NCBI table (22 of 22, range 0.583 to 0.772).
+
+The fold geometry alone, with no chemical input, identifies codon position 2 as the BU|BU closure stage. This is the position closed to sense-neutral transport (Theorem 8). The fold geometry therefore predicts it to be the protected semantic position. Kyte-Doolittle hydropathy is external biochemical data that independently confirms amino-acid identity concentrates there. Identity sits on the stage where forward and reverse readings join. Variety sits on the UNA and ONA stages.
+
+The fold-plane obstruction and its biological correlate are established. The next note identifies the two root involutions that act on the code.
+
+#### Note 5: Rumer and WC-RC as distinct involutions
+
+The code runs two orthogonal axes. The strand and palindrome axis is pole exchange and WC reverse-complement (Theorems 4, 7, Note 8). The meaning and degeneracy axis is fold-plane obstruction plus box connectivity (Theorems 1, 8, 9, 10).
+
+Two distinct root involutions exist on the 16 doublets. The Rumer map R (A to C, G to T on each of the first two bases) sends all 8 complete boxes to incomplete boxes (8 of 8), the classical strong to weak exchange. WC reverse-complement of the doublet preserves GC-strength on all 16 doublets and keeps 6 of 8 complete boxes complete. This is a different involution, acting within Rumer classes rather than exchanging them.
+
+Serine is the unique object on both axes. Its components are paired by position-wise WC complement (strand axis) and it is the unique disconnected fiber (meaning axis). This intersection makes serine the unique singularity common to both readings of the code.
+
+The two involutions are distinct. The next note asks why the code uses triplets at all.
+
+#### Note 6: Triplet minimality
+
+Meaning is family-gauge-invariant (Theorem 2) and is defined on GF(2)^6. Letters are 2-bit. Addressing rank: one letter reaches rank 2 (4 states), two letters reach rank 4 (16 states), three letters fill the payload exactly (rank 6, 64 states). The semantic inventory needs at least 21 labels, and 16 is less than 21 which is at most 64. Triplets are the minimal family-blind words addressing the six-bit transport space. Word length follows from carrier arithmetic. The degeneracy profile, the fold-plane obstruction, and stop are then the shape of the filling.
+
+The triplet minimality and the constraint structure are now in place. The next note states the full classification program.
+
+#### Note 7: Standard code classification constraints
+
+The standard code is a near-affine, duplex-covariant, fold-obstructed partition of GF(2)^6 with size profile {6^3, 4^5, 3, 2^9, 1^2} plus 3-codon stop boundary. Classification target: enumerate partitions of GF(2)^6 subject to: (i) size profile and affine ranks, (ii) eight complete wobble boxes, (iii) fiber connectivity with one serine-type split, (iv) one punctured stop-type square with Trp completion, (v) pair-inversion RC covariance, (vi) sense-neutral span equals outer planes (fold-plane closure, hard constraint), (vii) family-sheet invariance, (viii) beta1 = 27, (ix) quotient by Aff_S6 (order 46080), (x) serine uniquely reaches complement horizon (ab = 12), (xi) stop and Trp pairs obey ab + horizon = 12.
+
+Harness status: the standard passes (i) through (xi). Local Met expansions collapse to 5 survivors in one Aff_S6 orbit. Size-2 swaps pass 102 of 144. Only NCBI tables 1 and 11 pass. Fold-preserving Aut (order 120960) is a probe, not the classification measure. The target is the global count up to Aff_S6.
+
+Formal constraints restated: kinematic RC and payload-RC are distinct on all 256 bytes. Drift is governed by component connectivity, not span rank. AGY = {TCA, TCG} XOR antipode on pair_inversion. Rumer and WC-RC are distinct involutions. The coincidence 20 = C(6,3) does not extend structurally: no translation places all fiber direction sets on weight-3 shell. Grade-3 projection rank is 12 (13 with stop).
+
+The classification program is the formal version of the question "why this code." The next group of results applies the framework to real genomes.
+
+#### Note 8: Duplex as constitutional poles
+
+On pair_inversion, payload-RC equals the chirality pole map s to 6-s (Theorem 7) and WC polarity is the antipode (Theorem 4). A DNA molecule is one carrier whose two strands are the two constitutional poles of Omega. Duplex structure is the equality and complement horizon pair. Base pairing is antipodal transport. Storage consistency selects pair_inversion: 2048 of 2048 commutations on the octet versus 0 on the other 16 charts. Biology selects the encoding with minimal Fourier degree (S2(pair) exceeds S2(elem) on 22 of 22 NCBI tables).
+
+Chargaff second parity is pole-invariance: %A approximately equals %T and %G approximately equals %C means the mononucleotide measure has vanishing odd part under pole exchange. GC skew is the normalized antipode character expectation. Piecewise-linear cumulative skew with sign flips at ori and ter follows from trivial total holonomy around a closed replicon with two conjugation points.
+
+Three-sector decomposition on E. coli K-12 MG1655 (1133 windows of 4096 bp, checks 165 and 166): R^2 = 0.9941 for GC skew regressed on payload-pole parity, family parity, and W-membership of q6. Betas: payload +0.984, family -0.980 (near equal and opposite), W-residual -0.013. Replichore contrasts: payload flips sign (-0.029), family transforms by K4 (+0.036), W nearly invariant (+0.003).
+
+#### Note 9: Splice junction hinge and genome signals
+
+On 8003 chr22 donor and acceptor pairs, fold-disagreement is donor 3.159 and acceptor 2.155 (null p = 0.025). W-membership of the hinge matches the uniform baseline exactly (60/252 = 15/63, p = 1.0). Under kinematic RC of the donor window, the asymmetry collapses: gap_identity = 1.005 and gap_mirror = 0.033 (factor approximately 30). Donor and acceptor are two pole-readings of one local structure.
+
+Donor flank family-sheet mu L1 = 0.489 versus null 0.397. Splice donors select a boundary-polarity K4 sheet. The complementarity invariant ab + horizon = 12 holds pointwise on E. coli, yeast, and chr22. Equality-horizon occupancy is approximately 65% above GC-shuffle null on all three (p_eq = 0/12 each). Chargaff second parity holds in 90.1% of 100 kb chr22 windows.
+
+#### Note 10: Translation as carrier walk
+
+Real ORFs have mean chi-shell 2.855 to 2.901 versus GC-matched null 2.98 to 2.99 on E. coli (1966 genes), yeast (1995), and chr22 (300). p_low = 0/40 on all three (checks 131 and 132). Low-shell fraction 0.139 to 0.149, above 0.10 gate. GC/AT permutation kills frame semantics, so the gap is pure reading-frame structure. Damping below the null by approximately 0.13 shells quantifies the smoothness the step_uv gyration imposes.
+
+Synonymous recoding (resample codons within AA fiber, protein fixed): smoothness survives at 0.57 to 0.66 of obs-to-null depth. Damping is layered: codon-transport structure (survives recoding) and peptide-path organization (vanishes under recoding).
+
+Shell and hydropathy by cellular location: membrane n=322, r = -0.474. Cytoplasm n=194, r = -0.077. Periplasm n=57, r = -0.186. Membrane proteins carry strong coupling where more hydrophobic peptides have smoother walks. QuBEC order parameters: eta greater than 0 and M2 less than 4096 on all three genomes. Eta above every GC-matched null (12 of 12).
+
+#### Note 11: Depth-4 closure and compiled signatures
+
+Every sliding 4-byte frame on E. coli and yeast CDS has signature parity 0 (512,748 frames, zero exceptions, check 160). A depth-4 word compiles to a pure translation on Omega, automatically an involution. Net frame translation tau occupies 512 distinct classes per stratum. Mean defect weight approximately 3.00, matching composition-shuffle null to three decimals.
+
+Compiled ORF signatures: unique count less than n_orfs on all genomes (73, 79, 119 versus 150). Entropy at or below GC-shuffle null. TV greater than 0.9 versus shuffle on all three (p_TV = 0/8). Signature distribution carries biological information that survives two-step mixing. Plaquette defect weights: mean 2.999 to 3.022 on all three. Flat bytes: exactly 16 of 256 (fold-disagreement 0). CDS flat fraction 0.060 to 0.071, near 1/16.
+
+#### Note 12: Sense-neutral transport on real genomes
+
+Channels measured on adjacent-codon pairs of E. coli, yeast, SARS-CoV-2, and chr22. Sense channel (same-AA edges) enriched over GC null in 4 of 4 (E. coli 0.0653 versus 0.0586, chr22 0.0882 versus 0.0762). Fold-crossing serine chord (TCN to AGY) present in 4 of 4 but not enriched: at or below GC null, depleted versus protein-fixed synonym resampling in 4 of 4 (E. coli 0.0194 versus 0.0220, yeast 0.0474 versus 0.0651). Real coding avoids placing the two serine boxes adjacent more than uniform synonym use predicts.
+
+#### Note 13: Plaquette curvature and restriction-site parity
+
+On E. coli MG1655, plaquette defect spectrum has mean popcount 2.999 to 3.001 (kernel binomial center). Path-ordered replichore holonomy on ori/ter halves (script _6 section 28c): left TER to ORI parity 0 tau weight 4, right ORI to TER parity 1 tau weight 4, even-truncated circle product parity 0, matched tau weights, phi densities within 0.25 percent. Holonomy reading: the two arcs are palindromic conjugates (same angle-scale content, transported axis). Status: SIGNAL.
+
+Restriction-site parity: REBASE v608 (6115 enzymes), 3575 palindromic sites. Length = 2 mod 4 has 1722. Length = 0 mod 4 has 1401. Bayes factor approximately 3.4e5. Palindromic readers prefer the strand-symmetric canonical class of the Z_n law.
+
+#### Note 14: Fold as Weyl reflection of BU dual-pole
+
+The BU dual-pole loop is the cycle ONA to BU+ to BU- to ONA. BU+ carries Balance Egress and BU- carries Balance Ingress. The loop holonomy delta_BU is the path-memory magnitude from traversing both poles. The dual-pole structure carries orientation (Egress and Ingress, positive and negative) and magnitude (delta_BU) as a single object.
+
+The fold map P is the orientation-reversing symmetry of this dual-pole structure. In the continuous layer, P U(delta) P^{-1} equals U(-delta). In the finite layer, P exchanges W2 with W2' and fixes F = W2 composed with W2'. On GF(2), translations are self-inverse, so orientation lives in the choice of half-word (W2 versus W2'), expressed as angle sign only after lift to the continuous rotation. Fold is the Weyl reflection that swaps the two oriented BU factors and leaves the closed cycle F invariant. Genomically, bit-fold swaps the stop key 10 with 01 and fixes the serine key 11. Stop is the oriented BU branch. Serine is the fold-fixed axis. The operators remain distinct: U(delta_BU) is the dual-pole loop transport of angle delta_BU; P is the involutive reflection of that structure.
+
+#### Note 15: Cycle-to-Walsh j=2 projection
+
+The synonymous graph has beta1 = 27 fundamental cycles (Theorem 9). The Walsh block decomposition of H(3,4) has layer j=2 of dimension 27 (multiplicities (1, 9, 27, 27)). The cycle-to-j=2 map has rank 24 with dim ker = dim coker = 3 on the reference encoding (gates 140 through 142). Across all 24 encodings the rank histogram is {23: 8, 24: 8, 25: 8} (gate 143). On every rank-24 chart the cokernel equals the span of {Leu bridge, Arg bridge, Ser split, stop tree} (gate 144). On the pair_inversion reference the four singular directions obey the linear relation (0, 0, -1, 1): Ser_sheet_split and stop_tree share the same cokernel class (gate 142). That Ser=stop equality is reference-special, not chart-universal. Ambient j=2 projections of Ser and stop remain distinct on the reference; only their cokernel coordinates coincide, so Ser - stop is cycle-exact in grade two. Status: SIGNAL. An Aff_S6-equivariant intertwiner Phi independent of spanning tree and cycle basis would promote the singular-span agreement to ESTABLISHED; the covariance any such Phi must obey is Note 18, and the additive edge-character candidate failed (Failed #5).
+
+#### Theorem 11: Genealogy ingress selects the family gauge sheet
+
+A genealogy is a depth-4 frame record: the certified history of a reading as a sequence of closed 4-byte frames (Specs; Moments genealogy layer). Depth-4 closure forces signature parity 0 and cancels family phase modulo K4 after a complete frame (Note 11). The free gauge data of the byte are the two family bits (eps_a, eps_b), which are the boundary polarities of the K4 sheet and are invisible to amino-acid meaning (Theorem 2).
+
+Analysis_hQVM_Wavefunction.md identifies CS (GENE_Mic) as the transcription origin: the reference frame within which transcription is defined, not a re-enterable state of Omega. Wavefunction Theorem T7 forces the canonical family ordering from the CS axiom. Holonomy and Wavefunction Theorems T8 and T9 realize Balance Egress and Balance Ingress as simultaneous readings of W2: Egress is involutive closure; Ingress is invertible pole-pairing that reconstructs prior conditions as memory.
+
+Derivation. Opening a new reading is departure from the CS transcription frame into a depth-4 genealogy. At that opening the only free byte data that set frame and context without fixing payload meaning are the family-sheet polarities. Fold-plane disagreement and kinematic RC residual mark mid-path BU|BU and splice hinge structure (Note 1; Note 9), not the inauguration of a record. Therefore biological initiation of a transcript genealogy is predicted to select family-sheet occupancy relative to composition-matched sequence, and is predicted not to select fold-disagreement asymmetry or kinematic RC gap.
+
+Status. ESTABLISHED as a structural prediction from Theorem 2, Wavefunction T7 through T9, Specs depth-4 closure, and Holonomy Ingress. Genome confirmation is Note 16 (SIGNAL).
+
+#### Theorem 12: Translation initiation is a second, nested CS opening
+
+CS is the reference frame within which a reading is defined and is not a re-enterable state of Omega (Wavefunction section 10.3; Holonomy sections 2 and 5). A transcript genealogy opens at the -35 sheet: biological initiation selects family-sheet occupancy there relative to composition-matched sequence, with fold disagreement and kinematic RC gap flat (Theorem 11; Note 16 SIGNAL). A peptide genealogy then opens inside that transcript at the start codon: Met/ATG selects the reading frame and founds the codon-pair walk of Omega = U x V. Two structural facts distinguish the openings and forbid their reduction to one event. First, the free gauge data differ: transcription ingress has only the two family bits as frame data (Theorem 11), while translation ingress additionally fixes the payload — ATG pins all six transport bits to the singleton Met fiber of affine rank zero (Theorem 1), a frame-plus-origin act, unlike stop which is the punctured rank-2 closure boundary of Note 19. Second, the addresses do not overlap: the -35 sheet sits ~40 bases upstream in transcript coordinates while ATG sits at CDS position zero, so any sheet or pole selection measured at the start context is a distinct genomic address from tss_box35. Prediction: the start context may carry its own family-sheet or pole signature distinct from both the annotated -35 box and the CDS interior; whatever it carries, it is not the -35 signal relocated. Status: ESTABLISHED as structural prediction from Wavefunction T7 through T9 and section 10.3, Holonomy CS-as-frame, Theorems 1 and 2, Notes 14 and 19. Genome confirmation is Note 21 below.
+
+#### Note 16: Promoter-proximal initiation on E. coli
+
+On E. coli K-12 MG1655 with RegulonDB PromoterSet Confirmed+Strong (n = 1343) and 648 mapped CDS starts, family-sheet L1 versus 24 GC-shuffles:
+
+Annotated -35 box: L1 = 0.497 versus null mean 0.104, p_ge = 0/24. Localization (worknotes only; not certificate gates): annotated -10 box L1 = 0.087 versus null 0.081, p_ge = 11/24; fixed offset -41 to -35 L1 = 0.079 versus null 0.106, p_ge = 18/24; TSS plus or minus 3 bp L1 = 0.042 versus null 0.071, p_ge = 18/24; CDS interior L1 = 0.040 versus null 0.045, p_ge = 24/24. CDS-upstream pm3 and m10 remain above null as translation-proximal sheet signals (distinct address from the -35 transcription claim).
+
+Fold-disagreement on TSS-m40 equals the CDS interior to 0.019 (both approximately 1.95). Kinematic RC gap is 0.000 on every stratum. Depth-4 signature parity is 1.000 on m40 and CDS frames. Separation from Note 9: splice hinges elevate fold-disagreement and carry an RC kinematic gap; genealogy ingress elevates the family sheet at the -35 recognition element and leaves fold and RC gap flat. Status: SIGNAL.
+
+#### Note 21: Translation-proximal sheet selection at the start codon
+
+On the same E. coli K-12 MG1655 setup as Note 16 (648 mapped CDS starts, pair_inversion chart, 24 GC-shuffle nulls per stratum): the start-codon window ATG with three flanking bases on each side gives family-sheet L1 = 0.2413 versus null mean 0.1042, p_ge = 0/24, with mean fold-disagreement 2.007 (interior reference 1.938) and kinematic-RC gap 0.000. Controls reproduce Note 16 exactly: immediate upstream minus 10 to minus 4 gives L1 = 0.4491 versus 0.4005, p_ge = 0/24, and CDS interior gives 0.0400 versus 0.0455, p_ge = 24/24. Reading against Theorem 12: the peptide genealogy's founding address selects a family sheet relative to composition-matched sequence at its own genomic location — roughly half the annotated -35 box strength (0.497) at a disjoint address approximately forty bases away, with fold and RC channels near interior levels rather than splice-hinge levels. The two CS openings are therefore measurable as separate events on separate addresses, as the theorem requires. Scope note: worknote-level confirmation only (no dedicated script gate); related certificate rows are script 2 genealogy ingress gates 243-244 (cds_upstream_pm3 and cds_upstream_m10 sheet above null). Status: SIGNAL.
+
+
+#### Note 17: Serine spans two fold poles (exact)
+
+Exact on the standard table under the canonical payload map: the middle base occupies payload bits 2 and 3, and the four values of those bits are the fold poles. Eighteen of twenty sense fibers have their entire fiber on a single fold pole. The classic split families Leu (CTN plus TTR) and Arg (CGN plus AGR) do not split by pole: CTA through CTG and TTA, TTG share pole 11, and CGN with AGR both sit on 01. Serine alone among sense fibers occupies two distinct fold poles: AGC, AGT sit on pole 10 while TCA, TCC, TCG, TCT sit on pole 01. Stop mirrors this as the punctured boundary object of Note 1 with its three codons split across poles 00 (TAA, TAG) and 01 (TGA). Serine's fiber is therefore one meaning at two fold poles; mutations inside AGN or inside TCN preserve the pole, while inter-block paths cross the wall. Status: ESTABLISHED. Dynamical serine-chord measurements remain Note 12 (SIGNAL).
+
+#### Note 18: S6 edge-character covariance
+
+The Walsh edge character walsh_sign6(x XOR y, r) is S6-covariant in the natural form sign6(g x XOR g y, g r), with zero violations over 720 permutations times 64 times 64 pairs (gate 262). One-base mutation is codon XOR (gate 18d), so translations cancel on edge differences and the action factors through S6. The alternative convention (inverse permutation on the row index) fails (gate 263). This is the finite analogue of Holonomy section 9 conjugation: magnitude invariant, orientation transported. Status: ESTABLISHED. Any future cycle-to-j2 intertwiner must obey this covariance.
+
+#### Note 19: Stop-boundary moduli under Aff_S6
+
+The boundary object is a 4-subset of GF(2)^6: three stops plus one Trp. Admissibility uses payload-invariant clauses: punctured affine rank-2 hull completed by Trp (Note 1), constraint (xi) ab+horizon=12 on all hull pairs, constraint (x) stop-side max ab <= 4. Letter-form adjacency is not Aff_S6-invariant; the invariant form is payload-bit adjacency weight(u XOR v) = 1. Under those clauses the admissible set has 2240 members, is closed under Aff_S6 generators, and splits into exactly two orbits: size 960 (contains the standard {TAA, TAG, TGA} + TGG) and size 1280. The stricter Trp-completion rule selects exactly the standard's orbit. Status: ESTABLISHED (gates 264 through 268). Sense-fiber classification against a fixed boundary representative is Note 24 (Aff_S6 orbit census pivot).
+
+#### Note 20: The genetic code as gauge theory on K4
+
+The code carries one K4 in three roles, and distinguishing them dissolves the apparent tension between frame, meaning, and tolerance. The family K4 is the gauge label: the two boundary bits (eps_a, eps_b) select the spinorial closure phase, amino-acid meaning is constant on its fibers (Theorem 2), and the instruction unit of Gravity_Note is exactly Instruction = (phi_gauge, mu_payload) with 2 gauge bits anchoring 6 payload bits. The wobble K4 is the semantic tolerance group: a free alphabet action on the third-base plane whose eight complete boxes supply 24 of the 27 synonymous cycles (Theorems 2 and 9). The holonomy K4 = {id, W2, W2', F} is the carrier gate group of Holonomy sections 15 through 17; the fold map P exchanges W2 with W2' while fixing F, so stop is the oriented BU branch and serine the fold-fixed axis (Note 14). Serine is then the gauge singularity of the meaning bundle: one fiber value realized on two fold poles (Note 17), the unique signature collision under the eps_b sheet flip (Theorem 2), the finite analogue of one charged field realized on two curvature sectors of one connection. On the physics side the same algebra recurs: Compact Geometry assigns the four electroweak channels (top, Higgs, Z, W) to the four K4 operators {id, W2, W2', F} with flags fixed by fold-crossing depth, and reads masses off kernel shell data; Wavefunction section 17 reads byte fold disagreement as gauge-field curvature concentrated at the BU hinge. The genomic statement is structural: the partition of GF(2)^6 into meanings is a gauge quotient, wobble degeneracy is the stabilizer of that quotient action, and stop plus serine are the two generators that complete its obstruction plane. Failed-and-Refuted entry 6 confines this reading to what gates 109, 207, 229, and 230 already certify; no new census is claimed here. Status: ESTABLISHED as structural identification assembled from Theorem 2, Theorem 9, and Notes 1, 14, 17; the Compact Geometry channel mapping is cited parallel from its own document, not a new measured claim in this corpus.
+
+#### Theorem 13: Translation is a step_uv walk on Omega with Gravity's four-act cycle
+The carrier of translation is the ordered codon pair: state_i = (c_{i-1}, c_i) lies in C x C = GF(2)^6 x GF(2)^6, which is the hQVM product carrier Omega = U x V with |U| = |V| = 64 (Specs carrier chart; worknotes Context). The prior codon occupies the record face U (P site) and the incoming codon the active face V (A site). The six-bit difference chi_i = q(c_{i-1}) XOR q(c_{i+0}) is chirality transport under the affine law chi' = chi XOR q (Specs transport law), so the synonymous-graph shell N_i = weight(chi_i) is local information velocity: low shell means smooth six-mode transport between adjacent codons. One ribosomal advance realizes the four acts that Gravity_Note section 2.5 assigns to one instruction byte: Measure — decode the incoming codon against the code quotient (Theorem 2); Vary — the new codon supplies its payload q to the active face; Retrieve — the record face c_{i-1} constrains the transition exactly as ONA consults B12; Commit — peptidyl transfer bonds the amino acid and advances the record face, the complement-and-swap step R_fam that pulls the past forward and commits the mutated present (Gravity_Note section 2.4). Depth-4 closure bounds the walk's frame grammar: every sliding 4-byte frame on real CDS compiles to an involutive pure translation with signature parity zero (Note 11), so peptide temporality is path-ordered frame composition, not window depth (Failed-and-Refuted entry 3 closes the alternative). Genome confirmation already on file from Note 10: real ORFs occupy subthermal mean chi-shells versus GC-matched nulls on three genomes, QuBEC eta above every null, and smoothness partly survives synonymous recoding, separating code-geometry smoothing from peptide-path organization. This theorem is the temporality half of the nested reading whose opening half is Theorem 12: Met/ATG founds the record at position zero and each advance executes Measure-Vary-Retrieve-Commit until the stop boundary of Note 19 closes the walk. Status: ESTABLISHED as structural identification assembled from Specs, Gravity_Note sections 2.4 through 2.5, and Notes 10 and 11 (SIGNAL dynamics already certified); no wetware census is scheduled.
+
+#### Note 22: The four NCBI wall breaches ride the two BU generator keys
+
+On the pair_inversion chart the fold plane is payload bits 2 and 3; its four coordinate directions are the fold poles (Note 17). Each of the four NCBI breach tables opens exactly one sense-synonymous one-base edge whose payload diff lies purely in that plane, and the opener set is exactly two edges: TAG-TTG with fold pole 11 (tables 16 chlorophycean_mito and 22 scenedesmus_mito; joins stop-adjacent TAG into the Leu fiber across the serine axis) and AAG-AGG with fold pole 01 (tables 24 rhabdopleuridae_mito and 33 cephalodiscidae_mito; merges Lys onto the AGA/AGG block along the same direction as the TAA-TGA stop branch). The dictionary is Note 14's Weyl reading: pole 11 is the serine fold-fixed axis, pole 01 is the oriented stop branch; no breach uses poles 00 or 10, and no table opens more than one fold edge. Hard versus soft: hard breach = exactly one fold-plane sense edge opened (fold_edges=1) and wall_closed fails; soft = additional u8 clause failures (size profile, affine fibers, serine split, stop square, etc.) recorded per table. Tables 1 and 11 pass full u8; tables 16/22/24/33 each fail wall_closed plus at least one soft clause. Certified in script 8 section 31 (gates 269 through 274, 282 through 284). Status: ESTABLISHED.
+
+#### Note 23: GenomicCompile is the Scope compile object
+
+The Scope section names a deterministic compile from sequence to carrier features. That object is now fixed as `GenomicCompile` in hqvm_cgm_genomics_common.py: a frozen record for one DNA interval or ORF assembling certified fields — byte/W layer, fold_poles (payload bits 2-3, Note 17), family-sheet mu with L1 distance to uniform (Theorem 2), whole-stream Omega signature, sliding depth-4 parity-zero fraction (Note 11), codon-pair chi-shell census (Note 10 harness), QuBEC eta and M2 from mean-shell moment fit (script 4), ab/horizon means on successive codon pairs with ab+horizon (Note 7 xi), and boundary-key presence flags for TAA/TAG/TGA/ATG. No classifier, no held-out accuracy product. Smoke check is script 8 section 32 (gate 275): byte count matches genomic_byte_stream; fold-pole histogram matches manual bits 2-3; fold disagreement reproduces manually; QuBEC eta/M2 finite; ab+horizon equals 12 on codon-pair traffic when pairs exist; depth-4 parity equals 1 on the coding window. Status: ESTABLISHED as packaging of previously certified fields (gate 275).
+
+#### Note 24: Aff_S6 orbit census of the standard code (Open #2 pivot)
+
+Brute partition composition (stage-29) is REFUTED (Failed #7): it counted geometric block splittings (~10^19 for one serine placement), not Aff_S6 code orbits. The Note 7 classification measure is quotient by Aff_S6 (order 46080). Pivot: transport the labeled standard table under the 11 Aff_S6 generators from script 8; BFS the orbit; test u8_constraints on each member. Results (script 8 section 33, gates 276 through 281, 300, 301): the standard passes all Note 7 gates; Aff_S6 acts freely on the standard (orbit size exactly 46080, trivial stabilizer); every orbit member preserves the sense size multiset {6^3, 4^5, 3, 2^9, 1}; hard constraints cut the orbit to 512 u8-passing codes forming one connected cluster (512 = 2^9, fraction 512/46080 = 1/90). The 512-cluster factors as 64 translations times C2^3 letter-bit orientations: the GF(2)^6 translation subgroup acts freely and closed on the cluster, yielding exactly eight orbits of size 64 (gate 300). The residual order-8 group is the elementary abelian group generated by swapping the two bits inside each codon letter, on pairs (0,1), (2,3), and (4,5); those eight permutations form a subgroup of S6, each sends the standard table into the cluster, and T times that C2^3 recovers the cluster exactly (gate 302). The palindromic B3 sign subgroup on pairs (0,5), (1,4), (2,3) from Analysis_hQVM_CGM_Group_Theory section 6.4 is not the residual (gate 303; Failed #12). Absolute Leu/Arg/Ser placement product 8x8x8 is false: the absolute fiber counts are 128, 128, 64 with 256 observed triples (gate 301; Failed #11). Dominant failures on non-passers are wall_closed and wobble_boxes_8 (equal counts, each at least 94% of non-passers), then beta1_27. Structural fingerprint on standard six-fibers: Leu and Arg are cube_minus_edge on inner F2^4 (rank 3); serine is also cube_minus_edge geometrically while carrying the required (4,2) letter split (Note 7 iii). Level-3 reading: the standard code is not unique in the raw Aff_S6 orbit; the Note 7 hard shell is the free translation torsor of GF(2)^6 times the letter-bit C2^3 that swaps coordinates inside each of the three codon letters. Interpretive targets (unchanged): why-20 = C(6,3) equatorial capacity; D=24 regular sector beside three singular fold obstructions (Note 15 SIGNAL). Status: ESTABLISHED for orbit census, structural fingerprint, 64x8 factorization, and letter-C2^3 identification of the residual orientations.
+
+#### Note 25: NCBI reassignments avoid clean box interiors
+
+Across the 22 NCBI tables there are 54 nontrivial codon reassignments relative to table 1 (4 sense-to-stop, 22 stop-to-sense, 28 sense-to-sense), touching 13 distinct codons. The interiors of the five complete wobble boxes Pro/Thr/Val/Ala/Gly supply 20 codons in the fully represented sector of the synonymous cycle space (Note 15). Zero of 54 moves land in those interiors, and zero of 32 sense-origin moves do so. Under uniform sampling the analytic avoidance probability is 1.632e-9. Sector attribution of the 13 touched codons: Leu 5, stop 3, Arg 2, Ile 1, Ser 1, other 1. Variation in the genetic code explores the singular sector spanned by the Leu bridge, Arg bridge, Ser split, and stop tree, while the complete-box interiors remain frozen. Certified in script 8 section 40 (gates 285 through 288). Status: SIGNAL.
+
+#### Note 26: Serine matched to anticodon-blind SerRS
+
+Serine is the unique sense fiber on two fold poles and the unique amino acid whose length-1 Omega signatures collide under the family sheet flip (Theorem 2, Note 17). That gauge degeneracy matches the biochemical fact that seryl-tRNA synthetase does not read the anticodon. The companion check on the opposite pole: the direct-contact synthetase family Asp/Asn/Glu/Gln/Lys occupies a single fold pole each, carries injective length-1 signatures, and shares fold pole 00. Alanine is anticodon-blind yet single-pole and injective, so blindness alone does not force multi-pole geometry; serine is the singularity that combines both. Certified in script 8 section 41 (gates 289 through 293). Identity-element concentration at anticodon-middle remains section 34 (gates 182 through 184). Status: SIGNAL.
+
+#### Note 27: Codon-pair bias as a radial transport channel
+
+On E. coli (~1.25M codons) and yeast (~1.95M codons), the log observed-over-expected codon-pair bias y groups by the sixty-four chirality values chi = q(c_i) XOR q(c_{i+1}) with eta^2 = 0.1373 (E. coli) and 0.1038 (yeast). Grouping by the seven Hamming-weight shells alone yields eta^2 = 0.0423 and 0.0525, which is 30.9% and 50.6% of the chi-64 signal. The shell profile is monotonic: shell 0 bias +0.190 / +0.410 descending to shell 6 at -0.667 / -0.136. All 7 shells agree in sign across the two genomes. Protein-fixed synonymous resampling retains a positive low-minus-high shell contrast (+0.382 / +0.399). Codon-pair bias organizes as the radial projection of the subthermal walk of Note 10. Certified in script 8 section 42 (gates 294 through 299 and 304 through 306). A prior 6-feature OLS on collinear XOR quantities is REFUTED as a design flaw (Failed #8). Status: SIGNAL.
+
+----------
+
+## Failed and Refuted
+
+1. Scalar Phi_BU sum on the closed E. coli replicon. Phase closure |Phi| less than 2pi * 5/256 fails as a replicon invariant: only 2 of 3 stride/frame configurations close; GC nulls never close (0/6). Constructive replacement is path-ordered ori/ter holonomy (Note 13, section 28c).
+
+2. Divergent bidirectional promoters as a shared family-sheet midpoint. On 89 reverse-then-forward adjacent TSS pairs (gap <= 300 bp, RegulonDB C+S), same argmax sheet on 15 of 52 versus composition-preserving within-box shuffle null mean 14.7 (p_ge = 0.52, p_le = 0.59, 500 replicates). Facing -35 openings are independent sheet events.
+
+3. Distinct depth-4 law beyond period-2 / length arithmetic on CDS frames. On ecoli (93607) and yeast (115187) two-plus-two compositions, sig4(i) equals sig2(i) composed with sig2(i+2) in every frame. Lag-2 increment agreement matches GC null (ecoli 0.5007 versus 0.5009; yeast 0.4998 versus 0.4989). Temporality claims use path-ordered observables (Note 13), not window depth.
+
+4. Horizon-distance unification of Ile/Met, Stop/Trp, and Ser as one triad object. Within-fiber carrier-pair (A,H) spectra for that set coincide with control fibers L, R, G, T, P, A. Serine's two-pole fact stands separately as Note 17.
+
+5. Additive edge-character map as cycle-to-j2 intertwiner. Scoring fundamental cycles by additive edge characters yields rank 3 to 5 across all 24 encodings; the singular span does not land in its cokernel. The certified vertex-indicator projection (gates 129, 140, 141) remains the working map; a basis-free Aff_S6 intertwiner under the covariance of Note 18 is not constructed.
+
+6. CUB / sense-traffic outer-plane probe as new structure. Outer-plane dominance of synonymous movement and serine-only fold-crossing traffic restate certified gates 109, 207, 229, and 230. No new certificate.
+
+7. Stage-29 brute partition composition as global code census. For one standard serine placement, raw per-coset block compositions exceed 10^19; the count is geometric partition splittings without amino-acid labeling, Aff_S6 quotient, or global wobble/wall gates. Replacement is Note 24 Aff_S6 orbit census (512 u8-pass cluster in orbit 46080).
+
+8. Multi-feature OLS of codon-pair bias on collinear XOR-derived features (shell, W, fold-cross, outer, ab, horizon, same-AA, ser-chord). Coefficients flip sign between E. coli and yeast. Replacement is the radial shell channel of Note 27.
+
+9. REBASE recognition-site sequences beyond length parity. Among 83 strict ACGT palindromic sites, mean fold-disagreement and flat-byte fraction versus composition-matched nulls give p approximately 0.65 on both. The length n = 2 mod 4 enrichment of Note 13 stands; no second-order byte-fold class signal.
+
+10. oriC family-sheet stronger than promoter and start. On E. coli oriC +/-250 and +/-500, sheet L1 is approximately 0.10 with p_ge = 0/24, above CDS interior, but below the annotated -35 box (0.497) and the start window (0.241). A third opening exists; the nesting-strength ranking origin > promoter > start does not.
+
+11. Absolute L/R/S placement product 8x8x8 as the 512-cluster factorization. Absolute fiber counts are 128, 128, 64 with 256 triples. Replacement is the certified 64-translation x 8-orientation factorization of Note 24 (gate 300).
+
+12. Palindromic B3 C2^3 on pairs (0,5), (1,4), (2,3) as the residual orientation group of the 512-cluster. Only 2 of 8 elements keep the standard table in the cluster. Replacement is the letter-bit C2^3 of Note 24 (gate 302).
+
+13. Ambient cycle-boundary claim for stop - Ser in R^64. Least-squares projection of stop - Ser onto the span of the 27 fundamental cycle vertex-indicators has residual 2.268 on every one of the 24 encodings (0/24 boundaries). The certified statement remains grade-two: Ser - stop is cycle-exact in the j=2 image on the reference chart (Note 15, gate 142). Explicit homologous cycle combination is still Open #1.
+
+14. Chart-universal Ser_sheet_split = stop_tree cokernel equality. Among the eight rank-24 charts only the pair_inversion reference realizes relation (0, 0, -1, 1); the other seven carry distinct integer null vectors. Gate 142 stays reference-scoped; gate 144 certifies only that the four singular indicators span the cokernel on every rank-24 chart.
+
+----------
+
+## Open
+
+1. Explicit cycle combination realizing Ser - stop in the image of the cycle-to-j=2 map (Note 15). The cokernel relation is certified (gate 142); the homologous expression among the 27 fundamental cycles is not yet written.
+
+2. Aff_S6-equivariant basis-free intertwiner for cycle-to-j=2 under the covariance of Note 18 (Note 15 SIGNAL promotion).

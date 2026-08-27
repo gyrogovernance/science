@@ -4,6 +4,30 @@ All notable changes to the CGM Experimental Framework will be documented in this
 
 ---
 
+## [1.3.9.7-CGM_Genomics] — 2026-08-25 to 2026-08-27
+
+Genomic structure is read as a scale-recursive realization of the hQVM carrier. A nucleotide maps to a two-bit alphabet element, a codon to a state of the sixty-four-element constitutional horizon, an overlapping four-mer to one byte instruction and de Bruijn edge, and an ordered codon pair to a point of the 4096-state carrier Omega. The genetic code is a quotient of codon space whose synonymous fibers retain individuality beneath a shared translated meaning. Sense-neutral one-base variation spans the four-dimensional outer plane, while semantic identity is protected by the two-dimensional BU fold at the middle codon base, independently confirmed by amino-acid hydropathy and by tRNA identity elements concentrating on the anticodon. Stop and serine supply the two independent generators that complete the fold plane: stop as the oriented temporal boundary, serine as the fold-fixed semantic bridge, matched at both ends of the synthetase recognition spectrum by the anticodon-blind seryl-tRNA synthetase.
+
+Translation advances an ordered walk on Omega in a subthermal carrier climate, and codon-pair context bias decomposes radially by chirality shell as the pair-level projection of the same transport relation. Transcription initiation selects the family gauge sheet, translation initiation opens a second nested Common Source event at the start codon, splice junctions articulate the fold hinge, and the two replichores of the circular E. coli replicon form palindromic conjugate path holonomies. Under the Aff_S6 classification the labeled standard code occupies a free orbit of size 46080 whose hard-constraint shell holds 512 codes, factoring as the sixty-four codon translations times the order-eight letter-bit orientation group. Only NCBI tables 1 and 11 pass the full constraint list, and the four variant wall breaches open exclusively at the two BU generator keys. The fifty-four recorded NCBI reassignments avoid the interiors of the five clean complete wobble boxes, with uniform-targeting avoidance probability near 1.6 × 10−9, and explore the three-dimensional singular sector of the synonymous cycle space.
+
+### Added
+
+- `docs/Findings/Analysis_hQVM_CGM_Genomics.md` — public analysis: genomic state ladder, duplex poles and word memory, code quotient with holonomic fibers, fold-plane semantic wall, stop and serine as fold-plane generators, K4 gauge reading, ordered transport on Omega, chromosome-scale holonomy, Aff_S6 classification, negative results, and testable consequences
+- `experiments/hqvm_cgm_genomics_1.py` through `_8.py`, `hqvm_cgm_genomics_common.py`, `hqvm_cgm_genomics_run.py`, and `hqvm_cgm_genomics_gates.json` — gated verification suite (297 checks, zero failures)
+- `experiments/hqvm_cgm_genomics_results.txt` — deterministic run output
+- `experiments/hqvm_cgm_genomics_data_ingest.py` and frozen catalogs under `data/catalogs/genomics/`: NCBI genetic-code tables, E. coli K-12 coding set, RegulonDB promoter set, and REBASE palindromic sites with provenance
+
+### Results
+
+- Fold-plane direct sum `H = L_sense ⊕ P_fold` on all twenty-four charts; middle-base hydropathy eta squared ≈ 0.756 and dominant on all twenty-two NCBI tables; synonymous one-base edges by position are four, one, and sixty-four
+- Percolation ladder under the Square-Root Cluster Theorem: sense-only rank four reaches 256 states; stop or serine alone opens rank five at 1024; jointly they fill rank six and percolate all 4096 carrier states
+- Synonymous cycle space beta_1 = 27 equals the Walsh j = 2 multiplicity of H(3,4); the cycle-to-grade-two projection has rank 24 with a three-dimensional singular sector spanned by the leucine bridge, the arginine bridge, and the shared serine-stop class
+- Aff_S6 orbit of the labeled standard code has size 46080 with trivial stabilizer; the hard-constraint cluster holds 512 codes as sixty-four translations times the letter-bit group of order 8; the four wall breaches open fold poles 11 and 01 exclusively
+- Depth-four closure: signature parity zero on 512748 sliding four-byte frames; coding sequence occupies subthermal mean shells 2.85–2.90 against GC-matched nulls near 2.99 on E. coli, yeast, and human chromosome 22, with QuBEC eta above every null
+- Codon-pair bias groups by the chirality register with chi-64 eta squared of 0.137 (E. coli) and 0.104 (yeast); shell profiles monotonic with seven of seven shells sign-consistent across both genomes; GC skew regresses on payload-pole, family, and W-membership characters at R² = 0.9941
+
+---
+
 ## [1.3.9.6-CGM] — 2026-08-24
 
 Sharpened the continuous–finite account of dual balance and path memory across Holonomy and the documents that depend on it.

@@ -58,11 +58,12 @@ results/
 experiments/data/*.fits
 experiments/data/COM_CompMap_Compton-SZMap-masks_2048_R2.01.fits
 
-# Genomics ingest binaries (SOURCE.txt, MANIFEST.sha256, and ncbi_genetic_codes.json remain tracked)
+# Genomics catalogs: regenerate via experiments/hqvm_cgm_genomics_data_ingest.py
+# Keep tracked: SOURCE.txt, MANIFEST.sha256, ncbi_genetic_codes.json
 data/catalogs/genomics/*.gz
-data/catalogs/genomics/mavedb/
-data/catalogs/genomics/clinvar_gene_panel.tsv
-data/catalogs/genomics/variant_summary.txt.gz
+data/catalogs/genomics/ecoli_k12_uniprot.txt
+data/catalogs/genomics/rebase_withrefm.txt
+data/catalogs/genomics/regulondb_promoter_set.txt
 
 # Temporary files
 *.tmp

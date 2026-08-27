@@ -1306,7 +1306,7 @@ The cost figures given below are symbolic unless stated otherwise.
 | K4Char4 | 12 add/sub | 0 |
 | WHT + pointwise + inverse WHT | 832 total | 64 |
 
-### 18.9 Multiplication claims
+### 18.9 Multiplication in the native medium
 
 The native transition rule is multiply-free.
 
@@ -1318,11 +1318,11 @@ The Krawtchouk transform uses scalar multiply-add operations.
 
 The spectral application of a diagonalised operator uses pointwise scalar multipliers.
 
-A learned 64 × 64 weight block is multiply-free only when its data and symmetry structure reduce the required contraction to XOR, signed masks, additions, subtractions, and popcount operations.
+These statements apply to kernel dynamics and native spectral operators.
 
-The specification must not claim that general matrix multiplication is replaced by XOR. The formal claim is that native transport is XOR, native spinorial state projection is multiply-free, and learned weight application is exposed to native structure tests and exact dot-product evaluation where structure does not reduce further.
+### 18.10 n-step evolution: native vs dense (circulant climate, 64 modes)
 
-### 18.10 n-step evolution: native vs dense
+Scope: symbolic cost for **circulant chirality climate** evolution, exponentiating a 64×64 circulant via dense matrix power vs spectral WHT diagonalization. This is not a claim about arbitrary learned dense weight matrices, weight pruning, or universal matmul speedup.
 
 **Dense method via matrix exponentiation:**
 

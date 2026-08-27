@@ -1,0 +1,1301 @@
+0. KERNEL DEPENDENCY
+=====
+  PASS  d=6 API binding  |  q_word, step_uv, gates match api at d=6  |  q_word, step_uv, gates match api at d=6
+
+  objects
+    d=6 API bind; aperture constants; sha256 pins
+
+  APERTURE_GAP=0.02069954550267028 RHO=0.9793004544973297 M_A=0.19947114020071635
+  sha256 gyroscopic\hQVM\api.py 8552c1e5e675c09f094eacead164d5008a94762a9dc8bfc1a303cb9fd704cd2d
+  sha256 gyroscopic\hQVM\family.py 0addf4a51eb9b625d7359c735867d41aea628cb7004a558a4571b0188a628d5d
+  sha256 gyroscopic\hQVM\constants.py ad0bd48e033c6656a37066b97f5e30947995e9f9bec6a0ccb6bf789deadd390c
+  sha256 gyroscopic\hQVM\kernel.py 6a509ee33c2582ec2bd7c98a5477750dc44452d36eea1459d89a5e201fb2f587
+
+1. NUCLEOTIDE CHART AND TRANSLATION QUOTIENT
+=====
+  objects
+    24 Aff charts; orbits elem/pair/other; synonymous beta1; fold vs RC; S2
+
+  encodings
+    n=24  orbits elem/pair/other=8/8/8
+    chemical K4 on reference chart: WC=10/wt1 TS=01/wt1 TV=11/wt2
+    WC/TS/TV act by translation on all charts: 24/24/24 of 24
+    fold==RC as maps: 0/24; fold~RC (same GF2 rank pattern): 0/24
+    fold o RC == RC o fold: elementary 0/8; pair_inversion 8/8
+
+  synonymous homology (NCBI tables)
+     tid name                      E   C beta1
+       1 standard                 69  22    27
+       2 vertebrate_mito          66  23    25
+       3 yeast_mito               66  23    25
+       4 mold_protozoan_mito      69  22    27
+       5 invertebrate_mito        70  22    28
+       6 ciliate_nuclear          70  22    28
+       9 echinoderm_mito          72  22    30
+      10 euplotid_nuclear         70  22    28
+      11 bacterial_plastid        69  22    27
+      12 alt_yeast_nuclear        65  23    24
+      13 ascidian_mito            68  22    26
+      14 alt_flatworm_mito        72  22    30
+      16 chlorophycean_mito       69  22    27
+      21 trematode_mito           71  22    29
+      22 scenedesmus_mito         68  22    26
+      23 thraustochytrium_mito    69  22    27
+      24 rhabdopleuridae_mito     69  22    27
+      25 sr1_gracilibacteria      69  22    27
+      26 pachysolen_nuclear       65  23    24
+      29 mesodinium_nuclear       72  22    30
+      30 peritrich_nuclear        70  22    28
+      33 cephalodiscidae_mito     70  22    28
+    standard (tid=1): V=64 E=69 C=22 beta1=27  (= E-V+C)
+    H(3,4) Walsh-block multiplicities (j=0..3): (1, 9, 27, 27)  (slot j=2 equals 27)
+    AA count=20  C(6,3)=20  serine size/components=6/2  stop leakage=0.8519
+    vert/horiz one-base edges (tid=1): 69/219 (sum=288, H(3,4) undirected edges=288)
+    grade-3 projection rank (20 AA / +stop): 12/13
+    stop+Trp hull size=4 rank=2 contains Trp=True
+    mean S2(pair_inversion) > mean S2(elementary): 22/22 NCBI tables
+
+  checks
+    ok    check  |  measured  |  expect
+    PASS  24 affine encodings  |  n=24  |  n=24
+    PASS  orbits 8/8/8  |  8/8/8  |  8/8/8
+    PASS  WC/TS/TV translations on every chart  |  24/24/24  |  24/24/24
+    PASS  K4 span=2 on every chart  |  n_full_k4=24  |  n_full_k4=24
+    PASS  codon packing is a bijection 64->64  |  all encodings bijective  |  all encodings bijective
+    PASS  RC is an affine involution of rank 6  |  n_rc_affine=24  |  n_rc_affine=24
+    PASS  fold and RC are distinct maps  |  fold_eq_rc=0  |  fold_eq_rc=0
+    PASS  fold and RC have different GF2 ranks  |  similar=0  |  similar=0
+    PASS  fold/RC commute counts by orbit (pair full, elementary empty)  |  elem_commute=0/8 pair_commute=8/8  |  elem_commute=0/8 pair_commute=8/8
+    PASS  kernel d=6 API binds  |  q_word, step_uv, gates match api at d=6  |  q_word, step_uv, gates match api at d=6
+    PASS  standard-code beta1  |  beta1=27 (E=69, C=22)  |  beta1=27
+    PASS  beta1 equals H(3,4) multiplicity slot j=2  |  beta1=27 mult=(1, 9, 27, 27)  |  beta1=27
+    PASS  20 amino acids (excl stop)  |  n_aa=20  |  n_aa=20
+    PASS  serine fiber disconnected  |  size=6 components=2  |  size=6 components=2
+    PASS  stop has positive leakage to sense codons  |  leakage=0.8519  |  leakage>0
+    PASS  vert+horiz partition H(3,4) edges  |  69+219=288  |  sum=288
+    PASS  pair_inversion S2 > elementary S2 on all NCBI tables  |  22/22  |  22/22
+    PASS  grade-3 AA rank in (0,20)  |  rank=12  |  0 < rank < 20
+    PASS  adding stop raises grade-3 rank  |  rank_aa=12 rank_aa+stop=13  |  rank_aa+stop > rank_aa
+    PASS  q6 packing matches predicted  |  n_q6_exact=24  |  n=24
+    PASS  R/Y,M/K,S/W are linear bits  |  all charts  |  all charts
+    PASS  fold matches phase-pair mask  |  all charts  |  all charts
+    PASS  fold is an 8-bit involution  |  all charts  |  all charts
+    PASS  RC is an 8-bit involution  |  all charts  |  all charts
+    PASS  chirality phase-pair count  |  count from kernel  |  4
+    PASS  ref chart fold rank+I=3, RC rank+I=2  |  see gates  |  3 and 2
+    PASS  degeneracy multiset sums to 64  |  sum=64  |  64
+    PASS  pointwise Aut order on standard code  |  n_aut_pointwise  |  2
+    PASS  Walsh Plancherel sum E=64^2  |  sum E  |  4096
+    PASS  block-weight Plancherel sum=64^2  |  sum=4096  |  4096
+    PASS  stop+Trp affine hull  |  hull=4 rank=2  |  hull=4 rank=2 with Trp
+    PASS  wobble Aut not full K4  |  elem and pair <4  |  both <4
+    PASS  one-base mutation = codon XOR  |  all neighbors  |  all neighbors
+
+19. CYCLE-TO-J2 KER/COKER BASES
+=====
+  objects
+    27 cycles -> Walsh j=2; ker/coker bases; Leu/Arg/Ser/stop singular directions; Ser~stop cokernel relation on pair_inversion; rank histogram and singular-span on all 24 encodings
+
+    cycles=27 j2=27 rank=24 dim_ker=3 dim_coker=3
+    ker cycle-index supports: ((0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26), (3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26), (3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26))
+    coker j2-index supports: ((10, 11, 13, 17, 18, 19, 20, 24, 28, 33, 34, 36, 40, 44, 49, 50), (10, 11, 13, 17, 18, 19, 20, 24, 28, 33, 34, 36, 40, 44, 49, 50), (10, 11, 13, 17, 18, 19, 20, 24, 28, 33, 34, 36, 40, 44, 49, 50))
+    singular=('Leu_TTR_CTN', 'Arg_AGR_CGN', 'Ser_sheet_split', 'stop_tree') coker_rank=3 match=True
+    singular_relation=(0, 0, -1, 1) ser_stop_coker_equal=True
+    rank_hist={23: 8, 24: 8, 25: 8} n_rank24=8 singular_span_rank24=8/8
+
+  checks
+    ok    check  |  measured  |  expect
+    PASS  cycle->j=2 map square (27 cycles, 27 chars), rank 24  |  rank=24 ker=3 coker=3  |  rank=24 ker=3 coker=3
+    PASS  Leu/Arg/Ser/stop singular directions span cokernel (rank 3 of 3)  |  singular_coker_rank=3  |  =dim_coker=3
+    PASS  Ser_sheet_split ~ stop_tree in cokernel (relation 0,0,-1,1)  |  rel=(0, 0, -1, 1) eq=True  |  (0,0,-1,1)
+    PASS  rank histogram over 24 encodings is 8+8+8 at 23/24/25  |  {23: 8, 24: 8, 25: 8}  |  {23:8, 24:8, 25:8}
+    PASS  singular span equals cokernel on every rank-24 chart  |  8/8  |  8/8
+
+2. KERNEL LAYER (PACKING, OMEGA, WORD SIGNATURES)
+=====
+  objects
+    4-mer pack vs bracket; Omega step_uv; chi XOR; word signatures
+
+  packing (linear 4-mer vs bracket)
+    orbit_elementary_axes: n_4mer=256 equal_as_bytes=4 payload_agree=4 hinge_roundtrip=256
+    orbit_pair_inversion: n_4mer=256 equal_as_bytes=4 payload_agree=4 hinge_roundtrip=256
+
+  dual chart (5' vs 3'/RC packing on codon windows)
+    orbit_elementary_axes: n=1024 fold_eq=0 mean_hamming=4.0000 mean_disagreement=2.0000
+    orbit_pair_inversion: n=1024 fold_eq=32 mean_hamming=4.0000 mean_disagreement=2.0000
+
+  Omega census
+    codon-pairs=4096 chi==XOR=4096 pairdiag_roundtrip=64/64 step_q==chi=4096 gate_F==epsilon=64
+
+  word-signature holonomy
+    family0: pairs=81 word_hom=81 q6_add=81 commute=9 noncommute=72
+    derived_fiveprime: pairs=1296 word_hom=1296 q6_add=1296 commute=144 noncommute=1152
+  eta charts with full K4 and RC coverage: 48
+
+  checks
+    ok    check  |  measured  |  expect
+    PASS  eta nondegenerate RC chart exists  |  n=48  |  n>0
+    PASS  4-mer unpack roundtrip (hinge)  |  hinge==n_4mer on both orbits  |  hinge==n_4mer
+    PASS  linear 4-mer packing != bracket packing  |  equal=4/256 (elementary)  |  equal < n_4mer
+    PASS  chi equals payload XOR on all codon pairs  |  4096/4096  |  4096/4096
+    PASS  Omega pairdiag roundtrip on 64 codons  |  64  |  64
+    PASS  word homomorphism (family0)  |  81/81  |  81/81
+    PASS  word homomorphism (derived_fiveprime)  |  1296/1296  |  1296/1296
+    PASS  q6 additive under word compose (family0)  |  81/81  |  81/81
+    PASS  signature commute count (family0)  |  commute=9/81  |  commute < n_pairs
+    PASS  signatures have noncommuting pairs (derived)  |  noncommute=1152  |  noncommute>0
+    PASS  dual chart fold equals identity count  |  fold_eq=0/1024 (elementary); pair=32/1024  |  fold_eq < n
+    PASS  transition generator rank <= 6  |  rank=4  |  rank<=6
+    PASS  SRC/T predicted shell count >= 2 on all generator sets  |  all reach_rows.predicted>=2  |  predicted>=2
+
+3. SEQUENCE WINDOWS ON REAL DNA
+=====
+  objects
+    256 4-mer alphabet; genome fd/dual/shell meters; GC-matched nulls; SKIP if missing FASTA
+
+  alphabet
+    orbit_elementary_axes: n_4mer=256 fold_hist=(16, 64, 96, 64, 16) mean_fd=2.0000 dual_fold_eq=0/1024 dual_mean_h=4.0000
+    orbit_pair_inversion: n_4mer=256 fold_hist=(16, 64, 96, 64, 16) mean_fd=2.0000 dual_fold_eq=32/1024 dual_mean_h=4.0000
+
+  genomes
+    name           orbit                    status   cds     gc      fd  dual_h   shell    n1_p fd_null_p
+    ecoli_k12      orbit_elementary_axes    ok      4000  0.519  1.9903  3.9561   0.639  0.0123   1.0000
+    yeast_s288c    orbit_elementary_axes    ok      4000  0.397  1.9795  4.0254   0.660  0.0123   0.7037
+    sars_cov2      orbit_elementary_axes    ok        12  0.379  2.0303  4.0583   0.583  0.0123   0.0123
+    chr22_cds      orbit_elementary_axes    ok       300  0.584  1.9901  3.9845   0.828  0.0123   1.0000
+    ecoli_k12      orbit_pair_inversion     ok      4000  0.519  1.9426  3.8015   0.725  0.0123   1.0000
+    yeast_s288c    orbit_pair_inversion     ok      4000  0.397  1.9653  4.5011   0.754  0.0123   1.0000
+    sars_cov2      orbit_pair_inversion     ok        12  0.379  1.9714  4.7051   0.735  0.0123   1.0000
+    chr22_cds      orbit_pair_inversion     ok       300  0.584  2.0300  3.6282   0.863  0.0123   0.0123
+    totals: ok=8 SKIP=0
+
+  splice flanks
+    kind               orbit                    status     n      fd  gt_ag  null_p
+    donor              orbit_elementary_axes    ok      8003  2.7549  0.927  0.9753
+    acceptor           orbit_elementary_axes    ok      8003  1.7810  0.111  1.0000
+    exon_flank         orbit_elementary_axes    ok     20038  1.9770  0.416  0.4691
+    intron_interior    orbit_elementary_axes    ok      4551  1.9570  0.346  0.0123
+    donor              orbit_pair_inversion     ok      8003  3.1593  0.927  0.0247
+    acceptor           orbit_pair_inversion     ok      8003  2.1546  0.111  0.0123
+    exon_flank         orbit_pair_inversion     ok     20038  1.8878  0.416  0.8395
+    intron_interior    orbit_pair_inversion     ok      4551  2.0536  0.346  0.0123
+
+  checks
+    ok    check  |  measured  |  expect
+    PASS  alphabet covers all 256 4-mers  |  n_4mer=[256, 256]  |  [256, 256]
+    PASS  fold_hist sums to 256  |  sums=[256, 256]  |  [256, 256]
+    PASS  both metric orbits present  |  orbits=['orbit_elementary_axes', 'orbit_pair_inversion']  |  {orbit_elementary_axes, orbit_pair_inversion}
+
+20. FAMILY-SHEET MU ON K4
+=====
+  objects
+    family bits on packed 4-mers; mu vs uniform 1/4; composition shuffle null; donor=hinge_egress acceptor=hinge_ingress
+
+    stratum          junction              n    mu0    mu1    mu2    mu3  L1_unif  null_L1
+    cds              -                513948  0.264  0.259  0.245  0.231   0.0470   0.0297
+    donor_flank      hinge_egress       7500  0.083  0.478  0.266  0.173   0.4885   0.3971
+    acceptor_flank   hinge_ingress      5870  0.317  0.286  0.251  0.146   0.2077   0.1296
+    intron_interior  -                 34520  0.213  0.278  0.223  0.286   0.1275   0.0968
+
+  checks
+    ok    check  |  measured  |  expect
+    PASS  family mu strata computed  |  n_strata=4  |  >=2
+    PASS  CDS family-sheet mu near uniform (symmetric K4 use)  |  see table L1_unif  |  <0.15
+    PASS  donor flank selects a family sheet (L1 above null)  |  see donor row  |  L1 > null+0.05
+    PASS  acceptor flank selects a family sheet (L1 above null)  |  see acceptor row  |  L1 > null+0.05
+
+20b. GENEALOGY INGRESS (OPEN_TRANSCRIPT)
+=====
+  objects
+    open_transcript: RegulonDB C+S annotated -35 box; TSS-m40 and CDS-upstream contrast; kinematic-RC; fold vs hinge
+
+    n_tss_CS=1343  mapped_cds_starts=648
+    stratum          junction              n      L1  null_L1   p_ge      fd  kin_rc   d4_0
+    tss_box35        open_transcript     2905  0.4967   0.1043   0/24  1.9859  0.0000  1.000
+    tss_m40          open_transcript    49691  0.0505   0.0636  24/24  1.9570  0.0000  1.000
+    cds_upstream_pm3 open_transcript     1944  0.3210   0.1792   0/24  2.1507  0.0000    n/a
+    cds_upstream_m10 open_transcript     3888  0.4491   0.4075   0/24  2.1309  0.0000  1.000
+    cds_upstream_m40 open_transcript    23976  0.1033   0.0930   1/24  1.9510  0.0000  1.000
+    cds_interior     mid_transcript    62856  0.0400   0.0452  24/24  1.9380  0.0000  1.000
+
+  checks
+    ok    check  |  measured  |  expect
+    PASS  open_transcript strata defined  |  n=6  |  >=4
+    PASS  cds_upstream_pm3 family-sheet L1 above all GC nulls  |  see pm3 row  |  p_ge=0
+    PASS  cds_upstream_m10 family-sheet L1 above all GC nulls  |  see m10 row  |  p_ge=0
+    PASS  CDS-proxy fold-disagreement near CDS  |  |fd_m40-fd_cds|<0.05  |  True
+    PASS  all strata kinematic-RC gap near zero  |  kin_rc<0.01 all  |  True
+    PASS  depth-4 parity 0 on m40 / TSS-m40 / CDS  |  frac0=1  |  True
+    PASS  RegulonDB promoter catalog loaded (C+S)  |  n_tss=1343  |  >=200
+    PASS  annotated -35 box family-sheet above GC nulls  |  see tss_box35  |  p_ge=0
+    PASS  TSS-m40 fold-disagreement near CDS interior  |  |fd_tss-fd_cds|<0.05  |  True
+    PASS  TSS strata kinematic-RC gap near zero  |  kin_rc<0.01 tss  |  True
+
+21. CONSTITUTIONAL POLES ON CODON PAIRS
+=====
+  objects
+    carrier_from_codon_pair; ab/horizon distances; pole occupancy vs GC shuffle
+
+    name        pairs  mean_ab mean_hor  eq_frac comp_frac  null_eq   p_eq
+    ecoli      123813   5.7078   6.2922   0.0274    0.0113   0.0165   0/12
+    yeast      199130   5.7792   6.2208   0.0306    0.0158   0.0197   0/12
+    chr22       75466   5.7935   6.2065   0.0341    0.0185   0.0230   0/12
+
+  checks
+    ok    check  |  measured  |  expect
+    PASS  xi: ab + horizon = 12 on live genome traffic  |  see means  |  sum=12 each
+    PASS  equality-horizon occupancy exceeds GC-shuffle null  |  eq_frac > null_eq  |  each genome
+    PASS  eq-fraction p-value recorded (k+1)/(m+1) style  |  p_eq in table  |  defined
+
+5. POLARITY, DUAL RC, STOP TREE, AFFINE FIBERS
+=====
+  objects
+    codon-RC = R_block o T_delta; fold commute on pair_inversion; W residual; stop tree
+
+  polarity by orbit
+    orbit                        charts delta(s)                fold-RC commute
+    orbit_elementary_axes             8 010101,101010          0/2048
+    orbit_pair_inversion              8 111111                 2048/2048
+    orbit_other                       8 010101,101010          0/2048
+    fold payload == bit-reversal: True
+    R_block columns universal across 24 charts: True
+
+  dual RC (kinematic 4-mer vs payload)
+    orbit_elementary_axes: kin==payload 0/256  family_flip 192/256  fold==kin 0/256  residual_rank=4 is_W=True
+    orbit_pair_inversion: kin==payload 0/256  family_flip 192/256  fold==kin 16/256  residual_rank=4 is_W=True
+    W = (0, 1, 10, 11, 20, 21, 30, 31, 32, 33, 42, 43, 52, 53, 62, 63)
+    word residual = XOR letterwise lambda (pair_inv samples): True
+
+  stop tree / sense beta1
+    stops: V=3 E=2 C=1 beta1_stop=0 (tree => 0)
+    beta1_full=27  beta1_sense=27  Trp—TGA adjacent=True  stop_leakage=0.8519
+
+  affine fiber geometry (pair_inversion chart)
+     aa   n comps  aff  component_aff
+      L   6     1    3  [3]
+      R   6     1    3  [3]
+      S   6     2    3  [1, 2]
+      A   4     1    2  [2]
+      G   4     1    2  [2]
+      P   4     1    2  [2]
+      T   4     1    2  [2]
+      V   4     1    2  [2]
+      *   3     1    2  [2]
+      I   3     1    2  [2]
+      C   2     1    1  [1]
+      D   2     1    1  [1]
+      E   2     1    1  [1]
+      F   2     1    1  [1]
+      H   2     1    1  [1]
+      K   2     1    1  [1]
+      N   2     1    1  [1]
+      Q   2     1    1  [1]
+      Y   2     1    1  [1]
+      M   1     1    0  [0]
+      W   1     1    0  [0]
+
+  checks
+    ok    check  |  measured  |  expect
+    PASS  pair_inversion WC polarity is the antipode 111111  |  shifts=('111111',)  |  shifts=(111111,)
+    PASS  elementary/other WC polarity is weight-3 (010101/101010)  |  elem=('010101', '101010')  |  weight-3 forms 010101/101010
+    PASS  fold payload = bit-reversal on GF(2)^6  |  fold_is_bitrev=True  |  True
+    PASS  codon-RC linear part is block-reverse on all charts  |  universal=True  |  True
+    PASS  fold o payload-RC commute counts by orbit  |  pair 2048/2048; elem 0/2048  |  pair all; elem/other none
+    PASS  kinematic 4-mer RC equals payload-RC as byte maps  |  eq=(0, 0)/256  |  (0, 0)
+    PASS  kinematic RC chirality residual equals W (all 24 charts)  |  rank=4 |W|=16  |  rank=4, same W everywhere
+    PASS  word chirality residual = XOR of letterwise residuals  |  additive=True  |  True on genomic sample words
+    PASS  stop fiber is a tree; sense beta1 = full beta1 = 27; Trp bridges TGA  |  b1_stop=0 b1_full=27 b1_sense=27 Trp-TGA=True  |  b1_stop=0; both beta1=27; Trp-TGA True
+    PASS  serine fiber disconnected (2 affine pieces)  |  S size=6 comps=2 aff=(1, 2)  |  size=6 comps=2
+
+4. SPECTRUM, NULLS, BUNDLE
+=====
+  objects
+    H(3,4) spectrum; Walsh intertwiner; dual cocycle; beta1 nulls N=80; bundle lite
+
+  H(3,4) spectrum
+    eigenvalues measured: (9.0, 5.0, 1.0, -3.0)
+    multiplicities measured: (1, 9, 27, 27)  target: (1, 9, 27, 27)
+    intertwiner multiplicities: (1, 9, 27, 27)  ok=True
+
+  dual-chart cocycle
+    orbit_elementary_axes: charts=8 mean_commute=0.0000 mean_S2=0.59961 full_commute=0 zero_commute=8
+    orbit_pair_inversion: charts=8 mean_commute=1.0000 mean_S2=0.63086 full_commute=8 zero_commute=0
+    gaps (pair - elementary): commute=1.00000 S2=0.03125
+    S2(pair)>S2(elem) on NCBI tables: 22/22
+
+  beta1 null isolation (standard code)
+    null         def                                                        n  eq27    mean  min  max
+    N1_degen     shuffle AA labels freely                                  80     0   0.312    0    3
+    N2_boxes     shuffle within codon boxes                                80    30  26.250   25   28
+    N4_stops     shuffle sense; keep stop set                              80     0   0.500    0    4
+    N3_geom      preserve fiber sizes+components                           80    80  27.000   27   27
+
+  NCBI beta1 by table
+     tid name                   beta1
+       1 standard                  27
+       2 vertebrate_mito           25
+       3 yeast_mito                25
+       4 mold_protozoan_mito       27
+       5 invertebrate_mito         28
+       6 ciliate_nuclear           28
+       9 echinoderm_mito           30
+      10 euplotid_nuclear          28
+      11 bacterial_plastid         27
+      12 alt_yeast_nuclear         24
+      13 ascidian_mito             26
+      14 alt_flatworm_mito         30
+      16 chlorophycean_mito        27
+      21 trematode_mito            29
+      22 scenedesmus_mito          26
+      23 thraustochytrium_mito     27
+      24 rhabdopleuridae_mito      27
+      25 sr1_gracilibacteria       27
+      26 pachysolen_nuclear        24
+      29 mesodinium_nuclear        30
+      30 peritrich_nuclear         28
+      33 cephalodiscidae_mito      28
+
+  translation bundle (tid=1)
+    vert=69 horiz=219 sum=288 (H(3,4) edges=288) beta1=27 serine_comp=2 stop_leakage=0.8519
+    grade-3 rank20=12 rank21=13 top_singular=15.22
+  moduli graph: nodes=22 edges_kept(d<=4)=141
+
+  checks
+    ok    check  |  measured  |  expect
+    PASS  H(3,4) spectrum multiplicities  |  mult=(1, 9, 27, 27)  |  mult=(1, 9, 27, 27)
+    PASS  intertwiner multiplicities match H(3,4)  |  mult=(1, 9, 27, 27)  |  mult=(1, 9, 27, 27)
+    PASS  elementary orbit fold/RC commute count  |  zero_commute=8/8  |  zero_commute=8/8
+    PASS  pair_inversion orbit: fold/RC always fully commute  |  full_commute=8/8  |  full_commute=8/8
+    PASS  cocycle commute gap (pair - elem) > 0.5  |  gap=1.00000  |  gap>0.5
+    PASS  cocycle S2 gap (pair - elem) > 0  |  gap=0.03125  |  gap>0
+    PASS  pair S2 > elem S2 on every NCBI table  |  22/22  |  22/22
+    PASS  beta1=27 isolated by fiber geometry (N3), not N1/N2/N4  |  N3 mean=27.000; others=[0.312, 26.25, 0.5]  |  N3 mean~27; others far from 27
+    PASS  grade-3 rank of 20 AA indicators >= 1  |  rank20=12  |  rank20>=1
+    PASS  vert+horiz partition of H(3,4) edges  |  69+219=288  |  sum=288
+    PASS  serine fiber has 2 components  |  components=2  |  components=2
+    PASS  moduli nodes cover all NCBI tables  |  nodes=22  |  nodes=22
+
+7. Theta = S o F o R_block; CHIRALITY POLE MAP
+=====
+  objects
+    Theta = S o F o R_block; pair_inversion pole map; Z_n; delta_BU, Q_256
+
+  continuous constants
+    delta_BU=0.1953421782576621  rho=0.9793004544973297  Delta=0.0206995455026703  Q_256= 5/256
+
+  Theta factorization
+    Theta = S o F o R_block on letters: 256/256
+
+  chirality pole exchange s |-> 6-s
+    pair payload-RC  256/256
+    pair kinematic   96/256
+    elem payload-RC  0/256
+    elem kinematic   56/256
+
+  word palindrome on XOR chirality (pair, payload-RC*)
+    odd  n shell flip   4352/4352
+    even n shell keep   5120/5120
+
+  checks
+    ok    check  |  measured  |  expect
+    PASS  Theta is the stage palindrome S o F o R_block  |  256/256  |  256/256
+    PASS  pair_inversion payload-RC is the chirality pole map s |-> 6-s  |  256/256  |  256/256
+    PASS  elementary payload-RC chirality-pole matches  |  0/256  |  0/256
+    PASS  odd-length payload-RC* inverts XOR-chirality shell  |  4352/4352  |  all sampled
+    PASS  even-length payload-RC* preserves XOR-chirality shell  |  5120/5120  |  all sampled
+    PASS  delta_BU equals kernel closed form 4 arctan(k(pi/4) k(m_a))  |  0.1953421782576621  |  BU_HOLONOMY_ANGLE
+    PASS  byte-horizon aperture is 5/256  |  5/256  |  5/256
+    PASS  kinematic 4-mer RC chirality-pole matches on pair_inversion  |  pair kin 96/256  |  < 256
+
+8. NESTED WALL-BREACH; STAGE ANATOMY; SERINE ANTIPODE
+=====
+  objects
+    L_sense span; P_fold middle plane; stop/serine keys; stage anatomy
+
+  stage anatomy (payload bit p -> byte bit p+1)
+    first    payload bits 4,5  byte stages ONA|UNA
+    middle   payload bits 2,3  byte stages BU|BU
+    wobble   payload bits 0,1  byte stages UNA|ONA
+
+  nested ranks and fold intersections (24 charts)
+    orbit_elementary_axes: charts=8 rank_profiles={(4, 5, 5, 6): 8} fold_|I|_profiles={(0, 1, 1, 3): 8} ser_antipode_chords=0/64 agy=purine_tcn⊕A=0/8
+    orbit_pair_inversion: charts=8 rank_profiles={(4, 5, 5, 6): 8} fold_|I|_profiles={(0, 1, 1, 3): 8} ser_antipode_chords=16/64 agy=purine_tcn⊕A=8/8
+    orbit_other: charts=8 rank_profiles={(4, 5, 5, 6): 8} fold_|I|_profiles={(0, 1, 1, 3): 8} ser_antipode_chords=0/64 agy=purine_tcn⊕A=0/8
+
+  sense-component sizes (connectivity governs drift)
+    n_components=21  sizes=(6, 6, 4, 4, 4, 4, 4, 4, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1)
+
+  checks
+    ok    check  |  measured  |  expect
+    PASS  sense span rank 4 and fold plane closed on all 24 charts  |  rank=4, |I_fold|=0 on 24/24  |  4, empty intersection
+    PASS  stop opens exactly dim-1 of the fold plane (rank 5)  |  rank=5, |I_fold|=1 on 24/24  |  5, one nonzero fold vector
+    PASS  serine opens exactly dim-1 of the fold plane (rank 5)  |  rank=5, |I_fold|=1 on 24/24  |  5, one nonzero fold vector
+    PASS  stop+serine jointly fill the fold plane (rank 6)  |  rank=6, I_fold=P_fold\{0} on 24/24  |  6, three nonzero fold vectors
+    PASS  pair_inversion: AGY = {TCA,TCG} XOR antipode (2 antipodal pairs)  |  agy_match=8/8; antipode_chords=16/64  |  8/8 charts; exactly 2 antipodal chords per chart
+    PASS  elementary/other: serine split free of the antipodal AGY identity  |  0 antipode chords and 0 AGY=purine_tcn⊕A on 16 charts  |  0/16
+    PASS  codon positions occupy the three interior stage-pairs of the byte  |  (('first', (4, 5), ('ONA', 'UNA')), ('middle', (2, 3), ('BU', 'BU')), ('wobble', (0, 1), ('UNA', 'ONA')))  |  first=ONA|UNA, middle=BU|BU, wobble=UNA|ONA
+    PASS  sense synonymous-graph component census  |  n=21 sizes=(6, 6, 4, 4, 4, 4, 4, 4, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1)  |  21 components; (6,6,4^6,3,2^10,1,1)
+
+9. IDENTITY AT THE FOLD; TWO AXES; STOP SQUARE; TRIPLETS
+=====
+  objects
+    hydropathy eta^2 by codon pos (KD external); Rumer vs WC; stop square; triplet address
+
+  hydropathy eta^2 (standard code)
+    first=0.0960  middle=0.7564  wobble=0.0060
+    NCBI tables with middle > first and middle > wobble: 22/22
+    middle eta^2 range across tables: min=0.5834 max=0.7721
+
+  two root involutions on the 16 doublets
+    complete (4-fold) boxes: ('AC', 'CC', 'CG', 'CT', 'GC', 'GG', 'GT', 'TC')
+    Rumer: complete -> incomplete = 8/8
+    WC-RC: GC-strength preserved = 16/16
+    WC-RC: complete -> complete = 6/8
+
+  stop as punctured affine square (pair_inversion)
+    square ('TAA', 'TAG', 'TGA', 'TGG') affine_rank=2  Trp_is_corner=True
+
+  triplet addressability
+    4^1=4  4^2=16  4^3=64  labels_needed=21  payload_bits=6
+
+  checks
+    ok    check  |  measured  |  expect
+    PASS  standard-code middle base explains hydropathy (eta^2~0.756)  |  eta2=(0.0960,0.7564,0.0060)  |  middle > first > wobble and middle eta^2 > 0.5
+    PASS  middle base dominates hydropathy on every NCBI table  |  22/22  |  22/22
+    PASS  Rumer root map sends all 8 complete boxes to incomplete  |  8/8  |  8/8
+    PASS  WC reverse-complement preserves GC-strength on all 16 doublets  |  16/16  |  16/16
+    PASS  WC reverse-complement keeps 6 of 8 complete boxes complete  |  6/8  |  6/8
+    PASS  stop+Trp form an affine rank-2 square  |  aff=2 size=4  |  aff=2 size=4
+    PASS  stop occupies three vertices; Trp is the completing corner  |  Trp_corner=True  |  True
+    PASS  triplets are the minimal 2-bit words addressing 21 labels on 6 bits  |  4^2=16 < 21 <= 4^3=64  |  16 < 21 <= 64
+
+10. THETA_KIN; CYCLE INTERTWINER; SUBSTITUTION COST; STOP LEAKAGE
+=====
+  objects
+    Theta_kin; cycle space; intertwiner j-profile; sub cost; stop leakage
+
+  Theta_kin (pair_inversion)
+    byte kin!=payload 256/256  q kin!=payload 252/256  (q agree on 0 bytes)  lambda in W 256/256  multi-image signatures 128  max images 2
+
+  cycle intertwiner
+    n_cycles=27 beta1=27  cycle_diff_rank=2  slot_tot=(0, 27, 0, 0)  H34_j2=27
+
+  synonymous substitution cost
+    {'outer_only': 67}
+
+  stop leakage map (stop -> adjacent sense codons)
+    TAA -> ('AAA', 'CAA', 'GAA', 'TAC', 'TAT', 'TCA', 'TTA')
+    TAG -> ('AAG', 'CAG', 'GAG', 'TAC', 'TAT', 'TCG', 'TGG', 'TTG')
+    TGA -> ('AGA', 'CGA', 'GGA', 'TCA', 'TGC', 'TGG', 'TGT', 'TTA')
+
+  checks
+    ok    check  |  measured  |  expect
+    PASS  kinematic RC differs from payload-RC on every byte  |  256/256  |  256/256
+    PASS  kinematic q-residual lambda(b) lies in W for every byte  |  256/256  |  256/256
+    PASS  some Omega signatures carry multiple kinematic q-images  |  multi=128 max=2  |  multi>0, max>=2
+    PASS  fundamental cycle count equals beta1=27  |  n_cycles=27 beta1=27  |  27
+    PASS  fundamental cycle count equals H(3,4) j=2 multiplicity (27)  |  n_cycles=27  |  27
+    PASS  sense-synonymous edges are outer-plane only (67 edges, 0 fold)  |  {'outer_only': 67}  |  outer_only=67, fold_only=0
+    PASS  every stop codon leaks to sense by one-base adjacency  |  stops=3  |  3 stops, each with neighbors
+    PASS  Trp codon TGG is one-base adjacent to TGA stop  |  {'TAA': ('AAA', 'CAA', 'GAA', 'TAC', 'TAT', 'TCA', 'TTA'), 'TAG': ('AAG', 'CAG', 'GAG', 'TAC', 'TAT', 'TCG', 'TGG', 'TTG'), 'TGA': ('AGA', 'CGA', 'GGA', 'TCA', 'TGC', 'TGG', 'TGT', 'TTA')}  |  TGG in TGA neighbors
+
+11. QU BEC WALK; GAUGE SELECTION; SHELL VELOCITY
+=====
+  objects
+    chi-shell hist; binomial null; low-shell frac; S2 gauge selection
+
+  ORF shell meters (pair_inversion)
+    name     status    pairs  mean_sh  L1_null low_frac
+    ecoli    ok       605166   2.8602   0.0834   0.1374
+    yeast    ok       966452   2.8952   0.0759   0.1451
+    chr22    SKIP          0      nan      nan      nan
+
+  gauge selection
+    S2(pair) > S2(elem) on NCBI tables: 22/22  pair octet tied top on table 1: 24/24
+
+  checks
+    ok    check  |  measured  |  expect
+    PASS  real ORFs deviate from binomial shell null (L1 > 0.02)  |  L1=[0.0834, 0.0759]  |  all ok genomes > 0.02
+    PASS  mean chi-shell below binomial expectation (3.0) on real ORFs  |  mean=[2.8602, 2.8952]  |  all ok genomes < 3.0
+    PASS  pair_inversion S2 wins every NCBI table vs elementary  |  22/22  |  22/22
+    PASS  pair_inversion orbit S2 exceeds elementary on table 1  |  pair octet tied top tier 24/24  |  pair S2 > elem S2
+
+22. QuBEC ORDER PARAMETERS ON ORFs
+=====
+  objects
+    shell hist -> lambda fit; rho=lam/(1+lam); eta; M2; GC-matched null
+
+    name      genes    pairs    mean     lam    rho     eta       M2 null_eta  p_eta
+    ecoli       390   123813  2.8539  0.9071 0.4757  0.0487   4038.2   0.0040  12/12
+    yeast       399   199130  2.8896  0.9290 0.4816  0.0368   4062.9   0.0067  12/12
+    chr22       200    75466  2.8967  0.9334 0.4828  0.0344   4067.0   0.0043  12/12
+
+  checks
+    ok    check  |  measured  |  expect
+    PASS  eta > 0 on every genome (damped vs thermal)  |  eta=[0.0487, 0.0368, 0.0344]  |  all > 0
+    PASS  M2 < 4096 (below fully thermalized support)  |  M2=[4038.2, 4062.9, 4067.0]  |  all < 4096
+    PASS  eta above GC-matched null (p_eta >= 10/12)  |  p=[12, 12, 12]  |  all >= n_null-2
+
+6. W, PAYLOAD-RC WORD LAW, BOX beta1, FAMILY SHEET
+=====
+  objects
+    W rank-4 residual; payload-RC anti-action; Theta; Z_n; beta1=27; family K4
+
+  W
+    constraints match residual set: True  rank=4  R_bit(W)=W: True  antipode in W: True  R_block(W)=W: False
+    annihilator masks (bit1+bit3, bit2+bit4) = ('001010', '010100')
+
+  payload-RC word law
+    orbit                        charts Theta^2=id        law holds  Z_n n=1..4
+    orbit_pair_inversion              8       True 100352/100352       ((0, 0, 63), (0, 0, 0), (0, 63, 0), (0, 63, 63))
+    orbit_elementary_axes             8       True 0/256          ((0, 21, 63), (0, 21, 21), (0, 63, 21), (0, 63, 63))
+
+  synonymous cycle rank (sum = beta1 of the code)
+    sum=27  full K4 boxes=8  Ile K3=True  Leu extra=1  Arg extra=1  Ser disconnected=True
+
+  family sheet / serine
+    family=(eps_b << 1)|eps_a: True  Ser fibers WC-complements: True  Ser signatures pair under eps_b flip: True
+    amino acids with all 4*degeneracy length-1 signatures distinct: 19/20
+
+  synonymous edges by codon position
+    pos0,pos1,pos2 = (4, 1, 64)  sense pos1 = 0  pos1 edges = (('TAA', 'TGA', '*'),)
+
+  NCBI table moves vs table 1
+    t01  n_diff= 0  identical
+    t02  n_diff= 4  sense_to_sense:1,sense_to_stop:2,stop_to_sense:1
+    t03  n_diff= 6  sense_to_sense:5,stop_to_sense:1
+    t04  n_diff= 1  stop_to_sense:1
+    t05  n_diff= 4  sense_to_sense:3,stop_to_sense:1
+    t06  n_diff= 2  stop_to_sense:2
+    t09  n_diff= 4  sense_to_sense:3,stop_to_sense:1
+    t10  n_diff= 1  stop_to_sense:1
+    t11  n_diff= 0  identical
+    t12  n_diff= 1  sense_to_sense:1
+    t13  n_diff= 4  sense_to_sense:3,stop_to_sense:1
+    t14  n_diff= 5  sense_to_sense:3,stop_to_sense:2
+    t16  n_diff= 1  stop_to_sense:1
+    t21  n_diff= 5  sense_to_sense:4,stop_to_sense:1
+    t22  n_diff= 2  sense_to_stop:1,stop_to_sense:1
+    t23  n_diff= 1  sense_to_stop:1
+    t24  n_diff= 3  sense_to_sense:2,stop_to_sense:1
+    t25  n_diff= 1  stop_to_sense:1
+    t26  n_diff= 1  sense_to_sense:1
+    t29  n_diff= 2  stop_to_sense:2
+    t30  n_diff= 2  stop_to_sense:2
+    t33  n_diff= 4  sense_to_sense:2,stop_to_sense:2
+
+  checks
+    ok    check  |  measured  |  expect
+    PASS  W is the interior-diagonal 4-space {x1=x3, x2=x4}  |  set_eq=True rank=4  |  True, rank 4
+    PASS  W is fold-invariant and contains the antipode  |  R_bit=True antipode=True  |  True, True
+    PASS  payload-RC word law holds on pair_inversion  |  100352/100352  |  all sampled words on all 8 charts
+    PASS  pair_inversion residual Z_n is Klein period-4 (identity at n=2)  |  ((0, 0, 63), (0, 0, 0), (0, 63, 0), (0, 63, 63))  |  ((0,0,63),(0,0,0),(0,63,0),(0,63,63))
+    PASS  Theta is an involution  |  True  |  True
+    PASS  beta1=27 = 8*3 + Ile + Leu extra + Arg extra  |  sum=27 K4=8 IleK3=True Leu+1 Arg+1  |  27 = 8*3 + 1 + 1 + 1
+    PASS  family bits are the (eps_a, eps_b) K4  |  True  |  True
+    PASS  serine fibers are WC complements and share signatures after eps_b flip  |  wc=True paired=True  |  True, True
+    PASS  unique pos1 synonymous edge is the stop path TAA—TGA; sense pos1 is empty  |  pos=(4, 1, 64) sense_pos1=0 edges=(('TAA', 'TGA', '*'),)  |  pos1=1, sense 0, (TAA, TGA, *)
+    PASS  elementary residual under pair_inversion Z table  |  elem n=1 with pair Z: 0/256; elem Z_n=((0, 21, 63), (0, 21, 21), (0, 63, 21), (0, 63, 63))  |  partial; Z_2 nonzero
+
+12. SPLICE HINGE; SURGERY; RESTRICTION; SKEW
+=====
+  objects
+    H_J hinge; splice fd; surgery moves; restriction parity; CDS skew
+
+  splice (pair_inversion chr22)
+    n_donor=8003  mean_fd donor=3.1593  acceptor=2.1546  donor_null_p=0.0247
+
+  NCBI surgery moves vs table 1
+    {'sense_to_sense': 28, 'sense_to_stop': 4, 'stop_to_sense': 22}
+
+  restriction site length parity (strict palindromes)
+    n=21  len=2 mod4=12  len=0 mod4=9  p2=0.571  p0=0.429  binomial_p_vs_1/2=0.6636
+
+  genome skew
+    ecoli: GC_skew=0.0555  AT_skew=0.0072
+    yeast: GC_skew=0.0232  AT_skew=0.0820
+
+  hinge W-membership vs uniform baseline
+    W hits=60/252  W_frac=0.2381 baseline=0.2381 (15/63)  two-sided binomial p=1.0000
+
+  checks
+    ok    check  |  measured  |  expect
+    PASS  splice donor fold-disagreement exceeds acceptor on pair chart  |  donor=3.1593 acceptor=2.1546  |  donor > acceptor, donor > 2.5
+    PASS  packing hinge W-membership consistent with uniform GF(2)^6 baseline  |  W_hits=60/252 W_frac=0.2381 vs 0.2381  |  two-sided binomial p > 0.01 against p0 = 15/63
+    PASS  NCBI variant tables are low-complexity surgery (<120 total moves)  |  total=54  |  <120
+    PASS  Type II palindromes lean length n=2 mod 4 over n=0 mod 4 (direction only)  |  mod2=12 mod0=9 binomial_p=0.6636  |  mod2 > mod0; significance deferred to REBASE-scale (S4)
+    PASS  genome GC/AT skew meters are finite on ingested CDS  |  (('ecoli', 0.05549753304282062, 0.007157215356463578), ('yeast', 0.02315295238419271, 0.0820120519909372))  |  |skew|<=1
+
+13. NCBI MODULI; WALL CLOSURE; DEGENERACY PROFILE
+=====
+  objects
+    per-table wall (fold_syn=0); beta1 band [24,30]; fiber-size degeneracy vs standard; breaches = fold-plane openers on nonstandard tables
+
+     tid beta1 outer fold  wall  deg_ok Ser_c
+       1    27    67    0  True    True     2
+       2    25    64    0  True   False     2
+       3    25    65    0  True   False     2
+       4    27    68    0  True   False     2
+       5    28    69    0  True   False     2
+       6    28    70    0  True   False     2
+       9    30    71    0  True   False     2
+      10    28    69    0  True   False     2
+      11    27    67    0  True    True     2
+      12    24    63    0  True   False     3
+      13    26    67    0  True   False     2
+      14    30    72    0  True   False     2
+      16    27    67    1 False   False     2
+      21    29    70    0  True   False     2
+      22    26    64    1 False   False     2
+      23    27    65    0  True   False     2
+      24    27    67    1 False   False     2
+      25    27    68    0  True   False     2
+      26    24    63    0  True   False     2
+      29    30    72    0  True   False     2
+      30    28    70    0  True   False     2
+      33    28    69    1 False   False     2
+
+    wall_closed=18/22  breaches=[16, 22, 24, 33]  beta1_band=22/22  deg_match=2/22
+
+  checks
+    ok    check  |  measured  |  expect
+    PASS  variant tables: at most one sense fold-plane syn edge (wall almost closed)  |  fold<=1 on 22/22 tables  |  all
+    PASS  every NCBI table beta1 in [24,30]  |  22/22  |  all
+    PASS  NCBI tables differ from standard by <=6 codons (low-diff surgery)  |  22/22  |  >=20
+    PASS  serine two-component on >= n-1 tables  |  21/22  |  >=21
+    PASS  exactly 18/22 tables wall-closed (L_sense off fold)  |  18/22  |  18/22
+    PASS  four wall breaches open the fold plane (fold_syn>=1)  |  breaches=[16, 22, 24, 33]  |  4 fold openers
+
+15. THETA_KIN SIGNATURE LAW
+=====
+  objects
+    Theta_kin signatures; lambda in W; two-image byte cover
+
+  Theta_kin signature law (pair_inversion)
+    signatures=128 multi-image=128 lambda=0x1F uniform=True in_W=True byte_cover=True
+    cover arithmetic: 128 sigs x 2 images = 256 bytes
+
+  checks
+    ok    check  |  measured  |  expect
+    PASS  every length-1 Omega signature carries exactly two kinematic images  |  128/128  |  128/128
+    PASS  image difference is the global constant lambda = 0x1F  |  lambda=0x1F  |  uniform, 0x1F (= antipode XOR e_top)
+    PASS  lambda lies in the interior-diagonal space W  |  in_W=True  |  True
+    PASS  256 bytes biject to (signature, kinematic q-image) pairs  |  cover_ok=True 128x2=256  |  True
+
+16. OMEGA WALK VS GC-MATCHED SHUFFLES; PER-GENE OCCUPATION
+=====
+  objects
+    per-gene mean chi-shell; GC/AT-class shuffle null (40); low-shell frac
+
+    name      genes     pairs      obs     null   p_low  lowfrac
+    ecoli      1966    602524   2.8548   2.9904   0/40   0.1388
+    yeast      1995    964321   2.8920   2.9789   0/40   0.1461
+    chr22       300    108556   2.9006   2.9893   0/40   0.1493
+
+  checks
+    ok    check  |  measured  |  expect
+    PASS  real ORFs smoother than every GC-matched shuffle replicate  |  p_low per genome = [0, 0, 0] of 40  |  p_low == 0 on every genome (obs below all nulls)
+    PASS  low-shell fraction above 0.10 on every genome  |  {'ecoli': 0.1388, 'yeast': 0.1461, 'chr22': 0.1493}  |  > 0.10
+
+17. SPLICE RC-MIRROR; CHARGAFF PARITY; SKEW WALK
+=====
+  objects
+    RC-mirror splice; Chargaff |GC| windows; chr22 skew-walk switches
+
+    splice windows n=8000
+      donor=3.1593 acc=2.1546 RC(donor)=2.1877 RC(acc)=2.3062
+      gap identity=1.0046 gap mirror=0.0331
+    windows: frac|GC|<0.05=0.901 median|AT|=0.0322
+    walk: blocks=1016 sign_switches=306
+
+  checks
+    ok    check  |  measured  |  expect
+    PASS  donor/acceptor asymmetry closes under reverse complementation  |  gap_id=1.0046 gap_mirror=0.0331  |  gap_mirror <= 0.25 * gap_identity
+    PASS  Chargaff second-parity holds in most 100 kb windows  |  frac|GC|<0.05=0.901  |  > 0.5
+    PASS  cumulative skew walk is defined with sign structure  |  blocks=1016 switches=306  |  blocks>500, switches>0
+
+18. SURGERY MODULI NEIGHBORHOOD; C(6,3) CANONICAL TEST
+=====
+  objects
+    one-move surgery moduli; C(6,3) fiber directions; T5 annihilator mask
+
+    one-move admissible=1159/1159 NCBI tables inside=22/22
+    examples (('AAA', 'K', 'A', 27, 0), ('AAA', 'K', 'C', 27, 0), ('AAA', 'K', 'D', 27, 0), ('AAA', 'K', 'E', 27, 0), ('AAA', 'K', 'F', 27, 0))
+    C(6,3): best t=0b001010 hits 10/19 fiber direction sets
+
+  checks
+    ok    check  |  measured  |  expect
+    PASS  one-reassignment local constraints are non-rigid (all moves admissible)  |  1159/1159  |  admissible == total (negative local rigidity; U8)
+    PASS  every NCBI table satisfies the neighborhood constraints  |  22/22  |  22/22
+    PASS  no literal translation realizes all fibers as weight-3 shells  |  10/19  |  < all fibers (C(6,3) not literal)
+    PASS  best-aligning translation equals the T5 annihilator mask  |  t=0b001010  |  t=0b001010
+
+23. COMPILED ORF SIGNATURES VS GC SHUFFLE
+=====
+  objects
+    omega_word_signature on ORF byte stream; unique count; entropy; TV vs shuffle
+
+    name       orfs  unique       H  null_H      TV   p_TV
+    ecoli       150      73   5.878   7.046  0.9483    0/8
+    yeast       150      79   6.070   7.120  0.9342    0/8
+    chr22       150     119   6.703   7.159  0.9092    0/8
+
+  checks
+    ok    check  |  measured  |  expect
+    PASS  compiled signatures collide (unique < n_orfs)  |  unique=[73, 79, 119]  |  unique < n
+    PASS  signature entropy at or below GC-shuffle null  |  see H vs null_H  |  H <= null_H
+    PASS  TV(obs, null) positive  |  TV=[0.9483, 0.9342, 0.9092]  |  all > 0
+
+24. PLAQUETTE DEFECT WEIGHTS ON ORFs
+=====
+  objects
+    q6(b_i) XOR q6(b_{i+1}) weight hist; binomial + composition-shuffle null
+
+    name        pairs  mean_wt  L1_bin  null_L1   p_L1 hist                        
+    ecoli      159789   2.9992  0.0171   0.0136    0/8 (2594, 14456, 38499, 49188, 37598, 14888, 2566)
+    yeast      236283   3.0024  0.0129   0.0210    8/8 (3896, 21797, 56057, 73005, 55041, 22591, 3896)
+    chr22      179010   3.0224  0.0469   0.0190    0/8 (2164, 14816, 42150, 57827, 44068, 15733, 2252)
+
+  checks
+    ok    check  |  measured  |  expect
+    PASS  defect histograms computed  |  genomes=3  |  >=1
+    PASS  mean defect weight in [2.5, 3.5]  |  means=[2.9992, 3.0024, 3.0224]  |  [2.5,3.5]
+    PASS  L1 vs composition null recorded  |  see p_L1  |  defined
+
+25. FLAT-BYTE (TRIVIAL-CONNECTION) FREQUENCY
+=====
+  objects
+    16 fold-disagreement-0 bytes; frac in CDS / flanks / windows vs GC shuffle
+
+    n_flat_bytes=16
+    stratum                   n  flat_frac  null_frac
+    cds_ecoli            203763     0.0699     0.0671
+    cds_yeast            310185     0.0706     0.0668
+    cds_chr22            226398     0.0602     0.0622
+    splice_donor           5000     0.0284     0.0291
+    noncoding_windows         0        nan        nan
+
+  checks
+    ok    check  |  measured  |  expect
+    PASS  exactly 16 flat bytes (fd weight 0)  |  n=16  |  16
+    PASS  flat fractions computed on strata  |  n_strata=5  |  >=1
+    PASS  CDS flat fraction defined  |  see table  |  defined
+
+26. DEPTH-4 CLOSURE ON GENOMIC FRAMES
+=====
+  objects
+    sliding 4-byte frames -> signature; parity=0 law; tau histogram; weight vs shuffle
+
+    frames=512748
+    stratum           frames   inv_ok  tau_classes  wt_mean  null_wt
+    cds_ecoli         203163 203163/203163          512   3.0053   2.9991
+    cds_yeast         309585 309585/309585          512   3.0013   3.0015
+
+  checks
+    ok    check  |  measured  |  expect
+    PASS  every 4-byte frame has parity 0 (pure translation, involutory)  |  frames=512748  |  all parity 0
+    PASS  signature squared is identity (involution law)  |  probe  |  true
+    PASS  tau histograms computed per stratum  |  strata=2  |  >=1
+
+27. SYNONYMOUS RECODING SEPARATION (U13 MECHANISM)
+=====
+  objects
+    resample each codon within its AA fiber; protein fixed; shell walk re-run
+
+    name      genes      obs     null  p_obs  recoded  p_rec
+    ecoli       243   2.8592   2.9895    0/8   2.9362    0/8
+    yeast       249   2.8836   2.9806    0/8   2.9119    0/8
+
+  checks
+    ok    check  |  measured  |  expect
+    PASS  original ORFs below GC-shuffle null  |  see p_obs  |  <= 1/10 of nulls
+    PASS  synonymous-recoding null computed per genome  |  m_null=8  |  >=1
+
+28. THREE-SECTOR SKEW DECOMPOSITION AT ORI/TER
+=====
+  objects
+    E. coli K-12 replicon; payload/family/W channels vs per-window GC skew; OLS additivity
+
+    windows=1133 (win=4096)
+    channel         sec0-sec1    beta_skew
+    payload           -0.0289     +0.98442
+    family            +0.0362     -0.97965
+    w_resid           +0.0025     -0.01337
+    additivity R^2 (skew ~ 3 channels): 0.9941
+
+  checks
+    ok    check  |  measured  |  expect
+    PASS  replicon loaded and segmented  |  windows=1133  |  >=100
+    PASS  additivity fit defined on all channels  |  R2=0.9941  |  defined
+
+28c. PATH-ORDERED REPLICHORE HOLONOMY (ORI/TER)
+=====
+  objects
+    open arcs TER->ORI and ORI->TER; Omega signature path-compile; even-truncation circle product; matched tau weight and phi density
+
+    half                        n_bp  n_bytes  mean_pc   phi_open  par  tau_wt
+    left_ter_to_ori          2337505   146094   2.9950  14245.068    0       4
+    right_ori_wrap_ter       2304147   144009   3.0025  14077.302    1       4
+
+    raw_product parity=1 tau_wt=4  trunc_product_parity=0  phi_density L/R=0.09751/0.09775 rel=0.0025
+
+  checks
+    ok    check  |  measured  |  expect
+    PASS  replichore halves loaded at ori/ter cuts  |  left+right  |  present
+    PASS  both halves defect mean popcount near 3  |  see mean_pc  |  [2.9,3.1]
+    PASS  even-truncation circle product has parity 0  |  parity=0  |  0
+    PASS  half-path tau weights equal (conjugacy invariant)  |  equal=True  |  True
+    PASS  half-path phi density matched within 2%  |  rel=0.0025  |  <0.02
+
+29. REBASE TYPE II PALINDROMIC LENGTH PARITY
+=====
+  objects
+    REBASE v608 withrefm; palindromic sites; length mod 4 counts; BF vs blind null
+
+    enzymes_parsed=6115 palindromic=3575
+    len%4==2 : 1722
+    len%4==0 : 1401
+    Bayes factor (mod2 vs mod0, uniform prior): 3.355e+05
+
+  checks
+    ok    check  |  measured  |  expect
+    PASS  REBASE parsed at scale  |  n=6115  |  >3000
+    PASS  palindromic mod-4 counts computed  |  1722 vs 1401  |  >100 total
+
+30. SHELL-WALK VS HYDROPATHY BY CELLULAR LOCATION
+=====
+  objects
+    UniProt reviewed E. coli KW classes; per-gene mean shell vs KD hydropathy; Pearson r
+
+    locus        genes  mean_shell   mean_KD  pearson
+    cytoplasm      194      2.8852    -0.213   -0.077
+    membrane       322      2.7996     0.315   -0.474
+    periplasm       57      2.8469    -0.218   -0.186
+
+  checks
+    ok    check  |  measured  |  expect
+    PASS  location classes matched to CDS  |  strata=3  |  >=2
+    PASS  shell-hydropathy correlations defined  |  see pearson  |  defined
+
+40. WALL DIRECT SUM: H = L_SENSE ⊕ P_FOLD
+=====
+  objects
+    L_sense; P_fold; stop/ser BU projections; bit-fold on B
+
+    rank_sense=4 sense=outer=True meet_fold_0=True
+    stop_BU=000100 ser_BU=001100 fold(stop)=001000 fold(ser)=001100 stop XOR ser=001000
+    keys_span_fold=True outcome_B_ser_fold_fixed=True
+
+  checks
+    ok    check  |  measured  |  expect
+    PASS  rank L_sense = 4  |  4  |  4
+    PASS  L_sense equals the outer plane O  |  True  |  True
+    PASS  L_sense ∩ P_fold = {0}  |  True  |  True
+    PASS  H = L_sense ⊕ P_fold (exact direct sum)  |  see above  |  True
+    PASS  π_BU(stop) and π_BU(ser) span P_fold  |  span=True  |  True
+    PASS  fold outcome B: ser BU-fixed 11; stop oriented 10  |  outcome_B=True  |  True
+
+41. KERNEL PERCOLATION LADDER (WALL → OMEGA ORBITS)
+=====
+  objects
+    sense / +stop / +ser / full; predicted (2^r)^2; measured |Reach|, |U|, |V|
+
+    generators   rank  reach predict  |U|  |V|
+    sense           4    256     256   16   16
+    sense_stop      5   1024    1024   32   32
+    sense_ser       5   1024    1024   32   32
+    full            6   4096    4096   64   64
+
+  checks
+    ok    check  |  measured  |  expect
+    PASS  sense generators: |Reach|=256  |  256  |  256
+    PASS  sense+stop: |Reach|=1024  |  1024  |  1024
+    PASS  sense+serine: |Reach|=1024  |  1024  |  1024
+    PASS  full (sense+stop+ser): |Reach|=4096  |  4096  |  4096
+    PASS  payload-origin percolation ladder matches square-root law  |  True  |  True
+
+42. BU PROJECTION OF COMMUTATOR / DIFFERENCE DEFECTS
+=====
+  objects
+    sense-synonymous edges; stop key; serine chords; BU defect classes
+
+    sense_edges=134 sense_bu_nonzero=0 stop_BU=000100 ser_BU=001100 full_BU_classes=('000000', '000100', '001000', '001100')
+
+  checks
+    ok    check  |  measured  |  expect
+    PASS  all sense-synonymous defects have π_BU=0  |  nonzero=0/134  |  0
+    PASS  stop key has BU weight 1  |  wt=1  |  1
+    PASS  serine key has BU weight 2 (fold-fixed 11)  |  wt=2  |  2
+    PASS  stop+serine fill all four BU classes {00,10,01,11}  |  (0, 4, 8, 12)  |  (0,4,8,12)
+
+43. FOLD AS WEYL REFLECTION OF BU (FINITE)
+=====
+  objects
+    byte fold P; W2/W2' depth-4 half-words; F=W2∘W2'; genomic BU keys under bit-fold
+
+    fold_involutive=True q(fold)=bitrev6=True W2/W2'/F involutions=True/True/True
+    fold(W2)=W2'=True fold(W2')=W2=True fold(F)=F=True reverse(W2)=W2'=True
+    genomic: bit-fold swaps stop BU 10↔01 and fixes ser 11: True
+
+  checks
+    ok    check  |  measured  |  expect
+    PASS  byte fold P is an involution on all 256 bytes  |  True  |  True
+    PASS  q6(P(b)) equals bit-reversal of q6(b)  |  True  |  True
+    PASS  W2, W2', and F=W2∘W2' are involutions on Omega  |  see flags  |  True
+    PASS  fold exchanges W2 ↔ W2' as Omega operators  |  W2→W2'=True W2'→W2=True  |  True
+    PASS  fold fixes the Z2 cycle product F = W2∘W2'  |  True  |  True
+    PASS  word reverse also sends W2 to W2' (orientation channel)  |  True  |  True
+    PASS  genomic BU keys match the same Weyl pattern (stop swapped, ser fixed)  |  True  |  True
+
+44. GENOMES THROUGH THE WALL DECOMPOSITION (REAL CDS)
+=====
+  objects
+    BU-class usage; TGA share of the 10-class; same-AA edge fraction; TCN<->AGY chord share of same-AA edges; nulls: GC-matched letter shuffle x12 and protein-fixed synonym resample x24
+
+    genome    genes   codons     gc      c00     c10     c01     c11  tga/c10
+    ecoli       390   124203  0.529    35997   23081   28193   36932 127/23081
+    yeast       399   199529  0.400    70071   28076   45783   55599 119/28076
+    sars_cov2    12    14161  0.379     4440    2199    3257    4265   1/2199
+    chr22       300   108856  0.584    26007   30291   30366   22192 1601/30291
+
+  channels vs nulls (fractions)
+    chr22: sameAA 0.0882 vs gcnull 0.0762 | chord|sameAA 0.0582 vs gcnull 0.0616 vs synnull 0.0606
+
+  checks
+    ok    check  |  measured  |  expect
+    PASS  all four genomes scored (no missing data)  |  see table  |  all ok
+    PASS  same-AA edge fraction exceeds its GC-matched null in every genome  |  see channel lines  |  obs > null each
+    PASS  fold-crossing serine chords present and measurable in every genome  |  see channel lines  |  count > 0 each
+
+31. CODE-CLASSIFICATION CONSTRAINTS ON STANDARD CODE
+=====
+  objects
+    wall; size; affine; serine; stop square; beta1; wobble; constitutional shells
+
+    constraint                   ok
+    wall_closed                PASS
+    size_profile               PASS
+    affine_fibers              PASS
+    serine_split               PASS
+    stop_square                PASS
+    beta1_27                   PASS
+    wobble_boxes_8             PASS
+    family_sheet               PASS
+    serine_complement_reach    PASS
+    stop_fiber_near_eq         PASS
+    stop_trp_invariant         PASS
+
+  checks
+    ok    check  |  measured  |  expect
+    PASS  standard code satisfies every code-classification constraint  |  True  |  True
+    PASS  wall closed (rank 4, fold syn edges 0)  |  True  |  True
+    PASS  size profile matches measured multiset  |  True  |  True
+    PASS  serine split and punctured stop square  |  see checks  |  True
+    PASS  beta1=27 and eight complete wobble boxes  |  see checks  |  True
+    PASS  constitutional side conditions (x)-(xi)  |  see checks  |  True
+
+32. LOCAL MODULI UNDER FULL CODE CONSTRAINTS
+=====
+  objects
+    one-codon reassignments; weak nbhd vs full constraint filter; survivors
+
+    moves_with_3_stops=1159 weak_nbhd=1159 full_constraints=5
+    survivors=(('AAA', 'K', 'M'), ('AAT', 'N', 'M'), ('CAG', 'Q', 'M'), ('GAG', 'E', 'M'), ('TTT', 'F', 'M'))
+
+  checks
+    ok    check  |  measured  |  expect
+    PASS  one-move space enumerated at scale  |  n=1159  |  >1000
+    PASS  full constraints stricter than weak neighborhood  |  5 < 1159  |  full < weak
+    PASS  full-constraint local moduli has 5 survivors (one Aff_S6 orbit)  |  n=5  |  5
+
+33. STRUCTURED SLICES (STOP SQUARE; SER BRIDGE)
+=====
+  objects
+    stop on 3/4 of TAA/TAG/TGA/TGG; AGY↔AGR swaps; full-constraint survivors
+
+    stop_configs=4 stop_u8=4 ser_swaps=4 ser_u8=4
+
+  checks
+    ok    check  |  measured  |  expect
+    PASS  stop-square slice has 4 completions  |  n=4  |  4
+    PASS  all four stop-square completions pass full constraints  |  survivors=4  |  4
+    PASS  serine-bridge swap slice enumerated  |  n=4 u8=4  |  >0
+
+34. tRNA IDENTITY ELEMENTS VS ANTICODON / FOLD
+=====
+  objects
+    curated E. coli identity sites
+    role 1 = anticodon middle (pos 35 / fold); role 2 = other anticodon; -1 = outside
+
+    elements=30 anticodon_any=18 anticodon_middle=2 outside=12 frac_anticodon=0.600 frac_middle=0.067
+
+  checks
+    ok    check  |  measured  |  expect
+    PASS  identity-element table loaded  |  n=30  |  >=20
+    PASS  majority of listed elements involve the anticodon  |  frac=0.600  |  >0.5
+    PASS  non-anticodon identity elements also present  |  n_out=12  |  >0
+    PASS  at least one curated anticodon-middle (pos 35) contact  |  n_mid=2  |  >=1
+
+35. LOCAL MODULI: MET EXPANSIONS; WALL-AUT (PROBE ONLY)
+=====
+  objects
+    5 full-constraint Met survivors; wall-Aut probe orbits; Aff_S6 is the measure
+
+    survivors=5 met_expansions=5
+    n_orbits=3 sizes=(3, 1, 1)
+    orbits=(('AAA',), ('AAT', 'CAG', 'GAG'), ('TTT',))
+
+  checks
+    ok    check  |  measured  |  expect
+    PASS  all 5 local full-constraint survivors are single Met expansions  |  met=5/5  |  5/5
+    PASS  wall Aut (probe) quotients the 5 into 3 orbits of sizes 3,1,1  |  n=3 sizes=(3, 1, 1)  |  3 (3,1,1)
+    PASS  largest wall-Aut probe orbit has size 3  |  sizes=(3, 1, 1)  |  3,...
+
+36. STRUCTURED TWO-MOVE GENERATORS
+=====
+  objects
+    Met-expansion pairs; Ile double->Met; size-2 codon swaps; full constraints
+
+    met_pairs=0/10 ile_double_met=3/3 size2_swaps=102/144
+
+  checks
+    ok    check  |  measured  |  expect
+    PASS  no two simultaneous Met expansions among the 5 pass full constraints  |  0/10  |  0/>0
+    PASS  all three Ile double->Met moves pass full constraints  |  3/3  |  3/3
+    PASS  size-2 codon swaps: 102 of 144 pass full constraints (constitutional kills 36)  |  102/144  |  102/144
+
+37. NCBI TABLES UNDER FULL CODE CONSTRAINTS
+=====
+  objects
+    NCBI translation tables; full constraint filter; pass list
+
+    tables=22 constraint_pass=2 ids=(1, 11)
+
+  checks
+    ok    check  |  measured  |  expect
+    PASS  only NCBI tables 1 and 11 (standard) pass full constraints  |  ids=(1, 11)  |  (1, 11)
+    PASS  exactly two NCBI tables pass full constraints  |  n=2/22  |  2
+
+38. AUT RECONCILIATION: Iso(H(6,2)) PRIMARY; WALL-AUT PROBE
+=====
+  objects
+    Iso(H(6,2)) = GF(2)^6 rtimes S6 (Aff_S6); wall-Aut probe; orders
+
+    |wallAut|=120960 |Iso(H(6,2))|=46080 |byteGraphAut|=92160 |S6 cap wall-split|=48
+    wall_orbits=3 sizes=(3, 1, 1) aff_orbits=1 sizes=(5,) same_partition=False
+
+  checks
+    ok    check  |  measured  |  expect
+    PASS  wall-Aut order is |GL(2,2)| x |GL(4,2)| = 120960  |  120960  |  120960
+    PASS  Iso(H(6,2)) order is 64 x 720 = 46080  |  46080  |  46080
+    PASS  S6 elements preserving fold/outer split: |S2 x S4| = 48  |  48  |  48
+    PASS  Iso(H(6,2)) quotients the 5 Met survivors into one orbit of size 5  |  (5,)  |  (5,)
+    PASS  Iso(H(6,2)) and wall-Aut induce different partitions of the 5  |  same=False  |  False
+    PASS  byte-graph Aut order is 128 x 720 = 92160  |  92160  |  92160
+
+39. CONSTITUTIONAL FIBER SIDE CONDITIONS
+=====
+  objects
+    intra-fiber Omega ab shells; serine complement reach; wall not replaced by (x)-(xi)
+
+    ser_max_ab=12 ser_complement_pairs=2 other_sense_max_ab=6 stop_max_ab=4
+    stop_trp_pairs=6 complementarity_invariant=True wall_only_swap_fails=6 size2_pre_const=138
+
+  checks
+    ok    check  |  measured  |  expect
+    PASS  serine is the unique sense fiber reaching the complement pole (ab=12)  |  ser_max=12 other_max=6  |  12 vs <=6
+    PASS  exactly two serine intra-fiber pairs sit on the complement horizon  |  2  |  2
+    PASS  stop fiber stays near equality (intra-fiber ab <= 4)  |  4  |  <=4
+    PASS  all six stop-Trp square pairs obey ab + horizon = 12  |  ok=True n=6  |  True n=6
+    PASS  exactly six size-2 swaps fail wall alone while passing constitutional halves  |  6  |  6
+    PASS  without constitutional, 138 size-2 swaps pass the older core constraints  |  138  |  138
+
+29. S6 EDGE-CHARACTER COVARIANCE
+=====
+  objects
+    walsh_sign6 as character on edge differences u^v; S6 acts on payload bits by permutation; translation part drops
+
+    perms=720 pairs_tested=1520640 viol_natural=0 viol_alt=737280
+
+  checks
+    ok    check  |  measured  |  expect
+    PASS  natural form covariant under all of S6 (exact)  |  viol=0  |  0
+    PASS  alt form (inverse-permuted row index) is NOT covariant  |  viol=737280  |  >0
+
+30. STOP-BOUNDARY MODULI UNDER Iso(H(6,2))
+=====
+  objects
+    boundary object = stop^3 + Trp 4-subset of GF(2)^6; clauses: rank-2 hull, complementarity (ab+horizon=12), stop-side ab bound; orbit census under Iso(H(6,2)) = GF(2)^6 rtimes S6; BU punctured square
+
+    quantity                                          value
+    admissible boundaries                              2240
+    invariance violations                                 0
+    Iso(H(6,2)) orbits                                    2
+    orbit sizes                                 (1280, 960)
+    standard orbit size                                 960
+    strict class within std orbit                         1
+
+  checks
+    ok    check  |  measured  |  expect
+    PASS  enumeration finite at scale (2240 expected structure)  |  n=2240  |  >0 finite
+    PASS  admissible set is Iso(H(6,2))-invariant (payload-form clauses)  |  viol=0  |  0
+    PASS  exactly two Iso(H(6,2)) orbits  |  sizes=(1280, 960)  |  (960, 1280)
+    PASS  standard sits in the minority orbit  |  std_size=960  |  min(sizes)
+    PASS  strict Trp-completion selects exactly the standard orbit  |  bool=True  |  True
+
+31. NCBI WALL BREACHES AS BU POSITIONS
+=====
+  objects
+    breach classes on payload bits 2-3: pole 11 = serine fold-fixed axis (tables 16, 22); pole 01 = stop-branch direction, TAA-TGA diff (tables 24, 33); Weyl bit-fold on the fold plane
+
+     tid               name  fold  outer       opener  pole                        fails
+      16 chlorophycean_mito     1     67      TAG-TTG    11 wall_closed,size_profile,affine_fibers,stop_square
+      22   scenedesmus_mito     1     64      TAG-TTG    11 wall_closed,size_profile,affine_fibers,serine_split
+      24 rhabdopleuridae_mi     1     67      AAG-AGG    01 wall_closed,size_profile,serine_split,stop_square
+      33 cephalodiscidae_mi     1     69      AAG-AGG    01 wall_closed,size_profile,serine_split,stop_square
+
+  checks
+    ok    check  |  measured  |  expect
+    PASS  exactly four breach tables  |  n=4  |  4
+    PASS  each breach opens exactly one fold-plane sense edge  |  fold=1 x4  |  1 each
+    PASS  standard wall closed (67 outer / 0 fold sense edges)  |  67/0  |  67/0
+    PASS  tables 16+22 ride the serine axis (fold pole 11)  |  TAG-TTG  |  pole=11
+    PASS  tables 24+33 ride the stop branch (fold pole 01)  |  AAG-AGG  |  pole=01
+    PASS  opener set is exactly TAG-TTG and AAG-AGG  |  2 edges over 4 tables  |  set match
+    PASS  all four breach tables fail wall_closed (hard fold breach)  |  wall in fails x4  |  True
+    PASS  NCBI tables 1 and 11 pass full u8 constraints  |  pass both  |  True
+    PASS  each breach is hard (fold=1, wall open) plus soft clause failures  |  fold=1 and |fails|>=2  |  True x4
+
+compile[ecoli_cds_900] len=900 bytes=897
+-----
+  byte_fold_w: n_bytes=897, w_residual_frac=0.2798, mean_fold_disagreement=1.973
+  fold_poles: pole_00_frac=0.1839, pole_01_frac=0.2709, pole_10_frac=0.3088, pole_11_frac=0.2363
+  family_sheet: mu_0=0.2375, mu_1=0.2196, mu_2=0.2564, mu_3=0.2865, l1_uniform=0.08584
+  omega_signature: parity=1, tau_u_popcount=2, tau_v_popcount=4
+  depth4_parity: parity_zero_frac=1
+  chi_shells: n_pairs=299, mean_shell=2.836
+  qubec_order: eta=0.05463, M2=4023
+  ab_horizon: n_pairs=299, mean_ab=5.672, mean_horizon=6.328, ab_plus_horizon=12
+  boundary_keys: ATG_present=1, TAA_present=1, TAG_present=1, TGA_present=1
+
+compile[promoter_tss2537314] len=90 bytes=87
+-----
+  byte_fold_w: n_bytes=87, w_residual_frac=0.2644, mean_fold_disagreement=1.966
+  fold_poles: pole_00_frac=0.2414, pole_01_frac=0.2414, pole_10_frac=0.3563, pole_11_frac=0.1609
+  family_sheet: mu_0=0.2874, mu_1=0.1954, mu_2=0.3103, mu_3=0.2069, l1_uniform=0.1954
+  omega_signature: parity=1, tau_u_popcount=4, tau_v_popcount=4
+  depth4_parity: parity_zero_frac=1
+  chi_shells: n_pairs=29, mean_shell=2.759
+  qubec_order: eta=0.08046, M2=3940
+  ab_horizon: n_pairs=29, mean_ab=5.517, mean_horizon=6.483, ab_plus_horizon=12
+  boundary_keys: ATG_present=1, TAA_present=1, TAG_present=0, TGA_present=1
+
+32. GENOMIC COMPILE PRINT
+=====
+  objects
+    GenomicCompile = certified fields packaged: byte/W fold + fold poles (bits 2-3) + family sheet mu + Omega signature + depth-4 parity + chi shells + QuBEC eta/M2 + ab/horizon + boundary keys; object lives in common.py; this is a thin print
+
+  checks
+    ok    check  |  measured  |  expect
+    PASS  compile layers reproduce certified sections on both windows  |  CDS + promoter windows pass  |  pass
+
+33. Iso(H(6,2)) ORBIT OF STANDARD CODE
+=====
+  objects
+    Iso(H(6,2)) = GF(2)^6 rtimes S6 (Aff_S6); transport labeled standard under 11 generators; BFS orbit; count constraint-pass members; factor 512-cluster
+
+    orbit=46080 u8_pass=512 cluster=512 fail_wall=43008 fail_wobble=43008 fail_beta1=36864
+    six_fiber_geom L=cube_minus_edge R=cube_minus_edge S=cube_minus_edge ser_split=(4, 2)
+    cluster_factor: T_orbits=8 T_orbit_size=64 closed=True free=True |L,R,S|_abs=(128,128,64) LRS_triples=256
+    orientations: letter_C2^3 in_cluster=8/8 covers=True palindrome_B3_C2^3 in_cluster=2/8
+
+  checks
+    ok    check  |  measured  |  expect
+    PASS  standard passes all code-classification constraints  |  pass=True  |  True
+    PASS  Iso(H(6,2)) acts freely on standard (orbit size 46080)  |  46080  |  46080
+    PASS  u8-passing Iso(H(6,2)) cluster has size 512 (= 2^9)  |  pass=512 cluster=512  |  512
+    PASS  L/R/S six-fibers are cube_minus_edge on inner F2^4  |  {'L': 'cube_minus_edge', 'R': 'cube_minus_edge', 'S': 'cube_minus_edge'}  |  all cube_minus_edge
+    PASS  serine letter split is (4,2)  |  (4, 2)  |  (4, 2)
+    PASS  wall and wobble failures coincide and dominate non-passers  |  wall=43008 wobble=43008 non_pass=45568  |  equal and >=94%
+    PASS  512-cluster factors as 64 translations x 8 orientations  |  T_orbits=8 size=64 closed=True free=True  |  8 orbits of 64
+    PASS  512-cluster is not an absolute L/R/S product 8x8x8  |  |L,R,S|=(128,128,64) triples=256  |  not (8,8,8) with 512 triples
+    PASS  8 orientations are letter-bit C2^3 on pairs (0,1)(2,3)(4,5)  |  in_cluster=8/8 covers=True  |  8/8 and T x C2^3 = cluster
+    PASS  8 orientations are not palindromic B3 C2^3 on (0,5)(1,4)(2,3)  |  in_cluster=2/8  |  <8
+
+40. SINGULAR-SECTOR NCBI AVOIDANCE
+=====
+  objects
+    NCBI reassignments vs clean Pro/Thr/Val/Ala/Gly box interiors
+    singular sector = Leu/Arg/Ser/stop cycle generators
+
+    moves=54 sense_origin=32 clean_box=20
+    clean_hits=0/54 sense_origin_clean=0/32
+    p_analytic=1.632e-09
+    sectors={'other': 1, 'Arg': 2, 'Ile': 1, 'Leu': 5, 'stop': 3, 'Ser': 1}
+
+  checks
+    ok    check  |  measured  |  expect
+    PASS  NCBI nontrivial moves count 54  |  n=54  |  54
+    PASS  zero moves in clean box interiors  |  0/54  |  0
+    PASS  zero sense-origin moves in clean interiors  |  0/32  |  0
+    PASS  uniform-avoidance p below 1e-6  |  1.632e-09  |  <1e-6
+
+41. SERINE MATCHED SYNTHETASE CHECK
+=====
+  objects
+    Ser multi-pole + gauge-degenerate vs anticodon-blind SerRS
+    direct-contact D/N/E/Q/K single-pole + injective
+
+    aa  class    deg n_pole   inj
+    A   blind      4      1     1
+    D   direct     2      1     1
+    E   direct     2      1     1
+    K   direct     2      1     1
+    N   direct     2      1     1
+    Q   direct     2      1     1
+    S   blind      6      2     0
+    ser_poles=2 ser_injective=False
+    direct_single=True direct_injective=True shared_pole=00
+
+  checks
+    ok    check  |  measured  |  expect
+    PASS  serine occupies two fold poles  |  n=2  |  2
+    PASS  serine length-1 signatures collide  |  injective=False  |  False
+    PASS  direct-contact fibers are single-pole  |  True  |  True
+    PASS  direct-contact signatures injective  |  True  |  True
+    PASS  direct-contact share fold pole 00  |  pole=00  |  00
+
+42. CODON-PAIR RADIAL CHANNEL
+=====
+  objects
+    pair bias y = log2((O+1)/(E+1)); chi-64 ceiling and shell radial share
+    cross-genome sign consistency; protein-fixed resample contrast
+
+    ecoli eta_chi=0.1373 eta_shell=0.0423 radial_frac=0.309 contrast=+0.8570 resample=+0.3825
+    yeast eta_chi=0.1038 eta_shell=0.0525 radial_frac=0.506 contrast=+0.5462 resample=+0.3988
+    sign_agree=7/7
+    shell    ecoli    yeast
+        0  +0.1897  +0.4104
+        1  +0.0751  +0.0916
+        2  -0.0703  -0.0295
+        3  -0.1198  -0.0765
+        4  -0.2868  -0.0928
+        5  -0.3871  -0.0901
+        6  -0.6672  -0.1358
+
+  checks
+    ok    check  |  measured  |  expect
+    PASS  E. coli shell eta^2 above 0.02  |  0.0423  |  >0.02
+    PASS  yeast shell eta^2 above 0.02  |  0.0525  |  >0.02
+    PASS  E. coli low-shell enriched  |  contrast=+0.8570  |  >0
+    PASS  yeast low-shell enriched  |  contrast=+0.5462  |  >0
+    PASS  shell-profile signs agree on 7/7  |  7/7  |  7/7
+    PASS  resample low-high contrast positive  |  e=+0.382 y=+0.399  |  >0 both
+    PASS  E. coli chi-64 eta^2 above shell  |  0.1373>0.0423  |  >shell and >0.05
+    PASS  yeast chi-64 eta^2 above shell  |  0.1038>0.0525  |  >shell and >0.05
+    PASS  radial frac shell/chi in (0.2, 0.7)  |  e=0.309 y=0.506  |  (0.2, 0.7)
+
+15. CHECK TALLY
+=====
+  pass=301 fail=0 total=301
+

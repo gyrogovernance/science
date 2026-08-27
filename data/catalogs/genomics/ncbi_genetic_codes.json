@@ -1,0 +1,117 @@
+{
+  "source": "NCBI transl_table overrides frozen in hqvm_cgm_genomics_common.py",
+  "date_utc": "2026-08-27",
+  "codon_order": "itertools.product(ACGT, repeat=3)",
+  "tables": {
+    "1": {
+      "id": 1,
+      "name": "standard",
+      "aa": "KNKNTTTTRSRSIIMIQHQHPPPPRRRRLLLLEDEDAAAAGGGGVVVV*Y*YSSSS*CWCLFLF"
+    },
+    "2": {
+      "id": 2,
+      "name": "vertebrate_mito",
+      "aa": "KNKNTTTT*S*SMIMIQHQHPPPPRRRRLLLLEDEDAAAAGGGGVVVV*Y*YSSSSWCWCLFLF"
+    },
+    "3": {
+      "id": 3,
+      "name": "yeast_mito",
+      "aa": "KNKNTTTTRSRSMIMIQHQHPPPPRRRRTTTTEDEDAAAAGGGGVVVV*Y*YSSSSWCWCLFLF"
+    },
+    "4": {
+      "id": 4,
+      "name": "mold_protozoan_mito",
+      "aa": "KNKNTTTTRSRSIIMIQHQHPPPPRRRRLLLLEDEDAAAAGGGGVVVV*Y*YSSSSWCWCLFLF"
+    },
+    "5": {
+      "id": 5,
+      "name": "invertebrate_mito",
+      "aa": "KNKNTTTTSSSSMIMIQHQHPPPPRRRRLLLLEDEDAAAAGGGGVVVV*Y*YSSSSWCWCLFLF"
+    },
+    "6": {
+      "id": 6,
+      "name": "ciliate_nuclear",
+      "aa": "KNKNTTTTRSRSIIMIQHQHPPPPRRRRLLLLEDEDAAAAGGGGVVVVQYQYSSSS*CWCLFLF"
+    },
+    "9": {
+      "id": 9,
+      "name": "echinoderm_mito",
+      "aa": "NNKNTTTTSSSSIIMIQHQHPPPPRRRRLLLLEDEDAAAAGGGGVVVV*Y*YSSSSWCWCLFLF"
+    },
+    "10": {
+      "id": 10,
+      "name": "euplotid_nuclear",
+      "aa": "KNKNTTTTRSRSIIMIQHQHPPPPRRRRLLLLEDEDAAAAGGGGVVVV*Y*YSSSSCCWCLFLF"
+    },
+    "11": {
+      "id": 11,
+      "name": "bacterial_plastid",
+      "aa": "KNKNTTTTRSRSIIMIQHQHPPPPRRRRLLLLEDEDAAAAGGGGVVVV*Y*YSSSS*CWCLFLF"
+    },
+    "12": {
+      "id": 12,
+      "name": "alt_yeast_nuclear",
+      "aa": "KNKNTTTTRSRSIIMIQHQHPPPPRRRRLLSLEDEDAAAAGGGGVVVV*Y*YSSSS*CWCLFLF"
+    },
+    "13": {
+      "id": 13,
+      "name": "ascidian_mito",
+      "aa": "KNKNTTTTGSGSMIMIQHQHPPPPRRRRLLLLEDEDAAAAGGGGVVVV*Y*YSSSSWCWCLFLF"
+    },
+    "14": {
+      "id": 14,
+      "name": "alt_flatworm_mito",
+      "aa": "YNKNTTTTSSSSIIMIQHQHPPPPRRRRLLLLEDEDAAAAGGGGVVVVYY*YSSSSWCWCLFLF"
+    },
+    "16": {
+      "id": 16,
+      "name": "chlorophycean_mito",
+      "aa": "KNKNTTTTRSRSIIMIQHQHPPPPRRRRLLLLEDEDAAAAGGGGVVVV*YLYSSSS*CWCLFLF"
+    },
+    "21": {
+      "id": 21,
+      "name": "trematode_mito",
+      "aa": "NNKNTTTTSSSSMIMIQHQHPPPPRRRRLLLLEDEDAAAAGGGGVVVV*Y*YSSSSWCWCLFLF"
+    },
+    "22": {
+      "id": 22,
+      "name": "scenedesmus_mito",
+      "aa": "KNKNTTTTRSRSIIMIQHQHPPPPRRRRLLLLEDEDAAAAGGGGVVVV*YLY*SSS*CWCLFLF"
+    },
+    "23": {
+      "id": 23,
+      "name": "thraustochytrium_mito",
+      "aa": "KNKNTTTTRSRSIIMIQHQHPPPPRRRRLLLLEDEDAAAAGGGGVVVV*Y*YSSSS*CWC*FLF"
+    },
+    "24": {
+      "id": 24,
+      "name": "rhabdopleuridae_mito",
+      "aa": "KNKNTTTTSSKSIIMIQHQHPPPPRRRRLLLLEDEDAAAAGGGGVVVV*Y*YSSSSWCWCLFLF"
+    },
+    "25": {
+      "id": 25,
+      "name": "sr1_gracilibacteria",
+      "aa": "KNKNTTTTRSRSIIMIQHQHPPPPRRRRLLLLEDEDAAAAGGGGVVVV*Y*YSSSSGCWCLFLF"
+    },
+    "26": {
+      "id": 26,
+      "name": "pachysolen_nuclear",
+      "aa": "KNKNTTTTRSRSIIMIQHQHPPPPRRRRLLALEDEDAAAAGGGGVVVV*Y*YSSSS*CWCLFLF"
+    },
+    "29": {
+      "id": 29,
+      "name": "mesodinium_nuclear",
+      "aa": "KNKNTTTTRSRSIIMIQHQHPPPPRRRRLLLLEDEDAAAAGGGGVVVVYYYYSSSS*CWCLFLF"
+    },
+    "30": {
+      "id": 30,
+      "name": "peritrich_nuclear",
+      "aa": "KNKNTTTTRSRSIIMIQHQHPPPPRRRRLLLLEDEDAAAAGGGGVVVVEYEYSSSS*CWCLFLF"
+    },
+    "33": {
+      "id": 33,
+      "name": "cephalodiscidae_mito",
+      "aa": "KNKNTTTTSSKSIIMIQHQHPPPPRRRRLLLLEDEDAAAAGGGGVVVVYY*YSSSSWCWCLFLF"
+    }
+  }
+}
