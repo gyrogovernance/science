@@ -539,7 +539,7 @@ Epigenetic marks fit the same architecture as ingress-only state memory. Methyla
 
 ## 13. Verification Summary
 
-The verification suite reports 297 passing checks and zero failures [10]. Selected invariants that define the algebraic content are restated here.
+The verification suite reports 301 passing checks and zero failures [10]. Selected invariants that define the algebraic content are restated here.
 
 The twenty-four affine nucleotide encodings form three orbits of eight. Fold and payload reverse-complement commute on the pair-inversion orbit alone. Watson-Crick polarity on that orbit is the antipode.
 
@@ -665,6 +665,6 @@ The finite and continuous layers meet through chirality, double-cover organizati
 
 [9] Korompilias, B. *Analysis: hQVM Wavefunction. Holonomic Quantum Virtual Machine: Wavefunction Analysis of the hQVM Kernel.* CGM research corpus.
 
-[10] Korompilias, B. *hQVM CGM Genomics Results and Worknotes.* `experiments/hqvm_cgm_genomics_results.txt` and `experiments/hqvm_cgm_genomics_worknotes.txt`, 297 verification checks.
+[10] Korompilias, B. *hQVM CGM Genomics Results and Worknotes.* `experiments/hqvm_cgm_genomics_results.txt` and `experiments/hqvm_cgm_genomics_worknotes.txt`, 301 verification checks.
 
 [11] Korompilias, B. *Analysis: Compact Geometry. Spectral Algebra of the Electroweak Mass Spectrum.* CGM research corpus.

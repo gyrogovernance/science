@@ -13,7 +13,7 @@ Translation advances an ordered walk on Omega in a subthermal carrier climate, a
 ### Added
 
 - `docs/Findings/Analysis_hQVM_CGM_Genomics.md` — public analysis: genomic state ladder, duplex poles and word memory, code quotient with holonomic fibers, fold-plane semantic wall, stop and serine as fold-plane generators, K4 gauge reading, ordered transport on Omega, chromosome-scale holonomy, Aff_S6 classification, negative results, and testable consequences
-- `experiments/hqvm_cgm_genomics_1.py` through `_8.py`, `hqvm_cgm_genomics_common.py`, `hqvm_cgm_genomics_run.py`, and `hqvm_cgm_genomics_gates.json` — gated verification suite (297 checks, zero failures)
+- `experiments/hqvm_cgm_genomics_1.py` through `_8.py`, `hqvm_cgm_genomics_common.py`, `hqvm_cgm_genomics_run.py`, and `hqvm_cgm_genomics_gates.json` — gated verification suite (301 checks, zero failures)
 - `experiments/hqvm_cgm_genomics_results.txt` — deterministic run output
 - `experiments/hqvm_cgm_genomics_data_ingest.py` and frozen catalogs under `data/catalogs/genomics/`: NCBI genetic-code tables, E. coli K-12 coding set, RegulonDB promoter set, and REBASE palindromic sites with provenance
 

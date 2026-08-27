@@ -72,6 +72,7 @@ All results below derive from the hQVM kernel geometry and its shared logarithmi
 ### Biology and scaling
 
 * **Organismal metabolism** follows the spatial geometry to yield standard 3/4 and 2/3 scaling bands, a quarter-power lifespan law, and a 3/16 development law, which are successfully audited against mammalian trait catalogs.
+* **The genetic code** carries the rigid algebraic structure predicted by the kernel: amino-acid identity is fixed by the middle base of each codon (independently confirmed by biochemical hydropathy), and out of the vast space of conceivable codes only 512 satisfy the framework's constraints, with every known natural variant code deviating along just two permitted directions.
 
 ### Information-theoretic applications
 
