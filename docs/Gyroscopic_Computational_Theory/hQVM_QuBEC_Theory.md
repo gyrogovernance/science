@@ -781,6 +781,14 @@ At the byte level, only {0xD5, 0x2B} fix every complement horizon state pointwis
 
 Under the K4 gate group, Ω partitions into 1056 orbits: 32 of size 2 on the complement horizon (paired by S), 32 of size 2 on the equality horizon (paired by C), and 992 of size 4 in the bulk. Bulk states have trivial K4 stabilizer; horizon states have stabilizer of order 2.
 
+### 10.7 Climate stabilizers in the signature group
+
+The signature group G of order 8192 (Group Theory Analysis §5.2) acts on climates on Ω. By the signature chirality-shift law (SDK §5.1.3), a signature (ε, τ_u, τ_v) maps the chirality marginal to its translate by δ = τ_u ⊕ τ_v. The shell-weighted family P_λ(χ) ∝ λ^{wt(χ)} of §2 is therefore invariant under exactly the signatures with δ = 0. These form the diagonal subgroup
+
+    H = {(0, t, t), (1, t, t) : t ∈ GF(2)^6}
+
+of order 128. For λ ≠ 1 the stabilizer of P_λ equals H: a signature with δ ≠ 0 translates χ and changes λ^{wt(χ)} for some χ. Every holonomic gate lies in H, since S = (1, 0, 0), C = (1, 63, 63), and F = (0, 63, 63) all have δ = 0, so the gate group acts within the symmetry of any shell-weighted climate. The canonical word W2(m) has τ = (63 ⊕ m, m), so δ = 63 for every m, and W2 lies outside H for every m. W2 exchanges the two condensation regimes: it maps P_λ to P_{1/λ}, so ρ → 1 − ρ, η → −η, m → −m, and M2 is preserved since M2 depends on η^2. The pair (H, W2) is the exact finite symmetry structure of the λ-ensemble: H is the stabilizer that any climate-respecting model may assume, and W2 is the canonical generator that moves one climate to its dual. The computation is verified by brute force over all 8192 signatures (Features Report §3.1, SG-5).
+
 ---
 
 ## 11. The Full Climate Equation

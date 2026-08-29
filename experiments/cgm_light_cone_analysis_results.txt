@@ -1,0 +1,120 @@
+CGM LIGHT-CONE ANALYSIS
+=====
+Aperture and the light cone: dual-pole holonomy as the enclosed
+hyperbolic area of an interior (timelike) triangle of the ball,
+measured against the null boundary of velocity space.
+
+1. The exact light-cone bridge
+=====
+  Minkowski space, c = 1.  N = null cone (boundary);
+  H = {q.q = +1, q0 > 0} forward mass shell (the space);
+  B = {|beta| < 1} Einstein ball (a chart of H).
+  beta = q_spatial / q0 bijects H -> B;  dB = celestial sphere
+  = projectivized future null cone.  |beta|<1 timelike (inside),
+  |beta|=1 null (on the cone), |beta|>1 spacelike (outside).
+
+  k(4/5)            = 0.5    (must be exactly 1/2)
+  gamma(4/5)        = 1.666666666666667  (= 5/3 exactly)
+  margin 4/5 - pi/4 = 0.01460183660255169 (= (16-5pi)/20)
+  check  k(beta) = 1/2 <=> beta = 4/5 (closure saturation surface)        PASS
+  check  4/5 > pi/4: ONA strictly inside the saturation circle            PASS
+
+2. Causal classification of the stages
+=====
+  stage   beta          |beta|?1   rapidity           gamma
+  CS   1.57079632679  >1       --              --                outside (spacelike)
+  UNA  0.707106781187  <1       0.88137358701954  1.4142135623731   timelike
+  ONA  0.785398163397  <1        1.0593061708232  1.6155326551693   timelike
+  BU+  0.199471140201  <1       0.20218171906463  1.0205084422705   timelike
+  BU-  0.199471140201  <1       0.20218171906463  1.0205084422705   timelike
+  CS is outside the cone: the gauge frame is spacelike-separated
+  from every payload operation - the unobservable source frame.
+
+3. The closed form and the dual-pole loop
+=====
+  delta_BU = 4*atan(k(pi/4)*k(m_a))  [Definition]
+    k(pi/4) = 0.4851158626411627
+    k(m_a)  = 0.1007479000361957
+    omega   = 0.09767108912883104
+    delta_BU= 0.1953421782576621
+  rho = delta_BU / m_a = 0.9793004544973297
+  Delta = 1 - rho      = 0.0206995455026703
+
+  Middle edge (rotationally flat, metrically nonzero):
+    d(BU+,BU-) = 2*atanh(m_a) = 0.404363438129256
+  check  omega via Ungar formula agrees                                   PASS
+  check  delta_BU closed form is self-consistent                          PASS
+
+4. delta_BU as hyperbolic area: two independent derivations
+=====
+  Route A - Ungar gyrotriangle defect of (ONA,BU+,BU-):
+    area_full  = 0.1953421782576621
+    gyr angle  = 0.1953421782576621
+    |area_full - delta_BU| = 2.11e-81
+  Route B - Girard defect additivity of the corner (0,ONA,BU+):
+    area_corner = 0.09767108912883104
+    2*area_corner = 0.1953421782576621 (shares the two corners of the loop)
+    |area_full - 2*area_corner| = 8.43e-81
+  check  Area(ONA,BU+,BU-) == delta_BU (Ungar route)                      PASS
+  check  Area = 2*Area(corner) (Girard additivity)                        PASS
+
+5. Candidate aperture-light-cone relations
+=====
+  C1  closure-critical amplitude m* (4 atan(k(pi/4) k(m)) = m):
+      m*           = 0.353572912705431
+      u_p/2        = 1/(2 sqrt(2)) = 0.3535533905932738
+      m_a sqrt(pi) = 0.3535533905932738
+      |m*-u_p/2|/u_p/2 = 5.52169e-5    [~55 ppm: NEAR - needs an axiom to derive]
+  check  C1 is a well-quantified near-identity (5.5e-5 +/- factor)        PASS
+  C2  atan(m_a) - delta_BU = 0.00154481
+      COINCIDENTAL chart artifact: atanh ~ atan ~ beta at small m_a.
+  C3  delta_BU/pi = 0.06217934652809017   delta_BU/(pi/16) = 0.9948695444494427
+      The bound delta_BU <= pi (ideal-triangle ceiling) is EXACT;
+      the 1/16 quantization is only NEAR (0.51% off).
+  C4  baseline gap 1 - 2k(pi/4) = 0.02976827471767459
+      EXACT theorem: positive because ONA lies strictly inside
+      the k=1/2 saturation surface (beta < 4/5).
+  C5  Delta chart-dependence:
+      Delta_klein = 0.0206995455026703
+      Delta_rapid = 0.03382868064733219
+      Delta_angle = 0.007846180600947483
+      CGM Delta is the Klein (Common-Source-frame) gap; there is
+      no chart-independent number equal to 0.0207. Invariant
+      choices: delta_BU/pi = 0.06217934652809017 ;
+      delta_BU/(2 atanh m_a) = 0.4830856596763339 ;
+      delta_BU/atanh(pi/4) = 0.1844057777043357 .
+  C6  d(BU+,BU-) = 0.404363438129256
+      Ideal endpoints of the BU diameter = antipodal null pair
+      (0,0,+1), (0,0,-1). EXACT; invariant content is the AXIS.
+  C7  solid angle of the m_a-cone = 0.2525375348404258  = 0.020096298 x 4pi
+      Q_G m_a^2 = 0.5 (EXACT by definition; do not promote the 2.0% vs 2.07% proximity)
+
+6. Finite hQVM reinterpretation
+=====
+  Byte fold N(k) = 16*C(4,k): k=0:16, k=1:64, k=2:96, k=3:64, k=4:16
+  Central BU comparison disagrees in 128/256 = 1/2 of bytes.
+  W2 pole exchange is an involution with no fixed states: the
+  finite analogue of a flat geodesic to an antipodal null pair.
+  The continuous picture adds no new finite number; it re-reads
+  the certified K4/W2 data (already Tier-A verified).
+
+7. Falsification criteria
+=====
+  F1  C1: |m* - 1/(2 sqrt2)|/(1/(2 sqrt2)) must stay ~5.52e-5.
+  F2  T7: k(4/5) = 1/2 exactly and 1 - 2k(pi/4) > 0 (checked).
+  F3  T4/T8: both area routes must agree with delta_BU at 1e-70.
+  Any gate FAIL forces a nonzero exit code and voids the report.
+
+Result summary
+=====
+  delta_BU = 0.1953421782576621 rad
+  rho      = 0.9793004544973297
+  Delta    = 0.0206995455026703
+
+  The aperture is not ON the light cone: it is measured AGAINST it.
+  The cone is the ideal boundary of the space of timelike
+  directions; the dual-pole holonomy is the enclosed hyperbolic
+  area; the aperture is open because the depth-two boundary sits
+  strictly inside the k=1/2 saturation circle (beta<4/5,
+  gamma=5/3, eta=ln 3).  The one open item needing a new axiom is
+  the exact anchoring m* = u_p/2 = m_a sqrt(pi) (55 ppm NEAR).

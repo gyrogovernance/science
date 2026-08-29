@@ -119,6 +119,8 @@ On the Omega12 chart, the four K4 elements have signatures:
 
 The signatures are micro_ref-dependent for W2 and W2' (tau values shift), but the K4 structure is universal.
 
+**Remark (the two Klein four-groups).** The gate group {id, S, C, F} of the SDK and the word group {id, W2(m), W2'(m), F(m)} of Theorem T1 are two distinct Klein four-subgroups of the signature group. In signature coordinates the word elements are even: W2(m) = (0, 63 ⊕ m, m), W2'(m) = (0, m, 63 ⊕ m), and F(m) = (0, 63, 63) for every m. The gates S = (1, 0, 0) and C = (1, 63, 63) are odd signatures, and gate F = (0, 63, 63). The two subgroups therefore intersect in {id, F}. On the chirality register the word half-words act as χ → χ ⊕ 63 and exchange the constitutional poles, while each of the four gates preserves χ. As permutations of Ω the word half-words and the gates S, C are distinct elements with distinct fixed-point structure: W2 has zero fixed points, S fixes the equality horizon pointwise, and C fixes the complement horizon pointwise.
+
 ---
 
 ## 4. Constitutional Pole Dynamics

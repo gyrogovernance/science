@@ -1,0 +1,199 @@
+CGM LIGHT-CONE ANALYSIS - WORK NOTES
+==================================
+
+Status: draft synthesis. Companion script: cgm_light_cone_analysis.py
+(prints this same body of results to cgm_light_cone_analysis_results.txt).
+
+--------------------------------------------------------------------------
+0. THE QUESTION
+--------------------------------------------------------------------------
+
+Analysis_Holonomy.md Section 6 describes the BU dual-pole loop:
+
+  "The poles of the dual are collinear, so the origin-based gyration
+  gyr(BU+, BU-) equals the identity and the middle edge contributes no
+  rotational residue. The holonomy is therefore generated at the two
+  corners between the depth-two boundary and the dual-pole amplitude.
+  Each corner is a gyration of two boosts, one of magnitude pi/4 and one
+  of magnitude m_a, separated by a right angle."
+
+The author's intuition: this picture is familiar, and ontologically the
+"aperture" m_a (and its gap Delta) should be an object defined relative
+to the LIGHT CONE - the aperture is the interior margin that keeps
+observation/reconstruction possible without saturating the null
+boundary. The goal is to DERIVE this relation rigorously, not assert it.
+
+--------------------------------------------------------------------------
+1. THE GEOMETRIC DICTIONARY (the exact light-cone bridge)
+--------------------------------------------------------------------------
+
+Work in Minkowski space M^4, metric diag(+1,-1,-1,-1), c = 1. Three
+objects, kept distinct:
+
+  N   = { x : x.x = 0, x0 > 0 }      forward light/null cone  (BOUNDARY)
+  H^3 = { q : q.q = +1, q0 > 0 }     forward mass shell       (the SPACE)
+  B   = { beta : |beta| < 1 }        Einstein gyroball        (a CHART of H)
+
+Bridge: the projection q -> beta = q_spatial/q0 is a bijection H -> B
+(q0 = gamma). B IS the set of future-timelike directions. The boundary
+|beta| = 1 is the ideal completion of B and equals the CELESTIAL SPHERE
+S^2 = N/R+, the projectivized future light cone - one point per null
+direction.
+
+INVARIANT ORDERING (kept clean through all that follows):
+  - interior of B  <=> strictly timelike directions (inside the cone)
+  - boundary of B  <=> null directions (on the cone)
+  - |beta| > 1     <=> spacelike (outside the cone; not a velocity)
+H carries the hyperbolic metric of constant sectional curvature -1.
+On H, rapidity = hyperbolic distance: d(0, beta) = atanh(beta),
+k(beta) = tanh(atanh(beta)/2) is the Poincare half-rapidity radius.
+
+The three earlier drafts (AI/1, AI/2) got this essentially right but
+loose: the mass shell is the hyperbolic SPACE, the cone is its IDEAL
+BOUNDARY, and the gyroball is a CHART of the shell. Keep that ordering.
+
+--------------------------------------------------------------------------
+2. THEOREMS (no new axiom needed)
+--------------------------------------------------------------------------
+
+T1  Cone bridge: B <-> future timelike directions; d B = celestial sphere.
+T2  Stage rapidities ARE hyperbolic distances from rest:
+      d(0, UNA) = atanh(1/sqrt2) = 0.8813735870
+      d(0, ONA) = atanh(pi/4)    = 0.9726470586
+      d(0, BU+) = atanh(m_a)     = 0.2021817191
+T3  Collinear edge is rotationally flat but metrically nonzero:
+      gyr(BU+,BU-) = I,  d(BU+,BU-) = 2 atanh(m_a) = 0.4043634381
+T4  Holonomy = gyration = gyrotriangle defect = HYPERBOLIC AREA of the
+    enclosed dual-pole triangle (Gauss-Bonnet / Ungar defect theorem).
+    Verified independently at 80 digits:
+      delta_BU = 4 atan(k(pi/4) k(m_a)) = 0.1953421782576621
+      Area(ONA,BU+,BU-) = accelerator same to 1.3e-81.
+T5  Palindrome conjugates: H_pal = A^-1 H_BU A, angle preserved,
+    axis transported.
+T6  The conjugation-invariant ROTATION ANGLE of a loop is Lorentz
+    invariant; the AXIS is frame-dependent.
+T7  APERTURE POSITIVITY IS CONE-RELATIVE (strongest result):
+    baseline closure at vanishing BU amplitude:  rho(0) = 2 k(pi/4).
+    The baseline gap 1 - 2k(beta) > 0  iff  k(beta) < 1/2  iff  beta < 4/5.
+    And k(4/5) = 1/2 EXACTLY (verified); equivalently gamma = 5/3,
+    rapidity eta = ln 3, cosh(eta) = 5/3.
+    ONA at pi/4 = 0.7853981 < 4/5 = 0.8, margin (16-5pi)/20 = 0.0146018366:
+    the depth-two boundary lies STRICTLY INSIDE the half-saturation circle
+    k = 1/2, so the aperture is structurally open. The finite BU amplitude
+    then closes 0.9069 percentage points more, leaving Delta = 2.07%.
+T8  IDEAL-TRIANGLE CEILING: maximal gyrotriangle area is pi, achieved
+    only by the ideal (fully null) triangle. Hence delta_BU <= pi, with
+    delta_BU/pi = 0.0621793465 (the loop carries 1/16.08 of the memory of
+    a fully cone-saturated loop). Causal re-reading of the 1/32-turn.
+T9  Q_G = 4pi is the total solid angle of the celestial sphere (null-
+    direction space); Q_G m_a^2 = 1/2 = aperture normalized against the
+    null sphere (from phase-horizon: A^2 4pi^2 = pi/2).
+T10 BU+ and BU- are finite interior points on ONE hyperbolic diameter
+    whose ideal endpoints are the ANTIPODAL NULL PAIR (0,0,+1), (0,0,-1).
+
+--------------------------------------------------------------------------
+3. CAUSAL CLASSIFICATION OF THE STAGES (each threshold = Einstein beta)
+--------------------------------------------------------------------------
+
+  stage   beta        |beta|?1   rapidity          gamma
+  CS      pi/2=1.5708   >1       -- (not a speed)   --    spacelike/outside
+  UNA     1/sqrt2=0.707 <1       0.881373587019543  1.414213562373095
+  ONA     pi/4=0.7854   <1       0.972647058611443  1.615532655169348
+  BU+     m_a=0.19947   <1       0.202181719064628  1.020508442270544
+
+  CS is outside the cone (spacelike) - the unobservable gauge frame.
+  ONA is the payload stage CLOSEST to the cone; BU the farthest.
+  The holonomy is generated by transiting from the cone-nearest stage
+  (pi/4) to the cone-farthest stage (m_a) at a right angle.
+
+--------------------------------------------------------------------------
+4. CANDIDATE RELATIONS (classified; verified at 80 digits)
+--------------------------------------------------------------------------
+
+C1  Closure-critical amplitude: m* s.t. 4 atan(k(pi/4) k(m*)) = m* (rho=1)
+      m*   = 0.353572912705431
+      1/(2 sqrt2) = m_a sqrt(pi) = 0.353553390593274
+      relative diff ~ 5.52e-5 (55 ppm). NEAR - observation, not a theorem;
+      the natural derivation would need an axiom "aperture = saturation
+      point / sqrt(pi)". TOP CANDIDATE for a new axiom; currently honest
+      status: near-identity requiring a derivation or a postulate.
+C2  delta_BU vs atan(m_a): COINCIDENTAL and chart-dependent
+      atan(m_a) - delta_BU = 1.5448e-3 (0.0885 deg). First-order small-m_a
+      collapse of atanh ~ atan ~ beta; not structural. Report as artifact.
+C3  delta_BU vs pi/16: NEAR; delta_BU/(pi/16) = 0.9948695445 (0.513% below).
+      The EXACT statement is the bound delta_BU <= pi (T8).
+C4  Positivity of Delta: EXACT (T7). This is the clean theorem.
+C5  Delta is chart-dependent:
+      Delta_klein  = 1 - delta_BU/m_a          = 0.020699545503
+      Delta_rapid  = 1 - delta_BU/atanh(m_a)   = 0.033828680647
+      Delta_angle  = 1 - delta_BU/atan(m_a)    = 0.007846180601
+      The CGM Delta is the Common-Source-frame (Klein-projective) gap.
+      There is NO chart-indep Lorentz-invariant number equal to 0.0207.
+      Invariant aperture candidates: delta_BU/pi = 0.062179346528;
+      delta_BU/(2 atanh m_a) = 0.483085659676; delta_BU/atanh(pi/4) =
+      0.184405777704.
+C6  BU edge: EXACT. Length 2 atanh(m_a) = 0.404363438129256 between
+      antipodal null ideal endpoints; invariant content is the AXIS (the
+      fixed null pair), not the length.
+C7  Q_G = 4pi null sphere, Q_G m_a^2 = 1/2: EXACT by definition (T9).
+      The null cone with Klein slope m_a subtends 4pi(1-sqrt(1-m_a^2))
+      = 0.252537534840 sr = 0.02011 x 4pi, ~3% away from Delta - a THIRD
+      small-m_a coincidence, do not promote.
+
+--------------------------------------------------------------------------
+5. WHAT IS ALREADY A THEOREM vs. WHAT NEEDS AN AXIOM
+--------------------------------------------------------------------------
+
+Already derivable (no new axiom; holding "thresholds are Einstein speeds"
+plus standard Lorentz/hyperbolic geometry, which the framework asserts):
+  - T4: delta_BU = hyperbolic area enclosed by the dual-pole triangle.
+  - T7: aperture positivity <=> ONA strictly inside k = 1/2 saturation
+        circle; 4/5, eta = ln 3, gamma = 5/3 exact.
+  - T8: delta_BU <= pi (cone-saturated ceiling).
+  - T10/T6; T3.
+  - The flat-pole-geodesic-to-antipodal-null-pair structure.
+
+Needs a new axiom (if pursued):
+  - C1: exact anchoring m_a = m* / sqrt(pi)  (currently 55 ppm near-identity).
+  - C5: declaring the Klein (Common-Source) chart constitutive so that
+        Delta = 0.0207 is "the" aperture. Alternative invariant choice:
+        Delta_inv = delta_BU/pi = 6.22%.
+
+--------------------------------------------------------------------------
+6. THE FINITE hQVM COUNTERPART (prediction stated, not yet fully checked)
+--------------------------------------------------------------------------
+
+Continuous: dual-pole holonomy angle is set at the BU structure; the
+pole crossing is flat; the axis is a fixed ANTIPODAL PAIR OF NULL
+DIRECTIONS that the palindrome transports.
+
+Finite: W2 pooler exchange is the finite pole crossing - an involution
+(exchange of extremal shell regions s <-> 6-s), with no fixed states
+("Balance Ingress" pairs each state with a distinct shadow). This is the
+finite analogue of a FLAT geodesic to an ANTIPODAL pair: it maps, it does
+not rotate, and its fixed-set structure is extremal region exchange.
+The central BU fold disagreement is 128/256 (one half) and N(k) =
+16 C(4,k), already certified exactly. The continuous picture does NOT add
+a new finite number; it RE-INTERPRETS the certified involution data.
+
+--------------------------------------------------------------------------
+7. FALSIFICATION CRITERIA (top claims)
+--------------------------------------------------------------------------
+
+F1  Candidate 1: if |m* - 1/(2 sqrt2)|/(1/(2 sqrt2)) deviates from 5.52e-5
+    materially, the sqrt(pi) anchoring is coincidental. (Currently NEAR.)
+F2  T7: verify k(4/5) = 1/2 exactly and 1 - 2k(pi/4) > 0. If k(4/5) != 1/2
+    or the baseline gap <= 0, the cone-positivity theorem fails.
+F3  T4/T8: independently recompute hyperbolic area of (ONA,BU+,BU-)
+    (law of cosines AND Ungar defect) and compare to delta_BU
+    (floor ~1e-81). If they disagree, holonomy != area, and the
+    "enclosed hyperbolic area" light-cone reading fails.
+
+--------------------------------------------------------------------------
+8. SOURCE STATEMENT USED FOR THE SCRIPT (kept verbatim)
+--------------------------------------------------------------------------
+
+See Analysis_Holonomy.md Section 6, and the closed forms:
+  delta_BU = 4 atan(k(pi/4) k(m_a)),  k(beta) = beta/(1+sqrt(1-beta^2))
+  rho = delta_BU/m_a,  Delta = 1 - rho,
+  m_a = 1/(2 sqrt(2 pi)),  Q_G = 4pi,  Q_G m_a^2 = 1/2.

@@ -783,6 +783,8 @@ where:
 
 - the variables retain the definitions above.
 
+The two Klein four-groups are distinct subgroups of the signature group: the word elements are even signatures, the gates S and C are odd signatures, and the two subgroups share exactly {id, F} (Wavefunction Analysis §3.1, Remark).
+
 ### 6.2 Pole exchange and shell preservation
 
 The pole-swap operators invert all six chirality bits.
